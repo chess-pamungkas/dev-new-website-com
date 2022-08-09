@@ -1,0 +1,28 @@
+.header {
+  height: 83px;
+  display: flex;
+  align-items: center;
+  padding: 22px 73px;
+  background: red;
+
+  &__navigation {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 78px;
+    list-style: none;
+
+    &_section {
+      position: relative;
+      color: green;
+
+      &::after {
+        content: '>';
+        position: absolute;
+        top: 50%;
+        right: -15px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
