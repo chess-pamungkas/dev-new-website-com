@@ -1,0 +1,21 @@
+@import "typography";
+
+$sm: 375px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1920px;
+
+$font: 'Sofia Pro', sans-serif;
+
+$font-weight: ("light": 300, "regular": 400, "bold": 700, "semi-bold": 900);
+
+$colors: ("white": #FFFFFF, "red": #FF4400, "green": #11BA55, "light-green": #00FF66, "grey": #9B9B9B, "black": #232323,);
+
+$padding-sm: 15px;
+$padding-md: 35px;
+$padding-lg: 35px;
+$padding-xl: 70px;
+
+$border-radius-default: 31px;
+
+$button-default: ("height": 62px, "width": 380px);
