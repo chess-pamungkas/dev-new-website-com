@@ -1,7 +1,23 @@
 @import "vars";
 @import "mixins";
+@import "typography";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   font-family: $font;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  margin-top: $header-height;
 }

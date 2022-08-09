@@ -1,20 +1,67 @@
+@import '../../assets/styles/vars.scss';
+@import '../../assets/styles/mixins.scss';
+
 .header {
-  height: 83px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: $header-height;
   display: flex;
-  align-items: center;
-  padding: 22px 73px;
-  background: red;
+  align-items: stretch;
+  box-shadow: 0px 6px 8px #00000029;
+
+  &__left {
+    padding: 23px 73px;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    gap: 60px;
+    background-color: map-get($colors, 'white');
+  }
+
+  &__right {
+    padding: 23px 73px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: map-get($colors, 'red');
+
+    &::before {
+      content: '';
+      height: 100%;
+      position: absolute;
+      left: -40px;
+      border-top: $header-height solid transparent;
+      border-right: 40px solid map-get($colors, 'red');
+    }
+
+    &_btn {
+      @include button-header;
+
+      &._lng {
+        margin-right: 50px;
+      }
+
+      &._white {
+        margin-left: 10px;
+        background-color: map-get($colors, 'white');
+        color: map-get($colors, 'red');
+      }
+
+      &._upcs {
+        text-transform: uppercase;
+      }
+    }
+  }
 
   &__navigation {
-    margin: 0;
-    padding: 0;
     display: flex;
     gap: 78px;
     list-style: none;
 
     &_section {
       position: relative;
-      color: green;
+      color: map-get($colors, 'black');
 
       &::after {
         content: '>';

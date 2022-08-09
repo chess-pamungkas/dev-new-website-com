@@ -54,3 +54,12 @@
     text-transform: uppercase;
     font: normal normal map-get($font-weight, "semi-bold") 24px/32px $font;
 }
+
+@mixin button-header($color: map-get($colors, "white")) {
+    @include button-supress(10px 35px, 2px solid $color);
+    height: 40px;
+    border-radius: $border-radius-header;
+    color: $color;
+    white-space: nowrap;
+    font: normal normal map-get($font-weight, "bold") 16px/20px $font;
+}
