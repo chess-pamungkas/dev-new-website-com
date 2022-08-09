@@ -1,56 +1,58 @@
 @import "vars";
 // MOBILE FIRST
 @mixin tablet {
-    @media screen and (min-width: $md) {
-        @content;
-    }
+  @media screen and (min-width: $md) {
+    @content;
+  }
 }
 
 @mixin desktop-lg {
-    @media screen and (min-width: $lg) {
-        @content;
-    }
+  @media screen and (min-width: $lg) {
+    @content;
+  }
 }
 
 @mixin desktop-xl {
-    @media screen and (min-width: $xl) {
-        @content;
-    }
+  @media screen and (min-width: $xl) {
+    @content;
+  }
 }
 
 @mixin content-alignment($margin: 0 auto) {
-    margin: $margin;
-    padding-left: $padding-sm;
-    padding-right: $padding-sm;
-    @include tablet {
-        padding-left: $padding-md;
-        padding-right: $padding-md;
-    }
-    @include desktop-lg {
-        padding-left: $padding-lg;
-        padding-right: $padding-lg;
-    }
-    @include desktop-xl {
-        max-width: $xl;
-        padding-left: $padding-xl;
-        padding-right: $padding-xl;
-    }
+  margin: $margin;
+  padding-left: $padding-sm;
+  padding-right: $padding-sm;
+  @include tablet {
+    padding-left: $padding-md;
+    padding-right: $padding-md;
+  }
+  @include desktop-lg {
+    padding-left: $padding-lg;
+    padding-right: $padding-lg;
+  }
+  @include desktop-xl {
+    padding-left: $padding-xl;
+    padding-right: $padding-xl;
+  }
 }
 
 @mixin button-supress($padding: 0, $border: none) {
-    cursor: pointer;
-    border: $border;
-    outline: none;
-    background: transparent;
-    padding: $padding;
+  cursor: pointer;
+  border: $border;
+  outline: none;
+  background: transparent;
+  padding: $padding;
 }
 
 @mixin button-primary($color: map-get($colors, "black"), $border-radius: $border-radius-default, $height: map-get($button-default, "height"), $width: map-get($button-default, "width")) {
-    @include button-supress(15px, 2px solid $color);
-    height: $height;
-    width: $width;
-    display: block;
-    text-align: center;
-    text-transform: uppercase;
-    font: normal normal map-get($font-weight, "semi-bold") 24px/32px $font;
+  @include button-supress(0, 2px solid $color);
+  height: $height;
+  width: $width;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: map-get($font-weight, "black");
+  font-size: 24px;
+  line-height: $height;
+  border-radius: $border-radius;
 }

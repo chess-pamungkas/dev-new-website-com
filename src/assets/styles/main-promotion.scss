@@ -1,0 +1,92 @@
+@import "vars";
+@import "mixins";
+
+.main-promotion {
+  position: relative;
+  color: map-get($colors, "white");
+  display: flex;
+  align-items: center;
+  background: url("../images/bg/main-promotion-sm.png") no-repeat top right;
+  background-size: cover;
+  min-height: calc(100vh - 75px);
+  @include content-alignment(75px 0 0);
+
+  @include tablet {
+    background: url("../images/bg/main-promotion-md.png") no-repeat top right;
+    background-size: cover;
+  }
+
+  @include desktop-lg {
+    background: url("../images/bg/main-promotion-lg.png") no-repeat top right;
+    background-size: cover;
+  }
+
+  @include desktop-xl {
+    background: url("../images/bg/main-promotion-xl.png") no-repeat top right;
+    background-size: cover;
+    min-height: calc(100vh - 84px);
+    @include content-alignment(84px 0 0);
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .block {
+    width: 50%;
+  }
+
+  .title-wrapper {
+    margin: 0 0 35px;
+
+    @include desktop-xl {
+      max-width: 546px;
+    }
+
+    .title {
+      display: block;
+      margin-bottom: 15px;
+      font-weight: map-get($font-weight, "black");
+      font-size: 52px;
+      line-height: 65px;
+
+      &--big {
+        text-transform: uppercase;
+        font-size: 72px;
+        line-height: 90px;
+      }
+    }
+  }
+
+  .person {
+    position: absolute;
+    bottom: 38px;
+  }
+
+  .name-wrapper {
+    & > * {
+      display: block;
+    }
+
+    .name {
+      font-weight: map-get($font-weight, "black");
+      font-size: 26px;
+      line-height: 20px;
+      text-decoration: underline;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      font-weight: map-get($font-weight, "regular");
+      font-size: 16px;
+      line-height: 20px;
+
+      @include desktop-xl {
+        max-width: 236px;
+      }
+    }
+  }
+}

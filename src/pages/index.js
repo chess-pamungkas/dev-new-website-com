@@ -1,16 +1,15 @@
-import * as React from "react"
+import * as React from "react";
 import "../assets/styles/index.scss";
+import MainPromotion from "../components/main-promotion";
 
 const IndexPage = () => {
   return (
     <main>
-      <h1>
-        Hello
-      </h1>
+      <MainPromotion />
     </main>
-  )
-}
+  );
+};
 
 export default IndexPage;
 
-export const Head = () => <title>Home Page</title>
+export const Head = () => <title>Oqtima trading page</title>;
