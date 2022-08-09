@@ -1,11 +1,71 @@
 import React from 'react';
 // import { StaticImage } from 'gatsby-plugin-image';
 import { LogoFull } from '../shared/icons';
-import NavSection from './components/nav-section';
+import NavbarItem from './components/navbar-item';
 
 import './styles.scss';
 
-const navSections = ['Top Markets', 'Trading', 'Company', 'Partners'];
+const navItems = [
+  {
+    title: 'Top Markets',
+    subItems: [
+      {
+        title: 'Crypto',
+        link: '',
+        iconSrc: '',
+        description: ''
+      },
+      {
+        title: 'Indices',
+        link: '',
+        iconSrc: '',
+        description: ''
+      },
+      {
+        title: 'Forex',
+        link: '',
+        iconSrc: '',
+        description: ''
+      },
+      {
+        title: 'Commodities',
+        link: '',
+        iconSrc: '',
+        description: ''
+      },
+      {
+        title: 'Shares',
+        link: '',
+        iconSrc: '',
+        description: ''
+      },
+      {
+        title: 'Energies',
+        link: '',
+        iconSrc: '',
+        description: ''
+      },
+      {
+        title: 'All Markets Overview',
+        link: '',
+        iconSrc: '',
+        description: ''
+      }
+    ]
+  },
+  {
+    title: 'Trading',
+    subItems: []
+  },
+  {
+    title: 'Company',
+    subItems: []
+  },
+  {
+    title: 'Partners',
+    subItems: []
+  }
+];
 
 const Header = () => {
   return (
@@ -13,7 +73,7 @@ const Header = () => {
       <div className="header__left">
         <LogoFull />
         <ul className="header__navigation">
-          {navSections.map(section => <NavSection key={section} title={section} />)}
+          {navItems.map(({title, subItems}) => <NavbarItem key={title} title={title} subItems={subItems} />)}
         </ul>
       </div>
 
