@@ -1,9 +1,9 @@
 @import "vars";
 @import "mixins";
 
+@import "button-link";
 @import "main-promotion";
 @import "promotion";
-@import "button-link";
 
 * {
   box-sizing: border-box;
@@ -12,4 +12,16 @@
 body {
   margin: 0;
   font-family: $font;
+}
+
+.highlighted {
+  &-in-red {
+    color: map-get($colors, "red");
+  }
+  &-in-black {
+    color: map-get($colors, "black");
+  }
+  &-in-white {
+    color: map-get($colors, "white");
+  }
 }

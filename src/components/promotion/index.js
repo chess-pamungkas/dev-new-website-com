@@ -10,11 +10,15 @@ const Promotion = ({
   btnTitle,
   link,
   isReverseOrder = false,
+  isRedPalette = false,
 }) => {
   return (
     <section
       className={cn("promotion", className)}
-      style={{ background: `url(${bgImage}) no-repeat` }}
+      style={{
+        background: `url(${bgImage}) no-repeat`,
+        backgroundSize: "cover",
+      }}
     >
       <div
         className={cn("promotion__wrapper", {
@@ -22,11 +26,21 @@ const Promotion = ({
         })}
       >
         <div className="promotion__block">
-          <div>{children}</div>
-          <ButtonLink link={link}>{btnTitle}</ButtonLink>
+          <div className="promotion__description">
+            <p className="promotion__text">{children}</p>
+          </div>
+          <ButtonLink
+            link={link}
+            className={cn("promotion__btn", {
+              "promotion__btn--red": isRedPalette,
+              "promotion__btn--black": !isRedPalette,
+            })}
+          >
+            {btnTitle}
+          </ButtonLink>
         </div>
-        <div className="promotion__block">
-          <img src={image} alt="" />
+        <div className={cn("promotion__block", "promotion__block--flexed")}>
+          <img src={image} alt="" className="promotion__img" />
         </div>
       </div>
     </section>
