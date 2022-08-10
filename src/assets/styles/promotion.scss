@@ -1,0 +1,130 @@
+@import "vars";
+@import "mixins";
+
+.promotion {
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 90px;
+  @include content-alignment(0);
+
+  @include tablet {
+    padding-top: 110px;
+    padding-bottom: 55px;
+  }
+
+  @include desktop-lg {
+    padding-top: 40px;
+  }
+
+  @include desktop-xl {
+    padding-top: 180px;
+    padding-bottom: 180px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    @include desktop-xl {
+      flex-direction: unset;
+
+      &--reverse {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  &__block {
+    width: 100%;
+
+    @include desktop-xl {
+      width: 50%;
+    }
+
+    &--flexed {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__description {
+    margin-bottom: 30px;
+
+    @include desktop-xl {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__text {
+    text-align: center;
+    font-weight: map-get($font-weight, "black");
+    font-size: 24px;
+    line-height: 30px;
+    margin: 0;
+
+    @include tablet {
+      font-size: 36px;
+      line-height: 45px;
+      max-width: 663px;
+      margin: 0 auto;
+    }
+
+    @include desktop-xl {
+      text-align: left;
+      font-size: 48px;
+      line-height: 60px;
+      max-width: 863px;
+      margin: 0;
+    }
+  }
+
+  &__img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 56px;
+
+    @include tablet {
+      max-width: 491px;
+      margin-bottom: 86px;
+    }
+
+    @include desktop-lg {
+      max-width: 365px;
+      margin-bottom: 40px;
+    }
+
+    @include desktop-xl {
+      max-width: 629px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__btn {
+    background: transparent;
+    margin: 0 auto;
+
+    @include tablet {
+      line-height: 62px;
+      width: 380px;
+      font-size: 24px;
+    }
+
+    @include desktop-xl {
+      margin: unset;
+    }
+
+    &--red {
+      border: 2px solid map-get($colors, "red");
+    }
+
+    &--black {
+      color: map-get($colors, "black");
+      border: 2px solid map-get($colors, "black");
+    }
+  }
+}
