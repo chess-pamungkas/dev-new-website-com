@@ -1,10 +1,8 @@
 import React from 'react';
-// import { StaticImage } from 'gatsby-plugin-image';
 import { LogoTextMain, Logo } from '../shared/icons';
 import { useWindowSize } from '../helpers/useWindowSize';
 import NavbarItem from './components/navbar-item';
-
-import './styles.scss';
+import LangSelect from './components/lang-select';
 
 const navItems = [
   {
@@ -13,43 +11,43 @@ const navItems = [
       {
         title: 'Crypto',
         link: '',
-        icon: <Logo className="header__navigation_subtitle-icon" />,
+        icon: <Logo className="header__dropdown-icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Indices',
         link: '',
-        icon: <Logo className="header__navigation_subtitle-icon" />,
+        icon: <Logo className="header__dropdown-icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Forex',
         link: '',
-        icon: <Logo className="header__navigation_subtitle-icon" />,
+        icon: <Logo className="header__dropdown-icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Commodities',
         link: '',
-        icon: <Logo className="header__navigation_subtitle-icon" />,
+        icon: <Logo className="header__dropdown-icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Shares',
         link: '',
-        icon: <Logo className="header__navigation_subtitle-icon" />,
+        icon: <Logo className="header__dropdown-icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Energies',
         link: '',
-        icon: <Logo className="header__navigation_subtitle-icon" />,
+        icon: <Logo className="header__dropdown-icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'All Markets Overview',
         link: '',
-        icon: <Logo className="header__navigation_subtitle-icon" />,
+        icon: <Logo className="header__dropdown-icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       }
     ]
@@ -70,20 +68,21 @@ const navItems = [
 
 const Header = () => {
   const {width} = useWindowSize();
+  const isNarrowMode = width <= 1024;
 
   return (
-    <header className="header">
+    <header className={`header ${isNarrowMode ? 'header--small' : ''}`.trim()}>
       <div className="header__left">
-        {width <= 1024 ? <Logo className="header__logo" /> : <LogoTextMain />}
+        {isNarrowMode <= 1024 ? <Logo className="header__logo" /> : <LogoTextMain />}
         <ul className="header__navigation">
           {navItems.map(({title, subItems}) => <NavbarItem key={title} title={title} subItems={subItems} />)}
         </ul>
       </div>
 
       <div className="header__right">
-        <button className="header__right_btn _lng _upcs" type="button">EN</button>
-        <button className="header__right_btn" type="button">Sign In</button>
-        <button className="header__right_btn _white _upcs" type="button">Get Started</button>
+        <LangSelect />
+        <button className="header__signin" type="button">Sign In</button>
+        <button className="header__start" type="button">Get Started</button>
       </div>
     </header>
   );

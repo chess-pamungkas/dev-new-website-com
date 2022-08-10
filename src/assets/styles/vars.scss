@@ -1,4 +1,4 @@
-// @import "typography";
+@import "typography";
 
 $sm: 375px;
 $md: 768px;
@@ -23,3 +23,4 @@ $button-default: ("height": 62px, "width": 380px);
 $button-header: ("height": 40px, "width": unset);
 
 $header-height: 83px;
+$header-height-small: 75px;

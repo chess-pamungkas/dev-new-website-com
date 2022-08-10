@@ -3,11 +3,11 @@ import NavbarSubItem from '../navbar-sub-item';
 
 const NavbarItem = ({title, subItems}) => {
   return (
-    <li className="header__navigation_title">
-      {title}
+    <li className="header__navigation-item">
+      <span className="header__navigation-item-title">{title}</span>
 
       {!!subItems.length && (
-        <ul className="header__navigation_dropdown">
+        <ul className="header__dropdown">
           {subItems.map(subItem => <NavbarSubItem key={subItem.title} subItem={subItem} />)}
         </ul>
       )}
