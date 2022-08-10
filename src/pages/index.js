@@ -1,5 +1,6 @@
 import * as React from "react"
 import "../assets/styles/index.scss";
+import LivePricesWidget from '../widgets/live-prices-widget';
 
 const IndexPage = () => {
   return (
@@ -7,6 +8,7 @@ const IndexPage = () => {
       <h1>
         Hello
       </h1>
+      <LivePricesWidget />
     </main>
   )
 }

@@ -1,0 +1,81 @@
+@use 'sass:map';
+@import "../../assets/styles/vars";
+
+.live-prices-wrapper {
+  padding: 14px;
+}
+
+.live-prices-sections {
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+  box-shadow: 0 5px 10px #0000001A;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid map.get($colors, 'red');
+}
+
+.trading-section-title {
+  display: inline-block;
+  cursor: pointer;
+  padding: 4px 28px;
+  border-radius: 16px;
+  transition: 0.2s;
+  font-size: 18px;
+  font-family: 'Sofia Pro', sans-serif;
+  line-height: 22px;
+  letter-spacing: 0;
+  color: map.get($colors, 'black');
+
+  &__active {
+    background: map.get($colors, 'red');
+    box-shadow: 0 3px 24px #00000029;
+    color: map.get($colors, 'white');
+  }
+}
+
+.trading-item {
+  position: relative;
+  padding: 12px 21px;
+  margin-bottom: 2px;
+  min-width: 378px;
+
+  .trading-item__title {
+    position: relative;
+    font-family: $font;
+    font-size: 21px;
+    line-height: 26px;
+    font-weight: 900;
+    color: map.get($colors, 'red');
+
+    &:after {
+      position: absolute;
+      top: 50%;
+      right: -8px;
+      display: block;
+      width: 28px;
+      height: 2px;
+      content: ' ';
+      background: map.get($colors, 'red');
+      transform: translateY(-50%);
+    }
+  }
+
+  .trading-item__data {
+    display: flex;
+    align-items: flex-start;
+
+    .trading-item__option {
+      margin-right: 24px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      .trading-item__option-value {
+        padding-left: 5px;
+      }
+    }
+  }
+
+
+}
