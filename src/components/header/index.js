@@ -1,6 +1,7 @@
 import React from 'react';
 // import { StaticImage } from 'gatsby-plugin-image';
-import { LogoMain, Logo } from '../shared/icons';
+import { LogoTextMain, Logo } from '../shared/icons';
+import { useWindowSize } from '../helpers/useWindowSize';
 import NavbarItem from './components/navbar-item';
 
 import './styles.scss';
@@ -68,10 +69,12 @@ const navItems = [
 ];
 
 const Header = () => {
+  const {width} = useWindowSize();
+
   return (
     <header className="header">
       <div className="header__left">
-        <LogoMain />
+        {width <= 1024 ? <Logo className="header__logo" /> : <LogoTextMain />}
         <ul className="header__navigation">
           {navItems.map(({title, subItems}) => <NavbarItem key={title} title={title} subItems={subItems} />)}
         </ul>

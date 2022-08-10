@@ -1,7 +1,7 @@
 import React from "react";
 
-export const LogoMain = ({className, viewBox="0 0 169.007 36.623"}) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="169.007" height="36.623" viewBox={viewBox} className={className}>
+export const LogoTextMain = ({className}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="169.007" height="36.623" viewBox="0 0 169.007 36.623" className={className}>
     <g id="Group_222" data-name="Group 222" transform="translate(-1627.825 1122.742)">
       <path id="Path_39" data-name="Path 39" d="M698.642,157.658v3.384a1.16,1.16,0,0,0,1.16,1.159h2.443a1.16,1.16,0,0,0,1.16-1.159V140.469c-1.833,13.978-4.763,17.189-4.763,17.189" transform="translate(1093.427 -1248.977)" fill="#e03c00"/>
       <path id="Rectangle_64" data-name="Rectangle 64" d="M2.41,0h0A2.411,2.411,0,0,1,4.82,2.411V24.573A2.411,2.411,0,0,1,2.41,26.984h0A2.41,2.41,0,0,1,0,24.574V2.41A2.41,2.41,0,0,1,2.41,0Z" transform="translate(1717.278 -1113.103)" fill="#f40"/>
@@ -19,8 +19,8 @@ export const LogoMain = ({className, viewBox="0 0 169.007 36.623"}) => (
   </svg>
 );
 
-export const LogoPlain = ({className, viewBox="0 0 169.007 36.623"}) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="169.007" height="36.623" viewBox={viewBox} className={className}>
+export const LogoTextPlain = ({className}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="169.007" height="36.623" viewBox="0 0 169.007 36.623" className={className}>
     <g id="Group_458" data-name="Group 458" transform="translate(-1627.825 1122.742)">
       <path id="Path_39" data-name="Path 39" d="M698.642,157.658v3.384a1.16,1.16,0,0,0,1.16,1.159h2.443a1.16,1.16,0,0,0,1.16-1.159V140.469c-1.833,13.978-4.763,17.189-4.763,17.189" transform="translate(1093.427 -1248.977)" fill="#f40"/>
       <path id="Rectangle_64" data-name="Rectangle 64" d="M2.41,0h0A2.411,2.411,0,0,1,4.82,2.411V24.573A2.411,2.411,0,0,1,2.41,26.984h0A2.41,2.41,0,0,1,0,24.574V2.41A2.41,2.41,0,0,1,2.41,0Z" transform="translate(1717.278 -1113.103)" fill="#f40"/>
@@ -38,8 +38,8 @@ export const LogoPlain = ({className, viewBox="0 0 169.007 36.623"}) => (
   </svg>
 );
 
-export const Logo = ({className, viewBox="0 0 208 112"}) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="208" height="112.849" viewBox={viewBox} className={className}>
+export const Logo = ({className}) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="208" height="112.849" viewBox="0 0 208 112" className={className}>
     <g id="Group_693" data-name="Group 693" transform="translate(-1627.825 1122.742)">
       <path id="Path_41" data-name="Path 41" d="M384.388,184.016a54.017,54.017,0,0,0,4.376-19.717c-.047-.782-.078-1.566-.078-2.359a38.891,38.891,0,1,1,72.481,19.576h.01l13.083,12.09A56.422,56.422,0,1,0,380,192.253a58.045,58.045,0,0,0,4.391-8.237" transform="translate(1351.824 -1228.258)" fill="#e03c00"/>
       <path id="Path_42" data-name="Path 42" d="M424.983,151.613v37.471a38.883,38.883,0,0,1-34.833-21.6,59.14,59.14,0,0,1-2.569,7.238,64.13,64.13,0,0,1-6.248,11.218,56.418,56.418,0,0,0,61.217,17.87l.08-.013V192.655l13.963,13.963h23.758c-1.326,0-55.369-55-55.369-55" transform="translate(1354.418 -1216.51)" fill="#e03c00"/>
