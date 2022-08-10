@@ -43,16 +43,3 @@
   background: transparent;
   padding: $padding;
 }
-
-@mixin button-primary($color: map-get($colors, "black"), $border-radius: $border-radius-default, $height: map-get($button-default, "height"), $width: map-get($button-default, "width")) {
-  @include button-supress(0, 2px solid $color);
-  height: $height;
-  width: $width;
-  display: block;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: map-get($font-weight, "black");
-  font-size: 24px;
-  line-height: $height;
-  border-radius: $border-radius;
-}

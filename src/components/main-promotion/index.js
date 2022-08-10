@@ -1,29 +1,31 @@
 import React from "react";
-import { Link } from "gatsby";
+import cn from "classnames";
+import person from "../../assets/images/person.png";
+import ButtonLink from "../shared/button-link";
 
-const MainPromotion = () => {
+const MainPromotion = ({ className }) => {
   return (
-    <section className="main-promotion">
-      <div className="wrapper">
-        <div className="block">
-          <div className="person">
-            <div className="name-wrapper">
-              <span className="name">GIANLUIGI BUFFON</span>
-              <span className="description">goalkeeper legend and veteran trader, trades with Oqtima.</span>
-            </div>
-            <div>
-              <img src="" alt="" />
-            </div>
-          </div>
-        </div>
-        <div className="block">
-          <h1 className="title-wrapper">
-            <span className="title">
+    <section className={cn("main-promotion", className)}>
+      <div className="main-promotion__person">
+        <span className="main-promotion__name">Gianluigi Buffon</span>
+        <span className="main-promotion__description">
+          goalkeeper legend and veteran trader, trades with Oqtima.
+        </span>
+      </div>
+      <div className="main-promotion__photo" >
+        <img src={person} alt="Gianluigi Buffon" className="main-promotion__img" />
+      </div>
+      <div className="main-promotion__wrapper">
+        <div className="main-promotion__block">
+          <h1 className="main-promotion__title-wrapper">
+            <span className="main-promotion__title">
               A Perfectly optimised trading experience for
             </span>
-            <span className="title title--big">you</span>
+            <span className="main-promotion__title main-promotion__title--big">
+              you
+            </span>
           </h1>
-          <Link to="/" className="button-link">Trade now</Link>
+          <ButtonLink link={"/"}>Trade now</ButtonLink>
         </div>
       </div>
     </section>
