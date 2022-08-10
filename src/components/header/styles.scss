@@ -96,14 +96,55 @@
 
     &_dropdown {
       position: fixed;
-      top: 83px;
+      top: $header-height;
       left: 0;
       width: 100%;
+      padding: 75px;
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-auto-columns: 300px;
+      grid-auto-flow: column;
+      justify-content: center;
       background-color: map-get($colors, 'white');
       visibility: hidden;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
       list-style: none;
+
+      &:hover {
+        cursor: default;
+      }
+    }
+
+    &_subtitle {
+      padding: 10px;
+
+      &-icon {
+        width: 26px;
+        height: auto;
+        flex-shrink: 0;
+      }
+
+      &-link {
+        display: flex;
+        align-items: flex-start;
+        text-decoration: none;
+      }
+
+      &-content {
+        margin-left: 10px;
+      }
+
+      &-title {
+        color: #1a1a1a;
+        font: normal normal 900 16px/20px $font;
+      }
+
+      &-description {
+        margin: 6px 0 0;
+        color: #1a1a1a;
+        font: normal normal 300 14px/18px $font;
+      }
     }
   }
 }

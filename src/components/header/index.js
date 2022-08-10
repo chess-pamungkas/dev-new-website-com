@@ -1,6 +1,6 @@
 import React from 'react';
 // import { StaticImage } from 'gatsby-plugin-image';
-import { LogoFull } from '../shared/icons';
+import { LogoMain, Logo } from '../shared/icons';
 import NavbarItem from './components/navbar-item';
 
 import './styles.scss';
@@ -12,44 +12,44 @@ const navItems = [
       {
         title: 'Crypto',
         link: '',
-        iconSrc: '',
-        description: ''
+        icon: <Logo className="header__navigation_subtitle-icon" />,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Indices',
         link: '',
-        iconSrc: '',
-        description: ''
+        icon: <Logo className="header__navigation_subtitle-icon" />,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Forex',
         link: '',
-        iconSrc: '',
-        description: ''
+        icon: <Logo className="header__navigation_subtitle-icon" />,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Commodities',
         link: '',
-        iconSrc: '',
-        description: ''
+        icon: <Logo className="header__navigation_subtitle-icon" />,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Shares',
         link: '',
-        iconSrc: '',
-        description: ''
+        icon: <Logo className="header__navigation_subtitle-icon" />,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Energies',
         link: '',
-        iconSrc: '',
-        description: ''
+        icon: <Logo className="header__navigation_subtitle-icon" />,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'All Markets Overview',
         link: '',
-        iconSrc: '',
-        description: ''
+        icon: <Logo className="header__navigation_subtitle-icon" />,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       }
     ]
   },
@@ -71,7 +71,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header__left">
-        <LogoFull />
+        <LogoMain />
         <ul className="header__navigation">
           {navItems.map(({title, subItems}) => <NavbarItem key={title} title={title} subItems={subItems} />)}
         </ul>
