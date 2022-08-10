@@ -37,4 +37,8 @@ ul {
 
 main {
   margin-top: $header-height;
+
+  @media (max-width: $xl) {
+    margin-top: $header-height-small;
+  }
 }

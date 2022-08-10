@@ -12,6 +12,8 @@ const LangSelect = () => {
   return (
     <div
       className="header__lang-select"
+      role="button"
+      tabIndex={0}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
     >
