@@ -25,3 +25,27 @@
   font-weight: 900;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Lato/Lato-Regular.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/Lato/Lato-Bold.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("../fonts/Lato/Lato-Black.ttf") format('truetype');
+}
