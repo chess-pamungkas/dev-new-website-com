@@ -1,6 +1,9 @@
-@use 'sass:map';
 @import "../../assets/styles/vars";
 @import "../../assets/styles/mixins";
+
+.trading-ticker-wrapper {
+  margin: 11px 0 0;
+}
 
 .trading-sections-wrapper {
   margin: 0 14px;
@@ -12,7 +15,7 @@
   padding: 14px;
   box-shadow: 0 5px 10px #0000001A;
   border-radius: 10px 10px 0 0;
-  border-bottom: 1px solid map.get($colors, 'red');
+  border-bottom: 1px solid map-get($colors, 'red');
 }
 
 .trading-section-title {
@@ -25,12 +28,12 @@
   font-family: $font;
   line-height: 22px;
   letter-spacing: 0;
-  color: map.get($colors, 'black');
+  color: map-get($colors, 'black');
 
   &__active {
-    background: map.get($colors, 'red');
+    background: map-get($colors, 'red');
     box-shadow: 0 3px 24px #00000029;
-    color: map.get($colors, 'white');
+    color: map-get($colors, 'white');
   }
 }
 
@@ -41,7 +44,7 @@
 .trading-symbols {
   display: flex;
   flex-wrap: nowrap;
-  padding: 0 0 14px 14px;
+  padding: 0 0 6px 14px;
   overflow-x: scroll;
   margin-right: 14px;
 
@@ -65,8 +68,8 @@
     font-family: $font;
     font-size: 16px;
     line-height: 20px;
-    font-weight: map.get($font-weight, 'black');
-    color: map.get($colors, 'red');
+    font-weight: map-get($font-weight, 'black');
+    color: map-get($colors, 'red');
 
     span {
       display: inline-block;
@@ -80,7 +83,7 @@
         width: 28px;
         height: 2px;
         content: ' ';
-        background: map.get($colors, 'red');
+        background: map-get($colors, 'red');
         transform: translateY(-50%);
       }
     }
@@ -103,13 +106,13 @@
 
     .trading-symbol__option-value {
       padding-left: 5px;
-      font-weight: map.get($font-weight, 'bold');
+      font-weight: map-get($font-weight, 'bold');
     }
   }
 
   .trading-symbol__option-title,
   .trading-symbol__option-value {
-    color: map.get($colors, 'black');
+    color: map-get($colors, 'black');
   }
 
   .trading-symbol__option-title {
@@ -124,7 +127,7 @@
 
   .trading-symbol__option-value {
     margin-top: 4px;
-    font-weight: map.get($font-weight, 'bold');
+    font-weight: map-get($font-weight, 'bold');
     transition: 0.1s;
 
     &--up {
@@ -138,13 +141,13 @@
   .trading-symbol__actions {
     margin: 15px -14px 0;
     text-align: center;
-    border-top: 1px solid map.get($colors, 'red');
+    border-top: 1px solid map-get($colors, 'red');
   }
 
   .trading-symbol__sell,
   .trading-symbol__buy {
     font-family: $font-secondary;
-    font-weight: map.get($font-weight, 'black');
+    font-weight: map-get($font-weight, 'black');
     font-size: 11px;
     line-height: 13px;
     padding: 12px 10px;
@@ -164,6 +167,10 @@
 }
 
 @include tablet {
+  .trading-ticker-wrapper {
+    margin: 11px 0 0;
+  }
+
   .trading-sections {
     flex-wrap: nowrap;
     overflow-x: scroll;
@@ -207,7 +214,7 @@
     .trading-symbol__title {
       font-size: 21px;
       line-height: 26px;
-      font-weight: map.get($font-weight, 'black');
+      font-weight: map-get($font-weight, 'black');
     }
 
     .trading-symbol__option-value {
@@ -227,7 +234,7 @@
       margin-left: 0;
       margin-right: 0;
 
-      border-left: 1px solid map.get($colors, 'red');
+      border-left: 1px solid map-get($colors, 'red');
       border-top: 0;
       margin-top: 0;
     }
@@ -241,7 +248,7 @@
     }
 
     .trading-symbol__buy {
-      border-bottom: 1px solid map.get($colors, 'red');
+      border-bottom: 1px solid map-get($colors, 'red');
     }
   }
 }

@@ -7,18 +7,10 @@ const TradingSectionTitle = ({
   selectedSection,
   setSelectedSection,
 }) => {
-  const [isSelected, setIsSelected] = useState(
-    section.id === selectedSection.id
-  );
-
-  useEffect(() => {
-    setIsSelected(section.id === selectedSection.id);
-  }, [selectedSection]);
-
   return (
     <div
       className={cn("trading-section-title", {
-        "trading-section-title__active": isSelected,
+        "trading-section-title__active": section.id === selectedSection.id,
       })}
       onClick={() => {
         setSelectedSection(section);

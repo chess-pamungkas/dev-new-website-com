@@ -1,4 +1,4 @@
-import TradingSymbol from "./TradingSymbol";
+import TradingSymbol from "../trading-symbol";
 import * as React from "react";
 
 const TradingSymbols = ({ symbols }) => {

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-
-import TradingSymbols from './components/TradingSymbols/TradingSymbols';
-import TradingSections, { TRADING_SECTIONS } from './components/TradingSections/TradingSections';
+import TradingSections, { TRADING_SECTIONS } from './components/trading-sections';
+import TradingSymbols from './components/trading-symbols';
 
 import './styles.scss';
 
+// TO DO remove after provided API
 const TRADING_SYMBOLS = [
   {
     id: 1,

@@ -1,4 +1,4 @@
-import TradingSectionTitle from "./TradingSectionTitle";
+import TradingSectionTitle from "../trading-section-title";
 import * as React from "react";
 
 export const TRADING_SECTIONS = [
