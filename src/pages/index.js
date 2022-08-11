@@ -18,7 +18,7 @@ import {
   promoText3,
   promoText4,
 } from "../helpers/promo-texts";
-import TradingTicker from '../widgets/live-prices-widget';
+import TradingTicker from '../components/trading-ticker';
 
 const IndexPage = () => {
   return (
