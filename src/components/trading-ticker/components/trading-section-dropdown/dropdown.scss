@@ -5,7 +5,7 @@
   box-shadow: 0 3px 24px #00000029;
   border: 2px solid map-get($colors, "red");
   border-radius: 16px;
-  background-color: #fff;
+  background-color: map-get($colors, "white");
   user-select: none;
   text-align: center;
 
@@ -39,7 +39,7 @@
     width: 100%;
     border: 2px solid map-get($colors, "red");
     border-radius: 16px;
-    background-color: #ffffff;
+    background-color: map-get($colors, "white");
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     position: absolute;
     right: 0;

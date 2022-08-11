@@ -98,12 +98,6 @@ const TRADING_SYMBOLS = [
   }
 ];
 
-const TradingTickerWrapper = ({children}) => {
-  return (
-    <div className="trading-ticker-wrapper">{children}</div>
-  )
-}
-
 const TradingTicker = () => {
   const [selectedSection, setSelectedSection] = useState(TRADING_SECTIONS[0]);
   const [tradingSymbols, setTradingSymbols] = useState(TRADING_SYMBOLS);
@@ -131,13 +125,13 @@ const TradingTicker = () => {
   }, )
 
   return (
-    <TradingTickerWrapper>
+    <div className="trading-ticker-wrapper">
       <TradingSections
         selectedSection={selectedSection}
         setSelectedSection={setSelectedSection}
       />
       <TradingSymbols symbols={tradingSymbols}/>
-    </TradingTickerWrapper>
+    </div>
   );
 };
 

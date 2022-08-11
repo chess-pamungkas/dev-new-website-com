@@ -63,7 +63,7 @@
   flex-shrink: 0;
   margin-right: 10px;
 
-  .trading-symbol__title {
+  &__title {
     position: relative;
     margin-bottom: 2px;
     font-family: $font;
@@ -90,12 +90,12 @@
     }
   }
 
-  .trading-symbol__data {
+  &__data {
     display: flex;
     flex-wrap: wrap;
   }
 
-  .trading-symbol__option {
+  &__option {
     font-family: $font-secondary;
 
     flex-basis: 50%;
@@ -111,22 +111,22 @@
     }
   }
 
-  .trading-symbol__option-title,
-  .trading-symbol__option-value {
+  &__option-title,
+  &__option-value {
     color: map-get($colors, 'black');
   }
 
-  .trading-symbol__option-title {
+  &__option-title {
     font-size: 11px;
     line-height: 13px;
   }
 
-  .trading-symbol__option-value {
+  &__option-value {
     font-size: 10px;
     line-height: 12px;
   }
 
-  .trading-symbol__option-value {
+  &__option-value {
     margin-top: 4px;
     font-weight: map-get($font-weight, 'bold');
     transition: 0.1s;
@@ -139,14 +139,14 @@
     }
   }
 
-  .trading-symbol__actions {
+  &__actions {
     margin: 15px -14px 0;
     text-align: center;
     border-top: 1px solid map-get($colors, 'red');
   }
 
-  .trading-symbol__sell,
-  .trading-symbol__buy {
+  &__sell,
+  &__buy {
     font-family: $font-secondary;
     font-weight: map-get($font-weight, 'black');
     font-size: 11px;
@@ -158,11 +158,11 @@
     cursor: pointer;
   }
 
-  .trading-symbol__buy {
+  &__buy {
     color: #ff0000;
   }
 
-  .trading-symbol__sell {
+  &__sell {
     color: #00FF66;
   }
 }
@@ -201,34 +201,34 @@
     border-radius: 0;
     margin-right: 0;
 
-    .trading-symbol__data {
+    &__data {
       flex-wrap: nowrap;
       align-items: flex-start;
     }
 
-    .trading-symbol__option {
+    &__option {
       flex-basis: auto;
       margin-top: 0;
       margin-right: 24px;
     }
 
-    .trading-symbol__title {
+    &__title {
       font-size: 21px;
       line-height: 26px;
       font-weight: map-get($font-weight, 'black');
     }
 
-    .trading-symbol__option-value {
+    &__option-value {
       margin-top: 0;
     }
 
-    .trading-symbol__option-title,
-    .trading-symbol__option-value {
+    &__option-title,
+    &__option-value {
       font-size: 13px;
       line-height: 16px;
     }
 
-    .trading-symbol__actions {
+    &__actions {
       position: absolute;
       right: 21px;
       top: 12px;
@@ -240,15 +240,15 @@
       margin-top: 0;
     }
 
-    .trading-symbol__sell,
-    .trading-symbol__buy {
+    &__sell,
+    &__buy {
       display: block;
       padding: 8px 10px 10px;
       font-size: 13px;
       line-height: 16px;
     }
 
-    .trading-symbol__buy {
+    &__buy {
       border-bottom: 1px solid map-get($colors, 'red');
     }
   }
