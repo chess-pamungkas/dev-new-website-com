@@ -15,7 +15,7 @@ import {
   promoText2,
   promoText3,
   promoText4,
-} from "../assets/helpers/promo-texts";
+} from "../helpers/promo-texts";
 
 const IndexPage = () => {
   return (
