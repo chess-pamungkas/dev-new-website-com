@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const LangSelect = () => {
+const LangSelect = ({className}) => {
   const [langSelected, setLangSelected] = useState('EN');
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -11,7 +11,7 @@ const LangSelect = () => {
 
   return (
     <div
-      className="header__lang-select"
+      className={`${className}__lang-select`}
       role="button"
       tabIndex={0}
       onMouseEnter={() => setIsExpanded(true)}
@@ -20,11 +20,11 @@ const LangSelect = () => {
       {langSelected}
 
       {isExpanded && (
-        <ul className="header__lang-select-dropdown">
-          <li className="header__lang-select-item">
+        <ul className={`${className}__lang-select-dropdown`}>
+          <li className={`${className}__lang-select-item`}>
             <button type="button" onClick={onLangSelect}>EN</button>
           </li>
-          <li className="header__lang-select-item">
+          <li className={`${className}__lang-select-item`}>
             <button type="button" onClick={onLangSelect}>FR</button>
           </li>
         </ul>

@@ -1,19 +1,19 @@
 import React from 'react';
 
-const NavbarSubItem = ({subItem = {}}) => {
+const NavbarSubItem = ({className, subItem = {}}) => {
   const {title, link, icon, description} = subItem;
 
   return (
-    <li className="header__dropdown-item">
-      <a className="header__dropdown-link" href={link}>
+    <li className={`${className}__dropdown-item`}>
+      <a className={`${className}__dropdown-link`} href={link}>
         {icon ? icon : null}
 
-        <div className="header__dropdown-content">
-          <span className="header__dropdown-title">
+        <div className={`${className}__dropdown-content`}>
+          <span className={`${className}__dropdown-title`}>
             {title}
           </span>
           {description && (
-            <p className="header__dropdown-description">
+            <p className={`${className}__dropdown-description`}>
               {description}
             </p>
           )}

@@ -1,14 +1,20 @@
 import React from 'react';
 import NavbarSubItem from '../navbar-sub-item';
 
-const NavbarItem = ({title, subItems}) => {
+const NavbarItem = ({className, title, subItems = []}) => {
   return (
-    <li className="header__navigation-item">
-      <span className="header__navigation-item-title">{title}</span>
+    <li className={`${className}__navigation-item`}>
+      <span className={`${className}__navigation-item-title`}>{title}</span>
 
       {!!subItems.length && (
-        <ul className="header__dropdown">
-          {subItems.map(subItem => <NavbarSubItem key={subItem.title} subItem={subItem} />)}
+        <ul className={`${className}__dropdown`}>
+          {subItems.map(subItem => (
+            <NavbarSubItem
+              key={subItem.title}
+              className={className}
+              subItem={subItem}
+            />
+          ))}
         </ul>
       )}
     </li>
