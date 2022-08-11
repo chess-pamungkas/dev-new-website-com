@@ -1,18 +1,16 @@
-import TradingSymbol from './TradingSymbol';
-import * as React from 'react';
+import TradingSymbol from "./TradingSymbol";
+import * as React from "react";
 
-const TradingSymbols = ({
-  symbols
-}) => {
+const TradingSymbols = ({ symbols }) => {
   return (
     <div className="trading-symbols-wrapper">
       <div className="trading-symbols">
-        {symbols.map(symbol =>
+        {symbols.map((symbol) => (
           <TradingSymbol key={`TradingSymbol${symbol.id}`} {...symbol} />
-        )}
+        ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default TradingSymbols;

@@ -1,26 +1,32 @@
-import { useEffect, useState } from 'react';
-import * as React from 'react';
+import { useEffect, useState } from "react";
+import * as React from "react";
+import cn from "classnames";
 
 const TradingSectionTitle = ({
   section,
   selectedSection,
-  setSelectedSection
+  setSelectedSection,
 }) => {
-  const [isSelected, setIsSelected] = useState(section.id === selectedSection.id);
+  const [isSelected, setIsSelected] = useState(
+    section.id === selectedSection.id
+  );
 
   useEffect(() => {
-    setIsSelected(section.id === selectedSection.id)
+    setIsSelected(section.id === selectedSection.id);
   }, [selectedSection]);
 
   return (
-    <div className={`trading-section-title ${isSelected ? 'trading-section-title__active' : ''}`}
-         onClick={() => {
-           setSelectedSection(section);
-         }}
+    <div
+      className={cn("trading-section-title", {
+        "trading-section-title__active": isSelected,
+      })}
+      onClick={() => {
+        setSelectedSection(section);
+      }}
     >
       {section.title}
     </div>
-  )
-}
+  );
+};
 
 export default TradingSectionTitle;

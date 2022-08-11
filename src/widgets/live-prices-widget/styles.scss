@@ -48,18 +48,11 @@
   &::-webkit-scrollbar {
     display: none;
   }
-
-  .trading-symbol:first-child {
-    border-radius: 0 0 0 10px;
-  }
-  .trading-symbol:last-child {
-    border-radius: 0 0 10px 0;
-  }
 }
 
 .trading-symbol {
   position: relative;
-  padding: 15px 20px;
+  padding: 15px 20px 8px;
   border-radius: 5px;
   box-shadow: 0 5px 10px #0000001A;
   flex-basis: 138px;
@@ -72,7 +65,7 @@
     font-family: $font;
     font-size: 16px;
     line-height: 20px;
-    font-weight: map.get($font-weight, 'semi-bold');
+    font-weight: map.get($font-weight, 'black');
     color: map.get($colors, 'red');
 
     span {
@@ -102,6 +95,7 @@
     font-family: $font-secondary;
 
     flex-basis: 50%;
+    margin-top: 7px;
 
     &:last-child {
       margin-right: 0;
@@ -115,12 +109,21 @@
 
   .trading-symbol__option-title,
   .trading-symbol__option-value {
-    font-size: 13px;
-    line-height: 16px;
     color: map.get($colors, 'black');
   }
 
+  .trading-symbol__option-title {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
   .trading-symbol__option-value {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .trading-symbol__option-value {
+    margin-top: 4px;
     font-weight: map.get($font-weight, 'bold');
     transition: 0.1s;
 
@@ -133,16 +136,18 @@
   }
 
   .trading-symbol__actions {
-    margin-top: 15px;
+    margin: 15px -14px 0;
+    text-align: center;
     border-top: 1px solid map.get($colors, 'red');
   }
 
   .trading-symbol__sell,
   .trading-symbol__buy {
     font-family: $font-secondary;
-    font-weight: map.get($font-weight, 'semi-bold');
+    font-weight: map.get($font-weight, 'black');
     font-size: 11px;
     line-height: 13px;
+    padding: 12px 10px;
     border: 0;
     background: 0;
     text-transform: uppercase;
@@ -173,10 +178,20 @@
     flex-shrink: 0;
   }
 
+  .trading-symbols {
+    .trading-symbol:first-child {
+      border-radius: 0 0 0 10px;
+    }
+    .trading-symbol:last-child {
+      border-radius: 0 0 10px 0;
+    }
+  }
+
   .trading-symbol {
     padding: 12px 21px 20px;
     flex-basis: 378px;
     border-radius: 0;
+    margin-right: 0;
 
     .trading-symbol__data {
       flex-wrap: nowrap;
@@ -184,21 +199,37 @@
     }
 
     .trading-symbol__option {
+      flex-basis: auto;
+      margin-top: 0;
       margin-right: 24px;
     }
 
     .trading-symbol__title {
       font-size: 21px;
       line-height: 26px;
+      font-weight: map.get($font-weight, 'black');
+    }
+
+    .trading-symbol__option-value {
+      margin-top: 0;
+    }
+
+    .trading-symbol__option-title,
+    .trading-symbol__option-value {
+      font-size: 13px;
+      line-height: 16px;
     }
 
     .trading-symbol__actions {
       position: absolute;
       right: 21px;
       top: 12px;
+      margin-left: 0;
+      margin-right: 0;
 
       border-left: 1px solid map.get($colors, 'red');
       border-top: 0;
+      margin-top: 0;
     }
 
     .trading-symbol__sell,

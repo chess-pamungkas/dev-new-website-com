@@ -16,11 +16,13 @@ import {
   promoText3,
   promoText4,
 } from "../helpers/promo-texts";
+import TradingTicker from '../widgets/live-prices-widget';
 
 const IndexPage = () => {
   return (
     <main>
       <MainPromotion />
+      <TradingTicker />
       <Promotion
         bgImage={bgPromo1}
         image={promo1}
