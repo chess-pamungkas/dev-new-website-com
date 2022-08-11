@@ -49,13 +49,18 @@
       content: '';
       height: 100%;
       position: absolute;
-      left: -40px;
+      left: -25px;
       border-top: $header-height solid transparent;
-      border-right: 40px solid map-get($colors, 'red');
+      border-right: 25px solid map-get($colors, 'red');
     }
 
     @media (max-width: $xl) {
       padding: 0 30px;
+    }
+
+    @media (max-width: $md) {
+      width: 70px;
+      padding: 0;
     }
   }
 

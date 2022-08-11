@@ -1,0 +1,90 @@
+@import "vars";
+
+.burger-menu {
+  &__trigger {
+    position: absolute;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+
+    &:checked {
+      & ~ .burger-menu__navbar {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      & ~ .burger-menu__label > .burger-menu__bar {
+        &:first-child,
+        &:last-child {
+          height: 3px;
+          box-shadow: 0 0 0 2px map-get($colors, 'red');
+        }
+
+        &:first-child {
+          top: 11px;
+          transform: rotate(45deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:last-child {
+          top: -11px;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  &__label {
+    position: fixed;
+    top: 25px;
+    right: 26px;
+    z-index: 9999;
+    cursor: pointer;
+  }
+
+  &__bar {
+    width: 31px;
+    height: 5px;
+    position: relative;
+    display: block;
+    border-radius: 3px;
+    background-color: map-get($colors, 'white');
+    transition: .3s ease-out;
+
+    & + & {
+      margin-top: 7px;
+    }
+  }
+
+  &__navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 90%;
+    min-height: 100vh;
+    padding: 85px 26px 26px 96px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background-color: map-get($colors, 'white');
+    list-style: none;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(35, 35, 35, 0.1);
+    }
+
+    & + & {
+      margin-top: 30px;
+    }
+  }
+
+  &__btns {
+    display: flex;
+  }
+}
