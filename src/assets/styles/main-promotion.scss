@@ -1,0 +1,189 @@
+@import "vars";
+@import "mixins";
+
+.main-promotion {
+  position: relative;
+  overflow: hidden;
+  color: map-get($colors, "white");
+  display: flex;
+  align-items: center;
+  background: url("../images/bg/main-promotion-sm.png") no-repeat bottom left;
+  background-size: cover;
+  height: 703px;
+  @include content-alignment(75px 0 0);
+  padding-top: 75px;
+  padding-bottom: 75px;
+
+  @include tablet {
+    background: url("../images/bg/main-promotion-md.png") no-repeat left;
+    background-size: cover;
+    height: 949px;
+    padding: 75px 55px;
+  }
+
+  @include desktop-lg {
+    background: url("../images/bg/main-promotion-lg.png") no-repeat left;
+    background-size: cover;
+    height: 693px;
+    padding: 75px 120px;
+  }
+
+  @include desktop-xl {
+    background: url("../images/bg/main-promotion-xl.png") no-repeat right;
+    background-size: cover;
+    height: 902px;
+    @include content-alignment(84px 0 0);
+  }
+
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    @include desktop-xl {
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+
+  &__block {
+    width: 100%;
+
+    @include tablet {
+      width: 50%;
+    }
+  }
+
+  &__title-wrapper {
+    margin: 0 0 15px;
+    max-width: 275px;
+
+    @include tablet {
+      margin: 0 0 20px;
+      max-width: 326px;
+    }
+
+    @include desktop-xl {
+      margin: 0 0 35px;
+      max-width: 546px;
+    }
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: map-get($font-weight, "black");
+    font-size: 26px;
+    line-height: 32px;
+
+    @include tablet {
+      font-size: 31px;
+      line-height: 39px;
+    }
+
+    @include desktop-xl {
+      font-size: 52px;
+      line-height: 65px;
+    }
+
+    &--big {
+      text-transform: uppercase;
+      font-size: 36px;
+      line-height: 45px;
+
+      @include tablet {
+        font-size: 44px;
+        line-height: 55px;
+      }
+
+      @include desktop-xl {
+        font-size: 72px;
+        line-height: 90px;
+      }
+    }
+  }
+
+  &__photo {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: -17px;
+    right: -33px;
+
+    @include tablet {
+      bottom: -23px;
+      right: -37px;
+    }
+    @include desktop-lg {
+      right: 70px;
+    }
+
+    @include desktop-xl {
+      right: unset;
+      left: 0;
+      bottom: -280px;
+    }
+  }
+
+  &__img {
+    width: 323px;
+    height: auto;
+
+    @include tablet {
+      width: 679px;
+    }
+    @include desktop-lg {
+      width: 500px;
+    }
+    @include desktop-xl {
+      width: 842px;
+    }
+  }
+
+  &__person {
+    position: absolute;
+    bottom: 20px;
+    max-width: 146px;
+
+    @include tablet {
+      bottom: 60px;
+      max-width: 240px;
+    }
+
+    @include desktop-xl {
+      bottom: 28px;
+    }
+  }
+
+  &__name {
+    font-weight: map-get($font-weight, "black");
+    font-size: 13px;
+    line-height: 13px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    display: block;
+
+    @include tablet {
+      font-size: 26px;
+      line-height: 20px;
+    }
+  }
+
+  &__description {
+    font-weight: map-get($font-weight, "regular");
+    font-size: 10px;
+    line-height: 13px;
+    display: block;
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include desktop-xl {
+      max-width: 236px;
+    }
+  }
+}

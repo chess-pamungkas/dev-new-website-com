@@ -1,11 +1,27 @@
 @import "vars";
 @import "mixins";
-@import "typography";
 
-body {
-  font-family: $font;
-}
+@import "button-link";
+@import "main-promotion";
+@import "promotion";
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $font;
+}
+
+.highlighted {
+  &-in-red {
+    color: map-get($colors, "red");
+  }
+  &-in-black {
+    color: map-get($colors, "black");
+  }
+  &-in-white {
+    color: map-get($colors, "white");
+  }
 }

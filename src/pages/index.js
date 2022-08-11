@@ -1,18 +1,65 @@
-import * as React from "react"
+import * as React from "react";
 import "../assets/styles/index.scss";
-import LivePricesWidget from '../widgets/live-prices-widget';
+import bgPromo1 from "../assets/images/bg/promo1.png";
+import bgPromo2 from "../assets/images/bg/promo2.png";
+import bgPromo3 from "../assets/images/bg/promo3.png";
+import bgPromo4 from "../assets/images/bg/promo4.png";
+import promo1 from "../assets/images/promotions/promo1.svg";
+import promo2 from "../assets/images/promotions/promo2.svg";
+import promo3 from "../assets/images/promotions/promo3.svg";
+import promo4 from "../assets/images/promotions/promo4.svg";
+import MainPromotion from "../components/main-promotion";
+import Promotion from "../components/promotion";
+import {
+  promoText1,
+  promoText2,
+  promoText3,
+  promoText4,
+} from "../helpers/promo-texts";
 
 const IndexPage = () => {
   return (
     <main>
-      <h1>
-        Hello
-      </h1>
-      <LivePricesWidget />
+      <MainPromotion />
+      <Promotion
+        bgImage={bgPromo1}
+        image={promo1}
+        btnTitle="See more"
+        link={"/"}
+        isRedPalette
+      >
+        {promoText1}
+      </Promotion>
+      <Promotion
+        bgImage={bgPromo2}
+        image={promo2}
+        btnTitle="See more"
+        link={"/"}
+        isRedPalette
+      >
+        {promoText2}
+      </Promotion>
+      <Promotion
+        bgImage={bgPromo3}
+        image={promo3}
+        btnTitle="See more"
+        link={"/"}
+      >
+        {promoText3}
+      </Promotion>
+      <Promotion
+        bgImage={bgPromo4}
+        image={promo4}
+        btnTitle="Start copying"
+        link={"/"}
+        isReverseOrder
+      >
+        {promoText4}
+      </Promotion>
     </main>
-  )
-}
+  );
+};
 
 export default IndexPage;
 
-export const Head = () => <title>Home Page</title>
+export const Head = () => <title>Oqtima trading page</title>;
