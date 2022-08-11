@@ -2,14 +2,14 @@ import React from 'react';
 import cn from 'classnames';
 import { LogoTextMain, Logo } from '../shared/icons';
 import { useWindowSize } from '../../helpers/hooks/useWindowSize';
-import { windowSizeLg } from '../../helpers/constants';
+import { WINDOW_SIZE_LG } from '../../helpers/constants';
 import { navCongig } from '../../helpers/mega-menu.config';
 import NavbarItem from './components/navbar-item';
 import LangSelect from './components/lang-select';
 
 const Header = ({className}) => {
   const {width} = useWindowSize();
-  const isNarrow = width <= windowSizeLg;
+  const isNarrow = width <= WINDOW_SIZE_LG;
 
   return (
     <header className={cn("header", {"header--small": isNarrow}, className)}>

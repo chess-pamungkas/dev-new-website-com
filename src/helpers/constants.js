@@ -1,4 +1,4 @@
-export const windowSizeSm = 375;
-export const windowSizeMd = 768;
-export const windowSizeLg = 1024;
-export const windowSizeXl = 1920;
+export const WINDOW_SIZE_SM = 375;
+export const WINDOW_SIZE_MD = 768;
+export const WINDOW_SIZE_LG = 1024;
+export const WINDOW_SIZE_XL = 1920;
