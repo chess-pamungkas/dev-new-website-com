@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import "../assets/styles/index.scss";
 import bgPromo1 from "../assets/images/bg/promo1.png";
 import bgPromo2 from "../assets/images/bg/promo2.png";
@@ -13,16 +12,17 @@ import Header from "../components/header";
 import MainPromotion from "../components/main-promotion";
 import Promotion from "../components/promotion";
 import {
-  promoText1,
-  promoText2,
-  promoText3,
-  promoText4,
+  PROMO_TEXT_1,
+  PROMO_TEXT_2,
+  PROMO_TEXT_3,
+  PROMO_TEXT_4,
 } from "../helpers/promo-texts";
+import TradingTools from "../components/trading-tools";
 
 const IndexPage = () => {
   return (
     <>
-      <Header></Header>
+      <Header />
       <main>
         <MainPromotion />
         <Promotion
@@ -32,7 +32,7 @@ const IndexPage = () => {
           link={"/"}
           isRedPalette
         >
-          {promoText1}
+          {PROMO_TEXT_1}
         </Promotion>
         <Promotion
           bgImage={bgPromo2}
@@ -41,7 +41,7 @@ const IndexPage = () => {
           link={"/"}
           isRedPalette
         >
-          {promoText2}
+          {PROMO_TEXT_2}
         </Promotion>
         <Promotion
           bgImage={bgPromo3}
@@ -49,16 +49,18 @@ const IndexPage = () => {
           btnTitle="See more"
           link={"/"}
         >
-          {promoText3}
+          {PROMO_TEXT_3}
         </Promotion>
+        <TradingTools />
         <Promotion
           bgImage={bgPromo4}
           image={promo4}
           btnTitle="Start copying"
           link={"/"}
+          isRedPalette
           isReverseOrder
         >
-          {promoText4}
+          {PROMO_TEXT_4}
         </Promotion>
       </main>
     </>

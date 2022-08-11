@@ -1,0 +1,28 @@
+@import "vars";
+@import "mixins";
+
+.performance {
+  background: url("../../assets/images/bg/performance.png") no-repeat right bottom;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 140px;
+  padding-bottom: 140px;
+  @include content-alignment(0);
+
+  @include tablet {
+    padding-top: 87px;
+    padding-bottom: 130px;
+  }
+
+  @include desktop-lg {
+    padding-top: 70px;
+    padding-bottom: 180px;
+  }
+
+  @include desktop-xl {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}

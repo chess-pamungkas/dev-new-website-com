@@ -1,7 +1,7 @@
 import React from 'react';
 import { Logo } from '../components/shared/icons';
 
-export const navCongig = [
+export const MENU_ITEMS = [
   {
     title: 'Top Markets',
     subItems: [

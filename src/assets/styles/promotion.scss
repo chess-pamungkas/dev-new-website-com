@@ -61,6 +61,7 @@
   }
 
   &__text {
+    word-break: break-word;
     text-align: center;
     font-weight: map-get($font-weight, "black");
     font-size: 24px;
@@ -80,6 +81,23 @@
       line-height: 60px;
       max-width: 863px;
       margin: 0;
+    }
+  }
+
+  &__note {
+    font-weight: map-get($font-weight, "regular");
+    font-size: 15px;
+    line-height: 19px;
+    margin: 20px 0 0;
+
+    @include tablet {
+      font-size: 25px;
+      line-height: 31px;
+    }
+
+    @include desktop-xl {
+      font-size: 30px;
+      line-height: 37px;
     }
   }
 
