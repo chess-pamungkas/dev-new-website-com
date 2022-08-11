@@ -8,43 +8,43 @@ export const navCongig = [
       {
         title: 'Crypto',
         link: '',
-        icon: <Logo className="header__dropdown-icon" />,
+        icon: <Logo className="dropdown-item__icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Indices',
         link: '',
-        icon: <Logo className="header__dropdown-icon" />,
+        icon: <Logo className="dropdown-item__icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Forex',
         link: '',
-        icon: <Logo className="header__dropdown-icon" />,
+        icon: <Logo className="dropdown-item__icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Commodities',
         link: '',
-        icon: <Logo className="header__dropdown-icon" />,
+        icon: <Logo className="dropdown-item__icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Shares',
         link: '',
-        icon: <Logo className="header__dropdown-icon" />,
+        icon: <Logo className="dropdown-item__icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'Energies',
         link: '',
-        icon: <Logo className="header__dropdown-icon" />,
+        icon: <Logo className="dropdown-item__icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       },
       {
         title: 'All Markets Overview',
         link: '',
-        icon: <Logo className="header__dropdown-icon" />,
+        icon: <Logo className="dropdown-item__icon" />,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
       }
     ]
