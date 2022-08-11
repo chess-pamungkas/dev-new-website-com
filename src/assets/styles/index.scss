@@ -6,8 +6,14 @@
 @import "button-link";
 @import "main-promotion";
 @import "promotion";
+@import "header";
+@import "navbar-item";
+@import "dropdown-item";
+@import "lang-select";
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -25,5 +31,19 @@ body {
   }
   &-in-white {
     color: map-get($colors, "white");
+  }
+}
+
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  margin-top: $header-height;
+
+  @media (max-width: $lg) {
+    margin-top: $header-height-small;
   }
 }
