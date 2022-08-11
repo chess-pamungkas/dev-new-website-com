@@ -110,6 +110,7 @@ const TradingTicker = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
+      // to do remove changing trading symbols
       setTradingSymbols(
         TRADING_SYMBOLS.map(symbol => {
           return {

@@ -1,0 +1,60 @@
+.dropdown {
+  position: relative;
+  width: 315px;
+  padding: 6px 12px;
+  box-shadow: 0 3px 24px #00000029;
+  border: 2px solid map-get($colors, "red");
+  border-radius: 16px;
+  background-color: #fff;
+  user-select: none;
+  text-align: center;
+
+  &__title {
+    font-size: 16px;
+    line-height: 20px;
+    color: map-get($colors, "red");
+    cursor: pointer;
+
+    span {
+      position: relative;
+
+      &:after {
+        position: absolute;
+        display: block;
+        content: " ";
+        right: -12px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-style: solid;
+        border-width: 4px 4px 0 4px;
+        border-color: map-get($colors, "red") transparent transparent
+          transparent;
+      }
+    }
+  }
+
+  &__content {
+    box-sizing: border-box;
+    z-index: 2;
+    width: 100%;
+    border: 2px solid map-get($colors, "red");
+    border-radius: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+    position: absolute;
+    right: 0;
+    top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__item {
+    padding: 4px 10px;
+    font-size: 16px;
+    line-height: 20px;
+    color: map-get($colors, "red");
+    cursor: pointer;
+    text-align: center;
+  }
+}

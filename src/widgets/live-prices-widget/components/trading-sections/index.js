@@ -1,5 +1,8 @@
 import TradingSectionTitle from "../trading-section-title";
 import * as React from "react";
+import { useWindowSize } from "../../../../helpers/hooks/useWindowSize";
+import TradingSectionDropdown from "../trading-section-dropdown";
+import { useState } from "react";
 
 export const TRADING_SECTIONS = [
   {
@@ -41,17 +44,42 @@ export const TRADING_SECTIONS = [
 ];
 
 const TradingSections = ({ selectedSection, setSelectedSection }) => {
+  const [isDropdownOpened, setIsDropdownOpened] = useState(false);
+  const { isMobile } = useWindowSize();
+
   return (
     <div className="trading-sections-wrapper">
       <div className="trading-sections">
-        {TRADING_SECTIONS.map((section) => (
-          <TradingSectionTitle
-            key={`tradingSection${section.id}`}
-            section={section}
-            selectedSection={selectedSection}
-            setSelectedSection={setSelectedSection}
+        {isMobile ? (
+          <TradingSectionDropdown
+            selectedItem={selectedSection}
+            items={TRADING_SECTIONS.map((item) => {
+              return {
+                title: item.title,
+                value: item.id,
+              };
+            })}
+            setSelectedItem={(item) => {
+              setSelectedSection({
+                title: item.title,
+                id: item.value,
+              })
+            }}
+            isSelectionByClick
+            isDropdownShown
+            isOpen={isDropdownOpened}
+            setIsOpen={setIsDropdownOpened}
           />
-        ))}
+        ) : (
+          TRADING_SECTIONS.map((section) => (
+            <TradingSectionTitle
+              key={`tradingSection${section.id}`}
+              section={section}
+              selectedSection={selectedSection}
+              setSelectedSection={setSelectedSection}
+            />
+          ))
+        )}
       </div>
     </div>
   );
