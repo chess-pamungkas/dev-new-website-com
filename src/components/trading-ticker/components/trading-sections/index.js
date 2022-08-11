@@ -1,8 +1,8 @@
+import React, { useState } from "react";
 import TradingSectionTitle from "../trading-section-title";
-import * as React from "react";
 import { useWindowSize } from "../../../../helpers/hooks/useWindowSize";
 import TradingSectionDropdown from "../trading-section-dropdown";
-import { useState } from "react";
+import cn from "classnames";
 
 export const TRADING_SECTIONS = [
   {
@@ -43,12 +43,16 @@ export const TRADING_SECTIONS = [
   },
 ];
 
-const TradingSections = ({ selectedSection, setSelectedSection }) => {
+const TradingSections = ({
+  className,
+  selectedSection,
+  setSelectedSection,
+}) => {
   const [isDropdownOpened, setIsDropdownOpened] = useState(false);
   const { isMobile } = useWindowSize();
 
   return (
-    <div className="trading-sections-wrapper">
+    <div className={cn("trading-sections-wrapper", className)}>
       <div className="trading-sections">
         {isMobile ? (
           <TradingSectionDropdown
@@ -63,7 +67,7 @@ const TradingSections = ({ selectedSection, setSelectedSection }) => {
               setSelectedSection({
                 title: item.title,
                 id: item.value,
-              })
+              });
             }}
             isSelectionByClick
             isDropdownShown

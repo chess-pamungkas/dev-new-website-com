@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import cn from "classnames";
 
 const TradingSectionDropdown = ({
+  className,
   items,
   selectedItem,
   setSelectedItem,
@@ -29,9 +31,9 @@ const TradingSectionDropdown = ({
   };
 
   return (
-    <div className="dropdown" onClick={() => setIsOpen(!isOpen)}>
+    <div className={cn("dropdown", className)} onClick={() => setIsOpen(!isOpen)}>
       <div className="dropdown__title">
-        <span>{selectedItem.title}</span>
+        <span className="dropdown__title-content">{selectedItem.title}</span>
       </div>
       {isOpen && isDropdownShown && (
         <div

@@ -72,7 +72,7 @@
     font-weight: map-get($font-weight, 'black');
     color: map-get($colors, 'red');
 
-    span {
+    &-content {
       display: inline-block;
       position: relative;
 

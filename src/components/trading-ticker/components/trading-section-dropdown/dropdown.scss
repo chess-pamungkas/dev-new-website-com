@@ -15,7 +15,7 @@
     color: map-get($colors, "red");
     cursor: pointer;
 
-    span {
+    &-content {
       position: relative;
 
       &:after {

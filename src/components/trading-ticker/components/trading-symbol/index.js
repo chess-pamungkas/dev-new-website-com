@@ -1,11 +1,19 @@
 import * as React from "react";
 import cn from "classnames";
 
-const TradingSymbol = ({ name, direction, bid, ask, spread, trend }) => {
+const TradingSymbol = ({
+  className,
+  name,
+  direction,
+  bid,
+  ask,
+  spread,
+  trend,
+}) => {
   return (
-    <div className="trading-symbol">
+    <div className={cn("trading-symbol", className)}>
       <div className="trading-symbol__title">
-        <span>{name}</span>
+        <span className="trading-symbol__title-content">{name}</span>
       </div>
       <div className="trading-symbol__data">
         <div className="trading-symbol__option">

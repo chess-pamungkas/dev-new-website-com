@@ -5,12 +5,17 @@ const TradingSectionTitle = ({
   section,
   selectedSection,
   setSelectedSection,
+  className,
 }) => {
   return (
     <div
-      className={cn("trading-section-title", {
-        "trading-section-title__active": section.id === selectedSection.id,
-      })}
+      className={cn(
+        "trading-section-title",
+        {
+          "trading-section-title__active": section.id === selectedSection.id,
+        },
+        className
+      )}
       onClick={() => {
         setSelectedSection(section);
       }}
