@@ -1,13 +1,29 @@
-@import "mixins";
+@import "vars";
 
 .lang-select {
-  @include button-header;
+  height: 40px;
+  padding: 0 35px;
   position: relative;
-  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid map-get($colors, "red");
+  border-radius: $border-radius-header;
+  cursor: pointer;
 
   &:hover {
     & > .lang-select__dropdown {
       display: block;
+    }
+  }
+
+  &--header {
+    height: 34px;
+    padding: 0 27px;
+    border-color: map-get($colors, "white");
+
+    @include desktop-xl {
+      height: 40px;
+      padding: 0 30px;
     }
   }
 
@@ -19,6 +35,5 @@
     display: none;
     margin: 0;
     padding: 0;
-    list-style: none;
   }
 }

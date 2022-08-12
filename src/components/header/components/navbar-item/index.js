@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import NavbarSubItem from '../navbar-sub-item';
 
-const NavbarItem = ({className, title, subItems = []}) => {
+const NavbarItem = ({ className, title, subItems = [] }) => {
   return (
     <li className={cn("navbar-item", className)}>
       <span className="navbar-item__title">{title}</span>

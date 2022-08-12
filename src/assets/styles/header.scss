@@ -25,21 +25,21 @@
   }
 
   &__left {
-    padding-left: 73px;
+    padding-left: 30px;
     display: flex;
     align-items: center;
     flex-grow: 1;
-    gap: 30px;
+    gap: 24px;
     background-color: map-get($colors, 'white');
 
-    @media (max-width: $xl) {
-      padding: 0 30px;
-      gap: 24px;
+    @include desktop-xl {
+      padding-left: 73px;
+      gap: 30px;
     }
   }
 
   &__right {
-    padding: 23px 73px;
+    width: 70px;
     position: relative;
     display: flex;
     align-items: center;
@@ -54,42 +54,40 @@
       border-right: 25px solid map-get($colors, 'red');
     }
 
-    @media (max-width: $xl) {
-      padding: 0 30px;
+    @include desktop-lg {
+      padding: 0 34px;
+      width: initial;
     }
 
-    @media (max-width: $md) {
-      width: 70px;
-      padding: 0;
+    @include desktop-xl {
+      padding: 0 73px;
     }
-  }
-
-  &__signin,
-  &__start {
-    @include button-header;
   }
 
   &__signin {
-    margin-left: 50px;
+    margin-left: 26px;
+    padding: 0 33px;
 
-    @media (max-width: $xl) {
-      margin-left: 26px;
+    @include desktop-xl {
+      margin-left: 50px;
+      padding: 0 38px;
     }
   }
 
   &__start {
     margin-left: 10px;
+    padding: 0 16px;
     background-color: map-get($colors, 'white');
     color: map-get($colors, 'red');
+    text-transform: uppercase;
 
-    @media (max-width: $xl) {
-      padding: 10px 15px;
+    @include desktop-xl {
+      padding: 0 36px;
     }
   }
 
   &__navigation {
     display: flex;
     align-self: stretch;
-    list-style: none;
   }
 }

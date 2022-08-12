@@ -9,6 +9,8 @@
 @import "dropdown-item";
 @import "lang-select";
 @import "burger-menu";
+@import "accordeon";
+@import "search-bar";
 
 *,
 *::before,
@@ -37,12 +39,17 @@ body {
 ul {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 main {
-  margin-top: $header-height;
+  margin-top: $header-height-small;
 
-  @media (max-width: $lg) {
-    margin-top: $header-height-small;
+  @include desktop-xl {
+    margin-top: $header-height;
   }
+}
+
+a {
+  text-decoration: none;
 }

@@ -1,0 +1,6 @@
+@import "vars";
+@import "mixins";
+
+.search-bar {
+  background-color: map-get($colors, 'red');
+}
