@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import TradingSections, { TRADING_SECTIONS } from './components/trading-sections';
 import TradingSymbols from './components/trading-symbols';
+import cn from "classnames";
 
 import './styles.scss';
 
@@ -98,7 +99,7 @@ const TRADING_SYMBOLS = [
   }
 ];
 
-const TradingTicker = () => {
+const TradingTicker = ({className}) => {
   const [selectedSection, setSelectedSection] = useState(TRADING_SECTIONS[0]);
   const [tradingSymbols, setTradingSymbols] = useState(TRADING_SYMBOLS);
 
@@ -125,7 +126,7 @@ const TradingTicker = () => {
   }, )
 
   return (
-    <div className="trading-ticker-wrapper">
+    <div className={cn("trading-ticker-wrapper", className)}>
       <TradingSections
         selectedSection={selectedSection}
         setSelectedSection={setSelectedSection}

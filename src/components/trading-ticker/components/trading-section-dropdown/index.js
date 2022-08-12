@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import cn from "classnames";
 
 const TradingSectionDropdown = ({
@@ -8,7 +8,6 @@ const TradingSectionDropdown = ({
   setSelectedItem,
   isOpen,
   setIsOpen,
-  isSelectionByClick,
   isDropdownShown,
 }) => {
   const onSelectionByClick = (item) => {
@@ -21,7 +20,9 @@ const TradingSectionDropdown = ({
       return (
         <div
           key={`TradingSectionDropdownItem${item.value}`}
-          className="dropdown__item"
+          className={cn("dropdown__item", {
+            "dropdown__item--active": selectedItem.id === item.value
+          })}
           onClick={() => onSelectionByClick(item)}
         >
           <span>{item.title}</span>
@@ -31,16 +32,15 @@ const TradingSectionDropdown = ({
   };
 
   return (
-    <div className={cn("dropdown", className)} onClick={() => setIsOpen(!isOpen)}>
+    <div className={cn("dropdown", className, {
+      "dropdown--opened": isOpen
+    })} onClick={() => setIsOpen(!isOpen)}>
       <div className="dropdown__title">
         <span className="dropdown__title-content">{selectedItem.title}</span>
       </div>
       {isOpen && isDropdownShown && (
         <div
           className="dropdown__content"
-          onClick={(event) => {
-            event.stopPropagation();
-          }}
         >
           <div className="dropdown__items">
             <div>{renderItems()}</div>

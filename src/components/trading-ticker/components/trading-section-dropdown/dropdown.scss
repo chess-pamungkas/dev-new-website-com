@@ -2,12 +2,16 @@
   position: relative;
   width: 315px;
   padding: 6px 12px;
-  box-shadow: 0 3px 24px #00000029;
   border: 2px solid map-get($colors, "red");
   border-radius: 16px;
   background-color: map-get($colors, "white");
   user-select: none;
   text-align: center;
+  transition: 0.2s;
+
+  &--opened {
+    box-shadow: 0 3px 24px #00000029;
+  }
 
   &__title {
     font-size: 16px;
@@ -22,11 +26,11 @@
         position: absolute;
         display: block;
         content: " ";
-        right: -12px;
+        right: -10px;
         top: 50%;
-        transform: translateY(-50%);
         border-style: solid;
-        border-width: 4px 4px 0 4px;
+        border-width: 5px 4px 0 4px;
+        border-radius: 4px;
         border-color: map-get($colors, "red") transparent transparent
           transparent;
       }
@@ -34,27 +38,35 @@
   }
 
   &__content {
-    box-sizing: border-box;
-    z-index: 2;
-    width: 100%;
-    border: 2px solid map-get($colors, "red");
-    border-radius: 16px;
-    background-color: map-get($colors, "white");
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     position: absolute;
     right: 0;
     top: 40px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 2;
+    background-color: map-get($colors, "white");
+    box-shadow: 0 5px 10px #0000001A;
+    border-radius: 10px;
+    padding: 10px;
   }
 
   &__item {
-    padding: 4px 10px;
     font-size: 16px;
     line-height: 20px;
-    color: map-get($colors, "red");
+    color: map-get($colors, "black");
     cursor: pointer;
     text-align: center;
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--active {
+      font-weight: map-get($font-weight, "black");
+      color: map-get($colors, "red");
+    }
   }
 }
