@@ -9,9 +9,6 @@ jobs:
   deploy:
     name: Deploy com
     runs-on: ubuntu-latest
-    env:
-      REACT_APP_ENTITY: fsa
-      REACT_APP_API: example.com
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -19,6 +16,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+      - run: mv .env_dev_com .env
       - run: npm ci
       - run: npm run build
 
@@ -33,9 +31,6 @@ jobs:
   deploy_eu:
     name: Deploy eu
     runs-on: ubuntu-latest
-    env:
-      REACT_APP_ENTITY: cysec
-      REACT_APP_API: example.com
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -43,6 +38,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+      - run: mv .env_dev_eu .env
       - run: npm ci
       - run: npm run build
 
