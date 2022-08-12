@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import "../assets/styles/index.scss";
 import bgPromo1 from "../assets/images/bg/promo1.png";
 import bgPromo2 from "../assets/images/bg/promo2.png";
@@ -19,6 +19,7 @@ import {
 } from "../helpers/promo-texts";
 import TradingTicker from '../components/trading-ticker';
 import TradingTools from "../components/trading-tools";
+import Performance from "../components/performance";
 
 const IndexPage = () => {
   return (
@@ -64,6 +65,7 @@ const IndexPage = () => {
         >
           {PROMO_TEXT_4}
         </Promotion>
+        <Performance />
       </main>
     </>
   );

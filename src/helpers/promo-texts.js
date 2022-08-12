@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 export const PROMO_TEXT_1 = (
   <>
@@ -81,7 +81,7 @@ export const TRADING_TOOLS_TITLE = (
 export const PERFORMANCE_TITLE = (
   <>
     <span className="highlighted-in-red">Oqtima&nbsp;</span>
-    <span className="highlighted-in-black">is all about&nbsp;</span>
+    <span className="highlighted-in-black">is all<br />about&nbsp;</span>
     <span className="highlighted-in-red">performance</span>
     <span className="highlighted-in-black">.</span>
   </>
