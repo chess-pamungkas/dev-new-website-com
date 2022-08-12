@@ -69,7 +69,6 @@ const TradingSections = ({
                 id: item.value,
               });
             }}
-            isSelectionByClick
             isDropdownShown
             isOpen={isDropdownOpened}
             setIsOpen={setIsDropdownOpened}
