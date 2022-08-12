@@ -17,6 +17,7 @@ import {
   PROMO_TEXT_3,
   PROMO_TEXT_4,
 } from "../helpers/promo-texts";
+import TradingTicker from '../components/trading-ticker';
 import TradingTools from "../components/trading-tools";
 
 const IndexPage = () => {
@@ -25,6 +26,7 @@ const IndexPage = () => {
       <Header />
       <main>
         <MainPromotion />
+        <TradingTicker />
         <Promotion
           bgImage={bgPromo1}
           image={promo1}
