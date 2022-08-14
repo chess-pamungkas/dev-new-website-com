@@ -49,7 +49,7 @@ export const Logo = ({ className }) => (
   </svg>
 );
 
-export const FlagEnglish = ({ className }) => (
+export const FlagEnglishIcon = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24.131" height="18.098" viewBox="0 0 24.131 18.098" className={className}>
     <defs>
       <clipPath id="clip-path">
@@ -63,6 +63,18 @@ export const FlagEnglish = ({ className }) => (
         <path id="Path_5854" data-name="Path 5854" d="M-225.558,0V18.1h6.033V0ZM-240.64,6.033v6.033h36.2V6.033Z" transform="translate(240.64)" fill="#fff"/>
         <path id="Path_5855" data-name="Path 5855" d="M-240.64,7.239v3.62h36.2V7.239ZM-224.351,0V18.1h3.62V0ZM-240.64,18.1l12.066-6.033h2.7L-237.942,18.1Zm0-18.1,12.066,6.033h-2.7l-9.368-4.684Zm21.434,6.033L-207.141,0h2.7l-12.066,6.033ZM-204.443,18.1l-12.066-6.033h2.7l9.368,4.684Z" transform="translate(240.64)" fill="#c00"/>
       </g>
+    </g>
+  </svg>
+);
+
+export const SearchIcon = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="23.784" height="23.707" viewBox="0 0 23.784 23.707" className={className}>
+    <g id="Group_684" data-name="Group 684" transform="translate(0 0)">
+      <g id="Ellipse_7" data-name="Ellipse 7" transform="translate(0 0)" fill="none" stroke="#fff" strokeWidth="2">
+        <circle cx="10.5" cy="10.5" r="10.5" stroke="none"/>
+        <circle cx="10.5" cy="10.5" r="9.5" fill="none"/>
+      </g>
+      <line id="Line_57" data-name="Line 57" x2="4.512" y2="4.512" transform="translate(18.565 18.488)" fill="none" stroke="#fff" strokeWidth="2"/>
     </g>
   </svg>
 );

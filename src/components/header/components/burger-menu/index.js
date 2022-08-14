@@ -57,10 +57,10 @@ const BurgerMenu = ({ className }) => {
           </li>
 
           <li className="burger-menu__item">
-            <ButtonLink link={'/'} className="button-link--blank">Sign In</ButtonLink>
+            <ButtonLink link={'/'} className="button-link--blank burger-menu__signin">Sign In</ButtonLink>
             
             {isMobile && (
-              <ButtonLink link={'/'} className="button-link--header burger-menu__start">Get Started</ButtonLink>
+              <ButtonLink link={'/'} className="button-link--blank burger-menu__start--tablet">Get Started</ButtonLink>
             )}
           </li>
 
