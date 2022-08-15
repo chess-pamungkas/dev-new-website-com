@@ -6,8 +6,10 @@
   position: relative;
   display: inline-flex;
   align-items: center;
+  gap: 3px;
   border: 2px solid map-get($colors, "red");
   border-radius: $border-radius-header;
+  background: transparent;
   cursor: pointer;
 
   &:hover {
@@ -18,7 +20,7 @@
 
   &--header {
     height: 34px;
-    padding: 0 27px;
+    padding: 0 18px 0 27px;
     border-color: map-get($colors, "white");
 
     @include desktop-xl {
@@ -26,14 +28,13 @@
       padding: 0 30px;
     }
   }
-
-  &__dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    display: none;
-    margin: 0;
-    padding: 0;
-  }
+  // &__dropdown {
+  //   position: absolute;
+  //   top: 100%;
+  //   left: 0;
+  //   width: 100%;
+  //   display: none;
+  //   margin: 0;
+  //   padding: 0;
+  // }
 }

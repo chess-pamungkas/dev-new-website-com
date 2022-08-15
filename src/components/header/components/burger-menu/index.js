@@ -15,10 +15,11 @@ const BurgerMenu = ({ className }) => {
   const [selectedNavItem, setSelectedNavItem] = useState(MENU_ITEMS[0].title)
 
   const onTriggerChange = () => {
-    setIsNavbarOpen(!isNavbarOpen);
     typeof window !== 'undefined' && isNavbarOpen
-      ? document.body.style.overflow = 'unset'
-      : document.body.style.overflow = 'hidden';
+    ? document.body.classList.remove('overflow-hidden')
+    : document.body.classList.add('overflow-hidden');
+
+    setIsNavbarOpen(!isNavbarOpen);
   };
 
   const onSelect = title => setSelectedNavItem(title);

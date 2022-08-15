@@ -1,27 +1,34 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
-import { FlagEnglishIcon } from '../../../shared/icons';
+import { FlagEnglishIcon, AngleDownIcon } from '../../../shared/icons';
+import { ANGLE_ICON_COLOR } from '../../../../helpers/constants';
+import { useModal } from '../../../../helpers/hooks/use-modal';
+import Popup from '../../../shared/popup';
 
 const LangSelect = ({ className }) => {
+  const { isShow, handleOpen, handleClose } = useModal();
+
   const [langSelected, setLangSelected] = useState(<FlagEnglishIcon />);
-  const [isExpanded, setIsExpanded] = useState(false);
+  // const [isExpanded, setIsExpanded] = useState(false);
 
   const onLangSelect = () => {
-    setLangSelected('FR');
-    setIsExpanded(false);
+    handleOpen();
+    // setLangSelected('FR');
+    // setIsExpanded(false);
   };
 
   return (
-    <div
+    <>
+    <button
       className={cn("lang-select", className)}
-      role="button"
-      tabIndex={0}
-      onMouseEnter={() => setIsExpanded(true)}
-      onMouseLeave={() => setIsExpanded(false)}
+      type="button"
+      onClick={onLangSelect}
     >
       {langSelected}
 
-      {isExpanded && (
+      <AngleDownIcon color={ANGLE_ICON_COLOR.WHITE} />
+
+      {/* {isExpanded && (
         <ul className="lang-select__dropdown">
           <li className="lang-select__item">
             <button type="button" onClick={onLangSelect}>EN</button>
@@ -30,8 +37,16 @@ const LangSelect = ({ className }) => {
             <button type="button" onClick={onLangSelect}>FR</button>
           </li>
         </ul>
-      )}
-    </div>
+      )} */}
+    </button>
+
+    <Popup
+      isPopupOpen={isShow}
+      handlePopupClose={handleClose}
+    >
+      <div>Hello</div>
+    </Popup>
+    </>
   );
 };
 
