@@ -1,4 +1,5 @@
 import * as React from "react";
+import ReactGA from "react-ga";
 import "../assets/styles/index.scss";
 import bgPromo1 from "../assets/images/bg/promo1.png";
 import bgPromo2 from "../assets/images/bg/promo2.png";
@@ -17,8 +18,10 @@ import {
   PROMO_TEXT_3,
   PROMO_TEXT_4,
 } from "../helpers/promo-texts";
-import TradingTicker from '../components/trading-ticker';
+import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
+
+ReactGA.initialize(process.env.REACT_APP_GA);
 
 const IndexPage = () => {
   return (
