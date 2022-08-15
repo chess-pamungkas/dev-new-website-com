@@ -7,12 +7,8 @@ on:
 
 jobs:
   deploy:
-    name: Deploy
+    name: Deploy com
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -20,6 +16,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+      - run: mv .env_dev_com .env
       - run: npm ci
       - run: npm run build
 
@@ -30,4 +27,26 @@ jobs:
             aws-secret-access-key: ${{ secrets.S3_KEY }}
             aws-region: us-east-1
       - name: Deploy static site to S3 bucket
-        run: aws s3 sync ./public/ s3://oqtima-dev --delete
+        run: aws s3 sync ./public/ s3://oqtima-dev-com --delete
+  deploy_eu:
+    name: Deploy eu
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: mv .env_dev_eu .env
+      - run: npm ci
+      - run: npm run build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+            aws-access-key-id: ${{ secrets.S3_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.S3_KEY }}
+            aws-region: us-east-1
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync ./public/ s3://oqtima-dev-eu --delete
