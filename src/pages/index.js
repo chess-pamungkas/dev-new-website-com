@@ -22,6 +22,7 @@ import TradingTools from "../components/trading-tools";
 import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
 import {REGISTRATION_LINK} from "../helpers/constants";
+import Footer from "../components/footer";
 
 const IndexPage = () => {
   return (
@@ -70,6 +71,7 @@ const IndexPage = () => {
         </Promotion>
         <Performance />
       </main>
+      <Footer />
     </>
   );
 };
