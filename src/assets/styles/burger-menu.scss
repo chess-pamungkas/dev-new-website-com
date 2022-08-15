@@ -1,7 +1,7 @@
 @import "vars";
 
 .burger-menu {
-  &__trigger {
+  &__cbox {
     position: absolute;
     appearance: none;
     -moz-appearance: none;
@@ -12,8 +12,21 @@
         visibility: visible;
         opacity: 1;
       }
+    }
+  }
 
-      & ~ .burger-menu__label > .burger-menu__bar {
+  &__trigger {
+    position: absolute;
+    top: 25px;
+    right: 26px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &--open {
+      & > .burger-menu__bar {
         &:first-child,
         &:last-child {
           height: 3px;
@@ -35,14 +48,6 @@
         }
       }
     }
-  }
-
-  &__label {
-    position: fixed;
-    top: 25px;
-    right: 26px;
-    z-index: 9999;
-    cursor: pointer;
   }
 
   &__bar {
@@ -74,6 +79,15 @@
 
     @include tablet {
       padding: 85px 26px 26px 96px;
+    }
+
+    &::-webkit-scrollbar {
+      width: 2px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #cfcfcf;
     }
   }
 

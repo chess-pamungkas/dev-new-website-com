@@ -13,6 +13,7 @@
   border-radius: 25px;
 
   &__input {
+    width: 100%;
     margin-left: 5px;
     flex-grow: 1;
     background: transparent;
@@ -27,7 +28,7 @@
 
   &__submit {
     height: 36px;
-    padding: 0 19px;
+    padding: 11px 19px;
     background-color: map-get($colors, 'white');
     color: map-get($colors, 'red');
     border: none;

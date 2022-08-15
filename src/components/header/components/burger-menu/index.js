@@ -28,17 +28,23 @@ const BurgerMenu = ({ className }) => {
         id="bmt"
         type="checkbox"
         checked={isNavbarOpen}
-        onChange={onTriggerChange}
-        className="burger-menu__trigger"
+        onChange={() => {}}
+        className="burger-menu__cbox"
       />
 
-      <label htmlFor="bmt" className="burger-menu__label">
+      <button className={cn("burger-menu__trigger", {"burger-menu__trigger--open": isNavbarOpen})} onClick={onTriggerChange}>
         <span className="burger-menu__bar"></span>
         <span className="burger-menu__bar"></span>
         <span className="burger-menu__bar"></span>
-      </label>
+      </button>
 
       <div className="burger-menu__navbar">
+        <button className={cn("burger-menu__trigger", {"burger-menu__trigger--open": isNavbarOpen})} onClick={onTriggerChange}>
+          <span className="burger-menu__bar"></span>
+          <span className="burger-menu__bar"></span>
+          <span className="burger-menu__bar"></span>
+        </button>
+
         {isMobile && <LangSelect className="burger-menu__lang-select-mobile" />}
 
         <ul>
