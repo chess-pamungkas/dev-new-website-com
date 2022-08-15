@@ -1,0 +1,40 @@
+@import "vars";
+@import "mixins";
+
+.search-bar {
+  height: 50px;
+  padding: 0 8px 0 18px;
+  display: flex;
+  align-items: center;
+  background-color: map-get($colors, 'red');
+  color: map-get($colors, 'white');
+  box-shadow: 0px 5px 10px #0000001A;
+  border: 2px solid #E03C00;
+  border-radius: 25px;
+
+  &__input {
+    width: 100%;
+    margin-left: 5px;
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      color: map-get($colors, 'white');
+      font: normal normal bold 14px/18px $font;
+    }
+  }
+
+  &__submit {
+    height: 36px;
+    padding: 11px 19px;
+    background-color: map-get($colors, 'white');
+    color: map-get($colors, 'red');
+    border: none;
+    border-radius: 23px;
+    outline: none;
+    font: normal normal 900 16px/20px $font;
+    text-transform: uppercase;
+  }
+}

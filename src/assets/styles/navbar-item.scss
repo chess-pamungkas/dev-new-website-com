@@ -2,13 +2,13 @@
 
 .navbar-item {
   position: relative;
-  padding: 0 34px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   color: map-get($colors, 'black');
 
-  @media (max-width: $xl) {
-    padding: 0 16px;
+  @include desktop-xl {
+    padding: 0 34px;
   }
 
   &::after {
@@ -40,28 +40,27 @@
 
   &__dropdown {
     position: fixed;
-    top: $header-height;
+    top: $header-height-small;
     left: 0;
     width: 100%;
     padding: 75px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-auto-columns: 300px;
+    grid-auto-columns: 250px;
     grid-auto-flow: column;
     justify-content: center;
     background-color: map-get($colors, 'white');
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-    list-style: none;
 
     &:hover {
       cursor: default;
     }
 
-    @media (max-width: $xl) {
-      top: $header-height-small;
-      grid-auto-columns: 250px;
+    @include desktop-xl {
+      top: $header-height;
+      grid-auto-columns: 300px;
     }
   }
 

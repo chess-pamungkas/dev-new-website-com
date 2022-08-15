@@ -1,6 +1,6 @@
 import React from "react";
 
-export const LogoTextMain = ({className}) => (
+export const LogoTextMain = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="169.007" height="36.623" viewBox="0 0 169.007 36.623" className={className}>
     <g id="Group_222" data-name="Group 222" transform="translate(-1627.825 1122.742)">
       <path id="Path_39" data-name="Path 39" d="M698.642,157.658v3.384a1.16,1.16,0,0,0,1.16,1.159h2.443a1.16,1.16,0,0,0,1.16-1.159V140.469c-1.833,13.978-4.763,17.189-4.763,17.189" transform="translate(1093.427 -1248.977)" fill="#e03c00"/>
@@ -19,7 +19,7 @@ export const LogoTextMain = ({className}) => (
   </svg>
 );
 
-export const LogoTextPlain = ({className}) => (
+export const LogoTextPlain = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="169.007" height="36.623" viewBox="0 0 169.007 36.623" className={className}>
     <g id="Group_458" data-name="Group 458" transform="translate(-1627.825 1122.742)">
       <path id="Path_39" data-name="Path 39" d="M698.642,157.658v3.384a1.16,1.16,0,0,0,1.16,1.159h2.443a1.16,1.16,0,0,0,1.16-1.159V140.469c-1.833,13.978-4.763,17.189-4.763,17.189" transform="translate(1093.427 -1248.977)" fill="#f40"/>
@@ -38,13 +38,43 @@ export const LogoTextPlain = ({className}) => (
   </svg>
 );
 
-export const Logo = ({className}) => (
+export const Logo = ({ className }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="208" height="112.849" viewBox="0 0 208 112" className={className}>
     <g id="Group_693" data-name="Group 693" transform="translate(-1627.825 1122.742)">
       <path id="Path_41" data-name="Path 41" d="M384.388,184.016a54.017,54.017,0,0,0,4.376-19.717c-.047-.782-.078-1.566-.078-2.359a38.891,38.891,0,1,1,72.481,19.576h.01l13.083,12.09A56.422,56.422,0,1,0,380,192.253a58.045,58.045,0,0,0,4.391-8.237" transform="translate(1351.824 -1228.258)" fill="#e03c00"/>
       <path id="Path_42" data-name="Path 42" d="M424.983,151.613v37.471a38.883,38.883,0,0,1-34.833-21.6,59.14,59.14,0,0,1-2.569,7.238,64.13,64.13,0,0,1-6.248,11.218,56.418,56.418,0,0,0,61.217,17.87l.08-.013V192.655l13.963,13.963h23.758c-1.326,0-55.369-55-55.369-55" transform="translate(1354.418 -1216.51)" fill="#e03c00"/>
       <path id="Path_43" data-name="Path 43" d="M403.712,140.35a58.6,58.6,0,0,0-4.485-8.392,57.915,57.915,0,0,0-4.408,8.392,54.532,54.532,0,0,0-4.3,19.646l-.079,0q.053,1.075.054,2.168a39.342,39.342,0,0,1-3.019,15.389A40.148,40.148,0,0,1,379.2,190.14a38.937,38.937,0,0,1-12.226,8.485,38.775,38.775,0,0,1-30.346,0,39.974,39.974,0,0,1-12.369-8.558,38.959,38.959,0,0,1-8.342-12.583,40.02,40.02,0,0,1-2.948-15.461,41.206,41.206,0,0,1,2.876-15.318,38.613,38.613,0,0,1,20.494-21.357,38.068,38.068,0,0,1,42.86,8.558,41.721,41.721,0,0,1,7.419,10.837,59.763,59.763,0,0,1,2.4-6.8,64.024,64.024,0,0,1,6.284-11.391q-1.828-2.227-3.885-4.294a57.947,57.947,0,0,0-18.09-12.289,55.845,55.845,0,0,0-43.583,0,57.729,57.729,0,0,0-30.074,30.378,54.8,54.8,0,0,0-4.35,21.679,55.86,55.86,0,0,0,56.331,56.33,55.2,55.2,0,0,0,21.829-4.351,56.971,56.971,0,0,0,30.227-30,56.05,56.05,0,0,0,0-43.66" transform="translate(1332.5 -1228.251)" fill="#f40"/>
       <path id="Path_44" data-name="Path 44" d="M392.264,114.473a49.629,49.629,0,0,0-13.874,15.209c-5.653,9.783,8.91,26.813,8.91,26.813s-4.314-18.747,4.963-42.022" transform="translate(1353.336 -1225.975)" fill="#f40"/>
+    </g>
+  </svg>
+);
+
+export const FlagEnglishIcon = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24.131" height="18.098" viewBox="0 0 24.131 18.098" className={className}>
+    <defs>
+      <clipPath id="clip-path">
+        <path id="Path_5856" data-name="Path 5856" d="M-80.213,0h24.131V18.1H-80.213Z" fill="rgba(0,0,0,0.67)"/>
+      </clipPath>
+    </defs>
+    <g id="united-33115" transform="translate(80.213)" clipPath="url(#clip-path)">
+      <g id="Group_1861" data-name="Group 1861" transform="translate(-86.246)">
+        <path id="Path_5852" data-name="Path 5852" d="M-240.64,0h36.2V18.1h-36.2Z" transform="translate(240.64)" fill="#006"/>
+        <path id="Path_5853" data-name="Path 5853" d="M-240.64,0V2.023L-208.49,18.1h4.047V16.075L-236.593,0Zm36.2,0V2.023L-236.593,18.1h-4.047V16.075L-208.49,0Z" transform="translate(240.64)" fill="#fff"/>
+        <path id="Path_5854" data-name="Path 5854" d="M-225.558,0V18.1h6.033V0ZM-240.64,6.033v6.033h36.2V6.033Z" transform="translate(240.64)" fill="#fff"/>
+        <path id="Path_5855" data-name="Path 5855" d="M-240.64,7.239v3.62h36.2V7.239ZM-224.351,0V18.1h3.62V0ZM-240.64,18.1l12.066-6.033h2.7L-237.942,18.1Zm0-18.1,12.066,6.033h-2.7l-9.368-4.684Zm21.434,6.033L-207.141,0h2.7l-12.066,6.033ZM-204.443,18.1l-12.066-6.033h2.7l9.368,4.684Z" transform="translate(240.64)" fill="#c00"/>
+      </g>
+    </g>
+  </svg>
+);
+
+export const SearchIcon = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="23.784" height="23.707" viewBox="0 0 23.784 23.707" className={className}>
+    <g id="Group_684" data-name="Group 684" transform="translate(0 0)">
+      <g id="Ellipse_7" data-name="Ellipse 7" transform="translate(0 0)" fill="none" stroke="#fff" strokeWidth="2">
+        <circle cx="10.5" cy="10.5" r="10.5" stroke="none"/>
+        <circle cx="10.5" cy="10.5" r="9.5" fill="none"/>
+      </g>
+      <line id="Line_57" data-name="Line 57" x2="4.512" y2="4.512" transform="translate(18.565 18.488)" fill="none" stroke="#fff" strokeWidth="2"/>
     </g>
   </svg>
 );
