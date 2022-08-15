@@ -19,12 +19,16 @@ import {
 } from "../helpers/promo-texts";
 import TradingTicker from '../components/trading-ticker';
 import TradingTools from "../components/trading-tools";
+import { ClientResolverProvider } from "../context/client-resolver-context/entity-resolver-context";
+import Popup from "../components/popup"
 
 const IndexPage = () => {
   return (
     <>
+    <ClientResolverProvider>
       <Header />
       <main>
+        <Popup />
         <MainPromotion />
         <TradingTicker />
         <Promotion
@@ -65,6 +69,7 @@ const IndexPage = () => {
           {PROMO_TEXT_4}
         </Promotion>
       </main>
+    </ClientResolverProvider>
     </>
   );
 };
