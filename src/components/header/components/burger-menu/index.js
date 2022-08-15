@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
 import { MENU_ITEMS } from '../../../../helpers/mega-menu.config';
+import { BURGER_MENU_LINES_COUNT } from '../../../../helpers/constants';
 import { useWindowSize } from '../../../../helpers/hooks/use-window-size';
 import ButtonLink from '../../../shared/button-link';
 import LangSelect from '../lang-select';
@@ -33,16 +34,12 @@ const BurgerMenu = ({ className }) => {
       />
 
       <button className={cn("burger-menu__trigger", {"burger-menu__trigger--open": isNavbarOpen})} onClick={onTriggerChange}>
-        <span className="burger-menu__bar"></span>
-        <span className="burger-menu__bar"></span>
-        <span className="burger-menu__bar"></span>
+        {[...Array(BURGER_MENU_LINES_COUNT)].map((_el, i) => <span key={`burger-menu__bar-${i}`} className="burger-menu__bar"></span>)}
       </button>
 
       <div className="burger-menu__navbar">
         <button className={cn("burger-menu__trigger", {"burger-menu__trigger--open": isNavbarOpen})} onClick={onTriggerChange}>
-          <span className="burger-menu__bar"></span>
-          <span className="burger-menu__bar"></span>
-          <span className="burger-menu__bar"></span>
+          {[...Array(BURGER_MENU_LINES_COUNT)].map((_el, i) => <span key={`burger-menu__bar-${i}`} className="burger-menu__bar"></span>)}
         </button>
 
         {isMobile && <LangSelect className="burger-menu__lang-select-mobile" />}
