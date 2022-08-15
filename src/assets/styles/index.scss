@@ -1,9 +1,13 @@
 @import "vars";
 @import "mixins";
+@import "typography";
+
 
 @import "button-link";
 @import "main-promotion";
 @import "promotion";
+@import "trading-tools";
+@import "performance";
 @import "header";
 @import "navbar-item";
 @import "dropdown-item";
@@ -27,9 +31,11 @@ body {
   &-in-red {
     color: map-get($colors, "red");
   }
+
   &-in-black {
     color: map-get($colors, "black");
   }
+
   &-in-white {
     color: map-get($colors, "white");
   }
@@ -52,4 +58,9 @@ main {
 
 a {
   text-decoration: none;
+}
+.hidden-on-mobile {
+  @include mobile {
+    display: none;
+  }
 }

@@ -1,5 +1,12 @@
 @import "vars";
 // MOBILE FIRST
+
+@mixin mobile {
+  @media screen and (max-width: $max-sm) {
+    @content;
+  }
+}
+
 @mixin tablet {
   @media screen and (min-width: $md) {
     @content;

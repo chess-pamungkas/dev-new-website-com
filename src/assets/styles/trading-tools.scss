@@ -1,0 +1,218 @@
+@import "vars";
+@import "mixins";
+
+.trading-tools {
+  background: url("../../assets/images/bg/trading-tools.png") no-repeat right bottom;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200px;
+  padding-bottom: 200px;
+  @include content-alignment(0);
+
+  @include tablet {
+    padding-top: 115px;
+    padding-bottom: 230px;
+  }
+
+  @include desktop-lg {
+    padding-top: 70px;
+    padding-bottom: 55px;
+  }
+
+  @include desktop-xl {
+    padding-top: 150px;
+    padding-bottom: 250px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__icon-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+    flex-wrap: wrap-reverse;
+
+    @include tablet {
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+      flex-direction: unset;
+    }
+  }
+
+  &__img-wrapper {
+    margin-top: 30px;
+    margin-bottom: 55px;
+
+    @include tablet {
+      margin-top: 35px;
+      margin-bottom: 65px;
+    }
+
+    @include desktop-xl {
+      margin-top: 80px;
+      margin-bottom: 50px;
+    }
+  }
+
+  &__title {
+    max-width: 380px;
+    word-break: break-word;
+    text-align: center;
+    margin: 0 0 30px;
+    font-weight: map-get($font-weight, "black");
+    font-size: 24px;
+    line-height: 30px;
+
+    @include tablet {
+      max-width: 570px;
+      margin: 0 0 25px;
+      font-size: 36px;
+      line-height: 45px;
+    }
+
+    @include desktop-xl {
+      max-width: 100%;
+      margin: 0 0 36px;
+      font-size: 48px;
+      line-height: 60px;
+    }
+  }
+
+  &__btn {
+    background: transparent;
+    border: 2px solid map-get($colors, "red");
+
+    margin: 0 auto;
+
+    @include tablet {
+      line-height: 62px;
+      width: 380px;
+      font-size: 24px;
+    }
+
+    @include desktop-xl {
+      margin: unset;
+    }
+  }
+}
+
+.platform-block {
+  margin-right: 10px;
+  margin-bottom: 15px;
+
+  @include tablet {
+    margin-right: 45px;
+    margin-bottom: 0;
+  }
+
+  @include desktop-xl {
+    margin-right: 70px;
+  }
+
+  &:last-child {
+    margin-right: 10px;
+
+    @include tablet {
+      margin-right: 0;
+    }
+  }
+
+  &:first-child {
+    margin-right: 0;
+
+    @include tablet {
+      margin-right: 45px;
+    }
+
+    @include desktop-xl {
+      margin-right: 70px;
+    }
+  }
+
+  &__img {
+    max-width: 90px;
+    max-height: 45px;
+    width: auto;
+    height: auto;
+
+    @include tablet {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.device-block {
+  position: relative;
+
+  @include tablet {
+    margin-left: 140px;
+  }
+
+  &__img {
+    max-width: 100%;
+    height: auto;
+
+    &--phone {
+      position: absolute;
+      z-index: 3;
+
+      @include tablet {
+        max-width: 106px;
+        top: 68px;
+        left: -135px;
+      }
+
+      @include desktop-xl {
+        top: 96px;
+        left: -180px;
+        max-width: 100%;
+      }
+    }
+
+    &--tablet {
+      position: absolute;
+      z-index: 2;
+
+      @include tablet {
+        max-width: 155px;
+        top: 25px;
+        left: -60px;
+      }
+
+      @include desktop-xl {
+        top: 35px;
+        left: -75px;
+        max-width: 100%;
+      }
+    }
+
+    &--laptop {
+
+      @include tablet {
+        max-width: 473px;
+      }
+
+      @include desktop-xl {
+        max-width: 100%;
+      }
+    }
+
+    &--all-devices {
+      max-width: 100%;
+
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+}

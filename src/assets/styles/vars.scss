@@ -1,11 +1,11 @@
-@import "typography";
-
 $sm: 375px;
+$max-sm: 767px;
 $md: 768px;
 $lg: 1024px;
 $xl: 1920px;
 
 $font: "Sofia Pro", sans-serif;
+$font-secondary: 'Lato', sans-serif;
 
 $font-weight: (
   "light": 300,

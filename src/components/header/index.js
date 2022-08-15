@@ -1,9 +1,9 @@
 import React from 'react';
 import cn from 'classnames';
 import { LogoTextMain, Logo } from '../shared/icons';
-import { useWindowSize } from '../../helpers/hooks/useWindowSize';
+import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { WINDOW_SIZE_XL } from '../../helpers/constants';
-import { navCongig } from '../../helpers/mega-menu.config';
+import { MENU_ITEMS } from '../../helpers/mega-menu.config';
 import NavbarItem from './components/navbar-item';
 import LangSelect from './components/lang-select';
 import BurgerMenu from './components/burger-menu';
@@ -21,7 +21,7 @@ const Header = ({ className }) => {
 
         {!isTablet && (
           <ul className="header__navigation">
-            {navCongig.map(({ title, subItems }) => (
+            {MENU_ITEMS.map(({ title, subItems }) => (
               <NavbarItem
                 key={title}
                 title={title}

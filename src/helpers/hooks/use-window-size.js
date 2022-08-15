@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { WINDOW_SIZE_MD, WINDOW_SIZE_LG } from '../../constants';
+import { WINDOW_SIZE_MD, WINDOW_SIZE_LG } from '../constants';
 
 export const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
-import { navCongig } from '../../../../helpers/mega-menu.config';
-import { useWindowSize } from '../../../../helpers/hooks/useWindowSize';
+import { MENU_ITEMS } from '../../../../helpers/mega-menu.config';
+import { useWindowSize } from '../../../../helpers/hooks/use-window-size';
 import ButtonLink from '../../../shared/button-link';
 import LangSelect from '../lang-select';
 import SearchBar from '../search-bar';
@@ -11,7 +11,7 @@ const BurgerMenu = ({ className }) => {
   const { isMobile } = useWindowSize();
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-  const [selectedNavItem, setSelectedNavItem] = useState(navCongig[0].title)
+  const [selectedNavItem, setSelectedNavItem] = useState(MENU_ITEMS[0].title)
 
   const onTriggerChange = () => {
     setIsNavbarOpen(!isNavbarOpen);
@@ -72,7 +72,7 @@ const BurgerMenu = ({ className }) => {
 
           <li className="burger-menu__item">
             <ul className="burger-menu__navigation">
-              {navCongig.map(({ title, subItems }) => (
+              {MENU_ITEMS.map(({ title, subItems }) => (
                 <li key={title} className="burger-menu__navigation-item">
                   <Accordeon
                     key={title}
