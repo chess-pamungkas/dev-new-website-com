@@ -5,6 +5,7 @@ import PlatformBlock from "./components/platform-block";
 import { TRADING_TOOLS_TITLE } from "../../helpers/promo-texts";
 import ButtonLink from "../shared/button-link";
 import DeviceBlock from "./components/device-block";
+import {REGISTRATION_LINK} from "../../helpers/constants";
 
 const TradingTools = ({ className }) => {
   return (
@@ -21,7 +22,7 @@ const TradingTools = ({ className }) => {
         </div>
         <DeviceBlock className="trading-tools__img-wrapper" />
         <h2 className="trading-tools__title">{TRADING_TOOLS_TITLE}</h2>
-        <ButtonLink link="/" className="trading-tools__btn">
+        <ButtonLink link={REGISTRATION_LINK} className="trading-tools__btn">
           Create your account
         </ButtonLink>
       </div>

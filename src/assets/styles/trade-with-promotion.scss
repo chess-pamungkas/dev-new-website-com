@@ -1,0 +1,520 @@
+@import "vars";
+@import "mixins";
+
+.trade-with-promotion {
+  position: relative;
+  background: url("../../assets/images/bg/trade-with.png") no-repeat right bottom;
+  background-size: cover;
+  padding-top: 230px;
+  padding-bottom: 240px;
+  @include content-alignment(0);
+
+  @include tablet {
+    padding-top: 300px;
+    padding-bottom: 100px;
+  }
+
+  @include desktop-xl {
+    padding-top: 320px;
+    padding-bottom: 240px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: map-get($font-weight, "light");
+    font-size: 24px;
+    line-height: 30px;
+    color: map-get($colors, "red");
+    text-transform: uppercase;
+
+    @include desktop-xl {
+      font-size: 50px;
+      line-height: 63px;
+    }
+  }
+
+  &__input {
+    background-image: url("../../assets/images/icons/magnifier.svg");
+    background-position: 38px 50%;
+    background-repeat: no-repeat;
+    background-size: 33px;
+    box-shadow: 0 3px 24px #00000029;
+    border: 3px solid map-get($colors, "red");
+    border-radius: 114px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 345px;
+    margin: 30px 0;
+
+    @include tablet {
+      min-width: 517px;
+    }
+
+    @include desktop-xl {
+      background-size: 63px;
+      min-width: 725px;
+      padding: 27px 38px;
+      margin: 25px 0;
+    }
+  }
+
+  &__input-text {
+    color: map-get($colors, "red");
+    text-transform: uppercase;
+    font-weight: map-get($font-weight, "black");
+    font-size: 30px;
+    line-height: 37px;
+
+    @include desktop-xl {
+      font-size: 60px;
+      line-height: 75px;
+    }
+  }
+
+  &__promo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 40px;
+
+    @include tablet {
+      padding-top: 53px;
+    }
+
+    @include desktop-lg {
+      flex-direction: row;
+    }
+
+    @include desktop-xl {
+      max-width: 1148px;
+      padding-top: 215px;
+    }
+  }
+
+  &__block {
+    &:first-child {
+      padding: 0 0 40px 0;
+
+      @include desktop-lg {
+        padding: 0 30px 0 0;
+      }
+
+      @include desktop-xl {
+        padding: 0 60px 0 0;
+      }
+    }
+
+    &:last-child {
+      padding: 40px 0 0;
+      border-top: 3px solid map-get($colors, "red");
+      width: 100%;
+
+      @include desktop-lg {
+        width: auto;
+        border-top: none;
+        border-left: 3px solid map-get($colors, "red");
+        padding: 15px 0 5px 30px;
+      }
+
+      @include desktop-xl {
+        padding: 20px 0 10px 60px;
+      }
+    }
+  }
+
+  &__promo-text {
+    margin: 0;
+    color: map-get($colors, "red");
+    text-align: center;
+    font-weight: map-get($font-weight, "light");
+    font-size: 18px;
+    line-height: 22px;
+    max-width: 295px;
+
+    @include desktop-lg {
+      text-align: right;
+    }
+
+    @include desktop-xl {
+      max-width: 607px;
+      font-size: 37px;
+      line-height: 46px;
+    }
+  }
+
+  &__btn-wrapper {
+    border: 2px solid map-get($colors, "red");
+    border-radius: 75px;
+  }
+
+  &__btn {
+    position: relative;
+    left: -8px;
+    top: -8px;
+    border: 2px solid map-get($colors, "red");
+    background-color: map-get($colors, "red");
+    color: map-get($colors, "white");
+    font-weight: map-get($font-weight, "bold");
+    border-radius: 75px;
+    width: 100%;
+    line-height: 58px;
+    font-size: 19px;
+
+    &:hover {
+      background-color: map-get($colors, "white");
+      color: map-get($colors, "red");
+    }
+
+    @include desktop-lg {
+      width: 340px;
+    }
+
+    @include desktop-xl {
+      left: -15px;
+      top: -15px;
+      margin: unset;
+      width: 408px;
+      line-height: 115px;
+      font-size: 38px;
+      box-shadow: 0 3px 24px #00000029;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+
+    &--woman {
+      width: 109px;
+      height: 131px;
+      top: 50px;
+      right: 15px;
+
+      @include tablet {
+
+      }
+
+      @include desktop-lg {
+        top: 69px;
+        right: 160px;
+        width: 135px;
+        height: 162px;
+      }
+
+      @include desktop-xl {
+        top: 297px;
+        right: 27px;
+        width: 335px;
+        height: 402px;
+      }
+    }
+
+    &--man {
+      left: 15px;
+      bottom: 37px;
+      width: 141px;
+      height: 168px;
+
+      @include tablet {
+        bottom: unset;
+      }
+
+      @include desktop-lg {
+        top: 30px;
+        left: 198px;
+        width: 176px;
+        height: 209px;
+      }
+
+      @include desktop-xl {
+        width: 315px;
+        height: 376px;
+        top: 207px;
+        left: 93px;
+      }
+    }
+
+    &--netflix {
+      top: 35px;
+      left: 24px;
+      width: 18px;
+      height: 32px;
+
+      @include tablet {
+
+      }
+
+      @include desktop-lg {
+        top: 17px;
+        left: 144px;
+        width: 22px;
+        height: 40px;
+      }
+
+      @include desktop-xl {
+        top: 98px;
+        left: 290px;
+        width: 32px;
+        height: 58px;
+      }
+    }
+
+    &--apple {
+      top: 156px;
+      left: 57px;
+      width: 35px;
+      height: 41px;
+
+      @include tablet {
+
+      }
+
+      @include desktop-lg {
+        top: 183px;
+        left: 397px;
+        width: 43px;
+        height: 51px;
+      }
+
+      @include desktop-xl {
+        top: 20px;
+        left: 647px;
+        width: 62px;
+        height: 73px;
+      }
+    }
+
+    &--ripple {
+      top: 97px;
+      right: 188px;
+      width: 34px;
+      height: 27px;
+
+      @include tablet {
+
+      }
+
+      @include desktop-lg {
+        top: 227px;
+        right: 385px;
+        width: 43px;
+        height: 33px;
+      }
+
+      @include desktop-xl {
+        width: 61px;
+        height: 48px;
+        top: 152px;
+        right: 643px;
+      }
+    }
+
+    &--tesla {
+      width: 35px;
+      height: 35px;
+      right: 30px;
+      top: 30px;
+
+      @include tablet {
+
+      }
+
+      @include desktop-lg {
+        width: 44px;
+        height: 44px;
+        right: 98px;
+        top: 47px;
+      }
+
+      @include desktop-xl {
+        width: 63px;
+        height: 63px;
+        right: 214px;
+        top: 95px;
+      }
+    }
+
+    &--airbnb {
+      bottom: 171px;
+      left: 177px;
+      width: 34px;
+      height: 37px;
+
+      @include tablet {
+
+      }
+
+      @include desktop-lg {
+        bottom: 367px;
+        left: 275px;
+        width: 43px;
+        height: 46px;
+      }
+
+      @include desktop-xl {
+        left: 377px;
+        bottom: 493px;
+        width: 61px;
+        height: 65px;
+      }
+    }
+
+    &--logo {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+
+      @include desktop-lg {
+        bottom: 203px;
+        left: 438px;
+        width: 42px;
+        height: 42px;
+      }
+
+      @include desktop-xl {
+        left: 812px;
+        bottom: 471px;
+        width: 61px;
+        height: 61px;
+      }
+    }
+
+    &--grey-dot {
+      width: 46px;
+      height: 46px;
+      right: 116px;
+      top: 39px;
+
+      @include tablet {
+
+      }
+
+      @include desktop-lg {
+        right: 285px;
+        top: 54px;
+        width: 57px;
+        height: 57px;
+      }
+
+      @include desktop-xl {
+        width: 109px;
+        height: 109px;
+        right: 317px;
+        top: 267px;
+      }
+    }
+
+    &--red-dot {
+      right: 102px;
+      top: 178px;
+      width: 12px;
+      height: 12px;
+
+      @include tablet {
+
+      }
+
+      @include desktop-lg {
+        right: 268px;
+        top: 227px;
+        width: 15px;
+        height: 15px;
+      }
+
+      @include desktop-xl {
+        right: 329px;
+        bottom: 447px;
+        top: unset;
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &--meta {
+      top: 205px;
+      right: 48px;
+      width: 34px;
+      height: 23px;
+
+      @include tablet {
+
+      }
+
+      @include desktop-lg {
+        top: unset;
+        bottom: 115px;
+        left: 103px;
+        width: 43px;
+        height: 28px;
+      }
+
+      @include desktop-xl {
+        left: 146px;
+        bottom: 213px;
+        width: 62px;
+        height: 41px;
+      }
+    }
+
+    &--amazon {
+      bottom: 35px;
+      left: 201px;
+      width: 41px;
+      height: 42px;
+
+      @include tablet {
+
+      }
+
+      @include desktop-lg {
+        bottom: 21px;
+        left: 389px;
+        width: 51px;
+        height: 53px;
+      }
+
+      @include desktop-xl {
+        left: 715px;
+        bottom: 83px;
+        width: 73px;
+        height: 76px;
+      }
+    }
+
+    &--bitcoin {
+      width: 41px;
+      height: 46px;
+      right: 17px;
+      bottom: 104px;
+
+      @include tablet {
+
+      }
+
+      @include desktop-lg {
+        width: 51px;
+        height: 57px;
+        right: 47px;
+        bottom: 159px;
+      }
+
+      @include desktop-xl {
+        right: 209px;
+        bottom: 214px;
+        width: 73px;
+        height: 82px;
+      }
+    }
+  }
+}

@@ -17,9 +17,11 @@ import {
   PROMO_TEXT_3,
   PROMO_TEXT_4,
 } from "../helpers/promo-texts";
-import TradingTicker from '../components/trading-ticker';
+import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
 import Performance from "../components/performance";
+import TradeWithPromotion from "../components/trade-with-promotion";
+import {REGISTRATION_LINK} from "../helpers/constants";
 
 const IndexPage = () => {
   return (
@@ -28,11 +30,12 @@ const IndexPage = () => {
       <main>
         <MainPromotion />
         <TradingTicker />
+        <TradeWithPromotion />
         <Promotion
           bgImage={bgPromo1}
           image={promo1}
           btnTitle="See more"
-          link={"/"}
+          link={REGISTRATION_LINK}
           isRedPalette
         >
           {PROMO_TEXT_1}
@@ -41,7 +44,7 @@ const IndexPage = () => {
           bgImage={bgPromo2}
           image={promo2}
           btnTitle="See more"
-          link={"/"}
+          link={REGISTRATION_LINK}
           isRedPalette
         >
           {PROMO_TEXT_2}
@@ -50,7 +53,7 @@ const IndexPage = () => {
           bgImage={bgPromo3}
           image={promo3}
           btnTitle="See more"
-          link={"/"}
+          link={REGISTRATION_LINK}
         >
           {PROMO_TEXT_3}
         </Promotion>
@@ -59,7 +62,7 @@ const IndexPage = () => {
           bgImage={bgPromo4}
           image={promo4}
           btnTitle="Start copying"
-          link={"/"}
+          link={REGISTRATION_LINK}
           isRedPalette
           isReverseOrder
         >
