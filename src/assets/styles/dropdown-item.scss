@@ -20,13 +20,13 @@
   }
 
   &__title {
-    color: #1a1a1a;
+    color: map-get($colors, "black-secondary");
     font: normal normal 900 16px/20px $font;
   }
 
   &__description {
     margin: 6px 0 0;
-    color: #1a1a1a;
+    color: map-get($colors, "black-secondary");
     font: normal normal 300 14px/18px $font;
   }
 }

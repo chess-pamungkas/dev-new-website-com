@@ -1,0 +1,41 @@
+@import "vars";
+
+.lang-options {
+  padding: 56px 33px 38px 74px;
+  background-color: map-get($colors, "white");
+
+  &__title {
+    margin: 0 0 18px;
+    color: map-get($colors, "black-secondary");
+    font: normal normal 900 24px/30px $font;
+    text-align: center;
+
+    @include tablet {
+      font: normal normal 900 34px/42px $font;
+    }
+  }
+
+  &__list {
+    column-count: 2;
+
+    @include tablet {
+      column-count: 3;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 7px 9px;
+  }
+
+  &__name {
+    margin-left: 10px;
+    color: map-get($colors, "black-secondary");
+    font: normal normal 900 12px/15px $font;
+
+    @include tablet {
+      font: normal normal 900 16px/20px $font;
+    }
+  }
+}

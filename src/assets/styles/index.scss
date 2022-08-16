@@ -16,6 +16,7 @@
 @import "accordeon";
 @import "search-bar";
 @import "popup";
+@import "lang-options";
 
 *,
 *::before,
@@ -46,7 +47,6 @@ body {
   }
 }
 
-
 ul {
   margin: 0;
   padding: 0;
@@ -64,6 +64,7 @@ main {
 a {
   text-decoration: none;
 }
+
 .hidden-on-mobile {
   @include mobile {
     display: none;

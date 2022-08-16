@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
-import { FlagEnglishIcon, AngleDownIcon } from '../../../shared/icons';
+import { EnFlagIcon, AngleDownIcon } from '../../../shared/icons';
 import { ANGLE_ICON_COLOR } from '../../../../helpers/constants';
 import { useModal } from '../../../../helpers/hooks/use-modal';
 import Popup from '../../../shared/popup';
+import LangOptions from '../lang-options';
 
 const LangSelect = ({ className, isHeader = false }) => {
   const { isShow, handleOpen, handleClose } = useModal();
 
-  const [langSelected, setLangSelected] = useState(<FlagEnglishIcon />);
-  // const [isExpanded, setIsExpanded] = useState(false);
+  const [langSelected, setLangSelected] = useState(<EnFlagIcon />);
 
   const onLangSelect = () => {
     handleOpen();
-    // setLangSelected('FR');
-    // setIsExpanded(false);
   };
 
   const setIconColor = isShow => {
@@ -38,24 +36,13 @@ const LangSelect = ({ className, isHeader = false }) => {
           className={cn("lang-select__icon", {"lang-select__icon--up": isShow})}
           color={setIconColor(isShow)}
         />
-
-        {/* {isExpanded && (
-          <ul className="lang-select__dropdown">
-            <li className="lang-select__item">
-              <button type="button" onClick={onLangSelect}>EN</button>
-            </li>
-            <li className="lang-select__item">
-              <button type="button" onClick={onLangSelect}>FR</button>
-            </li>
-          </ul>
-        )} */}
       </button>
 
       <Popup
         isPopupOpen={isShow}
         handlePopupClose={handleClose}
       >
-        <div style={{background: '#fff', height: '300px'}}>Hello</div>
+        <LangOptions />
       </Popup>
     </>
   );
