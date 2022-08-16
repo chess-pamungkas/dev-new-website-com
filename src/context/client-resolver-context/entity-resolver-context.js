@@ -10,13 +10,24 @@ const CYSEC_ENTITY_DOMAIN = process.env.GATSBY_CYSEC_ENTITY_DOMAIN;
 const ClientResolverContext = createContext({});
 
 export const ClientResolverProvider = ({ children }) => {
-  const currentHost = window.location.host;
   const [clientConfig, setClientConfig] = useState({});
   const [isPopupShown, setIsPopupShown] = useState(false);
-  const currentEntity =
-    currentHost === FSA_ENTITY_DOMAIN ? entities.FSA : entities.CYSEC;
-  const entityToRedirect =
-    currentEntity === entities.FSA ? CYSEC_ENTITY_DOMAIN : FSA_ENTITY_DOMAIN;
+  const [currentEntity, setCurrentEntity] = useState("");
+  const [entityToRedirect, setEntityToRedirect] = useState("");
+
+  useEffect(() => {
+    if (window !== undefined) {
+      const currentHost = window.location.host;
+      const _currentEntity =
+        currentHost === FSA_ENTITY_DOMAIN ? entities.FSA : entities.CYSEC;
+      setCurrentEntity(_currentEntity);
+      setEntityToRedirect(
+        _currentEntity === entities.FSA
+          ? CYSEC_ENTITY_DOMAIN
+          : FSA_ENTITY_DOMAIN
+      );
+    }
+  }, []);
 
   useEffect(() => {
     function getClientConfig(ip) {
@@ -32,13 +43,15 @@ export const ClientResolverProvider = ({ children }) => {
         .catch((response) => console.log(response));
     }
 
-    axios
-      .get(PUBLIC_IP_API_URL)
-      .then((response) => {
-        getClientConfig(response.data.ip);
-      })
-      .catch((response) => console.log(response));
-  }, []);
+    if (currentEntity && entityToRedirect) {
+      axios
+        .get(PUBLIC_IP_API_URL)
+        .then((response) => {
+          getClientConfig(response.data.ip);
+        })
+        .catch((response) => console.log(response));
+    }
+  }, [currentEntity, entityToRedirect]);
 
   return (
     <ClientResolverContext.Provider
