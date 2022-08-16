@@ -36,32 +36,6 @@ export const FOOTER_MENU_ITEMS = {
       link: "",
     },
   ],
-  Company: [
-    {
-      title: "About",
-      link: "",
-    },
-    {
-      title: "Contact",
-      link: "",
-    },
-    {
-      title: "Legal",
-      link: "",
-    },
-    {
-      title: "Career",
-      link: "",
-    },
-    {
-      title: "Press and News",
-      link: "",
-    },
-    {
-      title: "Help Center (F.A.Q)",
-      link: "",
-    },
-  ],
   Trading: [
     {
       title: "Platforms",
@@ -132,6 +106,32 @@ export const FOOTER_MENU_ITEMS = {
     },
     {
       title: "How To Videos",
+      link: "",
+    },
+  ],
+  Company: [
+    {
+      title: "About",
+      link: "",
+    },
+    {
+      title: "Contact",
+      link: "",
+    },
+    {
+      title: "Legal",
+      link: "",
+    },
+    {
+      title: "Career",
+      link: "",
+    },
+    {
+      title: "Press and News",
+      link: "",
+    },
+    {
+      title: "Help Center (F.A.Q)",
       link: "",
     },
   ],

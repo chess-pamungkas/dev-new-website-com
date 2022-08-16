@@ -59,6 +59,7 @@
 
     a {
       color: map-get($colors, "red");
+      text-decoration: underline;
     }
   }
 }

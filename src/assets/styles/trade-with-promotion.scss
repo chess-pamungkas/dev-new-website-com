@@ -54,6 +54,12 @@
     min-width: 345px;
     margin: 30px 0;
 
+    @include small-mobile {
+      min-width: 100%;
+      background-position: 20px 50%;
+      background-size: 20px;
+    }
+
     @include tablet {
       min-width: 517px;
     }
@@ -200,7 +206,10 @@
       right: 15px;
 
       @include tablet {
-
+        width: 135px;
+        height: 162px;
+        top: 70px;
+        right: 147px;
       }
 
       @include desktop-lg {
@@ -226,6 +235,10 @@
 
       @include tablet {
         bottom: unset;
+        top: 29px;
+        left: 138px;
+        width: 176px;
+        height: 209px;
       }
 
       @include desktop-lg {
@@ -250,7 +263,10 @@
       height: 32px;
 
       @include tablet {
-
+        top: 37px;
+        left: 59px;
+        width: 22px;
+        height: 40px;
       }
 
       @include desktop-lg {
@@ -275,7 +291,10 @@
       height: 41px;
 
       @include tablet {
-
+        top: 219px;
+        left: 306px;
+        width: 43px;
+        height: 51px;
       }
 
       @include desktop-lg {
@@ -300,7 +319,10 @@
       height: 27px;
 
       @include tablet {
-
+        top: 280px;
+        right: 180px;
+        width: 43px;
+        height: 33px;
       }
 
       @include desktop-lg {
@@ -325,7 +347,10 @@
       top: 30px;
 
       @include tablet {
-
+        width: 44px;
+        height: 44px;
+        right: 46px;
+        top: 47px;
       }
 
       @include desktop-lg {
@@ -350,7 +375,10 @@
       height: 37px;
 
       @include tablet {
-
+        top: 280px;
+        left: 101px;
+        width: 43px;
+        height: 46px;
       }
 
       @include desktop-lg {
@@ -373,10 +401,15 @@
 
       @include tablet {
         display: block;
+        bottom: 320px;
+        right: 285px;
+        width: 42px;
+        height: 42px;
       }
 
       @include desktop-lg {
         bottom: 203px;
+        right: unset;
         left: 438px;
         width: 42px;
         height: 42px;
@@ -397,7 +430,10 @@
       top: 39px;
 
       @include tablet {
-
+        right: 272px;
+        top: 54px;
+        width: 58px;
+        height: 57px;
       }
 
       @include desktop-lg {
@@ -422,7 +458,10 @@
       height: 12px;
 
       @include tablet {
-
+        width: 15px;
+        height: 15px;
+        right: 255px;
+        top: 227px;
       }
 
       @include desktop-lg {
@@ -448,11 +487,14 @@
       height: 23px;
 
       @include tablet {
-
+        top: unset;
+        bottom: 299px;
+        left: 113px;
+        width: 43px;
+        height: 28px;
       }
 
       @include desktop-lg {
-        top: unset;
         bottom: 115px;
         left: 103px;
         width: 43px;
@@ -474,7 +516,10 @@
       height: 42px;
 
       @include tablet {
-
+        left: 389px;
+        bottom: 22px;
+        width: 51px;
+        height: 53px;
       }
 
       @include desktop-lg {
@@ -499,7 +544,10 @@
       bottom: 104px;
 
       @include tablet {
-
+        width: 51px;
+        height: 57px;
+        right: 78px;
+        bottom: 250px;
       }
 
       @include desktop-lg {
