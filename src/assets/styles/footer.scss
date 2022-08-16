@@ -1,0 +1,130 @@
+@import "vars";
+@import "mixins";
+
+.footer {
+  background-color: map-get($colors, "black");
+  @include content-alignment(0);
+  padding-top: 68px;
+  padding-bottom: 40px;
+
+  &__wrapper {
+    @include desktop-xl {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
+  &__logo-wrapper {
+    margin: 0 0 35px;
+
+    @include desktop-xl {
+      max-width: 520px;
+      margin: 0 217px 0 0;
+    }
+  }
+
+  &__text {
+    color: map-get($colors, "grey");
+    margin: 0;
+    padding: 30px 0;
+    font-weight: map-get($font-weight, "light");
+    font-size: 12px;
+    line-height: 15px;
+
+    @include desktop-lg {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+}
+
+.copy-right-block {
+  border-top: 1px solid map-get($colors, "red");
+  padding: 30px 0 0;
+
+  @include desktop-xl {
+    padding: 40px 0 0;
+  }
+
+  &__text {
+    color: map-get($colors, "grey");
+    font-weight: map-get($font-weight, "light");
+    font-size: 12px;
+    line-height: 15px;
+
+    @include desktop-xl {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    a {
+      color: map-get($colors, "red");
+      text-decoration: underline;
+    }
+  }
+}
+
+.menu {
+  display: block;
+  columns: 2;
+
+  &__wrapper {
+    break-inside: avoid;
+    padding: 0 0 35px;
+  }
+
+  @include tablet {
+    columns: unset;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px 50px;
+  }
+
+  @include desktop-xl {
+    gap: 30px 100px;
+  }
+
+  &__column-title {
+    color: map-get($colors, "red");
+    font-weight: map-get($font-weight, "black");
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0 0 25px;
+
+    @include desktop-lg {
+      font-size: 16px;
+      line-height: 20px;
+      margin: 0 0 20px;
+    }
+  }
+}
+
+.menu-column {
+  list-style-type: none;
+
+  &__item {
+    margin-bottom: 25px;
+
+    @include desktop-lg {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: map-get($colors, "grey");
+    font-weight: map-get($font-weight, "light");
+    font-size: 12px;
+    line-height: 15px;
+
+    @include desktop-lg {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    &--bold {
+      font-weight: map-get($font-weight, "black");
+      color: map-get($colors, "white");
+    }
+  }
+}

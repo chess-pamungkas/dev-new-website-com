@@ -8,14 +8,14 @@ import AdvantageBlock from "./components/advantage-block";
 const Performance = ({ className }) => {
   return (
     <section className={cn("performance", className)}>
-      <div>
-        <Logo />
-        <h2>{PERFORMANCE_TITLE}</h2>
+      <div className="performance__title-wrapper">
+        <Logo className="performance__icon" />
+        <h2 className="performance__title">{PERFORMANCE_TITLE}</h2>
       </div>
-      <div>
-        {ADVANTAGES.map((block) => (
+      <div className="performance__advantages">
+        {ADVANTAGES.map((block, i) => (
           <AdvantageBlock
-            key={`advantage-${block.text}`}
+            key={`advantage-${i}`}
             icon={block.icon}
             text={block.text}
           />
