@@ -158,7 +158,11 @@
 
   &__accordeon {
     & .accordeon__title {
-      text-align: right;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 8px;
+      color: map-get($colors, 'black');
       font: normal normal bold 18px/22px $font;
 
       @include tablet {

@@ -37,7 +37,7 @@ const Header = ({ className }) => {
           <BurgerMenu />
         ) : (
           <>
-            <LangSelect className="lang-select--header"/>
+            <LangSelect className="lang-select--header" isHeader={true} />
             {/* TODO: add links */}
             <ButtonLink link={'/'} className="button-link--header button-link--ghost header__signin">Sign In</ButtonLink>
             <ButtonLink link={'/'} className="button-link--header header__start">Get Started</ButtonLink>

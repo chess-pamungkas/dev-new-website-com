@@ -1,3 +1,5 @@
+@import "vars";
+
 .accordeon {
   &__title {
     width: 100%;
@@ -8,6 +10,16 @@
 
     &:focus {
       outline: none;
+    }
+  }
+
+  &__icon {
+    transition: transform 0.3s;
+  }
+
+  &--open {
+    & .accordeon__icon {
+      transform: scale(1, -1);
     }
   }
 }

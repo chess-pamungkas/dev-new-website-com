@@ -2,7 +2,7 @@
 
 .lang-select {
   height: 40px;
-  padding: 0 35px;
+  padding: 0 27px 0 35px;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -11,12 +11,7 @@
   border-radius: $border-radius-header;
   background: transparent;
   cursor: pointer;
-
-  &:hover {
-    & > .lang-select__dropdown {
-      display: block;
-    }
-  }
+  outline: none;
 
   &--header {
     height: 34px;
@@ -26,6 +21,22 @@
     @include desktop-xl {
       height: 40px;
       padding: 0 30px;
+    }
+
+    &.lang-select--active {
+      background: map-get($colors, "white");
+    }
+  }
+
+  &--active {
+    background: map-get($colors, "red");
+  }
+
+  &__icon {
+    transition: transform 0.3s;
+
+    &--up {
+      transform: scale(1, -1);
     }
   }
   // &__dropdown {
