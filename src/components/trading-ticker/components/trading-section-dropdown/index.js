@@ -18,30 +18,35 @@ const TradingSectionDropdown = ({
   const renderItems = () => {
     return items.map((item) => {
       return (
-        <div
+        <button
           key={`TradingSectionDropdownItem${item.value}`}
+          type="button"
           className={cn("dropdown__item", {
-            "dropdown__item--active": selectedItem.id === item.value
+            "dropdown__item--active": selectedItem.id === item.value,
           })}
           onClick={() => onSelectionByClick(item)}
         >
           <span>{item.title}</span>
-        </div>
+        </button>
       );
     });
   };
 
   return (
-    <div className={cn("dropdown", className, {
-      "dropdown--opened": isOpen
-    })} onClick={() => setIsOpen(!isOpen)}>
-      <div className="dropdown__title">
+    <div
+      className={cn("dropdown", className, {
+        "dropdown--opened": isOpen,
+      })}
+    >
+      <button
+        className="dropdown__title"
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+      >
         <span className="dropdown__title-content">{selectedItem.title}</span>
-      </div>
+      </button>
       {isOpen && isDropdownShown && (
-        <div
-          className="dropdown__content"
-        >
+        <div className="dropdown__content">
           <div className="dropdown__items">
             <div>{renderItems()}</div>
           </div>
