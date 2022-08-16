@@ -20,6 +20,8 @@ import {
 } from "../helpers/promo-texts";
 import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
+import { ClientResolverProvider } from "../context/client-resolver-context/entity-resolver-context";
+import Popup from "../components/popup"
 import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
 import { REGISTRATION_LINK } from "../helpers/constants";
@@ -30,8 +32,10 @@ ReactGA.initialize(process.env.REACT_APP_GA);
 const IndexPage = () => {
   return (
     <>
+    <ClientResolverProvider>
       <Header />
       <main>
+        <Popup />
         <MainPromotion />
         <TradingTicker />
         <TradeWithPromotion />
@@ -77,6 +81,7 @@ const IndexPage = () => {
         <Performance />
       </main>
       <Footer />
+    </ClientResolverProvider>
     </>
   );
 };
