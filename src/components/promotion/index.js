@@ -23,8 +23,9 @@ const Promotion = ({
         background:
           isMobile && mobileBgColor
             ? mobileBgColor
-            : `url(${bgImage}) no-repeat`,
+            : `url(${bgImage})`,
         backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div

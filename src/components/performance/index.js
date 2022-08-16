@@ -13,9 +13,9 @@ const Performance = ({ className }) => {
         <h2 className="performance__title">{PERFORMANCE_TITLE}</h2>
       </div>
       <div className="performance__advantages">
-        {ADVANTAGES.map((block) => (
+        {ADVANTAGES.map((block, i) => (
           <AdvantageBlock
-            key={`advantage-${block.text}`}
+            key={`advantage-${i}`}
             icon={block.icon}
             text={block.text}
           />
