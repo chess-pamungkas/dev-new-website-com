@@ -21,7 +21,7 @@ import {
 import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
 import { ClientResolverProvider } from "../context/client-resolver-context/entity-resolver-context";
-import Popup from "../components/popup"
+import Popup from "../components/popup";
 import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
 import { REGISTRATION_LINK } from "../helpers/constants";
@@ -32,56 +32,60 @@ ReactGA.initialize(process.env.REACT_APP_GA);
 const IndexPage = () => {
   return (
     <>
-    <ClientResolverProvider>
-      <Header />
-      <main>
-        <Popup />
-        <MainPromotion />
-        <TradingTicker />
-        <TradeWithPromotion />
-        <Promotion
-          bgImage={bgPromo1}
-          mobileBgColor="#1A1A1A"
-          image={promo1}
-          btnTitle="See more"
-          link={REGISTRATION_LINK}
-          isRedPalette
-        >
-          {PROMO_TEXT_1}
-        </Promotion>
-        <Promotion
-          bgImage={bgPromo2}
-          image={promo2}
-          btnTitle="See more"
-          link={REGISTRATION_LINK}
-          isRedPalette
-        >
-          {PROMO_TEXT_2}
-        </Promotion>
-        <Promotion
-          bgImage={bgPromo3}
-          mobileBgColor="#FF4400"
-          image={promo3}
-          btnTitle="See more"
-          link={REGISTRATION_LINK}
-        >
-          {PROMO_TEXT_3}
-        </Promotion>
-        <TradingTools />
-        <Promotion
-          bgImage={bgPromo4}
-          image={promo4}
-          btnTitle="Start copying"
-          link={REGISTRATION_LINK}
-          isRedPalette
-          isReverseOrder
-        >
-          {PROMO_TEXT_4}
-        </Promotion>
-        <Performance />
-      </main>
-      <Footer />
-    </ClientResolverProvider>
+      <ClientResolverProvider>
+        <Header />
+        <main>
+          <Popup />
+          <MainPromotion />
+          <TradingTicker />
+          <TradeWithPromotion />
+          <Promotion
+            className="promotion1"
+            bgImage={bgPromo1}
+            mobileBgColor="#1A1A1A"
+            image={promo1}
+            btnTitle="See more"
+            link={REGISTRATION_LINK}
+            isRedPalette
+          >
+            {PROMO_TEXT_1}
+          </Promotion>
+          <Promotion
+            className="promotion2"
+            bgImage={bgPromo2}
+            image={promo2}
+            btnTitle="See more"
+            link={REGISTRATION_LINK}
+            isRedPalette
+          >
+            {PROMO_TEXT_2}
+          </Promotion>
+          <Promotion
+            className="promotion3"
+            bgImage={bgPromo3}
+            mobileBgColor="#FF4400"
+            image={promo3}
+            btnTitle="See more"
+            link={REGISTRATION_LINK}
+          >
+            {PROMO_TEXT_3}
+          </Promotion>
+          <TradingTools />
+          <Promotion
+            className="promotion4"
+            bgImage={bgPromo4}
+            image={promo4}
+            btnTitle="Start copying"
+            link={REGISTRATION_LINK}
+            isRedPalette
+            isReverseOrder
+          >
+            {PROMO_TEXT_4}
+          </Promotion>
+          <Performance />
+        </main>
+        <Footer />
+      </ClientResolverProvider>
     </>
   );
 };

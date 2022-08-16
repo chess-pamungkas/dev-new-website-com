@@ -19,14 +19,14 @@ const Promotion = ({
   return (
     <section
       className={cn("promotion", className)}
-      style={{
+     /* style={{
         background:
           isMobile && mobileBgColor
             ? mobileBgColor
             : `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-      }}
+      }}*/
     >
       <div
         className={cn("promotion__wrapper", {
