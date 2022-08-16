@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import ReactGA from "react-ga";
 import "../assets/styles/index.scss";
 import bgPromo1 from "../assets/images/bg/promo1.png";
@@ -20,6 +20,10 @@ import {
 } from "../helpers/promo-texts";
 import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
+import Performance from "../components/performance";
+import TradeWithPromotion from "../components/trade-with-promotion";
+import { REGISTRATION_LINK } from "../helpers/constants";
+import Footer from "../components/footer";
 
 ReactGA.initialize(process.env.REACT_APP_GA);
 
@@ -30,11 +34,13 @@ const IndexPage = () => {
       <main>
         <MainPromotion />
         <TradingTicker />
+        <TradeWithPromotion />
         <Promotion
           bgImage={bgPromo1}
+          mobileBgColor="#1A1A1A"
           image={promo1}
           btnTitle="See more"
-          link={"/"}
+          link={REGISTRATION_LINK}
           isRedPalette
         >
           {PROMO_TEXT_1}
@@ -43,16 +49,17 @@ const IndexPage = () => {
           bgImage={bgPromo2}
           image={promo2}
           btnTitle="See more"
-          link={"/"}
+          link={REGISTRATION_LINK}
           isRedPalette
         >
           {PROMO_TEXT_2}
         </Promotion>
         <Promotion
           bgImage={bgPromo3}
+          mobileBgColor="#FF4400"
           image={promo3}
           btnTitle="See more"
-          link={"/"}
+          link={REGISTRATION_LINK}
         >
           {PROMO_TEXT_3}
         </Promotion>
@@ -61,13 +68,15 @@ const IndexPage = () => {
           bgImage={bgPromo4}
           image={promo4}
           btnTitle="Start copying"
-          link={"/"}
+          link={REGISTRATION_LINK}
           isRedPalette
           isReverseOrder
         >
           {PROMO_TEXT_4}
         </Promotion>
+        <Performance />
       </main>
+      <Footer />
     </>
   );
 };

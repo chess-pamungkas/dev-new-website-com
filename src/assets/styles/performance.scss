@@ -5,6 +5,7 @@
   background: url("../../assets/images/bg/performance.png") no-repeat right bottom;
   background-size: cover;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-top: 140px;
@@ -24,5 +25,137 @@
   @include desktop-xl {
     padding-top: 120px;
     padding-bottom: 120px;
+  }
+
+  &__title-wrapper {
+    text-align: center;
+    padding: 0 0 48px;
+
+    @include tablet {
+      padding: 0 0 40px;
+    }
+
+    @include desktop-xl {
+      padding: 0 0 65px;
+    }
+  }
+
+  &__icon {
+    margin-bottom: 17px;
+
+    @include tablet {
+      margin-bottom: 22px;
+
+      @include desktop-xl {
+        margin-bottom: 33px;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 23px;
+    line-height: 28px;
+    font-weight: map-get($font-weight, "black");
+
+    @include tablet {
+      font-size: 36px;
+      line-height: 45px;
+    }
+
+    @include desktop-xl {
+      font-size: 48px;
+      line-height: 60px;
+    }
+  }
+
+  &__advantages {
+    display: flex;
+    align-items: initial;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include tablet {
+      max-width: 980px;
+      justify-content: center;
+    }
+
+    @include desktop-xl {
+      max-width: 1400px;
+    }
+  }
+}
+
+.advantage-block {
+  box-shadow: 0 5px 10px #0000001a;
+  background: map-get($colors, "white");
+  border-radius: 10px;
+  text-align: center;
+  padding: 27px 20px;
+  width: 46%;
+  margin: 0 7px 25px 7px;
+
+
+  &:hover {
+    background: map-get($colors, "red");
+
+    & .highlighted-in-red {
+      color: map-get($colors, "white");
+    }
+
+    .advantage-block__icon path {
+      fill: map-get($colors, "white");
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 100%;
+    margin: 0 0 25px;
+  }
+
+  @include tablet {
+    width: 230px;
+    margin: 0 7px 35px 7px;
+  }
+
+  @include desktop-xl {
+    width: 330px;
+    margin: 0 10px 40px 10px;
+  }
+
+  &__icon-wrapper {
+    height: 45px;
+    margin-bottom: 11px;
+
+    @include tablet {
+      height: 62px;
+    }
+
+    @include desktop-xl {
+      height: 89px;
+    }
+  }
+
+  &__icon {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+  }
+
+  &__text {
+    font-weight: map-get($font-weight, "black");
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0;
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include desktop-xl {
+      font-size: 24px;
+      line-height: 30px;
+    }
   }
 }
