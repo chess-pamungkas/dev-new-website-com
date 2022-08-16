@@ -1,4 +1,5 @@
 import React from "react";
+import ReactGA from "react-ga";
 import "../assets/styles/index.scss";
 import bgPromo1 from "../assets/images/bg/promo1.png";
 import bgPromo2 from "../assets/images/bg/promo2.png";
@@ -23,6 +24,8 @@ import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
 import {REGISTRATION_LINK} from "../helpers/constants";
 import Footer from "../components/footer";
+
+ReactGA.initialize(process.env.REACT_APP_GA);
 
 const IndexPage = () => {
   return (

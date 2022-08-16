@@ -1,8 +1,8 @@
 import React from 'react';
 import cn from 'classnames';
 
-const NavbarSubItem = ({className, subItem = {}}) => {
-  const {title, link, icon, description} = subItem;
+const NavbarSubItem = ({ className, subItem = {} }) => {
+  const { title, link, icon, description } = subItem;
 
   return (
     <li className={cn("dropdown-item", className)}>
