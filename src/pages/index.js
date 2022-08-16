@@ -22,7 +22,7 @@ import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
 import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
-import {REGISTRATION_LINK} from "../helpers/constants";
+import { REGISTRATION_LINK } from "../helpers/constants";
 import Footer from "../components/footer";
 
 ReactGA.initialize(process.env.REACT_APP_GA);
@@ -37,6 +37,7 @@ const IndexPage = () => {
         <TradeWithPromotion />
         <Promotion
           bgImage={bgPromo1}
+          mobileBgColor="#1A1A1A"
           image={promo1}
           btnTitle="See more"
           link={REGISTRATION_LINK}
@@ -55,6 +56,7 @@ const IndexPage = () => {
         </Promotion>
         <Promotion
           bgImage={bgPromo3}
+          mobileBgColor="#FF4400"
           image={promo3}
           btnTitle="See more"
           link={REGISTRATION_LINK}
