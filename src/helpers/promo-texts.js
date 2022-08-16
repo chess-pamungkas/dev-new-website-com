@@ -56,13 +56,13 @@ export const PROMO_TEXT_4 = (
     </span>
     <span className="highlighted-in-red">investment&nbsp;</span>
     <span className="highlighted-in-white">with a few clicks.</span>
-    <p className="promotion__note">
+    <span className="promotion__note">
       <span className="highlighted-in-white">Find a trader you&nbsp;</span>
       <span className="highlighted-in-red">believe in</span>
       <span className="highlighted-in-white">
         , start copying them and get the same results.
       </span>
-    </p>
+    </span>
   </>
 );
 
@@ -81,7 +81,11 @@ export const TRADING_TOOLS_TITLE = (
 export const PERFORMANCE_TITLE = (
   <>
     <span className="highlighted-in-red">Oqtima&nbsp;</span>
-    <span className="highlighted-in-black">is all<br />about&nbsp;</span>
+    <span className="highlighted-in-black">
+      is all
+      <br />
+      about&nbsp;
+    </span>
     <span className="highlighted-in-red">performance</span>
     <span className="highlighted-in-black">.</span>
   </>
