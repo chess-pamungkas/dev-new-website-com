@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: mv .env_dev_com .env
+      - run: mv .env_dev_com .env.production
       - run: npm ci
       - run: npm run build
 
@@ -38,7 +38,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: mv .env_dev_eu .env
+      - run: mv .env_dev_eu .env.production
       - run: npm ci
       - run: npm run build
 
