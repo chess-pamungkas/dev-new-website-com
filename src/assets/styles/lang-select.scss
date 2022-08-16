@@ -32,6 +32,10 @@
     background: map-get($colors, "red");
   }
 
+  &__flag {
+    box-shadow: 0 0 2px 1px #0000001A;
+  }
+
   &__icon {
     transition: transform 0.3s;
 

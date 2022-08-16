@@ -1,8 +1,12 @@
 @import "vars";
 
 .lang-options {
-  padding: 56px 33px 38px 74px;
+  padding: 42px 33px 28px 30px;
   background-color: map-get($colors, "white");
+
+  @include tablet {
+    padding: 56px 33px 38px 74px;
+  }
 
   &__title {
     margin: 0 0 18px;
@@ -24,15 +28,42 @@
   }
 
   &__item {
+    border: 2px solid transparent;
+    border-radius: 9px;
+    overflow: hidden;
+    
+    &:hover {
+      border-color: map-get($colors, "red");
+    }
+
+    & + & {
+      margin-top: 4px;
+    }
+
+    &--selected {
+      background-color: map-get($colors, "red");
+    }
+  }
+
+  &__select {
+    width: 100%;
     display: flex;
     align-items: center;
     padding: 7px 9px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__flag {
+    box-shadow: 0 0 2px 1px #0000001A;
   }
 
   &__name {
     margin-left: 10px;
     color: map-get($colors, "black-secondary");
     font: normal normal 900 12px/15px $font;
+    text-align: left;
 
     @include tablet {
       font: normal normal 900 16px/20px $font;

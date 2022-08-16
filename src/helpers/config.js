@@ -99,142 +99,142 @@ export const PLATFORMS = {
 export const LANG_SELECT_OPTIONS = [
   {
     id: 'en',
-    icon: <EnFlagIcon />,
+    icon: EnFlagIcon,
     name: 'English (UK)'
   },
   {
     id: 'de',
-    icon: <DeFlagIcon />,
+    icon: DeFlagIcon,
     name: 'Deutsch'
   },
   {
     id: 'fr',
-    icon: <FrFlagIcon />,
+    icon: FrFlagIcon,
     name: 'Français'
   },
   {
     id: 'pl',
-    icon: <PlFlagIcon />,
+    icon: PlFlagIcon,
     name: 'Polski'
   },
   {
     id: 'pt',
-    icon: <PtFlagIcon />,
+    icon: PtFlagIcon,
     name: 'Português'
   },
   {
     id: 'da',
-    icon: <DaFlagIcon />,
+    icon: DaFlagIcon,
     name: 'Dansk'
   },
   {
     id: 'fi',
-    icon: <FiFlagIcon />,
+    icon: FiFlagIcon,
     name: 'Suomi'
   },
   {
     id: 'es',
-    icon: <EsFlagIcon />,
+    icon: EsFlagIcon,
     name: 'Español'
   },
   {
     id: 'ru',
-    icon: <RuFlagIcon />,
+    icon: RuFlagIcon,
     name: 'Русский'
   },
   {
     id: 'ar',
-    icon: <ArFlagIcon />,
+    icon: ArFlagIcon,
     name: 'عربي'
   },
   {
     id: 'nl',
-    icon: <NlFlagIcon />,
+    icon: NlFlagIcon,
     name: 'Nederlands'
   },
   {
     id: 'sw',
-    icon: <SwFlagIcon />,
+    icon: SwFlagIcon,
     name: 'Svenska'
   },
   {
     id: 'ro',
-    icon: <RoFlagIcon />,
+    icon: RoFlagIcon,
     name: 'Română'
   },
   {
     id: 'it',
-    icon: <ItFlagIcon />,
+    icon: ItFlagIcon,
     name: 'italiano'
   },
   {
     id: 'cn',
-    icon: <CnFlagIcon />,
+    icon: CnFlagIcon,
     name: '简体中文'
   },
   {
     id: 'tw',
-    icon: <CnFlagIcon />,
+    icon: CnFlagIcon,
     name: '繁體中文'
   },
   {
     id: 'no',
-    icon: <NoFlagIcon />,
+    icon: NoFlagIcon,
     name: 'Norsk'
   },
   {
     id: 'cz',
-    icon: <CzFlagIcon />,
+    icon: CzFlagIcon,
     name: 'čeština'
   },
   {
     id: 'vn',
-    icon: <VnFlagIcon />,
+    icon: VnFlagIcon,
     name: 'Tiếng Việt'
   },
   {
     id: 'th',
-    icon: <ThFlagIcon />,
+    icon: ThFlagIcon,
     name: 'แบบไทย'
   },
   {
     id: 'my',
-    icon: <MyFlagIcon />,
+    icon: MyFlagIcon,
     name: 'Melayu'
   },
   {
     id: 'id',
-    icon: <IdFlagIcon />,
+    icon: IdFlagIcon,
     name: 'bahasa Indonesia'
   },
   {
     id: 'kr',
-    icon: <KrFlagIcon />,
+    icon: KrFlagIcon,
     name: '한국인'
   },
   {
     id: 'jp',
-    icon: <JpFlagIcon />,
+    icon: JpFlagIcon,
     name: '日本'
   },
   {
     id: 'in',
-    icon: <InFlagIcon />,
+    icon: InFlagIcon,
     name: 'नहीं'
   },
   {
     id: 'bd',
-    icon: <BdFlagIcon />,
+    icon: BdFlagIcon,
     name: 'বাংলা'
   },
   {
     id: 'gr',
-    icon: <GrFlagIcon />,
+    icon: GrFlagIcon,
     name: 'Ελληνικά'
   },
   {
     id: 'ph',
-    icon: <PhFlagIcon />,
+    icon: PhFlagIcon,
     name: 'Filipino'
   }
 ];

@@ -1,4 +1,6 @@
-import * as React from "react";
+import React, { useState } from "react";
+import { LangugeContext } from '../helpers/contexts';
+import { LANG_SELECT_OPTIONS } from '../helpers/config';
 import "../assets/styles/index.scss";
 import bgPromo1 from "../assets/images/bg/promo1.png";
 import bgPromo2 from "../assets/images/bg/promo2.png";
@@ -21,8 +23,15 @@ import TradingTicker from '../components/trading-ticker';
 import TradingTools from "../components/trading-tools";
 
 const IndexPage = () => {
+  const [selectedLanguage, setSelectedLanguage] = useState(LANG_SELECT_OPTIONS[0]);
+
   return (
-    <>
+    <LangugeContext.Provider
+      value={{
+        selectedLanguage,
+        setSelectedLanguage
+      }}
+    >
       <Header />
       <main>
         <MainPromotion />
@@ -65,7 +74,7 @@ const IndexPage = () => {
           {PROMO_TEXT_4}
         </Promotion>
       </main>
-    </>
+    </LangugeContext.Provider>
   );
 };
 
