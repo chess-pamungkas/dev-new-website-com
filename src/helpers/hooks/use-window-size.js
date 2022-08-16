@@ -1,4 +1,5 @@
-import {useEffect, useState, useCallback} from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import { WINDOW_SIZE_MD, WINDOW_SIZE_LG } from '../constants';
 
 export const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({
@@ -19,5 +20,9 @@ export const useWindowSize = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [handleResize]);
 
-  return {...windowSize, isMobile: windowSize.width < 768};
+  return {
+    ...windowSize,
+    isMobile: windowSize.width < WINDOW_SIZE_MD,
+    isTablet: windowSize.width < WINDOW_SIZE_LG
+  };
 };

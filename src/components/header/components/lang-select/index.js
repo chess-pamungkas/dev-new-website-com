@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
+import { FlagEnglishIcon } from '../../../shared/icons';
 
-const LangSelect = ({className}) => {
-  const [langSelected, setLangSelected] = useState('EN');
+const LangSelect = ({ className }) => {
+  const [langSelected, setLangSelected] = useState(<FlagEnglishIcon />);
   const [isExpanded, setIsExpanded] = useState(false);
 
   const onLangSelect = () => {

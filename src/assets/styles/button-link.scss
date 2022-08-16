@@ -31,4 +31,33 @@
     width: 380px;
     font-size: 24px;
   }
+
+  &--header {
+    width: initial;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    border-radius: $border-radius-header;
+    color: map-get($colors, "white");
+    font: normal normal map-get($font-weight, "bold") 14px/18px $font;
+    text-transform: none;
+    white-space: nowrap;
+
+    @include desktop-xl {
+      height: 40px;
+      font: normal normal map-get($font-weight, "bold") 16px/20px $font;
+    }
+  }
+
+  &--ghost {
+    border: 2px solid map-get($colors, "white");
+    background: transparent;
+  }
+
+  &--blank {
+    width: fit-content;
+    border: none;
+    text-transform: none;
+    font: normal normal bold 16px/20px $font;
+  }
 }
