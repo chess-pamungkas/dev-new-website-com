@@ -7,7 +7,7 @@
   color: map-get($colors, "white");
   display: flex;
   align-items: center;
-  background: url("../images/bg/main-promotion-sm.png") no-repeat bottom left;
+  background: url("../images/bg/main-promotion-sm.svg") no-repeat bottom left;
   background-size: cover;
   height: 703px;
   @include content-alignment(0);
@@ -15,21 +15,21 @@
   padding-bottom: 75px;
 
   @include tablet {
-    background: url("../images/bg/main-promotion-md.png") no-repeat left;
+    background: url("../images/bg/main-promotion-md.svg") no-repeat left;
     background-size: cover;
     height: 949px;
     padding: 75px 55px;
   }
 
   @include desktop-lg {
-    background: url("../images/bg/main-promotion-lg.png") no-repeat left;
+    background: url("../images/bg/main-promotion-lg.svg") no-repeat left;
     background-size: cover;
     height: 693px;
     padding: 75px 120px;
   }
 
   @include desktop-xl {
-    background: url("../images/bg/main-promotion-xl.png") no-repeat right;
+    background: url("../images/bg/main-promotion-xl.svg") no-repeat;
     background-size: cover;
     height: 902px;
     @include content-alignment(0);

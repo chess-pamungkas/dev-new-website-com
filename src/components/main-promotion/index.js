@@ -2,6 +2,7 @@ import React from "react";
 import cn from "classnames";
 import person from "../../assets/images/person.png";
 import ButtonLink from "../shared/button-link";
+import {REGISTRATION_LINK} from "../../helpers/constants";
 
 const MainPromotion = ({ className }) => {
   return (
@@ -25,7 +26,7 @@ const MainPromotion = ({ className }) => {
               you
             </span>
           </h1>
-          <ButtonLink link={"/"}>Trade now</ButtonLink>
+          <ButtonLink link={REGISTRATION_LINK}>Trade now</ButtonLink>
         </div>
       </div>
     </section>
