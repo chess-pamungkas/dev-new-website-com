@@ -1,7 +1,9 @@
 @import "vars";
 
 .dropdown-item {
-  padding: 10px;
+  &--grow {
+    height: 100%;
+  }
 
   &__link {
     display: flex;
@@ -12,21 +14,31 @@
   &__icon {
     width: 26px;
     height: auto;
+    margin-right: 10px;
     flex-shrink: 0;
-  }
-
-  &__content {
-    margin-left: 10px;
   }
 
   &__title {
     color: map-get($colors, "black-secondary");
-    font: normal normal 900 16px/20px $font;
+    font: normal normal 900 14px/18px $font;
+
+    @include desktop-xl {
+      font: normal normal 900 16px/20px $font;
+    }
   }
 
   &__description {
     margin: 6px 0 0;
     color: map-get($colors, "black-secondary");
-    font: normal normal 300 14px/18px $font;
+    font: normal normal 300 12px/15px $font;
+
+    @include desktop-xl {
+      font: normal normal 300 14px/18px $font;
+    }
+  }
+
+  &__subtitles {
+    margin-top: 10px;
+    margin-left: 47px;
   }
 }

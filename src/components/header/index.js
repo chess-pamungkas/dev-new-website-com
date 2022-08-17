@@ -4,6 +4,7 @@ import { LogoTextMain, Logo } from '../shared/icons';
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { WINDOW_SIZE_XL } from '../../helpers/constants';
 import { MENU_ITEMS } from '../../helpers/menu.config';
+import { stringTransformToKebabCase } from '../../helpers/services/string-service';
 import NavbarItem from './components/navbar-item';
 import LangSelect from './components/lang-select';
 import BurgerMenu from './components/burger-menu';
@@ -21,11 +22,12 @@ const Header = ({ className }) => {
 
         {!isTablet && (
           <ul className="header__navigation">
-            {MENU_ITEMS.map(({ title, subItems }) => (
+            {MENU_ITEMS.map(({ title, subItems, isNested = false }) => (
               <NavbarItem
-                key={title}
+                key={`header-menu-${stringTransformToKebabCase(title)}`}
                 title={title}
                 subItems={subItems}
+                isNested={isNested}
               />
             ))}
           </ul>

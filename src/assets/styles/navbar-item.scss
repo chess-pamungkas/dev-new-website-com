@@ -54,10 +54,11 @@
     width: 100%;
     padding: 75px;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-auto-columns: 250px;
+    column-gap: 80px;
+    row-gap: 30px;
     grid-auto-flow: column;
-    justify-content: center;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: start;
     background-color: map-get($colors, 'white');
     visibility: hidden;
     opacity: 0;
@@ -69,7 +70,33 @@
 
     @include desktop-xl {
       top: $header-height;
+      padding-left: 450px;
       grid-auto-columns: 300px;
+    }
+
+    &--nested {
+      height: 660px;
+      padding-bottom: 60px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      column-gap: 20px;
+
+      & > .dropdown-item {
+        width: 33.33%;
+        max-width: 330px;
+
+        @include desktop-xl {
+          width: 18%;
+        }
+      }
+
+      @include desktop-xl {
+        height: 400px;
+        top: $header-height;
+        grid-auto-columns: 300px;
+      }
     }
   }
 
