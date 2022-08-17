@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import cn from "classnames";
 import airbnbIcon from "../../assets/images/icons/companies/airbnb.svg";
 import amazonIcon from "../../assets/images/icons/companies/amazon.svg";
@@ -14,9 +14,21 @@ import rippleIcon from "../../assets/images/icons/companies/ripple.svg";
 import teslaIcon from "../../assets/images/icons/companies/tesla.svg";
 import womanIcon from "../../assets/images/icons/companies/woman.svg";
 import ButtonLink from "../shared/button-link";
-import {REGISTRATION_LINK} from "../../helpers/constants";
+import { REGISTRATION_LINK } from "../../helpers/constants";
+import { MarketingContext } from "../../context/marketing-context";
+import { SECT2_TEXT_SEQUENCES } from "../../helpers/marketing.config";
+import {
+  getDefaultSect2TextSequence,
+  transformParamToKey,
+} from "../../helpers/services/marketing-service";
 
 const TradeWithPromotion = ({ className }) => {
+  const { sect2 } = useContext(MarketingContext);
+
+  const title =
+    SECT2_TEXT_SEQUENCES[transformParamToKey(sect2)] ||
+    getDefaultSect2TextSequence();
+
   return (
     <section className={cn("trade-with-promotion", className)}>
       <img
@@ -128,7 +140,8 @@ const TradeWithPromotion = ({ className }) => {
           Trade <span className="bold">now</span> with
         </h2>
         <div className="trade-with-promotion__input">
-          <span className="trade-with-promotion__input-text">Bitcoin</span>
+          {/*  TODO show all titles from array */}
+          <span className="trade-with-promotion__input-text">{title[0]}</span>
         </div>
 
         <div className="trade-with-promotion__promo">

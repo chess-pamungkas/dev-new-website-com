@@ -9,9 +9,3 @@ export const REGISTRATION_LINK = "/";
 export const LEARN_MORE_LINK = "/";
 export const TERMS_OF_USE_LINK = "/";
 export const PRIVACY_POLICY_LINK = "/";
-
-export const GET_PARAMS = {
-  sect1: "_sect1",
-  sect2: "_sect2",
-  content: "utm_content",
-};
