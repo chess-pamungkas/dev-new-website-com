@@ -6,6 +6,20 @@ export const MARKETING_GET_PARAMS = {
   content: "utm_content",
 };
 
+const SECT2_LOGOS = {
+  dollar: "",
+  euro: "",
+  rmb: "",
+  shib: "",
+  eth: "",
+  gold: "",
+  oilBarrel: "",
+  coffee: "",
+  sp500: "",
+  dowJones: "",
+  nikkei: "",
+};
+
 export const CONTENT_HEROES = {
   default: {
     image: heroImage,
@@ -86,12 +100,44 @@ export const SECT1_TEXT_SEQUENCES = {
 };
 
 export const SECT2_TEXT_SEQUENCES = {
-  forex: ["Forex", "Ready?", "Go"],
-  crypto: ["Crypto", "Ready?", "Go"],
-  commodities: ["Metals", "Ready?", "Go"],
-  indices: ["Indices", "Ready?", "Go"],
-  stocks: ["Stocks", "Ready?", "Go"],
-  eft: ["EFT", "Ready?", "Go"],
+  forex: {
+    group1: [
+      "EUR/USD",
+      "USD/JPY",
+      "GBP/USD",
+      "AUD/USD",
+      "USD/CAD",
+      "USD/CNY",
+      "USD/CHF",
+      "USD/HKD",
+      "EUR/GBP",
+      "USD/KRW",
+    ],
+    group2: ["Ready?", "Go"],
+    symbols: [SECT2_LOGOS.dollar, SECT2_LOGOS.euro, SECT2_LOGOS.rmb],
+  },
+  crypto: {
+    group1: ["BTC", "ETH", "ADA", "XRP", "SOL", "SHIB", "NEO", "BNB"],
+    group2: ["Ready?", "Go"],
+    symbols: [SECT2_LOGOS.shib, SECT2_LOGOS.eth],
+  },
+  commodities: {
+    group1: [
+        "Gold"
+    ],
+    group2: ["Ready?", "Go"],
+    symbols: [],
+  },
+  indices: {
+    group1: [],
+    group2: ["Ready?", "Go"],
+    symbols: [],
+  },
+  stocks: {
+    group1: [],
+    group2: ["Ready?", "Go"],
+    symbols: [],
+  },
 };
 
 export const SECT2_GROUP1_COUNT_OF_WORDS_DEFAULT = 4;
