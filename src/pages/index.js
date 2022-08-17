@@ -1,10 +1,6 @@
 import React from "react";
 import ReactGA from "react-ga";
 import "../assets/styles/index.scss";
-import bgPromo1 from "../assets/images/bg/promo1.png";
-import bgPromo2 from "../assets/images/bg/promo2.png";
-import bgPromo3 from "../assets/images/bg/promo3.png";
-import bgPromo4 from "../assets/images/bg/promo4.png";
 import promo1 from "../assets/images/promotions/promo1.svg";
 import promo2 from "../assets/images/promotions/promo2.svg";
 import promo3 from "../assets/images/promotions/promo3.svg";
@@ -41,8 +37,6 @@ const IndexPage = () => {
           <TradeWithPromotion />
           <Promotion
             className="promotion1"
-            bgImage={bgPromo1}
-            mobileBgColor="#1A1A1A"
             image={promo1}
             btnTitle="See more"
             link={REGISTRATION_LINK}
@@ -52,7 +46,6 @@ const IndexPage = () => {
           </Promotion>
           <Promotion
             className="promotion2"
-            bgImage={bgPromo2}
             image={promo2}
             btnTitle="See more"
             link={REGISTRATION_LINK}
@@ -62,8 +55,6 @@ const IndexPage = () => {
           </Promotion>
           <Promotion
             className="promotion3"
-            bgImage={bgPromo3}
-            mobileBgColor="#FF4400"
             image={promo3}
             btnTitle="See more"
             link={REGISTRATION_LINK}
@@ -73,7 +64,6 @@ const IndexPage = () => {
           <TradingTools />
           <Promotion
             className="promotion4"
-            bgImage={bgPromo4}
             image={promo4}
             btnTitle="Start copying"
             link={REGISTRATION_LINK}
