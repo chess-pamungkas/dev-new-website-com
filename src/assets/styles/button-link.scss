@@ -60,4 +60,9 @@
     text-transform: none;
     font: normal normal bold 16px/20px $font;
   }
+
+  &--disabled {
+    pointer-events: none;
+    touch-action: none;
+  }
 }
