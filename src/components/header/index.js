@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { LogoTextMain, Logo } from '../shared/icons';
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { WINDOW_SIZE_XL } from '../../helpers/constants';
-import { MENU_ITEMS } from '../../helpers/mega-menu.config';
+import { MENU_ITEMS } from '../../helpers/menu.config';
 import NavbarItem from './components/navbar-item';
 import LangSelect from './components/lang-select';
 import BurgerMenu from './components/burger-menu';

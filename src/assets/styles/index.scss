@@ -2,13 +2,14 @@
 @import "mixins";
 @import "typography";
 
-
 @import "button-link";
 @import "main-promotion";
 @import "promotion";
 @import "trading-tools";
+@import "trade-with-promotion";
 @import "performance";
 @import "header";
+@import "footer";
 @import "navbar-item";
 @import "dropdown-item";
 @import "lang-select";
@@ -45,6 +46,10 @@ body {
   &-in-white {
     color: map-get($colors, "white");
   }
+}
+
+.bold {
+  font-weight: map-get($font-weight, "bold");
 }
 
 ul {

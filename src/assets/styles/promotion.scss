@@ -85,6 +85,7 @@
   }
 
   &__note {
+    display: block;
     font-weight: map-get($font-weight, "regular");
     font-size: 15px;
     line-height: 19px;

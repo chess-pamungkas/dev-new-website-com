@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import cn from 'classnames';
-import { MENU_ITEMS } from '../../../../helpers/mega-menu.config';
-import { BURGER_MENU_LINES_COUNT } from '../../../../helpers/constants';
-import { useWindowSize } from '../../../../helpers/hooks/use-window-size';
-import ButtonLink from '../../../shared/button-link';
-import LangSelect from '../lang-select';
-import SearchBar from '../search-bar';
-import Accordeon from '../../../shared/accordion';
+import React, { useState } from "react";
+import cn from "classnames";
+import { MENU_ITEMS } from "../../../../helpers/menu.config";
+import { BURGER_MENU_LINES_COUNT } from "../../../../helpers/constants";
+import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
+import ButtonLink from "../../../shared/button-link";
+import LangSelect from "../lang-select";
+import SearchBar from "../search-bar";
+import Accordeon from "../../../shared/accordion";
 
 const BurgerMenu = ({ className }) => {
   const { isMobile } = useWindowSize();
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-  const [selectedNavItem, setSelectedNavItem] = useState(MENU_ITEMS[0].title)
+  const [selectedNavItem, setSelectedNavItem] = useState(MENU_ITEMS[0].title);
 
   const onTriggerChange = () => {
     typeof window !== 'undefined' && isNavbarOpen
@@ -22,7 +22,7 @@ const BurgerMenu = ({ className }) => {
     setIsNavbarOpen(!isNavbarOpen);
   };
 
-  const onSelect = title => setSelectedNavItem(title);
+  const onSelect = (title) => setSelectedNavItem(title);
 
   return (
     <div className={cn("burger-menu", className)}>
@@ -34,13 +34,27 @@ const BurgerMenu = ({ className }) => {
         className="burger-menu__cbox"
       />
 
-      <button className={cn("burger-menu__trigger", {"burger-menu__trigger--open": isNavbarOpen})} onClick={onTriggerChange}>
-        {[...Array(BURGER_MENU_LINES_COUNT)].map((_el, i) => <span key={`burger-menu__bar-${i}`} className="burger-menu__bar"></span>)}
+      <button
+        className={cn("burger-menu__trigger", {
+          "burger-menu__trigger--open": isNavbarOpen,
+        })}
+        onClick={onTriggerChange}
+      >
+        {[...Array(BURGER_MENU_LINES_COUNT)].map((_el, i) => (
+          <span key={`burger-menu__bar-${i}`} className="burger-menu__bar" />
+        ))}
       </button>
 
       <div className="burger-menu__navbar">
-        <button className={cn("burger-menu__trigger", {"burger-menu__trigger--open": isNavbarOpen})} onClick={onTriggerChange}>
-          {[...Array(BURGER_MENU_LINES_COUNT)].map((_el, i) => <span key={`burger-menu__bar-${i}`} className="burger-menu__bar"></span>)}
+        <button
+          className={cn("burger-menu__trigger", {
+            "burger-menu__trigger--open": isNavbarOpen,
+          })}
+          onClick={onTriggerChange}
+        >
+          {[...Array(BURGER_MENU_LINES_COUNT)].map((_el, i) => (
+            <span key={`burger-menu__bar-${i}`} className="burger-menu__bar" />
+          ))}
         </button>
 
         {isMobile && <LangSelect className="burger-menu__lang-select-mobile" />}
@@ -51,7 +65,12 @@ const BurgerMenu = ({ className }) => {
               {!isMobile && (
                 <>
                   {/* TODO: add link */}
-                  <ButtonLink link={'/'} className="button-link--header burger-menu__start">Get Started</ButtonLink>
+                  <ButtonLink
+                    link={"/"}
+                    className="button-link--header burger-menu__start"
+                  >
+                    Get Started
+                  </ButtonLink>
                   <LangSelect className="burger-menu__lang-select-tablet" />
                 </>
               )}
@@ -61,10 +80,20 @@ const BurgerMenu = ({ className }) => {
           </li>
 
           <li className="burger-menu__item">
-            <ButtonLink link={'/'} className="button-link--blank burger-menu__signin">Sign In</ButtonLink>
-            
+            <ButtonLink
+              link={"/"}
+              className="button-link--blank burger-menu__signin"
+            >
+              Sign In
+            </ButtonLink>
+
             {isMobile && (
-              <ButtonLink link={'/'} className="button-link--blank burger-menu__start--tablet">Get Started</ButtonLink>
+              <ButtonLink
+                link={"/"}
+                className="button-link--blank burger-menu__start--tablet"
+              >
+                Get Started
+              </ButtonLink>
             )}
           </li>
 
@@ -83,7 +112,9 @@ const BurgerMenu = ({ className }) => {
                       <ul className="burger-menu__links">
                         {subItems.map(({ link, title }) => (
                           <li key={title} className="burger-menu__link-item">
-                            <a className="burger-menu__link" href={link}>{title}</a>
+                            <a className="burger-menu__link" href={link}>
+                              {title}
+                            </a>
                           </li>
                         ))}
                       </ul>
