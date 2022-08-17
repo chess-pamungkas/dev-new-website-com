@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactGA from "react-ga";
-import { LangugeContext } from '../helpers/contexts';
-import { LANG_SELECT_OPTIONS } from '../helpers/config';
+import { LanguageContext } from '../helpers/contexts';
+import { LANG_SELECT_OPTIONS } from '../helpers/lang-options.config';
 import "../assets/styles/index.scss";
 import bgPromo1 from "../assets/images/bg/promo1.png";
 import bgPromo2 from "../assets/images/bg/promo2.png";
@@ -36,13 +36,14 @@ const IndexPage = () => {
 
   return (
     <ClientResolverProvider>
-      <LangugeContext.Provider
+      <LanguageContext.Provider
         value={{
           selectedLanguage,
           setSelectedLanguage
         }}
       >
         <Header />
+
         <main>
           <Popup />
           <MainPromotion />
@@ -89,8 +90,9 @@ const IndexPage = () => {
           </Promotion>
           <Performance />
         </main>
+        
         <Footer />
-      </LangugeContext.Provider>
+      </LanguageContext.Provider>
     </ClientResolverProvider>
   );
 };

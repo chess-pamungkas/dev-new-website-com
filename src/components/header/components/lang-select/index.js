@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { AngleDownIcon } from '../../../shared/icons';
 import { ANGLE_ICON_COLOR } from '../../../../helpers/constants';
 import { useModal } from '../../../../helpers/hooks/use-modal';
-import { LangugeContext } from '../../../../helpers/contexts';
+import { LanguageContext } from '../../../../helpers/contexts';
 import Popup from '../../../shared/popup';
 import LangOptions from '../lang-options';
 
@@ -12,7 +12,7 @@ const LangSelect = ({ className, isHeader = false }) => {
     selectedLanguage,
     selectedLanguage: { icon: Icon } = {},
     setSelectedLanguage
-  } = useContext(LangugeContext);
+  } = useContext(LanguageContext);
   const { isShow, handleOpen, handleClose } = useModal();
 
   const onLangSelect = selected => {

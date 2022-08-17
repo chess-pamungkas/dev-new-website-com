@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { LANG_SELECT_OPTIONS } from '../../../../helpers/config';
+import { LANG_SELECT_OPTIONS } from '../../../../helpers/lang-options.config';
 
 const LangSelectItem = ({
   language: { id, icon: Icon, name } = {},
