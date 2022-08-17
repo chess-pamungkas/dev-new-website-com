@@ -54,11 +54,11 @@
   }
 
   &__flag {
+    margin-right: 10px;
     box-shadow: 0 0 2px 1px #0000001A;
   }
 
   &__name {
-    margin-left: 10px;
     color: map-get($colors, "black-secondary");
     font: normal normal 900 12px/15px $font;
     text-align: left;
