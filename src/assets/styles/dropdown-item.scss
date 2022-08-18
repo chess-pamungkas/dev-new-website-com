@@ -21,9 +21,14 @@
   &__title {
     color: map-get($colors, "black-secondary");
     font: normal normal 900 14px/18px $font;
+    transition: color 0.2s;
 
     @include desktop-xl {
       font: normal normal 900 16px/20px $font;
+    }
+
+    &:hover {
+      color: map-get($colors, "red");
     }
   }
 
