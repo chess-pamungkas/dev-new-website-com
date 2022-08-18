@@ -6,9 +6,9 @@ import Popup from "../components/popup";
 import TopMarket from "../components/top-market";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import image from "../assets/images/top-markets/cripto.svg";
-import { FOREX_TEXT } from "../helpers/top-market-texts";
+import {COMMODITIES_TEXT, ENERGIES_TEXT, FOREX_TEXT, SHARES_TEXT} from "../helpers/top-market-texts";
 
-const ForexPage = () => {
+const EnergiesPage = () => {
   return (
     <>
       <ClientResolverProvider>
@@ -16,14 +16,14 @@ const ForexPage = () => {
         <main>
           <Popup />
           <TopMarket
-            title="Forex CFD"
+            title="Energies"
             image={image}
             btn1Title="Try our demo account"
             link1={REGISTRATION_LINK}
             btn2Title="Start trading FX now"
             link2={REGISTRATION_LINK}
           >
-            {FOREX_TEXT}
+            {ENERGIES_TEXT}
           </TopMarket>
         </main>
       </ClientResolverProvider>
@@ -31,6 +31,6 @@ const ForexPage = () => {
   );
 };
 
-export default ForexPage;
+export default EnergiesPage;
 
-export const Head = () => <title>Oqtima Forex</title>;
+export const Head = () => <title>Oqtima Energies</title>;
