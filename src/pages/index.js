@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactGA from "react-ga";
+import { LanguageContext } from '../helpers/contexts';
+import { LANG_SELECT_OPTIONS } from '../helpers/lang-options.config';
 import "../assets/styles/index.scss";
 import promo1 from "../assets/images/promotions/promo1.svg";
 import promo2 from "../assets/images/promotions/promo2.svg";
@@ -26,10 +28,18 @@ import Footer from "../components/footer";
 ReactGA.initialize(process.env.REACT_APP_GA);
 
 const IndexPage = () => {
+  const [selectedLanguage, setSelectedLanguage] = useState(LANG_SELECT_OPTIONS[0]);
+
   return (
-    <>
-      <ClientResolverProvider>
+    <ClientResolverProvider>
+      <LanguageContext.Provider
+        value={{
+          selectedLanguage,
+          setSelectedLanguage
+        }}
+      >
         <Header />
+
         <main>
           <Popup />
           <MainPromotion />
@@ -74,9 +84,10 @@ const IndexPage = () => {
           </Promotion>
           <Performance />
         </main>
+        
         <Footer />
-      </ClientResolverProvider>
-    </>
+      </LanguageContext.Provider>
+    </ClientResolverProvider>
   );
 };
 
