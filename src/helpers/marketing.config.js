@@ -99,47 +99,6 @@ export const SECT1_TEXT_SEQUENCES = {
   ],
 };
 
-export const SECT2_TEXT_SEQUENCES = {
-  forex: {
-    group1: [
-      "EUR/USD",
-      "USD/JPY",
-      "GBP/USD",
-      "AUD/USD",
-      "USD/CAD",
-      "USD/CNY",
-      "USD/CHF",
-      "USD/HKD",
-      "EUR/GBP",
-      "USD/KRW",
-    ],
-    group2: ["Ready?", "Go"],
-    symbols: [SECT2_LOGOS.dollar, SECT2_LOGOS.euro, SECT2_LOGOS.rmb],
-  },
-  crypto: {
-    group1: ["BTC", "ETH", "ADA", "XRP", "SOL", "SHIB", "NEO", "BNB"],
-    group2: ["Ready?", "Go"],
-    symbols: [SECT2_LOGOS.shib, SECT2_LOGOS.eth],
-  },
-  commodities: {
-    group1: [
-        "Gold"
-    ],
-    group2: ["Ready?", "Go"],
-    symbols: [],
-  },
-  indices: {
-    group1: [],
-    group2: ["Ready?", "Go"],
-    symbols: [],
-  },
-  stocks: {
-    group1: [],
-    group2: ["Ready?", "Go"],
-    symbols: [],
-  },
-};
-
 export const SECT2_GROUP1_COUNT_OF_WORDS_DEFAULT = 4;
 
 export const SECT2_GROUP1_DEFAULT = [
@@ -156,3 +115,68 @@ export const SECT2_GROUP1_DEFAULT = [
 ];
 
 export const SECT2_GROUP2_DEFAULT = ["Ready?", "Go"];
+
+export const SECT2_TEXT_SEQUENCES = {
+  forex: {
+    group1: [
+      "EUR/USD",
+      "USD/JPY",
+      "GBP/USD",
+      "AUD/USD",
+      "USD/CAD",
+      "USD/CNY",
+      "USD/CHF",
+      "USD/HKD",
+      "EUR/GBP",
+      "USD/KRW",
+    ],
+    group2: SECT2_GROUP2_DEFAULT,
+    symbols: [SECT2_LOGOS.dollar, SECT2_LOGOS.euro, SECT2_LOGOS.rmb],
+  },
+  crypto: {
+    group1: ["BTC", "ETH", "ADA", "XRP", "SOL", "SHIB", "NEO", "BNB"],
+    group2: SECT2_GROUP2_DEFAULT,
+    symbols: [SECT2_LOGOS.shib, SECT2_LOGOS.eth],
+  },
+  commodities: {
+    group1: [
+      "Gold",
+      "Silver",
+      "Platinum",
+      "Crude Oil",
+      "Brent Oil",
+      "Soybean",
+      "Palladium",
+      "Copper",
+      "Coffee Arabica",
+      "Cotton",
+      "Wheat",
+    ],
+    group2: SECT2_GROUP2_DEFAULT,
+    symbols: [SECT2_LOGOS.gold, SECT2_LOGOS.oilBarrel, SECT2_LOGOS.coffee],
+  },
+  indices: {
+    group1: [
+      "S&P 500",
+      "Dow Jones 30",
+      "Dax",
+      "Ftse100",
+      "Nikkei",
+      "Dax40",
+      "Hong Kong 50",
+      "Euro 50",
+      "Euro Btp",
+      "Australia 200",
+      "Spain 35",
+      "France 40",
+      "Canada 40",
+    ],
+    group2: SECT2_GROUP2_DEFAULT,
+    symbols: [SECT2_LOGOS.sp500, SECT2_LOGOS.dowJones, SECT2_LOGOS.nikkei],
+  },
+  stocks: {
+    group1: ["TBC"],
+    group2: SECT2_GROUP2_DEFAULT,
+    symbols: [],
+  },
+};

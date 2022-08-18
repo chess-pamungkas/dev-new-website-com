@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import cn from "classnames";
 import airbnbIcon from "../../assets/images/icons/companies/airbnb.svg";
 import amazonIcon from "../../assets/images/icons/companies/amazon.svg";
@@ -14,20 +14,19 @@ import rippleIcon from "../../assets/images/icons/companies/ripple.svg";
 import teslaIcon from "../../assets/images/icons/companies/tesla.svg";
 import womanIcon from "../../assets/images/icons/companies/woman.svg";
 import ButtonLink from "../shared/button-link";
-import { REGISTRATION_LINK } from "../../helpers/constants";
-import { MarketingContext } from "../../context/marketing-context";
-import { SECT2_TEXT_SEQUENCES } from "../../helpers/marketing.config";
-import {
-  getDefaultSect2TextSequence,
-  transformParamToKey,
-} from "../../helpers/services/marketing-service";
+import {REGISTRATION_LINK} from "../../helpers/constants";
+import {MarketingContext} from "../../context/marketing-context";
+import {SECT2_GROUP1_DEFAULT, SECT2_GROUP2_DEFAULT, SECT2_TEXT_SEQUENCES,} from "../../helpers/marketing.config";
+import {getSect2TextSequence, transformParamToKey,} from "../../helpers/services/marketing-service";
 
 const TradeWithPromotion = ({ className }) => {
   const { sect2 } = useContext(MarketingContext);
 
+  const content = SECT2_TEXT_SEQUENCES[transformParamToKey(sect2)];
+
   const title =
-    SECT2_TEXT_SEQUENCES[transformParamToKey(sect2)] ||
-    getDefaultSect2TextSequence();
+    getSect2TextSequence(content?.group1, content?.group2) ||
+    getSect2TextSequence(SECT2_GROUP1_DEFAULT, SECT2_GROUP2_DEFAULT);
 
   return (
     <section className={cn("trade-with-promotion", className)}>
