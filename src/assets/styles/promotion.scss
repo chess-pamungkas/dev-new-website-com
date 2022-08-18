@@ -129,6 +129,7 @@
   &__btn {
     background: transparent;
     margin: 0 auto;
+    transition: 0.1s;
 
     @include tablet {
       line-height: 62px;
@@ -142,11 +143,22 @@
 
     &--red {
       border: 2px solid map-get($colors, "red");
+
+      &:hover, &:active, &:focus {
+        background: map-get($colors, "red");
+        color: map-get($colors, "white");
+      }
     }
 
     &--black {
       color: map-get($colors, "black");
       border: 2px solid map-get($colors, "black");
+
+      &:hover, &:active, &:focus {
+        color: map-get($colors, "red");
+        background: map-get($colors, "white");
+        border-color: map-get($colors, "white");
+      }
     }
   }
 }

@@ -125,8 +125,13 @@
   &__btn {
     background: transparent;
     border: 2px solid map-get($colors, "red");
-
+    transition: 0.1s;
     margin: 0 auto;
+
+    &:hover, &:active, &:focus {
+      background: map-get($colors, "red");
+      color: map-get($colors, "white");
+    }
 
     @include tablet {
       line-height: 62px;
