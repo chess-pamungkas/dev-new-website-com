@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactGA from "react-ga";
-import { LanguageContext } from '../helpers/contexts';
-import { LANG_SELECT_OPTIONS } from '../helpers/lang-options.config';
 import "../assets/styles/index.scss";
 import promo1 from "../assets/images/promotions/promo1.svg";
 import promo2 from "../assets/images/promotions/promo2.svg";
@@ -18,26 +16,20 @@ import {
 } from "../helpers/promo-texts";
 import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
-import { ClientResolverProvider } from "../context/client-resolver-context/entity-resolver-context";
+import { ClientResolverProvider } from "../context/client-resolver-context";
 import Popup from "../components/popup";
 import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import Footer from "../components/footer";
+import { LanguageProvider } from "../context/language-context";
 
 ReactGA.initialize(process.env.REACT_APP_GA);
 
 const IndexPage = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState(LANG_SELECT_OPTIONS[0]);
-
   return (
     <ClientResolverProvider>
-      <LanguageContext.Provider
-        value={{
-          selectedLanguage,
-          setSelectedLanguage
-        }}
-      >
+      <LanguageProvider>
         <Header />
 
         <main>
@@ -84,9 +76,9 @@ const IndexPage = () => {
           </Promotion>
           <Performance />
         </main>
-        
+
         <Footer />
-      </LanguageContext.Provider>
+      </LanguageProvider>
     </ClientResolverProvider>
   );
 };
