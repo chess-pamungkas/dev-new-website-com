@@ -4,6 +4,7 @@ import { LogoTextMain, Logo } from "../shared/icons";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { WINDOW_SIZE_XL } from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
+import { REGISTRATION_LINK } from "../../helpers/constants";
 import NavbarItem from "./components/navbar-item";
 import LangSelect from "./components/lang-select";
 import BurgerMenu from "./components/burger-menu";
@@ -50,15 +51,14 @@ const Header = ({ className }) => {
         ) : (
           <>
             <LangSelect className="lang-select--header" isHeader={true} />
-            {/* TODO: add links */}
             <ButtonLink
-              link={"/"}
+              link={REGISTRATION_LINK}
               className="button-link--header button-link--ghost header__signin"
             >
               Sign In
             </ButtonLink>
             <ButtonLink
-              link={"/"}
+              link={REGISTRATION_LINK}
               className="button-link--header header__start"
             >
               Get Started
