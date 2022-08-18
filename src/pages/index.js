@@ -3,10 +3,6 @@ import ReactGA from "react-ga";
 import { LanguageContext } from '../helpers/contexts';
 import { LANG_SELECT_OPTIONS } from '../helpers/lang-options.config';
 import "../assets/styles/index.scss";
-import bgPromo1 from "../assets/images/bg/promo1.png";
-import bgPromo2 from "../assets/images/bg/promo2.png";
-import bgPromo3 from "../assets/images/bg/promo3.png";
-import bgPromo4 from "../assets/images/bg/promo4.png";
 import promo1 from "../assets/images/promotions/promo1.svg";
 import promo2 from "../assets/images/promotions/promo2.svg";
 import promo3 from "../assets/images/promotions/promo3.svg";
@@ -23,7 +19,7 @@ import {
 import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
 import { ClientResolverProvider } from "../context/client-resolver-context/entity-resolver-context";
-import Popup from "../components/popup"
+import Popup from "../components/popup";
 import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
 import { REGISTRATION_LINK } from "../helpers/constants";
@@ -50,8 +46,7 @@ const IndexPage = () => {
           <TradingTicker />
           <TradeWithPromotion />
           <Promotion
-            bgImage={bgPromo1}
-            mobileBgColor="#1A1A1A"
+            className="promotion1"
             image={promo1}
             btnTitle="See more"
             link={REGISTRATION_LINK}
@@ -60,7 +55,7 @@ const IndexPage = () => {
             {PROMO_TEXT_1}
           </Promotion>
           <Promotion
-            bgImage={bgPromo2}
+            className="promotion2"
             image={promo2}
             btnTitle="See more"
             link={REGISTRATION_LINK}
@@ -69,8 +64,7 @@ const IndexPage = () => {
             {PROMO_TEXT_2}
           </Promotion>
           <Promotion
-            bgImage={bgPromo3}
-            mobileBgColor="#FF4400"
+            className="promotion3"
             image={promo3}
             btnTitle="See more"
             link={REGISTRATION_LINK}
@@ -79,7 +73,7 @@ const IndexPage = () => {
           </Promotion>
           <TradingTools />
           <Promotion
-            bgImage={bgPromo4}
+            className="promotion4"
             image={promo4}
             btnTitle="Start copying"
             link={REGISTRATION_LINK}
