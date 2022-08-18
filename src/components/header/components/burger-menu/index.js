@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import cn from "classnames";
+import { Link } from "gatsby";
 import { MENU_ITEMS } from "../../../../helpers/menu.config";
 import { BURGER_MENU_LINES_COUNT } from "../../../../helpers/constants";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
+import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import ButtonLink from "../../../shared/button-link";
 import LangSelect from "../lang-select";
 import SearchBar from "../search-bar";
@@ -15,10 +17,11 @@ const BurgerMenu = ({ className }) => {
   const [selectedNavItem, setSelectedNavItem] = useState(MENU_ITEMS[0].title);
 
   const onTriggerChange = () => {
+    typeof window !== 'undefined' && isNavbarOpen
+    ? document.body.classList.remove('overflow-hidden')
+    : document.body.classList.add('overflow-hidden');
+
     setIsNavbarOpen(!isNavbarOpen);
-    typeof window !== "undefined" && isNavbarOpen
-      ? (document.body.style.overflow = "unset")
-      : (document.body.style.overflow = "hidden");
   };
 
   const onSelect = (title) => setSelectedNavItem(title);
@@ -101,7 +104,7 @@ const BurgerMenu = ({ className }) => {
               {MENU_ITEMS.map(({ title, subItems }) => (
                 <li key={title} className="burger-menu__navigation-item">
                   <Accordeon
-                    key={title}
+                    key={`burger-menu-${stringTransformToKebabCase(title)}`}
                     className="burger-menu__accordeon"
                     title={title}
                     onSelect={onSelect}
@@ -109,11 +112,29 @@ const BurgerMenu = ({ className }) => {
                   >
                     {!!subItems.length && (
                       <ul className="burger-menu__links">
-                        {subItems.map(({ link, title }) => (
-                          <li key={title} className="burger-menu__link-item">
-                            <a className="burger-menu__link" href={link}>
+                        {subItems.map(({ link, title, isSubtitle = false, subtitles = [] }) => (
+                          <li
+                            key={`burger-menu-${stringTransformToKebabCase(title)}`}
+                            className="burger-menu__link-item"
+                          >
+                            <Link className="burger-menu__link" to={link}>
                               {title}
-                            </a>
+                            </Link>
+
+                            {isSubtitle && !!subtitles.length && (
+                              <ul className="burger-menu__subtitles">
+                                {subtitles.map(subtitle => (
+                                  <li
+                                    key={`burger-menu-${stringTransformToKebabCase(subtitle.title)}`}
+                                    className="burger-menu__link-item"
+                                  >
+                                    <Link className="burger-menu__link" to={subtitle.link}>
+                                      {subtitle.title}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
                           </li>
                         ))}
                       </ul>

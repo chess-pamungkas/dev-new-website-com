@@ -110,6 +110,10 @@
     }
   }
 
+  &__subtitles {
+    margin-top: 20px;
+  }
+
   &__link {
     text-decoration: none;
     color: map-get($colors, "grey");
