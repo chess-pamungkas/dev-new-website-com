@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25.333" height="19" viewBox="0 0 25.333 19">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_5373" data-name="Path 5373" d="M-50.082,0h25.333V19H-50.082Z" fill="rgba(0,0,0,0.67)"/>
+    </clipPath>
+  </defs>
+  <g id="sweden-33096" transform="translate(50.082)" clip-path="url(#clip-path)">
+    <g id="Group_1643" data-name="Group 1643" transform="translate(-52.594 0)">
+      <path id="Path_5368" data-name="Path 5368" d="M-113.534.283h9.5v7.6h-9.5Zm0,11.388h9.5v7.6h-9.5Z" transform="translate(113.534 -0.272)" fill="#006aa7" fill-rule="evenodd"/>
+      <path id="Path_5369" data-name="Path 5369" d="M-113.534,192.173h9.5v3.8h-9.5Z" transform="translate(113.534 -184.566)" fill="#fecc00" fill-rule="evenodd"/>
+      <path id="Path_5370" data-name="Path 5370" d="M125.478.009h3.8v19h-3.8Z" transform="translate(-116.017 -0.009)" fill="#fecc00" fill-rule="evenodd"/>
+      <path id="Path_5371" data-name="Path 5371" d="M218.433,192.2h17.1V196h-17.1Z" transform="translate(-205.292 -184.592)" fill="#fecc00" fill-rule="evenodd"/>
+      <path id="Path_5372" data-name="Path 5372" d="M221.4,11.672h17.1v7.6H221.4Zm0-11.389h17.1v7.6H221.4Z" transform="translate(-208.138 -0.272)" fill="#006aa7" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>

@@ -17,6 +17,8 @@
 @import "burger-menu";
 @import "accordeon";
 @import "search-bar";
+@import "popup";
+@import "lang-options";
 
 *,
 *::before,
@@ -27,6 +29,10 @@
 body {
   margin: 0;
   font-family: $font;
+
+  &.overflow-hidden {
+    overflow: hidden;
+  }
 }
 
 .highlighted {

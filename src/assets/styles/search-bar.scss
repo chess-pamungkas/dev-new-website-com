@@ -28,7 +28,9 @@
 
   &__submit {
     height: 36px;
-    padding: 11px 19px;
+    padding: 0 19px;
+    display: flex;
+    align-items: center;
     background-color: map-get($colors, 'white');
     color: map-get($colors, 'red');
     border: none;
