@@ -1,16 +1,20 @@
 import React from "react";
 import cn from "classnames";
 import { Link } from "../../../../../.cache/gatsby-browser-entry";
-import {stringTransformToKebabCase} from "../../../../helpers/services/string-service";
+import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 
-const MenuColumn = ({ className, items }) => {  
+const MenuColumn = ({ className, items }) => {
   return (
     <ul className={cn("menu-column", className)}>
       {items.map((item) => {
-        const isItemHasSubtitles = item.isSubtitle && item.subtitles && !!item.subtitles.length;
+        const isItemHasSubtitles =
+          item.isSubtitle && item.subtitles && !!item.subtitles.length;
 
         return (
-          <li className="menu-column__item" key={`footer-menu-${stringTransformToKebabCase(item.title)}`}>
+          <li
+            className="menu-column__item"
+            key={`footer-menu-${stringTransformToKebabCase(item.title)}`}
+          >
             <Link
               className={cn("menu-column__link", {
                 "menu-column__link--bold": item.isSubtitle,
@@ -22,12 +26,14 @@ const MenuColumn = ({ className, items }) => {
 
             {isItemHasSubtitles && (
               <ul className="menu-column__subtitles">
-                {item.subtitles.map(subitem => (
-                  <li className="menu-column__item" key={`footer-menu-${stringTransformToKebabCase(subitem.title)}`}>
-                    <Link
-                      className="menu-column__link"
-                      to={subitem.link}
-                    >
+                {item.subtitles.map((subitem) => (
+                  <li
+                    className="menu-column__item"
+                    key={`footer-menu-${stringTransformToKebabCase(
+                      subitem.title
+                    )}`}
+                  >
+                    <Link className="menu-column__link" to={subitem.link}>
                       {subitem.title}
                     </Link>
                   </li>
@@ -35,7 +41,7 @@ const MenuColumn = ({ className, items }) => {
               </ul>
             )}
           </li>
-        )
+        );
       })}
     </ul>
   );
