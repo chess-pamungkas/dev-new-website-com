@@ -9,6 +9,7 @@ import NavbarItem from "./components/navbar-item";
 import LangSelect from "./components/lang-select";
 import BurgerMenu from "./components/burger-menu";
 import ButtonLink from "../shared/button-link";
+import SearchBar from "./components/search-bar";
 import { CYSEC_MENU_ITEMS, FSA_MENU_ITEMS } from "../../helpers/menu.config";
 import ClientResolverContext from "../../context/client-resolver-context";
 import entities from "../../enums/entities";
@@ -66,6 +67,10 @@ const Header = ({ className }) => {
           </>
         )}
       </div>
+
+      {!isTablet && (
+        <SearchBar className="header__search" isExpandable={true} />
+      )}
     </header>
   );
 };
