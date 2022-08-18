@@ -479,12 +479,6 @@ export const CYSEC_MENU_ITEMS = [
     title: "Top Markets",
     subItems: [
       {
-        title: "Crypto",
-        link: "",
-        icon: CryptoIcon,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
         title: "Indices",
         link: "",
         icon: IndicesIcon,
@@ -562,12 +556,6 @@ export const CYSEC_MENU_ITEMS = [
           },
           {
             title: "Accounts Type",
-            link: "",
-            description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          },
-          {
-            title: "Trading With Leverage",
             link: "",
             description:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -687,12 +675,6 @@ export const CYSEC_MENU_ITEMS = [
         title: "Collaboration Partnership",
         link: "",
         icon: CollaborationPartnershipIcon,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Affiliate Partnership",
-        link: "",
-        icon: AffiliatePartnershipIcon,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
     ],

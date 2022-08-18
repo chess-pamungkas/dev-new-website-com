@@ -15,7 +15,34 @@ import {
   AdvantageIcon7,
 } from "../components/shared/icons";
 
-export const ADVANTAGES = [
+export const CYSEC_ADVANTAGES = [
+  {
+    icon: <AdvantageIcon1 className="advantage-block__icon" />,
+    text: ADVANTAGE_TEXTS.block1,
+  },
+  {
+    icon: <AdvantageIcon2 className="advantage-block__icon" />,
+    text: ADVANTAGE_TEXTS.block2,
+  },
+  {
+    icon: <AdvantageIcon3 className="advantage-block__icon" />,
+    text: ADVANTAGE_TEXTS.block3,
+  },
+  {
+    icon: <AdvantageIcon4 className="advantage-block__icon" />,
+    text: ADVANTAGE_TEXTS.block4,
+  },
+  {
+    icon: <AdvantageIcon6 className="advantage-block__icon" />,
+    text: ADVANTAGE_TEXTS.block6,
+  },
+  {
+    icon: <AdvantageIcon7 className="advantage-block__icon" />,
+    text: ADVANTAGE_TEXTS.block7,
+  },
+];
+
+export const FSA_ADVANTAGES = [
   {
     icon: <AdvantageIcon1 className="advantage-block__icon" />,
     text: ADVANTAGE_TEXTS.block1,
