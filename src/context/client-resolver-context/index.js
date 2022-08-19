@@ -61,6 +61,7 @@ export const ClientResolverProvider = ({ children }) => {
         entityToRedirect,
         isPopupShown,
         setIsPopupShown,
+        currentEntity,
       }}
     >
       {children}

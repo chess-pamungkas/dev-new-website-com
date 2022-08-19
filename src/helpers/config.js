@@ -1,4 +1,3 @@
-import React from "react";
 import webTraderIcon from "../assets/images/icons/tools/webTrader.svg";
 import iosIcon from "../assets/images/icons/tools/ios.svg";
 import androidIcon from "../assets/images/icons/tools/android.svg";
@@ -15,33 +14,60 @@ import {
   AdvantageIcon7,
 } from "../components/shared/icons";
 
-export const ADVANTAGES = [
+export const CYSEC_ADVANTAGES = [
   {
-    icon: <AdvantageIcon1 className="advantage-block__icon" />,
+    icon: AdvantageIcon1,
     text: ADVANTAGE_TEXTS.block1,
   },
   {
-    icon: <AdvantageIcon2 className="advantage-block__icon" />,
+    icon: AdvantageIcon2,
     text: ADVANTAGE_TEXTS.block2,
   },
   {
-    icon: <AdvantageIcon3 className="advantage-block__icon" />,
+    icon: AdvantageIcon3,
     text: ADVANTAGE_TEXTS.block3,
   },
   {
-    icon: <AdvantageIcon4 className="advantage-block__icon" />,
+    icon: AdvantageIcon4,
     text: ADVANTAGE_TEXTS.block4,
   },
   {
-    icon: <AdvantageIcon5 className="advantage-block__icon" />,
-    text: ADVANTAGE_TEXTS.block5,
-  },
-  {
-    icon: <AdvantageIcon6 className="advantage-block__icon" />,
+    icon: AdvantageIcon6,
     text: ADVANTAGE_TEXTS.block6,
   },
   {
-    icon: <AdvantageIcon7 className="advantage-block__icon" />,
+    icon: AdvantageIcon7,
+    text: ADVANTAGE_TEXTS.block7,
+  },
+];
+
+export const FSA_ADVANTAGES = [
+  {
+    icon: AdvantageIcon1,
+    text: ADVANTAGE_TEXTS.block1,
+  },
+  {
+    icon: AdvantageIcon2,
+    text: ADVANTAGE_TEXTS.block2,
+  },
+  {
+    icon: AdvantageIcon3,
+    text: ADVANTAGE_TEXTS.block3,
+  },
+  {
+    icon: AdvantageIcon4,
+    text: ADVANTAGE_TEXTS.block4,
+  },
+  {
+    icon: AdvantageIcon5,
+    text: ADVANTAGE_TEXTS.block5,
+  },
+  {
+    icon: AdvantageIcon6,
+    text: ADVANTAGE_TEXTS.block6,
+  },
+  {
+    icon: AdvantageIcon7,
     text: ADVANTAGE_TEXTS.block7,
   },
 ];
