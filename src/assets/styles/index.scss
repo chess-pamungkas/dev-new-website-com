@@ -34,6 +34,10 @@ body {
   }
 }
 
+main {
+  overflow: hidden;
+}
+
 .highlighted {
   &-in-red {
     color: map-get($colors, "red");

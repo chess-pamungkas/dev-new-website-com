@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useSpring, animated } from "react-spring";
 import cn from "classnames";
 import ButtonLink from "../shared/button-link";
+import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 
 const Promotion = ({
   className,
@@ -11,6 +13,20 @@ const Promotion = ({
   isReverseOrder = false,
   isRedPalette = false,
 }) => {
+  const triggerRef = useRef();
+  const dataRef = useIntersectionObserver(triggerRef, {
+    freezeOnceVisible: true,
+  });
+
+  const animationConfig = useSpring({
+    config: { duration: 700 },
+    from: { opacity: 0, left: "100%" },
+    to: {
+      opacity: dataRef?.isIntersecting ? 1 : 0,
+      left: dataRef?.isIntersecting ? "0" : "100%",
+    },
+  });
+
   return (
     <section className={cn("promotion", className)}>
       <div
@@ -35,6 +51,10 @@ const Promotion = ({
         <div className={cn("promotion__block", "promotion__block--flexed")}>
           <img src={image} alt="" className="promotion__img" />
         </div>
+      </div>
+      <div>
+        <animated.div className="promotion__bg" style={animationConfig} />
+        <div ref={triggerRef} />
       </div>
     </section>
   );
