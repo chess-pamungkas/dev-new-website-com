@@ -15,6 +15,7 @@ import teslaIcon from "../../assets/images/icons/companies/tesla.svg";
 import womanIcon from "../../assets/images/icons/companies/woman.svg";
 import ButtonLink from "../shared/button-link";
 import {REGISTRATION_LINK} from "../../helpers/constants";
+import TypingAnimation from '../shared/typing-animation';
 
 const TradeWithPromotion = ({ className }) => {
   return (
@@ -128,7 +129,9 @@ const TradeWithPromotion = ({ className }) => {
           Trade <span className="bold">now</span> with
         </h2>
         <div className="trade-with-promotion__input">
-          <span className="trade-with-promotion__input-text">Bitcoin</span>
+          <span className="trade-with-promotion__input-text">
+            <TypingAnimation keywords={['Bitcoin', 'Netflix', 'Skype', 'Jira', 'Confluence', 'Skype']}/>
+          </span>
         </div>
 
         <div className="trade-with-promotion__promo">
