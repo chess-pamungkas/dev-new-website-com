@@ -1,4 +1,3 @@
-import React from "react";
 import webTraderIcon from "../assets/images/icons/tools/webTrader.svg";
 import iosIcon from "../assets/images/icons/tools/ios.svg";
 import androidIcon from "../assets/images/icons/tools/android.svg";
