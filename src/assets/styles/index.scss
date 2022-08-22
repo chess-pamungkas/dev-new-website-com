@@ -16,6 +16,8 @@
 @import "burger-menu";
 @import "accordeon";
 @import "search-bar";
+@import "popup";
+@import "lang-options";
 
 *,
 *::before,
@@ -26,6 +28,21 @@
 body {
   margin: 0;
   font-family: $font;
+
+  &.overflow-hidden {
+    overflow: hidden;
+  }
+}
+
+.scroll-container {
+  scroll-snap-type: y mandatory;
+  max-height: 100vh;
+  overflow-y: scroll;
+  scroll-padding: $header-height-small;
+
+  @include desktop-xl {
+    scroll-padding: $header-height;
+  }
 }
 
 .highlighted {

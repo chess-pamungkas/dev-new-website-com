@@ -2,6 +2,7 @@
 @import "mixins";
 
 .trade-with-promotion {
+  scroll-snap-align: start;
   position: relative;
   background: url("../../assets/images/bg/trade-with.svg") no-repeat center;
   background-size: cover;
@@ -175,6 +176,7 @@
     width: 100%;
     line-height: 58px;
     font-size: 19px;
+    transition: 0.1s;
 
     &:hover {
       background-color: map-get($colors, "white");

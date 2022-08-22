@@ -9,3 +9,9 @@ export const REGISTRATION_LINK = "/";
 export const LEARN_MORE_LINK = "/";
 export const TERMS_OF_USE_LINK = "/";
 export const PRIVACY_POLICY_LINK = "/";
+
+export const ANGLE_ICON_COLOR = {
+  BLACK: '#232323',
+  RED: '#ff4400',
+  WHITE: '#ffffff'
+};

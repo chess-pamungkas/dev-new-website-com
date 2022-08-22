@@ -1,23 +1,48 @@
 import React from "react";
 import cn from "classnames";
 import { Link } from "../../../../../.cache/gatsby-browser-entry";
-import {stringTransformToKebabCase} from "../../../../helpers/services/string-service";
+import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 
 const MenuColumn = ({ className, items }) => {
   return (
     <ul className={cn("menu-column", className)}>
-      {items.map((item) => (
-        <li className="menu-column__item" key={`footer-menu-${stringTransformToKebabCase(item.title)}`}>
-          <Link
-            className={cn("menu-column__link", {
-              "menu-column__link--bold": item.isSubtitle,
-            })}
-            to={item.link}
+      {items.map((item) => {
+        const isItemHasSubtitles =
+          item.isSubtitle && item.subtitles && !!item.subtitles.length;
+
+        return (
+          <li
+            className="menu-column__item"
+            key={`footer-menu-${stringTransformToKebabCase(item.title)}`}
           >
-            {item.title}
-          </Link>
-        </li>
-      ))}
+            <Link
+              className={cn("menu-column__link", {
+                "menu-column__link--bold": item.isSubtitle,
+              })}
+              to={item.link}
+            >
+              {item.title}
+            </Link>
+
+            {isItemHasSubtitles && (
+              <ul className="menu-column__subtitles">
+                {item.subtitles.map((subitem) => (
+                  <li
+                    className="menu-column__item"
+                    key={`footer-menu-${stringTransformToKebabCase(
+                      subitem.title
+                    )}`}
+                  >
+                    <Link className="menu-column__link" to={subitem.link}>
+                      {subitem.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 };
