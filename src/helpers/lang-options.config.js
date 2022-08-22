@@ -26,147 +26,149 @@ import {
   BdFlagIcon,
   GrFlagIcon,
   PhFlagIcon,
-} from '../components/shared/icons';
+} from "../components/shared/icons";
 
 export const LANG_SELECT_OPTIONS = [
   {
-    id: 'en',
+    id: "en",
     icon: EnFlagIcon,
-    name: 'English (UK)'
+    name: "English (UK)",
   },
   {
-    id: 'de',
+    id: "de",
     icon: DeFlagIcon,
-    name: 'Deutsch'
+    name: "Deutsch",
   },
   {
-    id: 'fr',
+    id: "fr",
     icon: FrFlagIcon,
-    name: 'Français'
+    name: "Français",
   },
   {
-    id: 'pl',
+    id: "pl",
     icon: PlFlagIcon,
-    name: 'Polski'
+    name: "Polski",
   },
   {
-    id: 'pt',
+    id: "pt",
     icon: PtFlagIcon,
-    name: 'Português'
+    name: "Português",
   },
   {
-    id: 'da',
+    id: "da",
     icon: DaFlagIcon,
-    name: 'Dansk'
+    name: "Dansk",
   },
   {
-    id: 'fi',
+    id: "fi",
     icon: FiFlagIcon,
-    name: 'Suomi'
+    name: "Suomi",
   },
   {
-    id: 'es',
+    id: "es",
     icon: EsFlagIcon,
-    name: 'Español'
+    name: "Español",
   },
   {
-    id: 'ru',
+    id: "ru",
     icon: RuFlagIcon,
-    name: 'Русский'
+    name: "Русский",
   },
   {
-    id: 'ar',
+    id: "ar",
     icon: ArFlagIcon,
-    name: 'عربي'
+    name: "عربي",
   },
   {
-    id: 'nl',
+    id: "nl",
     icon: NlFlagIcon,
-    name: 'Nederlands'
+    name: "Nederlands",
   },
   {
-    id: 'sw',
+    id: "sw",
     icon: SwFlagIcon,
-    name: 'Svenska'
+    name: "Svenska",
   },
   {
-    id: 'ro',
+    id: "ro",
     icon: RoFlagIcon,
-    name: 'Română'
+    name: "Română",
   },
   {
-    id: 'it',
+    id: "it",
     icon: ItFlagIcon,
-    name: 'italiano'
+    name: "Italiano",
   },
   {
-    id: 'cn',
+    id: "cn",
     icon: CnFlagIcon,
-    name: '简体中文'
+    name: "简体中文",
   },
   {
-    id: 'tw',
+    id: "tw",
     icon: CnFlagIcon,
-    name: '繁體中文'
+    name: "繁體中文",
   },
   {
-    id: 'no',
+    id: "no",
     icon: NoFlagIcon,
-    name: 'Norsk'
+    name: "Norsk",
   },
   {
-    id: 'cz',
+    id: "cz",
     icon: CzFlagIcon,
-    name: 'čeština'
+    name: "Čeština",
   },
   {
-    id: 'vn',
+    id: "vn",
     icon: VnFlagIcon,
-    name: 'Tiếng Việt'
+    name: "Tiếng Việt",
   },
   {
-    id: 'th',
+    id: "th",
     icon: ThFlagIcon,
-    name: 'แบบไทย'
+    name: "แบบไทย",
   },
   {
-    id: 'my',
+    id: "my",
     icon: MyFlagIcon,
-    name: 'Melayu'
+    name: "Melayu",
   },
   {
-    id: 'id',
+    id: "id",
     icon: IdFlagIcon,
-    name: 'bahasa Indonesia'
+    name: "Bahasa Indonesia",
   },
   {
-    id: 'kr',
+    id: "kr",
     icon: KrFlagIcon,
-    name: '한국인'
+    name: "한국인",
   },
   {
-    id: 'jp',
+    id: "jp",
     icon: JpFlagIcon,
-    name: '日本'
+    name: "日本",
   },
   {
-    id: 'in',
+    id: "in",
     icon: InFlagIcon,
-    name: 'नहीं'
+    name: "नहीं",
   },
   {
-    id: 'bd',
+    id: "bd",
     icon: BdFlagIcon,
-    name: 'বাংলা'
+    name: "বাংলা",
   },
   {
-    id: 'gr',
+    id: "gr",
     icon: GrFlagIcon,
-    name: 'Ελληνικά'
+    name: "Ελληνικά",
   },
   {
-    id: 'ph',
+    id: "ph",
     icon: PhFlagIcon,
-    name: 'Filipino'
-  }
+    name: "Filipino",
+  },
 ];
+
+export const SHOULD_BE_SMALLER_LANGUAGES = ["Русский", "Ελληνικά"];
