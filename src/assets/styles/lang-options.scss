@@ -1,11 +1,11 @@
 @import "vars";
 
 .lang-options {
-  padding: 42px 20px 28px 30px;
+  padding: 42px 20px 10px 30px;
   background-color: map-get($colors, "white");
 
   @include tablet {
-    padding: 56px 20px 38px 74px;
+    padding: 56px 20px 10px 74px;
   }
 
   &__title {
