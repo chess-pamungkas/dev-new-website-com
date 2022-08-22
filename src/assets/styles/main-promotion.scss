@@ -2,6 +2,7 @@
 @import "mixins";
 
 .main-promotion {
+  scroll-snap-align: start;
   position: relative;
   overflow: hidden;
   color: map-get($colors, "white");

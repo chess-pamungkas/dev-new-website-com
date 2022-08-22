@@ -126,13 +126,13 @@ const TradingTicker = ({className}) => {
   }, )
 
   return (
-    <div className={cn("trading-ticker-wrapper", className)}>
+    <section className={cn("trading-ticker-wrapper", className)}>
       <TradingSections
         selectedSection={selectedSection}
         setSelectedSection={setSelectedSection}
       />
       <TradingSymbols symbols={tradingSymbols}/>
-    </div>
+    </section>
   );
 };
 
