@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "gatsby";
 import cn from "classnames";
-import ClientResolverContext from "../../../context/client-resolver-context/entity-resolver-context";
+import ClientResolverContext from '../../../context/client-resolver-context';
 
 const ButtonLink = ({ children, className, link }) => {
   const {
