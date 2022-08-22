@@ -24,7 +24,7 @@ import { REGISTRATION_LINK } from "../helpers/constants";
 import Footer from "../components/footer";
 import { LanguageProvider } from "../context/language-context";
 
-ReactGA.initialize(process.env.REACT_APP_GA);
+ReactGA.initialize(process.env.GATSBY_GA);
 
 const IndexPage = () => {
   return (
