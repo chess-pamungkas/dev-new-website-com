@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
 import { PLATFORMS } from "../../helpers/config";
 import PlatformBlock from "./components/platform-block";
@@ -7,8 +7,14 @@ import ButtonLink from "../shared/button-link";
 import DeviceBlock from "./components/device-block";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import { useTrail, animated } from "react-spring";
+import { useIntersectionObserver } from "../../helpers/hooks/use-intersection";
 
 const TradingTools = ({ className }) => {
+  const containerRef = useRef();
+  const intersectionRef = useIntersectionObserver(containerRef, {
+    freezeOnceVisible: true,
+  });
+
   const [isAnimationStarted, setIsAnimationStarted] = useState(false);
 
   const platformIconTrail = useTrail(Object.values(PLATFORMS).length, {
@@ -21,37 +27,41 @@ const TradingTools = ({ className }) => {
       },
     },
     to: {
-      bottom: "0",
-      opacity: 1,
+      bottom: isAnimationStarted ? "0" : "-40px",
+      opacity: isAnimationStarted ? 1 : 0,
     },
-    delay: 2500,
+    delay: 1500,
   });
 
-  setTimeout(() => {
-    setIsAnimationStarted(true);
-  }, 1000);
+  useEffect(() => {
+    if (intersectionRef?.isIntersecting) {
+      setIsAnimationStarted(true);
+    }
+  }, [intersectionRef]);
 
   return (
     <section className={cn("trading-tools", className)}>
       <div className="trading-tools__wrapper">
         <div className="trading-tools__icon-wrapper">
           {platformIconTrail.map((styles, i) => {
-            return (
-              <animated.span style={styles}>
-                <PlatformBlock
-                  key={`platform-${Object.values(PLATFORMS)[i].title}`}
-                  icon={Object.values(PLATFORMS)[i].icon}
-                  title={Object.values(PLATFORMS)[i].title}
-                />
-              </animated.span>
-            );
-          })}
+              return (
+                <animated.span style={styles}>
+                  <PlatformBlock
+                    key={`platform-${Object.values(PLATFORMS)[i].title}`}
+                    icon={Object.values(PLATFORMS)[i].icon}
+                    title={Object.values(PLATFORMS)[i].title}
+                  />
+                </animated.span>
+              );
+            })}
         </div>
         <DeviceBlock
           className="trading-tools__img-wrapper device-block--animated"
           isAnimationStarted={isAnimationStarted}
         />
-        <h2 className="trading-tools__title">{TRADING_TOOLS_TITLE}</h2>
+        <h2 className="trading-tools__title" ref={containerRef}>
+          {TRADING_TOOLS_TITLE}
+        </h2>
         <ButtonLink link={REGISTRATION_LINK} className="trading-tools__btn">
           Create your account
         </ButtonLink>

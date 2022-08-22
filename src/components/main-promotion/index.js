@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import person from "../../assets/images/person.png";
 import ButtonLink from "../shared/button-link";
 import { REGISTRATION_LINK } from "../../helpers/constants";
+import TitlesAnimation from "../shared/titles-animation";
 
 const MainPromotion = ({ className }) => {
+  const keywords = [
+    "Crypto traders",
+    "Gold enthusiasts",
+    "Forex veterans",
+    "You",
+  ];
+  const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+
   return (
     <section className={cn("main-promotion", className)}>
       <div className="main-promotion__person">
@@ -27,10 +36,29 @@ const MainPromotion = ({ className }) => {
               A Perfectly optimised trading experience for
             </span>
             <span className="main-promotion__title main-promotion__title--big">
-              you
+              <TitlesAnimation
+                titles={keywords}
+                isAnimationFinished={isAnimationFinished}
+                setIsAnimationFinished={setIsAnimationFinished}
+              />
             </span>
           </h1>
-          <ButtonLink link={REGISTRATION_LINK}>Trade now</ButtonLink>
+          <ButtonLink
+            link={REGISTRATION_LINK}
+            className={cn({
+              "button-link--snake-animation": isAnimationFinished,
+            })}
+          >
+            {isAnimationFinished && (
+              <>
+                <span className="button-link--snake-animation-line-top" />
+                <span className="button-link--snake-animation-line-left" />
+                <span className="button-link--snake-animation-line-right" />
+                <span className="button-link--snake-animation-line-bottom" />
+              </>
+            )}
+            Trade now
+          </ButtonLink>
         </div>
       </div>
     </section>

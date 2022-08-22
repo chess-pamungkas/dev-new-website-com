@@ -1,9 +1,12 @@
 import { animated, useSpring } from "react-spring";
 import React, { useState } from "react";
 
-const TitlesAnimation = ({ titles }) => {
+const TitlesAnimation = ({
+  titles,
+  isAnimationFinished,
+  setIsAnimationFinished,
+}) => {
   const [index, setIndex] = useState(0);
-  const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
   const animationStyles = useSpring({
     loop: true,
