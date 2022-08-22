@@ -175,22 +175,23 @@
 }
 
 .promotion1 {
+  .promotion__bg {
+    background: #1A1A1A;
 
-  background: #1A1A1A;
+    @include tablet {
+      background: url("../../assets/images/bg/promotions/promo1/promo1-md.svg") no-repeat center;
+      background-size: cover;
+    }
 
-  @include tablet {
-    background: url("../../assets/images/bg/promotions/promo1/promo1-md.svg") no-repeat center;
-    background-size: cover;
-  }
+    @include desktop-lg {
+      background: url("../../assets/images/bg/promotions/promo1/promo1-lg.svg") no-repeat center;
+      background-size: cover;
+    }
 
-  @include desktop-lg {
-    background: url("../../assets/images/bg/promotions/promo1/promo1-lg.svg") no-repeat center;
-    background-size: cover;
-  }
-
-  @include desktop-xl {
-    background: url("../../assets/images/bg/promotions/promo1/promo1-xl.svg") no-repeat center;
-    background-size: cover;
+    @include desktop-xl {
+      background: url("../../assets/images/bg/promotions/promo1/promo1-xl.svg") no-repeat center;
+      background-size: cover;
+    }
   }
 }
 

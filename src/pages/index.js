@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import ReactGA from "react-ga";
 import "../assets/styles/index.scss";
 import promo1 from "../assets/images/promotions/promo1.svg";
@@ -23,10 +23,48 @@ import TradeWithPromotion from "../components/trade-with-promotion";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import Footer from "../components/footer";
 import { LanguageProvider } from "../context/language-context";
+import { useIntersectionObserver } from "../helpers/hooks/use-intersection-observer";
+import { useSpring } from "react-spring";
+import cn from "classnames";
+import {ANIMATION_DURATION} from "../helpers/animation.config";
 
 ReactGA.initialize(process.env.GATSBY_GA);
 
 const IndexPage = () => {
+  const promo1Ref = useRef();
+  const promo2Ref = useRef();
+  const promo3Ref = useRef();
+
+  const data1Ref = useIntersectionObserver(promo1Ref, {});
+
+  const data2Ref = useIntersectionObserver(promo2Ref, {});
+
+  const data3Ref = useIntersectionObserver(promo3Ref, {});
+
+  const animation1Config = useSpring({
+    config: { duration: ANIMATION_DURATION },
+    from: { left: "100%" },
+    to: {
+      left: data1Ref?.isIntersecting ? "0" : "100%",
+    },
+  });
+
+  const animation2Config = useSpring({
+    config: { duration: ANIMATION_DURATION },
+    from: { left: "100%" },
+    to: {
+      left: data2Ref?.isIntersecting ? "0" : "100%",
+    },
+  });
+
+  const animation3Config = useSpring({
+    config: { duration: ANIMATION_DURATION },
+    from: { left: "100%" },
+    to: {
+      left: data3Ref?.isIntersecting ? "0" : "100%",
+    },
+  });
+
   return (
     <ClientResolverProvider>
       <LanguageProvider>
@@ -39,6 +77,8 @@ const IndexPage = () => {
             <TradeWithPromotion />
             <Promotion
               className="promotion1"
+              animationConfig={animation1Config}
+              triggerRef={promo1Ref}
               image={promo1}
               btnTitle="See more"
               link={REGISTRATION_LINK}
