@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import cn from "classnames";
 import { Link } from "gatsby";
-import { MENU_ITEMS } from "../../../../helpers/menu.config";
 import { BURGER_MENU_LINES_COUNT } from "../../../../helpers/constants";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
@@ -9,12 +8,28 @@ import ButtonLink from "../../../shared/button-link";
 import LangSelect from "../lang-select";
 import SearchBar from "../search-bar";
 import Accordeon from "../../../shared/accordion";
+import {
+  CYSEC_MENU_ITEMS,
+  FSA_MENU_ITEMS,
+} from "../../../../helpers/menu.config";
+import ClientResolverContext from "../../../../context/client-resolver-context";
+import entities from "../../../../enums/entities";
 
 const BurgerMenu = ({ className }) => {
   const { isMobile } = useWindowSize();
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-  const [selectedNavItem, setSelectedNavItem] = useState(MENU_ITEMS[0].title);
+  const [selectedNavItem, setSelectedNavItem] = useState(
+    FSA_MENU_ITEMS[0].title
+  );
+  const [menu, setMenu] = useState([]);
+  const { currentEntity } = useContext(ClientResolverContext);
+
+  useEffect(() => {
+    setMenu(
+      currentEntity === entities.CYSEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS
+    );
+  }, [currentEntity]);
 
   const onTriggerChange = () => {
     typeof window !== "undefined" && isNavbarOpen
@@ -101,7 +116,7 @@ const BurgerMenu = ({ className }) => {
 
           <li className="burger-menu__item">
             <ul className="burger-menu__navigation">
-              {MENU_ITEMS.map(({ title, subItems }) => (
+              {menu.map(({ title, subItems }) => (
                 <li key={title} className="burger-menu__navigation-item">
                   <Accordeon
                     key={`burger-menu-${stringTransformToKebabCase(title)}`}

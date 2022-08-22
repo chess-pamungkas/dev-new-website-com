@@ -1,6 +1,9 @@
 import React from "react";
 import cn from "classnames";
-import { LANG_SELECT_OPTIONS } from "../../../../helpers/lang-options.config";
+import {
+  LANG_SELECT_OPTIONS,
+  SHOULD_BE_SMALLER_LANGUAGES,
+} from "../../../../helpers/lang-options.config";
 
 const LangSelectItem = ({
   language: { id, icon: Icon, name } = {},
@@ -20,7 +23,15 @@ const LangSelectItem = ({
     >
       {Icon && <Icon className="lang-options__flag" />}
 
-      <span className="lang-options__name">{name}</span>
+      <span
+        className={
+          SHOULD_BE_SMALLER_LANGUAGES.includes(name)
+            ? "lang-options__name--small"
+            : "lang-options__name"
+        }
+      >
+        {name}
+      </span>
     </button>
   </li>
 );

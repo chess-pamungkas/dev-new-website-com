@@ -38,6 +38,17 @@ main {
   overflow: hidden;
 }
 
+.scroll-container {
+  scroll-snap-type: y mandatory;
+  max-height: 100vh;
+  overflow-y: scroll;
+  scroll-padding: $header-height-small;
+
+  @include desktop-xl {
+    scroll-padding: $header-height;
+  }
+}
+
 .highlighted {
   &-in-red {
     color: map-get($colors, "red");

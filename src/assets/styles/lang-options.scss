@@ -1,11 +1,11 @@
 @import "vars";
 
 .lang-options {
-  padding: 42px 20px 28px 30px;
+  padding: 42px 20px 10px 30px;
   background-color: map-get($colors, "white");
 
   @include tablet {
-    padding: 56px 20px 38px 74px;
+    padding: 56px 20px 10px 74px;
   }
 
   &__title {
@@ -62,6 +62,14 @@
     color: map-get($colors, "black-secondary");
     font: normal normal 900 12px/15px $font;
     text-align: left;
+
+    &--small {
+      font: normal normal 900 10px/15px $font;
+
+      @include tablet {
+        font: normal normal 900 14px/20px $font;
+      }
+    }
 
     @include tablet {
       font: normal normal 900 16px/20px $font;
