@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import { PLATFORMS } from "../../helpers/config";
 import PlatformBlock from "./components/platform-block";
 import { TRADING_TOOLS_TITLE } from "../../helpers/promo-texts";
 import ButtonLink from "../shared/button-link";
 import DeviceBlock from "./components/device-block";
-import {REGISTRATION_LINK} from "../../helpers/constants";
-import {useTrail, animated} from "react-spring";
+import { REGISTRATION_LINK } from "../../helpers/constants";
+import { useTrail, animated } from "react-spring";
 
 const TradingTools = ({ className }) => {
   const [isAnimationStarted, setIsAnimationStarted] = useState(false);
@@ -17,8 +17,8 @@ const TradingTools = ({ className }) => {
       bottom: "-40px",
       opacity: 0,
       config: {
-        duration: 80
-      }
+        duration: 80,
+      },
     },
     to: {
       bottom: "0",
@@ -29,7 +29,7 @@ const TradingTools = ({ className }) => {
 
   setTimeout(() => {
     setIsAnimationStarted(true);
-  }, 1000)
+  }, 1000);
 
   return (
     <section className={cn("trading-tools", className)}>
@@ -44,10 +44,13 @@ const TradingTools = ({ className }) => {
                   title={Object.values(PLATFORMS)[i].title}
                 />
               </animated.span>
-            )
+            );
           })}
         </div>
-        <DeviceBlock className="trading-tools__img-wrapper device-block--animated" isAnimationStarted={isAnimationStarted} />
+        <DeviceBlock
+          className="trading-tools__img-wrapper device-block--animated"
+          isAnimationStarted={isAnimationStarted}
+        />
         <h2 className="trading-tools__title">{TRADING_TOOLS_TITLE}</h2>
         <ButtonLink link={REGISTRATION_LINK} className="trading-tools__btn">
           Create your account

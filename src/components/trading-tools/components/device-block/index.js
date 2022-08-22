@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
 import phoneIcon from "../../../../assets/images/icons/phone.svg";
 import tabletIcon from "../../../../assets/images/icons/tablet.svg";
@@ -8,16 +8,16 @@ import devicesIcon from "../../../../assets/images/icons/devices-sm.svg";
 const DeviceBlock = ({ className, isAnimationStarted }) => {
   const calculateLeftPosition = (ref) => {
     const clientRect = ref.current?.getBoundingClientRect();
-    return -(clientRect?.left + clientRect?.width) + 'px';
-  }
+    return -(clientRect?.left + clientRect?.width) + "px";
+  };
 
   const phoneIconRef = useRef();
   const tabletIconRef = useRef();
   const laptopIconRef = useRef();
 
-  const [phoneLeftPosition, setPhoneLeftPosition] = useState('inherit');
-  const [tabletLeftPosition, setTabletLeftPosition] = useState('inherit');
-  const [laptopLeftPosition, setLaptopLeftPosition] = useState('inherit');
+  const [phoneLeftPosition, setPhoneLeftPosition] = useState("inherit");
+  const [tabletLeftPosition, setTabletLeftPosition] = useState("inherit");
+  const [laptopLeftPosition, setLaptopLeftPosition] = useState("inherit");
 
   useEffect(() => {
     setPhoneLeftPosition(calculateLeftPosition(phoneIconRef));
