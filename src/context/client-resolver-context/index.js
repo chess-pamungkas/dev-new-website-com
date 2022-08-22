@@ -7,6 +7,7 @@ const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 const PUBLIC_IP_API_URL = process.env.GATSBY_PUBLIC_IP_API_URL;
 const FSA_ENTITY_DOMAIN = process.env.GATSBY_FSA_ENTITY_DOMAIN;
 const CYSEC_ENTITY_DOMAIN = process.env.GATSBY_CYSEC_ENTITY_DOMAIN;
+const FSA_ENTITY_HOST = process.env.GATSBY_FSA_ENTITY_HOST;
 const ClientResolverContext = createContext({});
 
 export const ClientResolverProvider = ({ children }) => {
@@ -19,7 +20,7 @@ export const ClientResolverProvider = ({ children }) => {
     if (window !== undefined) {
       const currentHost = window.location.host;
       const _currentEntity =
-        currentHost === FSA_ENTITY_DOMAIN ? entities.FSA : entities.CYSEC;
+        currentHost === FSA_ENTITY_HOST ? entities.FSA : entities.CYSEC;
       setCurrentEntity(_currentEntity);
       setEntityToRedirect(
         _currentEntity === entities.FSA
@@ -60,6 +61,7 @@ export const ClientResolverProvider = ({ children }) => {
         entityToRedirect,
         isPopupShown,
         setIsPopupShown,
+        currentEntity,
       }}
     >
       {children}

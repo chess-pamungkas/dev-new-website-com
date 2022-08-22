@@ -63,6 +63,14 @@
     font: normal normal 900 12px/15px $font;
     text-align: left;
 
+    &--small {
+      font: normal normal 900 10px/15px $font;
+
+      @include tablet {
+        font: normal normal 900 14px/20px $font;
+      }
+    }
+
     @include tablet {
       font: normal normal 900 16px/20px $font;
     }

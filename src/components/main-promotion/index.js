@@ -3,11 +3,8 @@ import cn from "classnames";
 import person from "../../assets/images/person.png";
 import ButtonLink from "../shared/button-link";
 import { REGISTRATION_LINK } from "../../helpers/constants";
-import TitlesAnimation from '../shared/titles-animation';
 
 const MainPromotion = ({ className }) => {
-  const keywords = ["Crypto traders", "Gold enthusiasts", "Forex veterans" , "You"];
-
   return (
     <section className={cn("main-promotion", className)}>
       <div className="main-promotion__person">
@@ -30,7 +27,7 @@ const MainPromotion = ({ className }) => {
               A Perfectly optimised trading experience for
             </span>
             <span className="main-promotion__title main-promotion__title--big">
-              <TitlesAnimation titles={keywords} />
+              you
             </span>
           </h1>
           <ButtonLink link={REGISTRATION_LINK}>Trade now</ButtonLink>

@@ -2,6 +2,7 @@
 @import "mixins";
 
 .trading-tools {
+  scroll-snap-align: start;
   position: relative;
   background: url("../../assets/images/bg/trading-tools/trading-tools-sm.svg") no-repeat bottom;
   background-size: cover;

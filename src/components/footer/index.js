@@ -1,8 +1,8 @@
 import React from "react";
 import cn from "classnames";
 import CopyRightBlock from "./components/copy-right-block";
-import {LogoTextMain} from "../shared/icons";
-import {FOOTER_TEXT} from "../../helpers/footer.config";
+import { LogoTextMain } from "../shared/icons";
+import { FOOTER_TEXT } from "../../helpers/footer.config";
 import Menu from "./components/menu";
 
 const Footer = ({ className }) => {

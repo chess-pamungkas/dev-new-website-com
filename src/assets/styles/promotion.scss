@@ -2,6 +2,7 @@
 @import "mixins";
 
 .promotion {
+  scroll-snap-align: start;
   position: relative;
   display: flex;
   align-items: center;

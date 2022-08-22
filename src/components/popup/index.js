@@ -1,10 +1,10 @@
 import cn from "classnames";
 import React, { useContext } from "react";
-import EntityResolverContext from "../../context/client-resolver-context/entity-resolver-context";
+import ClientResolverContext from "../../context/client-resolver-context";
 
 const Popup = ({ className }) => {
   const { clientConfig, entityToRedirect, isPopupShown, setIsPopupShown } =
-    useContext(EntityResolverContext);
+    useContext(ClientResolverContext);
   const isBanned = clientConfig.banned || false;
   const isRecommendedRedirect = clientConfig.recommendedRedirect || false;
   const redirectTo = (entity) => {
@@ -27,7 +27,7 @@ const Popup = ({ className }) => {
 
   const addButtons = (buttons) => {
     return (
-      <div className="popup__buttons">
+      <div className="warning-popup__buttons">
         {buttons.map((button) => {
           return (
             <button type="button" onClick={button.onClick}>
@@ -41,12 +41,12 @@ const Popup = ({ className }) => {
 
   // FYI: Just a placeholder with ip detection logic. Should be reworked
   return isPopupShown ? (
-    <div className={cn("popup", className)}>
-      <div className="popup__title">
+    <div className={cn("warning-popup", className)}>
+      <div className="warning-popup__title">
         {isBanned ? "Banned title" : ""}
         {isRecommendedRedirect ? "Recommended redirect title" : ""}
       </div>
-      <div className="popup__text">
+      <div className="warning-popup__text">
         {isBanned ? "Banned text" : ""}
         {isRecommendedRedirect ? "Recommended redirect text" : ""}
       </div>

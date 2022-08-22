@@ -1,14 +1,21 @@
-import React from 'react';
-import cn from 'classnames';
-import { LANG_SELECT_OPTIONS } from '../../../../helpers/lang-options.config';
+import React from "react";
+import cn from "classnames";
+import {
+  LANG_SELECT_OPTIONS,
+  SHOULD_BE_SMALLER_LANGUAGES,
+} from "../../../../helpers/lang-options.config";
 
 const LangSelectItem = ({
   language: { id, icon: Icon, name } = {},
   language,
   selectedLanguage: { id: selectedId } = {},
-  langugeSelectHandler
+  langugeSelectHandler,
 }) => (
-  <li className={cn("lang-options__item", {"lang-options__item--selected": selectedId === id})}>
+  <li
+    className={cn("lang-options__item", {
+      "lang-options__item--selected": selectedId === id,
+    })}
+  >
     <button
       className="lang-options__select"
       type="button"
@@ -16,7 +23,15 @@ const LangSelectItem = ({
     >
       {Icon && <Icon className="lang-options__flag" />}
 
-      <span className="lang-options__name">{name}</span>
+      <span
+        className={
+          SHOULD_BE_SMALLER_LANGUAGES.includes(name)
+            ? "lang-options__name--small"
+            : "lang-options__name"
+        }
+      >
+        {name}
+      </span>
     </button>
   </li>
 );
@@ -27,7 +42,7 @@ const LangOptions = ({ className, selectedLanguage, langugeSelectHandler }) => {
       <h2 className="lang-options__title">Select Your Language</h2>
 
       <ul className="lang-options__list">
-        {LANG_SELECT_OPTIONS.map(option => (
+        {LANG_SELECT_OPTIONS.map((option) => (
           <LangSelectItem
             key={option.id}
             selectedLanguage={selectedLanguage}
