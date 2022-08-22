@@ -36,7 +36,7 @@ const SearchBar = ({ className, isExpandable = false }) => {
           placeholder="Search..."
           ref={searchInput}
         />
-        <button className="search-bar__submit">Go</button>
+        <button className="search-bar__submit" type="button">Go</button>
       </div>
     </form>
   );
