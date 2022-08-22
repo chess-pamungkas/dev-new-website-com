@@ -2,6 +2,7 @@
 @import "mixins";
 
 .performance {
+  scroll-snap-align: start;
   position: relative;
   background-size: cover;
   background: url("../../assets/images/bg/performance/performance-sm.svg") no-repeat bottom;

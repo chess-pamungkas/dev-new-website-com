@@ -2,6 +2,7 @@
 @import "mixins";
 
 .trade-with-promotion {
+  scroll-snap-align: start;
   position: relative;
   background: url("../../assets/images/bg/trade-with.svg") no-repeat center;
   background-size: cover;
