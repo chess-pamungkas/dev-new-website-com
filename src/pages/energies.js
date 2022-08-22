@@ -1,7 +1,7 @@
 import React from "react";
 import "../assets/styles/index.scss";
 import Header from "../components/header";
-import { ClientResolverProvider } from "../context/client-resolver-context/entity-resolver-context";
+import {ClientResolverProvider} from "../context/client-resolver-context";
 import Popup from "../components/popup";
 import TopMarket from "../components/top-market";
 import { REGISTRATION_LINK } from "../helpers/constants";
