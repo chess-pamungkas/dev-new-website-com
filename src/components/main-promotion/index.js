@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import person from "../../assets/images/person.png";
 import ButtonLink from "../shared/button-link";
-import {REGISTRATION_LINK} from "../../helpers/constants";
+import { REGISTRATION_LINK } from "../../helpers/constants";
 
 const MainPromotion = ({ className }) => {
   return (
@@ -13,8 +13,12 @@ const MainPromotion = ({ className }) => {
           goalkeeper legend and veteran trader, trades with Oqtima.
         </span>
       </div>
-      <div className="main-promotion__photo" >
-        <img src={person} alt="Gianluigi Buffon" className="main-promotion__img" />
+      <div className="main-promotion__photo">
+        <img
+          src={person}
+          alt="Gianluigi Buffon"
+          className="main-promotion__img"
+        />
       </div>
       <div className="main-promotion__wrapper">
         <div className="main-promotion__block">

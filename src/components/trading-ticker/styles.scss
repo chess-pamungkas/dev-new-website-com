@@ -3,6 +3,7 @@
 @import "components/trading-section-dropdown/dropdown";
 
 .trading-ticker-wrapper {
+  scroll-snap-align: start;
   margin: 11px 0 0;
 }
 

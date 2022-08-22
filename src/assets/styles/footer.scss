@@ -2,6 +2,7 @@
 @import "mixins";
 
 .footer {
+  scroll-snap-align: start;
   background-color: map-get($colors, "black");
   @include content-alignment(0);
   padding-top: 68px;
