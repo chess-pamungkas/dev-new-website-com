@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import cn from "classnames";
 import airbnbIcon from "../../assets/images/icons/companies/airbnb.svg";
 import amazonIcon from "../../assets/images/icons/companies/amazon.svg";
@@ -14,9 +14,16 @@ import rippleIcon from "../../assets/images/icons/companies/ripple.svg";
 import teslaIcon from "../../assets/images/icons/companies/tesla.svg";
 import womanIcon from "../../assets/images/icons/companies/woman.svg";
 import ButtonLink from "../shared/button-link";
-import {REGISTRATION_LINK} from "../../helpers/constants";
+import { REGISTRATION_LINK } from "../../helpers/constants";
+import TypingAnimation from "../shared/typing-animation";
+import { useIntersectionObserver } from "../../helpers/hooks/use-intersection";
 
 const TradeWithPromotion = ({ className }) => {
+  const containerRef = useRef();
+  const intersectionRef = useIntersectionObserver(containerRef, {
+    freezeOnceVisible: true,
+  });
+
   return (
     <section className={cn("trade-with-promotion", className)}>
       <img
@@ -127,8 +134,23 @@ const TradeWithPromotion = ({ className }) => {
         <h2 className="trade-with-promotion__title">
           Trade <span className="bold">now</span> with
         </h2>
-        <div className="trade-with-promotion__input">
-          <span className="trade-with-promotion__input-text">Bitcoin</span>
+        <div className="trade-with-promotion__input" ref={containerRef}>
+          <span className="trade-with-promotion__input-text">
+            {intersectionRef?.isIntersecting ? (
+              <TypingAnimation
+                keywords={[
+                  "Bitcoin",
+                  "Netflix",
+                  "Skype",
+                  "Jira",
+                  "Confluence",
+                  "Skype",
+                ]}
+              />
+            ) : (
+              " "
+            )}
+          </span>
         </div>
 
         <div className="trade-with-promotion__promo">
