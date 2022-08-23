@@ -26,7 +26,7 @@ import { LanguageProvider } from "../context/language-context";
 import { useIntersectionObserver } from "../helpers/hooks/use-intersection-observer";
 import { useSpring } from "react-spring";
 import cn from "classnames";
-import {ANIMATION_DURATION} from "../helpers/animation.config";
+import { ANIMATION_DURATION } from "../helpers/animation.config";
 
 ReactGA.initialize(process.env.GATSBY_GA);
 
@@ -76,7 +76,7 @@ const IndexPage = () => {
             <TradingTicker />
             <TradeWithPromotion />
             <Promotion
-              className="promotion1"
+              className={cn("promotion1")}
               animationConfig={animation1Config}
               triggerRef={promo1Ref}
               image={promo1}
