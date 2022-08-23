@@ -1,0 +1,21 @@
+@import "mixins";
+
+.search-page {
+  padding: 40px 0;
+
+  @include tablet {
+    padding: 48px 0;
+  }
+
+  @include desktop-xl {
+    padding: 59px 0;
+  }
+
+  &__container {
+    @include content-alignment;
+  }
+
+  &__search {
+    margin: 0 auto;
+  }
+}

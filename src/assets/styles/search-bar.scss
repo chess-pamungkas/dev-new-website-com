@@ -34,6 +34,7 @@
   &__expand {
     width: 46px;
     height: 46px;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,11 +82,51 @@
     align-items: center;
     background-color: map-get($colors, 'white');
     color: map-get($colors, 'red');
-    border: none;
+    border: 2px solid map-get($colors, 'white');
     border-radius: 23px;
     cursor: pointer;
     outline: none;
     font: normal normal 900 16px/20px $font;
     text-transform: uppercase;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: map-get($colors, 'red');
+      color: map-get($colors, 'white');
+    }
+  }
+
+
+  &--inverted {
+    background-color: map-get($colors, 'white');
+    color: map-get($colors, 'black');
+    border: 2px solid map-get($colors, 'red');
+    border-radius: 31px;
+
+    @include tablet {
+      & .search-bar__expand {
+      width: 58px;
+      height: 58px;
+      }
+
+      & svg {
+        width: 28px;
+        height: 28px;
+        fill: map-get($colors, 'red');
+      }
+    }
+
+    @include desktop-lg {
+      width: 425px;
+      padding: 0 19px 0 6px;
+    }
+
+    @include desktop-xl {
+      width: 720px;
+    }
+    
+    & .search-bar__submit {
+      border: 2px solid map-get($colors, 'red');
+    }
   }
 }
