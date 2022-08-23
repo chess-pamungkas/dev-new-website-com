@@ -18,7 +18,7 @@ const MainPromotion = ({ className }) => {
   const hero =
     CONTENT_HEROES[transformParamToKey(content)] || CONTENT_HEROES.default;
 
-  const title =
+  const titles =
     SECT1_TEXT_SEQUENCES[transformParamToKey(sect1)] ||
     SECT1_TEXT_SEQUENCES.default;
 
@@ -39,7 +39,7 @@ const MainPromotion = ({ className }) => {
             </span>
             <span className="main-promotion__title main-promotion__title--big">
               <TitlesAnimation
-                titles={title}
+                titles={titles}
                 isAnimationFinished={isAnimationFinished}
                 setIsAnimationFinished={setIsAnimationFinished}
               />

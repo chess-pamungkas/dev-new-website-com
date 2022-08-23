@@ -22,7 +22,7 @@ import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import Footer from "../components/footer";
-import {MarketingContextProvider} from "../context/marketing-context";
+import { MarketingContextProvider } from "../context/marketing-context";
 import { LanguageProvider } from "../context/language-context";
 
 ReactGA.initialize(process.env.GATSBY_GA);
@@ -31,56 +31,56 @@ const IndexPage = () => {
   return (
     <ClientResolverProvider>
       <MarketingContextProvider>
-          <LanguageProvider>
-            <Header />
-            <section className="scroll-container">
-              <main>
-                <Popup />
-                <MainPromotion />
-                <TradingTicker />
-                <TradeWithPromotion />
-                <Promotion
-                  className="promotion1"
-                  image={promo1}
-                  btnTitle="See more"
-                  link={REGISTRATION_LINK}
-                  isRedPalette
-                >
-                  {PROMO_TEXT_1}
-                </Promotion>
-                <Promotion
-                  className="promotion2"
-                  image={promo2}
-                  btnTitle="See more"
-                  link={REGISTRATION_LINK}
-                  isRedPalette
-                >
-                  {PROMO_TEXT_2}
-                </Promotion>
-                <Promotion
-                  className="promotion3"
-                  image={promo3}
-                  btnTitle="See more"
-                  link={REGISTRATION_LINK}
-                >
-                  {PROMO_TEXT_3}
-                </Promotion>
-                <TradingTools />
-                <Promotion
-                  className="promotion4"
-                  image={promo4}
-                  btnTitle="Start copying"
-                  link={REGISTRATION_LINK}
-                  isRedPalette
-                  isReverseOrder
-                >
-                  {PROMO_TEXT_4}
-                </Promotion>
-                <Performance />
-              </main>
-              <Footer />
-            </section>
-          </LanguageProvider>
+        <LanguageProvider>
+          <Header />
+          <section className="scroll-container">
+            <main>
+              <Popup />
+              <MainPromotion />
+              <TradingTicker />
+              <TradeWithPromotion />
+              <Promotion
+                className="promotion1"
+                image={promo1}
+                btnTitle="See more"
+                link={REGISTRATION_LINK}
+                isRedPalette
+              >
+                {PROMO_TEXT_1}
+              </Promotion>
+              <Promotion
+                className="promotion2"
+                image={promo2}
+                btnTitle="See more"
+                link={REGISTRATION_LINK}
+                isRedPalette
+              >
+                {PROMO_TEXT_2}
+              </Promotion>
+              <Promotion
+                className="promotion3"
+                image={promo3}
+                btnTitle="See more"
+                link={REGISTRATION_LINK}
+              >
+                {PROMO_TEXT_3}
+              </Promotion>
+              <TradingTools />
+              <Promotion
+                className="promotion4"
+                image={promo4}
+                btnTitle="Start copying"
+                link={REGISTRATION_LINK}
+                isRedPalette
+                isReverseOrder
+              >
+                {PROMO_TEXT_4}
+              </Promotion>
+              <Performance />
+            </main>
+            <Footer />
+          </section>
+        </LanguageProvider>
       </MarketingContextProvider>
     </ClientResolverProvider>
   );

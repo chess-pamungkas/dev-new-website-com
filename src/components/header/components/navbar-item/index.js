@@ -12,7 +12,7 @@ const NavbarItem = ({ className, title, subItems = [], isNested = false }) => {
 
       <AngleDownIcon
         className="navbar-item__icon"
-        color={ANGLE_ICON_COLOR.BLACK}
+        color={ANGLE_ICON_COLOR.black}
       />
 
       {!!subItems.length && (

@@ -17,9 +17,16 @@ import ButtonLink from "../shared/button-link";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import TypingAnimation from "../shared/typing-animation";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection";
-import {MarketingContext} from "../../context/marketing-context";
-import {SECT2_GROUP1_DEFAULT, SECT2_GROUP2_DEFAULT, SECT2_TEXT_SEQUENCES,} from "../../helpers/marketing.config";
-import {getSect2TextSequence, transformParamToKey,} from "../../helpers/services/marketing-service";
+import { MarketingContext } from "../../context/marketing-context";
+import {
+  SECT2_GROUP1_DEFAULT,
+  SECT2_GROUP2_DEFAULT,
+  SECT2_TEXT_SEQUENCES,
+} from "../../helpers/marketing.config";
+import {
+  getSect2TextSequence,
+  transformParamToKey,
+} from "../../helpers/services/marketing-service";
 
 const TradeWithPromotion = ({ className }) => {
   const containerRef = useRef();
@@ -31,9 +38,9 @@ const TradeWithPromotion = ({ className }) => {
 
   const content = SECT2_TEXT_SEQUENCES[transformParamToKey(sect2)];
 
-  const title =
-    getSect2TextSequence(content?.group1, content?.group2) ||
-    getSect2TextSequence(SECT2_GROUP1_DEFAULT, SECT2_GROUP2_DEFAULT);
+  const titles = content
+    ? getSect2TextSequence(content?.group1, content?.group2)
+    : getSect2TextSequence(SECT2_GROUP1_DEFAULT, SECT2_GROUP2_DEFAULT);
 
   return (
     <section className={cn("trade-with-promotion", className)}>
@@ -148,11 +155,9 @@ const TradeWithPromotion = ({ className }) => {
         <div className="trade-with-promotion__input" ref={containerRef}>
           <span className="trade-with-promotion__input-text">
             {intersectionRef?.isIntersecting ? (
-              <TypingAnimation
-                keywords={title}
-              />
+              <TypingAnimation keywords={titles} />
             ) : (
-              " "
+              titles[0]
             )}
           </span>
         </div>
