@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 import { BURGER_MENU_LINES_COUNT } from "../../../../helpers/constants";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
+import { REGISTRATION_LINK } from "../../../../helpers/constants";
 import ButtonLink from "../../../shared/button-link";
 import LangSelect from "../lang-select";
 import SearchBar from "../search-bar";
@@ -81,9 +82,8 @@ const BurgerMenu = ({ className }) => {
             <div className="burger-menu__btns">
               {!isMobile && (
                 <>
-                  {/* TODO: add link */}
                   <ButtonLink
-                    link={"/"}
+                    link={REGISTRATION_LINK}
                     className="button-link--header burger-menu__start"
                   >
                     Get Started
@@ -98,7 +98,7 @@ const BurgerMenu = ({ className }) => {
 
           <li className="burger-menu__item">
             <ButtonLink
-              link={"/"}
+              link={REGISTRATION_LINK}
               className="button-link--blank burger-menu__signin"
             >
               Sign In
@@ -106,7 +106,7 @@ const BurgerMenu = ({ className }) => {
 
             {isMobile && (
               <ButtonLink
-                link={"/"}
+                link={REGISTRATION_LINK}
                 className="button-link--blank burger-menu__start--tablet"
               >
                 Get Started
