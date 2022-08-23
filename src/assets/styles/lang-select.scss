@@ -2,38 +2,45 @@
 
 .lang-select {
   height: 40px;
-  padding: 0 35px;
+  padding: 0 27px 0 35px;
   position: relative;
   display: inline-flex;
   align-items: center;
+  gap: 3px;
   border: 2px solid map-get($colors, "red");
   border-radius: $border-radius-header;
+  background: transparent;
   cursor: pointer;
-
-  &:hover {
-    & > .lang-select__dropdown {
-      display: block;
-    }
-  }
+  outline: none;
 
   &--header {
     height: 34px;
-    padding: 0 27px;
+    padding: 0 18px 0 27px;
     border-color: map-get($colors, "white");
 
     @include desktop-xl {
       height: 40px;
       padding: 0 30px;
     }
+
+    &.lang-select--active {
+      background: map-get($colors, "white");
+    }
   }
 
-  &__dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    display: none;
-    margin: 0;
-    padding: 0;
+  &--active {
+    background: map-get($colors, "red");
+  }
+
+  &__flag {
+    box-shadow: 0 0 2px 1px #0000001A;
+  }
+
+  &__icon {
+    transition: transform 0.3s;
+
+    &--up {
+      transform: scale(1, -1);
+    }
   }
 }

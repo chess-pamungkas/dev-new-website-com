@@ -1,218 +1,308 @@
-import React from "react";
-import { Logo } from "../components/shared/icons";
+import {
+  Logo,
+  CryptoIcon,
+  IndicesIcon,
+  ForexIcon,
+  CommoditiesIcon,
+  SharesIcon,
+  EnergiesIcon,
+  AllMarketsOverviewIcon,
+  PlatformsIcon,
+  FundingWithdrawalsIcon,
+  CopyTradingIcon,
+  ProfessionalQualificationIcon,
+  TradingToolsIcon,
+  EducationIcon,
+  AboutIcon,
+  ContactIcon,
+  LegalIcon,
+  CareerIcon,
+  PressAndNewsIcon,
+  HelpCenterIcon,
+  CollaborationPartnershipIcon,
+  AffiliatePartnershipIcon,
+} from "../components/shared/icons";
 
-export const MENU_ITEMS = [
-  {
-    title: "Top Markets",
-    subItems: [
-      {
-        title: "Crypto",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Indices",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Forex",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Commodities",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Shares",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Energies",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "All Markets Overview",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-    ],
-  },
-  {
-    title: "Trading",
-    subItems: [
-      {
-        title: "Platforms",
-        link: "",
-        isSubtitle: true,
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "MT4",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "MT5",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Funding Withdrawals",
-        link: "",
-        isSubtitle: true,
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Spreads and Fees",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Accounts Type",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Trading With Leverage",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Copy Trading",
-        link: "",
-        isSubtitle: true,
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Professional Qualification",
-        link: "",
-        isSubtitle: true,
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Why Trade With Oqtima",
-        link: "",
-        isSubtitle: true,
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Trading Tools",
-        link: "",
-        isSubtitle: true,
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Tradeview",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Economic Calendar",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Market Sentiment Tools",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Education",
-        link: "",
-        isSubtitle: true,
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "How To Videos",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-    ],
-  },
-  {
-    title: "Company",
-    subItems: [
-      {
-        title: "About",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Contact",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Legal",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Career",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Press and News",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Help Center (F.A.Q)",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-    ],
-  },
-  {
-    title: "Partners",
-    subItems: [
-      {
-        title: "Collaboration Partnership",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        title: "Affiliate Partnership",
-        link: "",
-        icon: <Logo className="dropdown-item__icon" />,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-    ],
-  },
+const CYSEC_TOP_MARKETS_TAB = {
+  title: "Top Markets",
+  subItems: [
+    {
+      title: "Indices",
+      link: "",
+      icon: IndicesIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "Forex",
+      link: "",
+      icon: ForexIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "Commodities",
+      link: "",
+      icon: CommoditiesIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "Shares",
+      link: "",
+      icon: SharesIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "Energies",
+      link: "",
+      icon: EnergiesIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "All Markets Overview",
+      link: "",
+      icon: AllMarketsOverviewIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+  ],
+};
+
+const FSA_TOP_MARKETS_TAB = {
+  title: "Top Markets",
+  subItems: [
+    {
+      title: "Crypto",
+      link: "",
+      icon: CryptoIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    ...CYSEC_TOP_MARKETS_TAB.subItems,
+  ],
+};
+
+const TRADING_TAB_PLATFORMS_ITEM = {
+  title: "Platforms",
+  link: "",
+  isSubtitle: true,
+  icon: PlatformsIcon,
+  description: "",
+  subtitles: [
+    {
+      title: "MT4",
+      link: "",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "MT5",
+      link: "",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+  ],
+};
+
+const CYSEC_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
+  title: "Funding Withdrawals",
+  link: "",
+  isSubtitle: true,
+  icon: FundingWithdrawalsIcon,
+  description: "",
+  subtitles: [
+    {
+      title: "Spreads and Fees",
+      link: "",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "Accounts Type",
+      link: "",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+  ],
+};
+
+const FSA_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
+  title: "Funding Withdrawals",
+  link: "",
+  isSubtitle: true,
+  icon: FundingWithdrawalsIcon,
+  description: "",
+  subtitles: [
+    ...CYSEC_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM.subtitles,
+    {
+      title: "Trading With Leverage",
+      link: "",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+  ],
+};
+
+const TRADING_TAB_COPY_TRADING_ITEM = {
+  title: "Copy Trading",
+  link: "",
+  isSubtitle: true,
+  icon: CopyTradingIcon,
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+};
+
+const TRADING_TAB_PRO_QUALIFICATION_ITEM = {
+  title: "Professional Qualification",
+  link: "",
+  isSubtitle: true,
+  icon: ProfessionalQualificationIcon,
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+};
+
+const TRADING_TAB_WHY_TRADE_ITEM = {
+  title: "Why Trade With Oqtima",
+  link: "",
+  isSubtitle: true,
+  icon: Logo,
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+};
+
+const TRADING_TAB_TRADING_TOOLS_ITEM = {
+  title: "Trading Tools",
+  link: "",
+  isSubtitle: true,
+  icon: TradingToolsIcon,
+  description: "",
+  subtitles: [
+    {
+      title: "Tradeview",
+      link: "",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "Economic Calendar",
+      link: "",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "Market Sentiment Tools",
+      link: "",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+  ],
+};
+
+const TRADING_TAB_EDUCATION_ITEM = {
+  title: "Education",
+  link: "",
+  isSubtitle: true,
+  icon: EducationIcon,
+  description: "",
+  subtitles: [
+    {
+      title: "How To Videos",
+      link: "",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+  ],
+};
+
+const CYSEC_TRADING_TAB = {
+  title: "Trading",
+  isNested: true,
+  subItems: [
+    TRADING_TAB_PLATFORMS_ITEM,
+    CYSEC_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM,
+    TRADING_TAB_COPY_TRADING_ITEM,
+    TRADING_TAB_PRO_QUALIFICATION_ITEM,
+    TRADING_TAB_WHY_TRADE_ITEM,
+    TRADING_TAB_TRADING_TOOLS_ITEM,
+    TRADING_TAB_EDUCATION_ITEM,
+  ],
+};
+
+const FSA_TRADING_TAB = {
+  title: "Trading",
+  isNested: true,
+  subItems: [
+    TRADING_TAB_PLATFORMS_ITEM,
+    FSA_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM,
+    TRADING_TAB_COPY_TRADING_ITEM,
+    TRADING_TAB_PRO_QUALIFICATION_ITEM,
+    TRADING_TAB_WHY_TRADE_ITEM,
+    TRADING_TAB_TRADING_TOOLS_ITEM,
+    TRADING_TAB_EDUCATION_ITEM,
+  ],
+};
+
+const COMPANY_TAB = {
+  title: "Company",
+  subItems: [
+    {
+      title: "About",
+      link: "",
+      icon: AboutIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "Contact",
+      link: "",
+      icon: ContactIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "Legal",
+      link: "",
+      icon: LegalIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "Career",
+      link: "",
+      icon: CareerIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "Press and News",
+      link: "",
+      icon: PressAndNewsIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      title: "Help Center (F.A.Q)",
+      link: "",
+      icon: HelpCenterIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+  ],
+};
+
+const CYSEC_PARTNERS_TAB = {
+  title: "Partners",
+  subItems: [
+    {
+      title: "Collaboration Partnership",
+      link: "",
+      icon: CollaborationPartnershipIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+  ],
+};
+
+const FSA_PARTNERS_TAB = {
+  title: "Partners",
+  subItems: [
+    ...CYSEC_PARTNERS_TAB.subItems,
+    {
+      title: "Affiliate Partnership",
+      link: "",
+      icon: AffiliatePartnershipIcon,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+  ],
+};
+
+export const FSA_MENU_ITEMS = [
+  FSA_TOP_MARKETS_TAB,
+  FSA_TRADING_TAB,
+  COMPANY_TAB,
+  FSA_PARTNERS_TAB,
+];
+
+export const CYSEC_MENU_ITEMS = [
+  CYSEC_TOP_MARKETS_TAB,
+  CYSEC_TRADING_TAB,
+  COMPANY_TAB,
+  CYSEC_PARTNERS_TAB,
 ];

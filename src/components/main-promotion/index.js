@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import cn from "classnames";
 import ButtonLink from "../shared/button-link";
 import { REGISTRATION_LINK } from "../../helpers/constants";
+import TitlesAnimation from "../shared/titles-animation";
 import { MarketingContext } from "../../context/marketing-context";
 import {
   CONTENT_HEROES,
@@ -10,6 +11,8 @@ import {
 import { transformParamToKey } from "../../helpers/services/marketing-service";
 
 const MainPromotion = ({ className }) => {
+  const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+
   const {content, sect1} = useContext(MarketingContext);
 
   const hero =
@@ -35,11 +38,29 @@ const MainPromotion = ({ className }) => {
               A Perfectly optimised trading experience for
             </span>
             <span className="main-promotion__title main-promotion__title--big">
-              {/*  TODO show all titles from array */}
-              {title[0]}
+              <TitlesAnimation
+                titles={title}
+                isAnimationFinished={isAnimationFinished}
+                setIsAnimationFinished={setIsAnimationFinished}
+              />
             </span>
           </h1>
-          <ButtonLink link={REGISTRATION_LINK}>Trade now</ButtonLink>
+          <ButtonLink
+            link={REGISTRATION_LINK}
+            className={cn({
+              "button-link--snake-animation": isAnimationFinished,
+            })}
+          >
+            {isAnimationFinished && (
+              <>
+                <span className="button-link--snake-animation-line-top" />
+                <span className="button-link--snake-animation-line-left" />
+                <span className="button-link--snake-animation-line-right" />
+                <span className="button-link--snake-animation-line-bottom" />
+              </>
+            )}
+            Trade now
+          </ButtonLink>
         </div>
       </div>
     </section>

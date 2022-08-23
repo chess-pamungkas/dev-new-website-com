@@ -2,6 +2,7 @@
 @import "mixins";
 
 .main-promotion {
+  scroll-snap-align: start;
   position: relative;
   overflow: hidden;
   color: map-get($colors, "white");
@@ -58,16 +59,16 @@
 
   &__title-wrapper {
     margin: 0 0 15px;
-    max-width: 275px;
+    max-width: 100%;
 
     @include tablet {
       margin: 0 0 20px;
-      max-width: 326px;
+      max-width: 100%;
     }
 
     @include desktop-xl {
       margin: 0 0 35px;
-      max-width: 546px;
+      max-width: 100%;
     }
   }
 
@@ -77,21 +78,25 @@
     font-weight: map-get($font-weight, "black");
     font-size: 26px;
     line-height: 32px;
+    max-width: 275px;
 
     @include tablet {
       font-size: 31px;
       line-height: 39px;
+      max-width: 326px;
     }
 
     @include desktop-xl {
       font-size: 52px;
       line-height: 65px;
+      max-width: 546px;
     }
 
     &--big {
       text-transform: uppercase;
       font-size: 36px;
       line-height: 45px;
+      max-width: 100%;
 
       @include tablet {
         font-size: 44px;

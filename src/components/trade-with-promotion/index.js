@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useRef, useContext } from "react";
 import cn from "classnames";
 import airbnbIcon from "../../assets/images/icons/companies/airbnb.svg";
 import amazonIcon from "../../assets/images/icons/companies/amazon.svg";
@@ -14,12 +14,19 @@ import rippleIcon from "../../assets/images/icons/companies/ripple.svg";
 import teslaIcon from "../../assets/images/icons/companies/tesla.svg";
 import womanIcon from "../../assets/images/icons/companies/woman.svg";
 import ButtonLink from "../shared/button-link";
-import {REGISTRATION_LINK} from "../../helpers/constants";
+import { REGISTRATION_LINK } from "../../helpers/constants";
+import TypingAnimation from "../shared/typing-animation";
+import { useIntersectionObserver } from "../../helpers/hooks/use-intersection";
 import {MarketingContext} from "../../context/marketing-context";
 import {SECT2_GROUP1_DEFAULT, SECT2_GROUP2_DEFAULT, SECT2_TEXT_SEQUENCES,} from "../../helpers/marketing.config";
 import {getSect2TextSequence, transformParamToKey,} from "../../helpers/services/marketing-service";
 
 const TradeWithPromotion = ({ className }) => {
+  const containerRef = useRef();
+  const intersectionRef = useIntersectionObserver(containerRef, {
+    freezeOnceVisible: true,
+  });
+
   const { sect2 } = useContext(MarketingContext);
 
   const content = SECT2_TEXT_SEQUENCES[transformParamToKey(sect2)];
@@ -138,9 +145,16 @@ const TradeWithPromotion = ({ className }) => {
         <h2 className="trade-with-promotion__title">
           Trade <span className="bold">now</span> with
         </h2>
-        <div className="trade-with-promotion__input">
-          {/*  TODO show all titles from array */}
-          <span className="trade-with-promotion__input-text">{title[0]}</span>
+        <div className="trade-with-promotion__input" ref={containerRef}>
+          <span className="trade-with-promotion__input-text">
+            {intersectionRef?.isIntersecting ? (
+              <TypingAnimation
+                keywords={title}
+              />
+            ) : (
+              " "
+            )}
+          </span>
         </div>
 
         <div className="trade-with-promotion__promo">
