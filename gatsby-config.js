@@ -6,7 +6,7 @@ module.exports = {
   plugins: ["gatsby-plugin-sass", {
     resolve: 'gatsby-plugin-google-analytics',
     options: {
-      "trackingId": process.env.GATSBY_GA
+      "trackingId": "G-CY84JW77HJ"
     }
   }, "gatsby-plugin-image", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
