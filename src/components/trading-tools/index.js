@@ -45,9 +45,11 @@ const TradingTools = ({ className }) => {
         <div className="trading-tools__icon-wrapper">
           {platformIconTrail.map((styles, i) => {
               return (
-                <animated.span style={styles}>
+                <animated.span
+                  key={`platform-${Object.values(PLATFORMS)[i].title}`}
+                  style={styles}
+                >
                   <PlatformBlock
-                    key={`platform-${Object.values(PLATFORMS)[i].title}`}
                     icon={Object.values(PLATFORMS)[i].icon}
                     title={Object.values(PLATFORMS)[i].title}
                   />
