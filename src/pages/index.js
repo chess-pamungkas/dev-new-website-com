@@ -25,7 +25,6 @@ import Footer from "../components/footer";
 import { LanguageProvider } from "../context/language-context";
 import { useIntersectionObserver } from "../helpers/hooks/use-intersection-observer";
 import { useSpring } from "react-spring";
-import cn from "classnames";
 import { ANIMATION_DURATION } from "../helpers/animation.config";
 
 ReactGA.initialize(process.env.GATSBY_GA);
@@ -43,25 +42,39 @@ const IndexPage = () => {
 
   const animation1Config = useSpring({
     config: { duration: ANIMATION_DURATION },
-    from: { left: "0" },
-    to: {
-      left: data1Ref?.isIntersecting ? "0" : "100%",
-    },
+    ...(data2Ref?.isIntersecting
+      ? {
+          from: { left: "0" },
+          to: { left: "-100%" },
+        }
+      : {
+          from: { left: data1Ref?.isIntersecting ? "100%" : "0" },
+          to: {
+            left: data1Ref?.isIntersecting ? "0" : "100%",
+          },
+        }),
   });
 
   const animation2Config = useSpring({
     config: { duration: ANIMATION_DURATION },
-    from: { left: "100%" },
-    to: {
-      left: data2Ref?.isIntersecting ? "0" : "100%",
-    },
+    ...(data3Ref?.isIntersecting
+      ? {
+          from: { left: "-100%" },
+          to: { left: "-200%" },
+        }
+      : {
+          from: { left: "0" },
+          to: {
+            left: data2Ref?.isIntersecting ? "-100%" : "0",
+          },
+        }),
   });
 
   const animation3Config = useSpring({
     config: { duration: ANIMATION_DURATION },
-    from: { left: "100%" },
+    from: { left: "0" },
     to: {
-      left: data3Ref?.isIntersecting ? "0" : "100%",
+      left: data3Ref?.isIntersecting ? "-100%" : "0",
     },
   });
 
@@ -88,6 +101,7 @@ const IndexPage = () => {
             </Promotion>
             <Promotion
               className="promotion2"
+              animationConfig={animation2Config}
               triggerRef={promo2Ref}
               image={promo2}
               btnTitle="See more"
@@ -98,6 +112,7 @@ const IndexPage = () => {
             </Promotion>
             <Promotion
               className="promotion3"
+              animationConfig={animation3Config}
               triggerRef={promo3Ref}
               image={promo3}
               btnTitle="See more"

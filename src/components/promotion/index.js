@@ -39,10 +39,10 @@ const Promotion = ({
           <img src={image} alt="" className="promotion__img" />
         </div>
       </div>
-      <div>
+      <>
         <animated.div className="promotion__bg" style={animationConfig} />
         <div ref={triggerRef} />
-      </div>
+      </>
     </section>
   );
 };
