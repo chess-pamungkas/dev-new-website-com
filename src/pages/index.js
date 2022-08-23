@@ -43,7 +43,7 @@ const IndexPage = () => {
 
   const animation1Config = useSpring({
     config: { duration: ANIMATION_DURATION },
-    from: { left: "100%" },
+    from: { left: "0" },
     to: {
       left: data1Ref?.isIntersecting ? "0" : "100%",
     },
@@ -76,7 +76,7 @@ const IndexPage = () => {
             <TradingTicker />
             <TradeWithPromotion />
             <Promotion
-              className={cn("promotion1")}
+              className="promotion1"
               animationConfig={animation1Config}
               triggerRef={promo1Ref}
               image={promo1}
@@ -88,6 +88,7 @@ const IndexPage = () => {
             </Promotion>
             <Promotion
               className="promotion2"
+              triggerRef={promo2Ref}
               image={promo2}
               btnTitle="See more"
               link={REGISTRATION_LINK}
@@ -97,6 +98,7 @@ const IndexPage = () => {
             </Promotion>
             <Promotion
               className="promotion3"
+              triggerRef={promo3Ref}
               image={promo3}
               btnTitle="See more"
               link={REGISTRATION_LINK}
