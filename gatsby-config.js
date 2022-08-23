@@ -1,3 +1,9 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
+const config = require('gatsby-plugin-config');
+
 module.exports = {
   siteMetadata: {
     title: `website`,
@@ -26,7 +32,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingIds: [process.env.GATSBY_GA],
+        trackingIds: [config.GATSBY_GA],
         gtagConfig: {
           anonymize_ip: true,
         },
