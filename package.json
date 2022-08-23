@@ -19,6 +19,7 @@
     "classnames": "^2.3.1",
     "gatsby": "^4.20.0",
     "gatsby-plugin-google-analytics": "^4.20.0",
+    "gatsby-plugin-google-gtag": "^4.21.0",
     "gatsby-plugin-image": "^2.20.0",
     "gatsby-plugin-manifest": "^4.20.0",
     "gatsby-plugin-sass": "^5.20.0",
@@ -28,7 +29,6 @@
     "gatsby-transformer-sharp": "^4.20.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-ga": "^3.3.1",
     "react-spring": "^9.5.2",
     "sass": "^1.54.3"
   },

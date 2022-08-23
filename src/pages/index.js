@@ -1,5 +1,4 @@
 import React from "react";
-import ReactGA from "react-ga";
 import "../assets/styles/index.scss";
 import promo1 from "../assets/images/promotions/promo1.svg";
 import promo2 from "../assets/images/promotions/promo2.svg";
@@ -23,8 +22,6 @@ import TradeWithPromotion from "../components/trade-with-promotion";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import Footer from "../components/footer";
 import { LanguageProvider } from "../context/language-context";
-
-ReactGA.initialize(process.env.GATSBY_GA);
 
 const IndexPage = () => {
   return (
