@@ -23,16 +23,25 @@ import TradeWithPromotion from "../components/trade-with-promotion";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import Footer from "../components/footer";
 import { LanguageProvider } from "../context/language-context";
+import { CookiesPopup } from "../components/cookies-popup";
+import { CookieConsentProvider } from "@use-cookie-consent/react";
+import { CookieProvider } from "../context/cookie-context";
+import { GDPRPopup } from "../components/gdpr-popup";
 
 ReactGA.initialize(process.env.GATSBY_GA);
 
 const IndexPage = () => {
   return (
+    <CookieConsentProvider>
+    <CookieProvider>
     <ClientResolverProvider>
       <LanguageProvider>
         <Header />
+        <CookiesPopup />
+        <GDPRPopup />
         <section className="scroll-container">
           <main>
+            
             <Popup />
             <MainPromotion />
             <TradingTicker />
@@ -80,6 +89,8 @@ const IndexPage = () => {
         </section>
       </LanguageProvider>
     </ClientResolverProvider>
+    </CookieProvider>
+    </CookieConsentProvider>
   );
 };
 
