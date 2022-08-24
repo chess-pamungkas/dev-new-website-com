@@ -23,8 +23,7 @@ export const useWindowSize = () => {
   return {
     ...windowSize,
     isMobile: windowSize.width < WINDOW_SIZE_MD,
-    isTablet:
-      windowSize.width >= WINDOW_SIZE_MD && windowSize.width < WINDOW_SIZE_LG,
+    isTablet: windowSize.width < WINDOW_SIZE_LG,
     isLG:
       windowSize.width >= WINDOW_SIZE_LG && windowSize.width < WINDOW_SIZE_XL,
     isXL: windowSize.width >= WINDOW_SIZE_XL,
