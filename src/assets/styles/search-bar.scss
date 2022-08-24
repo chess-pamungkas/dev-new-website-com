@@ -105,20 +105,26 @@
 
     @include tablet {
       & .search-bar__expand {
-      width: 58px;
-      height: 58px;
+        width: 58px;
+        height: 58px;
       }
 
       & svg {
         width: 28px;
         height: 28px;
-        fill: map-get($colors, 'red');
+
+        & > g > * {
+          stroke: map-get($colors, 'red');
+        }
       }
+    }
+
+    @include tablet {
+      padding: 0 19px 0 6px;
     }
 
     @include desktop-lg {
       width: 425px;
-      padding: 0 19px 0 6px;
     }
 
     @include desktop-xl {

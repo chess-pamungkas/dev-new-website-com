@@ -1,4 +1,5 @@
 @import "mixins";
+@import "vars";
 
 .search-page {
   padding: 40px 0;
@@ -16,6 +17,175 @@
   }
 
   &__search {
-    margin: 0 auto;
+    margin: 0 auto 50px;
+
+    @include tablet {
+      margin-bottom: 60px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__results {
+    @include desktop-lg {
+      max-width: 716px;
+      margin: 0 auto;
+    }
+
+    @include desktop-xl {
+      max-width: 998px;
+    }
+  }
+
+  &__item {
+    & + & {
+      margin-top: 20px;
+
+      @include tablet {
+        margin-top: 40px;
+      }
+
+      @include desktop-lg {
+        margin-top: 25px;
+      }
+
+      @include desktop-xl {
+        margin-top: 30px;
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__icon {
+    width: 100%;
+    height: auto;
+
+    &-wrapper {
+      width: 63px;
+      height: 46px;
+      margin-right: 12px;
+      padding: 15px;
+      flex-shrink: 0;
+      border: 1px solid map-get($colors, 'red');
+
+      @include tablet {
+        width: 83px;
+        height: 65px;
+        padding: 20px;
+      }
+
+      @include desktop-lg {
+        width: 72px;
+        height: 52px;
+        padding: 18px;
+      }
+
+      @include desktop-xl {
+        width: 87px;
+        height: 63px;
+        padding: 20px;
+      }
+    }
+  }
+
+  &__caption {
+    margin-bottom: 10px;
+    overflow: hidden;
+
+    @include desktop-lg {
+      margin-bottom: 5px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__title {
+    margin: 0 0 4px;
+    color: map-get($colors, 'red');
+    font: normal normal 900 22px/27px $font;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @include tablet {
+      font: normal normal 900 32px/40px $font;
+    }
+
+    @include desktop-lg {
+      font: normal normal 900 25px/31px $font;
+    }
+
+    @include desktop-xl {
+      font: normal normal 900 35px/44px $font;
+    }
+  }
+
+  &__ref {
+    margin: 0;
+    color: map-get($colors, 'red');
+    font: normal normal 17px/21px $font;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @include tablet {
+      font: normal normal 24px/30px $font;
+    }
+
+    @include desktop-lg {
+      font: normal normal 900 20px/25px $font;
+    }
+
+    @include desktop-xl {
+      font: normal normal 900 24px/30px $font;
+    }
+  }
+
+  &__text {
+    margin: 0 0 20px;
+    color: map-get($colors, 'black-secondary');
+    font: normal normal 300 20px/25px $font;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+
+    @include tablet {
+      margin-bottom: 16px;
+      font: normal normal 300 30px/37px $font;
+    }
+
+    @include desktop-lg {
+      margin-bottom: 10px;
+      font: normal normal 300 20px/25px $font;
+    }
+
+    @include desktop-lg {
+      margin-bottom: 10px;
+      font: normal normal 300 24px/30px $font;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    font-size: 13px;
+
+
+    @mixin tablet {
+      font-size: 15px;
+    }
+
+    @include desktop-lg {
+      width: 162px;
+      line-height: 38px;
+    }
   }
 }
