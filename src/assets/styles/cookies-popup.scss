@@ -1,0 +1,66 @@
+@import "vars";
+
+.cookies-popup {
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  bottom: 20px;
+  right: 30px;
+  width: 499px;
+  height: 252px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #0000001A;
+  background: map-get($colors, 'white') 0% 0% no-repeat padding-box;
+  overflow: hidden;
+
+  &--active {
+    display: block;
+  }
+
+  &__header {
+    height: 10px;
+    background-color: map-get($colors, 'red');
+  }
+
+  &__body {
+    padding: 40px 45px 40px 45px;
+    text-align: center;
+    font: normal normal normal 18px/22px $font;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 50px;
+  }
+
+  &__accept-btn {
+    background: map-get($colors, 'red') 0% 0% no-repeat padding-box;
+    border: 2px solid map-get($colors, 'white');
+    border-radius: 31px;
+    width: 234px;
+    height: 38px;
+    text-align: center;
+    font: normal normal 900 14px/18px $font;
+    letter-spacing: 0px;
+    color: map-get($colors, 'white');
+
+    &:hover {
+        background: map-get($colors, 'white') 0% 0% no-repeat padding-box;
+        color: map-get($colors, 'red');
+        border: 2px solid map-get($colors, 'red');
+    }
+  }
+
+  &__more-btn {
+    text-align: center;
+    text-decoration: underline;
+    font: normal normal 900 14px/18px $font;
+    letter-spacing: 0px;
+    color: map-get($colors, 'red');
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
