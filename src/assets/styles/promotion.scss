@@ -2,7 +2,6 @@
 @import "mixins";
 
 .promotion {
-  background: map-get($colors, "black-secondary");
   scroll-snap-align: start;
   position: relative;
   display: flex;
@@ -116,9 +115,8 @@
   }
 
   &__img {
-    max-width: 100%;
-    height: auto;
     margin-bottom: 56px;
+    max-width: 284px;
 
     @include tablet {
       max-width: 491px;
@@ -154,7 +152,9 @@
     &--red {
       border: 2px solid map-get($colors, "red");
 
-      &:hover, &:active, &:focus {
+      &:hover,
+      &:active,
+      &:focus {
         background: map-get($colors, "red");
         color: map-get($colors, "white");
       }
@@ -164,7 +164,9 @@
       color: map-get($colors, "black");
       border: 2px solid map-get($colors, "black");
 
-      &:hover, &:active, &:focus {
+      &:hover,
+      &:active,
+      &:focus {
         color: map-get($colors, "red");
         background: map-get($colors, "white");
         border-color: map-get($colors, "white");
@@ -175,23 +177,44 @@
 
 .promotion1 {
   .promotion__bg {
-    width: 200%;
-    background: url("../../assets/images/bg/promotions/promo1/promo1-sm-double.svg") no-repeat center;
+    left: 0;
+    background: url("../../assets/images/bg/promotions/promo1/promo1-sm.svg") no-repeat center;
     background-size: cover;
 
     @include tablet {
-      background: url("../../assets/images/bg/promotions/promo1/promo1-md-double.svg") no-repeat center;
+      background: url("../../assets/images/bg/promotions/promo1/promo1-md.svg") no-repeat center;
       background-size: cover;
     }
 
     @include desktop-lg {
-      background: url("../../assets/images/bg/promotions/promo1/promo1-lg-double.svg") no-repeat center;
+      background: url("../../assets/images/bg/promotions/promo1/promo1-lg.svg") no-repeat center;
       background-size: cover;
     }
 
     @include desktop-xl {
-      background: url("../../assets/images/bg/promotions/promo1/promo1-xl-double.svg") no-repeat center;
+      background: url("../../assets/images/bg/promotions/promo1/promo1-xl.svg") no-repeat center;
       background-size: cover;
+    }
+
+    &--right {
+      left: 100%;
+      background: url("../../assets/images/bg/promotions/promo1/promo1-sm-right.svg") no-repeat center;
+      background-size: cover;
+
+      @include tablet {
+        background: url("../../assets/images/bg/promotions/promo1/promo1-md-right.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-lg {
+        background: url("../../assets/images/bg/promotions/promo1/promo1-lg-right.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-xl {
+        background: url("../../assets/images/bg/promotions/promo1/promo1-xl-right.svg") no-repeat center;
+        background-size: cover;
+      }
     }
   }
 }
@@ -214,23 +237,65 @@
   }
 
   .promotion__bg {
-    width: 300%;
-    background: url("../../assets/images/bg/promotions/promo2/promo2-sm-triple.svg") no-repeat;
+    left: 100%;
+    background: url("../../assets/images/bg/promotions/promo2/promo2-sm.svg") no-repeat;
     background-size: cover;
 
     @include tablet {
-      background: url("../../assets/images/bg/promotions/promo2/promo2-md-triple.svg") no-repeat;
+      background: url("../../assets/images/bg/promotions/promo2/promo2-md.svg") no-repeat;
       background-size: cover;
     }
 
     @include desktop-lg {
-      background: url("../../assets/images/bg/promotions/promo2/promo2-lg-triple.svg") no-repeat;
+      background: url("../../assets/images/bg/promotions/promo2/promo2-lg.svg") no-repeat;
       background-size: cover;
     }
 
     @include desktop-xl {
-      background: url("../../assets/images/bg/promotions/promo2/promo2-xl-triple.svg") no-repeat;
+      background: url("../../assets/images/bg/promotions/promo2/promo2-xl.svg") no-repeat;
       background-size: cover;
+    }
+
+    &--right {
+      left: 100%;
+      background: url("../../assets/images/bg/promotions/promo2/promo2-sm-right.svg") no-repeat center;
+      background-size: cover;
+
+      @include tablet {
+        background: url("../../assets/images/bg/promotions/promo2/promo2-md-right.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-lg {
+        background: url("../../assets/images/bg/promotions/promo2/promo2-lg-right.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-xl {
+        background: url("../../assets/images/bg/promotions/promo2/promo2-xl-right.svg") no-repeat center;
+        background-size: cover;
+      }
+    }
+
+    &--left {
+      left: 0;
+      background: url("../../assets/images/bg/promotions/promo2/promo2-sm-left.svg") no-repeat center;
+      background-size: cover;
+
+      @include tablet {
+        background: url("../../assets/images/bg/promotions/promo2/promo2-md-left.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-lg {
+        background: url("../../assets/images/bg/promotions/promo2/promo2-lg-left.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-xl {
+        background: url("../../assets/images/bg/promotions/promo2/promo2-xl-left.svg") no-repeat center;
+        background-size: cover;
+      }
     }
   }
 }
@@ -238,7 +303,6 @@
 .promotion3 {
   padding-top: 81px;
   padding-bottom: 85px;
-  background: map-get($colors, "white");
 
   @include tablet {
     padding-top: 95px;
@@ -254,24 +318,43 @@
   }
 
   .promotion__bg {
-    width: 200%;
-    background: url("../../assets/images/bg/promotions/promo3/promo3-sm-double.svg") no-repeat center;
+    background: url("../../assets/images/bg/promotions/promo3/promo3-sm.svg") no-repeat center;
     background-size: cover;
 
-
     @include tablet {
-      background: url("../../assets/images/bg/promotions/promo3/promo3-md-double.svg") no-repeat center;
+      background: url("../../assets/images/bg/promotions/promo3/promo3-md.svg") no-repeat center;
       background-size: cover;
     }
 
     @include desktop-lg {
-      background: url("../../assets/images/bg/promotions/promo3/promo3-lg-double.svg") no-repeat center;
+      background: url("../../assets/images/bg/promotions/promo3/promo3-lg.svg") no-repeat center;
       background-size: cover;
     }
 
     @include desktop-xl {
-      background: url("../../assets/images/bg/promotions/promo3/promo3-xl-double.svg") no-repeat center;
+      background: url("../../assets/images/bg/promotions/promo3/promo3-xl.svg") no-repeat center;
       background-size: cover;
+    }
+
+    &--right {
+      left: 0;
+      background: url("../../assets/images/bg/promotions/promo3/promo3-sm-right.svg") no-repeat center;
+      background-size: cover;
+
+      @include tablet {
+        background: url("../../assets/images/bg/promotions/promo3/promo3-md-right.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-lg {
+        background: url("../../assets/images/bg/promotions/promo3/promo3-lg-right.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-xl {
+        background: url("../../assets/images/bg/promotions/promo3/promo3-xl-right.svg") no-repeat center;
+        background-size: cover;
+      }
     }
   }
 }
@@ -297,7 +380,7 @@
   background-size: cover;
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -311,7 +394,7 @@
     background-size: cover;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       right: 0;
@@ -342,7 +425,6 @@
       height: 236px;
       background: url("../../assets/images/bg/promotions/promo4/promo4-bottom-lg.svg") no-repeat;
     }
-
   }
 
   @include desktop-xl {

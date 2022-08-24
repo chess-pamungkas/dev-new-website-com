@@ -6,18 +6,18 @@ import ButtonLink from "../shared/button-link";
 const Promotion = ({
   className,
   children,
-  triggerRef,
-  animationConfig,
-  image,
+  sectionRef,
+  animationLeft,
+  animationRight,
   textAnimationConfig,
-  textTrigger,
+  image,
   btnTitle,
   link,
   isReverseOrder = false,
   isRedPalette = false,
 }) => {
   return (
-    <section className={cn("promotion", className)}>
+    <section ref={sectionRef} className={cn("promotion", className)}>
       <div
         className={cn("promotion__wrapper", {
           "promotion__wrapper--reverse": isReverseOrder,
@@ -28,7 +28,6 @@ const Promotion = ({
             <animated.p style={textAnimationConfig} className="promotion__text">
               {children}
             </animated.p>
-            <p ref={textTrigger} />
           </div>
           <ButtonLink
             link={link}
@@ -44,10 +43,15 @@ const Promotion = ({
           <img src={image} alt="" className="promotion__img" />
         </div>
       </div>
-      <>
-        <animated.div className="promotion__bg" style={animationConfig} />
-        <div ref={triggerRef} />
-      </>
+      <animated.div
+        className={cn("promotion__bg", "promotion__bg--left")}
+        style={animationLeft}
+      />
+      <div className="promotion__bg" />
+      <animated.div
+        className={cn("promotion__bg", "promotion__bg--right")}
+        style={animationRight}
+      />
     </section>
   );
 };

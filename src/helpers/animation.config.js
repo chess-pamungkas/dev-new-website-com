@@ -1,4 +1,4 @@
-const ANIMATION_DURATION = 600;
+const ANIMATION_DURATION = 700;
 const TEXT_ANIMATION_DURATION = 500;
 
 export const SPRING_CONFIG_BG = {
@@ -7,22 +7,6 @@ export const SPRING_CONFIG_BG = {
 
 export const SPRING_CONFIG_TEXT = {
   config: { duration: TEXT_ANIMATION_DURATION },
-};
-
-export const LEFT_0 = {
-  left: "0",
-};
-
-export const LEFT_100 = {
-  left: "100%",
-};
-
-export const LEFT_MINUS_100 = {
-  left: "-100%",
-};
-
-export const LEFT_MINUS_200 = {
-  left: "-200%",
 };
 
 export const OPACITY_0 = {
@@ -35,23 +19,19 @@ export const OPACITY_1 = {
 
 export const INTERSECTION_OBSERVER_CONFIG = {
   promo1: {
-    threshold: 0.25,
-    freezeOnceVisible: true,
+    threshold: [.0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1],
+    freezeOnceVisible: false,
   },
   promo2: {
-    threshold: 0.25,
-    freezeOnceVisible: true,
+    threshold: [.0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1],
+    freezeOnceVisible: false,
   },
   promo3: {
-    threshold: 0.25,
-    freezeOnceVisible: true,
+    threshold: [.0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1],
+    freezeOnceVisible: false,
   },
   textPromo4: {
     threshold: 1,
-    freezeOnceVisible: true,
-  },
-  tradingTools: {
-    threshold: 0.25,
     freezeOnceVisible: true,
   },
 };
