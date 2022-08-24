@@ -2,7 +2,7 @@
 @import "mixins";
 
 .promotion {
-  background: #1A1A1A;
+  background: map-get($colors, "black-secondary");
   scroll-snap-align: start;
   position: relative;
   display: flex;
