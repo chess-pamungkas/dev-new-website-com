@@ -18,6 +18,7 @@
 @import "search-bar";
 @import "popup";
 @import "lang-options";
+@import "search-page";
 
 *,
 *::before,
@@ -31,6 +32,16 @@ body {
 
   &.overflow-hidden {
     overflow: hidden;
+  }
+
+  & #gatsby-focus-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    & main {
+      flex-grow: 1;
+    }
   }
 }
 

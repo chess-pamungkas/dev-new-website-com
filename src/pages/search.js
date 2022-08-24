@@ -1,0 +1,51 @@
+import React from "react";
+import { Link } from "gatsby";
+import Layout from "../components/shared/layout";
+import SearchBar from "../components/header/components/search-bar";
+import ButtonLink from "../components/shared/button-link";
+import { Logo } from "../components/shared/icons";
+
+// TODO: replace mocked data with actual search results
+const mockedResult = {
+  title: 'Lorem Ipsum',
+  link: 'https://www.loremipsum.com/',
+  text: 'Lorem ipsum dolor sit amet, consect adipiscing elit. Quisque non...',
+  icon: Logo
+};
+
+const SearchPage = () => (
+  <Layout>
+    <main className="search-page">
+      <section className="search-page__container">
+        <SearchBar className="search-page__search search-bar--inverted" />
+
+        <ul className="search-page__results">
+          {Array.from({length: 3}, _el => (mockedResult)).map((item, i) => (
+            <li key={`search-page-${i}`} className="search-page__item">
+              <Link to={item.link} className="search-page__link">
+                <div className="search-page__icon-wrapper">
+                  <Logo className="search-page__icon" />
+                </div>
+
+                <div className="search-page__caption">
+                  <h2 className="search-page__title">{item.title}</h2>
+                  <p className="search-page__ref">{item.link}</p>
+                </div>
+              </Link>
+
+              <p className="search-page__text">{item.text}</p>
+
+              <ButtonLink link={item.link} className="search-page__btn button-link--ghost-red">
+                Go
+              </ButtonLink>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
+  </Layout>
+);
+
+export default SearchPage;
+
+export const Head = () => <title>Search</title>;
