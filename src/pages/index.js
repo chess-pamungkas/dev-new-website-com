@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../assets/styles/index.scss";
 import promo1 from "../assets/images/promotions/promo1.svg";
 import promo2 from "../assets/images/promotions/promo2.svg";
@@ -23,80 +23,95 @@ import Layout from "../components/shared/layout";
 import { useIntersectionObserver } from "../helpers/hooks/use-intersection-observer";
 import { useSpring } from "react-spring";
 import {
-  ANIMATION_DURATION,
-  TEXT_ANIMATION_DURATION,
+  INTERSECTION_OBSERVER_CONFIG,
+  LEFT_0,
+  LEFT_100,
+  LEFT_MINUS_100,
+  LEFT_MINUS_200,
+  OPACITY_0,
+  OPACITY_1,
+  SPRING_CONFIG_BG,
+  SPRING_CONFIG_TEXT,
 } from "../helpers/animation.config";
 
 const IndexPage = () => {
+  const [pageIsScrolled, setPageIsScrolled] = useState(false);
+  const [isFirstScrolling, setIsFirstScrolling] = useState(true);
+
   const promo1Ref = useRef();
   const promo2Ref = useRef();
   const promo3Ref = useRef();
   const promo4Ref = useRef();
+  const tradingToolsRef = useRef();
 
-  const data1Ref = useIntersectionObserver(promo1Ref, {
-    threshold: 0.25,
-    freezeOnceVisible: false,
-  });
+  const dataPromo1Ref = useIntersectionObserver(
+    promo1Ref,
+    INTERSECTION_OBSERVER_CONFIG.promo1
+  );
 
-  const data2Ref = useIntersectionObserver(promo2Ref, {
-    threshold: 0.25,
-    freezeOnceVisible: false,
-  });
+  const dataPromo2Ref = useIntersectionObserver(
+    promo2Ref,
+    INTERSECTION_OBSERVER_CONFIG.promo2
+  );
 
-  const data3Ref = useIntersectionObserver(promo3Ref, {
-    threshold: 0.25,
-    freezeOnceVisible: false,
-  });
+  const dataPromo3Ref = useIntersectionObserver(
+    promo3Ref,
+    INTERSECTION_OBSERVER_CONFIG.promo3
+  );
 
-  const data4Ref = useIntersectionObserver(promo4Ref, {
-    threshold: 1,
-    freezeOnceVisible: true,
-  });
+  const dataPromo4Ref = useIntersectionObserver(
+    promo4Ref,
+    INTERSECTION_OBSERVER_CONFIG.textPromo4
+  );
+
+  const dataTradingToolsRef = useIntersectionObserver(
+    tradingToolsRef,
+    INTERSECTION_OBSERVER_CONFIG.tradingTools
+  );
+
+  useEffect(() => {
+    if (dataTradingToolsRef?.isIntersecting && isFirstScrolling) {
+      setIsFirstScrolling(false);
+      setPageIsScrolled(true);
+    }
+  }, [dataTradingToolsRef, isFirstScrolling]);
 
   const animation1Config = useSpring({
-    config: { duration: ANIMATION_DURATION },
-    ...(data2Ref?.isIntersecting
+    ...SPRING_CONFIG_BG,
+    ...(dataPromo2Ref?.isIntersecting
       ? {
-          from: { left: "0" },
-          to: { left: "-100%" },
+          from: LEFT_0,
+          to: LEFT_MINUS_100,
         }
       : {
-          from: { left: data1Ref?.isIntersecting ? "100%" : "0" },
-          to: {
-            left: data1Ref?.isIntersecting ? "0" : "100%",
-          },
+          from: dataPromo1Ref?.isIntersecting ? LEFT_100 : LEFT_0,
+          to: dataPromo1Ref?.isIntersecting ? LEFT_0 : LEFT_100,
         }),
   });
 
   const animation2Config = useSpring({
-    config: { duration: ANIMATION_DURATION },
-    ...(data3Ref?.isIntersecting
+    ...SPRING_CONFIG_BG,
+    ...(dataPromo3Ref?.isIntersecting
       ? {
-          from: { left: "-100%" },
-          to: { left: "-200%" },
+          from: LEFT_MINUS_100,
+          to: LEFT_MINUS_200,
         }
       : {
-          from: { left: "0" },
-          to: {
-            left: data2Ref?.isIntersecting ? "-100%" : "0",
-          },
+          from: LEFT_0,
+          to: dataPromo2Ref?.isIntersecting ? LEFT_MINUS_100 : LEFT_0,
         }),
   });
 
   const animation3Config = useSpring({
-    config: { duration: ANIMATION_DURATION },
-    from: { left: "0" },
-    to: {
-      left: data3Ref?.isIntersecting ? "-100%" : "0",
-    },
+    ...SPRING_CONFIG_BG,
+    from: LEFT_0,
+    to: dataPromo3Ref?.isIntersecting ? LEFT_MINUS_100 : LEFT_0,
   });
 
   const animation4Config = useSpring({
-    config: { duration: TEXT_ANIMATION_DURATION },
-    from: { opacity: "0" },
-    to: {
-      opacity: data4Ref?.isIntersecting ? "1" : "0",
-    },
+    ...SPRING_CONFIG_TEXT,
+    from: OPACITY_0,
+    to: dataPromo4Ref?.isIntersecting ? OPACITY_1 : OPACITY_0,
   });
 
   return (
@@ -109,7 +124,7 @@ const IndexPage = () => {
           <TradeWithPromotion />
           <Promotion
             className="promotion1"
-            animationConfig={animation1Config}
+            animationConfig={pageIsScrolled ? LEFT_0 : animation1Config}
             triggerRef={promo1Ref}
             image={promo1}
             btnTitle="See more"
@@ -120,7 +135,7 @@ const IndexPage = () => {
           </Promotion>
           <Promotion
             className="promotion2"
-            animationConfig={animation2Config}
+            animationConfig={pageIsScrolled ? LEFT_MINUS_100 : animation2Config}
             triggerRef={promo2Ref}
             image={promo2}
             btnTitle="See more"
@@ -131,7 +146,7 @@ const IndexPage = () => {
           </Promotion>
           <Promotion
             className="promotion3"
-            animationConfig={animation3Config}
+            animationConfig={pageIsScrolled ? LEFT_MINUS_100 : animation3Config}
             triggerRef={promo3Ref}
             image={promo3}
             btnTitle="See more"
@@ -139,7 +154,7 @@ const IndexPage = () => {
           >
             {PROMO_TEXT_3}
           </Promotion>
-          <TradingTools />
+          <TradingTools sectionRef={tradingToolsRef} />
           <Promotion
             className="promotion4"
             textAnimationConfig={animation4Config}
