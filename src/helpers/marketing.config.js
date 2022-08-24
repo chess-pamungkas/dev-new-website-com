@@ -1,4 +1,15 @@
 import heroImage from "../assets/images/person.png";
+import dollarIcon from "../assets/images/icons/companies/marketing/dollar.svg";
+import euroIcon from "../assets/images/icons/companies/marketing/euro.svg";
+import rmbIcon from "../assets/images/icons/companies/marketing/rmb.svg";
+import shibIcon from "../assets/images/icons/companies/marketing/shib.svg";
+import ethIcon from "../assets/images/icons/companies/marketing/eth.svg";
+import goldIcon from "../assets/images/icons/companies/marketing/gold.svg";
+import oilBarrelIcon from "../assets/images/icons/companies/marketing/oilBarrel.svg";
+import coffeeIcon from "../assets/images/icons/companies/marketing/coffee.svg";
+import sp500Icon from "../assets/images/icons/companies/marketing/sp500.svg";
+import dowJonesIcon from "../assets/images/icons/companies/marketing/dowJones.svg";
+import nikkeiIcon from "../assets/images/icons/companies/marketing/nikkei.svg";
 
 export const MARKETING_GET_PARAMS = {
   sect1: "_sect1",
@@ -7,19 +18,20 @@ export const MARKETING_GET_PARAMS = {
 };
 
 const SECT2_LOGOS = {
-  dollar: "",
-  euro: "",
-  rmb: "",
-  shib: "",
-  eth: "",
-  gold: "",
-  oilBarrel: "",
-  coffee: "",
-  sp500: "",
-  dowJones: "",
-  nikkei: "",
+  dollar: dollarIcon,
+  euro: euroIcon,
+  rmb: rmbIcon,
+  shib: shibIcon,
+  eth: ethIcon,
+  gold: goldIcon,
+  oilBarrel: oilBarrelIcon,
+  coffee: coffeeIcon,
+  sp500: sp500Icon,
+  dowJones: dowJonesIcon,
+  nikkei: nikkeiIcon,
 };
 
+// TODO change heros
 export const CONTENT_HEROES = {
   default: {
     image: heroImage,
@@ -131,7 +143,7 @@ export const SECT2_TEXT_SEQUENCES = {
       "USD/KRW",
     ],
     group2: SECT2_GROUP2_DEFAULT,
-    symbols: [SECT2_LOGOS.dollar, SECT2_LOGOS.euro, SECT2_LOGOS.rmb],
+    symbols: [SECT2_LOGOS.rmb, SECT2_LOGOS.dollar, SECT2_LOGOS.euro],
   },
   crypto: {
     group1: ["BTC", "ETH", "ADA", "XRP", "SOL", "SHIB", "NEO", "BNB"],
@@ -153,7 +165,7 @@ export const SECT2_TEXT_SEQUENCES = {
       "Wheat",
     ],
     group2: SECT2_GROUP2_DEFAULT,
-    symbols: [SECT2_LOGOS.gold, SECT2_LOGOS.oilBarrel, SECT2_LOGOS.coffee],
+    symbols: [SECT2_LOGOS.coffee, SECT2_LOGOS.oilBarrel, SECT2_LOGOS.gold],
   },
   indices: {
     group1: [
@@ -172,7 +184,7 @@ export const SECT2_TEXT_SEQUENCES = {
       "Canada 40",
     ],
     group2: SECT2_GROUP2_DEFAULT,
-    symbols: [SECT2_LOGOS.sp500, SECT2_LOGOS.dowJones, SECT2_LOGOS.nikkei],
+    symbols: [SECT2_LOGOS.nikkei, SECT2_LOGOS.sp500, SECT2_LOGOS.dowJones],
   },
   stocks: {
     group1: ["TBC"],

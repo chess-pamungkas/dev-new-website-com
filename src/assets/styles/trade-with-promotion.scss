@@ -286,57 +286,49 @@
       }
     }
 
-    &--apple {
+    &--dynamic-logo-2 {
       top: 156px;
       left: 57px;
       width: 35px;
-      height: 41px;
 
       @include tablet {
         top: 219px;
         left: 306px;
         width: 43px;
-        height: 51px;
       }
 
       @include desktop-lg {
         top: 183px;
         left: 397px;
         width: 43px;
-        height: 51px;
       }
 
       @include desktop-xl {
         top: 20px;
         left: 647px;
         width: 62px;
-        height: 73px;
       }
     }
 
-    &--ripple {
+    &--dynamic-logo-3 {
       top: 97px;
       right: 188px;
       width: 34px;
-      height: 27px;
 
       @include tablet {
         top: 280px;
         right: 180px;
         width: 43px;
-        height: 33px;
       }
 
       @include desktop-lg {
         top: 227px;
         right: 385px;
         width: 43px;
-        height: 33px;
       }
 
       @include desktop-xl {
         width: 61px;
-        height: 48px;
         top: 152px;
         right: 643px;
       }
@@ -377,6 +369,7 @@
       height: 37px;
 
       @include tablet {
+        bottom: unset;
         top: 280px;
         left: 101px;
         width: 43px;
@@ -384,6 +377,7 @@
       }
 
       @include desktop-lg {
+        top: unset;
         bottom: 367px;
         left: 275px;
         width: 43px;
@@ -398,7 +392,7 @@
       }
     }
 
-    &--logo {
+    &--dynamic-logo-1 {
       display: none;
 
       @include tablet {
@@ -406,7 +400,6 @@
         bottom: 320px;
         right: 285px;
         width: 42px;
-        height: 42px;
       }
 
       @include desktop-lg {
@@ -414,14 +407,12 @@
         right: unset;
         left: 438px;
         width: 42px;
-        height: 42px;
       }
 
       @include desktop-xl {
         left: 812px;
         bottom: 471px;
         width: 61px;
-        height: 61px;
       }
     }
 

@@ -42,8 +42,34 @@ const TradeWithPromotion = ({ className }) => {
     ? getSect2TextSequence(content?.group1, content?.group2)
     : getSect2TextSequence(SECT2_GROUP1_DEFAULT, SECT2_GROUP2_DEFAULT);
 
+  const icons = content ? content.symbols : [];
+
   return (
     <section className={cn("trade-with-promotion", className)}>
+      <img
+        src={icons.length > 0 && icons[0] ? icons[0] : logoIcon}
+        alt=""
+        className={cn(
+          "trade-with-promotion__icon",
+          "trade-with-promotion__icon--dynamic-logo-1"
+        )}
+      />
+      <img
+        src={icons.length > 0 && icons[1] ? icons[1] : appleIcon}
+        alt=""
+        className={cn(
+          "trade-with-promotion__icon",
+          "trade-with-promotion__icon--dynamic-logo-2"
+        )}
+      />
+      <img
+        src={icons.length > 0 && icons[2] ? icons[2] : rippleIcon}
+        alt=""
+        className={cn(
+          "trade-with-promotion__icon",
+          "trade-with-promotion__icon--dynamic-logo-3"
+        )}
+      />
       <img
         src={manIcon}
         alt=""
@@ -69,22 +95,6 @@ const TradeWithPromotion = ({ className }) => {
         )}
       />
       <img
-        src={appleIcon}
-        alt=""
-        className={cn(
-          "trade-with-promotion__icon",
-          "trade-with-promotion__icon--apple"
-        )}
-      />
-      <img
-        src={rippleIcon}
-        alt=""
-        className={cn(
-          "trade-with-promotion__icon",
-          "trade-with-promotion__icon--ripple"
-        )}
-      />
-      <img
         src={teslaIcon}
         alt=""
         className={cn(
@@ -98,14 +108,6 @@ const TradeWithPromotion = ({ className }) => {
         className={cn(
           "trade-with-promotion__icon",
           "trade-with-promotion__icon--airbnb"
-        )}
-      />
-      <img
-        src={logoIcon}
-        alt=""
-        className={cn(
-          "trade-with-promotion__icon",
-          "trade-with-promotion__icon--logo"
         )}
       />
       <img
