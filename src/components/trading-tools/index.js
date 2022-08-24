@@ -7,7 +7,7 @@ import ButtonLink from "../shared/button-link";
 import DeviceBlock from "./components/device-block";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import { useTrail, animated } from "react-spring";
-import { useIntersectionObserver } from "../../helpers/hooks/use-intersection";
+import {useIntersectionObserver} from "../../helpers/hooks/use-intersection-observer";
 
 const TradingTools = ({ className }) => {
   const containerRef = useRef();

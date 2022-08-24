@@ -22,28 +22,45 @@ import Footer from "../components/footer";
 import Layout from "../components/shared/layout";
 import { useIntersectionObserver } from "../helpers/hooks/use-intersection-observer";
 import { useSpring } from "react-spring";
-import { ANIMATION_DURATION } from "../helpers/animation.config";
-
+import {
+  ANIMATION_DURATION,
+  TEXT_ANIMATION_DURATION,
+} from "../helpers/animation.config";
 
 const IndexPage = () => {
   const promo1Ref = useRef();
   const promo2Ref = useRef();
   const promo3Ref = useRef();
+  const promo4Ref = useRef();
 
-  const data1Ref = useIntersectionObserver(promo1Ref, {});
+  const data1Ref = useIntersectionObserver(promo1Ref, {
+    threshold: 0.25,
+    freezeOnceVisible: false,
+  });
 
-  const data2Ref = useIntersectionObserver(promo2Ref, {});
+  const data2Ref = useIntersectionObserver(promo2Ref, {
+    threshold: 0.25,
+    freezeOnceVisible: false,
+  });
 
-  const data3Ref = useIntersectionObserver(promo3Ref, {});
+  const data3Ref = useIntersectionObserver(promo3Ref, {
+    threshold: 0.25,
+    freezeOnceVisible: false,
+  });
+
+  const data4Ref = useIntersectionObserver(promo4Ref, {
+    threshold: 1,
+    freezeOnceVisible: true,
+  });
 
   const animation1Config = useSpring({
     config: { duration: ANIMATION_DURATION },
     ...(data2Ref?.isIntersecting
-        ? {
+      ? {
           from: { left: "0" },
           to: { left: "-100%" },
         }
-        : {
+      : {
           from: { left: data1Ref?.isIntersecting ? "100%" : "0" },
           to: {
             left: data1Ref?.isIntersecting ? "0" : "100%",
@@ -54,11 +71,11 @@ const IndexPage = () => {
   const animation2Config = useSpring({
     config: { duration: ANIMATION_DURATION },
     ...(data3Ref?.isIntersecting
-        ? {
+      ? {
           from: { left: "-100%" },
           to: { left: "-200%" },
         }
-        : {
+      : {
           from: { left: "0" },
           to: {
             left: data2Ref?.isIntersecting ? "-100%" : "0",
@@ -74,6 +91,13 @@ const IndexPage = () => {
     },
   });
 
+  const animation4Config = useSpring({
+    config: { duration: TEXT_ANIMATION_DURATION },
+    from: { opacity: "0" },
+    to: {
+      opacity: data4Ref?.isIntersecting ? "1" : "0",
+    },
+  });
 
   return (
     <Layout>
@@ -118,6 +142,8 @@ const IndexPage = () => {
           <TradingTools />
           <Promotion
             className="promotion4"
+            textAnimationConfig={animation4Config}
+            textTrigger={promo4Ref}
             image={promo4}
             btnTitle="Start copying"
             link={REGISTRATION_LINK}
@@ -128,7 +154,6 @@ const IndexPage = () => {
           </Promotion>
           <Performance />
         </main>
-
         <Footer />
       </section>
     </Layout>

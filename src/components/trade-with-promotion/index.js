@@ -16,7 +16,8 @@ import womanIcon from "../../assets/images/icons/companies/woman.svg";
 import ButtonLink from "../shared/button-link";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import TypingAnimation from "../shared/typing-animation";
-import { useIntersectionObserver } from "../../helpers/hooks/use-intersection";
+import {useIntersectionObserver} from "../../helpers/hooks/use-intersection-observer";
+
 
 const TradeWithPromotion = ({ className }) => {
   const containerRef = useRef();

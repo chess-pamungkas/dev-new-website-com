@@ -238,6 +238,7 @@
 .promotion3 {
   padding-top: 81px;
   padding-bottom: 85px;
+  background: map-get($colors, "white");
 
   @include tablet {
     padding-top: 95px;
@@ -254,15 +255,17 @@
 
   .promotion__bg {
     width: 200%;
-    background: #FF4400;
+    background: url("../../assets/images/bg/promotions/promo3/promo3-sm-double.svg") no-repeat center;
+    background-size: cover;
+
 
     @include tablet {
-      background: url("../../assets/images/bg/promotions/promo3/promo3-md.svg") no-repeat center;
+      background: url("../../assets/images/bg/promotions/promo3/promo3-md-double.svg") no-repeat center;
       background-size: cover;
     }
 
     @include desktop-lg {
-      background: url("../../assets/images/bg/promotions/promo3/promo3-lg.svg") no-repeat center;
+      background: url("../../assets/images/bg/promotions/promo3/promo3-lg-double.svg") no-repeat center;
       background-size: cover;
     }
 
