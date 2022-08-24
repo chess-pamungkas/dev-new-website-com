@@ -7,9 +7,9 @@ import ButtonLink from "../shared/button-link";
 import DeviceBlock from "./components/device-block";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import { useTrail, animated } from "react-spring";
-import { useIntersectionObserver } from "../../helpers/hooks/use-intersection";
+import {useIntersectionObserver} from "../../helpers/hooks/use-intersection-observer";
 
-const TradingTools = ({ className }) => {
+const TradingTools = ({ className, sectionRef }) => {
   const containerRef = useRef();
   const intersectionRef = useIntersectionObserver(containerRef, {
     freezeOnceVisible: true,
@@ -40,7 +40,7 @@ const TradingTools = ({ className }) => {
   }, [intersectionRef]);
 
   return (
-    <section className={cn("trading-tools", className)}>
+    <section className={cn("trading-tools", className)} ref={sectionRef}>
       <div className="trading-tools__wrapper">
         <div className="trading-tools__icon-wrapper">
           {platformIconTrail.map((styles, i) => {

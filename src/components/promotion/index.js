@@ -1,11 +1,16 @@
 import React from "react";
+import { animated } from "react-spring";
 import cn from "classnames";
 import ButtonLink from "../shared/button-link";
 
 const Promotion = ({
   className,
   children,
+  triggerRef,
+  animationConfig,
   image,
+  textAnimationConfig,
+  textTrigger,
   btnTitle,
   link,
   isReverseOrder = false,
@@ -20,7 +25,10 @@ const Promotion = ({
       >
         <div className="promotion__block">
           <div className="promotion__description">
-            <p className="promotion__text">{children}</p>
+            <animated.p style={textAnimationConfig} className="promotion__text">
+              {children}
+            </animated.p>
+            <p ref={textTrigger} />
           </div>
           <ButtonLink
             link={link}
@@ -36,6 +44,10 @@ const Promotion = ({
           <img src={image} alt="" className="promotion__img" />
         </div>
       </div>
+      <>
+        <animated.div className="promotion__bg" style={animationConfig} />
+        <div ref={triggerRef} />
+      </>
     </section>
   );
 };
