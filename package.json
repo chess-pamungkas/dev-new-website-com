@@ -15,6 +15,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@use-cookie-consent/react": "^0.3.6",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "gatsby": "^4.20.0",
@@ -29,7 +30,8 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-ga": "^3.3.1",
-    "sass": "^1.54.3"
+    "sass": "^1.54.3",
+    "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
     "prettier": "^2.7.1"
