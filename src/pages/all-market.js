@@ -1,20 +1,17 @@
 import React from "react";
 import "../assets/styles/index.scss";
-import Header from "../components/header";
-import {ClientResolverProvider} from "../context/client-resolver-context";
-import Popup from "../components/popup";
 import TopMarket from "../components/top-market";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import image from "../assets/images/top-markets/cripto.svg";
 import { ALL_MARKET_TEXT } from "../helpers/top-market-texts";
+import Footer from "../components/footer";
+import Layout from "../components/shared/layout";
 
 const AllMarketPage = () => {
   return (
-    <>
-      <ClientResolverProvider>
-        <Header />
+    <Layout>
+      <section className="scroll-container">
         <main>
-          <Popup />
           <TopMarket
             title="All market overview"
             image={image}
@@ -26,8 +23,9 @@ const AllMarketPage = () => {
             {ALL_MARKET_TEXT}
           </TopMarket>
         </main>
-      </ClientResolverProvider>
-    </>
+        <Footer />
+      </section>
+    </Layout>
   );
 };
 

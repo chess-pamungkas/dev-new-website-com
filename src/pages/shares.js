@@ -1,20 +1,17 @@
 import React from "react";
 import "../assets/styles/index.scss";
-import Header from "../components/header";
-import {ClientResolverProvider} from "../context/client-resolver-context";
-import Popup from "../components/popup";
 import TopMarket from "../components/top-market";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import image from "../assets/images/top-markets/cripto.svg";
-import {COMMODITIES_TEXT, FOREX_TEXT, SHARES_TEXT} from "../helpers/top-market-texts";
+import { SHARES_TEXT } from "../helpers/top-market-texts";
+import Footer from "../components/footer";
+import Layout from "../components/shared/layout";
 
 const SharesPage = () => {
   return (
-    <>
-      <ClientResolverProvider>
-        <Header />
+    <Layout>
+      <section className="scroll-container">
         <main>
-          <Popup />
           <TopMarket
             title="Shares"
             image={image}
@@ -26,8 +23,9 @@ const SharesPage = () => {
             {SHARES_TEXT}
           </TopMarket>
         </main>
-      </ClientResolverProvider>
-    </>
+        <Footer />
+      </section>
+    </Layout>
   );
 };
 
