@@ -1,5 +1,8 @@
+import { easings } from "react-spring";
+
 const ANIMATION_DURATION = 700;
 const TEXT_ANIMATION_DURATION = 500;
+const TWP_SECTION_ANIMATION_DURATION = 2000;
 
 export const SPRING_CONFIG_BG = {
   config: { duration: ANIMATION_DURATION },
@@ -7,6 +10,13 @@ export const SPRING_CONFIG_BG = {
 
 export const SPRING_CONFIG_TEXT = {
   config: { duration: TEXT_ANIMATION_DURATION },
+};
+
+export const TWP_SECTION_CONFIG_BG = {
+  config: {
+    duration: TWP_SECTION_ANIMATION_DURATION,
+    easing: easings.easeInOutQuad,
+  },
 };
 
 export const OPACITY_0 = {
@@ -34,4 +44,22 @@ export const INTERSECTION_OBSERVER_CONFIG = {
     threshold: 0.9,
     freezeOnceVisible: true,
   },
+  TWPSection: {
+    threshold: 0.1,
+    freezeOnceVisible: false,
+  },
 };
+
+export const TWP_ICONS_INITIAL_SHIFT = {
+  logo1: -430,
+  logo2: -250,
+  logo3: -270,
+  netflix: -100,
+  tesla: -200,
+  airbnb: -50,
+  meta: -100,
+  amazon: -300,
+  bitcoin: -250, 
+};
+
+export const setPositionY = value => ({ transform: `translateY(${value}px)` });
