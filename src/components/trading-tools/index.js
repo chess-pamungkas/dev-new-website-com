@@ -7,7 +7,7 @@ import ButtonLink from "../shared/button-link";
 import DeviceBlock from "./components/device-block";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import { useTrail, animated } from "react-spring";
-import { useIntersectionObserver } from "../../helpers/hooks/use-intersection";
+import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 
 const TradingTools = ({ className }) => {
   const containerRef = useRef();
@@ -44,18 +44,18 @@ const TradingTools = ({ className }) => {
       <div className="trading-tools__wrapper">
         <div className="trading-tools__icon-wrapper">
           {platformIconTrail.map((styles, i) => {
-              return (
-                <animated.span
-                  key={`platform-${Object.values(PLATFORMS)[i].title}`}
-                  style={styles}
-                >
-                  <PlatformBlock
-                    icon={Object.values(PLATFORMS)[i].icon}
-                    title={Object.values(PLATFORMS)[i].title}
-                  />
-                </animated.span>
-              );
-            })}
+            return (
+              <animated.span
+                key={`platform-${Object.values(PLATFORMS)[i].title}`}
+                style={styles}
+              >
+                <PlatformBlock
+                  icon={Object.values(PLATFORMS)[i].icon}
+                  title={Object.values(PLATFORMS)[i].title}
+                />
+              </animated.span>
+            );
+          })}
         </div>
         <DeviceBlock
           className="trading-tools__img-wrapper device-block--animated"
