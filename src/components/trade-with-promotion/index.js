@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useContext } from "react";
 import cn from "classnames";
 import airbnbIcon from "../../assets/images/icons/companies/airbnb.svg";
 import amazonIcon from "../../assets/images/icons/companies/amazon.svg";
@@ -14,11 +14,62 @@ import rippleIcon from "../../assets/images/icons/companies/ripple.svg";
 import teslaIcon from "../../assets/images/icons/companies/tesla.svg";
 import womanIcon from "../../assets/images/icons/companies/woman.svg";
 import ButtonLink from "../shared/button-link";
-import {REGISTRATION_LINK} from "../../helpers/constants";
+import { REGISTRATION_LINK } from "../../helpers/constants";
+import TypingAnimation from "../shared/typing-animation";
+import { MarketingContext } from "../../context/marketing-context";
+import {
+  SECT2_GROUP1_DEFAULT,
+  SECT2_GROUP2_DEFAULT,
+  SECT2_TEXT_SEQUENCES,
+} from "../../helpers/marketing.config";
+import {
+  getSect2TextSequence,
+  transformParamToKey,
+} from "../../helpers/services/marketing-service";
+import {useIntersectionObserver} from "../../helpers/hooks/use-intersection-observer";
 
 const TradeWithPromotion = ({ className }) => {
+  const containerRef = useRef();
+  const intersectionRef = useIntersectionObserver(containerRef, {
+    freezeOnceVisible: true,
+  });
+
+  const { sect2 } = useContext(MarketingContext);
+
+  const content = SECT2_TEXT_SEQUENCES[transformParamToKey(sect2)];
+
+  const titles = content
+    ? getSect2TextSequence(content?.group1, content?.group2)
+    : getSect2TextSequence(SECT2_GROUP1_DEFAULT, SECT2_GROUP2_DEFAULT);
+
+  const icons = content ? content.symbols : [];
+
   return (
     <section className={cn("trade-with-promotion", className)}>
+      <img
+        src={icons.length > 0 && icons[0] ? icons[0] : logoIcon}
+        alt=""
+        className={cn(
+          "trade-with-promotion__icon",
+          "trade-with-promotion__icon--dynamic-logo-1"
+        )}
+      />
+      <img
+        src={icons.length > 0 && icons[1] ? icons[1] : appleIcon}
+        alt=""
+        className={cn(
+          "trade-with-promotion__icon",
+          "trade-with-promotion__icon--dynamic-logo-2"
+        )}
+      />
+      <img
+        src={icons.length > 0 && icons[2] ? icons[2] : rippleIcon}
+        alt=""
+        className={cn(
+          "trade-with-promotion__icon",
+          "trade-with-promotion__icon--dynamic-logo-3"
+        )}
+      />
       <img
         src={manIcon}
         alt=""
@@ -44,22 +95,6 @@ const TradeWithPromotion = ({ className }) => {
         )}
       />
       <img
-        src={appleIcon}
-        alt=""
-        className={cn(
-          "trade-with-promotion__icon",
-          "trade-with-promotion__icon--apple"
-        )}
-      />
-      <img
-        src={rippleIcon}
-        alt=""
-        className={cn(
-          "trade-with-promotion__icon",
-          "trade-with-promotion__icon--ripple"
-        )}
-      />
-      <img
         src={teslaIcon}
         alt=""
         className={cn(
@@ -73,14 +108,6 @@ const TradeWithPromotion = ({ className }) => {
         className={cn(
           "trade-with-promotion__icon",
           "trade-with-promotion__icon--airbnb"
-        )}
-      />
-      <img
-        src={logoIcon}
-        alt=""
-        className={cn(
-          "trade-with-promotion__icon",
-          "trade-with-promotion__icon--logo"
         )}
       />
       <img
@@ -127,8 +154,14 @@ const TradeWithPromotion = ({ className }) => {
         <h2 className="trade-with-promotion__title">
           Trade <span className="bold">now</span> with
         </h2>
-        <div className="trade-with-promotion__input">
-          <span className="trade-with-promotion__input-text">Bitcoin</span>
+        <div className="trade-with-promotion__input" ref={containerRef}>
+          <span className="trade-with-promotion__input-text">
+            {intersectionRef?.isIntersecting ? (
+              <TypingAnimation keywords={titles} />
+            ) : (
+              titles[0]
+            )}
+          </span>
         </div>
 
         <div className="trade-with-promotion__promo">

@@ -90,4 +90,14 @@
     display: flex;
     align-self: stretch;
   }
+
+  &__search {
+    position: absolute;
+    top: calc(100% + 30px);
+    right: 54px;
+
+    @include desktop-xl {
+      right: 73px;
+    }
+  }
 }

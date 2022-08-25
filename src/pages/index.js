@@ -1,11 +1,9 @@
-import React from "react";
-import ReactGA from "react-ga";
+import React, { useRef } from "react";
 import "../assets/styles/index.scss";
 import promo1 from "../assets/images/promotions/promo1.svg";
 import promo2 from "../assets/images/promotions/promo2.svg";
 import promo3 from "../assets/images/promotions/promo3.svg";
 import promo4 from "../assets/images/promotions/promo4.svg";
-import Header from "../components/header";
 import MainPromotion from "../components/main-promotion";
 import Promotion from "../components/promotion";
 import {
@@ -16,70 +14,167 @@ import {
 } from "../helpers/promo-texts";
 import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
-import { ClientResolverProvider } from "../context/client-resolver-context";
 import Popup from "../components/popup";
 import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import Footer from "../components/footer";
-import { LanguageProvider } from "../context/language-context";
-
-ReactGA.initialize(process.env.GATSBY_GA);
+import Layout from "../components/shared/layout";
+import { useIntersectionObserver } from "../helpers/hooks/use-intersection-observer";
+import { useSpring } from "react-spring";
+import {
+  INTERSECTION_OBSERVER_CONFIG,
+  OPACITY_0,
+  OPACITY_1,
+  SPRING_CONFIG_BG,
+  SPRING_CONFIG_TEXT,
+} from "../helpers/animation.config";
+import { useWindowSize } from "../helpers/hooks/use-window-size";
 
 const IndexPage = () => {
+  const { isTablet } = useWindowSize();
+  const INTERSECTION_RATIO = isTablet ? 0.4 : 0.7;
+  const promo1Ref = useRef();
+  const promo2Ref = useRef();
+  const promo3Ref = useRef();
+  const promo4Ref = useRef();
+
+  const dataPromo2Ref = useIntersectionObserver(
+    promo2Ref,
+    INTERSECTION_OBSERVER_CONFIG.promo2
+  );
+
+  const dataPromo3Ref = useIntersectionObserver(
+    promo3Ref,
+    INTERSECTION_OBSERVER_CONFIG.promo3
+  );
+
+  const dataPromo4Ref = useIntersectionObserver(
+    promo4Ref,
+    INTERSECTION_OBSERVER_CONFIG.textPromo4
+  );
+
+  const textAnimation = useSpring({
+    ...SPRING_CONFIG_TEXT,
+    from: OPACITY_0,
+    to: dataPromo4Ref?.isIntersecting ? OPACITY_1 : OPACITY_0,
+  });
+
+  const animation1BgRight = useSpring({
+    ...SPRING_CONFIG_BG,
+    ...(dataPromo2Ref?.isIntersecting &&
+    dataPromo2Ref?.intersectionRatio > INTERSECTION_RATIO
+      ? {
+          from: { left: "100%" },
+          to: { left: "0" },
+        }
+      : {
+          from: { left: "0" },
+          to: { left: "100%" },
+        }),
+  });
+
+  const animation2BgLeft = useSpring({
+    ...SPRING_CONFIG_BG,
+    ...(dataPromo2Ref?.isIntersecting &&
+    dataPromo2Ref?.intersectionRatio > INTERSECTION_RATIO
+      ? {
+          from: { left: "0" },
+          to: { left: "-100%" },
+        }
+      : {
+          from: { left: !dataPromo3Ref?.isIntersecting ? "-100%" : "-100%" },
+          to: { left: !dataPromo3Ref?.isIntersecting ? "0" : "-200%" },
+        }),
+  });
+
+  const animation2BgRight = useSpring({
+    ...SPRING_CONFIG_BG,
+    ...(dataPromo3Ref?.isIntersecting &&
+    dataPromo3Ref?.intersectionRatio > INTERSECTION_RATIO
+      ? {
+          from: { left: "100%" },
+          to: { left: "0" },
+        }
+      : {
+          from: { left: "0" },
+          to: { left: "100%" },
+        }),
+  });
+
+  const animation3BgRight = useSpring({
+    ...SPRING_CONFIG_BG,
+    ...(dataPromo3Ref?.isIntersecting &&
+    dataPromo3Ref?.intersectionRatio > INTERSECTION_RATIO
+      ? {
+          from: { left: "0" },
+          to: { left: "-100%" },
+        }
+      : {
+          from: { left: "-100%" },
+          to: { left: "0" },
+        }),
+  });
+
   return (
-    <ClientResolverProvider>
-      <LanguageProvider>
-        <Header />
-        <section className="scroll-container">
-          <main>
-            <Popup />
-            <MainPromotion />
-            <TradingTicker />
-            <TradeWithPromotion />
-            <Promotion
-              className="promotion1"
-              image={promo1}
-              btnTitle="See more"
-              link={REGISTRATION_LINK}
-              isRedPalette
-            >
-              {PROMO_TEXT_1}
-            </Promotion>
-            <Promotion
-              className="promotion2"
-              image={promo2}
-              btnTitle="See more"
-              link={REGISTRATION_LINK}
-              isRedPalette
-            >
-              {PROMO_TEXT_2}
-            </Promotion>
-            <Promotion
-              className="promotion3"
-              image={promo3}
-              btnTitle="See more"
-              link={REGISTRATION_LINK}
-            >
-              {PROMO_TEXT_3}
-            </Promotion>
-            <TradingTools />
-            <Promotion
-              className="promotion4"
-              image={promo4}
-              btnTitle="Start copying"
-              link={REGISTRATION_LINK}
-              isRedPalette
-              isReverseOrder
-            >
-              {PROMO_TEXT_4}
-            </Promotion>
-            <Performance />
-          </main>
-          <Footer />
-        </section>
-      </LanguageProvider>
-    </ClientResolverProvider>
+    <Layout>
+      <section className="scroll-container">
+        <main>
+          <Popup />
+          <MainPromotion />
+          <TradingTicker />
+          <TradeWithPromotion />
+          <Promotion
+            className="promotion1"
+            sectionRef={promo1Ref}
+            animationRight={animation1BgRight}
+            image={promo1}
+            btnTitle="See more"
+            link={REGISTRATION_LINK}
+            isRedPalette
+          >
+            {PROMO_TEXT_1}
+          </Promotion>
+          <Promotion
+            className="promotion2"
+            sectionRef={promo2Ref}
+            animationRight={animation2BgRight}
+            animationLeft={animation2BgLeft}
+            image={promo2}
+            btnTitle="See more"
+            link={REGISTRATION_LINK}
+            isRedPalette
+          >
+            {PROMO_TEXT_2}
+          </Promotion>
+          <Promotion
+            className="promotion3"
+            animationRight={animation3BgRight}
+            sectionRef={promo3Ref}
+            image={promo3}
+            btnTitle="See more"
+            link={REGISTRATION_LINK}
+          >
+            {PROMO_TEXT_3}
+          </Promotion>
+          <TradingTools />
+          <Promotion
+            className="promotion4"
+            textAnimationConfig={textAnimation}
+            sectionRef={promo4Ref}
+            image={promo4}
+            btnTitle="Start copying"
+            link={REGISTRATION_LINK}
+            isRedPalette
+            isReverseOrder
+          >
+            {PROMO_TEXT_4}
+          </Promotion>
+          <Performance />
+        </main>
+        <Footer />
+      </section>
+    </Layout>
   );
 };
 
