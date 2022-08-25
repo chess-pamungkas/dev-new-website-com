@@ -6,7 +6,7 @@ import { GDPR_COOKIE_CATEGORIES, DEFAULT_COOKIE_CONSENT } from "../../helpers/gd
 
 export const GDPRPopup = ({className}) => {
     const [acceptedCookies, setAcceptedCookies] = useState(DEFAULT_COOKIE_CONSENT)
-    const { cookies, setCookie, handleCloseGDPRPopup, isShowGDPRPopup, acceptAllCookies, acceptCookies } = useContext(CookieContext)
+    const { handleCloseGDPRPopup, isShowGDPRPopup, acceptAllCookies, acceptCookies } = useContext(CookieContext)
   
     const onAcceptAll = () => {
       acceptAllCookies();
