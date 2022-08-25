@@ -14,6 +14,7 @@
 @import "navbar-item";
 @import "dropdown-item";
 @import "lang-select";
+@import "tabs";
 @import "burger-menu";
 @import "accordeon";
 @import "search-bar";
@@ -47,7 +48,7 @@ body {
 }
 
 .scroll-container {
-  scroll-snap-type: y mandatory;
+  //scroll-snap-type: y mandatory;
   max-height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden;

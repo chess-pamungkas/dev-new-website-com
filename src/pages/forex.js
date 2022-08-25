@@ -2,12 +2,40 @@ import React from "react";
 import "../assets/styles/index.scss";
 import TopMarket from "../components/top-market";
 import { REGISTRATION_LINK } from "../helpers/constants";
-import image from "../assets/images/top-markets/cripto.svg";
+import image from "../assets/images/top-markets/forex.svg";
 import { FOREX_TEXT } from "../helpers/top-market-texts";
 import Footer from "../components/footer";
 import Layout from "../components/shared/layout";
+import Tabs from "../components/shared/tabs";
 
 const ForexPage = () => {
+  const tabs = [
+    {
+      title: "For Standard Accounts",
+      content: <></>,
+    },
+    {
+      title: "For Micro Accounts",
+      content: <></>,
+    },
+    {
+      title: "For Swap Free Standard Accounts",
+      content: <></>,
+    },
+    {
+      title: "For Swap Free Micro Accounts",
+      content: <></>,
+    },
+    {
+      title: "For Swap Ultra Low Standard Accounts",
+      content: <></>,
+    },
+    {
+      title: "For Swap Ultra Low Micro Accounts",
+      content: <></>,
+    },
+  ];
+
   return (
     <Layout>
       <section className="scroll-container">
@@ -22,6 +50,7 @@ const ForexPage = () => {
           >
             {FOREX_TEXT}
           </TopMarket>
+          <Tabs tabList={tabs} />
         </main>
         <Footer />
       </section>

@@ -2,6 +2,7 @@
 @import "mixins";
 
 .top-market {
+  scroll-snap-align: start;
   background: url("../../assets/images/top-markets/bg.svg") no-repeat center;
   background-size: cover;
   display: flex;
