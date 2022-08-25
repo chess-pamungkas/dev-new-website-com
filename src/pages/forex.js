@@ -10,6 +10,7 @@ import Tabs from "../components/shared/tabs";
 import TableComponent from "../components/shared/table";
 import ButtonLink from "../components/shared/button-link";
 import FAQ from "../components/faq";
+import { FAQ_FOREX } from "../helpers/faq";
 
 const ForexPage = () => {
   const tabs = [
@@ -55,7 +56,7 @@ const ForexPage = () => {
           </TopMarket>
           <Tabs tabList={tabs} />
           <ButtonLink className="button-link--red">Try Oqtima</ButtonLink>
-          <FAQ />
+          <FAQ faq={FAQ_FOREX} />
         </main>
         <Footer />
       </section>

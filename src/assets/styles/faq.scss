@@ -5,6 +5,9 @@
   scroll-snap-align: start;
   padding-top: 82px;
   padding-bottom: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @include content-alignment(0);
 
   &__wrapper {
@@ -12,6 +15,14 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    @include tablet {
+      max-width: 479px;
+    }
+
+    @include desktop-lg {
+      max-width: 723px;
+    }
   }
 
   &__delimiter {
@@ -46,15 +57,57 @@
     }
   }
 
+  &__accordion-wrapper {
+
+  }
+
   &__accordion {
+    border-bottom: 1px solid #E3E3E3;
+    padding-bottom: 30px;
+    margin: 0 0 20px;
+
+
     .accordion__title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       text-align: left;
       font-weight: map-get($font-weight, "black");
       color: map-get($colors, "black-secondary");
       font-size: 17px;
       line-height: 21px;
 
+       svg {
+        margin-left: 15px;
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+      }
+
       @include tablet {
+        font-size: 20px;
+        line-height: 25px;
+      }
+    }
+
+    .accordion__expandable {
+      padding-top: 10px;
+      color: map-get($colors, "grey");
+      font-size: 12px;
+      line-height: 15px;
+      font-weight: map-get($font-weight, "light");
+
+      @include tablet {
+        font-size: 17px;
+        line-height: 21px;
+      }
+
+      @include desktop-lg {
+        font-size: 18px;
+        line-height: 22px;
+      }
+
+      @include desktop-xl {
         font-size: 20px;
         line-height: 25px;
       }

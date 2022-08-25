@@ -46,6 +46,17 @@
     }
   }
 
+  &--with-red-border {
+    border: 1px solid map-get($colors, "red");
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: map-get($colors, "red");
+      color: map-get($colors, "white");
+    }
+  }
+
   &--header {
     width: initial;
     height: 34px;

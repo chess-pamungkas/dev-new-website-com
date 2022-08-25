@@ -10,8 +10,10 @@ export const LEARN_MORE_LINK = "/";
 export const TERMS_OF_USE_LINK = "/";
 export const PRIVACY_POLICY_LINK = "/";
 
+export const FAQ_LINK = "/";
+
 export const ANGLE_ICON_COLOR = {
-  black: '#232323',
-  red: '#ff4400',
-  white: '#ffffff'
+  black: "#232323",
+  red: "#ff4400",
+  white: "#ffffff",
 };
