@@ -34,3 +34,4 @@ export const DEFAULT_COOKIE_CONSENT = {[NECESSARY_COOKIE_KEY]: true, [PERFORMANC
 
 export const COOKIE_CONSENT_KEY = "cookieConsent";
 export const COOKIE_POPUP_SHOWN_KEY = "cookiePopupShown";
+export const LAST_LANGUAGE_KEY = "lastLanguage";
