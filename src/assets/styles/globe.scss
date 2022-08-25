@@ -1,0 +1,50 @@
+@import "mixins";
+
+.globe {
+  padding: 135px 0 168px;
+
+  @include tablet {
+    padding: 200x 0 148px;
+    background: url("../images/top-markets/globe-bg.svg") no-repeat right;
+    background-size: contain;
+  }
+
+  @include desktop-lg {
+    padding: 232x 0 65px;
+  }
+
+  &__images {
+    min-height: 110px;
+    margin-bottom: 82px;
+    background: url("../images/top-markets/globe-chart.svg") no-repeat center;
+    background-size: cover;
+
+    @include tablet {
+      margin-bottom: 100px;
+    }
+
+    @include desktop-lg {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__title {
+    margin: 0 auto 30px;
+    text-align: center;
+    font: normal normal 900 34px/42px $font;
+
+    @include tablet {
+      max-width: 560px;
+      font: normal normal 900 36px/45px $font;
+    }
+
+    @include desktop-lg {
+      margin-bottom: 50px;
+      font: normal normal 900 40px/50px $font;
+    }
+  }
+
+  &__btn {
+    margin: 0 auto;
+  }
+}
