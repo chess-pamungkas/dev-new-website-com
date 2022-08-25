@@ -1,6 +1,6 @@
 @import "vars";
 
-.accordeon {
+.accordion {
   &__title {
     width: 100%;
     padding: 0;
@@ -18,7 +18,7 @@
   }
 
   &--open {
-    & .accordeon__icon {
+    & .accordion__icon {
       transform: scale(1, -1);
     }
   }

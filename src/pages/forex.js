@@ -7,12 +7,15 @@ import { FOREX_TEXT } from "../helpers/top-market-texts";
 import Footer from "../components/footer";
 import Layout from "../components/shared/layout";
 import Tabs from "../components/shared/tabs";
+import TableComponent from "../components/shared/table";
+import ButtonLink from "../components/shared/button-link";
+import FAQ from "../components/faq";
 
 const ForexPage = () => {
   const tabs = [
     {
       title: "For Standard Accounts",
-      content: <></>,
+      content: <TableComponent />,
     },
     {
       title: "For Micro Accounts",
@@ -51,6 +54,8 @@ const ForexPage = () => {
             {FOREX_TEXT}
           </TopMarket>
           <Tabs tabList={tabs} />
+          <ButtonLink className="button-link--red">Try Oqtima</ButtonLink>
+          <FAQ />
         </main>
         <Footer />
       </section>

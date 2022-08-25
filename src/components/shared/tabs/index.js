@@ -13,13 +13,18 @@ const Tabs = ({ classname, tabList = [], activeTabIndex = 0 }) => {
     return (
       <li
         className={cn("tabs__tab", { "tabs__tab--active": isSelected })}
+        // eslint-disable-next-line
         role="tab"
         id={`tab-${tabIndex}`}
         aria-selected={isSelected}
         aria-controls={`panel-${tabIndex}`}
         tabIndex={tabIndex}
         onClick={onTabClick}
-        onKeyDown={onTabClick}
+        onKeyPress={(event) => {
+          if (event.key === "Enter") {
+            onTabClick();
+          }
+        }}
       >
         {children}
       </li>
@@ -42,6 +47,7 @@ const Tabs = ({ classname, tabList = [], activeTabIndex = 0 }) => {
   return (
     <div className={cn("tabs", classname)} data-tabs="true">
       <div className="tabs__tablist-wrapper">
+        {/*eslint-disable-next-line*/}
         <ul role="tablist" className="tabs__tablist">
           {tabList.map(({ title }, tabIndex) => (
             <Tab
