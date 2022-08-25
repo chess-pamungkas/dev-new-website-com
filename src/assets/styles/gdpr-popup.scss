@@ -24,31 +24,57 @@
     max-width: 748px;
     width: 95%;
     border-radius: 10px;
-    height: 742px;
-    overflow: hidden;
+    overflow: auto;
     box-shadow: 0px 0px 10px #0000001A;
     background: map-get($colors, 'white') 0% 0% no-repeat padding-box;
-    padding-left: 37px;
-    padding-right: 37px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: fit-content;
+    max-height: 90%;
+
+    @include tablet {
+      padding-left: 37px;
+      padding-right: 37px;
+    }
   }
 
   &__header {
     height: 10px;
     background-color: map-get($colors, 'red');
-    margin-left: -37px;
+    margin-left: -20px;
+    margin-right: -20px;
+
+    @include tablet {
+      margin-left: -37px;
     margin-right: -37px;
+    }
   }
 
   &__title {
-    padding-top: 55px;
-    font: normal normal 900 36px/45px $font;
+    padding-top: 19px;
+    font: normal normal map-get($font-weight, 'black') 24px/30px $font;
+
+    @include tablet {
+      padding-top: 55px;
+      font: normal normal map-get($font-weight, 'black') 36px/45px $font;
+    }
   }
 
   &__description {
-    padding-top: 55px;
-    padding-bottom: 25px;
-    font: normal normal normal 18px/22px $font;
-    color: #1A1A1A;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font: normal normal normal 14px/18px $font;
+    color: map-get($colors, 'black-secondary');
+
+    @include tablet {
+      padding-top: 55px;
+      padding-bottom: 25px;
+      font: normal normal normal 16px/20px $font;
+    }
+  
+    @include desktop-xl {
+      font: normal normal normal 18px/22px $font;
+    }
   }
 
   &__consent {
@@ -56,29 +82,23 @@
     grid-template-areas: "a b";
     align-items: center;
     justify-content: space-between;
-    padding-top: 25px;
+    padding-top: 20px;
+
+    @include tablet {
+      padding-top: 25px;
+    }
   }
 
   &__consent-title {
-    font: normal normal 900 20px/25px $font;
-    color: #1A1A1A;
-  }
+    font: normal normal map-get($font-weight, 'black') 16px/20px $font;
+    color: map-get($colors, 'black-secondary');
 
-  &__all-btn {
-    background: map-get($colors, 'red') 0% 0% no-repeat padding-box;
-    border: 2px solid map-get($colors, 'white');
-    border-radius: 31px;
-    width: 234px;
-    height: 38px;
-    text-align: center;
-    font: normal normal 900 14px/18px $font;
-    letter-spacing: 0px;
-    color: map-get($colors, 'white');
-
-    &:hover {
-        background: map-get($colors, 'white') 0% 0% no-repeat padding-box;
-        color: map-get($colors, 'red');
-        border: 2px solid map-get($colors, 'red');
+    @include tablet {
+      font: normal normal map-get($font-weight, 'black') 18px/22px $font;
+    }
+  
+    @include desktop-xl {
+      font: normal normal map-get($font-weight, 'black') 20px/25px $font;
     }
   }
 
@@ -133,24 +153,32 @@
       cursor: default;
 
       &:before {
-        background-color: #9B9B9B;
+        background-color: map-get($colors, 'grey');
       }
     }
   }
 
-  &__cookie-type {
+  &__category-title {
     text-align: left;
-    font: normal normal normal 18px/22px $font;
+    font: normal normal normal 14px/18px $font;
     color: #1A1A1A;
 
+    @include tablet {
+      font: normal normal normal 16px/20px $font;
+    }
+
+    @include desktop-xl {
+      font: normal normal normal 18px/22px $font;
+    }
+
     &--disabled {
-      color: #9B9B9B;
+      color: map-get($colors, 'grey');
     }
   }
   
-  &__item {
+  &__category {
     height: 40px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    background: map-get($colors, 'white') 0% 0% no-repeat padding-box;
     box-shadow: 0px 0px 10px #0000001A;
     border-radius: 10px;
     display: grid;
@@ -167,30 +195,41 @@
     justify-content: space-between;
     grid-template-areas: "a b";
     align-items: center;
-    padding-top: 49px;
-    padding-left: 90px;
-    padding-right: 90px;
+    padding-top: 30px;
+    padding-bottom: 19px;
+
+    @include tablet {
+      padding-top: 49px;
+      padding-bottom: 19px;
+      padding-left: 90px;
+      padding-right: 90px;
+    }
   }
 
   &__btn {
     background: map-get($colors, 'white') 0% 0% no-repeat padding-box;
     border: 2px solid map-get($colors, 'red');
     border-radius: 31px;
-    width: 234px;
+    width: fit-content;
     height: 38px;
     text-align: center;
-    font: normal normal 900 14px/18px $font;
+    font: normal normal map-get($font-weight, 'black') 14px/18px $font;
     letter-spacing: 0px;
     color: map-get($colors, 'red');
+    min-width: 123px;
 
     &:hover {
         background: map-get($colors, 'red') 0% 0% no-repeat padding-box;
         color: map-get($colors, 'white');
         border: 2px solid map-get($colors, 'white');
     }
+
+    @include tablet {
+      min-width: 234px;
+    }
   }
 
-  &__line {
-    border-top: 1px solid #9B9B9B;
+  &__hr-line {
+    border-top: 1px solid map-get($colors, 'grey');
   }
 }

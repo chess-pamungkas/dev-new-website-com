@@ -24,7 +24,6 @@ import { REGISTRATION_LINK } from "../helpers/constants";
 import Footer from "../components/footer";
 import { LanguageProvider } from "../context/language-context";
 import { CookiesPopup } from "../components/cookies-popup";
-import { CookieConsentProvider } from "@use-cookie-consent/react";
 import { CookieProvider } from "../context/cookie-context";
 import { GDPRPopup } from "../components/gdpr-popup";
 
@@ -32,7 +31,6 @@ ReactGA.initialize(process.env.GATSBY_GA);
 
 const IndexPage = () => {
   return (
-    <CookieConsentProvider>
     <CookieProvider>
     <ClientResolverProvider>
       <LanguageProvider>
@@ -90,7 +88,6 @@ const IndexPage = () => {
       </LanguageProvider>
     </ClientResolverProvider>
     </CookieProvider>
-    </CookieConsentProvider>
   );
 };
 

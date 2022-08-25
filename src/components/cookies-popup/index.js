@@ -2,15 +2,17 @@ import React, { useContext } from "react";
 import cn from "classnames";
 import CookieContext from "../../context/cookie-context";
 import { useModal } from "../../helpers/hooks/use-modal";
+import { COOKIE_POPUP_SHOWN_KEY } from "../../helpers/gdpr-cookie.config";
 
 export const CookiesPopup = ({ className }) => {
-  const { cookies, setCookie, handleOpenGDPRPopup, acceptAllCookies } = useContext(CookieContext)
-  const { isShow, handleOpen, handleClose } = useModal(!(cookies.get("cookiePopupShown") || false), false);
+  const { cookies, handleOpenGDPRPopup, acceptAllCookies, cookieConsent } = useContext(CookieContext)
+  const { isShow, handleOpen, handleClose } = useModal(!(cookies.get(COOKIE_POPUP_SHOWN_KEY) || false), false);
+
+  console.log(cookieConsent)
 
   const acceptAll = () => {
     acceptAllCookies();
     handleClose();
-    setCookie("cookiePopupShown", true, "necessary");
   }
 
   const learnMore = () => {
