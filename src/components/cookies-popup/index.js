@@ -1,13 +1,10 @@
 import React, { useContext } from "react";
-import { useCookieConsentContext } from "@use-cookie-consent/react";
 import cn from "classnames";
 import CookieContext from "../../context/cookie-context";
 import { useModal } from "../../helpers/hooks/use-modal";
 
 export const CookiesPopup = ({ className }) => {
-  const { consent, acceptAllCookies, declineAllCookies, acceptCookies } =
-  useCookieConsentContext();
-  const { cookies, setCookie, handleOpenGDPRPopup } = useContext(CookieContext)
+  const { cookies, setCookie, handleOpenGDPRPopup, acceptAllCookies } = useContext(CookieContext)
   const { isShow, handleOpen, handleClose } = useModal(!(cookies.get("cookiePopupShown") || false), false);
 
   const acceptAll = () => {

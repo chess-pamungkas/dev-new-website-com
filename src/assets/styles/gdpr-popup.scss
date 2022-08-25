@@ -21,42 +21,50 @@
   }
 
   &__content {
-    max-width: 704px;
+    max-width: 748px;
     width: 95%;
     border-radius: 10px;
+    height: 742px;
     overflow: hidden;
     box-shadow: 0px 0px 10px #0000001A;
     background: map-get($colors, 'white') 0% 0% no-repeat padding-box;
+    padding-left: 37px;
+    padding-right: 37px;
   }
 
   &__header {
     height: 10px;
     background-color: map-get($colors, 'red');
+    margin-left: -37px;
+    margin-right: -37px;
   }
 
   &__title {
-    padding-top: 40px;
-    text-align: center;
-    font: normal normal normal 38px/22px $font;
+    padding-top: 55px;
+    font: normal normal 900 36px/45px $font;
   }
-  
-  &__items {
-    padding-top: 20px;
-    padding-bottom: 20px;
+
+  &__description {
+    padding-top: 55px;
+    padding-bottom: 25px;
+    font: normal normal normal 18px/22px $font;
+    color: #1A1A1A;
+  }
+
+  &__consent {
     display: grid;
-    grid-template-columns: 150px 150px;
-    justify-content: center;
-    font: normal normal 600 22px/30px $font;
-  }
-
-  &__buttons {
-    display: flex;
-    justify-content: space-around;
+    grid-template-areas: "a b";
     align-items: center;
-    padding-bottom: 40px;
+    justify-content: space-between;
+    padding-top: 25px;
   }
 
-  &__accept-btn {
+  &__consent-title {
+    font: normal normal 900 20px/25px $font;
+    color: #1A1A1A;
+  }
+
+  &__all-btn {
     background: map-get($colors, 'red') 0% 0% no-repeat padding-box;
     border: 2px solid map-get($colors, 'white');
     border-radius: 31px;
@@ -72,5 +80,117 @@
         color: map-get($colors, 'red');
         border: 2px solid map-get($colors, 'red');
     }
+  }
+
+  &__switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+  }
+
+  &__checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: map-get($colors, 'red');
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 11px;
+
+    &--checked {
+      &:before {
+        -webkit-transform: translateX(22px);
+        -ms-transform: translateX(22px);
+        transform: translateX(22px);
+      }
+    }
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 2px;
+      bottom: 2px;
+      background-color: map-get($colors, 'white');
+      -webkit-transition: .4s;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    &--disabled {
+      background-color: #E3E3E3;
+      cursor: default;
+
+      &:before {
+        background-color: #9B9B9B;
+      }
+    }
+  }
+
+  &__cookie-type {
+    text-align: left;
+    font: normal normal normal 18px/22px $font;
+    color: #1A1A1A;
+
+    &--disabled {
+      color: #9B9B9B;
+    }
+  }
+  
+  &__item {
+    height: 40px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 10px #0000001A;
+    border-radius: 10px;
+    display: grid;
+    grid-template-areas: "a b";
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 15px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    grid-template-areas: "a b";
+    align-items: center;
+    padding-top: 49px;
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+
+  &__btn {
+    background: map-get($colors, 'white') 0% 0% no-repeat padding-box;
+    border: 2px solid map-get($colors, 'red');
+    border-radius: 31px;
+    width: 234px;
+    height: 38px;
+    text-align: center;
+    font: normal normal 900 14px/18px $font;
+    letter-spacing: 0px;
+    color: map-get($colors, 'red');
+
+    &:hover {
+        background: map-get($colors, 'red') 0% 0% no-repeat padding-box;
+        color: map-get($colors, 'white');
+        border: 2px solid map-get($colors, 'white');
+    }
+  }
+
+  &__line {
+    border-top: 1px solid #9B9B9B;
   }
 }
