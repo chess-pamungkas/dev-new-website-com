@@ -31,7 +31,7 @@ export const INTERSECTION_OBSERVER_CONFIG = {
     freezeOnceVisible: false,
   },
   textPromo4: {
-    threshold: 1,
+    threshold: 0.9,
     freezeOnceVisible: true,
   },
 };
