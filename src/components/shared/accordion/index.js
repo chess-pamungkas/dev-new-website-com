@@ -39,7 +39,7 @@ const Accordion = ({
         onClick={() => handleClick(title)}
       >
         {title}
-        {icon ? <Icon /> : <AngleDownIcon className="accordion__icon" />}
+        {Icon ? <Icon /> : <AngleDownIcon className="accordion__icon" />}
       </button>
       {isActive && <div className="accordion__expandable">{children}</div>}
     </section>
