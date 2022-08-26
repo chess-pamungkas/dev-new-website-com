@@ -19,6 +19,7 @@ const TradingSectionTitle = ({
       onClick={() => {
         setSelectedSection(section);
       }}
+      role="presentation"
     >
       {section.title}
     </div>

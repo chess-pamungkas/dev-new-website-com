@@ -24,6 +24,14 @@
     padding-bottom: 180px;
   }
 
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   &__wrapper {
     position: relative;
     z-index: 3;
@@ -107,9 +115,8 @@
   }
 
   &__img {
-    max-width: 100%;
-    height: auto;
     margin-bottom: 56px;
+    max-width: 284px;
 
     @include tablet {
       max-width: 491px;
@@ -145,7 +152,9 @@
     &--red {
       border: 2px solid map-get($colors, "red");
 
-      &:hover, &:active, &:focus {
+      &:hover,
+      &:active,
+      &:focus {
         background: map-get($colors, "red");
         color: map-get($colors, "white");
       }
@@ -155,7 +164,9 @@
       color: map-get($colors, "black");
       border: 2px solid map-get($colors, "black");
 
-      &:hover, &:active, &:focus {
+      &:hover,
+      &:active,
+      &:focus {
         color: map-get($colors, "red");
         background: map-get($colors, "white");
         border-color: map-get($colors, "white");
@@ -165,69 +176,211 @@
 }
 
 .promotion1 {
-  background: #1A1A1A;
-
-  @include tablet {
-    background: url("../../assets/images/bg/promotions/promo1/promo1-md.svg") no-repeat center;
+  .promotion__bg {
+    left: 0;
+    background: url("../../assets/images/bg/promotions/promo1/promo1-sm.svg") no-repeat center;
     background-size: cover;
-  }
 
-  @include desktop-lg {
-    background: url("../../assets/images/bg/promotions/promo1/promo1-lg.svg") no-repeat center;
-    background-size: cover;
-  }
+    @include tablet {
+      background: url("../../assets/images/bg/promotions/promo1/promo1-md.svg") no-repeat center;
+      background-size: cover;
+    }
 
-  @include desktop-xl {
-    background: url("../../assets/images/bg/promotions/promo1/promo1-xl.svg") no-repeat center;
-    background-size: cover;
+    @include desktop-lg {
+      background: url("../../assets/images/bg/promotions/promo1/promo1-lg.svg") no-repeat center;
+      background-size: cover;
+    }
+
+    @include desktop-xl {
+      background: url("../../assets/images/bg/promotions/promo1/promo1-xl.svg") no-repeat center;
+      background-size: cover;
+    }
+
+    &--right {
+      left: 100%;
+      background: url("../../assets/images/bg/promotions/promo1/promo1-sm-right.svg") no-repeat center;
+      background-size: cover;
+
+      @include tablet {
+        background: url("../../assets/images/bg/promotions/promo1/promo1-md-right.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-lg {
+        background: url("../../assets/images/bg/promotions/promo1/promo1-lg-right.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-xl {
+        background: url("../../assets/images/bg/promotions/promo1/promo1-xl-right.svg") no-repeat center;
+        background-size: cover;
+      }
+    }
   }
 }
 
 .promotion2 {
-  background: url("../../assets/images/bg/promotions/promo2/promo2-sm.svg") no-repeat;
-  background-size: cover;
+  padding-top: 87px;
+  padding-bottom: 87px;
 
   @include tablet {
-    background: url("../../assets/images/bg/promotions/promo2/promo2-md.svg") no-repeat;
-    background-size: cover;
+    padding-top: 45px;
+    padding-bottom: 58px;
   }
-
   @include desktop-lg {
-    background: url("../../assets/images/bg/promotions/promo2/promo2-lg.svg") no-repeat;
-    background-size: cover;
+    padding-top: 42px;
+    padding-bottom: 42px;
+  }
+  @include desktop-xl {
+    padding-top: 100px;
+    padding-bottom: 150px;
   }
 
-  @include desktop-xl {
-    background: url("../../assets/images/bg/promotions/promo2/promo2-xl.svg") no-repeat;
+  .promotion__bg {
+    left: 100%;
+    background: url("../../assets/images/bg/promotions/promo2/promo2-sm.svg") no-repeat;
     background-size: cover;
+
+    @include tablet {
+      background: url("../../assets/images/bg/promotions/promo2/promo2-md.svg") no-repeat;
+      background-size: cover;
+    }
+
+    @include desktop-lg {
+      background: url("../../assets/images/bg/promotions/promo2/promo2-lg.svg") no-repeat;
+      background-size: cover;
+    }
+
+    @include desktop-xl {
+      background: url("../../assets/images/bg/promotions/promo2/promo2-xl.svg") no-repeat;
+      background-size: cover;
+    }
+
+    &--right {
+      left: 100%;
+      background: url("../../assets/images/bg/promotions/promo2/promo2-sm-right.svg") no-repeat center;
+      background-size: cover;
+
+      @include tablet {
+        background: url("../../assets/images/bg/promotions/promo2/promo2-md-right.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-lg {
+        background: url("../../assets/images/bg/promotions/promo2/promo2-lg-right.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-xl {
+        background: url("../../assets/images/bg/promotions/promo2/promo2-xl-right.svg") no-repeat center;
+        background-size: cover;
+      }
+    }
+
+    &--left {
+      left: 0;
+      background: url("../../assets/images/bg/promotions/promo2/promo2-sm-left.svg") no-repeat center;
+      background-size: cover;
+
+      @include tablet {
+        background: url("../../assets/images/bg/promotions/promo2/promo2-md-left.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-lg {
+        background: url("../../assets/images/bg/promotions/promo2/promo2-lg-left.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-xl {
+        background: url("../../assets/images/bg/promotions/promo2/promo2-xl-left.svg") no-repeat center;
+        background-size: cover;
+      }
+    }
   }
 }
 
 .promotion3 {
-  background: #FF4400;
+  padding-top: 81px;
+  padding-bottom: 85px;
 
   @include tablet {
-    background: url("../../assets/images/bg/promotions/promo3/promo3-md.svg") no-repeat center;
-    background-size: cover;
+    padding-top: 95px;
+    padding-bottom: 60px;
   }
-
   @include desktop-lg {
-    background: url("../../assets/images/bg/promotions/promo3/promo3-lg.svg") no-repeat center;
-    background-size: cover;
+    padding-top: 42px;
+    padding-bottom: 44px;
+  }
+  @include desktop-xl {
+    padding-top: 86px;
+    padding-bottom: 220px;
   }
 
-  @include desktop-xl {
-    background: url("../../assets/images/bg/promotions/promo3/promo3-xl.svg") no-repeat center;
+  .promotion__bg {
+    background: url("../../assets/images/bg/promotions/promo3/promo3-sm.svg") no-repeat center;
     background-size: cover;
+
+    @include tablet {
+      background: url("../../assets/images/bg/promotions/promo3/promo3-md.svg") no-repeat center;
+      background-size: cover;
+    }
+
+    @include desktop-lg {
+      background: url("../../assets/images/bg/promotions/promo3/promo3-lg.svg") no-repeat center;
+      background-size: cover;
+    }
+
+    @include desktop-xl {
+      background: url("../../assets/images/bg/promotions/promo3/promo3-xl.svg") no-repeat center;
+      background-size: cover;
+    }
+
+    &--right {
+      left: 0;
+      background: url("../../assets/images/bg/promotions/promo3/promo3-sm-right.svg") no-repeat center;
+      background-size: cover;
+
+      @include tablet {
+        background: url("../../assets/images/bg/promotions/promo3/promo3-md-right.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-lg {
+        background: url("../../assets/images/bg/promotions/promo3/promo3-lg-right.svg") no-repeat center;
+        background-size: cover;
+      }
+
+      @include desktop-xl {
+        background: url("../../assets/images/bg/promotions/promo3/promo3-xl-right.svg") no-repeat center;
+        background-size: cover;
+      }
+    }
   }
 }
 
 .promotion4 {
+  padding-top: 47px;
+  padding-bottom: 66px;
+
+  @include tablet {
+    padding-top: 77px;
+    padding-bottom: 77px;
+  }
+  @include desktop-lg {
+    padding-top: 49px;
+    padding-bottom: 85px;
+  }
+  @include desktop-xl {
+    padding-top: 150px;
+    padding-bottom: 204px;
+  }
+
   background: url("../../assets/images/bg/promotions/promo4/promo4-sm.svg") no-repeat;
   background-size: cover;
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -241,7 +394,7 @@
     background-size: cover;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       right: 0;
@@ -272,7 +425,6 @@
       height: 236px;
       background: url("../../assets/images/bg/promotions/promo4/promo4-bottom-lg.svg") no-repeat;
     }
-
   }
 
   @include desktop-xl {

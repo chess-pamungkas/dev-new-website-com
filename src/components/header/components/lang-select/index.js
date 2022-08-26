@@ -26,10 +26,10 @@ const LangSelect = ({ className, isHeader = false }) => {
 
   const setIconColor = (isShow) => {
     if (isHeader) {
-      return isShow ? ANGLE_ICON_COLOR.RED : ANGLE_ICON_COLOR.WHITE;
+      return isShow ? ANGLE_ICON_COLOR.red : ANGLE_ICON_COLOR.white;
     }
 
-    return isShow ? ANGLE_ICON_COLOR.WHITE : ANGLE_ICON_COLOR.RED;
+    return isShow ? ANGLE_ICON_COLOR.white : ANGLE_ICON_COLOR.red;
   };
 
   return (

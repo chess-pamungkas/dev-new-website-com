@@ -202,6 +202,7 @@
   &__img {
     max-width: 100%;
     height: auto;
+    transition: 0.2s;
 
     &--phone {
       position: absolute;
@@ -254,6 +255,25 @@
       @include tablet {
         display: none;
       }
+    }
+  }
+}
+
+.device-block.device-block--animated {
+  .device-block__img {
+    transition: .5s;
+
+    &--phone {
+      transition-delay: 1.15s;
+    }
+
+    &--tablet {
+      transition-delay: 0.65s;
+    }
+
+    &--laptop {
+      position: relative;
+      left: 0;
     }
   }
 }

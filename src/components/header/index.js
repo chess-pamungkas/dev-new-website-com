@@ -4,10 +4,12 @@ import { LogoTextMain, Logo } from "../shared/icons";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { WINDOW_SIZE_XL } from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
+import { REGISTRATION_LINK } from "../../helpers/constants";
 import NavbarItem from "./components/navbar-item";
 import LangSelect from "./components/lang-select";
 import BurgerMenu from "./components/burger-menu";
 import ButtonLink from "../shared/button-link";
+import SearchBar from "./components/search-bar";
 import { CYSEC_MENU_ITEMS, FSA_MENU_ITEMS } from "../../helpers/menu.config";
 import ClientResolverContext from "../../context/client-resolver-context";
 import entities from "../../enums/entities";
@@ -50,15 +52,14 @@ const Header = ({ className }) => {
         ) : (
           <>
             <LangSelect className="lang-select--header" isHeader={true} />
-            {/* TODO: add links */}
             <ButtonLink
-              link={"/"}
+              link={REGISTRATION_LINK}
               className="button-link--header button-link--ghost header__signin"
             >
               Sign In
             </ButtonLink>
             <ButtonLink
-              link={"/"}
+              link={REGISTRATION_LINK}
               className="button-link--header header__start"
             >
               Get Started
@@ -66,6 +67,10 @@ const Header = ({ className }) => {
           </>
         )}
       </div>
+
+      {!isTablet && (
+        <SearchBar className="header__search" isExpandable={true} />
+      )}
     </header>
   );
 };
