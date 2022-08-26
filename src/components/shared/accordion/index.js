@@ -27,7 +27,7 @@ const Accordion = ({
     if (onSelect) {
       setIsActive(isOpen);
     }
-  }, [isOpen]);
+  }, [isOpen, onSelect]);
 
   const getIcon = useCallback(() => {
     if (isActive) {
@@ -35,7 +35,7 @@ const Accordion = ({
     } else {
       return <Icon />;
     }
-  }, [isActive]);
+  }, [isActive, IconForActive]);
 
   return (
     <section

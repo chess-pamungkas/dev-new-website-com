@@ -9,14 +9,15 @@ import Layout from "../components/shared/layout";
 import Tabs from "../components/shared/tabs";
 import TableComponent from "../components/shared/table";
 import ButtonLink from "../components/shared/button-link";
-import FAQ from "../components/faq";
+import Faq from "../components/faq";
 import { FAQ_FOREX } from "../helpers/faq";
+import { COLUMNS_FOREX, DATA_FOREX } from "../helpers/top-market-tables";
 
 const ForexPage = () => {
   const tabs = [
     {
       title: "For Standard Accounts",
-      content: <TableComponent />,
+      content: <TableComponent data={DATA_FOREX} columns={COLUMNS_FOREX} />,
     },
     {
       title: "For Micro Accounts",
@@ -56,7 +57,7 @@ const ForexPage = () => {
           </TopMarket>
           <Tabs tabList={tabs} />
           <ButtonLink className="button-link--red">Try Oqtima</ButtonLink>
-          <FAQ faq={FAQ_FOREX} />
+          <Faq faq={FAQ_FOREX} />
         </main>
         <Footer />
       </section>

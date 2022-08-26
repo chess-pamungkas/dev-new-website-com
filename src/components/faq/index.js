@@ -6,7 +6,7 @@ import { stringTransformToKebabCase } from "../../helpers/services/string-servic
 import ButtonLink from "../shared/button-link";
 import { FAQ_LINK } from "../../helpers/constants";
 
-const FAQ = ({ className, title, faq }) => {
+const Faq = ({ className, title, faq }) => {
   return (
     <section className={cn("faq", className)}>
       <div className="faq__wrapper">
@@ -36,4 +36,4 @@ const FAQ = ({ className, title, faq }) => {
   );
 };
 
-export default FAQ;
+export default Faq;
