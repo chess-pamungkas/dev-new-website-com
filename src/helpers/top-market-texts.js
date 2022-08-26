@@ -126,7 +126,7 @@ export const ALL_MARKET_TEXT = (
   </>
 );
 
-export const GLOBE_TEXT = (
+export const PROMOTION_MARKETS_TEXT = (
   <>
     <span className="highlighted-in-black">7&nbsp;</span>
     <span className="highlighted-in-red">Major Pairs</span>

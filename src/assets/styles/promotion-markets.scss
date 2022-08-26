@@ -1,6 +1,6 @@
 @import "mixins";
 
-.globe {
+.promotion-markets {
   padding: 135px 0 168px;
 
   @include tablet {
@@ -14,10 +14,8 @@
   }
 
   &__images {
-    min-height: 110px;
+    position: relative;
     margin-bottom: 82px;
-    background: url("../images/top-markets/globe-chart.svg") no-repeat center;
-    background-size: cover;
 
     @include tablet {
       margin-bottom: 100px;
@@ -26,6 +24,47 @@
     @include desktop-lg {
       margin-bottom: 60px;
     }
+  }
+
+  &__chart {
+    min-height: 110px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: url("../images/top-markets/globe-chart.svg") no-repeat center;
+    background-size: cover;
+
+
+    @include desktop-lg {
+      background-repeat: repeat-x;
+      background-size: contain;
+    }
+  }
+
+  &__icon {
+    width: 100%;
+    max-width: 275px;
+    height: auto;
+    padding: 0 15px;
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin: 0 auto;
+    opacity: 0.8;
+
+    @include tablet {
+      max-width: 380px;
+      padding: 0;
+    }
+
+    @include desktop-lg {
+      max-width: 310px;
+    }
+  }
+
+  &__content {
+    @include content-alignment;
   }
 
   &__title {
