@@ -3,7 +3,8 @@ import Cookies from "universal-cookie";
 import {
   DEFAULT_COOKIE_CONSENT,
   COOKIE_CONSENT_KEY,
-  COOKIE_POPUP_SHOWN_KEY,
+  IS_SHOW_COOKIE_POPUP_KEY,
+  GLOBAL_COOKIE_PATH,
 } from "../../helpers/gdpr-cookie.config";
 import { useModal } from "../../helpers/hooks/use-modal";
 
@@ -11,11 +12,13 @@ const CookieContext = createContext({});
 
 export const CookieProvider = ({ children }) => {
   const cookies = new Cookies();
+  const showCookiePopup =
+    cookies.get(IS_SHOW_COOKIE_POPUP_KEY) === undefined ? true : false;
   const {
     isShow: isShowCookiePopup,
     handleOpen: handleOpenCookiePopup,
     handleClose: handleCloseCookiePopup,
-  } = useModal(!(cookies.get(COOKIE_POPUP_SHOWN_KEY) || false), false);
+  } = useModal(showCookiePopup, false);
   const {
     isShow: isShowGDPRPopup,
     handleOpen: handleOpenGDPRPopup,
@@ -32,15 +35,17 @@ export const CookieProvider = ({ children }) => {
   const setCookie = (cookieKey, cookieValue, cookieType) => {
     if (cookieConsent[cookieType]) {
       // TODO: Probably need to change the expiration time
-      cookies.set(cookieKey, cookieValue, { path: "/" });
+      cookies.set(cookieKey, cookieValue, { path: GLOBAL_COOKIE_PATH });
     }
   };
 
   const acceptCookies = (acceptedCookies) => {
     // TODO: Send client consents to the backend
-    cookies.set(COOKIE_CONSENT_KEY, acceptedCookies, { path: "/" });
+    cookies.set(COOKIE_CONSENT_KEY, acceptedCookies, {
+      path: GLOBAL_COOKIE_PATH,
+    });
     setCookieConsent(acceptedCookies);
-    cookies.set(COOKIE_POPUP_SHOWN_KEY, true, { path: "/" });
+    cookies.set(IS_SHOW_COOKIE_POPUP_KEY, false, { path: GLOBAL_COOKIE_PATH });
   };
 
   const acceptAllCookies = () => {

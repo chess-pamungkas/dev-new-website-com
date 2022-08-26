@@ -62,8 +62,12 @@ export const GDPRPopup = ({ className }) => {
             <div className="gdpr-popup__consent-title">
               Manage Consent Preferences
             </div>
-            <button className="gdpr-popup__btn" onClick={onAcceptAll}>
-              ALLOW ALL
+            <button
+              type="button"
+              className="gdpr-popup__btn"
+              onClick={onAcceptAll}
+            >
+              Allow all
             </button>
           </div>
           {GDPR_COOKIE_CATEGORIES.map((cookieCategory) => (
@@ -74,11 +78,15 @@ export const GDPRPopup = ({ className }) => {
             />
           ))}
           <div className="gdpr-popup__buttons">
-            <button className="gdpr-popup__btn" onClick={onClose}>
-              CLOSE
+            <button type="button" className="gdpr-popup__btn" onClick={onClose}>
+              Close
             </button>
-            <button className="gdpr-popup__btn" onClick={onAcceptSelected}>
-              CONFIRM MY CHOICE
+            <button
+              type="button"
+              className="gdpr-popup__btn"
+              onClick={onAcceptSelected}
+            >
+              Confirm my choice
             </button>
           </div>
         </div>

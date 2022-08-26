@@ -35,11 +35,11 @@ export const CookiesPopup = ({ className }) => {
         offer a customised experience.
       </div>
       <div className="cookies-popup__buttons">
-        <button className="cookies-popup__more-btn" onClick={learnMore}>
+        <button type="button" className="cookies-popup__more-btn" onClick={learnMore}>
           Learn More
         </button>
-        <button className="cookies-popup__accept-btn" onClick={acceptAll}>
-          ACCEPT ALL
+        <button type="button" className="cookies-popup__accept-btn" onClick={acceptAll}>
+          Accept all
         </button>
       </div>
     </div>

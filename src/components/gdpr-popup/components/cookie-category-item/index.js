@@ -8,6 +8,7 @@ export const CookieCategoryItem = ({
   canBeChanged,
   acceptedCookies,
   setAcceptedCookies,
+  className,
 }) => {
   const [checked, setChecked] = useState(initialValue);
 
@@ -18,7 +19,7 @@ export const CookieCategoryItem = ({
   };
 
   return (
-    <div className="gdpr-popup__category" key={categoryKey}>
+    <div className={cn("gdpr-popup__category", className)} key={categoryKey}>
       <div
         className={cn("gdpr-popup__category-title", {
           "gdpr-popup__category-title--disabled": !canBeChanged,

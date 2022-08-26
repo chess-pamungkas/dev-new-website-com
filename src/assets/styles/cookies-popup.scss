@@ -3,14 +3,14 @@
 .cookies-popup {
   display: none;
   position: absolute;
-  z-index: 9999;
+  z-index: 10;
   bottom: 10px;
   right: 10px;
   width: 285px;
   height: 214px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px #0000001A;
-  background: map-get($colors, 'white') 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001a;
+  background: map-get($colors, "white") 0% 0% no-repeat padding-box;
   overflow: hidden;
   font: normal normal normal 14px/18px $font;
 
@@ -33,7 +33,7 @@
 
   &__header {
     height: 10px;
-    background-color: map-get($colors, 'red');
+    background-color: map-get($colors, "red");
   }
 
   &__body {
@@ -41,10 +41,6 @@
     text-align: center;
 
     @include tablet {
-      padding-left: 40px;
-      padding-right: 40px;
-      padding-top: 35px;
-      padding-bottom: 39px;
       padding: 35px 40px 39px 40px;
     }
   }
@@ -60,33 +56,34 @@
   }
 
   &__accept-btn {
-    background: map-get($colors, 'red') 0% 0% no-repeat padding-box;
-    border: 2px solid map-get($colors, 'white');
+    background: map-get($colors, "red") 0% 0% no-repeat padding-box;
+    border: 2px solid map-get($colors, "white");
     border-radius: 31px;
     width: 122px;
     height: 38px;
     text-align: center;
-    font: normal normal map-get($font-weight, 'black') 14px/18px $font;
+    font: normal normal map-get($font-weight, "black") 14px/18px $font;
     letter-spacing: 0px;
-    color: map-get($colors, 'white');
+    color: map-get($colors, "white");
+    text-transform: uppercase;
 
     @include tablet {
       width: 234px;
     }
 
     &:hover {
-        background: map-get($colors, 'white') 0% 0% no-repeat padding-box;
-        color: map-get($colors, 'red');
-        border: 2px solid map-get($colors, 'red');
+      background: map-get($colors, "white") 0% 0% no-repeat padding-box;
+      color: map-get($colors, "red");
+      border: 2px solid map-get($colors, "red");
     }
   }
 
   &__more-btn {
     text-align: center;
     text-decoration: underline;
-    font: normal normal map-get($font-weight, 'black') 14px/18px $font;
+    font: normal normal map-get($font-weight, "black") 14px/18px $font;
     letter-spacing: 0px;
-    color: map-get($colors, 'red');
+    color: map-get($colors, "red");
     background: none;
     border: none;
     cursor: pointer;

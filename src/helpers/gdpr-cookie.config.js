@@ -36,5 +36,7 @@ export const DEFAULT_COOKIE_CONSENT = {
 };
 
 export const COOKIE_CONSENT_KEY = "cookieConsent";
-export const COOKIE_POPUP_SHOWN_KEY = "cookiePopupShown";
+export const IS_SHOW_COOKIE_POPUP_KEY = "isShowCookiePopup";
 export const LAST_LANGUAGE_KEY = "lastLanguage";
+
+export const GLOBAL_COOKIE_PATH = "/";
