@@ -3,7 +3,10 @@ import "../assets/styles/index.scss";
 import TopMarket from "../components/top-market";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import image from "../assets/images/top-markets/forex.svg";
-import { FOREX_TEXT } from "../helpers/top-market-texts";
+import {
+  FOREX_TEXT,
+  PROMOTION_MARKETS_TEXT
+} from "../helpers/top-market-texts";
 import Footer from "../components/footer";
 import Layout from "../components/shared/layout";
 import Tabs from "../components/shared/tabs";
@@ -11,6 +14,8 @@ import TableComponent from "../components/shared/table";
 import ButtonLink from "../components/shared/button-link";
 import FAQ from "../components/faq";
 import { FAQ_FOREX } from "../helpers/faq";
+import PromotionMarkets from "../components/promotion-markets";
+import promo1 from "../assets/images/promotions/promo1.svg";
 
 const ForexPage = () => {
   const tabs = [
@@ -54,6 +59,13 @@ const ForexPage = () => {
           >
             {FOREX_TEXT}
           </TopMarket>
+
+          <PromotionMarkets
+            // TODO: promo1 is an example, provide valid image src
+            imageSrc={promo1}
+            promoText={PROMOTION_MARKETS_TEXT}
+          />
+
           <Tabs tabList={tabs} />
           <ButtonLink className="button-link--red">Try Oqtima</ButtonLink>
           <FAQ faq={FAQ_FOREX} />
