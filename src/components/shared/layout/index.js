@@ -4,14 +4,16 @@ import Header from "../../header";
 import { ClientResolverProvider } from "../../../context/client-resolver-context";
 import { LanguageProvider } from "../../../context/language-context";
 
-const Layout = ({ children }) => (
-  <ClientResolverProvider>
-    <LanguageProvider>
-      <Header />
+const Layout = ({ children, headerRef, setSectionOptions }) => {
+  return (
+    <ClientResolverProvider>
+      <LanguageProvider>
+        <Header headerRef={headerRef} setSectionOptions={setSectionOptions} />
 
-      {children}
-    </LanguageProvider>
-  </ClientResolverProvider>
-);
+        {children}
+      </LanguageProvider>
+    </ClientResolverProvider>
+  );
+};
 
 export default Layout;

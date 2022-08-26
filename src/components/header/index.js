@@ -13,8 +13,9 @@ import SearchBar from "./components/search-bar";
 import { CYSEC_MENU_ITEMS, FSA_MENU_ITEMS } from "../../helpers/menu.config";
 import ClientResolverContext from "../../context/client-resolver-context";
 import entities from "../../enums/entities";
+import NotificationStripe from "../shared/notification-stripe";
 
-const Header = ({ className }) => {
+const Header = ({ className, setSectionOptions, headerRef }) => {
   const { width, isTablet } = useWindowSize();
   const [menu, setMenu] = useState([]);
   const { currentEntity } = useContext(ClientResolverContext);
@@ -28,50 +29,55 @@ const Header = ({ className }) => {
   }, [currentEntity]);
 
   return (
-    <header className={cn("header", { "header--small": isNarrow }, className)}>
-      <div className="header__left">
-        {isNarrow ? <Logo className="header__logo" /> : <LogoTextMain />}
+    <div className={cn("header-wrapper", className)} ref={headerRef}>
+      <NotificationStripe setSectionOptions={setSectionOptions} />
+      <header
+        className={cn("header", { "header--small": isNarrow }, className)}
+      >
+        <div className="header__left">
+          {isNarrow ? <Logo className="header__logo" /> : <LogoTextMain />}
+
+          {!isTablet && (
+            <ul className="header__navigation">
+              {menu.map(({ title, subItems, isNested = false }) => (
+                <NavbarItem
+                  key={`header-menu-${stringTransformToKebabCase(title)}`}
+                  title={title}
+                  subItems={subItems}
+                  isNested={isNested}
+                />
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <div className="header__right">
+          {isTablet ? (
+            <BurgerMenu />
+          ) : (
+            <>
+              <LangSelect className="lang-select--header" isHeader={true} />
+              <ButtonLink
+                link={REGISTRATION_LINK}
+                className="button-link--header button-link--ghost header__signin"
+              >
+                Sign In
+              </ButtonLink>
+              <ButtonLink
+                link={REGISTRATION_LINK}
+                className="button-link--header header__start"
+              >
+                Get Started
+              </ButtonLink>
+            </>
+          )}
+        </div>
 
         {!isTablet && (
-          <ul className="header__navigation">
-            {menu.map(({ title, subItems, isNested = false }) => (
-              <NavbarItem
-                key={`header-menu-${stringTransformToKebabCase(title)}`}
-                title={title}
-                subItems={subItems}
-                isNested={isNested}
-              />
-            ))}
-          </ul>
+          <SearchBar className="header__search" isExpandable={true} />
         )}
-      </div>
-
-      <div className="header__right">
-        {isTablet ? (
-          <BurgerMenu />
-        ) : (
-          <>
-            <LangSelect className="lang-select--header" isHeader={true} />
-            <ButtonLink
-              link={REGISTRATION_LINK}
-              className="button-link--header button-link--ghost header__signin"
-            >
-              Sign In
-            </ButtonLink>
-            <ButtonLink
-              link={REGISTRATION_LINK}
-              className="button-link--header header__start"
-            >
-              Get Started
-            </ButtonLink>
-          </>
-        )}
-      </div>
-
-      {!isTablet && (
-        <SearchBar className="header__search" isExpandable={true} />
-      )}
-    </header>
+      </header>
+    </div>
   );
 };
 

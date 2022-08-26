@@ -1,0 +1,116 @@
+@import "vars";
+@import "mixins";
+
+.notification-stripe {
+  position: relative;
+  z-index: 1;
+  background: map-get($colors, "white");
+  box-shadow: 0 0 10px #0000001A;
+  border-top: 5px solid  map-get($colors, "red");
+  padding: 13px 10px 10px;
+
+  @include desktop-lg {
+    padding: 13px 30px 18px;
+  }
+
+  &__content {
+    flex-basis: auto;
+
+    @include desktop-lg {
+      flex-basis: auto;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-left: 12px;
+    flex-basis: 200px;
+
+    @include desktop-lg {
+      flex-basis: auto;
+      margin-left: 44px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .notification-stripe__button {
+      width: 140px;
+      margin: 0 0 7px 0;
+
+      @include desktop-lg {
+        width: auto;
+      }
+    }
+
+    @media screen and (max-width: $lg) {
+      .notification-stripe__button + .notification-stripe__button {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__button {
+    @include button-supress;
+    text-decoration: none;
+    color: map-get($colors, "red");
+    background: map-get($colors, "white");
+    display: inline-block;
+    padding: 8px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: $font;
+    font-weight: map-get($font-weight, "black");
+    border: 2px solid map-get($colors, "red");
+    border-radius: $border-radius-default;
+    font-size: 14px;
+    line-height: 18px;
+
+    @include desktop-lg {
+      padding: 8px 30px;
+      min-width: 164px;
+    }
+
+    @include desktop-xl {
+      min-width: 234px;
+    }
+
+    &:hover,
+    &:focus {
+      background: map-get($colors, "red");
+      color: map-get($colors, "white");
+    }
+  }
+
+  &__button + &__button {
+    margin-left: 15px;
+
+    @include desktop-xl {
+      margin-left: 20px;
+    }
+  }
+
+  &__redirection-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__cysec-wrapper {
+    font-family: $font;
+    font-size: 14px;
+    line-height: 18px;
+
+    @include desktop-lg {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include desktop-xl {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+}
