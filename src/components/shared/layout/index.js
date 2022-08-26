@@ -6,12 +6,12 @@ import { LanguageProvider } from "../../../context/language-context";
 import { MarketingContextProvider } from "../../../context/marketing-context";
 import { CookieProvider } from "../../../context/cookie-context";
 
-const Layout = ({ children }) => (
+const Layout = ({ children, headerRef, setSectionOptions }) => (
   <CookieProvider>
     <ClientResolverProvider>
       <MarketingContextProvider>
         <LanguageProvider>
-          <Header />
+          <Header headerRef={headerRef} setSectionOptions={setSectionOptions} />
           {children}
         </LanguageProvider>
       </MarketingContextProvider>
