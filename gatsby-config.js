@@ -3,6 +3,7 @@ require('dotenv').config({
 });
 
 const config = require('gatsby-plugin-config');
+const languages = require('./src/locales/language.config');
 
 module.exports = {
   siteMetadata: {
@@ -30,6 +31,13 @@ module.exports = {
       __key: "images",
     },
     {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "locale",
+        path: `${__dirname}/src/locales/`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: [config.GATSBY_GA],
@@ -37,6 +45,18 @@ module.exports = {
           anonymize_ip: true,
         },
       },
+    },
+    {
+      resolve: "gatsby-plugin-react-i18next",
+      options: {
+        localeJsonSourceName: "locale", // name given to "gatsby-source-filesystem" plugin.
+        languages: languages.list,
+        defaultLanguage: languages.defaultLangKey,
+        i18nextOptions: {
+          keySeparator: false,
+          nsSeparator: false
+        },
+      }
     },
   ],
 };

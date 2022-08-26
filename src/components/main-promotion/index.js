@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import ButtonLink from "../shared/button-link";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import TitlesAnimation from "../shared/titles-animation";
@@ -11,6 +12,7 @@ import {
 import { transformParamToKey } from "../../helpers/services/marketing-service";
 
 const MainPromotion = ({ className }) => {
+  const { t } = useTranslation();
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
   const {content, sect1} = useContext(MarketingContext);
@@ -35,7 +37,8 @@ const MainPromotion = ({ className }) => {
         <div className="main-promotion__block">
           <h1 className="main-promotion__title-wrapper">
             <span className="main-promotion__title">
-              A Perfectly optimised trading experience for
+              {/* A Perfectly optimised trading experience for */}
+              {t('example')}
             </span>
             <span className="main-promotion__title main-promotion__title--big">
               <TitlesAnimation

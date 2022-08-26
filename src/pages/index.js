@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { graphql } from "gatsby";
 import "../assets/styles/index.scss";
 import promo1 from "../assets/images/promotions/promo1.svg";
 import promo2 from "../assets/images/promotions/promo2.svg";
@@ -32,8 +33,13 @@ import {
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import { CookiesPopup } from "../components/cookies-popup";
 import { GDPRPopup } from "../components/gdpr-popup";
+import { I18nextContext, useTranslation } from "gatsby-plugin-react-i18next";
 
 const IndexPage = () => {
+  const { t } = useTranslation();
+  const context = React.useContext(I18nextContext);
+  console.log(context)
+
   const { isTablet } = useWindowSize();
   const INTERSECTION_RATIO = isTablet ? 0.4 : 0.7;
   const promo1Ref = useRef();
@@ -122,6 +128,7 @@ const IndexPage = () => {
     <Layout>
       <section className="scroll-container">
         <main>
+          <div>{t('hello')}</div>
           <CookiesPopup />
           <GDPRPopup />
           <Popup />
@@ -185,3 +192,17 @@ const IndexPage = () => {
 export default IndexPage;
 
 export const Head = () => <title>Oqtima trading page</title>;
+
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: {language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
