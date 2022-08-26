@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
 
-const TradingSectionDropdown = ({
+const Dropdown = ({
   className,
   items,
   selectedItem,
@@ -19,7 +19,7 @@ const TradingSectionDropdown = ({
     return items.map((item) => {
       return (
         <button
-          key={`TradingSectionDropdownItem${item.value}`}
+          key={`dropdown-item-${item.value}`}
           type="button"
           className={cn("dropdown__item", {
             "dropdown__item--active": selectedItem.id === item.value,
@@ -56,4 +56,4 @@ const TradingSectionDropdown = ({
   );
 };
 
-export default TradingSectionDropdown;
+export default Dropdown;

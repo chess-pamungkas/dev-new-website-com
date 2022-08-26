@@ -11,24 +11,6 @@ import {
 
 import SearchBar from "../../header/components/search-bar";
 
-const TableSearch = ({ globalFilter, setGlobalFilter }) => {
-  const [value, setValue] = React.useState(globalFilter);
-  const onChange = useAsyncDebounce((value) => {
-    setGlobalFilter(value || undefined);
-  }, 200);
-
-  return (
-    <SearchBar
-      className="table__searchbar"
-      value={value || ""}
-      onChange={(e) => {
-        setValue(e.target.value);
-        onChange(e.target.value);
-      }}
-    />
-  );
-};
-
 const TableComponent = ({ className, tableClassName, data, columns }) => {
   const PAGE_SIZES = [5, 10, 15];
 
@@ -37,9 +19,8 @@ const TableComponent = ({ className, tableClassName, data, columns }) => {
     getTableBodyProps,
     headerGroups,
     prepareRow,
-    state,
-    preGlobalFilteredRows,
     setGlobalFilter,
+    globalFilter,
     gotoPage,
     nextPage,
     previousPage,
@@ -55,10 +36,13 @@ const TableComponent = ({ className, tableClassName, data, columns }) => {
       data,
       initialState: {
         pageSize: PAGE_SIZES[0],
-        sortBy: [{
-          id: columns[0].accessor,
-          desc: false,
-        }],
+        sortBy: [
+          {
+            // default sorting by first column
+            id: columns[0].accessor,
+            desc: false,
+          },
+        ],
       },
     },
     useFilters,
@@ -67,22 +51,53 @@ const TableComponent = ({ className, tableClassName, data, columns }) => {
     usePagination
   );
 
-  return (
-    <div className={cn("table-wrapper", className)}>
-      <div className="table__showby">
+  const TableSearch = () => {
+    const [value, setValue] = React.useState(globalFilter);
+    const onChange = useAsyncDebounce((value) => {
+      setGlobalFilter(value || undefined);
+    }, 200);
+
+    return (
+      <div className="table__search">
+        <SearchBar
+          className="table__searchbar"
+          value={value || ""}
+          onChange={(e) => {
+            setValue(e.target.value);
+            onChange(e.target.value);
+          }}
+        />
+      </div>
+    );
+  };
+
+  const TableShowByDropdown = () => {
+    return (
+      <div className="table__dropdown-wrapper">
+        <span className="table__dropdown-title">Display</span>
         <select
+          className="table__dropdown"
           value={pageSize}
           onChange={(e) => {
             setPageSize(Number(e.target.value));
           }}
         >
           {PAGE_SIZES.map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
+            <option
+              key={pageSize}
+              value={pageSize}
+              className="table__dropdown-option"
+            >
+              {pageSize}
             </option>
           ))}
         </select>
       </div>
+    );
+  };
+
+  const TablePagination = () => {
+    return (
       <div>
         <button
           className=""
@@ -109,12 +124,14 @@ const TableComponent = ({ className, tableClassName, data, columns }) => {
           {">>"}
         </button>
       </div>
-      <div className="table__search">
-        <TableSearch
-          preGlobalFilteredRows={preGlobalFilteredRows}
-          globalFilter={state.globalFilter}
-          setGlobalFilter={setGlobalFilter}
-        />
+    );
+  };
+
+  return (
+    <div className={cn("table-wrapper", className)}>
+      <div className="table__tools">
+        <TableShowByDropdown />
+        <TableSearch />
       </div>
 
       <table className={cn("table", tableClassName)} {...getTableProps()}>
@@ -131,10 +148,18 @@ const TableComponent = ({ className, tableClassName, data, columns }) => {
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                 >
                   {column.render("Header")}
-                  <span className={cn("table__head-icon")} />
-                  <span className="table__head-icon">
-                    {column.isSorted ? (column.isSortedDesc ? "🔽" : "🔼") : ""}
-                  </span>
+                  {/* sort only by first column */}
+                  {column.isSorted && column.id === columns[0].accessor && (
+                    <span
+                    /*className={cn("table__head-icon", {
+                        "table__head-icon--desc": column.isSortedDesc,
+                      })}*/
+                    >
+                      <span className="table__head-icon">
+                        {column.isSortedDesc ? "🔽" : "🔼"}
+                      </span>
+                    </span>
+                  )}
                 </th>
               ))}
             </tr>
@@ -157,6 +182,9 @@ const TableComponent = ({ className, tableClassName, data, columns }) => {
           })}
         </tbody>
       </table>
+      <div className={cn("table__tools", "table__tools--bottom")}>
+        <TablePagination />
+      </div>
     </div>
   );
 };

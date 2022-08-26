@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import cn from "classnames";
 import { stringTransformToKebabCase } from "../../../helpers/services/string-service";
+import { useWindowSize } from "../../../helpers/hooks/use-window-size";
+import Dropdown from "../dropdown";
 
 const Tabs = ({ classname, tabList = [], activeTabIndex = 0 }) => {
   const [currentTabIndex, setCurrentTabIndex] = useState(activeTabIndex);
+  const [isDropdownOpened, setIsDropdownOpened] = useState(false);
+  const { isTablet } = useWindowSize();
 
   const handleTabClick = (index) => {
     setCurrentTabIndex(index);
@@ -47,19 +51,41 @@ const Tabs = ({ classname, tabList = [], activeTabIndex = 0 }) => {
   return (
     <div className={cn("tabs", classname)} data-tabs="true">
       <div className="tabs__tablist-wrapper">
-        {/*eslint-disable-next-line*/}
-        <ul role="tablist" className="tabs__tablist">
-          {tabList.map(({ title }, tabIndex) => (
-            <Tab
-              key={`${stringTransformToKebabCase(title)}_tab`}
-              tabIndex={tabIndex}
-              isSelected={currentTabIndex === tabIndex}
-              onTabClick={() => handleTabClick(tabIndex)}
-            >
-              {title}
-            </Tab>
-          ))}
-        </ul>
+        {isTablet ? (
+          <Dropdown
+            className="tabs__dropdown"
+            selectedItem={{
+              title: tabList[currentTabIndex].title,
+              value: currentTabIndex,
+            }}
+            items={tabList.map(({ id, title }, tabIndex) => {
+              return {
+                title: title,
+                value: tabIndex,
+              };
+            })}
+            setSelectedItem={({ value }) => {
+              setCurrentTabIndex(value);
+            }}
+            isDropdownShown
+            isOpen={isDropdownOpened}
+            setIsOpen={setIsDropdownOpened}
+          />
+        ) : (
+          // eslint-disable-next-line
+          <ul role="tablist" className="tabs__tablist">
+            {tabList.map(({ title }, tabIndex) => (
+              <Tab
+                key={`${stringTransformToKebabCase(title)}_tab`}
+                tabIndex={tabIndex}
+                isSelected={currentTabIndex === tabIndex}
+                onTabClick={() => handleTabClick(tabIndex)}
+              >
+                {title}
+              </Tab>
+            ))}
+          </ul>
+        )}
       </div>
       <div className="tabs__panels">
         {tabList.map(({ content }, tabIndex) => (

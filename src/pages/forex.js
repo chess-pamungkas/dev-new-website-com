@@ -21,26 +21,32 @@ import promo1 from "../assets/images/promotions/promo1.svg";
 const ForexPage = () => {
   const tabs = [
     {
+      id: 1,
       title: "For Standard Accounts",
       content: <TableComponent data={DATA_FOREX} columns={COLUMNS_FOREX} />,
     },
     {
+      id: 2,
       title: "For Micro Accounts",
       content: <></>,
     },
     {
+      id: 3,
       title: "For Swap Free Standard Accounts",
       content: <></>,
     },
     {
+      id: 4,
       title: "For Swap Free Micro Accounts",
       content: <></>,
     },
     {
+      id: 5,
       title: "For Swap Ultra Low Standard Accounts",
       content: <></>,
     },
     {
+      id: 6,
       title: "For Swap Ultra Low Micro Accounts",
       content: <></>,
     },

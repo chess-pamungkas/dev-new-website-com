@@ -2,14 +2,12 @@
 @import "vars";
 
 .table-wrapper {
-  @include desktop-lg {
-    max-width: 1550px;
-    margin: 0 auto;
-  }
+
 }
 
 .table {
   box-shadow: 4px 3px 15px #00000029;
+  background: map-get($colors, "white");
   border-radius: 15px;
   padding: 20px;
   border-collapse: separate;
@@ -30,15 +28,16 @@
 
     &:first-child {
       color: map-get($colors, "red");
-    }
-
-    @include desktop-lg {
+      border-right: 1px solid map-get($colors, "black");
     }
 
     @include desktop-xl {
       font-size: 18px;
       line-height: 22px;
     }
+  }
+
+  &__head-icon {
   }
 
   &__body-column {
@@ -51,6 +50,22 @@
     // TODO change border color after layout will be updated
     border-bottom: 1px solid #f2f2f2;
     padding: 15px 10px;
+
+    &:first-child {
+      border-right: 1px solid map-get($colors, "black");
+    }
+  }
+
+  &__tools {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 30px;
+
+    &--bottom {
+      padding: 30px 0 0;
+      justify-content: flex-end;
+    }
   }
 
   &__searchbar {
@@ -78,6 +93,25 @@
       &::placeholder {
         color: map-get($colors, "black");
       }
+    }
+  }
+
+  &____dropdown-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__dropdown-title {
+    font-weight: map-get($font-weight, "bold");
+    font-size: 16px;
+    line-height: 20px;
+    color: map-get($colors, "black");
+    text-transform: capitalize;
+    padding-right: 10px;
+
+    @include desktop-lg {
+      font-size: 18px;
+      line-height: 22px;
     }
   }
 }
