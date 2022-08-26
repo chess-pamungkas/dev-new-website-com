@@ -4,16 +4,19 @@ import Header from "../../header";
 import { ClientResolverProvider } from "../../../context/client-resolver-context";
 import { LanguageProvider } from "../../../context/language-context";
 import { MarketingContextProvider } from "../../../context/marketing-context";
+import { CookieProvider } from "../../../context/cookie-context";
 
 const Layout = ({ children }) => (
-  <ClientResolverProvider>
-    <MarketingContextProvider>
-      <LanguageProvider>
-        <Header />
-        {children}
-      </LanguageProvider>
-    </MarketingContextProvider>
-  </ClientResolverProvider>
+  <CookieProvider>
+    <ClientResolverProvider>
+      <MarketingContextProvider>
+        <LanguageProvider>
+          <Header />
+          {children}
+        </LanguageProvider>
+      </MarketingContextProvider>
+    </ClientResolverProvider>
+  </CookieProvider>
 );
 
 export default Layout;

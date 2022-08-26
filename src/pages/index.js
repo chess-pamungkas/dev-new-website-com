@@ -30,6 +30,8 @@ import {
   SPRING_CONFIG_TEXT,
 } from "../helpers/animation.config";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
+import { CookiesPopup } from "../components/cookies-popup";
+import { GDPRPopup } from "../components/gdpr-popup";
 
 const IndexPage = () => {
   const { isTablet } = useWindowSize();
@@ -120,6 +122,8 @@ const IndexPage = () => {
     <Layout>
       <section className="scroll-container">
         <main>
+          <CookiesPopup />
+          <GDPRPopup />
           <Popup />
           <MainPromotion />
           <TradingTicker />
