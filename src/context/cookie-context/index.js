@@ -7,8 +7,8 @@ const CookieContext = createContext({});
 
 export const CookieProvider = ({ children }) => {
   const cookies = new Cookies();
-  const { isShow, handleOpen, handleClose } = useModal();
-  const [isShowGDPRPopup, handleOpenGDPRPopup, handleCloseGDPRPopup] = [isShow, handleOpen, handleClose];
+  const { isShow: isShowCookiePopup, handleOpen: handleOpenCookiePopup, handleClose: handleCloseCookiePopup } = useModal(!(cookies.get(COOKIE_POPUP_SHOWN_KEY) || false), false);
+  const { isShow: isShowGDPRPopup, handleOpen: handleOpenGDPRPopup, handleClose: handleCloseGDPRPopup } = useModal();
   const [cookieConsent, setCookieConsent] = useState(cookies.get(COOKIE_CONSENT_KEY) || {})
 
   const getCookie = (cookieKey) => {
@@ -41,6 +41,9 @@ export const CookieProvider = ({ children }) => {
         isShowGDPRPopup,
         handleCloseGDPRPopup,
         handleOpenGDPRPopup,
+        isShowCookiePopup,
+        handleOpenCookiePopup,
+        handleCloseCookiePopup,
         cookieConsent,
         acceptCookies,
         acceptAllCookies,

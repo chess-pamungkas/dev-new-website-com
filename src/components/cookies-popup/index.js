@@ -1,27 +1,24 @@
 import React, { useContext } from "react";
 import cn from "classnames";
 import CookieContext from "../../context/cookie-context";
-import { useModal } from "../../helpers/hooks/use-modal";
-import { COOKIE_POPUP_SHOWN_KEY } from "../../helpers/gdpr-cookie.config";
 
 export const CookiesPopup = ({ className }) => {
-  const { cookies, handleOpenGDPRPopup, acceptAllCookies, cookieConsent } = useContext(CookieContext)
-  const { isShow, handleOpen, handleClose } = useModal(!(cookies.get(COOKIE_POPUP_SHOWN_KEY) || false), false);
+  const { cookies, handleOpenGDPRPopup, acceptAllCookies, cookieConsent, isShowCookiePopup, handleCloseCookiePopup } = useContext(CookieContext)
 
   console.log(cookieConsent)
 
   const acceptAll = () => {
     acceptAllCookies();
-    handleClose();
+    handleCloseCookiePopup();
   }
 
   const learnMore = () => {
     handleOpenGDPRPopup();
-    handleClose();
+    handleCloseCookiePopup();
   }
 
   return (
-    <div className={cn("cookies-popup", { "cookies-popup--active": isShow }, className)}>
+    <div className={cn("cookies-popup", { "cookies-popup--active": isShowCookiePopup }, className)}>
         <div className="cookies-popup__header"></div>
         <div className="cookies-popup__body">
             By clicking “Accept All”, you agree to store cookies on your device to enhance site navigation and user experience, analyse site usage, and offer a customised experience.
