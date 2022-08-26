@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import cn from "classnames";
 import { AngleDownIcon } from "../icons";
 
@@ -9,9 +9,9 @@ const Accordion = ({
   isOpen,
   onSelect,
   icon: Icon,
+  iconForActive: IconForActive,
 }) => {
   const [isActive, setIsActive] = useState(isOpen);
-  // const Icon = CustomIcon || AngleDownIcon;
 
   const handleClick = (title) => {
     if (onSelect) {
@@ -29,6 +29,14 @@ const Accordion = ({
     }
   }, [isOpen]);
 
+  const getIcon = useCallback(() => {
+    if (isActive) {
+      return IconForActive ? <IconForActive /> : <Icon />;
+    } else {
+      return <Icon />;
+    }
+  }, [isActive]);
+
   return (
     <section
       className={cn("accordion", { "accordion--open": isActive }, className)}
@@ -38,8 +46,8 @@ const Accordion = ({
         className="accordion__title"
         onClick={() => handleClick(title)}
       >
-        {title}
-        {Icon ? <Icon /> : <AngleDownIcon className="accordion__icon" />}
+        <span>{title}</span>
+        {Icon ? getIcon() : <AngleDownIcon className="accordion__icon" />}
       </button>
       {isActive && <div className="accordion__expandable">{children}</div>}
     </section>
