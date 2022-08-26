@@ -32,61 +32,60 @@ ReactGA.initialize(process.env.GATSBY_GA);
 const IndexPage = () => {
   return (
     <CookieProvider>
-    <ClientResolverProvider>
-      <LanguageProvider>
-        <Header />
-        <CookiesPopup />
-        <GDPRPopup />
-        <section className="scroll-container">
-          <main>
-            
-            <Popup />
-            <MainPromotion />
-            <TradingTicker />
-            <TradeWithPromotion />
-            <Promotion
-              className="promotion1"
-              image={promo1}
-              btnTitle="See more"
-              link={REGISTRATION_LINK}
-              isRedPalette
-            >
-              {PROMO_TEXT_1}
-            </Promotion>
-            <Promotion
-              className="promotion2"
-              image={promo2}
-              btnTitle="See more"
-              link={REGISTRATION_LINK}
-              isRedPalette
-            >
-              {PROMO_TEXT_2}
-            </Promotion>
-            <Promotion
-              className="promotion3"
-              image={promo3}
-              btnTitle="See more"
-              link={REGISTRATION_LINK}
-            >
-              {PROMO_TEXT_3}
-            </Promotion>
-            <TradingTools />
-            <Promotion
-              className="promotion4"
-              image={promo4}
-              btnTitle="Start copying"
-              link={REGISTRATION_LINK}
-              isRedPalette
-              isReverseOrder
-            >
-              {PROMO_TEXT_4}
-            </Promotion>
-            <Performance />
-          </main>
-          <Footer />
-        </section>
-      </LanguageProvider>
-    </ClientResolverProvider>
+      <ClientResolverProvider>
+        <LanguageProvider>
+          <Header />
+          <CookiesPopup />
+          <GDPRPopup />
+          <section className="scroll-container">
+            <main>
+              <Popup />
+              <MainPromotion />
+              <TradingTicker />
+              <TradeWithPromotion />
+              <Promotion
+                className="promotion1"
+                image={promo1}
+                btnTitle="See more"
+                link={REGISTRATION_LINK}
+                isRedPalette
+              >
+                {PROMO_TEXT_1}
+              </Promotion>
+              <Promotion
+                className="promotion2"
+                image={promo2}
+                btnTitle="See more"
+                link={REGISTRATION_LINK}
+                isRedPalette
+              >
+                {PROMO_TEXT_2}
+              </Promotion>
+              <Promotion
+                className="promotion3"
+                image={promo3}
+                btnTitle="See more"
+                link={REGISTRATION_LINK}
+              >
+                {PROMO_TEXT_3}
+              </Promotion>
+              <TradingTools />
+              <Promotion
+                className="promotion4"
+                image={promo4}
+                btnTitle="Start copying"
+                link={REGISTRATION_LINK}
+                isRedPalette
+                isReverseOrder
+              >
+                {PROMO_TEXT_4}
+              </Promotion>
+              <Performance />
+            </main>
+            <Footer />
+          </section>
+        </LanguageProvider>
+      </ClientResolverProvider>
     </CookieProvider>
   );
 };
