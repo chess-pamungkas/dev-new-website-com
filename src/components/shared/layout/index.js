@@ -3,17 +3,20 @@ import "../../../assets/styles/index.scss";
 import Header from "../../header";
 import { ClientResolverProvider } from "../../../context/client-resolver-context";
 import { LanguageProvider } from "../../../context/language-context";
+import { MarketingContextProvider } from "../../../context/marketing-context";
+import { CookieProvider } from "../../../context/cookie-context";
 
-const Layout = ({ children, headerRef, setSectionOptions }) => {
-  return (
+const Layout = ({ children }) => (
+  <CookieProvider>
     <ClientResolverProvider>
-      <LanguageProvider>
-        <Header headerRef={headerRef} setSectionOptions={setSectionOptions} />
-
-        {children}
-      </LanguageProvider>
+      <MarketingContextProvider>
+        <LanguageProvider>
+          <Header />
+          {children}
+        </LanguageProvider>
+      </MarketingContextProvider>
     </ClientResolverProvider>
-  );
-};
+  </CookieProvider>
+);
 
 export default Layout;

@@ -52,6 +52,16 @@
   &--ghost {
     border: 2px solid map-get($colors, "white");
     background: transparent;
+
+    &-red {
+      border: 2px solid map-get($colors, "red");
+      transition: all 0.3s;
+
+      &:hover {
+        color: map-get($colors, "white");
+        background-color: map-get($colors, "red");
+      }
+    }
   }
 
   &--blank {

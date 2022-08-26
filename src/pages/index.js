@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import "../assets/styles/index.scss";
 import promo1 from "../assets/images/promotions/promo1.svg";
 import promo2 from "../assets/images/promotions/promo2.svg";
@@ -14,47 +14,124 @@ import {
 } from "../helpers/promo-texts";
 import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
+import Popup from "../components/popup";
 import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import Footer from "../components/footer";
 import Layout from "../components/shared/layout";
+import { useIntersectionObserver } from "../helpers/hooks/use-intersection-observer";
+import { useSpring } from "react-spring";
+import {
+  INTERSECTION_OBSERVER_CONFIG,
+  OPACITY_0,
+  OPACITY_1,
+  SPRING_CONFIG_BG,
+  SPRING_CONFIG_TEXT,
+} from "../helpers/animation.config";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
-import cn from "classnames";
+import { CookiesPopup } from "../components/cookies-popup";
+import { GDPRPopup } from "../components/gdpr-popup";
 
 const IndexPage = () => {
-  const headerRef = useRef();
+  const { isTablet } = useWindowSize();
+  const INTERSECTION_RATIO = isTablet ? 0.4 : 0.7;
+  const promo1Ref = useRef();
+  const promo2Ref = useRef();
+  const promo3Ref = useRef();
+  const promo4Ref = useRef();
 
-  const { width } = useWindowSize();
-  const [sectionOptions, setSectionOptions] = useState(null);
-  const [scrollHeight, setScrollHeight] = useState(null);
+  const dataPromo2Ref = useIntersectionObserver(
+    promo2Ref,
+    INTERSECTION_OBSERVER_CONFIG.promo2
+  );
 
-  useEffect(() => {
-    setScrollHeight(
-      (sectionOptions?.isCysecNotification ||
-        sectionOptions?.isCysecRedirect) &&
-        headerRef?.current?.offsetHeight
-        ? headerRef?.current?.offsetHeight + "px"
-        : null
-    );
-  }, [headerRef, sectionOptions, width]);
+  const dataPromo3Ref = useIntersectionObserver(
+    promo3Ref,
+    INTERSECTION_OBSERVER_CONFIG.promo3
+  );
+
+  const dataPromo4Ref = useIntersectionObserver(
+    promo4Ref,
+    INTERSECTION_OBSERVER_CONFIG.textPromo4
+  );
+
+  const textAnimation = useSpring({
+    ...SPRING_CONFIG_TEXT,
+    from: OPACITY_0,
+    to: dataPromo4Ref?.isIntersecting ? OPACITY_1 : OPACITY_0,
+  });
+
+  const animation1BgRight = useSpring({
+    ...SPRING_CONFIG_BG,
+    ...(dataPromo2Ref?.isIntersecting &&
+    dataPromo2Ref?.intersectionRatio > INTERSECTION_RATIO
+      ? {
+          from: { left: "100%" },
+          to: { left: "0" },
+        }
+      : {
+          from: { left: "0" },
+          to: { left: "100%" },
+        }),
+  });
+
+  const animation2BgLeft = useSpring({
+    ...SPRING_CONFIG_BG,
+    ...(dataPromo2Ref?.isIntersecting &&
+    dataPromo2Ref?.intersectionRatio > INTERSECTION_RATIO
+      ? {
+          from: { left: "0" },
+          to: { left: "-100%" },
+        }
+      : {
+          from: { left: !dataPromo3Ref?.isIntersecting ? "-100%" : "-100%" },
+          to: { left: !dataPromo3Ref?.isIntersecting ? "0" : "-200%" },
+        }),
+  });
+
+  const animation2BgRight = useSpring({
+    ...SPRING_CONFIG_BG,
+    ...(dataPromo3Ref?.isIntersecting &&
+    dataPromo3Ref?.intersectionRatio > INTERSECTION_RATIO
+      ? {
+          from: { left: "100%" },
+          to: { left: "0" },
+        }
+      : {
+          from: { left: "0" },
+          to: { left: "100%" },
+        }),
+  });
+
+  const animation3BgRight = useSpring({
+    ...SPRING_CONFIG_BG,
+    ...(dataPromo3Ref?.isIntersecting &&
+    dataPromo3Ref?.intersectionRatio > INTERSECTION_RATIO
+      ? {
+          from: { left: "0" },
+          to: { left: "-100%" },
+        }
+      : {
+          from: { left: "-100%" },
+          to: { left: "0" },
+        }),
+  });
 
   return (
-    <Layout headerRef={headerRef} setSectionOptions={setSectionOptions}>
-      <section
-        className={cn("scroll-container")}
-        style={{
-          scrollPadding: scrollHeight,
-        }}
-      >
-        <main style={{
-          marginTop: scrollHeight,
-        }}>
+    <Layout>
+      <section className="scroll-container">
+        <main>
+          <CookiesPopup />
+          <GDPRPopup />
+          <Popup />
           <MainPromotion />
           <TradingTicker />
           <TradeWithPromotion />
           <Promotion
             className="promotion1"
+            sectionRef={promo1Ref}
+            animationRight={animation1BgRight}
             image={promo1}
             btnTitle="See more"
             link={REGISTRATION_LINK}
@@ -64,6 +141,9 @@ const IndexPage = () => {
           </Promotion>
           <Promotion
             className="promotion2"
+            sectionRef={promo2Ref}
+            animationRight={animation2BgRight}
+            animationLeft={animation2BgLeft}
             image={promo2}
             btnTitle="See more"
             link={REGISTRATION_LINK}
@@ -73,6 +153,8 @@ const IndexPage = () => {
           </Promotion>
           <Promotion
             className="promotion3"
+            animationRight={animation3BgRight}
+            sectionRef={promo3Ref}
             image={promo3}
             btnTitle="See more"
             link={REGISTRATION_LINK}
@@ -82,6 +164,8 @@ const IndexPage = () => {
           <TradingTools />
           <Promotion
             className="promotion4"
+            textAnimationConfig={textAnimation}
+            sectionRef={promo4Ref}
             image={promo4}
             btnTitle="Start copying"
             link={REGISTRATION_LINK}
@@ -92,7 +176,6 @@ const IndexPage = () => {
           </Promotion>
           <Performance />
         </main>
-
         <Footer />
       </section>
     </Layout>
