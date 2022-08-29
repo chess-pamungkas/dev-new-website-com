@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import {
-  useTable,
-  useSortBy,
-  useFilters,
-  usePagination,
-  useGlobalFilter,
   useAsyncDebounce,
+  useFilters,
+  useGlobalFilter,
+  usePagination,
+  useSortBy,
+  useTable,
 } from "react-table";
 
 import SearchBar from "../../header/components/search-bar";
+import Dropdown from "../dropdown";
 
-const TableComponent = ({ className, tableClassName, data, columns }) => {
+const TableComponent = ({
+  className,
+  tableClassName,
+  data,
+  columns,
+  isPagination,
+  isSearch,
+}) => {
   const PAGE_SIZES = [5, 10, 15];
+  const [isDropdownOpened, setIsDropdownOpened] = useState(false);
 
   const {
     getTableProps,
@@ -28,14 +37,14 @@ const TableComponent = ({ className, tableClassName, data, columns }) => {
     canNextPage,
     pageCount,
     page,
-    pageSize,
     setPageSize,
+    state,
   } = useTable(
     {
       columns,
       data,
       initialState: {
-        pageSize: PAGE_SIZES[0],
+        ...(isPagination ? { pageSize: PAGE_SIZES[0] } : {}),
         sortBy: [
           {
             // default sorting by first column
@@ -73,55 +82,76 @@ const TableComponent = ({ className, tableClassName, data, columns }) => {
 
   const TableShowByDropdown = () => {
     return (
-      <div className="table__dropdown-wrapper">
+      <div className="table__dropdown">
         <span className="table__dropdown-title">Display</span>
-        <select
-          className="table__dropdown"
-          value={pageSize}
-          onChange={(e) => {
-            setPageSize(Number(e.target.value));
+        <Dropdown
+          className="table__dropdown-select"
+          selectedItem={{
+            title: state.pageSize,
+            value: state.pageSize,
           }}
-        >
-          {PAGE_SIZES.map((pageSize) => (
-            <option
-              key={pageSize}
-              value={pageSize}
-              className="table__dropdown-option"
-            >
-              {pageSize}
-            </option>
-          ))}
-        </select>
+          items={PAGE_SIZES.map((item) => {
+            return {
+              title: item,
+              value: item,
+            };
+          })}
+          setSelectedItem={({ value }) => {
+            setPageSize(value);
+          }}
+          isDropdownShown
+          isOpen={isDropdownOpened}
+          setIsOpen={setIsDropdownOpened}
+        />
       </div>
     );
   };
 
   const TablePagination = () => {
     return (
-      <div>
+      <div className="pagination">
         <button
-          className=""
-          onClick={() => gotoPage(0)}
-          disabled={!canPreviousPage}
-        >
-          {"<<"}
-        </button>
-        <button
-          className=""
+          className={cn(
+            "pagination",
+            "pagination__btn",
+            "pagination__btn--arrow",
+            "pagination__btn--left"
+          )}
+          type="button"
           onClick={() => previousPage()}
           disabled={!canPreviousPage}
         >
           {"<"}
         </button>
-        <button className="" onClick={() => nextPage()} disabled={!canNextPage}>
-          {">"}
-        </button>
         <button
-          className=""
+          className={cn("pagination", "pagination__btn")}
+          type="button"
+          onClick={() => gotoPage(0)}
+          disabled={!canPreviousPage}
+        >
+          1
+        </button>
+
+        <button
+          className={cn("pagination", "pagination__btn")}
+          type="button"
           onClick={() => gotoPage(pageCount - 1)}
           disabled={!canNextPage}
         >
-          {">>"}
+          {pageCount}
+        </button>
+        <button
+          className={cn(
+            "pagination",
+            "pagination__btn",
+            "pagination__btn--arrow",
+            "pagination__btn--right"
+          )}
+          type="button"
+          onClick={() => nextPage()}
+          disabled={!canNextPage}
+        >
+          {">"}
         </button>
       </div>
     );
@@ -130,60 +160,64 @@ const TableComponent = ({ className, tableClassName, data, columns }) => {
   return (
     <div className={cn("table-wrapper", className)}>
       <div className="table__tools">
-        <TableShowByDropdown />
-        <TableSearch />
+        {isPagination && <TableShowByDropdown />}
+        {isSearch && <TableSearch />}
       </div>
-
-      <table className={cn("table", tableClassName)} {...getTableProps()}>
-        <thead className="table__head">
-          {headerGroups.map((headerGroup) => (
-            <tr
-              className="table__head-row"
-              {...headerGroup.getHeaderGroupProps()}
-            >
-              {headerGroup.headers.map((column) => (
-                <th
-                  key={`header-${column.render("id")}`}
-                  className="table__head-column"
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                >
-                  {column.render("Header")}
-                  {/* sort only by first column */}
-                  {column.isSorted && column.id === columns[0].accessor && (
-                    <span
-                    /*className={cn("table__head-icon", {
+      <div className="table-scroll">
+        <table className={cn("table", tableClassName)} {...getTableProps()}>
+          <thead className="table__head">
+            {headerGroups.map((headerGroup) => (
+              <tr
+                className="table__head-row"
+                {...headerGroup.getHeaderGroupProps()}
+              >
+                {headerGroup.headers.map((column) => (
+                  <th
+                    key={`header-${column.render("id")}`}
+                    className="table__head-column"
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                  >
+                    {column.render("Header")}
+                    {/* sort only by first column */}
+                    {column.isSorted && column.id === columns[0].accessor && (
+                      <span
+                      /*className={cn("table__head-icon", {
                         "table__head-icon--desc": column.isSortedDesc,
                       })}*/
-                    >
-                      <span className="table__head-icon">
-                        {column.isSortedDesc ? "🔽" : "🔼"}
+                      >
+                        <span className="table__head-icon">
+                          {column.isSortedDesc ? "🔽" : "🔼"}
+                        </span>
                       </span>
-                    </span>
-                  )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody className="table__body" {...getTableBodyProps()}>
-          {page.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()} className="table__body-row">
-                {row.cells.map((cell) => {
-                  return (
-                    <td className="table__body-column" {...cell.getCellProps()}>
-                      {cell.render("Cell")}
-                    </td>
-                  );
-                })}
+                    )}
+                  </th>
+                ))}
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            ))}
+          </thead>
+          <tbody className="table__body" {...getTableBodyProps()}>
+            {page.map((row) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()} className="table__body-row">
+                  {row.cells.map((cell) => {
+                    return (
+                      <td
+                        className="table__body-column"
+                        {...cell.getCellProps()}
+                      >
+                        {cell.render("Cell")}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
       <div className={cn("table__tools", "table__tools--bottom")}>
-        <TablePagination />
+        {isPagination && <TablePagination />}
       </div>
     </div>
   );

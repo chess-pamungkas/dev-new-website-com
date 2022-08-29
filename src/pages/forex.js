@@ -5,25 +5,32 @@ import { REGISTRATION_LINK } from "../helpers/constants";
 import image from "../assets/images/top-markets/forex.svg";
 import {
   FOREX_TEXT,
-  PROMOTION_MARKETS_TEXT
+  PROMOTION_MARKETS_TEXT,
 } from "../helpers/top-market-texts";
 import Footer from "../components/footer";
 import Layout from "../components/shared/layout";
 import Tabs from "../components/shared/tabs";
 import TableComponent from "../components/shared/table";
-import ButtonLink from "../components/shared/button-link";
 import Faq from "../components/faq";
 import { FAQ_FOREX } from "../helpers/faq";
 import { COLUMNS_FOREX, DATA_FOREX } from "../helpers/top-market-tables";
 import PromotionMarkets from "../components/promotion-markets";
 import promo1 from "../assets/images/promotions/promo1.svg";
+import TopMarketLayout from "../components/top-market-layout";
 
 const ForexPage = () => {
   const tabs = [
     {
       id: 1,
       title: "For Standard Accounts",
-      content: <TableComponent data={DATA_FOREX} columns={COLUMNS_FOREX} />,
+      content: (
+        <TableComponent
+          data={DATA_FOREX}
+          columns={COLUMNS_FOREX}
+          isPagination
+          isSearch
+        />
+      ),
     },
     {
       id: 2,
@@ -72,9 +79,14 @@ const ForexPage = () => {
             imageSrc={promo1}
             promoText={PROMOTION_MARKETS_TEXT}
           />
+          <TopMarketLayout
+            title="Forex Trading Spreads / Conditions"
+            btnTitle="Try Oqtima"
+            link={REGISTRATION_LINK}
+          >
+            <Tabs tabList={tabs} />
+          </TopMarketLayout>
 
-          <Tabs tabList={tabs} />
-          <ButtonLink className="button-link--red">Try Oqtima</ButtonLink>
           <Faq faq={FAQ_FOREX} />
         </main>
         <Footer />
