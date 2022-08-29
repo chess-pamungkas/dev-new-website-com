@@ -1,16 +1,17 @@
+@import "vars";
 @import "mixins";
 
 .promotion-markets {
   padding: 135px 0 168px;
 
   @include tablet {
-    padding: 200x 0 148px;
-    background: url("../images/top-markets/globe-bg.svg") no-repeat right;
-    background-size: contain;
+    padding: 200px 0 148px;
+    background: url("../images/top-markets/globe-bg.svg") no-repeat center;
+    background-size: cover;
   }
 
   @include desktop-lg {
-    padding: 232x 0 65px;
+    padding: 232px 0 65px;
   }
 
   &__images {
@@ -70,16 +71,20 @@
   &__title {
     margin: 0 auto 30px;
     text-align: center;
-    font: normal normal 900 34px/42px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 34px;
+    line-height: 42px;
 
     @include tablet {
       max-width: 560px;
-      font: normal normal 900 36px/45px $font;
+      font-size: 36px;
+      line-height: 45px;
     }
 
     @include desktop-lg {
       margin-bottom: 50px;
-      font: normal normal 900 40px/50px $font;
+      font-size: 40px;
+      line-height: 50px;
     }
   }
 
