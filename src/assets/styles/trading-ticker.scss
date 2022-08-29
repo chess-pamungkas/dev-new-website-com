@@ -1,6 +1,6 @@
-@import "../../assets/styles/vars";
-@import "../../assets/styles/mixins";
-@import "../../assets/styles/dropdown";
+@import "vars";
+@import "mixins";
+@import "dropdown";
 
 .trading-ticker-wrapper {
   scroll-snap-align: start;
