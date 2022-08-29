@@ -10,6 +10,8 @@ import PromotionMarkets from "../components/promotion-markets";
 import TopMarketLayout from "../components/top-market-layout";
 import {COLUMNS_CRYPTO, DATA_CRYPTO} from "../helpers/top-market-tables";
 import TableComponent from "../components/shared/table";
+import {FAQ_CRYPTO} from "../helpers/faq";
+import Faq from "../components/faq";
 
 const CryptoPage = () => {
   return (
@@ -40,6 +42,7 @@ const CryptoPage = () => {
           subtitle="When you have nothing to hide"
         />
       </TopMarketLayout>
+      <Faq faq={FAQ_CRYPTO} />
     </Layout>
   );
 };
