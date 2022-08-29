@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import cn from "classnames";
+import "regenerator-runtime"
 import {
   useAsyncDebounce,
   useFilters,
