@@ -1,6 +1,3 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
 const React = require("react");
 
 export const onRenderBody = ({ setPostBodyComponents }) => {
@@ -8,7 +5,7 @@ export const onRenderBody = ({ setPostBodyComponents }) => {
     <script
       defer
       id="convrs-webchat"
-      src={process.env.CONVRS_LIVECHAT}
+      src={process.env.GATSBY_CONVRS_LIVECHAT}
     ></script>,
   ]);
 };
