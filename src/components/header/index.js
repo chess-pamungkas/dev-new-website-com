@@ -56,27 +56,27 @@ const Header = ({ className, setSectionOptions, headerRef }) => {
           )}
         </div>
 
-      <div className="header__right">
-        {isTablet ? (
-          <BurgerMenu />
-        ) : (
-          <>
-            <LangSelect className="lang-select--header" isHeader={true} />
-            <ButtonLink
-              link={REGISTRATION_LINK}
-              className="button-link--header button-link--ghost header__signin"
-            >
-              {t("button-sign-in")}
-            </ButtonLink>
-            <ButtonLink
-              link={REGISTRATION_LINK}
-              className="button-link--header header__start"
-            >
-              {t("button-get-started")}
-            </ButtonLink>
-          </>
-        )}
-      </div>
+        <div className="header__right">
+          {isTablet ? (
+            <BurgerMenu />
+          ) : (
+            <>
+              <LangSelect className="lang-select--header" isHeader={true} />
+              <ButtonLink
+                link={REGISTRATION_LINK}
+                className="button-link--header button-link--ghost header__signin"
+              >
+                {t("button-sign-in")}
+              </ButtonLink>
+              <ButtonLink
+                link={REGISTRATION_LINK}
+                className="button-link--header header__start"
+              >
+                {t("button-get-started")}
+              </ButtonLink>
+            </>
+          )}
+        </div>
 
         {!isTablet && (
           <SearchBar className="header__search" isExpandable={true} />

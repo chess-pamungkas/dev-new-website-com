@@ -2,7 +2,6 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const config = require('gatsby-plugin-config');
 const languages = require('./src/locales/language.config');
 
 module.exports = {

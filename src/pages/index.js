@@ -175,7 +175,6 @@ const IndexPage = () => {
         {PROMO_TEXT_4}
       </Promotion>
       <Performance />
-      <div>{t("page-main-title")}</div>
     </Layout>
   );
 };
