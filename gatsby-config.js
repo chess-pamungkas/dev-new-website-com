@@ -1,4 +1,4 @@
-require('dotenv').config({
+require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
@@ -32,8 +32,15 @@ module.exports = {
       options: {
         trackingIds: [process.env.GATSBY_GA],
         gtagConfig: {
-          anonymize_ip: true,
+          anonymize_ip: false,
         },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: process.env.GATSBY_GOOGLE_TAG_MANAGER,
+        defaultDataLayer: { platform: "gatsby" },
       },
     },
   ],
