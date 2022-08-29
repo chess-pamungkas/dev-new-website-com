@@ -1,4 +1,6 @@
 import React from "react";
+import { graphql } from "gatsby";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import TopMarket from "../components/top-market";
 import {REGISTRATION_LINK} from "../helpers/constants";
@@ -12,10 +14,14 @@ import {COLUMNS_CRYPTO, DATA_CRYPTO} from "../helpers/top-market-tables";
 import TableComponent from "../components/shared/table";
 import {FAQ_CRYPTO} from "../helpers/faq";
 import Faq from "../components/faq";
+import Seo from "../components/shared/seo";
 
 const CryptoPage = () => {
+  const { t } = useTranslation();
+
   return (
     <Layout>
+      <Seo title={t("page-crypto-title")} />
       <TopMarket
         title="You can now trade more than xxx crypto pairs!"
         image={image}
@@ -49,4 +55,16 @@ const CryptoPage = () => {
 
 export default CryptoPage;
 
-export const Head = () => <title>Oqtima Crypto</title>;
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: {language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
