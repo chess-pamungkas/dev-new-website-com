@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import MenuColumn from "../menu-column";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import {
@@ -10,6 +11,7 @@ import ClientResolverContext from "../../../../context/client-resolver-context";
 import entities from "../../../../enums/entities";
 
 const Menu = ({ className }) => {
+  const { t } = useTranslation();
   const { currentEntity } = useContext(ClientResolverContext);
   const [menu, setMenu] = useState([]);
 
@@ -27,7 +29,7 @@ const Menu = ({ className }) => {
             key={`footer-menu-${stringTransformToKebabCase(item.title)}`}
             className="menu__wrapper"
           >
-            <h4 className="menu__column-title">{item.title}</h4>
+            <h4 className="menu__column-title">{t(item.title)}</h4>
             <MenuColumn items={item.subItems} />
           </div>
         ))}

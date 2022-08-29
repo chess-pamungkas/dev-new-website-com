@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
 import ButtonLink from "../shared/button-link";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import TitlesAnimation from "../shared/titles-animation";
@@ -12,7 +11,6 @@ import {
 import { transformParamToKey } from "../../helpers/services/marketing-service";
 
 const MainPromotion = ({ className }) => {
-  const { t } = useTranslation();
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
   const {content, sect1} = useContext(MarketingContext);

@@ -5,11 +5,12 @@ import { useOnClickOutside } from "../../../../helpers/hooks/use-on-click-outsid
 import { SearchIcon } from "../../../shared/icons";
 
 const SearchBar = ({ className, isExpandable = false }) => {
+  const { t } = useTranslation();
+
   const [isActive, setIsActive] = useState(false);
 
   const searchInput = useRef();
   const searchBarRef = useRef();
-  const { t } = useTranslation();
 
   const onBarExpand = () => {
     setIsActive(true);

@@ -52,6 +52,7 @@ module.exports = {
         localeJsonSourceName: "locale", // name given to "gatsby-source-filesystem" plugin.
         languages: languages.list,
         defaultLanguage: languages.defaultLangKey,
+        fallbackLanguage: languages.defaultLangKey,
         i18nextOptions: {
           keySeparator: false,
           nsSeparator: false
