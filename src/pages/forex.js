@@ -28,6 +28,7 @@ const ForexPage = () => {
           columns={COLUMNS_FOREX}
           isPagination
           isSearch
+          isSorting
         />
       ),
     },

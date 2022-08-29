@@ -3,9 +3,6 @@
 
 .tabs {
   width: 100%;
-  box-shadow: 0 3px 6px #00000029;
-  border: 1px solid map-get($colors, "red");
-  border-radius: 9px;
 
   &__tablist-wrapper {
     display: flex;
@@ -19,7 +16,6 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     justify-items: center;
-    align-items: center;
   }
 
   &__dropdown {
