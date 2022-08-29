@@ -92,6 +92,16 @@
   "search-placeholder": "Search...",
   "search-submit-btn": "Go",
 
-  "lang-select-popup-title": "Select Your Language"
+  "lang-select-popup-title": "Select Your Language",
+
+  "page-main-title": "Oqtima trading page",
+  "page-allmarkets-title": "Oqtima All Markets",
+  "page-commodities-title": "Oqtima Commodities",
+  "page-crypto-title": "Oqtima Crypto",
+  "page-energies-title": "Oqtima Energies",
+  "page-forex-title": "Oqtima Forex",
+  "page-indices-title": "Oqtima Indices",
+  "page-search-title": "Oqtima Search",
+  "page-shares-title": "Oqtima Shares"
 
 }

@@ -1,14 +1,20 @@
 import React from "react";
+import { graphql } from "gatsby";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import TopMarket from "../components/top-market";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import image from "../assets/images/top-markets/cripto.svg";
 import { ALL_MARKET_TEXT } from "../helpers/top-market-texts";
 import Layout from "../components/shared/layout";
+import Seo from "../components/shared/seo";
 
 const AllMarketsPage = () => {
+  const { t } = useTranslation();
+
   return (
     <Layout>
+      <Seo title={t("page-allmarkets-title")} />
       <TopMarket
         title="All market overview"
         image={image}
@@ -25,4 +31,16 @@ const AllMarketsPage = () => {
 
 export default AllMarketsPage;
 
-export const Head = () => <title>Oqtima All Markets</title>;
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: {language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
