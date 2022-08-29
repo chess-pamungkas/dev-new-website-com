@@ -1,24 +1,19 @@
 import React from "react";
 import cn from "classnames";
+import Lottie from "lottie-react";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import ButtonLink from "../shared/button-link";
 
-const PromotionMarkets = ({ className, imageSrc, promoText }) => {
+const PromotionMarkets = ({ className, animation, promoText }) => {
   return (
     <section className={cn("promotion-markets", className)}>
       <div className="promotion-markets__images">
-        <div className="promotion-markets__chart"></div>
-        <img
-          src={imageSrc}
-          alt=""
-          className="promotion-markets__icon"
-        />
-      </div>      
-      
+        <div className="promotion-markets__chart" />
+        <Lottie animationData={animation} />
+      </div>
+
       <div className="promotion-markets__content">
-        <h2 className="promotion-markets__title">
-          {promoText}
-        </h2>
+        <h2 className="promotion-markets__title">{promoText}</h2>
 
         <ButtonLink
           link={REGISTRATION_LINK}

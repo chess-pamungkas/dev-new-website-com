@@ -126,13 +126,24 @@ export const ALL_MARKET_TEXT = (
   </>
 );
 
-export const PROMOTION_MARKETS_TEXT = (
+export const PROMOTION_TEXT_FOREX = (
   <>
     <span className="highlighted-in-black">7&nbsp;</span>
     <span className="highlighted-in-red">Major Pairs</span>
-    <span className="highlighted-in-black">, 21&nbsp;</span>
+    <span className="highlighted-in-black">,&nbsp;21&nbsp;</span>
     <span className="highlighted-in-red">Minors</span>
-    <span className="highlighted-in-black">, 62&nbsp;</span>
+    <span className="highlighted-in-black">,&nbsp;62&nbsp;</span>
+    <span className="highlighted-in-red">Exotic</span>
+  </>
+);
+
+export const PROMOTION_TEXT_CRYPTO = (
+  <>
+    <span className="highlighted-in-black">7&nbsp;</span>
+    <span className="highlighted-in-red">Major Pairs</span>
+    <span className="highlighted-in-black">,&nbsp;21&nbsp;</span>
+    <span className="highlighted-in-red">Minors</span>
+    <span className="highlighted-in-black">,&nbsp;62&nbsp;</span>
     <span className="highlighted-in-red">Exotic</span>
   </>
 );

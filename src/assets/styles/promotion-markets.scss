@@ -43,31 +43,6 @@
     }
   }
 
-  &__icon {
-    width: 100%;
-    max-width: 275px;
-    height: auto;
-    padding: 0 15px;
-    position: relative;
-    z-index: 1;
-    display: block;
-    margin: 0 auto;
-    opacity: 0.8;
-
-    @include tablet {
-      max-width: 380px;
-      padding: 0;
-    }
-
-    @include desktop-lg {
-      max-width: 310px;
-    }
-  }
-
-  &__content {
-    @include content-alignment;
-  }
-
   &__title {
     margin: 0 auto 30px;
     text-align: center;

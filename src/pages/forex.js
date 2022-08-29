@@ -3,10 +3,7 @@ import "../assets/styles/index.scss";
 import TopMarket from "../components/top-market";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import image from "../assets/images/top-markets/forex.svg";
-import {
-  FOREX_TEXT,
-  PROMOTION_MARKETS_TEXT,
-} from "../helpers/top-market-texts";
+import { FOREX_TEXT, PROMOTION_TEXT_FOREX } from "../helpers/top-market-texts";
 import Layout from "../components/shared/layout";
 import Tabs from "../components/shared/tabs";
 import TableComponent from "../components/shared/table";
@@ -14,10 +11,13 @@ import Faq from "../components/faq";
 import { FAQ_FOREX } from "../helpers/faq";
 import { COLUMNS_FOREX, DATA_FOREX } from "../helpers/top-market-tables";
 import PromotionMarkets from "../components/promotion-markets";
-import promo1 from "../assets/images/promotions/promo1.svg";
+import animation from "../assets/images/animations/forex.json";
 import TopMarketLayout from "../components/top-market-layout";
+import { useWindowSize } from "../helpers/hooks/use-window-size";
 
 const ForexPage = () => {
+  const { isMobile } = useWindowSize();
+
   const tabs = [
     {
       id: 1,
@@ -72,9 +72,9 @@ const ForexPage = () => {
       </TopMarket>
 
       <PromotionMarkets
-        // TODO: promo1 is an example, provide valid image src
-        imageSrc={promo1}
-        promoText={PROMOTION_MARKETS_TEXT}
+        // TODO replace with responsive images
+        animation={isMobile ? animation : animation}
+        promoText={PROMOTION_TEXT_FOREX}
       />
       <TopMarketLayout
         title="Forex Trading Spreads / Conditions"
