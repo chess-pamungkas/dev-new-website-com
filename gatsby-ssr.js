@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 const React = require("react");
 
 export const onRenderBody = ({ setPostBodyComponents }) => {
