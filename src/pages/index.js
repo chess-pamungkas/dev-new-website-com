@@ -33,12 +33,11 @@ import {
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import { CookiesPopup } from "../components/cookies-popup";
 import { GDPRPopup } from "../components/gdpr-popup";
-import { I18nextContext, useTranslation } from "gatsby-plugin-react-i18next";
+// import { I18nextContext, useTranslation } from "gatsby-plugin-react-i18next";
 
 const IndexPage = () => {
-  const { t } = useTranslation();
-  const context = React.useContext(I18nextContext);
-  console.log(context)
+  // const { t } = useTranslation();
+  // const context = React.useContext(I18nextContext);
 
   const { isTablet } = useWindowSize();
   const INTERSECTION_RATIO = isTablet ? 0.4 : 0.7;
@@ -128,7 +127,6 @@ const IndexPage = () => {
     <Layout>
       <section className="scroll-container">
         <main>
-          <div>{t('hello')}</div>
           <CookiesPopup />
           <GDPRPopup />
           <Popup />

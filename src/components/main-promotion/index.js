@@ -37,8 +37,7 @@ const MainPromotion = ({ className }) => {
         <div className="main-promotion__block">
           <h1 className="main-promotion__title-wrapper">
             <span className="main-promotion__title">
-              {/* A Perfectly optimised trading experience for */}
-              {t('example')}
+              A Perfectly optimised trading experience for
             </span>
             <span className="main-promotion__title main-promotion__title--big">
               <TitlesAnimation

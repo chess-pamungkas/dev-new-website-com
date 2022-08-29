@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { Link } from "gatsby";
 import { BURGER_MENU_LINES_COUNT } from "../../../../helpers/constants";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
@@ -17,6 +18,7 @@ import ClientResolverContext from "../../../../context/client-resolver-context";
 import entities from "../../../../enums/entities";
 
 const BurgerMenu = ({ className }) => {
+  const { t } = useTranslation();
   const { isMobile } = useWindowSize();
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -86,7 +88,7 @@ const BurgerMenu = ({ className }) => {
                     link={REGISTRATION_LINK}
                     className="button-link--header burger-menu__start"
                   >
-                    Get Started
+                    {t("button-get-started")}
                   </ButtonLink>
                   <LangSelect className="burger-menu__lang-select-tablet" />
                 </>
@@ -101,7 +103,7 @@ const BurgerMenu = ({ className }) => {
               link={REGISTRATION_LINK}
               className="button-link--blank burger-menu__signin"
             >
-              Sign In
+              {t("button-sign-in")}
             </ButtonLink>
 
             {isMobile && (
@@ -109,7 +111,7 @@ const BurgerMenu = ({ className }) => {
                 link={REGISTRATION_LINK}
                 className="button-link--blank burger-menu__start--tablet"
               >
-                Get Started
+                {t("button-get-started")}
               </ButtonLink>
             )}
           </li>
@@ -141,7 +143,7 @@ const BurgerMenu = ({ className }) => {
                               className="burger-menu__link-item"
                             >
                               <Link className="burger-menu__link" to={link}>
-                                {title}
+                                {t(title)}
                               </Link>
 
                               {isSubtitle && !!subtitles.length && (
@@ -157,7 +159,7 @@ const BurgerMenu = ({ className }) => {
                                         className="burger-menu__link"
                                         to={subtitle.link}
                                       >
-                                        {subtitle.title}
+                                        {t(subtitle.title)}
                                       </Link>
                                     </li>
                                   ))}
