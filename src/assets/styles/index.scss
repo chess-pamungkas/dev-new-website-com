@@ -25,6 +25,9 @@
 @import "popup";
 @import "lang-options";
 @import "search-page";
+@import "cookies-popup";
+@import "gdpr-popup";
+@import "notification-stripe";
 @import "promotion-markets";
 
 *,
@@ -105,4 +108,3 @@ a {
     display: none;
   }
 }
-

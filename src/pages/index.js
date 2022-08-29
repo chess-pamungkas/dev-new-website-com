@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../assets/styles/index.scss";
 import promo1 from "../assets/images/promotions/promo1.svg";
 import promo2 from "../assets/images/promotions/promo2.svg";
@@ -14,7 +14,6 @@ import {
 } from "../helpers/promo-texts";
 import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
-import Popup from "../components/popup";
 import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
 import { REGISTRATION_LINK } from "../helpers/constants";
@@ -30,8 +29,26 @@ import {
   SPRING_CONFIG_TEXT,
 } from "../helpers/animation.config";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
+import { CookiesPopup } from "../components/cookies-popup";
+import { GDPRPopup } from "../components/gdpr-popup";
 
 const IndexPage = () => {
+  const headerRef = useRef();
+
+  const { width } = useWindowSize();
+  const [sectionOptions, setSectionOptions] = useState(null);
+  const [scrollHeight, setScrollHeight] = useState(null);
+
+  useEffect(() => {
+    setScrollHeight(
+      (sectionOptions?.isCysecNotification ||
+        sectionOptions?.isCysecRedirect) &&
+        headerRef?.current?.offsetHeight
+        ? headerRef?.current?.offsetHeight + "px"
+        : null
+    );
+  }, [headerRef, sectionOptions, width]);
+
   const { isTablet } = useWindowSize();
   const INTERSECTION_RATIO = isTablet ? 0.4 : 0.7;
   const promo1Ref = useRef();
@@ -117,10 +134,20 @@ const IndexPage = () => {
   });
 
   return (
-    <Layout>
-      <section className="scroll-container">
-        <main>
-          <Popup />
+    <Layout headerRef={headerRef} setSectionOptions={setSectionOptions}>
+      <section
+        className="scroll-container"
+        style={{
+          scrollPadding: scrollHeight,
+        }}
+      >
+        <main
+          style={{
+            marginTop: scrollHeight,
+          }}
+        >
+          <CookiesPopup />
+          <GDPRPopup />
           <MainPromotion />
           <TradingTicker />
           <TradeWithPromotion />

@@ -4,6 +4,7 @@
 .trade-with-promotion {
   scroll-snap-align: start;
   position: relative;
+  overflow: hidden;
   background: url("../../assets/images/bg/trade-with.svg") no-repeat center;
   background-size: cover;
   padding-top: 230px;
@@ -21,6 +22,7 @@
   }
 
   &__wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
