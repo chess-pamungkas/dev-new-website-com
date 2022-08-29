@@ -146,3 +146,17 @@ export const ADVANTAGE_TEXTS = {
     </>
   ),
 };
+
+export const PROMO_TEXT_FOREX = (
+  <>
+    <span className="highlighted-in-black">
+      Take advantage of global macroeconomics changes with&nbsp;
+    </span>
+    <span className="highlighted-in-red">90 currency pairs</span>
+    <span className="highlighted-in-black">
+      &nbsp;at your disposal and leverage up to&nbsp;
+    </span>
+    <span className="highlighted-in-red">500</span>
+    <span className="highlighted-in-black">.</span>
+  </>
+);

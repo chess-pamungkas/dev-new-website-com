@@ -14,6 +14,9 @@ import PromotionMarkets from "../components/promotion-markets";
 import animation from "../assets/images/animations/forex.json";
 import TopMarketLayout from "../components/top-market-layout";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
+import forex from "../assets/images/promotions/promo1.svg";
+import { PROMO_TEXT_FOREX } from "../helpers/promo-texts";
+import TopMarketPromotion from "../components/top-market-promotion";
 
 const ForexPage = () => {
   const { isMobile } = useWindowSize();
@@ -71,7 +74,15 @@ const ForexPage = () => {
       >
         {FOREX_TEXT}
       </TopMarket>
-
+      <TopMarketPromotion
+        className="forex-promotion"
+        // TODO replace with a real image
+        image={forex}
+        btnTitle="Start trading forex CFD"
+        link={REGISTRATION_LINK}
+      >
+        {PROMO_TEXT_FOREX}
+      </TopMarketPromotion>
       <PromotionMarkets
         // TODO replace with responsive images
         animation={isMobile ? animation : animation}
