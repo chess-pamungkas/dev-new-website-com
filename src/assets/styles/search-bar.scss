@@ -8,7 +8,7 @@
   overflow: hidden;
   background-color: map-get($colors, 'red');
   color: map-get($colors, 'white');
-  box-shadow: 0px 5px 10px #0000001A;
+  box-shadow: 0 5px 10px #0000001A;
   border: 2px solid #E03C00;
   border-radius: 25px;
 
@@ -62,12 +62,12 @@
     border: none;
     outline: none;
     color: map-get($colors, 'white');
-    font: normal normal bold 16px/20px $font;
+    font: normal normal map-get($font-weight, "bold") 16px/20px $font;
     transition: width 0.3s;
 
     &::placeholder {
       color: map-get($colors, 'white');
-      font: normal normal bold 14px/18px $font;
+      font: normal normal map-get($font-weight, "bold") 14px/18px $font;
     }
 
     &--expandable {
@@ -86,7 +86,7 @@
     border-radius: 23px;
     cursor: pointer;
     outline: none;
-    font: normal normal 900 16px/20px $font;
+    font: normal normal map-get($font-weight, "black") 16px/20px $font;
     text-transform: uppercase;
     transition: all 0.3s;
 
@@ -130,7 +130,7 @@
     @include desktop-xl {
       width: 720px;
     }
-    
+
     & .search-bar__submit {
       border: 2px solid map-get($colors, 'red');
     }

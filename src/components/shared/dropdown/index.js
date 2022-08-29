@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
 
-const TradingSectionDropdown = ({
+const Dropdown = ({
   className,
   items,
   selectedItem,
@@ -19,10 +19,12 @@ const TradingSectionDropdown = ({
     return items.map((item) => {
       return (
         <button
-          key={`TradingSectionDropdownItem${item.value}`}
+          key={`dropdown-item-${item.value}`}
           type="button"
           className={cn("dropdown__item", {
-            "dropdown__item--active": selectedItem.id === item.value,
+            // TODO refactor this to avoid id prop here
+            "dropdown__item--active":
+              (selectedItem.id || selectedItem.value) === item.value,
           })}
           onClick={() => onSelectionByClick(item)}
         >
@@ -56,4 +58,4 @@ const TradingSectionDropdown = ({
   );
 };
 
-export default TradingSectionDropdown;
+export default Dropdown;

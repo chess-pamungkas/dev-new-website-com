@@ -1,4 +1,5 @@
 @import "vars";
+@import "mixins";
 
 .burger-menu {
   &__cbox {
@@ -11,6 +12,7 @@
       & ~ .burger-menu__navbar {
         visibility: visible;
         opacity: 1;
+        z-index: 2;
       }
     }
   }
@@ -156,8 +158,8 @@
     }
   }
 
-  &__accordeon {
-    & .accordeon__title {
+  &__accordion {
+    & .accordion__title {
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -170,7 +172,7 @@
       }
     }
 
-    & .accordeon__expandable {
+    & .accordion__expandable {
       margin-top: 12px;
 
       @include tablet {

@@ -28,37 +28,37 @@ const CYSEC_TOP_MARKETS_TAB = {
   subItems: [
     {
       title: "header-nav-tab-top-markets-indices-title",
-      link: "",
+      link: "/indices",
       icon: IndicesIcon,
       description: "header-nav-tab-top-markets-indices-desc",
     },
     {
       title: "header-nav-tab-top-markets-forex-title",
-      link: "",
+      link: "/forex",
       icon: ForexIcon,
       description: "header-nav-tab-top-markets-forex-desc",
     },
     {
       title: "header-nav-tab-top-markets-commodities-title",
-      link: "",
+      link: "/commodities",
       icon: CommoditiesIcon,
       description: "header-nav-tab-top-markets-commodities-desc",
     },
     {
       title: "header-nav-tab-top-markets-shares-title",
-      link: "",
+      link: "/shares",
       icon: SharesIcon,
       description: "header-nav-tab-top-markets-shares-desc",
     },
     {
       title: "header-nav-tab-top-markets-energies-title",
-      link: "",
+      link: "/energies",
       icon: EnergiesIcon,
       description: "header-nav-tab-top-markets-energies-desc",
     },
     {
       title: "header-nav-tab-top-markets-allmarkets-title",
-      link: "",
+      link: "/all-markets",
       icon: AllMarketsOverviewIcon,
       description: "header-nav-tab-top-markets-allmarkets-desc",
     },
@@ -70,7 +70,7 @@ const FSA_TOP_MARKETS_TAB = {
   subItems: [
     {
       title: "header-nav-tab-top-markets-crypto-title",
-      link: "",
+      link: "/crypto",
       icon: CryptoIcon,
       description: "header-nav-tab-top-markets-crypto-desc",
     },

@@ -1,0 +1,66 @@
+@import "mixins";
+@import "vars";
+
+.top-market-layout {
+  scroll-snap-align: start;
+  position: relative;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 55px;
+  padding-bottom: 50px;
+  @include content-alignment(0);
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  &__content {
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+    border: 1px solid map-get($colors, "red");
+    border-radius: 9px;
+  }
+
+  &__title {
+    margin: 0 0 20px;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: map-get($font-weight, "black");
+    color: map-get($colors, "red");
+    text-align: center;
+
+    @include tablet {
+      margin: 0 0 30px;
+      font-size: 36px;
+      line-height: 45px;
+    }
+
+    @include desktop-lg {
+      text-align: left;
+      font-size: 40px;
+      line-height: 50px;
+    }
+
+    @include desktop-xl {
+      margin: 0 0 40px;
+      font-size: 42px;
+      line-height: 53px;
+    }
+  }
+
+  &__btn {
+    margin: 30px auto 0;
+
+    @include tablet {
+      margin: 40px auto 0;
+    }
+
+    @include desktop-xl {
+      margin: 65px auto 0;
+    }
+  }
+}

@@ -15,11 +15,9 @@ import {
 } from "../helpers/promo-texts";
 import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
-import Popup from "../components/popup";
 import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
 import { REGISTRATION_LINK } from "../helpers/constants";
-import Footer from "../components/footer";
 import Layout from "../components/shared/layout";
 import { useIntersectionObserver } from "../helpers/hooks/use-intersection-observer";
 import { useSpring } from "react-spring";
@@ -125,64 +123,58 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <section className="scroll-container">
-        <main>
-          <CookiesPopup />
-          <GDPRPopup />
-          <Popup />
-          <MainPromotion />
-          <TradingTicker />
-          <TradeWithPromotion />
-          <Promotion
-            className="promotion1"
-            sectionRef={promo1Ref}
-            animationRight={animation1BgRight}
-            image={promo1}
-            btnTitle="See more"
-            link={REGISTRATION_LINK}
-            isRedPalette
-          >
-            {PROMO_TEXT_1}
-          </Promotion>
-          <Promotion
-            className="promotion2"
-            sectionRef={promo2Ref}
-            animationRight={animation2BgRight}
-            animationLeft={animation2BgLeft}
-            image={promo2}
-            btnTitle="See more"
-            link={REGISTRATION_LINK}
-            isRedPalette
-          >
-            {PROMO_TEXT_2}
-          </Promotion>
-          <Promotion
-            className="promotion3"
-            animationRight={animation3BgRight}
-            sectionRef={promo3Ref}
-            image={promo3}
-            btnTitle="See more"
-            link={REGISTRATION_LINK}
-          >
-            {PROMO_TEXT_3}
-          </Promotion>
-          <TradingTools />
-          <Promotion
-            className="promotion4"
-            textAnimationConfig={textAnimation}
-            sectionRef={promo4Ref}
-            image={promo4}
-            btnTitle="Start copying"
-            link={REGISTRATION_LINK}
-            isRedPalette
-            isReverseOrder
-          >
-            {PROMO_TEXT_4}
-          </Promotion>
-          <Performance />
-        </main>
-        <Footer />
-      </section>
+      <CookiesPopup />
+      <GDPRPopup />
+      <MainPromotion />
+      <TradingTicker />
+      <TradeWithPromotion />
+      <Promotion
+        className="promotion1"
+        sectionRef={promo1Ref}
+        animationRight={animation1BgRight}
+        image={promo1}
+        btnTitle="See more"
+        link={REGISTRATION_LINK}
+        isRedPalette
+      >
+        {PROMO_TEXT_1}
+      </Promotion>
+      <Promotion
+        className="promotion2"
+        sectionRef={promo2Ref}
+        animationRight={animation2BgRight}
+        animationLeft={animation2BgLeft}
+        image={promo2}
+        btnTitle="See more"
+        link={REGISTRATION_LINK}
+        isRedPalette
+      >
+        {PROMO_TEXT_2}
+      </Promotion>
+      <Promotion
+        className="promotion3"
+        animationRight={animation3BgRight}
+        sectionRef={promo3Ref}
+        image={promo3}
+        btnTitle="See more"
+        link={REGISTRATION_LINK}
+      >
+        {PROMO_TEXT_3}
+      </Promotion>
+      <TradingTools />
+      <Promotion
+        className="promotion4"
+        textAnimationConfig={textAnimation}
+        sectionRef={promo4Ref}
+        image={promo4}
+        btnTitle="Start copying"
+        link={REGISTRATION_LINK}
+        isRedPalette
+        isReverseOrder
+      >
+        {PROMO_TEXT_4}
+      </Promotion>
+      <Performance />
     </Layout>
   );
 };

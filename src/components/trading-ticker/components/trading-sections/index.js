@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TradingSectionTitle from "../trading-section-title";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
-import TradingSectionDropdown from "../trading-section-dropdown";
+import Dropdown from "../../../shared/dropdown";
 import cn from "classnames";
 
 export const TRADING_SECTIONS = [
@@ -55,7 +55,7 @@ const TradingSections = ({
     <div className={cn("trading-sections-wrapper", className)}>
       <div className="trading-sections">
         {isMobile ? (
-          <TradingSectionDropdown
+          <Dropdown
             selectedItem={selectedSection}
             items={TRADING_SECTIONS.map((item) => {
               return {

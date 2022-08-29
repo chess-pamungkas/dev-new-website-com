@@ -3,7 +3,7 @@ import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { LogoTextMain, Logo } from "../shared/icons";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
-import { WINDOW_SIZE_XL } from "../../helpers/constants";
+import { HOME_PAGE_LINK, WINDOW_SIZE_XL } from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import NavbarItem from "./components/navbar-item";
@@ -14,8 +14,10 @@ import SearchBar from "./components/search-bar";
 import { CYSEC_MENU_ITEMS, FSA_MENU_ITEMS } from "../../helpers/menu.config";
 import ClientResolverContext from "../../context/client-resolver-context";
 import entities from "../../enums/entities";
+import NotificationStripe from "../shared/notification-stripe";
+import { Link } from "../../../.cache/gatsby-browser-entry";
 
-const Header = ({ className }) => {
+const Header = ({ className, setSectionOptions, headerRef }) => {
   const { t } = useTranslation();
   const { width, isTablet } = useWindowSize();
   const [menu, setMenu] = useState([]);
@@ -30,23 +32,29 @@ const Header = ({ className }) => {
   }, [currentEntity]);
 
   return (
-    <header className={cn("header", { "header--small": isNarrow }, className)}>
-      <div className="header__left">
-        {isNarrow ? <Logo className="header__logo" /> : <LogoTextMain />}
+    <div className={cn("header-wrapper", className)} ref={headerRef}>
+      <NotificationStripe setSectionOptions={setSectionOptions} />
+      <header
+        className={cn("header", { "header--small": isNarrow }, className)}
+      >
+        <div className="header__left">
+            <Link to={HOME_PAGE_LINK}>
+                {isNarrow ? <Logo className="header__logo" /> : <LogoTextMain />}
+            </Link>
 
-        {!isTablet && (
-          <ul className="header__navigation">
-            {menu.map(({ title, subItems, isNested = false }) => (
-              <NavbarItem
-                key={`header-menu-${stringTransformToKebabCase(title)}`}
-                title={title}
-                subItems={subItems}
-                isNested={isNested}
-              />
-            ))}
-          </ul>
-        )}
-      </div>
+          {!isTablet && (
+            <ul className="header__navigation">
+              {menu.map(({ title, subItems, isNested = false }) => (
+                <NavbarItem
+                  key={`header-menu-${stringTransformToKebabCase(title)}`}
+                  title={title}
+                  subItems={subItems}
+                  isNested={isNested}
+                />
+              ))}
+            </ul>
+          )}
+        </div>
 
       <div className="header__right">
         {isTablet ? (
@@ -70,10 +78,11 @@ const Header = ({ className }) => {
         )}
       </div>
 
-      {!isTablet && (
-        <SearchBar className="header__search" isExpandable={true} />
-      )}
-    </header>
+        {!isTablet && (
+          <SearchBar className="header__search" isExpandable={true} />
+        )}
+      </header>
+    </div>
   );
 };
 
