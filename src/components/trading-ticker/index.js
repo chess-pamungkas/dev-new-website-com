@@ -4,8 +4,6 @@ import TradingSections, { TRADING_SECTIONS } from './components/trading-sections
 import TradingSymbols from './components/trading-symbols';
 import cn from "classnames";
 
-import './styles.scss';
-
 // TO DO remove after provided API
 const TRADING_SYMBOLS = [
   {

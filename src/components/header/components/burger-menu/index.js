@@ -8,7 +8,7 @@ import { REGISTRATION_LINK } from "../../../../helpers/constants";
 import ButtonLink from "../../../shared/button-link";
 import LangSelect from "../lang-select";
 import SearchBar from "../search-bar";
-import Accordeon from "../../../shared/accordion";
+import Accordion from "../../../shared/accordion";
 import {
   CYSEC_MENU_ITEMS,
   FSA_MENU_ITEMS,
@@ -118,9 +118,9 @@ const BurgerMenu = ({ className }) => {
             <ul className="burger-menu__navigation">
               {menu.map(({ title, subItems }) => (
                 <li key={title} className="burger-menu__navigation-item">
-                  <Accordeon
+                  <Accordion
                     key={`burger-menu-${stringTransformToKebabCase(title)}`}
-                    className="burger-menu__accordeon"
+                    className="burger-menu__accordion"
                     title={title}
                     onSelect={onSelect}
                     isOpen={selectedNavItem === title}
@@ -168,7 +168,7 @@ const BurgerMenu = ({ className }) => {
                         )}
                       </ul>
                     )}
-                  </Accordeon>
+                  </Accordion>
                 </li>
               ))}
             </ul>

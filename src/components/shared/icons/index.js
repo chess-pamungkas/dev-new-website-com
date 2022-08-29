@@ -1059,3 +1059,30 @@ export const AffiliatePartnershipIcon = ({ className }) => (
     </g>
   </svg>
 );
+
+export const AccordionIcon = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" className={className}>
+      <g id="Group_2263" data-name="Group 2263" transform="translate(-682)">
+        <g id="Ellipse_122" data-name="Ellipse 122" transform="translate(682)" fill="#fff" stroke="#f40" strokeWidth="2">
+          <circle cx="17.5" cy="17.5" r="17.5" stroke="none"/>
+          <circle cx="17.5" cy="17.5" r="16.5" fill="none"/>
+        </g>
+        <path id="Path_6191" data-name="Path 6191" d="M693.667,17.5h12.666" fill="none" stroke="#f40" strokeWidth="2"/>
+        <path id="Path_6197" data-name="Path 6197" d="M693.667,17.5h12.666" transform="translate(717.5 -682.5) rotate(90)" fill="none" stroke="#f40" strokeWidth="2"/>
+      </g>
+    </svg>
+
+)
+
+export const AccordionActiveIcon = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" className={className}>
+      <g id="Group_2266" data-name="Group 2266" transform="translate(-682)">
+        <g id="Ellipse_122" data-name="Ellipse 122" transform="translate(682)" fill="#fff" stroke="#f40" strokeWidth="2">
+          <circle cx="17.5" cy="17.5" r="17.5" stroke="none"/>
+          <circle cx="17.5" cy="17.5" r="16.5" fill="none"/>
+        </g>
+        <path id="Path_6191" data-name="Path 6191" d="M693.667,17.5h12.666" fill="none" stroke="#f40" strokeWidth="2"/>
+      </g>
+    </svg>
+
+)

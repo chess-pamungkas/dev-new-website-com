@@ -1,0 +1,187 @@
+@import "mixins";
+@import "vars";
+
+.table-wrapper {
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  box-shadow: 4px 3px 15px #00000029;
+  background: map-get($colors, "white");
+  border-radius: 15px;
+  padding: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+
+  &__head {
+  }
+
+  &__head-column {
+    min-width: 120px;
+    border-bottom: 1px solid map-get($colors, "black");
+    padding: 10px;
+    font-weight: map-get($font-weight, "bold");
+    font-size: 13px;
+    line-height: 17px;
+    color: map-get($colors, "black");
+    text-transform: capitalize;
+
+    &:first-child {
+      color: map-get($colors, "red");
+      border-right: 1px solid map-get($colors, "black");
+    }
+
+    @include desktop-xl {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+
+  &__head-icon {
+  }
+
+  &__body-column {
+    text-align: center;
+    font-weight: map-get($font-weight, "light");
+    font-size: 16px;
+    line-height: 20px;
+    color: map-get($colors, "black");
+    text-transform: capitalize;
+    // TODO change border color after layout will be updated
+    border-bottom: 1px solid #f2f2f2;
+    padding: 15px 10px;
+
+    &:first-child {
+      border-right: 1px solid map-get($colors, "black");
+    }
+  }
+
+  &__tools {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 0 30px;
+
+    &--bottom {
+      padding: 30px 0 0;
+      justify-content: flex-end;
+    }
+  }
+
+  &__searchbar {
+    background-color: transparent;
+    color: map-get($colors, "black");
+    border-width: 1px;
+    max-width: 330px;
+
+    .search-bar__expand {
+      svg {
+        g,
+        line {
+          stroke: map-get($colors, "red");
+        }
+      }
+    }
+
+    .search-bar__submit {
+      border: 1px solid map-get($colors, "red");
+    }
+
+    .search-bar__input {
+      color: map-get($colors, "black");
+
+      &::placeholder {
+        color: map-get($colors, "black");
+      }
+    }
+  }
+
+  &__dropdown {
+    display: flex;
+    align-items: center;
+  }
+
+  &__dropdown-title {
+    font-weight: map-get($font-weight, "bold");
+    font-size: 16px;
+    line-height: 20px;
+    color: map-get($colors, "black");
+    text-transform: capitalize;
+    padding-right: 10px;
+
+    @include desktop-lg {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+
+  &__dropdown-select {
+    border: 1px solid map-get($colors, "black");
+    width: 71px;
+    border-radius: 19px;
+    padding: 5px 10px;
+
+    .dropdown__title {
+      color: map-get($colors, "black");
+    }
+
+    .dropdown__title-content {
+      display: block;
+
+      &:after {
+        display: none;
+      }
+
+      &:before {
+        position: absolute;
+        display: block;
+        content: "";
+        left: 0;
+        top: 40%;
+        border-style: solid;
+        border-width: 5px 4px 0 4px;
+        border-radius: 4px;
+        border-color: map-get($colors, "black") transparent transparent transparent;
+      }
+    }
+  }
+}
+
+.pagination {
+  &__btn {
+    @include button-supress();
+    font-weight: map-get($font-weight, "bold");
+    color: map-get($colors, "red");
+    font-size: 18px;
+    line-height: 22px;
+    width: 34px;
+    height: 28px;
+    border: 1px solid map-get($colors, "red");
+    border-radius: 9px;
+    margin: 0 4px;
+    transition: .3s ease-out;
+
+    &:first-child {
+      margin: 0 4px 0 0;
+    }
+
+    &:last-child {
+      margin: 0 0 0 4px;
+    }
+
+    &:hover, &:active, &:focus {
+      color: map-get($colors, "white");
+      background: map-get($colors, "red");;
+    }
+
+    &--arrow {
+      width: 55px;
+    }
+  }
+}
