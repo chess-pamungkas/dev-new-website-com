@@ -7,7 +7,7 @@ import { ALL_MARKET_TEXT } from "../helpers/top-market-texts";
 import Footer from "../components/footer";
 import Layout from "../components/shared/layout";
 
-const AllMarketPage = () => {
+const AllMarketsPage = () => {
   return (
     <Layout>
       <section className="scroll-container">
@@ -29,6 +29,6 @@ const AllMarketPage = () => {
   );
 };
 
-export default AllMarketPage;
+export default AllMarketsPage;
 
-export const Head = () => <title>Oqtima All Market</title>;
+export const Head = () => <title>Oqtima All Markets</title>;
