@@ -7,7 +7,6 @@ import {
   FOREX_TEXT,
   PROMOTION_MARKETS_TEXT,
 } from "../helpers/top-market-texts";
-import Footer from "../components/footer";
 import Layout from "../components/shared/layout";
 import Tabs from "../components/shared/tabs";
 import TableComponent from "../components/shared/table";
@@ -61,36 +60,31 @@ const ForexPage = () => {
 
   return (
     <Layout>
-      <section className="scroll-container">
-        <main>
-          <TopMarket
-            title="Forex CFD"
-            image={image}
-            btn1Title="Try our demo account"
-            link1={REGISTRATION_LINK}
-            btn2Title="Start trading FX now"
-            link2={REGISTRATION_LINK}
-          >
-            {FOREX_TEXT}
-          </TopMarket>
+      <TopMarket
+        title="Forex CFD"
+        image={image}
+        btn1Title="Try our demo account"
+        link1={REGISTRATION_LINK}
+        btn2Title="Start trading FX now"
+        link2={REGISTRATION_LINK}
+      >
+        {FOREX_TEXT}
+      </TopMarket>
 
-          <PromotionMarkets
-            // TODO: promo1 is an example, provide valid image src
-            imageSrc={promo1}
-            promoText={PROMOTION_MARKETS_TEXT}
-          />
-          <TopMarketLayout
-            title="Forex Trading Spreads / Conditions"
-            btnTitle="Try Oqtima"
-            link={REGISTRATION_LINK}
-          >
-            <Tabs tabList={tabs} />
-          </TopMarketLayout>
+      <PromotionMarkets
+        // TODO: promo1 is an example, provide valid image src
+        imageSrc={promo1}
+        promoText={PROMOTION_MARKETS_TEXT}
+      />
+      <TopMarketLayout
+        title="Forex Trading Spreads / Conditions"
+        btnTitle="Try Oqtima"
+        link={REGISTRATION_LINK}
+      >
+        <Tabs tabList={tabs} />
+      </TopMarketLayout>
 
-          <Faq faq={FAQ_FOREX} />
-        </main>
-        <Footer />
-      </section>
+      <Faq faq={FAQ_FOREX} />
     </Layout>
   );
 };
