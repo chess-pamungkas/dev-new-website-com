@@ -2,15 +2,56 @@
 @import "vars";
 
 .table-wrapper {
+  padding: 25px;
 }
 
 .table-scroll {
+  box-shadow: 4px 3px 15px #00000029;
   width: 100%;
   overflow-x: auto;
+
+  &--vertical {
+    max-height: 510px;
+    overflow-y: auto;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 25px;
+    background-color: #E3E3E3;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background-color: #9B9B9B;
+  }
+}
+
+.table-title-wrapper {
+  text-align: center;
+  padding: 15px 0 10px;
+}
+
+.table-title {
+  font-weight: map-get($font-weight, "black");
+  color: map-get($colors, "black");
+  font-size: 36px;
+  line-height: 45px;
+  margin: 0 0 5px;
+
+  &__subtitle {
+    display: block;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
 
 .table {
-  box-shadow: 4px 3px 15px #00000029;
   background: map-get($colors, "white");
   border-radius: 15px;
   padding: 20px;
@@ -58,6 +99,27 @@
 
     &:first-child {
       border-right: 1px solid map-get($colors, "black");
+    }
+  }
+
+  &__btn-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn {
+    margin: 0 5px;
+    font-size: 11px;
+    width: 83px;
+    line-height: 30px;
+    color: map-get($colors, "white");
+
+    &--red {
+      background: map-get($colors, "red-secondary");
+    }
+
+    &--green {
+      background: map-get($colors, "light-green");
     }
   }
 
@@ -165,7 +227,7 @@
     border: 1px solid map-get($colors, "red");
     border-radius: 9px;
     margin: 0 4px;
-    transition: .3s ease-out;
+    transition: 0.3s ease-out;
 
     &:first-child {
       margin: 0 4px 0 0;
@@ -175,9 +237,11 @@
       margin: 0 0 0 4px;
     }
 
-    &:hover, &:active, &:focus {
+    &:hover,
+    &:active,
+    &:focus {
       color: map-get($colors, "white");
-      background: map-get($colors, "red");;
+      background: map-get($colors, "red");
     }
 
     &--arrow {

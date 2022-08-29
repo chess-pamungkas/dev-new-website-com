@@ -19,6 +19,9 @@ const TableComponent = ({
   columns,
   isPagination,
   isSearch,
+  isSorting,
+  title,
+  subtitle,
 }) => {
   const PAGE_SIZES = [5, 10, 15];
   const [isDropdownOpened, setIsDropdownOpened] = useState(false);
@@ -45,13 +48,17 @@ const TableComponent = ({
       data,
       initialState: {
         ...(isPagination ? { pageSize: PAGE_SIZES[0] } : {}),
-        sortBy: [
-          {
-            // default sorting by first column
-            id: columns[0].accessor,
-            desc: false,
-          },
-        ],
+        ...(isSorting
+          ? {
+              sortBy: [
+                {
+                  // default sorting by first column
+                  id: columns[0].accessor,
+                  desc: false,
+                },
+              ],
+            }
+          : {}),
       },
     },
     useFilters,
@@ -157,13 +164,23 @@ const TableComponent = ({
     );
   };
 
+  const TableTitle = () => (
+    <div className="table-title-wrapper">
+      <h4 className="table-title">{title}</h4>
+      {subtitle && <span className="table-title__subtitle">{subtitle}</span>}
+    </div>
+  );
+
   return (
     <div className={cn("table-wrapper", className)}>
+      {title && <TableTitle />}
       <div className="table__tools">
         {isPagination && <TableShowByDropdown />}
         {isSearch && <TableSearch />}
       </div>
-      <div className="table-scroll">
+      <div
+        className={cn("table-scroll", { "table-scroll--vertical": !isPagination })}
+      >
         <table className={cn("table", tableClassName)} {...getTableProps()}>
           <thead className="table__head">
             {headerGroups.map((headerGroup) => (
@@ -175,7 +192,9 @@ const TableComponent = ({
                   <th
                     key={`header-${column.render("id")}`}
                     className="table__head-column"
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    {...(isSorting
+                      ? column.getHeaderProps(column.getSortByToggleProps())
+                      : {})}
                   >
                     {column.render("Header")}
                     {/* sort only by first column */}
