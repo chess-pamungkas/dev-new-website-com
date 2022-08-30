@@ -1,6 +1,7 @@
 import React, { useRef, useContext } from "react";
 import cn from "classnames";
 import { animated } from "react-spring";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import airbnbIcon from "../../assets/images/icons/companies/airbnb.svg";
 import amazonIcon from "../../assets/images/icons/companies/amazon.svg";
 import appleIcon from "../../assets/images/icons/companies/apple.svg";
@@ -34,6 +35,8 @@ import { useSectionAnimation } from "./use-section-animation";
 const TradeWithPromotion = ({ className }) => {
   const sectionRef = useRef();
   const typingContainerRef = useRef();
+
+  const { t } = useTranslation();
   
   const sectionIntersectionRef = useIntersectionObserver(
     sectionRef,
@@ -181,7 +184,9 @@ const TradeWithPromotion = ({ className }) => {
       />
       <div className="trade-with-promotion__wrapper">
         <h2 className="trade-with-promotion__title">
-          Trade <span className="bold">now</span> with
+          {t("main-trade-with-promotion-title-trade")}&nbsp;
+          <span className="bold">{t("main-trade-with-promotion-title-now")}</span>
+          &nbsp;{t("main-trade-with-promotion-title-with")}
         </h2>
         <div className="trade-with-promotion__input" ref={typingContainerRef}>
           <span className="trade-with-promotion__input-text">
@@ -196,8 +201,7 @@ const TradeWithPromotion = ({ className }) => {
         <div className="trade-with-promotion__promo">
           <div className="trade-with-promotion__block">
             <p className="trade-with-promotion__promo-text">
-              More than XXXX assets to trade directly on mobile, desktop or
-              tablet anywhere anytime
+              {t("main-trade-with-promotion-promo-text")}
             </p>
           </div>
           <div className="trade-with-promotion__block">
@@ -206,7 +210,7 @@ const TradeWithPromotion = ({ className }) => {
                 link={REGISTRATION_LINK}
                 className="trade-with-promotion__btn"
               >
-                Start now
+                {t("button-start-now")}
               </ButtonLink>
             </div>
           </div>
