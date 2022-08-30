@@ -45,6 +45,7 @@ export const TRADING_SECTIONS = [
 
 const TradingSections = ({
   className,
+  title,
   selectedSection,
   setSelectedSection,
 }) => {
@@ -53,37 +54,43 @@ const TradingSections = ({
 
   return (
     <div className={cn("trading-sections-wrapper", className)}>
-      <div className="trading-sections">
-        {isMobile ? (
-          <Dropdown
-            selectedItem={selectedSection}
-            items={TRADING_SECTIONS.map((item) => {
-              return {
-                title: item.title,
-                value: item.id,
-              };
-            })}
-            setSelectedItem={(item) => {
-              setSelectedSection({
-                title: item.title,
-                id: item.value,
-              });
-            }}
-            isDropdownShown
-            isOpen={isDropdownOpened}
-            setIsOpen={setIsDropdownOpened}
-          />
-        ) : (
-          TRADING_SECTIONS.map((section) => (
-            <TradingSectionTitle
-              key={`tradingSection${section.id}`}
-              section={section}
-              selectedSection={selectedSection}
-              setSelectedSection={setSelectedSection}
+      {title ? (
+        <div className="trading-sections">
+          <h4 className="trading-sections__header">{title}</h4>
+        </div>
+      ) : (
+        <div className="trading-sections">
+          {isMobile ? (
+            <Dropdown
+              selectedItem={selectedSection}
+              items={TRADING_SECTIONS.map((item) => {
+                return {
+                  title: item.title,
+                  value: item.id,
+                };
+              })}
+              setSelectedItem={(item) => {
+                setSelectedSection({
+                  title: item.title,
+                  id: item.value,
+                });
+              }}
+              isDropdownShown
+              isOpen={isDropdownOpened}
+              setIsOpen={setIsDropdownOpened}
             />
-          ))
-        )}
-      </div>
+          ) : (
+            TRADING_SECTIONS.map((section) => (
+              <TradingSectionTitle
+                key={`tradingSection${section.id}`}
+                section={section}
+                selectedSection={selectedSection}
+                setSelectedSection={setSelectedSection}
+              />
+            ))
+          )}
+        </div>
+      )}
     </div>
   );
 };

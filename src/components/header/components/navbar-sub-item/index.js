@@ -1,10 +1,12 @@
 import React from "react";
 import cn from "classnames";
 import { Link } from "gatsby";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 
 const NavbarSubItem = ({ className, subItem = {} }) => {
   const { title, link, icon: Icon, description } = subItem;
+  const { t } = useTranslation();
   const isItemHasSubtitles =
     subItem.isSubtitle && subItem.subtitles && !!subItem.subtitles.length;
 
@@ -14,10 +16,10 @@ const NavbarSubItem = ({ className, subItem = {} }) => {
         {Icon && <Icon className="dropdown-item__icon" />}
 
         <div className="dropdown-item__content">
-          <span className="dropdown-item__title">{title}</span>
+          <span className="dropdown-item__title">{t(title)}</span>
 
           {description && (
-            <p className="dropdown-item__description">{description}</p>
+            <p className="dropdown-item__description">{t(description)}</p>
           )}
         </div>
       </Link>
@@ -30,11 +32,11 @@ const NavbarSubItem = ({ className, subItem = {} }) => {
               key={`footer-menu-${stringTransformToKebabCase(subtitle.title)}`}
             >
               <Link className="menu-column__link" to={subtitle.link}>
-                <span className="dropdown-item__title">{subtitle.title}</span>
+                <span className="dropdown-item__title">{t(subtitle.title)}</span>
 
                 {subtitle.description && (
                   <p className="dropdown-item__description">
-                    {subtitle.description}
+                    {t(subtitle.description)}
                   </p>
                 )}
               </Link>

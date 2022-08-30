@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { AngleDownIcon } from "../icons";
 
 const Accordion = ({
@@ -11,6 +12,8 @@ const Accordion = ({
   icon: Icon,
   iconForActive: IconForActive,
 }) => {
+  const { t } = useTranslation();
+
   const [isActive, setIsActive] = useState(isOpen);
 
   const handleClick = (title) => {
@@ -46,7 +49,7 @@ const Accordion = ({
         className="accordion__title"
         onClick={() => handleClick(title)}
       >
-        <span>{title}</span>
+        <span>{t(title)}</span>
         {Icon ? getIcon() : <AngleDownIcon className="accordion__icon" />}
       </button>
       {isActive && <div className="accordion__expandable">{children}</div>}

@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import {
   LANG_SELECT_OPTIONS,
   SHOULD_BE_SMALLER_LANGUAGES,
@@ -37,9 +38,11 @@ const LangSelectItem = ({
 );
 
 const LangOptions = ({ className, selectedLanguage, langugeSelectHandler }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={cn("lang-options", className)}>
-      <h2 className="lang-options__title">Select Your Language</h2>
+      <h2 className="lang-options__title">{t("lang-select-popup-title")}</h2>
 
       <ul className="lang-options__list">
         {LANG_SELECT_OPTIONS.map((option) => (
