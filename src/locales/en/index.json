@@ -107,6 +107,15 @@
   "main-promotion-hero-australia-name": "Australia",
   "main-promotion-hero-australia-text": "goalkeeper legend and veteran trader, trades with Oqtima.",
 
+  "main-trading-ticker-section-crypto": "Crypto",
+  "main-trading-ticker-section-forex": "Forex",
+  "main-trading-ticker-section-shares": "Shares",
+  "main-trading-ticker-section-energies": "Energies",
+  "main-trading-ticker-section-commodities": "Commodities",
+  "main-trading-ticker-section-indices": "Indices",
+  "main-trading-ticker-section-indices1": "Indices1",
+  "main-trading-ticker-section-indices2": "Indices2",
+  "main-trading-ticker-section-indices3": "Indices3",
 
 
   "footer-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",

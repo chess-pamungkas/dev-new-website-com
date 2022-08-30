@@ -1,5 +1,6 @@
 import * as React from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const TradingSectionTitle = ({
   section,
@@ -7,6 +8,8 @@ const TradingSectionTitle = ({
   setSelectedSection,
   className,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div
       className={cn(
@@ -21,7 +24,7 @@ const TradingSectionTitle = ({
       }}
       role="presentation"
     >
-      {section.title}
+      {t(section.title)}
     </div>
   );
 };
