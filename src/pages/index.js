@@ -134,7 +134,7 @@ const IndexPage = () => {
       >
         <HighlightedLocalizationText
           localizationText="index_promotion1-text"
-          wordsToHighlight="index_promotion1-text-accent"
+          wordsToHighlight="promotion1-text-accent"
           primaryClassName="highlighted-in-white"
           accentClassName="highlighted-in-red"
         />
@@ -151,7 +151,7 @@ const IndexPage = () => {
       >
         <HighlightedLocalizationText
           localizationText="index_promotion2-text"
-          wordsToHighlight="index_promotion2-text-accent"
+          wordsToHighlight="promotion2-text-accent"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
@@ -166,7 +166,7 @@ const IndexPage = () => {
       >
         <HighlightedLocalizationText
           localizationText="index_promotion3-text"
-          wordsToHighlight="index_promotion3-text-accent"
+          wordsToHighlight="promotion3-text-accent"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
@@ -184,14 +184,14 @@ const IndexPage = () => {
       >
         <HighlightedLocalizationText
           localizationText="index_promotion4-text"
-          wordsToHighlight="index_promotion4-text-accent"
+          wordsToHighlight="promotion4-text-accent"
           primaryClassName="highlighted-in-white"
           accentClassName="highlighted-in-red"
         >
           <span className="promotion__note">
             <HighlightedLocalizationText
               localizationText="index_promotion4-text-children-text"
-              wordsToHighlight="index_promotion4-text-children-text-accent"
+              wordsToHighlight="promotion4-text-children-text-accent"
               primaryClassName="highlighted-in-white"
               accentClassName="highlighted-in-red"
             />

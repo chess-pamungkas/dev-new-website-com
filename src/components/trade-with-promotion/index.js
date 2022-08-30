@@ -187,7 +187,7 @@ const TradeWithPromotion = ({ className }) => {
         <h2 className="trade-with-promotion__title">
           <HighlightedLocalizationText
             localizationText="index_trade-with-promotion-title"
-            wordsToHighlight="index_trade-with-promotion-title-bold"
+            wordsToHighlight="trade-with-promotion-title-accent"
             accentClassName="bold"
           />
         </h2>
