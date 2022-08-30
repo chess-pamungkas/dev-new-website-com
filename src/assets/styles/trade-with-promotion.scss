@@ -81,6 +81,7 @@
     font-weight: map-get($font-weight, "black");
     font-size: 30px;
     line-height: 37px;
+    white-space: nowrap;
 
     @include desktop-xl {
       font-size: 55px;

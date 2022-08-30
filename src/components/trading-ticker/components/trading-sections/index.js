@@ -8,39 +8,39 @@ import cn from "classnames";
 export const TRADING_SECTIONS = [
   {
     id: 1,
-    title: "main-trading-ticker-section-crypto",
+    title: "index_trading-ticker-section1",
   },
   {
     id: 2,
-    title: "main-trading-ticker-section-forex",
+    title: "index_trading-ticker-section2",
   },
   {
     id: 3,
-    title: "main-trading-ticker-section-shares",
+    title: "index_trading-ticker-section3",
   },
   {
     id: 4,
-    title: "main-trading-ticker-section-energies",
+    title: "index_trading-ticker-section4",
   },
   {
     id: 5,
-    title: "main-trading-ticker-section-commodities",
+    title: "index_trading-ticker-section5",
   },
   {
     id: 6,
-    title: "main-trading-ticker-section-indices",
+    title: "index_trading-ticker-section6",
   },
   {
     id: 7,
-    title: "main-trading-ticker-section-indices1",
+    title: "index_trading-ticker-section7",
   },
   {
     id: 8,
-    title: "main-trading-ticker-section-indices2",
+    title: "index_trading-ticker-section8",
   },
   {
     id: 9,
-    title: "main-trading-ticker-section-indices3",
+    title: "index_trading-ticker-section9",
   },
 ];
 

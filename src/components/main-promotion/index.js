@@ -37,7 +37,7 @@ const MainPromotion = ({ className }) => {
         <div className="main-promotion__block">
           <h1 className="main-promotion__title-wrapper">
             <span className="main-promotion__title">
-              {t("main-promotion-title")}
+              {t("index_main-promotion-title")}
             </span>
             <span className="main-promotion__title main-promotion__title--big">
               <TitlesAnimation
