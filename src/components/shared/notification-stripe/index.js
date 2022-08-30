@@ -4,6 +4,7 @@ import ClientResolverContext from "../../../context/client-resolver-context";
 import { useModal } from "../../../helpers/hooks/use-modal";
 import RedirectPopup from "../../redirect-popup";
 import { useEntityNotifications } from "../../../helpers/hooks/use-entity-notifications";
+import CookieContext from "../../../context/cookie-context";
 
 const CYSEC_STRIPE = (
   <div className="notification-stripe__cysec-wrapper">
@@ -50,6 +51,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
   const { isShow, handleOpen, handleClose } = useModal();
   const { isCysecNotification, isCysecRedirect, setIsCysecRedirect, isBannedPopup } =
     useEntityNotifications(handleOpen);
+  const { getCookie } = useContext(CookieContext);
 
   const getContent = () => {
     if (isCysecNotification) {
@@ -88,6 +90,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
         isPopupOpen={isShow}
         handleClose={handleClose}
         setIsCysecRedirect={setIsCysecRedirect}
+        getCookie={getCookie}
       />
     </>
   );

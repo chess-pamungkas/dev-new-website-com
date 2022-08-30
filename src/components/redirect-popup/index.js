@@ -2,6 +2,7 @@ import React from "react";
 import Popup from "../shared/popup";
 import cn from "classnames";
 import entities from "../../enums/entities";
+import { postClientConsent } from "../../helpers/services/client-consent-service";
 
 const RedirectPopup = ({
   clientConfig,
@@ -11,6 +12,7 @@ const RedirectPopup = ({
   isBannedPopup,
   redirectEntity,
   setIsCysecRedirect,
+  getCookie,
 }) => {
   const bannedPopupDescription = (country, ipAddress, entity) => (
     <>
@@ -56,15 +58,16 @@ const RedirectPopup = ({
       return [
         {
           text: "Close",
-          onClick: () => handleClose(false),
+          onClick: () => {handleClose(false); postClientConsent(clientConfig.ipAddress, currentEntity, getCookie, `Accepted banned popup, clicked on 'Close'`)},
         },
-        { text: "Continue", onClick: () => handleClose(false) },
+        { text: "Continue", onClick: () => {handleClose(false); postClientConsent(clientConfig.ipAddress, currentEntity, getCookie, `Accepted banned popup, clicked on 'Continue'`)} },
       ];
     } else {
       return [
         {
           text: "Do not confirm",
           onClick: () => {
+            postClientConsent(clientConfig.ipAddress, currentEntity, getCookie, `Accepted redirect popup, clicked on 'Do not confirm'`)
             window.location.replace(redirectEntity);
           },
           subTitle:
@@ -75,6 +78,7 @@ const RedirectPopup = ({
         {
           text: "Confirm",
           onClick: () => {
+            postClientConsent(clientConfig.ipAddress, currentEntity, getCookie, `Accepted redirect popup, clicked on 'Confirm'`)
             setIsCysecRedirect(false);
             handleClose(false);
           },
