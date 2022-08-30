@@ -1,14 +1,17 @@
 import React from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { AngleDownIcon } from "../../../shared/icons";
 import { ANGLE_ICON_COLOR } from "../../../../helpers/constants";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import NavbarSubItem from "../navbar-sub-item";
 
 const NavbarItem = ({ className, title, subItems = [], isNested = false }) => {
+  const { t } = useTranslation();
+
   return (
     <li className={cn("navbar-item", className)}>
-      <span className="navbar-item__title">{title}</span>
+      <span className="navbar-item__title">{t(title)}</span>
 
       <AngleDownIcon
         className="navbar-item__icon"

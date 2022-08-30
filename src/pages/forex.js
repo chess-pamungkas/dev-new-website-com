@@ -1,4 +1,6 @@
 import React from "react";
+import { graphql } from "gatsby";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import TopMarket from "../components/top-market";
 import { REGISTRATION_LINK } from "../helpers/constants";
@@ -14,11 +16,13 @@ import PromotionMarkets from "../components/promotion-markets";
 import animation from "../assets/images/animations/forex.json";
 import TopMarketLayout from "../components/top-market-layout";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
+import Seo from "../components/shared/seo";
 import forex from "../assets/images/promotions/promo1.svg";
 import { PROMO_TEXT_FOREX } from "../helpers/promo-texts";
 import TopMarketPromotion from "../components/top-market-promotion";
 
 const ForexPage = () => {
+  const { t } = useTranslation();
   const { isMobile } = useWindowSize();
 
   const tabs = [
@@ -64,6 +68,7 @@ const ForexPage = () => {
 
   return (
     <Layout>
+      <Seo title={t("page-forex-title")} />
       <TopMarket
         title="Forex CFD"
         image={image}
@@ -103,4 +108,16 @@ const ForexPage = () => {
 
 export default ForexPage;
 
-export const Head = () => <title>Oqtima Forex</title>;
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: {language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
