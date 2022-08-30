@@ -28,10 +28,7 @@ import {
   transformParamToKey,
 } from "../../helpers/services/marketing-service";
 import {useIntersectionObserver} from "../../helpers/hooks/use-intersection-observer";
-import {
-  INTERSECTION_OBSERVER_CONFIG,
-  TWP_ICONS_INITIAL_SHIFT
-} from "../../helpers/animation.config";
+import { INTERSECTION_OBSERVER_CONFIG } from "../../helpers/animation.config";
 import { useSectionAnimation } from "./use-section-animation";
 
 const TradeWithPromotion = ({ className }) => {
@@ -46,6 +43,17 @@ const TradeWithPromotion = ({ className }) => {
     freezeOnceVisible: true,
   });
 
+  const {
+    sectionAnimation1,
+    sectionAnimation2,
+    sectionAnimation3,
+    sectionAnimation4,
+    sectionAnimation5,
+    sectionAnimation6,
+    sectionAnimation7,
+    sectionAnimation8,
+    sectionAnimation9
+  } = useSectionAnimation(sectionIntersectionRef);
   const { sect2 } = useContext(MarketingContext);
 
   const content = SECT2_TEXT_SEQUENCES[transformParamToKey(sect2)];
@@ -55,43 +63,6 @@ const TradeWithPromotion = ({ className }) => {
     : getSect2TextSequence(SECT2_GROUP1_DEFAULT, SECT2_GROUP2_DEFAULT);
 
   const icons = content ? content.symbols : [];
-
-  const sectionAnimation1 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.logo1
-  );
-  const sectionAnimation2 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.logo2
-  );
-  const sectionAnimation3 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.logo3
-  );
-  const sectionAnimation4 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.netflix
-  );
-  const sectionAnimation5 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.tesla
-  );
-  const sectionAnimation6 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.airbnb
-  );
-  const sectionAnimation7 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.meta
-  );
-  const sectionAnimation8 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.amazon
-  );
-  const sectionAnimation9 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.bitcoin
-  );
 
   return (
     <section className={cn("trade-with-promotion", className)} ref={sectionRef}>

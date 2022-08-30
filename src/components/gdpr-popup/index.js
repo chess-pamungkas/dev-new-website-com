@@ -70,11 +70,12 @@ export const GDPRPopup = ({ className }) => {
               Allow all
             </button>
           </div>
-          {GDPR_COOKIE_CATEGORIES.map((cookieCategory) => (
+          {GDPR_COOKIE_CATEGORIES.map(cookieCategory => (
             <CookieCategoryItem
-              {...cookieCategory}
+              key={cookieCategory.categoryKey}
               acceptedCookies={acceptedCookies}
               setAcceptedCookies={setAcceptedCookies}
+              {...cookieCategory}
             />
           ))}
           <div className="gdpr-popup__buttons">
