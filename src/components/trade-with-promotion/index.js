@@ -31,6 +31,7 @@ import {
 import {useIntersectionObserver} from "../../helpers/hooks/use-intersection-observer";
 import { INTERSECTION_OBSERVER_CONFIG } from "../../helpers/animation.config";
 import { useSectionAnimation } from "./use-section-animation";
+import HighlightedLocalizationText from "../shared/highlighted";
 
 const TradeWithPromotion = ({ className }) => {
   const sectionRef = useRef();
@@ -184,9 +185,11 @@ const TradeWithPromotion = ({ className }) => {
       />
       <div className="trade-with-promotion__wrapper">
         <h2 className="trade-with-promotion__title">
-          {t("main-trade-with-promotion-title-trade")}&nbsp;
-          <span className="bold">{t("main-trade-with-promotion-title-now")}</span>
-          &nbsp;{t("main-trade-with-promotion-title-with")}
+          <HighlightedLocalizationText
+            localizationText="index_trade-with-promotion-title"
+            wordsToHighlight="index_trade-with-promotion-title-bold"
+            accentClassName="bold"
+          />
         </h2>
         <div className="trade-with-promotion__input" ref={typingContainerRef}>
           <span className="trade-with-promotion__input-text">

@@ -117,9 +117,8 @@
   "main-trading-ticker-section-indices2": "Indices2",
   "main-trading-ticker-section-indices3": "Indices3",
 
-  "main-trade-with-promotion-title-trade": "Trade",
-  "main-trade-with-promotion-title-now": "now",
-  "main-trade-with-promotion-title-with": "with",
+  "index_trade-with-promotion-title": "Trade now with",
+  "index_trade-with-promotion-title-bold": "2",
   "main-trade-with-promotion-bitcoin": "Bitcoin",
   "main-trade-with-promotion-gold": "Gold",
   "main-trade-with-promotion-silver": "Silver",
