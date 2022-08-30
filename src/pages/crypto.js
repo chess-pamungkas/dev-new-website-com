@@ -3,18 +3,25 @@ import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import TopMarket from "../components/top-market";
-import {REGISTRATION_LINK} from "../helpers/constants";
+import { REGISTRATION_LINK } from "../helpers/constants";
 import image from "../assets/images/top-markets/cripto.svg";
-import {CRYPTO_TEXT, PROMOTION_TEXT_CRYPTO,} from "../helpers/top-market-texts";
+import {
+  CRYPTO_TEXT,
+  PROMOTION_TEXT_CRYPTO,
+} from "../helpers/top-market-texts";
 import Layout from "../components/shared/layout";
 import animation from "../assets/images/animations/crypto.json";
 import PromotionMarkets from "../components/promotion-markets";
 import TopMarketLayout from "../components/top-market-layout";
-import {COLUMNS_CRYPTO, DATA_CRYPTO} from "../helpers/top-market-tables";
+import { COLUMNS_CRYPTO, DATA_CRYPTO } from "../helpers/top-market-tables";
 import TableComponent from "../components/shared/table";
-import {FAQ_CRYPTO} from "../helpers/faq";
+import { FAQ_CRYPTO } from "../helpers/faq";
 import Faq from "../components/faq";
 import Seo from "../components/shared/seo";
+import TradingTicker from "../components/trading-ticker";
+import crypto from "../assets/images/promotions/promo1.svg";
+import { PROMO_TEXT_CRYPTO } from "../helpers/promo-texts";
+import TopMarketPromotion from "../components/top-market-promotion";
 
 const CryptoPage = () => {
   const { t } = useTranslation();
@@ -32,6 +39,16 @@ const CryptoPage = () => {
       >
         {CRYPTO_TEXT}
       </TopMarket>
+      <TradingTicker />
+      <TopMarketPromotion
+        className="crypto-promotion"
+        // TODO replace with a real image
+        image={crypto}
+        btnTitle="Start trading crypto CFD"
+        link={REGISTRATION_LINK}
+      >
+        {PROMO_TEXT_CRYPTO}
+      </TopMarketPromotion>
       <PromotionMarkets
         animation={animation}
         promoText={PROMOTION_TEXT_CRYPTO}
@@ -57,7 +74,7 @@ export default CryptoPage;
 
 export const query = graphql`
   query ($language: String!) {
-    locales: allLocale(filter: {language: {eq: $language}}) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns

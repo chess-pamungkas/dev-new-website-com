@@ -15,11 +15,10 @@ const RedirectPopup = ({
   const bannedPopupDescription = (country, ipAddress, entity) => (
     <>
       <p className="popup__paragraph">
-        Your IP shows you are located in{" "}
-        <span className="highlighted-in-red">{country}</span>. Our{" "}
-        <span className="highlighted-in-red">{entity}</span> authorised body
-        cannot accept residents of{" "}
-        <span className="highlighted-in-red">{ipAddress}</span>.
+        Your IP shows you are located in&nbsp;
+        <span className="highlighted-in-red">{country}</span>. Our&nbsp;
+        <span className="highlighted-in-red">{entity}</span>&nbsp;authorised body
+        cannot accept residents of this country.
       </p>
       <p className="popup__paragraph">
         If you are a resident of a different country, we apologise for the

@@ -117,7 +117,7 @@ export const SECT1_TEXT_SEQUENCES = {
   ],
 };
 
-export const SECT2_GROUP1_COUNT_OF_WORDS_DEFAULT = 4;
+export const SECT2_GROUP1_COUNT_OF_WORDS_DEFAULT = 5;
 
 export const SECT2_GROUP1_DEFAULT = [
   "main-trade-with-promotion-bitcoin",
@@ -132,10 +132,7 @@ export const SECT2_GROUP1_DEFAULT = [
   "main-trade-with-promotion-s&p-500",
 ];
 
-export const SECT2_GROUP2_DEFAULT = [
-  "main-trade-with-promotion-ready",
-  "main-trade-with-promotion-go"
-];
+export const SECT2_GROUP2_DEFAULT = ["What's hot now!"];
 
 export const SECT2_TEXT_SEQUENCES = {
   forex: {
