@@ -111,7 +111,7 @@ export const SECT1_TEXT_SEQUENCES = {
   ],
 };
 
-export const SECT2_GROUP1_COUNT_OF_WORDS_DEFAULT = 4;
+export const SECT2_GROUP1_COUNT_OF_WORDS_DEFAULT = 5;
 
 export const SECT2_GROUP1_DEFAULT = [
   "Bitcoin",
@@ -126,7 +126,7 @@ export const SECT2_GROUP1_DEFAULT = [
   "S&P 500",
 ];
 
-export const SECT2_GROUP2_DEFAULT = ["Ready?", "Go"];
+export const SECT2_GROUP2_DEFAULT = ["What's hot now!"];
 
 export const SECT2_TEXT_SEQUENCES = {
   forex: {
