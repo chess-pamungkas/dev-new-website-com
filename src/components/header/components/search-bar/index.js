@@ -7,7 +7,7 @@ import { SearchIcon } from "../../../shared/icons";
 const SearchBar = ({
   className,
   isExpandable = false,
-  onChange,
+  onChange = () => {},
   value
 }) => {
   const { t } = useTranslation();
