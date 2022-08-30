@@ -1,5 +1,6 @@
-import { animated, useSpring } from "react-spring";
 import React, { useState } from "react";
+import { animated, useSpring } from "react-spring";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const TitlesAnimation = ({
   titles,
@@ -7,6 +8,8 @@ const TitlesAnimation = ({
   setIsAnimationFinished,
 }) => {
   const [index, setIndex] = useState(0);
+
+  const { t } = useTranslation();
 
   const animationStyles = useSpring({
     loop: true,
@@ -42,7 +45,7 @@ const TitlesAnimation = ({
   return isAnimationFinished ? (
     titles[titles.length - 1]
   ) : (
-    <animated.div style={animationStyles}>{titles[index]}</animated.div>
+    <animated.div style={animationStyles}>{t(titles[index])}</animated.div>
   );
 };
 
