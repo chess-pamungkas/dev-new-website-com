@@ -18,6 +18,48 @@
   box-shadow: 0 5px 10px #0000001A;
   border-radius: 10px 10px 0 0;
   border-bottom: 1px solid map-get($colors, 'red');
+
+  @include tablet {
+    flex-wrap: nowrap;
+    padding: 7px 31px;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @include desktop-xl {
+    padding: 14px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    justify-content: center;
+  }
+
+  &__header {
+    color: map-get($colors, "black");
+    margin: 0;
+    text-align: center;
+    font-weight: map-get($font-weight, "black");
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+
+    @include tablet {
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    @include desktop-lg {
+      font-size: 28px;
+      line-height: 35px;
+    }
+
+    @include desktop-xl {
+      font-size: 32px;
+      line-height: 40px;
+    }
+  }
 }
 
 .trading-section-title {
@@ -37,6 +79,11 @@
     box-shadow: 0 3px 24px #00000029;
     color: map-get($colors, 'white');
   }
+
+  @include tablet {
+    padding: 4px 30px 7px;
+    flex-shrink: 0;
+  }
 }
 
 .trading-symbols-wrapper {
@@ -53,6 +100,16 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
+  @include tablet {
+    &:first-child {
+      border-radius: 0 0 0 10px;
+    }
+
+    &:last-child {
+      border-radius: 0 0 10px 0;
+    }
+  }
 }
 
 .trading-symbol {
@@ -64,6 +121,13 @@
   flex-shrink: 0;
   margin-right: 10px;
 
+  @include tablet {
+    padding: 12px 21px 20px;
+    flex-basis: 378px;
+    border-radius: 0;
+    margin-right: 0;
+  }
+
   &__title {
     position: relative;
     margin-bottom: 2px;
@@ -72,6 +136,12 @@
     line-height: 20px;
     font-weight: map-get($font-weight, 'black');
     color: map-get($colors, 'red');
+
+    @include tablet {
+      font-size: 21px;
+      line-height: 26px;
+      font-weight: map-get($font-weight, 'black');
+    }
 
     &-content {
       display: inline-block;
@@ -94,16 +164,26 @@
   &__data {
     display: flex;
     flex-wrap: wrap;
+
+    @include tablet {
+      flex-wrap: nowrap;
+      align-items: flex-start;
+    }
   }
 
   &__option {
     font-family: $font-secondary;
-
     flex-basis: 50%;
     margin-top: 7px;
 
     &:last-child {
       margin-right: 0;
+    }
+
+    @include tablet {
+      flex-basis: auto;
+      margin-top: 0;
+      margin-right: 24px;
     }
 
     .trading-symbol__option-value {
@@ -115,6 +195,11 @@
   &__option-title,
   &__option-value {
     color: map-get($colors, 'black');
+
+    @include tablet {
+      font-size: 13px;
+      line-height: 16px;
+    }
   }
 
   &__option-title {
@@ -125,6 +210,10 @@
   &__option-value {
     font-size: 10px;
     line-height: 12px;
+
+    @include tablet {
+      margin-top: 0;
+    }
   }
 
   &__option-value {
@@ -135,6 +224,7 @@
     &--up {
       color: #00FF66;
     }
+
     &--down {
       color: #ff0000;
     }
@@ -144,6 +234,17 @@
     margin: 15px -14px 0;
     text-align: center;
     border-top: 1px solid map-get($colors, 'red');
+
+    @include tablet {
+      position: absolute;
+      right: 21px;
+      top: 12px;
+      margin-left: 0;
+      margin-right: 0;
+      border-left: 1px solid map-get($colors, 'red');
+      border-top: 0;
+      margin-top: 0;
+    }
   }
 
   &__sell,
@@ -157,117 +258,24 @@
     background: 0;
     text-transform: uppercase;
     cursor: pointer;
-  }
 
-  &__buy {
-    color: #ff0000;
-  }
-
-  &__sell {
-    color: #00FF66;
-  }
-}
-
-@include tablet {
-  .trading-ticker-wrapper {
-    margin: 11px 0 0;
-  }
-
-  .trading-sections {
-    flex-wrap: nowrap;
-    padding: 7px 31px;
-    overflow-x: scroll;
-    justify-content: flex-start;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  .trading-section-title {
-    padding: 4px 30px 7px;
-    flex-shrink: 0;
-  }
-
-  .trading-symbols {
-    .trading-symbol:first-child {
-      border-radius: 0 0 0 10px;
-    }
-    .trading-symbol:last-child {
-      border-radius: 0 0 10px 0;
-    }
-  }
-
-  .trading-symbol {
-    padding: 12px 21px 20px;
-    flex-basis: 378px;
-    border-radius: 0;
-    margin-right: 0;
-
-    &__data {
-      flex-wrap: nowrap;
-      align-items: flex-start;
-    }
-
-    &__option {
-      flex-basis: auto;
-      margin-top: 0;
-      margin-right: 24px;
-    }
-
-    &__title {
-      font-size: 21px;
-      line-height: 26px;
-      font-weight: map-get($font-weight, 'black');
-    }
-
-    &__option-value {
-      margin-top: 0;
-    }
-
-    &__option-title,
-    &__option-value {
-      font-size: 13px;
-      line-height: 16px;
-    }
-
-    &__actions {
-      position: absolute;
-      right: 21px;
-      top: 12px;
-      margin-left: 0;
-      margin-right: 0;
-
-      border-left: 1px solid map-get($colors, 'red');
-      border-top: 0;
-      margin-top: 0;
-    }
-
-    &__sell,
-    &__buy {
+    @include tablet {
       display: block;
       padding: 8px 10px 10px;
       font-size: 13px;
       line-height: 16px;
     }
+  }
 
-    &__buy {
+  &__buy {
+    color: #ff0000;
+
+    @include tablet {
       border-bottom: 1px solid map-get($colors, 'red');
     }
   }
-}
 
-@include desktop-lg {
-  .trading-sections {
-    justify-content: flex-start;
-  }
-}
-
-@include desktop-xl {
-  .trading-sections {
-    padding: 14px;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    justify-content: center;
+  &__sell {
+    color: #00FF66;
   }
 }

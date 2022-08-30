@@ -17,6 +17,10 @@ import animation from "../assets/images/animations/forex.json";
 import TopMarketLayout from "../components/top-market-layout";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import Seo from "../components/shared/seo";
+import forex from "../assets/images/promotions/promo1.svg";
+import { PROMO_TEXT_FOREX } from "../helpers/promo-texts";
+import TopMarketPromotion from "../components/top-market-promotion";
+import TradingTicker from "../components/trading-ticker";
 
 const ForexPage = () => {
   const { t } = useTranslation();
@@ -76,7 +80,16 @@ const ForexPage = () => {
       >
         {FOREX_TEXT}
       </TopMarket>
-
+      <TradingTicker title="Popular currency pairs" />
+      <TopMarketPromotion
+        className="forex-promotion"
+        // TODO replace with a real image
+        image={forex}
+        btnTitle="Start trading forex CFD"
+        link={REGISTRATION_LINK}
+      >
+        {PROMO_TEXT_FOREX}
+      </TopMarketPromotion>
       <PromotionMarkets
         // TODO replace with responsive images
         animation={isMobile ? animation : animation}
@@ -99,7 +112,7 @@ export default ForexPage;
 
 export const query = graphql`
   query ($language: String!) {
-    locales: allLocale(filter: {language: {eq: $language}}) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns

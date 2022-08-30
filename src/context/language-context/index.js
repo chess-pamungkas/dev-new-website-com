@@ -34,7 +34,7 @@ export const LanguageProvider = ({ children }) => {
       }
       // TODO: Apply localization
     }
-  }, [clientConfig]);
+  }, [clientConfig, getCookie]);
 
   return (
     <LanguageContext.Provider
