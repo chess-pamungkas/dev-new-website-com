@@ -20,6 +20,7 @@ import Seo from "../components/shared/seo";
 import forex from "../assets/images/promotions/promo1.svg";
 import { PROMO_TEXT_FOREX } from "../helpers/promo-texts";
 import TopMarketPromotion from "../components/top-market-promotion";
+import TradingTicker from "../components/trading-ticker";
 
 const ForexPage = () => {
   const { t } = useTranslation();
@@ -79,6 +80,7 @@ const ForexPage = () => {
       >
         {FOREX_TEXT}
       </TopMarket>
+      <TradingTicker />
       <TopMarketPromotion
         className="forex-promotion"
         // TODO replace with a real image
@@ -110,7 +112,7 @@ export default ForexPage;
 
 export const query = graphql`
   query ($language: String!) {
-    locales: allLocale(filter: {language: {eq: $language}}) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns
