@@ -1,25 +1,21 @@
 import React, { useRef, useState } from "react";
 import { animated, useTransition, easings } from "react-spring";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-
-const DEFAULT_WRAPPER_WIDTH = 90;
-const DELAY_BEFORE_NEXT_KEYWORD = 2000;
+import {
+  DEFAULT_WRAPPER_WIDTH,
+  DELAY_BEFORE_NEXT_KEYWORD
+} from "../../../helpers/animation.config";
 
 const TypingAnimation = ({ keywords }) => {
   const { t } = useTranslation();
 
-  const buildChars = (str) => {
-    return str.split("").map((item, i) => {
-      return {
-        key: i,
-        char: item,
-      };
-    });
+  const buildChars = str => {
+    return [...t(str)].map((char, key) => ({ char, key }));
   };
 
   const wrapperRef = useRef(null);
 
-  const [chars, setChars] = useState(buildChars(t(keywords[0])));
+  const [chars, setChars] = useState(buildChars(keywords[0]));
   const [keywordIndex, setKeywordIndex] = useState(0);
   const [removeChars, setRemoveChars] = useState(false);
   const [wrapperRefWidth, setWrapperRefWidth] = useState(DEFAULT_WRAPPER_WIDTH);
@@ -61,7 +57,7 @@ const TypingAnimation = ({ keywords }) => {
           if (chars.length === 0) {
             setRemoveChars(false);
             setKeywordIndex(keywordIndex + 1);
-            setChars(buildChars(t(keywords[keywordIndex + 1])));
+            setChars(buildChars(keywords[keywordIndex + 1]));
             setWrapperRefWidth(DEFAULT_WRAPPER_WIDTH);
           } else {
             setChars(chars.slice(0, chars.length - 1));

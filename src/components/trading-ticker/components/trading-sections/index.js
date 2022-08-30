@@ -4,6 +4,7 @@ import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import Dropdown from "../../../shared/dropdown";
 import cn from "classnames";
 
+// TODO: move constant to helpers
 export const TRADING_SECTIONS = [
   {
     id: 1,
