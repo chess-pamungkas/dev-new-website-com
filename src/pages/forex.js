@@ -80,7 +80,7 @@ const ForexPage = () => {
       >
         {FOREX_TEXT}
       </TopMarket>
-      <TradingTicker />
+      <TradingTicker title="Popular currency pairs" />
       <TopMarketPromotion
         className="forex-promotion"
         // TODO replace with a real image
