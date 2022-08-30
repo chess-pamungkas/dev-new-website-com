@@ -179,8 +179,13 @@
   "index_trade-with-promotion-NEO": "NEO",
   "index_trade-with-promotion-BNB": "BNB",
   "index_trade-with-promotion-TBC": "TBC",
-
   "index_trade-with-promotion-promo-text": "More than XXXX assets to trade directly on mobile, desktop or tablet anywhere anytime",
+
+  "index_promotion1-btn-text": "See more",
+  "index_promotion1-text": "Start building your trading portfolio with as little as $XX USD or equivalent with X base currencies available.",
+  "index_promotion2-btn-text": "See more",
+  "index_promotion3-btn-text": "See more",
+  "index_promotion4-btn-text": "Start copying",
 
 
 
