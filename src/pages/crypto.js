@@ -22,9 +22,11 @@ import TradingTicker from "../components/trading-ticker";
 import crypto from "../assets/images/promotions/promo1.svg";
 import { PROMO_TEXT_CRYPTO } from "../helpers/promo-texts";
 import TopMarketPromotion from "../components/top-market-promotion";
+import { useWindowSize } from "../helpers/hooks/use-window-size";
 
 const CryptoPage = () => {
   const { t } = useTranslation();
+  const { isMobile } = useWindowSize();
 
   return (
     <Layout>
@@ -51,6 +53,9 @@ const CryptoPage = () => {
       </TopMarketPromotion>
       <PromotionMarkets
         animation={animation}
+        animationStyle={{
+          height: isMobile ? 301 : 473,
+        }}
         promoText={PROMOTION_TEXT_CRYPTO}
       />
       <TopMarketLayout

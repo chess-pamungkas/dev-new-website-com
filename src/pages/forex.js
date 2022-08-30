@@ -91,8 +91,10 @@ const ForexPage = () => {
         {PROMO_TEXT_FOREX}
       </TopMarketPromotion>
       <PromotionMarkets
-        // TODO replace with responsive images
-        animation={isMobile ? animation : animation}
+        animation={animation}
+        animationStyle={{
+          height: isMobile ? 246 : 382,
+        }}
         promoText={PROMOTION_TEXT_FOREX}
       />
       <TopMarketLayout
