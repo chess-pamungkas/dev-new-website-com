@@ -139,6 +139,7 @@
   }
 
   &__search {
+    position: relative;
     flex-grow: 1;
 
     @include tablet {

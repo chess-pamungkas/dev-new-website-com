@@ -4,6 +4,7 @@ export const WINDOW_SIZE_LG = 1024;
 export const WINDOW_SIZE_XL = 1920;
 
 export const BURGER_MENU_LINES_COUNT = 3;
+export const DROPDOWN_SEARCH_ITEMS_TO_SHOW = 3;
 
 export const HOME_PAGE_LINK = "/";
 export const REGISTRATION_LINK = "/";
