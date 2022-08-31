@@ -2,6 +2,9 @@ import React from "react";
 import Popup from "../shared/popup";
 import cn from "classnames";
 import entities from "../../enums/entities";
+import { postClientConsent } from "../../helpers/services/client-consent-service";
+import { CONSENT_TYPES } from "../../helpers/consent-types.config";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const RedirectPopup = ({
   clientConfig,
@@ -11,41 +14,33 @@ const RedirectPopup = ({
   isBannedPopup,
   redirectEntity,
   setIsCysecRedirect,
+  getCookie,
 }) => {
+  const { t } = useTranslation();
   const bannedPopupDescription = (country, ipAddress, entity) => (
     <>
       <p className="popup__paragraph">
-        Your IP shows you are located in&nbsp;
-        <span className="highlighted-in-red">{country}</span>. Our&nbsp;
-        <span className="highlighted-in-red">{entity}</span>&nbsp;authorised body
-        cannot accept residents of this country.
+        {t("popup-banned-description-part1")}&nbsp;
+        <span className="highlighted-in-red">{country}</span>
+        {t("popup-banned-description-part2")}&nbsp;
+        <span className="highlighted-in-red">{entity}</span>&nbsp;
+        {t("popup-banned-description-part3")}
       </p>
-      <p className="popup__paragraph">
-        If you are a resident of a different country, we apologise for the
-        inconvenience; please click on continue to access the website.
-      </p>
+      <p className="popup__paragraph">{t("popup-banned-description-part4")}</p>
     </>
   );
 
-  const softRedirectionDescription = (
+  const softRedirectionDescription = () => (
     <>
       <p className="popup__paragraph">
-        Based on your Geo-Location, we wish to inform you that{" "}
-        <span className="highlighted-in-red">
-          {process.env.GATSBY_FSA_ENTITY_NAME}
-        </span>{" "}
-        operates the website you are visiting now. This entity is not
-        established in the European Union or regulated by an EU National
-        Competent Authority.
+        {t("popup-redirect-description-part1")}{" "}
+        <span className="highlighted-in-red">{t("fsa-entity-name")}</span>{" "}
+        {t("popup-redirect-description-part2")}
       </p>
       <p className="popup__paragraph">
-        Should you wish to proceed, please confirm that your decision was made
-        independently and at your exclusive initiative and that no solicitation
-        has been made by{" "}
-        <span className="highlighted-in-red">
-          {process.env.GATSBY_FSA_ENTITY_NAME}
-        </span>{" "}
-        or any of its related entities.
+        {t("popup-redirect-description-part3")}{" "}
+        <span className="highlighted-in-red">{t("fsa-entity-name")}</span>{" "}
+        {t("popup-redirect-description-part4")}
       </p>
     </>
   );
@@ -54,16 +49,41 @@ const RedirectPopup = ({
     if (isBannedPopup) {
       return [
         {
-          text: "Close",
-          onClick: () => handleClose(false),
+          text: t("popup-banned-close-btn"),
+          onClick: () => {
+            handleClose(false);
+            postClientConsent(
+              clientConfig.ipAddress,
+              currentEntity,
+              getCookie,
+              CONSENT_TYPES["bannedClose"]
+            );
+          },
         },
-        { text: "Continue", onClick: () => handleClose(false) },
+        {
+          text: t("popup-banned-continue-btn"),
+          onClick: () => {
+            handleClose(false);
+            postClientConsent(
+              clientConfig.ipAddress,
+              currentEntity,
+              getCookie,
+              CONSENT_TYPES["bannedContinue"]
+            );
+          },
+        },
       ];
     } else {
       return [
         {
-          text: "Do not confirm",
+          text: t("popup-redirect-dont-confirm-btn"),
           onClick: () => {
+            postClientConsent(
+              clientConfig.ipAddress,
+              currentEntity,
+              getCookie,
+              CONSENT_TYPES["redirectDoNotConfirm"]
+            );
             window.location.replace(redirectEntity);
           },
           subTitle:
@@ -72,8 +92,14 @@ const RedirectPopup = ({
               : "",
         },
         {
-          text: "Confirm",
+          text: t("popup-redirect-confirm-btn"),
           onClick: () => {
+            postClientConsent(
+              clientConfig.ipAddress,
+              currentEntity,
+              getCookie,
+              CONSENT_TYPES["redirectConfirm"]
+            );
             setIsCysecRedirect(false);
             handleClose(false);
           },
@@ -114,17 +140,17 @@ const RedirectPopup = ({
         "popup--banned": isBannedPopup,
       })}
     >
-      <div className="popup__title">Please Read</div>
+      <div className="popup__title">{t("popup-title")}</div>
       <div className="popup__text">
         {isBannedPopup &&
           bannedPopupDescription(
             clientConfig.countryName,
             clientConfig.ipAddress,
             currentEntity === entities.FSA
-              ? process.env.GATSBY_FSA_ENTITY_NAME
-              : process.env.GATSBY_CYSEC_ENTITY_NAME
+              ? t("fsa-entity-name")
+              : t("cysec-entity-name")
           )}
-        {!isBannedPopup && softRedirectionDescription}
+        {!isBannedPopup && softRedirectionDescription()}
       </div>
       {buildButtons(getButtons())}
     </Popup>
