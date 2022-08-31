@@ -8,20 +8,29 @@
 @import "trading-tools";
 @import "trade-with-promotion";
 @import "performance";
+@import "faq";
+@import "top-market";
+@import "top-market-layout";
 @import "header";
 @import "footer";
 @import "navbar-item";
-@import "dropdown-item";
 @import "lang-select";
 @import "burger-menu";
-@import "accordeon";
+@import "accordion";
 @import "search-bar";
+@import "dropdown-item";
+@import "dropdown";
+@import "trading-ticker";
+@import "tabs";
+@import "table";
 @import "popup";
 @import "lang-options";
 @import "search-page";
 @import "cookies-popup";
 @import "gdpr-popup";
 @import "notification-stripe";
+@import "promotion-markets";
+@import "top-market-promotion";
 
 *,
 *::before,

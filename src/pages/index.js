@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import {graphql} from "gatsby";
+import {useTranslation} from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import promo1 from "../assets/images/promotions/promo1.svg";
 import promo2 from "../assets/images/promotions/promo2.svg";
@@ -6,12 +8,6 @@ import promo3 from "../assets/images/promotions/promo3.svg";
 import promo4 from "../assets/images/promotions/promo4.svg";
 import MainPromotion from "../components/main-promotion";
 import Promotion from "../components/promotion";
-import {
-  PROMO_TEXT_1,
-  PROMO_TEXT_2,
-  PROMO_TEXT_3,
-  PROMO_TEXT_4,
-} from "../helpers/promo-texts";
 import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
 import Performance from "../components/performance";
@@ -41,8 +37,11 @@ import { CookiesPopup } from "../components/cookies-popup";
 import { GDPRPopup } from "../components/gdpr-popup";
 import cn from "classnames";
 import { scrollTo } from "../helpers/scroll-to";
+import Seo from "../components/shared/seo";
+import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 
 const IndexPage = () => {
+  const { t } = useTranslation()
   const headerRef = useRef();
 
   const [isTradePromoScrolled, setIsTradePromoScrolled] = useState(false);
@@ -240,6 +239,7 @@ const IndexPage = () => {
     <Layout headerRef={headerRef}>
       <CookiesPopup />
       <GDPRPopup />
+      <Seo title={t("page-main-title")} />
       <MainPromotion />
       <TradingTicker />
       <TradeWithPromotion sectionRef={tradePromoRef} />
@@ -250,30 +250,45 @@ const IndexPage = () => {
         sectionRef={promo1Ref}
         bgAnimationConfig={isMobile ? null : bgAnimationConfig}
         image={promo1}
-        btnTitle="See more"
+        btnTitle={t("index_promotion1-btn-text")}
         link={REGISTRATION_LINK}
         isRedPalette
       >
-        {PROMO_TEXT_1}
+        <HighlightedLocalizationText
+          localizationText="index_promotion1-text"
+          wordsToHighlight="promotion1-text-accent"
+          primaryClassName="highlighted-in-white"
+          accentClassName="highlighted-in-red"
+        />
       </Promotion>
       <Promotion
         className="promotion2"
         sectionRef={promo2Ref}
         image={promo2}
-        btnTitle="See more"
+        btnTitle={t("index_promotion2-btn-text")}
         link={REGISTRATION_LINK}
         isRedPalette
       >
-        {PROMO_TEXT_2}
+        <HighlightedLocalizationText
+          localizationText="index_promotion2-text"
+          wordsToHighlight="promotion2-text-accent"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
       </Promotion>
       <Promotion
         className="promotion3"
         sectionRef={promo3Ref}
         image={promo3}
-        btnTitle="See more"
+        btnTitle={t("index_promotion2-btn-text")}
         link={REGISTRATION_LINK}
       >
-        {PROMO_TEXT_3}
+        <HighlightedLocalizationText
+          localizationText="index_promotion3-text"
+          wordsToHighlight="promotion3-text-accent"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-white"
+        />
       </Promotion>
       <TradingTools />
       <Promotion
@@ -281,18 +296,43 @@ const IndexPage = () => {
         textAnimationConfig={textAnimation}
         sectionRef={promo4Ref}
         image={promo4}
-        btnTitle="Start copying"
+        btnTitle={t("index_promotion4-btn-text")}
         link={REGISTRATION_LINK}
         isRedPalette
         isReverseOrder
       >
-        {PROMO_TEXT_4}
+        <HighlightedLocalizationText
+          localizationText="index_promotion4-text"
+          wordsToHighlight="promotion4-text-accent"
+          primaryClassName="highlighted-in-white"
+          accentClassName="highlighted-in-red"
+        >
+          <span className="promotion__note">
+            <HighlightedLocalizationText
+              localizationText="index_promotion4-text-children-text"
+              wordsToHighlight="promotion4-text-children-text-accent"
+              primaryClassName="highlighted-in-white"
+              accentClassName="highlighted-in-red"
+            />
+          </span>
+        </HighlightedLocalizationText>
       </Promotion>
       <Performance />
     </Layout>
   );
 };
-
 export default IndexPage;
 
-export const Head = () => <title>Oqtima trading page</title>;
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;

@@ -95,3 +95,6 @@ export const TWP_ICONS_INITIAL_SHIFT = {
 export const setPositionY = (value) => ({
   transform: `translateY(${value}px)`,
 });
+
+export const DEFAULT_WRAPPER_WIDTH = 90;
+export const DELAY_BEFORE_NEXT_KEYWORD = 2000;
