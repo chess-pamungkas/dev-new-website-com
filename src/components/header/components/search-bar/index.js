@@ -9,8 +9,6 @@ import { SearchIcon } from "../../../shared/icons";
 const SearchBar = ({
   className,
   isExpandable = false,
-  // onChange = () => {},
-  // value
 }) => {
   const { t } = useTranslation();
 
@@ -37,8 +35,8 @@ const SearchBar = ({
   });
 
   const getSearchResults = query => {
-    const index = window.__FLEXSEARCH__.en.index;
-    const store = window.__FLEXSEARCH__.en.store;
+    const index = window.__FLEXSEARCH__?.en?.index;
+    const store = window.__FLEXSEARCH__?.en?.store;
     if (!query || !index) {
       return [];
     } else {
@@ -90,7 +88,6 @@ const SearchBar = ({
           placeholder={t("search-placeholder")}
           ref={searchInput}
           onChange={doSearch}
-          // value={value || searchState.query}
           value={searchState.query}
         />
         <button className="search-bar__submit" type="button">
