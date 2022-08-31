@@ -43,7 +43,7 @@ const TitlesAnimation = ({
   });
 
   return isAnimationFinished ? (
-    titles[titles.length - 1]
+    t(titles[titles.length - 1])
   ) : (
     <animated.div style={animationStyles}>{t(titles[index])}</animated.div>
   );

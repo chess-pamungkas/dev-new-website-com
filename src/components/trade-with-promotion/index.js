@@ -196,7 +196,7 @@ const TradeWithPromotion = ({ className }) => {
             {typingIntersectionRef?.isIntersecting ? (
               <TypingAnimation keywords={titles} />
             ) : (
-              titles[0]
+              t(titles[0])
             )}
           </span>
         </div>
