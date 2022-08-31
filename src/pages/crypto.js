@@ -32,11 +32,11 @@ const CryptoPage = () => {
     <Layout>
       <Seo title={t("page-crypto-title")} />
       <TopMarket
-        title="You can now trade more than xxx crypto pairs!"
+        title={t("crypto_top-market-title")}
         image={image}
-        btn1Title="Try our demo account"
+        btn1Title={t("crypto_top-market-btn1")}
         link1={REGISTRATION_LINK}
-        btn2Title="Trade now crypto cfc"
+        btn2Title={t("crypto_top-market-btn2")}
         link2={REGISTRATION_LINK}
       >
         {CRYPTO_TEXT}
@@ -46,7 +46,7 @@ const CryptoPage = () => {
         className="crypto-promotion"
         // TODO replace with a real image
         image={crypto}
-        btnTitle="Start trading crypto CFD"
+        btnTitle={t("crypto_top-market-promo-btn")}
         link={REGISTRATION_LINK}
       >
         {PROMO_TEXT_CRYPTO}
@@ -59,15 +59,15 @@ const CryptoPage = () => {
         promoText={PROMOTION_TEXT_CRYPTO}
       />
       <TopMarketLayout
-        title="Transparent Pricings"
-        btnTitle="Try Oqtima"
+        title={t("crypto_top-market-layout-title")}
+        btnTitle={t("crypto_top-market-layout-btn")}
         link={REGISTRATION_LINK}
       >
         <TableComponent
           data={DATA_CRYPTO}
           columns={COLUMNS_CRYPTO}
-          title="Spread Transparency"
-          subtitle="When you have nothing to hide"
+          title={t("crypto_table-title")}
+          subtitle={t("crypto_table-subtitle")}
         />
       </TopMarketLayout>
       <Faq faq={FAQ_CRYPTO} />

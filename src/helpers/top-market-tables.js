@@ -53,6 +53,29 @@ export const COLUMNS_FOREX = [
   },
 ];
 
+const FOREX_COLUMNS_WITH_BTN = (
+  <div className="table__info-column">
+    <div className="table__params">
+      <div className="table__param">
+        <span className="table__param-name">Bid</span>
+        <span className="table__param-value">0.77</span>
+      </div>
+      <div className="table__param">
+        <span className="table__param-name">Ask</span>
+        <span className="table__param-value">0.77</span>
+      </div>
+    </div>
+    <div className="table__btn-wrapper">
+      <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
+        Buy
+      </ButtonLink>
+      <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
+        Sell
+      </ButtonLink>
+    </div>
+  </div>
+);
+
 export const DATA_FOREX = [
   {
     col1: "AUDCAD",
@@ -60,16 +83,7 @@ export const DATA_FOREX = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col6: FOREX_COLUMNS_WITH_BTN,
   },
   {
     col1: "AUDCAD",
@@ -77,16 +91,7 @@ export const DATA_FOREX = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col6: FOREX_COLUMNS_WITH_BTN,
   },
   {
     col1: "AUDCAD",
@@ -94,16 +99,7 @@ export const DATA_FOREX = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col6: FOREX_COLUMNS_WITH_BTN,
   },
   {
     col1: "AUDCAD",
@@ -111,16 +107,7 @@ export const DATA_FOREX = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col6: FOREX_COLUMNS_WITH_BTN,
   },
   {
     col1: "AUDCAD",
@@ -128,84 +115,16 @@ export const DATA_FOREX = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col6: FOREX_COLUMNS_WITH_BTN,
   },
-  {
-    col1: "AUDCAD",
-    col2: "0",
-    col3: "0.4",
-    col4: "0",
-    col5: "0.4",
-    col6: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
-  },
+
   {
     col1: "USDEUR",
     col2: "0",
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
-  },
-  {
-    col1: "AUDCAD",
-    col2: "0",
-    col3: "0.4",
-    col4: "0",
-    col5: "0.4",
-    col6: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
-  },
-  {
-    col1: "AUDCAD",
-    col2: "0",
-    col3: "0.4",
-    col4: "0",
-    col5: "0.4",
-    col6: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col6: FOREX_COLUMNS_WITH_BTN,
   },
 ];
 
@@ -232,165 +151,92 @@ export const COLUMNS_CRYPTO = [
   },
 ];
 
+const CRYPTO_COLUMNS_WITH_BTN = (
+  <div className={cn("table__btn-wrapper", "table__btn-wrapper--row")}>
+    <ButtonLink
+      link="/"
+      className={cn("table__btn", "table__btn--inline", "table__btn--green")}
+    >
+      Buy
+    </ButtonLink>
+    <ButtonLink
+      link="/"
+      className={cn("table__btn", "table__btn--inline", "table__btn--red")}
+    >
+      Sell
+    </ButtonLink>
+  </div>
+);
+
 export const DATA_CRYPTO = [
   {
     col1: "BTCUSD",
     col2: "20996",
     col3: "21017",
     col4: "2.1",
-    col5: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col5: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "BCHUSD",
     col2: "20996",
     col3: "21017",
     col4: "2.1",
-    col5: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col5: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "ETHUSD",
     col2: "20996",
     col3: "21017",
     col4: "2.1",
-    col5: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col5: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "LTCUSD",
     col2: "20996",
     col3: "21017",
     col4: "2.1",
-    col5: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col5: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "XRPUSD",
     col2: "20996",
     col3: "21017",
     col4: "2.1",
-    col5: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col5: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "BNBUSD",
     col2: "20996",
     col3: "21017",
     col4: "2.1",
-    col5: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col5: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "BTCUSD",
     col2: "20996",
     col3: "21017",
     col4: "2.1",
-    col5: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col5: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "BNBUSD",
     col2: "20996",
     col3: "21017",
     col4: "2.1",
-    col5: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col5: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "BTCUSD",
     col2: "20996",
     col3: "21017",
     col4: "2.1",
-    col5: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col5: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "BTCUSD",
     col2: "20996",
     col3: "21017",
     col4: "2.1",
-    col5: (
-      <div className="table__btn-wrapper">
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-          Buy
-        </ButtonLink>
-        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-          Sell
-        </ButtonLink>
-      </div>
-    ),
+    col5: CRYPTO_COLUMNS_WITH_BTN,
   },
 ];

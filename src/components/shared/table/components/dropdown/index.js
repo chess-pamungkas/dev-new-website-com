@@ -1,13 +1,15 @@
 import Dropdown from "../../../dropdown";
 import React, { useState } from "react";
 import { TABLE_PAGE_SIZES } from "../../../../../helpers/constants";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const TableShowByDropdown = ({ state, setPageSize }) => {
+  const { t } = useTranslation();
   const [isDropdownOpened, setIsDropdownOpened] = useState(false);
 
   return (
     <div className="table__dropdown">
-      <span className="table__dropdown-title">Display</span>
+      <span className="table__dropdown-title">{t("table-dropdown-title")}</span>
       <Dropdown
         className="table__dropdown-select"
         selectedItem={{

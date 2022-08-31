@@ -224,7 +224,6 @@
   "index_performance-advantage7": "100% focus on our trader's experience.",
   "performance-advantage7-accent": "1",
 
-
   "footer-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   "footer-copyright-paragraph1": "Testimonials were given by clients of both Oqtima Advisers and Oqtima Brokerage. There is no guarantee that clients will have similar experiences or success.",
   "footer-copyright-paragraph2": "about the methodology behind Socially Responsible Investing.",
@@ -252,6 +251,10 @@
 
   "lang-select-popup-title": "Select Your Language",
 
+  "table-dropdown-title": "Display",
+  "table-tip1": "minimum,",
+  "table-tip2": "average",
+
   "page-main-title": "Oqtima trading page",
   "page-allmarkets-title": "Oqtima All Markets",
   "page-commodities-title": "Oqtima Commodities",
@@ -260,5 +263,22 @@
   "page-forex-title": "Oqtima Forex",
   "page-indices-title": "Oqtima Indices",
   "page-search-title": "Oqtima Search",
-  "page-shares-title": "Oqtima Shares"
+  "page-shares-title": "Oqtima Shares",
+
+  "forex_top-market-title": "Forex CFD",
+  "forex_top-market-btn1": "Try our demo account",
+  "forex_top-market-btn2": "Start trading FX now",
+  "forex_trading-ticker-title": "Popular currency pairs",
+  "forex_top-market-promo-btn": "Start trading forex CFD",
+  "forex_top-market-layout-title": "Forex Trading Spreads / Conditions",
+  "forex_top-market-layout-btn": "Try Oqtima",
+
+  "crypto_top-market-title": "You can now trade more than xxx crypto pairs!",
+  "crypto_top-market-btn1": "Try our demo account",
+  "crypto_top-market-btn2": "Trade now crypto cfc",
+  "crypto_top-market-promo-btn": "Start trading crypto CFD",
+  "crypto_top-market-layout-title": "Transparent Pricings",
+  "crypto_top-market-layout-btn": "Try Oqtima",
+  "crypto_table-title": "Spread Transparency",
+  "crypto_table-subtitle": "When you have nothing to hide"
 }

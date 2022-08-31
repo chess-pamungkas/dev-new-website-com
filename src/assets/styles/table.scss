@@ -95,7 +95,6 @@
       border-left: 1px solid map-get($colors, "black");
     }
 
-
     @include desktop-xl {
       font-size: 18px;
       line-height: 22px;
@@ -151,24 +150,95 @@
     }
   }
 
-  &__btn-wrapper {
+  &__info-column {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 210px;
+  }
+
+  &__params {
     display: flex;
     align-items: center;
   }
 
+  &__param {
+    text-align: left;
+    margin-right: 15px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__param-name {
+    display: block;
+    font-size: 11px;
+    line-height: 14px;
+    font-weight: map-get($font-weight, "bold");
+    color: map-get($colors, "black");
+  }
+
+  &__param-value {
+    display: block;
+    padding-left: 7px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: map-get($font-weight, "light");
+    color: map-get($colors, "black");
+  }
+
+  &__btn-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    &--row {
+      flex-direction: row;
+    }
+  }
+
   &__btn {
-    margin: 0 5px;
     font-size: 11px;
     width: 83px;
-    line-height: 30px;
+    line-height: 26px;
     color: map-get($colors, "white");
+    margin: 0 0 5px;
+    transition: all 0.1s;
+    border: 2px solid;
+    transform: scale(1);
+
+    &:last-child {
+      margin: 0;
+    }
+
+    &--inline {
+      margin: 0 5px;
+    }
 
     &--red {
       background: map-get($colors, "red-secondary");
+      border-color: map-get($colors, "red-secondary");
+
+      &:hover {
+        color: map-get($colors, "red-secondary");
+      }
     }
 
     &--green {
       background: map-get($colors, "light-green");
+      border-color: map-get($colors, "light-green");
+
+      &:hover {
+        color: map-get($colors, "light-green");
+      }
+    }
+
+    &:hover {
+      background: map-get($colors, "white");
+      transform: scale(1.15);
+      -webkit-transform: scale(1.15);
+      -moz-transform: scale(1.15);
     }
   }
 
