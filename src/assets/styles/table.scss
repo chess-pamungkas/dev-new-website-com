@@ -61,7 +61,8 @@
   border-spacing: 0;
   width: 100%;
 
-  &__head {
+  &--small-padding {
+    padding: 0 20px 20px;
   }
 
   &__head-row {
@@ -114,6 +115,7 @@
       box-shadow: 4px 3px 15px #00000029;
       border: 1px solid map-get($colors, "red");
       border-radius: 10px 10px 0 0;
+      padding: 8px 10px;
       text-transform: uppercase;
       font-size: 16px;
     }
@@ -247,10 +249,10 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0 0 30px;
+    padding: 0 0 20px;
 
     &--bottom {
-      padding: 30px 0 0;
+      padding: 20px 0 0;
       justify-content: flex-end;
     }
 
@@ -279,10 +281,10 @@
     }
 
     .search-bar__input {
-      color: map-get($colors, "black");
+      color: map-get($colors, "red");
 
       &::placeholder {
-        color: map-get($colors, "black");
+        color: map-get($colors, "red");
       }
     }
   }
@@ -377,7 +379,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 20px 20px 0;
 
   &__text {
     font-size: 14px;

@@ -7,8 +7,9 @@ import { SearchIcon } from "../../../shared/icons";
 const SearchBar = ({
   className,
   isExpandable = false,
+  placeholder,
   onChange = () => {},
-  value
+  value,
 }) => {
   const { t } = useTranslation();
 
@@ -51,7 +52,7 @@ const SearchBar = ({
           className={cn("search-bar__input", {
             "search-bar__input--expandable": isExpandable,
           })}
-          placeholder={t("search-placeholder")}
+          placeholder={placeholder ? placeholder : t("search-placeholder")}
           ref={searchInput}
           onChange={onChange}
           value={value || ""}

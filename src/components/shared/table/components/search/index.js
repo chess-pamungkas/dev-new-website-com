@@ -1,8 +1,10 @@
 import React from "react";
 import { useAsyncDebounce } from "react-table";
 import SearchBar from "../../../../header/components/search-bar";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const TableSearch = ({ globalFilter, setGlobalFilter }) => {
+  const { t } = useTranslation();
   const [value, setValue] = React.useState(globalFilter);
   const onChange = useAsyncDebounce((value) => {
     setGlobalFilter(value || undefined);
@@ -13,6 +15,7 @@ const TableSearch = ({ globalFilter, setGlobalFilter }) => {
       <SearchBar
         className="table__searchbar"
         value={value || ""}
+        placeholder={t("table-search-placeholder")}
         onChange={(e) => {
           setValue(e.target.value);
           onChange(e.target.value);
