@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import cn from "classnames";
 import CookieContext from "../../context/cookie-context";
 import { useTranslation } from "gatsby-plugin-react-i18next";
@@ -11,6 +11,14 @@ export const CookiesPopup = ({ className }) => {
     isShowCookiePopup,
     handleCloseCookiePopup,
   } = useContext(CookieContext);
+
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    if (window !== undefined) {
+      setIsReady(true);
+    }
+  }, []);
 
   const acceptAll = () => {
     acceptAllCookies();
@@ -26,20 +34,28 @@ export const CookiesPopup = ({ className }) => {
     <div
       className={cn(
         "cookies-popup",
-        { "cookies-popup--active": isShowCookiePopup },
+        { "cookies-popup--active": isShowCookiePopup && isReady },
         className
       )}
     >
-      <div className="cookies-popup__header"></div>
+      <div className="cookies-popup__header" />
       <div className="cookies-popup__body">
-        {t("cookie-popup-text")}
+        <span>{t("cookie-popup-body")}</span>
       </div>
       <div className="cookies-popup__buttons">
-        <button type="button" className="cookies-popup__more-btn" onClick={learnMore}>
-          {t("cookie-popup-more-btn")}
+        <button
+          type="button"
+          className="cookies-popup__more-btn"
+          onClick={learnMore}
+        >
+          {t("cookie-popup-bnt-learn-more")}
         </button>
-        <button type="button" className="cookies-popup__accept-btn" onClick={acceptAll}>
-          {t("cookie-popup-accept-btn")}
+        <button
+          type="button"
+          className="cookies-popup__accept-btn"
+          onClick={acceptAll}
+        >
+          {t("cookie-popup-bnt-accept-all")}
         </button>
       </div>
     </div>

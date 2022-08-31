@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import { graphql } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import React, {useRef} from "react";
+import {graphql} from "gatsby";
+import {useTranslation} from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import promo1 from "../assets/images/promotions/promo1.svg";
 import promo2 from "../assets/images/promotions/promo2.svg";
@@ -12,22 +12,20 @@ import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
 import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
-import { REGISTRATION_LINK } from "../helpers/constants";
+import {REGISTRATION_LINK} from "../helpers/constants";
 import Layout from "../components/shared/layout";
-import { useIntersectionObserver } from "../helpers/hooks/use-intersection-observer";
-import { useSpring } from "react-spring";
+import {useIntersectionObserver} from "../helpers/hooks/use-intersection-observer";
+import {useSpring} from "react-spring";
 import {
-  INTERSECTION_OBSERVER_CONFIG,
-  OPACITY_0,
-  OPACITY_1,
-  SPRING_CONFIG_BG,
-  SPRING_CONFIG_TEXT,
+    INTERSECTION_OBSERVER_CONFIG,
+    OPACITY_0,
+    OPACITY_1,
+    SPRING_CONFIG_BG,
+    SPRING_CONFIG_TEXT,
 } from "../helpers/animation.config";
-import { useWindowSize } from "../helpers/hooks/use-window-size";
-import { CookiesPopup } from "../components/cookies-popup";
-import { GDPRPopup } from "../components/gdpr-popup";
+import {useWindowSize} from "../helpers/hooks/use-window-size";
 import Seo from "../components/shared/seo";
-import HighlightedLocalizationText from '../components/shared/highlighted-localization-text';
+import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 
 const IndexPage = () => {
   const { t } = useTranslation();
@@ -118,8 +116,6 @@ const IndexPage = () => {
   return (
     <Layout>
       <Seo title={t("page-main-title")} />
-      <CookiesPopup />
-      <GDPRPopup />
       <MainPromotion />
       <TradingTicker />
       <TradeWithPromotion />
@@ -207,7 +203,7 @@ export default IndexPage;
 
 export const query = graphql`
   query ($language: String!) {
-    locales: allLocale(filter: {language: {eq: $language}}) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns
