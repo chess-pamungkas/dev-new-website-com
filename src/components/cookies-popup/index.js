@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import cn from "classnames";
 import CookieContext from "../../context/cookie-context";
 import { useTranslation } from "gatsby-plugin-react-i18next";
@@ -11,6 +11,14 @@ export const CookiesPopup = ({ className }) => {
     isShowCookiePopup,
     handleCloseCookiePopup,
   } = useContext(CookieContext);
+
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    if (window !== undefined) {
+      setIsReady(true);
+    }
+  }, []);
 
   const acceptAll = () => {
     acceptAllCookies();
@@ -26,7 +34,7 @@ export const CookiesPopup = ({ className }) => {
     <div
       className={cn(
         "cookies-popup",
-        { "cookies-popup--active": isShowCookiePopup },
+        { "cookies-popup--active": isShowCookiePopup && isReady },
         className
       )}
     >

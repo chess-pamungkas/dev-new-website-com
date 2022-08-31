@@ -12,18 +12,21 @@ const CookieContext = createContext({});
 
 export const CookieProvider = ({ children }) => {
   const cookies = new Cookies();
-  const showCookiePopup =
-    cookies.get(IS_SHOW_COOKIE_POPUP_KEY) === undefined ? true : false;
+
+  const showCookiePopup = cookies.get(IS_SHOW_COOKIE_POPUP_KEY) === undefined;
+
   const {
     isShow: isShowCookiePopup,
     handleOpen: handleOpenCookiePopup,
     handleClose: handleCloseCookiePopup,
   } = useModal(showCookiePopup, false);
+
   const {
     isShow: isShowGDPRPopup,
     handleOpen: handleOpenGDPRPopup,
     handleClose: handleCloseGDPRPopup,
   } = useModal();
+
   const [cookieConsent, setCookieConsent] = useState(
     cookies.get(COOKIE_CONSENT_KEY) || {}
   );
