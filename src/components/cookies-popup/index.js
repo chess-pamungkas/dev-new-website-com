@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import cn from "classnames";
 import CookieContext from "../../context/cookie-context";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 export const CookiesPopup = ({ className }) => {
+  const { t } = useTranslation();
   const {
     handleOpenGDPRPopup,
     acceptAllCookies,
@@ -28,18 +30,24 @@ export const CookiesPopup = ({ className }) => {
         className
       )}
     >
-      <div className="cookies-popup__header"></div>
+      <div className="cookies-popup__header" />
       <div className="cookies-popup__body">
-        By clicking “Accept All”, you agree to store cookies on your device to
-        enhance site navigation and user experience, analyse site usage, and
-        offer a customised experience.
+        <span>{t("cookie-popup-body")}</span>
       </div>
       <div className="cookies-popup__buttons">
-        <button type="button" className="cookies-popup__more-btn" onClick={learnMore}>
-          Learn More
+        <button
+          type="button"
+          className="cookies-popup__more-btn"
+          onClick={learnMore}
+        >
+          {t("cookie-popup-bnt-learn-more")}
         </button>
-        <button type="button" className="cookies-popup__accept-btn" onClick={acceptAll}>
-          Accept all
+        <button
+          type="button"
+          className="cookies-popup__accept-btn"
+          onClick={acceptAll}
+        >
+          {t("cookie-popup-bnt-accept-all")}
         </button>
       </div>
     </div>
