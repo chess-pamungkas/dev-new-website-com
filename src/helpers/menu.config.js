@@ -119,7 +119,7 @@ const CYSEC_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
 };
 
 const FSA_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
-  title: "header-nav-tab-funding-withdrawals",
+  title: "header-nav-tab-trading-funding-withdrawals-title",
   link: "",
   isSubtitle: true,
   icon: FundingWithdrawalsIcon,
