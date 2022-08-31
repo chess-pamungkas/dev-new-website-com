@@ -1,12 +1,18 @@
 import React from "react";
 import cn from "classnames";
 import "regenerator-runtime";
-import {useFilters, useGlobalFilter, usePagination, useSortBy, useTable,} from "react-table";
+import {
+  useFilters,
+  useGlobalFilter,
+  usePagination,
+  useSortBy,
+  useTable,
+} from "react-table";
 import TableSearch from "./components/search";
 import TablePagination from "./components/pagination";
-import {TABLE_PAGE_SIZES} from "../../../helpers/constants";
+import { TABLE_PAGE_SIZES } from "../../../helpers/constants";
 import TableShowByDropdown from "./components/dropdown";
-import {TableTip, TableTitle} from "./components/title";
+import { TableTip, TableTitle } from "./components/title";
 
 const TableComponent = ({
   className,
@@ -62,9 +68,21 @@ const TableComponent = ({
   const isGroupedHeader = () => Object.keys(headerGroups).length > 1;
 
   return (
-    <div className={cn("table-wrapper", className)}>
+    <div
+      className={cn(
+        "table-wrapper",
+        {
+          "table-wrapper--padding": !isSearch,
+        },
+        className
+      )}
+    >
       {title && <TableTitle title={title} subtitle={subtitle} />}
-      <div className="table__tools">
+      <div
+        className={cn("table__tools", {
+          "table__tools--single-block": !isPagination,
+        })}
+      >
         {isPagination && (
           <TableShowByDropdown state={state} setPageSize={setPageSize} />
         )}

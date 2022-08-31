@@ -47,12 +47,36 @@ const ForexPage = () => {
     {
       id: 2,
       title: "Minor",
-      content: <></>,
+      content: (
+        <TableComponent
+          data={DATA_FOREX}
+          columns={COLUMNS_FOREX}
+          tip={
+            <span>
+              <span className="bold">*MIN</span> - minimum,&nbsp;
+              <span className="bold">AVG</span> - average
+            </span>
+          }
+          isSearch
+        />
+      ),
     },
     {
       id: 3,
       title: "Exotic",
-      content: <></>,
+      content: (
+        <TableComponent
+          data={DATA_FOREX}
+          columns={COLUMNS_FOREX}
+          tip={
+            <span>
+              <span className="bold">*MIN</span> - minimum,&nbsp;
+              <span className="bold">AVG</span> - average
+            </span>
+          }
+          isSearch
+        />
+      ),
     },
   ];
 
