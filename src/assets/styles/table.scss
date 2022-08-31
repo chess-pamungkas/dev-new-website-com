@@ -2,7 +2,9 @@
 @import "vars";
 
 .table-wrapper {
-  padding: 25px;
+  &--padding {
+    padding: 25px;
+  }
 }
 
 .table-scroll {
@@ -22,12 +24,12 @@
 
   &::-webkit-scrollbar-track {
     border-radius: 25px;
-    background-color: #E3E3E3;
+    background-color: map-get($colors, "table-grey");
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 25px;
-    background-color: #9B9B9B;
+    background-color: #9b9b9b;
   }
 }
 
@@ -62,24 +64,58 @@
   &__head {
   }
 
+  &__head-row {
+    &--grouped {
+      .table__head-column {
+        border-right: 1px solid map-get($colors, "table-grey");
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+  }
+
   &__head-column {
     min-width: 120px;
     border-bottom: 1px solid map-get($colors, "black");
-    padding: 10px;
+
+    padding: 10px 10px 15px;
     font-weight: map-get($font-weight, "bold");
-    font-size: 13px;
-    line-height: 17px;
+    font-size: 18px;
+    line-height: 22px;
     color: map-get($colors, "black");
     text-transform: capitalize;
 
     &:first-child {
       color: map-get($colors, "red");
-      border-right: 1px solid map-get($colors, "black");
+    }
+
+    &:nth-child(2) {
+      border-left: 1px solid map-get($colors, "black");
     }
 
     @include desktop-xl {
       font-size: 18px;
       line-height: 22px;
+    }
+
+    &--grouped {
+      border: none;
+
+      &:first-child {
+        border-right: none;
+      }
+    }
+
+    &--grouped:not(.table__head-column--empty) {
+      color: map-get($colors, "white");
+      background: map-get($colors, "red");
+      box-shadow: 4px 3px 15px #00000029;
+      border: 1px solid map-get($colors, "red");
+      border-radius: 10px 10px 0 0;
+      text-transform: uppercase;
+      font-size: 16px;
     }
   }
 
@@ -93,33 +129,116 @@
     line-height: 20px;
     color: map-get($colors, "black");
     text-transform: capitalize;
-    // TODO change border color after layout will be updated
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: 1px solid map-get($colors, "black");
+    border-right: 1px solid map-get($colors, "table-grey");
     padding: 15px 10px;
 
     &:first-child {
-      border-right: 1px solid map-get($colors, "black");
+      //border-right: 1px solid map-get($colors, "black");
+      font-size: 18px;
     }
+
+    &:nth-child(2) {
+      border-left: 1px solid map-get($colors, "black");
+    }
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &--grouped {
+    }
+  }
+
+  &__info-column {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 210px;
+  }
+
+  &__params {
+    display: flex;
+    align-items: center;
+  }
+
+  &__param {
+    text-align: left;
+    margin-right: 15px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__param-name {
+    display: block;
+    font-size: 11px;
+    line-height: 14px;
+    font-weight: map-get($font-weight, "bold");
+    color: map-get($colors, "black");
+  }
+
+  &__param-value {
+    display: block;
+    padding-left: 7px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: map-get($font-weight, "light");
+    color: map-get($colors, "black");
   }
 
   &__btn-wrapper {
     display: flex;
     align-items: center;
+    flex-direction: column;
+
+    &--row {
+      flex-direction: row;
+    }
   }
 
   &__btn {
-    margin: 0 5px;
     font-size: 11px;
     width: 83px;
-    line-height: 30px;
+    line-height: 26px;
     color: map-get($colors, "white");
+    margin: 0 0 5px;
+    transition: all 0.1s;
+    border: 2px solid;
+    transform: scale(1);
+
+    &:last-child {
+      margin: 0;
+    }
+
+    &--inline {
+      margin: 0 5px;
+    }
 
     &--red {
       background: map-get($colors, "red-secondary");
+      border-color: map-get($colors, "red-secondary");
+
+      &:hover {
+        color: map-get($colors, "red-secondary");
+      }
     }
 
     &--green {
       background: map-get($colors, "light-green");
+      border-color: map-get($colors, "light-green");
+
+      &:hover {
+        color: map-get($colors, "light-green");
+      }
+    }
+
+    &:hover {
+      background: map-get($colors, "white");
+      transform: scale(1.15);
+      -webkit-transform: scale(1.15);
+      -moz-transform: scale(1.15);
     }
   }
 
@@ -132,6 +251,10 @@
 
     &--bottom {
       padding: 30px 0 0;
+      justify-content: flex-end;
+    }
+
+    &--single-block {
       justify-content: flex-end;
     }
   }
@@ -247,5 +370,18 @@
     &--arrow {
       width: 55px;
     }
+  }
+}
+
+.tip {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px 20px 0;
+
+  &__text {
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0;
   }
 }
