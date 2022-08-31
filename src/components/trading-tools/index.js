@@ -1,15 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { PLATFORMS } from "../../helpers/config";
 import PlatformBlock from "./components/platform-block";
-import { TRADING_TOOLS_TITLE } from "../../helpers/promo-texts";
 import ButtonLink from "../shared/button-link";
 import DeviceBlock from "./components/device-block";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import { useTrail, animated } from "react-spring";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
+import HighlightedLocalizationText from '../shared/highlighted-localization-text';
 
 const TradingTools = ({ className }) => {
+  const { t } = useTranslation();
   const containerRef = useRef();
   const intersectionRef = useIntersectionObserver(containerRef, {
     freezeOnceVisible: true,
@@ -51,7 +53,7 @@ const TradingTools = ({ className }) => {
               >
                 <PlatformBlock
                   icon={Object.values(PLATFORMS)[i].icon}
-                  title={Object.values(PLATFORMS)[i].title}
+                  title={t(Object.values(PLATFORMS)[i].title)}
                 />
               </animated.span>
             );
@@ -62,10 +64,15 @@ const TradingTools = ({ className }) => {
           isAnimationStarted={isAnimationStarted}
         />
         <h2 className="trading-tools__title" ref={containerRef}>
-          {TRADING_TOOLS_TITLE}
+          <HighlightedLocalizationText
+            localizationText="index_trading-tools-title"
+            wordsToHighlight="trading-tools-title-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
         </h2>
         <ButtonLink link={REGISTRATION_LINK} className="trading-tools__btn">
-          Create your account
+          {t("index_trading-tools-btn-text")}
         </ButtonLink>
       </div>
     </section>
