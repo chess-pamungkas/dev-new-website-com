@@ -4,42 +4,43 @@ import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import Dropdown from "../../../shared/dropdown";
 import cn from "classnames";
 
+// TODO: move constant to helpers
 export const TRADING_SECTIONS = [
   {
     id: 1,
-    title: "Crypto",
+    title: "index_trading-ticker-section1",
   },
   {
     id: 2,
-    title: "Forex",
+    title: "index_trading-ticker-section2",
   },
   {
     id: 3,
-    title: "Shares",
+    title: "index_trading-ticker-section3",
   },
   {
     id: 4,
-    title: "Energies",
+    title: "index_trading-ticker-section4",
   },
   {
     id: 5,
-    title: "Commodities",
+    title: "index_trading-ticker-section5",
   },
   {
     id: 6,
-    title: "Indices",
+    title: "index_trading-ticker-section6",
   },
   {
     id: 7,
-    title: "Indices1",
+    title: "index_trading-ticker-section7",
   },
   {
     id: 8,
-    title: "Indices2",
+    title: "index_trading-ticker-section8",
   },
   {
     id: 9,
-    title: "Indices3",
+    title: "index_trading-ticker-section9",
   },
 ];
 

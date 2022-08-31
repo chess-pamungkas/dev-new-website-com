@@ -3,7 +3,6 @@ import iosIcon from "../assets/images/icons/tools/ios.svg";
 import androidIcon from "../assets/images/icons/tools/android.svg";
 import metaTrader4Icon from "../assets/images/icons/tools/metaTrader4.svg";
 import metaTrader5Icon from "../assets/images/icons/tools/metaTrader5.svg";
-import { ADVANTAGE_TEXTS } from "./promo-texts";
 import {
   AdvantageIcon1,
   AdvantageIcon2,
@@ -17,80 +16,93 @@ import {
 export const CYSEC_ADVANTAGES = [
   {
     icon: AdvantageIcon1,
-    text: ADVANTAGE_TEXTS.block1,
+    text: "index_performance-advantage1",
+    accent: "performance-advantage1-accent",
   },
   {
     icon: AdvantageIcon2,
-    text: ADVANTAGE_TEXTS.block2,
+    text: "index_performance-advantage2",
+    accent: "performance-advantage2-accent",
   },
   {
     icon: AdvantageIcon3,
-    text: ADVANTAGE_TEXTS.block3,
+    text: "index_performance-advantage3",
+    accent: "performance-advantage3-accent",
   },
   {
     icon: AdvantageIcon4,
-    text: ADVANTAGE_TEXTS.block4,
+    text: "index_performance-advantage4",
+    accent: "performance-advantage4-accent",
   },
   {
     icon: AdvantageIcon6,
-    text: ADVANTAGE_TEXTS.block6,
+    text: "index_performance-advantage6",
+    accent: "performance-advantage6-accent",
   },
   {
     icon: AdvantageIcon7,
-    text: ADVANTAGE_TEXTS.block7,
+    text: "index_performance-advantage7",
+    accent: "performance-advantage7-accent",
   },
 ];
 
 export const FSA_ADVANTAGES = [
   {
     icon: AdvantageIcon1,
-    text: ADVANTAGE_TEXTS.block1,
+    text: "index_performance-advantage1",
+    accent: "performance-advantage1-accent",
   },
   {
     icon: AdvantageIcon2,
-    text: ADVANTAGE_TEXTS.block2,
+    text: "index_performance-advantage2",
+    accent: "performance-advantage2-accent",
   },
   {
     icon: AdvantageIcon3,
-    text: ADVANTAGE_TEXTS.block3,
+    text: "index_performance-advantage3",
+    accent: "performance-advantage3-accent",
   },
   {
     icon: AdvantageIcon4,
-    text: ADVANTAGE_TEXTS.block4,
+    text: "index_performance-advantage4",
+    accent: "performance-advantage4-accent",
   },
   {
     icon: AdvantageIcon5,
-    text: ADVANTAGE_TEXTS.block5,
+    text: "index_performance-advantage5",
+    accent: "performance-advantage5-accent",
   },
   {
     icon: AdvantageIcon6,
-    text: ADVANTAGE_TEXTS.block6,
+    text: "index_performance-advantage6",
+    accent: "performance-advantage6-accent",
   },
   {
     icon: AdvantageIcon7,
-    text: ADVANTAGE_TEXTS.block7,
+    text: "index_performance-advantage7",
+    accent: "performance-advantage7-accent",
   },
 ];
 
 export const PLATFORMS = {
   webTrader: {
     icon: webTraderIcon,
-    title: "WebTrader",
+    title: "index_trading-tools-platforms-webtrader",
   },
   ios: {
     icon: iosIcon,
-    title: "iOS",
+    title: "index_trading-tools-platforms-ios",
   },
   android: {
     icon: androidIcon,
-    title: "Android",
+    title: "index_trading-tools-platforms-android",
   },
   metaTrader4: {
     icon: metaTrader4Icon,
-    title: "MetaTrader4",
+    title: "index_trading-tools-platforms-metatrader4",
   },
   metaTrader5: {
     icon: metaTrader5Icon,
-    title: "MetaTrader5",
+    title: "index_trading-tools-platforms-metatrader5",
   },
 };

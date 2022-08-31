@@ -3,21 +3,21 @@ export const PERFORMANCE_COOKIE_KEY = "performance";
 export const SEGMENTATION_COOKIE_KEY = "segmentation";
 
 export const NECESSARY_COOKIE = {
-  title: "Strictly necessary cookies",
+  title: "cookie-necessary",
   categoryKey: NECESSARY_COOKIE_KEY,
   initialValue: true,
   canBeChanged: false,
 };
 
 export const PERFORMANCE_COOKIE = {
-  title: "Performance Cookies",
+  title: "cookie-performance",
   categoryKey: PERFORMANCE_COOKIE_KEY,
   initialValue: true,
   canBeChanged: true,
 };
 
 export const SEGMENTATION_COOKIE = {
-  title: "Segmentation Cookies",
+  title: "cookie-segmentation",
   categoryKey: SEGMENTATION_COOKIE_KEY,
   initialValue: true,
   canBeChanged: true,

@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const Dropdown = ({
   className,
@@ -10,6 +11,8 @@ const Dropdown = ({
   setIsOpen,
   isDropdownShown,
 }) => {
+  const { t } = useTranslation();
+
   const onSelectionByClick = (item) => {
     setSelectedItem(item);
     setIsOpen(false);
@@ -28,7 +31,7 @@ const Dropdown = ({
           })}
           onClick={() => onSelectionByClick(item)}
         >
-          <span>{item.title}</span>
+          <span>{t(item.title)}</span>
         </button>
       );
     });
@@ -45,7 +48,7 @@ const Dropdown = ({
         type="button"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="dropdown__title-content">{selectedItem.title}</span>
+        <span className="dropdown__title-content">{t(selectedItem.title)}</span>
       </button>
       {isOpen && isDropdownShown && (
         <div className="dropdown__content">
