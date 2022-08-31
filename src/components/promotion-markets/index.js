@@ -1,15 +1,20 @@
 import React from "react";
 import cn from "classnames";
 import Lottie from "lottie-react";
-import { REGISTRATION_LINK } from "../../helpers/constants";
+import {REGISTRATION_LINK} from "../../helpers/constants";
 import ButtonLink from "../shared/button-link";
 
-const PromotionMarkets = ({ className, animation, promoText }) => {
+const PromotionMarkets = ({
+  className,
+  animation,
+  animationStyle,
+  promoText,
+}) => {
   return (
     <section className={cn("promotion-markets", className)}>
       <div className="promotion-markets__images">
         <div className="promotion-markets__chart" />
-        <Lottie animationData={animation} />
+        <Lottie animationData={animation} style={animationStyle} />
       </div>
 
       <div className="promotion-markets__content">

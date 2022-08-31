@@ -78,6 +78,9 @@
   "cookie-necessary": "Strictly necessary cookies",
   "cookie-performance": "Performance Cookies",
   "cookie-segmentation": "Segmentation Cookies",
+  "cookie-popup-body": " By clicking “Accept All”, you agree to store cookies on your device to enhance site navigation and user experience, analyse site usage, and offer a customised experience.",
+  "cookie-popup-bnt-learn-more": "Learn More",
+  "cookie-popup-bnt-accept-all": "Accept all",
 
   "index_main-promotion-title": "A Perfectly optimised trading experience for",
   "index_main-promotion-animated-text-forex-traders": "Forex Traders",
@@ -224,7 +227,6 @@
   "index_performance-advantage7": "100% focus on our trader's experience.",
   "performance-advantage7-accent": "1",
 
-
   "footer-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   "footer-copyright-paragraph1": "Testimonials were given by clients of both Oqtima Advisers and Oqtima Brokerage. There is no guarantee that clients will have similar experiences or success.",
   "footer-copyright-paragraph2": "about the methodology behind Socially Responsible Investing.",
@@ -252,6 +254,10 @@
 
   "lang-select-popup-title": "Select Your Language",
 
+  "table-dropdown-title": "Display",
+  "table-tip1": "minimum,",
+  "table-tip2": "average",
+
   "page-main-title": "Oqtima trading page",
   "page-allmarkets-title": "Oqtima All Markets",
   "page-commodities-title": "Oqtima Commodities",
@@ -260,5 +266,45 @@
   "page-forex-title": "Oqtima Forex",
   "page-indices-title": "Oqtima Indices",
   "page-search-title": "Oqtima Search",
-  "page-shares-title": "Oqtima Shares"
+  "page-shares-title": "Oqtima Shares",
+
+  "notification-stripe-cysec-part1": "CFDs are complex instruments with a high risk of losing money rapidly due to leverage.",
+  "notification-stripe-cysec-part2": "of retail investor accounts lose money when trading CFDs. It would be best to consider whether you understand how CFDs work and whether you can afford to take the high risk of losing the money you want to invest.",
+  "notification-stripe-redirect-text": "Based on your geolocation, you may want to consider another of our licensed companies that may be better suited to you.",
+  "notification-stripe-close-btn": "Close",
+  "notification-stripe-change-btn": "Change site",
+
+  "popup-title": "Please Read",
+  "popup-banned-description-part1": "Your IP shows you are located in",
+  "popup-banned-description-part2": ". Our",
+  "popup-banned-description-part3": "authorised body cannot accept residents of this country.",
+  "popup-banned-description-part4": "If you are a resident of a different country, we apologise for the inconvenience; please click on continue to access the website.",
+  "popup-banned-continue-btn": "Continue",
+  "popup-banned-close-btn": "Close",
+  "popup-redirect-description-part1": "Based on your Geo-Location, we wish to inform you that",
+  "popup-redirect-description-part2": "operates the website you are visiting now. This entity is not established in the European Union or regulated by an EU National Competent Authority.",
+  "popup-redirect-description-part3": "Should you wish to proceed, please confirm that your decision was made independently and at your exclusive initiative and that no solicitation has been made by",
+  "popup-redirect-description-part4": "or any of its related entities.",
+  "popup-redirect-confirm-btn": "Confirm",
+  "popup-redirect-dont-confirm-btn": "Do not confirm",
+
+  "cysec-entity-name": "Cyprus Securities and Exchange Commission",
+  "fsa-entity-name": "Financial Services Authority",
+
+  "forex_top-market-title": "Forex CFD",
+  "forex_top-market-btn1": "Try our demo account",
+  "forex_top-market-btn2": "Start trading FX now",
+  "forex_trading-ticker-title": "Popular currency pairs",
+  "forex_top-market-promo-btn": "Start trading forex CFD",
+  "forex_top-market-layout-title": "Forex Trading Spreads / Conditions",
+  "forex_top-market-layout-btn": "Try Oqtima",
+
+  "crypto_top-market-title": "You can now trade more than xxx crypto pairs!",
+  "crypto_top-market-btn1": "Try our demo account",
+  "crypto_top-market-btn2": "Trade now crypto cfc",
+  "crypto_top-market-promo-btn": "Start trading crypto CFD",
+  "crypto_top-market-layout-title": "Transparent Pricings",
+  "crypto_top-market-layout-btn": "Try Oqtima",
+  "crypto_table-title": "Spread Transparency",
+  "crypto_table-subtitle": "When you have nothing to hide"
 }

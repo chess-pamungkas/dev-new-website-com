@@ -19,3 +19,5 @@ export const ANGLE_ICON_COLOR = {
   red: "#ff4400",
   white: "#ffffff",
 };
+
+export const TABLE_PAGE_SIZES = [5, 10, 15];

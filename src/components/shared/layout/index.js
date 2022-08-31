@@ -7,6 +7,8 @@ import { MarketingContextProvider } from "../../../context/marketing-context";
 import { CookieProvider } from "../../../context/cookie-context";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import Footer from "../../footer";
+import { CookiesPopup } from "../../cookies-popup";
+import { GDPRPopup } from "../../gdpr-popup";
 
 const Layout = ({ children, isShowFooter = true }) => {
   const headerRef = useRef();
@@ -26,8 +28,8 @@ const Layout = ({ children, isShowFooter = true }) => {
   }, [headerRef, sectionOptions, width]);
 
   return (
-    <CookieProvider>
-      <ClientResolverProvider>
+    <ClientResolverProvider>
+      <CookieProvider>
         <MarketingContextProvider>
           <LanguageProvider>
             <Header
@@ -45,14 +47,16 @@ const Layout = ({ children, isShowFooter = true }) => {
                   marginTop: scrollHeight,
                 }}
               >
+                <CookiesPopup />
+                <GDPRPopup />
                 {children}
               </main>
               {isShowFooter && <Footer />}
             </section>
           </LanguageProvider>
         </MarketingContextProvider>
-      </ClientResolverProvider>
-    </CookieProvider>
+      </CookieProvider>
+    </ClientResolverProvider>
   );
 };
 

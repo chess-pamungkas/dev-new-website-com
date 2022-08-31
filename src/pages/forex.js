@@ -29,41 +29,60 @@ const ForexPage = () => {
   const tabs = [
     {
       id: 1,
-      title: "For Standard Accounts",
+      title: "Major",
       content: (
         <TableComponent
           data={DATA_FOREX}
           columns={COLUMNS_FOREX}
-          isPagination
+          tip={
+            <span>
+              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+              &nbsp;
+              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+              &nbsp;
+            </span>
+          }
           isSearch
-          isSorting
         />
       ),
     },
     {
       id: 2,
-      title: "For Micro Accounts",
-      content: <></>,
+      title: "Minor",
+      content: (
+        <TableComponent
+          data={DATA_FOREX}
+          columns={COLUMNS_FOREX}
+          tip={
+            <span>
+              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+              &nbsp;
+              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+              &nbsp;
+            </span>
+          }
+          isSearch
+        />
+      ),
     },
     {
       id: 3,
-      title: "For Swap Free Standard Accounts",
-      content: <></>,
-    },
-    {
-      id: 4,
-      title: "For Swap Free Micro Accounts",
-      content: <></>,
-    },
-    {
-      id: 5,
-      title: "For Swap Ultra Low Standard Accounts",
-      content: <></>,
-    },
-    {
-      id: 6,
-      title: "For Swap Ultra Low Micro Accounts",
-      content: <></>,
+      title: "Exotic",
+      content: (
+        <TableComponent
+          data={DATA_FOREX}
+          columns={COLUMNS_FOREX}
+          tip={
+            <span>
+              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+              &nbsp;
+              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+              &nbsp;
+            </span>
+          }
+          isSearch
+        />
+      ),
     },
   ];
 
@@ -71,33 +90,35 @@ const ForexPage = () => {
     <Layout>
       <Seo title={t("page-forex-title")} />
       <TopMarket
-        title="Forex CFD"
+        title={t("forex_top-market-title")}
         image={image}
-        btn1Title="Try our demo account"
+        btn1Title={t("forex_top-market-btn1")}
         link1={REGISTRATION_LINK}
-        btn2Title="Start trading FX now"
+        btn2Title={t("forex_top-market-btn2")}
         link2={REGISTRATION_LINK}
       >
         {FOREX_TEXT}
       </TopMarket>
-      <TradingTicker title="Popular currency pairs" />
+      <TradingTicker title={t("forex_trading-ticker-title")} />
       <TopMarketPromotion
         className="forex-promotion"
         // TODO replace with a real image
         image={forex}
-        btnTitle="Start trading forex CFD"
+        btnTitle={t("forex_top-market-promo-btn")}
         link={REGISTRATION_LINK}
       >
         {PROMO_TEXT_FOREX}
       </TopMarketPromotion>
       <PromotionMarkets
-        // TODO replace with responsive images
-        animation={isMobile ? animation : animation}
+        animation={animation}
+        animationStyle={{
+          height: isMobile ? 246 : 382,
+        }}
         promoText={PROMOTION_TEXT_FOREX}
       />
       <TopMarketLayout
-        title="Forex Trading Spreads / Conditions"
-        btnTitle="Try Oqtima"
+        title={t("forex_top-market-layout-title")}
+        btnTitle={t("forex_top-market-layout-btn")}
         link={REGISTRATION_LINK}
       >
         <Tabs tabList={tabs} />

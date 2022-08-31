@@ -81,7 +81,7 @@
   }
 
   &__accordion {
-    border-bottom: 1px solid #E3E3E3;
+    border-bottom: 1px solid map-get($colors, "table-grey");
     padding-bottom: 30px;
     margin: 0 0 20px;
 
