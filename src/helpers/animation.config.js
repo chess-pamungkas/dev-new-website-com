@@ -4,6 +4,8 @@ const ANIMATION_DURATION = 700;
 const TEXT_ANIMATION_DURATION = 500;
 const TWP_SECTION_ANIMATION_DURATION = 2000;
 
+export const BACKGROUND_ANIMATION_DURATION = 1000;
+
 export const SPRING_CONFIG_BG = {
   config: { duration: ANIMATION_DURATION },
 };
@@ -27,17 +29,45 @@ export const OPACITY_1 = {
   opacity: "1",
 };
 
+export const TRADE_PROMO_INTERSECTION_RATIO_XL = 0.1;
+export const PROMO_INTERSECTION_RATIO_TO_SCROLL_XL = 0.1;
+export const PROMO_INTERSECTION_RATIO_TO_REVERSE_XL = 0.2;
+
+export const TRADE_PROMO_INTERSECTION_RATIO_LG = 0.3;
+export const PROMO_INTERSECTION_RATIO_TO_SCROLL_LG = 0.4;
+export const PROMO_INTERSECTION_RATIO_TO_REVERSE_LG = 0.5;
+
+export const TRADE_PROMO_INTERSECTION_RATIO_TABLET = 0.3;
+export const PROMO_INTERSECTION_RATIO_TO_SCROLL_TABLET = 0.3;
+export const PROMO_INTERSECTION_RATIO_TO_REVERSE_TABLET = 0.3;
+
 export const INTERSECTION_OBSERVER_CONFIG = {
+  tradePromo: {
+    threshold: [
+      0.02, 0.05, 0.07, 0.1, 0.12, 0.15, 0.17, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7,
+      0.85, 0.89, 0.92, 0.95, 0.97, 1,
+    ],
+    freezeOnceVisible: false,
+  },
   promo1: {
-    threshold: [.0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1],
+    threshold: [
+      0.02, 0.05, 0.07, 0.1, 0.12, 0.15, 0.17, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7,
+      0.85, 0.89, 0.92, 0.95, 0.97, 1,
+    ],
     freezeOnceVisible: false,
   },
   promo2: {
-    threshold: [.0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1],
+    threshold: [
+      0.02, 0.05, 0.07, 0.1, 0.12, 0.15, 0.17, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7,
+      0.85, 0.89, 0.92, 0.95, 0.97, 1,
+    ],
     freezeOnceVisible: false,
   },
   promo3: {
-    threshold: [.0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1],
+    threshold: [
+      0.02, 0.05, 0.07, 0.1, 0.12, 0.15, 0.17, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7,
+      0.85, 0.89, 0.92, 0.95, 0.97, 1,
+    ],
     freezeOnceVisible: false,
   },
   textPromo4: {
@@ -59,7 +89,9 @@ export const TWP_ICONS_INITIAL_SHIFT = {
   airbnb: -50,
   meta: -100,
   amazon: -300,
-  bitcoin: -250, 
+  bitcoin: -250,
 };
 
-export const setPositionY = value => ({ transform: `translateY(${value}px)` });
+export const setPositionY = (value) => ({
+  transform: `translateY(${value}px)`,
+});

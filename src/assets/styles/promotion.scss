@@ -180,41 +180,27 @@
     left: 0;
     background: url("../../assets/images/bg/promotions/promo1/promo1-sm.svg") no-repeat center;
     background-size: cover;
+    background-position: 0  top;
 
     @include tablet {
-      background: url("../../assets/images/bg/promotions/promo1/promo1-md.svg") no-repeat center;
-      background-size: cover;
+      width: 2304px;
+      height: 2935px;
+      background: url("../../assets/images/bg/promotions/promotion-slide-tablet.jpg") no-repeat center;
+      background-size: 300% 100%;
     }
 
     @include desktop-lg {
-      background: url("../../assets/images/bg/promotions/promo1/promo1-lg.svg") no-repeat center;
-      background-size: cover;
+      width: 3072px;
+      height: 2273px;
+      background: url("../../assets/images/bg/promotions/promotion-slide-lg.jpg") no-repeat center;
+      background-size: 300% 100%;
     }
 
     @include desktop-xl {
-      background: url("../../assets/images/bg/promotions/promo1/promo1-xl.svg") no-repeat center;
-      background-size: cover;
-    }
-
-    &--right {
-      left: 100%;
-      background: url("../../assets/images/bg/promotions/promo1/promo1-sm-right.svg") no-repeat center;
-      background-size: cover;
-
-      @include tablet {
-        background: url("../../assets/images/bg/promotions/promo1/promo1-md-right.svg") no-repeat center;
-        background-size: cover;
-      }
-
-      @include desktop-lg {
-        background: url("../../assets/images/bg/promotions/promo1/promo1-lg-right.svg") no-repeat center;
-        background-size: cover;
-      }
-
-      @include desktop-xl {
-        background: url("../../assets/images/bg/promotions/promo1/promo1-xl-right.svg") no-repeat center;
-        background-size: cover;
-      }
+      width: 3841px;
+      height: 2868px;
+      background: url("../../assets/images/bg/promotions/promotion-slide.jpg") no-repeat center;
+      background-size: 300% 100%;
     }
   }
 }
@@ -237,65 +223,11 @@
   }
 
   .promotion__bg {
-    left: 100%;
     background: url("../../assets/images/bg/promotions/promo2/promo2-sm.svg") no-repeat;
     background-size: cover;
 
     @include tablet {
-      background: url("../../assets/images/bg/promotions/promo2/promo2-md.svg") no-repeat;
-      background-size: cover;
-    }
-
-    @include desktop-lg {
-      background: url("../../assets/images/bg/promotions/promo2/promo2-lg.svg") no-repeat;
-      background-size: cover;
-    }
-
-    @include desktop-xl {
-      background: url("../../assets/images/bg/promotions/promo2/promo2-xl.svg") no-repeat;
-      background-size: cover;
-    }
-
-    &--right {
-      left: 100%;
-      background: url("../../assets/images/bg/promotions/promo2/promo2-sm-right.svg") no-repeat center;
-      background-size: cover;
-
-      @include tablet {
-        background: url("../../assets/images/bg/promotions/promo2/promo2-md-right.svg") no-repeat center;
-        background-size: cover;
-      }
-
-      @include desktop-lg {
-        background: url("../../assets/images/bg/promotions/promo2/promo2-lg-right.svg") no-repeat center;
-        background-size: cover;
-      }
-
-      @include desktop-xl {
-        background: url("../../assets/images/bg/promotions/promo2/promo2-xl-right.svg") no-repeat center;
-        background-size: cover;
-      }
-    }
-
-    &--left {
-      left: 0;
-      background: url("../../assets/images/bg/promotions/promo2/promo2-sm-left.svg") no-repeat center;
-      background-size: cover;
-
-      @include tablet {
-        background: url("../../assets/images/bg/promotions/promo2/promo2-md-left.svg") no-repeat center;
-        background-size: cover;
-      }
-
-      @include desktop-lg {
-        background: url("../../assets/images/bg/promotions/promo2/promo2-lg-left.svg") no-repeat center;
-        background-size: cover;
-      }
-
-      @include desktop-xl {
-        background: url("../../assets/images/bg/promotions/promo2/promo2-xl-left.svg") no-repeat center;
-        background-size: cover;
-      }
+      background: none;
     }
   }
 }
@@ -322,39 +254,7 @@
     background-size: cover;
 
     @include tablet {
-      background: url("../../assets/images/bg/promotions/promo3/promo3-md.svg") no-repeat center;
-      background-size: cover;
-    }
-
-    @include desktop-lg {
-      background: url("../../assets/images/bg/promotions/promo3/promo3-lg.svg") no-repeat center;
-      background-size: cover;
-    }
-
-    @include desktop-xl {
-      background: url("../../assets/images/bg/promotions/promo3/promo3-xl.svg") no-repeat center;
-      background-size: cover;
-    }
-
-    &--right {
-      left: 0;
-      background: url("../../assets/images/bg/promotions/promo3/promo3-sm-right.svg") no-repeat center;
-      background-size: cover;
-
-      @include tablet {
-        background: url("../../assets/images/bg/promotions/promo3/promo3-md-right.svg") no-repeat center;
-        background-size: cover;
-      }
-
-      @include desktop-lg {
-        background: url("../../assets/images/bg/promotions/promo3/promo3-lg-right.svg") no-repeat center;
-        background-size: cover;
-      }
-
-      @include desktop-xl {
-        background: url("../../assets/images/bg/promotions/promo3/promo3-xl-right.svg") no-repeat center;
-        background-size: cover;
-      }
+      background: none;
     }
   }
 }
@@ -441,5 +341,11 @@
       height: 493px;
       background: url("../../assets/images/bg/promotions/promo4/promo4-bottom-xl.svg") no-repeat;
     }
+  }
+}
+
+.promotion--parallax-bg {
+  .promotion__bg {
+    background-attachment: fixed;
   }
 }

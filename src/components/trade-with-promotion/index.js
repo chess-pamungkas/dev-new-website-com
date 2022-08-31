@@ -34,8 +34,7 @@ import {
 } from "../../helpers/animation.config";
 import { useSectionAnimation } from "./use-section-animation";
 
-const TradeWithPromotion = ({ className }) => {
-  const sectionRef = useRef();
+const TradeWithPromotion = ({ className, sectionRef }) => {
   const typingContainerRef = useRef();
   
   const sectionIntersectionRef = useIntersectionObserver(

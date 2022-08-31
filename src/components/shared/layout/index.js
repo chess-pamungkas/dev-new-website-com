@@ -8,9 +8,7 @@ import { CookieProvider } from "../../../context/cookie-context";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import Footer from "../../footer";
 
-const Layout = ({ children, isShowFooter = true }) => {
-  const headerRef = useRef();
-
+const Layout = ({ children, isShowFooter = true, headerRef }) => {
   const { width } = useWindowSize();
   const [sectionOptions, setSectionOptions] = useState(null);
   const [scrollHeight, setScrollHeight] = useState(null);
@@ -36,9 +34,6 @@ const Layout = ({ children, isShowFooter = true }) => {
             />
             <section
               className="scroll-container"
-              style={{
-                scrollPadding: scrollHeight,
-              }}
             >
               <main
                 style={{
