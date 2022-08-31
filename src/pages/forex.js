@@ -29,40 +29,29 @@ const ForexPage = () => {
   const tabs = [
     {
       id: 1,
-      title: "For Standard Accounts",
+      title: "Major",
       content: (
         <TableComponent
           data={DATA_FOREX}
           columns={COLUMNS_FOREX}
-          isPagination
+          tip={
+            <span>
+              <span className="bold">*MIN</span> - minimum,&nbsp;
+              <span className="bold">AVG</span> - average
+            </span>
+          }
           isSearch
-          isSorting
         />
       ),
     },
     {
       id: 2,
-      title: "For Micro Accounts",
+      title: "Minor",
       content: <></>,
     },
     {
       id: 3,
-      title: "For Swap Free Standard Accounts",
-      content: <></>,
-    },
-    {
-      id: 4,
-      title: "For Swap Free Micro Accounts",
-      content: <></>,
-    },
-    {
-      id: 5,
-      title: "For Swap Ultra Low Standard Accounts",
-      content: <></>,
-    },
-    {
-      id: 6,
-      title: "For Swap Ultra Low Micro Accounts",
+      title: "Exotic",
       content: <></>,
     },
   ];

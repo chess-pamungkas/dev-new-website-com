@@ -1,17 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import cn from "classnames";
-import "regenerator-runtime"
-import {
-  useAsyncDebounce,
-  useFilters,
-  useGlobalFilter,
-  usePagination,
-  useSortBy,
-  useTable,
-} from "react-table";
-
-import SearchBar from "../../header/components/search-bar";
-import Dropdown from "../dropdown";
+import "regenerator-runtime";
+import {useFilters, useGlobalFilter, usePagination, useSortBy, useTable,} from "react-table";
+import TableSearch from "./components/search";
+import TablePagination from "./components/pagination";
+import {TABLE_PAGE_SIZES} from "../../../helpers/constants";
+import TableShowByDropdown from "./components/dropdown";
+import {TableTip, TableTitle} from "./components/title";
 
 const TableComponent = ({
   className,
@@ -23,10 +18,8 @@ const TableComponent = ({
   isSorting,
   title,
   subtitle,
+  tip,
 }) => {
-  const PAGE_SIZES = [5, 10, 15];
-  const [isDropdownOpened, setIsDropdownOpened] = useState(false);
-
   const {
     getTableProps,
     getTableBodyProps,
@@ -34,12 +27,10 @@ const TableComponent = ({
     prepareRow,
     setGlobalFilter,
     globalFilter,
-    gotoPage,
     nextPage,
     previousPage,
     canPreviousPage,
     canNextPage,
-    pageCount,
     page,
     setPageSize,
     state,
@@ -48,7 +39,7 @@ const TableComponent = ({
       columns,
       data,
       initialState: {
-        ...(isPagination ? { pageSize: PAGE_SIZES[0] } : {}),
+        ...(isPagination ? { pageSize: TABLE_PAGE_SIZES[0] } : {}),
         ...(isSorting
           ? {
               sortBy: [
@@ -68,148 +59,54 @@ const TableComponent = ({
     usePagination
   );
 
-  const TableSearch = () => {
-    const [value, setValue] = React.useState(globalFilter);
-    const onChange = useAsyncDebounce((value) => {
-      setGlobalFilter(value || undefined);
-    }, 200);
-
-    return (
-      <div className="table__search">
-        <SearchBar
-          className="table__searchbar"
-          value={value || ""}
-          onChange={(e) => {
-            setValue(e.target.value);
-            onChange(e.target.value);
-          }}
-        />
-      </div>
-    );
-  };
-
-  const TableShowByDropdown = () => {
-    return (
-      <div className="table__dropdown">
-        <span className="table__dropdown-title">Display</span>
-        <Dropdown
-          className="table__dropdown-select"
-          selectedItem={{
-            title: state.pageSize,
-            value: state.pageSize,
-          }}
-          items={PAGE_SIZES.map((item) => {
-            return {
-              title: item,
-              value: item,
-            };
-          })}
-          setSelectedItem={({ value }) => {
-            setPageSize(value);
-          }}
-          isDropdownShown
-          isOpen={isDropdownOpened}
-          setIsOpen={setIsDropdownOpened}
-        />
-      </div>
-    );
-  };
-
-  const TablePagination = () => {
-    return (
-      <div className="pagination">
-        <button
-          className={cn(
-            "pagination",
-            "pagination__btn",
-            "pagination__btn--arrow",
-            "pagination__btn--left"
-          )}
-          type="button"
-          onClick={() => previousPage()}
-          disabled={!canPreviousPage}
-        >
-          {"<"}
-        </button>
-        <button
-          className={cn("pagination", "pagination__btn")}
-          type="button"
-          onClick={() => gotoPage(0)}
-          disabled={!canPreviousPage}
-        >
-          1
-        </button>
-
-        <button
-          className={cn("pagination", "pagination__btn")}
-          type="button"
-          onClick={() => gotoPage(pageCount - 1)}
-          disabled={!canNextPage}
-        >
-          {pageCount}
-        </button>
-        <button
-          className={cn(
-            "pagination",
-            "pagination__btn",
-            "pagination__btn--arrow",
-            "pagination__btn--right"
-          )}
-          type="button"
-          onClick={() => nextPage()}
-          disabled={!canNextPage}
-        >
-          {">"}
-        </button>
-      </div>
-    );
-  };
-
-  const TableTitle = () => (
-    <div className="table-title-wrapper">
-      <h4 className="table-title">{title}</h4>
-      {subtitle && <span className="table-title__subtitle">{subtitle}</span>}
-    </div>
-  );
+  const isGroupedHeader = () => Object.keys(headerGroups).length > 1;
 
   return (
     <div className={cn("table-wrapper", className)}>
-      {title && <TableTitle />}
+      {title && <TableTitle title={title} subtitle={subtitle} />}
       <div className="table__tools">
-        {isPagination && <TableShowByDropdown />}
-        {isSearch && <TableSearch />}
+        {isPagination && (
+          <TableShowByDropdown state={state} setPageSize={setPageSize} />
+        )}
+        {isSearch && (
+          <TableSearch
+            setGlobalFilter={setGlobalFilter}
+            globalFilter={globalFilter}
+          />
+        )}
       </div>
       <div
-        className={cn("table-scroll", { "table-scroll--vertical": !isPagination })}
+        className={cn("table-scroll", {
+          "table-scroll--vertical": !isPagination,
+        })}
       >
+        {tip && <TableTip tip={tip} />}
+
         <table className={cn("table", tableClassName)} {...getTableProps()}>
           <thead className="table__head">
-            {headerGroups.map((headerGroup) => (
+            {headerGroups.map((headerGroup, index) => (
               <tr
-                className="table__head-row"
+                key={headerGroup.id}
+                className={cn("table__head-row", {
+                  "table__head-row--grouped": isGroupedHeader(),
+                })}
                 {...headerGroup.getHeaderGroupProps()}
               >
                 {headerGroup.headers.map((column) => (
                   <th
                     key={`header-${column.render("id")}`}
-                    className="table__head-column"
+                    className={cn("table__head-column", {
+                      "table__head-column--grouped":
+                        isGroupedHeader() && index === 0,
+                      "table__head-column--empty":
+                        isGroupedHeader() && column.render("Header") === "",
+                    })}
+                    {...column.getHeaderProps()}
                     {...(isSorting
                       ? column.getHeaderProps(column.getSortByToggleProps())
                       : {})}
                   >
                     {column.render("Header")}
-                    {/* sort only by first column */}
-                    {column.isSorted && column.id === columns[0].accessor && (
-                      <span
-                      /*className={cn("table__head-icon", {
-                        "table__head-icon--desc": column.isSortedDesc,
-                      })}*/
-                      >
-                        <span className="table__head-icon">
-                          {column.isSortedDesc ? "🔽" : "🔼"}
-                        </span>
-                      </span>
-                    )}
                   </th>
                 ))}
               </tr>
@@ -237,7 +134,14 @@ const TableComponent = ({
         </table>
       </div>
       <div className={cn("table__tools", "table__tools--bottom")}>
-        {isPagination && <TablePagination />}
+        {isPagination && (
+          <TablePagination
+            canNextPage={canNextPage}
+            canPreviousPage={canPreviousPage}
+            nextPage={nextPage}
+            previousPage={previousPage}
+          />
+        )}
       </div>
     </div>
   );

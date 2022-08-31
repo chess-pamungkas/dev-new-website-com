@@ -4,415 +4,208 @@ import cn from "classnames";
 
 export const COLUMNS_FOREX = [
   {
-    Header: <span>Currency Pair</span>,
-    accessor: "col1", // accessor is the "key" in the data
+    id: "group1",
+    Header: "",
+    columns: [
+      {
+        Header: "",
+        accessor: "col1",
+      },
+    ],
   },
   {
-    Header: (
-      <span>
-        Minimum Price
-        <br />
-        Fluctuation
-      </span>
-    ),
-    accessor: "col2",
+    id: "group2",
+    Header: "ECN+ Account",
+    columns: [
+      {
+        Header: "Min",
+        accessor: "col2",
+      },
+      {
+        Header: "Avg",
+        accessor: "col3",
+      },
+    ],
   },
   {
-    Header: (
-      <span>
-        Spreads
-        <br />
-        As Low As*
-      </span>
-    ),
-    accessor: "col3",
+    id: "group3",
+    Header: "Simple Account",
+    columns: [
+      {
+        Header: "Min",
+        accessor: "col4",
+      },
+      {
+        Header: "Avg",
+        accessor: "col5",
+      },
+    ],
   },
   {
-    Header: (
-      <span>
-        Average
-        <br />
-        Spreads*
-      </span>
-    ),
-    accessor: "col4",
-  },
-  {
-    Header: (
-      <span>
-        Long Swap
-        <br />
-        Value (Points)**
-      </span>
-    ),
-    accessor: "col5",
-  },
-  {
-    Header: (
-      <span>
-        Short Swap
-        <br />
-        (Points)**
-      </span>
-    ),
-    accessor: "col6",
-  },
-  {
-    Header: <span>Value Of 1 Lot</span>,
-    accessor: "col7",
-  },
-  {
-    Header: (
-      <span>
-        Limit And Stop
-        <br />
-        Levels***
-      </span>
-    ),
-    accessor: "col8",
+    id: "group4",
+    Header: "",
+    columns: [
+      {
+        Header: "Live",
+        accessor: "col6",
+      },
+    ],
   },
 ];
 
 export const DATA_FOREX = [
   {
     col1: "AUDCAD",
-    col2: "0.00001",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
+    col2: "0",
+    col3: "0.4",
+    col4: "0",
+    col5: "0.4",
+    col6: (
+      <div className="table__btn-wrapper">
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
+          Buy
+        </ButtonLink>
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
+          Sell
+        </ButtonLink>
+      </div>
+    ),
   },
   {
-    col1: "AUDCHF",
-    col2: "0.00001",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
+    col1: "AUDCAD",
+    col2: "0",
+    col3: "0.4",
+    col4: "0",
+    col5: "0.4",
+    col6: (
+      <div className="table__btn-wrapper">
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
+          Buy
+        </ButtonLink>
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
+          Sell
+        </ButtonLink>
+      </div>
+    ),
   },
   {
-    col1: "AUDJPY",
-    col2: "0.00001",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
+    col1: "AUDCAD",
+    col2: "0",
+    col3: "0.4",
+    col4: "0",
+    col5: "0.4",
+    col6: (
+      <div className="table__btn-wrapper">
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
+          Buy
+        </ButtonLink>
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
+          Sell
+        </ButtonLink>
+      </div>
+    ),
   },
   {
-    col1: "AUDNZD",
-    col2: "0.00001",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
+    col1: "AUDCAD",
+    col2: "0",
+    col3: "0.4",
+    col4: "0",
+    col5: "0.4",
+    col6: (
+      <div className="table__btn-wrapper">
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
+          Buy
+        </ButtonLink>
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
+          Sell
+        </ButtonLink>
+      </div>
+    ),
   },
   {
-    col1: "AUDUSD",
-    col2: "0.00001",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
+    col1: "AUDCAD",
+    col2: "0",
+    col3: "0.4",
+    col4: "0",
+    col5: "0.4",
+    col6: (
+      <div className="table__btn-wrapper">
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
+          Buy
+        </ButtonLink>
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
+          Sell
+        </ButtonLink>
+      </div>
+    ),
   },
   {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
+    col1: "AUDCAD",
+    col2: "0",
+    col3: "0.4",
+    col4: "0",
+    col5: "0.4",
+    col6: (
+      <div className="table__btn-wrapper">
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
+          Buy
+        </ButtonLink>
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
+          Sell
+        </ButtonLink>
+      </div>
+    ),
   },
   {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
+    col1: "USDEUR",
+    col2: "0",
+    col3: "0.4",
+    col4: "0",
+    col5: "0.4",
+    col6: (
+      <div className="table__btn-wrapper">
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
+          Buy
+        </ButtonLink>
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
+          Sell
+        </ButtonLink>
+      </div>
+    ),
   },
   {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
+    col1: "AUDCAD",
+    col2: "0",
+    col3: "0.4",
+    col4: "0",
+    col5: "0.4",
+    col6: (
+      <div className="table__btn-wrapper">
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
+          Buy
+        </ButtonLink>
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
+          Sell
+        </ButtonLink>
+      </div>
+    ),
   },
   {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "AUDUSD",
-    col2: "0.00001",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "AUDUSD",
-    col2: "0.00001",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "AUDUSD",
-    col2: "0.00001",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "AUDUSD",
-    col2: "0.00001",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "AUDUSD",
-    col2: "0.00001",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
-  },
-  {
-    col1: "eeee",
-    col2: "0.%5555555",
-    col3: "0.00028",
-    col4: "0.0003",
-    col5: "-5.83",
-    col6: "-1.97",
-    col7: "100000 AUD",
-    col8: "0",
+    col1: "AUDCAD",
+    col2: "0",
+    col3: "0.4",
+    col4: "0",
+    col5: "0.4",
+    col6: (
+      <div className="table__btn-wrapper">
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
+          Buy
+        </ButtonLink>
+        <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
+          Sell
+        </ButtonLink>
+      </div>
+    ),
   },
 ];
 
