@@ -45,7 +45,7 @@ const CYSEC_REDIRECT = (handlePopup, setIsHidden, setIsCysecRedirect, t) => (
 );
 
 const NotificationStripe = ({ className, setSectionOptions }) => {
-  const { clientConfig, currentEntity } = useContext(ClientResolverContext);
+  const { clientConfig, currentEntity, entityToRedirect } = useContext(ClientResolverContext);
   const { isShow, handleOpen, handleClose } = useModal();
   const {
     isCysecNotification,
@@ -94,6 +94,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
         handleClose={handleClose}
         setIsCysecRedirect={setIsCysecRedirect}
         getCookie={getCookie}
+        redirectEntity={entityToRedirect}
       />
     </>
   );
