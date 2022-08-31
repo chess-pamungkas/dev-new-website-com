@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Cookies from "universal-cookie";
+import { CONSENT_TYPES } from "../../helpers/consent-types.config";
 import {
   DEFAULT_COOKIE_CONSENT,
   COOKIE_CONSENT_KEY,
@@ -31,26 +32,18 @@ export const CookieProvider = ({ children }) => {
   const [cookieConsent, setCookieConsent] = useState(
     cookies.get(COOKIE_CONSENT_KEY) || {}
   );
-  // const [gaId, setGaId] = useState(undefined);
   const { clientConfig, currentEntity } = useContext(ClientResolverContext);
 
   useEffect(() => {
     if (window !== undefined && !cookieConsent[SEGMENTATION_COOKIE_KEY]) {
-      // desable ga
-      // window.gtag('consent', 'update', {
-      //   'ad_storage': 'denied',
-      //   'analytics_storage': 'denied'
-      // });
-      console.log("Disable GA cookie here")
+      // desable GA
+      // It works on the first load, but after refresh GA cookie will be created anyway, need to fix it
+      window[`ga-disable-${process.env.GATSBY_GA}`] = true;
     } else if (window !== undefined && cookieConsent[SEGMENTATION_COOKIE_KEY]) {
-      // enable ga
-      // window.gtag('consent', 'update', {
-      //   'ad_storage': 'granted',
-      //   'analytics_storage': 'granted'
-      // });
-      console.log("Enable GA cookie here")
+      // enable GA
+      window[`ga-disable-${process.env.GATSBY_GA}`] = false;
     }
-  }, [cookieConsent])
+  }, [cookieConsent]);
 
   const getCookie = (cookieKey) => {
     return cookies.get(cookieKey);
@@ -58,19 +51,32 @@ export const CookieProvider = ({ children }) => {
 
   const setCookie = (cookieKey, cookieValue, cookieType) => {
     if (cookieConsent[cookieType]) {
-      // TODO: Probably need to change the expiration time
-      cookies.set(cookieKey, cookieValue, { path: GLOBAL_COOKIE_PATH, maxAge: DEFAULT_COOKIE_AGE });
+      cookies.set(cookieKey, cookieValue, {
+        path: GLOBAL_COOKIE_PATH,
+        maxAge: DEFAULT_COOKIE_AGE,
+      });
     }
   };
 
   const acceptCookies = (acceptedCookies) => {
     cookies.set(COOKIE_CONSENT_KEY, acceptedCookies, {
-      path: GLOBAL_COOKIE_PATH, maxAge: DEFAULT_COOKIE_AGE
+      path: GLOBAL_COOKIE_PATH,
+      maxAge: DEFAULT_COOKIE_AGE,
     });
     setCookieConsent(acceptedCookies);
-    cookies.set(IS_SHOW_COOKIE_POPUP_KEY, false, { path: GLOBAL_COOKIE_PATH, maxAge: DEFAULT_COOKIE_AGE });
-    const consent = `Accepted cookies: ${Object.keys(acceptedCookies).filter(item => acceptedCookies[item]).join(", ")}`;
-    postClientConsent(clientConfig.ipAddress, currentEntity, getCookie, consent);
+    cookies.set(IS_SHOW_COOKIE_POPUP_KEY, false, {
+      path: GLOBAL_COOKIE_PATH,
+      maxAge: DEFAULT_COOKIE_AGE,
+    });
+    const consent = `${CONSENT_TYPES["cookie"]} ${Object.keys(acceptedCookies)
+      .filter((item) => acceptedCookies[item])
+      .join(", ")}`;
+    postClientConsent(
+      clientConfig.ipAddress,
+      currentEntity,
+      getCookie,
+      consent
+    );
   };
 
   const acceptAllCookies = () => {

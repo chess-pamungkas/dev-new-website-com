@@ -3,6 +3,7 @@ import Popup from "../shared/popup";
 import cn from "classnames";
 import entities from "../../enums/entities";
 import { postClientConsent } from "../../helpers/services/client-consent-service";
+import { CONSENT_TYPES } from "../../helpers/consent-types.config";
 
 const RedirectPopup = ({
   clientConfig,
@@ -19,8 +20,8 @@ const RedirectPopup = ({
       <p className="popup__paragraph">
         Your IP shows you are located in&nbsp;
         <span className="highlighted-in-red">{country}</span>. Our&nbsp;
-        <span className="highlighted-in-red">{entity}</span>&nbsp;authorised body
-        cannot accept residents of this country.
+        <span className="highlighted-in-red">{entity}</span>&nbsp;authorised
+        body cannot accept residents of this country.
       </p>
       <p className="popup__paragraph">
         If you are a resident of a different country, we apologise for the
@@ -57,16 +58,40 @@ const RedirectPopup = ({
       return [
         {
           text: "Close",
-          onClick: () => {handleClose(false); postClientConsent(clientConfig.ipAddress, currentEntity, getCookie, `Accepted banned popup, clicked on 'Close'`)},
+          onClick: () => {
+            handleClose(false);
+            postClientConsent(
+              clientConfig.ipAddress,
+              currentEntity,
+              getCookie,
+              CONSENT_TYPES["bannedClose"]
+            );
+          },
         },
-        { text: "Continue", onClick: () => {handleClose(false); postClientConsent(clientConfig.ipAddress, currentEntity, getCookie, `Accepted banned popup, clicked on 'Continue'`)} },
+        {
+          text: "Continue",
+          onClick: () => {
+            handleClose(false);
+            postClientConsent(
+              clientConfig.ipAddress,
+              currentEntity,
+              getCookie,
+              CONSENT_TYPES["bannedContinue"]
+            );
+          },
+        },
       ];
     } else {
       return [
         {
           text: "Do not confirm",
           onClick: () => {
-            postClientConsent(clientConfig.ipAddress, currentEntity, getCookie, `Accepted redirect popup, clicked on 'Do not confirm'`)
+            postClientConsent(
+              clientConfig.ipAddress,
+              currentEntity,
+              getCookie,
+              CONSENT_TYPES["redirectDoNotConfirm"]
+            );
             window.location.replace(redirectEntity);
           },
           subTitle:
@@ -77,7 +102,12 @@ const RedirectPopup = ({
         {
           text: "Confirm",
           onClick: () => {
-            postClientConsent(clientConfig.ipAddress, currentEntity, getCookie, `Accepted redirect popup, clicked on 'Confirm'`)
+            postClientConsent(
+              clientConfig.ipAddress,
+              currentEntity,
+              getCookie,
+              CONSENT_TYPES["redirectConfirm"]
+            );
             setIsCysecRedirect(false);
             handleClose(false);
           },
