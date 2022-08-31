@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 export const CookieCategoryItem = ({
   title,
@@ -10,22 +11,25 @@ export const CookieCategoryItem = ({
   setAcceptedCookies,
   className,
 }) => {
+  const { t } = useTranslation();
   const [checked, setChecked] = useState(initialValue);
 
   const onClick = () => {
+    if (!canBeChanged) return;
+
     acceptedCookies[categoryKey] = !checked;
     setAcceptedCookies(acceptedCookies);
     setChecked(!checked);
   };
 
   return (
-    <div className={cn("gdpr-popup__category", className)} key={categoryKey}>
+    <div className={cn("gdpr-popup__category", className)}>
       <div
         className={cn("gdpr-popup__category-title", {
           "gdpr-popup__category-title--disabled": !canBeChanged,
         })}
       >
-        {title}
+        {t(title)}
       </div>
       <label className="gdpr-popup__switch">
         <input
@@ -33,7 +37,7 @@ export const CookieCategoryItem = ({
           type="checkbox"
           checked={checked}
           id={categoryKey}
-          onChange={canBeChanged ? onClick : undefined}
+          onChange={onClick}
         />
         <span
           className={cn(
@@ -41,7 +45,7 @@ export const CookieCategoryItem = ({
             { "gdpr-popup__slider--checked": checked },
             { "gdpr-popup__slider--disabled": !canBeChanged }
           )}
-        ></span>
+        />
       </label>
     </div>
   );

@@ -2,6 +2,8 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const languages = require('./src/locales/language.config');
+
 module.exports = {
   siteMetadata: {
     title: `website`,
@@ -28,6 +30,13 @@ module.exports = {
       __key: "images",
     },
     {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "locale",
+        path: `${__dirname}/src/locales/`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: [process.env.GATSBY_GA],
@@ -42,6 +51,19 @@ module.exports = {
         id: process.env.GATSBY_GOOGLE_TAG_MANAGER,
         defaultDataLayer: { platform: "gatsby" },
       },
+    },
+    {
+      resolve: "gatsby-plugin-react-i18next",
+      options: {
+        localeJsonSourceName: "locale", // name given to "gatsby-source-filesystem" plugin.
+        languages: languages.list,
+        defaultLanguage: languages.defaultLangKey,
+        fallbackLanguage: languages.defaultLangKey,
+        i18nextOptions: {
+          keySeparator: false,
+          nsSeparator: false
+        },
+      }
     },
   ],
 };

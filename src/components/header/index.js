@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { LogoTextMain, Logo } from "../shared/icons";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
-import { WINDOW_SIZE_XL } from "../../helpers/constants";
+import { HOME_PAGE_LINK, WINDOW_SIZE_XL } from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import NavbarItem from "./components/navbar-item";
@@ -14,8 +15,10 @@ import { CYSEC_MENU_ITEMS, FSA_MENU_ITEMS } from "../../helpers/menu.config";
 import ClientResolverContext from "../../context/client-resolver-context";
 import entities from "../../enums/entities";
 import NotificationStripe from "../shared/notification-stripe";
+import { Link } from "../../../.cache/gatsby-browser-entry";
 
 const Header = ({ className, setSectionOptions, headerRef }) => {
+  const { t } = useTranslation();
   const { width, isTablet } = useWindowSize();
   const [menu, setMenu] = useState([]);
   const { currentEntity } = useContext(ClientResolverContext);
@@ -35,7 +38,9 @@ const Header = ({ className, setSectionOptions, headerRef }) => {
         className={cn("header", { "header--small": isNarrow }, className)}
       >
         <div className="header__left">
-          {isNarrow ? <Logo className="header__logo" /> : <LogoTextMain />}
+            <Link to={HOME_PAGE_LINK}>
+                {isNarrow ? <Logo className="header__logo" /> : <LogoTextMain />}
+            </Link>
 
           {!isTablet && (
             <ul className="header__navigation">
@@ -61,13 +66,13 @@ const Header = ({ className, setSectionOptions, headerRef }) => {
                 link={REGISTRATION_LINK}
                 className="button-link--header button-link--ghost header__signin"
               >
-                Sign In
+                {t("button-sign-in")}
               </ButtonLink>
               <ButtonLink
                 link={REGISTRATION_LINK}
                 className="button-link--header header__start"
               >
-                Get Started
+                {t("button-get-started")}
               </ButtonLink>
             </>
           )}

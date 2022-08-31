@@ -4,22 +4,21 @@ import ClientResolverContext from "../../../context/client-resolver-context";
 import { useModal } from "../../../helpers/hooks/use-modal";
 import RedirectPopup from "../../redirect-popup";
 import { useEntityNotifications } from "../../../helpers/hooks/use-entity-notifications";
+import CookieContext from "../../../context/cookie-context";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
-const CYSEC_STRIPE = (
+const CYSEC_STRIPE = (t) => (
   <div className="notification-stripe__cysec-wrapper">
-    CFDs are complex instruments with a high risk of losing money rapidly due to
-    leverage. <span className="highlighted-in-red">XX%</span> of retail investor
-    accounts lose money when trading CFDs. It would be best to consider whether
-    you understand how CFDs work and whether you can afford to take the high
-    risk of losing the money you want to invest.
+    {t("notification-stripe-cysec-part1")}&nbsp;
+    <span className="highlighted-in-red">XX%</span>&nbsp;
+    {t("notification-stripe-cysec-part2")}
   </div>
 );
 
-const CYSEC_REDIRECT = (handlePopup, setIsHidden, setIsCysecRedirect) => (
+const CYSEC_REDIRECT = (handlePopup, setIsHidden, setIsCysecRedirect, t) => (
   <div className="notification-stripe__redirection-wrapper">
     <div className="notification-stripe__content">
-      Based on your geolocation, you may want to consider another of our
-      licensed companies that may be better suited to you.
+      {t("notification-stripe-redirect-text")}
     </div>
     <div className="notification-stripe__actions">
       <button
@@ -29,7 +28,7 @@ const CYSEC_REDIRECT = (handlePopup, setIsHidden, setIsCysecRedirect) => (
           handlePopup();
         }}
       >
-        Change site
+        {t("notification-stripe-change-btn")}
       </button>
       <button
         type="button"
@@ -39,27 +38,33 @@ const CYSEC_REDIRECT = (handlePopup, setIsHidden, setIsCysecRedirect) => (
           setIsHidden(true);
         }}
       >
-        Close
+        {t("notification-stripe-close-btn")}
       </button>
     </div>
   </div>
 );
 
 const NotificationStripe = ({ className, setSectionOptions }) => {
-  const { clientConfig, currentEntity } = useContext(ClientResolverContext);
+  const { clientConfig, currentEntity, entityToRedirect } = useContext(ClientResolverContext);
   const { isShow, handleOpen, handleClose } = useModal();
-  const { isCysecNotification, isCysecRedirect, setIsCysecRedirect, isBannedPopup } =
-    useEntityNotifications(handleOpen);
+  const {
+    isCysecNotification,
+    isCysecRedirect,
+    setIsCysecRedirect,
+    isBannedPopup,
+  } = useEntityNotifications(handleOpen);
+  const { getCookie } = useContext(CookieContext);
+  const { t } = useTranslation();
 
   const getContent = () => {
     if (isCysecNotification) {
       setIsHidden(false);
-      return CYSEC_STRIPE;
+      return CYSEC_STRIPE(t);
     }
 
     if (isCysecRedirect) {
       setIsHidden(false);
-      return CYSEC_REDIRECT(handleOpen, setIsHidden, setIsCysecRedirect);
+      return CYSEC_REDIRECT(handleOpen, setIsHidden, setIsCysecRedirect, t);
     }
 
     return null;
@@ -88,6 +93,8 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
         isPopupOpen={isShow}
         handleClose={handleClose}
         setIsCysecRedirect={setIsCysecRedirect}
+        getCookie={getCookie}
+        redirectEntity={entityToRedirect}
       />
     </>
   );

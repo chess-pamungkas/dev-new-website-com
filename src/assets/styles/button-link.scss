@@ -14,6 +14,7 @@
   border-radius: $border-radius-default;
   line-height: 31px;
   width: 190px;
+  transition: 0.1s;
 
   @include tablet {
     font-size: 14px;
@@ -30,6 +31,30 @@
     line-height: 62px;
     width: 380px;
     font-size: 24px;
+  }
+
+  &--red {
+    background: map-get($colors, "red");
+    color: map-get($colors, "white");
+    border: 1px solid map-get($colors, "red");
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: map-get($colors, "white");
+      color: map-get($colors, "red");
+    }
+  }
+
+  &--with-red-border {
+    border: 1px solid map-get($colors, "red");
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: map-get($colors, "red");
+      color: map-get($colors, "white");
+    }
   }
 
   &--header {

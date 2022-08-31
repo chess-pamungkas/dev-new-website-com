@@ -3,16 +3,16 @@ import { detectBrowserLanguage } from "../../helpers/services/detect-browser-set
 import ClientResolverContext from "../client-resolver-context";
 import { LANG_SELECT_OPTIONS } from "../../helpers/lang-options.config";
 import CookieContext from "../cookie-context";
-import { LAST_LANGUAGE_KEY } from "../../helpers/gdpr-cookie.config";
+import {
+  LAST_LANGUAGE_KEY,
+  PERFORMANCE_COOKIE_KEY,
+} from "../../helpers/gdpr-cookie.config";
 
 const LanguageContext = createContext({});
 
 export const LanguageProvider = ({ children }) => {
-  const [selectedLanguage, setSelectedLanguage] = useState(
-    LANG_SELECT_OPTIONS[0]
-  );
   const { clientConfig } = useContext(ClientResolverContext);
-  const { getCookie } = useContext(CookieContext);
+  const { getCookie, setCookie } = useContext(CookieContext);
 
   const findLanguage = (languageId) => {
     return (
@@ -20,6 +20,10 @@ export const LanguageProvider = ({ children }) => {
       LANG_SELECT_OPTIONS[0]
     );
   };
+
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    findLanguage(getCookie(LAST_LANGUAGE_KEY))
+  );
 
   useEffect(() => {
     if (window !== undefined && clientConfig.forceToEnglish !== undefined) {
@@ -32,9 +36,9 @@ export const LanguageProvider = ({ children }) => {
       } else {
         setSelectedLanguage(findLanguage(detectBrowserLanguage()));
       }
-      // TODO: Apply localization
+      setCookie(LAST_LANGUAGE_KEY, selectedLanguage.id, PERFORMANCE_COOKIE_KEY);
     }
-  }, [clientConfig]);
+  }, [clientConfig, getCookie, setCookie]);
 
   return (
     <LanguageContext.Provider

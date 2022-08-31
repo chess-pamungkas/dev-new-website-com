@@ -5,13 +5,18 @@ export const WINDOW_SIZE_XL = 1920;
 
 export const BURGER_MENU_LINES_COUNT = 3;
 
+export const HOME_PAGE_LINK = "/";
 export const REGISTRATION_LINK = "/";
 export const LEARN_MORE_LINK = "/";
 export const TERMS_OF_USE_LINK = "/";
 export const PRIVACY_POLICY_LINK = "/";
 
+export const FAQ_LINK = "/";
+
 export const ANGLE_ICON_COLOR = {
-  black: '#232323',
-  red: '#ff4400',
-  white: '#ffffff'
+  black: "#232323",
+  red: "#ff4400",
+  white: "#ffffff",
 };
+
+export const TABLE_PAGE_SIZES = [5, 10, 15];

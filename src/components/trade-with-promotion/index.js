@@ -1,6 +1,7 @@
 import React, { useRef, useContext } from "react";
 import cn from "classnames";
 import { animated } from "react-spring";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import airbnbIcon from "../../assets/images/icons/companies/airbnb.svg";
 import amazonIcon from "../../assets/images/icons/companies/amazon.svg";
 import appleIcon from "../../assets/images/icons/companies/apple.svg";
@@ -28,14 +29,14 @@ import {
   transformParamToKey,
 } from "../../helpers/services/marketing-service";
 import {useIntersectionObserver} from "../../helpers/hooks/use-intersection-observer";
-import {
-  INTERSECTION_OBSERVER_CONFIG,
-  TWP_ICONS_INITIAL_SHIFT
-} from "../../helpers/animation.config";
+import { INTERSECTION_OBSERVER_CONFIG } from "../../helpers/animation.config";
 import { useSectionAnimation } from "./use-section-animation";
+import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 
 const TradeWithPromotion = ({ className, sectionRef }) => {
   const typingContainerRef = useRef();
+
+  const { t } = useTranslation();
   
   const sectionIntersectionRef = useIntersectionObserver(
     sectionRef,
@@ -45,6 +46,17 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
     freezeOnceVisible: true,
   });
 
+  const {
+    sectionAnimation1,
+    sectionAnimation2,
+    sectionAnimation3,
+    sectionAnimation4,
+    sectionAnimation5,
+    sectionAnimation6,
+    sectionAnimation7,
+    sectionAnimation8,
+    sectionAnimation9
+  } = useSectionAnimation(sectionIntersectionRef);
   const { sect2 } = useContext(MarketingContext);
 
   const content = SECT2_TEXT_SEQUENCES[transformParamToKey(sect2)];
@@ -54,43 +66,6 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
     : getSect2TextSequence(SECT2_GROUP1_DEFAULT, SECT2_GROUP2_DEFAULT);
 
   const icons = content ? content.symbols : [];
-
-  const sectionAnimation1 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.logo1
-  );
-  const sectionAnimation2 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.logo2
-  );
-  const sectionAnimation3 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.logo3
-  );
-  const sectionAnimation4 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.netflix
-  );
-  const sectionAnimation5 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.tesla
-  );
-  const sectionAnimation6 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.airbnb
-  );
-  const sectionAnimation7 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.meta
-  );
-  const sectionAnimation8 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.amazon
-  );
-  const sectionAnimation9 = useSectionAnimation(
-    sectionIntersectionRef,
-    TWP_ICONS_INITIAL_SHIFT.bitcoin
-  );
 
   return (
     <section className={cn("trade-with-promotion", className)} ref={sectionRef}>
@@ -209,14 +184,18 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
       />
       <div className="trade-with-promotion__wrapper">
         <h2 className="trade-with-promotion__title">
-          Trade <span className="bold">now</span> with
+          <HighlightedLocalizationText
+            localizationText="index_trade-with-promotion-title"
+            wordsToHighlight="trade-with-promotion-title-accent"
+            accentClassName="bold"
+          />
         </h2>
         <div className="trade-with-promotion__input" ref={typingContainerRef}>
           <span className="trade-with-promotion__input-text">
             {typingIntersectionRef?.isIntersecting ? (
               <TypingAnimation keywords={titles} />
             ) : (
-              titles[0]
+              t(titles[0])
             )}
           </span>
         </div>
@@ -224,8 +203,7 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
         <div className="trade-with-promotion__promo">
           <div className="trade-with-promotion__block">
             <p className="trade-with-promotion__promo-text">
-              More than XXXX assets to trade directly on mobile, desktop or
-              tablet anywhere anytime
+              {t("index_trade-with-promotion-promo-text")}
             </p>
           </div>
           <div className="trade-with-promotion__block">
@@ -234,7 +212,7 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
                 link={REGISTRATION_LINK}
                 className="trade-with-promotion__btn"
               >
-                Start now
+                {t("button-start-now")}
               </ButtonLink>
             </div>
           </div>

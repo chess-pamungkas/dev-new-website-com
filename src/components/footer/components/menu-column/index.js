@@ -1,9 +1,12 @@
 import React from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { Link } from "../../../../../.cache/gatsby-browser-entry";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 
 const MenuColumn = ({ className, items }) => {
+  const { t } = useTranslation();
+
   return (
     <ul className={cn("menu-column", className)}>
       {items.map((item) => {
@@ -21,7 +24,7 @@ const MenuColumn = ({ className, items }) => {
               })}
               to={item.link}
             >
-              {item.title}
+              {t(item.title)}
             </Link>
 
             {isItemHasSubtitles && (
@@ -34,7 +37,7 @@ const MenuColumn = ({ className, items }) => {
                     )}`}
                   >
                     <Link className="menu-column__link" to={subitem.link}>
-                      {subitem.title}
+                      {t(subitem.title)}
                     </Link>
                   </li>
                 ))}

@@ -11,7 +11,8 @@ export const useEntityNotifications = (handlePopupOpen) => {
 
   useEffect(() => {
     if (
-      clientConfig && Object.keys(clientConfig).length &&
+      clientConfig &&
+      Object.keys(clientConfig).length &&
       !clientConfig.banned &&
       !clientConfig.recommendedRedirect &&
       currentEntity === entities.CYSEC
@@ -20,14 +21,19 @@ export const useEntityNotifications = (handlePopupOpen) => {
     }
 
     if (
-      clientConfig && Object.keys(clientConfig).length &&
+      clientConfig &&
+      Object.keys(clientConfig).length &&
       clientConfig.recommendedRedirect &&
       currentEntity !== entities.CYSEC
     ) {
       setIsCysecRedirect(true);
     }
 
-    if (clientConfig && Object.keys(clientConfig).length && clientConfig.banned) {
+    if (
+      clientConfig &&
+      Object.keys(clientConfig).length &&
+      clientConfig.banned
+    ) {
       if (handlePopupOpen) {
         handlePopupOpen();
       }
@@ -35,7 +41,7 @@ export const useEntityNotifications = (handlePopupOpen) => {
         clientConfig.banned && !clientConfig.recommendedRedirect
       );
     }
-  }, [clientConfig]);
+  }, [clientConfig, currentEntity]);
 
   return {
     isCysecNotification,

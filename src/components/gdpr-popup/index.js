@@ -6,8 +6,10 @@ import {
   GDPR_COOKIE_CATEGORIES,
   DEFAULT_COOKIE_CONSENT,
 } from "../../helpers/gdpr-cookie.config";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 export const GDPRPopup = ({ className }) => {
+  const { t } = useTranslation();
   const [acceptedCookies, setAcceptedCookies] = useState(
     DEFAULT_COOKIE_CONSENT
   );
@@ -43,50 +45,42 @@ export const GDPRPopup = ({ className }) => {
     >
       <div className="gdpr-popup__wrapper">
         <div className="gdpr-popup__content">
-          <div className="gdpr-popup__header"></div>
-          <div className="gdpr-popup__title">Privacy Preference Center</div>
+          <div className="gdpr-popup__header" />
+          <div className="gdpr-popup__title">{t("cookie-title")}</div>
           <div className="gdpr-popup__description">
-            When you visit any website, it may store or retrieve information on
-            your browser, mostly in the form of cookies. This information might
-            be about you, your preferences or your device and is mostly used to
-            make the site work as you expect it to. The information does not
-            usually directly identify you, but it can give you a more
-            personalized web experience. Because we respect your right to
-            privacy, you can choose not to allow some types of cookies. Click on
-            the different category headings to find out more and change our
-            default settings. However, blocking some types of cookies may impact
-            your experience of the site and the services we are able to offer.
+            {t("cookie-description")}
           </div>
           <hr className="gdpr-popup__hr-line" />
           <div className="gdpr-popup__consent">
             <div className="gdpr-popup__consent-title">
-              Manage Consent Preferences
+              {t("cookie-consent-title")}
             </div>
             <button
               type="button"
               className="gdpr-popup__btn"
               onClick={onAcceptAll}
             >
-              Allow all
+              {t("cookie-consent-btn")}
             </button>
           </div>
           {GDPR_COOKIE_CATEGORIES.map((cookieCategory) => (
             <CookieCategoryItem
-              {...cookieCategory}
+              key={cookieCategory.categoryKey}
               acceptedCookies={acceptedCookies}
               setAcceptedCookies={setAcceptedCookies}
+              {...cookieCategory}
             />
           ))}
           <div className="gdpr-popup__buttons">
             <button type="button" className="gdpr-popup__btn" onClick={onClose}>
-              Close
+              {t("cookie-consent-close-btn")}
             </button>
             <button
               type="button"
               className="gdpr-popup__btn"
               onClick={onAcceptSelected}
             >
-              Confirm my choice
+              {t("cookie-consent-confirm-btn")}
             </button>
           </div>
         </div>

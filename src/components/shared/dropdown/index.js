@@ -1,7 +1,8 @@
 import React from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
-const TradingSectionDropdown = ({
+const Dropdown = ({
   className,
   items,
   selectedItem,
@@ -10,6 +11,8 @@ const TradingSectionDropdown = ({
   setIsOpen,
   isDropdownShown,
 }) => {
+  const { t } = useTranslation();
+
   const onSelectionByClick = (item) => {
     setSelectedItem(item);
     setIsOpen(false);
@@ -19,14 +22,16 @@ const TradingSectionDropdown = ({
     return items.map((item) => {
       return (
         <button
-          key={`TradingSectionDropdownItem${item.value}`}
+          key={`dropdown-item-${item.value}`}
           type="button"
           className={cn("dropdown__item", {
-            "dropdown__item--active": selectedItem.id === item.value,
+            // TODO refactor this to avoid id prop here
+            "dropdown__item--active":
+              (selectedItem.id || selectedItem.value) === item.value,
           })}
           onClick={() => onSelectionByClick(item)}
         >
-          <span>{item.title}</span>
+          <span>{t(item.title)}</span>
         </button>
       );
     });
@@ -43,7 +48,7 @@ const TradingSectionDropdown = ({
         type="button"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="dropdown__title-content">{selectedItem.title}</span>
+        <span className="dropdown__title-content">{t(selectedItem.title)}</span>
       </button>
       {isOpen && isDropdownShown && (
         <div className="dropdown__content">
@@ -56,4 +61,4 @@ const TradingSectionDropdown = ({
   );
 };
 
-export default TradingSectionDropdown;
+export default Dropdown;

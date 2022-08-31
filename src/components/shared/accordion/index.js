@@ -1,19 +1,58 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { AngleDownIcon } from "../icons";
 
-const Accordion = ({ children, className, title, isOpen, onSelect }) => {
+const Accordion = ({
+  children,
+  className,
+  title,
+  isOpen,
+  onSelect,
+  icon: Icon,
+  iconForActive: IconForActive,
+}) => {
+  const { t } = useTranslation();
+
+  const [isActive, setIsActive] = useState(isOpen);
+
+  const handleClick = (title) => {
+    if (onSelect) {
+      // in case handling is needed in the parent component
+      onSelect(title);
+    } else {
+      // default handling
+      setIsActive(!isActive);
+    }
+  };
+
+  useEffect(() => {
+    if (onSelect) {
+      setIsActive(isOpen);
+    }
+  }, [isOpen, onSelect]);
+
+  const getIcon = useCallback(() => {
+    if (isActive) {
+      return IconForActive ? <IconForActive /> : <Icon />;
+    } else {
+      return <Icon />;
+    }
+  }, [isActive, IconForActive]);
+
   return (
     <section
-      className={cn("accordeon", { "accordeon--open": isOpen }, className)}
+      className={cn("accordion", { "accordion--open": isActive }, className)}
     >
-      <button className="accordeon__title" onClick={() => onSelect(title)}>
-        {title}
-
-        <AngleDownIcon className="accordeon__icon" />
+      <button
+        type="button"
+        className="accordion__title"
+        onClick={() => handleClick(title)}
+      >
+        <span>{t(title)}</span>
+        {Icon ? getIcon() : <AngleDownIcon className="accordion__icon" />}
       </button>
-
-      {isOpen && <div className="accordeon__expandable">{children}</div>}
+      {isActive && <div className="accordion__expandable">{children}</div>}
     </section>
   );
 };

@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from "gatsby";
+import { graphql, Link } from "gatsby";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import Layout from "../components/shared/layout";
 import SearchBar from "../components/header/components/search-bar";
 import ButtonLink from "../components/shared/button-link";
 import { Logo } from "../components/shared/icons";
+import Seo from "../components/shared/seo";
 
 // TODO: replace mocked data with actual search results
 const mockedResult = {
@@ -13,8 +15,12 @@ const mockedResult = {
   icon: Logo
 };
 
-const SearchPage = () => (
+const SearchPage = () => {
+  const { t } = useTranslation();
+
+  return (
   <Layout>
+    <Seo title={t("page-search-title")} />
     <main className="search-page">
       <section className="search-page__container">
         <SearchBar className="search-page__search search-bar--inverted" />
@@ -44,8 +50,20 @@ const SearchPage = () => (
       </section>
     </main>
   </Layout>
-);
+)};
 
 export default SearchPage;
 
-export const Head = () => <title>Search</title>;
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: {language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
