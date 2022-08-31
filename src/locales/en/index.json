@@ -286,9 +286,5 @@
   "popup-redirect-dont-confirm-btn": "Do not confirm",
 
   "cysec-entity-name": "Cyprus Securities and Exchange Commission",
-  "fsa-entity-name": "Financial Services Authority",
-
-  "cookie-popup-text": "By clicking “Accept All”, you agree to store cookies on your device to enhance site navigation and user experience, analyse site usage, and offer a customised experience.",
-  "cookie-popup-accept-btn": "Accept all",
-  "cookie-popup-more-btn": "Learn More"
+  "fsa-entity-name": "Financial Services Authority"
 }
