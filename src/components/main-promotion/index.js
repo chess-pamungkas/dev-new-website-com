@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import ButtonLink from "../shared/button-link";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import TitlesAnimation from "../shared/titles-animation";
@@ -13,6 +14,7 @@ import { transformParamToKey } from "../../helpers/services/marketing-service";
 const MainPromotion = ({ className }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
+  const { t } = useTranslation();
   const {content, sect1} = useContext(MarketingContext);
 
   const hero =
@@ -25,8 +27,8 @@ const MainPromotion = ({ className }) => {
   return (
     <section className={cn("main-promotion", className)}>
       <div className="main-promotion__person">
-        <span className="main-promotion__name">{hero.name}</span>
-        <span className="main-promotion__description">{hero.text}</span>
+        <span className="main-promotion__name">{t(hero.name)}</span>
+        <span className="main-promotion__description">{t(hero.text)}</span>
       </div>
       <div className="main-promotion__photo">
         <img src={hero.image} alt={hero.name} className="main-promotion__img" />
@@ -35,7 +37,7 @@ const MainPromotion = ({ className }) => {
         <div className="main-promotion__block">
           <h1 className="main-promotion__title-wrapper">
             <span className="main-promotion__title">
-              A Perfectly optimised trading experience for
+              {t("index_main-promotion-title")}
             </span>
             <span className="main-promotion__title main-promotion__title--big">
               <TitlesAnimation
@@ -59,7 +61,7 @@ const MainPromotion = ({ className }) => {
                 <span className="button-link--snake-animation-line-bottom" />
               </>
             )}
-            Trade now
+            {t("button-trade-now")}
           </ButtonLink>
         </div>
       </div>
