@@ -108,11 +108,11 @@ const SearchBar = ({
             ))
           ) : searchState.query.length > SEARCH_MIN_QUERY_LENGTH ? (
               <li className="search-bar__results-item">
-                <span className="search-bar__results-title">No results</span>
+                <span className="search-bar__results-title">{t("search-no-results")}</span>
               </li>
             ) : (
               <li className="search-bar__results-item">
-                <span className="search-bar__results-title">Please insert at least 3 characters</span>
+                <span className="search-bar__results-title">{t("search-min-query-required")}</span>
               </li>
             )}
         </ul>
