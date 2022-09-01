@@ -36,12 +36,12 @@ const IndexPage = () => {
   const { t } = useTranslation();
   const { isMobile } = useWindowSize();
 
-  const [headerRef, setHeaderRef] = useState(null);
   const [isTradePromoScrolled, setIsTradePromoScrolled] = useState(false);
   const [isPromo1Scrolled, setIsPromo1Scrolled] = useState(false);
   const [isPromo2Scrolled, setIsPromo2Scrolled] = useState(false);
   const [isPromo3Scrolled, setIsPromo3Scrolled] = useState(false);
 
+  const headerRef = useRef();
   const tradePromoRef = useRef();
   const promo1Ref = useRef();
   const promo2Ref = useRef();
@@ -220,7 +220,7 @@ const IndexPage = () => {
   }, [isMobile, isPromo12Bg, isPromo23Bg, isPromo32Bg, isPromo21Bg, headerRef, bgAnimationApi]);
 
   return (
-    <Layout setHeaderRef={setHeaderRef}>
+    <Layout headerRef={headerRef}>
       <CookiesPopup />
       <GDPRPopup />
       <Seo title={t("page-main-title")} />
