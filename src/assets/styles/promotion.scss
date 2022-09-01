@@ -180,7 +180,7 @@
     left: 0;
     background: url("../../assets/images/bg/promotions/promo1/promo1-sm.svg") no-repeat center;
     background-size: cover;
-    background-position: 0  top;
+    background-position: 0 top;
 
     @include tablet {
       width: 2304px;
@@ -197,9 +197,9 @@
     }
 
     @include desktop-xl {
-      width: 3841px;
-      height: 2868px;
-      background: url("../../assets/images/bg/promotions/promotion-slide.jpg") no-repeat center;
+      width: 5760px;
+      height: 2862px;
+      background: url("../../assets/images/bg/promotions/promotion-slide.svg") no-repeat center;
       background-size: 300% 100%;
     }
   }
