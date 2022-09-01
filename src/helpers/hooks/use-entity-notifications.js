@@ -41,7 +41,7 @@ export const useEntityNotifications = (handlePopupOpen) => {
         clientConfig.banned && !clientConfig.recommendedRedirect
       );
     }
-  }, [clientConfig, currentEntity, handlePopupOpen]);
+  }, [clientConfig, currentEntity]);
 
   return {
     isCysecNotification,

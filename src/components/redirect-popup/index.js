@@ -17,7 +17,7 @@ const RedirectPopup = ({
   getCookie,
 }) => {
   const { t } = useTranslation();
-  const bannedPopupDescription = (country, ipAddress, entity) => (
+  const bannedPopupDescription = (country, entity) => (
     <>
       <p className="popup__paragraph">
         {t("popup-banned-description-part1")}&nbsp;
@@ -135,7 +135,6 @@ const RedirectPopup = ({
   return (
     <Popup
       isPopupOpen={isPopupOpen}
-      handlePopupClose={handleClose}
       className={cn("popup--redirect", {
         "popup--banned": isBannedPopup,
       })}
@@ -145,7 +144,6 @@ const RedirectPopup = ({
         {isBannedPopup &&
           bannedPopupDescription(
             clientConfig.countryName,
-            clientConfig.ipAddress,
             currentEntity === entities.FSA
               ? t("fsa-entity-name")
               : t("cysec-entity-name")
