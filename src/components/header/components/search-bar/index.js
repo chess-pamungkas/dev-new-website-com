@@ -3,7 +3,11 @@ import cn from "classnames";
 import { Link } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useOnClickOutside } from "../../../../helpers/hooks/use-on-click-outside";
-import { DROPDOWN_SEARCH_ITEMS_TO_SHOW } from "../../../../helpers/constants";
+import {
+  DROPDOWN_SEARCH_ITEMS_TO_SHOW,
+  SEARCH_MIN_QUERY_LENGTH,
+  INITIAL_SEARCH_STATE
+} from "../../../../helpers/constants";
 import { SearchIcon } from "../../../shared/icons";
 
 const SearchBar = ({
@@ -12,12 +16,8 @@ const SearchBar = ({
 }) => {
   const { t } = useTranslation();
 
-  const initSearchState = {
-    query: "",
-    results: [],
-  };
   const [isActive, setIsActive] = useState(false);
-  const [searchState, setSearchState] = useState(initSearchState);
+  const [searchState, setSearchState] = useState(INITIAL_SEARCH_STATE);
 
   const searchInput = useRef();
   const searchBarRef = useRef();
@@ -28,7 +28,7 @@ const SearchBar = ({
   };
 
   useOnClickOutside(searchBarRef, () => {
-    setSearchState(initSearchState);
+    setSearchState(INITIAL_SEARCH_STATE);
     if (!isExpandable) return;
 
     setIsActive(false);
@@ -55,7 +55,7 @@ const SearchBar = ({
 
   const doSearch = e => {
     const query = e.target.value;
-    if (searchState.query.length > 2) {
+    if (searchState.query.length > SEARCH_MIN_QUERY_LENGTH) {
       const results = getSearchResults(query);
       setSearchState({ results, query });
     } else {
@@ -106,11 +106,15 @@ const SearchBar = ({
                 </Link>
               </li>
             ))
-          ) : (
-            <li className="search-bar__results-item">
-              <span className="search-bar__results-title">No results</span>
-            </li>
-          )}
+          ) : searchState.query.length > SEARCH_MIN_QUERY_LENGTH ? (
+              <li className="search-bar__results-item">
+                <span className="search-bar__results-title">No results</span>
+              </li>
+            ) : (
+              <li className="search-bar__results-item">
+                <span className="search-bar__results-title">Please insert at least 3 characters</span>
+              </li>
+            )}
         </ul>
       )}
     </form>
