@@ -17,7 +17,7 @@ const TableSearch = ({ globalFilter, setGlobalFilter }) => {
       <SearchIcon className="table__searchbar-icon" />
       <input
         className={cn("search-bar__input")}
-        placeholder={t("search-table-placeholder")}
+        placeholder={t("table-search-placeholder")}
         onChange={(e) => {
           setValue(e.target.value);
           onChange(e.target.value);
