@@ -10,8 +10,9 @@ import Footer from "../../footer";
 import { CookiesPopup } from "../../cookies-popup";
 import { GDPRPopup } from "../../gdpr-popup";
 
-const Layout = ({ children, isShowFooter = true }) => {
+const Layout = ({ children, isShowFooter = true, setHeaderRef }) => {
   const headerRef = useRef();
+  setHeaderRef(headerRef);
 
   const { width } = useWindowSize();
   const [sectionOptions, setSectionOptions] = useState(null);
@@ -38,9 +39,6 @@ const Layout = ({ children, isShowFooter = true }) => {
             />
             <section
               className="scroll-container"
-              style={{
-                scrollPadding: scrollHeight,
-              }}
             >
               <main
                 style={{

@@ -1,6 +1,6 @@
-import React, {useRef} from "react";
-import {graphql} from "gatsby";
-import {useTranslation} from "gatsby-plugin-react-i18next";
+import React, { useEffect, useRef, useState } from "react";
+import { graphql } from "gatsby";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import promo1 from "../assets/images/promotions/promo1.svg";
 import promo2 from "../assets/images/promotions/promo2.svg";
@@ -12,29 +12,51 @@ import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
 import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
-import {REGISTRATION_LINK} from "../helpers/constants";
+import { REGISTRATION_LINK } from "../helpers/constants";
 import Layout from "../components/shared/layout";
-import {useIntersectionObserver} from "../helpers/hooks/use-intersection-observer";
-import {useSpring} from "react-spring";
+import { useIntersectionObserver } from "../helpers/hooks/use-intersection-observer";
+import { useSpring } from "react-spring";
 import {
-    INTERSECTION_OBSERVER_CONFIG,
-    OPACITY_0,
-    OPACITY_1,
-    SPRING_CONFIG_BG,
-    SPRING_CONFIG_TEXT,
+  INTERSECTION_OBSERVER_CONFIG,
+  OPACITY_0,
+  OPACITY_1,
+  SPRING_CONFIG_TEXT,
+  BACKGROUND_ANIMATION_DURATION,
 } from "../helpers/animation.config";
-import {useWindowSize} from "../helpers/hooks/use-window-size";
+import { useWindowSize } from "../helpers/hooks/use-window-size";
+import { CookiesPopup } from "../components/cookies-popup";
+import { GDPRPopup } from "../components/gdpr-popup";
+import cn from "classnames";
+import { scrollTo } from "../helpers/scroll-to";
 import Seo from "../components/shared/seo";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
+import { usePromotionAnimation } from "../components/promotion/use-promotion-animation";
 
 const IndexPage = () => {
   const { t } = useTranslation();
-  const { isTablet } = useWindowSize();
-  const INTERSECTION_RATIO = isTablet ? 0.4 : 0.7;
+  const { isMobile } = useWindowSize();
+
+  const [headerRef, setHeaderRef] = useState(null);
+  const [isTradePromoScrolled, setIsTradePromoScrolled] = useState(false);
+  const [isPromo1Scrolled, setIsPromo1Scrolled] = useState(false);
+  const [isPromo2Scrolled, setIsPromo2Scrolled] = useState(false);
+  const [isPromo3Scrolled, setIsPromo3Scrolled] = useState(false);
+
+  const tradePromoRef = useRef();
   const promo1Ref = useRef();
   const promo2Ref = useRef();
   const promo3Ref = useRef();
   const promo4Ref = useRef();
+
+  const dataTradePromoRef = useIntersectionObserver(
+    tradePromoRef,
+    INTERSECTION_OBSERVER_CONFIG.tradePromo
+  );
+
+  const dataPromo1Ref = useIntersectionObserver(
+    promo1Ref,
+    INTERSECTION_OBSERVER_CONFIG.promo1
+  );
 
   const dataPromo2Ref = useIntersectionObserver(
     promo2Ref,
@@ -57,72 +79,160 @@ const IndexPage = () => {
     to: dataPromo4Ref?.isIntersecting ? OPACITY_1 : OPACITY_0,
   });
 
-  const animation1BgRight = useSpring({
-    ...SPRING_CONFIG_BG,
-    ...(dataPromo2Ref?.isIntersecting &&
-    dataPromo2Ref?.intersectionRatio > INTERSECTION_RATIO
-      ? {
-          from: { left: "100%" },
-          to: { left: "0" },
-        }
-      : {
-          from: { left: "0" },
-          to: { left: "100%" },
-        }),
-  });
+  const [bgAnimationConfig, bgAnimationApi] = useSpring(() => ({
+    from: { backgroundPositionX: "0" },
+  }));
 
-  const animation2BgLeft = useSpring({
-    ...SPRING_CONFIG_BG,
-    ...(dataPromo2Ref?.isIntersecting &&
-    dataPromo2Ref?.intersectionRatio > INTERSECTION_RATIO
-      ? {
-          from: { left: "0" },
-          to: { left: "-100%" },
-        }
-      : {
-          from: { left: !dataPromo3Ref?.isIntersecting ? "-100%" : "-100%" },
-          to: { left: !dataPromo3Ref?.isIntersecting ? "0" : "-200%" },
-        }),
-  });
+  const {
+    isPromo12Bg,
+    isPromo23Bg,
+    isPromo32Bg,
+    isPromo21Bg,
+    tradePromoIntersectionRatio,
+    promoIntersectionRatioToScroll,
+  } = usePromotionAnimation(
+    dataPromo1Ref,
+    dataPromo2Ref,
+    dataPromo3Ref,
+    isPromo1Scrolled,
+    isPromo2Scrolled,
+    isPromo3Scrolled
+  );
 
-  const animation2BgRight = useSpring({
-    ...SPRING_CONFIG_BG,
-    ...(dataPromo3Ref?.isIntersecting &&
-    dataPromo3Ref?.intersectionRatio > INTERSECTION_RATIO
-      ? {
-          from: { left: "100%" },
-          to: { left: "0" },
-        }
-      : {
-          from: { left: "0" },
-          to: { left: "100%" },
-        }),
-  });
+  useEffect(() => {
+    if (
+      dataTradePromoRef?.isIntersecting &&
+      dataTradePromoRef?.intersectionRatio > tradePromoIntersectionRatio &&
+      !isTradePromoScrolled &&
+      !isMobile
+    ) {
+      scrollTo({
+        ref: tradePromoRef,
+        headerRef,
+        duration: BACKGROUND_ANIMATION_DURATION,
+        callback: () => {
+          setIsTradePromoScrolled(true);
+        },
+      });
+    }
+  }, [
+    isMobile,
+    dataTradePromoRef,
+    headerRef,
+    isTradePromoScrolled,
+    tradePromoIntersectionRatio,
+  ]);
 
-  const animation3BgRight = useSpring({
-    ...SPRING_CONFIG_BG,
-    ...(dataPromo3Ref?.isIntersecting &&
-    dataPromo3Ref?.intersectionRatio > INTERSECTION_RATIO
-      ? {
-          from: { left: "0" },
-          to: { left: "-100%" },
-        }
-      : {
-          from: { left: "-100%" },
-          to: { left: "0" },
-        }),
-  });
+  useEffect(() => {
+    if (
+      dataPromo1Ref?.isIntersecting &&
+      dataPromo1Ref?.intersectionRatio > promoIntersectionRatioToScroll &&
+      !isPromo1Scrolled &&
+      isTradePromoScrolled &&
+      !isMobile
+    ) {
+      scrollTo({
+        ref: promo1Ref,
+        headerRef,
+        duration: BACKGROUND_ANIMATION_DURATION,
+        callback: () => {
+          setIsPromo1Scrolled(true);
+        },
+      });
+    }
+  }, [
+    headerRef,
+    dataPromo1Ref,
+    isPromo1Scrolled,
+    isTradePromoScrolled,
+    isMobile,
+    promoIntersectionRatioToScroll,
+  ]);
+
+  useEffect(() => {
+    if (isMobile) {
+      return;
+    }
+
+    if (isPromo12Bg) {
+      scrollTo({
+        ref: promo2Ref,
+        headerRef,
+        duration: BACKGROUND_ANIMATION_DURATION,
+      });
+      bgAnimationApi.start({
+        backgroundPositionX: "50%",
+        backgroundPositionY: headerRef?.current.clientHeight,
+        config: { duration: BACKGROUND_ANIMATION_DURATION },
+        onRest: () => {
+          setIsPromo2Scrolled(true);
+        },
+      });
+    }
+
+    if (isPromo23Bg) {
+      scrollTo({
+        ref: promo3Ref,
+        headerRef,
+        duration: BACKGROUND_ANIMATION_DURATION,
+      });
+      bgAnimationApi.start({
+        backgroundPositionX: "100%",
+        backgroundPositionY: headerRef?.current.clientHeight,
+        config: { duration: BACKGROUND_ANIMATION_DURATION },
+        onRest: () => {
+          setIsPromo3Scrolled(true);
+        },
+      });
+    }
+
+    if (isPromo32Bg) {
+      scrollTo({
+        ref: promo2Ref,
+        headerRef,
+        duration: BACKGROUND_ANIMATION_DURATION,
+      });
+      bgAnimationApi.start({
+        backgroundPositionX: "50%",
+        backgroundPositionY: headerRef?.current.clientHeight,
+        config: { duration: BACKGROUND_ANIMATION_DURATION },
+        onRest: () => {
+          setIsPromo3Scrolled(false);
+        },
+      });
+    }
+
+    if (isPromo21Bg) {
+      scrollTo({
+        ref: promo1Ref,
+        headerRef,
+        duration: BACKGROUND_ANIMATION_DURATION,
+      });
+      bgAnimationApi.start({
+        backgroundPositionX: "0",
+        backgroundPositionY: headerRef?.current.clientHeight,
+        config: { duration: BACKGROUND_ANIMATION_DURATION },
+        onRest: () => {
+          setIsPromo2Scrolled(false);
+        },
+      });
+    }
+  }, [isMobile, isPromo12Bg, isPromo23Bg, isPromo32Bg, isPromo21Bg, headerRef, bgAnimationApi]);
 
   return (
-    <Layout>
+    <Layout setHeaderRef={setHeaderRef}>
+      <CookiesPopup />
+      <GDPRPopup />
       <Seo title={t("page-main-title")} />
       <MainPromotion />
       <TradingTicker />
-      <TradeWithPromotion />
+      <TradeWithPromotion sectionRef={tradePromoRef} />
       <Promotion
-        className="promotion1"
+        className={cn("promotion1", {
+          "promotion--parallax-bg": !isMobile,
+        })}
         sectionRef={promo1Ref}
-        animationRight={animation1BgRight}
+        bgAnimationConfig={isMobile ? null : bgAnimationConfig}
         image={promo1}
         btnTitle={t("index_promotion1-btn-text")}
         link={REGISTRATION_LINK}
@@ -138,8 +248,6 @@ const IndexPage = () => {
       <Promotion
         className="promotion2"
         sectionRef={promo2Ref}
-        animationRight={animation2BgRight}
-        animationLeft={animation2BgLeft}
         image={promo2}
         btnTitle={t("index_promotion2-btn-text")}
         link={REGISTRATION_LINK}
@@ -154,10 +262,9 @@ const IndexPage = () => {
       </Promotion>
       <Promotion
         className="promotion3"
-        animationRight={animation3BgRight}
         sectionRef={promo3Ref}
         image={promo3}
-        btnTitle={t("index_promotion3-btn-text")}
+        btnTitle={t("index_promotion2-btn-text")}
         link={REGISTRATION_LINK}
       >
         <HighlightedLocalizationText
@@ -198,7 +305,6 @@ const IndexPage = () => {
     </Layout>
   );
 };
-
 export default IndexPage;
 
 export const query = graphql`
