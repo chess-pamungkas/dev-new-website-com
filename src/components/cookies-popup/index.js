@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import cn from "classnames";
 import CookieContext from "../../context/cookie-context";
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import { isBrowser } from "../../helpers/services/is-browser";
 
 export const CookiesPopup = ({ className }) => {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ export const CookiesPopup = ({ className }) => {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    if (window !== undefined) {
+    if (isBrowser()) {
       setIsReady(true);
     }
   }, []);

@@ -7,6 +7,7 @@ import {
   LAST_LANGUAGE_KEY,
   PERFORMANCE_COOKIE_KEY,
 } from "../../helpers/gdpr-cookie.config";
+import { isBrowser } from "../../helpers/services/is-browser";
 
 const LanguageContext = createContext({});
 
@@ -20,25 +21,26 @@ export const LanguageProvider = ({ children }) => {
       LANG_SELECT_OPTIONS[0]
     );
   };
-
+  const browserLanguage = detectBrowserLanguage();
   const [selectedLanguage, setSelectedLanguage] = useState(
-    findLanguage(getCookie(LAST_LANGUAGE_KEY))
+    findLanguage(getCookie(LAST_LANGUAGE_KEY) || browserLanguage)
   );
 
   useEffect(() => {
-    if (window !== undefined && clientConfig.forceToEnglish !== undefined) {
+    if (isBrowser() && clientConfig.forceToEnglish !== undefined) {
       const lastLanguage = getCookie(LAST_LANGUAGE_KEY);
 
       if (lastLanguage !== undefined) {
         setSelectedLanguage(findLanguage(lastLanguage));
       } else if (clientConfig.forceToEnglish) {
         setSelectedLanguage(LANG_SELECT_OPTIONS[0]);
-      } else {
-        setSelectedLanguage(findLanguage(detectBrowserLanguage()));
       }
-      setCookie(LAST_LANGUAGE_KEY, selectedLanguage.id, PERFORMANCE_COOKIE_KEY);
     }
-  }, [clientConfig, getCookie, setCookie, selectedLanguage.id]);
+  }, [clientConfig, getCookie]);
+
+  useEffect(() => {
+    setCookie(LAST_LANGUAGE_KEY, selectedLanguage.id, PERFORMANCE_COOKIE_KEY);
+  }, [setCookie, selectedLanguage]);
 
   return (
     <LanguageContext.Provider
