@@ -9,12 +9,15 @@ import {
   INITIAL_SEARCH_STATE
 } from "../../../../helpers/constants";
 import { SearchIcon } from "../../../shared/icons";
+import { useSiteMetadata } from "../../../../helpers/hooks/use-global-context";
 
 const SearchBar = ({
   className,
   isExpandable = false,
 }) => {
   const { t } = useTranslation();
+  const { title, langGlobalContext } = useSiteMetadata();
+  console.log(title, langGlobalContext)
 
   const [isActive, setIsActive] = useState(false);
   const [searchState, setSearchState] = useState(INITIAL_SEARCH_STATE);

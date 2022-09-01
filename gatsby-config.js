@@ -2,12 +2,46 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const languages = require('./src/locales/language.config');
+const languages = require(`${__dirname}/src/locales/language.config`);
+
+const processLangs = languages => {
+  return languages.reduce((acc, lang, i, arr) => {
+    const localeData = require(`${__dirname}/src/locales/${lang}`);
+
+    const localeDataToIndex = Object.entries(localeData).reduce((acc, [key, value]) => {
+      if (key.includes('_')) {
+        const page = key.split('_')[0];
+        const pageContent = acc[page];
+        if (pageContent) {
+          acc = {
+            ...acc,
+            [page]: [...acc[page], value]
+          }
+        } else {
+          acc = {
+            ...acc,
+            [page]: [value]
+          }
+        }
+      }
+
+      return acc;
+    }, {});
+
+    return {
+      ...acc,
+      [lang]: localeDataToIndex
+    };
+  }, {});
+};
+
+const langGlobalContext = processLangs(languages.list);
 
 module.exports = {
   siteMetadata: {
     title: `website`,
     siteUrl: `https://www.yourdomain.tld`,
+    langGlobalContext
   },
   plugins: [
     "gatsby-plugin-sass",
