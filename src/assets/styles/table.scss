@@ -260,17 +260,18 @@
   }
 
   &__searchbar {
+    padding: 5px 8px 5px 20px;
     background-color: transparent;
     color: map-get($colors, "black");
     border-width: 1px;
     max-width: 330px;
 
-    .search-bar__expand {
-      svg {
-        g,
-        line {
-          stroke: map-get($colors, "red");
-        }
+    &-icon {
+      flex-shrink: 0;
+
+      g,
+      line {
+        stroke: map-get($colors, "red");
       }
     }
 
@@ -279,10 +280,10 @@
     }
 
     .search-bar__input {
-      color: map-get($colors, "black");
+      color: map-get($colors, "red");
 
       &::placeholder {
-        color: map-get($colors, "black");
+        color: map-get($colors, "red");
       }
     }
   }

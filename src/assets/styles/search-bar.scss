@@ -5,7 +5,6 @@
   padding: 0 8px 0 6px;
   display: flex;
   align-items: center;
-  overflow: hidden;
   background-color: map-get($colors, 'red');
   color: map-get($colors, 'white');
   box-shadow: 0 5px 10px #0000001A;
@@ -133,6 +132,45 @@
 
     & .search-bar__submit {
       border: 2px solid map-get($colors, 'red');
+    }
+  }
+
+  &__results {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    left: 0;
+    padding: 14px 30px;
+    background-color: map-get($colors, 'white');
+    border-radius: 25px;
+    box-shadow: 0px 3px 6px #00000029;
+
+    &-item {
+      text-align: left;
+
+      & + & {
+        margin-top: 10px;
+      }
+    }
+
+    &-link {
+      display: flex;
+      align-items: center;
+    }
+
+    &-icon {
+      width: 18px;
+      height: auto;
+
+      & g, line {
+        stroke: map-get($colors, 'red');
+      }
+    }
+
+    &-title {
+      margin-left: 14px;
+      color: map-get($colors, 'black-secondary');
+      font: normal normal 300 14px/18px $font;
     }
   }
 }
