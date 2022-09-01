@@ -26,13 +26,13 @@
 
   &__tab {
     color: map-get($colors, "black");
-    font-size: 18px;
-    line-height: 31px;
+    font-size: 11px;
+    line-height: 23px;
     font-weight: map-get($font-weight, "regular");
     cursor: pointer;
     text-align: center;
     padding: 0 20px;
-    min-width: 112px;
+    min-width: 67px;
 
 
     &--active {
@@ -41,12 +41,22 @@
       box-shadow: 0 3px 24px #00000029;
       border-radius: 16px;
     }
+
+    @include tablet {
+      min-width: 112px;
+      font-size: 18px;
+      line-height: 31px;
+    }
   }
 
   &__panels {
     width: 100%;
     max-width: 100%;
-    padding: 20px;
+    padding: 10px;
+
+    @include tablet {
+      padding: 20px;
+    }
   }
 
   &__panel {

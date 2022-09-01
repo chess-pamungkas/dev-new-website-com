@@ -56,13 +56,21 @@
 .table {
   background: map-get($colors, "white");
   border-radius: 15px;
-  padding: 20px;
+  padding: 10px;
   border-collapse: separate;
   border-spacing: 0;
   width: 100%;
 
+  @include tablet {
+    padding: 20px;
+  }
+
   &--small-padding {
-    padding: 0 20px 20px;
+    padding: 0 5px 10px;
+
+    @include tablet {
+      padding: 0 20px 20px;
+    }
   }
 
   &__head-row {
@@ -78,13 +86,11 @@
   }
 
   &__head-column {
-    min-width: 120px;
     border-bottom: 1px solid map-get($colors, "black");
-
     padding: 10px 10px 15px;
     font-weight: map-get($font-weight, "bold");
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 10px;
+    line-height: 13px;
     color: map-get($colors, "black");
     text-transform: capitalize;
 
@@ -96,9 +102,15 @@
       border-left: 1px solid map-get($colors, "black");
     }
 
-    @include desktop-xl {
+    @include tablet {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include desktop-lg {
       font-size: 18px;
       line-height: 22px;
+      min-width: 120px;
     }
 
     &--grouped {
@@ -117,27 +129,31 @@
       border-radius: 10px 10px 0 0;
       padding: 8px 10px;
       text-transform: uppercase;
-      font-size: 16px;
-    }
-  }
+      font-size: 11px;
 
-  &__head-icon {
+      @include tablet {
+        font-size: 16px;
+      }
+    }
   }
 
   &__body-column {
     text-align: center;
     font-weight: map-get($font-weight, "light");
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 10px;
+    line-height: 13px;
     color: map-get($colors, "black");
     text-transform: capitalize;
     border-bottom: 1px solid map-get($colors, "black");
     border-right: 1px solid map-get($colors, "table-grey");
-    padding: 15px 10px;
+    padding: 3px;
 
     &:first-child {
-      //border-right: 1px solid map-get($colors, "black");
-      font-size: 18px;
+      font-size: 11px;
+
+      @include tablet {
+        font-size: 18px;
+      }
     }
 
     &:nth-child(2) {
@@ -148,7 +164,10 @@
       border-right: none;
     }
 
-    &--grouped {
+    @include tablet {
+      font-size: 16px;
+      line-height: 20px;
+      padding: 15px 10px;
     }
   }
 
@@ -156,7 +175,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-width: 210px;
+    min-width: 100px;
+
+    @include tablet {
+      min-width: 210px;
+    }
   }
 
   &__params {
@@ -166,7 +189,11 @@
 
   &__param {
     text-align: left;
-    margin-right: 15px;
+    margin-right: 5px;
+
+    @include tablet {
+      margin-right: 15px;
+    }
 
     &:last-child {
       margin: 0;
@@ -183,11 +210,17 @@
 
   &__param-value {
     display: block;
-    padding-left: 7px;
-    font-size: 16px;
-    line-height: 20px;
+    padding-left: 4px;
+    font-size: 11px;
+    line-height: 14px;
     font-weight: map-get($font-weight, "light");
     color: map-get($colors, "black");
+
+    @include tablet {
+      padding-left: 7px;
+      font-size: 16px;
+      line-height: 20px;
+    }
   }
 
   &__btn-wrapper {
@@ -201,9 +234,9 @@
   }
 
   &__btn {
-    font-size: 11px;
-    width: 83px;
-    line-height: 26px;
+    font-size: 7px;
+    width: 41px;
+    line-height: 22px;
     color: map-get($colors, "white");
     margin: 0 0 5px;
     transition: all 0.1s;
@@ -212,6 +245,12 @@
 
     &:last-child {
       margin: 0;
+    }
+
+    @include tablet {
+      font-size: 11px;
+      width: 83px;
+      line-height: 26px;
     }
 
     &--inline {
@@ -249,11 +288,19 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0 0 20px;
+    padding: 0 0 15px;
+
+    @include tablet {
+      padding: 0 0 20px;
+    }
 
     &--bottom {
-      padding: 20px 0 0;
+      padding: 15px 0 0;
       justify-content: flex-end;
+
+      @include tablet {
+        padding: 20px 0 0;
+      }
     }
 
     &--single-block {
@@ -265,7 +312,10 @@
     background-color: transparent;
     color: map-get($colors, "black");
     border-width: 1px;
-    max-width: 330px;
+
+    @include tablet {
+      max-width: 330px;
+    }
 
     .search-bar__expand {
       svg {
@@ -278,6 +328,15 @@
 
     .search-bar__submit {
       border: 1px solid map-get($colors, "red");
+      height: 29px;
+      font-size: 14px;
+      line-height: 18px;
+
+      @include tablet {
+        font-size: 16px;
+        line-height: 20px;
+        height: 36px;
+      }
     }
 
     .search-bar__input {
@@ -285,6 +344,13 @@
 
       &::placeholder {
         color: map-get($colors, "red");
+        font-size: 12px;
+        line-height: 15px;
+
+        @include tablet {
+          font-size: 16px;
+          line-height: 20px;
+        }
       }
     }
   }
@@ -381,8 +447,13 @@
   justify-content: flex-end;
 
   &__text {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 11px;
+    line-height: 14px;
     margin: 0;
+
+    @include tablet {
+      font-size: 14px;
+      line-height: 18px;
+    }
   }
 }

@@ -4,7 +4,12 @@ import { stringTransformToKebabCase } from "../../../helpers/services/string-ser
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import Dropdown from "../dropdown";
 
-const Tabs = ({ classname, tabList = [], activeTabIndex = 0 }) => {
+const Tabs = ({
+  classname,
+  tabList = [],
+  activeTabIndex = 0,
+  isMobileDropdown = false,
+}) => {
   const [currentTabIndex, setCurrentTabIndex] = useState(activeTabIndex);
   const [isDropdownOpened, setIsDropdownOpened] = useState(false);
   const { isTablet } = useWindowSize();
@@ -51,7 +56,7 @@ const Tabs = ({ classname, tabList = [], activeTabIndex = 0 }) => {
   return (
     <div className={cn("tabs", classname)} data-tabs="true">
       <div className="tabs__tablist-wrapper">
-        {isTablet ? (
+        {isTablet && isMobileDropdown ? (
           <Dropdown
             className="tabs__dropdown"
             selectedItem={{
