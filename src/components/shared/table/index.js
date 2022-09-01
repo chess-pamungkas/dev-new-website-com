@@ -99,9 +99,16 @@ const TableComponent = ({
           "table-scroll--vertical": !isPagination,
         })}
       >
-        {tip && <TableTip tip={tip} />}
-
-        <table className={cn("table", tableClassName)} {...getTableProps()}>
+        <table
+          className={cn(
+            "table",
+            {
+              "table--small-padding": isGroupedHeader(),
+            },
+            tableClassName
+          )}
+          {...getTableProps()}
+        >
           <thead className="table__head">
             {headerGroups.map((headerGroup, index) => (
               <tr
@@ -153,6 +160,7 @@ const TableComponent = ({
         </table>
       </div>
       <div className={cn("table__tools", "table__tools--bottom")}>
+        {tip && <TableTip tip={tip} />}
         {isPagination && (
           <TablePagination
             canNextPage={canNextPage}
