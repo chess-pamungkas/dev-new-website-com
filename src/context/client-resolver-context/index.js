@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import handleClient from "./handle-client";
 import entities from "../../enums/entities";
+import { isBrowser } from "../../helpers/services/is-browser";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 const PUBLIC_IP_API_URL = process.env.GATSBY_PUBLIC_IP_API_URL;
@@ -17,7 +18,7 @@ export const ClientResolverProvider = ({ children }) => {
   const [entityToRedirect, setEntityToRedirect] = useState("");
 
   useEffect(() => {
-    if (window !== undefined) {
+    if (isBrowser()) {
       const currentHost = window.location.host;
       const _currentEntity =
         currentHost !== FSA_ENTITY_HOST ? entities.FSA : entities.CYSEC;
