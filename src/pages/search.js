@@ -41,8 +41,11 @@ const SearchPage = () => {
 
               <p className="search-page__text">{item.text}</p>
 
-              <ButtonLink link={item.link} className="search-page__btn button-link--ghost-red">
-                Go
+              <ButtonLink
+                link={item.link}
+                className="search-page__btn button-link--ghost-red"
+              >
+                {t("search-submit-btn")}
               </ButtonLink>
             </li>
           ))}
