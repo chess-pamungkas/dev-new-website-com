@@ -105,9 +105,9 @@ export const usePromotionAnimation = (
     );
   }, [
     isMobile,
-    isTablet,
-    isLG,
-    isXL,
+    tradePromoIntersectionRatio,
+    promoIntersectionRatioToScroll,
+    promoIntersectionRatioToReverse,
     dataPromo1Ref,
     dataPromo2Ref,
     dataPromo3Ref,
