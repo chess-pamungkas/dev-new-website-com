@@ -38,7 +38,7 @@ export const LanguageProvider = ({ children }) => {
       }
       setCookie(LAST_LANGUAGE_KEY, selectedLanguage.id, PERFORMANCE_COOKIE_KEY);
     }
-  }, [clientConfig, getCookie, setCookie]);
+  }, [clientConfig, getCookie, setCookie, selectedLanguage.id]);
 
   return (
     <LanguageContext.Provider
