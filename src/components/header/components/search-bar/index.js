@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import cn from "classnames";
 import { Link } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation, I18nextContext } from "gatsby-plugin-react-i18next";
 import { useOnClickOutside } from "../../../../helpers/hooks/use-on-click-outside";
 import {
   DROPDOWN_SEARCH_ITEMS_TO_SHOW,
@@ -16,8 +16,10 @@ const SearchBar = ({
   isExpandable = false,
 }) => {
   const { t } = useTranslation();
-  const { title, langGlobalContext } = useSiteMetadata();
-  console.log(title, langGlobalContext)
+  const { language } = useContext(I18nextContext);
+
+  const { langGlobalContext } = useSiteMetadata();
+  console.log(langGlobalContext[language])
 
   const [isActive, setIsActive] = useState(false);
   const [searchState, setSearchState] = useState(INITIAL_SEARCH_STATE);

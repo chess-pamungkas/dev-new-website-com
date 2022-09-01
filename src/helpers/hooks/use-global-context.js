@@ -1,19 +1,44 @@
 import { graphql, useStaticQuery } from "gatsby";
 
 export const useSiteMetadata = () => {
-  const data = useStaticQuery(graphql`
+  const { site } = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
-          title
           langGlobalContext {
-            en {
-              index
-            }
+            en
+            de
+            fr
+            pl
+            pt
+            da
+            fi
+            es
+            ru
+            ar
+            nl
+            sw
+            ro
+            it
+            cn
+            tw
+            no
+            cz
+            vn
+            th
+            my
+            id
+            kr
+            jp
+            in
+            bd
+            gr
+            ph        
           }
         }
       }
     }
-  `)
-  return data.site.siteMetadata;
+  `);
+
+  return site.siteMetadata;
 };

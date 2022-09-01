@@ -5,28 +5,43 @@ require("dotenv").config({
 const languages = require(`${__dirname}/src/locales/language.config`);
 
 const processLangs = languages => {
-  return languages.reduce((acc, lang, i, arr) => {
+  return languages.reduce((acc, lang) => {
     const localeData = require(`${__dirname}/src/locales/${lang}`);
+    const localeDataArr = Object.entries(localeData);
+    const localeDataToIndex = localeDataArr.length
+      ? Object.entries(localeData)
+          .reduce((acc, [key, value], i, arr) => {
+            if (key.includes('_')) {
+              const page = key.split('_')[0];
+              const formatedValue = `${page}_${value}`;
+              acc.push(formatedValue);
+            }
 
-    const localeDataToIndex = Object.entries(localeData).reduce((acc, [key, value]) => {
-      if (key.includes('_')) {
-        const page = key.split('_')[0];
-        const pageContent = acc[page];
-        if (pageContent) {
-          acc = {
-            ...acc,
-            [page]: [...acc[page], value]
-          }
-        } else {
-          acc = {
-            ...acc,
-            [page]: [value]
-          }
-        }
-      }
+            if (i === arr.length - 1 && acc.length === 0) acc.push('empty');
 
-      return acc;
-    }, {});
+            return acc;
+          }, [])
+      : ['empty'];
+
+    // const localeDataToIndex = Object.entries(localeData).reduce((acc, [key, value]) => {
+    //   if (key.includes('_')) {
+    //     const page = key.split('_')[0];
+    //     const pageContent = acc[page];
+    //     if (pageContent) {
+    //       acc = {
+    //         ...acc,
+    //         [page]: [...acc[page], value]
+    //       }
+    //     } else {
+    //       acc = {
+    //         ...acc,
+    //         [page]: [value]
+    //       }
+    //     }
+    //   }
+
+    //   return acc;
+    // }, {});
 
     return {
       ...acc,
@@ -36,6 +51,7 @@ const processLangs = languages => {
 };
 
 const langGlobalContext = processLangs(languages.list);
+console.log(langGlobalContext)
 
 module.exports = {
   siteMetadata: {

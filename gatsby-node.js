@@ -19,6 +19,9 @@ dataToSearch.searchIndex = new JsSearch.TfIdfSearchIndex("index");
 
 // exports.createPages = async ({ graphql, actions }) => {
 //   const { createPage } = actions;
+//   createPage({
+//     context: 
+//   })
 
 // };
 
