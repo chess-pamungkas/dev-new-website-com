@@ -5,9 +5,9 @@ import "../assets/styles/index.scss";
 import TopMarket from "../components/top-market";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import image from "../assets/images/top-markets/cripto.svg";
-import { ALL_MARKET_TEXT } from "../helpers/top-market-texts";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
+import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 
 const AllMarketsPage = () => {
   const { t } = useTranslation();
@@ -16,14 +16,19 @@ const AllMarketsPage = () => {
     <Layout>
       <Seo title={t("page-allmarkets-title")} />
       <TopMarket
-        title="All market overview"
+        title={t("all-markets_top-market-title")}
         image={image}
-        btn1Title="Try our demo account"
+        btn1Title={t("all-markets_top-market-btn1")}
         link1={REGISTRATION_LINK}
-        btn2Title="Start trading FX now"
+        btn2Title={t("all-markets_top-market-btn2")}
         link2={REGISTRATION_LINK}
       >
-        {ALL_MARKET_TEXT}
+        <HighlightedLocalizationText
+          localizationText="all-markets_top-market-promo-text"
+          wordsToHighlight="all-markets-top-market-promo-text-accent"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-white"
+        />
       </TopMarket>
     </Layout>
   );

@@ -5,7 +5,6 @@ import "../assets/styles/index.scss";
 import TopMarket from "../components/top-market";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import image from "../assets/images/top-markets/forex.svg";
-import { FOREX_TEXT, PROMOTION_TEXT_FOREX } from "../helpers/top-market-texts";
 import Layout from "../components/shared/layout";
 import Tabs from "../components/shared/tabs";
 import TableComponent from "../components/shared/table";
@@ -18,14 +17,15 @@ import TopMarketLayout from "../components/top-market-layout";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import Seo from "../components/shared/seo";
 import forex from "../assets/images/promotions/promo1.svg";
-import { PROMO_TEXT_FOREX } from "../helpers/promo-texts";
 import TopMarketPromotion from "../components/top-market-promotion";
 import TradingTicker from "../components/trading-ticker";
+import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 
 const ForexPage = () => {
   const { t } = useTranslation();
   const { isMobile } = useWindowSize();
 
+  // TODO: move to helpers/constants.js
   const tabs = [
     {
       id: 1,
@@ -97,7 +97,12 @@ const ForexPage = () => {
         btn2Title={t("forex_top-market-btn2")}
         link2={REGISTRATION_LINK}
       >
-        {FOREX_TEXT}
+        <HighlightedLocalizationText
+          localizationText="forex_top-market-promo-text"
+          wordsToHighlight="forex-top-market-promo-text-accent"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-white"
+        />
       </TopMarket>
       <TradingTicker title={t("forex_trading-ticker-title")} />
       <TopMarketPromotion
@@ -107,15 +112,27 @@ const ForexPage = () => {
         btnTitle={t("forex_top-market-promo-btn")}
         link={REGISTRATION_LINK}
       >
-        {PROMO_TEXT_FOREX}
+        <HighlightedLocalizationText
+          localizationText="forex_top-market-promotion-promo-text"
+          wordsToHighlight="forex-top-market-promotion-promo-text-accent"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
       </TopMarketPromotion>
       <PromotionMarkets
         animation={animation}
         animationStyle={{
           height: isMobile ? 246 : 382,
         }}
-        promoText={PROMOTION_TEXT_FOREX}
-      />
+        btnTitle={t("forex_promotion-markets-btn")}
+      >
+        <HighlightedLocalizationText
+          localizationText="forex_promotion-markets-promo-text"
+          wordsToHighlight="forex-promotion-markets-promo-text-accent"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+      </PromotionMarkets>
       <TopMarketLayout
         title={t("forex_top-market-layout-title")}
         btnTitle={t("forex_top-market-layout-btn")}

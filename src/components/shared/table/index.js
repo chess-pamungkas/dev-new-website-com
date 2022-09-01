@@ -14,6 +14,7 @@ import { TABLE_PAGE_SIZES } from "../../../helpers/constants";
 import TableShowByDropdown from "./components/dropdown";
 import { TableTip, TableTitle } from "./components/title";
 
+// TODO: add localization to the component
 const TableComponent = ({
   className,
   tableClassName,

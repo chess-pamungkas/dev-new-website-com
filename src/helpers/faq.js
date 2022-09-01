@@ -1,29 +1,29 @@
 export const FAQ_FOREX = [
   {
-    title: "Consectetur Forex elit sed do eiusmod tempor incididunt?",
-    content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    title: "forex_faq-title1",
+    content: "forex_faq-content1",
   },
   {
-    title: "Risus commodo viverra maecenas accumsan lacus vel facilisis. Sed egestas egestas fringilla phasellus?",
-    content: "",
+    title: "forex_faq-title2",
+    content: "forex_faq-content2",
   },
   {
-    title: "Sunt in culpa qui officia deserunt?",
-    content: "",
+    title: "forex_faq-title3",
+    content: "forex_faq-content3",
   },
 ];
 
 export const FAQ_CRYPTO = [
   {
-    title: "Consectetur Forex elit sed do eiusmod tempor incididunt?",
-    content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    title: "crypto_faq-title1",
+    content: "crypto_faq-content1",
   },
   {
-    title: "Risus commodo viverra maecenas accumsan lacus vel facilisis. Sed egestas egestas fringilla phasellus?",
-    content: "",
+    title: "crypto_faq-title2",
+    content: "crypto_faq-content2",
   },
   {
-    title: "Sunt in culpa qui officia deserunt?",
-    content: "",
+    title: "crypto_faq-title3",
+    content: "crypto_faq-content3",
   },
 ];

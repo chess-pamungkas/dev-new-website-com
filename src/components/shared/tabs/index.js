@@ -4,6 +4,7 @@ import { stringTransformToKebabCase } from "../../../helpers/services/string-ser
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import Dropdown from "../dropdown";
 
+// TODO: add localization to the component
 const Tabs = ({ classname, tabList = [], activeTabIndex = 0 }) => {
   const [currentTabIndex, setCurrentTabIndex] = useState(activeTabIndex);
   const [isDropdownOpened, setIsDropdownOpened] = useState(false);

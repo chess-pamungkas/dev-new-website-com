@@ -5,10 +5,6 @@ import "../assets/styles/index.scss";
 import TopMarket from "../components/top-market";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import image from "../assets/images/top-markets/cripto.svg";
-import {
-  CRYPTO_TEXT,
-  PROMOTION_TEXT_CRYPTO,
-} from "../helpers/top-market-texts";
 import Layout from "../components/shared/layout";
 import animation from "../assets/images/animations/crypto.json";
 import PromotionMarkets from "../components/promotion-markets";
@@ -20,9 +16,9 @@ import Faq from "../components/faq";
 import Seo from "../components/shared/seo";
 import TradingTicker from "../components/trading-ticker";
 import crypto from "../assets/images/promotions/promo1.svg";
-import { PROMO_TEXT_CRYPTO } from "../helpers/promo-texts";
 import TopMarketPromotion from "../components/top-market-promotion";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
+import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 
 const CryptoPage = () => {
   const { t } = useTranslation();
@@ -39,7 +35,12 @@ const CryptoPage = () => {
         btn2Title={t("crypto_top-market-btn2")}
         link2={REGISTRATION_LINK}
       >
-        {CRYPTO_TEXT}
+        <HighlightedLocalizationText
+          localizationText="crypto_top-market-promo-text"
+          wordsToHighlight="crypto-top-market-promo-text-accent"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-white"
+        />
       </TopMarket>
       <TradingTicker />
       <TopMarketPromotion
@@ -49,15 +50,27 @@ const CryptoPage = () => {
         btnTitle={t("crypto_top-market-promo-btn")}
         link={REGISTRATION_LINK}
       >
-        {PROMO_TEXT_CRYPTO}
+        <HighlightedLocalizationText
+          localizationText="crypto_top-market-promotion-promo-text"
+          wordsToHighlight="crypto-top-market-promotion-promo-text-accent"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
       </TopMarketPromotion>
       <PromotionMarkets
         animation={animation}
         animationStyle={{
           height: isMobile ? 301 : 473,
         }}
-        promoText={PROMOTION_TEXT_CRYPTO}
-      />
+        btnTitle={t("crypto_promotion-markets-btn")}
+      >
+        <HighlightedLocalizationText
+          localizationText="crypto_promotion-markets-promo-text"
+          wordsToHighlight="crypto-promotion-markets-promo-text-accent"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+      </PromotionMarkets>
       <TopMarketLayout
         title={t("crypto_top-market-layout-title")}
         btnTitle={t("crypto_top-market-layout-btn")}
