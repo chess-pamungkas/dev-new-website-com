@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import cn from "classnames";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useOnClickOutside } from "../../../../helpers/hooks/use-on-click-outside";
 import {
@@ -55,6 +55,10 @@ const SearchBar = ({
         className
       )}
       ref={searchBarRef}
+      onSubmit={(e => {
+        e.preventDefault();
+        navigate(`/search/?${SEARCH_PARAM_NAME}=${encodeURI(searchState.query)}`)
+      })}
     >
       <button
         className="search-bar__expand"
@@ -74,7 +78,7 @@ const SearchBar = ({
           onChange={handleSearch}
           value={searchState.query}
         />
-        <button className="search-bar__submit" type="button">
+        <button className="search-bar__submit" type="submit">
           {t("search-submit-btn")}
         </button>
       </div>

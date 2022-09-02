@@ -10,17 +10,12 @@ import {
 import { getUrlParamValue } from "../helpers/services/get-url-param-value";
 import Layout from "../components/shared/layout";
 import ButtonLink from "../components/shared/button-link";
-import { Logo } from "../components/shared/icons";
+import {
+  Logo,
+  SearchIcon,
+  SearchNoResultsImg
+} from "../components/shared/icons";
 import Seo from "../components/shared/seo";
-import { SearchIcon, SearchNoResultsImg } from "../components/shared/icons";
-
-// TODO: replace mocked data with actual search results
-const mockedResult = {
-  title: 'Lorem Ipsum',
-  link: 'https://www.loremipsum.com/',
-  text: 'Lorem ipsum dolor sit amet, consect adipiscing elit. Quisque non...',
-  icon: Logo
-};
 
 const SearchPage = () => {
   const { t } = useTranslation();
@@ -42,7 +37,7 @@ const SearchPage = () => {
       results,
       noResultsFound: !results.length
     });
-  }, []);
+  }, [getSearchResults]);
 
   const handleSearch = e => {
     const query = e.target.value;
@@ -85,7 +80,7 @@ const SearchPage = () => {
               <h2 className="search-page__no-results-title">
                 {t("search-no-results-title")}
               </h2>
-              <p className="search-page__no-results-text">
+              <p className="search-page__note">
                 {t("search-no-results-text")}
               </p>
               <ButtonLink
@@ -97,23 +92,25 @@ const SearchPage = () => {
             </div>
           ) : !!searchState.results.length ? (
             <ul className="search-page__results-list">
-              {Array.from({length: 3}, _el => (mockedResult)).map((item, i) => (
+              {searchState.results.map((page, i) => (
                 <li key={`search-page-${i}`} className="search-page__item">
-                  <Link to={item.link} className="search-page__link">
+                  <Link to={page.url} className="search-page__link">
                     <div className="search-page__icon-wrapper">
                       <Logo className="search-page__icon" />
                     </div>
 
                     <div className="search-page__caption">
-                      <h2 className="search-page__title">{item.title}</h2>
-                      <p className="search-page__ref">{item.link}</p>
+                      <h2 className="search-page__title">{page.content}</h2>
+                      <p className="search-page__ref">
+                        {`${window.location.origin}${page.url}`}
+                      </p>
                     </div>
                   </Link>
 
-                  <p className="search-page__text">{item.text}</p>
+                  <p className="search-page__text">{page.content}</p>
 
                   <ButtonLink
-                    link={item.link}
+                    link={page.url}
                     className="search-page__btn button-link--ghost-red"
                   >
                     {t("search-submit-btn")}
@@ -122,7 +119,7 @@ const SearchPage = () => {
               ))}
             </ul>
           ) : (
-            <p className="search-page__text">
+            <p className="search-page__note">
               {t("search-min-query-part1")}
               {' '}{SEARCH_MIN_QUERY_LENGTH}{' '}
               {t("search-min-query-part2")}

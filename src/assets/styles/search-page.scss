@@ -18,10 +18,11 @@
   }
 
   &__form {
-    width: 425px;
+    width: 100%;
     margin: 0 auto 50px;
     padding: 5px 8px 5px 20px;
     display: flex;
+    align-items: center;
     background-color: map-get($colors, 'white');
     color: map-get($colors, 'black');
     border: 2px solid map-get($colors, 'red');
@@ -31,20 +32,38 @@
       margin-bottom: 60px;
     }
 
+    @include desktop-lg {
+      width: 425px;
+      margin-bottom: 80px;
+    }
+
     @include desktop-xl {
+      width: 720px;
       margin-bottom: 80px;
     }
 
     &-icon {
       flex-shrink: 0;
+      margin-right: 10px;
 
       @include tablet {
+        width: 28px;
+        height: 28px;
+      }
 
+      & > g > * {
+        stroke: map-get($colors, 'red');
       }
     }
 
     &-input {
-
+      height: 36px;
+      flex-grow: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: map-get($colors, 'black-secondaty');
+      font: normal normal map-get($font-weight, "bold") 16px/20px $font;
     }
   }
 
@@ -247,26 +266,27 @@
       }
     }
 
-    &-text {
-      margin: 0 0 30px;
-      color: map-get($colors, 'black-secondary');
-      font: normal normal 900 24px/30px $font;
-
-      @include tablet {
-        font: normal normal 900 36px/45px $font;
-      }
-
-      @include desktop-lg {
-        font: normal normal 900 30px/37px $font;
-      }
-
-      @include desktop-xl {
-        font: normal normal 900 36px/45px $font;
-      }
-    }
-
     &-btn {
       margin: 0 auto;
+    }
+  }
+
+  &__note{
+    margin: 0 0 30px;
+    color: map-get($colors, 'black-secondary');
+    font: normal normal 900 24px/30px $font;
+    text-align: center;
+
+    @include tablet {
+      font: normal normal 900 36px/45px $font;
+    }
+
+    @include desktop-lg {
+      font: normal normal 900 30px/37px $font;
+    }
+
+    @include desktop-xl {
+      font: normal normal 900 36px/45px $font;
     }
   }
 }
