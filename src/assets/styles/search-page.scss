@@ -13,11 +13,19 @@
   }
 
   &__container {
+    min-height: 400px;
     @include content-alignment;
   }
 
-  &__search {
+  &__form {
+    width: 425px;
     margin: 0 auto 50px;
+    padding: 5px 8px 5px 20px;
+    display: flex;
+    background-color: map-get($colors, 'white');
+    color: map-get($colors, 'black');
+    border: 2px solid map-get($colors, 'red');
+    border-radius: 31px;
 
     @include tablet {
       margin-bottom: 60px;
@@ -25,6 +33,18 @@
 
     @include desktop-xl {
       margin-bottom: 80px;
+    }
+
+    &-icon {
+      flex-shrink: 0;
+
+      @include tablet {
+
+      }
+    }
+
+    &-input {
+
     }
   }
 
@@ -168,8 +188,7 @@
       font: normal normal 300 20px/25px $font;
     }
 
-    @include desktop-lg {
-      margin-bottom: 10px;
+    @include desktop-xl {
       font: normal normal 300 24px/30px $font;
     }
   }
@@ -186,6 +205,68 @@
     @include desktop-lg {
       width: 162px;
       line-height: 38px;
+    }
+  }
+
+  &__no-results {
+    text-align: center;
+
+    &-img {
+      margin-bottom: 50px;
+
+      @include tablet {
+        margin-bottom: 45px;
+      }
+
+      @include desktop-lg {
+        margin-bottom: 20px;
+      }
+
+      @include desktop-xl {
+        margin-bottom: 30px;
+      }
+    }
+
+    &-title {
+      margin: 0 0 20px;
+      color: map-get($colors, 'red');
+      font: normal normal 900 34px/42px $font;
+
+      @include tablet {
+        margin-bottom: 30px;
+        font: normal normal 900 60px/75px $font;
+      }
+
+      @include desktop-lg {
+        font: normal normal 900 40px/50px $font;
+      }
+
+      @include desktop-xl {
+        margin-bottom: 20px;
+        font: normal normal 900 60px/75px $font;
+      }
+    }
+
+    &-text {
+      margin: 0 0 30px;
+      color: map-get($colors, 'black-secondary');
+      font: normal normal 900 24px/30px $font;
+
+      @include tablet {
+        font: normal normal 900 36px/45px $font;
+      }
+
+      @include desktop-lg {
+        font: normal normal 900 30px/37px $font;
+      }
+
+      @include desktop-xl {
+        font: normal normal 900 36px/45px $font;
+      }
+    }
+
+    &-btn {
+      margin: 0 auto;
     }
   }
 }

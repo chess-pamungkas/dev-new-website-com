@@ -17,7 +17,12 @@ import entities from "../../enums/entities";
 import NotificationStripe from "../shared/notification-stripe";
 import { Link } from "../../../.cache/gatsby-browser-entry";
 
-const Header = ({ className, setSectionOptions, headerRef }) => {
+const Header = ({
+  className,
+  setSectionOptions,
+  headerRef,
+  isSearchBarAttached
+}) => {
   const { t } = useTranslation();
   const { width, isTablet } = useWindowSize();
   const [menu, setMenu] = useState([]);
@@ -78,7 +83,7 @@ const Header = ({ className, setSectionOptions, headerRef }) => {
           )}
         </div>
 
-        {!isTablet && (
+        {!isTablet && isSearchBarAttached && (
           <SearchBar className="header__search" isExpandable={true} />
         )}
       </header>

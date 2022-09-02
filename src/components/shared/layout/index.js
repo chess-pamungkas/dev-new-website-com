@@ -10,7 +10,11 @@ import Footer from "../../footer";
 import { CookiesPopup } from "../../cookies-popup";
 import { GDPRPopup } from "../../gdpr-popup";
 
-const Layout = ({ children, isShowFooter = true }) => {
+const Layout = ({
+  children,
+  isShowFooter = true,
+  isSearchBarAttached = true
+}) => {
   const headerRef = useRef();
 
   const { width } = useWindowSize();
@@ -35,6 +39,7 @@ const Layout = ({ children, isShowFooter = true }) => {
             <Header
               headerRef={headerRef}
               setSectionOptions={setSectionOptions}
+              isSearchBarAttached={isSearchBarAttached}
             />
             <section
               className="scroll-container"

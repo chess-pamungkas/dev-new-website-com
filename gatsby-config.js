@@ -4,16 +4,16 @@ require("dotenv").config({
 
 const languages = require(`${__dirname}/src/locales/language.config`);
 
-const processLangs = languages => {
+const processLanguagesForConfig = languages => {
   return languages.reduce((acc, lang) => {
     const localeData = require(`${__dirname}/src/locales/${lang}`);
     const localeDataArr = Object.entries(localeData);
-    const localeDataToIndex = localeDataArr.length
+    const indexedLocaleDataArr = localeDataArr.length
       ? Object.entries(localeData)
           .reduce((acc, [key, value], i, arr) => {
             if (key.includes('_')) {
               const page = key.split('_')[0];
-              const formatedValue = `${page}_${value}`;
+              const formatedValue = `${page === 'index' ? '/' : '/' + page}_${value}`;
               acc.push(formatedValue);
             }
 
@@ -23,7 +23,7 @@ const processLangs = languages => {
           }, [])
       : ['empty'];
 
-    // const localeDataToIndex = Object.entries(localeData).reduce((acc, [key, value]) => {
+    // const indexedLocaleDataArr = Object.entries(localeData).reduce((acc, [key, value]) => {
     //   if (key.includes('_')) {
     //     const page = key.split('_')[0];
     //     const pageContent = acc[page];
@@ -45,19 +45,18 @@ const processLangs = languages => {
 
     return {
       ...acc,
-      [lang]: localeDataToIndex
+      [lang]: indexedLocaleDataArr
     };
   }, {});
 };
 
-const langGlobalContext = processLangs(languages.list);
-console.log(langGlobalContext)
+const indexedLocaleData = processLanguagesForConfig(languages.list);
 
 module.exports = {
   siteMetadata: {
     title: `website`,
     siteUrl: `https://www.yourdomain.tld`,
-    langGlobalContext
+    indexedLocaleData
   },
   plugins: [
     "gatsby-plugin-sass",
