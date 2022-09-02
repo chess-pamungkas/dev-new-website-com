@@ -39,11 +39,7 @@ export const CookieProvider = ({ children }) => {
   const { clientConfig, currentEntity } = useContext(ClientResolverContext);
 
   useEffect(() => {
-    if (isBrowser() && !cookieConsent[SEGMENTATION_COOKIE_KEY]) {
-      // desable GA
-      // It works on the first load, but after refresh GA cookie will be created anyway, need to fix it
-      window[`ga-disable-${process.env.GATSBY_GA}`] = true;
-    } else if (isBrowser() && cookieConsent[SEGMENTATION_COOKIE_KEY]) {
+    if (isBrowser() && cookieConsent[SEGMENTATION_COOKIE_KEY]) {
       // enable GA
       window[`ga-disable-${process.env.GATSBY_GA}`] = false;
     }
