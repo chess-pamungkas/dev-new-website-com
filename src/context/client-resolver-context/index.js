@@ -21,7 +21,7 @@ export const ClientResolverProvider = ({ children }) => {
     if (isBrowser()) {
       const currentHost = window.location.host;
       const _currentEntity =
-        currentHost !== FSA_ENTITY_HOST ? entities.FSA : entities.CYSEC;
+        currentHost === FSA_ENTITY_HOST ? entities.FSA : entities.CYSEC;
       setCurrentEntity(_currentEntity);
       setEntityToRedirect(
         _currentEntity === entities.FSA
