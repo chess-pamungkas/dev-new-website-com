@@ -59,7 +59,7 @@ const SearchBar = ({
       ref={searchBarRef}
       onSubmit={(e => {
         e.preventDefault();
-        navigate(`/search/?${SEARCH_PARAM_NAME}=${encodeURI(searchState.query)}`)
+        navigate(`${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(searchState.query)}`)
       })}
     >
       <button

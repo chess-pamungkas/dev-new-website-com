@@ -64,12 +64,20 @@ export const useSearchData = () => {
         // TODO: replace with reliable regExp if possible
         let fullMatch = transformedQuery;
         const lastMatchedIndex = transformedContent.indexOf(transformedQuery) + transformedQuery.length;
-        for (let i = lastMatchedIndex; transformedContent[i] && transformedContent[i] !== ' '; i++) {
+        for (
+          let i = lastMatchedIndex;
+          transformedContent[i] && transformedContent[i] !== ' ';
+          i++
+        ) {
           fullMatch += transformedContent[i];
         }
 
         const startingMatchedIndex = transformedContent.indexOf(fullMatch);
-        for (let i = startingMatchedIndex; transformedContent[i - 1] && transformedContent[i - 1] !== ' '; i--) {
+        for (
+          let i = startingMatchedIndex;
+          transformedContent[i - 1] && transformedContent[i - 1] !== ' ';
+          i--
+        ) {
           fullMatch = transformedContent[i - 1] + fullMatch;
         }
 
