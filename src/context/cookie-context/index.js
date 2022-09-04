@@ -11,6 +11,7 @@ import {
 } from "../../helpers/gdpr-cookie.config";
 import { useModal } from "../../helpers/hooks/use-modal";
 import { postClientConsent } from "../../helpers/services/client-consent-service";
+import { isBrowser } from "../../helpers/services/is-browser";
 import ClientResolverContext from "../client-resolver-context";
 
 const CookieContext = createContext({});
@@ -38,11 +39,7 @@ export const CookieProvider = ({ children }) => {
   const { clientConfig, currentEntity } = useContext(ClientResolverContext);
 
   useEffect(() => {
-    if (window !== undefined && !cookieConsent[SEGMENTATION_COOKIE_KEY]) {
-      // desable GA
-      // It works on the first load, but after refresh GA cookie will be created anyway, need to fix it
-      window[`ga-disable-${process.env.GATSBY_GA}`] = true;
-    } else if (window !== undefined && cookieConsent[SEGMENTATION_COOKIE_KEY]) {
+    if (isBrowser() && cookieConsent[SEGMENTATION_COOKIE_KEY]) {
       // enable GA
       window[`ga-disable-${process.env.GATSBY_GA}`] = false;
     }

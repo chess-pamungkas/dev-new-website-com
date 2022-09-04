@@ -7,8 +7,7 @@ const Promotion = ({
   className,
   children,
   sectionRef,
-  animationLeft,
-  animationRight,
+  bgAnimationConfig,
   textAnimationConfig,
   image,
   btnTitle,
@@ -43,15 +42,14 @@ const Promotion = ({
           <img src={image} alt="" className="promotion__img" />
         </div>
       </div>
-      <animated.div
-        className={cn("promotion__bg", "promotion__bg--left")}
-        style={animationLeft}
-      />
-      <div className="promotion__bg" />
-      <animated.div
-        className={cn("promotion__bg", "promotion__bg--right")}
-        style={animationRight}
-      />
+      {bgAnimationConfig ? (
+        <animated.div
+          className={cn("promotion__bg")}
+          style={bgAnimationConfig}
+        />
+      ) : (
+        <div className="promotion__bg" />
+      )}
     </section>
   );
 };

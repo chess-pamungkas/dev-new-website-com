@@ -33,8 +33,7 @@ import { INTERSECTION_OBSERVER_CONFIG } from "../../helpers/animation.config";
 import { useSectionAnimation } from "./use-section-animation";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 
-const TradeWithPromotion = ({ className }) => {
-  const sectionRef = useRef();
+const TradeWithPromotion = ({ className, sectionRef }) => {
   const typingContainerRef = useRef();
 
   const { t } = useTranslation();

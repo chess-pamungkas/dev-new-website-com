@@ -13,10 +13,9 @@ import { GDPRPopup } from "../../gdpr-popup";
 const Layout = ({
   children,
   isShowFooter = true,
+  headerRef,
   isSearchBarAttached = true
 }) => {
-  const headerRef = useRef();
-
   const { width } = useWindowSize();
   const [sectionOptions, setSectionOptions] = useState(null);
   const [scrollHeight, setScrollHeight] = useState(null);
@@ -43,9 +42,6 @@ const Layout = ({
             />
             <section
               className="scroll-container"
-              style={{
-                scrollPadding: scrollHeight,
-              }}
             >
               <main
                 style={{
