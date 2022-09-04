@@ -54,8 +54,27 @@ export const useSearchData = () => {
 
     const results = currentLocaleIndexedData.reduce((acc, piece) => {
       const [url, content] = piece.split('_');
-      const isContentRelevant = url !== currentPageUrl && content.toLowerCase().includes(query.toLowerCase());
-      if (isContentRelevant) acc.push({ url, content });
+      const transformedContent = content.toLowerCase();
+      const transformedQuery = query.toLowerCase();
+      const isContentRelevant = url !== currentPageUrl && transformedContent.includes(transformedQuery);
+      if (isContentRelevant) {
+        // Latest Chrome versions support auto scroll to highlighted text.
+        // To make it work it's required to get full matched phrase.
+        // Will be ignored on not-supported platforms.
+        // TODO: replace with reliable regExp if possible
+        let fullMatch = transformedQuery;
+        const lastMatchedIndex = transformedContent.indexOf(transformedQuery) + transformedQuery.length;
+        for (let i = lastMatchedIndex; transformedContent[i] && transformedContent[i] !== ' '; i++) {
+          fullMatch += transformedContent[i];
+        }
+
+        const startingMatchedIndex = transformedContent.indexOf(fullMatch);
+        for (let i = startingMatchedIndex; transformedContent[i - 1] && transformedContent[i - 1] !== ' '; i--) {
+          fullMatch = transformedContent[i - 1] + fullMatch;
+        }
+
+        acc.push({ url, content, fullMatch });
+      }
 
       return acc;
     }, []);

@@ -5,7 +5,8 @@ import { useSearchData } from "../helpers/hooks/use-search-data";
 import {
   HOME_PAGE_LINK,
   SEARCH_PARAM_NAME,
-  SEARCH_MIN_QUERY_LENGTH
+  SEARCH_MIN_QUERY_LENGTH,
+  LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME
 } from "../helpers/constants";
 import { getUrlParamValue } from "../helpers/services/get-url-param-value";
 import Layout from "../components/shared/layout";
@@ -90,40 +91,47 @@ const SearchPage = () => {
                 {t("search-go-back-btn")}
               </ButtonLink>
             </div>
-          ) : !!searchState.results.length ? (
-            <ul className="search-page__results-list">
-              {searchState.results.map((page, i) => (
-                <li key={`search-page-${i}`} className="search-page__item">
-                  <Link to={page.url} className="search-page__link">
-                    <div className="search-page__icon-wrapper">
-                      <Logo className="search-page__icon" />
-                    </div>
-
-                    <div className="search-page__caption">
-                      <h2 className="search-page__title">{page.content}</h2>
-                      <p className="search-page__ref">
-                        {`${window.location.origin}${page.url}`}
-                      </p>
-                    </div>
-                  </Link>
-
-                  <p className="search-page__text">{page.content}</p>
-
-                  <ButtonLink
-                    link={page.url}
-                    className="search-page__btn button-link--ghost-red"
-                  >
-                    {t("search-submit-btn")}
-                  </ButtonLink>
-                </li>
-              ))}
-            </ul>
           ) : (
-            <p className="search-page__note">
-              {t("search-min-query-part1")}
-              {' '}{SEARCH_MIN_QUERY_LENGTH}{' '}
-              {t("search-min-query-part2")}
-            </p>
+            <>
+              {!!searchState.results.length ? (
+                <ul className="search-page__results-list">
+                  {searchState.results.map((page, i) => (
+                    <li key={`search-page-${i}`} className="search-page__item">
+                      <Link
+                        to={`${page.url}?${LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME}=${encodeURI(page.fullMatch)}`}
+                        className="search-page__link"
+                      >
+                        <div className="search-page__icon-wrapper">
+                          <Logo className="search-page__icon" />
+                        </div>
+
+                        <div className="search-page__caption">
+                          <h2 className="search-page__title">{page.content}</h2>
+                          <p className="search-page__ref">
+                            {`${window.location.origin}${page.url}`}
+                          </p>
+                        </div>
+                      </Link>
+
+                      <p className="search-page__text">{page.content}</p>
+
+                      <ButtonLink
+                        link={`${page.url}?${LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME}=${encodeURI(page.fullMatch)}`}
+                        className="search-page__btn button-link--ghost-red"
+                      >
+                        {t("search-submit-btn")}
+                      </ButtonLink>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="search-page__note">
+                  {t("search-min-query-part1")}
+                  {' '}{SEARCH_MIN_QUERY_LENGTH}{' '}
+                  {t("search-min-query-part2")}
+                </p>
+              )}
+            </>
           )}          
         </div>
       </section>

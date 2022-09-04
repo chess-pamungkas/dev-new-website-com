@@ -7,7 +7,9 @@ import {
   DROPDOWN_SEARCH_ITEMS_TO_SHOW,
   SEARCH_MIN_QUERY_LENGTH,
   INITIAL_SEARCH_STATE,
-  SEARCH_PARAM_NAME
+  SEARCH_PAGE_LINK,
+  SEARCH_PARAM_NAME,
+  LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME
 } from "../../../../helpers/constants";
 import { SearchIcon } from "../../../shared/icons";
 import { useSearchData } from "../../../../helpers/hooks/use-search-data";
@@ -89,7 +91,10 @@ const SearchBar = ({
             <>
               {searchState.results.slice(0, DROPDOWN_SEARCH_ITEMS_TO_SHOW).map((page, i) => (
                 <li className="search-bar__results-item" key={`search-bar-${i}`}>
-                  <Link to={page.url} className="search-bar__results-link">
+                  <Link
+                    to={`${page.url}?${LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME}=${encodeURI(page.fullMatch)}`}
+                    className="search-bar__results-link"
+                  >
                     <SearchIcon className="search-bar__results-icon" />
                     <span className="search-bar__results-title">{page.content}</span>
                   </Link>
@@ -99,7 +104,7 @@ const SearchBar = ({
               {searchState.results.length > DROPDOWN_SEARCH_ITEMS_TO_SHOW && (
                 <li className="search-bar__results-item">
                   <Link
-                    to={`/search/?${SEARCH_PARAM_NAME}=${encodeURI(searchState.query)}`}
+                    to={`${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(searchState.query)}`}
                     className="search-bar__results-link"
                   >
                     <span className="search-bar__results-title search-bar__results-title--bold">
@@ -109,19 +114,25 @@ const SearchBar = ({
                 </li>
               )}
             </>
-          ) : searchState.query.length >= SEARCH_MIN_QUERY_LENGTH ? (
-              <li className="search-bar__results-item">
-                <span className="search-bar__results-title">{t("search-no-results")}</span>
-              </li>
-            ) : (
-              <li className="search-bar__results-item">
-                <span className="search-bar__results-title">
-                  {t("search-min-query-part1")}
-                  {' '}{SEARCH_MIN_QUERY_LENGTH}{' '}
-                  {t("search-min-query-part2")}
-                </span>
-              </li>
-            )}
+          ) : (
+            <>
+              {searchState.query.length >= SEARCH_MIN_QUERY_LENGTH ? (
+                <li className="search-bar__results-item">
+                  <span className="search-bar__results-title">
+                    {t("search-no-results")}
+                  </span>
+                </li>
+              ) : (
+                <li className="search-bar__results-item">
+                  <span className="search-bar__results-title">
+                    {t("search-min-query-part1")}
+                    {' '}{SEARCH_MIN_QUERY_LENGTH}{' '}
+                    {t("search-min-query-part2")}
+                  </span>
+                </li>
+              )}
+            </>
+          )}
         </ul>
       )}
     </form>

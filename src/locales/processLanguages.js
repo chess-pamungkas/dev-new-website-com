@@ -7,7 +7,7 @@ module.exports.processLanguagesForConfig = languages => {
           .reduce((acc, [key, value], i, arr) => {
             if (key.includes('_')) {
               const page = key.split('_')[0];
-              const formatedValue = `${page === 'index' ? '/' : '/' + page}_${value}`;
+              const formatedValue = `${page === 'index' ? '/' : '/' + page + '/'}_${value}`;
               acc.push(formatedValue);
             }
 
