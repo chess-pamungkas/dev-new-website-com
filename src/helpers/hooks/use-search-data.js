@@ -54,6 +54,8 @@ export const useSearchData = () => {
 
     const results = currentLocaleIndexedData.reduce((acc, piece) => {
       const [url, content] = piece.split('_');
+      if (!url || !content) return acc;
+
       const transformedContent = content.toLowerCase();
       const transformedQuery = query.toLowerCase();
       const isContentRelevant = url !== currentPageUrl && transformedContent.includes(transformedQuery);

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../assets/styles/index.scss";
 import Header from "../../header";
 import { ClientResolverProvider } from "../../../context/client-resolver-context";
