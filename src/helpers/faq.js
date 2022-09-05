@@ -27,3 +27,18 @@ export const FAQ_CRYPTO = [
     content: "crypto_faq-content3",
   },
 ];
+
+export const FAQ_INDICES = [
+  {
+    title: "indices_faq-title1",
+    content: "indices_faq-content1",
+  },
+  {
+    title: "indices_faq-title2",
+    content: "indices_faq-content2",
+  },
+  {
+    title: "indices_faq-title3",
+    content: "indices_faq-content3",
+  },
+];
