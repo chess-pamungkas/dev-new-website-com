@@ -51,11 +51,11 @@
 
   &__icon {
     flex-shrink: 0;
+    margin-right: 5px;
   }
 
   &__input {
     width: 100%;
-    margin-left: 5px;
     flex-grow: 1;
     background: transparent;
     border: none;
@@ -133,6 +133,10 @@
     & .search-bar__submit {
       border: 2px solid map-get($colors, 'red');
     }
+
+    & .search-bar__input {
+      color: map-get($colors, 'black-secondary');
+    }
   }
 
   &__results {
@@ -149,7 +153,7 @@
       text-align: left;
 
       & + & {
-        margin-top: 10px;
+        margin-top: 12px;
       }
     }
 
@@ -161,6 +165,8 @@
     &-icon {
       width: 18px;
       height: auto;
+      margin-right: 14px;
+      flex-shrink: 0;
 
       & g, line {
         stroke: map-get($colors, 'red');
@@ -168,9 +174,15 @@
     }
 
     &-title {
-      margin-left: 14px;
       color: map-get($colors, 'black-secondary');
       font: normal normal 300 14px/18px $font;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &--bold {
+        font-weight: 600;
+      }
     }
   }
 }

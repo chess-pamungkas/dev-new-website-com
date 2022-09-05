@@ -2,12 +2,16 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const languages = require('./src/locales/language.config');
+const languages = require(`${__dirname}/src/locales/language.config`);
+const { processLanguagesForConfig } = require(`${__dirname}/src/locales/processLanguages`);
+
+const indexedLocaleData = processLanguagesForConfig(languages.list);
 
 module.exports = {
   siteMetadata: {
     title: `website`,
     siteUrl: `https://www.yourdomain.tld`,
+    indexedLocaleData
   },
   plugins: [
     "gatsby-plugin-sass",

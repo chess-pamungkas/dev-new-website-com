@@ -252,7 +252,12 @@
   "search-placeholder": "Search...",
   "search-submit-btn": "Go",
   "search-no-results": "No results",
-  "search-min-query-required": "Please insert at least 3 characters",
+  "search-no-results-title": "No results found",
+  "search-no-results-text": "Unfortunately we couldn't find what you are looking for.",
+  "search-go-back-btn": "Go back",
+  "search-more-results": "Find more results...",
+  "search-min-query-part1": "Please insert at least",
+  "search-min-query-part2": "symbols",
 
   "lang-select-popup-title": "Select Your Language",
 

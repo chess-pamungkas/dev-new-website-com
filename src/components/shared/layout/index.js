@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../assets/styles/index.scss";
 import Header from "../../header";
 import { ClientResolverProvider } from "../../../context/client-resolver-context";
@@ -10,7 +10,12 @@ import Footer from "../../footer";
 import { CookiesPopup } from "../../cookies-popup";
 import { GDPRPopup } from "../../gdpr-popup";
 
-const Layout = ({ children, isShowFooter = true, headerRef }) => {
+const Layout = ({
+  children,
+  isShowFooter = true,
+  headerRef,
+  isSearchBarAttached = true
+}) => {
   const { width } = useWindowSize();
   const [sectionOptions, setSectionOptions] = useState(null);
   const [scrollHeight, setScrollHeight] = useState(null);
@@ -33,6 +38,7 @@ const Layout = ({ children, isShowFooter = true, headerRef }) => {
             <Header
               headerRef={headerRef}
               setSectionOptions={setSectionOptions}
+              isSearchBarAttached={isSearchBarAttached}
             />
             <section
               className="scroll-container"
