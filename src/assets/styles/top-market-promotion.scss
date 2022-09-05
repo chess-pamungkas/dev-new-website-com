@@ -101,6 +101,37 @@
     }
   }
 
+  &__sub-text {
+    margin-top: 6px;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 12px;
+    line-height: 15px;
+    word-break: break-word;
+
+    @include tablet {
+      font-size: 18px;
+      line-height: 22px;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    @include desktop-lg {
+      margin-top: 22px;
+      font-size: 14px;
+      line-height: 18px;
+      max-width: 415px;
+      text-align: left;
+    }
+
+    @include desktop-xl {
+      margin-top: 27px;
+      max-width: 763px;
+      font-size: 30px;
+      line-height: 37px;
+      text-align: left;
+    }
+  }
+
   &__note {
     display: block;
     text-align: center;
