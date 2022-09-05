@@ -6,6 +6,8 @@ const TopMarket = ({
   className,
   children,
   title,
+  isTitleUppercase = false,
+  isChildrenHasSmallSize = false,
   image,
   btn1Title,
   link1,
@@ -16,9 +18,21 @@ const TopMarket = ({
     <section className={cn("top-market", className)}>
       <div className={"top-market__wrapper"}>
         <div className="top-market__block">
-          <h2 className="top-market__title">{title}</h2>
+          <h2
+            className={cn("top-market__title", {
+              "top-market__title--uppercase": isTitleUppercase,
+            })}
+          >
+            {title}
+          </h2>
           <div className="top-market__description">
-            <p className="top-market__text">{children}</p>
+            <p
+              className={cn("top-market__text", {
+                "top-market__text--small": isChildrenHasSmallSize,
+              })}
+            >
+              {children}
+            </p>
           </div>
           <div className="top-market__btn-wrapper">
             <ButtonLink

@@ -28,6 +28,37 @@ export const FAQ_CRYPTO = [
   },
 ];
 
+export const FAQ_COMMODITIES = [
+  {
+    title: "commodities_faq-title1",
+    content: "commodities_faq-content1",
+  },
+  {
+    title: "commodities_faq-title2",
+    content: "commodities_faq-content2",
+  },
+  {
+    title: "commodities_faq-title3",
+    content: "commodities_faq-content3",
+  },
+];
+
+export const FAQ_SHARES = [
+  {
+    title: "shares_faq-title1",
+    content: "shares_faq-content1",
+  },
+  {
+    title: "shares_faq-title2",
+    content: "shares_faq-content2",
+  },
+  {
+    title: "shares_faq-title3",
+    content: "shares_faq-content3",
+  },
+];
+
+
 export const FAQ_INDICES = [
   {
     title: "indices_faq-title1",

@@ -23,6 +23,7 @@ const TableComponent = ({
   isPagination,
   isSearch,
   isSorting,
+  isWrapperPadding = false,
   title,
   subtitle,
   tip,
@@ -73,7 +74,7 @@ const TableComponent = ({
       className={cn(
         "table-wrapper",
         {
-          "table-wrapper--padding": !isSearch,
+          "table-wrapper--padding": !isSearch || isWrapperPadding,
         },
         className
       )}

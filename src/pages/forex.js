@@ -16,7 +16,7 @@ import animation from "../assets/images/animations/forex.json";
 import TopMarketLayout from "../components/top-market-layout";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import Seo from "../components/shared/seo";
-import forex from "../assets/images/promotions/promo1.svg";
+import forex from "../assets/images/top-markets/images/forex.png";
 import TopMarketPromotion from "../components/top-market-promotion";
 import TradingTicker from "../components/trading-ticker";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
@@ -25,7 +25,7 @@ const ForexPage = () => {
   const { t } = useTranslation();
   const { isMobile } = useWindowSize();
 
-  // TODO: move to helpers/constants.js
+  // TODO:get data from API
   const tabs = [
     {
       id: 1,
@@ -91,6 +91,7 @@ const ForexPage = () => {
       <Seo title={t("page-forex-title")} />
       <TopMarket
         title={t("forex_top-market-title")}
+        isTitleUppercase
         image={image}
         btn1Title={t("forex_top-market-btn1")}
         link1={REGISTRATION_LINK}
@@ -107,7 +108,6 @@ const ForexPage = () => {
       <TradingTicker title={t("forex_trading-ticker-title")} />
       <TopMarketPromotion
         className="forex-promotion"
-        // TODO replace with a real image
         image={forex}
         btnTitle={t("forex_top-market-promo-btn")}
         link={REGISTRATION_LINK}
