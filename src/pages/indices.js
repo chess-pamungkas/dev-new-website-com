@@ -59,7 +59,7 @@ const IndicesPage = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
-      <TradingTicker title="Popular Index to Trade" />
+      <TradingTicker title={t("indices_trading-ticker-title")} />
       <TopMarketPromotion
         className="indices-promotion"
         image={indices}
