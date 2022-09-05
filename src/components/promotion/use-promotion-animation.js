@@ -105,6 +105,9 @@ export const usePromotionAnimation = (
     );
   }, [
     isMobile,
+    isTablet,
+    isLG,
+    isXL,
     tradePromoIntersectionRatio,
     promoIntersectionRatioToScroll,
     promoIntersectionRatioToReverse,
@@ -113,7 +116,7 @@ export const usePromotionAnimation = (
     dataPromo3Ref,
     isPromo1Scrolled,
     isPromo2Scrolled,
-    isPromo3Scrolled
+    isPromo3Scrolled,
   ]);
 
   return {

@@ -164,6 +164,7 @@ const IndexPage = () => {
         config: { duration: BACKGROUND_ANIMATION_DURATION },
         onRest: () => {
           setIsPromo2Scrolled(true);
+          setIsPromo3Scrolled(false);
         },
       });
     }
@@ -212,6 +213,7 @@ const IndexPage = () => {
         config: { duration: BACKGROUND_ANIMATION_DURATION },
         onRest: () => {
           setIsPromo2Scrolled(false);
+          setIsPromo3Scrolled(false);
         },
       });
     }
