@@ -1,4 +1,13 @@
-import React, { createContext, useEffect, useState, useContext } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState
+} from "react";
+import { navigate } from "gatsby";
+import { I18nextContext } from "gatsby-plugin-react-i18next";
 import { detectBrowserLanguage } from "../../helpers/services/detect-browser-settings";
 import ClientResolverContext from "../client-resolver-context";
 import { LANG_SELECT_OPTIONS } from "../../helpers/lang-options.config";
@@ -14,16 +23,33 @@ const LanguageContext = createContext({});
 export const LanguageProvider = ({ children }) => {
   const { clientConfig } = useContext(ClientResolverContext);
   const { getCookie, setCookie } = useContext(CookieContext);
+  const { language: i18Language } = useContext(I18nextContext);
+  const browserLanguage = useMemo(() => detectBrowserLanguage(), []);
+  const defaultLang = useMemo(
+    () => LANG_SELECT_OPTIONS.find(({ isDefault }) => isDefault), []
+  );
 
-  const findLanguage = (languageId) => {
+  const findLanguage = useCallback(languageId => {
     return (
       LANG_SELECT_OPTIONS.find((item) => item.id === languageId) ||
-      LANG_SELECT_OPTIONS[0]
+      defaultLang
     );
-  };
-  const browserLanguage = detectBrowserLanguage();
+  }, [defaultLang]);
+
+  const initialLanguageDetection = useCallback(() => {
+    if (i18Language !== defaultLang.id) return findLanguage(i18Language);
+
+    return findLanguage(getCookie(LAST_LANGUAGE_KEY) || browserLanguage)
+  }, [
+    i18Language,
+    defaultLang,
+    findLanguage,
+    getCookie,
+    browserLanguage
+  ]);
+
   const [selectedLanguage, setSelectedLanguage] = useState(
-    findLanguage(getCookie(LAST_LANGUAGE_KEY) || browserLanguage)
+    initialLanguageDetection()
   );
 
   useEffect(() => {
@@ -33,10 +59,34 @@ export const LanguageProvider = ({ children }) => {
       if (lastLanguage !== undefined) {
         setSelectedLanguage(findLanguage(lastLanguage));
       } else if (clientConfig.forceToEnglish) {
-        setSelectedLanguage(LANG_SELECT_OPTIONS[0]);
+        setSelectedLanguage(defaultLang);
       }
     }
-  }, [clientConfig, getCookie]);
+  }, [
+    clientConfig,
+    getCookie,
+    defaultLang,
+    findLanguage
+  ]);
+
+  useEffect(() => {
+    if (!selectedLanguage.id) return;
+
+    const { pathname } = window.location;
+    if (selectedLanguage.id === defaultLang.id) {
+      const processedPathname = pathname.replace(`/${i18Language}`, '');
+      const navigatePath = processedPathname || '/';
+      navigate(navigatePath);
+      return;
+    };
+
+    const navigatePath = `/${selectedLanguage.id}` + pathname.replace(`/${i18Language}`, '')
+    navigate(`${navigatePath}`);
+  }, [
+    selectedLanguage,
+    defaultLang,
+    i18Language
+  ]);
 
   useEffect(() => {
     setCookie(LAST_LANGUAGE_KEY, selectedLanguage.id, PERFORMANCE_COOKIE_KEY);

@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import { Link } from "gatsby";
+import { Link } from "gatsby-plugin-react-i18next";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 
