@@ -84,23 +84,26 @@
     }
 
     &--right {
-      background: url("../../assets/images/bg/company/split-text-promotion.svg") no-repeat bottom right;
+      background: url("../../assets/images/bg/company/split-text-promotion-sm.svg") no-repeat bottom right;
       align-items: flex-start;
       flex-direction: column;
       padding-top: 32px;
       padding-bottom: 40px;
 
       @include tablet {
+        background: url("../../assets/images/bg/company/split-text-promotion-md.svg") no-repeat bottom right;
         padding-top: 91px;
         padding-bottom: 91px;
       }
 
       @include desktop-lg {
+        background: url("../../assets/images/bg/company/split-text-promotion-lg.svg") no-repeat bottom right;
         padding-top: 68px;
         padding-bottom: 60px;
       }
 
       @include desktop-xl {
+        background: url("../../assets/images/bg/company/split-text-promotion-xl.svg") no-repeat bottom right;
         padding-top: 126px;
         padding-bottom: 128px;
       }
