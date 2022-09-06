@@ -6,9 +6,9 @@ import PlatformBlock from "./components/platform-block";
 import ButtonLink from "../shared/button-link";
 import DeviceBlock from "./components/device-block";
 import { REGISTRATION_LINK } from "../../helpers/constants";
-import { useTrail, animated } from "react-spring";
+import { useTrail } from "react-spring";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
-import HighlightedLocalizationText from '../shared/highlighted-localization-text';
+import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 
 const TradingTools = ({ className }) => {
   const { t } = useTranslation();
@@ -47,15 +47,12 @@ const TradingTools = ({ className }) => {
         <div className="trading-tools__icon-wrapper">
           {platformIconTrail.map((styles, i) => {
             return (
-              <animated.span
+              <PlatformBlock
                 key={`platform-${Object.values(PLATFORMS)[i].title}`}
-                style={styles}
-              >
-                <PlatformBlock
-                  icon={Object.values(PLATFORMS)[i].icon}
-                  title={t(Object.values(PLATFORMS)[i].title)}
-                />
-              </animated.span>
+                icon={Object.values(PLATFORMS)[i].icon}
+                title={t(Object.values(PLATFORMS)[i].title)}
+                animationStyle={styles}
+              />
             );
           })}
         </div>

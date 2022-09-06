@@ -15,7 +15,7 @@ import { FAQ_CRYPTO } from "../helpers/faq";
 import Faq from "../components/faq";
 import Seo from "../components/shared/seo";
 import TradingTicker from "../components/trading-ticker";
-import crypto from "../assets/images/promotions/promo1.svg";
+import crypto from "../assets/images/top-markets/images/crypto.png";
 import TopMarketPromotion from "../components/top-market-promotion";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
@@ -42,10 +42,9 @@ const CryptoPage = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
-      <TradingTicker />
+      <TradingTicker title={t("crypto_trading-ticker-title")} />
       <TopMarketPromotion
         className="crypto-promotion"
-        // TODO replace with a real image
         image={crypto}
         btnTitle={t("crypto_top-market-promo-btn")}
         link={REGISTRATION_LINK}

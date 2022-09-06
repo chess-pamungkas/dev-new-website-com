@@ -24,8 +24,6 @@ import {
   BACKGROUND_ANIMATION_DURATION,
 } from "../helpers/animation.config";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
-import { CookiesPopup } from "../components/cookies-popup";
-import { GDPRPopup } from "../components/gdpr-popup";
 import cn from "classnames";
 import { scrollTo } from "../helpers/scroll-to";
 import Seo from "../components/shared/seo";
@@ -166,6 +164,7 @@ const IndexPage = () => {
         config: { duration: BACKGROUND_ANIMATION_DURATION },
         onRest: () => {
           setIsPromo2Scrolled(true);
+          setIsPromo3Scrolled(false);
         },
       });
     }
@@ -214,6 +213,7 @@ const IndexPage = () => {
         config: { duration: BACKGROUND_ANIMATION_DURATION },
         onRest: () => {
           setIsPromo2Scrolled(false);
+          setIsPromo3Scrolled(false);
         },
       });
     }
@@ -221,8 +221,6 @@ const IndexPage = () => {
 
   return (
     <Layout headerRef={headerRef}>
-      <CookiesPopup />
-      <GDPRPopup />
       <Seo title={t("page-main-title")} />
       <MainPromotion />
       <TradingTicker />

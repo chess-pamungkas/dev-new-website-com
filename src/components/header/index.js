@@ -16,6 +16,7 @@ import { CYSEC_MENU_ITEMS, FSA_MENU_ITEMS } from "../../helpers/menu.config";
 import ClientResolverContext from "../../context/client-resolver-context";
 import entities from "../../enums/entities";
 import NotificationStripe from "../shared/notification-stripe";
+import { GDPRPopup } from "../gdpr-popup";
 
 const Header = ({
   className,
@@ -39,6 +40,7 @@ const Header = ({
   return (
     <div className={cn("header-wrapper", className)} ref={headerRef}>
       <NotificationStripe setSectionOptions={setSectionOptions} />
+      <GDPRPopup />
       <header
         className={cn("header", { "header--small": isNarrow }, className)}
       >

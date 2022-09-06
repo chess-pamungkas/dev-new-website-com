@@ -5,7 +5,8 @@ import { CYSEC_ADVANTAGES, FSA_ADVANTAGES } from "../../helpers/config";
 import AdvantageBlock from "./components/advantage-block";
 import ClientResolverContext from "../../context/client-resolver-context";
 import entities from "../../enums/entities";
-import HighlightedLocalizationText from '../shared/highlighted-localization-text';
+import HighlightedLocalizationText from "../shared/highlighted-localization-text";
+import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 
 const Performance = ({ className }) => {
   const { currentEntity } = useContext(ClientResolverContext);
@@ -40,9 +41,9 @@ const Performance = ({ className }) => {
       </div>
       <div className="performance__advantages">
         {advantages.length > 0 &&
-          advantages.map((block, i) => (
+          advantages.map((block) => (
             <AdvantageBlock
-              key={`advantage-${i}`}
+              key={`advantage-${stringTransformToKebabCase(block.text)}`}
               icon={block.icon}
               text={block.text}
               accent={block.accent}
