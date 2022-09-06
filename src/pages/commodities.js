@@ -1,24 +1,27 @@
 import React from "react";
-import {graphql} from "gatsby";
-import {useTranslation} from "gatsby-plugin-react-i18next";
+import { graphql } from "gatsby";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import TopMarket from "../components/top-market";
-import {REGISTRATION_LINK} from "../helpers/constants";
+import { REGISTRATION_LINK } from "../helpers/constants";
 import image from "../assets/images/top-markets/commodities.svg";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
-import {useWindowSize} from "../helpers/hooks/use-window-size";
+import { useWindowSize } from "../helpers/hooks/use-window-size";
 import TradingTicker from "../components/trading-ticker";
 import commodities from "../assets/images/top-markets/images/commodities.png";
 import TopMarketPromotion from "../components/top-market-promotion";
-import animation from "../assets/images/animations/crypto.json";
+import animation from "../assets/images/animations/commodities.json";
 import PromotionMarkets from "../components/promotion-markets";
 import TopMarketLayout from "../components/top-market-layout";
 import TableComponent from "../components/shared/table";
-import {COLUMNS_COMMODITIES, DATA_COMMODITIES} from "../helpers/top-market-tables";
+import {
+  COLUMNS_COMMODITIES,
+  DATA_COMMODITIES,
+} from "../helpers/top-market-tables";
 import Faq from "../components/faq";
-import {FAQ_COMMODITIES} from "../helpers/faq";
+import { FAQ_COMMODITIES } from "../helpers/faq";
 
 const CommoditiesPage = () => {
   const { t } = useTranslation();
@@ -58,10 +61,9 @@ const CommoditiesPage = () => {
         />
       </TopMarketPromotion>
       <PromotionMarkets
-        //TODO replace with the real animation
         animation={animation}
         animationStyle={{
-          height: isMobile ? 301 : 473,
+          height: isMobile ? 228 : 448,
         }}
         btnTitle={t("commodities_promotion-markets-btn")}
       >
