@@ -1,0 +1,122 @@
+@import "vars";
+@import "mixins";
+
+.company-advantages {
+  position: relative;
+  background-size: cover;
+  background: url("../../assets/images/bg/company/company-advantages.svg")
+    no-repeat top right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 140px;
+  padding-bottom: 140px;
+  @include content-alignment(0);
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("../../assets/images/bg/performance/performance-top-sm.svg")
+      no-repeat;
+    width: 174px;
+    height: 227px;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: url("../../assets/images/bg/performance/performance-bottom-sm.svg")
+      no-repeat;
+    width: 174px;
+    height: 227px;
+  }
+
+  @include tablet {
+    &:before {
+      background: url("../../assets/images/bg/performance/performance-top-md.svg")
+        no-repeat;
+      width: 210px;
+      height: 295px;
+    }
+
+    &:after {
+      background: url("../../assets/images/bg/performance/performance-bottom-md.svg")
+        no-repeat;
+      width: 258px;
+      height: 297px;
+    }
+  }
+
+  @include desktop-lg {
+    &:before {
+      background: url("../../assets/images/bg/performance/performance-top-lg.svg")
+        no-repeat;
+      width: 190px;
+      height: 285px;
+    }
+
+    &:after {
+      background: url("../../assets/images/bg/performance/performance-bottom-lg.svg")
+        no-repeat;
+      width: 257px;
+      height: 297px;
+    }
+  }
+
+  @include desktop-xl {
+    &:before {
+      background: url("../../assets/images/bg/performance/performance-top-xl.svg")
+        no-repeat;
+      width: 408px;
+      height: 490px;
+    }
+
+    &:after {
+      background: url("../../assets/images/bg/performance/performance-bottom-xl.svg")
+        no-repeat;
+      width: 377px;
+      height: 592px;
+    }
+  }
+}
+
+.company-advantage-block {
+  box-shadow: 0 5px 10px #0000001a;
+  border-radius: 10px;
+  background: map-get($colors, "white");
+  transition: all 0.2s;
+
+  &:hover {
+    background: map-get($colors, "red");
+  }
+
+  &__icon {
+    width: 143px;
+    height: 111px;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: map-get($font-weight, "black");
+    font-size: 36px;
+    line-height: 45px;
+    color: map-get($colors, "black");
+
+    &--back {
+      color: map-get($colors, "white");
+    }
+  }
+
+  &__text {
+    margin: 0;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 18px;
+    line-height: 22px;
+    color: map-get($colors, "white");
+  }
+}

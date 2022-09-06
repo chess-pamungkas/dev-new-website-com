@@ -11,6 +11,7 @@ import {
   AdvantageIcon5,
   AdvantageIcon6,
   AdvantageIcon7,
+  CompanyAdvantageIcon,
 } from "../components/shared/icons";
 
 export const CYSEC_ADVANTAGES = [
@@ -106,3 +107,26 @@ export const PLATFORMS = {
     title: "index_trading-tools-platforms-metatrader5",
   },
 };
+
+export const COMPANY_ADVANTAGES = [
+  {
+    title: "company_company-advantages-title1",
+    icon: CompanyAdvantageIcon,
+    textArray: [
+      "company_company-advantages-text1-1",
+      "company_company-advantages-text1-2",
+      "company_company-advantages-text1-3",
+      "company_company-advantages-text1-4",
+    ],
+  },
+  {
+    title: "company_company-advantages-title2",
+    icon: CompanyAdvantageIcon,
+    textArray: ["company_company-advantages-text2"],
+  },
+  {
+    title: "company_company-advantages-title3",
+    icon: CompanyAdvantageIcon,
+    textArray: ["company_company-advantages-text3"],
+  },
+];

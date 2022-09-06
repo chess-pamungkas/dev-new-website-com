@@ -1,0 +1,46 @@
+@import "vars";
+@import "mixins";
+
+.banner-with-title {
+  background-color: map-get($colors, "red");
+  color: map-get($colors, "white");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include content-alignment(0);
+  padding-top: 75px;
+  padding-bottom: 75px;
+
+  @include tablet {
+    min-height: calc(100vh - #{$header-height-small});
+  }
+
+  @include desktop-lg {
+
+  }
+
+  @include desktop-xl {
+    min-height: calc(100vh - #{$header-height});
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin: 0 0 35px;
+    font-weight: map-get($font-weight, "black");
+    font-size: 60px;
+    line-height: 75px;
+  }
+
+  &__subtitle {
+    display: block;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 36px;
+    line-height: 45px;
+  }
+}
