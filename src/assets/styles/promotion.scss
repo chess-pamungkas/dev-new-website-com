@@ -11,6 +11,7 @@
   @include content-alignment(0);
 
   @include tablet {
+    min-height: 100vh;
     padding-top: 110px;
     padding-bottom: 55px;
   }
@@ -184,21 +185,19 @@
 
     @include tablet {
       width: 2304px;
-      height: 2935px;
+      height: 300vh;
       background: url("../../assets/images/bg/promotions/promotion-slide-tablet.jpg") no-repeat center;
       background-size: 300% 100%;
     }
 
     @include desktop-lg {
       width: 3072px;
-      height: 2273px;
       background: url("../../assets/images/bg/promotions/promotion-slide-lg.jpg") no-repeat center;
       background-size: 300% 100%;
     }
 
     @include desktop-xl {
       width: 5760px;
-      height: 2868px;
       background: url("../../assets/images/bg/promotions/promotion-slide.jpg") no-repeat center;
       background-size: 300% 100%;
     }
