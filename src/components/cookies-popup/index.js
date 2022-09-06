@@ -27,8 +27,8 @@ export const CookiesPopup = ({ className }) => {
   };
 
   const learnMore = () => {
-    handleOpenGDPRPopup();
     handleCloseCookiePopup();
+    handleOpenGDPRPopup();
   };
 
   return (

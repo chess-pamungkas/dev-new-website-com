@@ -8,7 +8,6 @@ import { CookieProvider } from "../../../context/cookie-context";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import Footer from "../../footer";
 import { CookiesPopup } from "../../cookies-popup";
-import { GDPRPopup } from "../../gdpr-popup";
 
 const Layout = ({
   children,
@@ -49,7 +48,6 @@ const Layout = ({
                 }}
               >
                 <CookiesPopup />
-                <GDPRPopup />
                 {children}
               </main>
               {isShowFooter && <Footer />}
