@@ -17,14 +17,22 @@
   }
 
   &__wrapper {
-    display: grid;
-    grid-auto-flow: row dense;
-    grid-template-columns: 50% 50%;
-    gap: 0 0;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    width: 100%;
+
+
+    @include tablet {
+
+    }
+
+    @include desktop-lg {
+      display: grid;
+      grid-auto-flow: row dense;
+      grid-template-columns: 50% 50%;
+      gap: 0 0;
+      justify-content: center;
+      justify-items: center;
+      align-items: center;
+      width: 100%;
+    }
   }
 
   &__block {
@@ -33,39 +41,44 @@
     display: flex;
     justify-content: center;
     @include content-alignment(0);
-    padding-top: 126px;
-    padding-bottom: 128px;
 
     &--left {
       position: relative;
       background: map-get($colors, "black");
       align-items: center;
+      padding-top: 54px;
+      padding-bottom: 64px;
+
+      @include tablet {
+        padding-top: 111px;
+        padding-bottom: 130px;
+      }
 
       &:after {
         content: "";
         position: absolute;
         bottom: 0;
         left: 0;
-        width: 175px;
-        height: 227px;
-        background: url("../../assets/images/bg/promotions/promo4/promo4-bottom-sm.svg") no-repeat center;
+        width: 123px;
+        height: 142px;
+        background: url("../../assets/images/bg/company/ornament-sm.svg") no-repeat;
 
         @include tablet {
-          width: 239px;
-          height: 247px;
-          background: url("../../assets/images/bg/promotions/promo4/promo4-bottom-md.svg") no-repeat;
+          width: 252px;
+          height: 291px;
+          background: url("../../assets/images/bg/company/ornament-md.svg") no-repeat;
         }
 
         @include desktop-lg {
-          width: 215px;
-          height: 236px;
-          background: url("../../assets/images/bg/promotions/promo4/promo4-bottom-lg.svg") no-repeat;
+          width: 261px;
+          height: 299px;
+          background: url("../../assets/images/bg/company/ornament-lg.svg") no-repeat;
         }
 
         @include desktop-xl {
           width: 408px;
-          height: 493px;
-          background: url("../../assets/images/bg/promotions/promo4/promo4-bottom-xl.svg") no-repeat;
+          height: 468px;
+          background: url("../../assets/images/bg/company/ornament-xl.svg") no-repeat;
         }
       }
     }
@@ -74,34 +87,102 @@
       background: url("../../assets/images/bg/company/split-text-promotion.svg") no-repeat bottom right;
       align-items: flex-start;
       flex-direction: column;
+      padding-top: 32px;
+      padding-bottom: 40px;
+
+      @include tablet {
+        padding-top: 91px;
+        padding-bottom: 91px;
+      }
+
+      @include desktop-lg {
+        padding-top: 68px;
+        padding-bottom: 60px;
+      }
+
+      @include desktop-xl {
+        padding-top: 126px;
+        padding-bottom: 128px;
+      }
     }
   }
 
   &__icon {
-    width: 316px;
-    height: 171px;
+    width: 84px;
+    height: 46px;
+
+    @include tablet {
+      width: 172px;
+      height: 93px;
+    }
+
+    @include desktop-lg {
+      width: 202px;
+      height: 109px;
+    }
+
+    @include desktop-xl {
+      width: 316px;
+      height: 171px;
+    }
   }
 
   &__title {
     margin: 0 0 45px;
     font-weight: map-get($font-weight, "black");
-    font-size: 36px;
-    line-height: 40px;
+    font-size: 24px;
+    line-height: 30px;
 
+    @include tablet {
+      line-height: 35px;
+    }
+
+    @include desktop-lg {
+      font-size: 24px;
+    }
+
+    @include desktop-xl {
+      font-size: 36px;
+      line-height: 40px;
+    }
   }
 
   &__subtitle {
     display: block;
     margin: 0 0 30px;
     font-weight: map-get($font-weight, "regular");
-    font-size: 24px;
-    line-height: 40px;
+    font-size: 14px;
+    line-height: 30px;
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 35px;
+    }
+
+    @include desktop-lg {
+      font-size: 18px;
+    }
+
+    @include desktop-xl {
+      font-size: 24px;
+      line-height: 40px;
+    }
   }
 
   &__text {
     margin: 0;
     font-weight: map-get($font-weight, "black");
-    font-size: 36px;
-    line-height: 40px;
+    font-size: 22px;
+    line-height: 30px;
+
+    @include tablet {
+      font-size: 24px;
+      line-height: 35px;
+    }
+
+    @include desktop-xl {
+      font-size: 36px;
+      line-height: 40px;
+    }
   }
 }

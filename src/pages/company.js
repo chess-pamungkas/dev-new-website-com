@@ -4,10 +4,11 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
-import BannerWithTitle from "../components/banner-with-title";
+import VideoBanner from "../components/video-banner";
 import SplitTextPromotion from "../components/split-text-promotion";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import CompanyAdvantages from "../components/company-advantages";
+import video from "../assets/video/about.mp4";
 
 const CompanyPage = () => {
   const { t } = useTranslation();
@@ -15,9 +16,10 @@ const CompanyPage = () => {
   return (
     <Layout>
       <Seo title={t("page-company-title")} />
-      <BannerWithTitle
+      <VideoBanner
         title={t("company_banner-with-title-title")}
         subtitle={t("company_banner-with-title-subtitle")}
+        video={video}
       />
       <SplitTextPromotion
         title={t("company_split-text-promotion-title")}

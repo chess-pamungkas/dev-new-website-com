@@ -11,7 +11,14 @@ const CompanyAdvantageBlock = ({ className, icon: Icon, title, textArray }) => {
         <p className="company-advantage-block__title">{t(title)}</p>
       </div>
       <div className="company-advantage-block__back">
-        <p className="company-advantage-block__title--back">{t(title)}</p>
+        <p
+          className={cn(
+            "company-advantage-block__title",
+            "company-advantage-block__title--back"
+          )}
+        >
+          {t(title)}
+        </p>
         <p className="company-advantage-block__text">
           {textArray.map((text) => (
             <span>{t(text)}</span>
