@@ -54,6 +54,7 @@ const Header = ({
               {menu.map(({ title, subItems, isNested = false }) => (
                 <NavbarItem
                   key={`header-menu-${stringTransformToKebabCase(title)}`}
+                  headerRef={headerRef}
                   title={title}
                   subItems={subItems}
                   isNested={isNested}

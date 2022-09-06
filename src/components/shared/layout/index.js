@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
 import "../../../assets/styles/index.scss";
 import Header from "../../header";
 import { ClientResolverProvider } from "../../../context/client-resolver-context";
@@ -12,12 +12,14 @@ import { CookiesPopup } from "../../cookies-popup";
 const Layout = ({
   children,
   isShowFooter = true,
-  headerRef,
+  setHeaderRef,
   isSearchBarAttached = true
 }) => {
   const { width } = useWindowSize();
   const [sectionOptions, setSectionOptions] = useState(null);
   const [scrollHeight, setScrollHeight] = useState(null);
+
+  const headerRef = useRef();
 
   useEffect(() => {
     setScrollHeight(
@@ -28,6 +30,13 @@ const Layout = ({
         : null
     );
   }, [headerRef, sectionOptions, width]);
+
+
+  useEffect(() => {
+    if (headerRef && setHeaderRef) {
+      setHeaderRef(headerRef)
+    }
+  }, [headerRef, setHeaderRef]);
 
   return (
     <ClientResolverProvider>
