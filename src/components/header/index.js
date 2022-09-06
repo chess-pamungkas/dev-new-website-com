@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import { Link } from "gatsby-plugin-react-i18next";
 import { LogoTextMain, Logo } from "../shared/icons";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { HOME_PAGE_LINK, WINDOW_SIZE_XL } from "../../helpers/constants";
@@ -15,7 +16,6 @@ import { CYSEC_MENU_ITEMS, FSA_MENU_ITEMS } from "../../helpers/menu.config";
 import ClientResolverContext from "../../context/client-resolver-context";
 import entities from "../../enums/entities";
 import NotificationStripe from "../shared/notification-stripe";
-import { Link } from "../../../.cache/gatsby-browser-entry";
 import { GDPRPopup } from "../gdpr-popup";
 
 const Header = ({
@@ -45,9 +45,9 @@ const Header = ({
         className={cn("header", { "header--small": isNarrow }, className)}
       >
         <div className="header__left">
-            <Link to={HOME_PAGE_LINK}>
-                {isNarrow ? <Logo className="header__logo" /> : <LogoTextMain />}
-            </Link>
+          <Link to={HOME_PAGE_LINK}>
+              {isNarrow ? <Logo className="header__logo" /> : <LogoTextMain />}
+          </Link>
 
           {!isTablet && (
             <ul className="header__navigation">
