@@ -4,24 +4,7 @@
 .split-text-promotion {
   color: map-get($colors, "black");
 
-  @include tablet {
-
-  }
-
-  @include desktop-lg {
-
-  }
-
-  @include desktop-xl {
-
-  }
-
   &__wrapper {
-
-
-    @include tablet {
-
-    }
 
     @include desktop-lg {
       display: grid;
