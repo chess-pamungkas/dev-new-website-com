@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "gatsby";
+import { Link } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
 import ClientResolverContext from '../../../context/client-resolver-context';
 

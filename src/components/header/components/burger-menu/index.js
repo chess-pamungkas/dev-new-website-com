@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { Link } from "gatsby";
+import { Link } from "gatsby-plugin-react-i18next";
 import { BURGER_MENU_LINES_COUNT } from "../../../../helpers/constants";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
