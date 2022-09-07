@@ -1,0 +1,168 @@
+@import "vars";
+@import "mixins";
+
+.legal-page-promotion {
+  background: url("../../assets/images/bg/legal/banner-sm.svg") no-repeat center;
+  background-size: cover;
+  padding-top: 25px;
+  padding-bottom: 48px;
+
+  @include tablet {
+    padding-top: 42px;
+    padding-bottom: 45px;
+    background: url("../../assets/images/bg/legal/banner-md.svg") no-repeat center;
+    background-size: cover;
+  }
+
+  @include desktop-lg {
+    padding-top: 20px;
+    padding-bottom: 44px;
+    background: url("../../assets/images/bg/legal/banner-lg.svg") no-repeat center;
+    background-size: cover;
+  }
+
+  @include desktop-xl {
+    padding-top: 145px;
+    padding-bottom: 135px;
+    background: url("../../assets/images/bg/legal/banner-xl.svg") no-repeat center;
+    background-size: cover;
+  }
+
+  .top-market-promotion__wrapper {
+    flex-direction: column-reverse;
+
+    @include desktop-xl {
+      flex-direction: row;
+    }
+  }
+
+  .top-market-promotion__description {
+    margin: 0 auto 40px;
+
+    @include desktop-lg {
+      max-width: 780px;
+    }
+
+    @include desktop-xl {
+      margin: 0 0 40px;
+    }
+  }
+
+  .top-market-promotion__img {
+    @include desktop-lg {
+      margin-bottom: 86px;
+    }
+    @include desktop-xl {
+      margin-bottom: 0;
+    }
+  }
+
+  .top-market-promotion__text {
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+
+    @include tablet {
+      font-size: 36px;
+      line-height: 45px;
+    }
+
+    @include desktop-lg {
+      font-size: 30px;
+      line-height: 37px;
+    }
+
+    @include desktop-xl {
+      font-size: 36px;
+      line-height: 45px;
+      text-align: left;
+    }
+  }
+
+  .top-market-promotion__btn {
+    font-size: 11px;
+    color: map-get($colors, "red");
+    background: map-get($colors, "white");
+    margin: 0 auto;
+
+    @include tablet {
+      font-size: 22px;
+    }
+
+    @include desktop-xl {
+      margin: unset;
+      color: map-get($colors, "white");
+      background: map-get($colors, "red");
+    }
+  }
+}
+
+.legal-page-esma {
+  padding-top: 60px;
+  padding-bottom: 84px;
+  background-position: bottom right;
+
+  @include tablet {
+    padding-top: 81px;
+    padding-bottom: 72px;
+  }
+
+  @include desktop-lg {
+    padding-top: 166px;
+    padding-bottom: 171px;
+  }
+
+  @include desktop-xl {
+    padding-top: 144px;
+    padding-bottom: 57px;
+  }
+
+  .top-market-promotion__wrapper {
+
+    @include desktop-xl {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .top-market-promotion__block {
+    @include desktop-xl {
+      padding-left: 100px;
+    }
+
+    &--flexed {
+      @include desktop-xl {
+        padding-left: 0;
+        justify-content: flex-start;
+      }
+    }
+
+  }
+
+  .top-market-promotion__text {
+    font-size: 22px;
+    line-height: 20px;
+
+    @include tablet {
+      font-size: 28px;
+      line-height: 30px;
+    }
+
+    @include desktop-lg {
+      font-size: 26px;
+      line-height: 25px;
+    }
+
+    @include desktop-xl {
+      font-size: 36px;
+      line-height: 37px;
+    }
+  }
+
+  .top-market-promotion__btn {
+    font-size: 11px;
+
+    @include tablet {
+      font-size: 22px;
+    }
+  }
+}
