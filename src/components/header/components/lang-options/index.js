@@ -5,6 +5,7 @@ import {
   LANG_SELECT_OPTIONS,
   SHOULD_BE_SMALLER_LANGUAGES,
 } from "../../../../helpers/lang-options.config";
+import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
 
 const LangSelectItem = ({
   language: { id, icon: Icon, name } = {},
@@ -20,7 +21,10 @@ const LangSelectItem = ({
     <button
       className="lang-options__select"
       type="button"
-      onClick={() => langugeSelectHandler(language)}
+      onClick={(e) => {
+        langugeSelectHandler(language);
+        sendClickEventToGA(e);
+      }}
     >
       {Icon && <Icon className="lang-options__flag" />}
 

@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
-import ClientResolverContext from '../../../context/client-resolver-context';
+import ClientResolverContext from "../../../context/client-resolver-context";
+import { sendClickEventToGA } from "../../../helpers/services/google-analytics-service";
 
 const ButtonLink = ({ children, className, link }) => {
   const {
@@ -14,6 +15,7 @@ const ButtonLink = ({ children, className, link }) => {
       className={cn("button-link", className, {
         "button-link--disabled": banned,
       })}
+      onClick={(e) => sendClickEventToGA(e)}
     >
       {children}
     </Link>

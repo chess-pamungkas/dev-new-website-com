@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { AngleDownIcon } from "../icons";
+import { sendClickEventToGA } from "../../../helpers/services/google-analytics-service";
 
 const Accordion = ({
   children,
@@ -47,7 +48,10 @@ const Accordion = ({
       <button
         type="button"
         className="accordion__title"
-        onClick={() => handleClick(title)}
+        onClick={(e) => {
+          handleClick(title);
+          sendClickEventToGA(e);
+        }}
       >
         <span>{t(title)}</span>
         {Icon ? getIcon() : <AngleDownIcon className="accordion__icon" />}
