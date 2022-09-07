@@ -1,0 +1,32 @@
+import React from "react";
+import cn from "classnames";
+import { Logo } from "../shared/icons";
+
+const SplitTextPromotion = ({ className, children, title, subtitle }) => {
+  return (
+    <section className={cn("split-text-promotion", className)}>
+      <div className="split-text-promotion__wrapper">
+        <div
+          className={cn(
+            "split-text-promotion__block",
+            "split-text-promotion__block--left"
+          )}
+        >
+          <Logo className="split-text-promotion__icon" />
+        </div>
+        <div
+          className={cn(
+            "split-text-promotion__block",
+            "split-text-promotion__block--right"
+          )}
+        >
+          <h3 className="split-text-promotion__title">{title}</h3>
+          <span className="split-text-promotion__subtitle">{subtitle}</span>
+          <p className="split-text-promotion__text">{children}</p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default SplitTextPromotion;

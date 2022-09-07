@@ -74,13 +74,13 @@ export const LanguageProvider = ({ children }) => {
 
     const { pathname, search } = window.location;
     if (selectedLanguage.id === defaultLang.id) {
-      const processedPathname = pathname.replace(`/${i18Language}`, '');
+      const processedPathname = pathname.replace(`/${i18Language}/`, '/');
       const navigatePath = processedPathname || '/';
       navigate(`${navigatePath}${search}`);
       return;
     };
 
-    const navigatePath = `/${selectedLanguage.id}` + pathname.replace(`/${i18Language}`, '')
+    const navigatePath = `/${selectedLanguage.id}` + pathname.replace(`/${i18Language}/`, '/')
     navigate(`${navigatePath}${search}`);
   }, [
     selectedLanguage,
