@@ -2064,6 +2064,516 @@ export const SearchNoResultsImg = ({ className }) => (
   />
 );
 
+export const SafetyAdvantageIcon = ({ className }) => (
+  <svg
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="116"
+    height="116"
+    viewBox="0 0 116 116"
+  >
+    <g
+      id="private_network"
+      data-name="private network"
+      transform="translate(-3 -3)"
+    >
+      <path
+        id="Path_7096"
+        data-name="Path 7096"
+        d="M96.3,61.966H136V46.971a4.585,4.585,0,0,0-4.571-4.571H44.571A4.585,4.585,0,0,0,40,46.971V61.966H79.7"
+        transform="translate(-27 -28.851)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7097"
+        data-name="Path 7097"
+        d="M110.143,117H11.857A6.848,6.848,0,0,1,5,110.143V11.857A6.848,6.848,0,0,1,11.857,5h98.286A6.848,6.848,0,0,1,117,11.857v98.286A6.848,6.848,0,0,1,110.143,117Z"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7098"
+        data-name="Path 7098"
+        d="M67.566,336H40v23.771a4.585,4.585,0,0,0,4.571,4.571h86.857A4.585,4.585,0,0,0,136,359.771V336H108.434"
+        transform="translate(-27 -255.343)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7099"
+        data-name="Path 7099"
+        d="M85.38,369.3a2.292,2.292,0,0,1-2.286,2.286H71.986A2.292,2.292,0,0,1,69.7,369.3v-7.611a2.292,2.292,0,0,1,2.286-2.286H83.117a2.292,2.292,0,0,1,2.286,2.286V369.3Z"
+        transform="translate(-49.911 -273.394)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7100"
+        data-name="Path 7100"
+        d="M377.3,369.3a2.292,2.292,0,0,1-2.286,2.286H363.886A2.292,2.292,0,0,1,361.6,369.3v-7.611a2.292,2.292,0,0,1,2.286-2.286h11.131a2.292,2.292,0,0,1,2.286,2.286Z"
+        transform="translate(-275.091 -273.394)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7101"
+        data-name="Path 7101"
+        d="M194.611,243.7H167.457a6.848,6.848,0,0,1-6.857-6.857V208.957a6.848,6.848,0,0,1,6.857-6.857h27.131a6.848,6.848,0,0,1,6.857,6.857v27.909A6.824,6.824,0,0,1,194.611,243.7Z"
+        transform="translate(-120.034 -152.049)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7102"
+        data-name="Path 7102"
+        d="M167,372.6v6.88a2.292,2.292,0,0,0,2.286,2.286h11.131a2.292,2.292,0,0,0,2.286-2.286v-4.229H172.417A6.937,6.937,0,0,1,167,372.6Z"
+        transform="translate(-124.971 -283.577)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7103"
+        data-name="Path 7103"
+        d="M274.686,375.151H264.4v4.229a2.292,2.292,0,0,0,2.286,2.286h11.109a2.292,2.292,0,0,0,2.286-2.286V372.5A6.79,6.79,0,0,1,274.686,375.151Z"
+        transform="translate(-200.109 -283.5)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <g
+        id="Group_2920"
+        data-name="Group 2920"
+        transform="translate(49.389 30.349)"
+      >
+        <path
+          id="Path_7104"
+          data-name="Path 7104"
+          d="M222.423,135.42v-9.189A10.35,10.35,0,0,0,212.091,115.9h-2.56A10.35,10.35,0,0,0,199.2,126.231v9.189Zm-15.977-9.189a3.112,3.112,0,0,1,3.109-3.109h2.56a3.112,3.112,0,0,1,3.109,3.109v9.189h-8.754v-9.189Z"
+          transform="translate(-199.2 -115.9)"
+          fill="none"
+          stroke="#f40"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="4"
+        />
+      </g>
+      <path
+        id="Path_7105"
+        data-name="Path 7105"
+        d="M235.193,244.674a6.225,6.225,0,0,0-12.434-.434,6.355,6.355,0,0,0,1.737,4.777,7.469,7.469,0,0,1,2.057,5.257v6.72a2.4,2.4,0,0,0,2.4,2.4h0a2.4,2.4,0,0,0,2.4-2.4v-6.72a7.923,7.923,0,0,1,2.149-5.349A6.176,6.176,0,0,0,235.193,244.674Z"
+        transform="translate(-167.975 -180.086)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+    </g>
+  </svg>
+);
+
+export const QualityAdvantageIcon = ({ className }) => (
+  <svg
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="110.195"
+    height="96.3"
+    viewBox="0 0 110.195 96.3"
+  >
+    <g id="clean_code" data-name="clean code" transform="translate(-3 -36.1)">
+      <path
+        id="Path_7094"
+        data-name="Path 7094"
+        d="M89.418,38.6l20.909,29.181L57.652,130.4,5,67.781,25.909,38.6Z"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7095"
+        data-name="Path 7095"
+        d="M161.308,38.6l11.4,29.181L144,130.4,115.3,67.781,126.7,38.6Z"
+        transform="translate(-86.351)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_86"
+        data-name="Line 86"
+        x1="52.674"
+        transform="translate(57.652 67.781)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_87"
+        data-name="Line 87"
+        x1="12.745"
+        transform="translate(36.961 67.781)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_88"
+        data-name="Line 88"
+        x1="4.386"
+        transform="translate(17.246 67.781)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_89"
+        data-name="Line 89"
+        x1="0.738"
+        transform="translate(11.058 67.781)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_90"
+        data-name="Line 90"
+        y2="4.95"
+        transform="translate(57.652 38.6)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_91"
+        data-name="Line 91"
+        y2="17.674"
+        transform="translate(57.652 50.108)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_92"
+        data-name="Line 92"
+        y1="3.887"
+        transform="translate(57.652 113.508)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_93"
+        data-name="Line 93"
+        y1="31.374"
+        transform="translate(57.652 76.336)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_94"
+        data-name="Line 94"
+        y2="10"
+        transform="translate(106.195 38.1)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_95"
+        data-name="Line 95"
+        x1="9"
+        transform="translate(102.195 43.1)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_96"
+        data-name="Line 96"
+        y2="9.553"
+        transform="translate(46.232 48.414)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_97"
+        data-name="Line 97"
+        x1="9.553"
+        transform="translate(41.455 53.191)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_98"
+        data-name="Line 98"
+        y2="9.553"
+        transform="translate(14.228 93.597)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_99"
+        data-name="Line 99"
+        x1="9.553"
+        transform="translate(9.451 98.374)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_100"
+        data-name="Line 100"
+        y2="9.553"
+        transform="translate(81.579 117.394)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_101"
+        data-name="Line 101"
+        x1="9.553"
+        transform="translate(76.803 122.171)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+    </g>
+  </svg>
+);
+
+export const TrustAdvantageIcon = ({ className }) => (
+  <svg
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    width="126"
+    height="120.498"
+    viewBox="0 0 126 120.498"
+  >
+    <g
+      id="business_strategy-02"
+      data-name="business strategy-02"
+      transform="translate(-3 -14)"
+    >
+      <line
+        id="Line_82"
+        data-name="Line 82"
+        x2="1.444"
+        transform="translate(81.686 117.011)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_83"
+        data-name="Line 83"
+        x2="10.856"
+        transform="translate(64.88 117.011)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7088"
+        data-name="Path 7088"
+        d="M105.9,312.1l1,2.863,8.565,24.425H133.91"
+        transform="translate(-75.778 -222.377)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_84"
+        data-name="Line 84"
+        x2="3.784"
+        y2="10.831"
+        transform="translate(23.997 72.22)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <line
+        id="Line_85"
+        data-name="Line 85"
+        x2="0.423"
+        y2="1.27"
+        transform="translate(20.835 63.182)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7089"
+        data-name="Path 7089"
+        d="M120.216,166.09h4.332l23.927-68.27a1.55,1.55,0,0,0-2.664-1.494l-17.752,21.836a12.544,12.544,0,0,1-22.01-5.353l-6.3-30.226a1.537,1.537,0,0,0-3.013,0l-6.3,30.251a12.544,12.544,0,0,1-22.01,5.353L50.676,96.351a1.55,1.55,0,0,0-2.664,1.494l2.938,8.416"
+        transform="translate(-32.231 -49.079)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7090"
+        data-name="Path 7090"
+        d="M123.471,421.7l-2.938,3.262a15.739,15.739,0,0,0-4.033,10.507v1.718H183v-1.718a15.739,15.739,0,0,0-4.033-10.507l-2.938-3.262"
+        transform="translate(-83.739 -304.689)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <circle
+        id="Ellipse_133"
+        data-name="Ellipse 133"
+        cx="8.142"
+        cy="8.142"
+        r="8.142"
+        transform="translate(57.858 16)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <circle
+        id="Ellipse_134"
+        data-name="Ellipse 134"
+        cx="8.142"
+        cy="8.142"
+        r="8.142"
+        transform="translate(110.717 31.86)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <circle
+        id="Ellipse_135"
+        data-name="Ellipse 135"
+        cx="8.142"
+        cy="8.142"
+        r="8.142"
+        transform="translate(5 31.86)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7091"
+        data-name="Path 7091"
+        d="M227.722,281.705,219.53,289.9a2.48,2.48,0,0,1-3.511,0l-8.216-8.191a2.479,2.479,0,0,1,0-3.511L215.995,270a2.479,2.479,0,0,1,3.511,0l8.191,8.191A2.458,2.458,0,0,1,227.722,281.705Z"
+        transform="translate(-151.762 -190.215)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7092"
+        data-name="Path 7092"
+        d="M306.725,291.919l-4.805,4.805a2.48,2.48,0,0,1-3.511,0l-4.805-4.805a2.479,2.479,0,0,1,0-3.511l4.805-4.805a2.48,2.48,0,0,1,3.511,0l4.805,4.805A2.48,2.48,0,0,1,306.725,291.919Z"
+        transform="translate(-216.2 -200.429)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+      <path
+        id="Path_7093"
+        data-name="Path 7093"
+        d="M162.424,291.919l-4.805,4.805a2.48,2.48,0,0,1-3.511,0l-4.805-4.805a2.48,2.48,0,0,1,0-3.511l4.805-4.805a2.48,2.48,0,0,1,3.511,0l4.805,4.805A2.48,2.48,0,0,1,162.424,291.919Z"
+        transform="translate(-107.828 -200.429)"
+        fill="none"
+        stroke="#f40"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="4"
+      />
+    </g>
+  </svg>
+);
+
 export const AllMarketsForexIcon = ({ className }) => (
   <svg
     data-name="Group 3549"

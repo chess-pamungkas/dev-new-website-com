@@ -214,13 +214,28 @@
     }
 
     &--white {
-      border: 2px solid map-get($colors, "red");
+      border: 2px solid map-get($colors, "white");
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: map-get($colors, "white");
+        background: map-get($colors, "red");
+      }
     }
 
     &--black {
       color: map-get($colors, "black");
       border: 2px solid map-get($colors, "black");
       background: transparent;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background: map-get($colors, "white");
+        border-color: map-get($colors, "white");
+        color: map-get($colors, "red");
+      }
     }
   }
 }
