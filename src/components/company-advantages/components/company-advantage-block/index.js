@@ -30,7 +30,7 @@ const CompanyAdvantageBlock = ({ className, icon: Icon, title, textArray }) => {
               )}
             >
               {textArray.map((text) => (
-                <span>{t(text)}</span>
+                <span key={`company-advantage-${text}-mobile`}>{t(text)}</span>
               ))}
             </p>
           </div>
@@ -52,7 +52,7 @@ const CompanyAdvantageBlock = ({ className, icon: Icon, title, textArray }) => {
             </p>
             <p className="company-advantage-block__text">
               {textArray.map((text) => (
-                <span>{t(text)}</span>
+                <span key={`company-advantage-${text}`}>{t(text)}</span>
               ))}
             </p>
           </div>
