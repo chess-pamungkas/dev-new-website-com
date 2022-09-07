@@ -38,8 +38,8 @@ const IndexPage = () => {
   const [isPromo1Scrolled, setIsPromo1Scrolled] = useState(false);
   const [isPromo2Scrolled, setIsPromo2Scrolled] = useState(false);
   const [isPromo3Scrolled, setIsPromo3Scrolled] = useState(false);
+  const [headerRef, setHeaderRef] = useState(null);
 
-  const headerRef = useRef();
   const tradePromoRef = useRef();
   const promo1Ref = useRef();
   const promo2Ref = useRef();
@@ -220,7 +220,7 @@ const IndexPage = () => {
   }, [isMobile, isPromo12Bg, isPromo23Bg, isPromo32Bg, isPromo21Bg, headerRef, bgAnimationApi]);
 
   return (
-    <Layout headerRef={headerRef}>
+    <Layout setHeaderRef={setHeaderRef}>
       <Seo title={t("page-main-title")} />
       <MainPromotion />
       <TradingTicker />
