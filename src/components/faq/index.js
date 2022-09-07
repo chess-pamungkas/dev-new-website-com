@@ -13,9 +13,7 @@ const Faq = ({ className, title, faq }) => {
     <section className={cn("faq", className)}>
       <div className="faq__wrapper">
         <div className="faq__delimiter" />
-        <h2 className="faq__title">
-          {title || "Frequently Asked Questions (FAQ)"}
-        </h2>
+        <h2 className="faq__title">{title || t("faq-title")}</h2>
         <div className="faq__accordion-wrapper">
           {faq.length > 0 &&
             faq.map((item, i) => (
