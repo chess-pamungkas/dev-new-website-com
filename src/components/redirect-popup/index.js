@@ -5,6 +5,7 @@ import entities from "../../enums/entities";
 import { postClientConsent } from "../../helpers/services/client-consent-service";
 import { CONSENT_TYPES } from "../../helpers/consent-types.config";
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import { sendClickEventToGA } from "../../helpers/services/google-analytics-service";
 
 const RedirectPopup = ({
   clientConfig,
@@ -50,7 +51,7 @@ const RedirectPopup = ({
       return [
         {
           text: t("popup-banned-close-btn"),
-          onClick: () => {
+          onClick: (e) => {
             handleClose(false);
             postClientConsent(
               clientConfig.ipAddress,
@@ -58,11 +59,12 @@ const RedirectPopup = ({
               getCookie,
               CONSENT_TYPES["bannedClose"]
             );
+            sendClickEventToGA(e);
           },
         },
         {
           text: t("popup-banned-continue-btn"),
-          onClick: () => {
+          onClick: (e) => {
             handleClose(false);
             postClientConsent(
               clientConfig.ipAddress,
@@ -70,6 +72,7 @@ const RedirectPopup = ({
               getCookie,
               CONSENT_TYPES["bannedContinue"]
             );
+            sendClickEventToGA(e);
           },
         },
       ];
@@ -77,13 +80,14 @@ const RedirectPopup = ({
       return [
         {
           text: t("popup-redirect-dont-confirm-btn"),
-          onClick: () => {
+          onClick: (e) => {
             postClientConsent(
               clientConfig.ipAddress,
               currentEntity,
               getCookie,
               CONSENT_TYPES["redirectDoNotConfirm"]
             );
+            sendClickEventToGA(e);
             window.location.replace(redirectEntity);
           },
           subTitle:
@@ -93,7 +97,7 @@ const RedirectPopup = ({
         },
         {
           text: t("popup-redirect-confirm-btn"),
-          onClick: () => {
+          onClick: (e) => {
             postClientConsent(
               clientConfig.ipAddress,
               currentEntity,
@@ -102,6 +106,7 @@ const RedirectPopup = ({
             );
             setIsCysecRedirect(false);
             handleClose(false);
+            sendClickEventToGA(e);
           },
         },
       ];

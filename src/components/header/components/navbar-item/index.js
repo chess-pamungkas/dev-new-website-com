@@ -6,7 +6,13 @@ import { ANGLE_ICON_COLOR } from "../../../../helpers/constants";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import NavbarSubItem from "../navbar-sub-item";
 
-const NavbarItem = ({ className, title, subItems = [], isNested = false }) => {
+const NavbarItem = ({
+  className,
+  headerRef,
+  title,
+  subItems = [],
+  isNested = false,
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -23,6 +29,11 @@ const NavbarItem = ({ className, title, subItems = [], isNested = false }) => {
           className={cn("navbar-item__dropdown", {
             "navbar-item__dropdown--nested": isNested,
           })}
+          style={
+            headerRef?.current
+              ? { top: headerRef?.current.offsetHeight + "px" }
+              : null
+          }
         >
           {subItems.map((subItem, i) => (
             <NavbarSubItem

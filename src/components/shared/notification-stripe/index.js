@@ -6,6 +6,7 @@ import RedirectPopup from "../../redirect-popup";
 import { useEntityNotifications } from "../../../helpers/hooks/use-entity-notifications";
 import CookieContext from "../../../context/cookie-context";
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import { sendClickEventToGA } from "../../../helpers/services/google-analytics-service";
 
 const CYSEC_STRIPE = (t) => (
   <div className="notification-stripe__cysec-wrapper">
@@ -24,8 +25,9 @@ const CYSEC_REDIRECT = (handlePopup, setIsHidden, setIsCysecRedirect, t) => (
       <button
         type="button"
         className="notification-stripe__button"
-        onClick={() => {
+        onClick={(e) => {
           handlePopup();
+          sendClickEventToGA(e);
         }}
       >
         {t("notification-stripe-change-btn")}
@@ -33,9 +35,10 @@ const CYSEC_REDIRECT = (handlePopup, setIsHidden, setIsCysecRedirect, t) => (
       <button
         type="button"
         className="notification-stripe__button"
-        onClick={() => {
+        onClick={(e) => {
           setIsCysecRedirect(false);
           setIsHidden(true);
+          sendClickEventToGA(e);
         }}
       >
         {t("notification-stripe-close-btn")}
@@ -45,7 +48,9 @@ const CYSEC_REDIRECT = (handlePopup, setIsHidden, setIsCysecRedirect, t) => (
 );
 
 const NotificationStripe = ({ className, setSectionOptions }) => {
-  const { clientConfig, currentEntity, entityToRedirect } = useContext(ClientResolverContext);
+  const { clientConfig, currentEntity, entityToRedirect } = useContext(
+    ClientResolverContext
+  );
   const { isShow, handleOpen, handleClose } = useModal();
   const {
     isCysecNotification,
