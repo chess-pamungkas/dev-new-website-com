@@ -16,7 +16,7 @@ const TopMarket = ({
 }) => {
   return (
     <section className={cn("top-market", className)}>
-      <div className={"top-market__wrapper"}>
+      <div className="top-market__wrapper">
         <div className="top-market__block">
           <h2
             className={cn("top-market__title", {

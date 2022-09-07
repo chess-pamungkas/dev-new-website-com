@@ -9,6 +9,8 @@ import HighlightedLocalizationText from "../components/shared/highlighted-locali
 import TopMarketPromotion from "../components/top-market-promotion";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import indices from "../assets/images/top-markets/indices.jpg";
+import Documents from "../components/documents";
+import {LEGAL_DOCS} from "../helpers/documents";
 
 const LegalPage = () => {
   const { t } = useTranslation();
@@ -45,6 +47,16 @@ const LegalPage = () => {
           accentClassName={"highlighted-in-red"}
         />
       </TopMarketPromotion>
+      <Documents
+        title={t("legal_documents-title")}
+        text={
+          <>
+            <span className="bold">{t("legal_documents-text-bold")}</span>
+            <span>{t("legal_documents-text")}</span>
+          </>
+        }
+        documents={LEGAL_DOCS}
+      />
     </Layout>
   );
 };

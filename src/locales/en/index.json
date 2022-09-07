@@ -309,9 +309,13 @@
   "legal_top-market-promo-text-accent": "8,9,10,11,28,29",
 
   "legal_top-market-promo-btn2": "Check our legal documents",
-  "legal_top-market-promo-text2":"CySEC is an established regulatory authority governing financial services firms in Cyprus. Being a part of the European Union, CySEC is also a member of the European Securities and Markets Authority (ESMA).",
+  "legal_top-market-promo-text2": "CySEC is an established regulatory authority governing financial services firms in Cyprus. Being a part of the European Union, CySEC is also a member of the European Securities and Markets Authority (ESMA).",
   "legal_top-market-promo-text-accent2": "1,32",
   "legal_top-market-promo-note": "As a CySEC licensed firm, Oqtima EU Ltd complies with all domestic and European laws and regulations applicable to investment firms.",
+  "legal_documents-title": "Legal Documents",
+  "legal_documents-text-bold": "European Markets in Financial Instruments (MiFID - MiFIR)",
+  "legal_documents-text": "Effective from January 3, 2018 MiFID II, the updated version of the Markets in Financial Instruments Directive and MiFIR, will ensure fairer, safer and more transparent market trading conditions. Cyprus, as a member of the European Union, has transposed MiFID II into its domestic legislation, the Investment Services and Activities and Regulated Markets Law of 2017 (Law 87(I)/2017).",
+  "legal_documents-btn": "View PDF",
 
   "company_banner-with-title-title": "We live in a complex financial world.",
   "company_banner-with-title-subtitle": "We want you to be able to take advantage of it.",
