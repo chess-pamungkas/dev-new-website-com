@@ -8,6 +8,7 @@ import image from "../assets/images/top-markets/cripto.svg";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
+import TradingTicker from "../components/trading-ticker";
 
 const EnergiesPage = () => {
   const { t } = useTranslation();
@@ -30,6 +31,7 @@ const EnergiesPage = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
+        <TradingTicker title={t("energies_trading-ticker-title")} />
     </Layout>
   );
 };
