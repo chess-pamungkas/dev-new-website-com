@@ -10,7 +10,7 @@ import TopMarketPromotion from "../components/top-market-promotion";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import indices from "../assets/images/top-markets/indices.jpg";
 import Documents from "../components/documents";
-import {LEGAL_DOCS} from "../helpers/documents";
+import { LEGAL_DOCS } from "../helpers/documents";
 
 const LegalPage = () => {
   const { t } = useTranslation();
@@ -24,6 +24,7 @@ const LegalPage = () => {
         image={image}
         btnTitle={t("legal_top-market-promo-btn")}
         link="#legalDocuments"
+        isAnchorLink
       >
         <HighlightedLocalizationText
           localizationText="legal_top-market-promo-text"
@@ -39,6 +40,7 @@ const LegalPage = () => {
         btnTitle={t("legal_top-market-promo-btn2")}
         note={t("legal_top-market-promo-note")}
         link="#legalDocuments"
+        isAnchorLink
       >
         <HighlightedLocalizationText
           localizationText="legal_top-market-promo-text2"
