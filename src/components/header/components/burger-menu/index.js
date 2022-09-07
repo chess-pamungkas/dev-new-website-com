@@ -16,6 +16,7 @@ import {
 } from "../../../../helpers/menu.config";
 import ClientResolverContext from "../../../../context/client-resolver-context";
 import entities from "../../../../enums/entities";
+import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
 
 const BurgerMenu = ({ className }) => {
   const { t } = useTranslation();
@@ -34,12 +35,13 @@ const BurgerMenu = ({ className }) => {
     );
   }, [currentEntity]);
 
-  const onTriggerChange = () => {
+  const onTriggerChange = (e) => {
     typeof window !== "undefined" && isNavbarOpen
       ? document.body.classList.remove("overflow-hidden")
       : document.body.classList.add("overflow-hidden");
 
     setIsNavbarOpen(!isNavbarOpen);
+    sendClickEventToGA(e);
   };
 
   const onSelect = (title) => setSelectedNavItem(title);

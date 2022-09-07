@@ -32,7 +32,9 @@ const NavbarSubItem = ({ className, subItem = {} }) => {
               key={`footer-menu-${stringTransformToKebabCase(subtitle.title)}`}
             >
               <Link className="menu-column__link" to={subtitle.link}>
-                <span className="dropdown-item__title">{t(subtitle.title)}</span>
+                <span className="dropdown-item__title">
+                  {t(subtitle.title)}
+                </span>
 
                 {subtitle.description && (
                   <p className="dropdown-item__description">

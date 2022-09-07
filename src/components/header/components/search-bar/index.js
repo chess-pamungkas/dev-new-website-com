@@ -9,15 +9,13 @@ import {
   INITIAL_SEARCH_STATE,
   SEARCH_PAGE_LINK,
   SEARCH_PARAM_NAME,
-  LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME
+  LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME,
 } from "../../../../helpers/constants";
 import { SearchIcon } from "../../../shared/icons";
 import { useSearchData } from "../../../../helpers/hooks/use-search-data";
+import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
 
-const SearchBar = ({
-  className,
-  isExpandable = false,
-}) => {
+const SearchBar = ({ className, isExpandable = false }) => {
   const { t } = useTranslation();
   const { getSearchResults } = useSearchData();
 
@@ -39,7 +37,7 @@ const SearchBar = ({
     setIsActive(false);
   });
 
-  const handleSearch = e => {
+  const handleSearch = (e) => {
     const query = e.target.value;
     if (query.length >= SEARCH_MIN_QUERY_LENGTH) {
       const results = getSearchResults(query);
@@ -57,15 +55,22 @@ const SearchBar = ({
         className
       )}
       ref={searchBarRef}
-      onSubmit={(e => {
+      onSubmit={(e) => {
         e.preventDefault();
-        navigate(`${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(searchState.query)}`)
-      })}
+        navigate(
+          `${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(
+            searchState.query
+          )}`
+        );
+      }}
     >
       <button
         className="search-bar__expand"
         type="button"
-        onClick={onBarExpand}
+        onClick={(e) => {
+          onBarExpand();
+          sendClickEventToGA(e);
+        }}
       >
         <SearchIcon />
       </button>
@@ -80,7 +85,11 @@ const SearchBar = ({
           onChange={handleSearch}
           value={searchState.query}
         />
-        <button className="search-bar__submit" type="submit">
+        <button
+          className="search-bar__submit"
+          type="submit"
+          onClick={(e) => sendClickEventToGA(e)}
+        >
           {t("search-submit-btn")}
         </button>
       </div>
@@ -89,22 +98,35 @@ const SearchBar = ({
         <ul className="search-bar__results">
           {!!searchState.results.length ? (
             <>
-              {searchState.results.slice(0, DROPDOWN_SEARCH_ITEMS_TO_SHOW).map((page, i) => (
-                <li className="search-bar__results-item" key={`search-bar-${i}`}>
-                  <Link
-                    to={`${page.url}?${LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME}=${encodeURI(page.fullMatch)}`}
-                    className="search-bar__results-link"
+              {searchState.results
+                .slice(0, DROPDOWN_SEARCH_ITEMS_TO_SHOW)
+                .map((page, i) => (
+                  <li
+                    className="search-bar__results-item"
+                    key={`search-bar-${i}`}
                   >
-                    <SearchIcon className="search-bar__results-icon" />
-                    <span className="search-bar__results-title">{page.content}</span>
-                  </Link>
-                </li>
-              ))}
+                    <Link
+                      to={`${
+                        page.url
+                      }?${LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME}=${encodeURI(
+                        page.fullMatch
+                      )}`}
+                      className="search-bar__results-link"
+                    >
+                      <SearchIcon className="search-bar__results-icon" />
+                      <span className="search-bar__results-title">
+                        {page.content}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
 
               {searchState.results.length > DROPDOWN_SEARCH_ITEMS_TO_SHOW && (
                 <li className="search-bar__results-item">
                   <Link
-                    to={`${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(searchState.query)}`}
+                    to={`${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(
+                      searchState.query
+                    )}`}
                     className="search-bar__results-link"
                   >
                     <span className="search-bar__results-title search-bar__results-title--bold">
@@ -125,8 +147,7 @@ const SearchBar = ({
               ) : (
                 <li className="search-bar__results-item">
                   <span className="search-bar__results-title">
-                    {t("search-min-query-part1")}
-                    {' '}{SEARCH_MIN_QUERY_LENGTH}{' '}
+                    {t("search-min-query-part1")} {SEARCH_MIN_QUERY_LENGTH}{" "}
                     {t("search-min-query-part2")}
                   </span>
                 </li>
