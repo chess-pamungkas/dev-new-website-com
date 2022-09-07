@@ -5,6 +5,8 @@ export const WINDOW_SIZE_XL = 1920;
 
 export const BURGER_MENU_LINES_COUNT = 3;
 export const DROPDOWN_SEARCH_ITEMS_TO_SHOW = 3;
+export const SEARCH_RESULTS_FIRST_BUNDLE = 1;
+export const SEARCH_RESULTS_BUNDLE_SIZE = 10;
 export const SEARCH_MIN_QUERY_LENGTH = 2;
 export const SEARCH_PARAM_NAME = 'q';
 export const LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME = '#:~:text';

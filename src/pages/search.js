@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { graphql, Link } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useSearchData } from "../helpers/hooks/use-search-data";
@@ -6,7 +6,9 @@ import {
   HOME_PAGE_LINK,
   SEARCH_PARAM_NAME,
   SEARCH_MIN_QUERY_LENGTH,
-  LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME
+  LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME,
+  SEARCH_RESULTS_FIRST_BUNDLE,
+  SEARCH_RESULTS_BUNDLE_SIZE
 } from "../helpers/constants";
 import { getUrlParamValue } from "../helpers/services/get-url-param-value";
 import Layout from "../components/shared/layout";
@@ -21,12 +23,24 @@ import Seo from "../components/shared/seo";
 const SearchPage = () => {
   const { t } = useTranslation();
   const { getSearchResults } = useSearchData();
+  const searchResultsRef = useRef();
 
+  const [resultsBundleCount, setResultsBundleCount] = useState(SEARCH_RESULTS_FIRST_BUNDLE);
   const [searchState, setSearchState] = useState({
     query: "",
     results: [],
     noResultsFound: false
   });
+
+  const handleScroll = useCallback(() => {
+    if (!searchResultsRef.current) return;
+
+    const { bottom: resultsElementBottom } = searchResultsRef.current.getBoundingClientRect();
+
+    if (typeof window !== "undefined" && resultsElementBottom < window.innerHeight) {
+      setResultsBundleCount(prevBundleCount => prevBundleCount + 1);
+    } 
+  }, []);
 
   useEffect(() => {
     const searchParamValue = getUrlParamValue(SEARCH_PARAM_NAME);
@@ -40,9 +54,16 @@ const SearchPage = () => {
     });
   }, [getSearchResults]);
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
   const handleSearch = e => {
     const query = e.target.value;
     if (query.length >= SEARCH_MIN_QUERY_LENGTH) {
+      setResultsBundleCount(SEARCH_RESULTS_FIRST_BUNDLE);
       const results = getSearchResults(query);
       setSearchState({
         query,
@@ -59,9 +80,8 @@ const SearchPage = () => {
   };
 
   return (
-  <Layout isSearchBarAttached={false}>
-    <Seo title={t("page-search-title")} />
-    <main className="search-page">
+    <Layout isSearchBarAttached={false}>
+      <Seo title={t("page-search-title")} />
       <section className="search-page__container">
         <form className="search-page__form">
           <SearchIcon className="search-page__form-icon" />
@@ -94,35 +114,38 @@ const SearchPage = () => {
           ) : (
             <>
               {!!searchState.results.length ? (
-                <ul className="search-page__results-list">
-                  {searchState.results.map((page, i) => (
-                    <li key={`search-page-${i}`} className="search-page__item">
-                      <Link
-                        to={`${page.url}?${LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME}=${encodeURI(page.fullMatch)}`}
-                        className="search-page__link"
-                      >
-                        <div className="search-page__icon-wrapper">
-                          <Logo className="search-page__icon" />
-                        </div>
+                <ul className="search-page__results-list" ref={searchResultsRef}>
+                  {searchState.results
+                    .slice(0, resultsBundleCount * SEARCH_RESULTS_BUNDLE_SIZE)
+                    .map((page, i) => (
+                      <li key={`search-page-${i}`} className="search-page__item">
+                        <Link
+                          to={`${page.url}?${LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME}=${encodeURI(page.fullMatch)}`}
+                          className="search-page__link"
+                        >
+                          <div className="search-page__icon-wrapper">
+                            <Logo className="search-page__icon" />
+                          </div>
 
-                        <div className="search-page__caption">
-                          <h2 className="search-page__title">{page.content}</h2>
-                          <p className="search-page__ref">
-                            {`${window.location.origin}${page.url}`}
-                          </p>
-                        </div>
-                      </Link>
+                          <div className="search-page__caption">
+                            <h2 className="search-page__title">{page.content}</h2>
+                            <p className="search-page__ref">
+                              {`${window.location.origin}${page.url}`}
+                            </p>
+                          </div>
+                        </Link>
 
-                      <p className="search-page__text">{page.content}</p>
+                        <p className="search-page__text">{page.content}</p>
 
-                      <ButtonLink
-                        link={`${page.url}?${LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME}=${encodeURI(page.fullMatch)}`}
-                        className="search-page__btn button-link--ghost-red"
-                      >
-                        {t("search-submit-btn")}
-                      </ButtonLink>
-                    </li>
-                  ))}
+                        <ButtonLink
+                          link={`${page.url}?${LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME}=${encodeURI(page.fullMatch)}`}
+                          className="search-page__btn button-link--ghost-red"
+                        >
+                          {t("search-submit-btn")}
+                        </ButtonLink>
+                      </li>
+                    ))
+                  }
                 </ul>
               ) : (
                 <p className="search-page__note">
@@ -135,9 +158,9 @@ const SearchPage = () => {
           )}          
         </div>
       </section>
-    </main>
-  </Layout>
-)};
+    </Layout>
+  );
+};
 
 export default SearchPage;
 

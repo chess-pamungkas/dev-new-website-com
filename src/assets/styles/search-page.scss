@@ -2,19 +2,18 @@
 @import "vars";
 
 .search-page {
-  padding: 40px 0;
-
-  @include tablet {
-    padding: 48px 0;
-  }
-
-  @include desktop-xl {
-    padding: 59px 0;
-  }
-
   &__container {
+    padding: 40px 0;
     min-height: 400px;
     @include content-alignment;
+
+    @include tablet {
+      padding: 48px 0;
+    }
+  
+    @include desktop-xl {
+      padding: 59px 0;
+    }
   }
 
   &__form {

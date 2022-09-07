@@ -119,7 +119,8 @@ const SearchBar = ({ className, isExpandable = false }) => {
                       </span>
                     </Link>
                   </li>
-                ))}
+                ))
+              }
 
               {searchState.results.length > DROPDOWN_SEARCH_ITEMS_TO_SHOW && (
                 <li className="search-bar__results-item">
