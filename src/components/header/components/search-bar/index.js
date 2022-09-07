@@ -1,7 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import cn from "classnames";
-import { Link, navigate } from "gatsby";
+import { navigate } from "gatsby";
+import { Link } from "gatsby-plugin-react-i18next";
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import SearchContext from "../../../../context/search-context";
 import { useOnClickOutside } from "../../../../helpers/hooks/use-on-click-outside";
 import {
   DROPDOWN_SEARCH_ITEMS_TO_SHOW,
@@ -15,12 +17,17 @@ import { SearchIcon } from "../../../shared/icons";
 import { useSearchData } from "../../../../helpers/hooks/use-search-data";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
 
-const SearchBar = ({ className, isExpandable = false }) => {
+const SearchBar = ({
+  className,
+  isExpandable = false,
+  isNavbarOpen = false,
+  onSubmit
+}) => {
   const { t } = useTranslation();
   const { getSearchResults } = useSearchData();
+  const { searchState, setSearchState } = useContext(SearchContext);
 
   const [isActive, setIsActive] = useState(false);
-  const [searchState, setSearchState] = useState(INITIAL_SEARCH_STATE);
 
   const searchInput = useRef();
   const searchBarRef = useRef();
@@ -31,6 +38,8 @@ const SearchBar = ({ className, isExpandable = false }) => {
   };
 
   useOnClickOutside(searchBarRef, () => {
+    if (!isExpandable && !isNavbarOpen) return;
+
     setSearchState(INITIAL_SEARCH_STATE);
     if (!isExpandable) return;
 
@@ -41,10 +50,33 @@ const SearchBar = ({ className, isExpandable = false }) => {
     const query = e.target.value;
     if (query.length >= SEARCH_MIN_QUERY_LENGTH) {
       const results = getSearchResults(query);
-      setSearchState({ query, results });
+      setSearchState({
+        query,
+        results,
+        noResultsFound: !results.length
+      });
     } else {
-      setSearchState({ query, results: [] });
+      setSearchState({
+        query,
+        results: [],
+        noResultsFound: false
+      });
     }
+  };
+
+  const handleMoreResultsClick = e => {
+    if (!isNavbarOpen) return;
+
+    onSubmit(e);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (onSubmit) onSubmit(e);
+
+    navigate(
+      `${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(searchState.query)}`
+    );
   };
 
   return (
@@ -55,14 +87,7 @@ const SearchBar = ({ className, isExpandable = false }) => {
         className
       )}
       ref={searchBarRef}
-      onSubmit={(e) => {
-        e.preventDefault();
-        navigate(
-          `${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(
-            searchState.query
-          )}`
-        );
-      }}
+      onSubmit={handleSubmit}
     >
       <button
         className="search-bar__expand"
@@ -88,7 +113,6 @@ const SearchBar = ({ className, isExpandable = false }) => {
         <button
           className="search-bar__submit"
           type="submit"
-          onClick={(e) => sendClickEventToGA(e)}
         >
           {t("search-submit-btn")}
         </button>
@@ -129,6 +153,7 @@ const SearchBar = ({ className, isExpandable = false }) => {
                       searchState.query
                     )}`}
                     className="search-bar__results-link"
+                    onClick={handleMoreResultsClick}
                   >
                     <span className="search-bar__results-title search-bar__results-title--bold">
                       {t("search-more-results")}

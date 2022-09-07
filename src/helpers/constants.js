@@ -13,6 +13,7 @@ export const LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME = '#:~:text';
 export const INITIAL_SEARCH_STATE = {
   query: "",
   results: [],
+  noResultsFound: false
 };
 
 export const HOME_PAGE_LINK = "/";

@@ -72,16 +72,16 @@ export const LanguageProvider = ({ children }) => {
   useEffect(() => {
     if (!selectedLanguage.id) return;
 
-    const { pathname } = window.location;
+    const { pathname, search } = window.location;
     if (selectedLanguage.id === defaultLang.id) {
       const processedPathname = pathname.replace(`/${i18Language}`, '');
       const navigatePath = processedPathname || '/';
-      navigate(navigatePath);
+      navigate(`${navigatePath}${search}`);
       return;
     };
 
     const navigatePath = `/${selectedLanguage.id}` + pathname.replace(`/${i18Language}`, '')
-    navigate(`${navigatePath}`);
+    navigate(`${navigatePath}${search}`);
   }, [
     selectedLanguage,
     defaultLang,

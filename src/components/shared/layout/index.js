@@ -5,6 +5,7 @@ import { ClientResolverProvider } from "../../../context/client-resolver-context
 import { LanguageProvider } from "../../../context/language-context";
 import { MarketingContextProvider } from "../../../context/marketing-context";
 import { CookieProvider } from "../../../context/cookie-context";
+import { SearchProvider } from '../../../context/search-context';
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import Footer from "../../footer";
 import { CookiesPopup } from "../../cookies-popup";
@@ -43,24 +44,26 @@ const Layout = ({
       <CookieProvider>
         <MarketingContextProvider>
           <LanguageProvider>
-            <Header
-              headerRef={headerRef}
-              setSectionOptions={setSectionOptions}
-              isSearchBarAttached={isSearchBarAttached}
-            />
-            <section
-              className="scroll-container"
-            >
-              <main
-                style={{
-                  marginTop: scrollHeight,
-                }}
+            <SearchProvider>
+              <Header
+                headerRef={headerRef}
+                setSectionOptions={setSectionOptions}
+                isSearchBarAttached={isSearchBarAttached}
+              />
+              <section
+                className="scroll-container"
               >
-                <CookiesPopup />
-                {children}
-              </main>
-              {isShowFooter && <Footer />}
-            </section>
+                <main
+                  style={{
+                    marginTop: scrollHeight,
+                  }}
+                >
+                  <CookiesPopup />
+                  {children}
+                </main>
+                {isShowFooter && <Footer />}
+              </section>
+            </SearchProvider>
           </LanguageProvider>
         </MarketingContextProvider>
       </CookieProvider>
