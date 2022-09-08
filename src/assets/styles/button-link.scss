@@ -15,6 +15,9 @@
   line-height: 31px;
   width: 190px;
   transition: 0.1s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @include tablet {
     font-size: 14px;
