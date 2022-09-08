@@ -44,27 +44,23 @@
 
   &__input {
     background-image: url("../../assets/images/icons/magnifier.svg");
-    background-position: 38px 50%;
+    background-position: 20px 50%;
     background-repeat: no-repeat;
     background-size: 33px;
     box-shadow: 0 3px 24px #00000029;
     border: 3px solid map-get($colors, "red");
     border-radius: 114px;
-    padding: 14px 20px;
+    padding: 14px 20px 14px 56px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 345px;
+    width: 100%;
     margin: 30px 0;
-
-    @include small-mobile {
-      min-width: 100%;
-      background-position: 20px 50%;
-      background-size: 20px;
-    }
 
     @include tablet {
       min-width: 517px;
+      padding: 14px 20px 14px 76px;
+      background-position: 38px 50%;
     }
 
     @include desktop-xl {
@@ -76,12 +72,13 @@
   }
 
   &__input-text {
+    display: flex;
     color: map-get($colors, "red");
     text-transform: uppercase;
     font-weight: map-get($font-weight, "black");
     font-size: 30px;
     line-height: 37px;
-    white-space: nowrap;
+    overflow: hidden;
 
     @include desktop-xl {
       font-size: 55px;
