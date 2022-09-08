@@ -1,0 +1,107 @@
+@import "vars";
+
+.market-item {
+  padding: 120px 40px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  @include desktop-lg {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 215px 80px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    background: url("../../assets/images/all-markets/top-bg-sm.svg") no-repeat;
+    width: 166px;
+    height: 199px;
+    top: 0;
+
+    @include tablet {
+      background: url("../../assets/images/all-markets/top-bg-md.svg") no-repeat;
+      width: 249px;
+      height: 299px;
+    }
+
+    @include desktop-lg {
+      background: url("../../assets/images/all-markets/top-bg-lg.svg") no-repeat;
+      width: 332px;
+      height: 398px;
+    }
+  }
+
+  &--gray {
+    background-color: #f9f9f9;
+  }
+
+  &__description {
+    width: 100%;
+
+    @include desktop-xl {
+      width: 1072px;
+    }
+  }
+
+  &__advantages {
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+
+    @include desktop-lg {
+      padding-left: 74px;
+      display: block;
+      padding-top: unset;
+    }
+  }
+
+  &__title {
+    font: normal normal map-get($font-weight, "black") 40px/52px $font;
+    color: map-get($colors, "black-secondary");
+
+    @include desktop-xl {
+      font: normal normal map-get($font-weight, "black") 54px/67px $font;
+    }
+  }
+
+  &__text {
+    font: normal normal normal 24px/32px $font;
+    color: map-get($colors, "black-secondary");
+    padding-top: 39px;
+    padding-bottom: 51px;
+
+    @include desktop-xl {
+      font: normal normal normal 28px/45px $font;
+    }
+  }
+
+  &__btn {
+    background: map-get($colors, "red") 0 0% no-repeat padding-box;
+    border: 2px solid map-get($colors, "white");
+    border-radius: 31px;
+    height: 62px;
+    text-align: center;
+    font: normal normal map-get($font-weight, "black") 24px/30px $font;
+    color: map-get($colors, "white");
+    text-transform: uppercase;
+    padding-top: 13px;
+
+    @include tablet {
+      width: 300px;
+    }
+
+    @include desktop-xl {
+      width: 380px;
+    }
+
+    &:hover {
+      background: map-get($colors, "white") 0 0% no-repeat padding-box;
+      color: map-get($colors, "red");
+      border: 2px solid map-get($colors, "red");
+    }
+  }
+}

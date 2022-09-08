@@ -73,3 +73,18 @@ export const FAQ_INDICES = [
     content: "indices_faq-content3",
   },
 ];
+
+export const FAQ_ENERGIES = [
+  {
+    title: "energies_faq-title1",
+    content: "energies_faq-content1",
+  },
+  {
+    title: "energies_faq-title2",
+    content: "energies_faq-content2",
+  },
+  {
+    title: "energies_faq-title3",
+    content: "energies_faq-content3",
+  },
+];

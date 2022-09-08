@@ -69,7 +69,14 @@ const TypingAnimation = ({ keywords }) => {
 
   return (
     <span
-      style={{ display: "inline-block", minWidth: wrapperRefWidth + "px" }}
+      style={{
+        display: "inline-block",
+        maxWidth: "100%",
+        minWidth: wrapperRefWidth + "px",
+        overflow: "hidden",
+        whiteSpace: "nowrap",
+        textOverflow: "ellipsis"
+      }}
       ref={wrapperRef}
     >
       {transition((styles, item) => {

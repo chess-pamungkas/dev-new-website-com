@@ -5,7 +5,6 @@ import entities from "../../enums/entities";
 import { isBrowser } from "../../helpers/services/is-browser";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
-const PUBLIC_IP_API_URL = process.env.GATSBY_PUBLIC_IP_API_URL;
 const FSA_ENTITY_DOMAIN = process.env.GATSBY_FSA_ENTITY_DOMAIN;
 const CYSEC_ENTITY_DOMAIN = process.env.GATSBY_CYSEC_ENTITY_DOMAIN;
 const FSA_ENTITY_HOST = process.env.GATSBY_FSA_ENTITY_HOST;
@@ -32,9 +31,9 @@ export const ClientResolverProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    function getClientConfig(ip) {
+    if (currentEntity && entityToRedirect) {
       axios
-        .get(`${API_URL}client-detection/${ip}?entity=${currentEntity}`)
+        .get(`${API_URL}client-detection?entity=${currentEntity}`)
         .then((response) => {
           setClientConfig(response.data);
           return response.data;
@@ -42,15 +41,6 @@ export const ClientResolverProvider = ({ children }) => {
         .then((clientConfig) =>
           handleClient(clientConfig, entityToRedirect, setIsPopupShown)
         )
-        .catch((response) => console.log(response));
-    }
-
-    if (currentEntity && entityToRedirect) {
-      axios
-        .get(PUBLIC_IP_API_URL)
-        .then((response) => {
-          getClientConfig(response.data.ip);
-        })
         .catch((response) => console.log(response));
     }
   }, [currentEntity, entityToRedirect]);
