@@ -96,7 +96,11 @@ const BurgerMenu = ({ className }) => {
                 </>
               )}
 
-              <SearchBar className="burger-menu__search" />
+              <SearchBar
+                isNavbarOpen={isNavbarOpen}
+                onSubmit={onTriggerChange}
+                className="burger-menu__search"
+              />
             </div>
           </li>
 
