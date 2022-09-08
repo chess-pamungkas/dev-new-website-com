@@ -1,3 +1,6 @@
+import privacyPolicy from "../assets/documents/Privacy_Policy.pdf";
+import termsAndConditions from "../assets/documents/Terms_and_Conditions.pdf";
+
 export const WINDOW_SIZE_SM = 375;
 export const WINDOW_SIZE_MD = 768;
 export const WINDOW_SIZE_LG = 1024;
@@ -13,14 +16,14 @@ export const LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME = "#:~:text";
 export const INITIAL_SEARCH_STATE = {
   query: "",
   results: [],
-  noResultsFound: false
+  noResultsFound: false,
 };
 
 export const HOME_PAGE_LINK = "/";
 export const REGISTRATION_LINK = "/";
 export const LEARN_MORE_LINK = "/";
-export const TERMS_OF_USE_LINK = "/";
-export const PRIVACY_POLICY_LINK = "/";
+export const TERMS_OF_USE_LINK = termsAndConditions;
+export const PRIVACY_POLICY_LINK = privacyPolicy;
 export const SEARCH_PAGE_LINK = "/search";
 export const CRYPTO_PAGE_LINK = "/crypto";
 export const INDICES_PAGE_LINK = "/indices";
