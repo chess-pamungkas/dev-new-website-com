@@ -68,7 +68,7 @@ const Header = ({
           {isTablet ? (
             <BurgerMenu />
           ) : (
-            <>
+            <div className="header__controls">
               <LangSelect className="lang-select--header" isHeader={true} />
               <ButtonLink
                 link={REGISTRATION_LINK}
@@ -82,7 +82,7 @@ const Header = ({
               >
                 {t("button-get-started")}
               </ButtonLink>
-            </>
+            </div>
           )}
         </div>
 
