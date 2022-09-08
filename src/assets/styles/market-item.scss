@@ -16,10 +16,22 @@
     content: "";
     position: absolute;
     right: 0;
-    background: url("../../assets/images/all-markets/top-bg.svg") no-repeat;
-    width: 332px;
-    height: 398px;
+    background: url("../../assets/images/all-markets/top-bg-sm.svg") no-repeat;
+    width: 166px;
+    height: 199px;
     top: 0;
+
+    @include tablet {
+      background: url("../../assets/images/all-markets/top-bg-md.svg") no-repeat;
+      width: 249px;
+      height: 299px;
+    }
+
+    @include desktop-lg {
+      background: url("../../assets/images/all-markets/top-bg-lg.svg") no-repeat;
+      width: 332px;
+      height: 398px;
+    }
   }
 
   &--gray {
