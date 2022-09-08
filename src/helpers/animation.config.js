@@ -92,6 +92,29 @@ export const TWP_ICONS_INITIAL_SHIFT = {
   bitcoin: -250,
 };
 
+export const TITLES_ANIMATION_DEFAULT_FROM_CONFIG = {
+  ...OPACITY_0,
+  top: "-40px",
+  position: "relative",
+};
+
+export const TITLES_ANIMATION_DEFAULT_TO_STEP_1_CONFIG = {
+  ...OPACITY_1,
+  top: "0",
+  config: {
+    duration: 150,
+  },
+};
+
+export const TITLES_ANIMATION_DEFAULT_TO_STEP_2_CONFIG = {
+  ...OPACITY_0,
+  top: "40px",
+  config: {
+    duration: 150,
+  },
+  delay: 2000,
+};
+
 export const setPositionY = (value) => ({
   transform: `translateY(${value}px)`,
 });
