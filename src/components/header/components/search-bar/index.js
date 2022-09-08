@@ -1,8 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import cn from "classnames";
 import { navigate } from "gatsby";
-import { Link } from "gatsby-plugin-react-i18next";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import SearchContext from "../../../../context/search-context";
 import { useOnClickOutside } from "../../../../helpers/hooks/use-on-click-outside";
 import {
