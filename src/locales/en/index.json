@@ -457,5 +457,19 @@
   "shares_faq-title3": "Sunt in culpa qui officia deserunt?",
   "shares_faq-content3": "",
   "shares_top-market-layout-title": "Transparent Pricing",
-  "shares_top-market-layout-btn": "Try Oqtima"
+  "shares_top-market-layout-btn": "Try Oqtima",
+
+  "document-client-categorisation-notice-name": "Client Categorisation Notice",
+  "document-complaint-policy-name": "Complaint-Handling Policy",
+  "document-conflict-of-interest-name": "Conflict of Interest Policy",
+  "document-terms-and-cond-name": "Terms and Conditions",
+  "document-investor-compensation-fund-name": "Investor Compensation Fund",
+  "document-order-execution-name": "Order Execution Policy",
+  "document-privacy-policy-name": "Privacy Policy",
+  "document-risk-disclosure-name": "Risk Disclosure",
+  "document-key-FX-name": "Key Information FX",
+  "document-key-indices-name": "Key information Indices",
+  "document-key-commodities-name": "Key information Commodities",
+  "document-summary-statement-name": "Execution Quality Summary Statement 2021",
+  "document-discipline-report-name": "Disclosure and Market Discipline Report (Pillar III) 2021"
 }

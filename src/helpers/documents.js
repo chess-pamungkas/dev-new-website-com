@@ -14,55 +14,69 @@ import disciplineReport from "../assets/documents/Disclosure_and_Market_Discipli
 
 export const LEGAL_DOCS = [
   {
-    name: "Client Categorisation Notice",
+    name: "document-client-categorisation-notice-name",
     file: clientCategorisationNotice,
+    // TODO replace with the real data
+    date: "09/05/2022",
   },
   {
-    name: "Complaint-Handling Policy",
+    name: "document-complaint-policy-name",
     file: complaintHandlingPolicy,
+    date: "09/05/2022",
   },
   {
-    name: "Conflict of Interest Policy",
+    name: "document-conflict-of-interest-name",
     file: conflictOfInterestPolicy,
+    date: "09/05/2022",
   },
   {
-    name: "Terms and Conditions",
+    name: "document-terms-and-cond-name",
     file: termsAndConditions,
+    date: "09/05/2022",
   },
   {
-    name: "Investor Compensation Fund",
+    name: "document-investor-compensation-fund-name",
     file: investorCompensationFund,
+    date: "09/05/2022",
   },
   {
-    name: "Order Execution Policy",
+    name: "document-order-execution-name",
     file: orderExecutionPolicy,
+    date: "09/05/2022",
   },
   {
-    name: "Privacy Policy",
+    name: "document-privacy-policy-name",
     file: privacyPolicy,
+    date: "09/05/2022",
   },
   {
-    name: "Risk Disclosure",
+    name: "document-risk-disclosure-name",
     file: riskDisclosure,
+    date: "09/05/2022",
   },
   {
-    name: "Key Information FX",
+    name: "document-key-FX-name",
     file: keyInformationFX,
+    date: "09/05/2022",
   },
   {
-    name: "Key information Indices",
+    name: "document-key-indices-name",
     file: keyInformationIndices,
+    date: "09/05/2022",
   },
   {
-    name: "Key information Commodities",
+    name: "document-key-commodities-name",
     file: keyInformationCommodities,
+    date: "09/05/2022",
   },
   {
-    name: "Execution Quality Summary Statement 2021",
+    name: "document-summary-statement-name",
     file: summaryStatement,
+    date: "09/05/2022",
   },
   {
-    name: "Disclosure and Market Discipline Report (Pillar III) 2021",
+    name: "document-discipline-report-name",
     file: disciplineReport,
+    date: "09/05/2022",
   },
 ];

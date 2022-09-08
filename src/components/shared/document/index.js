@@ -8,11 +8,10 @@ const Document = ({ className, document }) => {
 
   return (
     <div className={cn("document", className)}>
-      <a className="document__link" href={document.file} target="_blank">
+      <a className="document__link" href={document.file} target="_blank" rel="noreferrer">
         <HelpCenterIcon className="document__icon" />
-        <span className="document__name">{document.name}</span>
-        {/*TODO replace with the real data*/}
-        <span className="document__date">09/05/2022</span>
+        <span className="document__name">{t(document.name)}</span>
+        <span className="document__date">{document.date}</span>
         <span
           className={cn(
             "button-link",
