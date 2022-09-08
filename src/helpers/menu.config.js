@@ -231,7 +231,7 @@ const COMPANY_TAB = {
   subItems: [
     {
       title: "header-nav-tab-company-about-title",
-      link: "",
+      link: "/company",
       icon: AboutIcon,
       description: "header-nav-tab-company-about-desc",
     },
@@ -243,7 +243,7 @@ const COMPANY_TAB = {
     },
     {
       title: "header-nav-tab-company-legal-title",
-      link: "",
+      link: "/legal",
       icon: LegalIcon,
       description: "header-nav-tab-company-legal-desc",
     },

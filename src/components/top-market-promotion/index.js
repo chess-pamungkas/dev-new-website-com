@@ -1,6 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import ButtonLink from "../shared/button-link";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const TopMarketPromotion = ({
   className,
@@ -9,6 +10,7 @@ const TopMarketPromotion = ({
   image,
   btnTitle,
   link,
+  isAnchorLink = false,
 }) => {
   return (
     <section className={cn("top-market-promotion", className)}>
@@ -18,12 +20,25 @@ const TopMarketPromotion = ({
             <p className="top-market-promotion__text">{children}</p>
             <span className="top-market-promotion__note">{note}</span>
           </div>
-          <ButtonLink
-            link={link}
-            className={cn("button-link--red", "top-market-promotion__btn")}
-          >
-            {btnTitle}
-          </ButtonLink>
+          {isAnchorLink ? (
+            <AnchorLink
+              href={link}
+              className={cn(
+                "button-link",
+                "button-link--red",
+                "top-market-promotion__btn"
+              )}
+            >
+              {btnTitle}
+            </AnchorLink>
+          ) : (
+            <ButtonLink
+              link={link}
+              className={cn("button-link--red", "top-market-promotion__btn")}
+            >
+              {btnTitle}
+            </ButtonLink>
+          )}
         </div>
         <div
           className={cn(
