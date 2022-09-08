@@ -17,228 +17,228 @@ import {
 
 const FOREX = {
   icon: AllMarketsForexIcon,
-  title: "all-markets-forex-title",
-  text: "all-markets-forex-text",
+  title: "all-markets_forex-title",
+  text: "all-markets_forex-text",
   isGrayBackground: false,
   link: FOREX_PAGE_LINK,
   advantages: [
     {
       key: "adv1",
-      text: "all-markets-forex-adv1",
+      text: "all-markets_forex-adv1",
     },
     {
       key: "adv2",
-      text: "all-markets-forex-adv2",
+      text: "all-markets_forex-adv2",
     },
     {
       key: "adv3",
-      text: "all-markets-forex-adv3",
+      text: "all-markets_forex-adv3",
     },
     {
       key: "adv4",
-      text: "all-markets-forex-adv4",
+      text: "all-markets_forex-adv4",
     },
     {
       key: "adv5",
-      text: "all-markets-forex-adv5",
+      text: "all-markets_forex-adv5",
     },
     {
       key: "adv6",
-      text: "all-markets-forex-adv6",
+      text: "all-markets_forex-adv6",
     },
     {
       key: "adv7",
-      text: "all-markets-forex-adv7",
+      text: "all-markets_forex-adv7",
     },
   ],
 };
 
 const INDICES = {
   icon: AllMarketsIndicesIcon,
-  title: "all-markets-indices-title",
-  text: "all-markets-indices-text",
+  title: "all-markets_indices-title",
+  text: "all-markets_indices-text",
   isGrayBackground: true,
   link: INDICES_PAGE_LINK,
   advantages: [
     {
       key: "adv1",
-      text: "all-markets-indices-adv1",
+      text: "all-markets_indices-adv1",
     },
     {
       key: "adv2",
-      text: "all-markets-indices-adv2",
+      text: "all-markets_indices-adv2",
     },
     {
       key: "adv3",
-      text: "all-markets-indices-adv3",
+      text: "all-markets_indices-adv3",
     },
     {
       key: "adv4",
-      text: "all-markets-indices-adv4",
+      text: "all-markets_indices-adv4",
     },
     {
       key: "adv5",
-      text: "all-markets-indices-adv5",
+      text: "all-markets_indices-adv5",
     },
     {
       key: "adv6",
-      text: "all-markets-indices-adv6",
+      text: "all-markets_indices-adv6",
     },
     {
       key: "adv7",
-      text: "all-markets-indices-adv7",
+      text: "all-markets_indices-adv7",
     },
   ],
 };
 
 const SHARES = {
   icon: AllMarketsSharesIcon,
-  title: "all-markets-shares-title",
-  text: "all-markets-shares-text",
+  title: "all-markets_shares-title",
+  text: "all-markets_shares-text",
   isGrayBackground: false,
   link: SHARES_PAGE_LINK,
   advantages: [
     {
       key: "adv1",
-      text: "all-markets-shares-adv1",
+      text: "all-markets_shares-adv1",
     },
     {
       key: "adv2",
-      text: "all-markets-shares-adv2",
+      text: "all-markets_shares-adv2",
     },
     {
       key: "adv3",
-      text: "all-markets-shares-adv3",
+      text: "all-markets_shares-adv3",
     },
     {
       key: "adv4",
-      text: "all-markets-shares-adv4",
+      text: "all-markets_shares-adv4",
     },
     {
       key: "adv5",
-      text: "all-markets-shares-adv5",
+      text: "all-markets_shares-adv5",
     },
     {
       key: "adv6",
-      text: "all-markets-shares-adv6",
+      text: "all-markets_shares-adv6",
     },
     {
       key: "adv7",
-      text: "all-markets-shares-adv7",
+      text: "all-markets_shares-adv7",
     },
   ],
 };
 
 const COMMODITIES = {
   icon: AllMarketsCommoditiesIcon,
-  title: "all-markets-commodities-title",
-  text: "all-markets-commodities-text",
+  title: "all-markets_commodities-title",
+  text: "all-markets_commodities-text",
   isGrayBackground: true,
   link: COMMODITIES_PAGE_LINK,
   advantages: [
     {
       key: "adv1",
-      text: "all-markets-commodities-adv1",
+      text: "all-markets_commodities-adv1",
     },
     {
       key: "adv2",
-      text: "all-markets-commodities-adv2",
+      text: "all-markets_commodities-adv2",
     },
     {
       key: "adv3",
-      text: "all-markets-commodities-adv3",
+      text: "all-markets_commodities-adv3",
     },
     {
       key: "adv4",
-      text: "all-markets-commodities-adv4",
+      text: "all-markets_commodities-adv4",
     },
     {
       key: "adv5",
-      text: "all-markets-commodities-adv5",
+      text: "all-markets_commodities-adv5",
     },
     {
       key: "adv6",
-      text: "all-markets-commodities-adv6",
+      text: "all-markets_commodities-adv6",
     },
     {
       key: "adv7",
-      text: "all-markets-commodities-adv7",
+      text: "all-markets_commodities-adv7",
     },
   ],
 };
 
 const ENERGIES = {
   icon: AllMarketsEnergiesIcon,
-  title: "all-markets-energies-title",
-  text: "all-markets-energies-text",
+  title: "all-markets_energies-title",
+  text: "all-markets_energies-text",
   isGrayBackground: false,
   link: ENERGIES_PAGE_LINK,
   advantages: [
     {
       key: "adv1",
-      text: "all-markets-energies-adv1",
+      text: "all-markets_energies-adv1",
     },
     {
       key: "adv2",
-      text: "all-markets-energies-adv2",
+      text: "all-markets_energies-adv2",
     },
     {
       key: "adv3",
-      text: "all-markets-energies-adv3",
+      text: "all-markets_energies-adv3",
     },
     {
       key: "adv4",
-      text: "all-markets-energies-adv4",
+      text: "all-markets_energies-adv4",
     },
     {
       key: "adv5",
-      text: "all-markets-energies-adv5",
+      text: "all-markets_energies-adv5",
     },
     {
       key: "adv6",
-      text: "all-markets-energies-adv6",
+      text: "all-markets_energies-adv6",
     },
     {
       key: "adv7",
-      text: "all-markets-energies-adv7",
+      text: "all-markets_energies-adv7",
     },
   ],
 };
 
 const CRYPTO = {
   icon: AllMarketsCryptoIcon,
-  title: "all-markets-crypto-title",
-  text: "all-markets-crypto-text",
+  title: "all-markets_crypto-title",
+  text: "all-markets_crypto-text",
   isGrayBackground: true,
   link: CRYPTO_PAGE_LINK,
   advantages: [
     {
       key: "adv1",
-      text: "all-markets-crypto-adv1",
+      text: "all-markets_crypto-adv1",
     },
     {
       key: "adv2",
-      text: "all-markets-crypto-adv2",
+      text: "all-markets_crypto-adv2",
     },
     {
       key: "adv3",
-      text: "all-markets-crypto-adv3",
+      text: "all-markets_crypto-adv3",
     },
     {
       key: "adv4",
-      text: "all-markets-crypto-adv4",
+      text: "all-markets_crypto-adv4",
     },
     {
       key: "adv5",
-      text: "all-markets-crypto-adv5",
+      text: "all-markets_crypto-adv5",
     },
     {
       key: "adv6",
-      text: "all-markets-crypto-adv6",
+      text: "all-markets_crypto-adv6",
     },
     {
       key: "adv7",
-      text: "all-markets-crypto-adv7",
+      text: "all-markets_crypto-adv7",
     },
   ],
 };

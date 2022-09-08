@@ -25,7 +25,7 @@ const MarketItem = ({
         <div className="market-item__title">{t(title)}</div>
         <div className="market-item__text">{t(text)}</div>
         <ButtonLink link={link} className={"market-item__btn"}>
-          {t("all-markets-learn-more-btn")}
+          {t("all-markets_learn-more-btn")}
         </ButtonLink>
       </div>
       <div className="market-item__advantages">

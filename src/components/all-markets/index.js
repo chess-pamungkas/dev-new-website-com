@@ -9,8 +9,8 @@ const AllMarkets = ({ className }) => {
     <section className={cn("all-markets", className)}>
       <div className="all-markets__wrapper">
         <div className="all-markets__block">
-          <h2 className="all-markets__title">{t("all-markets-title")}</h2>
-          <div className="all-markets__text">{t("all-markets-text")}</div>
+          <h2 className="all-markets__title">{t("all-markets_title")}</h2>
+          <div className="all-markets__text">{t("all-markets_text")}</div>
         </div>
         <div className={cn("all-markets__block", "all-markets__block--flexed")}>
           <img src={image} alt="" className="all-markets__img" />
