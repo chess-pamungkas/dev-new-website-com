@@ -60,9 +60,21 @@ export const useSearchData = () => {
       const transformedQuery = query.toLowerCase();
       const isContentRelevant = url !== currentPageUrl && transformedContent.includes(transformedQuery);
       if (isContentRelevant) {
-        // Latest Chrome versions support auto scroll to highlighted text.
-        // To make it work it's required to get full matched phrase.
-        // Will be ignored on not-supported platforms.
+        /**
+         * Latest Chrome versions support auto scroll to highlighted text
+         * if a special url parameter "#:~:text=" is provided.
+         * To make it work it's required to get full matched phrase.
+         * Will be ignored on not-supported platforms.
+         * 
+         * Nevertheless, this parameter is not accessible
+         * via "window.location" method, and this project parses url
+         * on every navigate action on localization demands.
+         * This makes engagement of this feature useless at this point.
+         * 
+         * The code below detecting "fullMatch" property is left
+         * as a hint in terms of further development.
+         */
+
         // TODO: replace with reliable regExp if possible
         let fullMatch = transformedQuery;
         const lastMatchedIndex = transformedContent.indexOf(transformedQuery) + transformedQuery.length;
