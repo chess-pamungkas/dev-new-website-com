@@ -22,6 +22,18 @@
   &__logo {
     height: 33px;
     width: auto;
+
+    &-text-main {
+      display: none;
+    }
+
+    @include desktop-xl {
+      display: none;
+
+      &-text-main {
+        display: block;
+      }
+    }
   }
 
   &__left {
@@ -108,9 +120,14 @@
   }
 
   &__search {
+    display: none;
     position: absolute;
     top: calc(100% + 30px);
     right: 54px;
+
+    @include desktop-lg {
+      display: block;
+    }
 
     @include desktop-xl {
       right: 73px;
