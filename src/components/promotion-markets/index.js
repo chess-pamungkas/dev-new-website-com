@@ -46,7 +46,7 @@ const PromotionMarkets = ({
             +result.value.backgroundPositionX.replace("px", "") +
             200 +
             "px",
-          delay: 2500,
+          delay: 2250,
           config: {
             easing: easings.easeInOutCubic,
             duration: 1000,

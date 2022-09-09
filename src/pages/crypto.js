@@ -50,6 +50,20 @@ const CryptoPage = () => {
         link={REGISTRATION_LINK}
       >
         <HighlightedLocalizationText
+          localizationText="crypto_top-market-promotion-promo-text"
+          wordsToHighlight="crypto-top-market-promotion-promo-text-accent"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+      </TopMarketPromotion>
+      <PromotionMarkets
+        animation={animation}
+        animationStyle={{
+          height: isMobile ? 301 : 473,
+        }}
+        btnTitle={t("crypto_promotion-markets-btn")}
+      >
+        <HighlightedLocalizationText
           localizationText="crypto_promotion-markets-promo-text-1"
           wordsToHighlight="crypto-promotion-markets-promo-text-accent-1"
           primaryClassName="highlighted-in-black"
@@ -88,20 +102,6 @@ const CryptoPage = () => {
         <HighlightedLocalizationText
           localizationText="crypto_promotion-markets-promo-text-7"
           wordsToHighlight="crypto-promotion-markets-promo-text-accent-7"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-      </TopMarketPromotion>
-      <PromotionMarkets
-        animation={animation}
-        animationStyle={{
-          height: isMobile ? 301 : 473,
-        }}
-        btnTitle={t("crypto_promotion-markets-btn")}
-      >
-        <HighlightedLocalizationText
-          localizationText="crypto_promotion-markets-promo-text"
-          wordsToHighlight="crypto-promotion-markets-promo-text-accent"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
