@@ -58,7 +58,6 @@ const SharesPage = () => {
         />
       </TopMarketPromotion>
       <PromotionMarkets
-        //TODO replace with the real animation
         className="promotion-markets--shares"
         animation={animation}
         animationStyle={{
