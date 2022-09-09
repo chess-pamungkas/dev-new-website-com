@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
-import { Link } from "gatsby-plugin-react-i18next";
+import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import { LogoTextMain, Logo } from "../shared/icons";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { HOME_PAGE_LINK, WINDOW_SIZE_XL } from "../../helpers/constants";
@@ -42,11 +41,11 @@ const Header = ({
       <NotificationStripe setSectionOptions={setSectionOptions} />
       <GDPRPopup />
       <header
-        className={cn("header", { "header--small": isNarrow }, className)}
+        className={cn("header", className)}
       >
         <div className="header__left">
           <Link to={HOME_PAGE_LINK}>
-              {isNarrow ? <Logo className="header__logo" /> : <LogoTextMain />}
+            {isNarrow ? <Logo className="header__logo" /> : <LogoTextMain />}
           </Link>
 
           {!isTablet && (
