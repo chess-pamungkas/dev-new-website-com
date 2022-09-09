@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import { HelpCenterIcon } from "../icons";
+import { DownloadIcon } from "../icons";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const Document = ({ className, document }) => {
@@ -8,8 +8,13 @@ const Document = ({ className, document }) => {
 
   return (
     <div className={cn("document", className)}>
-      <a className="document__link" href={document.file} target="_blank" rel="noreferrer">
-        <HelpCenterIcon className="document__icon" />
+      <a
+        className="document__link"
+        href={document.file}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <DownloadIcon className="document__icon" />
         <span className="document__name">{t(document.name)}</span>
         <span className="document__date">{document.date}</span>
         <span

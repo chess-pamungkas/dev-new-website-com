@@ -8,7 +8,7 @@ import image from "../assets/images/about-pages/legal-banner.svg";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import TopMarketPromotion from "../components/top-market-promotion";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
-import indices from "../assets/images/top-markets/indices.jpg";
+import cysec from "../assets/images/about-pages/cysec.png";
 import Documents from "../components/documents";
 import { LEGAL_DOCS } from "../helpers/documents";
 
@@ -35,8 +35,7 @@ const LegalPage = () => {
       </TopMarketPromotion>
       <TopMarketPromotion
         className="legal-page-esma"
-        // TODO replace with the real image
-        image={indices}
+        image={cysec}
         btnTitle={t("legal_top-market-promo-btn2")}
         note={t("legal_top-market-promo-note")}
         link="#legalDocuments"

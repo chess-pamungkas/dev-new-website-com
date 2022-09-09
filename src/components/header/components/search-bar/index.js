@@ -1,8 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import cn from "classnames";
 import { navigate } from "gatsby";
-import { Link } from "gatsby-plugin-react-i18next";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import SearchContext from "../../../../context/search-context";
 import { useOnClickOutside } from "../../../../helpers/hooks/use-on-click-outside";
 import {
@@ -10,8 +9,7 @@ import {
   SEARCH_MIN_QUERY_LENGTH,
   INITIAL_SEARCH_STATE,
   SEARCH_PAGE_LINK,
-  SEARCH_PARAM_NAME,
-  LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME,
+  SEARCH_PARAM_NAME
 } from "../../../../helpers/constants";
 import { SearchIcon } from "../../../shared/icons";
 import { useSearchData } from "../../../../helpers/hooks/use-search-data";
@@ -130,11 +128,7 @@ const SearchBar = ({
                     key={`search-bar-${i}`}
                   >
                     <Link
-                      to={`${
-                        page.url
-                      }?${LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME}=${encodeURI(
-                        page.fullMatch
-                      )}`}
+                      to={`${page.url}`}
                       className="search-bar__results-link"
                     >
                       <SearchIcon className="search-bar__results-icon" />

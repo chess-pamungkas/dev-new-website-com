@@ -12,7 +12,6 @@ import {
   HOME_PAGE_LINK,
   SEARCH_PARAM_NAME,
   SEARCH_MIN_QUERY_LENGTH,
-  LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME,
   SEARCH_RESULTS_FIRST_BUNDLE,
   SEARCH_RESULTS_BUNDLE_SIZE
 } from "../../helpers/constants";
@@ -118,7 +117,7 @@ const SearchPageContent = () => {
                   .map((page, i) => (
                     <li key={`search-page-${i}`} className="search-page__item">
                       <Link
-                        to={`${page.url}?${LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME}=${encodeURI(page.fullMatch)}`}
+                        to={`${page.url}`}
                         className="search-page__link"
                       >
                         <div className="search-page__icon-wrapper">
@@ -136,7 +135,7 @@ const SearchPageContent = () => {
                       <p className="search-page__text">{page.content}</p>
 
                       <ButtonLink
-                        link={`${page.url}?${LINK_TO_HIGHLIGHTED_TEXT_PARAM_NAME}=${encodeURI(page.fullMatch)}`}
+                        link={`${page.url}`}
                         className="search-page__btn button-link--ghost-red"
                       >
                         {t("search-submit-btn")}

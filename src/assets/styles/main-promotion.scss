@@ -1,6 +1,18 @@
 @import "vars";
 @import "mixins";
 
+@mixin custom-breakpoint-1200 {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin custom-breakpoint-1600 {
+  @media screen and (min-width: 1600px) {
+    @content;
+  }
+}
+
 .main-promotion {
   scroll-snap-align: start;
   position: relative;
@@ -27,6 +39,14 @@
     background-size: cover;
     height: 693px;
     padding: 75px 120px;
+  }
+
+  @include custom-breakpoint-1200 {
+    padding: 75px 15%;
+  }
+
+  @include custom-breakpoint-1600 {
+    padding: 75px 20%;
   }
 
   @include desktop-xl {
@@ -123,6 +143,14 @@
     }
     @include desktop-lg {
       right: 70px;
+    }
+
+    @include custom-breakpoint-1200 {
+      right: 15%;
+    }
+
+    @include custom-breakpoint-1600 {
+      right: 20%;
     }
 
     @include desktop-xl {
