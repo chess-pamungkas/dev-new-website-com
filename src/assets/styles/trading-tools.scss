@@ -11,6 +11,7 @@
   scroll-snap-align: start;
   position: relative;
   background: url("../../assets/images/bg/trading-tools/trading-tools-sm.svg") no-repeat bottom;
+  background-color: #fff;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -33,6 +34,7 @@
     padding-top: 115px;
     padding-bottom: 230px;
     background: url("../../assets/images/bg/trading-tools/trading-tools-md.svg") no-repeat bottom;
+    background-color: #fff;
     background-size: cover;
 
     &:after {
@@ -46,6 +48,7 @@
     padding-top: 70px;
     padding-bottom: 55px;
     background: url("../../assets/images/bg/trading-tools/trading-tools-lg.svg") no-repeat bottom;
+    background-color: #fff;
     background-size: cover;
 
     &:after {

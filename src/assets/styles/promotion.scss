@@ -1,6 +1,12 @@
 @import "vars";
 @import "mixins";
 
+@mixin custom-parallax-bg-breakpoint {
+  @media screen and (max-height: 950px) and (min-width: $md) and (max-width: $max-lg) {
+    @content;
+  }
+}
+
 .promotion {
   scroll-snap-align: start;
   position: relative;
@@ -185,7 +191,7 @@
 
     @include tablet {
       width: 2304px;
-      height: 300vh;
+      height: 300%;
       background: url("../../assets/images/bg/promotions/promotion-slide-tablet.jpg") no-repeat center;
       background-size: 300% 100%;
     }
@@ -200,6 +206,10 @@
       width: 5760px;
       background: url("../../assets/images/bg/promotions/promotion-slide.jpg") no-repeat center;
       background-size: 300% 100%;
+    }
+
+    @include custom-parallax-bg-breakpoint {
+      height: 2900px;
     }
   }
 }

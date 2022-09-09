@@ -13,6 +13,12 @@
   }
 }
 
+@mixin custom-height-breakpoint-1081 {
+  @media screen and (min-height: $xl-height + 1) {
+    @content;
+  }
+}
+
 .main-promotion {
   scroll-snap-align: start;
   position: relative;
@@ -54,6 +60,10 @@
     background-size: cover;
     height: 902px;
     @include content-alignment(0);
+  }
+
+  @include custom-height-breakpoint-1081 {
+    height: 90vh;
   }
 
   &__wrapper {
