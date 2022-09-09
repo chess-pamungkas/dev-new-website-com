@@ -1,40 +1,61 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { animated, useSpring } from "react-spring";
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import {
+  TITLES_ANIMATION_DEFAULT_FROM_CONFIG,
+  TITLES_ANIMATION_DEFAULT_TO_STEP_1_CONFIG,
+  TITLES_ANIMATION_DEFAULT_TO_STEP_2_CONFIG,
+} from "../../../helpers/animation.config";
 
 const TitlesAnimation = ({
   titles,
   isAnimationFinished,
   setIsAnimationFinished,
+  children,
+  isChildrenAnimation,
+  animationToStep1Config,
+  animationToStep2Config,
 }) => {
+  const { t } = useTranslation();
+
+  const [activeItem, setActiveItem] = useState(
+    isChildrenAnimation ? React.Children.toArray(children[0]) : t(titles[0])
+  );
+  const [items, setItems] = useState(null);
   const [index, setIndex] = useState(0);
 
-  const { t } = useTranslation();
+  useEffect(() => {
+    if (isChildrenAnimation && children?.length) {
+      setItems(React.Children.toArray(children));
+    }
+
+    if (titles?.length) {
+      setItems(titles);
+    }
+  }, [isChildrenAnimation, titles]);
 
   const animationStyles = useSpring({
     loop: true,
-    from: { opacity: 0, top: "-40px", position: "relative" },
+    from: TITLES_ANIMATION_DEFAULT_FROM_CONFIG,
     to: [
+      animationToStep1Config || TITLES_ANIMATION_DEFAULT_TO_STEP_1_CONFIG,
       {
-        opacity: 1,
-        top: "0",
-        config: {
-          duration: 150,
-        },
-      },
-      {
-        opacity: 0,
-        top: "40px",
-        config: {
-          duration: 150,
-        },
-        delay: 2000,
+        ...(animationToStep2Config ||
+          TITLES_ANIMATION_DEFAULT_TO_STEP_2_CONFIG),
         onRest: () => {
-          if (index < titles.length - 1) {
+          if (index < items.length - 1) {
+            setActiveItem(
+              isChildrenAnimation ? items[index + 1] : t(items[index + 1])
+            );
             setIndex(index + 1);
           }
 
-          if (index === titles.length - 2) {
+          if (index === items.length - 2) {
+            setActiveItem(
+              isChildrenAnimation
+                ? items[items.length - 1]
+                : t(items[titles.length - 1])
+            );
             setIsAnimationFinished(true);
           }
         },
@@ -43,9 +64,9 @@ const TitlesAnimation = ({
   });
 
   return isAnimationFinished ? (
-    t(titles[titles.length - 1])
+    activeItem
   ) : (
-    <animated.div style={animationStyles}>{t(titles[index])}</animated.div>
+    <animated.div style={animationStyles}>{activeItem}</animated.div>
   );
 };
 

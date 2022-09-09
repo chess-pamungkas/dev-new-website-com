@@ -38,13 +38,27 @@
   }
 
   &__chart {
-    min-height: 110px;
     width: 100%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: url("../images/top-markets/globe-chart.svg") no-repeat center;
+    background: url("../images/top-markets/globe-chart.svg") center;
     background-size: cover;
+    background-repeat: repeat-x;
+    background-position-x: 0;
+    min-height: 110px;
+
+    @include tablet {
+      min-height: 181px;
+    }
+
+    @include desktop-lg {
+      min-height: 147px;
+    }
+
+    @include desktop-xl {
+      min-height: 180px;
+    }
   }
 
   &__title {
@@ -77,6 +91,31 @@
       line-height: 62px;
       width: 380px;
       font-size: 24px;
+    }
+  }
+}
+
+.promotion-markets--shares {
+  .promotion-markets__svg {
+    svg {
+      position: absolute;
+    }
+  }
+
+  @include tablet {
+    .promotion-markets__svg {
+      svg {
+        height: 100vh!important;
+        top: -50%;
+      }
+    }
+  }
+
+  @include desktop-xl {
+    .promotion-markets__svg {
+      svg {
+        height: 1080px!important;
+      }
     }
   }
 }

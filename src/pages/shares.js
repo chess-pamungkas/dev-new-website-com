@@ -11,7 +11,7 @@ import HighlightedLocalizationText from "../components/shared/highlighted-locali
 import TradingTicker from "../components/trading-ticker";
 import shares from "../assets/images/top-markets/images/shares.png";
 import TopMarketPromotion from "../components/top-market-promotion";
-import animation from "../assets/images/animations/crypto.json";
+import animation from "../assets/images/animations/shares.json";
 import PromotionMarkets from "../components/promotion-markets";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import TableComponent from "../components/shared/table";
@@ -58,7 +58,7 @@ const SharesPage = () => {
         />
       </TopMarketPromotion>
       <PromotionMarkets
-        //TODO replace with the real animation
+        className="promotion-markets--shares"
         animation={animation}
         animationStyle={{
           height: isMobile ? 301 : 473,
@@ -66,8 +66,44 @@ const SharesPage = () => {
         btnTitle={t("shares_promotion-markets-btn")}
       >
         <HighlightedLocalizationText
-          localizationText="shares_promotion-markets-promo-text"
-          wordsToHighlight="shares-promotion-markets-promo-text-accent"
+          localizationText="shares_promotion-markets-promo-text-1"
+          wordsToHighlight="shares-promotion-markets-promo-text-accent-1"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+        <HighlightedLocalizationText
+          localizationText="shares_promotion-markets-promo-text-2"
+          wordsToHighlight="shares-promotion-markets-promo-text-accent-2"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+        <HighlightedLocalizationText
+          localizationText="shares_promotion-markets-promo-text-3"
+          wordsToHighlight="shares-promotion-markets-promo-text-accent-3"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+        <HighlightedLocalizationText
+          localizationText="shares_promotion-markets-promo-text-4"
+          wordsToHighlight="shares-promotion-markets-promo-text-accent-4"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+        <HighlightedLocalizationText
+          localizationText="shares_promotion-markets-promo-text-5"
+          wordsToHighlight="shares-promotion-markets-promo-text-accent-5"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+        <HighlightedLocalizationText
+          localizationText="shares_promotion-markets-promo-text-6"
+          wordsToHighlight="shares-promotion-markets-promo-text-accent-6"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+        <HighlightedLocalizationText
+          localizationText="shares_promotion-markets-promo-text-7"
+          wordsToHighlight="shares-promotion-markets-promo-text-accent-7"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
