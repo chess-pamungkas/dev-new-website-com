@@ -94,7 +94,7 @@ const PromotionMarkets = ({
             style={chartAnimationStyles}
           />
         )}
-        <Lottie animationData={animation} style={animationStyle} />
+        <Lottie className="promotion-markets__svg" animationData={animation} style={animationStyle} />
       </div>
 
       <div className="promotion-markets__content">

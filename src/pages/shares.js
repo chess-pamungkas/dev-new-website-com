@@ -11,7 +11,7 @@ import HighlightedLocalizationText from "../components/shared/highlighted-locali
 import TradingTicker from "../components/trading-ticker";
 import shares from "../assets/images/top-markets/images/shares.png";
 import TopMarketPromotion from "../components/top-market-promotion";
-import animation from "../assets/images/animations/crypto.json";
+import animation from "../assets/images/animations/shares.json";
 import PromotionMarkets from "../components/promotion-markets";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import TableComponent from "../components/shared/table";
@@ -59,6 +59,7 @@ const SharesPage = () => {
       </TopMarketPromotion>
       <PromotionMarkets
         //TODO replace with the real animation
+        className="promotion-markets--shares"
         animation={animation}
         animationStyle={{
           height: isMobile ? 301 : 473,

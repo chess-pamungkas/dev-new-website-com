@@ -94,3 +94,28 @@
     }
   }
 }
+
+.promotion-markets--shares {
+  .promotion-markets__svg {
+    svg {
+      position: absolute;
+    }
+  }
+
+  @include tablet {
+    .promotion-markets__svg {
+      svg {
+        height: 100vh!important;
+        top: -50%;
+      }
+    }
+  }
+
+  @include desktop-xl {
+    .promotion-markets__svg {
+      svg {
+        height: 1080px!important;
+      }
+    }
+  }
+}
