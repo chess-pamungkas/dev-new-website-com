@@ -2829,3 +2829,20 @@ export const AllMarketsCryptoIcon = ({ className }) => (
     </g>
   </svg>
 );
+
+export const DownloadIcon = ({ className }) => (
+  <svg
+    className={className}
+    id="row3"
+    xmlns="http://www.w3.org/2000/svg"
+    width="79.584"
+    height="79.584"
+    viewBox="0 0 79.584 79.584"
+  >
+    <path
+      id="download_2_"
+      d="M39.792,0A39.792,39.792,0,1,0,79.584,39.792,39.829,39.829,0,0,0,39.792,0ZM39.73,65.159,18.652,39.792,34.01,39.73V17.471H45.636v22.2h15.3Z"
+      fill="#f40"
+    />
+  </svg>
+);
