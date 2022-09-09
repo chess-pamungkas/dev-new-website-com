@@ -13,7 +13,7 @@
   }
 }
 
-@mixin custom-height-breakpoint-1081 {
+@mixin custom-height-breakpoint {
   @media screen and (min-height: $xl-height + 1) {
     @content;
   }
@@ -62,7 +62,7 @@
     @include content-alignment(0);
   }
 
-  @include custom-height-breakpoint-1081 {
+  @include custom-height-breakpoint {
     height: 90vh;
   }
 
