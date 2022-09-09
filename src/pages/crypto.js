@@ -50,8 +50,44 @@ const CryptoPage = () => {
         link={REGISTRATION_LINK}
       >
         <HighlightedLocalizationText
-          localizationText="crypto_top-market-promotion-promo-text"
-          wordsToHighlight="crypto-top-market-promotion-promo-text-accent"
+          localizationText="crypto_promotion-markets-promo-text-1"
+          wordsToHighlight="crypto-promotion-markets-promo-text-accent-1"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+        <HighlightedLocalizationText
+          localizationText="crypto_promotion-markets-promo-text-2"
+          wordsToHighlight="crypto-promotion-markets-promo-text-accent-2"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+        <HighlightedLocalizationText
+          localizationText="crypto_promotion-markets-promo-text-3"
+          wordsToHighlight="crypto-promotion-markets-promo-text-accent-3"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+        <HighlightedLocalizationText
+          localizationText="crypto_promotion-markets-promo-text-4"
+          wordsToHighlight="crypto-promotion-markets-promo-text-accent-4"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+        <HighlightedLocalizationText
+          localizationText="crypto_promotion-markets-promo-text-5"
+          wordsToHighlight="crypto-promotion-markets-promo-text-accent-5"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+        <HighlightedLocalizationText
+          localizationText="crypto_promotion-markets-promo-text-6"
+          wordsToHighlight="crypto-promotion-markets-promo-text-accent-6"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+        <HighlightedLocalizationText
+          localizationText="crypto_promotion-markets-promo-text-7"
+          wordsToHighlight="crypto-promotion-markets-promo-text-accent-7"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
