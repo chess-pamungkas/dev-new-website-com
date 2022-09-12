@@ -60,19 +60,19 @@
   &__title {
     color: map-get($colors, "white");
     font-weight: map-get($font-weight, "black");
-    font-size: 34px;
-    line-height: 42px;
+    font-size: 32px;
+    line-height: 40px;
     margin: 0 0 20px;
     text-align: center;
 
     @include tablet {
-      font-size: 60px;
-      line-height: 75px;
+      font-size: 42px;
+      line-height: 53px;
     }
 
     @include desktop-lg {
-      font-size: 40px;
-      line-height: 50px;
+      font-size: 52px;
+      line-height: 65px;
     }
 
     @include desktop-xl {
@@ -90,13 +90,13 @@
     line-height: 30px;
 
     @include tablet {
-      font-size: 36px;
-      line-height: 45px;
+      font-size: 32px;
+      line-height: 40px;
     }
 
     @include desktop-lg {
-      font-size: 30px;
-      line-height: 37px;
+      font-size: 36px;
+      line-height: 45px;
     }
 
     @include desktop-xl {

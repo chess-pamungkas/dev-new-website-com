@@ -1,12 +1,4 @@
 import {
-  AllMarketsCommoditiesIcon,
-  AllMarketsCryptoIcon,
-  AllMarketsEnergiesIcon,
-  AllMarketsForexIcon,
-  AllMarketsIndicesIcon,
-  AllMarketsSharesIcon,
-} from "../components/shared/icons";
-import {
   COMMODITIES_PAGE_LINK,
   CRYPTO_PAGE_LINK,
   ENERGIES_PAGE_LINK,
@@ -14,10 +6,16 @@ import {
   INDICES_PAGE_LINK,
   SHARES_PAGE_LINK,
 } from "./constants";
+import forexIcon from "../assets/images/all-markets/forex.svg";
+import IndicesIcon from "../assets/images/all-markets/indices.svg";
+import sharesIcon from "../assets/images/all-markets/shares.svg";
+import CommoditiesIcon from "../assets/images/all-markets/commodities.svg";
+import EnergiesIcon from "../assets/images/all-markets/energies.svg";
+import CryptoIcon from "../assets/images/all-markets/crypto.svg";
 
 const FOREX = {
   key: "forex",
-  icon: AllMarketsForexIcon,
+  icon: forexIcon,
   title: "all-markets_market-items-list-forex-title",
   text: "all-markets_market-items-list-forex-text",
   isGrayBackground: false,
@@ -56,7 +54,7 @@ const FOREX = {
 
 const INDICES = {
   key: "indices",
-  icon: AllMarketsIndicesIcon,
+  icon: IndicesIcon,
   title: "all-markets_market-items-list-indices-title",
   text: "all-markets_market-items-list-indices-text",
   isGrayBackground: true,
@@ -95,7 +93,7 @@ const INDICES = {
 
 const SHARES = {
   key: "shares",
-  icon: AllMarketsSharesIcon,
+  icon: sharesIcon,
   title: "all-markets_market-items-list-shares-title",
   text: "all-markets_market-items-list-shares-text",
   isGrayBackground: false,
@@ -134,7 +132,7 @@ const SHARES = {
 
 const COMMODITIES = {
   key: "commodities",
-  icon: AllMarketsCommoditiesIcon,
+  icon: CommoditiesIcon,
   title: "all-markets_market-items-list-commodities-title",
   text: "all-markets_market-items-list-commodities-text",
   isGrayBackground: true,
@@ -173,7 +171,7 @@ const COMMODITIES = {
 
 const ENERGIES = {
   key: "energies",
-  icon: AllMarketsEnergiesIcon,
+  icon: EnergiesIcon,
   title: "all-markets_market-items-list-energies-title",
   text: "all-markets_market-items-list-energies-text",
   isGrayBackground: false,
@@ -212,7 +210,7 @@ const ENERGIES = {
 
 const CRYPTO = {
   key: "crypto",
-  icon: AllMarketsCryptoIcon,
+  icon: CryptoIcon,
   title: "all-markets_market-items-list-crypto-title",
   text: "all-markets_market-items-list-crypto-text",
   isGrayBackground: true,
