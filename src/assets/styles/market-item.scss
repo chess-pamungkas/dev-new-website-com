@@ -1,15 +1,25 @@
 @import "vars";
 
 .market-item {
-  padding: 120px 40px;
+  padding: 86px 20px 80px 20px;
   display: flex;
   position: relative;
   flex-direction: column;
 
+  @include tablet {
+    padding: 120px 30px;
+  }
+
   @include desktop-lg {
     flex-direction: row;
     justify-content: space-between;
-    padding: 215px 80px;
+    padding: 124px 40px;
+  }
+
+  @include desktop-xl {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 210px 74px 216px 80px;
   }
 
   &:before {
@@ -17,17 +27,17 @@
     position: absolute;
     right: 0;
     background: url("../../assets/images/all-markets/top-bg-sm.svg") no-repeat;
-    width: 166px;
-    height: 199px;
+    width: 95px;
+    height: 114px;
     top: 0;
 
     @include tablet {
       background: url("../../assets/images/all-markets/top-bg-md.svg") no-repeat;
-      width: 249px;
-      height: 299px;
+      width: 219px;
+      height: 263px;
     }
 
-    @include desktop-lg {
+    @include desktop-xl {
       background: url("../../assets/images/all-markets/top-bg-lg.svg") no-repeat;
       width: 332px;
       height: 398px;
@@ -38,41 +48,52 @@
     background-color: #f9f9f9;
   }
 
-  &__description {
-    width: 100%;
-
-    @include desktop-xl {
-      width: 1072px;
-    }
-  }
-
   &__advantages {
     z-index: 2;
     display: flex;
     justify-content: center;
     padding-top: 30px;
 
+    @include tablet {
+      padding-top: 57px;
+      padding-right: 9px;
+    }
+
     @include desktop-lg {
-      padding-left: 74px;
-      display: block;
+      padding-left: 44px;
       padding-top: unset;
+      padding-right: unset;
+    }
+
+    @include desktop-xl {
+      padding-left: 74px;
     }
   }
 
   &__title {
-    font: normal normal map-get($font-weight, "black") 40px/52px $font;
+    font: normal normal map-get($font-weight, "black") 36px/45px $font;
     color: map-get($colors, "black-secondary");
 
-    @include desktop-xl {
+    @include tablet {
       font: normal normal map-get($font-weight, "black") 54px/67px $font;
     }
   }
 
   &__text {
-    font: normal normal normal 24px/32px $font;
+    font: normal normal normal 12px/20px $font;
     color: map-get($colors, "black-secondary");
-    padding-top: 39px;
-    padding-bottom: 51px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    @include tablet {
+      font: normal normal normal 28px/45px $font;
+      padding-top: 39px;
+      padding-bottom: 40px;
+    }
+
+    @include desktop-lg {
+      font: normal normal normal 24px/35px $font;
+    }
 
     @include desktop-xl {
       font: normal normal normal 28px/45px $font;
@@ -83,25 +104,35 @@
     background: map-get($colors, "red") 0 0% no-repeat padding-box;
     border: 2px solid map-get($colors, "white");
     border-radius: 31px;
-    height: 62px;
+    width: 254px;
+    height: 42px;
     text-align: center;
-    font: normal normal map-get($font-weight, "black") 24px/30px $font;
+    font: normal normal map-get($font-weight, "black") 16px/20px $font;
     color: map-get($colors, "white");
     text-transform: uppercase;
-    padding-top: 13px;
+    padding-top: 9px;
+    margin-left: 10px;
 
     @include tablet {
-      width: 300px;
-    }
-
-    @include desktop-xl {
       width: 380px;
+      height: 62px;
+      font: normal normal map-get($font-weight, "black") 24px/30px $font;
+      padding-top: 13px;
+      margin-left: unset;
     }
 
     &:hover {
       background: map-get($colors, "white") 0 0% no-repeat padding-box;
       color: map-get($colors, "red");
       border: 2px solid map-get($colors, "red");
+    }
+  }
+
+  &__icon {
+    width: 51px;
+
+    @include tablet {
+      width: 71px;
     }
   }
 }
