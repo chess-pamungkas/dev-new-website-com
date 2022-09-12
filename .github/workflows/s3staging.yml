@@ -1,4 +1,4 @@
-name: Deploy front to s3
+name: Deploy front to s3 staging
 
 on:
   push:
