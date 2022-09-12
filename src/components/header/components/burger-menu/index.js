@@ -147,7 +147,11 @@ const BurgerMenu = ({ className }) => {
                               )}`}
                               className="burger-menu__link-item"
                             >
-                              <Link className="burger-menu__link" to={link}>
+                              <Link
+                                className="burger-menu__link"
+                                to={link}
+                                onClick={onTriggerChange}
+                              >
                                 {t(title)}
                               </Link>
 
@@ -163,6 +167,7 @@ const BurgerMenu = ({ className }) => {
                                       <Link
                                         className="burger-menu__link"
                                         to={subtitle.link}
+                                        onClick={onTriggerChange}
                                       >
                                         {t(subtitle.title)}
                                       </Link>
