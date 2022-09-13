@@ -205,6 +205,7 @@
   }
 
   &__btn {
+    cursor: pointer;
     background: map-get($colors, "white") 0 0% no-repeat padding-box;
     border: 2px solid map-get($colors, "red");
     border-radius: 31px;

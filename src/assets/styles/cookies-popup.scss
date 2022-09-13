@@ -58,6 +58,7 @@
   }
 
   &__accept-btn {
+    cursor: pointer;
     background: map-get($colors, "red") 0 0% no-repeat padding-box;
     border: 2px solid map-get($colors, "white");
     border-radius: 31px;
