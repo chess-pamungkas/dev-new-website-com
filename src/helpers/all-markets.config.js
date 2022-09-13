@@ -17,7 +17,7 @@ const FOREX = {
   key: "forex",
   icon: forexIcon,
   title: "all-markets_market-items-list-forex-title",
-  text: "all-markets_market-items-list-forex-text",
+  text: ["all-markets_market-items-list-forex-text"],
   isGrayBackground: false,
   link: FOREX_PAGE_LINK,
   advantages: [
@@ -56,7 +56,11 @@ const INDICES = {
   key: "indices",
   icon: IndicesIcon,
   title: "all-markets_market-items-list-indices-title",
-  text: "all-markets_market-items-list-indices-text",
+  text: [
+    "all-markets_market-items-list-indices-text",
+    "all-markets_market-items-list-indices-text2",
+    "all-markets_market-items-list-indices-text3",
+  ],
   isGrayBackground: true,
   link: INDICES_PAGE_LINK,
   advantages: [
@@ -95,7 +99,7 @@ const SHARES = {
   key: "shares",
   icon: sharesIcon,
   title: "all-markets_market-items-list-shares-title",
-  text: "all-markets_market-items-list-shares-text",
+  text: ["all-markets_market-items-list-shares-text"],
   isGrayBackground: false,
   link: SHARES_PAGE_LINK,
   advantages: [
@@ -134,7 +138,7 @@ const COMMODITIES = {
   key: "commodities",
   icon: CommoditiesIcon,
   title: "all-markets_market-items-list-commodities-title",
-  text: "all-markets_market-items-list-commodities-text",
+  text: ["all-markets_market-items-list-commodities-text", "all-markets_market-items-list-commodities-text2"],
   isGrayBackground: true,
   link: COMMODITIES_PAGE_LINK,
   advantages: [
@@ -173,7 +177,7 @@ const ENERGIES = {
   key: "energies",
   icon: EnergiesIcon,
   title: "all-markets_market-items-list-energies-title",
-  text: "all-markets_market-items-list-energies-text",
+  text: ["all-markets_market-items-list-energies-text"],
   isGrayBackground: false,
   link: ENERGIES_PAGE_LINK,
   advantages: [
@@ -212,7 +216,7 @@ const CRYPTO = {
   key: "crypto",
   icon: CryptoIcon,
   title: "all-markets_market-items-list-crypto-title",
-  text: "all-markets_market-items-list-crypto-text",
+  text: ["all-markets_market-items-list-crypto-text"],
   isGrayBackground: true,
   link: CRYPTO_PAGE_LINK,
   advantages: [

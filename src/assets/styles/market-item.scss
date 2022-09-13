@@ -1,7 +1,8 @@
 @import "vars";
+@import "mixins";
 
 .market-item {
-  padding: 86px 20px 80px 20px;
+  padding: 86px 20px 80px;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -69,6 +70,7 @@
   }
 
   &__title {
+    margin: 0;
     font: normal normal map-get($font-weight, "black") 36px/45px $font;
     color: map-get($colors, "black-secondary");
 
@@ -78,23 +80,27 @@
   }
 
   &__text {
-    font: normal normal normal 12px/20px $font;
+    font: normal normal map-get($font-weight, "regular") 12px/20px $font;
     color: map-get($colors, "black-secondary");
     padding-top: 30px;
     padding-bottom: 30px;
 
     @include tablet {
-      font: normal normal normal 28px/45px $font;
+      font: normal normal map-get($font-weight, "regular") 28px/45px $font;
       padding-top: 39px;
       padding-bottom: 40px;
     }
 
     @include desktop-lg {
-      font: normal normal normal 24px/35px $font;
+      font: normal normal map-get($font-weight, "regular") 24px/35px $font;
     }
 
     @include desktop-xl {
-      font: normal normal normal 28px/45px $font;
+      font: normal normal map-get($font-weight, "regular") 28px/45px $font;
+    }
+
+    span {
+      display: block;
     }
   }
 

@@ -22,8 +22,12 @@ const MarketItem = ({
     >
       <div className="market-item__description">
         <img src={icon} alt="" className="market-item__icon" />
-        <div className="market-item__title">{t(title)}</div>
-        <div className="market-item__text">{t(text)}</div>
+        <h3 className="market-item__title">{t(title)}</h3>
+        <div className="market-item__text">
+          {text.map((item, number) => (
+            <span key={`${t(title)}-${number}`}>{t(item)}</span>
+          ))}
+        </div>
         <ButtonLink link={link} className={"market-item__btn"}>
           {t("all-markets_market-items-list-learn-more-btn")}
         </ButtonLink>

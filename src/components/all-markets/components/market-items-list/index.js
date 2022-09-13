@@ -21,7 +21,7 @@ const MarketItemsList = ({ className }) => {
   return (
     <section className={cn("market-items-list", className)}>
       {markets.map((item) => (
-        <MarketItem {...item} />
+        <MarketItem key={`market-item-${item.title}`} {...item} />
       ))}
     </section>
   );
