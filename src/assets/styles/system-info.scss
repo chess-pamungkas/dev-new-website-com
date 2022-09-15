@@ -10,14 +10,17 @@
 
   @include tablet {
     padding: 90px 0 67px;
+    background: url("../../assets/images/system-info/bg-md.svg") no-repeat bottom;
   }
 
   @include desktop-lg {
     padding: 77px 0 60px;
+    background: url("../../assets/images/system-info/bg-lg.svg") no-repeat bottom;
   }
 
   @include desktop-xl {
     padding: 85px 0;
+    background: url("../../assets/images/system-info/bg-xl.svg") no-repeat bottom;
   }
 
   &__img-container {
