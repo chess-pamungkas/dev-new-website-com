@@ -1,0 +1,52 @@
+name: Deploy front to s3 prod after approval
+
+on: [workflow_dispatch]
+jobs:
+  deploy:
+    name: Deploy com
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: mv .env_prod_com .env.production
+      - run: npm ci
+      - run: npm run build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+            aws-access-key-id: ${{ secrets.S3_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.S3_KEY }}
+            aws-region: eu-central-1
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync ./public/ s3://oqtima.com --delete
+  deploy_eu:
+    name: Deploy eu
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: mv .env_prod_eu .env.production
+      - run: npm ci
+      - run: npm run build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+            aws-access-key-id: ${{ secrets.S3_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.S3_KEY }}
+            aws-region: eu-central-1
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync ./public/ s3://oqtima.eu --delete
