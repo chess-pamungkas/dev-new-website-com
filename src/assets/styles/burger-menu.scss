@@ -83,6 +83,10 @@
     transition: opacity 0.3s ease-in-out;
     background-color: map-get($colors, 'white');
 
+    &--lang-popup-opened {
+      left: 0;
+    }
+
     @include tablet {
       padding: 85px 26px 26px 96px;
     }

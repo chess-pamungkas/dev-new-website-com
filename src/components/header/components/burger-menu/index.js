@@ -26,6 +26,7 @@ const BurgerMenu = ({ className }) => {
     FSA_MENU_ITEMS[0].title
   );
   const [menu, setMenu] = useState([]);
+  const [isLangPopupOpened, setIsLangPopupOpened] = useState(false);
   const { currentEntity } = useContext(ClientResolverContext);
 
   useEffect(() => {
@@ -66,7 +67,11 @@ const BurgerMenu = ({ className }) => {
         ))}
       </button>
 
-      <div className="burger-menu__navbar">
+      <div
+        className={cn("burger-menu__navbar", {
+          "burger-menu__navbar--lang-popup-opened": isLangPopupOpened,
+        })}
+      >
         <button
           className={cn("burger-menu__trigger", {
             "burger-menu__trigger--open": isNavbarOpen,
@@ -78,7 +83,12 @@ const BurgerMenu = ({ className }) => {
           ))}
         </button>
 
-        {isMobile && <LangSelect className="burger-menu__lang-select-mobile" />}
+        {isMobile && (
+          <LangSelect
+            className="burger-menu__lang-select-mobile"
+            setIsLangPopupOpened={setIsLangPopupOpened}
+          />
+        )}
 
         <ul>
           <li className="burger-menu__item">

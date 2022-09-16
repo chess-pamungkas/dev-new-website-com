@@ -8,7 +8,7 @@ import Popup from "../../../shared/popup";
 import LangOptions from "../lang-options";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
 
-const LangSelect = ({ className, isHeader = false }) => {
+const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
   const {
     selectedLanguage,
     selectedLanguage: { icon: Icon } = {},
@@ -18,7 +18,7 @@ const LangSelect = ({ className, isHeader = false }) => {
 
   const onLangSelect = (selected) => {
     setSelectedLanguage(selected);
-    handleClose();
+    closePopup();
   };
 
   const setIconColor = (isShow) => {
@@ -27,6 +27,11 @@ const LangSelect = ({ className, isHeader = false }) => {
     }
 
     return isShow ? ANGLE_ICON_COLOR.white : ANGLE_ICON_COLOR.red;
+  };
+
+  const closePopup = () => {
+    setIsLangPopupOpened && setIsLangPopupOpened(false);
+    handleClose();
   };
 
   return (
@@ -40,6 +45,7 @@ const LangSelect = ({ className, isHeader = false }) => {
         type="button"
         onClick={(e) => {
           handleOpen();
+          setIsLangPopupOpened && setIsLangPopupOpened(true);
           sendClickEventToGA(e);
         }}
       >
@@ -53,7 +59,7 @@ const LangSelect = ({ className, isHeader = false }) => {
         />
       </button>
 
-      <Popup isPopupOpen={isShow} handlePopupClose={handleClose}>
+      <Popup isPopupOpen={isShow} handlePopupClose={closePopup}>
         <LangOptions
           selectedLanguage={selectedLanguage}
           langugeSelectHandler={onLangSelect}
