@@ -9,7 +9,7 @@ import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import TradingTicker from "../components/trading-ticker";
-import shares from "../assets/images/top-markets/images/shares.png";
+import shares from "../assets/images/top-markets/images/shares.svg";
 import TopMarketPromotion from "../components/top-market-promotion";
 import animation from "../assets/images/animations/shares.json";
 import PromotionMarkets from "../components/promotion-markets";

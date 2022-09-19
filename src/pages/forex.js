@@ -16,7 +16,7 @@ import animation from "../assets/images/animations/forex.json";
 import TopMarketLayout from "../components/top-market-layout";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import Seo from "../components/shared/seo";
-import forex from "../assets/images/top-markets/images/forex.png";
+import forex from "../assets/images/top-markets/images/forex.svg";
 import TopMarketPromotion from "../components/top-market-promotion";
 import TradingTicker from "../components/trading-ticker";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
