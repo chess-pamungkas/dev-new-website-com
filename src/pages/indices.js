@@ -17,7 +17,7 @@ import { FAQ_INDICES } from "../helpers/faq";
 import animation from "../assets/images/animations/indices.json";
 import PromotionMarkets from "../components/promotion-markets";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
-import indices from "../assets/images/top-markets/indices.jpg";
+import indices from "../assets/images/top-markets/images/indices.svg";
 import TopMarketPromotion from "../components/top-market-promotion";
 
 const IndicesPage = () => {

@@ -15,7 +15,7 @@ import { FAQ_CRYPTO } from "../helpers/faq";
 import Faq from "../components/faq";
 import Seo from "../components/shared/seo";
 import TradingTicker from "../components/trading-ticker";
-import crypto from "../assets/images/top-markets/images/crypto.png";
+import crypto from "../assets/images/top-markets/images/crypto.svg";
 import TopMarketPromotion from "../components/top-market-promotion";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";

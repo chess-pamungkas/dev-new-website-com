@@ -10,7 +10,7 @@ import Seo from "../components/shared/seo";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import TradingTicker from "../components/trading-ticker";
 import TopMarketPromotion from "../components/top-market-promotion";
-import energies from "../assets/images/top-markets/images/energies.png";
+import energies from "../assets/images/top-markets/images/energies.svg";
 import PromotionMarkets from "../components/promotion-markets";
 import animation from "../assets/images/animations/energies.json";
 import TopMarketLayout from "../components/top-market-layout";
