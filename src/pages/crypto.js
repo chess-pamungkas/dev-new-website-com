@@ -114,8 +114,16 @@ const CryptoPage = () => {
         <TableComponent
           data={DATA_CRYPTO}
           columns={COLUMNS_CRYPTO}
-          title={t("crypto_table-title")}
-          subtitle={t("crypto_table-subtitle")}
+          isWrapperPadding
+          tip={
+            <span>
+              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+              &nbsp;
+              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+              &nbsp;
+            </span>
+          }
+          isSearch
         />
       </TopMarketLayout>
       <Faq faq={FAQ_CRYPTO} />
