@@ -24,7 +24,15 @@ const Faq = ({ className, title, faq }) => {
                 iconForActive={AccordionActiveIcon}
                 title={item.title}
               >
-                {t(item.content)}
+                {item.content.map((content, i) => (
+                  <span
+                    className={cn("faq__text", {
+                      "faq__text--bold": item.bold?.includes(i),
+                    })}
+                  >
+                    {t(content)}
+                  </span>
+                ))}
               </Accordion>
             ))}
         </div>
