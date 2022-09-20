@@ -12,6 +12,9 @@ import { MT4_DOC } from "../helpers/documents";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import icon from "../assets/images/icon--white.svg";
+import MarketItemAdvantageList from "../components/all-markets/components/market-item-advantage-list";
+import { MT4_ADVANTAGES } from "../helpers/platforms.config";
+import { MT4_PLATFORMS } from "../helpers/config";
 
 const MT4Page = () => {
   const { t } = useTranslation();
@@ -42,17 +45,56 @@ const MT4Page = () => {
           accentClassName={"highlighted-in-white"}
         />
       </TopMarketPromotion>
+      <TopMarketPromotion
+        className="mt4-page-advantage-promotion"
+        // TODO replace with the real animation
+        image={animation}
+        isLottieImage
+        lottieStyle={{
+          height: 536,
+        }}
+        btnClassName="button-link--red"
+        btnTitle={t("mt4_top-market-promo-btn")}
+        link={MT4_DOC}
+        isDocumentLink
+        isAdditionalBlock
+        additionalBlock={
+          <div className="mt4-page-advantage-promotion__img-wrapper">
+            {Object.values(MT4_PLATFORMS).map((platform) => (
+              <img
+                key={`mt4-${platform.title}`}
+                src={platform.icon}
+                alt="platform.title"
+                className="mt4-page-advantage-promotion__img"
+              />
+            ))}
+          </div>
+        }
+      >
+        <HighlightedLocalizationText
+          localizationText="mt4_top-market-promo-text2"
+          wordsToHighlight="mt4_top-market-promo-text-accent2"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-red"
+        />
+        <div className="mt4-page-advantages">
+          <MarketItemAdvantageList
+            advantages={MT4_ADVANTAGES}
+            className="mt4-market-item-advantages"
+          />
+        </div>
+      </TopMarketPromotion>
       {isXL && (
         <TopMarketPromotion
           className="mt4-page-bottom-promotion"
           image={icon}
           btnClassName="button-link--red"
-          btnTitle={t("mt4_top-market-promo-btn2")}
+          btnTitle={t("mt4_top-market-promo-btn3")}
           link={REGISTRATION_LINK}
         >
           <HighlightedLocalizationText
-            localizationText="mt4_top-market-promo-text2"
-            wordsToHighlight="mt4_top-market-promo-text-accent2"
+            localizationText="mt4_top-market-promo-text3"
+            wordsToHighlight="mt4_top-market-promo-text-accent3"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-white"
           />

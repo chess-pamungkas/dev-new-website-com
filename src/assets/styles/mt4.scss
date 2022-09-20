@@ -73,9 +73,113 @@
   }
 }
 
+.mt4-page-advantage-promotion {
+  padding-top: 52px;
+  padding-bottom: 40px;
+
+  @include tablet {
+    padding-top: 60px;
+    padding-bottom: 119px;
+  }
+
+  @include desktop-lg {
+    padding-top: 95px;
+    padding-bottom: 98px;
+  }
+
+  @include desktop-xl {
+    padding-top: 119px;
+    padding-bottom: 119px;
+  }
+
+  .top-market-promotion__text {
+    text-align: center;
+    font-size: 24px;
+    line-height: 30px;
+
+    @include tablet {
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    @include desktop-lg {
+      text-align: left;
+    }
+  }
+
+  .top-market-promotion__btn {
+    text-transform: unset;
+    margin: 0;
+
+
+    @include desktop-lg {
+      text-transform: uppercase;
+      width: 431px;
+    }
+  }
+}
+
+.mt4-page-advantages {
+  margin: 31px 0 30px;
+
+  @include tablet {
+    margin: 31px 0 45px;
+  }
+
+  @include desktop-xl {
+    margin: 31px 0 67px;
+  }
+}
+
+.mt4-market-item-advantages {
+  width: unset;
+
+  @include desktop-lg {
+    max-width: 460px;
+  }
+
+  @include desktop-xl {
+    max-width: 823px;
+  }
+}
+
+.mt4-page-advantage-promotion__img-wrapper {
+  padding: 30px 0 0;
+
+  @include tablet {
+    padding: 40px 0 0;
+  }
+}
+
+.mt4-page-advantage-promotion__img {
+  height: 25px;
+  width: auto;
+  margin: 0 10px;
+
+  &:first-child {
+    margin: 0 10px 0 0;
+  }
+
+  &:last-child {
+    margin: 0 0 0 10px;
+  }
+
+  @include tablet {
+    height: auto;
+    margin: 0 25px;
+
+    &:first-child {
+      margin: 0 25px 0 0;
+    }
+
+    &:last-child {
+      margin: 0 0 0 25px;
+    }
+  }
+}
+
 .mt4-page-bottom-promotion {
   background: map-get($colors, "red");
-  @include content-alignment(0);
   padding-top: 86px;
   padding-bottom: 86px;
 

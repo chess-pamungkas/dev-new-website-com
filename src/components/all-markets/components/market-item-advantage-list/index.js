@@ -17,7 +17,7 @@ const MarketItemAdvantageList = ({ className, advantages }) => {
             alt=""
             className="market-item-advantages__icon"
           />
-          <div className="market-item-advantages__text">{t(item.text)}</div>
+          <span className="market-item-advantages__text">{t(item.text)}</span>
         </div>
       ))}
     </div>
