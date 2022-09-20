@@ -95,6 +95,7 @@
     font-size: 36px;
     line-height: 45px;
     font-weight: map-get($font-weight, "black");
+    margin-top: 0;
     margin-bottom: 22px;
 
     @include tablet {
@@ -115,15 +116,20 @@
   &__text {
     font-size: 12px;
     line-height: 20px;
+    margin-top: 0;
     margin-bottom: 20px;
     word-break: break-word;
+
+    > p {
+      margin: 0;
+    }
 
     @include tablet {
       font-size: 24px;
       line-height: 45px;
       margin-bottom: 11px;
 
-      > div + div {
+      > p + p {
         margin-top: 45px;
       }
     }
@@ -131,7 +137,7 @@
     @include desktop-lg {
       margin-bottom: 10px;
 
-      > div + div {
+      > p + p {
         margin-top: 0;
       }
     }
@@ -140,7 +146,7 @@
       font-size: 28px;
       margin-bottom: 30px;
 
-      > div + div {
+      > p + p {
         margin-top: 45px;
       }
     }

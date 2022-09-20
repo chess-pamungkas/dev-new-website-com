@@ -40,6 +40,20 @@ const MetaTrader = ({
     </div>
   );
 
+  const TRADER_TOOLS = [PLATFORMS.ios, PLATFORMS.android, ADDITIONAL_PLATFORMS.windows];
+
+  const traderToolIcon = (item) => {
+    return (
+      <div className={cn("meta-trader__tool-icon")}>
+        <img
+          className="meta-trader__tool-icon-img"
+          src={item.icon}
+          alt={t(item.title)}
+        />
+      </div>
+    )
+  };
+
   return (
     <section
       className={cn("meta-trader", classname, {
@@ -48,12 +62,12 @@ const MetaTrader = ({
     >
       <div className={cn("meta-trader__wrapper")}>
         <div className={cn("meta-trader__description")}>
-          <div className={cn("meta-trader__title")}>{t(title)}</div>
-          <div className={cn("meta-trader__text")}>
+          <h2 className={cn("meta-trader__title")}>{t(title)}</h2>
+          <p className={cn("meta-trader__text")}>
             {text.map((item, number) => (
-              <div key={`${t(title)}-${number}`}>{t(item)}</div>
+              <p key={`${t(title)}-text-${number}`}>{t(item)}</p>
             ))}
-          </div>
+          </p>
           {!isMobile && isTablet && advantagesTemplate}
           <div className={cn("meta-trader__footer")}>
             <div className={cn("meta-trader__links")}>
@@ -75,32 +89,12 @@ const MetaTrader = ({
                 <img
                   className="meta-trader__tool-icon-img"
                   src={icon}
-                  title={t(title)}
+                  alt={t(title)}
                 />
               </div>
             )}
             <div className={cn("meta-trader__tool-icons")}>
-              <div className={cn("meta-trader__tool-icon")}>
-                <img
-                  className="meta-trader__tool-icon-img"
-                  src={PLATFORMS.ios.icon}
-                  title={t(PLATFORMS.ios.title)}
-                />
-              </div>
-              <div className={cn("meta-trader__tool-icon")}>
-                <img
-                  className="meta-trader__tool-icon-img"
-                  src={PLATFORMS.android.icon}
-                  title={t(PLATFORMS.android.title)}
-                />
-              </div>
-              <div className={cn("meta-trader__tool-icon")}>
-                <img
-                  className="meta-trader__tool-icon-img"
-                  src={ADDITIONAL_PLATFORMS.windows.icon}
-                  title={t(ADDITIONAL_PLATFORMS.windows.title)}
-                />
-              </div>
+              {TRADER_TOOLS.map(tool => traderToolIcon(tool))}
             </div>
           </div>
         </div>
