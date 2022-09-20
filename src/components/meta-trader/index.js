@@ -42,9 +42,9 @@ const MetaTrader = ({
 
   const TRADER_TOOLS = [PLATFORMS.ios, PLATFORMS.android, ADDITIONAL_PLATFORMS.windows];
 
-  const traderToolIcon = (item) => {
+  const TraderToolIcon = (item) => {
     return (
-      <div className={cn("meta-trader__tool-icon")}>
+      <div key={`traderToolIconKey${item.title}`} className={cn("meta-trader__tool-icon")}>
         <img
           className="meta-trader__tool-icon-img"
           src={item.icon}
@@ -65,7 +65,7 @@ const MetaTrader = ({
           <h2 className={cn("meta-trader__title")}>{t(title)}</h2>
           <p className={cn("meta-trader__text")}>
             {text.map((item, number) => (
-              <p key={`${t(title)}-text-${number}`}>{t(item)}</p>
+              <span key={`${t(title)}-text-${number}`}>{t(item)}</span>
             ))}
           </p>
           {!isMobile && isTablet && advantagesTemplate}
@@ -94,7 +94,7 @@ const MetaTrader = ({
               </div>
             )}
             <div className={cn("meta-trader__tool-icons")}>
-              {TRADER_TOOLS.map(tool => traderToolIcon(tool))}
+              {TRADER_TOOLS.map(tool => TraderToolIcon(tool))}
             </div>
           </div>
         </div>

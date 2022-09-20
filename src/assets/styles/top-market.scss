@@ -239,3 +239,74 @@
     }
   }
 }
+
+.top-market--platforms {
+  .top-market__text {
+    font-size: 32px;
+    line-height: 40px;
+
+    @include tablet {
+      font-size: 42px;
+      line-height: 53px;
+    }
+
+    @include desktop-lg {
+      font-size: 50px;
+      line-height: 63px;
+    }
+
+    @include desktop-xl {
+      font-size: 60px;
+      line-height: 75px;
+    }
+  }
+
+  .top-market__trader-tools {
+    margin: 50px 0;
+    padding: 8px 31px;
+    border-radius: $border-radius-default;
+    background: map-get($colors, "white");
+
+    img {
+      width: 81px;
+      height: 21px;
+    }
+
+    img + img {
+      margin-left: 30px;
+    }
+
+    @include tablet {
+      margin: 60px 0;
+      padding: 12px 40px;
+      max-width: 100%;
+
+      img {
+        width: 202px;
+        height: 52px;
+      }
+
+      img + img {
+        margin-left: 25px;
+      }
+    }
+
+    @include desktop-lg {
+      margin: 24px 0;
+      padding: 12px 40px;
+    }
+
+    @include desktop-xl {
+      margin-top: 32px;
+      padding: 10px 34px;
+
+      img + img {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  .top-market__block--flexed {
+    flex-direction: column;
+  }
+}

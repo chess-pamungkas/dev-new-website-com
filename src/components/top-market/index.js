@@ -13,6 +13,7 @@ const TopMarket = ({
   link1,
   btn2Title,
   link2,
+  subImageTemplate
 }) => {
   return (
     <section className={cn("top-market", className)}>
@@ -55,6 +56,7 @@ const TopMarket = ({
         </div>
         <div className={cn("top-market__block", "top-market__block--flexed")}>
           <img src={image} alt="" className="top-market__img" />
+          {subImageTemplate && (subImageTemplate)}
         </div>
       </div>
     </section>
