@@ -72,3 +72,34 @@
     }
   }
 }
+
+.mt4-page-bottom-promotion {
+  background: map-get($colors, "red");
+  @include content-alignment(0);
+  padding-top: 86px;
+  padding-bottom: 86px;
+
+  .top-market-promotion__wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .top-market-promotion__block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .top-market-promotion__description {
+    max-width: unset;
+  }
+
+  .top-market-promotion__btn {
+    color: map-get($colors, "red");
+    background: map-get($colors, "white");
+  }
+
+  .top-market-promotion__img {
+    margin-bottom: 56px;
+  }
+}

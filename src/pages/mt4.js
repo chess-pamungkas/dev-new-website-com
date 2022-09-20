@@ -10,6 +10,8 @@ import HighlightedLocalizationText from "../components/shared/highlighted-locali
 import TopMarketPromotion from "../components/top-market-promotion";
 import { MT4_DOC } from "../helpers/documents";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
+import { REGISTRATION_LINK } from "../helpers/constants";
+import icon from "../assets/images/icon--white.svg";
 
 const MT4Page = () => {
   const { t } = useTranslation();
@@ -40,6 +42,22 @@ const MT4Page = () => {
           accentClassName={"highlighted-in-white"}
         />
       </TopMarketPromotion>
+      {isXL && (
+        <TopMarketPromotion
+          className="mt4-page-bottom-promotion"
+          image={icon}
+          btnClassName="button-link--red"
+          btnTitle={t("mt4_top-market-promo-btn2")}
+          link={REGISTRATION_LINK}
+        >
+          <HighlightedLocalizationText
+            localizationText="mt4_top-market-promo-text2"
+            wordsToHighlight="mt4_top-market-promo-text-accent2"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-white"
+          />
+        </TopMarketPromotion>
+      )}
     </Layout>
   );
 };

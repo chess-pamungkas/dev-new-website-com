@@ -632,6 +632,9 @@
   "mt4_top-market-promo-btn": "Download MT4 Oqtima Now",
   "mt4_top-market-promo-text": "Oqtima’s MetaTrader 4 platform comes equipped with superior connectivity, deep liquidity and unrivalled spreads. With our Equinix data centres for low latency along with our deep liquidity pool, you'll consistently get the best trading conditions.",
   "mt4_top-market-promo-text-accent": "2,3,4,17,18,19,33,34,35",
+  "mt4_top-market-promo-text2": "Experience Oqtima now.",
+  "mt4_top-market-promo-text-accent2": "2",
+  "mt4_top-market-promo-btn2": "Open an account",
 
   "system-page-404-title": "Page not found",
   "system-page-404-subtitle": "Ops, it looks like we lost this page… but not your trade, your trades are safe with us ;)",
