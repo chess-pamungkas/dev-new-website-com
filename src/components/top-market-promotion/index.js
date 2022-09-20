@@ -2,16 +2,69 @@ import React from "react";
 import cn from "classnames";
 import ButtonLink from "../shared/button-link";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import Lottie from "lottie-react";
 
 const TopMarketPromotion = ({
   className,
   children,
   note,
   image,
+  btnClassName,
   btnTitle,
   link,
+  isDocumentLink = false,
   isAnchorLink = false,
+  isLottieImage = false,
+  lottieStyle = {},
 }) => {
+  const getButton = () => {
+    switch (true) {
+      case isDocumentLink:
+        return (
+          <a
+            className={cn(
+              "button-link",
+              "top-market-promotion__btn",
+              btnClassName
+            )}
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {btnTitle}
+          </a>
+        );
+      case isAnchorLink:
+        return (
+          <AnchorLink
+            href={link}
+            className={cn(
+              "button-link",
+              "button-link--red",
+              "top-market-promotion__btn",
+              btnClassName
+            )}
+          >
+            {btnTitle}
+          </AnchorLink>
+        );
+
+      default:
+        return (
+          <ButtonLink
+            link={link}
+            className={cn(
+              "button-link--red",
+              "top-market-promotion__btn",
+              btnClassName
+            )}
+          >
+            {btnTitle}
+          </ButtonLink>
+        );
+    }
+  };
+
   return (
     <section className={cn("top-market-promotion", className)}>
       <div className={cn("top-market-promotion__wrapper")}>
@@ -20,25 +73,7 @@ const TopMarketPromotion = ({
             <p className="top-market-promotion__text">{children}</p>
             <span className="top-market-promotion__note">{note}</span>
           </div>
-          {isAnchorLink ? (
-            <AnchorLink
-              href={link}
-              className={cn(
-                "button-link",
-                "button-link--red",
-                "top-market-promotion__btn"
-              )}
-            >
-              {btnTitle}
-            </AnchorLink>
-          ) : (
-            <ButtonLink
-              link={link}
-              className={cn("button-link--red", "top-market-promotion__btn")}
-            >
-              {btnTitle}
-            </ButtonLink>
-          )}
+          {getButton()}
         </div>
         <div
           className={cn(
@@ -46,7 +81,15 @@ const TopMarketPromotion = ({
             "top-market-promotion__block--flexed"
           )}
         >
-          <img src={image} alt="" className="top-market-promotion__img" />
+          {isLottieImage ? (
+            <Lottie
+              className="top-market-promotion__img--lottie"
+              animationData={image}
+              style={lottieStyle}
+            />
+          ) : (
+            <img src={image} alt="" className="top-market-promotion__img" />
+          )}
         </div>
       </div>
     </section>

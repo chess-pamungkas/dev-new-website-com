@@ -167,7 +167,7 @@
   "index_trade-with-promotion-USD/JPY": "USD/JPY",
   "index_trade-with-promotion-GBP/USD": "GBP/USD",
   "index_trade-with-promotion-AUD/USD": "AUD/USD",
-  "index_tradewith-promotion-USD/CAD": "USD/CAD",
+  "index_trade-with-promotion-USD/CAD": "USD/CAD",
   "index_trade-with-promotion-USD/CNY": "USD/CNY",
   "index_trade-with-promotion-USD/CHF": "USD/CHF",
   "index_trade-with-promotion-USD/HKD": "USD/HKD",
@@ -277,6 +277,7 @@
   "page-shares-title": "Oqtima Shares",
   "page-company-title": "Oqtima Company page",
   "page-legal-title": "Oqtima Legal page",
+  "page-mt4-title": "Oqtima MT4 page",
 
   "notification-stripe-cysec-part1": "CFDs are complex instruments with a high risk of losing money rapidly due to leverage.",
   "notification-stripe-cysec-part2": "of retail investor accounts lose money when trading CFDs. It would be best to consider whether you understand how CFDs work and whether you can afford to take the high risk of losing the money you want to invest.",
@@ -627,6 +628,10 @@
   "document-key-commodities-name": "Key information Commodities",
   "document-summary-statement-name": "Execution Quality Summary Statement 2021",
   "document-discipline-report-name": "Disclosure and Market Discipline Report (Pillar III) 2021",
+
+  "mt4_top-market-promo-btn": "Download MT4 Oqtima Now",
+  "mt4_top-market-promo-text": "Oqtima’s MetaTrader 4 platform comes equipped with superior connectivity, deep liquidity and unrivalled spreads. With our Equinix data centres for low latency along with our deep liquidity pool, you'll consistently get the best trading conditions.",
+  "mt4_top-market-promo-text-accent": "2,3,4,17,18,19,33,34,35",
 
   "system-page-404-title": "Page not found",
   "system-page-404-subtitle": "Ops, it looks like we lost this page… but not your trade, your trades are safe with us ;)",

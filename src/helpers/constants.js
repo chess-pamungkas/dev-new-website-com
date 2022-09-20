@@ -24,6 +24,8 @@ export const REGISTRATION_LINK = "/";
 export const LEARN_MORE_LINK = "/";
 export const TERMS_OF_USE_LINK = termsAndConditions;
 export const PRIVACY_POLICY_LINK = privacyPolicy;
+export const COMPANY_PAGE_LINK = "/company";
+export const LEGAL_PAGE_LINK = "/legal";
 export const SEARCH_PAGE_LINK = "/search";
 export const CRYPTO_PAGE_LINK = "/crypto";
 export const INDICES_PAGE_LINK = "/indices";
@@ -31,6 +33,9 @@ export const FOREX_PAGE_LINK = "/forex";
 export const SHARES_PAGE_LINK = "/shares";
 export const ENERGIES_PAGE_LINK = "/energies";
 export const COMMODITIES_PAGE_LINK = "/commodities";
+export const ALL_MARKETS_PAGE_LINK = "/all-markets";
+export const MT4_PAGE_LINK = "/mt4";
+export const MT5_PAGE_LINK = "";
 
 export const FAQ_LINK = "/";
 

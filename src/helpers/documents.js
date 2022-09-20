@@ -12,6 +12,9 @@ import keyInformationCommodities from "../assets/documents/Key_Information_commo
 import summaryStatement from "../assets/documents/Summary Statement.pdf";
 import disciplineReport from "../assets/documents/Disclosure_and_Market_Discipline_Report_Pillar_III_2021.pdf";
 
+// TODO replace with the real doc
+export const MT4_DOC = summaryStatement;
+
 export const LEGAL_DOCS = [
   {
     name: "document-client-categorisation-notice-name",

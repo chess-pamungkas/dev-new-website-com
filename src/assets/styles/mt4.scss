@@ -1,0 +1,74 @@
+@import "vars";
+@import "mixins";
+
+.mt4-page-promotion {
+  background: url("../../assets/images/mt4/bg-sm.svg") no-repeat center;
+  background-size: cover;
+  padding-top: 33px;
+  padding-bottom: 52px;
+
+  @include tablet {
+    padding-top: 33px;
+    padding-bottom: 39px;
+    background: url("../../assets/images/mt4/bg-md.svg") no-repeat center;
+    background-size: cover;
+  }
+
+  @include desktop-lg {
+    padding-top: 56px;
+    padding-bottom: 60px;
+    background: url("../../assets/images/mt4/bg-lg.svg") no-repeat center;
+    background-size: cover;
+  }
+
+  @include desktop-xl {
+    padding-top: 161px;
+    padding-bottom: 112px;
+    background: url("../../assets/images/mt4/bg-xl.svg") no-repeat center;
+    background-size: cover;
+  }
+
+  .top-market-promotion__wrapper {
+    flex-direction: column-reverse;
+
+    @include desktop-lg {
+      flex-direction: row;
+    }
+  }
+
+  .top-market-promotion__text {
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+
+    @include mobile {
+      .highlighted-in-white {
+        color: map-get($colors, "black");
+      }
+    }
+
+    @include tablet {
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    @include desktop-lg {
+      font-size: 28px;
+      line-height: 35px;
+      text-align: left;
+    }
+
+    @include desktop-xl {
+      font-size: 42px;
+      line-height: 53px;
+    }
+  }
+
+  .top-market-promotion__btn {
+    text-transform: unset;
+
+    @include desktop-lg {
+      color: map-get($colors, "white");
+    }
+  }
+}
