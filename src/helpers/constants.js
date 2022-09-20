@@ -31,6 +31,7 @@ export const FOREX_PAGE_LINK = "/forex";
 export const SHARES_PAGE_LINK = "/shares";
 export const ENERGIES_PAGE_LINK = "/energies";
 export const COMMODITIES_PAGE_LINK = "/commodities";
+export const PLATFORMS_LINK = "/platforms";
 
 export const FAQ_LINK = "/";
 
