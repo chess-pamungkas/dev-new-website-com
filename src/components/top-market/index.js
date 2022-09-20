@@ -18,13 +18,15 @@ const TopMarket = ({
     <section className={cn("top-market", className)}>
       <div className="top-market__wrapper">
         <div className="top-market__block">
-          <h2
-            className={cn("top-market__title", {
-              "top-market__title--uppercase": isTitleUppercase,
-            })}
-          >
-            {title}
-          </h2>
+          {title && (
+            <h2
+              className={cn("top-market__title", {
+                "top-market__title--uppercase": isTitleUppercase,
+              })}
+            >
+              {title}
+            </h2>
+          )}
           <div className="top-market__description">
             <p
               className={cn("top-market__text", {
@@ -34,20 +36,22 @@ const TopMarket = ({
               {children}
             </p>
           </div>
-          <div className="top-market__btn-wrapper">
-            <ButtonLink
-              link={link1}
-              className={cn("top-market__btn", "top-market__btn--black")}
-            >
-              {btn1Title}
-            </ButtonLink>
-            <ButtonLink
-              link={link2}
-              className={cn("top-market__btn", "top-market__btn--white")}
-            >
-              {btn2Title}
-            </ButtonLink>
-          </div>
+          {(btn1Title || btn2Title) && (
+            <div className="top-market__btn-wrapper">
+              <ButtonLink
+                link={link1}
+                className={cn("top-market__btn", "top-market__btn--black")}
+              >
+                {btn1Title}
+              </ButtonLink>
+              <ButtonLink
+                link={link2}
+                className={cn("top-market__btn", "top-market__btn--white")}
+              >
+                {btn2Title}
+              </ButtonLink>
+            </div>
+          )}
         </div>
         <div className={cn("top-market__block", "top-market__block--flexed")}>
           <img src={image} alt="" className="top-market__img" />
