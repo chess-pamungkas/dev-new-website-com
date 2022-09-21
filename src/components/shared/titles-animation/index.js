@@ -32,7 +32,7 @@ const TitlesAnimation = ({
     if (titles?.length) {
       setItems(titles);
     }
-  }, [isChildrenAnimation, titles]);
+  }, [isChildrenAnimation, titles, children]);
 
   const animationStyles = useSpring({
     loop: true,
