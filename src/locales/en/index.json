@@ -208,7 +208,6 @@
   "index_trading-tools-platforms-windows": "Windows",
   "index_trading-tools-platforms-metatrader4": "MetaTrader4",
   "index_trading-tools-platforms-metatrader5": "MetaTrader5",
-  "index_trading-tools-platforms-windows": "Windows",
 
   "index_performance-title1": "Oqtima is all",
   "performance-title1-accent": "1",
@@ -651,6 +650,9 @@
   "platforms_meta-trader-5-advantage-9": "Micro Lot trading available",
   "platforms_meta-trader-5-advantage-10": "Charting tools",
   "platforms_meta-trader-5-advantage-11": "Hedging allowed",
+  "platforms__top-market-promo-text": "Experience Oqtima now.",
+  "platforms__top-market-promo-text-accent": "2",
+  "platforms_top-market-promo-btn": "Open an account",
 
   "document-client-categorisation-notice-name": "Client Categorisation Notice",
   "document-complaint-policy-name": "Complaint-Handling Policy",

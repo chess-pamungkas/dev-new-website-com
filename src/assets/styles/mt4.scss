@@ -70,6 +70,11 @@
     @include desktop-lg {
       color: map-get($colors, "white");
     }
+
+    &:hover, &:focus, &:active {
+      color: map-get($colors, "red");
+      background-color: map-get($colors, "white");
+    }
   }
 }
 
@@ -175,35 +180,5 @@
     &:last-child {
       margin: 0 0 0 25px;
     }
-  }
-}
-
-.mt4-page-bottom-promotion {
-  background: map-get($colors, "red");
-  padding-top: 86px;
-  padding-bottom: 86px;
-
-  .top-market-promotion__wrapper {
-    flex-direction: column-reverse;
-  }
-
-  .top-market-promotion__block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  .top-market-promotion__description {
-    max-width: unset;
-  }
-
-  .top-market-promotion__btn {
-    color: map-get($colors, "red");
-    background: map-get($colors, "white");
-  }
-
-  .top-market-promotion__img {
-    margin-bottom: 56px;
   }
 }

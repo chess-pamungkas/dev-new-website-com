@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { graphql } from "gatsby";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
-import animation from "../assets/images/animations/indices.json";
+import animation from "../assets/images/animations/aggregator.json";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import TopMarketPromotion from "../components/top-market-promotion";
 import { MT4_DOC } from "../helpers/documents";
@@ -18,19 +18,31 @@ import { MT4_PLATFORMS } from "../helpers/config";
 
 const MT4Page = () => {
   const { t } = useTranslation();
-  const { isLG, isXL } = useWindowSize();
+  const { isMobile, isTablet, isLG, isXL } = useWindowSize();
+
+  const getAnimationStyles = useCallback(() => {
+    switch (true) {
+      case isXL:
+        return { height: 723 };
+      case isLG:
+        return { height: 385 };
+      case isTablet:
+        return { height: 610 };
+      case isMobile:
+        return { height: 329 };
+      default:
+        return { height: 329 };
+    }
+  }, [isMobile, isTablet, isLG, isXL]);
 
   return (
     <Layout>
       <Seo title={t("page-mt4-title")} />
       <TopMarketPromotion
         className="mt4-page-promotion"
-        // TODO replace with the real animation
         image={animation}
         isLottieImage
-        lottieStyle={{
-          height: 536,
-        }}
+        lottieStyle={getAnimationStyles()}
         btnClassName={cn({
           "button-link--ghost": isLG || isXL,
         })}
@@ -86,7 +98,7 @@ const MT4Page = () => {
       </TopMarketPromotion>
       {isXL && (
         <TopMarketPromotion
-          className="mt4-page-bottom-promotion"
+          className="bottom-promotion"
           image={icon}
           btnClassName="button-link--red"
           btnTitle={t("mt4_top-market-promo-btn3")}

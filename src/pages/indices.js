@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback } from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
@@ -24,20 +24,18 @@ const IndicesPage = () => {
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
 
-  const [svgAnimationHeight, setSvgAnimationHeight] = useState(276);
-
-  useEffect(() => {
-    if (isXL) {
-      setSvgAnimationHeight(536);
-    }
-    if (isLG) {
-      setSvgAnimationHeight(311);
-    }
-    if (isTablet) {
-      setSvgAnimationHeight(383);
-    }
-    if (isMobile) {
-      setSvgAnimationHeight(276);
+  const getAnimationStyles = useCallback(() => {
+    switch (true) {
+      case isXL:
+        return { height: 536 };
+      case isLG:
+        return { height: 311 };
+      case isTablet:
+        return { height: 383 };
+      case isMobile:
+        return { height: 276 };
+      default:
+        return { height: 276 };
     }
   }, [isMobile, isTablet, isLG, isXL]);
 
@@ -84,9 +82,7 @@ const IndicesPage = () => {
       </TopMarketPromotion>
       <PromotionMarkets
         animation={animation}
-        animationStyle={{
-          height: svgAnimationHeight,
-        }}
+        animationStyle={getAnimationStyles()}
         btnTitle={t("indices_promotion-markets-btn")}
       >
         <HighlightedLocalizationText
