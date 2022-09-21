@@ -34,6 +34,7 @@ import {
   SHARES_PAGE_LINK,
   ENERGIES_PAGE_LINK,
   CRYPTO_PAGE_LINK,
+  PLATFORMS_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
@@ -93,7 +94,7 @@ const FSA_TOP_MARKETS_TAB = {
 
 const TRADING_TAB_PLATFORMS_ITEM = {
   title: "header-nav-tab-trading-platforms-title",
-  link: "",
+  link: PLATFORMS_LINK,
   isSubtitle: true,
   icon: PlatformsIcon,
   description: "header-nav-tab-trading-platforms-desc",

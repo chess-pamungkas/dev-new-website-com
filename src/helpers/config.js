@@ -4,6 +4,7 @@ import androidIcon from "../assets/images/icons/tools/android.svg";
 import windowsIcon from "../assets/images/icons/tools/windows.svg";
 import metaTrader4Icon from "../assets/images/icons/tools/metaTrader4.svg";
 import metaTrader5Icon from "../assets/images/icons/tools/metaTrader5.svg";
+import windows from "../assets/images/icons/tools/windows.svg";
 import {
   AdvantageIcon1,
   AdvantageIcon2,
@@ -123,6 +124,13 @@ export const PLATFORMS = {
   metaTrader5: {
     icon: metaTrader5Icon,
     title: "index_trading-tools-platforms-metatrader5",
+  },
+};
+
+export const ADDITIONAL_PLATFORMS = {
+  windows: {
+    icon: windows,
+    title: "index_trading-tools-platforms-windows",
   },
 };
 
