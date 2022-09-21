@@ -22,6 +22,7 @@ import {
   CollaborationPartnershipIcon,
   AffiliatePartnershipIcon,
 } from "../components/shared/icons";
+import { PLATFORMS_LINK } from './constants';
 
 const CYSEC_TOP_MARKETS_TAB = {
   title: "header-nav-tab-top-markets",
@@ -80,7 +81,7 @@ const FSA_TOP_MARKETS_TAB = {
 
 const TRADING_TAB_PLATFORMS_ITEM = {
   title: "header-nav-tab-trading-platforms-title",
-  link: "",
+  link: PLATFORMS_LINK,
   isSubtitle: true,
   icon: PlatformsIcon,
   description: "header-nav-tab-trading-platforms-desc",
