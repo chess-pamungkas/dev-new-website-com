@@ -21,7 +21,7 @@ const MetaTrader = ({
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
 
-  const advantagesTemplate = (
+  const AdvantagesTemplate = (
     <div className={cn("meta-trader__advantages")}>
       {!isLG && (
         <div className={cn("meta-trader__trader-icon")}>
@@ -72,7 +72,7 @@ const MetaTrader = ({
               <span key={`${t(title)}-text-${number}`}>{t(item)}</span>
             ))}
           </p>
-          {!isMobile && isTablet && advantagesTemplate}
+          {!isMobile && isTablet && AdvantagesTemplate}
           <div className={cn("meta-trader__footer")}>
             <div className={cn("meta-trader__links")}>
               <ButtonLink
@@ -108,7 +108,7 @@ const MetaTrader = ({
           </div>
         </div>
 
-        {(isMobile || isLG || isXL) && advantagesTemplate}
+        {(isMobile || isLG || isXL) && AdvantagesTemplate}
       </div>
     </section>
   );
