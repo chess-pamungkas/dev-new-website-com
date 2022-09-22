@@ -670,8 +670,10 @@
   "document-discipline-report-name": "Disclosure and Market Discipline Report (Pillar III) 2021",
 
   "mt4_top-market-promo-btn": "Download MT4 Oqtima Now",
-  "mt4_top-market-promo-text": "Oqtima’s MetaTrader 4 platform comes equipped with superior connectivity, deep liquidity and unrivalled spreads. With our Equinix data centres for low latency along with our deep liquidity pool, you'll consistently get the best trading conditions.",
-  "mt4_top-market-promo-text-accent": "2,3,4,17,18,19,33,34,35",
+  "mt4_top-market-promo-text": "Oqtima’s MetaTrader 4 Platform comes equipped with",
+  "mt4_top-market-promo-text-accent": "2,3,4",
+  "mt4_top-market-promo-note" : "ECN Pricing environment, superior connectivity, deep liquidity and unrivalled spreads. With our Equinix data centres for low latency along with our deep liquidity pool, you'll consistently get the best trading conditions.",
+  "mt4_top-market-promo-note-accent": "1,2,3,13,14,15,29,30,31",
   "mt4_top-market-promo-text2": "What makes Oqtima Mt4 one of the most superior choices in the market for every level of traders?",
   "mt4_top-market-promo-text-accent2": "3,4,16,17,18",
   "mt4_top-market-promo-text3": "Experience Oqtima now.",
@@ -692,6 +694,7 @@
   "mt4_mt-promotion-download-android": "MT4 for Android",
   "mt4_mt-promotion-download-ios": "MT4 for IOS",
   "mt4_mt-promotion-download-windows": "MT4 for Windows",
+  "mt4_mt-promotion-download-webtrader": "MT4 (Webtrader)",
   "mt4_mt-promotion-download-mac": "MT4 for MAC OS",
   "mt4_top-market-layout-title": "Check the table below to compare the features between Oqtima MetaTrader 4 and MetaTrader 5.",
   "mt4_top-market-layout-title-accent": "6,10,11,12,14,15",
@@ -729,6 +732,7 @@
   "mt5_mt-promotion-download-ios": "MT5 for IOS",
   "mt5_mt-promotion-download-windows": "MT5 for Windows",
   "mt5_mt-promotion-download-mac": "MT5 for MAC OS",
+  "mt5_mt-promotion-download-webtrader": "MT5 (Webtrader)",
   "mt5_top-market-layout-title": "Check the table below to compare the features between Oqtima MetaTrader 4 and MetaTrader 5.",
   "mt5_top-market-layout-title-accent": "6,10,11,12,14,15",
 

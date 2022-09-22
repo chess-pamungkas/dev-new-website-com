@@ -10,7 +10,7 @@ const MtPromotion = ({
   advantagesTitle,
   downloadTitle,
   tabs,
-  asset,
+  image,
 }) => {
   return (
     <section className={cn("mt-promotion", className)}>
@@ -18,7 +18,7 @@ const MtPromotion = ({
         <div
           className={cn("mt-promotion__block", "mt-promotion__block--flexed")}
         >
-          {asset}
+          <img src={image} alt={advantagesTitle} className="mt-promotion__img" />
         </div>
         <div className="mt-promotion__block">
           <div className="mt-promotion__description">

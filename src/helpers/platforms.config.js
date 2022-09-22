@@ -8,6 +8,7 @@ export const MT4_DOWNLOAD_LINKS = {
   ios: "/",
   windows: "/",
   mac: "/",
+  webtrader: "/",
 };
 
 export const MT5_DOWNLOAD_LINKS = {
@@ -15,6 +16,7 @@ export const MT5_DOWNLOAD_LINKS = {
   ios: "/",
   windows: "/",
   mac: "/",
+  webtrader: "/",
 };
 
 export const MT5_ADVANTAGES = [

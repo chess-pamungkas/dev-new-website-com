@@ -6,6 +6,7 @@ import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import animation from "../assets/images/animations/aggregator_MT4.json";
+import image from "../assets/images/mt4/MT4andMT5.png";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import TopMarketPromotion from "../components/top-market-promotion";
 import { MT4_DOC } from "../helpers/documents";
@@ -29,15 +30,15 @@ const MT4Page = () => {
   const getAnimationStyles = useCallback(() => {
     switch (true) {
       case isXL:
-        return { height: 723 };
+        return { height: 700 };
       case isLG:
-        return { height: 385 };
+        return { height: 444 };
       case isTablet:
-        return { height: 610 };
+        return { height: 540 };
       case isMobile:
-        return { height: 329 };
+        return { height: 358 };
       default:
-        return { height: 329 };
+        return { height: 358 };
     }
   }, [isMobile, isTablet, isLG, isXL]);
 
@@ -67,6 +68,9 @@ const MT4Page = () => {
           <Link to={MT4_DOWNLOAD_LINKS.windows}>
             {t("mt4_mt-promotion-download-windows")}
           </Link>
+          <Link to={MT4_DOWNLOAD_LINKS.webtrader}>
+            {t("mt4_mt-promotion-download-webtrader")}
+          </Link>
         </>
       ),
     },
@@ -86,6 +90,14 @@ const MT4Page = () => {
         btnTitle={t("mt4_top-market-promo-btn")}
         link={MT4_DOC}
         isDocumentLink
+        note={
+          <HighlightedLocalizationText
+            localizationText="mt4_top-market-promo-note"
+            wordsToHighlight="mt4_top-market-promo-note-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-white"
+          />
+        }
       >
         <HighlightedLocalizationText
           localizationText="mt4_top-market-promo-text"
@@ -107,6 +119,7 @@ const MT4Page = () => {
         advantagesTitle={t("mt4_market-items-list_title")}
         advantages={MT4_ADVANTAGES}
         downloadTitle={t("mt4_download-title")}
+        image={image}
         tabs={tabs}
       />
       <TopMarketLayout

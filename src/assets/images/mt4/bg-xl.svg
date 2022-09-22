@@ -1,8 +1,5 @@
-<svg id="Mask_Group_4494" data-name="Mask Group 4494" xmlns="http://www.w3.org/2000/svg" width="1920" height="1004" viewBox="0 0 1920 1004">
-  <g id="Group_1244" data-name="Group 1244" transform="translate(0 0)">
-    <g id="Group_1243" data-name="Group 1243" transform="translate(0)">
-      <path id="Path_3934" data-name="Path 3934" d="M0,0H1920V1004H0Z" fill="#f40"/>
-      <path id="Path_3935" data-name="Path 3935" d="M0,0,1002.124,1105.736,0,1704.593Z" transform="translate(215.406 1003.191) rotate(-90)" fill="#f40"/>
-    </g>
-  </g>
+<svg width="1920" height="921" viewBox="0 0 1920 921" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 1H1920V921H0V1Z" fill="#FF4400"/>
+<path d="M215.406 920.259L1321.14 1.97766L1920 920.259L215.406 920.259Z" fill="#FF4400"/>
+<path d="M901 920.076L1120.95 0.61499L1919.93 0.61499L1920 921L901 920.076Z" fill="white"/>
 </svg>

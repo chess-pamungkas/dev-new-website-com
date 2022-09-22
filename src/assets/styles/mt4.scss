@@ -4,13 +4,13 @@
 .mt4-page-promotion {
   background: url("../../assets/images/mt4/bg-sm.svg") no-repeat center;
   background-size: cover;
-  padding-top: 33px;
-  padding-bottom: 52px;
+  padding-top: 0;
+  padding-bottom: 33px;
 
   @include tablet {
     padding-top: 33px;
     padding-bottom: 39px;
-    background: url("../../assets/images/mt4/bg-md.svg") no-repeat center;
+    background: url("../../assets/images/mt4/bg-md.svg") no-repeat bottom;
     background-size: cover;
   }
 
@@ -37,30 +37,24 @@
   }
 
   .top-market-promotion__text {
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 20px;
+    line-height: 25px;
     text-align: center;
 
-    @include mobile {
-      .highlighted-in-white {
-        color: map-get($colors, "black");
-      }
-    }
-
     @include tablet {
-      font-size: 24px;
-      line-height: 30px;
+      font-size: 30px;
+      line-height: 37px;
     }
 
     @include desktop-lg {
-      font-size: 28px;
-      line-height: 35px;
+      font-size: 34px;
+      line-height: 42px;
       text-align: left;
     }
 
     @include desktop-xl {
-      font-size: 42px;
-      line-height: 53px;
+      font-size: 58px;
+      line-height: 60px;
     }
   }
 

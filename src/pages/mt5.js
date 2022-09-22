@@ -6,6 +6,7 @@ import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import animation from "../assets/images/animations/aggregator_MT5.json";
+import image from "../assets/images/mt4/MT4andMT5.png";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import TopMarketPromotion from "../components/top-market-promotion";
 import { MT5_DOC } from "../helpers/documents";
@@ -29,15 +30,15 @@ const MT5Page = () => {
   const getAnimationStyles = useCallback(() => {
     switch (true) {
       case isXL:
-        return { height: 723 };
+        return { height: 700 };
       case isLG:
-        return { height: 385 };
+        return { height: 444 };
       case isTablet:
-        return { height: 610 };
+        return { height: 540 };
       case isMobile:
-        return { height: 329 };
+        return { height: 358 };
       default:
-        return { height: 329 };
+        return { height: 358 };
     }
   }, [isMobile, isTablet, isLG, isXL]);
 
@@ -66,6 +67,9 @@ const MT5Page = () => {
           </Link>
           <Link to={MT5_DOWNLOAD_LINKS.windows}>
             {t("mt5_mt-promotion-download-windows")}
+          </Link>{" "}
+          <Link to={MT5_DOWNLOAD_LINKS.webtrader}>
+            {t('"mt5_mt-promotion-download-webtrader"')}
           </Link>
         </>
       ),
@@ -115,6 +119,7 @@ const MT5Page = () => {
         advantagesTitle={t("mt5_market-items-list_title")}
         advantages={MT5_ADVANTAGES}
         downloadTitle={t("mt5_download-title")}
+        image={image}
         tabs={tabs}
       />
       <TopMarketLayout
