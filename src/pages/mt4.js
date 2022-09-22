@@ -1,20 +1,22 @@
 import React, { useCallback } from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
-import animation from "../assets/images/animations/aggregator.json";
+import animation from "../assets/images/animations/aggregator_MT4.json";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import TopMarketPromotion from "../components/top-market-promotion";
 import { MT4_DOC } from "../helpers/documents";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import icon from "../assets/images/icon--white.svg";
-import MarketItemAdvantageList from "../components/all-markets/components/market-item-advantage-list";
-import { MT4_ADVANTAGES } from "../helpers/platforms.config";
-import { MT4_PLATFORMS } from "../helpers/config";
+import {
+  MT4_ADVANTAGES,
+  MT4_DOWNLOAD_LINKS,
+} from "../helpers/platforms.config";
+import MtPromotion from "../components/mt-promotion";
 
 const MT4Page = () => {
   const { t } = useTranslation();
@@ -34,6 +36,37 @@ const MT4Page = () => {
         return { height: 329 };
     }
   }, [isMobile, isTablet, isLG, isXL]);
+
+  const tabs = [
+    {
+      id: 1,
+      title: t("mt-promotion-tabs-mobile"),
+      content: (
+        <>
+          <Link to={MT4_DOWNLOAD_LINKS.android}>
+            {t("mt4_mt-promotion-download-android")}
+          </Link>
+          <Link to={MT4_DOWNLOAD_LINKS.ios}>
+            {t("mt4_mt-promotion-download-ios")}
+          </Link>
+        </>
+      ),
+    },
+    {
+      id: 2,
+      title: t("mt-promotion-tabs-desktop"),
+      content: (
+        <>
+          <Link to={MT4_DOWNLOAD_LINKS.mac}>
+            {t("mt4_mt-promotion-download-mac")}
+          </Link>
+          <Link to={MT4_DOWNLOAD_LINKS.windows}>
+            {t("mt4_mt-promotion-download-windows")}
+          </Link>
+        </>
+      ),
+    },
+  ];
 
   return (
     <Layout>
@@ -57,45 +90,22 @@ const MT4Page = () => {
           accentClassName={"highlighted-in-white"}
         />
       </TopMarketPromotion>
-      <TopMarketPromotion
-        className="mt4-page-advantage-promotion"
-        // TODO replace with the real animation
-        image={animation}
-        isLottieImage
-        lottieStyle={{
-          height: 536,
-        }}
-        btnClassName="button-link--red"
-        btnTitle={t("mt4_top-market-promo-btn")}
-        link={MT4_DOC}
-        isDocumentLink
-        isAdditionalBlock
-        additionalBlock={
-          <div className="mt4-page-advantage-promotion__img-wrapper">
-            {Object.values(MT4_PLATFORMS).map((platform) => (
-              <img
-                key={`mt4-${platform.title}`}
-                src={platform.icon}
-                alt="platform.title"
-                className="mt4-page-advantage-promotion__img"
-              />
-            ))}
-          </div>
-        }
-      >
-        <HighlightedLocalizationText
-          localizationText="mt4_top-market-promo-text2"
-          wordsToHighlight="mt4_top-market-promo-text-accent2"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <div className="mt4-page-advantages">
-          <MarketItemAdvantageList
-            advantages={MT4_ADVANTAGES}
-            className="mt4-market-item-advantages"
+
+      <MtPromotion
+        title={
+          <HighlightedLocalizationText
+            localizationText="mt4_top-market-promo-text2"
+            wordsToHighlight="mt4_top-market-promo-text-accent2"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
           />
-        </div>
-      </TopMarketPromotion>
+        }
+        advantagesTitle={t("mt4_market-items-list_title")}
+        advantages={MT4_ADVANTAGES}
+        downloadTitle={t("mt4_download-title")}
+        tabs={tabs}
+      />
+
       {isXL && (
         <TopMarketPromotion
           className="bottom-promotion"

@@ -3,6 +3,20 @@ import metaTrader5 from "../assets/images/icons/tools/metaTrader5.svg";
 import { MT4_PAGE_LINK, MT5_PAGE_LINK } from "./constants";
 import { MT4_DOC, MT5_DOC } from "./documents";
 
+export const MT4_DOWNLOAD_LINKS = {
+  android: "/",
+  ios: "/",
+  windows: "/",
+  mac: "/",
+};
+
+export const MT5_DOWNLOAD_LINKS = {
+  android: "/",
+  ios: "/",
+  windows: "/",
+  mac: "/",
+};
+
 export const MT4_ADVANTAGES = [
   {
     key: "adv1",

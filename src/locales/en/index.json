@@ -676,6 +676,8 @@
   "mt4_top-market-promo-text3": "Experience Oqtima now.",
   "mt4_top-market-promo-text-accent3": "2",
   "mt4_top-market-promo-btn3": "Open an account",
+  "mt4_market-items-list_title": "Oqtima’s MT4 – Join the next level",
+  "mt4_download-title": "Download MT4",
   "mt4_market-items-list_adv1": "ECN pricing environment",
   "mt4_market-items-list_adv2": "Institutional Grade Market liquidity",
   "mt4_market-items-list_adv3": "Low latency",
@@ -686,6 +688,13 @@
   "mt4_market-items-list_adv8": "Easy immediate funding and immediate withdrawal options",
   "mt4_market-items-list_adv9": "Pre built Oqtima indicators",
   "mt4_market-items-list_adv10": "MSQL 4 for EA",
+  "mt4_mt-promotion-download-android": "MT4 for Android",
+  "mt4_mt-promotion-download-ios": "MT4 for IOS",
+  "mt4_mt-promotion-download-windows": "MT4 for Windows",
+  "mt4_mt-promotion-download-mac": "MT4 for MAC OS",
+
+  "mt-promotion-tabs-mobile": "Mobile and Tablet",
+  "mt-promotion-tabs-desktop": "Desktop",
 
   "system-page-404-title": "Page not found",
   "system-page-404-subtitle": "Ops, it looks like we lost this page… but not your trade, your trades are safe with us ;)",

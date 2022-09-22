@@ -1,10 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
-  <g id="Mask_Group_4494" data-name="Mask Group 4494" transform="translate(3.006 61)">
-    <g id="Group_1244" data-name="Group 1244" transform="translate(-3.006 -61)">
-      <g id="Group_1243" data-name="Group 1243" transform="translate(0)">
-        <path id="Path_3934" data-name="Path 3934" d="M0,0H1920V1080H0Z" fill="#f40"/>
-        <path id="Path_3935" data-name="Path 3935" d="M0,0,1078.124,1105.736,0,1704.593Z" transform="translate(215.406 1079.192) rotate(-90)" fill="#f40"/>
-      </g>
+<svg id="Mask_Group_4494" data-name="Mask Group 4494" xmlns="http://www.w3.org/2000/svg" width="1920" height="1004" viewBox="0 0 1920 1004">
+  <g id="Group_1244" data-name="Group 1244" transform="translate(0 0)">
+    <g id="Group_1243" data-name="Group 1243" transform="translate(0)">
+      <path id="Path_3934" data-name="Path 3934" d="M0,0H1920V1004H0Z" fill="#f40"/>
+      <path id="Path_3935" data-name="Path 3935" d="M0,0,1002.124,1105.736,0,1704.593Z" transform="translate(215.406 1003.191) rotate(-90)" fill="#f40"/>
     </g>
   </g>
 </svg>

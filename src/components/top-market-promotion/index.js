@@ -14,8 +14,6 @@ const TopMarketPromotion = ({
   link,
   isDocumentLink = false,
   isAnchorLink = false,
-  isAdditionalBlock = false,
-  additionalBlock,
   isLottieImage = false,
   lottieStyle = {},
 }) => {
@@ -76,7 +74,6 @@ const TopMarketPromotion = ({
             <span className="top-market-promotion__note">{note}</span>
           </div>
           {getButton()}
-          {isAdditionalBlock && <>{additionalBlock}</>}
         </div>
         <div
           className={cn(
