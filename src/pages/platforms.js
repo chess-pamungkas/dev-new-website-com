@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import TopMarket from "../components/top-market";
-import image from "../assets/images/top-markets/cripto.svg";
+import platforms from "../assets/images/platforms/platforms.svg";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import MetaTrader from "../components/meta-trader";
@@ -25,7 +25,7 @@ const PlatformsPage = () => {
       <Seo title={t("page-platforms-title")} />
       <TopMarket
         className={cn("top-market--platforms")}
-        image={image}
+        image={platforms}
         subImageTemplate={
           <div className={cn("top-market__trader-tools")}>
             <img src={META_TRADER_4.icon} alt={t(META_TRADER_4.title)} />

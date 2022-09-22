@@ -8,44 +8,48 @@ import CookieContext from "../../../context/cookie-context";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { sendClickEventToGA } from "../../../helpers/services/google-analytics-service";
 
-const CYSEC_STRIPE = (t) => (
-  <div className="notification-stripe__cysec-wrapper">
-    {t("notification-stripe-cysec-part1")}&nbsp;
-    <span className="highlighted-in-red">XX%</span>&nbsp;
-    {t("notification-stripe-cysec-part2")}
-  </div>
-);
+const CysecStripe = ({ t }) => {
+  return (
+    <div className="notification-stripe__cysec-wrapper">
+      {t("notification-stripe-cysec-part1")}&nbsp;
+      <span className="highlighted-in-red">XX%</span>&nbsp;
+      {t("notification-stripe-cysec-part2")}
+    </div>
+  );
+};
 
-const CYSEC_REDIRECT = (handlePopup, setIsHidden, setIsCysecRedirect, t) => (
-  <div className="notification-stripe__redirection-wrapper">
-    <div className="notification-stripe__content">
-      {t("notification-stripe-redirect-text")}
+const CysecRedirect = (handlePopup, setIsHidden, setIsCysecRedirect, t) => {
+  return (
+    <div className="notification-stripe__redirection-wrapper">
+      <div className="notification-stripe__content">
+        {t("notification-stripe-redirect-text")}
+      </div>
+      <div className="notification-stripe__actions">
+        <button
+          type="button"
+          className="notification-stripe__button"
+          onClick={(e) => {
+            handlePopup();
+            sendClickEventToGA(e);
+          }}
+        >
+          {t("notification-stripe-change-btn")}
+        </button>
+        <button
+          type="button"
+          className="notification-stripe__button"
+          onClick={(e) => {
+            setIsCysecRedirect(false);
+            setIsHidden(true);
+            sendClickEventToGA(e);
+          }}
+        >
+          {t("notification-stripe-close-btn")}
+        </button>
+      </div>
     </div>
-    <div className="notification-stripe__actions">
-      <button
-        type="button"
-        className="notification-stripe__button"
-        onClick={(e) => {
-          handlePopup();
-          sendClickEventToGA(e);
-        }}
-      >
-        {t("notification-stripe-change-btn")}
-      </button>
-      <button
-        type="button"
-        className="notification-stripe__button"
-        onClick={(e) => {
-          setIsCysecRedirect(false);
-          setIsHidden(true);
-          sendClickEventToGA(e);
-        }}
-      >
-        {t("notification-stripe-close-btn")}
-      </button>
-    </div>
-  </div>
-);
+  );
+};
 
 const NotificationStripe = ({ className, setSectionOptions }) => {
   const { clientConfig, currentEntity, entityToRedirect } = useContext(
@@ -61,33 +65,48 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
   const { getCookie } = useContext(CookieContext);
   const { t } = useTranslation();
 
-  const getContent = () => {
-    if (isCysecNotification) {
-      setIsHidden(false);
-      return CYSEC_STRIPE(t);
-    }
-
-    if (isCysecRedirect) {
-      setIsHidden(false);
-      return CYSEC_REDIRECT(handleOpen, setIsHidden, setIsCysecRedirect, t);
-    }
-
-    return null;
-  };
-
-  const [content, setContent] = useState(null);
   const [isHidden, setIsHidden] = useState(true);
 
   useEffect(() => {
     setSectionOptions({ isCysecNotification, isCysecRedirect });
-    setContent(getContent());
-  }, [clientConfig, currentEntity, isCysecNotification, isCysecRedirect]);
+
+    if (isCysecNotification) {
+      setIsHidden(false);
+    }
+
+    if (isCysecRedirect) {
+      setIsHidden(false);
+    }
+
+    if (!isCysecRedirect && !isCysecNotification) {
+      setIsHidden(true);
+    }
+  }, [
+    clientConfig,
+    currentEntity,
+    isCysecNotification,
+    isCysecRedirect,
+    setSectionOptions,
+  ]);
 
   return (
     <>
-      {!isHidden && content && (
+      {!isHidden && (isCysecNotification || isCysecRedirect) && (
         <div className={cn("notification-stripe", className)}>
-          <div className={cn("notification-stripe__wrapper")}>{content}</div>
+          <div className={cn("notification-stripe__wrapper")}>
+            {isCysecRedirect && (
+              <CysecRedirect
+                handleOpen={handleOpen}
+                setIsHidden={setIsHidden}
+                setIsCysecRedirect={setIsCysecRedirect}
+                t={t}
+              />
+            )}
+
+            {isCysecNotification && (
+              <CysecStripe t={t} />
+            )}
+          </div>
         </div>
       )}
 

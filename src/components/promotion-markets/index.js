@@ -60,7 +60,7 @@ const PromotionMarkets = ({
     if (dataPromoRef?.isIntersecting && !isAnimationStarted) {
       setIsAnimationStarted(true);
     }
-  }, [promoRef, dataPromoRef]);
+  }, [dataPromoRef, isAnimationStarted, promoRef]);
 
   const animationToStep1Config = {
     ...OPACITY_1,
@@ -83,7 +83,7 @@ const PromotionMarkets = ({
     if (isAnimationStarted && isAnimationFinished) {
       chartAnimationApi.stop();
     }
-  }, [isAnimationStarted, isAnimationFinished, children]);
+  }, [chartAnimationApi, isAnimationStarted, isAnimationFinished, children]);
 
   return (
     <section className={cn("promotion-markets", className)} ref={promoRef}>
