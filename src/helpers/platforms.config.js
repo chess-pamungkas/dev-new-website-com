@@ -17,6 +17,65 @@ export const MT5_DOWNLOAD_LINKS = {
   mac: "/",
 };
 
+export const MT5_ADVANTAGES = [
+  {
+    key: "adv1",
+    text: "mt5_market-items-list_adv1",
+  },
+  {
+    key: "adv2",
+    text: "mt5_market-items-list_adv2",
+  },
+  {
+    key: "adv3",
+    text: "mt5_market-items-list_adv3",
+  },
+  {
+    key: "adv4",
+    text: "mt5_market-items-list_adv4",
+  },
+  {
+    key: "adv5",
+    text: "mt5_market-items-list_adv5",
+  },
+  {
+    key: "adv6",
+    text: "mt5_market-items-list_adv6",
+  },
+  {
+    key: "adv7",
+    text: "mt5_market-items-list_adv7",
+  },
+  {
+    key: "adv8",
+    text: "mt5_market-items-list_adv8",
+  },
+  {
+    key: "adv9",
+    text: "mt5_market-items-list_adv9",
+  },
+  {
+    key: "adv10",
+    text: "mt5_market-items-list_adv10",
+  },
+  {
+    key: "adv11",
+    text: "mt5_market-items-list_adv11",
+  },
+  {
+    key: "adv12",
+    text: "mt5_market-items-list_adv12",
+  },
+  {
+    key: "adv13",
+    text: "mt5_market-items-list_adv13",
+  },
+  {
+    key: "adv14",
+    text: "mt5_market-items-list_adv14",
+  },
+];
+
 export const MT4_ADVANTAGES = [
   {
     key: "adv1",
@@ -171,3 +230,94 @@ export const META_TRADER_5 = {
     },
   ],
 };
+
+export const COLUMNS_PLATFORMS = [
+  {
+    id: "group1",
+    Header: "",
+    columns: [
+      {
+        Header: "",
+        accessor: "col1",
+      },
+    ],
+  },
+  {
+    id: "group2",
+    Header: "MetaTrader 5",
+    columns: [
+      {
+        Header: "",
+        accessor: "col2",
+      },
+    ],
+  },
+  {
+    id: "group3",
+    Header: "MetaTrader 4",
+    columns: [
+      {
+        Header: "",
+        accessor: "col3",
+      },
+    ],
+  },
+];
+
+export const DATA_PLATFORMS = [
+  {
+    col1: "Old Execution Types",
+    col2: "4",
+    col3: "3",
+  },
+  {
+    col1: "Pending Old Types",
+    col2: "6",
+    col3: "3",
+  },
+  {
+    col1: "Symbols",
+    col2: "Untitled",
+    col3: "3",
+  },
+  {
+    col1: "Technical Indicators",
+    col2: "38",
+    col3: "38",
+  },
+  {
+    col1: "Programming Language",
+    col2: "Mql5",
+    col3: "Mql4",
+  },
+  {
+    col1: "Time Frames",
+    col2: "21",
+    col3: "9",
+  },
+  {
+    col1: "Analytical Objects",
+    col2: "44",
+    col3: "31",
+  },
+  {
+    col1: "Strategy Tester",
+    col2: "Multi-Threaded",
+    col3: "Single Thread",
+  },
+  {
+    col1: "Trading Signals & Copy Trading",
+    col2: "Yes",
+    col3: "No",
+  },
+  {
+    col1: "Reports",
+    col2: "Charts (HTML 5) & Tables",
+    col3: "Tables Only",
+  },
+  {
+    col1: "Built Economic Calendar",
+    col2: "Yes",
+    col3: "No",
+  },
+];

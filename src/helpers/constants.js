@@ -36,7 +36,7 @@ export const COMMODITIES_PAGE_LINK = "/commodities";
 export const PLATFORMS_LINK = "/platforms";
 export const ALL_MARKETS_PAGE_LINK = "/all-markets";
 export const MT4_PAGE_LINK = "/mt4";
-export const MT5_PAGE_LINK = "";
+export const MT5_PAGE_LINK = "/mt5";
 
 export const FAQ_LINK = "/";
 

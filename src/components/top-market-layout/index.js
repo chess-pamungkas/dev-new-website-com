@@ -8,12 +8,14 @@ const TopMarketLayout = ({ className, children, title, btnTitle, link }) => {
       <div className={"top-market-layout__wrapper"}>
         <h2 className="top-market-layout__title">{title}</h2>
         <div className="top-market-layout__content">{children}</div>
-        <ButtonLink
-          link={link}
-          className={cn("top-market-layout__btn", "button-link--red")}
-        >
-          {btnTitle}
-        </ButtonLink>
+        {btnTitle && (
+          <ButtonLink
+            link={link}
+            className={cn("top-market-layout__btn", "button-link--red")}
+          >
+            {btnTitle}
+          </ButtonLink>
+        )}
       </div>
     </section>
   );
