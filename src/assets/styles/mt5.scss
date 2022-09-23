@@ -8,8 +8,8 @@
   padding-bottom: 33px;
 
   @include tablet {
-    padding-top: 33px;
-    padding-bottom: 39px;
+    padding-top: 26px;
+    padding-bottom: 33px;
     background: url("../../assets/images/mt4/bg-md.svg") no-repeat bottom;
     background-size: cover;
   }
@@ -17,7 +17,7 @@
   @include desktop-lg {
     padding-top: 56px;
     padding-bottom: 60px;
-    background: url("../../assets/images/mt4/bg-lg.svg") no-repeat center;
+    background: url("../../assets/images/mt4/bg-lg.svg") no-repeat right;
     background-size: cover;
   }
 
