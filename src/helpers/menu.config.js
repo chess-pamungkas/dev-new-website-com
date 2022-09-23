@@ -22,44 +22,57 @@ import {
   CollaborationPartnershipIcon,
   AffiliatePartnershipIcon,
 } from "../components/shared/icons";
-import { PLATFORMS_LINK } from './constants';
+import {
+  ALL_MARKETS_PAGE_LINK,
+  COMPANY_PAGE_LINK,
+  LEGAL_PAGE_LINK,
+  MT4_PAGE_LINK,
+  MT5_PAGE_LINK,
+  INDICES_PAGE_LINK,
+  FOREX_PAGE_LINK,
+  COMMODITIES_PAGE_LINK,
+  SHARES_PAGE_LINK,
+  ENERGIES_PAGE_LINK,
+  CRYPTO_PAGE_LINK,
+  PLATFORMS_LINK,
+} from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
   title: "header-nav-tab-top-markets",
   subItems: [
     {
       title: "header-nav-tab-top-markets-indices-title",
-      link: "/indices",
+      link: INDICES_PAGE_LINK,
       icon: IndicesIcon,
       description: "header-nav-tab-top-markets-indices-desc",
     },
     {
       title: "header-nav-tab-top-markets-forex-title",
-      link: "/forex",
+      link: FOREX_PAGE_LINK,
       icon: ForexIcon,
       description: "header-nav-tab-top-markets-forex-desc",
     },
     {
       title: "header-nav-tab-top-markets-commodities-title",
-      link: "/commodities",
+      link: COMMODITIES_PAGE_LINK,
       icon: CommoditiesIcon,
       description: "header-nav-tab-top-markets-commodities-desc",
     },
     {
       title: "header-nav-tab-top-markets-shares-title",
-      link: "/shares",
+      link: SHARES_PAGE_LINK,
       icon: SharesIcon,
       description: "header-nav-tab-top-markets-shares-desc",
     },
     {
       title: "header-nav-tab-top-markets-energies-title",
-      link: "/energies",
+      link: ENERGIES_PAGE_LINK,
       icon: EnergiesIcon,
       description: "header-nav-tab-top-markets-energies-desc",
     },
     {
       title: "header-nav-tab-top-markets-allmarkets-title",
-      link: "/all-markets",
+      link: ALL_MARKETS_PAGE_LINK,
       icon: AllMarketsOverviewIcon,
       description: "header-nav-tab-top-markets-allmarkets-desc",
     },
@@ -71,7 +84,7 @@ const FSA_TOP_MARKETS_TAB = {
   subItems: [
     {
       title: "header-nav-tab-top-markets-crypto-title",
-      link: "/crypto",
+      link: CRYPTO_PAGE_LINK,
       icon: CryptoIcon,
       description: "header-nav-tab-top-markets-crypto-desc",
     },
@@ -88,12 +101,12 @@ const TRADING_TAB_PLATFORMS_ITEM = {
   subtitles: [
     {
       title: "header-nav-tab-trading-platforms-mt4-title",
-      link: "",
+      link: MT4_PAGE_LINK,
       description: "header-nav-tab-trading-platforms-mt4-desc",
     },
     {
       title: "header-nav-tab-trading-platforms-mt5-title",
-      link: "",
+      link: MT5_PAGE_LINK,
       description: "header-nav-tab-trading-platforms-mt5-desc",
     },
   ],
@@ -174,12 +187,15 @@ const TRADING_TAB_TRADING_TOOLS_ITEM = {
     {
       title: "header-nav-tab-trading-trading-tools-economic-calendar-title",
       link: "",
-      description: "header-nav-tab-trading-trading-tools-economic-calendar-desc",
+      description:
+        "header-nav-tab-trading-trading-tools-economic-calendar-desc",
     },
     {
-      title: "header-nav-tab-trading-trading-tools-market-sentiment-tools-title",
+      title:
+        "header-nav-tab-trading-trading-tools-market-sentiment-tools-title",
       link: "",
-      description: "header-nav-tab-trading-trading-tools-market-sentiment-tools-desc",
+      description:
+        "header-nav-tab-trading-trading-tools-market-sentiment-tools-desc",
     },
   ],
 };
@@ -232,7 +248,7 @@ const COMPANY_TAB = {
   subItems: [
     {
       title: "header-nav-tab-company-about-title",
-      link: "/company",
+      link: COMPANY_PAGE_LINK,
       icon: AboutIcon,
       description: "header-nav-tab-company-about-desc",
     },
@@ -244,7 +260,7 @@ const COMPANY_TAB = {
     },
     {
       title: "header-nav-tab-company-legal-title",
-      link: "/legal",
+      link: LEGAL_PAGE_LINK,
       icon: LegalIcon,
       description: "header-nav-tab-company-legal-desc",
     },

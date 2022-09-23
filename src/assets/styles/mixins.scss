@@ -1,5 +1,5 @@
 @import "vars";
-// MOBILE FIRST
+// MOBILE FIRST APPROACH
 
 @mixin small-mobile {
   @media screen and (max-width: $sm) {

@@ -40,6 +40,7 @@ const TableComponent = ({
     canPreviousPage,
     canNextPage,
     page,
+    rows,
     setPageSize,
     state,
   } = useTable(
@@ -140,7 +141,7 @@ const TableComponent = ({
             ))}
           </thead>
           <tbody className="table__body" {...getTableBodyProps()}>
-            {page.map((row) => {
+            {(isPagination ? page : rows).map((row) => {
               prepareRow(row);
               return (
                 <tr {...row.getRowProps()} className="table__body-row">

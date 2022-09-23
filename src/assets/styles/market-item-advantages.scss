@@ -1,28 +1,69 @@
 @import "vars";
+@import "mixins";
 
-.market-item-advantages {
-  background: map-get($colors, "white") 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 10px #0000001a;
-  border-radius: 10px;
+.market-item-advantages-list {
   width: 100%;
-  height: fit-content;
-  font: normal normal map-get($font-weight, "black") 14px/35px $font;
-  color: map-get($colors, "red");
-  padding: 20px;
-
-  @include tablet {
-    font: normal normal map-get($font-weight, "black") 24px/35px $font;
-    padding: 35px 43px 17px 43px;
-  }
 
   @include desktop-lg {
-    font: normal normal map-get($font-weight, "black") 24px/35px $font;
-    padding: 35px 19px 22px 43px;
     width: 460px;
   }
 
   @include desktop-xl {
     width: 620px;
+  }
+
+  &__title-wrapper {
+    background-color: map-get($colors, "red");
+    border-radius: 10px 10px 0 0;
+    padding: 6px 20px;
+
+    @include tablet {
+      padding: 7px 43px;
+    }
+
+    @include desktop-lg {
+      padding: 7px 19px 7px 43px;
+    }
+
+    @include desktop-xl {
+      padding: 9px 19px 9px 43px;
+    }
+  }
+
+  &__title {
+    text-align: left;
+    color: map-get($colors, "white");
+    margin: 0;
+    font-weight: map-get($font-weight, "black");
+    font-size: 16px;
+    line-height: 20px;
+
+    @include tablet {
+      font-size: 22px;
+      line-height: 27px;
+    }
+
+    @include desktop-xl {
+      font-size: 23px;
+      line-height: 28px;
+    }
+  }
+}
+
+.market-item-advantages {
+  background: map-get($colors, "white") 0 0% no-repeat padding-box;
+  box-shadow: 0 0 10px #0000001a;
+  border-radius: 10px;
+  width: 100%;
+  height: fit-content;
+  padding: 20px;
+
+  @include tablet {
+    padding: 35px 43px 17px 43px;
+  }
+
+  @include desktop-lg {
+    padding: 35px 19px 22px 43px;
   }
 
   &__item {
@@ -40,8 +81,15 @@
 
   &__text {
     padding-left: 10px;
+    text-align: left;
+    font-size: 14px;
+    line-height: 35px;
+    color: map-get($colors, "red");
+    font-weight: map-get($font-weight, "black");
 
     @include tablet {
+      font-size: 24px;
+      line-height: 35px;
       padding-left: 20px;
     }
   }

@@ -1,6 +1,7 @@
 import webTraderIcon from "../assets/images/icons/tools/webTrader.svg";
 import iosIcon from "../assets/images/icons/tools/ios.svg";
 import androidIcon from "../assets/images/icons/tools/android.svg";
+import windowsIcon from "../assets/images/icons/tools/windows.svg";
 import metaTrader4Icon from "../assets/images/icons/tools/metaTrader4.svg";
 import metaTrader5Icon from "../assets/images/icons/tools/metaTrader5.svg";
 import windows from "../assets/images/icons/tools/windows.svg";
@@ -87,6 +88,21 @@ export const FSA_ADVANTAGES = [
     accent: "performance-advantage7-accent",
   },
 ];
+
+export const MT4_PLATFORMS = {
+  ios: {
+    icon: iosIcon,
+    title: "index_trading-tools-platforms-ios",
+  },
+  android: {
+    icon: androidIcon,
+    title: "index_trading-tools-platforms-android",
+  },
+  windows: {
+    icon: windowsIcon,
+    title: "index_trading-tools-platforms-windows",
+  },
+};
 
 export const PLATFORMS = {
   webTrader: {
