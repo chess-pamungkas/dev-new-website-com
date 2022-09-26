@@ -45,6 +45,7 @@
 @import "mt4";
 @import "mt5";
 @import "mt-promotion";
+@import "withdrawal";
 
 *,
 *::before,
@@ -118,4 +119,8 @@ a {
   @include mobile {
     display: none;
   }
+}
+
+.display-block {
+  display: block;
 }
