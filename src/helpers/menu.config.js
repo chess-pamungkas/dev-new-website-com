@@ -34,7 +34,7 @@ import {
   SHARES_PAGE_LINK,
   ENERGIES_PAGE_LINK,
   CRYPTO_PAGE_LINK,
-  PLATFORMS_LINK,
+  PLATFORMS_LINK, WITHDRAWAL_PAGE_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
@@ -114,7 +114,7 @@ const TRADING_TAB_PLATFORMS_ITEM = {
 
 const CYSEC_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
   title: "header-nav-tab-trading-funding-withdrawals-title",
-  link: "",
+  link: WITHDRAWAL_PAGE_LINK,
   isSubtitle: true,
   icon: FundingWithdrawalsIcon,
   description: "header-nav-tab-trading-funding-withdrawals-desc",
@@ -134,7 +134,7 @@ const CYSEC_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
 
 const FSA_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
   title: "header-nav-tab-trading-funding-withdrawals-title",
-  link: "",
+  link: WITHDRAWAL_PAGE_LINK,
   isSubtitle: true,
   icon: FundingWithdrawalsIcon,
   description: "",

@@ -150,6 +150,7 @@
 
     &:first-child {
       font-size: 11px;
+      border-right: none;
 
       @include tablet {
         font-size: 18px;
@@ -179,6 +180,18 @@
 
     @include tablet {
       min-width: 210px;
+    }
+  }
+
+  &__img-wrapper {
+    padding-top: 10px;
+
+    img {
+      padding-right: 3px;
+
+      &:last-child {
+        padding-right: 0;
+      }
     }
   }
 

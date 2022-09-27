@@ -71,26 +71,28 @@ const TopMarketPromotion = ({
         <div className="top-market-promotion__block">
           <div className="top-market-promotion__description">
             <p className="top-market-promotion__text">{children}</p>
-            <span className="top-market-promotion__note">{note}</span>
+            {note && <span className="top-market-promotion__note">{note}</span>}
           </div>
-          {getButton()}
+          {btnTitle && getButton()}
         </div>
-        <div
-          className={cn(
-            "top-market-promotion__block",
-            "top-market-promotion__block--flexed"
-          )}
-        >
-          {isLottieImage ? (
-            <Lottie
-              className="top-market-promotion__img--lottie"
-              animationData={image}
-              style={lottieStyle}
-            />
-          ) : (
-            <img src={image} alt="" className="top-market-promotion__img" />
-          )}
-        </div>
+        {image && (
+          <div
+            className={cn(
+              "top-market-promotion__block",
+              "top-market-promotion__block--flexed"
+            )}
+          >
+            {isLottieImage ? (
+              <Lottie
+                className="top-market-promotion__img--lottie"
+                animationData={image}
+                style={lottieStyle}
+              />
+            ) : (
+              <img src={image} alt="" className="top-market-promotion__img" />
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1,5 +1,12 @@
 import privacyPolicy from "../assets/documents/Privacy_Policy.pdf";
 import termsAndConditions from "../assets/documents/Terms_and_Conditions.pdf";
+import visaLogo from "../assets/images/icons/payments/visa.png";
+import masterCardLogo from "../assets/images/icons/payments/mastercard.png";
+import bankwireLogo from "../assets/images/icons/payments/bankwire.png";
+import netellerLogo from "../assets/images/icons/payments/neteller.png";
+import revolutLogo from "../assets/images/icons/payments/revolut.png";
+import skrillLogo from "../assets/images/icons/payments/skrill.png";
+import wiseLogo from "../assets/images/icons/payments/wise.png";
 
 export const WINDOW_SIZE_SM = 375;
 export const WINDOW_SIZE_MD = 768;
@@ -37,6 +44,7 @@ export const PLATFORMS_LINK = "/platforms";
 export const ALL_MARKETS_PAGE_LINK = "/all-markets";
 export const MT4_PAGE_LINK = "/mt4";
 export const MT5_PAGE_LINK = "/mt5";
+export const WITHDRAWAL_PAGE_LINK = "/withdrawal";
 
 export const FAQ_LINK = "/";
 
@@ -47,3 +55,34 @@ export const ANGLE_ICON_COLOR = {
 };
 
 export const TABLE_PAGE_SIZES = [5, 10, 15];
+
+export const PAYMENT_SYSTEMS = {
+  visa: {
+    alt: "Visa",
+    logo: visaLogo,
+  },
+  masterCard: {
+    alt: "MasterCard",
+    logo: masterCardLogo,
+  },
+  bankwire: {
+    alt: "Bank Wire",
+    logo: bankwireLogo,
+  },
+  neteller: {
+    alt: "Neteller",
+    logo: netellerLogo,
+  },
+  revolut: {
+    alt: "Revolut",
+    logo: revolutLogo,
+  },
+  skrill: {
+    alt: "Skrill",
+    logo: skrillLogo,
+  },
+  wise: {
+    alt: "TransferWise",
+    logo: wiseLogo,
+  },
+};
