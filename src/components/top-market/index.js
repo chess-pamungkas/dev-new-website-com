@@ -13,7 +13,7 @@ const TopMarket = ({
   link1,
   btn2Title,
   link2,
-  subImageTemplate
+  subImageTemplate,
 }) => {
   return (
     <section className={cn("top-market", className)}>
@@ -39,24 +39,28 @@ const TopMarket = ({
           </div>
           {(btn1Title || btn2Title) && (
             <div className="top-market__btn-wrapper">
-              <ButtonLink
-                link={link1}
-                className={cn("top-market__btn", "top-market__btn--black")}
-              >
-                {btn1Title}
-              </ButtonLink>
-              <ButtonLink
-                link={link2}
-                className={cn("top-market__btn", "top-market__btn--white")}
-              >
-                {btn2Title}
-              </ButtonLink>
+              {btn1Title && (
+                <ButtonLink
+                  link={link1}
+                  className={cn("top-market__btn", "top-market__btn--black")}
+                >
+                  {btn1Title}
+                </ButtonLink>
+              )}
+              {btn2Title && (
+                <ButtonLink
+                  link={link2}
+                  className={cn("top-market__btn", "top-market__btn--white")}
+                >
+                  {btn2Title}
+                </ButtonLink>
+              )}
             </div>
           )}
         </div>
         <div className={cn("top-market__block", "top-market__block--flexed")}>
           <img src={image} alt="" className="top-market__img" />
-          {subImageTemplate && (subImageTemplate)}
+          {subImageTemplate && subImageTemplate}
         </div>
       </div>
     </section>

@@ -2,7 +2,13 @@ import React from "react";
 import cn from "classnames";
 import { Logo } from "../shared/icons";
 
-const SplitTextPromotion = ({ className, children, title, subtitle }) => {
+const SplitTextPromotion = ({
+  className,
+  children,
+  title,
+  subtitle,
+  table,
+}) => {
   return (
     <section className={cn("split-text-promotion", className)}>
       <div className="split-text-promotion__wrapper">
@@ -21,8 +27,11 @@ const SplitTextPromotion = ({ className, children, title, subtitle }) => {
           )}
         >
           <h3 className="split-text-promotion__title">{title}</h3>
-          <span className="split-text-promotion__subtitle">{subtitle}</span>
+          {subtitle && (
+            <span className="split-text-promotion__subtitle">{subtitle}</span>
+          )}
           <p className="split-text-promotion__text">{children}</p>
+          {table && table}
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
@@ -17,11 +17,11 @@ import Layout from "../components/shared/layout";
 import { useIntersectionObserver } from "../helpers/hooks/use-intersection-observer";
 import { useSpring } from "react-spring";
 import {
+  BACKGROUND_ANIMATION_DURATION,
   INTERSECTION_OBSERVER_CONFIG,
   OPACITY_0,
   OPACITY_1,
   SPRING_CONFIG_TEXT,
-  BACKGROUND_ANIMATION_DURATION,
 } from "../helpers/animation.config";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import cn from "classnames";
@@ -29,10 +29,14 @@ import { scrollTo } from "../helpers/scroll-to";
 import Seo from "../components/shared/seo";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import { usePromotionAnimation } from "../components/promotion/use-promotion-animation";
+import ClientResolverContext from "../context/client-resolver-context";
+import entities from "../enums/entities";
+import { CYSEC_ADVANTAGES, FSA_ADVANTAGES } from "../helpers/config";
 
 const IndexPage = () => {
   const { t } = useTranslation();
   const { isMobile } = useWindowSize();
+  const { currentEntity } = useContext(ClientResolverContext);
 
   const [isTradePromoScrolled, setIsTradePromoScrolled] = useState(false);
   const [isPromo1Scrolled, setIsPromo1Scrolled] = useState(false);
@@ -45,6 +49,14 @@ const IndexPage = () => {
   const promo2Ref = useRef();
   const promo3Ref = useRef();
   const promo4Ref = useRef();
+
+  const [advantages, setAdvantages] = useState([]);
+
+  useEffect(() => {
+    setAdvantages(
+      currentEntity === entities.CYSEC ? CYSEC_ADVANTAGES : FSA_ADVANTAGES
+    );
+  }, [currentEntity]);
 
   const dataTradePromoRef = useIntersectionObserver(
     tradePromoRef,
@@ -217,7 +229,15 @@ const IndexPage = () => {
         },
       });
     }
-  }, [isMobile, isPromo12Bg, isPromo23Bg, isPromo32Bg, isPromo21Bg, headerRef, bgAnimationApi]);
+  }, [
+    isMobile,
+    isPromo12Bg,
+    isPromo23Bg,
+    isPromo32Bg,
+    isPromo21Bg,
+    headerRef,
+    bgAnimationApi,
+  ]);
 
   return (
     <Layout setHeaderRef={setHeaderRef}>
@@ -299,7 +319,25 @@ const IndexPage = () => {
           </span>
         </HighlightedLocalizationText>
       </Promotion>
-      <Performance />
+      <Performance
+        title={
+          <HighlightedLocalizationText
+            localizationText="index_performance-title1"
+            wordsToHighlight="performance-title1-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          >
+            <br />
+            <HighlightedLocalizationText
+              localizationText="index_performance-title2"
+              wordsToHighlight="performance-title2-accent"
+              primaryClassName="highlighted-in-black"
+              accentClassName="highlighted-in-red"
+            />
+          </HighlightedLocalizationText>
+        }
+        advantages={advantages}
+      />
     </Layout>
   );
 };

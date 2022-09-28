@@ -16,6 +16,10 @@ import {
   QualityAdvantageIcon,
   SafetyAdvantageIcon,
   TrustAdvantageIcon,
+  ProfQualificationAdvantageIcon1,
+  ProfQualificationAdvantageIcon2,
+  ProfQualificationAdvantageIcon3,
+  ProfQualificationAdvantageIcon4,
 } from "../components/shared/icons";
 
 export const CYSEC_ADVANTAGES = [
@@ -154,5 +158,28 @@ export const COMPANY_ADVANTAGES = [
     title: "company_company-advantages-title3",
     icon: TrustAdvantageIcon,
     textArray: ["company_company-advantages-text3"],
+  },
+];
+
+export const PROFESSIONAL_QUALIFICATION_ADVANTAGES = [
+  {
+    icon: ProfQualificationAdvantageIcon1,
+    text: "professional-qualification_performance-advantage1",
+    accent: "professional-qualification_performance-advantage1-accent",
+  },
+  {
+    icon: ProfQualificationAdvantageIcon2,
+    text: "professional-qualification_performance-advantage2",
+    accent: "professional-qualification_performance-advantage2-accent",
+  },
+  {
+    icon: ProfQualificationAdvantageIcon3,
+    text: "professional-qualification_performance-advantage3",
+    accent: "professional-qualification_performance-advantage3-accent",
+  },
+  {
+    icon: ProfQualificationAdvantageIcon4,
+    text: "professional-qualification_performance-advantage4",
+    accent: "professional-qualification_performance-advantage4-accent",
   },
 ];

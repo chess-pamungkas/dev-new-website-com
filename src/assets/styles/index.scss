@@ -46,6 +46,7 @@
 @import "mt5";
 @import "mt-promotion";
 @import "withdrawal";
+@import "professional-qualification";
 
 *,
 *::before,
@@ -123,4 +124,8 @@ a {
 
 .display-block {
   display: block;
+}
+
+.mocked-li {
+  display: list-item;
 }

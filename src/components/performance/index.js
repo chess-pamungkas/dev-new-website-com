@@ -1,43 +1,23 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import cn from "classnames";
 import { Logo } from "../shared/icons";
-import { CYSEC_ADVANTAGES, FSA_ADVANTAGES } from "../../helpers/config";
 import AdvantageBlock from "./components/advantage-block";
-import ClientResolverContext from "../../context/client-resolver-context";
-import entities from "../../enums/entities";
-import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
+import ButtonLink from "../shared/button-link";
 
-const Performance = ({ className }) => {
-  const { currentEntity } = useContext(ClientResolverContext);
-  const [advantages, setAdvantages] = useState([]);
-
-  useEffect(() => {
-    setAdvantages(
-      currentEntity === entities.CYSEC ? CYSEC_ADVANTAGES : FSA_ADVANTAGES
-    );
-  }, [currentEntity]);
-
+const Performance = ({
+  className,
+  title,
+  advantages,
+  btnTitle,
+  link,
+  note,
+}) => {
   return (
     <section className={cn("performance", className)}>
       <div className="performance__title-wrapper">
         <Logo className="performance__icon" />
-        <h2 className="performance__title">
-          <HighlightedLocalizationText
-            localizationText="index_performance-title1"
-            wordsToHighlight="performance-title1-accent"
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-red"
-          >
-            <br />
-            <HighlightedLocalizationText
-              localizationText="index_performance-title2"
-              wordsToHighlight="performance-title2-accent"
-              primaryClassName="highlighted-in-black"
-              accentClassName="highlighted-in-red"
-            />
-          </HighlightedLocalizationText>
-        </h2>
+        <h2 className="performance__title">{title}</h2>
       </div>
       <div className="performance__advantages">
         {advantages.length > 0 &&
@@ -50,6 +30,19 @@ const Performance = ({ className }) => {
             />
           ))}
       </div>
+      {(btnTitle || note) && (
+        <div className="performance__btn-wrapper">
+          {btnTitle && (
+            <ButtonLink
+              link={link}
+              className={cn("button-link--red", "performance__btn")}
+            >
+              {btnTitle}
+            </ButtonLink>
+          )}
+          {note && <p className="performance__note">{note}</p>}
+        </div>
+      )}
     </section>
   );
 };
