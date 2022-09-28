@@ -16,6 +16,7 @@ import {
 } from "../helpers/copy-trading.config";
 import Performance from "../components/performance";
 import { PROFESSIONAL_QUALIFICATION_ADVANTAGES } from "../helpers/config";
+import TextBanner from "../components/text-banner";
 
 const ProfessionalQualificationPage = () => {
   const { t } = useTranslation();
@@ -115,6 +116,55 @@ const ProfessionalQualificationPage = () => {
           />
         </span>
       </SplitTextPromotion>
+      <TextBanner
+        title={
+          <HighlightedLocalizationText
+            localizationText="professional-qualification_text-banner-title"
+            wordsToHighlight="professional-qualification_text-banner-title-accent"
+            primaryClassName="highlighted-in-white"
+            accentClassName="highlighted-in-black"
+          />
+        }
+        note={
+          <HighlightedLocalizationText
+            localizationText="professional-qualification_text-banner-note"
+            wordsToHighlight="professional-qualification_text-banner-note-accent"
+            primaryClassName="highlighted-in-white"
+            accentClassName="highlighted-in-black"
+          />
+        }
+        btnTitle1={t("professional-qualification_text-banner-btn1")}
+        // TODO replace with the real link
+        link1={"/"}
+        btnTitle2={t("professional-qualification_text-banner-btn2")}
+        // TODO replace with the real link
+        link2={"/"}
+      >
+        <span className="mocked-li">
+          <HighlightedLocalizationText
+            localizationText="professional-qualification_text-banner-text1"
+            wordsToHighlight="professional-qualification_text-banner-text1-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-white"
+          />
+        </span>
+        <span className="mocked-li">
+          <HighlightedLocalizationText
+            localizationText="professional-qualification_text-banner-text2"
+            wordsToHighlight="professional-qualification_text-banner-text2-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-white"
+          />
+        </span>
+        <span className="mocked-li">
+          <HighlightedLocalizationText
+            localizationText="professional-qualification_text-banner-text3"
+            wordsToHighlight="professional-qualification_text-banner-text3-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-white"
+          />
+        </span>
+      </TextBanner>
     </Layout>
   );
 };
