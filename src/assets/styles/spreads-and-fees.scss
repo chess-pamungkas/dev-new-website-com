@@ -1,0 +1,397 @@
+@import "vars";
+@import "mixins";
+
+.spreads__table-link {
+  display: inline-block;
+  margin-left: 0;
+  font-size: 13px;
+  line-height: 17px;
+
+  @include tablet {
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  @include desktop-lg {
+    font-size: 18px;
+    line-height: 22px;
+    margin-left: 25px;
+  }
+
+  color: map-get($colors, "red");
+  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.spreads--common-table {
+  .table__body-column {
+    font-size: 17px;
+    line-height: 21px;
+    min-width: 169px;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    @include tablet {
+      min-width: 202px;
+    }
+
+    @include desktop-lg {
+      font-size: 16px;
+      line-height: 20px;
+      min-width: 183px;
+
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    @include desktop-xl {
+      padding-top: 32px;
+      padding-bottom: 32px;
+      min-width: unset;
+    }
+
+    &:first-child {
+      font-weight: map-get($font-weight, "regular");
+    }
+
+    &:nth-child(2) {
+      border-left-color: map-get($colors, "table-grey");
+    }
+  }
+
+  .table__head > tr:last-child > .table__head-column {
+    font-size: 14px;
+    line-height: 18px;
+    padding: 14px 20px;
+    min-width: 169px;
+
+    border-top: 1px solid map-get($colors, "black");
+    border-right: 1px solid map-get($colors, "black");
+
+    @include tablet {
+      min-width: 202px;
+    }
+
+    @include desktop-lg {
+      font-size: 16px;
+      line-height: 20px;
+      min-width: 162px;
+
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+
+    &:first-child,
+    &:last-child {
+      border-right: none;
+    }
+
+    &:first-child {
+      color: map-get($colors, "black");
+      border-left: none;
+    }
+  }
+
+  .table {
+    padding: 37px 4px;
+  }
+
+  .table-scroll {
+    border-radius: 15px;
+  }
+
+  .table-scroll--vertical {
+    max-height: 768px;
+  }
+
+  @include tablet {
+    &.table-wrapper--padding {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  @include desktop-lg {
+    &.table-wrapper--padding {
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+  }
+}
+
+.spreads--table {
+  @include mobile {
+    &.table-wrapper--padding {
+      padding: 0 0 8px;
+    }
+  }
+
+  .table {
+    padding: 37px 4px;
+  }
+
+  .table-scroll {
+    border-radius: 15px;
+  }
+}
+
+.spreads--second-table {
+  &.table-wrapper--padding {
+    padding: 28px 10px;
+
+    @include desktop-lg {
+      padding: 55px 30px 60px;
+    }
+
+    @include desktop-xl {
+      padding: 55px 45px 60px;
+    }
+  }
+
+  .table__tools--single-block {
+    display: none;
+  }
+
+  .table-scroll--vertical {
+    max-height: 800px;
+  }
+
+  .table__body-column {
+    font-size: 11px;
+    line-height: 14px;
+    min-width: 169px;
+
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    &:first-child {
+      min-width: 84px;
+      padding-left: 15px;
+      text-align: left;
+    }
+
+    &:nth-child(2) {
+      min-width: 226px;
+    }
+
+    @include tablet {
+      font-size: 17px;
+      line-height: 21px;
+      min-width: 202px;
+
+      padding-top: 31px;
+      padding-bottom: 34px;
+
+      &:first-child {
+        text-align: center;
+        min-width: 176px;
+      }
+    }
+
+    @include desktop-lg {
+      font-size: 16px;
+      line-height: 20px;
+      min-width: 183px;
+
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    @include desktop-xl {
+      padding-top: 32px;
+      padding-bottom: 32px;
+      min-width: unset;
+    }
+
+    &:first-child {
+      font-weight: map-get($font-weight, "regular");
+    }
+
+    &:nth-child(2) {
+      border-left-color: map-get($colors, "table-grey");
+    }
+  }
+
+  .table__head > tr:last-child > .table__head-column {
+    font-size: 11px;
+    line-height: 14px;
+    padding: 4px 20px 6px;
+    min-width: 169px;
+
+    border-top: 1px solid map-get($colors, "black");
+    border-right: 1px solid map-get($colors, "black");
+
+    &:first-child {
+      min-width: 84px;
+      padding-left: 15px;
+    }
+
+    @include tablet {
+      font-size: 17px;
+      line-height: 21px;
+      min-width: 202px;
+
+      &:first-child {
+        min-width: 176px;
+        text-align: center;
+      }
+
+      &:nth-child(2) {
+        min-width: 471px;
+      }
+    }
+
+    @include desktop-lg {
+      font-size: 16px;
+      line-height: 20px;
+
+      padding-top: 16px;
+      padding-bottom: 16px;
+
+      &:first-child {
+        min-width: 328px;
+      }
+
+      &:nth-child(2) {
+        min-width: 646px;
+      }
+    }
+
+    @include desktop-xl {
+      padding-top: 16px;
+      padding-bottom: 16px;
+
+      &:first-child {
+        min-width: 274px;
+      }
+
+      &:nth-child(2) {
+        min-width: 601px;
+      }
+    }
+
+    &:first-child,
+    &:last-child {
+      border-right: none;
+    }
+
+    &:first-child {
+      color: map-get($colors, "black");
+      border-left: none;
+    }
+  }
+
+  .table-scroll--vertical {
+    max-height: 860px;
+  }
+}
+
+.faq--spreads {
+  padding-top: 57px;
+  padding-bottom: 254px;
+  background: none;
+
+  @include tablet {
+    padding-top: 75px;
+    padding-bottom: 200px;
+  }
+
+  @include desktop-lg {
+    padding-top: 87px;
+    padding-bottom: 221px;
+    background: url("../../assets/images/spreads-and-fees/faq/bg/lg.svg")
+      no-repeat top;
+  }
+
+  @include desktop-xl {
+    padding-top: 100px;
+    padding-bottom: 356px;
+
+    background: url("../../assets/images/spreads-and-fees/faq/bg/xl.svg")
+      no-repeat bottom;
+  }
+
+  .faq__wrapper {
+    @include tablet {
+      max-width: 479px;
+    }
+
+    @include desktop-lg {
+      max-width: 100%;
+    }
+
+    @include desktop-xl {
+      max-width: 1103px;
+    }
+  }
+
+  .faq__title {
+    color: map-get($colors, "red");
+    margin-top: 0;
+    text-align: left;
+    width: 100%;
+
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 27px;
+
+    @include tablet {
+      font-size: 38px;
+      line-height: 48px;
+      margin-bottom: 25px;
+    }
+
+    @include desktop-xl {
+      font-size: 42px;
+      line-height: 53px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .faq__subtitle {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 53px;
+
+    div + div {
+      margin-top: 35px;
+    }
+
+    @include tablet {
+      font-size: 22px;
+      line-height: 27px;
+      margin-bottom: 82px;
+
+      div + div {
+        margin-top: 0;
+      }
+    }
+
+    @include desktop-lg {
+      div + div {
+        margin-top: 20px;
+      }
+    }
+
+    @include desktop-xl {
+      font-size: 24px;
+      line-height: 30px;
+      margin-bottom: 44px;
+    }
+  }
+
+  .faq__accordion:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .faq__delimiter {
+    display: none;
+  }
+}
