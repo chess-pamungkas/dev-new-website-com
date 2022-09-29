@@ -27,6 +27,7 @@ export const INITIAL_SEARCH_STATE = {
 };
 
 export const HOME_PAGE_LINK = "/";
+export const LOGIN_LINK = "/";
 export const REGISTRATION_LINK = "/";
 export const LEARN_MORE_LINK = "/";
 export const TERMS_OF_USE_LINK = termsAndConditions;

@@ -6,7 +6,7 @@ import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import SplitTextPromotion from "../components/split-text-promotion";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
-import promotion from "../assets/images/withdrawal/promotion.svg";
+import promotion from "../assets/images/professional-qualification/promotion.svg";
 import TopMarket from "../components/top-market";
 import TopMarketLayout from "../components/top-market-layout";
 import TableComponent from "../components/shared/table";
@@ -17,6 +17,7 @@ import {
 import Performance from "../components/performance";
 import { PROFESSIONAL_QUALIFICATION_ADVANTAGES } from "../helpers/config";
 import TextBanner from "../components/text-banner";
+import { LOGIN_LINK, REGISTRATION_LINK } from "../helpers/constants";
 
 const ProfessionalQualificationPage = () => {
   const { t } = useTranslation();
@@ -26,11 +27,10 @@ const ProfessionalQualificationPage = () => {
       <Seo title={t("page-professional-qualification-title")} />
       <TopMarket
         className="top-market--professional-qualification"
-        // TODO replace with the real image
         image={promotion}
         btn1Title={t("professional-qualification_top-market-btn")}
-        // TODO replace with the real link
-        link1={"/"}
+        link1="#eligibilityCriteria"
+        isAnchorLink1
         title={
           <HighlightedLocalizationText
             localizationText="professional-qualification_top-market-text"
@@ -58,8 +58,8 @@ const ProfessionalQualificationPage = () => {
           />
         }
         btnTitle={t("professional-qualification_performance-btn")}
-        // TODO replace with the real link
-        link={"/"}
+        link="#eligibilityCriteria"
+        isAnchorLink
         advantages={PROFESSIONAL_QUALIFICATION_ADVANTAGES}
         note={
           <HighlightedLocalizationText
@@ -134,11 +134,10 @@ const ProfessionalQualificationPage = () => {
           />
         }
         btnTitle1={t("professional-qualification_text-banner-btn1")}
-        // TODO replace with the real link
-        link1={"/"}
+        link1={REGISTRATION_LINK}
         btnTitle2={t("professional-qualification_text-banner-btn2")}
-        // TODO replace with the real link
-        link2={"/"}
+        link2={LOGIN_LINK}
+        id="eligibilityCriteria"
       >
         <span className="mocked-li">
           <HighlightedLocalizationText

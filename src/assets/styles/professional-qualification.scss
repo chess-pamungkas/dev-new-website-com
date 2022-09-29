@@ -54,6 +54,13 @@
     @include desktop-xl {
       text-transform: capitalize;
     }
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: map-get($colors, "white");
+      color: map-get($colors, "red");
+    }
   }
 }
 

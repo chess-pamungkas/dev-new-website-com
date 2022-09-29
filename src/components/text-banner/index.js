@@ -11,9 +11,10 @@ const TextBanner = ({
   link1,
   btnTitle2,
   link2,
+  id,
 }) => {
   return (
-    <section className={cn("text-banner", className)}>
+    <section className={cn("text-banner", className)} id={id}>
       <div className="text-banner__wrapper">
         {note && <p className="text-banner__note">{note}</p>}
         <h2 className="text-banner__title">{title}</h2>

@@ -1,5 +1,3 @@
-import React from "react";
-
 export const COLUMNS_PROFESSIONAL_QUALIFICATION = [
   {
     accessor: "col1",

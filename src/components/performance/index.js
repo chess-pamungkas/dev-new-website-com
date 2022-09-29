@@ -4,6 +4,7 @@ import { Logo } from "../shared/icons";
 import AdvantageBlock from "./components/advantage-block";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import ButtonLink from "../shared/button-link";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Performance = ({
   className,
@@ -11,8 +12,38 @@ const Performance = ({
   advantages,
   btnTitle,
   link,
+  isAnchorLink,
   note,
 }) => {
+  // TODO refactor it, move to helper
+  const getButton = () => {
+    switch (true) {
+      case isAnchorLink:
+        return (
+          <AnchorLink
+            href={link}
+            className={cn(
+              "button-link",
+              "button-link--red",
+              "performance__btn"
+            )}
+          >
+            {btnTitle}
+          </AnchorLink>
+        );
+
+      default:
+        return (
+          <ButtonLink
+            link={link}
+            className={cn("button-link--red", "performance__btn")}
+          >
+            {btnTitle}
+          </ButtonLink>
+        );
+    }
+  };
+
   return (
     <section className={cn("performance", className)}>
       <div className="performance__title-wrapper">
@@ -32,14 +63,7 @@ const Performance = ({
       </div>
       {(btnTitle || note) && (
         <div className="performance__btn-wrapper">
-          {btnTitle && (
-            <ButtonLink
-              link={link}
-              className={cn("button-link--red", "performance__btn")}
-            >
-              {btnTitle}
-            </ButtonLink>
-          )}
+          {btnTitle && getButton()}
           {note && <p className="performance__note">{note}</p>}
         </div>
       )}
