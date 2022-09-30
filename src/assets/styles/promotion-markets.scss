@@ -5,7 +5,7 @@
   scroll-snap-align: start;
   position: relative;
   padding: 135px 0 168px;
-  background: map-get($font-weight, "white");
+  background: map-get($colors, "white");
 
   @include tablet {
     padding: 200px 0 148px;

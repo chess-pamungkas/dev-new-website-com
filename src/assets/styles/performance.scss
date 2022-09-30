@@ -137,6 +137,42 @@
     }
   }
 
+  &__btn-wrapper {
+    text-align: center;
+    padding-top: 35px;
+  }
+
+  &__btn {
+    margin: 0 auto;
+    text-transform: capitalize;
+  }
+
+  &__note {
+    padding-top: 16px;
+    margin: 0;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: map-get($font-weight, "regular");
+
+    @include tablet {
+      padding-top: 50px;
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    @include desktop-lg {
+      padding-top: 74px;
+      font-size: 22px;
+      line-height: 27px;
+    }
+
+    @include desktop-xl {
+      padding-top: 16px;
+      font-size: 24px;
+      line-height: 30px;
+    }
+  }
+
   &__advantages {
     display: flex;
     align-items: initial;

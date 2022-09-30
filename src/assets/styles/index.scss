@@ -46,7 +46,8 @@
 @import "mt5";
 @import "mt-promotion";
 @import "withdrawal";
-@import "spreads-and-fees";
+@import "professional-qualification";
+@import "text-banner";
 
 *,
 *::before,
@@ -124,4 +125,8 @@ a {
 
 .display-block {
   display: block;
+}
+
+.mocked-li {
+  display: list-item;
 }
