@@ -7,6 +7,12 @@
   }
 }
 
+@mixin custom-parallax-bg-breakpoint-2 {
+  @media screen and (max-height: 750px) and (min-width: $lg) and (max-width: $max-xl) {
+    @content;
+  }
+}
+
 .promotion {
   scroll-snap-align: start;
   position: relative;
@@ -210,6 +216,10 @@
 
     @include custom-parallax-bg-breakpoint {
       height: 2900px;
+    }
+
+    @include custom-parallax-bg-breakpoint-2 {
+      height: 3200px;
     }
   }
 }
