@@ -353,12 +353,16 @@
     }
   }
 
+  .faq__subtitle-text {
+    display: block;
+  }
+
   .faq__subtitle {
     font-size: 16px;
     line-height: 20px;
     margin-bottom: 53px;
 
-    div + div {
+    .faq__subtitle-text + .faq__subtitle-text {
       margin-top: 35px;
     }
 
@@ -367,13 +371,13 @@
       line-height: 27px;
       margin-bottom: 82px;
 
-      div + div {
+      .faq__subtitle-text + .faq__subtitle-text {
         margin-top: 0;
       }
     }
 
     @include desktop-lg {
-      div + div {
+      .faq__subtitle-text + .faq__subtitle-text {
         margin-top: 20px;
       }
     }

@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
@@ -17,10 +17,18 @@ import { REGISTRATION_LINK } from "../helpers/constants";
 import Faq from "../components/faq";
 import { FAQ_SPREADS_AND_FEES } from "../helpers/faq";
 import {
-  COLUMNS_SPREADS_TABLE_1,
   COLUMNS_SPREADS_TABLE_2,
-  DATA_SPREADS_TABLE_1,
+  COLUMNS_SPREADS_TABLE_COMMODITIES,
+  COLUMNS_SPREADS_TABLE_CRYPTO,
+  COLUMNS_SPREADS_TABLE_FOREX,
+  COLUMNS_SPREADS_TABLE_INDICES,
+  COLUMNS_SPREADS_TABLE_SHARES,
   DATA_SPREADS_TABLE_2,
+  DATA_SPREADS_TABLE_COMMODITIES,
+  DATA_SPREADS_TABLE_CRYPTO,
+  DATA_SPREADS_TABLE_FOREX,
+  DATA_SPREADS_TABLE_INDICES,
+  DATA_SPREADS_TABLE_SHARES,
 } from "../helpers/spreads-and-fees.config";
 import Tabs from "../components/shared/tabs";
 
@@ -34,13 +42,13 @@ const SpreadsFeesPage = () => {
       content: (
         <>
           <TableComponent
-            data={DATA_SPREADS_TABLE_1}
-            columns={COLUMNS_SPREADS_TABLE_1}
+            data={DATA_SPREADS_TABLE_FOREX}
+            columns={COLUMNS_SPREADS_TABLE_FOREX}
             className={cn("spreads--common-table", "spreads--table")}
           />
-          <a href="/" className="spreads__table-link">
+          <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title")}
-          </a>
+          </Link>
         </>
       ),
     },
@@ -50,13 +58,13 @@ const SpreadsFeesPage = () => {
       content: (
         <>
           <TableComponent
-            data={DATA_SPREADS_TABLE_1}
-            columns={COLUMNS_SPREADS_TABLE_1}
+            data={DATA_SPREADS_TABLE_INDICES}
+            columns={COLUMNS_SPREADS_TABLE_INDICES}
             className={cn("spreads--common-table", "spreads--table")}
           />
-          <a href="/" className="spreads__table-link">
+          <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title")}
-          </a>
+          </Link>
         </>
       ),
     },
@@ -66,13 +74,13 @@ const SpreadsFeesPage = () => {
       content: (
         <>
           <TableComponent
-            data={DATA_SPREADS_TABLE_1}
-            columns={COLUMNS_SPREADS_TABLE_1}
+            data={DATA_SPREADS_TABLE_COMMODITIES}
+            columns={COLUMNS_SPREADS_TABLE_COMMODITIES}
             className={cn("spreads--common-table", "spreads--table")}
           />
-          <a href="/" className="spreads__table-link">
+          <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title")}
-          </a>
+          </Link>
         </>
       ),
     },
@@ -82,13 +90,13 @@ const SpreadsFeesPage = () => {
       content: (
         <>
           <TableComponent
-            data={DATA_SPREADS_TABLE_1}
-            columns={COLUMNS_SPREADS_TABLE_1}
+            data={DATA_SPREADS_TABLE_CRYPTO}
+            columns={COLUMNS_SPREADS_TABLE_CRYPTO}
             className={cn("spreads--common-table", "spreads--table")}
           />
-          <a href="/" className="spreads__table-link">
+          <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title")}
-          </a>
+          </Link>
         </>
       ),
     },
@@ -98,13 +106,13 @@ const SpreadsFeesPage = () => {
       content: (
         <>
           <TableComponent
-            data={DATA_SPREADS_TABLE_1}
-            columns={COLUMNS_SPREADS_TABLE_1}
+            data={DATA_SPREADS_TABLE_SHARES}
+            columns={COLUMNS_SPREADS_TABLE_SHARES}
             className={cn("spreads--common-table", "spreads--table")}
           />
-          <a href="/" className="spreads__table-link">
+          <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title")}
-          </a>
+          </Link>
         </>
       ),
     },
@@ -163,12 +171,16 @@ const SpreadsFeesPage = () => {
       <Faq
         className={cn("faq--spreads")}
         faq={FAQ_SPREADS_AND_FEES}
-        isFaqBtnHidden={true}
+        isFaqBtnHidden
         title={t("spreads_faq-title")}
         subTitleTemplate={
           <div className={cn("faq__subtitle")}>
-            <div>{t("spreads_faq-subtitle1")}</div>
-            <div>{t("spreads_faq-subtitle2")}</div>
+            <span className="faq__subtitle-text">
+              {t("spreads_faq-subtitle1")}
+            </span>
+            <span className="faq__subtitle-text">
+              {t("spreads_faq-subtitle2")}
+            </span>
           </div>
         }
       />
