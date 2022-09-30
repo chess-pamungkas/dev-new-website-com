@@ -1,6 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import ButtonLink from "../shared/button-link";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const TopMarket = ({
   className,
@@ -13,8 +14,34 @@ const TopMarket = ({
   link1,
   btn2Title,
   link2,
-  subImageTemplate
+  subImageTemplate,
+  isAnchorLink1 = false,
+  isAnchorLink2 = false,
 }) => {
+  const getButton = (btnTitle, link, isAnchorLink, btnClassName) => {
+    switch (true) {
+      case isAnchorLink:
+        return (
+          <AnchorLink
+            href={link}
+            className={cn("button-link", "top-market__btn", btnClassName)}
+          >
+            {btnTitle}
+          </AnchorLink>
+        );
+
+      default:
+        return (
+          <ButtonLink
+            link={link}
+            className={cn("top-market__btn", btnClassName)}
+          >
+            {btnTitle}
+          </ButtonLink>
+        );
+    }
+  };
+
   return (
     <section className={cn("top-market", className)}>
       <div className="top-market__wrapper">
@@ -39,24 +66,26 @@ const TopMarket = ({
           </div>
           {(btn1Title || btn2Title) && (
             <div className="top-market__btn-wrapper">
-              <ButtonLink
-                link={link1}
-                className={cn("top-market__btn", "top-market__btn--black")}
-              >
-                {btn1Title}
-              </ButtonLink>
-              <ButtonLink
-                link={link2}
-                className={cn("top-market__btn", "top-market__btn--white")}
-              >
-                {btn2Title}
-              </ButtonLink>
+              {btn1Title &&
+                getButton(
+                  btn1Title,
+                  link1,
+                  isAnchorLink1,
+                  "top-market__btn--black"
+                )}
+              {btn2Title &&
+                getButton(
+                  btn2Title,
+                  link2,
+                  isAnchorLink2,
+                  "top-market__btn--white"
+                )}
             </div>
           )}
         </div>
         <div className={cn("top-market__block", "top-market__block--flexed")}>
           <img src={image} alt="" className="top-market__img" />
-          {subImageTemplate && (subImageTemplate)}
+          {subImageTemplate && subImageTemplate}
         </div>
       </div>
     </section>

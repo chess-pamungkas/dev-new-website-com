@@ -12,12 +12,21 @@
   font-weight: map-get($font-weight, "black");
   font-size: 12px;
   border-radius: $border-radius-default;
+  border: 1px solid map-get($colors, "white");
   line-height: 31px;
   width: 190px;
   transition: 0.1s;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: map-get($colors, "red");
+    color: map-get($colors, "white");
+    border-color: map-get($colors, "white");
+  }
 
   @include tablet {
     font-size: 14px;

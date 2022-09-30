@@ -3,7 +3,7 @@
 
 .documents {
   @include content-alignment(0);
-  background: map-get($font-weight, "white");
+  background: map-get($colors, "white");
   padding-top: 84px;
   padding-bottom: 84px;
 
