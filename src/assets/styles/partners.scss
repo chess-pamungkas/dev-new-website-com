@@ -1,0 +1,154 @@
+@import "vars";
+
+.partners-page-promotion {
+  background: url("../../assets/images/partners/promotion-bg.svg") no-repeat center;
+  background-size: cover;
+  padding-top: 32px;
+  padding-bottom: 48px;
+
+  @include tablet {
+    padding-top: 40px;
+    padding-bottom: 112px;
+  }
+
+  @include desktop-lg {
+    padding-top: 57px;
+    padding-bottom: 50px;
+  }
+
+  @include desktop-xl {
+    padding-top: 161px;
+    padding-bottom: 112px;
+  }
+
+  .top-market-promotion__wrapper {
+    flex-direction: column-reverse;
+
+    @include desktop-xl {
+      flex-direction: row;
+    }
+  }
+
+  .top-market-promotion__description {
+    max-width: 799px;
+
+    @include desktop-lg {
+      max-width: 780px;
+    }
+  }
+
+  .top-market-promotion__text {
+    font: normal normal 900 28px/35px $font;
+    text-align: center;
+    padding-bottom: 85px;
+
+    @include tablet {
+      font: normal normal 900 41px/51px $font;
+      padding-bottom: 78px;
+    }
+
+    @include tablet {
+      padding-top: 40px;
+      padding-bottom: 20px;
+    }
+
+    @include desktop-xl {
+      font: normal normal 900 48px/60px $font;
+      text-align: left;
+    }
+  }
+
+  .top-market-promotion__block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @include desktop-xl {
+      display: block;
+    }
+}
+}
+
+.partners-page-bottom-promotion {
+  background: map-get($colors, "red");
+  padding-top: 18px;
+  padding-bottom: 38px;
+
+  @include tablet {
+    padding-top: 35px;
+    padding-bottom: 42px;
+  }
+
+  @include desktop-lg {
+    padding-top: 46px;
+    padding-bottom: 48px;
+  }
+
+  @include desktop-xl {
+    padding-top: 86px;
+    padding-bottom: 130px;
+  }
+
+  .top-market-promotion__wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .top-market-promotion__block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: unset;
+  }
+
+  .top-market-promotion__description {
+    margin: unset;
+
+    @include tablet {
+      max-width: 508px;
+    }
+
+    @include desktop-lg {
+      max-width: 626px;
+    }
+
+    @include desktop-xl {
+      max-width: 1294px;
+    }
+  }
+
+  .top-market-promotion__text {
+    font: normal normal 900 19px/23px $font;
+    text-align: center;
+    padding-top: 25px;
+
+    @include tablet {
+      font: normal normal 900 23px/28px $font;
+      padding-top: 31px;
+    }
+
+    @include desktop-lg {
+      font: normal normal 900 32px/40px $font;
+      padding-top: 45px;
+    }
+
+    @include desktop-xl {
+      font: normal normal 900 60px/75px $font;
+      padding-top: 56px;
+    }
+  }
+
+  .top-market-promotion__img {
+    width: 67px;
+    margin-bottom: unset;
+
+    @include desktop-lg {
+      width: 89px;
+    }
+
+    @include desktop-xl {
+      width: 166px;
+    }
+  }
+}

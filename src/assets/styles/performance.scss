@@ -209,6 +209,17 @@
 
     .advantage-block__icon path {
       fill: map-get($colors, "white");
+      stroke: map-get($colors, "white");
+    }
+
+    .advantage-block__icon g {
+      fill: map-get($colors, "red");
+      stroke: map-get($colors, "white");
+    }
+
+    .advantage-block__icon line {
+      // fill: map-get($colors, "red");
+      stroke: map-get($colors, "white");
     }
   }
 

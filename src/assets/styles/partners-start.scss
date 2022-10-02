@@ -1,0 +1,58 @@
+@import "vars";
+
+.partners-start {
+    background: map-get($colors, "black-secondary") 0% 0% no-repeat padding-box;
+    padding-top: 98px;
+    padding-bottom: 111px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        background: url("../../assets/images/partners/start-bg-top.svg") no-repeat;
+        width: 261px;
+        height: 299px;
+        top: 0;
+        left: 0;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        background: url("../../assets/images/partners/start-bg-bot.svg") no-repeat;
+        width: 261px;
+        height: 299px;
+        bottom: 0;
+        right: 0;
+    }
+
+    &__title {
+        font: normal normal 900 60px/75px $font;
+        color: map-get($colors, "red");
+        padding-bottom: 134px;
+    }
+
+    &__items {
+        display: flex;
+        justify-content: space-around;
+        font: normal normal 900 24px/30px $font;
+        padding-bottom: 134px;
+    }
+
+    &__btn {
+        background: map-get($colors, "black-secondary");
+        font: normal normal 900 24px/62px $font;
+        border: 1px solid map-get($colors, "red");
+        width: 380px;
+
+        &:hover {
+            background: map-get($colors, "white");
+            border-color: map-get($colors, "white");
+            color: map-get($colors, "red");
+          }
+    }
+}
