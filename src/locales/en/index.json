@@ -313,14 +313,32 @@
   "legal_top-market-promo-text": "Oqtima is authorised and Regulated by the Cyprus Securities and Exchange Commission Sub As an EU member state, CySEC's financial regulations and operations comply with the strict European MiFID financial harmonization law.",
   "legal_top-market-promo-text-accent": "8,9,10,11,28,29",
 
+  "legal_top-market-promo-btn-fsa": "Check our legal documents",
+  "legal_top-market-promo-text-fsa": "Seychelles is considered among traders as one of the most trustworthy regulators that allow high leverage.",
+  "legal_top-market-promo-text-accent-fsa": "10,11,12,16",
+
   "legal_top-market-promo-btn2": "Check our legal documents",
   "legal_top-market-promo-text2": "CySEC is an established regulatory authority governing financial services firms in Cyprus. Being a part of the European Union, CySEC is also a member of the European Securities and Markets Authority (ESMA).",
   "legal_top-market-promo-text-accent2": "1,32",
   "legal_top-market-promo-note": "As a CySEC licensed firm, Oqtima EU Ltd complies with all domestic and European laws and regulations applicable to investment firms.",
+
+  "legal_top-market-promo-text2-fsa": "As a licensed firm, Oqtima Global complies with all domestic and International laws and regulations applicable to investment firms.",
+  "legal_top-market-promo-text-accent2-fsa": "5,6",
+  "legal_top-market-promo-note1-fsa": "Segregation of Client Funds",
+  "legal_top-market-promo-note2-fsa": "When funding your trading account your funds are held in client segregated accounts with top tier banking institutions in UK and Australia. Oqtima Global complies with the Securities Act and the Securities (Conduct of Business) Regulations and employs strict policies and procedures regarding the maintenance and operation of these accounts.",
+  "legal_top-market-promo-note3-fsa": "Anti-Money Laundering",
+  "legal_top-market-promo-note4-fsa": "In accordance with the FSA Anti-Money Laundering and Counter Terrorism Financial Act, Oqtima Global has in place policies and procedures to ensure compliance with the law. These policies and procedures are designed to prevent money laundering activities from occurring.",
+
   "legal_documents-title": "Legal Documents",
   "legal_documents-text-bold": "European Markets in Financial Instruments (MiFID - MiFIR)",
   "legal_documents-text": "Effective from January 3, 2018 MiFID II, the updated version of the Markets in Financial Instruments Directive and MiFIR, will ensure fairer, safer and more transparent market trading conditions. Cyprus, as a member of the European Union, has transposed MiFID II into its domestic legislation, the Investment Services and Activities and Regulated Markets Law of 2017 (Law 87(I)/2017).",
   "legal_documents-btn": "View PDF",
+
+  "legal_documents-title-fsa": "Legal Documents",
+  "legal_documents-text-bold-fsa": "Oqtima Global, trading as Oqtima is registered in Seychelles with the company number 8430031-1. Oqtima Global is regulated by the Financial Services Authority of Seychelles with Licence Number SD109.",
+  "legal_documents-text-bold-accent-fsa": "1,2,14,21,22,23,24,25,29",
+  "legal_documents-text-fsa": "Ongoing assessment of our policies and procedure are regularly held internally and by external parties to insure the highest level of adherence to law and regulations that protect your funds.",
+  "legal_documents-btn-fsa": "View PDF",
 
   "company_banner-with-title-title": "We live in a complex financial world.",
   "company_banner-with-title-subtitle": "We want you to be able to take advantage of it.",

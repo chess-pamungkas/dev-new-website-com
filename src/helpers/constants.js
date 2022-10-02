@@ -26,6 +26,8 @@ export const INITIAL_SEARCH_STATE = {
   noResultsFound: false,
 };
 
+export const FSA_POSTFIX = "-fsa";
+
 export const HOME_PAGE_LINK = "/";
 export const LOGIN_LINK = "/";
 export const REGISTRATION_LINK = "/";
@@ -46,7 +48,8 @@ export const ALL_MARKETS_PAGE_LINK = "/all-markets";
 export const MT4_PAGE_LINK = "/mt4";
 export const MT5_PAGE_LINK = "/mt5";
 export const WITHDRAWAL_PAGE_LINK = "/withdrawal";
-export const PROFESSIONAL_QUALIFICATION_PAGE_LINK = "/professional-qualification";
+export const PROFESSIONAL_QUALIFICATION_PAGE_LINK =
+  "/professional-qualification";
 
 export const FAQ_LINK = "/";
 
