@@ -36,7 +36,7 @@
         &:first-child,
         &:last-child {
           height: 3px;
-          box-shadow: 0 0 0 2px map-get($colors, 'red');
+          box-shadow: 0 0 0 2px map-get($colors, "red");
         }
 
         &:first-child {
@@ -62,8 +62,8 @@
     position: relative;
     display: block;
     border-radius: 3px;
-    background-color: map-get($colors, 'white');
-    transition: .3s ease-out;
+    background-color: map-get($colors, "white");
+    transition: 0.3s ease-out;
 
     & + & {
       margin-top: 7px;
@@ -81,7 +81,7 @@
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-    background-color: map-get($colors, 'white');
+    background-color: map-get($colors, "white");
 
     &--lang-popup-opened {
       left: 0;
@@ -136,8 +136,8 @@
     @include tablet {
       height: 40px;
       padding: 0 18px;
-      background-color: map-get($colors, 'red');
-      color: map-get($colors, 'white');
+      background-color: map-get($colors, "red");
+      color: map-get($colors, "white");
     }
 
     &--tablet {
@@ -173,7 +173,7 @@
       justify-content: flex-end;
       align-items: center;
       gap: 8px;
-      color: map-get($colors, 'black');
+      color: map-get($colors, "black");
       font: normal normal bold 18px/22px $font;
 
       @include tablet {
@@ -191,7 +191,7 @@
   }
 
   &__link {
-    color: map-get($colors, 'red');
+    color: map-get($colors, "red");
     font: normal normal 300 15px/19px $font;
 
     @include tablet {

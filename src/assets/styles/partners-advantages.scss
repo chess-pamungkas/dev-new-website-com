@@ -1,101 +1,102 @@
 @import "vars";
 
 .partners-advantages {
-    background: url("../../assets/images/partners/advantages-bg.svg") no-repeat center;
-    background-size: cover;
-    padding-top: 51px;
-    padding-bottom: 53px;
-    align-items: center;
+  background: url("../../assets/images/partners/advantages-bg.svg") no-repeat
+    center;
+  background-size: cover;
+  padding-top: 51px;
+  padding-bottom: 53px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include tablet {
+    padding-top: 47px;
+    padding-bottom: 60px;
+  }
+
+  @include desktop-lg {
+    padding-top: 87px;
+    padding-bottom: 150px;
+  }
+
+  @include desktop-xl {
+    padding-top: 98px;
+    padding-bottom: 128px;
+  }
+
+  &__advantages {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
+    padding-top: 23px;
+
+    @include desktop-xl {
+      padding-top: 96px;
+      max-width: 1540px;
+    }
+
+    .advantage-block {
+      margin: 8px;
+      width: 136px;
+      padding: 9px;
+      text-align: center;
+
+      @include tablet {
+        margin: 9px;
+        width: 230px;
+        padding: 15px 9px;
+      }
+
+      @include desktop-xl {
+        margin: 20px;
+        width: 330px;
+        padding: 30px 9px;
+      }
+    }
+
+    .advantage-block__text {
+      font: normal normal map-get($font-weight, "black") 10px/13px $font;
+
+      @include tablet {
+        font: normal normal map-get($font-weight, "black") 16px/20px $font;
+      }
+
+      @include desktop-xl {
+        font: normal normal map-get($font-weight, "black") 20px/25px $font;
+      }
+    }
+
+    .advantage-block__icon {
+      width: 40px;
+
+      @include tablet {
+        width: 86px;
+      }
+
+      @include desktop-xl {
+        width: 100px;
+      }
+    }
+  }
+
+  &__title {
+    font: normal normal map-get($font-weight, "black") 22px/27px $font;
+    text-align: center;
+    max-width: 202px;
 
     @include tablet {
-        padding-top: 47px;
-        padding-bottom: 60px;
+      font: normal normal map-get($font-weight, "black") 36px/45px $font;
+      max-width: unset;
     }
 
     @include desktop-lg {
-        padding-top: 87px;
-        padding-bottom: 150px;
+      font: normal normal map-get($font-weight, "black") 40px/50px $font;
     }
 
     @include desktop-xl {
-        padding-top: 98px;
-        padding-bottom: 128px;
+      font: normal normal map-get($font-weight, "black") 60px/75px $font;
     }
-
-    &__advantages {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding-top: 23px;
-
-        @include desktop-xl {
-            padding-top: 96px;
-            max-width: 1540px;
-        }
-
-        .advantage-block {
-            margin: 8px;
-            width: 136px;
-            padding: 9px;
-            text-align: center;
-
-            @include tablet {
-                margin: 9px;
-                width: 230px;
-                padding: 15px 9px;
-            }
-
-            @include desktop-xl {
-                margin: 20px;
-                width: 330px;
-                padding: 30px 9px;
-            }
-        }
-
-        .advantage-block__text {
-            font: normal normal 900 10px/13px $font;
-
-            @include tablet {
-                font: normal normal 900 16px/20px $font;
-            }
-
-            @include desktop-xl {
-                font: normal normal 900 20px/25px $font;
-            }
-        }
-
-        .advantage-block__icon {
-            width: 40px;
-
-            @include tablet {
-                width: 86px;
-            }
-
-            @include desktop-xl {
-                width: 100px;
-            }
-        }
-    }
-
-    &__title {
-        font: normal normal 900 22px/27px $font;
-        text-align: center;
-        max-width: 202px;
-
-        @include tablet {
-            font: normal normal 900 36px/45px $font;
-            max-width: unset;
-        }
-
-        @include desktop-lg {
-            font: normal normal 900 40px/50px $font;
-        }
-
-        @include desktop-xl {
-            font: normal normal 900 60px/75px $font;
-        }
-    }
+  }
 }

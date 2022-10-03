@@ -3,12 +3,20 @@ import cn from "classnames";
 import Slider from "../../../shared/slider";
 import { useState } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { CLIENTS_MARKS, COST_PER_CLIENT, DEFAULT_CLIENTS, MAX_CLIENTS, MIN_CLIENTS } from "../../../../helpers/partners.config";
+import {
+  CLIENTS_MARKS,
+  COST_PER_CLIENT,
+  DEFAULT_CLIENTS,
+  MAX_CLIENTS,
+  MIN_CLIENTS,
+} from "../../../../helpers/partners.config";
 
 const IncomeSlider = ({ className }) => {
   const { t } = useTranslation();
   const [clientsCount, setClientsCount] = useState(DEFAULT_CLIENTS);
-  const [totalIncome, setTotalIncome] = useState(DEFAULT_CLIENTS * COST_PER_CLIENT);
+  const [totalIncome, setTotalIncome] = useState(
+    DEFAULT_CLIENTS * COST_PER_CLIENT
+  );
 
   const onSliderChange = (value) => {
     setClientsCount(value);
@@ -18,10 +26,12 @@ const IncomeSlider = ({ className }) => {
   const renderMark = (props) => {
     return (
       <div className={props.className}>
-        <span {...props} className={`${props.className}-v-line`}/>
-        <span {...props} className={`${props.className}-number`}>{props.key}</span>
+        <span {...props} className={`${props.className}-v-line`} />
+        <span {...props} className={`${props.className}-number`}>
+          {props.key}
+        </span>
       </div>
-    )
+    );
   };
 
   return (
@@ -34,7 +44,9 @@ const IncomeSlider = ({ className }) => {
       </p>
       <div className="partners-income__total-clients">
         <p className="partners-income__total-num">{clientsCount}</p>
-        <p className="partners-income__total-note">{t("partners_income-slider-clients-note")}</p>
+        <p className="partners-income__total-note">
+          {t("partners_income-slider-clients-note")}
+        </p>
       </div>
       <Slider
         marks={CLIENTS_MARKS}
@@ -50,7 +62,9 @@ const IncomeSlider = ({ className }) => {
       />
       <div className="partners-income__total-income">
         <p className="partners-income__total-num">&#36; {totalIncome}</p>
-        <p className="partners-income__total-note">{t("partners_income-slider-income-note")}</p>
+        <p className="partners-income__total-note">
+          {t("partners_income-slider-income-note")}
+        </p>
       </div>
     </section>
   );

@@ -1,7 +1,8 @@
 @import "vars";
 
 .partners-page-promotion {
-  background: url("../../assets/images/partners/promotion-bg.svg") no-repeat center;
+  background: url("../../assets/images/partners/promotion-bg.svg") no-repeat
+    center;
   background-size: cover;
   padding-top: 32px;
   padding-bottom: 48px;
@@ -38,12 +39,12 @@
   }
 
   .top-market-promotion__text {
-    font: normal normal 900 28px/35px $font;
+    font: normal normal map-get($font-weight, "black") 28px/35px $font;
     text-align: center;
     padding-bottom: 85px;
 
     @include tablet {
-      font: normal normal 900 41px/51px $font;
+      font: normal normal map-get($font-weight, "black") 41px/51px $font;
       padding-bottom: 78px;
     }
 
@@ -53,7 +54,7 @@
     }
 
     @include desktop-xl {
-      font: normal normal 900 48px/60px $font;
+      font: normal normal map-get($font-weight, "black") 48px/60px $font;
       text-align: left;
     }
   }
@@ -67,7 +68,7 @@
     @include desktop-xl {
       display: block;
     }
-}
+  }
 }
 
 .partners-page-bottom-promotion {
@@ -119,22 +120,22 @@
   }
 
   .top-market-promotion__text {
-    font: normal normal 900 19px/23px $font;
+    font: normal normal map-get($font-weight, "black") 19px/23px $font;
     text-align: center;
     padding-top: 25px;
 
     @include tablet {
-      font: normal normal 900 23px/28px $font;
+      font: normal normal map-get($font-weight, "black") 23px/28px $font;
       padding-top: 31px;
     }
 
     @include desktop-lg {
-      font: normal normal 900 32px/40px $font;
+      font: normal normal map-get($font-weight, "black") 32px/40px $font;
       padding-top: 45px;
     }
 
     @include desktop-xl {
-      font: normal normal 900 60px/75px $font;
+      font: normal normal map-get($font-weight, "black") 60px/75px $font;
       padding-top: 56px;
     }
   }

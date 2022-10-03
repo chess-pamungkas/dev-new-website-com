@@ -11,7 +11,8 @@
   @include tablet {
     padding-top: 107px;
     padding-bottom: 102px;
-    background: url("../../assets/images/bg/split-bg/bg-md.svg") no-repeat bottom;
+    background: url("../../assets/images/bg/split-bg/bg-md.svg") no-repeat
+      bottom;
     background-size: cover;
   }
 
@@ -25,7 +26,8 @@
   @include desktop-xl {
     padding-top: 188px;
     padding-bottom: 94px;
-    background: url("../../assets/images/bg/split-bg/bg-xl.svg") no-repeat center;
+    background: url("../../assets/images/bg/split-bg/bg-xl.svg") no-repeat
+      center;
     background-size: cover;
   }
 
@@ -131,7 +133,6 @@
 }
 
 .withdrawal-table {
-
   @include mobile {
     padding: 5px;
   }
@@ -146,7 +147,8 @@
       padding: 3px;
     }
 
-    &:first-child, &:last-child {
+    &:first-child,
+    &:last-child {
       border-right: none;
     }
 
@@ -169,7 +171,6 @@
   }
 
   .table__body-column {
-
     &:first-child {
       font-weight: map-get($font-weight, "regular");
     }

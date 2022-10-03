@@ -1,269 +1,269 @@
 @import "vars";
 
 .partners-income {
-    padding: 72px 56px;
-    display: grid;
-    gap: 15px;
-    grid-template-areas: "title title" "desc desc" "total-clients total-income" "slider slider";
+  padding: 72px 56px;
+  display: grid;
+  gap: 15px;
+  grid-template-areas: "title title" "desc desc" "total-clients total-income" "slider slider";
+
+  @include tablet {
+    padding: 110px 90px;
+    gap: 30px 9px;
+    grid-template-areas: "title desc" "total-clients total-income" "slider slider";
+  }
+
+  @include desktop-lg {
+    padding: 113px 64px;
+    gap: 40px 25px;
+    grid-template-areas: "title title title desc desc" "total-clients slider slider slider total-income";
+  }
+
+  @include desktop-xl {
+    padding: 204px 272px;
+    gap: 49px 60px;
+    grid-template-areas: "title title desc" "total-clients slider total-income";
+  }
+
+  &__title {
+    font: normal normal normal 15px/19px $font;
+    margin: 0px;
+    width: 233px;
+    grid-area: title;
+    justify-self: center;
+    text-align: center;
 
     @include tablet {
-        padding: 110px 90px;
-        gap: 30px 9px;
-        grid-template-areas: "title desc" "total-clients total-income" "slider slider";
+      font: normal normal normal 21px/26px $font;
+      width: 287px;
+      justify-self: start;
+      text-align: left;
     }
 
     @include desktop-lg {
-        padding: 113px 64px;
-        gap: 40px 25px;
-        grid-template-areas: "title title title desc desc" "total-clients slider slider slider total-income";
+      font: normal normal normal 34px/42px $font;
+      width: 480px;
     }
 
     @include desktop-xl {
-        padding: 204px 272px;
-        gap: 49px 60px;
-        grid-template-areas: "title title desc" "total-clients slider total-income";
+      font: normal normal normal 48px/60px $font;
+      width: 823px;
+    }
+  }
+
+  &__description {
+    font: normal normal normal 10px/13px $font;
+    color: map-get($colors, "grey");
+    margin: 0px;
+    width: 264px;
+    grid-area: desc;
+    justify-self: center;
+    text-align: center;
+
+    @include tablet {
+      font: normal normal normal 18px/22px $font;
+      justify-self: right;
+      width: 291px;
+      text-align: left;
     }
 
-    &__title {
-        font: normal normal normal 15px/19px $font;
-        margin: 0px;
-        width: 233px;
-        grid-area: title;
-        justify-self: center;
-        text-align: center;
-
-        @include tablet {
-            font: normal normal normal 21px/26px $font;
-            width: 287px;
-            justify-self: start;
-            text-align: left;
-        }
-
-        @include desktop-lg {
-            font: normal normal normal 34px/42px $font;
-            width: 480px;
-        }
-
-        @include desktop-xl {
-            font: normal normal normal 48px/60px $font;
-            width: 823px;
-        }
+    @include desktop-lg {
+      font: normal normal normal 22px/27px $font;
+      width: 356px;
     }
 
-    &__description {
-        font: normal normal normal 10px/13px $font;
-        color: map-get($colors, "grey");
-        margin: 0px;
-        width: 264px;
-        grid-area: desc;
-        justify-self: center;
-        text-align: center;
+    @include desktop-xl {
+      justify-self: unset;
+      width: 476px;
+    }
+  }
 
-        @include tablet {
-            font: normal normal normal 18px/22px $font;
-            justify-self: right;
-            width: 291px;
-            text-align: left;
-        }
+  &__total-clients {
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+    grid-area: total-clients;
+    justify-self: start;
+    text-align: left;
 
-        @include desktop-lg {
-            font: normal normal normal 22px/27px $font;
-            width: 356px;
-        }
-
-        @include desktop-xl {
-            justify-self: unset;
-            width: 476px;
-        }
+    @include tablet {
+      width: 197px;
     }
 
-    &__total-clients {
-        display: flex;
-        flex-direction: column;
-        width: 80px;
-        grid-area: total-clients;
-        justify-self: start;
-        text-align: left;
-
-        @include tablet {
-            width: 197px;
-        }
-
-        @include desktop-lg {
-            width: 142px;
-        }
-
-        @include desktop-xl {
-            width: 150px;
-        }
+    @include desktop-lg {
+      width: 142px;
     }
 
-    &__total-income {
-        display: flex;
-        flex-direction: column;
-        width: 87px;
-        grid-area: total-income;
-        justify-self: end;
-        text-align: right;
+    @include desktop-xl {
+      width: 150px;
+    }
+  }
 
-        @include tablet {
-            width: 180px;
-        }
+  &__total-income {
+    display: flex;
+    flex-direction: column;
+    width: 87px;
+    grid-area: total-income;
+    justify-self: end;
+    text-align: right;
 
-        @include desktop-lg {
-            width: 235px;
-            text-align: left;
-        }
-
-        @include desktop-xl {
-            justify-self: unset;
-            text-align: left;
-        }
+    @include tablet {
+      width: 180px;
     }
 
-    &__total-num {
-        font: normal normal 900 16px/20px $font;
-        margin: 0px;
-
-        @include tablet {
-            font: normal normal 900 25px/31px $font;
-        }
-
-        @include desktop-lg {
-            font: normal normal 900 60px/75px $font;
-        }
+    @include desktop-lg {
+      width: 235px;
+      text-align: left;
     }
 
-    &__total-note {
-        font: normal normal 900 9px/12px $font;
+    @include desktop-xl {
+      justify-self: unset;
+      text-align: left;
+    }
+  }
 
-        @include tablet {
-            font: normal normal 900 15px/19px $font;
-        }
+  &__total-num {
+    font: normal normal map-get($font-weight, "black") 16px/20px $font;
+    margin: 0px;
 
-        @include desktop-lg {
-            font: normal normal 900 16px/20px $font;
-        }
+    @include tablet {
+      font: normal normal map-get($font-weight, "black") 25px/31px $font;
     }
 
-    &__slider {
-        width: 257px;
-        padding-top: 5px;
-        grid-area: slider;
-        justify-self: center;
+    @include desktop-lg {
+      font: normal normal map-get($font-weight, "black") 60px/75px $font;
+    }
+  }
 
-        @include tablet {
-            width: 574px;
-        }
+  &__total-note {
+    font: normal normal map-get($font-weight, "black") 9px/12px $font;
 
-        @include desktop-lg {
-            width: 470px;
-            padding-top: 62px;
-        }
-
-        @include desktop-xl {
-            width: 630px;
-            padding-top: 62px;
-            justify-self: unset;
-        }
+    @include tablet {
+      font: normal normal map-get($font-weight, "black") 15px/19px $font;
     }
 
-    &__slider-track {
-        height: 2px;
-        top: 10px;
+    @include desktop-lg {
+      font: normal normal map-get($font-weight, "black") 16px/20px $font;
+    }
+  }
 
-        @include tablet {
-            height: 4px;
-            top: 17px;
-        }
+  &__slider {
+    width: 257px;
+    padding-top: 5px;
+    grid-area: slider;
+    justify-self: center;
 
-        @include desktop-lg {
-            top: 72px;
-        }
-
-        @include desktop-xl {
-            height: 7px;
-            top: 73px;
-        }
-
-        &-0 {
-            background: map-get($colors, "red");
-        }
-
-        &-1 {
-            background: map-get($colors, "black-secondary");
-        }
+    @include tablet {
+      width: 574px;
     }
 
-    &__slider-thumb {
-        width: 12px;
+    @include desktop-lg {
+      width: 470px;
+      padding-top: 62px;
+    }
+
+    @include desktop-xl {
+      width: 630px;
+      padding-top: 62px;
+      justify-self: unset;
+    }
+  }
+
+  &__slider-track {
+    height: 2px;
+    top: 10px;
+
+    @include tablet {
+      height: 4px;
+      top: 17px;
+    }
+
+    @include desktop-lg {
+      top: 72px;
+    }
+
+    @include desktop-xl {
+      height: 7px;
+      top: 73px;
+    }
+
+    &-0 {
+      background: map-get($colors, "red");
+    }
+
+    &-1 {
+      background: map-get($colors, "black-secondary");
+    }
+  }
+
+  &__slider-thumb {
+    width: 12px;
+    height: 12px;
+    background: map-get($colors, "red");
+    border-radius: 100%;
+    cursor: pointer;
+    outline: none;
+
+    @include tablet {
+      width: 27px;
+      height: 27px;
+    }
+
+    @include desktop-lg {
+      width: 23px;
+      height: 23px;
+    }
+
+    @include desktop-xl {
+      width: 29px;
+      height: 29px;
+    }
+  }
+
+  &__slider-mark {
+    display: flex;
+    flex-direction: column;
+
+    &-v-line {
+      top: 15px;
+      height: 7px;
+      width: 0;
+      border: 1px solid map-get($colors, "grey");
+
+      @include tablet {
+        top: 30px;
+        height: 14px;
+      }
+
+      @include desktop-lg {
+        top: 80px;
         height: 12px;
-        background: map-get($colors, "red");
-        border-radius: 100%;
-        cursor: pointer;
-        outline: none;
+      }
 
-        @include tablet {
-            width: 27px;
-            height: 27px;
-        }
-
-        @include desktop-lg {
-            width: 23px;
-            height: 23px;
-        }
-
-        @include desktop-xl {
-            width: 29px;
-            height: 29px;
-        }
+      @include desktop-xl {
+        top: 85px;
+        height: 16px;
+      }
     }
 
-    &__slider-mark {
-        display: flex;
-        flex-direction: column;
+    &-number {
+      top: 23px;
+      font: normal normal normal 7px/9px $font;
+      color: map-get($colors, "grey");
 
-        &-v-line {
-            top: 15px;
-            height: 7px;
-            width: 0;
-            border: 1px solid map-get($colors, "grey");
+      @include tablet {
+        top: 43px;
+        font: normal normal normal 13px/17px $font;
+      }
 
-            @include tablet {
-                top: 30px;
-                height: 14px;
-            }
+      @include desktop-lg {
+        top: 92px;
+        font: normal normal normal 8px/10px $font;
+      }
 
-            @include desktop-lg {
-                top: 80px;
-                height: 12px;
-            }
-
-            @include desktop-xl {
-                top: 85px;
-                height: 16px;
-            }
-        }
-
-        &-number {
-            top: 23px;
-            font: normal normal normal 7px/9px $font;
-            color: map-get($colors, "grey");
-
-            @include tablet {
-                top: 43px;
-                font: normal normal normal 13px/17px $font;
-            }
-
-            @include desktop-lg {
-                top: 92px;
-                font: normal normal normal 8px/10px $font;
-            }
-
-            @include desktop-xl {
-                top: 100px;
-                font: normal normal normal 18px/22px $font;
-            }
-        }
+      @include desktop-xl {
+        top: 100px;
+        font: normal normal normal 18px/22px $font;
+      }
     }
+  }
 }
