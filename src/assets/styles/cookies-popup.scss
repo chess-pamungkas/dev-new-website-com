@@ -13,12 +13,15 @@
   box-shadow: 0 0 10px #0000001a;
   background: map-get($colors, "white") 0 0% no-repeat padding-box;
   overflow: hidden;
-  font: normal normal normal 14px/18px $font;
+  font-weight: map-get($font-weight, "regular");
+  font-size: 14px;
+  line-height: 18px;
 
   @include tablet {
     width: 499px;
     height: 225px;
-    font: normal normal normal 16px/20px $font;
+    font-size: 16px;
+    line-height: 20px;
     bottom: 20px;
     right: 30px;
     left: unset;
@@ -26,7 +29,8 @@
 
   @include desktop-xl {
     height: 252px;
-    font: normal normal normal 18px/22px $font;
+    font-size: 18px;
+    line-height: 22px;
   }
 
   &--active {
@@ -59,36 +63,46 @@
 
   &__accept-btn {
     cursor: pointer;
-    background: map-get($colors, "red") 0 0% no-repeat padding-box;
+    background: map-get($colors, "red");
     border: 2px solid map-get($colors, "white");
     border-radius: 31px;
     width: 122px;
     height: 38px;
     text-align: center;
-    font: normal normal map-get($font-weight, "black") 14px/18px $font;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 14px;
+    line-height: 18px;
     letter-spacing: 0;
     color: map-get($colors, "white");
     text-transform: uppercase;
+    transition: all 0.3s;
 
     @include tablet {
       width: 234px;
     }
 
-    &:hover {
-      background: map-get($colors, "white") 0 0% no-repeat padding-box;
+    &:hover, &:active, &:focus {
+      background: map-get($colors, "white");
       color: map-get($colors, "red");
-      border: 2px solid map-get($colors, "red");
+      border-color: map-get($colors, "red");
     }
   }
 
   &__more-btn {
     text-align: center;
     text-decoration: underline;
-    font: normal normal map-get($font-weight, "black") 14px/18px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 14px;
+    line-height: 18px;
     letter-spacing: 0;
     color: map-get($colors, "red");
     background: none;
     border: none;
     cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover, &:active, &:focus {
+      text-decoration: none;
+    }
   }
 }
