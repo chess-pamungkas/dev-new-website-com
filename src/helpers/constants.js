@@ -1,5 +1,3 @@
-import privacyPolicy from "../assets/documents/Privacy_Policy.pdf";
-import termsAndConditions from "../assets/documents/Terms_and_Conditions.pdf";
 import visaLogo from "../assets/images/icons/payments/visa.png";
 import masterCardLogo from "../assets/images/icons/payments/mastercard.png";
 import bankwireLogo from "../assets/images/icons/payments/bankwire.png";
@@ -26,12 +24,12 @@ export const INITIAL_SEARCH_STATE = {
   noResultsFound: false,
 };
 
+export const FSA_POSTFIX = "-fsa";
+
 export const HOME_PAGE_LINK = "/";
 export const LOGIN_LINK = "/";
 export const REGISTRATION_LINK = "/";
-export const LEARN_MORE_LINK = "/";
-export const TERMS_OF_USE_LINK = termsAndConditions;
-export const PRIVACY_POLICY_LINK = privacyPolicy;
+
 export const COMPANY_PAGE_LINK = "/company";
 export const LEGAL_PAGE_LINK = "/legal";
 export const SEARCH_PAGE_LINK = "/search";
@@ -46,8 +44,8 @@ export const ALL_MARKETS_PAGE_LINK = "/all-markets";
 export const MT4_PAGE_LINK = "/mt4";
 export const MT5_PAGE_LINK = "/mt5";
 export const WITHDRAWAL_PAGE_LINK = "/withdrawal";
-export const SPREADS_AND_FEES_PAGE_LINK = "/spreads-and-fees";
-export const PROFESSIONAL_QUALIFICATION_PAGE_LINK = "/professional-qualification";
+export const PROFESSIONAL_QUALIFICATION_PAGE_LINK =
+  "/professional-qualification";
 
 export const FAQ_LINK = "/";
 

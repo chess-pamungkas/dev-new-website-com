@@ -71,7 +71,7 @@ const TopMarketPromotion = ({
         <div className="top-market-promotion__block">
           <div className="top-market-promotion__description">
             <p className="top-market-promotion__text">{children}</p>
-            {note && <span className="top-market-promotion__note">{note}</span>}
+            {note && <p className="top-market-promotion__note">{note}</p>}
           </div>
           {btnTitle && getButton()}
         </div>
