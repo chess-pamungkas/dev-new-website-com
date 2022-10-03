@@ -285,6 +285,7 @@ const COMPANY_TAB = {
   ],
 };
 
+// TODO: Rework partners tab (https://oqtima-website.atlassian.net/browse/OW-4?focusedCommentId=10333)
 const CYSEC_PARTNERS_TAB = {
   title: "header-nav-tab-partners",
   subItems: [

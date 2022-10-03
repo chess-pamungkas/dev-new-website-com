@@ -5,6 +5,7 @@ import HowToStartItem from "../how-to-start-item";
 import { START_STEPS } from "../../../../helpers/partners.config";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import ButtonLink from "../../../shared/button-link";
+import { REGISTRATION_LINK } from "../../../../helpers/constants";
 
 const HowToStart = ({ className }) => {
   const { t } = useTranslation();
@@ -23,7 +24,10 @@ const HowToStart = ({ className }) => {
             />
           ))}
       </div>
-      <ButtonLink link={"/"} className={cn("partners-start__btn")}>
+      <ButtonLink
+        link={REGISTRATION_LINK}
+        className={cn("partners-start__btn")}
+      >
         {t("partners_start-btn")}
       </ButtonLink>
     </section>

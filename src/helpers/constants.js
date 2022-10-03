@@ -47,6 +47,7 @@ export const MT4_PAGE_LINK = "/mt4";
 export const MT5_PAGE_LINK = "/mt5";
 export const WITHDRAWAL_PAGE_LINK = "/withdrawal";
 export const PROFESSIONAL_QUALIFICATION_PAGE_LINK = "/professional-qualification";
+export const PARTNERS_PAGE_LINK = "/partners"
 
 export const FAQ_LINK = "/";
 

@@ -13,6 +13,7 @@ import { PARTNERS_ADVANTAGES } from "../helpers/partners.config";
 import HowToStart from "../components/partners/components/how-to-start";
 import icon from "../assets/images/icon--white.svg";
 import IncomeSlider from "../components/partners/components/income-slider";
+import { REGISTRATION_LINK } from "../helpers/constants";
 
 const PartnersPage = () => {
   const { t } = useTranslation();
@@ -25,7 +26,7 @@ const PartnersPage = () => {
         image={promotion}
         btnClassName={cn("button-link--ghost")}
         btnTitle={t("partners_top-market-promo-btn")}
-        link={"/"}
+        link={REGISTRATION_LINK}
       >
         <HighlightedLocalizationText
           localizationText="partners_top-market-promo-text"
@@ -45,7 +46,7 @@ const PartnersPage = () => {
           />
         }
         advantages={PARTNERS_ADVANTAGES}
-      ></PartnersAdvantages>
+      />
       <HowToStart />
       <TopMarketPromotion
         className="partners-page-bottom-promotion"

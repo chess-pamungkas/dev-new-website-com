@@ -61,7 +61,9 @@ const IncomeSlider = ({ className }) => {
         renderMark={renderMark}
       />
       <div className="partners-income__total-income">
-        <p className="partners-income__total-num">&#36; {totalIncome}</p>
+        <p className="partners-income__total-num">
+          &#36; {totalIncome.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+        </p>
         <p className="partners-income__total-note">
           {t("partners_income-slider-income-note")}
         </p>
