@@ -839,5 +839,10 @@
   "partners_start-btn": "Apply now",
 
   "partners_top-market-bot-promo-text": "Tailor made partnership plan that evolve as you grow your revenue",
-  "partners_top-market-bot-promo-text-accent": "3,10,11"
+  "partners_top-market-bot-promo-text-accent": "3,10,11",
+
+  "partners_income-slider-title": "The compounding effect of an Introducing broker",
+  "partners_income-slider-description": "Drag the bar to see an estimated average monthly income you could make based on the total amount of traders you introduce to Oqtima overtime.",
+  "partners_income-slider-clients-note": "Total accumulated clients",
+  "partners_income-slider-income-note": "Your income per month"
 }

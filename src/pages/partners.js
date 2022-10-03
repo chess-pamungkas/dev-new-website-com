@@ -12,6 +12,7 @@ import PartnersAdvantages from "../components/partners/components/advantages";
 import { PARTNERS_ADVANTAGES } from "../helpers/partners.config";
 import HowToStart from "../components/partners/components/how-to-start";
 import icon from "../assets/images/icon--white.svg";
+import IncomeSlider from "../components/partners/components/income-slider";
 
 const PartnersPage = () => {
   const { t } = useTranslation();
@@ -33,6 +34,7 @@ const PartnersPage = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarketPromotion>
+      <IncomeSlider />
       <PartnersAdvantages
         title={
           <HighlightedLocalizationText
