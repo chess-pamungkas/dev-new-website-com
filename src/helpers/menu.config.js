@@ -34,7 +34,10 @@ import {
   SHARES_PAGE_LINK,
   ENERGIES_PAGE_LINK,
   CRYPTO_PAGE_LINK,
-  PLATFORMS_LINK, WITHDRAWAL_PAGE_LINK, PROFESSIONAL_QUALIFICATION_PAGE_LINK,
+  PLATFORMS_LINK,
+  WITHDRAWAL_PAGE_LINK,
+  PROFESSIONAL_QUALIFICATION_PAGE_LINK,
+  SPREADS_AND_FEES_PAGE_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
@@ -121,7 +124,7 @@ const CYSEC_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
   subtitles: [
     {
       title: "header-nav-tab-trading-funding-withdrawals-spreads-title",
-      link: "",
+      link: SPREADS_AND_FEES_PAGE_LINK,
       description: "header-nav-tab-trading-funding-withdrawals-spreads-desc",
     },
     {

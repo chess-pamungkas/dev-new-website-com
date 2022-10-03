@@ -96,3 +96,18 @@ export const FAQ_ENERGIES = [
     content: ["energies_faq-content2-1", "energies_faq-content2-2"],
   },
 ];
+
+export const FAQ_SPREADS_AND_FEES = [
+  {
+    title: "spreads_faq-title1",
+    content: ["spreads_faq-content1"],
+  },
+  {
+    title: "spreads_faq-title2",
+    content: ["spreads_faq-content2"],
+  },
+  {
+    title: "spreads_faq-title3",
+    content: ["spreads_faq-content3"],
+  },
+];
