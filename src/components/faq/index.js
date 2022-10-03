@@ -6,7 +6,7 @@ import { AccordionActiveIcon, AccordionIcon } from "../shared/icons";
 import ButtonLink from "../shared/button-link";
 import { FAQ_LINK } from "../../helpers/constants";
 
-const Faq = ({ className, title, faq }) => {
+const Faq = ({ className, title, faq, isFaqBtnHidden, subTitleTemplate }) => {
   const { t } = useTranslation();
 
   return (
@@ -14,6 +14,7 @@ const Faq = ({ className, title, faq }) => {
       <div className="faq__wrapper">
         <div className="faq__delimiter" />
         <h2 className="faq__title">{title || t("faq-title")}</h2>
+        {subTitleTemplate && (subTitleTemplate)}
         <div className="faq__accordion-wrapper">
           {faq.length > 0 &&
             faq.map((item, i) => (
@@ -36,9 +37,11 @@ const Faq = ({ className, title, faq }) => {
               </Accordion>
             ))}
         </div>
-        <ButtonLink link={FAQ_LINK} className="button-link--with-red-border">
-          {t("faq-btn-text")}
-        </ButtonLink>
+        {!isFaqBtnHidden && (
+          <ButtonLink link={FAQ_LINK} className="button-link--with-red-border">
+            {t("faq-btn-text")}
+          </ButtonLink>
+        )}
       </div>
     </section>
   );

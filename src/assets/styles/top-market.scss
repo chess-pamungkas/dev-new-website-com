@@ -330,3 +330,55 @@
     flex-direction: column;
   }
 }
+
+.top-market--spreads-page {
+  .top-market__title {
+    @include tablet {
+      font-size: 56px;
+      line-height: 70px;
+    }
+
+    @include desktop-lg {
+      font-size: 40px;
+      line-height: 50px;
+    }
+
+    @include desktop-xl {
+      font-size: 58px;
+      line-height: 60px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .top-market__text {
+    font-size: 20px;
+    line-height: 25px;
+
+    @include tablet {
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    @include desktop-xl {
+      font-size: 28px;
+      line-height: 45px;
+      max-width: 820px;
+    }
+  }
+
+  .top-market__img {
+    max-width: 295px;
+
+    @include tablet {
+      max-width: 543px;
+    }
+
+    @include desktop-lg {
+      max-width: 451px;
+    }
+
+    @include desktop-xl {
+      max-width: 679px;
+    }
+  }
+}

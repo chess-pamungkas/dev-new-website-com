@@ -41,6 +41,8 @@ export const TRADE_PROMO_INTERSECTION_RATIO_TABLET = 0.2;
 export const PROMO_INTERSECTION_RATIO_TO_SCROLL_TABLET = 0.2;
 export const PROMO_INTERSECTION_RATIO_TO_REVERSE_TABLET = 0.2;
 
+export const TEXT_PROMO_INTERSECTION_LOW_HEIGHT = 750;
+
 export const INTERSECTION_OBSERVER_CONFIG = {
   tradePromo: {
     threshold: [
@@ -72,6 +74,10 @@ export const INTERSECTION_OBSERVER_CONFIG = {
   },
   textPromo4: {
     threshold: 0.9,
+    freezeOnceVisible: true,
+  },
+  lowHeightTextPromo4: {
+    threshold: [0.62, 0.65, 0.68],
     freezeOnceVisible: true,
   },
   TWPSection: {

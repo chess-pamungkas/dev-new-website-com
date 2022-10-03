@@ -133,7 +133,6 @@
   }
 
   &__note {
-    display: block;
     text-align: center;
     font-weight: map-get($font-weight, "regular");
     font-size: 15px;
@@ -152,6 +151,10 @@
     @include desktop-xl {
       font-size: 30px;
       line-height: 37px;
+    }
+
+    .bold {
+      display: block;
     }
   }
 

@@ -22,6 +22,7 @@ import {
   OPACITY_0,
   OPACITY_1,
   SPRING_CONFIG_TEXT,
+  TEXT_PROMO_INTERSECTION_LOW_HEIGHT,
 } from "../helpers/animation.config";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import cn from "classnames";
@@ -35,7 +36,7 @@ import { CYSEC_ADVANTAGES, FSA_ADVANTAGES } from "../helpers/config";
 
 const IndexPage = () => {
   const { t } = useTranslation();
-  const { isMobile } = useWindowSize();
+  const { isMobile, height } = useWindowSize();
   const { currentEntity } = useContext(ClientResolverContext);
 
   const [isTradePromoScrolled, setIsTradePromoScrolled] = useState(false);
@@ -80,7 +81,9 @@ const IndexPage = () => {
 
   const dataPromo4Ref = useIntersectionObserver(
     promo4Ref,
-    INTERSECTION_OBSERVER_CONFIG.textPromo4
+    height < TEXT_PROMO_INTERSECTION_LOW_HEIGHT
+      ? INTERSECTION_OBSERVER_CONFIG.lowHeightTextPromo4
+      : INTERSECTION_OBSERVER_CONFIG.textPromo4
   );
 
   const textAnimation = useSpring({
