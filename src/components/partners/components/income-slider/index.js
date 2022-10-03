@@ -10,6 +10,7 @@ import {
   MAX_CLIENTS,
   MIN_CLIENTS,
 } from "../../../../helpers/partners.config";
+import { formatMoney } from "../../../../helpers/services/format-money";
 
 const IncomeSlider = ({ className }) => {
   const { t } = useTranslation();
@@ -62,7 +63,7 @@ const IncomeSlider = ({ className }) => {
       />
       <div className="partners-income__total-income">
         <p className="partners-income__total-num">
-          &#36; {totalIncome.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+          &#36; {formatMoney(totalIncome)}
         </p>
         <p className="partners-income__total-note">
           {t("partners_income-slider-income-note")}

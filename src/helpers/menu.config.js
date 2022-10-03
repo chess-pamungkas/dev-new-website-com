@@ -38,6 +38,7 @@ import {
   WITHDRAWAL_PAGE_LINK,
   PROFESSIONAL_QUALIFICATION_PAGE_LINK,
   SPREADS_AND_FEES_PAGE_LINK,
+  PARTNERS_PAGE_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
@@ -288,13 +289,12 @@ const COMPANY_TAB = {
   ],
 };
 
-// TODO: Rework partners tab (https://oqtima-website.atlassian.net/browse/OW-4?focusedCommentId=10333)
 const CYSEC_PARTNERS_TAB = {
   title: "header-nav-tab-partners",
   subItems: [
     {
       title: "header-nav-tab-partners-collaboration-partnership-title",
-      link: "",
+      link: PARTNERS_PAGE_LINK,
       icon: CollaborationPartnershipIcon,
       description: "header-nav-tab-partners-collaboration-partnership-desc",
     },
@@ -305,12 +305,13 @@ const FSA_PARTNERS_TAB = {
   title: "header-nav-tab-partners",
   subItems: [
     ...CYSEC_PARTNERS_TAB.subItems,
-    {
-      title: "header-nav-tab-partners-affiliate-partnership-title",
-      link: "",
-      icon: AffiliatePartnershipIcon,
-      description: "header-nav-tab-partners-affiliate-partnership-desc",
-    },
+    // Disabled for now (https://oqtima-website.atlassian.net/browse/OW-4?focusedCommentId=10334)
+    // {
+    //   title: "header-nav-tab-partners-affiliate-partnership-title",
+    //   link: "",
+    //   icon: AffiliatePartnershipIcon,
+    //   description: "header-nav-tab-partners-affiliate-partnership-desc",
+    // },
   ],
 };
 
