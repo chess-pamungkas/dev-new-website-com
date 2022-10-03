@@ -24,6 +24,8 @@ export const INITIAL_SEARCH_STATE = {
   noResultsFound: false,
 };
 
+export const FSA_POSTFIX = "-fsa";
+
 export const HOME_PAGE_LINK = "/";
 export const LOGIN_LINK = "/";
 export const REGISTRATION_LINK = "/";
