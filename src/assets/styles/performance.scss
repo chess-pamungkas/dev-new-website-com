@@ -232,6 +232,10 @@
     .advantage-block__icon line {
       stroke: map-get($colors, "white");
     }
+
+    .advantage-block__icon circle {
+      fill: map-get($colors, "red");
+    }
   }
 
   @media screen and (max-width: 400px) {
