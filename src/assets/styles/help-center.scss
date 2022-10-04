@@ -1,0 +1,180 @@
+@import "vars";
+@import "mixins";
+
+.help-center {
+  padding-top: 61px;
+  padding-bottom: 145px;
+  @include content-alignment(0);
+
+  @include tablet {
+    padding-top: 104px;
+    padding-bottom: 200px;
+  }
+
+  @include desktop-lg {
+    padding-top: 154px;
+    padding-bottom: 103px;
+  }
+
+  @include desktop-xl {
+    padding-top: 195px;
+    padding-bottom: 145px;
+  }
+
+  &__wrapper {
+    margin: 0 auto;
+
+    @include tablet {
+      max-width: 640px;
+    }
+
+    @include desktop-lg {
+      max-width: 840px;
+    }
+
+    @include desktop-xl {
+      max-width: 1148px;
+    }
+  }
+
+  &__title {
+    color: map-get($colors, "red");
+    font-weight: map-get($font-weight, "black");
+    margin: 0 0 30px;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+
+    @include tablet {
+      margin: 0 0 80px;
+      font-size: 40px;
+      line-height: 75px;
+    }
+
+    @include desktop-lg {
+      margin: 0 0 94px;
+      font-size: 49px;
+    }
+
+    @include desktop-xl {
+      margin: 0 0 100px;
+      font-size: 60px;
+    }
+  }
+
+  &__block {
+  }
+
+  &__block-title {
+    color: map-get($colors, "red");
+    font-weight: map-get($font-weight, "bold");
+    margin: 0;
+    font-size: 17px;
+    line-height: 20px;
+
+    @include tablet {
+      margin: 0 0 10px;
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    @include desktop-lg {
+      margin: 0 0 15px;
+      font-size: 32px;
+    }
+
+    @include desktop-xl {
+      font-size: 36px;
+    }
+  }
+
+  &__block-subtitle {
+    color: map-get($colors, "black");
+    font-weight: map-get($font-weight, "regular");
+    margin: 0 0 20px;
+    font-size: 18px;
+    line-height: 20px;
+
+    @include tablet {
+      font-size: 20px;
+      line-height: 40px;
+      margin: 0 0 40px;
+    }
+
+    @include desktop-lg {
+      margin: 0 0 30px;
+    }
+
+    @include desktop-xl {
+      font-size: 24px;
+      line-height: 40px;
+      margin: 0 0 60px;
+    }
+  }
+
+  &__title-icon {
+    height: 20px;
+    width: auto;
+    padding-right: 10px;
+
+    @include tablet {
+      height: 28px;
+      padding-right: 15px;
+    }
+
+    @include desktop-xl {
+      height: 30px;
+    }
+  }
+
+  .faq--help-center {
+    background: none;
+    padding: 0 0 40px;
+
+    @include tablet {
+      padding: 0 0 80px;
+    }
+
+    @include desktop-lg {
+      padding: 0 0 59px;
+    }
+
+    @include desktop-xl {
+      padding: 0 0 63px;
+    }
+  }
+
+  .faq__delimiter {
+    display: none;
+  }
+
+  .faq__wrapper {
+    align-items: unset;
+    max-width: unset;
+  }
+
+  .faq__title {
+    position: relative;
+    color: map-get($colors, "red");
+    text-align: left;
+    margin: 0 0 20px;
+
+    @include tablet {
+      margin: 0 0 40px;
+    }
+
+    @include desktop-lg {
+      margin: 0 0 30px;
+    }
+
+    @include desktop-xl {
+      margin: 0 0 60px;
+    }
+  }
+
+  &--no-title {
+    .faq__title {
+      display: none;
+    }
+  }
+}
