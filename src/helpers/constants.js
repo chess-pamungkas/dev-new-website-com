@@ -47,6 +47,7 @@ export const WITHDRAWAL_PAGE_LINK = "/withdrawal";
 export const SPREADS_AND_FEES_PAGE_LINK = "/spreads-and-fees";
 export const PROFESSIONAL_QUALIFICATION_PAGE_LINK =
   "/professional-qualification";
+export const PARTNERS_PAGE_LINK = "/partners";
 
 export const FAQ_LINK = "/";
 

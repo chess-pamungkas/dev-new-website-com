@@ -12,7 +12,7 @@
       padding-top: 48px;
       padding-bottom: 48px;
     }
-  
+
     @include desktop-xl {
       padding-top: 59px;
       padding-bottom: 59px;
@@ -25,9 +25,9 @@
     padding: 5px 8px 5px 20px;
     display: flex;
     align-items: center;
-    background-color: map-get($colors, 'white');
-    color: map-get($colors, 'black');
-    border: 2px solid map-get($colors, 'red');
+    background-color: map-get($colors, "white");
+    color: map-get($colors, "black");
+    border: 2px solid map-get($colors, "red");
     border-radius: 31px;
 
     @include tablet {
@@ -54,7 +54,7 @@
       }
 
       & > g > * {
-        stroke: map-get($colors, 'red');
+        stroke: map-get($colors, "red");
       }
     }
 
@@ -64,7 +64,7 @@
       background: transparent;
       border: none;
       outline: none;
-      color: map-get($colors, 'black-secondaty');
+      color: map-get($colors, "black-secondaty");
       font: normal normal map-get($font-weight, "bold") 16px/20px $font;
     }
   }
@@ -102,7 +102,7 @@
     margin-bottom: 10px;
     display: flex;
     align-items: flex-end;
-    
+
     @include desktop-lg {
       margin-bottom: 5px;
     }
@@ -122,7 +122,7 @@
       margin-right: 12px;
       padding: 15px;
       flex-shrink: 0;
-      border: 1px solid map-get($colors, 'red');
+      border: 1px solid map-get($colors, "red");
 
       @include tablet {
         width: 83px;
@@ -150,7 +150,7 @@
 
   &__title {
     margin: 0 0 4px;
-    color: map-get($colors, 'red');
+    color: map-get($colors, "red");
     font: normal normal map-get($font-weight, "black") 22px/27px $font;
     white-space: nowrap;
     overflow: hidden;
@@ -171,7 +171,7 @@
 
   &__ref {
     margin: 0;
-    color: map-get($colors, 'red');
+    color: map-get($colors, "red");
     font: normal normal map-get($font-weight, "normal") 17px/21px $font;
     white-space: nowrap;
     overflow: hidden;
@@ -192,7 +192,7 @@
 
   &__text {
     margin: 0 0 20px;
-    color: map-get($colors, 'black-secondary');
+    color: map-get($colors, "black-secondary");
     font: normal normal map-get($font-weight, "light") 20px/25px $font;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -253,7 +253,7 @@
 
     &-title {
       margin: 0 0 20px;
-      color: map-get($colors, 'red');
+      color: map-get($colors, "red");
       font: normal normal map-get($font-weight, "black") 34px/42px $font;
 
       @include tablet {
@@ -276,9 +276,9 @@
     }
   }
 
-  &__note{
+  &__note {
     margin: 0 0 30px;
-    color: map-get($colors, 'black-secondary');
+    color: map-get($colors, "black-secondary");
     font: normal normal map-get($font-weight, "black") 24px/30px $font;
     text-align: center;
 

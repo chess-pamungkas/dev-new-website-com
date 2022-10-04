@@ -9,7 +9,7 @@ $xl: 1920px;
 $xl-height: 1080px;
 
 $font: "Sofia Pro", sans-serif;
-$font-secondary: 'Lato', sans-serif;
+$font-secondary: "Lato", sans-serif;
 
 $font-weight: (
   "light": 300,
@@ -38,8 +38,14 @@ $padding-xl: 70px;
 $border-radius-default: 31px;
 $border-radius-header: 27px;
 
-$button-default: ("height": 62px, "width": 380px);
-$button-header: ("height": 40px, "width": unset);
+$button-default: (
+  "height": 62px,
+  "width": 380px,
+);
+$button-header: (
+  "height": 40px,
+  "width": unset,
+);
 
 $header-height: 83px;
 $header-height-small: 75px;

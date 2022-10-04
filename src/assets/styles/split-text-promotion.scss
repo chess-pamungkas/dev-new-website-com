@@ -5,7 +5,6 @@
   color: map-get($colors, "black");
 
   &__wrapper {
-
     @include desktop-lg {
       display: grid;
       grid-auto-flow: row dense;
@@ -44,49 +43,57 @@
         left: 0;
         width: 123px;
         height: 142px;
-        background: url("../../assets/images/bg/company/ornament-sm.svg") no-repeat;
+        background: url("../../assets/images/bg/company/ornament-sm.svg")
+          no-repeat;
 
         @include tablet {
           width: 252px;
           height: 291px;
-          background: url("../../assets/images/bg/company/ornament-md.svg") no-repeat;
+          background: url("../../assets/images/bg/company/ornament-md.svg")
+            no-repeat;
         }
 
         @include desktop-lg {
           width: 261px;
           height: 299px;
-          background: url("../../assets/images/bg/company/ornament-lg.svg") no-repeat;
+          background: url("../../assets/images/bg/company/ornament-lg.svg")
+            no-repeat;
         }
 
         @include desktop-xl {
           width: 408px;
           height: 468px;
-          background: url("../../assets/images/bg/company/ornament-xl.svg") no-repeat;
+          background: url("../../assets/images/bg/company/ornament-xl.svg")
+            no-repeat;
         }
       }
     }
 
     &--right {
-      background: url("../../assets/images/bg/company/split-text-promotion-sm.svg") no-repeat bottom right;
+      background: url("../../assets/images/bg/company/split-text-promotion-sm.svg")
+        no-repeat bottom right;
       align-items: flex-start;
       flex-direction: column;
       padding-top: 32px;
       padding-bottom: 40px;
 
       @include tablet {
-        background: url("../../assets/images/bg/company/split-text-promotion-md.svg") no-repeat bottom right;
+        background: url("../../assets/images/bg/company/split-text-promotion-md.svg")
+          no-repeat bottom right;
         padding-top: 91px;
         padding-bottom: 91px;
       }
 
       @include desktop-lg {
-        background: url("../../assets/images/bg/company/split-text-promotion-lg.svg") no-repeat bottom right;
+        background: url("../../assets/images/bg/company/split-text-promotion-lg.svg")
+          no-repeat bottom right;
         padding-top: 68px;
         padding-bottom: 60px;
       }
 
       @include desktop-xl {
-        background: url("../../assets/images/bg/company/split-text-promotion-xl.svg") no-repeat bottom right;
+        background: url("../../assets/images/bg/company/split-text-promotion-xl.svg")
+          no-repeat bottom right;
         padding-top: 126px;
         padding-bottom: 128px;
       }

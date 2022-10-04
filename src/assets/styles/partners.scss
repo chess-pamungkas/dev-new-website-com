@@ -1,0 +1,787 @@
+@import "vars";
+@import "mixins";
+
+.partners-page-promotion {
+  background: url("../../assets/images/partners/promotion-bg.svg") no-repeat
+    center;
+  background-size: cover;
+  padding-top: 32px;
+  padding-bottom: 48px;
+
+  @include tablet {
+    padding-top: 40px;
+    padding-bottom: 112px;
+  }
+
+  @include desktop-lg {
+    padding-top: 57px;
+    padding-bottom: 50px;
+  }
+
+  @include desktop-xl {
+    padding-top: 161px;
+    padding-bottom: 112px;
+  }
+
+  .top-market-promotion__wrapper {
+    flex-direction: column-reverse;
+
+    @include desktop-xl {
+      flex-direction: row;
+    }
+  }
+
+  .top-market-promotion__description {
+    max-width: 799px;
+
+    @include desktop-lg {
+      max-width: 780px;
+    }
+  }
+
+  .top-market-promotion__text {
+    font: normal normal map-get($font-weight, "black") 28px/35px $font;
+    text-align: center;
+    padding-bottom: 85px;
+
+    @include tablet {
+      font: normal normal map-get($font-weight, "black") 41px/51px $font;
+      padding-bottom: 78px;
+    }
+
+    @include tablet {
+      padding-top: 40px;
+      padding-bottom: 20px;
+    }
+
+    @include desktop-xl {
+      font: normal normal map-get($font-weight, "black") 48px/60px $font;
+      text-align: left;
+    }
+  }
+
+  .top-market-promotion__block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @include desktop-xl {
+      display: block;
+    }
+  }
+}
+
+.partners-page-bottom-promotion {
+  background: map-get($colors, "red");
+  padding-top: 18px;
+  padding-bottom: 38px;
+
+  @include tablet {
+    padding-top: 35px;
+    padding-bottom: 42px;
+  }
+
+  @include desktop-lg {
+    padding-top: 46px;
+    padding-bottom: 48px;
+  }
+
+  @include desktop-xl {
+    padding-top: 86px;
+    padding-bottom: 130px;
+  }
+
+  .top-market-promotion__wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .top-market-promotion__block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: unset;
+  }
+
+  .top-market-promotion__description {
+    margin: unset;
+
+    @include tablet {
+      max-width: 508px;
+    }
+
+    @include desktop-lg {
+      max-width: 626px;
+    }
+
+    @include desktop-xl {
+      max-width: 1294px;
+    }
+  }
+
+  .top-market-promotion__text {
+    font: normal normal map-get($font-weight, "black") 19px/23px $font;
+    text-align: center;
+    padding-top: 25px;
+
+    @include tablet {
+      font: normal normal map-get($font-weight, "black") 23px/28px $font;
+      padding-top: 31px;
+    }
+
+    @include desktop-lg {
+      font: normal normal map-get($font-weight, "black") 32px/40px $font;
+      padding-top: 45px;
+    }
+
+    @include desktop-xl {
+      font: normal normal map-get($font-weight, "black") 60px/75px $font;
+      padding-top: 56px;
+    }
+  }
+
+  .top-market-promotion__img {
+    width: 67px;
+    margin-bottom: unset;
+
+    @include desktop-lg {
+      width: 89px;
+    }
+
+    @include desktop-xl {
+      width: 166px;
+    }
+  }
+}
+
+.partners-income {
+  padding: 72px 56px;
+  display: grid;
+  gap: 15px;
+  grid-template-areas: "title title" "desc desc" "total-clients total-income" "slider slider";
+  background: url("../../assets/images/partners/income-bg-sm.svg") no-repeat
+    padding-box;
+
+  @include tablet {
+    padding: 110px 90px;
+    gap: 30px 9px;
+    grid-template-areas: "title desc" "total-clients total-income" "slider slider";
+    background: url("../../assets/images/partners/income-bg-md.svg") no-repeat
+      padding-box;
+  }
+
+  @include desktop-lg {
+    padding: 113px 64px;
+    gap: 40px 25px;
+    grid-template-areas: "title title title desc desc" "total-clients slider slider slider total-income";
+    // TODO: Change this bg
+    background: transparent url("../../assets/images/partners/income-bg-lg.svg")
+      no-repeat padding-box;
+  }
+
+  @include desktop-xl {
+    padding: 204px 272px;
+    gap: 49px 60px;
+    grid-template-areas: "title title desc" "total-clients slider total-income";
+    background: url("../../assets/images/partners/income-bg-xl.svg") no-repeat
+      padding-box;
+  }
+
+  &__title {
+    font: normal normal normal 15px/19px $font;
+    margin: 0px;
+    width: 233px;
+    grid-area: title;
+    justify-self: center;
+    text-align: center;
+
+    @include tablet {
+      font: normal normal normal 21px/26px $font;
+      width: 287px;
+      justify-self: start;
+      text-align: left;
+    }
+
+    @include desktop-lg {
+      font: normal normal normal 34px/42px $font;
+      width: 480px;
+    }
+
+    @include desktop-xl {
+      font: normal normal normal 48px/60px $font;
+      width: 823px;
+    }
+  }
+
+  &__description {
+    font: normal normal normal 10px/13px $font;
+    color: map-get($colors, "grey");
+    margin: 0px;
+    width: 264px;
+    grid-area: desc;
+    justify-self: center;
+    text-align: center;
+
+    @include tablet {
+      font: normal normal normal 18px/22px $font;
+      justify-self: right;
+      width: 291px;
+      text-align: left;
+    }
+
+    @include desktop-lg {
+      font: normal normal normal 22px/27px $font;
+      width: 356px;
+    }
+
+    @include desktop-xl {
+      justify-self: unset;
+      width: 476px;
+    }
+  }
+
+  &__total-clients {
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+    grid-area: total-clients;
+    justify-self: start;
+    text-align: left;
+
+    @include tablet {
+      width: 197px;
+    }
+
+    @include desktop-lg {
+      width: 142px;
+    }
+
+    @include desktop-xl {
+      width: 150px;
+    }
+  }
+
+  &__total-income {
+    display: flex;
+    flex-direction: column;
+    width: 87px;
+    grid-area: total-income;
+    justify-self: end;
+    text-align: right;
+
+    @include tablet {
+      width: 180px;
+    }
+
+    @include desktop-lg {
+      width: 247px;
+      text-align: left;
+    }
+
+    @include desktop-xl {
+      justify-self: unset;
+      text-align: left;
+    }
+  }
+
+  &__total-num {
+    font: normal normal map-get($font-weight, "black") 16px/20px $font;
+    margin: 0px;
+
+    @include tablet {
+      font: normal normal map-get($font-weight, "black") 25px/31px $font;
+    }
+
+    @include desktop-lg {
+      font: normal normal map-get($font-weight, "black") 60px/75px $font;
+    }
+  }
+
+  &__total-note {
+    font: normal normal map-get($font-weight, "black") 9px/12px $font;
+
+    @include tablet {
+      font: normal normal map-get($font-weight, "black") 15px/19px $font;
+    }
+
+    @include desktop-lg {
+      font: normal normal map-get($font-weight, "black") 16px/20px $font;
+    }
+  }
+
+  &__slider {
+    width: 257px;
+    padding-top: 5px;
+    grid-area: slider;
+    justify-self: center;
+
+    @include tablet {
+      width: 574px;
+    }
+
+    @include desktop-lg {
+      width: 470px;
+      padding-top: 62px;
+    }
+
+    @include desktop-xl {
+      width: 630px;
+      padding-top: 62px;
+      justify-self: unset;
+    }
+  }
+
+  &__slider-track {
+    height: 2px;
+    top: 10px;
+
+    @include tablet {
+      height: 4px;
+      top: 17px;
+    }
+
+    @include desktop-lg {
+      top: 72px;
+    }
+
+    @include desktop-xl {
+      height: 7px;
+      top: 73px;
+    }
+
+    &-0 {
+      background: map-get($colors, "red");
+    }
+
+    &-1 {
+      background: map-get($colors, "black-secondary");
+    }
+  }
+
+  &__slider-thumb {
+    width: 12px;
+    height: 12px;
+    background: map-get($colors, "red");
+    border-radius: 100%;
+    cursor: pointer;
+    outline: none;
+
+    @include tablet {
+      width: 27px;
+      height: 27px;
+    }
+
+    @include desktop-lg {
+      width: 23px;
+      height: 23px;
+    }
+
+    @include desktop-xl {
+      width: 29px;
+      height: 29px;
+    }
+  }
+
+  &__slider-mark {
+    display: flex;
+    flex-direction: column;
+
+    &-v-line {
+      top: 15px;
+      height: 7px;
+      width: 0;
+      border: 1px solid map-get($colors, "grey");
+
+      @include tablet {
+        top: 30px;
+        height: 14px;
+      }
+
+      @include desktop-lg {
+        top: 80px;
+        height: 12px;
+      }
+
+      @include desktop-xl {
+        top: 85px;
+        height: 16px;
+      }
+    }
+
+    &-number {
+      top: 23px;
+      font: normal normal normal 7px/9px $font;
+      color: map-get($colors, "grey");
+
+      @include tablet {
+        top: 43px;
+        font: normal normal normal 13px/17px $font;
+      }
+
+      @include desktop-lg {
+        top: 92px;
+        font: normal normal normal 8px/10px $font;
+      }
+
+      @include desktop-xl {
+        top: 100px;
+        font: normal normal normal 18px/22px $font;
+      }
+    }
+  }
+}
+
+.partners-advantages {
+  background: url("../../assets/images/partners/advantages-bg-sm.svg") no-repeat
+    padding-box;
+  background-size: cover;
+  padding-top: 51px;
+  padding-bottom: 53px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include tablet {
+    padding-top: 47px;
+    padding-bottom: 60px;
+    background: url("../../assets/images/partners/advantages-bg-md.svg")
+      no-repeat padding-box;
+  }
+
+  @include desktop-lg {
+    padding-top: 87px;
+    padding-bottom: 150px;
+    background: url("../../assets/images/partners/advantages-bg-lg.svg")
+      no-repeat padding-box;
+  }
+
+  @include desktop-xl {
+    padding-top: 98px;
+    padding-bottom: 128px;
+    background: url("../../assets/images/partners/advantages-bg-xl.svg")
+      no-repeat padding-box;
+  }
+
+  &__advantages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 23px;
+
+    @include desktop-xl {
+      padding-top: 96px;
+      max-width: 1540px;
+    }
+
+    .advantage-block {
+      margin: 8px;
+      width: 136px;
+      padding: 9px;
+      text-align: center;
+
+      @include tablet {
+        margin: 9px;
+        width: 230px;
+        padding: 15px 9px;
+      }
+
+      @include desktop-xl {
+        margin: 20px;
+        width: 330px;
+        padding: 30px 9px;
+      }
+    }
+
+    .advantage-block__text {
+      font: normal normal map-get($font-weight, "black") 10px/13px $font;
+
+      @include tablet {
+        font: normal normal map-get($font-weight, "black") 16px/20px $font;
+      }
+
+      @include desktop-xl {
+        font: normal normal map-get($font-weight, "black") 20px/25px $font;
+      }
+    }
+
+    .advantage-block__icon {
+      width: 40px;
+
+      @include tablet {
+        width: 86px;
+      }
+
+      @include desktop-xl {
+        width: 100px;
+      }
+    }
+  }
+
+  &__title {
+    font: normal normal map-get($font-weight, "black") 22px/27px $font;
+    text-align: center;
+    max-width: 202px;
+
+    @include tablet {
+      font: normal normal map-get($font-weight, "black") 36px/45px $font;
+      max-width: unset;
+    }
+
+    @include desktop-lg {
+      font: normal normal map-get($font-weight, "black") 40px/50px $font;
+    }
+
+    @include desktop-xl {
+      font: normal normal map-get($font-weight, "black") 60px/75px $font;
+    }
+  }
+}
+
+.partners-start {
+  background: map-get($colors, "black-secondary") 0% 0% no-repeat padding-box;
+  padding-top: 59px;
+  padding-bottom: 39px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: -2;
+
+  @include tablet {
+    padding-top: 194px;
+    padding-bottom: 164px;
+  }
+
+  @include desktop-lg {
+    padding-top: 40px;
+    padding-bottom: 53px;
+  }
+
+  @include desktop-xl {
+    padding-top: 98px;
+    padding-bottom: 111px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    background: url("../../assets/images/partners/start-bg-top-sm.svg")
+      no-repeat;
+    width: 92px;
+    height: 110px;
+    top: 0;
+    left: 0;
+
+    @include tablet {
+      background: url("../../assets/images/partners/start-bg-top-md.svg")
+        no-repeat;
+      width: 187px;
+      height: 226px;
+    }
+
+    @include desktop-lg {
+      background: url("../../assets/images/partners/start-bg-top-lg.svg")
+        no-repeat;
+      width: 177px;
+      height: 213px;
+    }
+
+    @include desktop-xl {
+      background: url("../../assets/images/partners/start-bg-top-xl.svg")
+        no-repeat;
+      width: 261px;
+      height: 299px;
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    background: url("../../assets/images/partners/start-bg-bot-sm.svg")
+      no-repeat;
+    width: 92px;
+    height: 110px;
+    bottom: 0;
+    right: 0;
+
+    @include tablet {
+      background: url("../../assets/images/partners/start-bg-bot-md.svg")
+        no-repeat;
+      width: 188px;
+      height: 225px;
+    }
+
+    @include desktop-lg {
+      background: url("../../assets/images/partners/start-bg-bot-lg.svg")
+        no-repeat;
+      width: 177px;
+      height: 213px;
+    }
+
+    @include desktop-xl {
+      background: url("../../assets/images/partners/start-bg-bot-xl.svg")
+        no-repeat;
+      width: 261px;
+      height: 299px;
+    }
+  }
+
+  &__title {
+    font: normal normal map-get($font-weight, "black") 18px/22px $font;
+    color: map-get($colors, "red");
+    padding-bottom: 49px;
+    margin: 0px;
+
+    @include tablet {
+      font: normal normal map-get($font-weight, "black") 26px/32px $font;
+      padding-bottom: 67px;
+    }
+
+    @include desktop-lg {
+      font: normal normal map-get($font-weight, "black") 30px/37px $font;
+      padding-bottom: 70px;
+    }
+
+    @include desktop-xl {
+      font: normal normal map-get($font-weight, "black") 60px/75px $font;
+      padding-bottom: 134px;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-areas: "a b c";
+    font: normal normal map-get($font-weight, "black") 12px/15px $font;
+
+    @include tablet {
+      font: normal normal map-get($font-weight, "black") 18px/22px $font;
+    }
+
+    @include desktop-lg {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    @include desktop-xl {
+      font: normal normal map-get($font-weight, "black") 24px/30px $font;
+    }
+  }
+
+  &__btn {
+    background: map-get($colors, "black-secondary");
+    font: normal normal map-get($font-weight, "black") 11px/31px $font;
+    border: 1px solid map-get($colors, "red");
+    width: 190px;
+
+    &:hover {
+      background: map-get($colors, "white");
+      border-color: map-get($colors, "white");
+      color: map-get($colors, "red");
+    }
+
+    @include tablet {
+      font: normal normal map-get($font-weight, "black") 24px/62px $font;
+      width: 380px;
+    }
+  }
+
+  &__arrow1 {
+    position: absolute;
+    top: 135px;
+    left: calc(50% - 115px);
+    z-index: -1;
+
+    @include tablet {
+      top: 305px;
+      left: calc(50% - 240px);
+    }
+
+    @include desktop-lg {
+      top: 155px;
+      left: calc(50% - 375px);
+    }
+
+    @include desktop-xl {
+      top: 305px;
+      left: calc(50% - 755px);
+    }
+  }
+
+  &__arrow2 {
+    position: absolute;
+    top: 275px;
+    right: calc(50% - 115px);
+    z-index: -1;
+
+    @include tablet {
+      top: 520px;
+      right: calc(50% - 240px);
+    }
+  }
+}
+
+.partners-start-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 110px;
+
+  @include tablet {
+    width: 194px;
+  }
+
+  @include desktop-lg {
+    width: 149px;
+  }
+
+  @include desktop-xl {
+    width: 298px;
+  }
+
+  &__text {
+    padding-top: 10px;
+    padding-bottom: 28px;
+    text-align: center;
+    max-width: 98px;
+    margin: 0px;
+
+    @include tablet {
+      padding-top: 10px;
+      padding-bottom: 66px;
+      max-width: 154px;
+    }
+
+    @include desktop-lg {
+      padding-top: 10px;
+      padding-bottom: 31px;
+      max-width: 126px;
+    }
+
+    @include desktop-xl {
+      padding-top: 20px;
+      padding-bottom: 134px;
+      max-width: 252px;
+    }
+  }
+
+  &__icon {
+    width: 55px;
+
+    @include tablet {
+      width: 87px;
+    }
+
+    @include desktop-lg {
+      width: 71px;
+    }
+
+    @include desktop-xl {
+      width: 142px;
+    }
+  }
+}

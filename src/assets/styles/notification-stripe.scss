@@ -5,8 +5,8 @@
   position: relative;
   z-index: 1;
   background: map-get($colors, "white");
-  box-shadow: 0 0 10px #0000001A;
-  border-top: 5px solid  map-get($colors, "red");
+  box-shadow: 0 0 10px #0000001a;
+  border-top: 5px solid map-get($colors, "red");
   padding: 13px 10px 10px;
 
   @include desktop-lg {
