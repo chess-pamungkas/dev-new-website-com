@@ -1,0 +1,15 @@
+@import "vars";
+@import "mixins";
+
+.faq-page {
+  
+  @include tablet {
+  }
+
+  @include desktop-lg {
+  }
+
+  @include desktop-xl {
+  }
+
+}

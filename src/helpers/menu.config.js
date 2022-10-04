@@ -37,7 +37,7 @@ import {
   PLATFORMS_LINK,
   WITHDRAWAL_PAGE_LINK,
   PROFESSIONAL_QUALIFICATION_PAGE_LINK,
-  SPREADS_AND_FEES_PAGE_LINK,
+  SPREADS_AND_FEES_PAGE_LINK, FAQ_PAGE_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
@@ -281,7 +281,7 @@ const COMPANY_TAB = {
     },
     {
       title: "header-nav-tab-company-help-center-title",
-      link: "",
+      link: FAQ_PAGE_LINK,
       icon: HelpCenterIcon,
       description: "header-nav-tab-company-help-center-desc",
     },

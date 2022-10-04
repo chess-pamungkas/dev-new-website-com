@@ -32,6 +32,7 @@ export const REGISTRATION_LINK = "/";
 
 export const COMPANY_PAGE_LINK = "/company";
 export const LEGAL_PAGE_LINK = "/legal";
+export const FAQ_PAGE_LINK = "/faq";
 export const SEARCH_PAGE_LINK = "/search";
 export const CRYPTO_PAGE_LINK = "/crypto";
 export const INDICES_PAGE_LINK = "/indices";
@@ -48,7 +49,6 @@ export const SPREADS_AND_FEES_PAGE_LINK = "/spreads-and-fees";
 export const PROFESSIONAL_QUALIFICATION_PAGE_LINK =
   "/professional-qualification";
 
-export const FAQ_LINK = "/";
 
 export const ANGLE_ICON_COLOR = {
   black: "#232323",

@@ -828,6 +828,8 @@
   "spreads_faq-title3": "Shares",
   "spreads_faq-content3": "Shares",
 
+  "faq_quick-title": "Quick Answers",
+  "faq_quick-subtitle": "Don’t worry we have shortlisted the most common questions",
   "faq_quick-q1": "Which documents do I need to open a trading account?",
   "faq_quick-a1": "You will need a clear colour copy of your current Identification document and proof of residence",
   "faq_quick-q2": "When is the forex market open?",
@@ -839,6 +841,7 @@
   "faq_quick-q5": "How fast will you process my withdrawal?",
   "faq_quick-a5": "Your withdrawal request will be processed within one working day if not before.",
 
+  "faq_account-title": "Your Oqtima Account",
   "faq_account-q1": "How long does it take to create my account?",
   "faq_account-a1": "It only takes a couple of minutes, and your account application will be sent to our experienced team to be processed. You will receive an email as soon as your account is ready to go!",
   "faq_account-q2": "Which documents do I need to open my account?",
@@ -850,6 +853,7 @@
   "faq_account-q5": "When can I start trading?",
   "faq_account-a5": "As soon as you have submitted your documents and your account has been approved.",
 
+  "faq_funding-title": "Oqtima Funding",
   "faq_funding-q1": "Will I be charged to fund my account?",
   "faq_funding-a1": "There are no fees when making a deposit.",
   "faq_funding-q2": "Are there fees on withdrawals?",
@@ -861,6 +865,7 @@
   "faq_funding-q5": "How fast will you process my withdrawal?",
   "faq_funding-a5": "Your withdrawal request will be processed within one working day if not before.",
 
+  "faq_trading-title": "Oqtima Trading",
   "faq_trading-q1": "How can I practice before I start trading on a real account?",
   "faq_trading-a1": "We offer a free demo account, where you can trade with virtual money andpractice trading before starting on a real account.",
   "faq_trading-q2": "Are the prices the same on my demo and real account?",
@@ -872,6 +877,9 @@
   "faq_trading-q5": "What spreads to you offer?",
   "faq_trading-a5": "Our spreads are floating, which means that they will fluctuate depending on the market conditions. Depending on the account type you choose, our spreads start from zero pips.",
 
+  "faq_market-title": "Oqtima Markets",
+
+  "faq_forex-title": "Forex",
   "faq_forex-q1": "What is forex trading?",
   "faq_forex-a1": "Trading forex is when you buy or sell currencies on the foreign exchange market. FX is the world’s most-traded financial market with daily transactions Worth trillions of dollars.",
   "faq_forex-q2": "When is the forex market open?",
@@ -881,6 +889,7 @@
   "faq_forex-q4": "Which are the most popular forex pairs?",
   "faq_forex-a4": "The Major pairs are the most well-known FX pairs, these include; - EUR/USD - USD/JPY - GBP/USD - AUD/USD - USD/CHF - USD/CAD - NZD/USD",
 
+  "faq_cryptocurrencies-title": "Cryptocurrencies",
   "faq_cryptocurrencies-q1": "Is trading over the weekend possible?",
   "faq_cryptocurrencies-a1": "As cryptocurrencies are decentralised and therefore do not rely on the world banks, the advantage is that you can trade any day of the week, including the weekend. When checking the specifications under the symbol list on the platform, you will see the trading times and there is a small trading break on the weekend for cryptocurrencies.",
   "faq_cryptocurrencies-q2": "Where is Bitcoin on the platform?",
@@ -888,26 +897,31 @@
   "faq_cryptocurrencies-q3": "Is a digital wallet needed to trade cryptocurrencies?",
   "faq_cryptocurrencies-a3": "From your Oqtima account, you will have access to trade any cryptocurrency we offer without the need for any digital wallet. Funding your account is simple and can be done using any one of our available deposit methods.",
 
+  "faq_metals-title": "Metals",
   "faq_metals-q1": "Can I take delivery of the underlying metal?",
   "faq_metals-a1": "Oqtima only offers CFDs and does not support physical delivery of the asset. When trading CFD’s you are trading based on price speculation, you are not physically buying or selling the instruments. If you open a trade in Gold, you do not physically own that amount of gold, but you can earn profit or loss depending on the market movement.",
   "faq_metals-q2": "Can I take delivery of the underlying metal?",
   "faq_metals-a2": "All metals have their own internationally recognised 3 letter codes. XAU is the code for Gold and as all our metals are traded against US Dollar you will see the pair XAUUSD. This shows us 1 ounce of gold price per dollar unit. Below are all our available metals: ● Gold – XAUUSD ● Silver – XAGUSD ● Platinum – XPTUSD",
 
+  "faq_energies-title": "Energies",
   "faq_energies-q1": "Is there any commission when trading Energies?",
   "faq_energies-a1": "There are no extra commission fees charged when opening or closing positions on energies. The cost of the trade is the spread only and this can be calculated in real time depending on your trade size.",
   "faq_energies-q2": "What is the spot price?",
   "faq_energies-a2": "The term Spot simply refers to the fact you are trading using the current delivery price, as opposed to a future contract. Unlike future contracts, you have no expiration date with spot contracts.Trading CFD spot energies, but you are not taking physical ownership of the goods, you are simply trading based on price speculation.",
 
+  "faq_shares-title": "Shares",
   "faq_shares-q1": "Can I sell as well as buy shares?",
   "faq_shares-a1": "All our shares are CFDs which means you get to buy and sell without having to purchase the underlying share. Remember a CFD is when you are speculating on the price movement. So, you are not limited to only buying a share, you can open either a buy or sell trade and your profit/loss will be determined by the difference between the open and close price.",
   "faq_shares-q2": "Is there a time limit to my trade?",
   "faq_shares-a2": "You can hold a position for as long as you want, provided you have enough margin to cover your trade. There are rollover fees, also known as swap which is a financing charge, and this is applied to any trade kept open overnight or for shares, past the time of market closing for the relevant stock. The swap rate is displayed in your platform as percentage per annum and can be calculated using the following formula. Market Price (*EOD) X Trade size in lots X Swap rate / 100 / 360 = Swap charge per night in USD *EOD = End of Day",
 
+  "faq_indices-title": "Indices",
   "faq_indices-q1": "Why trade Indices?",
   "faq_indices-a1": "Trading Indices allows a trader to have access to several companies in one trade and further diversify their portfolio. An Index is a measurement of the price performance of a group of shares from na exchange. For example, the FTSE 100 (Financial Times Stock Exchange 100) is na index of the biggest 100 companies on the London Stock Exchange.",
   "faq_indices-q2": "Why is it important to understand Indices?",
   "faq_indices-a2": "Imagine a basket of shares in one Index but not all the shares have the same value. So, you need to know how the overall Index is calculated? Most Indices use market capitalisation weighting and what this means is the more the share value a stock has, the more weight it is given in the calculation of the overall Index.",
 
+  "faq_beginners-title": "Beginners Terminology",
   "faq_beginners-q1": "CFD",
   "faq_beginners-a1": "Stands for Contracts for Difference and is an agreement (contract) to exchange the difference in the value of na underlying asset (FX, Metals, Indices, Energies, Shares, Cryptocurrencies), from the point at which the contract is opened to when it is closed. You speculate on the price movement in either direction without having to take physical ownership or purchase of the underlying asset and your profit or loss is determined by the difference between the open and close price. For example: if you buy a ‘contract for difference’ at $20 and sell at $25 then you will receive the $5 difference. If you buy a CFD at $10 and sell at $5 then you pay the $5 difference. A CFD contract means that you are not physically buying the underlying asset, but you have exposure to the price movement.",
   "faq_beginners-q2": "SPREAD",
