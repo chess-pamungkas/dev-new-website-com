@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
@@ -10,7 +10,6 @@ import MainPromotion from "../components/main-promotion";
 import Promotion from "../components/promotion";
 import TradingTicker from "../components/trading-ticker";
 import TradingTools from "../components/trading-tools";
-import Performance from "../components/performance";
 import TradeWithPromotion from "../components/trade-with-promotion";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import Layout from "../components/shared/layout";
@@ -30,14 +29,11 @@ import { scrollTo } from "../helpers/scroll-to";
 import Seo from "../components/shared/seo";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import { usePromotionAnimation } from "../components/promotion/use-promotion-animation";
-import ClientResolverContext from "../context/client-resolver-context";
-import entities from "../enums/entities";
-import { CYSEC_ADVANTAGES, FSA_ADVANTAGES } from "../helpers/config";
+import PerformanceContent from "../components/main-page-content/performance-content";
 
 const IndexPage = () => {
   const { t } = useTranslation();
   const { isMobile, height } = useWindowSize();
-  const { currentEntity } = useContext(ClientResolverContext);
 
   const [isTradePromoScrolled, setIsTradePromoScrolled] = useState(false);
   const [isPromo1Scrolled, setIsPromo1Scrolled] = useState(false);
@@ -50,14 +46,6 @@ const IndexPage = () => {
   const promo2Ref = useRef();
   const promo3Ref = useRef();
   const promo4Ref = useRef();
-
-  const [advantages, setAdvantages] = useState([]);
-
-  useEffect(() => {
-    setAdvantages(
-      currentEntity === entities.CYSEC ? CYSEC_ADVANTAGES : FSA_ADVANTAGES
-    );
-  }, [currentEntity]);
 
   const dataTradePromoRef = useIntersectionObserver(
     tradePromoRef,
@@ -322,25 +310,7 @@ const IndexPage = () => {
           </span>
         </HighlightedLocalizationText>
       </Promotion>
-      <Performance
-        title={
-          <HighlightedLocalizationText
-            localizationText="index_performance-title1"
-            wordsToHighlight="performance-title1-accent"
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-red"
-          >
-            <br />
-            <HighlightedLocalizationText
-              localizationText="index_performance-title2"
-              wordsToHighlight="performance-title2-accent"
-              primaryClassName="highlighted-in-black"
-              accentClassName="highlighted-in-red"
-            />
-          </HighlightedLocalizationText>
-        }
-        advantages={advantages}
-      />
+      <PerformanceContent />
     </Layout>
   );
 };
