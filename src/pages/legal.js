@@ -30,6 +30,8 @@ const LegalPage = () => {
     setSitePostfix(currentEntity === entities.FSA ? FSA_POSTFIX : "");
   }, [currentEntity]);
 
+  console.log(currentEntity);
+
   return (
     <Layout>
       <Seo title={t("page-legal-title")} />
