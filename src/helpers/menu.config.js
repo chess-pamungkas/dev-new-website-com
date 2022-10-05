@@ -39,6 +39,7 @@ import {
   PROFESSIONAL_QUALIFICATION_PAGE_LINK,
   SPREADS_AND_FEES_PAGE_LINK,
   PARTNERS_PAGE_LINK,
+  ACCOUNTS_TYPE_PAGE_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
@@ -130,7 +131,7 @@ const CYSEC_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
     },
     {
       title: "header-nav-tab-trading-funding-withdrawals-accounts-title",
-      link: "",
+      link: ACCOUNTS_TYPE_PAGE_LINK,
       description: "header-nav-tab-trading-funding-withdrawals-accounts-desc",
     },
   ],

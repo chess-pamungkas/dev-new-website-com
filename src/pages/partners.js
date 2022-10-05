@@ -20,7 +20,7 @@ const PartnersPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("partners-page-title")} />
+      <Seo title={t("page-partners-title")} />
       <TopMarketPromotion
         className="partners-page-promotion"
         image={promotion}

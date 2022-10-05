@@ -1,0 +1,267 @@
+@import "vars";
+@import "mixins";
+
+.accounts-type-page-promotion {
+  background: url("../../assets/images/accounts-type/promotion-bg.svg")
+    no-repeat center;
+  background-size: cover;
+  padding-top: 141px;
+  padding-bottom: 297px;
+
+  .top-market-promotion__description {
+    max-width: 900px;
+    margin: 50px 0 50px;
+  }
+}
+
+.accounts-type-page-bottom-promotion {
+  background: map-get($colors, "red");
+  padding-top: 18px;
+  padding-bottom: 38px;
+
+  @include tablet {
+    padding-top: 35px;
+    padding-bottom: 42px;
+  }
+
+  @include desktop-lg {
+    padding-top: 46px;
+    padding-bottom: 48px;
+  }
+
+  @include desktop-xl {
+    padding-top: 86px;
+    padding-bottom: 86px;
+  }
+
+  .top-market-promotion__wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .top-market-promotion__block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: unset;
+  }
+
+  .top-market-promotion__description {
+    margin: unset;
+
+    @include tablet {
+      max-width: 508px;
+    }
+
+    @include desktop-lg {
+      max-width: 626px;
+    }
+
+    @include desktop-xl {
+      max-width: 1294px;
+    }
+  }
+
+  .top-market-promotion__text {
+    font: normal normal map-get($font-weight, "black") 19px/23px $font;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    @include tablet {
+      font: normal normal map-get($font-weight, "black") 23px/28px $font;
+      padding-top: 31px;
+      padding-bottom: 31px;
+    }
+
+    @include desktop-lg {
+      font: normal normal map-get($font-weight, "black") 32px/40px $font;
+      padding-top: 45px;
+      padding-bottom: 45px;
+    }
+
+    @include desktop-xl {
+      font: normal normal map-get($font-weight, "black") 60px/75px $font;
+      padding-top: 56px;
+      padding-bottom: 56px;
+    }
+  }
+
+  .top-market-promotion__img {
+    width: 67px;
+    margin-bottom: unset;
+
+    @include desktop-lg {
+      width: 89px;
+    }
+
+    @include desktop-xl {
+      width: 166px;
+    }
+  }
+}
+
+.accounts-type-page-mid-promotion {
+  background: map-get($colors, "black-secondary") 0% 0% no-repeat padding-box;
+  padding: 130px 0px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    background: url("../../assets/images/accounts-type/mid-promo-bg-top-xl.svg")
+      no-repeat;
+    width: 261px;
+    height: 299px;
+    top: 0;
+    left: 0;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    background: url("../../assets/images/accounts-type/mid-promo-bg-bot-xl.svg")
+      no-repeat;
+    width: 261px;
+    height: 299px;
+    bottom: 0;
+    right: 0;
+  }
+
+  .top-market-promotion__wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .top-market-promotion__block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .top-market-promotion__description {
+    margin: 0;
+    margin-top: 65px;
+  }
+
+  .top-market-promotion__btn {
+    color: map-get($colors, "red");
+    background: map-get($colors, "black-secondary");
+    border: 2px solid map-get($colors, "red");
+
+    &:hover {
+      color: map-get($colors, "white");
+      background: map-get($colors, "red");
+    }
+  }
+}
+
+.accounts-type {
+  background: url("../../assets/images/accounts-type/accounts-type-bg-xl.svg");
+  padding: 85px 124px 85px 84px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__title {
+    margin: 0;
+    padding-bottom: 24px;
+    font: normal normal map-get($font-weight, "black") 60px/80px $font;
+  }
+
+  &__description {
+    margin: 0;
+    font: normal normal map-get($font-weight, "bold") 36px/60px $font;
+  }
+
+  &__desc-block {
+    width: 572px;
+  }
+}
+
+.account-type {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001a;
+  border-radius: 10px;
+  width: 475px;
+  padding: 0px 30px 42px 30px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    height: 10px;
+    background-color: map-get($colors, "red");
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+
+  &__title {
+    padding-top: 32px;
+    margin: 0;
+    text-align: center;
+    font: normal normal map-get($font-weight, "bold") 18px/35px $font;
+  }
+
+  &__name {
+    margin: 0;
+    text-align: center;
+    color: map-get($colors, "red");
+    font: normal normal map-get($font-weight, "black") 40px/35px $font;
+    padding-bottom: 36px;
+  }
+
+  &__btn {
+    color: map-get($colors, "red");
+    background: map-get($colors, "white");
+    border: 2px solid map-get($colors, "red");
+    align-self: center;
+    margin-top: 40px;
+
+    &:hover {
+      color: map-get($colors, "white");
+      background: map-get($colors, "red");
+    }
+  }
+}
+
+.account-type-advantage {
+  display: grid;
+  grid-template-areas: "title value" "hr hr";
+
+  &__title {
+    margin: 0px;
+    font: normal normal map-get($font-weight, "black") 18px/25px $font;
+    justify-self: start;
+    grid-area: title;
+  }
+
+  &__value {
+    margin: 0px;
+    font: normal normal map-get($font-weight, "black") 18px/25px $font;
+    color: map-get($colors, "red");
+    justify-self: end;
+    max-width: 170px;
+    grid-area: value;
+    text-align: right;
+
+    &--small {
+      font: normal normal map-get($font-weight, "black") 14px/25px $font;
+    }
+  }
+
+  &__icon {
+    width: 26px;
+    height: 26px;
+    grid-area: value;
+    justify-self: end;
+  }
+
+  &__hr {
+    width: 363px;
+    height: 0px;
+    border: 1px solid map-get($colors, "table-grey");
+    grid-area: hr;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
