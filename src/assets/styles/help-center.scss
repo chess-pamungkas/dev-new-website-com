@@ -122,6 +122,12 @@
       padding-right: 15px;
     }
 
+    @include desktop-lg {
+      position: absolute;
+      right: 100%;
+      top: 27%;
+    }
+
     @include desktop-xl {
       height: 30px;
     }

@@ -27,6 +27,7 @@ const Faq = ({ className, title, faq, isFaqBtnHidden, subTitleTemplate }) => {
               >
                 {item.answer.map((content, i) => (
                   <span
+                    key={`faq-title-${i}`}
                     className={cn("faq__text", {
                       "faq__text--bold": item.bold?.includes(i),
                     })}
