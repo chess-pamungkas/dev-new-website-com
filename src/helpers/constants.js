@@ -48,6 +48,7 @@ export const SPREADS_AND_FEES_PAGE_LINK = "/spreads-and-fees";
 export const PROFESSIONAL_QUALIFICATION_PAGE_LINK =
   "/professional-qualification";
 export const PARTNERS_PAGE_LINK = "/partners";
+export const ACCOUNTS_TYPE_PAGE_LINK = "/accounts-type";
 
 export const FAQ_LINK = "/";
 
