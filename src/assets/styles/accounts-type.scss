@@ -106,18 +106,6 @@
 
   .top-market-promotion__description {
     margin: unset;
-
-    // @include tablet {
-    //   max-width: 508px;
-    // }
-
-    // @include desktop-lg {
-    //   max-width: 626px;
-    // }
-
-    // @include desktop-xl {
-    //   max-width: 1294px;
-    // }
   }
 
   .top-market-promotion__text {
@@ -450,7 +438,6 @@
 
   @include desktop-xl {
     width: 475px;
-    // padding: 0px 30px 42px 30px;
   }
 
   &__header {
@@ -479,11 +466,6 @@
       padding-top: 35px;
       font: normal normal map-get($font-weight, "bold") 18px/35px $font;
     }
-
-    // @include desktop-xl {
-    //   padding-top: 36px;
-    //   font: normal normal map-get($font-weight, "bold") 18px/35px $font;
-    // }
   }
 
   &__name {
@@ -495,7 +477,6 @@
 
     @include desktop-lg {
       font: normal normal map-get($font-weight, "black") 40px/35px $font;
-      // padding-bottom: 36px;
     }
   }
 
