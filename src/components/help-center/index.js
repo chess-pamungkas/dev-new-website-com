@@ -10,20 +10,33 @@ import {
 import Faq from "../faq";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import FaqSearchBar from "./faq-search-bar";
+import marketsIcon from "../../assets/images/icons/markets.svg";
 
 const HelpCenter = ({ className }) => {
   const { t } = useTranslation();
   const [searchResults, setSearchResults] = useState([]);
 
-  const HelpCenterBlock = ({ title, subtitle, faq, classNames }) => (
+  const HelpCenterBlock = ({
+    title,
+    subtitle,
+    faq,
+    titleClassName,
+    classNames,
+  }) => (
     <div className="help-center__block">
-      {title && <h4 className="help-center__block-title">{title}</h4>}
+      {title && (
+        <h4 className={cn("help-center__block-title", titleClassName)}>
+          {title}
+        </h4>
+      )}
       {subtitle && <p className="help-center__block-subtitle">{subtitle}</p>}
-      {faq.map((item) => (
+      {faq.map((item, i) => (
         <Faq
-          key={`faq-${stringTransformToKebabCase(item.title || title || "Search")}`}
+          key={`faq-${stringTransformToKebabCase(
+            item.title || title || `faq-search-${i}`
+          )}`}
           title={
-            item.title ? (
+            item.title && (
               <>
                 <img
                   src={item.icon}
@@ -32,8 +45,6 @@ const HelpCenter = ({ className }) => {
                 />
                 <span>{t(item.title)}</span>
               </>
-            ) : (
-              ""
             )
           }
           faq={item.content}
@@ -43,22 +54,22 @@ const HelpCenter = ({ className }) => {
       ))}
     </div>
   );
-  console.log("searchResults", searchResults);
-  console.log("FAQ_MARKET", FAQ_MARKET);
+
   return (
     <section className={cn("help-center", className)}>
       <div className="help-center__wrapper">
         <h2 className="help-center__title">{t("faq-title")}</h2>
         <FaqSearchBar setSearchResults={setSearchResults} />
         {searchResults.length > 0 ? (
-            <HelpCenterBlock
-                faq={searchResults}
-                classNames={["help-center--market"]}
-            />
+          <HelpCenterBlock
+            faq={searchResults}
+            classNames={["help-center--market"]}
+          />
         ) : (
           <>
             <HelpCenterBlock
               title={t("faq_quick-title")}
+              titleClassName="help-center__block-title--quick-answer"
               subtitle={t("faq_quick-subtitle")}
               faq={FAQ_QUICK_ANSWER}
               classNames={[
@@ -68,12 +79,19 @@ const HelpCenter = ({ className }) => {
             />
             <HelpCenterBlock faq={FAQ_ALL} classNames={["help-center--all"]} />
             <HelpCenterBlock
-              title={t("faq_market-title")}
+              title={
+                <>
+                  <img src={marketsIcon} className="help-center__block-icon" alt="" />
+                  <span>{t("faq_market-title")}</span>
+                </>
+              }
+              titleClassName="help-center__block-title--market"
               faq={FAQ_MARKET}
               classNames={["help-center--market"]}
             />
             <HelpCenterBlock
               title={t("faq_beginners-title")}
+              titleClassName="help-center__block-title--beginners"
               faq={FAQ_BEGINNERS}
               classNames={["help-center--no-title", "help-center--beginners"]}
             />

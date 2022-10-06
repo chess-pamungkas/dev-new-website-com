@@ -24,14 +24,16 @@ const FaqSearchBar = ({ className, setSearchResults }) => {
 
   const handleSearchValue = (value) => {
     if (value.length >= COUNT_OF_SEARCH_CHARS) {
+      const _value = value.toLowerCase();
       const results = searchContent.filter((topic) => {
+        // check if maps with faq content contain the search query
         return (
-          (topic.title &&
-            t(topic.title).toLowerCase().includes(value.toLowerCase())) ||
-          topic.content.some((item) =>
-            t(item.question).toLowerCase().includes(value.toLowerCase())
+          (topic.title && t(topic.title).toLowerCase().includes(_value)) ||
+          topic.content.some(
+            (item) =>
+              t(item.question).toLowerCase().includes(_value) ||
+              item.answer.some((el) => t(el).toLowerCase().includes(_value))
           )
-          // TODO check item.answer
         );
       });
       setSearchResults(results);
@@ -52,7 +54,7 @@ const FaqSearchBar = ({ className, setSearchResults }) => {
 
   return (
     <div className={cn("faq-search-bar", className)}>
-      <p>{t("faq_quick-searchbar-title")}</p>
+      <p className="faq-search-bar__title">{t("faq_quick-searchbar-title")}</p>
       <input
         className={cn("faq-search-bar__input")}
         placeholder={t("faq_quick-searchbar-placeholder")}

@@ -38,14 +38,16 @@
   }
 
   &__title {
+    max-width: 265px;
+    margin: 0 auto 30px;
     color: map-get($colors, "red");
     font-weight: map-get($font-weight, "black");
-    margin: 0 0 30px;
     font-size: 20px;
     line-height: 30px;
     text-align: center;
 
     @include tablet {
+      max-width: unset;
       margin: 0 0 80px;
       font-size: 40px;
       line-height: 75px;
@@ -62,18 +64,17 @@
     }
   }
 
-  &__block {
-  }
-
   &__block-title {
     color: map-get($colors, "red");
     font-weight: map-get($font-weight, "bold");
-    margin: 0;
+    margin: 0 0 10px;
     font-size: 17px;
     line-height: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
 
     @include tablet {
-      margin: 0 0 10px;
       font-size: 32px;
       line-height: 40px;
     }
@@ -86,13 +87,45 @@
     @include desktop-xl {
       font-size: 36px;
     }
+
+    &--market {
+      font-size: 25px;
+      line-height: 45px;
+      margin: 0 0 60px;
+
+      @include tablet {
+        font-size: 36px;
+        line-height: 40px;
+        margin: 0 0 24px;
+      }
+
+      @include desktop-lg {
+        font-size: 40px;
+        line-height: 45px;
+        margin: 0 0 49px;
+      }
+
+      @include desktop-xl {
+        margin: 0 0 70px;
+      }
+    }
+  }
+
+  &__block-icon {
+    padding-right: 15px;
+
+    @include desktop-lg {
+      position: absolute;
+      right: 100%;
+      top: 27%;
+    }
   }
 
   &__block-subtitle {
     color: map-get($colors, "black");
     font-weight: map-get($font-weight, "regular");
     margin: 0 0 20px;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 20px;
 
     @include tablet {
@@ -160,13 +193,18 @@
   }
 
   .faq__title {
+    display: flex;
+    align-items: center;
     position: relative;
     color: map-get($colors, "red");
     text-align: left;
     margin: 0 0 20px;
+    font-size: 17px;
+    line-height: 40px;
 
     @include tablet {
       margin: 0 0 40px;
+      font-size: 32px;
     }
 
     @include desktop-lg {
@@ -174,13 +212,114 @@
     }
 
     @include desktop-xl {
+      font-size: 36px;
+      line-height: 45px;
       margin: 0 0 60px;
+    }
+  }
+
+  .accordion__title {
+    font-size: 16px;
+    line-height: 20px;
+
+    @include tablet {
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    @include desktop-xl {
+      font-size: 24px;
+      line-height: 30px;
+    }
+  }
+
+  .accordion__expandable {
+    font-size: 16px;
+    line-height: 20px;
+
+    @include desktop-lg {
+      font-size: 20px;
+      line-height: 25px;
     }
   }
 
   &--no-title {
     .faq__title {
       display: none;
+    }
+  }
+}
+
+.faq-search-bar {
+  padding: 0 0 80px;
+
+  @include tablet {
+    padding: 0 0 119px;
+  }
+
+  @include desktop-lg {
+    padding: 0 0 40px;
+  }
+
+  @include desktop-xl {
+    padding: 0 0 145px;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    color: map-get($colors, "red");
+    font-weight: map-get($font-weight, "black");
+    font-size: 14px;
+    margin: 0 0 18px;
+
+    @include tablet {
+      font-size: 20px;
+    }
+
+    @include desktop-lg {
+      font-size: 24px;
+      margin: 0 0 15px;
+    }
+  }
+
+  &__input {
+    position: relative;
+    width: 100%;
+    height: 64px;
+    font-weight: map-get($font-weight, "black");
+    color: map-get($colors, "red");
+    font-size: 14px;
+    box-shadow: 0 3px 24px #00000029;
+    border: 3px solid #ff4400;
+    outline: none;
+    border-radius: 114px;
+    padding-left: 60px;
+    background-image: url("../../assets/images/icons/magnifier.svg");
+    background-repeat: no-repeat;
+    background-position: 21px;
+    background-size: 33px 33px;
+
+    @include tablet {
+      font-size: 20px;
+    }
+
+    @include desktop-lg {
+      font-size: 24px;
+      padding-left: 80px;
+    }
+
+    &::placeholder {
+      font-weight: map-get($font-weight, "black");
+      color: map-get($colors, "red");
+      font-size: 14px;
+
+      @include tablet {
+        font-size: 20px;
+      }
+
+      @include desktop-lg {
+        font-size: 24px;
+      }
     }
   }
 }
