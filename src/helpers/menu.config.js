@@ -239,9 +239,6 @@ const FSA_TRADING_TAB = {
     FSA_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM,
     TRADING_TAB_COPY_TRADING_ITEM,
     TRADING_TAB_PRO_QUALIFICATION_ITEM,
-    TRADING_TAB_WHY_TRADE_ITEM,
-    TRADING_TAB_TRADING_TOOLS_ITEM,
-    TRADING_TAB_EDUCATION_ITEM,
   ],
 };
 
@@ -295,18 +292,6 @@ const FSA_COMPANY_TAB = {
       link: LEGAL_PAGE_LINK,
       icon: LegalIcon,
       description: "header-nav-tab-company-legal-desc",
-    },
-    {
-      title: "header-nav-tab-company-career-title",
-      link: "",
-      icon: CareerIcon,
-      description: "header-nav-tab-company-career-desc",
-    },
-    {
-      title: "header-nav-tab-company-press-and-news-title",
-      link: "",
-      icon: PressAndNewsIcon,
-      description: "header-nav-tab-company-press-and-news-desc",
     },
     {
       title: "header-nav-tab-company-help-center-title",

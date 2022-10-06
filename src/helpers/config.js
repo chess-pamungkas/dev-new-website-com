@@ -77,9 +77,9 @@ export const FSA_ADVANTAGES = [
     accent: "performance-advantage3-accent",
   },
   {
-    icon: AdvantageIcon4,
-    text: "index_performance-advantage4",
-    accent: "performance-advantage4-accent",
+    icon: AdvantageIcon5,
+    text: "index_performance-advantage5-fsa",
+    accent: "performance-advantage5-accent-fsa",
   },
   {
     icon: AdvantageIcon6,
