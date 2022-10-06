@@ -166,11 +166,22 @@ export const FAQ_ALL = [
       },
       {
         question: "faq_account-q3",
-        answer: ["faq_account-a3"],
+        answer: [
+          "faq_account-a3",
+          "faq_account-a3-2",
+          "faq_account-a3-3",
+          "faq_account-a3-4",
+          "faq_account-a3-5",
+        ],
       },
       {
         question: "faq_account-q4",
-        answer: ["faq_account-a4"],
+        answer: [
+          "faq_account-a4",
+          "faq_account-a4-2",
+          "faq_account-a4-3",
+          "faq_account-a4-4",
+        ],
       },
       {
         question: "faq_account-q5",
@@ -251,7 +262,16 @@ export const FAQ_MARKET = [
       },
       {
         question: "faq_forex-q4",
-        answer: ["faq_forex-a4"],
+        answer: [
+          "faq_forex-a4",
+          "faq_forex-a4-2",
+          "faq_forex-a4-3",
+          "faq_forex-a4-4",
+          "faq_forex-a4-5",
+          "faq_forex-a4-6",
+          "faq_forex-a4-7",
+          "faq_forex-a4-8",
+        ],
       },
     ],
   },
@@ -283,7 +303,13 @@ export const FAQ_MARKET = [
       },
       {
         question: "faq_metals-q2",
-        answer: ["faq_metals-a2"],
+        answer: [
+          "faq_metals-a2",
+          "faq_metals-a2-2",
+          "faq_metals-a2-3",
+          "faq_metals-a2-4",
+          "faq_metals-a2-5",
+        ],
       },
     ],
   },
@@ -311,7 +337,7 @@ export const FAQ_MARKET = [
       },
       {
         question: "faq_shares-q2",
-        answer: ["faq_shares-a2"],
+        answer: ["faq_shares-a2", "faq_shares-a2-2", "faq_shares-a2-3"],
       },
     ],
   },
@@ -325,7 +351,7 @@ export const FAQ_MARKET = [
       },
       {
         question: "faq_indices-q2",
-        answer: ["faq_indices-a2"],
+        answer: ["faq_indices-a2", "faq_indices-a2-2"],
       },
     ],
   },
@@ -338,31 +364,61 @@ export const FAQ_BEGINNERS = [
     content: [
       {
         question: "faq_beginners-q1",
-        answer: ["faq_beginners-a1"],
+        answer: ["faq_beginners-a1", "faq_beginners-a1-2"],
       },
       {
         question: "faq_beginners-q2",
-        answer: ["faq_beginners-a2"],
+        answer: [
+          "faq_beginners-a2",
+          "faq_beginners-a2-2",
+          "faq_beginners-a2-3",
+          "faq_beginners-a2-4",
+          "faq_beginners-a2-5",
+          "faq_beginners-a2-6",
+          "faq_beginners-a2-7",
+          "faq_beginners-a2-8",
+        ],
       },
       {
         question: "faq_beginners-q3",
-        answer: ["faq_beginners-a3"],
+        answer: [
+          "faq_beginners-a3",
+          "faq_beginners-a3-2",
+          "faq_beginners-a3-3",
+        ],
       },
       {
         question: "faq_beginners-q4",
-        answer: ["faq_beginners-a4"],
+        answer: [
+          "faq_beginners-a4",
+          "faq_beginners-a4-2",
+          "faq_beginners-a4-3",
+        ],
       },
       {
         question: "faq_beginners-q5",
-        answer: ["faq_beginners-a5"],
+        answer: [
+          "faq_beginners-a5",
+          "faq_beginners-a5-2",
+          "faq_beginners-a5-3",
+        ],
       },
       {
         question: "faq_beginners-q6",
-        answer: ["faq_beginners-a6"],
+        answer: [
+          "faq_beginners-a6",
+          "faq_beginners-a6-2",
+          "faq_beginners-a6-3",
+          "faq_beginners-a6-4",
+        ],
       },
       {
         question: "faq_beginners-q7",
-        answer: ["faq_beginners-a7"],
+        answer: [
+          "faq_beginners-a7",
+          "faq_beginners-a7-2",
+          "faq_beginners-a7-3",
+        ],
       },
     ],
   },
