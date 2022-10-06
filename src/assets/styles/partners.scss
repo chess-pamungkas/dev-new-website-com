@@ -693,7 +693,7 @@
   &__arrow1 {
     position: absolute;
     top: 135px;
-    left: calc(50% - 115px);
+    left: calc(50% - 250px);
     z-index: -1;
 
     @include tablet {
@@ -715,7 +715,7 @@
   &__arrow2 {
     position: absolute;
     top: 275px;
-    right: calc(50% - 115px);
+    right: calc(50% - 250px);
     z-index: -1;
 
     @include tablet {
