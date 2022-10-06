@@ -42,7 +42,7 @@
     align-items: center;
     flex-grow: 1;
     gap: 24px;
-    background-color: map-get($colors, 'white');
+    background-color: map-get($colors, "white");
 
     @include desktop-xl {
       padding-left: 73px;
@@ -55,15 +55,15 @@
     position: relative;
     display: flex;
     align-items: center;
-    background-color: map-get($colors, 'red');
+    background-color: map-get($colors, "red");
 
     &::before {
-      content: '';
+      content: "";
       height: 100%;
       position: absolute;
       left: -25px;
       border-top: $header-height-small solid transparent;
-      border-right: 25px solid map-get($colors, 'red');
+      border-right: 25px solid map-get($colors, "red");
     }
 
     @include desktop-lg {
@@ -93,8 +93,8 @@
   &__start {
     margin-left: 10px;
     padding: 0 16px;
-    background-color: map-get($colors, 'white');
-    color: map-get($colors, 'red');
+    background-color: map-get($colors, "white");
+    color: map-get($colors, "red");
     text-transform: uppercase;
     border: 2px solid map-get($colors, "white");
 

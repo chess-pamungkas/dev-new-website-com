@@ -2,7 +2,6 @@
 @import "mixins";
 
 .top-market--professional-qualification {
-
   .top-market__title {
     font-size: 44px;
     line-height: 55px;
@@ -95,7 +94,6 @@
 }
 
 .professional-qualification-table {
-
   @include mobile {
     padding: 5px;
   }
@@ -116,7 +114,8 @@
       padding: 5px;
     }
 
-    &:first-child, &:last-child {
+    &:first-child,
+    &:last-child {
       border-right: none;
     }
 

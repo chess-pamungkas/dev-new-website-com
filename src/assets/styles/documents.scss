@@ -10,19 +10,22 @@
   @include tablet {
     padding-top: 93px;
     padding-bottom: 88px;
-    background: url("../../assets/images/bg/legal/docs-md.svg") no-repeat top right;
+    background: url("../../assets/images/bg/legal/docs-md.svg") no-repeat top
+      right;
   }
 
   @include desktop-lg {
     padding-top: 60px;
     padding-bottom: 60px;
-    background: url("../../assets/images/bg/legal/docs-lg.svg") no-repeat top right;
+    background: url("../../assets/images/bg/legal/docs-lg.svg") no-repeat top
+      right;
   }
 
   @include desktop-xl {
     padding-top: 163px;
     padding-bottom: 120px;
-    background: url("../../assets/images/bg/legal/docs-xl.svg") no-repeat top right;
+    background: url("../../assets/images/bg/legal/docs-xl.svg") no-repeat top
+      right;
   }
 
   &__wrapper {

@@ -5,10 +5,10 @@
   padding: 0 8px 0 6px;
   display: flex;
   align-items: center;
-  background-color: map-get($colors, 'red');
-  color: map-get($colors, 'white');
-  box-shadow: 0 5px 10px #0000001A;
-  border: 2px solid #E03C00;
+  background-color: map-get($colors, "red");
+  color: map-get($colors, "white");
+  box-shadow: 0 5px 10px #0000001a;
+  border: 2px solid #e03c00;
   border-radius: 25px;
 
   &--closed {
@@ -60,12 +60,12 @@
     background: transparent;
     border: none;
     outline: none;
-    color: map-get($colors, 'white');
+    color: map-get($colors, "white");
     font: normal normal map-get($font-weight, "bold") 16px/20px $font;
     transition: width 0.3s;
 
     &::placeholder {
-      color: map-get($colors, 'white');
+      color: map-get($colors, "white");
       font: normal normal map-get($font-weight, "bold") 14px/18px $font;
     }
 
@@ -79,9 +79,9 @@
     padding: 0 19px;
     display: flex;
     align-items: center;
-    background-color: map-get($colors, 'white');
-    color: map-get($colors, 'red');
-    border: 2px solid map-get($colors, 'white');
+    background-color: map-get($colors, "white");
+    color: map-get($colors, "red");
+    border: 2px solid map-get($colors, "white");
     border-radius: 23px;
     cursor: pointer;
     outline: none;
@@ -90,16 +90,15 @@
     transition: all 0.3s;
 
     &:hover {
-      background-color: map-get($colors, 'red');
-      color: map-get($colors, 'white');
+      background-color: map-get($colors, "red");
+      color: map-get($colors, "white");
     }
   }
 
-
   &--inverted {
-    background-color: map-get($colors, 'white');
-    color: map-get($colors, 'black');
-    border: 2px solid map-get($colors, 'red');
+    background-color: map-get($colors, "white");
+    color: map-get($colors, "black");
+    border: 2px solid map-get($colors, "red");
     border-radius: 31px;
 
     @include tablet {
@@ -113,7 +112,7 @@
         height: 28px;
 
         & > g > * {
-          stroke: map-get($colors, 'red');
+          stroke: map-get($colors, "red");
         }
       }
     }
@@ -131,11 +130,11 @@
     }
 
     & .search-bar__submit {
-      border: 2px solid map-get($colors, 'red');
+      border: 2px solid map-get($colors, "red");
     }
 
     & .search-bar__input {
-      color: map-get($colors, 'black-secondary');
+      color: map-get($colors, "black-secondary");
     }
   }
 
@@ -145,7 +144,7 @@
     right: 0;
     left: 0;
     padding: 14px 30px;
-    background-color: map-get($colors, 'white');
+    background-color: map-get($colors, "white");
     border-radius: 25px;
     box-shadow: 0px 3px 6px #00000029;
 
@@ -168,13 +167,14 @@
       margin-right: 14px;
       flex-shrink: 0;
 
-      & g, line {
-        stroke: map-get($colors, 'red');
+      & g,
+      line {
+        stroke: map-get($colors, "red");
       }
     }
 
     &-title {
-      color: map-get($colors, 'black-secondary');
+      color: map-get($colors, "black-secondary");
       font: normal normal 300 14px/18px $font;
       white-space: nowrap;
       overflow: hidden;
