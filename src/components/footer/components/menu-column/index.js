@@ -2,9 +2,11 @@ import React from "react";
 import cn from "classnames";
 import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
+import { useEntityPostfix } from "../../../../helpers/use-entity-postfix";
 
 const MenuColumn = ({ className, items }) => {
   const { t } = useTranslation();
+  const { isCySEC } = useEntityPostfix();
 
   return (
     <ul className={cn("menu-column", className)}>
@@ -19,7 +21,7 @@ const MenuColumn = ({ className, items }) => {
           >
             <Link
               className={cn("menu-column__link", {
-                "menu-column__link--bold": item.isSubtitle,
+                "menu-column__link--bold": item.isSubtitle && !isCySEC,
               })}
               to={item.link}
             >

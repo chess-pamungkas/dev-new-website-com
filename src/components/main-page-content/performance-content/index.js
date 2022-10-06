@@ -1,19 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import Performance from "../../performance";
-import entities from "../../../enums/entities";
 import { CYSEC_ADVANTAGES, FSA_ADVANTAGES } from "../../../helpers/config";
-import ClientResolverContext from "../../../context/client-resolver-context";
+import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 
 const PerformanceContent = () => {
-  const { currentEntity } = useContext(ClientResolverContext);
-  const [advantages, setAdvantages] = useState([]);
-
-  useEffect(() => {
-    setAdvantages(
-      currentEntity === entities.CYSEC ? CYSEC_ADVANTAGES : FSA_ADVANTAGES
-    );
-  }, [currentEntity]);
+  const { isCySEC } = useEntityPostfix();
 
   return (
     <Performance
@@ -33,7 +25,7 @@ const PerformanceContent = () => {
           />
         </HighlightedLocalizationText>
       }
-      advantages={advantages}
+      advantages={isCySEC ? CYSEC_ADVANTAGES : FSA_ADVANTAGES}
     />
   );
 };

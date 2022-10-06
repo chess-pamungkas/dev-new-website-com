@@ -61,6 +61,11 @@
     a {
       color: map-get($colors, "red");
       text-decoration: underline;
+      transition: all 0.3s;
+
+      &:hover, &:active, &:focus {
+        text-decoration: none;
+      }
     }
   }
 }

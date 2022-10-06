@@ -1,45 +1,45 @@
 import {
-  Logo,
-  CryptoIcon,
-  IndicesIcon,
-  ForexIcon,
-  CommoditiesIcon,
-  SharesIcon,
-  EnergiesIcon,
-  AllMarketsOverviewIcon,
-  PlatformsIcon,
-  FundingWithdrawalsIcon,
-  CopyTradingIcon,
-  ProfessionalQualificationIcon,
-  TradingToolsIcon,
-  EducationIcon,
   AboutIcon,
-  ContactIcon,
-  LegalIcon,
+  AllMarketsOverviewIcon,
   CareerIcon,
-  PressAndNewsIcon,
-  HelpCenterIcon,
   CollaborationPartnershipIcon,
-  AffiliatePartnershipIcon,
+  CommoditiesIcon,
+  ContactIcon,
+  CopyTradingIcon,
+  CryptoIcon,
+  EducationIcon,
+  EnergiesIcon,
+  ForexIcon,
+  FundingWithdrawalsIcon,
+  HelpCenterIcon,
+  IndicesIcon,
+  LegalIcon,
+  Logo,
+  PlatformsIcon,
+  PressAndNewsIcon,
+  ProfessionalQualificationIcon,
+  SharesIcon,
+  TradingToolsIcon,
 } from "../components/shared/icons";
 import {
+  ACCOUNTS_TYPE_PAGE_LINK,
   ALL_MARKETS_PAGE_LINK,
+  COMMODITIES_PAGE_LINK,
   COMPANY_PAGE_LINK,
+  CRYPTO_PAGE_LINK,
+  ENERGIES_PAGE_LINK,
+  FAQ_PAGE_LINK,
+  FOREX_PAGE_LINK,
+  INDICES_PAGE_LINK,
   LEGAL_PAGE_LINK,
   MT4_PAGE_LINK,
   MT5_PAGE_LINK,
-  INDICES_PAGE_LINK,
-  FOREX_PAGE_LINK,
-  COMMODITIES_PAGE_LINK,
-  SHARES_PAGE_LINK,
-  ENERGIES_PAGE_LINK,
-  CRYPTO_PAGE_LINK,
-  PLATFORMS_LINK,
-  WITHDRAWAL_PAGE_LINK,
-  PROFESSIONAL_QUALIFICATION_PAGE_LINK,
-  SPREADS_AND_FEES_PAGE_LINK, FAQ_PAGE_LINK,
   PARTNERS_PAGE_LINK,
-  ACCOUNTS_TYPE_PAGE_LINK,
+  PLATFORMS_LINK,
+  PROFESSIONAL_QUALIFICATION_PAGE_LINK,
+  SHARES_PAGE_LINK,
+  SPREADS_AND_FEES_PAGE_LINK,
+  WITHDRAWAL_PAGE_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
@@ -228,9 +228,6 @@ const CYSEC_TRADING_TAB = {
     CYSEC_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM,
     TRADING_TAB_COPY_TRADING_ITEM,
     TRADING_TAB_PRO_QUALIFICATION_ITEM,
-    TRADING_TAB_WHY_TRADE_ITEM,
-    TRADING_TAB_TRADING_TOOLS_ITEM,
-    TRADING_TAB_EDUCATION_ITEM,
   ],
 };
 
@@ -248,7 +245,37 @@ const FSA_TRADING_TAB = {
   ],
 };
 
-const COMPANY_TAB = {
+const CYSEC_COMPANY_TAB = {
+  title: "header-nav-tab-company",
+  subItems: [
+    {
+      title: "header-nav-tab-company-about-title",
+      link: COMPANY_PAGE_LINK,
+      icon: AboutIcon,
+      description: "header-nav-tab-company-about-desc",
+    },
+    {
+      title: "header-nav-tab-company-contact-title",
+      link: "",
+      icon: ContactIcon,
+      description: "header-nav-tab-company-contact-desc",
+    },
+    {
+      title: "header-nav-tab-company-legal-title",
+      link: LEGAL_PAGE_LINK,
+      icon: LegalIcon,
+      description: "header-nav-tab-company-legal-desc",
+    },
+    {
+      title: "header-nav-tab-company-help-center-title",
+      link: FAQ_PAGE_LINK,
+      icon: HelpCenterIcon,
+      description: "header-nav-tab-company-help-center-desc",
+    },
+  ],
+};
+
+const FSA_COMPANY_TAB = {
   title: "header-nav-tab-company",
   subItems: [
     {
@@ -319,13 +346,13 @@ const FSA_PARTNERS_TAB = {
 export const FSA_MENU_ITEMS = [
   FSA_TOP_MARKETS_TAB,
   FSA_TRADING_TAB,
-  COMPANY_TAB,
+  FSA_COMPANY_TAB,
   FSA_PARTNERS_TAB,
 ];
 
 export const CYSEC_MENU_ITEMS = [
   CYSEC_TOP_MARKETS_TAB,
   CYSEC_TRADING_TAB,
-  COMPANY_TAB,
+  CYSEC_COMPANY_TAB,
   CYSEC_PARTNERS_TAB,
 ];

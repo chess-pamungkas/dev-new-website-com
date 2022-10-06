@@ -4,7 +4,8 @@ import Promotion from "../../promotion";
 import cn from "classnames";
 import promo1 from "../../../assets/images/promotions/promo1.svg";
 import {
-  REGISTRATION_LINK,
+  ALL_MARKETS_PAGE_LINK,
+  COMING_SOON_PAGE_LINK,
   WITHDRAWAL_PAGE_LINK,
 } from "../../../helpers/constants";
 import promo2 from "../../../assets/images/promotions/promo2.svg";
@@ -253,12 +254,12 @@ const PromotionContent = ({ headerRef }) => {
         sectionRef={promo2Ref}
         image={promo2}
         btnTitle={t("index_promotion2-btn-text")}
-        link={REGISTRATION_LINK}
+        link={ALL_MARKETS_PAGE_LINK}
         isRedPalette
       >
         <HighlightedLocalizationText
-          localizationText="index_promotion2-text"
-          wordsToHighlight="promotion2-text-accent"
+          localizationText={t(`index_promotion2-text${sitePostfix}`)}
+          wordsToHighlight={t(`promotion2-text-accent${sitePostfix}`)}
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
@@ -268,11 +269,11 @@ const PromotionContent = ({ headerRef }) => {
         sectionRef={promo3Ref}
         image={promo3}
         btnTitle={t("index_promotion2-btn-text")}
-        link={REGISTRATION_LINK}
+        link={WITHDRAWAL_PAGE_LINK}
       >
         <HighlightedLocalizationText
-          localizationText="index_promotion3-text"
-          wordsToHighlight="promotion3-text-accent"
+          localizationText={t(`index_promotion3-text${sitePostfix}`)}
+          wordsToHighlight={t(`promotion3-text-accent${sitePostfix}`)}
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
@@ -284,7 +285,7 @@ const PromotionContent = ({ headerRef }) => {
         sectionRef={promo4Ref}
         image={promo4}
         btnTitle={t("index_promotion4-btn-text")}
-        link={REGISTRATION_LINK}
+        link={COMING_SOON_PAGE_LINK}
         isRedPalette
         isReverseOrder
       >
