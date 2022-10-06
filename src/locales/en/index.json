@@ -273,6 +273,8 @@
   "page-partners-title": "Introducing Brokers (IB)",
   "page-accounts-type-title": "Accounts Type",
 
+  "notification-stripe-cysec": "CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. The vast majority of retail investor accounts lose money when trading CFDs. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. Read Oqtima Risk disclosure",
+  "notification-stripe-cysec-link": "here.",
   "notification-stripe-cysec-part1": "CFDs are complex instruments with a high risk of losing money rapidly due to leverage.",
   "notification-stripe-cysec-part2": "of retail investor accounts lose money when trading CFDs. It would be best to consider whether you understand how CFDs work and whether you can afford to take the high risk of losing the money you want to invest.",
   "notification-stripe-redirect-text": "Based on your geolocation, you may want to consider another of our licensed companies that may be better suited to you.",

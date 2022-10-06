@@ -99,7 +99,11 @@
   }
 
   &__cysec-wrapper {
-    font-family: $font;
+    padding: 7px;
+  }
+
+  &__text {
+    color: map-get($colors, "black");
     font-size: 14px;
     line-height: 18px;
 
@@ -111,6 +115,18 @@
     @include desktop-xl {
       font-size: 18px;
       line-height: 22px;
+    }
+  }
+
+  &__link {
+    color: map-get($colors, "red");
+    text-decoration: underline;
+    transition: all 0.3s;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
     }
   }
 }
