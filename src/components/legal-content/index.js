@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import TopMarketPromotion from "../top-market-promotion";
 import cn from "classnames";
 import image from "../../assets/images/about-pages/legal-banner.svg";
@@ -7,24 +7,14 @@ import cysec from "../../assets/images/about-pages/cysec.png";
 import fsa from "../../assets/images/about-pages/fsa.png";
 import Documents from "../documents";
 import { LEGAL_DOCS } from "../../helpers/documents";
-import ClientResolverContext from "../../context/client-resolver-context";
-import entities from "../../enums/entities";
-import { FSA_POSTFIX } from "../../helpers/constants";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 
 const LegalContent = () => {
   const { t } = useTranslation();
   const { isXL } = useWindowSize();
-  const { currentEntity } = useContext(ClientResolverContext);
-
-  const [sitePostfix, setSitePostfix] = useState("");
-  const [isCySEC, setIsCySEC] = useState(null);
-
-  useEffect(() => {
-    setIsCySEC(currentEntity === entities.CYSEC);
-    setSitePostfix(currentEntity === entities.FSA ? FSA_POSTFIX : "");
-  }, [currentEntity]);
+  const { sitePostfix, isCySEC } = useEntityPostfix();
 
   return (
     <>

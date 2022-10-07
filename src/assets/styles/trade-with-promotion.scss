@@ -191,6 +191,7 @@
     &:hover {
       background-color: map-get($colors, "white");
       color: map-get($colors, "red");
+      border-color: map-get($colors, "red");
     }
 
     @include desktop-lg {

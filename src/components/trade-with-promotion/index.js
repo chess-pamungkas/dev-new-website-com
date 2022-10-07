@@ -28,19 +28,21 @@ import {
   getSect2TextSequence,
   transformParamToKey,
 } from "../../helpers/services/marketing-service";
-import {useIntersectionObserver} from "../../helpers/hooks/use-intersection-observer";
+import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 import { INTERSECTION_OBSERVER_CONFIG } from "../../helpers/animation.config";
 import { useSectionAnimation } from "./use-section-animation";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
+import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 
 const TradeWithPromotion = ({ className, sectionRef }) => {
   const typingContainerRef = useRef();
 
   const { t } = useTranslation();
-  
+  const { sitePostfix } = useEntityPostfix();
+
   const sectionIntersectionRef = useIntersectionObserver(
     sectionRef,
-    INTERSECTION_OBSERVER_CONFIG.TWPSection,
+    INTERSECTION_OBSERVER_CONFIG.TWPSection
   );
   const typingIntersectionRef = useIntersectionObserver(typingContainerRef, {
     freezeOnceVisible: true,
@@ -55,7 +57,7 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
     sectionAnimation6,
     sectionAnimation7,
     sectionAnimation8,
-    sectionAnimation9
+    sectionAnimation9,
   } = useSectionAnimation(sectionIntersectionRef);
   const { sect2 } = useContext(MarketingContext);
 
@@ -203,7 +205,7 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
         <div className="trade-with-promotion__promo">
           <div className="trade-with-promotion__block">
             <p className="trade-with-promotion__promo-text">
-              {t("index_trade-with-promotion-promo-text")}
+              {t(`index_trade-with-promotion-promo-text${sitePostfix}`)}
             </p>
           </div>
           <div className="trade-with-promotion__block">

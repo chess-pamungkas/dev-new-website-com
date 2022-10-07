@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import MenuColumn from "../menu-column";
@@ -7,19 +7,16 @@ import {
   CYSEC_MENU_ITEMS,
   FSA_MENU_ITEMS,
 } from "../../../../helpers/menu.config";
-import ClientResolverContext from "../../../../context/client-resolver-context";
-import entities from "../../../../enums/entities";
+import { useEntityPostfix } from "../../../../helpers/use-entity-postfix";
 
 const Menu = ({ className }) => {
   const { t } = useTranslation();
-  const { currentEntity } = useContext(ClientResolverContext);
   const [menu, setMenu] = useState([]);
+  const { isCySEC } = useEntityPostfix();
 
   useEffect(() => {
-    setMenu(
-      currentEntity === entities.CYSEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS
-    );
-  }, [currentEntity]);
+    setMenu(isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS);
+  }, [isCySEC]);
 
   return (
     <div className={cn("menu", className)}>

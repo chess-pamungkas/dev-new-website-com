@@ -189,6 +189,14 @@
     text-decoration: underline;
     text-transform: none;
     border-radius: 0;
+    transition: all 0.3s;
+
+    &:hover, &:active, &:focus {
+      color: map-get($colors, "red");
+      text-decoration: none;
+      background: transparent;
+      border-color: transparent;
+    }
 
     @include tablet {
       order: 2;

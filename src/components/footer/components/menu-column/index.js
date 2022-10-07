@@ -17,12 +17,7 @@ const MenuColumn = ({ className, items }) => {
             className="menu-column__item"
             key={`footer-menu-${stringTransformToKebabCase(item.title)}`}
           >
-            <Link
-              className={cn("menu-column__link", {
-                "menu-column__link--bold": item.isSubtitle,
-              })}
-              to={item.link}
-            >
+            <Link className={cn("menu-column__link")} to={item.link}>
               {t(item.title)}
             </Link>
 

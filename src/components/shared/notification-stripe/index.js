@@ -7,13 +7,22 @@ import { useEntityNotifications } from "../../../helpers/hooks/use-entity-notifi
 import CookieContext from "../../../context/cookie-context";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { sendClickEventToGA } from "../../../helpers/services/google-analytics-service";
+import { RISK_DISCLOSURE_DOC } from "../../../helpers/documents";
 
-const CysecStripe = ({ t }) => {
+export const CysecStripe = ({ t }) => {
   return (
     <div className="notification-stripe__cysec-wrapper">
-      {t("notification-stripe-cysec-part1")}&nbsp;
-      <span className="highlighted-in-red">XX%</span>&nbsp;
-      {t("notification-stripe-cysec-part2")}
+      <span className="notification-stripe__text">
+        {t("notification-stripe-cysec")}&nbsp;
+        <a
+          className="notification-stripe__link"
+          href={RISK_DISCLOSURE_DOC}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {t("notification-stripe-cysec-link")}
+        </a>
+      </span>
     </div>
   );
 };
@@ -22,7 +31,7 @@ const CysecRedirect = (handlePopup, setIsHidden, setIsCysecRedirect, t) => {
   return (
     <div className="notification-stripe__redirection-wrapper">
       <div className="notification-stripe__content">
-        {t("notification-stripe-redirect-text")}
+        <span>{t("notification-stripe-redirect-text")}</span>
       </div>
       <div className="notification-stripe__actions">
         <button
@@ -103,9 +112,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
               />
             )}
 
-            {isCysecNotification && (
-              <CysecStripe t={t} />
-            )}
+            {isCysecNotification && <CysecStripe t={t} />}
           </div>
         </div>
       )}

@@ -20,7 +20,7 @@ import {
   DATA_WITHDRAWAL,
 } from "../helpers/withdrawal.config";
 
-const WithdrawalPage = () => {
+const FundingPage = () => {
   const { t } = useTranslation();
 
   const tabs = [
@@ -117,7 +117,7 @@ const WithdrawalPage = () => {
   );
 };
 
-export default WithdrawalPage;
+export default FundingPage;
 
 export const query = graphql`
   query ($language: String!) {
