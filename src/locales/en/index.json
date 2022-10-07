@@ -182,8 +182,13 @@
   "index_trade-with-promotion-NEO": "NEO",
   "index_trade-with-promotion-BNB": "BNB",
   "index_trade-with-promotion-TBC": "TBC",
-  "index_trade-with-promotion-promo-text-fsa": "More than 10.000 assets to trade directly on mobile, desktop or tablet anywhere anytime",
-  "index_trade-with-promotion-promo-text": "More than 9.000 assets to trade directly on mobile, desktop or tablet anywhere anytime",
+  "index_trade-with-promotion-promo-text1-fsa": "More than",
+  "index_trade-with-promotion-promo-text-bold-fsa": "10.000",
+  "index_trade-with-promotion-promo-text2-fsa": "assets to trade directly on mobile, desktop or tablet anywhere anytime",
+
+  "index_trade-with-promotion-promo-text1": "More than",
+  "index_trade-with-promotion-promo-text-bold": "9.000",
+  "index_trade-with-promotion-promo-text2": "assets to trade directly on mobile, desktop or tablet anywhere anytime",
 
   "index_promotion1-btn-text": "See more",
   "index_promotion1-text-fsa": "Start building your trading portfolio with as little as $20 USD or equivalent with 8 base currencies available.",
