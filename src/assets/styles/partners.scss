@@ -172,15 +172,16 @@
   }
 
   @include desktop-lg {
+    min-height: 561px;
     padding: 113px 64px;
     gap: 40px 25px;
     grid-template-areas: "title title title desc desc" "total-clients slider slider slider total-income";
-    // TODO: Change this bg
-    background: transparent url("../../assets/images/partners/income-bg-lg.svg")
+    background: url("../../assets/images/partners/income-bg-lg.svg")
       no-repeat padding-box;
   }
 
   @include desktop-xl {
+    max-height: 720px;
     padding: 204px 272px;
     gap: 49px 60px;
     grid-template-areas: "title title desc" "total-clients slider total-income";
@@ -692,12 +693,12 @@
   &__arrow1 {
     position: absolute;
     top: 135px;
-    left: calc(50% - 115px);
+    left: calc(50% - 250px);
     z-index: -1;
 
     @include tablet {
       top: 305px;
-      left: calc(50% - 240px);
+      left: calc(50% - 370px);
     }
 
     @include desktop-lg {
@@ -714,12 +715,12 @@
   &__arrow2 {
     position: absolute;
     top: 275px;
-    right: calc(50% - 115px);
+    right: calc(50% - 250px);
     z-index: -1;
 
     @include tablet {
       top: 520px;
-      right: calc(50% - 240px);
+      right: calc(50% - 370px);
     }
   }
 }

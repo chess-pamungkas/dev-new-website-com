@@ -6,11 +6,18 @@ import { REGISTRATION_LINK } from "../../../helpers/constants";
 import AccountTypeAdvantage from "../account-type-advantage";
 import { stringTransformToKebabCase } from "../../../helpers/services/string-service";
 
-const AccountType = ({ className, title, name, btnTitle, advantages }) => {
+const AccountType = ({
+  className,
+  title,
+  name,
+  btnTitle,
+  gridArea,
+  advantages,
+}) => {
   const { t } = useTranslation();
 
   return (
-    <div className={cn("account-type", className)}>
+    <div className={cn("account-type", className, gridArea)}>
       <div className="account-type__header" />
       <p className="account-type__title">{t(title)}</p>
       <h2 className="account-type__name">{t(name)}</h2>

@@ -30,8 +30,10 @@ export const HOME_PAGE_LINK = "/";
 export const LOGIN_LINK = "/";
 export const REGISTRATION_LINK = "/";
 
+export const COMING_SOON_PAGE_LINK = "/coming-soon";
 export const COMPANY_PAGE_LINK = "/company";
 export const LEGAL_PAGE_LINK = "/legal";
+export const FAQ_PAGE_LINK = "/faq";
 export const SEARCH_PAGE_LINK = "/search";
 export const CRYPTO_PAGE_LINK = "/crypto";
 export const INDICES_PAGE_LINK = "/indices";
@@ -43,14 +45,13 @@ export const PLATFORMS_LINK = "/platforms";
 export const ALL_MARKETS_PAGE_LINK = "/all-markets";
 export const MT4_PAGE_LINK = "/mt4";
 export const MT5_PAGE_LINK = "/mt5";
-export const WITHDRAWAL_PAGE_LINK = "/withdrawal";
+export const WITHDRAWAL_PAGE_LINK = "/funding";
 export const SPREADS_AND_FEES_PAGE_LINK = "/spreads-and-fees";
 export const PROFESSIONAL_QUALIFICATION_PAGE_LINK =
   "/professional-qualification";
 export const PARTNERS_PAGE_LINK = "/partners";
 export const ACCOUNTS_TYPE_PAGE_LINK = "/accounts-type";
 
-export const FAQ_LINK = "/";
 
 export const ANGLE_ICON_COLOR = {
   black: "#232323",

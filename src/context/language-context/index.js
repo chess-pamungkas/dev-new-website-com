@@ -4,7 +4,7 @@ import React, {
   useContext,
   useEffect,
   useMemo,
-  useState
+  useState,
 } from "react";
 import { navigate } from "gatsby";
 import { I18nextContext } from "gatsby-plugin-react-i18next";
@@ -26,27 +26,25 @@ export const LanguageProvider = ({ children }) => {
   const { language: i18Language } = useContext(I18nextContext);
   const browserLanguage = useMemo(() => detectBrowserLanguage(), []);
   const defaultLang = useMemo(
-    () => LANG_SELECT_OPTIONS.find(({ isDefault }) => isDefault), []
+    () => LANG_SELECT_OPTIONS.find(({ isDefault }) => isDefault),
+    []
   );
 
-  const findLanguage = useCallback(languageId => {
-    return (
-      LANG_SELECT_OPTIONS.find((item) => item.id === languageId) ||
-      defaultLang
-    );
-  }, [defaultLang]);
+  const findLanguage = useCallback(
+    (languageId) => {
+      return (
+        LANG_SELECT_OPTIONS.find((item) => item.id === languageId) ||
+        defaultLang
+      );
+    },
+    [defaultLang]
+  );
 
   const initialLanguageDetection = useCallback(() => {
     if (i18Language !== defaultLang.id) return findLanguage(i18Language);
 
-    return findLanguage(getCookie(LAST_LANGUAGE_KEY) || browserLanguage)
-  }, [
-    i18Language,
-    defaultLang,
-    findLanguage,
-    getCookie,
-    browserLanguage
-  ]);
+    return findLanguage(getCookie(LAST_LANGUAGE_KEY) || browserLanguage);
+  }, [i18Language, defaultLang, findLanguage, getCookie, browserLanguage]);
 
   const [selectedLanguage, setSelectedLanguage] = useState(
     initialLanguageDetection()
@@ -62,31 +60,23 @@ export const LanguageProvider = ({ children }) => {
         setSelectedLanguage(defaultLang);
       }
     }
-  }, [
-    clientConfig,
-    getCookie,
-    defaultLang,
-    findLanguage
-  ]);
+  }, [clientConfig, getCookie, defaultLang, findLanguage]);
 
   useEffect(() => {
     if (!selectedLanguage.id) return;
 
     const { pathname, search } = window.location;
     if (selectedLanguage.id === defaultLang.id) {
-      const processedPathname = pathname.replace(`/${i18Language}/`, '/');
-      const navigatePath = processedPathname || '/';
+      const processedPathname = pathname.replace(`/${i18Language}/`, "/");
+      const navigatePath = processedPathname || "/";
       navigate(`${navigatePath}${search}`);
       return;
-    };
+    }
 
-    const navigatePath = `/${selectedLanguage.id}` + pathname.replace(`/${i18Language}/`, '/')
+    const navigatePath =
+      `/${selectedLanguage.id}` + pathname.replace(`/${i18Language}/`, "/");
     navigate(`${navigatePath}${search}`);
-  }, [
-    selectedLanguage,
-    defaultLang,
-    i18Language
-  ]);
+  }, [selectedLanguage, defaultLang, i18Language]);
 
   useEffect(() => {
     setCookie(LAST_LANGUAGE_KEY, selectedLanguage.id, PERFORMANCE_COOKIE_KEY);

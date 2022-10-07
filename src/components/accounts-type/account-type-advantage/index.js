@@ -10,6 +10,7 @@ const AccountTypeAdvantage = ({
   icon,
   skipHr,
   smallValue,
+  higherLine,
 }) => {
   const { t } = useTranslation();
 
@@ -22,6 +23,7 @@ const AccountTypeAdvantage = ({
         <p
           className={cn("account-type-advantage__value", {
             "account-type-advantage__value--small": smallValue,
+            "account-type-advantage__value--higher": higherLine,
           })}
         >
           {t(value)}

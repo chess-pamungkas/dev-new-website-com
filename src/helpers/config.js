@@ -44,6 +44,11 @@ export const CYSEC_ADVANTAGES = [
     accent: "performance-advantage4-accent",
   },
   {
+    icon: AdvantageIcon5,
+    text: "index_performance-advantage5",
+    accent: "performance-advantage5-accent",
+  },
+  {
     icon: AdvantageIcon6,
     text: "index_performance-advantage6",
     accent: "performance-advantage6-accent",
@@ -63,8 +68,8 @@ export const FSA_ADVANTAGES = [
   },
   {
     icon: AdvantageIcon2,
-    text: "index_performance-advantage2",
-    accent: "performance-advantage2-accent",
+    text: "index_performance-advantage2-fsa",
+    accent: "performance-advantage2-accent-fsa",
   },
   {
     icon: AdvantageIcon3,
@@ -72,19 +77,14 @@ export const FSA_ADVANTAGES = [
     accent: "performance-advantage3-accent",
   },
   {
-    icon: AdvantageIcon4,
-    text: "index_performance-advantage4",
-    accent: "performance-advantage4-accent",
-  },
-  {
     icon: AdvantageIcon5,
-    text: "index_performance-advantage5",
-    accent: "performance-advantage5-accent",
+    text: "index_performance-advantage5-fsa",
+    accent: "performance-advantage5-accent-fsa",
   },
   {
     icon: AdvantageIcon6,
-    text: "index_performance-advantage6",
-    accent: "performance-advantage6-accent",
+    text: "index_performance-advantage6-fsa",
+    accent: "performance-advantage6-accent-fsa",
   },
   {
     icon: AdvantageIcon7,

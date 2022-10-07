@@ -84,3 +84,6 @@ export const LEGAL_DOCS = [
     date: "09/05/2022",
   },
 ];
+
+
+export const RISK_DISCLOSURE_DOC = riskDisclosure;
