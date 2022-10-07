@@ -19,3 +19,8 @@ export const FOOTER_COPYRIGHT_FSA = {
   p1: "footer-copyright-paragraph1-fsa",
   p2: "footer-copyright-paragraph2-fsa",
 };
+
+export const FOOTER_FOR_FUNDING = {
+  p1: "footer-funding-1",
+  p2: "footer-funding-2",
+};

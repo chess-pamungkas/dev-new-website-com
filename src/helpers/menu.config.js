@@ -156,8 +156,7 @@ const FSA_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
 
 const TRADING_TAB_COPY_TRADING_ITEM = {
   title: "header-nav-tab-trading-copy-trading-title",
-  // TODO replace with the real link
-  link: COMING_SOON_PAGE_LINK,
+  link: "",
   isSubtitle: true,
   icon: CopyTradingIcon,
   description: "header-nav-tab-trading-copy-trading-desc",
@@ -228,7 +227,6 @@ const CYSEC_TRADING_TAB = {
   subItems: [
     TRADING_TAB_PLATFORMS_ITEM,
     CYSEC_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM,
-    TRADING_TAB_COPY_TRADING_ITEM,
     TRADING_TAB_PRO_QUALIFICATION_ITEM,
   ],
 };
@@ -239,7 +237,6 @@ const FSA_TRADING_TAB = {
   subItems: [
     TRADING_TAB_PLATFORMS_ITEM,
     FSA_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM,
-    TRADING_TAB_COPY_TRADING_ITEM,
     TRADING_TAB_PRO_QUALIFICATION_ITEM,
   ],
 };

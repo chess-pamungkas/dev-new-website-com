@@ -83,8 +83,8 @@ export const FSA_ADVANTAGES = [
   },
   {
     icon: AdvantageIcon6,
-    text: "index_performance-advantage6",
-    accent: "performance-advantage6-accent",
+    text: "index_performance-advantage6-fsa",
+    accent: "performance-advantage6-accent-fsa",
   },
   {
     icon: AdvantageIcon7,
