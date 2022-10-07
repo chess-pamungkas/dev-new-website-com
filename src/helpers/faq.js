@@ -84,15 +84,11 @@ export const FAQ_SHARES = [
 export const FAQ_INDICES = [
   {
     question: "indices_faq-title1",
-    answer: ["indices_faq-content1"],
+    answer: ["indices_faq-content1", "indices_faq-content1-2"],
   },
   {
     question: "indices_faq-title2",
     answer: ["indices_faq-content2"],
-  },
-  {
-    question: "indices_faq-title3",
-    answer: ["indices_faq-content3"],
   },
 ];
 
@@ -110,15 +106,25 @@ export const FAQ_ENERGIES = [
 export const FAQ_SPREADS_AND_FEES = [
   {
     question: "spreads_faq-title1",
-    answer: ["spreads_faq-content1"],
+    answer: ["spreads_faq-content1", "spreads_faq-content1-2"],
+    bold: [0],
   },
   {
     question: "spreads_faq-title2",
-    answer: ["spreads_faq-content2"],
+    answer: [
+      "spreads_faq-content2",
+      "spreads_faq-content2-2",
+      "spreads_faq-content2-3",
+      "spreads_faq-content2-4",
+      "spreads_faq-content2-5",
+      "spreads_faq-content2-6",
+      "spreads_faq-content2-7",
+    ],
+    bold: [0],
   },
   {
     question: "spreads_faq-title3",
-    answer: ["spreads_faq-content3"],
+    answer: ["spreads_faq-content3", "spreads_faq-content3-2"],
   },
 ];
 
