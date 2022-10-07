@@ -41,6 +41,7 @@ export const useEntityNotifications = (handlePopupOpen) => {
         clientConfig.banned && !clientConfig.recommendedRedirect
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientConfig, currentEntity]);
 
   return {
