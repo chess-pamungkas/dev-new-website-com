@@ -18,7 +18,7 @@ const CysecStripe = ({ t }) => {
   );
 };
 
-const CysecRedirect = (handlePopup, setIsHidden, setIsCysecRedirect, t) => {
+const CysecRedirect = ({ handleOpen, setIsHidden, setIsCysecRedirect, t }) => {
   return (
     <div className="notification-stripe__redirection-wrapper">
       <div className="notification-stripe__content">
@@ -29,7 +29,7 @@ const CysecRedirect = (handlePopup, setIsHidden, setIsCysecRedirect, t) => {
           type="button"
           className="notification-stripe__button"
           onClick={(e) => {
-            handlePopup();
+            handleOpen();
             sendClickEventToGA(e);
           }}
         >
@@ -88,7 +88,6 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
     isCysecRedirect,
     setSectionOptions,
   ]);
-
   return (
     <>
       {!isHidden && (isCysecNotification || isCysecRedirect) && (
@@ -103,9 +102,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
               />
             )}
 
-            {isCysecNotification && (
-              <CysecStripe t={t} />
-            )}
+            {isCysecNotification && <CysecStripe t={t} />}
           </div>
         </div>
       )}
