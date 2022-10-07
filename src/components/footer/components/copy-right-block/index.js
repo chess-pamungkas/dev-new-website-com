@@ -1,26 +1,32 @@
 import React from "react";
 import cn from "classnames";
-import {useTranslation} from "gatsby-plugin-react-i18next";
-import {FOOTER_COPYRIGHT, FOOTER_COPYRIGHT_FSA, FOOTER_FOR_FUNDING,} from "../../../../helpers/footer.config";
-import {useEntityPostfix} from "../../../../helpers/use-entity-postfix";
-import {WITHDRAWAL_PAGE_LINK,} from "../../../../helpers/constants";
+import { useTranslation } from "gatsby-plugin-react-i18next";
+import {
+  FOOTER_COPYRIGHT,
+  FOOTER_COPYRIGHT_FSA,
+  FOOTER_FOR_FUNDING,
+} from "../../../../helpers/footer.config";
+import { useEntityPostfix } from "../../../../helpers/use-entity-postfix";
+import { WITHDRAWAL_PAGE_LINK } from "../../../../helpers/constants";
 
 const CopyRightContent = () => {
   const { t } = useTranslation();
   const { isCySEC } = useEntityPostfix();
 
   const getAdditionalInfo = () => {
-    const page = window?.location.pathname;
-    switch (page) {
-      case WITHDRAWAL_PAGE_LINK:
-        return (
-          <>
-            <p>{t(FOOTER_FOR_FUNDING.p1)}</p>
-            <p>{t(FOOTER_FOR_FUNDING.p2)}</p>
-          </>
-        );
-      default:
-        return <></>;
+    if (typeof window !== "undefined") {
+      const page = window.location.pathname;
+      switch (page) {
+        case WITHDRAWAL_PAGE_LINK:
+          return (
+            <>
+              <p>{t(FOOTER_FOR_FUNDING.p1)}</p>
+              <p>{t(FOOTER_FOR_FUNDING.p2)}</p>
+            </>
+          );
+        default:
+          return <></>;
+      }
     }
   };
 
