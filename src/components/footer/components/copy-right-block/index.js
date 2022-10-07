@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import {
@@ -8,13 +8,14 @@ import {
 } from "../../../../helpers/footer.config";
 import { useEntityPostfix } from "../../../../helpers/use-entity-postfix";
 import { WITHDRAWAL_PAGE_LINK } from "../../../../helpers/constants";
+import { isBrowser } from "../../../../helpers/services/is-browser";
 
 const CopyRightContent = () => {
   const { t } = useTranslation();
   const { isCySEC } = useEntityPostfix();
 
-  const getAdditionalInfo = () => {
-    if (typeof window !== "undefined") {
+  const getAdditionalInfo = useCallback(() => {
+    if (isBrowser()) {
       const page = window.location.pathname;
       switch (page) {
         case WITHDRAWAL_PAGE_LINK:
@@ -28,7 +29,7 @@ const CopyRightContent = () => {
           return <></>;
       }
     }
-  };
+  }, [t]);
 
   return isCySEC ? (
     <>

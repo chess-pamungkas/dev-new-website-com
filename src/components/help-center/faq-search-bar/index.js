@@ -42,6 +42,7 @@ const FaqSearchBar = ({ className, setSearchResults }) => {
     }
   };
 
+  // eslint-disable-next-line
   const debouncedHandleSearchValue = useCallback(
     debounce(handleSearchValue, 500, {}),
     []

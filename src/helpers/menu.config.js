@@ -1,6 +1,7 @@
 import {
   AboutIcon,
   AllMarketsOverviewIcon,
+  //  No used vars for the 2nd release, please, don't remove them
   CareerIcon,
   CollaborationPartnershipIcon,
   CommoditiesIcon,
