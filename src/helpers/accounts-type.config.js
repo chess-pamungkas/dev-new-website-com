@@ -5,6 +5,7 @@ export const ACCOUNT_TYPES = [
     title: "accounts-type_account-type1-title",
     name: "accounts-type_account-type1-name",
     btnTitle: "accounts-type_account-type1-btn-title",
+    gridArea: "acc1",
     advantages: [
       {
         title: "accounts-type_account-type1-spreads-from-title",
@@ -13,6 +14,7 @@ export const ACCOUNT_TYPES = [
       {
         title: "accounts-type_account-type1-commissions-title",
         value: "accounts-type_account-type1-commissions-value",
+        higherLine: true,
       },
       {
         title: "accounts-type_account-type1-min-deposit-title",
@@ -60,6 +62,7 @@ export const ACCOUNT_TYPES = [
     title: "accounts-type_account-type2-title",
     name: "accounts-type_account-type2-name",
     btnTitle: "accounts-type_account-type2-btn-title",
+    gridArea: "acc2",
     advantages: [
       {
         title: "accounts-type_account-type2-spreads-from-title",
@@ -68,6 +71,7 @@ export const ACCOUNT_TYPES = [
       {
         title: "accounts-type_account-type2-commissions-title",
         value: "accounts-type_account-type2-commissions-value",
+        higherLine: true,
       },
       {
         title: "accounts-type_account-type2-min-deposit-title",
