@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import {
@@ -14,19 +14,22 @@ const CopyRightContent = () => {
   const { t } = useTranslation();
   const { isCySEC } = useEntityPostfix();
 
-  const getAdditionalInfo = useCallback(() => {
+  const [additionalText, setAdditionalText] = useState(null);
+
+  useEffect(() => {
     if (isBrowser()) {
       const page = window.location.pathname;
       switch (page) {
         case WITHDRAWAL_PAGE_LINK:
-          return (
+          setAdditionalText(
             <>
               <p>{t(FOOTER_FOR_FUNDING.p1)}</p>
               <p>{t(FOOTER_FOR_FUNDING.p2)}</p>
             </>
           );
+          break;
         default:
-          return <></>;
+          setAdditionalText(<></>);
       }
     }
   }, [t]);
@@ -47,13 +50,13 @@ const CopyRightContent = () => {
           {t(FOOTER_COPYRIGHT.a2)}
         </a>
       </p>
-      {getAdditionalInfo()}
+      {additionalText}
     </>
   ) : (
     <>
       <p>{t(FOOTER_COPYRIGHT_FSA.p1)}</p>
       <p>{t(FOOTER_COPYRIGHT_FSA.p2)}</p>
-      {getAdditionalInfo()}
+      {additionalText}
     </>
   );
 };
