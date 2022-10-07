@@ -18,7 +18,8 @@ const CopyRightContent = () => {
 
   useEffect(() => {
     if (isBrowser()) {
-      const page = window.location.pathname;
+      const path = window.location.pathname;
+      const page = path.substring(0, path.length - 1);
       switch (page) {
         case WITHDRAWAL_PAGE_LINK:
           setAdditionalText(
