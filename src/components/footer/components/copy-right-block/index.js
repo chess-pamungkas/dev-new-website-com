@@ -15,10 +15,9 @@ const CopyRightContent = () => {
   const { isCySEC } = useEntityPostfix();
 
   const [additionalText, setAdditionalText] = useState(null);
-  const _isBrowser = isBrowser();
 
   useEffect(() => {
-    if (_isBrowser) {
+    if (isBrowser()) {
       const page = window.location.pathname;
       switch (page) {
         case WITHDRAWAL_PAGE_LINK:
@@ -33,7 +32,8 @@ const CopyRightContent = () => {
           setAdditionalText(<></>);
       }
     }
-  }, [_isBrowser, t]);
+    // eslint-disable-next-line
+  }, []);
 
   return isCySEC ? (
     <>
