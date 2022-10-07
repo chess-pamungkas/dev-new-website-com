@@ -56,7 +56,7 @@ export const DATA_DEPOSIT = [
       </>
     ),
     col2: "Instant",
-    col3: "$20",
+    col3: "$200",
     col4: "None",
     col5: "USD, BRL, EUR, AUD, CHE, JPY, CNY, CAD",
     col6: DEPOSIT_COLUMNS_WITH_BTN,
@@ -78,7 +78,7 @@ export const DATA_DEPOSIT = [
       </>
     ),
     col2: "Instant",
-    col3: "$20",
+    col3: "$200",
     col4: "None",
     col5: "USD, BRL, EUR, AUD, CHE, JPY, CNY, CAD",
     col6: DEPOSIT_COLUMNS_WITH_BTN,
@@ -96,7 +96,7 @@ export const DATA_DEPOSIT = [
       </>
     ),
     col2: "1-3 Days",
-    col3: "$50",
+    col3: "$200",
     col4: "None",
     col5: "USD, BRL, EUR, AUD, CHE, JPY, CNY, CAD",
     col6: DEPOSIT_COLUMNS_WITH_BTN,
@@ -141,7 +141,7 @@ export const DATA_WITHDRAWAL = [
         </div>
       </>
     ),
-    col2: "Instant",
+    col2: "Same day*",
     col3: "$100",
     col4: "None",
   },
@@ -161,7 +161,7 @@ export const DATA_WITHDRAWAL = [
         </div>
       </>
     ),
-    col2: "Instant",
+    col2: "Same day*",
     col3: "$100",
     col4: "None",
   },

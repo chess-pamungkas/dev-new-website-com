@@ -254,8 +254,11 @@
   "footer-copyright-paragraph2": "Nordskov Capital Ltd is registered as a Cyprus Investment Firm (CIF), authorized and licensed by the Cyprus Securities and Exchange Commission (CySEC), with licence number 406/21.",
   "footer-copyright-paragraph3": "Risk Warning: CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. The vast majority of retail investor accounts lose money when trading CFDs. You should \n\nconsider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. Please consider our",
   "footer-copyright-paragraph-link": "Risk Disclosure.",
-  "footer-copyright-paragraph4": "*Retail traders can use leverage up to 1:30, to qualify for higher leverage (1:500) apply for a ",
+  "footer-copyright-paragraph4": "* Retail traders can use leverage up to 1:30, to qualify for higher leverage (1:500) apply for a ",
   "footer-copyright-paragraph-link-2": "Oqtima Pro account.",
+
+  "footer-funding-1": "* If a request is made before 11am Eastern European Time",
+  "footer-funding-2": "* We won’t charge any fees, but you may incur in fees charged by your bank depending on the method you use.",
 
   "button-sign-in": "Sign In",
   "button-get-started": "Get Started",
@@ -822,7 +825,7 @@
   "withdrawal_top-market-promo-note-accent": "11,12,13,14,16,18",
   "withdrawal_top-market-promo-text2-1": "Instant deposit",
   "withdrawal_top-market-promo-text-accent2-1": "2",
-  "withdrawal_top-market-promo-text2-2": "Instant withdrawals 24/7*",
+  "withdrawal_top-market-promo-text2-2": "Same day withdrawals*",
   "withdrawal_top-market-promo-text-accent2-2": "2,3",
   "withdrawal_top-market-promo-text2-3": "No fees*",
   "withdrawal_top-market-promo-text-accent2-3": "2",
