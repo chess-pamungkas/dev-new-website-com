@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Cookies from "universal-cookie";
+import entities from "../../enums/entities";
 import { CONSENT_TYPES } from "../../helpers/consent-types.config";
 import {
   DEFAULT_COOKIE_CONSENT,
@@ -82,6 +83,24 @@ export const CookieProvider = ({ children }) => {
   const acceptAllCookies = () => {
     acceptCookies(DEFAULT_COOKIE_CONSENT);
   };
+
+  useEffect(() => {
+    handleCloseCookiePopup();
+    if (
+      clientConfig.memberOfEU !== undefined &&
+      currentEntity === entities.FSA &&
+      cookies.get(COOKIE_CONSENT_KEY) === undefined
+    ) {
+      if (clientConfig.memberOfEU) {
+        handleOpenCookiePopup();
+      } else {
+        acceptAllCookies();
+      }
+    } else if (currentEntity === entities.CYSEC) {
+      handleOpenCookiePopup();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [clientConfig, currentEntity]);
 
   return (
     <CookieContext.Provider
