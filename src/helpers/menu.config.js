@@ -24,6 +24,7 @@ import {
 import {
   ACCOUNTS_TYPE_PAGE_LINK,
   ALL_MARKETS_PAGE_LINK,
+  COMING_SOON_PAGE_LINK,
   COMMODITIES_PAGE_LINK,
   COMPANY_PAGE_LINK,
   CRYPTO_PAGE_LINK,
@@ -155,7 +156,8 @@ const FSA_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
 
 const TRADING_TAB_COPY_TRADING_ITEM = {
   title: "header-nav-tab-trading-copy-trading-title",
-  link: "",
+  // TODO replace with the real link
+  link: COMING_SOON_PAGE_LINK,
   isSubtitle: true,
   icon: CopyTradingIcon,
   description: "header-nav-tab-trading-copy-trading-desc",
