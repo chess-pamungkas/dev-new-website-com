@@ -4,7 +4,7 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import TopMarket from "../components/top-market";
 import { REGISTRATION_LINK } from "../helpers/constants";
-import image from "../assets/images/top-markets/cripto.svg";
+import image from "../assets/images/top-markets/energies.svg";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
