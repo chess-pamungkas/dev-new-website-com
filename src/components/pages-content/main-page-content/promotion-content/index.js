@@ -1,21 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
-import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
-import Promotion from "../../promotion";
+import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
+import Promotion from "../../../promotion";
 import cn from "classnames";
-import promo1 from "../../../assets/images/promotions/promo1.svg";
+import promo1 from "../../../../assets/images/promotions/promo1.svg";
 import {
   ALL_MARKETS_PAGE_LINK,
   COMING_SOON_PAGE_LINK,
   WITHDRAWAL_PAGE_LINK,
-} from "../../../helpers/constants";
-import promo2 from "../../../assets/images/promotions/promo2.svg";
-import promo3 from "../../../assets/images/promotions/promo3.svg";
-import TradingTools from "../../trading-tools";
-import promo4 from "../../../assets/images/promotions/promo4.svg";
-import TradeWithPromotion from "../../trade-with-promotion";
+} from "../../../../helpers/constants";
+import promo2 from "../../../../assets/images/promotions/promo2.svg";
+import promo3 from "../../../../assets/images/promotions/promo3.svg";
+import TradingTools from "../../../trading-tools";
+import promo4 from "../../../../assets/images/promotions/promo4.svg";
+import TradeWithPromotion from "../../../trade-with-promotion";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { useWindowSize } from "../../../helpers/hooks/use-window-size";
-import { useIntersectionObserver } from "../../../helpers/hooks/use-intersection-observer";
+import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
+import { useIntersectionObserver } from "../../../../helpers/hooks/use-intersection-observer";
 import {
   BACKGROUND_ANIMATION_DURATION,
   INTERSECTION_OBSERVER_CONFIG,
@@ -23,11 +23,11 @@ import {
   OPACITY_1,
   SPRING_CONFIG_TEXT,
   TEXT_PROMO_INTERSECTION_LOW_HEIGHT,
-} from "../../../helpers/animation.config";
+} from "../../../../helpers/animation.config";
 import { useSpring } from "react-spring";
-import { usePromotionAnimation } from "../../promotion/use-promotion-animation";
-import { scrollTo } from "../../../helpers/scroll-to";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import { usePromotionAnimation } from "../../../promotion/use-promotion-animation";
+import { scrollTo } from "../../../../helpers/scroll-to";
+import { useEntityPostfix } from "../../../../helpers/use-entity-postfix";
 
 const PromotionContent = ({ headerRef }) => {
   const { t } = useTranslation();

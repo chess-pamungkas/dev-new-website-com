@@ -6,22 +6,22 @@ import React, {
   useState
 } from "react";
 import { Link, useTranslation } from "gatsby-plugin-react-i18next";
-import { useSearchData } from "../../helpers/hooks/use-search-data";
-import SearchContext from "../../context/search-context";
+import { useSearchData } from "../../../helpers/hooks/use-search-data";
+import SearchContext from "../../../context/search-context";
 import {
   HOME_PAGE_LINK,
   SEARCH_PARAM_NAME,
   SEARCH_MIN_QUERY_LENGTH,
   SEARCH_RESULTS_FIRST_BUNDLE,
   SEARCH_RESULTS_BUNDLE_SIZE
-} from "../../helpers/constants";
-import { getUrlParamValue } from "../../helpers/services/get-url-param-value";
-import ButtonLink from "../shared/button-link";
+} from "../../../helpers/constants";
+import { getUrlParamValue } from "../../../helpers/services/get-url-param-value";
+import ButtonLink from "../../shared/button-link";
 import {
   Logo,
   SearchIcon,
   SearchNoResultsImg
-} from "../shared/icons";
+} from "../../shared/icons";
 
 const SearchPageContent = () => {
   const { t } = useTranslation();

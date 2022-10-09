@@ -422,6 +422,7 @@
   "forex_faq-content3-6": "USD/CHF",
 
   "crypto_top-market-title": "You can now trade more than xxx crypto pairs!",
+  "crypto_top-market-title-fsa": "You can now trade more than 170 crypto pairs!",
   "crypto_top-market-btn1": "Try our demo account",
   "crypto_top-market-btn2": "Trade now crypto cfc",
   "crypto_trading-ticker-title": "Popular crypto to trade",
@@ -433,8 +434,8 @@
   "crypto_top-market-promotion-promo-text": "Cryptocurrencies are a new realm of opportunities and excitement for traders from all around the world, join the Oqtima army of crypto traders.",
   "crypto-top-market-promotion-promo-text-accent": "9,19,20",
   "crypto_promotion-markets-btn": "Start Now",
-  "crypto_promotion-markets-promo-text-1": "7 Major Pairs, 21 Minors, 62 Exotic",
-  "crypto-promotion-markets-promo-text-accent-1": "2,3,5,7",
+  "crypto_promotion-markets-promo-text-1": "All the major cryptocurrencies vs all the major currencies with super competitive spread  ",
+  "crypto-promotion-markets-promo-text-accent-1": "3,4,8,9,12,13",
   "crypto_promotion-markets-promo-text-2": "Ultra-competitive spreads from 0.0 pips",
   "crypto-promotion-markets-promo-text-accent-2": "2",
   "crypto_promotion-markets-promo-text-3": "Micro lots available",

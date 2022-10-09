@@ -1,16 +1,16 @@
 import React from "react";
-import { useEntityPostfix } from "../../helpers/use-entity-postfix";
-import TopMarket from "../top-market";
-import image from "../../assets/images/top-markets/forex.svg";
-import { REGISTRATION_LINK } from "../../helpers/constants";
-import HighlightedLocalizationText from "../shared/highlighted-localization-text";
-import TradingTicker from "../trading-ticker";
-import TopMarketPromotion from "../top-market-promotion";
-import forex from "../../assets/images/top-markets/images/forex.svg";
-import PromotionMarkets from "../promotion-markets";
-import animation from "../../assets/images/animations/forex.json";
+import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import TopMarket from "../../top-market";
+import image from "../../../assets/images/top-markets/forex.svg";
+import { REGISTRATION_LINK } from "../../../helpers/constants";
+import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
+import TradingTicker from "../../trading-ticker";
+import TopMarketPromotion from "../../top-market-promotion";
+import forex from "../../../assets/images/top-markets/images/forex.svg";
+import PromotionMarkets from "../../promotion-markets";
+import animation from "../../../assets/images/animations/forex.json";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { useWindowSize } from "../../helpers/hooks/use-window-size";
+import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 
 const ForexContent = () => {
   const { sitePostfix } = useEntityPostfix();

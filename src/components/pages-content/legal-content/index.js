@@ -1,15 +1,15 @@
 import React from "react";
-import TopMarketPromotion from "../top-market-promotion";
+import TopMarketPromotion from "../../top-market-promotion";
 import cn from "classnames";
-import image from "../../assets/images/about-pages/legal-banner.svg";
-import HighlightedLocalizationText from "../shared/highlighted-localization-text";
-import cysec from "../../assets/images/about-pages/cysec.png";
-import fsa from "../../assets/images/about-pages/fsa.png";
-import Documents from "../documents";
-import { LEGAL_DOCS } from "../../helpers/documents";
-import { useWindowSize } from "../../helpers/hooks/use-window-size";
+import image from "../../../assets/images/about-pages/legal-banner.svg";
+import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
+import cysec from "../../../assets/images/about-pages/cysec.png";
+import fsa from "../../../assets/images/about-pages/fsa.png";
+import Documents from "../../documents";
+import { LEGAL_DOCS } from "../../../helpers/documents";
+import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { useEntityPostfix } from "../../helpers/use-entity-postfix";
+import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 
 const LegalContent = () => {
   const { t } = useTranslation();

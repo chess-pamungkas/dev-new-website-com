@@ -4,7 +4,7 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
-import LegalContent from "../components/legal-content";
+import LegalContent from "../components/pages-content/legal-content";
 
 const LegalPage = () => {
   const { t } = useTranslation();
