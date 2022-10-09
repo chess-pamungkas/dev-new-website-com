@@ -19,6 +19,7 @@ const CopyRightContent = () => {
   useEffect(() => {
     if (isBrowser()) {
       const path = window.location.pathname;
+      // remove last "slash" character
       const page = path.substring(0, path.length - 1);
       switch (page) {
         case WITHDRAWAL_PAGE_LINK:
