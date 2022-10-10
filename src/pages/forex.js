@@ -11,7 +11,7 @@ import { FAQ_FOREX } from "../helpers/faq";
 import { COLUMNS_FOREX, DATA_FOREX } from "../helpers/top-market-tables";
 import TopMarketLayout from "../components/top-market-layout";
 import Seo from "../components/shared/seo";
-import ForexContent from "../components/forex-content";
+import ForexContent from "../components/pages-content/forex-content";
 
 const ForexPage = () => {
   const { t } = useTranslation();

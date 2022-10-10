@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
-import SearchPageContent from "../components/search-page-content";
+import SearchPageContent from "../components/pages-content/search-page-content";
 
 const SearchPage = () => {
   const { t } = useTranslation();

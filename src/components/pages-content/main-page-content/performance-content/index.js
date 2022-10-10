@@ -1,8 +1,8 @@
 import React from "react";
-import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
-import Performance from "../../performance";
-import { CYSEC_ADVANTAGES, FSA_ADVANTAGES } from "../../../helpers/config";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
+import Performance from "../../../performance";
+import { CYSEC_ADVANTAGES, FSA_ADVANTAGES } from "../../../../helpers/config";
+import { useEntityPostfix } from "../../../../helpers/use-entity-postfix";
 
 const PerformanceContent = () => {
   const { isCySEC } = useEntityPostfix();

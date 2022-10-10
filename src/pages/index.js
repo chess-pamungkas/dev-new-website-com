@@ -6,8 +6,8 @@ import MainPromotion from "../components/main-promotion";
 import TradingTicker from "../components/trading-ticker";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
-import PerformanceContent from "../components/main-page-content/performance-content";
-import PromotionContent from "../components/main-page-content/promotion-content";
+import PerformanceContent from "../components/pages-content/main-page-content/performance-content";
+import PromotionContent from "../components/pages-content/main-page-content/promotion-content";
 
 const IndexPage = () => {
   const { t } = useTranslation();
