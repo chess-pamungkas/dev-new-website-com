@@ -96,7 +96,10 @@ export const CookieProvider = ({ children }) => {
       } else {
         acceptAllCookies();
       }
-    } else if (currentEntity === entities.CYSEC) {
+    } else if (
+      currentEntity === entities.CYSEC &&
+      cookies.get(COOKIE_CONSENT_KEY) === undefined
+    ) {
       handleOpenCookiePopup();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
