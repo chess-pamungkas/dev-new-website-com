@@ -26,6 +26,11 @@ export const INITIAL_SEARCH_STATE = {
 
 export const FSA_POSTFIX = "-fsa";
 
+export const CONTACT_PHONE = "±35723252520";
+export const CONTACT_PHONE_LINK = "35723252520";
+export const CONTACT_EMAIL = "Support@Oqtima.Com";
+export const CONTACT_EMAIL_FSA = "Support@Oqtimaglobal.Co";
+
 export const HOME_PAGE_LINK = "/";
 export const LOGIN_LINK = "/";
 export const REGISTRATION_LINK = "/";
@@ -33,6 +38,7 @@ export const REGISTRATION_LINK = "/";
 export const COMING_SOON_PAGE_LINK = "/coming-soon";
 export const COMPANY_PAGE_LINK = "/company";
 export const LEGAL_PAGE_LINK = "/legal";
+export const CONTACT_US_PAGE_LINK = "/contact-us";
 export const FAQ_PAGE_LINK = "/faq";
 export const SEARCH_PAGE_LINK = "/search";
 export const CRYPTO_PAGE_LINK = "/crypto";
@@ -51,7 +57,6 @@ export const PROFESSIONAL_QUALIFICATION_PAGE_LINK =
   "/professional-qualification";
 export const PARTNERS_PAGE_LINK = "/partners";
 export const ACCOUNTS_TYPE_PAGE_LINK = "/accounts-type";
-
 
 export const ANGLE_ICON_COLOR = {
   black: "#232323",

@@ -1,0 +1,209 @@
+@import "mixins";
+@import "vars";
+
+.contact-us {
+  position: relative;
+  background-size: cover;
+  background: url("../../assets/images/bg/contact-us.svg") no-repeat bottom left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 24px;
+  padding-bottom: 160px;
+  @include content-alignment(0);
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("../../assets/images/about-pages/ornament-top-sm.svg") no-repeat;
+    width: 218px;
+    height: 213px;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: url("../../assets/images/about-pages/ornament-bottom-sm.svg") no-repeat;
+    width: 187px;
+    height: 182px;
+  }
+
+  @include tablet {
+    padding-top: 65px;
+    padding-bottom: 142px;
+
+    &:before {
+      background: url("../../assets/images/about-pages/ornament-top-md.svg") no-repeat;
+      width: 251px;
+      height: 246px;
+    }
+
+    &:after {
+      background: url("../../assets/images/about-pages/ornament-bottom-md.svg") no-repeat;
+      width: 267px;
+      height: 261px;
+    }
+  }
+
+  @include desktop-lg {
+    padding-top: 35px;
+    padding-bottom: 89px;
+
+    &:before {
+      background: url("../../assets/images/about-pages/ornament-top-lg.svg") no-repeat;
+      width: 266px;
+      height: 261px;
+    }
+
+    &:after {
+      background: url("../../assets/images/about-pages/ornament-bottom-lg.svg") no-repeat;
+      width: 228px;
+      height: 223px;
+    }
+  }
+
+  @include desktop-xl {
+    padding-top: 323px;
+    padding-bottom: 323px;
+
+    &:before {
+      background: url("../../assets/images/about-pages/ornament-top-xl.svg") no-repeat;
+      width: 261px;
+      height: 299px;
+    }
+
+    &:after {
+      background: url("../../assets/images/about-pages/ornament-bottom-xl.svg") no-repeat;
+      width: 261px;
+      height: 299px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    width: 100%;
+
+    @include desktop-xl {
+      max-width: 1489px;
+      margin: 0 auto;
+    }
+  }
+
+  &__block {
+    width: 100%;
+
+    @include desktop-xl {
+      width: 50%;
+    }
+  }
+
+  &__title {
+    margin: 0 0 36px;
+    text-align: center;
+    color: map-get($colors, "black");
+    font-weight: map-get($font-weight, "black");
+    font-size: 25px;
+    line-height: 31px;
+
+    @include tablet {
+      margin: 0 0 30px;
+      font-size: 35px;
+      line-height: 44px;
+    }
+    @include desktop-lg {
+      margin: 0 0 32px;
+      font-size: 39px;
+      line-height: 49px;
+    }
+    @include desktop-xl {
+      text-align: left;
+      font-size: 70px;
+      line-height: 45px;
+      margin: 0 0 45px;
+    }
+  }
+
+  &__text {
+    margin: 0 0 15px;
+    text-align: center;
+    color: map-get($colors, "black");
+    font-weight: map-get($font-weight, "regular");
+    font-size: 18px;
+    line-height: 22px;
+
+    @include tablet {
+      margin: 0 0 35px;
+      font-size: 25px;
+      line-height: 31px;
+    }
+    @include desktop-lg {
+      margin: 0 0 45px;
+      font-size: 27px;
+      line-height: 34px;
+    }
+    @include desktop-xl {
+      text-align: left;
+      font-size: 26px;
+      line-height: 45px;
+      margin: 0 0 60px;
+      max-width: 541px;
+    }
+  }
+
+  &__contact-block {
+    padding: 0 0 10px;
+
+    @include tablet {
+      padding: 0 0 15px;
+    }
+    @include desktop-lg {
+      padding: 0 0 20px;
+    }
+    @include desktop-xl {
+      padding: 0 0 30px;
+    }
+  }
+
+  &__contact-block-title {
+    margin: 0 0 5px;
+    color: map-get($colors, "black-secondary");
+    font-weight: map-get($font-weight, "black");
+    font-size: 10px;
+    line-height: 13px;
+
+    @include tablet {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    @include desktop-xl {
+      margin: 0 0 20px;
+    }
+  }
+
+  &__contact-block-href {
+    color: map-get($colors, "red");
+    font-weight: map-get($font-weight, "black");
+    font-size: 14px;
+    line-height: 18px;
+    text-decoration: underline;
+    transition: all 0.3s;
+    padding-left: 10px;
+
+    &:hover, &:active, &:focus {
+      text-decoration: none;
+    }
+
+    @include tablet {
+      font-size: 22px;
+      line-height: 27px;
+    }
+
+  }
+}

@@ -293,6 +293,7 @@
   "page-shares-title": "Oqtima Shares",
   "page-company-title": "Oqtima Company page",
   "page-legal-title": "Oqtima Legal page",
+  "page-contact-title": "Contact us",
   "page-mt4-title": "Oqtima MT4 page",
   "page-mt5-title": "Oqtima MT5 page",
   "page-professional-qualification-title": "Oqtima Professional Qualification",
@@ -380,6 +381,20 @@
 
   "company_company-advantages-title3": "Trust",
   "company_company-advantages-text3": "Oqtima has been funded by experienced former employees of some of the major brokers in the world. We know that when it comes to financial services, trust is king. And we are betting on making of fairness and responsible governance a key point to differentiate Oqtima as the place to trade with total pace of mind. Acting responsibly, and doing the right thing is in our DNA.",
+
+  "contact-us_top-market-title": "Oqtima focus on offering a top class support in every step of your trading journey.",
+  "contact-us_top-market-title-accent": "1,11,14,15",
+  "contact-us_top-market-promo-text": "Pick the best method to contact us and let us help you.",
+  "contact-us-top-market-promo-text-accent": "6,7,11,12",
+  "contact-us_page-title": "Contact Us",
+  "contact-us_page-text": "Need to get touch with us? Either fill out the form with your inquiry or find the department email you'd like to contact below.",
+  "contact-us_email": "Email",
+  "contact-us_phone": "Phone",
+  "contact-us_form_name": "Full name",
+  "contact-us_form_email": "Email",
+  "contact-us_form_subject": "Subject",
+  "contact-us_form_message": "Message (Optional)",
+  "contact-us_form_btn": "Submit",
 
   "forex_top-market-title": "Forex CFD",
   "forex_top-market-btn1": "Try our demo account",
