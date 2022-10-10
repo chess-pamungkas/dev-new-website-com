@@ -59,13 +59,24 @@ const PromotionMarkets = ({
 
   const [titleAnimationStyles, titleAnimationApi] = useSpring(() => ({}));
 
+  const windowScrollEvent = () => {
+    const event = document.createEvent("MouseEvents");
+    event.initEvent("wheel", false, true);
+    event.deltaY = +1;
+    if (promoRef.current) {
+      promoRef.current.dispatchEvent(event);
+    }
+  };
+
   useEffect(() => {
     if (autoScrollPromoRef?.isIntersecting) {
       scrollTo({
         ref: promoRef,
         duration: 1000,
+        callback: () => {
+          setIsAnimationStarted(true);
+        },
       });
-      setIsAnimationStarted(true);
     }
   }, [autoScrollPromoRef]);
 
@@ -109,12 +120,14 @@ const PromotionMarkets = ({
 
     const promoElement = promoRef.current;
 
-    if (!isAnimationFinished) {
+    if (isAnimationStarted && !isAnimationFinished) {
       promoElement.addEventListener("wheel", scrollHandler);
+      window.addEventListener("scroll", windowScrollEvent);
     }
 
     return () => {
       promoElement.removeEventListener("wheel", scrollHandler);
+      window.removeEventListener("scroll", windowScrollEvent);
     };
   }, [
     isAnimationFinished,
@@ -170,11 +183,9 @@ const PromotionMarkets = ({
 
       <div className="promotion-markets__content">
         <h2 className="promotion-markets__title">
-          {isAnimationStarted && (
-            <animated.div style={titleAnimationStyles}>
-              {currentTitle}
-            </animated.div>
-          )}
+          <animated.div style={titleAnimationStyles}>
+            {currentTitle}
+          </animated.div>
         </h2>
 
         <ButtonLink
