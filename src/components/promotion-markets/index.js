@@ -157,12 +157,10 @@ const PromotionMarkets = ({
   return (
     <section className={cn("promotion-markets", className)} ref={promoRef}>
       <div className="promotion-markets__images">
-        {isAnimationStarted && (
-          <animated.div
-            className="promotion-markets__chart"
-            style={chartAnimationStyles}
-          />
-        )}
+        <animated.div
+          className="promotion-markets__chart"
+          style={chartAnimationStyles}
+        />
         <Lottie
           className="promotion-markets__svg"
           animationData={animation}
