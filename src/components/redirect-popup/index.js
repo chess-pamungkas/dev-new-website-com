@@ -88,7 +88,7 @@ const RedirectPopup = ({
               CONSENT_TYPES["redirectDoNotConfirm"]
             );
             sendClickEventToGA(e);
-            window.location.replace(redirectEntity);
+            window.location.replace(redirectEntity + window.location.pathname);
           },
           subTitle:
             currentEntity === entities.FSA
