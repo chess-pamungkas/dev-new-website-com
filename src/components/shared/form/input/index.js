@@ -1,5 +1,6 @@
 import React from "react";
 import ErrorMessage from "../error-message";
+import cn from "classnames";
 
 const Input = ({
   type,
@@ -8,10 +9,13 @@ const Input = ({
   value,
   isError,
   errorMessage,
+  isHalfWidth = false,
   ...props
 }) => {
   return (
-    <div className="input-wrapper">
+    <div className={cn("input-wrapper", {
+      "input-wrapper--half-width": isHalfWidth
+    })}>
       {title && <span className="input-title">{title}</span>}
       <input
         className="input"
