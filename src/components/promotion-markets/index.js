@@ -59,13 +59,14 @@ const PromotionMarkets = ({
 
   const [titleAnimationStyles, titleAnimationApi] = useSpring(() => ({}));
 
-  const windowScrollEvent = () => {
+  const windowScrollEvent = (e) => {
     const event = document.createEvent("MouseEvents");
     event.initEvent("wheel", false, true);
-    event.deltaY = +1;
+    event.deltaY = + 120;
     if (promoRef.current) {
       promoRef.current.dispatchEvent(event);
     }
+    e.preventDefault();
   };
 
   useEffect(() => {
