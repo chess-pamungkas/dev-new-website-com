@@ -27,7 +27,7 @@ import {
   ALL_MARKETS_PAGE_LINK,
   COMING_SOON_PAGE_LINK,
   COMMODITIES_PAGE_LINK,
-  COMPANY_PAGE_LINK,
+  COMPANY_PAGE_LINK, CONTACT_US_PAGE_LINK,
   CRYPTO_PAGE_LINK,
   ENERGIES_PAGE_LINK,
   FAQ_PAGE_LINK,
@@ -238,7 +238,6 @@ const FSA_TRADING_TAB = {
   subItems: [
     TRADING_TAB_PLATFORMS_ITEM,
     FSA_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM,
-    TRADING_TAB_PRO_QUALIFICATION_ITEM,
   ],
 };
 
@@ -253,7 +252,7 @@ const CYSEC_COMPANY_TAB = {
     },
     {
       title: "header-nav-tab-company-contact-title",
-      link: "",
+      link: CONTACT_US_PAGE_LINK,
       icon: ContactIcon,
       description: "header-nav-tab-company-contact-desc",
     },
@@ -283,7 +282,7 @@ const FSA_COMPANY_TAB = {
     },
     {
       title: "header-nav-tab-company-contact-title",
-      link: "",
+      link: CONTACT_US_PAGE_LINK,
       icon: ContactIcon,
       description: "header-nav-tab-company-contact-desc",
     },
