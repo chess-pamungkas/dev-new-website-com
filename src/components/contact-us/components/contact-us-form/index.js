@@ -15,11 +15,10 @@ const ContactUsForm = () => {
   const { currentEntity } = useContext(ClientResolverContext);
 
   const handleContactForm = (values) => {
-    console.log(values);
     axios
       .post(`${API_URL}mail`, {
         ...values,
-        currentEntity,
+        entity: currentEntity,
       })
       .then((response) => {
         setIsSentSuccessful(response.ok);
@@ -97,8 +96,6 @@ const ContactUsForm = () => {
               {
                 "button-link--disabled":
                   Object.values(errors).length > 0 ||
-                  (Object.values(errors).length === 0 &&
-                    Object.values(touched).length > 0) ||
                   Object.values(touched).length === 0,
               }
             )}
