@@ -2,7 +2,7 @@ import { object, string } from "yup";
 import { emailRegex, textRegex } from "./regex";
 
 export const ContactUsSchema = object().shape({
-  name: string()
+  fullName: string()
     .required("contact-us_form_error_message_required")
     .matches(textRegex, { message: "contact-us_form_error_message_invalid" })
     .trim(),

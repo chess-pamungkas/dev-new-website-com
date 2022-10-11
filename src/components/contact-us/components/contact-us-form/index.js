@@ -20,18 +20,25 @@ const ContactUsForm = () => {
         ...values,
         entity: currentEntity,
       })
-      .then((response) => {
-        setIsSentSuccessful(response.ok);
+      .then(() => {
+        setIsSentSuccessful(true);
       })
-      .catch((response) => console.log(response));
+      .catch((response) => {
+        console.log(response);
+        setIsSentSuccessful(false);
+      });
+    setTimeout(() => {
+      setIsSentSuccessful(null);
+    }, 3000);
   };
 
   return (
     <Formik
-      initialValues={{ name: "", email: "", subject: "", message: "" }}
+      initialValues={{ fullName: "", email: "", subject: "", message: "" }}
       validationSchema={ContactUsSchema}
-      onSubmit={(values) => {
+      onSubmit={(values, { resetForm }) => {
         handleContactForm(values);
+        resetForm();
       }}
       enableReinitialize
     >
@@ -46,13 +53,13 @@ const ContactUsForm = () => {
         <form onSubmit={handleSubmit} className="contact-us-form">
           <Input
             type="text"
-            name="name"
+            name="fullName"
             title={t("contact-us_form_name")}
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.name}
-            isError={errors.name && touched.name}
-            errorMessage={errors.name}
+            value={values.fullName}
+            isError={errors.fullName && touched.fullName}
+            errorMessage={errors.fullName}
             isHalfWidth
           />
           <Input
