@@ -18,8 +18,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: url("../../assets/images/about-pages/ornament-top-sm.svg")
-      no-repeat;
+    background: url("../../assets/images/about-pages/ornament-top-sm.svg") no-repeat;
     width: 218px;
     height: 213px;
   }
@@ -29,10 +28,9 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    background: url("../../assets/images/about-pages/ornament-bottom-sm.svg")
-      no-repeat;
-    width: 187px;
-    height: 182px;
+    background: url("../../assets/images/about-pages/ornament-bottom-sm.svg") no-repeat;
+    width: 110px;
+    height: 132px;
   }
 
   @include tablet {
@@ -40,17 +38,15 @@
     padding-bottom: 142px;
 
     &:before {
-      background: url("../../assets/images/about-pages/ornament-top-md.svg")
-        no-repeat;
+      background: url("../../assets/images/about-pages/ornament-top-md.svg") no-repeat;
       width: 251px;
       height: 246px;
     }
 
     &:after {
-      background: url("../../assets/images/about-pages/ornament-bottom-md.svg")
-        no-repeat;
-      width: 267px;
-      height: 261px;
+      background: url("../../assets/images/about-pages/ornament-bottom-md.svg") no-repeat;
+      width: 205px;
+      height: 246px;
     }
   }
 
@@ -59,17 +55,15 @@
     padding-bottom: 89px;
 
     &:before {
-      background: url("../../assets/images/about-pages/ornament-top-lg.svg")
-        no-repeat;
+      background: url("../../assets/images/about-pages/ornament-top-lg.svg") no-repeat;
       width: 266px;
       height: 261px;
     }
 
     &:after {
-      background: url("../../assets/images/about-pages/ornament-bottom-lg.svg")
-        no-repeat;
-      width: 228px;
-      height: 223px;
+      background: url("../../assets/images/about-pages/ornament-bottom-lg.svg") no-repeat;
+      width: 163px;
+      height: 210px;
     }
   }
 
@@ -78,15 +72,13 @@
     padding-bottom: 323px;
 
     &:before {
-      background: url("../../assets/images/about-pages/ornament-top-xl.svg")
-        no-repeat;
+      background: url("../../assets/images/about-pages/ornament-top-xl.svg") no-repeat;
       width: 261px;
       height: 299px;
     }
 
     &:after {
-      background: url("../../assets/images/about-pages/ornament-bottom-xl.svg")
-        no-repeat;
+      background: url("../../assets/images/about-pages/ornament-bottom-xl.svg") no-repeat;
       width: 261px;
       height: 299px;
     }
