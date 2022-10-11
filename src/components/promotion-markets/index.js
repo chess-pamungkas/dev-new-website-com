@@ -19,7 +19,7 @@ const PromotionMarkets = ({
   children,
   btnTitle,
 }) => {
-  let lastPageYOffset = window.pageYOffset;
+  let lastPageYOffset = typeof window !== "undefined" ? window.pageYOffset : 0;
   const promoRef = useRef();
   const scrollCount = children.length;
 
