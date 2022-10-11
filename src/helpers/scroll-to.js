@@ -6,14 +6,16 @@ export const scrollTo = ({
   duration = 1000,
   callback,
 }) => {
-  if (!ref?.current) {
+  if (!ref) {
     return;
   }
 
   animateScroll({
     targetPosition:
-      ref?.current.offsetTop -
-      (headerRef?.current ? headerRef?.current.clientHeight : 0),
+      typeof ref === "number"
+        ? ref - (headerRef?.current ? headerRef?.current.clientHeight : 0)
+        : ref?.current.offsetTop -
+          (headerRef?.current ? headerRef?.current.clientHeight : 0),
     initialPosition: window.scrollY,
     duration,
   });

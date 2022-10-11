@@ -19,12 +19,13 @@ const PromotionMarkets = ({
   children,
   btnTitle,
 }) => {
+  let lastPageYOffset = window.pageYOffset;
   const promoRef = useRef();
   const scrollCount = children.length;
 
   const autoScrollPromoRef = useIntersectionObserver(promoRef, {
     threshold: 0.2,
-    freezeOnceVisible: true,
+    freezeOnceVisible: false,
   });
 
   const animationToStep1Config = {
@@ -46,8 +47,10 @@ const PromotionMarkets = ({
   const [backgroundPositionX, setBackgroundPositionX] = useState(0);
   const [currentScroll, setCurrentScroll] = useState(0);
   const [currentTitle, setCurrentTitle] = useState(children[0]);
-  const [isAnimationStarted, setIsAnimationStarted] = useState(false);
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+  const [isAnimationStarted, setIsAnimationStarted] = useState(false);
+  const [isAnimationReady, setIsAnimationReady] = useState(true);
+  const [isAnimationReverse, setIsAnimationReverse] = useState(false);
 
   const [chartAnimationStyles, chartAnimationApi] = useSpring(() => ({
     delay: 250,
@@ -59,36 +62,37 @@ const PromotionMarkets = ({
 
   const [titleAnimationStyles, titleAnimationApi] = useSpring(() => ({}));
 
-  const windowScrollEvent = (e) => {
-    const event = document.createEvent("MouseEvents");
-    event.initEvent("wheel", false, true);
-    event.deltaY = + 120;
-    if (promoRef.current) {
-      promoRef.current.dispatchEvent(event);
-    }
-    e.preventDefault();
-  };
-
   useEffect(() => {
-    if (autoScrollPromoRef?.isIntersecting) {
+    if (autoScrollPromoRef?.isIntersecting && !isAnimationFinished) {
       scrollTo({
-        ref: promoRef,
+        ref:
+          promoRef?.current.clientHeight > window.innerHeight
+            ? promoRef?.current.offsetTop +
+              promoRef?.current.clientHeight -
+              window.innerHeight
+            : promoRef,
         duration: 1000,
         callback: () => {
           setIsAnimationStarted(true);
         },
       });
     }
-  }, [autoScrollPromoRef]);
+  }, [autoScrollPromoRef, isAnimationFinished]);
 
   useEffect(() => {
-    if (currentScroll && currentScroll < children.length) {
-      setCurrentTitle(children[currentScroll - 1]);
-      setBackgroundPositionX(backgroundPositionX + 200);
+    if (currentScroll < children.length) {
+      setBackgroundPositionX(
+        backgroundPositionX + (isAnimationReverse ? -200 : 200)
+      );
+      setIsAnimationReady(false);
 
       titleAnimationApi.start({
-        from: animationToStep1Config,
-        to: animationToStep2Config,
+        from: isAnimationReverse
+          ? animationToStep1Config
+          : animationToStep1Config,
+        to: isAnimationReverse
+          ? TITLES_ANIMATION_DEFAULT_FROM_CONFIG
+          : animationToStep2Config,
         config: {
           duration: 500,
         },
@@ -96,10 +100,17 @@ const PromotionMarkets = ({
           setCurrentTitle(children[currentScroll]);
 
           titleAnimationApi.start({
-            from: TITLES_ANIMATION_DEFAULT_FROM_CONFIG,
-            to: animationToStep1Config,
+            from: isAnimationReverse
+              ? animationToStep2Config
+              : TITLES_ANIMATION_DEFAULT_FROM_CONFIG,
+            to: isAnimationReverse
+              ? animationToStep1Config
+              : animationToStep1Config,
             config: {
               duration: 500,
+            },
+            onRest: () => {
+              setIsAnimationReady(true);
             },
           });
         },
@@ -112,9 +123,41 @@ const PromotionMarkets = ({
   }, [currentScroll]);
 
   useEffect(() => {
-    const scrollHandler = (e) => {
-      if (currentScroll < scrollCount) {
+    const wheelHandler = (e) => {
+      if (!isAnimationReady) {
+        e.preventDefault();
+        return;
+      }
+
+      if (e.deltaY > 0 && currentScroll < scrollCount) {
         setCurrentScroll(currentScroll + 1);
+        setIsAnimationReverse(false);
+        e.preventDefault();
+      }
+
+      if (e.deltaY < 0 && currentScroll > 0) {
+        setCurrentScroll(currentScroll - 1);
+        setIsAnimationReverse(true);
+        e.preventDefault();
+      }
+
+      if (e.deltaY < 0 && currentScroll === 0) {
+        setCurrentScroll(0);
+        setIsAnimationStarted(false);
+        setIsAnimationReverse(false);
+        setIsAnimationFinished(false);
+      }
+    };
+
+    const scrollHandler = (e) => {
+      if (isAnimationReady && isAnimationStarted) {
+        const event = document.createEvent("MouseEvents");
+        event.initEvent("wheel", false, true);
+        event.deltaY = lastPageYOffset - window.pageYOffset > 0 ? -120 : +120;
+        if (promoRef.current) {
+          promoRef.current.dispatchEvent(event);
+          lastPageYOffset = window.pageYOffset;
+        }
         e.preventDefault();
       }
     };
@@ -122,39 +165,23 @@ const PromotionMarkets = ({
     const promoElement = promoRef.current;
 
     if (isAnimationStarted && !isAnimationFinished) {
-      promoElement.addEventListener("wheel", scrollHandler);
-      window.addEventListener("scroll", windowScrollEvent);
+      promoElement.addEventListener("wheel", wheelHandler);
+      window.addEventListener("scroll", scrollHandler);
     }
 
     return () => {
-      promoElement.removeEventListener("wheel", scrollHandler);
-      window.removeEventListener("scroll", windowScrollEvent);
+      promoElement.removeEventListener("wheel", wheelHandler);
+      window.removeEventListener("scroll", scrollHandler);
     };
   }, [
+    backgroundPositionX,
     isAnimationFinished,
     isAnimationStarted,
+    isAnimationReady,
     promoRef,
-    backgroundPositionX,
-    setBackgroundPositionX,
     scrollCount,
+    setBackgroundPositionX,
   ]);
-
-  useEffect(() => {
-    if (isAnimationStarted) {
-      titleAnimationApi.start({
-        from: TITLES_ANIMATION_DEFAULT_FROM_CONFIG,
-        to: animationToStep1Config,
-      });
-
-      chartAnimationApi.start({
-        backgroundPositionX: "200px",
-        config: {
-          easing: easings.easeInOutCubic,
-          duration: 1000,
-        },
-      });
-    }
-  }, [isAnimationStarted]);
 
   useEffect(() => {
     if (isAnimationStarted) {
@@ -166,7 +193,7 @@ const PromotionMarkets = ({
         },
       });
     }
-  }, [isAnimationStarted, backgroundPositionX]);
+  }, [backgroundPositionX, chartAnimationApi, isAnimationStarted]);
 
   return (
     <section className={cn("promotion-markets", className)} ref={promoRef}>
