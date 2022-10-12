@@ -11,6 +11,7 @@ import {
 import { animated, easings, useSpring } from "react-spring";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 import { scrollTo } from "../../helpers/scroll-to";
+import { isBrowser } from "../../helpers/services/is-browser";
 
 const PromotionMarkets = ({
   className,
@@ -19,7 +20,7 @@ const PromotionMarkets = ({
   children,
   btnTitle,
 }) => {
-  let lastPageYOffset = typeof window !== "undefined" ? window.pageYOffset : 0;
+  let lastTouchPointY = 0;
   const promoRef = useRef();
   const scrollCount = children.length;
 
@@ -74,6 +75,12 @@ const PromotionMarkets = ({
         duration: 1000,
         callback: () => {
           setIsAnimationStarted(true);
+
+          if (isBrowser()) {
+            document.querySelector("body").style.paddingRight =
+              window.outerWidth - document.body.offsetWidth + "px";
+            document.querySelector("body").style.overflowY = "hidden";
+          }
         },
       });
     }
@@ -119,6 +126,11 @@ const PromotionMarkets = ({
 
     if (currentScroll === children.length) {
       setIsAnimationFinished(true);
+
+      if (isBrowser()) {
+        document.querySelector("body").style.overflowY = "scroll";
+        document.querySelector("body").style.paddingRight = "0px";
+      }
     }
   }, [currentScroll]);
 
@@ -146,17 +158,26 @@ const PromotionMarkets = ({
         setIsAnimationStarted(false);
         setIsAnimationReverse(false);
         setIsAnimationFinished(false);
+
+        if (isBrowser()) {
+          document.querySelector("body").style.overflowY = "scroll";
+          document.querySelector("body").style.paddingRight = "0px";
+        }
       }
     };
 
-    const scrollHandler = (e) => {
+    const touchStartHandler = (e) => {
+      lastTouchPointY = e.touches[0].pageY;
+    };
+
+    const touchMoveHandler = (e) => {
       if (isAnimationReady && isAnimationStarted) {
         const event = document.createEvent("MouseEvents");
         event.initEvent("wheel", false, true);
-        event.deltaY = lastPageYOffset - window.pageYOffset > 0 ? -120 : +120;
+        event.deltaY = lastTouchPointY - e.touches[0].pageY > 0 ? -120 : +120;
         if (promoRef.current) {
           promoRef.current.dispatchEvent(event);
-          lastPageYOffset = window.pageYOffset;
+          lastTouchPointY = e.touches[0].pageY;
         }
         e.preventDefault();
       }
@@ -166,12 +187,14 @@ const PromotionMarkets = ({
 
     if (isAnimationStarted && !isAnimationFinished) {
       promoElement.addEventListener("wheel", wheelHandler);
-      window.addEventListener("scroll", scrollHandler);
+      promoElement.addEventListener("touchstart", touchStartHandler);
+      promoElement.addEventListener("touchmove", touchMoveHandler);
     }
 
     return () => {
       promoElement.removeEventListener("wheel", wheelHandler);
-      window.removeEventListener("scroll", scrollHandler);
+      promoElement.removeEventListener("touchstart", touchStartHandler);
+      promoElement.removeEventListener("touchmove", touchMoveHandler);
     };
   }, [
     backgroundPositionX,
