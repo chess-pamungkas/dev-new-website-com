@@ -174,7 +174,7 @@ const PromotionMarkets = ({
       if (isAnimationReady && isAnimationStarted) {
         const event = document.createEvent("MouseEvents");
         event.initEvent("wheel", false, true);
-        event.deltaY = e.changedTouches[0].pageY - lastTouchPointY > 0 ? +120 : -120;
+        event.deltaY = e.changedTouches[0].pageY - lastTouchPointY < 0 ? 120 : -120;
         if (promoRef.current) {
           promoRef.current.dispatchEvent(event);
           lastTouchPointY = e.changedTouches[0].pageY;
