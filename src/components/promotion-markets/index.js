@@ -188,7 +188,7 @@ const PromotionMarkets = ({
     if (isAnimationStarted && !isAnimationFinished) {
       promoElement.addEventListener("wheel", wheelHandler);
       promoElement.addEventListener("touchstart", touchStartHandler);
-      promoElement.addEventListener("touchmove", touchMoveHandler);
+      promoElement.addEventListener("touchend", touchMoveHandler);
     }
 
     return () => {
