@@ -132,6 +132,7 @@ const PromotionMarkets = ({
         document.querySelector("body").style.paddingRight = "0px";
       }
     }
+    // eslint-disable-next-line
   }, [currentScroll]);
 
   useEffect(() => {
@@ -167,6 +168,7 @@ const PromotionMarkets = ({
     };
 
     const touchStartHandler = (e) => {
+      // eslint-disable-next-line
       lastTouchPointY = e.touches[0].pageY;
     };
 

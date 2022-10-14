@@ -26,7 +26,7 @@ import {
   ACCOUNTS_TYPE_PAGE_LINK,
   ALL_MARKETS_PAGE_LINK,
   COMING_SOON_PAGE_LINK,
-  COMMODITIES_PAGE_LINK,
+  METALS_PAGE_LINK,
   COMPANY_PAGE_LINK, CONTACT_US_PAGE_LINK,
   CRYPTO_PAGE_LINK,
   ENERGIES_PAGE_LINK,
@@ -61,7 +61,7 @@ const CYSEC_TOP_MARKETS_TAB = {
     },
     {
       title: "header-nav-tab-top-markets-commodities-title",
-      link: COMMODITIES_PAGE_LINK,
+      link: METALS_PAGE_LINK,
       icon: CommoditiesIcon,
       description: "header-nav-tab-top-markets-commodities-desc",
     },

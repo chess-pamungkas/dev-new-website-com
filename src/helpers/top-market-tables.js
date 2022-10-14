@@ -379,7 +379,7 @@ export const DATA_SHARES = [
   },
 ];
 
-export const COLUMNS_COMMODITIES = [
+export const COLUMNS_METALS = [
   {
     id: "group1",
     Header: "",
@@ -430,7 +430,7 @@ export const COLUMNS_COMMODITIES = [
   },
 ];
 
-const COMMODITIES_COLUMNS_WITH_BTN = (
+const METALS_COLUMNS_WITH_BTN = (
   <div className="table__info-column">
     <div className="table__params">
       <div className="table__param">
@@ -453,55 +453,46 @@ const COMMODITIES_COLUMNS_WITH_BTN = (
   </div>
 );
 
-export const DATA_COMMODITIES = [
+export const DATA_METALS = [
   {
-    col1: "AUDCAD",
+    col1: "GOLD",
     col2: "0",
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: COMMODITIES_COLUMNS_WITH_BTN,
+    col6: METALS_COLUMNS_WITH_BTN,
   },
   {
-    col1: "AUDCAD",
+    col1: "COPPER",
     col2: "0",
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: COMMODITIES_COLUMNS_WITH_BTN,
+    col6: METALS_COLUMNS_WITH_BTN,
   },
   {
-    col1: "AUDCAD",
+    col1: "SILVER",
     col2: "0",
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: COMMODITIES_COLUMNS_WITH_BTN,
+    col6: METALS_COLUMNS_WITH_BTN,
   },
   {
-    col1: "AUDCAD",
+    col1: "PLATINUM",
     col2: "0",
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: COMMODITIES_COLUMNS_WITH_BTN,
+    col6: METALS_COLUMNS_WITH_BTN,
   },
   {
-    col1: "AUDCAD",
+    col1: "PALLADIUM",
     col2: "0",
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: COMMODITIES_COLUMNS_WITH_BTN,
-  },
-
-  {
-    col1: "USDEUR",
-    col2: "0",
-    col3: "0.4",
-    col4: "0",
-    col5: "0.4",
-    col6: COMMODITIES_COLUMNS_WITH_BTN,
+    col6: METALS_COLUMNS_WITH_BTN,
   },
 ];
 export const COLUMNS_INDICES = [
@@ -540,16 +531,6 @@ export const COLUMNS_INDICES = [
       {
         Header: "Avg",
         accessor: "col5",
-      },
-    ],
-  },
-  {
-    id: "group4",
-    Header: "",
-    columns: [
-      {
-        Header: "Live",
-        accessor: "col6",
       },
     ],
   },

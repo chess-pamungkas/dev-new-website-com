@@ -17,45 +17,45 @@ import PromotionMarkets from "../components/promotion-markets";
 import TopMarketLayout from "../components/top-market-layout";
 import TableComponent from "../components/shared/table";
 import {
-  COLUMNS_COMMODITIES,
-  DATA_COMMODITIES,
+  COLUMNS_METALS,
+  DATA_METALS,
 } from "../helpers/top-market-tables";
 import Faq from "../components/faq";
-import { FAQ_COMMODITIES } from "../helpers/faq";
+import { FAQ_METALS } from "../helpers/faq";
 
-const CommoditiesPage = () => {
+const MetalsPage = () => {
   const { t } = useTranslation();
   const { isMobile } = useWindowSize();
 
   return (
     <Layout>
-      <Seo title={t("page-commodities-title")} />
+      <Seo title={t("page-metals-title")} />
       <TopMarket
-        title={t("commodities_top-market-title")}
+        title={t("metals_top-market-title")}
         image={image}
-        btn1Title={t("commodities_top-market-btn1")}
+        btn1Title={t("metals_top-market-btn1")}
         link1={REGISTRATION_LINK}
-        btn2Title={t("commodities_top-market-btn2")}
+        btn2Title={t("metals_top-market-btn2")}
         link2={REGISTRATION_LINK}
       >
         <HighlightedLocalizationText
-          localizationText="commodities_top-market-promo-text"
-          wordsToHighlight="commodities-top-market-promo-text-accent"
+          localizationText="metals_top-market-promo-text"
+          wordsToHighlight="metals-top-market-promo-text-accent"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
-      <TradingTicker title={t("commodities_trading-ticker-title")} />
+      <TradingTicker title={t("metals_trading-ticker-title")} />
       <TopMarketPromotion
         className="commodities-promotion"
         image={commodities}
-        btnTitle={t("commodities_top-market-promo-btn")}
+        btnTitle={t("metals_top-market-promo-btn")}
         link={REGISTRATION_LINK}
-        note={t("commodities_top-market-promotion-promo-note")}
+        note={t("metals_top-market-promotion-promo-note")}
       >
         <HighlightedLocalizationText
-          localizationText="commodities_top-market-promotion-promo-text"
-          wordsToHighlight="commodities-top-market-promotion-promo-text-accent"
+          localizationText="metals_top-market-promotion-promo-text"
+          wordsToHighlight="metals-top-market-promotion-promo-text-accent"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
@@ -65,59 +65,59 @@ const CommoditiesPage = () => {
         animationStyle={{
           height: isMobile ? 228 : 448,
         }}
-        btnTitle={t("commodities_promotion-markets-btn")}
+        btnTitle={t("metals_promotion-markets-btn")}
       >
         <HighlightedLocalizationText
-          localizationText="commodities_promotion-markets-promo-text-1"
-          wordsToHighlight="commodities-promotion-markets-promo-text-accent-1"
+          localizationText="metals_promotion-markets-promo-text-1"
+          wordsToHighlight="metals-promotion-markets-promo-text-accent-1"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
         <HighlightedLocalizationText
-          localizationText="commodities_promotion-markets-promo-text-2"
-          wordsToHighlight="commodities-promotion-markets-promo-text-accent-2"
+          localizationText="metals_promotion-markets-promo-text-2"
+          wordsToHighlight="metals-promotion-markets-promo-text-accent-2"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
         <HighlightedLocalizationText
-          localizationText="commodities_promotion-markets-promo-text-3"
-          wordsToHighlight="commodities-promotion-markets-promo-text-accent-3"
+          localizationText="metals_promotion-markets-promo-text-3"
+          wordsToHighlight="metals-promotion-markets-promo-text-accent-3"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
         <HighlightedLocalizationText
-          localizationText="commodities_promotion-markets-promo-text-4"
-          wordsToHighlight="commodities-promotion-markets-promo-text-accent-4"
+          localizationText="metals_promotion-markets-promo-text-4"
+          wordsToHighlight="metals-promotion-markets-promo-text-accent-4"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
         <HighlightedLocalizationText
-          localizationText="commodities_promotion-markets-promo-text-5"
-          wordsToHighlight="commodities-promotion-markets-promo-text-accent-5"
+          localizationText="metals_promotion-markets-promo-text-5"
+          wordsToHighlight="metals-promotion-markets-promo-text-accent-5"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
         <HighlightedLocalizationText
-          localizationText="commodities_promotion-markets-promo-text-6"
-          wordsToHighlight="commodities-promotion-markets-promo-text-accent-6"
+          localizationText="metals_promotion-markets-promo-text-6"
+          wordsToHighlight="metals-promotion-markets-promo-text-accent-6"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
         <HighlightedLocalizationText
-          localizationText="commodities_promotion-markets-promo-text-7"
-          wordsToHighlight="commodities-promotion-markets-promo-text-accent-7"
+          localizationText="metals_promotion-markets-promo-text-7"
+          wordsToHighlight="metals-promotion-markets-promo-text-accent-7"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
       </PromotionMarkets>
       <TopMarketLayout
-        title={t("commodities_top-market-layout-title")}
-        btnTitle={t("commodities_top-market-layout-btn")}
+        title={t("metals_top-market-layout-title")}
+        btnTitle={t("metals_top-market-layout-btn")}
         link={REGISTRATION_LINK}
       >
         <TableComponent
-          data={DATA_COMMODITIES}
-          columns={COLUMNS_COMMODITIES}
+          data={DATA_METALS}
+          columns={COLUMNS_METALS}
           isWrapperPadding
           tip={
             <span>
@@ -131,12 +131,12 @@ const CommoditiesPage = () => {
         />
       </TopMarketLayout>
 
-      <Faq faq={FAQ_COMMODITIES} />
+      <Faq faq={FAQ_METALS} />
     </Layout>
   );
 };
 
-export default CommoditiesPage;
+export default MetalsPage;
 
 export const query = graphql`
   query ($language: String!) {

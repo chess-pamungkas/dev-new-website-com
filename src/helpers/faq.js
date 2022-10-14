@@ -45,19 +45,19 @@ export const FAQ_CRYPTO = [
   },
 ];
 
-export const FAQ_COMMODITIES = [
+export const FAQ_METALS = [
   {
-    question: "commodities_faq-title1",
-    answer: ["commodities_faq-content1"],
+    question: "metals_faq-title1",
+    answer: ["metals_faq-content1"],
   },
   {
-    question: "commodities_faq-title2",
+    question: "metals_faq-title2",
     answer: [
-      "commodities_faq-content2-1",
-      "commodities_faq-content2-2",
-      "commodities_faq-content2-3",
-      "commodities_faq-content2-4",
-      "commodities_faq-content2-5",
+      "metals_faq-content2-1",
+      "metals_faq-content2-2",
+      "metals_faq-content2-3",
+      "metals_faq-content2-4",
+      "metals_faq-content2-5",
     ],
   },
 ];

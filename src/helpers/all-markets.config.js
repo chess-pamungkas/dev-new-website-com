@@ -1,5 +1,5 @@
 import {
-  COMMODITIES_PAGE_LINK,
+  METALS_PAGE_LINK,
   CRYPTO_PAGE_LINK,
   ENERGIES_PAGE_LINK,
   FOREX_PAGE_LINK,
@@ -140,7 +140,7 @@ const COMMODITIES = {
   title: "all-markets_market-items-list-commodities-title",
   text: ["all-markets_market-items-list-commodities-text", "all-markets_market-items-list-commodities-text2"],
   isGrayBackground: true,
-  link: COMMODITIES_PAGE_LINK,
+  link: METALS_PAGE_LINK,
   advantages: [
     {
       key: "adv1",
