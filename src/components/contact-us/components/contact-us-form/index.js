@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Formik } from "formik";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import Input from "../../../shared/form/input";
@@ -6,6 +6,7 @@ import Textarea from "../../../shared/form/textarea";
 import cn from "classnames";
 import { ContactUsSchema } from "../../../../validations/contact-us";
 import axios from "axios";
+import ReCAPTCHA from "react-google-recaptcha";
 import ClientResolverContext from "../../../../context/client-resolver-context";
 
 const ContactUsForm = () => {
@@ -14,22 +15,31 @@ const ContactUsForm = () => {
   const API_URL = process.env.GATSBY_OQTIMA_API_URL;
   const { currentEntity } = useContext(ClientResolverContext);
 
-  const handleContactForm = (values) => {
+  const reCaptchaRef = useRef();
+
+  const handleApiResponse = (isSuccessful) => {
+    reCaptchaRef.current.reset();
+    setIsSentSuccessful(isSuccessful);
+    setTimeout(() => {
+      setIsSentSuccessful(null);
+    }, 3000);
+  };
+
+  const handleContactForm = async (values) => {
+    const token = await reCaptchaRef.current.executeAsync();
     axios
       .post(`${API_URL}mail`, {
         ...values,
         entity: currentEntity,
+        token,
       })
       .then(() => {
-        setIsSentSuccessful(true);
+        handleApiResponse(true);
       })
       .catch((response) => {
         console.log(response);
-        setIsSentSuccessful(false);
+        handleApiResponse(false);
       });
-    setTimeout(() => {
-      setIsSentSuccessful(null);
-    }, 3000);
   };
 
   return (
@@ -93,6 +103,12 @@ const ContactUsForm = () => {
             isError={errors.message && touched.message}
             errorMessage={errors.message}
             placeholder={t("contact-us_form_placeholder")}
+          />
+          <ReCAPTCHA
+            // TODO Replace with the real key
+            sitekey={`6LcXjogiAAAAAH_3NOgPEHNiBUTAIgDo8q3Z1_Fc`}
+            size="invisible"
+            ref={reCaptchaRef}
           />
           <button
             type="submit"
