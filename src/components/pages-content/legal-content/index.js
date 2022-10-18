@@ -6,7 +6,7 @@ import HighlightedLocalizationText from "../../shared/highlighted-localization-t
 import cysec from "../../../assets/images/about-pages/cysec.png";
 import fsa from "../../../assets/images/about-pages/fsa.png";
 import Documents from "../../documents";
-import { LEGAL_DOCS } from "../../../helpers/documents";
+import { LEGAL_DOCS, LEGAL_DOCS_FSA } from "../../../helpers/documents";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
@@ -88,8 +88,7 @@ const LegalContent = () => {
             </>
           )
         }
-        // TODO add real docs for fsa and cysec
-        documents={LEGAL_DOCS}
+        documents={isCySEC ? LEGAL_DOCS : LEGAL_DOCS_FSA}
       />
     </>
   );
