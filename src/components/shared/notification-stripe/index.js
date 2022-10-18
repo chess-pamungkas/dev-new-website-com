@@ -7,16 +7,20 @@ import { useEntityNotifications } from "../../../helpers/hooks/use-entity-notifi
 import CookieContext from "../../../context/cookie-context";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { sendClickEventToGA } from "../../../helpers/services/google-analytics-service";
-import { RISK_DISCLOSURE_DOC } from "../../../helpers/documents";
+import {
+  RISK_DISCLOSURE_DOC,
+  RISK_DISCLOSURE_DOC_FSA,
+} from "../../../helpers/documents";
+import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 
-export const CysecStripe = ({ t }) => {
+export const CysecStripe = ({ t, isCySEC }) => {
   return (
     <div className="notification-stripe__cysec-wrapper">
       <span className="notification-stripe__text">
         {t("notification-stripe-cysec")}&nbsp;
         <a
           className="notification-stripe__link"
-          href={RISK_DISCLOSURE_DOC}
+          href={isCySEC ? RISK_DISCLOSURE_DOC : RISK_DISCLOSURE_DOC_FSA}
           target="_blank"
           rel="noreferrer"
         >
@@ -73,6 +77,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
   } = useEntityNotifications(handleOpen);
   const { getCookie } = useContext(CookieContext);
   const { t } = useTranslation();
+  const { isCySEC } = useEntityPostfix();
 
   const [isHidden, setIsHidden] = useState(true);
 
@@ -111,7 +116,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
               />
             )}
 
-            {isCysecNotification && <CysecStripe t={t} />}
+            {isCysecNotification && <CysecStripe t={t} isCySEC={isCySEC} />}
           </div>
         </div>
       )}
