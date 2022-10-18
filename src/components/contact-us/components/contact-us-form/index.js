@@ -13,6 +13,7 @@ const ContactUsForm = () => {
   const { t } = useTranslation();
   const [isSentSuccessful, setIsSentSuccessful] = useState(null);
   const API_URL = process.env.GATSBY_OQTIMA_API_URL;
+  const SITE_KEY = process.env.GOOGLE_CAPTCHA_SITE_KEY;
   const { currentEntity } = useContext(ClientResolverContext);
 
   const reCaptchaRef = useRef();
@@ -104,12 +105,7 @@ const ContactUsForm = () => {
             errorMessage={errors.message}
             placeholder={t("contact-us_form_placeholder")}
           />
-          <ReCAPTCHA
-            // TODO Replace with the real key
-            sitekey={`6LcXjogiAAAAAH_3NOgPEHNiBUTAIgDo8q3Z1_Fc`}
-            size="invisible"
-            ref={reCaptchaRef}
-          />
+          <ReCAPTCHA sitekey={SITE_KEY} size="invisible" ref={reCaptchaRef} />
           <button
             type="submit"
             className={cn(
