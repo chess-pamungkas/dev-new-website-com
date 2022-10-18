@@ -2,7 +2,8 @@
 @import "mixins";
 
 .notification-stripe {
-  position: relative;
+  position: fixed;
+  bottom: 0;
   z-index: 1;
   background: map-get($colors, "white");
   box-shadow: 0 0 10px #0000001a;
@@ -11,6 +12,8 @@
 
   @include desktop-lg {
     padding: 13px 30px 18px;
+    position: relative;
+    bottom: unset;
   }
 
   &__content {
