@@ -30,6 +30,7 @@ import { scrollTo } from "../../../../helpers/scroll-to";
 import { useEntityPostfix } from "../../../../helpers/use-entity-postfix";
 
 const PromotionContent = ({ headerRef }) => {
+  const XL_HEIGHT = 1080;
   const { t } = useTranslation();
   const { isMobile, height } = useWindowSize();
   const { sitePostfix } = useEntityPostfix();
@@ -47,12 +48,16 @@ const PromotionContent = ({ headerRef }) => {
 
   const dataTradePromoRef = useIntersectionObserver(
     tradePromoRef,
-    INTERSECTION_OBSERVER_CONFIG.tradePromo
+    height <= XL_HEIGHT
+      ? INTERSECTION_OBSERVER_CONFIG.tradePromo
+      : INTERSECTION_OBSERVER_CONFIG.tradePromoForHighScreen
   );
 
   const dataPromo1Ref = useIntersectionObserver(
     promo1Ref,
-    INTERSECTION_OBSERVER_CONFIG.promo1
+    height <= XL_HEIGHT
+      ? INTERSECTION_OBSERVER_CONFIG.promo1
+      : INTERSECTION_OBSERVER_CONFIG.promo1ForHighScreen
   );
 
   const dataPromo2Ref = useIntersectionObserver(
@@ -97,6 +102,8 @@ const PromotionContent = ({ headerRef }) => {
     isPromo2Scrolled,
     isPromo3Scrolled
   );
+
+  console.log(height);
 
   useEffect(() => {
     if (

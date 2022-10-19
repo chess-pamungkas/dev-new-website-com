@@ -51,11 +51,19 @@ export const INTERSECTION_OBSERVER_CONFIG = {
     ],
     freezeOnceVisible: false,
   },
+  tradePromoForHighScreen: {
+    threshold: [0.7, 0.85, 0.89, 0.92, 0.95, 0.97, 1],
+    freezeOnceVisible: false,
+  },
   promo1: {
     threshold: [
       0.02, 0.05, 0.07, 0.1, 0.12, 0.15, 0.17, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7,
       0.85, 0.89, 0.92, 0.95, 0.97, 1,
     ],
+    freezeOnceVisible: false,
+  },
+  promo1ForHighScreen: {
+    threshold: [0.7, 0.85, 0.89, 0.92, 0.95, 0.97, 1],
     freezeOnceVisible: false,
   },
   promo2: {
