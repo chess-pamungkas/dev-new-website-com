@@ -170,8 +170,11 @@ const LANG_CONFIG = [
   },
 ];
 
+const ARABIC_LANG_ID = "ar";
+
 module.exports = {
   LANG_CONFIG,
+  ARABIC_LANG_ID,
   list: LANG_CONFIG.map(({ id }) => id),
   defaultLangKey: LANG_CONFIG.find(({ isDefault }) => isDefault).id
 };

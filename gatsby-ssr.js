@@ -7,7 +7,7 @@ export const onRenderBody = ({ setPostBodyComponents, setHeadComponents }) => {
       defer
       id="convrs-webchat"
       src={process.env.GATSBY_CONVRS_LIVECHAT}
-    ></script>,
+    />,
   ]);
   setHeadComponents([
     <script
