@@ -29,6 +29,7 @@ import disciplineReport from "../assets/documents/eu/Disclosure_and_Market_Disci
 // TODO replace with the real doc
 export const MT4_DOC = summaryStatement;
 export const MT5_DOC = summaryStatement;
+export const CTRADER_DOC = summaryStatement;
 
 export const LEGAL_DOCS = [
   {
