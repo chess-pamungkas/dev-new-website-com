@@ -62,7 +62,7 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
       <Popup isPopupOpen={isShow} handlePopupClose={closePopup}>
         <LangOptions
           selectedLanguage={selectedLanguage}
-          langugeSelectHandler={onLangSelect}
+          languageSelectHandler={onLangSelect}
         />
       </Popup>
     </>

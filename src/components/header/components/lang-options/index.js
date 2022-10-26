@@ -11,7 +11,7 @@ const LangSelectItem = ({
   language: { id, icon: Icon, name } = {},
   language,
   selectedLanguage: { id: selectedId } = {},
-  langugeSelectHandler,
+  languageSelectHandler,
 }) => (
   <li
     className={cn("lang-options__item", {
@@ -22,7 +22,7 @@ const LangSelectItem = ({
       className="lang-options__select"
       type="button"
       onClick={(e) => {
-        langugeSelectHandler(language);
+        languageSelectHandler(language);
         sendClickEventToGA(e);
       }}
     >
@@ -41,7 +41,7 @@ const LangSelectItem = ({
   </li>
 );
 
-const LangOptions = ({ className, selectedLanguage, langugeSelectHandler }) => {
+const LangOptions = ({ className, selectedLanguage, languageSelectHandler }) => {
   const { t } = useTranslation();
 
   return (
@@ -53,7 +53,7 @@ const LangOptions = ({ className, selectedLanguage, langugeSelectHandler }) => {
           <LangSelectItem
             key={option.id}
             selectedLanguage={selectedLanguage}
-            langugeSelectHandler={langugeSelectHandler}
+            languageSelectHandler={languageSelectHandler}
             language={option}
           />
         ))}
