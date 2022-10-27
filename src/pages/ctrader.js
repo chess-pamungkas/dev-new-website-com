@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import { graphql, Link } from "gatsby";
-import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
@@ -76,13 +75,11 @@ const CTraderPage = () => {
     <Layout>
       <Seo title={t("page-ctrader-title")} />
       <TopMarketPromotion
-        className="mt4-page-promotion"
+        className="ctrader-page-promotion"
         image={animation}
         isLottieImage
         lottieStyle={getAnimationStyles()}
-        btnClassName={cn({
-          "button-link--ghost": isLG || isXL,
-        })}
+        btnClassName="button-link--ghost"
         btnTitle={t("ctrader_top-market-promo-btn")}
         link={CTRADER_DOC}
         isDocumentLink
@@ -117,6 +114,7 @@ const CTraderPage = () => {
         downloadTitle={t("ctrader_download-title")}
         image={image}
         tabs={tabs}
+        className="mt-promotion--ctrader"
       />
 
       {isXL && (

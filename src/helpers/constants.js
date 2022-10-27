@@ -51,6 +51,7 @@ export const PLATFORMS_LINK = "/platforms";
 export const ALL_MARKETS_PAGE_LINK = "/all-markets";
 export const MT4_PAGE_LINK = "/mt4";
 export const MT5_PAGE_LINK = "/mt5";
+export const CTRADER_PAGE_LINK = "/ctrader";
 export const WITHDRAWAL_PAGE_LINK = "/funding";
 export const SPREADS_AND_FEES_PAGE_LINK = "/spreads-and-fees";
 export const PROFESSIONAL_QUALIFICATION_PAGE_LINK =
