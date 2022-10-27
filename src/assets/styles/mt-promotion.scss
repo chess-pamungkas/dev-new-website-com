@@ -233,8 +233,11 @@
 }
 
 .mt-promotion--ctrader {
-  padding-top: 10px;
-  padding-bottom: 38px;
+
+  @include mobile {
+    padding-top: 10px;
+    padding-bottom: 38px;
+  }
 
   .mt-promotion__img {
     height: 258px;

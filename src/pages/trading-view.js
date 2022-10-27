@@ -4,21 +4,22 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
-import animation from "../assets/images/animations/aggregator_cTrader.json";
-import image from "../assets/images/mt4/cTrader.png";
+import animation from "../assets/images/animations/aggregator_Trading.json";
+import image from "../assets/images/mt4/trading-view.png";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import TopMarketPromotion from "../components/top-market-promotion";
-import { CTRADER_DOC } from "../helpers/documents";
+import { TRADING_VIEW_DOC } from "../helpers/documents";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import { REGISTRATION_LINK } from "../helpers/constants";
 import icon from "../assets/images/icon--white.svg";
 import {
-  CTRADER_ADVANTAGES,
-  CTRADER_DOWNLOAD_LINKS,
+  TRADING_VIEW_ADVANTAGES,
+  TRADING_VIEW_DOWNLOAD_LINKS,
 } from "../helpers/platforms.config";
 import MtPromotion from "../components/mt-promotion";
+import cn from "classnames";
 
-const CTraderPage = () => {
+const TradingViewPage = () => {
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
 
@@ -43,11 +44,11 @@ const CTraderPage = () => {
       title: t("mt-promotion-tabs-mobile"),
       content: (
         <>
-          <Link to={CTRADER_DOWNLOAD_LINKS.android}>
-            {t("ctrader_mt-promotion-download-android")}
+          <Link to={TRADING_VIEW_DOWNLOAD_LINKS.android}>
+            {t("trading-view_mt-promotion-download-android")}
           </Link>
-          <Link to={CTRADER_DOWNLOAD_LINKS.ios}>
-            {t("ctrader_mt-promotion-download-ios")}
+          <Link to={TRADING_VIEW_DOWNLOAD_LINKS.ios}>
+            {t("trading-view_mt-promotion-download-ios")}
           </Link>
         </>
       ),
@@ -57,14 +58,14 @@ const CTraderPage = () => {
       title: t("mt-promotion-tabs-desktop"),
       content: (
         <>
-          <Link to={CTRADER_DOWNLOAD_LINKS.mac}>
-            {t("ctrader_mt-promotion-download-mac")}
+          <Link to={TRADING_VIEW_DOWNLOAD_LINKS.mac}>
+            {t("trading-view_mt-promotion-download-mac")}
           </Link>
-          <Link to={CTRADER_DOWNLOAD_LINKS.windows}>
-            {t("ctrader_mt-promotion-download-windows")}
+          <Link to={TRADING_VIEW_DOWNLOAD_LINKS.windows}>
+            {t("trading-view_mt-promotion-download-windows")}
           </Link>
-          <Link to={CTRADER_DOWNLOAD_LINKS.webtrader}>
-            {t("ctrader_mt-promotion-download-webtrader")}
+          <Link to={TRADING_VIEW_DOWNLOAD_LINKS.webtrader}>
+            {t("trading-view_mt-promotion-download-webtrader")}
           </Link>
         </>
       ),
@@ -73,28 +74,28 @@ const CTraderPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-ctrader-title")} />
+      <Seo title={t("page-trading-view-title")} />
       <TopMarketPromotion
-        className="ctrader-page-promotion"
+        className={cn("ctrader-page-promotion", "trading-view-page-promotion")}
         image={animation}
         isLottieImage
         lottieStyle={getAnimationStyles()}
         btnClassName="button-link--ghost"
-        btnTitle={t("ctrader_top-market-promo-btn")}
-        link={CTRADER_DOC}
+        btnTitle={t("trading-view_top-market-promo-btn")}
+        link={TRADING_VIEW_DOC}
         isDocumentLink
         note={
           <HighlightedLocalizationText
-            localizationText="ctrader_top-market-promo-note"
-            wordsToHighlight="ctrader_top-market-promo-note-accent"
+            localizationText="trading-view_top-market-promo-note"
+            wordsToHighlight="trading-view_top-market-promo-note-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-white"
           />
         }
       >
         <HighlightedLocalizationText
-          localizationText="ctrader_top-market-promo-text"
-          wordsToHighlight="ctrader_top-market-promo-text-accent"
+          localizationText="trading-view_top-market-promo-text"
+          wordsToHighlight="trading-view_top-market-promo-text-accent"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
@@ -103,29 +104,30 @@ const CTraderPage = () => {
       <MtPromotion
         title={
           <HighlightedLocalizationText
-            localizationText="ctrader_top-market-promo-text2"
-            wordsToHighlight="ctrader_top-market-promo-text-accent2"
+            localizationText="trading-view_top-market-promo-text2"
+            wordsToHighlight="trading-view_top-market-promo-text-accent2"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
-        advantagesTitle={t("ctrader_market-items-list_title")}
-        advantages={CTRADER_ADVANTAGES}
-        downloadTitle={t("ctrader_download-title")}
+        advantagesTitle={t("trading-view_market-items-list_title")}
+        advantages={TRADING_VIEW_ADVANTAGES}
+        downloadTitle={t("trading-view_download-title")}
         image={image}
         tabs={tabs}
         className="mt-promotion--ctrader"
       />
+
       <TopMarketPromotion
         className="bottom-promotion"
         image={icon}
         btnClassName="button-link--red"
-        btnTitle={t("ctrader_top-market-promo-btn3")}
+        btnTitle={t("trading-view_top-market-promo-btn3")}
         link={REGISTRATION_LINK}
       >
         <HighlightedLocalizationText
-          localizationText="ctrader_top-market-promo-text3"
-          wordsToHighlight="ctrader_top-market-promo-text-accent3"
+          localizationText="trading-view_top-market-promo-text3"
+          wordsToHighlight="trading-view_top-market-promo-text-accent3"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
@@ -134,7 +136,7 @@ const CTraderPage = () => {
   );
 };
 
-export default CTraderPage;
+export default TradingViewPage;
 
 export const query = graphql`
   query ($language: String!) {

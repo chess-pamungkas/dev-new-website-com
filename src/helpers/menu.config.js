@@ -42,7 +42,7 @@ import {
   PROFESSIONAL_QUALIFICATION_PAGE_LINK,
   SHARES_PAGE_LINK,
   SPREADS_AND_FEES_PAGE_LINK,
-  WITHDRAWAL_PAGE_LINK,
+  WITHDRAWAL_PAGE_LINK, TRADING_VIEW_PAGE_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
@@ -189,7 +189,7 @@ const TRADING_TAB_TRADING_TOOLS_ITEM = {
   subtitles: [
     {
       title: "header-nav-tab-trading-trading-tools-tradeview-title",
-      link: "",
+      link: TRADING_VIEW_PAGE_LINK,
       description: "header-nav-tab-trading-trading-tools-tradeview-desc",
     },
     {
