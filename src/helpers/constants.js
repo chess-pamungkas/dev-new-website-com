@@ -11,6 +11,10 @@ export const WINDOW_SIZE_MD = 768;
 export const WINDOW_SIZE_LG = 1024;
 export const WINDOW_SIZE_XL = 1920;
 
+export const SM_MAX_WIDTH = 767;
+export const MD_MAX_WIDTH = 1023;
+export const LG_MAX_WIDTH = 1919;
+
 export const BURGER_MENU_LINES_COUNT = 3;
 export const DROPDOWN_SEARCH_ITEMS_TO_SHOW = 3;
 export const SEARCH_RESULTS_FIRST_BUNDLE = 1;
@@ -98,3 +102,5 @@ export const PAYMENT_SYSTEMS = {
     logo: wiseLogo,
   },
 };
+
+export const YOUTUBE_VIDEO_SHARE_LINK = "https://youtu.be/";

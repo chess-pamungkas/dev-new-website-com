@@ -1,0 +1,94 @@
+@import "vars";
+@import "mixins";
+
+$padding-sm: 51px;
+$padding-md: 105px;
+$padding-lg: 98px;
+$padding-xl: 155px;
+
+.playlist {
+  padding: 71px 51px 49px 15px;
+
+  @include tablet {
+    padding: 90px 105px 118px 35px;
+  }
+  @include desktop-lg {
+    padding: 83px 98px 42px 42px;
+  }
+  @include desktop-xl {
+    padding: 103px 155px 88px 55px;
+  }
+
+  &__title {
+    font-weight: map-get($font-weight, "black");
+    font-size: 30px;
+    line-height: 37px;
+    color: map-get($colors, "black-secondary");
+    margin: 0 0 26px;
+
+    @include tablet {
+      font-size: 35px;
+      line-height: 44px;
+    }
+    @include desktop-lg {
+      font-size: 40px;
+      line-height: 50px;
+    }
+    @include desktop-xl {
+      margin: 0 0 40px;
+      font-size: 68px;
+      line-height: 85px;
+    }
+  }
+}
+
+.video-block {
+  width: 150px;
+
+  @include tablet {
+    width: 274px;
+  }
+  @include desktop-lg {
+    width: 359px;
+  }
+
+  &__title {
+    font-weight: map-get($font-weight, "black");
+    font-size: 12px;
+    line-height: 15px;
+    color: map-get($colors, "black-secondary");
+    margin: 10px 0 5px;
+    @include limit-lines(3);
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 20px;
+      margin: 22px 0 10px;
+    }
+
+    @include desktop-lg {
+      font-size: 20px;
+      line-height: 25px;
+      margin: 10px 0 10px;
+    }
+  }
+
+  &__description {
+    font-weight: map-get($font-weight, "light");
+    font-size: 10px;
+    line-height: 13px;
+    color: map-get($colors, "black-secondary");
+    margin: 0 0 5px;
+    @include limit-lines;
+
+    @include tablet {
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    @include desktop-lg {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+}

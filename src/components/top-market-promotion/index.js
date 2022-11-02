@@ -3,6 +3,7 @@ import cn from "classnames";
 import ButtonLink from "../shared/button-link";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Lottie from "lottie-react";
+import ReactPlayer from "react-player";
 
 const TopMarketPromotion = ({
   className,
@@ -15,8 +16,11 @@ const TopMarketPromotion = ({
   isDocumentLink = false,
   isAnchorLink = false,
   isLottieImage = false,
+  isVideo = false,
+  videoSettings = {},
   lottieStyle = {},
 }) => {
+
   const getButton = () => {
     switch (true) {
       case isDocumentLink:
@@ -65,6 +69,23 @@ const TopMarketPromotion = ({
     }
   };
 
+  const getImage = () => {
+    switch (true) {
+      case isVideo:
+        return <ReactPlayer url={image} {...videoSettings} />;
+      case isLottieImage:
+        return (
+          <Lottie
+            className="top-market-promotion__img--lottie"
+            animationData={image}
+            style={lottieStyle}
+          />
+        );
+      default:
+        return <img src={image} alt="" className="top-market-promotion__img" />;
+    }
+  };
+
   return (
     <section className={cn("top-market-promotion", className)}>
       <div className={cn("top-market-promotion__wrapper")}>
@@ -82,15 +103,7 @@ const TopMarketPromotion = ({
               "top-market-promotion__block--flexed"
             )}
           >
-            {isLottieImage ? (
-              <Lottie
-                className="top-market-promotion__img--lottie"
-                animationData={image}
-                style={lottieStyle}
-              />
-            ) : (
-              <img src={image} alt="" className="top-market-promotion__img" />
-            )}
+            {getImage()}
           </div>
         )}
       </div>

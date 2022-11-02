@@ -41,10 +41,13 @@
     "react-google-recaptcha": "^2.1.0",
     "react-i18next": "^11.18.5",
     "react-intersection-observer": "^9.4.0",
+    "react-player": "^2.11.0",
+    "react-slick": "^0.29.0",
     "react-slider": "^2.0.4",
     "react-spring": "^9.5.2",
     "react-table": "^7.8.0",
     "sass": "^1.54.3",
+    "slick-carousel": "^1.8.1",
     "universal-cookie": "^4.0.4",
     "yup": "^0.32.11"
   },
