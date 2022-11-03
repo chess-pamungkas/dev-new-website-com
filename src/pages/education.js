@@ -8,7 +8,6 @@ import HighlightedLocalizationText from "../components/shared/highlighted-locali
 import TopMarketPromotion from "../components/top-market-promotion";
 import MainEducationVideo from "../components/education/components/main-education-video";
 import Playlist from "../components/education/components/playlist";
-import {VIDEOS} from "../helpers/education.config";
 
 const EducationPage = () => {
   const { t } = useTranslation();
@@ -36,7 +35,7 @@ const EducationPage = () => {
         />
       </TopMarketPromotion>
       <MainEducationVideo />
-      <Playlist playlist={VIDEOS} />
+      <Playlist />
     </Layout>
   );
 };

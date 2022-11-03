@@ -17,8 +17,12 @@ const VideosCarousel = ({ className, videos }) => {
 
   const CarouselNextArrow = (sliderProps) => {
     const { onClick } = sliderProps;
-    return <></>;
-    // return <CarouselNavArrow handleClick={onClick} className="category__next-arrow nav-arrow_right" />;
+    return (
+        // TODO replace with the real arrow
+      <button onClick={onClick} className="videos-carousel__arrow">
+        >
+      </button>
+    );
   };
 
   const getSettings = useCallback(() => {

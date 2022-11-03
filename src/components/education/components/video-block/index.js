@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import cn from "classnames";
 import ReactPlayer from "react-player/youtube";
-import { YOUTUBE_VIDEO_SHARE_LINK } from "../../../../helpers/constants";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
+import { getYoutubeLink } from "../helpers";
 
 const VideoBlock = ({ className, video }) => {
   const { isMobile, isMD, isLG, isXL } = useWindowSize();
@@ -21,9 +21,6 @@ const VideoBlock = ({ className, video }) => {
         return { width: "359px", height: "202px" };
     }
   }, [isMobile, isMD, isLG, isXL]);
-
-  const getYoutubeLink = (videoId) =>
-    [YOUTUBE_VIDEO_SHARE_LINK, videoId].join("");
 
   return (
     <div className={cn("video-block", className)}>

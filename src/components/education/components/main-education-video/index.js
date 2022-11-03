@@ -1,27 +1,55 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
-import { MAIN_VIDEO } from "../../../../helpers/education.config";
+import { MAIN_VIDEO_ID } from "../../../../helpers/education.config";
 import TopMarketPromotion from "../../../top-market-promotion";
+import { getVideoById } from "../../../../helpers/services/get-videos";
+import { getYoutubeLink } from "../helpers";
+import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 
 const MainEducationVideo = () => {
-  const { t } = useTranslation();
+  const [video, setVideo] = useState(null);
+  const { isMobile, isMD, isLG, isXL } = useWindowSize();
+
+  useEffect(() => {
+    const getVideo = async () => {
+      await getVideoById(MAIN_VIDEO_ID)
+        .then((data) => {
+          setVideo(data[0]);
+        })
+        .catch((e) => console.log(e.message));
+    };
+    getVideo();
+  }, []);
+
+  const getVideoStyles = useCallback(() => {
+    switch (true) {
+      case isXL:
+        return { width: "740px", height: "417px" };
+      case isLG:
+        return { width: "422px", height: "238px" };
+      case isMD:
+        return { width: "633px", height: "356px" };
+      case isMobile:
+        return { width: "344px", height: "195px" };
+      default:
+        return { width: "740px", height: "417px" };
+    }
+  }, [isMobile, isMD, isLG, isXL]);
+
   return (
-    <TopMarketPromotion
-      className={cn("black-promotion", "black-promotion--education")}
-      image={MAIN_VIDEO.url}
-      isVideo
-      note={
-        <>
-          <span>{t(MAIN_VIDEO.description)}</span>
-          {MAIN_VIDEO.labels.map((label) => (
-            <span key={`main-video-label-${t(label)}`}>{t(label)}</span>
-          ))}
-        </>
-      }
-    >
-      {t(MAIN_VIDEO.title)}
-    </TopMarketPromotion>
+    <>
+      {video && (
+        <TopMarketPromotion
+          className={cn("black-promotion", "top-market-promotion--education")}
+          image={getYoutubeLink(video.id)}
+          isVideo
+          note={video.snippet.description}
+          videoSettings={getVideoStyles()}
+        >
+          {video.snippet.title}
+        </TopMarketPromotion>
+      )}
+    </>
   );
 };
 
