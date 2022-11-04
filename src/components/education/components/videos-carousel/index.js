@@ -11,6 +11,7 @@ import {
   SM_MAX_WIDTH,
 } from "../../../../helpers/constants";
 import { useScreenWidth } from "./use-screen-width";
+import {ArrowNext} from "../../../shared/icons";
 
 const VideosCarousel = ({ className, videos }) => {
   const responsiveSettings = useScreenWidth();
@@ -18,9 +19,8 @@ const VideosCarousel = ({ className, videos }) => {
   const CarouselNextArrow = (sliderProps) => {
     const { onClick } = sliderProps;
     return (
-        // TODO replace with the real arrow
       <button onClick={onClick} className="videos-carousel__arrow">
-        >
+        <ArrowNext className="videos-carousel__arrow-icon" />
       </button>
     );
   };

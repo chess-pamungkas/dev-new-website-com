@@ -4005,7 +4005,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
       <g
         id="Mask_Group_4519"
         data-name="Mask Group 4519"
-        clip-path="url(#clip-path)"
+        clipPath="url(#clip-path)"
       >
         <g
           id="Group_5616"
@@ -4031,7 +4031,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
       <g
         id="Mask_Group_4520"
         data-name="Mask Group 4520"
-        clip-path="url(#clip-path-2)"
+        clipPath="url(#clip-path-2)"
       >
         <g id="Group_5619" data-name="Group 5619">
           <g
@@ -4565,6 +4565,79 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
               fill="#fff"
             />
           </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+);
+
+export const ArrowNext = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="91"
+    height="91"
+    viewBox="0 0 91 91"
+    className={className}
+  >
+    <defs>
+      <filter
+        id="Ellipse_233"
+        x="0"
+        y="0"
+        width="91"
+        height="91"
+        filterUnits="userSpaceOnUse"
+      >
+        <feOffset input="SourceAlpha" />
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feFlood floodOpacity="0.102" />
+        <feComposite operator="in" in2="blur" />
+        <feComposite in="SourceGraphic" />
+      </filter>
+    </defs>
+    <g
+      id="Group_7460"
+      data-name="Group 7460"
+      transform="translate(-1693 -1922)"
+    >
+      <g transform="matrix(1, 0, 0, 1, 1693, 1922)" filter="url(#Ellipse_233)">
+        <circle
+          id="Ellipse_233-2"
+          data-name="Ellipse 233"
+          cx="30.5"
+          cy="30.5"
+          r="30.5"
+          transform="translate(15 15)"
+          fill="#fff"
+        />
+      </g>
+      <g
+        id="Group_7405"
+        data-name="Group 7405"
+        transform="translate(1732.4 1955.978)"
+      >
+        <line
+          id="Line_163"
+          data-name="Line 163"
+          y1="11.522"
+          x2="12.2"
+          transform="translate(0 11.522)"
+          fill="none"
+          stroke="#f40"
+          strokeLinecap="round"
+          strokeWidth="4"
+        />
+        <g id="Group_7404" data-name="Group 7404" transform="translate(0)">
+          <line
+            id="Line_164"
+            data-name="Line 164"
+            x2="12.2"
+            y2="11.522"
+            fill="none"
+            stroke="#f40"
+            strokeLinecap="round"
+            strokeWidth="4"
+          />
         </g>
       </g>
     </g>

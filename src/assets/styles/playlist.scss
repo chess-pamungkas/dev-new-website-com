@@ -74,16 +74,33 @@
 
   &__arrow {
     @include button-supress();
-    color: map-get($colors, "red");
-    font-weight: map-get($font-weight, "black");
-    font-size: 25px;
     position: absolute;
-    top: calc(50% - 31px);
-    right: -81px;
-    width: 61px;
-    height: 61px;
-    box-shadow: 0 0 10px #0000001a;
-    border-radius: 50%;
+    top: calc(50% - 18px);
+    right: -45px;
+
+
+    @include tablet {
+      right: -50px;
+    }
+
+    @include desktop-lg {
+      top: calc(50% - 31px);
+      right: -65px;
+    }
+
+    @include desktop-xl {
+      right: -81px;
+    }
+  }
+
+  &__arrow-icon {
+    width: 36px;
+    height: 36px;
+
+    @include tablet {
+      width: 61px;
+      height: 61px;
+    }
   }
 }
 
