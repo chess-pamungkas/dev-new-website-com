@@ -231,3 +231,27 @@
     }
   }
 }
+
+.mt-promotion--ctrader {
+
+  @include mobile {
+    padding-top: 10px;
+    padding-bottom: 38px;
+  }
+
+  .mt-promotion__img {
+    height: 258px;
+
+    @include tablet {
+      height: 434px;
+    }
+
+    @include desktop-lg {
+      height: 318px;
+    }
+
+    @include desktop-xl {
+      height: 600px;
+    }
+  }
+}

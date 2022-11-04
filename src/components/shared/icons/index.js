@@ -643,219 +643,248 @@ export const AdvantageIcon7 = ({ className }) => (
   </svg>
 );
 
+const FLAG_WIDTH = 25;
+
 export const EnFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/en.svg"
+    src="../../../assets/images/icons/languages/en.png"
     alt="en"
+    width={FLAG_WIDTH}
   />
 );
 
 export const DeFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/de.svg"
+    src="../../../assets/images/icons/languages/de.png"
     alt="de"
+    width={FLAG_WIDTH}
   />
 );
 
 export const FrFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/fr.svg"
+    src="../../../assets/images/icons/languages/fr.png"
     alt="fr"
+    width={FLAG_WIDTH}
   />
 );
 
 export const PlFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/pl.svg"
+    src="../../../assets/images/icons/languages/pl.png"
     alt="pl"
+    width={FLAG_WIDTH}
   />
 );
 
 export const PtFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/pt.svg"
+    src="../../../assets/images/icons/languages/pt.png"
     alt="pt"
+    width={FLAG_WIDTH}
   />
 );
 
 export const DaFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/da.svg"
+    src="../../../assets/images/icons/languages/da.png"
     alt="da"
+    width={FLAG_WIDTH}
   />
 );
 
 export const FiFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/fi.svg"
+    src="../../../assets/images/icons/languages/fi.png"
     alt="fi"
+    width={FLAG_WIDTH}
   />
 );
 
 export const EsFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/es.svg"
+    src="../../../assets/images/icons/languages/es.png"
     alt="es"
+    width={FLAG_WIDTH}
   />
 );
 
 export const RuFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/ru.svg"
+    src="../../../assets/images/icons/languages/ru.png"
     alt="ru"
+    width={FLAG_WIDTH}
   />
 );
 
 export const ArFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/ar.svg"
+    src="../../../assets/images/icons/languages/ar.png"
     alt="ar"
+    width={FLAG_WIDTH}
   />
 );
 
 export const NlFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/nl.svg"
+    src="../../../assets/images/icons/languages/nl.png"
     alt="nl"
+    width={FLAG_WIDTH}
   />
 );
 
 export const SwFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/sw.svg"
+    src="../../../assets/images/icons/languages/sw.png"
     alt="sw"
+    width={FLAG_WIDTH}
   />
 );
 
 export const RoFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/ro.svg"
+    src="../../../assets/images/icons/languages/ro.png"
     alt="ro"
+    width={FLAG_WIDTH}
   />
 );
 
 export const ItFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/it.svg"
+    src="../../../assets/images/icons/languages/it.png"
     alt="it"
+    width={FLAG_WIDTH}
   />
 );
 
 export const CnFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/cn.svg"
+    src="../../../assets/images/icons/languages/cn.png"
     alt="cn"
+    width={FLAG_WIDTH}
   />
 );
 
 export const NoFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/no.svg"
+    src="../../../assets/images/icons/languages/no.png"
     alt="no"
+    width={FLAG_WIDTH}
   />
 );
 
 export const CzFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/cz.svg"
+    src="../../../assets/images/icons/languages/cz.png"
     alt="cz"
+    width={FLAG_WIDTH}
   />
 );
 
 export const VnFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/vn.svg"
+    src="../../../assets/images/icons/languages/vn.png"
     alt="vn"
+    width={FLAG_WIDTH}
   />
 );
 
 export const ThFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/th.svg"
+    src="../../../assets/images/icons/languages/th.png"
     alt="th"
+    width={FLAG_WIDTH}
   />
 );
 
 export const MyFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/my.svg"
+    src="../../../assets/images/icons/languages/my.png"
     alt="my"
+    width={FLAG_WIDTH}
   />
 );
 
 export const IdFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/id.svg"
+    src="../../../assets/images/icons/languages/id.png"
     alt="id"
+    width={FLAG_WIDTH}
   />
 );
 
 export const KrFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/kr.svg"
+    src="../../../assets/images/icons/languages/kr.png"
     alt="kr"
+    width={FLAG_WIDTH}
   />
 );
 
 export const JpFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/jp.svg"
+    src="../../../assets/images/icons/languages/jp.png"
     alt="jp"
+    width={FLAG_WIDTH}
   />
 );
 
 export const InFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/in.svg"
+    src="../../../assets/images/icons/languages/in.png"
     alt="in"
+    width={FLAG_WIDTH}
   />
 );
 
 export const BdFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/bd.svg"
+    src="../../../assets/images/icons/languages/bd.png"
     alt="bd"
+    width={FLAG_WIDTH}
   />
 );
 
 export const GrFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/gr.svg"
+    src="../../../assets/images/icons/languages/gr.png"
     alt="gr"
+    width={FLAG_WIDTH}
   />
 );
 
 export const PhFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/ph.svg"
+    src="../../../assets/images/icons/languages/ph.png"
     alt="ph"
+    width={FLAG_WIDTH}
   />
 );
 
@@ -3116,7 +3145,7 @@ export const PartnersAdvantageIcon1 = ({ className }) => (
         transform="translate(374 2048)"
         fill="#fff"
         stroke="#f40"
-        stroke-width="2"
+        strokeWidth="2"
       >
         <rect width="64" height="64" rx="5" stroke="none" />
         <rect x="1" y="1" width="62" height="62" rx="4" fill="none" />
@@ -3132,7 +3161,7 @@ export const PartnersAdvantageIcon1 = ({ className }) => (
           transform="translate(150.31 -37.266)"
           fill="#fff"
           stroke="#f40"
-          stroke-width="3"
+          strokeWidth="3"
         >
           <rect width="45" height="28.846" rx="3" stroke="none" />
           <rect
@@ -3151,7 +3180,7 @@ export const PartnersAdvantageIcon1 = ({ className }) => (
           transform="translate(153.194 -28.612)"
           fill="none"
           stroke="#f40"
-          stroke-width="4"
+          strokeWidth="4"
         />
         <line
           id="Line_141"
@@ -3160,7 +3189,7 @@ export const PartnersAdvantageIcon1 = ({ className }) => (
           transform="translate(155.502 -15.919)"
           fill="none"
           stroke="#f40"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           id="Line_142"
@@ -3169,7 +3198,7 @@ export const PartnersAdvantageIcon1 = ({ className }) => (
           transform="translate(165.886 -15.919)"
           fill="none"
           stroke="#f40"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           id="Line_143"
@@ -3178,7 +3207,7 @@ export const PartnersAdvantageIcon1 = ({ className }) => (
           transform="translate(177.425 -15.919)"
           fill="none"
           stroke="#f40"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           id="Line_144"
@@ -3187,7 +3216,7 @@ export const PartnersAdvantageIcon1 = ({ className }) => (
           transform="translate(187.81 -15.919)"
           fill="none"
           stroke="#f40"
-          stroke-width="2"
+          strokeWidth="2"
         />
       </g>
       <g
@@ -3256,7 +3285,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-135.402 -799.828)"
             fill="#1c1d21"
             stroke="#f40"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
         </g>
         <g
@@ -3271,7 +3300,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-142.401 -809.131)"
             fill="#1c1d21"
             stroke="#f40"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
         </g>
         <g
@@ -3286,7 +3315,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-143.753 -810.471)"
             fill="#1c1d21"
             stroke="#f40"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
         </g>
         <g
@@ -3301,7 +3330,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-142.401 -809.131)"
             fill="#1c1d21"
             stroke="#f40"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
         </g>
         <g
@@ -3316,7 +3345,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-145.027 -808.272)"
             fill="#1c1d21"
             stroke="#f40"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
         </g>
         <g
@@ -3331,7 +3360,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-137.425 -801.988)"
             fill="#f40"
             stroke="#f40"
-            stroke-width="1"
+            strokeWidth="1"
           />
         </g>
         <g
@@ -3346,7 +3375,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-151.361 -813.769)"
             fill="#1c1d21"
             stroke="#f40"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
         </g>
         <g
@@ -3361,7 +3390,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-152.649 -816.917)"
             fill="#1c1d21"
             stroke="#f40"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
         </g>
         <g
@@ -3376,7 +3405,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-148.928 -811.558)"
             fill="#1c1d21"
             stroke="#f40"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
         </g>
         <g
@@ -3391,7 +3420,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-139.85 -806.074)"
             fill="#1c1d21"
             stroke="#f40"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
         </g>
         <g
@@ -3406,7 +3435,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-137.425 -818.965)"
             fill="#f40"
             stroke="#f40"
-            stroke-width="1"
+            strokeWidth="1"
           />
         </g>
         <g
@@ -3421,7 +3450,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-151.069 -805.496)"
             fill="#1c1d21"
             stroke="#f40"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
         </g>
         <g
@@ -3436,7 +3465,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-158.046 -808.072)"
             fill="#1c1d21"
             stroke="#f40"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
         </g>
         <g
@@ -3451,7 +3480,7 @@ export const PartnersAdvantageIcon2 = ({ className }) => (
             transform="translate(-139.839 -818.387)"
             fill="#1c1d21"
             stroke="#f40"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
         </g>
       </g>
@@ -3507,7 +3536,7 @@ export const PartnersAdvantageIcon4 = ({ className }) => (
             transform="translate(-182.477 -583.026)"
             fill="#f40"
             stroke="#f40"
-            stroke-width="1"
+            strokeWidth="1"
           />
         </g>
         <g
@@ -3522,7 +3551,7 @@ export const PartnersAdvantageIcon4 = ({ className }) => (
             transform="translate(-184.829 -600.952)"
             fill="#f40"
             stroke="#f40"
-            stroke-width="1"
+            strokeWidth="1"
           />
         </g>
         <g
@@ -3537,7 +3566,7 @@ export const PartnersAdvantageIcon4 = ({ className }) => (
             transform="translate(-193.351 -600.952)"
             fill="#f40"
             stroke="#f40"
-            stroke-width="1"
+            strokeWidth="1"
           />
         </g>
         <g
@@ -3552,7 +3581,7 @@ export const PartnersAdvantageIcon4 = ({ className }) => (
             transform="translate(-190.695 -587.26)"
             fill="#f40"
             stroke="#f40"
-            stroke-width="1"
+            strokeWidth="1"
           />
         </g>
         <g
@@ -3567,7 +3596,7 @@ export const PartnersAdvantageIcon4 = ({ className }) => (
             transform="translate(-187.16 -588.144)"
             fill="#f40"
             stroke="#f40"
-            stroke-width="1"
+            strokeWidth="1"
           />
         </g>
         <g
@@ -3582,7 +3611,7 @@ export const PartnersAdvantageIcon4 = ({ className }) => (
             transform="translate(-186.477 -587.024)"
             fill="#f40"
             stroke="#f40"
-            stroke-width="1"
+            strokeWidth="1"
           />
         </g>
       </g>
@@ -3617,7 +3646,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
               transform="translate(-271.24 -772.577)"
               fill="#f40"
               stroke="#f40"
-              stroke-width="1.2"
+              strokeWidth="1.2"
             />
           </g>
           <g
@@ -3637,7 +3666,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-277.863 -760.073)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3652,7 +3681,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-288.258 -773.65)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3667,7 +3696,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-277.863 -773.65)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3682,7 +3711,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-267.47 -773.65)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3697,7 +3726,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-274.716 -770.266)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3712,7 +3741,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-271.24 -770.266)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3727,7 +3756,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-281.634 -770.266)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3742,7 +3771,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-290.094 -770.266)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3757,7 +3786,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-292.028 -772.577)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3772,7 +3801,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-281.634 -767.614)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3787,7 +3816,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-281.634 -772.481)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3802,7 +3831,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-279.089 -761.389)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3817,7 +3846,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-270.037 -776.282)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3832,7 +3861,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-280.431 -776.282)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
             <g
@@ -3847,7 +3876,7 @@ export const PartnersAdvantageIcon5 = ({ className }) => (
                 transform="translate(-290.825 -776.282)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </g>
           </g>
@@ -3954,7 +3983,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
           d="M238.537-7.932h29.939s4.166-1,7.666,6.832,15.5-19.332,15.5-19.332L264.477-41.6l-27.5,3Z"
           fill="none"
           stroke="#707070"
-          stroke-width="1"
+          strokeWidth="1"
         />
       </clipPath>
       <clipPath id="clip-path-2">
@@ -3964,7 +3993,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
           d="M210.31,11.4v-13s-.833-6.5,8.667-6.666,27.833,0,27.833,0V-36.6H195.143l-2.5,29.168,7.334,19.5Z"
           fill="none"
           stroke="#707070"
-          stroke-width="1"
+          strokeWidth="1"
         />
       </clipPath>
     </defs>
@@ -3976,7 +4005,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
       <g
         id="Mask_Group_4519"
         data-name="Mask Group 4519"
-        clip-path="url(#clip-path)"
+        clipPath="url(#clip-path)"
       >
         <g
           id="Group_5616"
@@ -4002,7 +4031,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
       <g
         id="Mask_Group_4520"
         data-name="Mask Group 4520"
-        clip-path="url(#clip-path-2)"
+        clipPath="url(#clip-path-2)"
       >
         <g id="Group_5619" data-name="Group 5619">
           <g
@@ -4016,7 +4045,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
               transform="translate(150.31 -37.266)"
               fill="#fff"
               stroke="#f40"
-              stroke-width="3"
+              strokeWidth="3"
             >
               <rect width="39" height="25" rx="3" stroke="none" />
               <rect
@@ -4035,7 +4064,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
               transform="translate(152.81 -29.766)"
               fill="none"
               stroke="#f40"
-              stroke-width="4"
+              strokeWidth="4"
             />
             <line
               id="Line_141"
@@ -4044,7 +4073,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
               transform="translate(154.81 -18.766)"
               fill="none"
               stroke="#f40"
-              stroke-width="2"
+              strokeWidth="2"
             />
             <line
               id="Line_142"
@@ -4053,7 +4082,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
               transform="translate(163.81 -18.766)"
               fill="none"
               stroke="#f40"
-              stroke-width="2"
+              strokeWidth="2"
             />
             <line
               id="Line_143"
@@ -4062,7 +4091,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
               transform="translate(173.81 -18.766)"
               fill="none"
               stroke="#f40"
-              stroke-width="2"
+              strokeWidth="2"
             />
             <line
               id="Line_144"
@@ -4071,7 +4100,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
               transform="translate(182.81 -18.766)"
               fill="none"
               stroke="#f40"
-              stroke-width="2"
+              strokeWidth="2"
             />
           </g>
           <g
@@ -4085,7 +4114,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
               transform="translate(150.31 -37.266)"
               fill="#fff"
               stroke="#f40"
-              stroke-width="3"
+              strokeWidth="3"
             >
               <rect width="39" height="25" rx="3" stroke="none" />
               <rect
@@ -4104,7 +4133,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
               transform="translate(152.81 -29.766)"
               fill="none"
               stroke="#f40"
-              stroke-width="4"
+              strokeWidth="4"
             />
             <line
               id="Line_141-2"
@@ -4113,7 +4142,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
               transform="translate(154.81 -18.766)"
               fill="none"
               stroke="#f40"
-              stroke-width="2"
+              strokeWidth="2"
             />
             <line
               id="Line_142-2"
@@ -4122,7 +4151,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
               transform="translate(163.81 -18.766)"
               fill="none"
               stroke="#f40"
-              stroke-width="2"
+              strokeWidth="2"
             />
             <line
               id="Line_143-2"
@@ -4131,7 +4160,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
               transform="translate(173.81 -18.766)"
               fill="none"
               stroke="#f40"
-              stroke-width="2"
+              strokeWidth="2"
             />
             <line
               id="Line_144-2"
@@ -4140,7 +4169,7 @@ export const PartnersAdvantageIcon7 = ({ className }) => (
               transform="translate(182.81 -18.766)"
               fill="none"
               stroke="#f40"
-              stroke-width="2"
+              strokeWidth="2"
             />
           </g>
         </g>
@@ -4291,7 +4320,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-198.89 -77.443)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4306,7 +4335,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-196.095 -82.85)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4321,7 +4350,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-193.505 -81.386)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4336,7 +4365,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-195.808 -72.562)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4351,7 +4380,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-193.505 -65.375)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4366,7 +4395,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-198.89 -69.718)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4381,7 +4410,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-194.276 -77.443)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4396,7 +4425,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-196.095 -65.746)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4411,7 +4440,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-188.301 -81.386)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4426,7 +4455,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-187.661 -72.562)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4441,7 +4470,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-181.379 -69.718)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4456,7 +4485,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-188.301 -65.375)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4471,7 +4500,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-187.661 -77.443)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4486,7 +4515,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-184.605 -82.85)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4501,7 +4530,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-184.605 -65.746)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
             <g
@@ -4516,7 +4545,7 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
                 transform="translate(-181.379 -77.443)"
                 fill="#f40"
                 stroke="#f40"
-                stroke-width="0.5"
+                strokeWidth="0.5"
               />
             </g>
           </g>
@@ -4536,6 +4565,79 @@ export const PartnersAdvantageIcon8 = ({ className }) => (
               fill="#fff"
             />
           </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+);
+
+export const ArrowNext = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="91"
+    height="91"
+    viewBox="0 0 91 91"
+    className={className}
+  >
+    <defs>
+      <filter
+        id="Ellipse_233"
+        x="0"
+        y="0"
+        width="91"
+        height="91"
+        filterUnits="userSpaceOnUse"
+      >
+        <feOffset input="SourceAlpha" />
+        <feGaussianBlur stdDeviation="5" result="blur" />
+        <feFlood floodOpacity="0.102" />
+        <feComposite operator="in" in2="blur" />
+        <feComposite in="SourceGraphic" />
+      </filter>
+    </defs>
+    <g
+      id="Group_7460"
+      data-name="Group 7460"
+      transform="translate(-1693 -1922)"
+    >
+      <g transform="matrix(1, 0, 0, 1, 1693, 1922)" filter="url(#Ellipse_233)">
+        <circle
+          id="Ellipse_233-2"
+          data-name="Ellipse 233"
+          cx="30.5"
+          cy="30.5"
+          r="30.5"
+          transform="translate(15 15)"
+          fill="#fff"
+        />
+      </g>
+      <g
+        id="Group_7405"
+        data-name="Group 7405"
+        transform="translate(1732.4 1955.978)"
+      >
+        <line
+          id="Line_163"
+          data-name="Line 163"
+          y1="11.522"
+          x2="12.2"
+          transform="translate(0 11.522)"
+          fill="none"
+          stroke="#f40"
+          strokeLinecap="round"
+          strokeWidth="4"
+        />
+        <g id="Group_7404" data-name="Group 7404" transform="translate(0)">
+          <line
+            id="Line_164"
+            data-name="Line 164"
+            x2="12.2"
+            y2="11.522"
+            fill="none"
+            stroke="#f40"
+            strokeLinecap="round"
+            strokeWidth="4"
+          />
         </g>
       </g>
     </g>

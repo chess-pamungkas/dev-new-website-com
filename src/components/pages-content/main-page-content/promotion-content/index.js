@@ -103,8 +103,6 @@ const PromotionContent = ({ headerRef }) => {
     isPromo3Scrolled
   );
 
-  console.log(height);
-
   useEffect(() => {
     if (
       dataTradePromoRef?.isIntersecting &&

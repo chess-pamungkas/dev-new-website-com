@@ -3,6 +3,22 @@ import metaTrader5 from "../assets/images/icons/tools/metaTrader5.svg";
 import { MT4_PAGE_LINK, MT5_PAGE_LINK } from "./constants";
 import { MT4_DOC, MT5_DOC } from "./documents";
 
+export const CTRADER_DOWNLOAD_LINKS = {
+  android: "/",
+  ios: "/",
+  windows: "/",
+  mac: "/",
+  webtrader: "/",
+};
+
+export const TRADING_VIEW_DOWNLOAD_LINKS = {
+  android: "/",
+  ios: "/",
+  windows: "/",
+  mac: "/",
+  webtrader: "/",
+};
+
 export const MT4_DOWNLOAD_LINKS = {
   android: "/",
   ios: "/",
@@ -232,6 +248,120 @@ export const META_TRADER_5 = {
     },
   ],
 };
+
+export const CTRADER_ADVANTAGES = [
+  {
+    key: "adv1",
+    text: "ctrader_market-items-list_adv1",
+  },
+  {
+    key: "adv2",
+    text: "ctrader_market-items-list_adv2",
+  },
+  {
+    key: "adv3",
+    text: "ctrader_market-items-list_adv3",
+  },
+  {
+    key: "adv4",
+    text: "ctrader_market-items-list_adv4",
+  },
+  {
+    key: "adv5",
+    text: "ctrader_market-items-list_adv5",
+  },
+  {
+    key: "adv6",
+    text: "ctrader_market-items-list_adv6",
+  },
+  {
+    key: "adv7",
+    text: "ctrader_market-items-list_adv7",
+  },
+  {
+    key: "adv8",
+    text: "ctrader_market-items-list_adv8",
+  },
+  {
+    key: "adv9",
+    text: "ctrader_market-items-list_adv9",
+  },
+  {
+    key: "adv10",
+    text: "ctrader_market-items-list_adv10",
+  },
+  {
+    key: "adv11",
+    text: "ctrader_market-items-list_adv11",
+  },
+  {
+    key: "adv12",
+    text: "ctrader_market-items-list_adv12",
+  },
+  {
+    key: "adv13",
+    text: "ctrader_market-items-list_adv13",
+  },
+];
+
+export const TRADING_VIEW_ADVANTAGES = [
+  {
+    key: "adv1",
+    text: "trading-view_market-items-list_adv1",
+  },
+  {
+    key: "adv2",
+    text: "trading-view_market-items-list_adv2",
+  },
+  {
+    key: "adv3",
+    text: "trading-view_market-items-list_adv3",
+  },
+  {
+    key: "adv4",
+    text: "trading-view_market-items-list_adv4",
+  },
+  {
+    key: "adv5",
+    text: "trading-view_market-items-list_adv5",
+  },
+  {
+    key: "adv6",
+    text: "trading-view_market-items-list_adv6",
+  },
+  {
+    key: "adv7",
+    text: "trading-view_market-items-list_adv7",
+  },
+  {
+    key: "adv8",
+    text: "trading-view_market-items-list_adv8",
+  },
+  {
+    key: "adv9",
+    text: "trading-view_market-items-list_adv9",
+  },
+  {
+    key: "adv10",
+    text: "trading-view_market-items-list_adv10",
+  },
+  {
+    key: "adv11",
+    text: "trading-view_market-items-list_adv11",
+  },
+  {
+    key: "adv12",
+    text: "trading-view_market-items-list_adv12",
+  },
+  {
+    key: "adv13",
+    text: "trading-view_market-items-list_adv13",
+  },
+  {
+    key: "adv14",
+    text: "trading-view_market-items-list_adv14",
+  },
+];
 
 export const COLUMNS_PLATFORMS = [
   {

@@ -36,12 +36,13 @@ import {
   LEGAL_PAGE_LINK,
   MT4_PAGE_LINK,
   MT5_PAGE_LINK,
+  CTRADER_PAGE_LINK,
   PARTNERS_PAGE_LINK,
   PLATFORMS_LINK,
   PROFESSIONAL_QUALIFICATION_PAGE_LINK,
   SHARES_PAGE_LINK,
   SPREADS_AND_FEES_PAGE_LINK,
-  WITHDRAWAL_PAGE_LINK,
+  WITHDRAWAL_PAGE_LINK, TRADING_VIEW_PAGE_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
@@ -157,7 +158,7 @@ const FSA_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
 
 const TRADING_TAB_COPY_TRADING_ITEM = {
   title: "header-nav-tab-trading-copy-trading-title",
-  link: "",
+  link: CTRADER_PAGE_LINK,
   isSubtitle: true,
   icon: CopyTradingIcon,
   description: "header-nav-tab-trading-copy-trading-desc",
@@ -188,7 +189,7 @@ const TRADING_TAB_TRADING_TOOLS_ITEM = {
   subtitles: [
     {
       title: "header-nav-tab-trading-trading-tools-tradeview-title",
-      link: "",
+      link: TRADING_VIEW_PAGE_LINK,
       description: "header-nav-tab-trading-trading-tools-tradeview-desc",
     },
     {
