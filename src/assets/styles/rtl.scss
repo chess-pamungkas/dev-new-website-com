@@ -1,0 +1,49 @@
+@import "vars";
+@import "mixins";
+
+.header--rtl {
+  .header__left {
+    padding-right: 73px;
+    padding-left: unset;
+  }
+
+  .header__right {
+    &:after {
+      border-left: 25px solid map-get($colors, "red");
+      border-top: $header-height-small solid transparent;
+      content: "";
+      height: 100%;
+      right: -25px;
+      position: absolute;
+
+      @include desktop-xl {
+        border-top: $header-height solid transparent;
+      }
+    }
+  }
+
+  .header__signin {
+    margin-right: 26px;
+    margin-left: unset;
+    padding: 0 33px;
+
+    @include desktop-xl {
+      margin-right: 50px;
+      margin-left: unset;
+      padding: 0 38px;
+    }
+  }
+
+  .header__start {
+    margin-right: 10px;
+    margin-left: unset;
+  }
+
+  .lang-select {
+    flex-direction: row-reverse;
+  }
+
+  .navbar-item__title {
+    order: 2;
+  }
+}
