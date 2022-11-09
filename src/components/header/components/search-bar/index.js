@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useCallback, useContext, useRef, useState } from "react";
 import cn from "classnames";
 import { navigate } from "gatsby";
 import { Link, useTranslation } from "gatsby-plugin-react-i18next";
@@ -9,21 +9,24 @@ import {
   SEARCH_MIN_QUERY_LENGTH,
   INITIAL_SEARCH_STATE,
   SEARCH_PAGE_LINK,
-  SEARCH_PARAM_NAME
+  SEARCH_PARAM_NAME,
 } from "../../../../helpers/constants";
 import { SearchIcon } from "../../../shared/icons";
 import { useSearchData } from "../../../../helpers/hooks/use-search-data";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
+import { ArabicNumbers } from "react-native-arabic-numbers";
 
 const SearchBar = ({
   className,
   isExpandable = false,
   isNavbarOpen = false,
-  onSubmit
+  onSubmit,
 }) => {
   const { t } = useTranslation();
   const { getSearchResults } = useSearchData();
   const { searchState, setSearchState } = useContext(SearchContext);
+  const isRTL = useRtlDirection();
 
   const [isActive, setIsActive] = useState(false);
 
@@ -34,6 +37,12 @@ const SearchBar = ({
     setIsActive(true);
     searchInput.current.focus();
   };
+
+  const getSearchMinQueryLocale = useCallback(() => {
+    return isRTL
+      ? ArabicNumbers(SEARCH_MIN_QUERY_LENGTH)
+      : SEARCH_MIN_QUERY_LENGTH;
+  }, [isRTL]);
 
   useOnClickOutside(searchBarRef, () => {
     if (!isExpandable && !isNavbarOpen) return;
@@ -51,29 +60,31 @@ const SearchBar = ({
       setSearchState({
         query,
         results,
-        noResultsFound: !results.length
+        noResultsFound: !results.length,
       });
     } else {
       setSearchState({
         query,
         results: [],
-        noResultsFound: false
+        noResultsFound: false,
       });
     }
   };
 
-  const handleMoreResultsClick = e => {
+  const handleMoreResultsClick = (e) => {
     if (!isNavbarOpen) return;
 
     onSubmit(e);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (onSubmit) onSubmit(e);
 
     navigate(
-      `${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(searchState.query)}`
+      `${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(
+        searchState.query
+      )}`
     );
   };
 
@@ -108,10 +119,7 @@ const SearchBar = ({
           onChange={handleSearch}
           value={searchState.query}
         />
-        <button
-          className="search-bar__submit"
-          type="submit"
-        >
+        <button className="search-bar__submit" type="submit">
           {t("search-submit-btn")}
         </button>
       </div>
@@ -137,8 +145,7 @@ const SearchBar = ({
                       </span>
                     </Link>
                   </li>
-                ))
-              }
+                ))}
 
               {searchState.results.length > DROPDOWN_SEARCH_ITEMS_TO_SHOW && (
                 <li className="search-bar__results-item">
@@ -167,8 +174,11 @@ const SearchBar = ({
               ) : (
                 <li className="search-bar__results-item">
                   <span className="search-bar__results-title">
-                    {t("search-min-query-part1")} {SEARCH_MIN_QUERY_LENGTH}{" "}
-                    {t("search-min-query-part2")}
+                    {`${t(
+                      "search-min-query-part1"
+                    )} ${getSearchMinQueryLocale()} ${t(
+                      "search-min-query-part2"
+                    )}`}
                   </span>
                 </li>
               )}

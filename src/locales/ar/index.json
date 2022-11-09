@@ -74,6 +74,16 @@
   "button-trade-now": "التجارة الآن",
   "button-start-now": "ابدأ الآن",
 
+  "search-placeholder": "بحث...",
+  "search-submit-btn": "اذهب",
+  "search-no-results": "لا توجد نتائج",
+  "search-no-results-title": "لم يتم العثور على نتائج",
+  "search-no-results-text": "للأسف لم نتمكن من العثور على ما تبحث عنه.",
+  "search-go-back-btn": "العودة",
+  "search-more-results": "العثور على مزيد من النتائج...",
+  "search-min-query-part1": "يرجى إدراج على الأقل",
+  "search-min-query-part2": "الرموز",
+
   "lang-select-popup-title": "اختر لغتك",
 
   "index_main-promotion-title": "تجربة التداول الأمثل تماما ل",

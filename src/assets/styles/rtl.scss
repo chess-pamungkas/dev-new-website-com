@@ -1,6 +1,18 @@
 @import "vars";
 @import "mixins";
 
+@mixin custom-breakpoint-1200 {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin custom-breakpoint-1600 {
+  @media screen and (min-width: 1600px) {
+    @content;
+  }
+}
+
 .header--rtl {
   .header__left {
     padding-right: 73px;
@@ -37,6 +49,17 @@
   .header__start {
     margin-right: 10px;
     margin-left: unset;
+    // TODO check this padding after translations will be added
+    padding: 0 50px;
+  }
+
+  .header__search {
+    right: unset;
+    left: 54px;
+  }
+
+  .search-bar {
+    flex-direction: row;
   }
 
   .lang-select {
@@ -45,5 +68,72 @@
 
   .navbar-item__title {
     order: 2;
+  }
+
+  .dropdown-item__subtitles {
+    margin-left: unset;
+    margin-right: 47px;
+  }
+
+  .dropdown-item__icon {
+    margin-right: unset;
+    margin-left: 10px;
+  }
+}
+
+.main-promotion--rtl {
+
+  @include desktop-lg {
+    flex-direction: row-reverse;
+  }
+
+  .main-promotion__wrapper {
+    @include desktop-xl {
+      justify-content: flex-start;
+    }
+  }
+
+  .main-promotion__photo {
+    @include desktop-lg {
+      right: 295px;
+    }
+
+    @include custom-breakpoint-1200 {
+      right: 30%;
+    }
+
+    @include custom-breakpoint-1600 {
+      right: 35%;
+    }
+
+    @include desktop-xl {
+      right: 185px;
+      left: unset;
+    }
+  }
+
+  .main-promotion__person {
+    text-align: right;
+  }
+
+  .main-promotion__title {
+    max-width: 100%;
+    text-align: right;
+  }
+
+  .main-promotion__block {
+    @include tablet {
+      width: 35%;
+    }
+  }
+
+  .button-link {
+    float: right;
+  }
+}
+
+.search-page__form--rtl {
+  .search-page__form-input {
+    padding: 0 15px;
   }
 }

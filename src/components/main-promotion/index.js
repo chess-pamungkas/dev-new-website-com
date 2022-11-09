@@ -10,12 +10,14 @@ import {
   SECT1_TEXT_SEQUENCES,
 } from "../../helpers/marketing.config";
 import { transformParamToKey } from "../../helpers/services/marketing-service";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 
 const MainPromotion = ({ className }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
   const { t } = useTranslation();
-  const {content, sect1} = useContext(MarketingContext);
+  const { content, sect1 } = useContext(MarketingContext);
+  const isRTL = useRtlDirection();
 
   const hero =
     CONTENT_HEROES[transformParamToKey(content)] || CONTENT_HEROES.default;
@@ -25,7 +27,11 @@ const MainPromotion = ({ className }) => {
     SECT1_TEXT_SEQUENCES.default;
 
   return (
-    <section className={cn("main-promotion", className)}>
+    <section
+      className={cn("main-promotion", className, {
+        "main-promotion--rtl": isRTL,
+      })}
+    >
       <div className="main-promotion__person">
         <span className="main-promotion__name">{t(hero.name)}</span>
         <span className="main-promotion__description">{t(hero.text)}</span>
