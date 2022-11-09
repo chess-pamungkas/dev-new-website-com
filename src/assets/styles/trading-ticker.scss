@@ -113,50 +113,62 @@
 }
 
 .trading-symbol {
-  position: relative;
+  display: flex;
   padding: 15px 20px 8px;
   border-radius: 5px;
   box-shadow: 0 5px 10px #0000001a;
-  flex-basis: 138px;
-  flex-shrink: 0;
   margin-right: 10px;
+  flex-direction: column;
+  min-width: 138px;
 
   @include tablet {
-    padding: 12px 21px 20px;
-    flex-basis: 378px;
+    min-width: unset;
+    padding: 12px 21px;
     border-radius: 0;
     margin-right: 0;
+    flex-direction: row;
+  }
+
+  &__data {
+    display: flex;
+
+    @include tablet {
+      padding-right: 20px;
+    }
+
+    @include desktop-xl {
+      padding-right: 38px;
+    }
   }
 
   &__title {
     position: relative;
-    margin-bottom: 2px;
-    font-family: $font;
+    margin: 0 0 7px;
     font-size: 16px;
     line-height: 20px;
     font-weight: map-get($font-weight, "black");
     color: map-get($colors, "red");
 
     @include tablet {
+      margin: 0 0 3px;
       font-size: 21px;
       line-height: 26px;
-      font-weight: map-get($font-weight, "black");
     }
 
-    &-content {
-      display: inline-block;
-      position: relative;
+    &:after {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      display: block;
+      width: 28px;
+      height: 2px;
+      content: " ";
+      background: map-get($colors, "red");
+      transform: translateY(-50%);
 
-      &:after {
-        position: absolute;
-        top: 50%;
-        right: -36px;
-        display: block;
-        width: 28px;
-        height: 2px;
-        content: " ";
-        background: map-get($colors, "red");
-        transform: translateY(-50%);
+      @include tablet {
+        right: unset;
+        left: -100%;
       }
     }
   }
@@ -173,17 +185,17 @@
 
   &__option {
     font-family: $font-secondary;
-    flex-basis: 50%;
-    margin-top: 7px;
-
-    &:last-child {
-      margin-right: 0;
-    }
+    width: 50%;
+    margin-bottom: 10px;
 
     @include tablet {
-      flex-basis: auto;
-      margin-top: 0;
+      width: unset;
+      margin-bottom: unset;
       margin-right: 24px;
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
 
     .trading-symbol__option-value {
@@ -192,8 +204,9 @@
     }
   }
 
-  &__option-title,
-  &__option-value {
+  &__option-title {
+    font-size: 11px;
+    line-height: 13px;
     color: map-get($colors, "black");
 
     @include tablet {
@@ -202,22 +215,11 @@
     }
   }
 
-  &__option-title {
-    font-size: 11px;
-    line-height: 13px;
-  }
-
   &__option-value {
     font-size: 10px;
     line-height: 12px;
-
-    @include tablet {
-      margin-top: 0;
-    }
-  }
-
-  &__option-value {
     margin-top: 4px;
+    color: map-get($colors, "black");
     font-weight: map-get($font-weight, "bold");
     transition: 0.1s;
 
@@ -228,22 +230,24 @@
     &--down {
       color: #ff0000;
     }
+
+    @include tablet {
+      margin-top: 0;
+      font-size: 13px;
+      line-height: 16px;
+    }
   }
 
   &__actions {
-    margin: 15px -14px 0;
-    text-align: center;
     border-top: 1px solid map-get($colors, "red");
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 
     @include tablet {
-      position: absolute;
-      right: 21px;
-      top: 12px;
-      margin-left: 0;
-      margin-right: 0;
+      flex-direction: column;
+      border-top: none;
       border-left: 1px solid map-get($colors, "red");
-      border-top: 0;
-      margin-top: 0;
     }
   }
 
@@ -268,7 +272,7 @@
   }
 
   &__buy {
-    color: #ff0000;
+    color: #00ff66;
 
     @include tablet {
       border-bottom: 1px solid map-get($colors, "red");
@@ -276,6 +280,7 @@
   }
 
   &__sell {
-    color: #00ff66;
+
+    color: #ff0000;
   }
 }
