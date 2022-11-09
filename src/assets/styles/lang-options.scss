@@ -2,21 +2,24 @@
 @import "mixins";
 
 .lang-options {
-  padding: 42px 20px 10px 30px;
+  padding: 42px 20px 35px 30px;
   background-color: map-get($colors, "white");
 
   @include tablet {
-    padding: 56px 20px 10px 74px;
+    padding: 56px 20px 35px 55px;
   }
 
   &__title {
     margin: 0 0 18px;
     color: map-get($colors, "black-secondary");
-    font: normal normal 900 24px/30px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 24px;
+    line-height: 30px;
     text-align: center;
 
     @include tablet {
-      font: normal normal 900 34px/42px $font;
+      font-size: 34px;
+      line-height: 42px;
     }
   }
 
@@ -61,19 +64,24 @@
 
   &__name {
     color: map-get($colors, "black-secondary");
-    font: normal normal 900 12px/15px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 12px;
+    line-height: 15px;
     text-align: left;
 
     &--small {
-      font: normal normal 900 10px/15px $font;
+      font-size: 10px;
+      line-height: 15px;
 
       @include tablet {
-        font: normal normal 900 14px/20px $font;
+        font-size: 14px;
+        line-height: 20px;
       }
     }
 
     @include tablet {
-      font: normal normal 900 16px/20px $font;
+      font-size: 16px;
+      line-height: 20px;
     }
   }
 }

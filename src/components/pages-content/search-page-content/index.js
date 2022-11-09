@@ -14,6 +14,8 @@ import {
   SEARCH_MIN_QUERY_LENGTH,
   SEARCH_RESULTS_FIRST_BUNDLE,
   SEARCH_RESULTS_BUNDLE_SIZE,
+  DIR_RTL,
+  DIR_LTR,
 } from "../../../helpers/constants";
 import { getUrlParamValue } from "../../../helpers/services/get-url-param-value";
 import ButtonLink from "../../shared/button-link";
@@ -91,7 +93,7 @@ const SearchPageContent = () => {
   };
 
   return (
-    <section className="search-page__container" dir={isRTL ? "rtl" : "ltr"}>
+    <section className="search-page__container" dir={isRTL ? DIR_RTL : DIR_LTR}>
       <form
         className={cn("search-page__form", {
           "search-page__form--rtl": isRTL,

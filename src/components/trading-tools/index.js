@@ -5,13 +5,15 @@ import { PLATFORMS } from "../../helpers/config";
 import PlatformBlock from "./components/platform-block";
 import ButtonLink from "../shared/button-link";
 import DeviceBlock from "./components/device-block";
-import { REGISTRATION_LINK } from "../../helpers/constants";
+import { DIR_LTR, DIR_RTL, REGISTRATION_LINK } from "../../helpers/constants";
 import { useTrail } from "react-spring";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 
 const TradingTools = ({ className }) => {
   const { t } = useTranslation();
+  const isRTL = useRtlDirection();
   const containerRef = useRef();
   const intersectionRef = useIntersectionObserver(containerRef, {
     freezeOnceVisible: true,
@@ -42,7 +44,12 @@ const TradingTools = ({ className }) => {
   }, [intersectionRef]);
 
   return (
-    <section className={cn("trading-tools", className)}>
+    <section
+      className={cn("trading-tools", className, {
+        "trading-tools--rtl": isRTL,
+      })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <div className="trading-tools__wrapper">
         <div className="trading-tools__icon-wrapper">
           {platformIconTrail.map((styles, i) => {

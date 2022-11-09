@@ -66,6 +66,11 @@
     flex-direction: row-reverse;
   }
 
+  .navbar-item__dropdown {
+    align-content: flex-end;
+    justify-content: flex-end;
+  }
+
   .navbar-item__title {
     order: 2;
   }
@@ -79,6 +84,10 @@
     margin-right: unset;
     margin-left: 10px;
   }
+}
+
+.popup {
+  direction: ltr;
 }
 
 .main-promotion--rtl {
@@ -135,5 +144,46 @@
 .search-page__form--rtl {
   .search-page__form-input {
     padding: 0 15px;
+  }
+}
+
+.trading-symbol--rtl {
+
+  .trading-symbol__title-wrapper {
+    direction: rtl;
+  }
+
+  .trading-symbol__title {
+    margin: 0 0 0 10px;
+  }
+}
+
+.trade-with-promotion--rtl {
+  .trade-with-promotion__block {
+    &:last-child {
+
+      @include desktop-lg {
+        padding: 20px 60px 10px 0;
+        border-left: unset;
+        border-right: 3px solid map-get($colors, "red");
+      }
+    }
+  }
+}
+
+.promotion--rtl {
+  .promotion__text {
+    text-align: right;
+  }
+}
+
+.promotion4.promotion--rtl {
+  background: url("../../assets/images/promotions/promo4-rtl.svg") no-repeat left;
+  background-size: cover;
+}
+
+.trading-tools--rtl {
+  .trading-tools__icon-wrapper {
+    direction: ltr;
   }
 }

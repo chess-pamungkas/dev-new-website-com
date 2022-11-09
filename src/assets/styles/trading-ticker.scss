@@ -129,9 +129,7 @@
     flex-direction: row;
   }
 
-  &__data {
-    display: flex;
-
+  &__block {
     @include tablet {
       padding-right: 20px;
     }
@@ -141,36 +139,40 @@
     }
   }
 
+  &__data {
+    display: flex;
+  }
+
+  &__title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 0 7px;
+
+    @include tablet {
+      margin: 0 0 3px;
+    }
+  }
+
   &__title {
     position: relative;
-    margin: 0 0 7px;
+    margin: 0 10px 0 0;
     font-size: 16px;
     line-height: 20px;
     font-weight: map-get($font-weight, "black");
     color: map-get($colors, "red");
 
     @include tablet {
-      margin: 0 0 3px;
       font-size: 21px;
       line-height: 26px;
     }
+  }
 
-    &:after {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      display: block;
-      width: 28px;
-      height: 2px;
-      content: " ";
-      background: map-get($colors, "red");
-      transform: translateY(-50%);
-
-      @include tablet {
-        right: unset;
-        left: -100%;
-      }
-    }
+  &__title-delimiter {
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: map-get($colors, "red");
   }
 
   &__data {

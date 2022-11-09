@@ -5,6 +5,8 @@ import AdvantageBlock from "./components/advantage-block";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import ButtonLink from "../shared/button-link";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const Performance = ({
   className,
@@ -15,6 +17,7 @@ const Performance = ({
   isAnchorLink,
   note,
 }) => {
+  const isRTL = useRtlDirection();
   // TODO refactor it, move to helper
   const getButton = () => {
     switch (true) {
@@ -45,7 +48,12 @@ const Performance = ({
   };
 
   return (
-    <section className={cn("performance", className)}>
+    <section
+      className={cn("performance", className, {
+        "performance--rtl": isRTL,
+      })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <div className="performance__title-wrapper">
         <Logo className="performance__icon" />
         <h2 className="performance__title">{title}</h2>

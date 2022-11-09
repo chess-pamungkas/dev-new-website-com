@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import cn from "classnames";
 import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import { LogoTextMain, Logo } from "../shared/icons";
-import { HOME_PAGE_LINK } from "../../helpers/constants";
+import { DIR_LTR, DIR_RTL, HOME_PAGE_LINK } from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import NavbarItem from "./components/navbar-item";
@@ -42,7 +42,7 @@ const Header = ({
         className={cn("header", className, {
           "header--rtl": isRTL,
         })}
-        dir={isRTL ? "rtl" : "ltr"}
+        dir={isRTL ? DIR_RTL : DIR_LTR}
       >
         <div className="header__left">
           <Link to={HOME_PAGE_LINK}>
