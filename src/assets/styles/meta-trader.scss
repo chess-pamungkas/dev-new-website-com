@@ -66,10 +66,12 @@
     @include desktop-lg {
       align-items: flex-start;
       flex-direction: row;
+      justify-content: space-around;
     }
 
     @include desktop-xl {
       flex-direction: unset;
+      justify-content: unset;
 
       &--reverse {
         flex-direction: row-reverse;
@@ -259,10 +261,10 @@
       height: 55px;
       margin-right: 55px;
     }
-  }
 
-  &__tool-icon:last-child {
-    margin-right: 0;
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   &__tool-icon-img {

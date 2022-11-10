@@ -309,31 +309,10 @@
 .market-items-list--rtl {
   .market-item {
     &:before {
-      display: none;
-    }
-
-    &:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      background: url("../../assets/images/all-markets/top-bg-sm.svg") no-repeat;
-      width: 95px;
-      height: 114px;
-      top: 0;
       -webkit-transform: scaleX(-1);
       transform: scaleX(-1);
-
-      @include tablet {
-        background: url("../../assets/images/all-markets/top-bg-md.svg") no-repeat;
-        width: 219px;
-        height: 263px;
-      }
-
-      @include desktop-xl {
-        background: url("../../assets/images/all-markets/top-bg-lg.svg") no-repeat;
-        width: 332px;
-        height: 398px;
-      }
+      right: unset;
+      left: 0;
     }
   }
 
@@ -355,37 +334,10 @@
 .split-text-promotion--rtl {
   .split-text-promotion__block--left {
     &:after {
-      display: none;
-    }
-
-    &:before {
       -webkit-transform: scaleX(-1);
       transform: scaleX(-1);
-      content: "";
-      position: absolute;
-      bottom: 0;
+      left: unset;
       right: 0;
-      width: 123px;
-      height: 142px;
-      background: url("../../assets/images/bg/company/ornament-sm.svg") no-repeat;
-
-      @include tablet {
-        width: 252px;
-        height: 291px;
-        background: url("../../assets/images/bg/company/ornament-md.svg") no-repeat;
-      }
-
-      @include desktop-lg {
-        width: 261px;
-        height: 299px;
-        background: url("../../assets/images/bg/company/ornament-lg.svg") no-repeat;
-      }
-
-      @include desktop-xl {
-        width: 408px;
-        height: 468px;
-        background: url("../../assets/images/bg/company/ornament-xl.svg") no-repeat;
-      }
     }
   }
 }
@@ -429,6 +381,80 @@
   }
 }
 
-.documents--rtl {
+.top-market--platforms--rtl {
+  .top-market__trader-tools {
+    img + img {
+      margin-left: unset;
+      margin-right: 30px;
 
+      @include tablet {
+        margin-left: unset;
+        margin-right: 25px;
+      }
+
+      @include desktop-xl {
+        margin-left: unset;
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+.meta-trader--rtl {
+  &:before {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    right: unset;
+    left: 0;
+  }
+
+  .meta-trader__description {
+    @include desktop-lg {
+      margin-right: unset;
+      margin-left: 34px;
+    }
+
+    @include desktop-xl {
+      margin-right: unset;
+      margin-left: 230px;
+    }
+  }
+
+  .market-item-advantages__text {
+    padding-left: unset;
+    padding-right: 10px;
+
+    @include tablet {
+      padding-right: 20px;
+    }
+  }
+
+  .meta-trader__more-link {
+    margin-right: unset;
+    margin-left: 18px;
+
+    @include desktop-xl {
+      margin-left: 50px;
+    }
+  }
+
+  .meta-trader__tool-icon {
+    margin-right: unset;
+    margin-left: 25px;
+
+    @include desktop-lg {
+      margin-left: 35px;
+    }
+
+    @include desktop-xl {
+      margin-left: 55px;
+    }
+
+    &:last-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.bottom-promotion--rtl {
 }

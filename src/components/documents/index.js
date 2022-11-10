@@ -7,6 +7,7 @@ import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const Documents = ({ className, title, text, documents }) => {
   const isRTL = useRtlDirection();
+
   return (
     <section
       className={cn("documents", className, {

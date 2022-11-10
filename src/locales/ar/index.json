@@ -221,5 +221,19 @@
 
   "document-client-categorisation-notice-name": "إشعار تصنيف العميل",
   "document-complaint-policy-name": "سياسة التعامل مع الشكاوى",
-  "document-conflict-of-interest-name": "سياسة تضارب المصالح"
+  "document-conflict-of-interest-name": "سياسة تضارب المصالح",
+
+  "platforms_top-market-promo-text": "وقد تم تحسين كل منصة مع مساعدة من المحللين والتجار لدينا لإعطاء التجربة المثلى.",
+  "platforms_meta-trader-4-title": "ميتاتريدر 4",
+  "platforms_meta-trader-4-text-1": "منصة التداول الأكثر شهرة واستخداما في العالم ، 4 يوفر طريقة متعمقة لتخصيص الطريقة التي تتداول بها.",
+  "platforms_meta-trader-4-text-2": "مثالية لكل من التجار التقديرية والخوارزمية. يمكن استخدام ميتاتريدر 4 (ميتاتريدر 4) على أجهزة الكمبيوتر المكتبية والمحمولة والأجهزة اللوحية",
+  "platforms_meta-trader-4-more-link-title": "اعرف المزيد",
+  "platforms_meta-trader-4-download-link-title": "تحميل أوبتيما ميتاتريدر4",
+
+  "platforms_meta-trader-5-title": "ميتاتريدر 5",
+  "platforms_meta-trader-5-text-1": "مستقبل ميتا يقتبس هنا مع ميتاتريدر 5 الطريقة المحسنة الجديدة للتداول مع المزيد من الوظائف والمزيد من المنتجات والأوامر والمؤشرات المعلقة المتقدمة الجديدة. كل بنيت مع أسهل مقل 5 رمز لتشغيل منصة في أسلس طريقة والسماح لمزيد من التخصيص من مستشار الخبراء الخاص بك.",
+  "platforms_meta-trader-5-more-link-title": "اعرف المزيد",
+  "platforms_meta-trader-5-download-link-title": "تحميل أوبتيما ميتاتريدر 5",
+  "platforms__top-market-promo-text": "تجربة أوبتيما الآن.",
+  "platforms_top-market-promo-btn": "افتح حساب"
 }
