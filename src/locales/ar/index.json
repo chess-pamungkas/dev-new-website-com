@@ -172,5 +172,19 @@
   "crypto_faq-title2": "أين هو بيتكوين على منصة?",
   "crypto_faq-content2": "سيكون لكل عملة مشفرة رمز الأصول الخاص بها. إذا قمت بالتدقيق في قائمة الرموز الخاصة بك سترى بتك أوسد وهذا هو رمز ل بيتكوين أوسد. يتم تداول جميع العملات المشفرة لدينا مقابل الدولار الأمريكي.",
   "crypto_faq-title3": "أين هو بيتكوين على منصة?",
-  "crypto_faq-content3": "من حساب أوكتيما الخاص بك ، سيكون لديك حق الوصول إلى تداول أي عملة مشفرة نقدمها دون الحاجة إلى أي محفظة رقمية. تمويل حسابك بسيط ويمكن القيام به باستخدام أي من طرق الإيداع المتاحة لدينا."
+  "crypto_faq-content3": "من حساب أوكتيما الخاص بك ، سيكون لديك حق الوصول إلى تداول أي عملة مشفرة نقدمها دون الحاجة إلى أي محفظة رقمية. تمويل حسابك بسيط ويمكن القيام به باستخدام أي من طرق الإيداع المتاحة لدينا.",
+
+  "all-markets_all-markets-title": "بنيت أوبتيما للتداول",
+  "all-markets_all-markets-text": "اخترت السوق الخاص بك",
+  "all-markets_market-items-list-learn-more-btn": "اعرف المزيد",
+
+  "all-markets_market-items-list-forex-title": "الفوركس",
+  "all-markets_market-items-list-forex-text": "الاستفادة من التغيرات الاقتصاد الكلي العالمية مع 90 أزواج العملات تحت تصرفكم مع الأسواق الأكثر سيولة في العالم مفتوحة 24/5.",
+  "all-markets_market-items-list-forex-adv1": "90 زوج عملات",
+  "all-markets_market-items-list-forex-adv2": "MT4 – MT5",
+  "all-markets_market-items-list-forex-adv3": "تطبيق جوال ، سطح مكتب ، تطبيق ويب",
+  "all-markets_market-items-list-forex-adv4": "هوامش من 0.0",
+  "all-markets_market-items-list-forex-adv5": "سيولة عميقة",
+  "all-markets_market-items-list-forex-adv6": "تنفيذ سريع ومستقر",
+  "all-markets_market-items-list-forex-adv7": "بدون عمولة"
 }

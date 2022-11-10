@@ -263,7 +263,7 @@
     }
 
     &:nth-child(2) {
-      border-left:none;
+      border-left: none;
     }
   }
 
@@ -279,6 +279,69 @@
     &:nth-child(2) {
       border-left: none;
       border-right: 1px solid map-get($colors, "black");
+    }
+  }
+}
+
+.all-markets--rtl {
+  background: url("../../assets/images/all-markets/bg-rtl.svg") no-repeat center;
+  background-size: cover;
+
+  .all-markets__title {
+    @include desktop-xl {
+      text-align: right;
+    }
+  }
+
+  .all-markets__text {
+    @include desktop-xl {
+      text-align: right;
+    }
+  }
+}
+
+.market-items-list--rtl {
+  .market-item {
+    &:before {
+      display: none;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      background: url("../../assets/images/all-markets/top-bg-sm.svg") no-repeat;
+      width: 95px;
+      height: 114px;
+      top: 0;
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+
+      @include tablet {
+        background: url("../../assets/images/all-markets/top-bg-md.svg") no-repeat;
+        width: 219px;
+        height: 263px;
+      }
+
+      @include desktop-xl {
+        background: url("../../assets/images/all-markets/top-bg-lg.svg") no-repeat;
+        width: 332px;
+        height: 398px;
+      }
+    }
+  }
+
+  .market-item-advantages__text {
+    padding-left: 0;
+    padding-right: 20px;
+  }
+
+  .market-item__description {
+    @include desktop-lg {
+      padding-left: 40px;
+    }
+    @include desktop-xl {
+      padding-left: 60px;
     }
   }
 }
