@@ -345,3 +345,43 @@
     }
   }
 }
+
+.split-text-promotion--rtl {
+
+  .split-text-promotion__block--left {
+
+    &:after {
+      display: none;
+    }
+
+    &:before {
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 123px;
+      height: 142px;
+      background: url("../../assets/images/bg/company/ornament-sm.svg") no-repeat;
+
+      @include tablet {
+        width: 252px;
+        height: 291px;
+        background: url("../../assets/images/bg/company/ornament-md.svg") no-repeat;
+      }
+
+      @include desktop-lg {
+        width: 261px;
+        height: 299px;
+        background: url("../../assets/images/bg/company/ornament-lg.svg") no-repeat;
+      }
+
+      @include desktop-xl {
+        width: 408px;
+        height: 468px;
+        background: url("../../assets/images/bg/company/ornament-xl.svg") no-repeat;
+      }
+    }
+  }
+}
