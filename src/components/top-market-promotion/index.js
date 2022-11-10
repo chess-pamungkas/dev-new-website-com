@@ -4,6 +4,7 @@ import ButtonLink from "../shared/button-link";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Lottie from "lottie-react";
 import ReactPlayer from "react-player";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 
 const TopMarketPromotion = ({
   className,
@@ -20,6 +21,7 @@ const TopMarketPromotion = ({
   videoSettings = {},
   lottieStyle = {},
 }) => {
+  const isRTL = useRtlDirection();
 
   const getButton = () => {
     switch (true) {
@@ -87,7 +89,11 @@ const TopMarketPromotion = ({
   };
 
   return (
-    <section className={cn("top-market-promotion", className)}>
+    <section
+      className={cn("top-market-promotion", className, {
+        "top-market-promotion--rtl": isRTL,
+      })}
+    >
       <div className={cn("top-market-promotion__wrapper")}>
         <div className="top-market-promotion__block">
           <div className="top-market-promotion__description">

@@ -4,13 +4,20 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import Accordion from "../shared/accordion";
 import { AccordionActiveIcon, AccordionIcon } from "../shared/icons";
 import ButtonLink from "../shared/button-link";
-import { FAQ_PAGE_LINK } from "../../helpers/constants";
+import { DIR_LTR, DIR_RTL, FAQ_PAGE_LINK } from "../../helpers/constants";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 
 const Faq = ({ className, title, faq, isFaqBtnHidden, subTitleTemplate }) => {
   const { t } = useTranslation();
+  const isRTL = useRtlDirection();
 
   return (
-    <section className={cn("faq", className)}>
+    <section
+      className={cn("faq", className, {
+        "faq--rtl": isRTL,
+      })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <div className="faq__wrapper">
         <div className="faq__delimiter" />
         <h2 className="faq__title">{title || t("faq-title")}</h2>

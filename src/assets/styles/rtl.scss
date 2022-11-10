@@ -91,7 +91,6 @@
 }
 
 .main-promotion--rtl {
-
   @include desktop-lg {
     flex-direction: row-reverse;
   }
@@ -148,7 +147,6 @@
 }
 
 .trading-symbol--rtl {
-
   .trading-symbol__title-wrapper {
     direction: rtl;
   }
@@ -161,7 +159,6 @@
 .trade-with-promotion--rtl {
   .trade-with-promotion__block {
     &:last-child {
-
       @include desktop-lg {
         padding: 20px 60px 10px 0;
         border-left: unset;
@@ -185,5 +182,103 @@
 .trading-tools--rtl {
   .trading-tools__icon-wrapper {
     direction: ltr;
+  }
+}
+
+.top-market--rtl {
+  background: url("../../assets/images/top-markets/bg-rtl.svg") no-repeat center;
+  background-size: cover;
+
+  .top-market__title {
+    @include desktop-xl {
+      text-align: right;
+    }
+  }
+
+  .top-market__text {
+    @include desktop-xl {
+      text-align: right;
+    }
+  }
+
+  .top-market__btn {
+    @include desktop-xl {
+      &:first-child {
+        margin: 0 0 0 10px;
+      }
+
+      &:last-child {
+        margin: 0 10px 0 0;
+      }
+    }
+  }
+}
+
+.top-market-promotion--rtl {
+  .top-market-promotion__block {
+    direction: rtl;
+  }
+
+  .top-market-promotion__text {
+    @include desktop-lg {
+      text-align: right;
+    }
+  }
+}
+
+.top-market-layout--rtl {
+  .top-market-layout__title {
+    @include desktop-lg {
+      text-align: right;
+    }
+  }
+
+  .table__searchbar .search-bar__input {
+    padding: 0 15px 0 0;
+  }
+}
+
+.table--rtl {
+  .table__head-row {
+    &--grouped {
+      .table__head-column {
+        &:first-child {
+          border-right: none;
+        }
+
+        &:last-child {
+          border-right: 1px solid map-get($colors, "table-grey");
+        }
+      }
+    }
+  }
+
+  .table__head-column {
+    &:first-child {
+      color: map-get($colors, "black");
+    }
+
+    &:last-child {
+      color: map-get($colors, "red");
+    }
+
+    &:nth-child(2) {
+      border-left:none;
+    }
+  }
+
+  .table__body-column {
+    &:last-child {
+      border-right: none;
+    }
+
+    &:first-child {
+      border-right: none;
+    }
+
+    &:nth-child(2) {
+      border-left: none;
+      border-right: 1px solid map-get($colors, "black");
+    }
   }
 }

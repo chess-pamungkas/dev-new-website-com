@@ -2,6 +2,8 @@ import React from "react";
 import cn from "classnames";
 import ButtonLink from "../shared/button-link";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const TopMarket = ({
   className,
@@ -18,6 +20,8 @@ const TopMarket = ({
   isAnchorLink1 = false,
   isAnchorLink2 = false,
 }) => {
+  const isRTL = useRtlDirection();
+
   const getButton = (btnTitle, link, isAnchorLink, btnClassName) => {
     switch (true) {
       case isAnchorLink:
@@ -43,7 +47,12 @@ const TopMarket = ({
   };
 
   return (
-    <section className={cn("top-market", className)}>
+    <section
+      className={cn("top-market", className, {
+        "top-market--rtl": isRTL,
+      })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <div className="top-market__wrapper">
         <div className="top-market__block">
           {title && (

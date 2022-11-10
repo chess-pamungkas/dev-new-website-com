@@ -13,8 +13,8 @@ import TablePagination from "./components/pagination";
 import { TABLE_PAGE_SIZES } from "../../../helpers/constants";
 import TableShowByDropdown from "./components/dropdown";
 import { TableTip, TableTitle } from "./components/title";
+import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 
-// TODO: add localization to the component
 const TableComponent = ({
   className,
   tableClassName,
@@ -28,6 +28,8 @@ const TableComponent = ({
   subtitle,
   tip,
 }) => {
+  const isRTL = useRtlDirection();
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -107,7 +109,10 @@ const TableComponent = ({
             {
               "table--small-padding": isGroupedHeader(),
             },
-            tableClassName
+            tableClassName,
+            {
+              "table--rtl": isRTL,
+            }
           )}
           {...getTableProps()}
         >
