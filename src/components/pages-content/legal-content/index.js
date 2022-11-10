@@ -10,17 +10,20 @@ import { LEGAL_DOCS, LEGAL_DOCS_FSA } from "../../../helpers/documents";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 
 const LegalContent = () => {
   const { t } = useTranslation();
   const { isXL } = useWindowSize();
   const { sitePostfix, isCySEC } = useEntityPostfix();
+  const isRTL = useRtlDirection();
 
   return (
     <>
       <TopMarketPromotion
         className={cn("legal-page-promotion", {
           "legal-page-promotion--cysec": isCySEC,
+          "legal-page-promotion--rtl": isRTL,
         })}
         image={image}
         btnTitle={t(`legal_top-market-promo-btn${sitePostfix}`)}
@@ -35,7 +38,9 @@ const LegalContent = () => {
         />
       </TopMarketPromotion>
       <TopMarketPromotion
-        className="legal-page-esma"
+        className={cn("legal-page-esma", {
+          "legal-page-esma--rtl": isRTL,
+        })}
         image={isCySEC ? cysec : fsa}
         btnTitle={isCySEC ? t("legal_top-market-promo-btn2") : null}
         note={
