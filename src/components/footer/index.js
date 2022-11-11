@@ -6,13 +6,21 @@ import { LogoTextMain } from "../shared/icons";
 import { FOOTER_TEXT, FOOTER_TEXT_FSA } from "../../helpers/footer.config";
 import Menu from "./components/menu";
 import { useEntityPostfix } from "../../helpers/use-entity-postfix";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const Footer = ({ className }) => {
   const { t } = useTranslation();
   const { isCySEC } = useEntityPostfix();
+  const isRTL = useRtlDirection();
 
   return (
-    <footer className={cn("footer", className)}>
+    <footer
+      className={cn("footer", className, {
+        "footer--rtl": isRTL,
+      })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <div className="footer__wrapper">
         <div className="footer__logo-wrapper">
           <LogoTextMain />
