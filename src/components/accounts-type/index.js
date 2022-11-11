@@ -5,12 +5,20 @@ import HighlightedLocalizationText from "../../components/shared/highlighted-loc
 import { ACCOUNT_TYPES } from "../../helpers/accounts-type.config";
 import AccountType from "./account-type";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const AccountsType = ({ className }) => {
   const { t } = useTranslation();
+  const isRTL = useRtlDirection();
 
   return (
-    <section className={cn("accounts-type", className)}>
+    <section
+      className={cn("accounts-type", className, {
+        "accounts-type--rtl": isRTL,
+      })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <div className="accounts-type__desc-block">
         <h2 className="accounts-type__title">
           {t("accounts-type_accounts-type-title")}

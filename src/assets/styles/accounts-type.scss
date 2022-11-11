@@ -9,10 +9,7 @@
   padding-bottom: 100px;
 
   @include tablet {
-    padding-top: 92px;
-    padding-bottom: 140px;
-    padding-left: 15px;
-    padding-right: 21px;
+    padding: 92px 21px 140px 15px;
   }
 
   @include desktop-lg {
@@ -172,7 +169,7 @@
 }
 
 .accounts-type-page-mid-promotion {
-  background: map-get($colors, "black-secondary") 0% 0% no-repeat padding-box;
+  background: map-get($colors, "black-secondary") 0 0 no-repeat padding-box;
   padding-top: 158px;
   padding-bottom: 85px;
 
@@ -326,7 +323,7 @@
 
 .accounts-type {
   background: url("../../assets/images/accounts-type/accounts-type-bg-xl.svg");
-  padding: 24px 11px 0px 11px;
+  padding: 24px 11px 0 11px;
   display: grid;
   grid-template-areas: "desc" "acc1" "acc2";
   justify-items: center;
@@ -417,11 +414,11 @@
 }
 
 .account-type {
-  background: #ffffff 0% 0% no-repeat padding-box;
-  box-shadow: 0px 0px 10px #0000001a;
+  background: #ffffff 0 0 no-repeat padding-box;
+  box-shadow: 0 0 10px #0000001a;
   border-radius: 10px;
   width: 353px;
-  padding: 0px 23px 61px 24px;
+  padding: 0 23px 61px 24px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -433,7 +430,7 @@
 
   @include desktop-lg {
     width: 395px;
-    padding: 0px 30px 42px 30px;
+    padding: 0 30px 42px 30px;
   }
 
   @include desktop-xl {
@@ -506,7 +503,7 @@
   grid-template-areas: "title value" "hr hr";
 
   &__title {
-    margin: 0px;
+    margin: 0;
     font: normal normal map-get($font-weight, "black") 12px/25px $font;
     justify-self: start;
     grid-area: title;
@@ -521,7 +518,7 @@
   }
 
   &__value {
-    margin: 0px;
+    margin: 0;
     font: normal normal map-get($font-weight, "black") 12px/25px $font;
     color: map-get($colors, "red");
     justify-self: end;
@@ -565,7 +562,7 @@
 
   &__hr {
     width: 250px;
-    height: 0px;
+    height: 0;
     border: 1px solid map-get($colors, "table-grey");
     grid-area: hr;
     margin-bottom: 20px;
