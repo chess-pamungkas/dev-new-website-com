@@ -456,5 +456,75 @@
   }
 }
 
-.bottom-promotion--rtl {
+.mt4-page-promotion--rtl {
+  direction: rtl;
+  background: url("../../assets/images/bg/split-bg/bg-sm-rtl.svg") no-repeat center;
+  background-size: cover;
+
+  @include tablet {
+    background: url("../../assets/images/bg/split-bg/bg-md-rtl.svg") no-repeat bottom;
+    background-size: cover;
+  }
+
+  @include desktop-lg {
+    background: url("../../assets/images/bg/split-bg/bg-lg-rtl.svg") no-repeat right;
+    background-size: cover;
+  }
+
+  @include desktop-xl {
+    background: url("../../assets/images/bg/split-bg/bg-xl-rtl.svg") no-repeat center;
+    background-size: cover;
+  }
+}
+
+.mt-promotion--rtl {
+
+  .mt-promotion__title {
+    text-align: right;
+  }
+
+  .market-item-advantages-list__title {
+    text-align: right;
+  }
+
+  .market-item-advantages__text {
+    padding-left: unset;
+    padding-right: 10px;
+
+    @include tablet {
+      padding-right: 20px;
+    }
+  }
+
+  .mt-promotion__download-tabs {
+    .tabs__tab {
+      border-right: unset;
+      border-left: 1px solid map-get($colors, "black");
+
+      &:first-child {
+        padding: 0 0 0 40px;
+      }
+
+      &:last-child {
+        border-left: none;
+        padding: 0 40px 0 0;
+      }
+    }
+  }
+}
+
+.mt-table--rtl.table--rtl {
+  .table__head-column {
+    &:last-child {
+      color: map-get($colors, "white");
+    }
+  }
+}
+
+.top-market-layout--mt--rtl {
+  .table__body-column {
+    &:first-child {
+      text-align: right;
+    }
+  }
 }
