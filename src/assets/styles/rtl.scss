@@ -528,3 +528,31 @@
     }
   }
 }
+
+.withdrawal-page-promotion--rtl {
+  direction: rtl;
+  background: url("../../assets/images/bg/split-bg/bg-sm-rtl.svg") no-repeat center;
+  background-size: cover;
+
+  @include tablet {
+    background: url("../../assets/images/bg/split-bg/bg-md-rtl.svg") no-repeat bottom;
+    background-size: cover;
+  }
+
+  @include desktop-lg {
+    background: url("../../assets/images/bg/split-bg/bg-lg-rtl.svg") no-repeat right;
+    background-size: cover;
+  }
+
+  @include desktop-xl {
+    background: url("../../assets/images/bg/split-bg/bg-xl-rtl.svg") no-repeat center;
+    background-size: cover;
+  }
+}
+
+.funding-black-promotion--rtl.top-market-promotion--rtl {
+
+  .top-market-promotion__text {
+    text-align: center;
+  }
+}
