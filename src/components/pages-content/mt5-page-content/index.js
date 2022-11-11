@@ -1,15 +1,15 @@
 import React, { useCallback } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
-import animation from "../../../assets/images/animations/aggregator_MT4.json";
-import { MT4_DOC } from "../../../helpers/documents";
+import animation from "../../../assets/images/animations/aggregator_MT5.json";
+import { MT5_DOC } from "../../../helpers/documents";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
 import {
   COLUMNS_PLATFORMS,
   DATA_PLATFORMS,
-  MT4_ADVANTAGES,
-  MT4_DOWNLOAD_LINKS,
+  MT5_ADVANTAGES,
+  MT5_DOWNLOAD_LINKS,
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/MT4andMT5.png";
 import TopMarketLayout from "../../top-market-layout";
@@ -21,10 +21,10 @@ import { Link } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 
-const Mt4PageContent = () => {
+const Mt5PageContent = () => {
   const { t } = useTranslation();
-  const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
+  const { isMobile, isTablet, isLG, isXL } = useWindowSize();
 
   const getAnimationStyles = useCallback(() => {
     switch (true) {
@@ -47,11 +47,11 @@ const Mt4PageContent = () => {
       title: t("mt-promotion-tabs-mobile"),
       content: (
         <>
-          <Link to={MT4_DOWNLOAD_LINKS.android}>
-            {t("mt4_mt-promotion-download-android")}
+          <Link to={MT5_DOWNLOAD_LINKS.android}>
+            {t("mt5_mt-promotion-download-android")}
           </Link>
-          <Link to={MT4_DOWNLOAD_LINKS.ios}>
-            {t("mt4_mt-promotion-download-ios")}
+          <Link to={MT5_DOWNLOAD_LINKS.ios}>
+            {t("mt5_mt-promotion-download-ios")}
           </Link>
         </>
       ),
@@ -61,14 +61,14 @@ const Mt4PageContent = () => {
       title: t("mt-promotion-tabs-desktop"),
       content: (
         <>
-          <Link to={MT4_DOWNLOAD_LINKS.mac}>
-            {t("mt4_mt-promotion-download-mac")}
+          <Link to={MT5_DOWNLOAD_LINKS.mac}>
+            {t("mt5_mt-promotion-download-mac")}
           </Link>
-          <Link to={MT4_DOWNLOAD_LINKS.windows}>
-            {t("mt4_mt-promotion-download-windows")}
-          </Link>
-          <Link to={MT4_DOWNLOAD_LINKS.webtrader}>
-            {t("mt4_mt-promotion-download-webtrader")}
+          <Link to={MT5_DOWNLOAD_LINKS.windows}>
+            {t("mt5_mt-promotion-download-windows")}
+          </Link>{" "}
+          <Link to={MT5_DOWNLOAD_LINKS.webtrader}>
+            {t('"mt5_mt-promotion-download-webtrader"')}
           </Link>
         </>
       ),
@@ -78,7 +78,7 @@ const Mt4PageContent = () => {
   return (
     <>
       <TopMarketPromotion
-        className={cn("mt4-page-promotion", {
+        className={cn("mt5-page-promotion", {
           "mt-page-promotion--rtl": isRTL,
         })}
         image={animation}
@@ -87,21 +87,21 @@ const Mt4PageContent = () => {
         btnClassName={cn({
           "button-link--ghost": isLG || isXL,
         })}
-        btnTitle={t("mt4_top-market-promo-btn")}
-        link={MT4_DOC}
+        btnTitle={t("mt5_top-market-promo-btn")}
+        link={MT5_DOC}
         isDocumentLink
         note={
           <HighlightedLocalizationText
-            localizationText="mt4_top-market-promo-note"
-            wordsToHighlight="mt4_top-market-promo-note-accent"
+            localizationText="mt5_top-market-promo-note"
+            wordsToHighlight="mt5_top-market-promo-note-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-white"
           />
         }
       >
         <HighlightedLocalizationText
-          localizationText="mt4_top-market-promo-text"
-          wordsToHighlight="mt4_top-market-promo-text-accent"
+          localizationText="mt5_top-market-promo-text"
+          wordsToHighlight="mt5_top-market-promo-text-accent"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
@@ -110,23 +110,23 @@ const Mt4PageContent = () => {
       <MtPromotion
         title={
           <HighlightedLocalizationText
-            localizationText="mt4_top-market-promo-text2"
-            wordsToHighlight="mt4_top-market-promo-text-accent2"
+            localizationText="mt5_top-market-promo-text2"
+            wordsToHighlight="mt5_top-market-promo-text-accent2"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
-        advantagesTitle={t("mt4_market-items-list_title")}
-        advantages={MT4_ADVANTAGES}
-        downloadTitle={t("mt4_download-title")}
+        advantagesTitle={t("mt5_market-items-list_title")}
+        advantages={MT5_ADVANTAGES}
+        downloadTitle={t("mt5_download-title")}
         image={image}
         tabs={tabs}
       />
       <TopMarketLayout
         title={
           <HighlightedLocalizationText
-            localizationText="mt4_top-market-layout-title"
-            wordsToHighlight="mt4_top-market-layout-title-accent"
+            localizationText="mt5_top-market-layout-title"
+            wordsToHighlight="mt5_top-market-layout-title-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
@@ -146,12 +146,12 @@ const Mt4PageContent = () => {
           className="bottom-promotion"
           image={icon}
           btnClassName="button-link--red"
-          btnTitle={t("mt4_top-market-promo-btn3")}
+          btnTitle={t("mt5_top-market-promo-btn3")}
           link={REGISTRATION_LINK}
         >
           <HighlightedLocalizationText
-            localizationText="mt4_top-market-promo-text3"
-            wordsToHighlight="mt4_top-market-promo-text-accent3"
+            localizationText="mt5_top-market-promo-text3"
+            wordsToHighlight="mt5_top-market-promo-text-accent3"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-white"
           />
@@ -161,4 +161,4 @@ const Mt4PageContent = () => {
   );
 };
 
-export default Mt4PageContent;
+export default Mt5PageContent;
