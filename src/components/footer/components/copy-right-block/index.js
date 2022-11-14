@@ -47,12 +47,6 @@ const CopyRightContent = () => {
           {t(FOOTER_COPYRIGHT.a1)}
         </a>
       </p>
-      <p>
-        {t(FOOTER_COPYRIGHT.p4)}&nbsp;
-        <a href={FOOTER_COPYRIGHT.link2} target="_blank" rel="noreferrer">
-          {t(FOOTER_COPYRIGHT.a2)}
-        </a>
-      </p>
       {additionalText}
     </>
   ) : (
