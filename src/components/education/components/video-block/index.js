@@ -3,9 +3,12 @@ import cn from "classnames";
 import ReactPlayer from "react-player/youtube";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { getYoutubeLink } from "../helpers";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
+import { DIR_LTR, DIR_RTL } from "../../../../helpers/constants";
 
 const VideoBlock = ({ className, video }) => {
   const { isMobile, isMD, isLG, isXL } = useWindowSize();
+  const isRTL = useRtlDirection();
 
   const getVideoStyles = useCallback(() => {
     switch (true) {
@@ -23,7 +26,10 @@ const VideoBlock = ({ className, video }) => {
   }, [isMobile, isMD, isLG, isXL]);
 
   return (
-    <div className={cn("video-block", className)}>
+    <div
+      className={cn("video-block", className)}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <ReactPlayer
         url={getYoutubeLink(video.resourceId.videoId)}
         config={{

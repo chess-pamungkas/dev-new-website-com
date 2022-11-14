@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import cn from "classnames";
 import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import { LogoTextMain, Logo } from "../shared/icons";
-import { HOME_PAGE_LINK } from "../../helpers/constants";
+import { DIR_LTR, DIR_RTL, HOME_PAGE_LINK } from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import { REGISTRATION_LINK } from "../../helpers/constants";
 import NavbarItem from "./components/navbar-item";
@@ -15,16 +15,18 @@ import ClientResolverContext from "../../context/client-resolver-context";
 import entities from "../../enums/entities";
 import NotificationStripe from "../shared/notification-stripe";
 import { GDPRPopup } from "../gdpr-popup";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 
 const Header = ({
   className,
   setSectionOptions,
   headerRef,
-  isSearchBarAttached
+  isSearchBarAttached,
 }) => {
   const { t } = useTranslation();
   const [menu, setMenu] = useState([]);
   const { currentEntity } = useContext(ClientResolverContext);
+  const isRTL = useRtlDirection();
 
   useEffect(() => {
     setMenu(
@@ -37,7 +39,10 @@ const Header = ({
       <NotificationStripe setSectionOptions={setSectionOptions} />
       <GDPRPopup />
       <header
-        className={cn("header", className)}
+        className={cn("header", className, {
+          "header--rtl": isRTL,
+        })}
+        dir={isRTL ? DIR_RTL : DIR_LTR}
       >
         <div className="header__left">
           <Link to={HOME_PAGE_LINK}>
@@ -60,7 +65,7 @@ const Header = ({
 
         <div className="header__right">
           <BurgerMenu />
-          
+
           <div className="header__controls">
             <LangSelect className="lang-select--header" isHeader={true} />
             <ButtonLink

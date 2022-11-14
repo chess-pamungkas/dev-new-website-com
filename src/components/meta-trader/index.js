@@ -5,6 +5,8 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import { ADDITIONAL_PLATFORMS, PLATFORMS } from "../../helpers/config";
 import MarketItemAdvantageList from "../all-markets/components/market-item-advantage-list";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const MetaTrader = ({
   classname,
@@ -20,6 +22,7 @@ const MetaTrader = ({
 }) => {
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
+  const isRTL = useRtlDirection();
 
   const AdvantagesTemplate = (
     <div className={cn("meta-trader__advantages")}>
@@ -62,7 +65,9 @@ const MetaTrader = ({
     <section
       className={cn("meta-trader", classname, {
         "meta-trader--gray-bg": isGrayBackground,
+        "meta-trader--rtl": isRTL,
       })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
     >
       <div className={cn("meta-trader__wrapper")}>
         <div className={cn("meta-trader__description")}>

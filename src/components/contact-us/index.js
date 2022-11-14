@@ -7,19 +7,28 @@ import {
   CONTACT_EMAIL_FSA,
   CONTACT_PHONE,
   CONTACT_PHONE_LINK,
+  DIR_LTR,
+  DIR_RTL,
 } from "../../helpers/constants";
 import ContactUsForm from "./components/contact-us-form";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 
 const ContactUs = ({ className }) => {
   const { isCySEC } = useEntityPostfix();
   const { t } = useTranslation();
+  const isRTL = useRtlDirection();
 
   const getEmail = useCallback(() => {
     return isCySEC ? CONTACT_EMAIL : CONTACT_EMAIL_FSA;
   }, [isCySEC]);
 
   return (
-    <section className={cn("contact-us", className)}>
+    <section
+      className={cn("contact-us", className, {
+        "contact-us--rtl": isRTL,
+      })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <div className="contact-us__wrapper">
         <div className="contact-us__block">
           <h2 className="contact-us__title">{t("contact-us_page-title")}</h2>

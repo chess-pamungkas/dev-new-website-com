@@ -16,7 +16,7 @@ import rippleIcon from "../../assets/images/icons/companies/ripple.svg";
 import teslaIcon from "../../assets/images/icons/companies/tesla.svg";
 import womanIcon from "../../assets/images/icons/companies/woman.svg";
 import ButtonLink from "../shared/button-link";
-import { REGISTRATION_LINK } from "../../helpers/constants";
+import { DIR_LTR, DIR_RTL, REGISTRATION_LINK } from "../../helpers/constants";
 import TypingAnimation from "../shared/typing-animation";
 import { MarketingContext } from "../../context/marketing-context";
 import {
@@ -33,12 +33,14 @@ import { INTERSECTION_OBSERVER_CONFIG } from "../../helpers/animation.config";
 import { useSectionAnimation } from "./use-section-animation";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 import { useEntityPostfix } from "../../helpers/use-entity-postfix";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 
 const TradeWithPromotion = ({ className, sectionRef }) => {
   const typingContainerRef = useRef();
 
   const { t } = useTranslation();
   const { sitePostfix } = useEntityPostfix();
+  const isRTL = useRtlDirection();
 
   const sectionIntersectionRef = useIntersectionObserver(
     sectionRef,
@@ -70,7 +72,13 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
   const icons = content ? content.symbols : [];
 
   return (
-    <section className={cn("trade-with-promotion", className)} ref={sectionRef}>
+    <section
+      className={cn("trade-with-promotion", className, {
+        "trade-with-promotion--rtl": isRTL,
+      })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+      ref={sectionRef}
+    >
       <animated.img
         style={sectionAnimation1}
         src={icons.length > 0 && icons[0] ? icons[0] : logoIcon}
@@ -206,10 +214,12 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
           <div className="trade-with-promotion__block">
             <p className="trade-with-promotion__promo-text">
               <span>
-                {t(`index_trade-with-promotion-promo-text1${sitePostfix}`)}&nbsp;
+                {t(`index_trade-with-promotion-promo-text1${sitePostfix}`)}
+                &nbsp;
               </span>
               <span className="bold">
-                {t(`index_trade-with-promotion-promo-text-bold${sitePostfix}`)}&nbsp;
+                {t(`index_trade-with-promotion-promo-text-bold${sitePostfix}`)}
+                &nbsp;
               </span>
               <span>
                 {t(`index_trade-with-promotion-promo-text2${sitePostfix}`)}

@@ -2,6 +2,8 @@ import React from "react";
 import cn from "classnames";
 import MarketItemAdvantageList from "../all-markets/components/market-item-advantage-list";
 import Tabs from "../shared/tabs";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const MtPromotion = ({
   className,
@@ -12,13 +14,24 @@ const MtPromotion = ({
   tabs,
   image,
 }) => {
+  const isRTL = useRtlDirection();
+
   return (
-    <section className={cn("mt-promotion", className)}>
+    <section
+      className={cn("mt-promotion", className, {
+        "mt-promotion--rtl": isRTL,
+      })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <div className={cn("mt-promotion__wrapper")}>
         <div
           className={cn("mt-promotion__block", "mt-promotion__block--flexed")}
         >
-          <img src={image} alt={advantagesTitle} className="mt-promotion__img" />
+          <img
+            src={image}
+            alt={advantagesTitle}
+            className="mt-promotion__img"
+          />
         </div>
         <div className="mt-promotion__block">
           <div className="mt-promotion__description">

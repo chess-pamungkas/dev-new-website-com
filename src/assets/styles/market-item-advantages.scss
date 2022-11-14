@@ -57,6 +57,8 @@
   width: 100%;
   height: fit-content;
   padding: 20px;
+  z-index: 2;
+  position: relative;
 
   @include tablet {
     padding: 35px 43px 17px 43px;

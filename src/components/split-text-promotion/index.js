@@ -1,6 +1,8 @@
 import React from "react";
 import cn from "classnames";
 import { Logo } from "../shared/icons";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const SplitTextPromotion = ({
   className,
@@ -9,8 +11,15 @@ const SplitTextPromotion = ({
   subtitle,
   table,
 }) => {
+  const isRTL = useRtlDirection();
+
   return (
-    <section className={cn("split-text-promotion", className)}>
+    <section
+      className={cn("split-text-promotion", className, {
+        "split-text-promotion--rtl": isRTL,
+      })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <div className="split-text-promotion__wrapper">
         <div
           className={cn(

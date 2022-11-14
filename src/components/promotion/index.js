@@ -2,6 +2,8 @@ import React from "react";
 import { animated } from "react-spring";
 import cn from "classnames";
 import ButtonLink from "../shared/button-link";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import {DIR_LTR, DIR_RTL} from "../../helpers/constants";
 
 const Promotion = ({
   className,
@@ -15,8 +17,16 @@ const Promotion = ({
   isReverseOrder = false,
   isRedPalette = false,
 }) => {
+  const isRTL = useRtlDirection();
+
   return (
-    <section ref={sectionRef} className={cn("promotion", className)}>
+    <section
+      ref={sectionRef}
+      className={cn("promotion", className, {
+        "promotion--rtl": isRTL,
+      })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <div
         className={cn("promotion__wrapper", {
           "promotion__wrapper--reverse": isReverseOrder,

@@ -3,7 +3,7 @@ import React, {
   useContext,
   useEffect,
   useRef,
-  useState
+  useState,
 } from "react";
 import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import { useSearchData } from "../../../helpers/hooks/use-search-data";
@@ -13,32 +13,40 @@ import {
   SEARCH_PARAM_NAME,
   SEARCH_MIN_QUERY_LENGTH,
   SEARCH_RESULTS_FIRST_BUNDLE,
-  SEARCH_RESULTS_BUNDLE_SIZE
+  SEARCH_RESULTS_BUNDLE_SIZE,
+  DIR_RTL,
+  DIR_LTR,
 } from "../../../helpers/constants";
 import { getUrlParamValue } from "../../../helpers/services/get-url-param-value";
 import ButtonLink from "../../shared/button-link";
-import {
-  Logo,
-  SearchIcon,
-  SearchNoResultsImg
-} from "../../shared/icons";
+import { Logo, SearchIcon, SearchNoResultsImg } from "../../shared/icons";
+import { ArabicNumbers } from "react-native-arabic-numbers";
+import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
+import cn from "classnames";
 
 const SearchPageContent = () => {
   const { t } = useTranslation();
   const { getSearchResults } = useSearchData();
   const { searchState, setSearchState } = useContext(SearchContext);
   const searchResultsRef = useRef();
+  const isRTL = useRtlDirection();
 
-  const [resultsBundleCount, setResultsBundleCount] = useState(SEARCH_RESULTS_FIRST_BUNDLE);
+  const [resultsBundleCount, setResultsBundleCount] = useState(
+    SEARCH_RESULTS_FIRST_BUNDLE
+  );
 
   const handleScroll = useCallback(() => {
     if (!searchResultsRef.current) return;
 
-    const { bottom: resultsElementBottom } = searchResultsRef.current.getBoundingClientRect();
+    const { bottom: resultsElementBottom } =
+      searchResultsRef.current.getBoundingClientRect();
 
-    if (typeof window !== "undefined" && resultsElementBottom < window.innerHeight) {
-      setResultsBundleCount(prevBundleCount => prevBundleCount + 1);
-    } 
+    if (
+      typeof window !== "undefined" &&
+      resultsElementBottom < window.innerHeight
+    ) {
+      setResultsBundleCount((prevBundleCount) => prevBundleCount + 1);
+    }
   }, []);
 
   useEffect(() => {
@@ -49,17 +57,23 @@ const SearchPageContent = () => {
     setSearchState({
       query: searchParamValue,
       results,
-      noResultsFound: !results.length
+      noResultsFound: !results.length,
     });
   }, [getSearchResults, setSearchState]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  const handleSearch = e => {
+  const getSearchMinQueryLocale = useCallback(() => {
+    return isRTL
+      ? ArabicNumbers(SEARCH_MIN_QUERY_LENGTH)
+      : SEARCH_MIN_QUERY_LENGTH;
+  }, [isRTL]);
+
+  const handleSearch = (e) => {
     const query = e.target.value;
     if (query.length >= SEARCH_MIN_QUERY_LENGTH) {
       setResultsBundleCount(SEARCH_RESULTS_FIRST_BUNDLE);
@@ -67,20 +81,25 @@ const SearchPageContent = () => {
       setSearchState({
         query,
         results,
-        noResultsFound: !results.length
+        noResultsFound: !results.length,
       });
     } else {
       setSearchState({
         query,
         results: [],
-        noResultsFound: false
+        noResultsFound: false,
       });
     }
   };
 
   return (
-    <section className="search-page__container">
-      <form className="search-page__form" onSubmit={e => e.preventDefault()}>
+    <section className="search-page__container" dir={isRTL ? DIR_RTL : DIR_LTR}>
+      <form
+        className={cn("search-page__form", {
+          "search-page__form--rtl": isRTL,
+        })}
+        onSubmit={(e) => e.preventDefault()}
+      >
         <SearchIcon className="search-page__form-icon" />
 
         <input
@@ -98,9 +117,7 @@ const SearchPageContent = () => {
             <h2 className="search-page__no-results-title">
               {t("search-no-results-title")}
             </h2>
-            <p className="search-page__note">
-              {t("search-no-results-text")}
-            </p>
+            <p className="search-page__note">{t("search-no-results-text")}</p>
             <ButtonLink
               link={HOME_PAGE_LINK}
               className="button-link button-link--ghost-red search-page__no-results-btn"
@@ -116,10 +133,7 @@ const SearchPageContent = () => {
                   .slice(0, resultsBundleCount * SEARCH_RESULTS_BUNDLE_SIZE)
                   .map((page, i) => (
                     <li key={`search-page-${i}`} className="search-page__item">
-                      <Link
-                        to={`${page.url}`}
-                        className="search-page__link"
-                      >
+                      <Link to={`${page.url}`} className="search-page__link">
                         <div className="search-page__icon-wrapper">
                           <Logo className="search-page__icon" />
                         </div>
@@ -141,18 +155,17 @@ const SearchPageContent = () => {
                         {t("search-submit-btn")}
                       </ButtonLink>
                     </li>
-                  ))
-                }
+                  ))}
               </ul>
             ) : (
               <p className="search-page__note">
-                {t("search-min-query-part1")}
-                {' '}{SEARCH_MIN_QUERY_LENGTH}{' '}
-                {t("search-min-query-part2")}
+                {`${t(
+                  "search-min-query-part1"
+                )} ${getSearchMinQueryLocale()} ${t("search-min-query-part2")}`}
               </p>
             )}
           </>
-        )}          
+        )}
       </div>
     </section>
   );

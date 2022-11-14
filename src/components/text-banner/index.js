@@ -1,6 +1,8 @@
 import React from "react";
 import cn from "classnames";
 import ButtonLink from "../shared/button-link";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const TextBanner = ({
   className,
@@ -13,8 +15,16 @@ const TextBanner = ({
   link2,
   id,
 }) => {
+  const isRTL = useRtlDirection();
+
   return (
-    <section className={cn("text-banner", className)} id={id}>
+    <section
+      className={cn("text-banner", className, {
+        "text-banner--rtl": isRTL,
+      })}
+      id={id}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <div className="text-banner__wrapper">
         {note && <p className="text-banner__note">{note}</p>}
         <h2 className="text-banner__title">{title}</h2>

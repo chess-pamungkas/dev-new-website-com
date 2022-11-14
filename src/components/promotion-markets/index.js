@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
 import Lottie from "lottie-react";
-import { REGISTRATION_LINK } from "../../helpers/constants";
+import { DIR_LTR, DIR_RTL, REGISTRATION_LINK } from "../../helpers/constants";
 import ButtonLink from "../shared/button-link";
 import {
   OPACITY_0,
@@ -12,6 +12,7 @@ import { animated, easings, useSpring } from "react-spring";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 import { scrollTo } from "../../helpers/scroll-to";
 import { isBrowser } from "../../helpers/services/is-browser";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 
 const PromotionMarkets = ({
   className,
@@ -20,6 +21,7 @@ const PromotionMarkets = ({
   children,
   btnTitle,
 }) => {
+  const isRTL = useRtlDirection();
   let lastTouchPointY = 0;
   const promoRef = useRef();
   const scrollCount = children.length;
@@ -230,7 +232,13 @@ const PromotionMarkets = ({
   }, [backgroundPositionX, chartAnimationApi, isAnimationStarted]);
 
   return (
-    <section className={cn("promotion-markets", className)} ref={promoRef}>
+    <section
+      className={cn("promotion-markets", className, {
+        "promotion-markets--rtl": isRTL,
+      })}
+      ref={promoRef}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <div className="promotion-markets__images">
         <animated.div
           className="promotion-markets__chart"

@@ -284,6 +284,7 @@
 
   "page-main-title": "Oqtima trading page",
   "page-allmarkets-title": "Oqtima All Markets",
+  "page-platforms-title": "Platforms",
   "page-metals-title": "Oqtima Metals",
   "page-crypto-title": "Oqtima Crypto",
   "page-energies-title": "Oqtima Energies",
@@ -475,7 +476,7 @@
   "crypto_faq-content1": "As cryptocurrencies are decentralised and therefore do not rely on the world banks, the advantage is that you can trade any day of the week, including the weekend. When checking the specifications under the symbol list on the platform, you will see the trading times and there is a small trading break on the weekend for cryptocurrencies.",
   "crypto_faq-title2": "Where is Bitcoin on the platform?",
   "crypto_faq-content2": "Each cryptocurrency will have its own asset code. If you check in your Symbol list you will see BTCUSD and this is the code for BITCOIN/USD. All of our cryptocurrencies are traded against USD.",
-  "crypto_faq-title3": "Where is Bitcoin on the platform?",
+  "crypto_faq-title3": "Is a digital wallet needed to trade cryptocurrencies?",
   "crypto_faq-content3": "From your Oqtima account, you will have access to trade any cryptocurrency we offer without the need for any digital wallet. Funding your account is simple and can be done using any one of our available deposit methods.",
 
   "all-markets_top-market-title": "All market overview",
@@ -684,7 +685,6 @@
   "all-markets_market-items-list-crypto-adv6": "Fast and stable execution",
   "all-markets_market-items-list-crypto-adv7": "No commission",
 
-  "page-platforms-title": "Platforms",
   "platforms_top-market-promo-text": "Each platform has been optimized with the help of our analysts and traders to give the Oqtima Experience.",
   "platforms-top-market-promo-text-accent": "1,3,4,5,6,7,8,9,10,12,14,15,16",
 
