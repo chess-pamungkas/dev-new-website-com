@@ -79,6 +79,7 @@ const Mt4PageContent = () => {
     <>
       <TopMarketPromotion
         className={cn("mt4-page-promotion", {
+          "split-bg--rtl": isRTL,
           "mt-page-promotion--rtl": isRTL,
         })}
         image={animation}

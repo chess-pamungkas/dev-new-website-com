@@ -11,10 +11,13 @@ import Faq from "../faq";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import FaqSearchBar from "./faq-search-bar";
 import marketsIcon from "../../assets/images/icons/markets.svg";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const HelpCenter = ({ className }) => {
   const { t } = useTranslation();
   const [searchResults, setSearchResults] = useState([]);
+  const isRTL = useRtlDirection();
 
   const HelpCenterBlock = ({
     title,
@@ -56,7 +59,12 @@ const HelpCenter = ({ className }) => {
   );
 
   return (
-    <section className={cn("help-center", className)}>
+    <section
+      className={cn("help-center", className, {
+        "help-center--rtl": isRTL,
+      })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <div className="help-center__wrapper">
         <h2 className="help-center__title">{t("faq-title")}</h2>
         <FaqSearchBar setSearchResults={setSearchResults} />
@@ -81,7 +89,11 @@ const HelpCenter = ({ className }) => {
             <HelpCenterBlock
               title={
                 <>
-                  <img src={marketsIcon} className="help-center__block-icon" alt="" />
+                  <img
+                    src={marketsIcon}
+                    className="help-center__block-icon"
+                    alt=""
+                  />
                   <span>{t("faq_market-title")}</span>
                 </>
               }
