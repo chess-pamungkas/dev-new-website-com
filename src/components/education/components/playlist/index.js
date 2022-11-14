@@ -7,12 +7,9 @@ import {
   getPlaylistTitleFromYoutube,
 } from "../../../../helpers/services/get-videos";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
-import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
-import { DIR_LTR, DIR_RTL } from "../../../../helpers/constants";
 
 const Playlist = ({ className }) => {
   const [playlist, setPlaylist] = useState(null);
-  const isRTL = useRtlDirection();
 
   useEffect(() => {
     const getPlaylists = async () => {
@@ -38,12 +35,7 @@ const Playlist = ({ className }) => {
   }, []);
 
   return (
-    <section
-      className={cn("playlist", className, {
-        "playlist--rtl": isRTL,
-      })}
-      dir={isRTL ? DIR_RTL : DIR_LTR}
-    >
+    <section className={cn("playlist", className)}>
       {playlist &&
         Object.entries(playlist).map(([key, value]) => (
           <div

@@ -75,7 +75,6 @@ const CtraderPageContent = () => {
     <>
       <TopMarketPromotion
         className={cn("ctrader-page-promotion", {
-          "split-bg--rtl": isRTL,
           "ctrader-page-promotion--rtl": isRTL,
         })}
         image={animation}

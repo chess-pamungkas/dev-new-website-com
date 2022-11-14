@@ -6,29 +6,20 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
-  DIR_LTR,
-  DIR_RTL,
   LG_MAX_WIDTH,
   MD_MAX_WIDTH,
   SM_MAX_WIDTH,
 } from "../../../../helpers/constants";
 import { useScreenWidth } from "./use-screen-width";
-import { ArrowNext } from "../../../shared/icons";
-import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
+import {ArrowNext} from "../../../shared/icons";
 
 const VideosCarousel = ({ className, videos }) => {
-  const isRTL = useRtlDirection();
   const responsiveSettings = useScreenWidth();
 
   const CarouselNextArrow = (sliderProps) => {
     const { onClick } = sliderProps;
     return (
-      <button
-        onClick={onClick}
-        className={cn("videos-carousel__arrow", {
-          "videos-carousel__arrow--rtl": isRTL,
-        })}
-      >
+      <button onClick={onClick} className="videos-carousel__arrow">
         <ArrowNext className="videos-carousel__arrow-icon" />
       </button>
     );
@@ -39,6 +30,7 @@ const VideosCarousel = ({ className, videos }) => {
       dots: false,
       infinite: false,
       nextArrow: <CarouselNextArrow />,
+      prevArrow: <></>,
       ...responsiveSettings.xl,
       responsive: [
         {
@@ -58,10 +50,7 @@ const VideosCarousel = ({ className, videos }) => {
   }, [responsiveSettings]);
 
   return (
-    <div
-      className={cn("videos-carousel", className)}
-      dir={isRTL ? DIR_RTL : DIR_LTR}
-    >
+    <div className={cn("videos-carousel", className)}>
       {videos && (
         <Slider {...getSettings()}>
           {videos.map(({ snippet: video }) => (

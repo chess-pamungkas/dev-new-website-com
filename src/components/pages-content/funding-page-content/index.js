@@ -49,7 +49,6 @@ const FundingPageContent = () => {
     <>
       <TopMarketPromotion
         className={cn("withdrawal-page-promotion", {
-          "split-bg--rtl": isRTL,
           "withdrawal-page-promotion--rtl": isRTL,
         })}
         image={promotion}

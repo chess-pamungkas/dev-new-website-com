@@ -183,8 +183,7 @@
 }
 
 .promotion4.promotion--rtl {
-  background: url("../../assets/images/promotions/promo4-rtl.svg") no-repeat
-    left;
+  background: url("../../assets/images/promotions/promo4-rtl.svg") no-repeat left;
   background-size: cover;
 }
 
@@ -242,6 +241,7 @@
 }
 
 .top-market-layout--rtl {
+
   .top-market-layout__title {
     @include desktop-lg {
       text-align: right;
@@ -258,6 +258,7 @@
     text-align: right;
   }
 }
+
 
 .table--rtl {
   .table__head-row {
@@ -359,25 +360,21 @@
 
 .legal-page-promotion--rtl {
   direction: rtl;
-  background: url("../../assets/images/bg/legal/banner-sm-rtl.svg") no-repeat
-    center;
+  background: url("../../assets/images/bg/legal/banner-sm-rtl.svg") no-repeat center;
   background-size: cover;
 
   @include tablet {
-    background: url("../../assets/images/bg/legal/banner-md-rtl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/legal/banner-md-rtl.svg") no-repeat center;
     background-size: cover;
   }
 
   @include desktop-lg {
-    background: url("../../assets/images/bg/legal/banner-lg-rtl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/legal/banner-lg-rtl.svg") no-repeat center;
     background-size: cover;
   }
 
   @include desktop-xl {
-    background: url("../../assets/images/bg/legal/banner-xl-rtl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/legal/banner-xl-rtl.svg") no-repeat center;
     background-size: cover;
   }
 
@@ -475,6 +472,27 @@
   }
 }
 
+.mt-page-promotion--rtl {
+  direction: rtl;
+  background: url("../../assets/images/bg/split-bg/bg-sm-rtl.svg") no-repeat center;
+  background-size: cover;
+
+  @include tablet {
+    background: url("../../assets/images/bg/split-bg/bg-md-rtl.svg") no-repeat bottom;
+    background-size: cover;
+  }
+
+  @include desktop-lg {
+    background: url("../../assets/images/bg/split-bg/bg-lg-rtl.svg") no-repeat right;
+    background-size: cover;
+  }
+
+  @include desktop-xl {
+    background: url("../../assets/images/bg/split-bg/bg-xl-rtl.svg") no-repeat center;
+    background-size: cover;
+  }
+}
+
 .mt-promotion--rtl {
   .mt-promotion__title {
     text-align: right;
@@ -523,6 +541,27 @@
     &:first-child {
       text-align: right;
     }
+  }
+}
+
+.withdrawal-page-promotion--rtl {
+  direction: rtl;
+  background: url("../../assets/images/bg/split-bg/bg-sm-rtl.svg") no-repeat center;
+  background-size: cover;
+
+  @include tablet {
+    background: url("../../assets/images/bg/split-bg/bg-md-rtl.svg") no-repeat bottom;
+    background-size: cover;
+  }
+
+  @include desktop-lg {
+    background: url("../../assets/images/bg/split-bg/bg-lg-rtl.svg") no-repeat right;
+    background-size: cover;
+  }
+
+  @include desktop-xl {
+    background: url("../../assets/images/bg/split-bg/bg-xl-rtl.svg") no-repeat center;
+    background-size: cover;
   }
 }
 
@@ -602,6 +641,7 @@
 }
 
 .accounts-type--rtl {
+
   .accounts-type__title {
     @include desktop-xl {
       text-align: right;
@@ -616,6 +656,7 @@
 }
 
 .text-banner--rtl {
+
   .text-banner__btn {
     &:last-child {
       @include desktop-xl {
@@ -625,64 +666,23 @@
   }
 }
 
-.split-bg--rtl {
+.ctrader-page-promotion--rtl, .trading-view-page-promotion--rtl {
   direction: rtl;
-  background: url("../../assets/images/bg/split-bg/bg-sm-rtl.svg") no-repeat
-    center;
+  background: url("../../assets/images/bg/split-bg/bg-sm-rtl.svg") no-repeat center;
   background-size: cover;
 
   @include tablet {
-    background: url("../../assets/images/bg/split-bg/bg-md-rtl.svg") no-repeat
-      bottom;
+    background: url("../../assets/images/bg/split-bg/bg-md-rtl.svg") no-repeat bottom;
     background-size: cover;
   }
 
   @include desktop-lg {
-    background: url("../../assets/images/bg/split-bg/bg-lg-rtl.svg") no-repeat
-      right;
+    background: url("../../assets/images/bg/split-bg/bg-lg-rtl.svg") no-repeat right;
     background-size: cover;
   }
 
   @include desktop-xl {
-    background: url("../../assets/images/bg/split-bg/bg-xl-rtl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/split-bg/bg-xl-rtl.svg") no-repeat center;
     background-size: cover;
-  }
-}
-
-.top-market-promotion--education--rtl {
-  direction: rtl;
-}
-
-.playlist--rtl {
-  padding: 71px 15px 49px 51px;
-
-  @include tablet {
-    padding: 90px 35px 118px 105px;
-  }
-  @include desktop-lg {
-    padding: 83px 42px 42px 98px;
-  }
-  @include desktop-xl {
-    padding: 103px 55px 88px 155px;
-  }
-}
-
-.videos-carousel__arrow--rtl {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  right: unset;
-  left: -45px;
-
-  @include tablet {
-    left: -50px;
-  }
-
-  @include desktop-lg {
-    left: -65px;
-  }
-
-  @include desktop-xl {
-    left: -81px;
   }
 }

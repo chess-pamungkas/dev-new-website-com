@@ -79,7 +79,6 @@ const Mt5PageContent = () => {
     <>
       <TopMarketPromotion
         className={cn("mt5-page-promotion", {
-          "split-bg--rtl": isRTL,
           "mt-page-promotion--rtl": isRTL,
         })}
         image={animation}

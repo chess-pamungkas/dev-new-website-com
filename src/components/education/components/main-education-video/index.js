@@ -5,12 +5,10 @@ import TopMarketPromotion from "../../../top-market-promotion";
 import { getVideoById } from "../../../../helpers/services/get-videos";
 import { getYoutubeLink } from "../helpers";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
-import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 
 const MainEducationVideo = () => {
   const [video, setVideo] = useState(null);
   const { isMobile, isMD, isLG, isXL } = useWindowSize();
-  const isRTL = useRtlDirection();
 
   useEffect(() => {
     const getVideo = async () => {
@@ -42,9 +40,7 @@ const MainEducationVideo = () => {
     <>
       {video && (
         <TopMarketPromotion
-          className={cn("black-promotion", "top-market-promotion--education", {
-            "top-market-promotion--education--rtl": isRTL,
-          })}
+          className={cn("black-promotion", "top-market-promotion--education")}
           image={getYoutubeLink(video.id)}
           isVideo
           note={video.snippet.description}
