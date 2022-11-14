@@ -1,8 +1,6 @@
 export const YOUTUBE_PLAYLIST_IDS = [
-  "PLynm3_86ldoSubjp4KQdqcTnJvuS2iqUO",
-  "PLynm3_86ldoTcoeVnHZUZx7AbWil1_YOK",
-  "PLynm3_86ldoTKwFVIKd2YwhYLCmxIEYun",
-  "PLynm3_86ldoTRvdQZn3wIiPTSfUqpZjcy",
+  "PL4Gr5tOAPttLOY9IrWVjJlv4CtkYI5cI_",
+  "PLcKa-34z76PvI5KvI5S2JGj0RcBVuz3jg",
 ];
 
-export const MAIN_VIDEO_ID = "0MX_fJAhmEE";
+export const MAIN_VIDEO_ID = "HccqokXN2n8";

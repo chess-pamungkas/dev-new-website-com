@@ -339,5 +339,12 @@
   "accounts-type_account-type2-markets-title": "Markets",
   "accounts-type_account-type2-markets-value": "XX",
   "accounts-type_account-type2-total-symbols-title": "مجموع الرموز",
-  "accounts-type_account-type2-total-symbols-value": "XX"
+  "accounts-type_account-type2-total-symbols-value": "XX",
+
+  "education_top-market-promo-note": "أبجد هوز دولور الجلوس أميت, ضبط باستمرار النخبة, ولكن هل تم ضرب دوم له من العمل والألم.",
+  "education_top-market-promo-note-accent": "1,5,9,17",
+  "education_top-market-promo-text": "الأمثل التعليمية",
+  "education_top-market-promo-text-accent": "2",
+  "education_top-market-promo-text-2": "أبجد هوز دولور الجلوس أميت, ضبط باستمرار النخبة, ولكن هل تم ضرب دوم له من العمل والألم.",
+  "education_top-market-promo-text-accent-2": ""
 }
