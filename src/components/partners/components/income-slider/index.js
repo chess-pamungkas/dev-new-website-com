@@ -11,9 +11,12 @@ import {
   MIN_CLIENTS,
 } from "../../../../helpers/partners.config";
 import { formatMoney } from "../../../../helpers/services/format-money";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
+import { DIR_LTR, DIR_RTL } from "../../../../helpers/constants";
 
 const IncomeSlider = ({ className }) => {
   const { t } = useTranslation();
+  const isRTL = useRtlDirection();
   const [clientsCount, setClientsCount] = useState(DEFAULT_CLIENTS);
   const [totalIncome, setTotalIncome] = useState(
     DEFAULT_CLIENTS * COST_PER_CLIENT
@@ -36,7 +39,12 @@ const IncomeSlider = ({ className }) => {
   };
 
   return (
-    <section className={cn("partners-income", className)}>
+    <section
+      className={cn("partners-income", className, {
+        "partners-income--rtl": isRTL,
+      })}
+      dir={isRTL ? DIR_RTL : DIR_LTR}
+    >
       <p className="partners-income__title">
         {t("partners_income-slider-title")}
       </p>
@@ -60,6 +68,7 @@ const IncomeSlider = ({ className }) => {
         thumbClassName={"partners-income__slider-thumb"}
         markClassName={"partners-income__slider-mark"}
         renderMark={renderMark}
+        invert={isRTL}
       />
       <div className="partners-income__total-income">
         <p className="partners-income__total-num">

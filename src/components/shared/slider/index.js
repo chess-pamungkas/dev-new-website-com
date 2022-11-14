@@ -12,6 +12,7 @@ const Slider = ({
   currentValue,
   onChange,
   renderMark,
+  invert = false,
 }) => {
   return (
     <ReactSlider
@@ -28,6 +29,7 @@ const Slider = ({
         onChange(value);
       }}
       renderMark={renderMark}
+      invert={invert}
     />
   );
 };

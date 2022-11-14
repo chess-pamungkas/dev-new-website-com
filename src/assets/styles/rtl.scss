@@ -183,8 +183,7 @@
 }
 
 .promotion4.promotion--rtl {
-  background: url("../../assets/images/promotions/promo4-rtl.svg") no-repeat
-    left;
+  background: url("../../assets/images/promotions/promo4-rtl.svg") no-repeat left;
   background-size: cover;
 }
 
@@ -359,25 +358,21 @@
 
 .legal-page-promotion--rtl {
   direction: rtl;
-  background: url("../../assets/images/bg/legal/banner-sm-rtl.svg") no-repeat
-    center;
+  background: url("../../assets/images/bg/legal/banner-sm-rtl.svg") no-repeat center;
   background-size: cover;
 
   @include tablet {
-    background: url("../../assets/images/bg/legal/banner-md-rtl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/legal/banner-md-rtl.svg") no-repeat center;
     background-size: cover;
   }
 
   @include desktop-lg {
-    background: url("../../assets/images/bg/legal/banner-lg-rtl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/legal/banner-lg-rtl.svg") no-repeat center;
     background-size: cover;
   }
 
   @include desktop-xl {
-    background: url("../../assets/images/bg/legal/banner-xl-rtl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/legal/banner-xl-rtl.svg") no-repeat center;
     background-size: cover;
   }
 
@@ -627,25 +622,21 @@
 
 .split-bg--rtl {
   direction: rtl;
-  background: url("../../assets/images/bg/split-bg/bg-sm-rtl.svg") no-repeat
-    center;
+  background: url("../../assets/images/bg/split-bg/bg-sm-rtl.svg") no-repeat center;
   background-size: cover;
 
   @include tablet {
-    background: url("../../assets/images/bg/split-bg/bg-md-rtl.svg") no-repeat
-      bottom;
+    background: url("../../assets/images/bg/split-bg/bg-md-rtl.svg") no-repeat bottom;
     background-size: cover;
   }
 
   @include desktop-lg {
-    background: url("../../assets/images/bg/split-bg/bg-lg-rtl.svg") no-repeat
-      right;
+    background: url("../../assets/images/bg/split-bg/bg-lg-rtl.svg") no-repeat right;
     background-size: cover;
   }
 
   @include desktop-xl {
-    background: url("../../assets/images/bg/split-bg/bg-xl-rtl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/split-bg/bg-xl-rtl.svg") no-repeat center;
     background-size: cover;
   }
 }
@@ -684,5 +675,89 @@
 
   @include desktop-xl {
     left: -81px;
+  }
+}
+
+.partners-page-promotion--rtl {
+  direction: rtl;
+
+  background: url("../../assets/images/all-markets/bg-rtl.svg") no-repeat center;
+  background-size: cover;
+}
+
+.partners-income--rtl {
+
+  .partners-income__title {
+    @include tablet {
+      text-align: right;
+    }
+  }
+
+  .partners-income__description {
+    @include tablet {
+      text-align: right;
+    }
+  }
+
+  .partners-income__total-clients {
+    text-align: right;
+  }
+
+  .partners-income__total-num {
+    direction: ltr;
+  }
+}
+
+.partners-start--rtl {
+  &:before {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    left: unset;
+    right: 0;
+  }
+
+  &:after {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    right: unset;
+    left: 0;
+  }
+
+  .partners-start__arrow1 {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    left: unset;
+    right: calc(50% - 250px);
+
+    @include tablet {
+      right: calc(50% - 370px);
+    }
+
+    @include desktop-lg {
+      right: calc(50% - 375px);
+    }
+
+    @include desktop-xl {
+      right: calc(50% - 755px);
+    }
+  }
+
+  .partners-start__arrow2 {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    right: unset;
+    left: calc(50% - 250px);
+
+    @include tablet {
+      left: calc(50% - 370px);
+    }
+  }
+}
+
+.partners-page-bottom-promotion--rtl {
+  direction: rtl;
+
+  .top-market-promotion__text {
+    text-align: center;
   }
 }
