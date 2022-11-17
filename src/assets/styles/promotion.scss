@@ -302,8 +302,8 @@
     padding-bottom: 204px;
   }
 
-  background: url("../../assets/images/bg/promotions/promo4/promo4-sm.svg")
-    no-repeat;
+  background: url("../../assets/images/bg/promotions/promo4/promo4-sm_.svg")
+    no-repeat center;
   background-size: cover;
 
   &:after {
@@ -318,7 +318,7 @@
   }
 
   @include tablet {
-    background: url("../../assets/images/bg/promotions/promo4/promo4-md.svg")
+    background: url("../../assets/images/bg/promotions/promo4/promo4-md_.svg")
       no-repeat center;
     background-size: cover;
 
@@ -342,7 +342,7 @@
   }
 
   @include desktop-lg {
-    background: url("../../assets/images/bg/promotions/promo4/promo4-lg.svg")
+    background: url("../../assets/images/bg/promotions/promo4/promo4-lg_.svg")
       no-repeat center;
     background-size: cover;
 
@@ -362,8 +362,8 @@
   }
 
   @include desktop-xl {
-    background: url("../../assets/images/bg/promotions/promo4/promo4-xl.svg")
-      no-repeat bottom;
+    background: url("../../assets/images/bg/promotions/promo4/promo4-xl_.svg")
+      no-repeat right;
     background-size: cover;
 
     &:before {
