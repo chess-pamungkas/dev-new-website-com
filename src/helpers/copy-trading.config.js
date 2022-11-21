@@ -45,3 +45,57 @@ export const DATA_PROFESSIONAL_QUALIFICATION = [
     col3: "5:1",
   },
 ];
+
+export const ADVANTAGES_FOR_INVESTORS = [
+  {
+    key: "copy-trading-advantage-1",
+    text: "copy-trading_investors-advantage-1",
+  },
+  {
+    key: "copy-trading-advantage-2",
+    text: "copy-trading_investors-advantage-2",
+  },
+  {
+    key: "copy-trading-advantage-3",
+    text: "copy-trading_investors-advantage-3",
+  },
+  {
+    key: "copy-trading-advantage-4",
+    text: "copy-trading_investors-advantage-4",
+  },
+  {
+    key: "copy-trading-advantage-5",
+    text: "copy-trading_investors-advantage-5",
+  },
+  {
+    key: "copy-trading-advantage-6",
+    text: "copy-trading_investors-advantage-6",
+  },
+];
+
+export const ADVANTAGES_FOR_PROVIDERS = [
+  {
+    key: "copy-trading-advantage-1-providers",
+    text: "copy-trading_providers-advantage-1",
+  },
+  {
+    key: "copy-trading-advantage-2-providers",
+    text: "copy-trading_providers-advantage-2",
+  },
+  {
+    key: "copy-trading-advantage-3-providers",
+    text: "copy-trading_providers-advantage-3",
+  },
+  {
+    key: "copy-trading-advantage-4-providers",
+    text: "copy-trading_providers-advantage-4",
+  },
+  {
+    key: "copy-trading-advantage-5-providers",
+    text: "copy-trading_providers-advantage-5",
+  },
+  {
+    key: "copy-trading-advantage-6-providers",
+    text: "copy-trading_providers-advantage-6",
+  },
+];

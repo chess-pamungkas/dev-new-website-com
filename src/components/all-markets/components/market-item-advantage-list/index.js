@@ -4,28 +4,57 @@ import icon from "../../../../assets/images/all-markets/advantage-icon.svg";
 import iconSm from "../../../../assets/images/all-markets/advantage-icon-sm.svg";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
+import ButtonLink from "../../../shared/button-link";
+import {useRtlDirection} from "../../../../helpers/hooks/use-rtl-direction";
 
-const MarketItemAdvantageList = ({ className, advantages, title }) => {
+const MarketItemAdvantageList = ({
+  className,
+  advantages,
+  title,
+  btnTitle,
+  link,
+  btnClassName,
+}) => {
   const { t } = useTranslation();
   const { isMobile } = useWindowSize();
+  const isRTL = useRtlDirection();
+
   return (
-    <div className={cn("market-item-advantages-list", className)}>
+    <div className={cn("market-item-advantages-list", className, {
+      "market-item-advantages-list--rtl": isRTL
+    })}>
       {title && (
         <div className="market-item-advantages-list__title-wrapper">
           <h4 className="market-item-advantages-list__title">{title}</h4>
         </div>
       )}
-      <div className="market-item-advantages">
-        {advantages.map((item) => (
-          <div key={item.key} className="market-item-advantages__item">
-            <img
-              src={isMobile ? iconSm : icon}
-              alt=""
-              className="market-item-advantages__icon"
-            />
-            <span className="market-item-advantages__text">{t(item.text)}</span>
-          </div>
-        ))}
+      <div className="market-item-advantages-wrapper">
+        <div className="market-item-advantages">
+          {advantages.map((item) => (
+              <div key={item.key} className="market-item-advantages__item">
+                <img
+                    src={isMobile ? iconSm : icon}
+                    alt=""
+                    className="market-item-advantages__icon"
+                />
+                <span className="market-item-advantages__text">{t(item.text)}</span>
+              </div>
+          ))}
+        </div>
+        {btnTitle && btnTitle !== "" && (
+            <div className="market-item-btn-wrapper">
+              <ButtonLink
+                  link={link}
+                  className={cn(
+                      "button-link--red",
+                      "market-item-btn",
+                      btnClassName
+                  )}
+              >
+                {btnTitle}
+              </ButtonLink>
+            </div>
+        )}
       </div>
     </div>
   );

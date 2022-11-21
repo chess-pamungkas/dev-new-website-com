@@ -20,6 +20,7 @@ const TopMarketPromotion = ({
   isVideo = false,
   videoSettings = {},
   lottieStyle = {},
+  content,
 }) => {
   const isRTL = useRtlDirection();
 
@@ -101,6 +102,7 @@ const TopMarketPromotion = ({
             {note && <p className="top-market-promotion__note">{note}</p>}
           </div>
           {btnTitle && getButton()}
+          {content && <div className="top-market-promotion__content">{content}</div>}
         </div>
         {image && (
           <div

@@ -1,0 +1,34 @@
+import React from "react";
+import { graphql } from "gatsby";
+import { useTranslation } from "gatsby-plugin-react-i18next";
+import "../assets/styles/index.scss";
+import Layout from "../components/shared/layout";
+import Seo from "../components/shared/seo";
+import CopyTradingPageContent from "../components/pages-content/copy-trading-page-content";
+
+const CopyTradingPage = () => {
+  const { t } = useTranslation();
+
+  return (
+    <Layout>
+      <Seo title={t("page-copy-trading-title")} />
+      <CopyTradingPageContent />
+    </Layout>
+  );
+};
+
+export default CopyTradingPage;
+
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;

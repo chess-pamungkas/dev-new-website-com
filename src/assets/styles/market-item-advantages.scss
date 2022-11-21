@@ -96,3 +96,31 @@
     }
   }
 }
+
+.market-item-btn-wrapper {
+  width: 100%;
+  padding: 20px;
+
+  @include tablet {
+    padding: 35px 43px 17px 43px;
+  }
+
+  @include desktop-lg {
+    padding: 35px 19px 22px 43px;
+  }
+}
+
+.market-item-advantages-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.market-item-btn {
+  font-size: 12px;
+
+  @include desktop-xl {
+    font-size: 20px;
+  }
+}

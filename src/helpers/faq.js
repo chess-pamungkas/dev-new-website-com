@@ -429,3 +429,18 @@ export const FAQ_BEGINNERS = [
     ],
   },
 ];
+
+export const FAQ_COPY_TRADING = [
+  {
+    question: "copy-trading_faq-title1",
+    answer: ["copy-trading_faq-content1"],
+  },
+  {
+    question: "copy-trading_faq-title2",
+    answer: [
+      "copy-trading_faq-content2",
+      "copy-trading_faq-content2-2",
+      "copy-trading_faq-content2-3",
+    ],
+  },
+];

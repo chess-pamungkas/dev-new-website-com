@@ -761,3 +761,19 @@
     text-align: center;
   }
 }
+
+.market-item-advantages-list--rtl {
+
+  .market-item-advantages-list__title {
+    text-align: right;
+  }
+
+  .market-item-advantages__text {
+    padding-left: unset;
+    padding-right: 10px;
+
+    @include tablet {
+      padding-right: 20px;
+    }
+  }
+}
