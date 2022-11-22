@@ -4,7 +4,6 @@ import TopMarketPromotion from "../../top-market-promotion";
 import cn from "classnames";
 import promotion from "../../../assets/images/copy-trading/promotion.svg";
 import promotion2 from "../../../assets/images/copy-trading/why.svg";
-import { MT4_DOC } from "../../../helpers/documents";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import MarketItemAdvantageList from "../../all-markets/components/market-item-advantage-list";
@@ -27,11 +26,10 @@ const CopyTradingPageContent = () => {
           "split-bg--rtl": isRTL,
           "copy-trading-page-promotion--rtl": isRTL,
         })}
-        // TODO replace with the real image
         image={promotion}
         btnClassName="button-link--ghost"
         btnTitle={t("copy-trading_top-market-promo-btn")}
-        link={MT4_DOC}
+        link={REGISTRATION_LINK}
         note={
           <>
             <span className="display-block">
