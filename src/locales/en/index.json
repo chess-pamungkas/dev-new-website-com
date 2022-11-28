@@ -305,6 +305,7 @@
   "page-faq-title": "FAQ",
   "page-education-title": "Oqtima Educational",
   "page-copy-trading-title": "Oqtima Copy Trading",
+  "page-career-title": "Oqtima Career",
 
   "notification-stripe-cysec": "CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. The vast majority of retail investor accounts lose money when trading CFDs. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. Read Oqtima Risk disclosure",
   "notification-stripe-cysec-link": "here.",
@@ -1262,5 +1263,27 @@
   "copy-trading_faq-title2": "Is there a time limit to my trade?",
   "copy-trading_faq-content2": "You can hold a position for as long as you want, provided you have enough margin to cover your trade. There are rollover fees, also known as swap which is a financing charge, and this is applied to any trade kept open overnight or for shares, past the time of market closing for the relevant stock. The swap rate is displayed in your platform as percentage per annum and can be calculated using the following formula.",
   "copy-trading_faq-content2-2": "Market Price (*EOD) X Trade size in lots X Swap rate / 100 / 360 = Swap charge per night in USD",
-  "copy-trading_faq-content2-3": "*EOD = End of Day"
+  "copy-trading_faq-content2-3": "*EOD = End of Day",
+
+  "career_top-market-promo-btn": "See the jobs",
+  "career_top-market-promo-text": "We are",
+  "career_top-market-promo-text-accent": "",
+  "career_top-market-promo-btn2": "More about us",
+  "career_pros-title": "Why Work here?",
+  "career_pros-title-accent": "2",
+  "career_pros-subtitle": "Straight to the feels.",
+  "career_pros-1-title": "People people",
+  "career_pros-1-text": "We work better when we work together. You’ll find everyone here is up for the challenge, highly connected, aligned to the common goal and open to new ideas",
+  "career_pros-1-desc-title": "41%",
+  "career_pros-1-desc-text": "Women",
+  "career_pros-1-desc-title-2": "59%",
+  "career_pros-1-desc-text-2": "Men",
+  "career_pros-2-title": "Diverse and Inclusive",
+  "career_pros-2-text": "When a company talks about diversity it often feels contrived, so we let the numbers do our talking.",
+  "career_pros-2-desc-title": "43",
+  "career_pros-2-desc-text": "Different languages Spoken",
+  "career_pros-3-title": "Make an Impact",
+  "career_pros-3-text": "Our people make our customers’ experience all over the world better, but pride themselves on taking the time to improve the lives of people in their local communities.",
+  "career_pros-3-desc-title": "23",
+  "career_pros-3-desc-text": "Different languages Spoken"
 }

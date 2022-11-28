@@ -59,6 +59,36 @@
     }
   }
 
+  &--black {
+    background: transparent;
+    color: map-get($colors, "black");
+    border: 2px solid map-get($colors, "black");
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: map-get($colors, "white");
+      color: map-get($colors, "red");
+      border-color: map-get($colors, "red");
+    }
+  }
+
+  &--without-bg {
+    background: transparent;
+    text-decoration: underline;
+    text-transform: none;
+    width: auto;
+    border-radius: unset;
+    border: none;
+    color: map-get($colors, "white");
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
   &--with-red-border {
     border: 2px solid map-get($colors, "red");
 
@@ -139,22 +169,22 @@
 
   .button-link--snake-animation-line-bottom {
     animation: bottomLineMoveIn 0.25s linear 0s forwards,
-      bottomLineMoveOut 0.25s linear 0.75s forwards;
+    bottomLineMoveOut 0.25s linear 0.75s forwards;
   }
 
   .button-link--snake-animation-line-left {
     animation: leftLineMoveIn 0.25s linear 0.25s forwards,
-      leftLineMoveOut 0.25s linear 1s forwards;
+    leftLineMoveOut 0.25s linear 1s forwards;
   }
 
   .button-link--snake-animation-line-top {
     animation: topLineMoveIn 0.25s linear 0.5s forwards,
-      topLineMoveOut 0.25s linear 1.25s forwards;
+    topLineMoveOut 0.25s linear 1.25s forwards;
   }
 
   .button-link--snake-animation-line-right {
     animation: rightLineMoveIn 0.25s linear 0.75s forwards,
-      rightLineMoveOut 0.25s linear 1.5s forwards;
+    rightLineMoveOut 0.25s linear 1.5s forwards;
   }
 
   .button-link--snake-animation-line-top {

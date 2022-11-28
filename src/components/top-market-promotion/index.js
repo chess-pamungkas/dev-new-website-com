@@ -14,8 +14,12 @@ const TopMarketPromotion = ({
   btnClassName,
   btnTitle,
   link,
+  btnClassName2,
+  btnTitle2,
+  link2,
   isDocumentLink = false,
   isAnchorLink = false,
+  isButtonAndLink = false,
   isLottieImage = false,
   isVideo = false,
   videoSettings = {},
@@ -54,6 +58,31 @@ const TopMarketPromotion = ({
           >
             {btnTitle}
           </AnchorLink>
+        );
+      case isButtonAndLink:
+        return (
+          <div className="top-market-promotion__btn-wrapper">
+            <ButtonLink
+              link={link}
+              className={cn(
+                "button-link--red",
+                "top-market-promotion__btn",
+                btnClassName
+              )}
+            >
+              {btnTitle}
+            </ButtonLink>
+            <ButtonLink
+              link={link2}
+              className={cn(
+                "button-link--without-bg",
+                "top-market-promotion__btn--secondary",
+                btnClassName2
+              )}
+            >
+              {btnTitle2}
+            </ButtonLink>
+          </div>
         );
 
       default:
@@ -102,7 +131,9 @@ const TopMarketPromotion = ({
             {note && <p className="top-market-promotion__note">{note}</p>}
           </div>
           {btnTitle && getButton()}
-          {content && <div className="top-market-promotion__content">{content}</div>}
+          {content && (
+            <div className="top-market-promotion__content">{content}</div>
+          )}
         </div>
         {image && (
           <div
