@@ -2,6 +2,7 @@ import {
   CareerPros1,
   CareerPros2,
   CareerPros3,
+  CareerBenefit3,
 } from "../components/shared/icons";
 
 export const CAREER_PROS = [
@@ -49,5 +50,54 @@ export const CAREER_PROS = [
         textAccent: "2",
       },
     ],
+  },
+];
+
+export const CAREER_BENEFITS = [
+  //  TODO replace icons with the real
+  {
+    icon: CareerBenefit3,
+    title: "career_benefits-1-title",
+    text: "career_benefits-1-text",
+  },
+  {
+    icon: CareerBenefit3,
+    title: "career_benefits-2-title",
+    text: "career_benefits-2-text",
+  },
+  {
+    icon: CareerBenefit3,
+    title: "career_benefits-3-title",
+    text: "career_benefits-3-text",
+  },
+  {
+    icon: CareerBenefit3,
+    title: "career_benefits-4-title",
+    text: "career_benefits-4-text",
+  },
+  {
+    icon: CareerBenefit3,
+    title: "career_benefits-5-title",
+    text: "career_benefits-5-text",
+  },
+  {
+    icon: CareerBenefit3,
+    title: "career_benefits-6-title",
+    text: "career_benefits-6-text",
+  },
+  {
+    icon: CareerBenefit3,
+    title: "career_benefits-7-title",
+    text: "career_benefits-7-text",
+  },
+  {
+    icon: CareerBenefit3,
+    title: "career_benefits-8-title",
+    text: "career_benefits-8-text",
+  },
+  {
+    icon: CareerBenefit3,
+    title: "career_benefits-9-title",
+    text: "career_benefits-9-text",
   },
 ];
