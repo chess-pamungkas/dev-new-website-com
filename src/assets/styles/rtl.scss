@@ -146,6 +146,18 @@
   .button-link {
     float: right;
   }
+
+  .main-promotion__wrapper--without-hero {
+    justify-content: center;
+
+    .main-promotion__title {
+      text-align: center;
+    }
+
+    .button-link {
+      float: none;
+    }
+  }
 }
 
 .search-page__form--rtl {

@@ -67,6 +67,22 @@
       align-items: center;
       justify-content: flex-end;
     }
+
+    &--without-hero {
+      justify-content: center;
+
+      .main-promotion__title-wrapper {
+        text-align: center;
+      }
+
+      .main-promotion__title {
+        max-width: unset;
+      }
+
+      .button-link {
+        margin: 0 auto;
+      }
+    }
   }
 
   &__block {

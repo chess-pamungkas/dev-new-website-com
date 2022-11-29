@@ -12,7 +12,7 @@ import {
 import { transformParamToKey } from "../../helpers/services/marketing-service";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 
-const MainPromotion = ({ className }) => {
+const MainPromotion = ({ className, isShowHero = true }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
   const { t } = useTranslation();
@@ -32,14 +32,26 @@ const MainPromotion = ({ className }) => {
         "main-promotion--rtl": isRTL,
       })}
     >
-      <div className="main-promotion__person">
-        <span className="main-promotion__name">{t(hero.name)}</span>
-        <span className="main-promotion__description">{t(hero.text)}</span>
-      </div>
-      <div className="main-promotion__photo">
-        <img src={hero.image} alt={hero.name} className="main-promotion__img" />
-      </div>
-      <div className="main-promotion__wrapper">
+      {isShowHero && (
+        <>
+          <div className="main-promotion__person">
+            <span className="main-promotion__name">{t(hero.name)}</span>
+            <span className="main-promotion__description">{t(hero.text)}</span>
+          </div>
+          <div className="main-promotion__photo">
+            <img
+              src={hero.image}
+              alt={hero.name}
+              className="main-promotion__img"
+            />
+          </div>
+        </>
+      )}
+      <div
+        className={cn("main-promotion__wrapper", {
+          "main-promotion__wrapper--without-hero": !isShowHero,
+        })}
+      >
         <div className="main-promotion__block">
           <h1 className="main-promotion__title-wrapper">
             <span className="main-promotion__title">

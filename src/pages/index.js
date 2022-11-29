@@ -16,7 +16,8 @@ const IndexPage = () => {
   return (
     <Layout setHeaderRef={setHeaderRef}>
       <Seo title={t("page-main-title")} />
-      <MainPromotion />
+      {/*isShowHero is workaround to hide hero image (e.g. Buffon)  */}
+      <MainPromotion isShowHero={false} />
       <TradingTicker />
       <PromotionContent headerRef={headerRef} />
       <PerformanceContent />
