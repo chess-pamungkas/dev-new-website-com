@@ -34,10 +34,9 @@ const CareerPros = ({ className }) => {
         {CAREER_PROS.map((block) => (
           <ProsBlock
             key={`career-pros-${stringTransformToKebabCase(block.title)}`}
-            icon={block.icon}
             title={block.title}
+            titleAccent={block.titleAccent}
             text={block.text}
-            description={block.description}
           />
         ))}
       </div>
