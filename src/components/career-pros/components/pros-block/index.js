@@ -3,6 +3,7 @@ import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 import { Logo } from "../../../shared/icons";
+import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 
 const ProsBlock = ({ className, title, titleAccent, text }) => {
   const { t } = useTranslation();
@@ -18,7 +19,16 @@ const ProsBlock = ({ className, title, titleAccent, text }) => {
           accentClassName="highlighted-in-red"
         />
       </p>
-      <p className="pros-block__subtitle">{t(text)}</p>
+      <p className="pros-block__text">
+        {text.map((item, index) => (
+          <span
+            key={`${stringTransformToKebabCase(title)}-desc-${index}`}
+            className="display-block"
+          >
+            {t(item)}
+          </span>
+        ))}
+      </p>
     </div>
   );
 };

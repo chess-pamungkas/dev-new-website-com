@@ -180,6 +180,10 @@
     flex-direction: column;
 
     @include desktop-lg {
+      align-items: flex-start;
+    }
+
+    @include desktop-xl {
       flex-direction: row;
     }
   }
@@ -199,14 +203,20 @@
     }
 
     &--secondary {
-      margin: 30px auto 0;
+      margin: 15px auto 0;
       transition: 0.1s;
+      font-size: 20px;
 
       @include tablet {
-        font-size: 24px;
+        margin: 25px auto 0;
       }
 
       @include desktop-lg {
+        margin: 15px 0  0 0;
+        font-size: 24px;
+      }
+
+      @include desktop-xl {
         margin: 0 0  0 30px;
       }
     }
