@@ -71,3 +71,34 @@ export const CAREER_BENEFITS = [
     ],
   },
 ];
+
+export const VACANCY = [
+  {
+    title: "career_vacancy1_title",
+    location: "career_vacancy1_location",
+    area: "career_vacancy1_area",
+    description: "career_vacancy1_description",
+    link: "/",
+  },
+  {
+    title: "career_vacancy2_title",
+    location: "career_vacancy2_location",
+    area: "career_vacancy2_area",
+    description: "career_vacancy21_description",
+    link: "/",
+  },
+  {
+    title: "career_vacancy3_title",
+    location: "career_vacancy3_location",
+    area: "career_vacancy3_area",
+    description: "career_vacancy3_description",
+    link: "/",
+  },
+  {
+    title: "career_vacancy4_title",
+    location: "career_vacancy4_location",
+    area: "career_vacancy4_area",
+    description: "career_vacancy4_description",
+    link: "/",
+  },
+];

@@ -10,6 +10,7 @@ import CareerPros from "../../career-pros";
 import icon from "../../../assets/images/icon--white.svg";
 import { REGISTRATION_LINK } from "../../../helpers/constants";
 import CareerBenefits from "../../career-benefits";
+import JobOpenings from "../../job-openings";
 
 const CareerContent = () => {
   const { t } = useTranslation();
@@ -41,6 +42,7 @@ const CareerContent = () => {
       </TopMarketPromotion>
       <CareerPros />
       <CareerBenefits />
+      <JobOpenings />
       <TopMarketPromotion
         className="bottom-promotion"
         image={icon}
