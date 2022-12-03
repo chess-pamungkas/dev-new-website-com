@@ -118,9 +118,7 @@
 .career-pros {
   scroll-snap-align: start;
   position: relative;
-  background-size: cover;
-  background: url("../../assets/images/bg/performance/performance-sm.svg")
-    no-repeat bottom;
+  background: map-get($colors, "white");
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -145,7 +143,7 @@
     padding-bottom: 77px;
     background-size: cover;
     background: url("../../assets/images/bg/performance/performance-md.svg")
-      no-repeat bottom;
+      no-repeat bottom right;
 
     &:after {
       width: 124px;
@@ -158,7 +156,7 @@
     padding-bottom: 83px;
     background-size: cover;
     background: url("../../assets/images/bg/performance/performance-lg.svg")
-      no-repeat bottom;
+      no-repeat bottom right;
 
     &:after {
       width: 194px;
@@ -171,7 +169,7 @@
     padding-bottom: 203px;
     background-size: cover;
     background: url("../../assets/images/bg/performance/performance-xl.svg")
-      no-repeat bottom;
+      no-repeat bottom right;
 
     &:after {
       right: -175px;
@@ -268,6 +266,11 @@
   text-align: center;
   height: 100%;
   width: 100%;
+  margin: 0 0 40px;
+
+  @include tablet {
+    margin: 0;
+  }
 
   &__title {
     font-weight: map-get($font-weight, "black");
@@ -293,7 +296,7 @@
     }
   }
 
-  &_text {
+  &__text {
     font-weight: map-get($font-weight, "light");
     font-size: 14px;
     line-height: 18px;
