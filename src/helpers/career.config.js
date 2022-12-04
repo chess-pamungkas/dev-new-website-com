@@ -84,7 +84,7 @@ export const VACANCY = [
     title: "career_vacancy2_title",
     location: "career_vacancy2_location",
     area: "career_vacancy2_area",
-    description: "career_vacancy21_description",
+    description: "career_vacancy2_description",
     link: "/",
   },
   {

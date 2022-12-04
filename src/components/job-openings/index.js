@@ -3,6 +3,11 @@ import cn from "classnames";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
+import { VACANCY } from "../../helpers/career.config";
+import Accordion from "../shared/accordion";
+import Vacancy from "./components/vacancy";
+import { stringTransformToKebabCase } from "../../helpers/services/string-service";
+import { AccordionActiveIcon, AccordionIcon } from "../shared/icons";
 
 const JobOpenings = ({ className }) => {
   const isRTL = useRtlDirection();
@@ -20,7 +25,17 @@ const JobOpenings = ({ className }) => {
           {t("career_job-openings_title")}
         </h2>
         <div className="job-openings__vacancy-wrapper">
-
+          {VACANCY.map((item) => (
+            <Accordion
+              key={`vacancy-${stringTransformToKebabCase(item.title)}`}
+              className={cn("faq__accordion", "vacancy__accordion")}
+              icon={AccordionIcon}
+              iconForActive={AccordionActiveIcon}
+              title={item.title}
+            >
+              <Vacancy {...item} />
+            </Accordion>
+          ))}
         </div>
       </div>
     </section>
