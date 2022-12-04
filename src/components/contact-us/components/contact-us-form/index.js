@@ -105,7 +105,9 @@ const ContactUsForm = () => {
             errorMessage={errors.message}
             placeholder={t("contact-us_form_placeholder")}
           />
-          <ReCAPTCHA sitekey={SITE_KEY} size="invisible" ref={reCaptchaRef} />
+          {SITE_KEY && (
+            <ReCAPTCHA sitekey={SITE_KEY} size="invisible" ref={reCaptchaRef} />
+          )}
           <button
             type="submit"
             className={cn(
