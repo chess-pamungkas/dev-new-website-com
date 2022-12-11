@@ -4,7 +4,6 @@ import { stringTransformToKebabCase } from "../../../helpers/services/string-ser
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import Dropdown from "../dropdown";
 
-// TODO: add localization to the component
 const Tabs = ({
   classname,
   tabList = [],
@@ -80,13 +79,14 @@ const Tabs = ({
         ) : (
           // eslint-disable-next-line
           <ul role="tablist" className="tabs__tablist">
-            {tabList.map(({ title }, tabIndex) => (
+            {tabList.map(({ title, isTitleWithIcon, icon }, tabIndex) => (
               <Tab
                 key={`${stringTransformToKebabCase(title)}_tab`}
                 tabIndex={tabIndex}
                 isSelected={currentTabIndex === tabIndex}
                 onTabClick={() => handleTabClick(tabIndex)}
               >
+                {isTitleWithIcon && icon}
                 {title}
               </Tab>
             ))}

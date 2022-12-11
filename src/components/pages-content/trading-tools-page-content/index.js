@@ -5,6 +5,7 @@ import TopMarket from "../../top-market";
 import cn from "classnames";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import promotion from "../../../assets/images/trading-tools/promotion.svg";
+import AlphaGeneration from "../../trading-tools/components/alpha-generation";
 
 const TradingToolsPageContent = () => {
   const { t } = useTranslation();
@@ -36,6 +37,7 @@ const TradingToolsPageContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
+      <AlphaGeneration />
     </>
   );
 };

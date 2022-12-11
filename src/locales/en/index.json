@@ -684,7 +684,7 @@
   "all-markets_market-items-list-crypto-adv7": "No commission",
 
   "platforms_top-market-promo-text": "Each platform has been optimized with the help of our analysts and traders to give the Oqtima Experience.",
-  "platforms-top-market-promo-text-accent": "1,3,4,5,6,7,8,9,10,12,14,15,16",
+  "platforms_top-market-promo-text-accent": "1,3,4,5,6,7,8,9,10,12,14,15,16",
 
   "platforms_meta-trader-4-title": "MetaTrader 4",
   "platforms_meta-trader-4-text-1": "The most famous and used trading platform in the world, MT4 offers an in depth way to customise the way you trade.",
@@ -716,9 +716,9 @@
   "platforms_meta-trader-5-advantage-9": "Micro Lot trading available",
   "platforms_meta-trader-5-advantage-10": "Charting tools",
   "platforms_meta-trader-5-advantage-11": "Hedging allowed",
-  "platforms_top-market-promo-text": "Experience Oqtima now.",
-  "platforms_top-market-promo-text-accent": "2",
-  "platforms_top-market-promo-btn": "Open an account",
+  "platforms_bottom-top-market-promo-text": "Experience Oqtima now.",
+  "platforms_bottom-top-market-promo-text-accent": "2",
+  "platforms_bottom-top-market-promo-btn": "Open an account",
 
   "document-client-categorisation-notice-name": "Client Categorisation Notice",
   "document-complaint-policy-name": "Complaint-Handling Policy",
@@ -1337,5 +1337,25 @@
   "trading-tools_top-market-promo-text-accent": "1,2,7,8,9,21,31,32,33",
   "trading-tools_top-market-btn1-title": "Alpha Generation",
   "trading-tools_top-market-btn2-title": "Featured Ideas",
-  "trading-tools_top-market-btn3-title": "TC Market Buzz"
+  "trading-tools_top-market-btn3-title": "TC Market Buzz",
+  "trading-tools_alpha-generation_title": "Alpha Generation",
+  "trading-tools_alpha-generation_subtitle": "Actionable insights for your MetaTrader platform.",
+  "trading-tools_alpha-generation_description": "Alpha Generation enables you to form confident decision-making by offering three innovative indicators that represent market psychology and assist with identifying new trade opportunities and potential entry/exit points. These indicators are superimposed within the MetaTrader MT4/MT5 charts.",
+  "trading-tools_alpha-generation_tabs_title1": "Analyst views",
+  "trading-tools_alpha-generation_tabs_title2": "Adaptive candles",
+  "trading-tools_alpha-generation_tabs_title3": "Adaptive divergence convergence",
+  "trading-tools_alpha-generation_tabs_content1_title":"Your trusted source for target levels",
+  "trading-tools_alpha-generation_tabs_content1_text":"Trading Central is always there with a directional perspective on every chart. Based on the Trading Central award-winning technical analysis you will see a directional perspective on every chart. Get an instant viewpoint on our preferred direction along with target levels superimposed onto the charts of actively traded instruments! Discover our alternative scenario based on a pivot level where we would change our view and offer target levels in the opposite direction.",
+  "trading-tools_alpha-generation_tabs_content2_title":"A simple view into the bulls & bears",
+  "trading-tools_alpha-generation_tabs_content2_text1":"Get instant access to the candlestick patterns that illustrate important changes in supply and demand lines and the struggles between buyers and sellers. This indicator gives you access to:",
+  "trading-tools_alpha-generation_tabs_content2_text2-bold":"Our favourite patterns:",
+  "trading-tools_alpha-generation_tabs_content2_text2":"Our indicator scans for sixteen of our favourite time-trusted candlestick patterns, instantly on any chart!",
+  "trading-tools_alpha-generation_tabs_content2_text3-bold":"Expert filtering for what’s important:",
+  "trading-tools_alpha-generation_tabs_content2_text3":" We combine candlesticks with our unique quantitative and technical analysis expertise to focus in on only those patterns that are relevant for decision making based on current context.",
+  "trading-tools_alpha-generation_tabs_content3_title": "If you like MACD, You’ll love this indicator for your short-term trading!",
+  "trading-tools_alpha-generation_tabs_content3_text1" : "It’s useful at shorter lengths than MACD and offers more timely signals, while also guarding against sideways movements by adapting and lengthening during such periods. Gain access to:",
+  "trading-tools_alpha-generation_tabs_content3_text2" : "Long & short entry/exit signals",
+  "trading-tools_alpha-generation_tabs_content3_text3" : "Slow & fast price indicators",
+  "trading-tools_alpha-generation_tabs_content3_text4" : "Raw & smooth signal lines",
+  "trading-tools_alpha-generation_tabs_content3_text5" : "Oscillators- Slow & Fast"
 }

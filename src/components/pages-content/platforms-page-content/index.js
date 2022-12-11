@@ -52,12 +52,12 @@ const PlatformsPageContent = () => {
           })}
           image={icon}
           btnClassName="button-link--red"
-          btnTitle={t("platforms_top-market-promo-btn")}
+          btnTitle={t("platforms_bottom-top-market-promo-btn")}
           link={REGISTRATION_LINK}
         >
           <HighlightedLocalizationText
-            localizationText="platforms_top-market-promo-text"
-            wordsToHighlight="platforms_top-market-promo-text-accent"
+            localizationText="platforms_bottom-top-market-promo-text"
+            wordsToHighlight="platforms_bottom-top-market-promo-text-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-white"
           />
