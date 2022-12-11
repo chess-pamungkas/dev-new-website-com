@@ -814,3 +814,19 @@
     }
   }
 }
+
+.top-market--trading-tools--rtl {
+  .top-market__btn {
+
+    @include desktop-xl {
+
+      &:first-child {
+        margin: 0 0 0 10px;
+      }
+
+      &:last-child {
+        margin: 49px 0 0 0;
+      }
+    }
+  }
+}

@@ -292,6 +292,7 @@
   "page-contact-title": "Contact us",
   "page-ctrader-title": "Oqtima CTrader page",
   "page-trading-view-title": "Oqtima Trading View page",
+  "page-trading-tools-title": "Oqtima Trading Tools page",
   "page-mt4-title": "Oqtima MT4 page",
   "page-mt5-title": "Oqtima MT5 page",
   "page-professional-qualification-title": "Oqtima Professional Qualification",
@@ -715,8 +716,8 @@
   "platforms_meta-trader-5-advantage-9": "Micro Lot trading available",
   "platforms_meta-trader-5-advantage-10": "Charting tools",
   "platforms_meta-trader-5-advantage-11": "Hedging allowed",
-  "platforms__top-market-promo-text": "Experience Oqtima now.",
-  "platforms__top-market-promo-text-accent": "2",
+  "platforms_top-market-promo-text": "Experience Oqtima now.",
+  "platforms_top-market-promo-text-accent": "2",
   "platforms_top-market-promo-btn": "Open an account",
 
   "document-client-categorisation-notice-name": "Client Categorisation Notice",
@@ -1328,5 +1329,13 @@
   "career_vacancy4_title": "Frontend Engineer",
   "career_vacancy4_location": "Lorem ipsum",
   "career_vacancy4_area": "Lorem ipsum",
-  "career_vacancy4_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  "career_vacancy4_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+
+  "trading-tools_top-market-promo-title": "Trading Tools",
+  "trading-tools_top-market-promo-title-accent": "1,2",
+  "trading-tools_top-market-promo-text": "Trading Tools that makes your trading life easier Oqtima really is the one stop shop for traders around the world. Oqtima accounts are packed with tools to help you with your trading analysis, and action plan.",
+  "trading-tools_top-market-promo-text-accent": "1,2,7,8,9,21,31,32,33",
+  "trading-tools_top-market-btn1-title": "Alpha Generation",
+  "trading-tools_top-market-btn2-title": "Featured Ideas",
+  "trading-tools_top-market-btn3-title": "TC Market Buzz"
 }
