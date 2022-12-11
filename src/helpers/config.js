@@ -183,3 +183,55 @@ export const PROFESSIONAL_QUALIFICATION_ADVANTAGES = [
     accent: "professional-qualification_performance-advantage4-accent",
   },
 ];
+
+export const CYSEC_TRADING_SECTIONS = [
+  {
+    id: 2,
+    title: "index_trading-ticker-section2",
+  },
+  {
+    id: 3,
+    title: "index_trading-ticker-section3",
+  },
+  {
+    id: 4,
+    title: "index_trading-ticker-section4",
+  },
+  {
+    id: 5,
+    title: "index_trading-ticker-section5",
+  },
+  {
+    id: 6,
+    title: "index_trading-ticker-section6",
+  },
+];
+
+
+
+export const FSA_TRADING_SECTIONS = [
+  {
+    id: 1,
+    title: "index_trading-ticker-section1",
+  },
+  {
+    id: 2,
+    title: "index_trading-ticker-section2",
+  },
+  {
+    id: 3,
+    title: "index_trading-ticker-section3",
+  },
+  {
+    id: 4,
+    title: "index_trading-ticker-section4",
+  },
+  {
+    id: 5,
+    title: "index_trading-ticker-section5",
+  },
+  {
+    id: 6,
+    title: "index_trading-ticker-section6",
+  },
+];

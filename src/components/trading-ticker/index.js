@@ -1,10 +1,12 @@
-import * as React from "react";
-import { useEffect, useState } from "react";
-import TradingSections, {
-  TRADING_SECTIONS,
-} from "./components/trading-sections";
+import React, { useEffect, useState } from "react";
 import TradingSymbols from "./components/trading-symbols";
 import cn from "classnames";
+import {
+  CYSEC_TRADING_SECTIONS,
+  FSA_TRADING_SECTIONS,
+} from "../../helpers/config";
+import TradingSections from "./components/trading-sections";
+import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 
 // TO DO remove after provided API
 const TRADING_SYMBOLS = [
@@ -110,8 +112,23 @@ const TRADING_SYMBOLS = [
 ];
 
 const TradingTicker = ({ className, title }) => {
-  const [selectedSection, setSelectedSection] = useState(TRADING_SECTIONS[0]);
+  const [tradingSection, setTradingSection] = useState(CYSEC_TRADING_SECTIONS);
+  const [selectedSection, setSelectedSection] = useState(
+    CYSEC_TRADING_SECTIONS[0]
+  );
   const [tradingSymbols, setTradingSymbols] = useState(TRADING_SYMBOLS);
+
+  const { isCySEC } = useEntityPostfix();
+
+  useEffect(() => {
+    if (isCySEC) {
+      setTradingSection(CYSEC_TRADING_SECTIONS);
+      setSelectedSection(CYSEC_TRADING_SECTIONS[0]);
+    } else {
+      setTradingSection(FSA_TRADING_SECTIONS);
+      setSelectedSection(FSA_TRADING_SECTIONS[0]);
+    }
+  }, [isCySEC]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -138,6 +155,7 @@ const TradingTicker = ({ className, title }) => {
   return (
     <section className={cn("trading-ticker-wrapper", className)}>
       <TradingSections
+        tradingSection={tradingSection}
         title={title}
         selectedSection={selectedSection}
         setSelectedSection={setSelectedSection}
