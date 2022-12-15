@@ -1,54 +1,45 @@
 import React from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { AlphaGeneration2 } from "../../../shared/icons";
+import {
+  AlphaGeneration1,
+  AlphaGeneration2,
+  AlphaGeneration3,
+} from "../../../shared/icons";
 import Tabs from "../../../shared/tabs";
-//TODO replace with the real ones
-import alpha1 from "../../../../assets/images/trading-tools/alpha22.png";
-import alpha21 from "../../../../assets/images/trading-tools/alpha22.png";
+import alpha1 from "../../../../assets/images/trading-tools/alpha1.png";
+import alpha21 from "../../../../assets/images/trading-tools/alpha21.png";
 import alpha22 from "../../../../assets/images/trading-tools/alpha22.png";
-import alpha3 from "../../../../assets/images/trading-tools/alpha22.png";
+import alpha3 from "../../../../assets/images/trading-tools/alpha3.png";
+import TradingToolsTabContent from "../trading-tools-tab-content";
 
 const AlphaGenerationTabs = () => {
   const { t } = useTranslation();
-
-  const TabContent = ({ img1, img2, title, children }) => (
-    <div className="tab-content">
-      <div className="tab-content__image-wrapper">
-        <img src={img1} alt={title} className="tab-content__image" />
-        {img2 && <img src={img2} alt={title} className="tab-content__image" />}
-      </div>
-      <div className="tab-content__text-wrapper">
-        <h3 className="tab-content__title">{title}</h3>
-        <div className="tab-content__text">{children}</div>
-      </div>
-    </div>
-  );
 
   const tabs = [
     {
       id: 1,
       title: t("trading-tools_alpha-generation_tabs_title1"),
       isTitleWithIcon: true,
-      icon: <AlphaGeneration2 className="alpha-generation-tabs__icon" />,
+      icon: <AlphaGeneration1 className="trading-tools-tabs__icon" />,
       content: (
-        <TabContent
+        <TradingToolsTabContent
           img1={alpha1}
           title={t("trading-tools_alpha-generation_tabs_content1_title")}
         >
           <p>{t("trading-tools_alpha-generation_tabs_content1_text")}</p>
-        </TabContent>
+        </TradingToolsTabContent>
       ),
     },
     {
       id: 2,
       title: t("trading-tools_alpha-generation_tabs_title2"),
       isTitleWithIcon: true,
-      icon: <AlphaGeneration2 className="alpha-generation-tabs__icon" />,
+      icon: <AlphaGeneration2 className="trading-tools-tabs__icon" />,
       content: (
-        <TabContent
+        <TradingToolsTabContent
           img1={alpha21}
           img2={alpha22}
-          title={t("trading-tools_alpha-generation_tabs_content1_title")}
+          title={t("trading-tools_alpha-generation_tabs_content2_title")}
         >
           <p>{t("trading-tools_alpha-generation_tabs_content2_text1")}</p>
           <p>
@@ -69,16 +60,16 @@ const AlphaGenerationTabs = () => {
               {t("trading-tools_alpha-generation_tabs_content2_text3")}
             </span>
           </p>
-        </TabContent>
+        </TradingToolsTabContent>
       ),
     },
     {
       id: 3,
       title: t("trading-tools_alpha-generation_tabs_title3"),
       isTitleWithIcon: true,
-      icon: <AlphaGeneration2 className="alpha-generation-tabs__icon" />,
+      icon: <AlphaGeneration3 className="trading-tools-tabs__icon" />,
       content: (
-        <TabContent
+        <TradingToolsTabContent
           img1={alpha3}
           title={t("trading-tools_alpha-generation_tabs_content3_title")}
         >
@@ -97,16 +88,12 @@ const AlphaGenerationTabs = () => {
               {t("trading-tools_alpha-generation_tabs_content3_text5")}
             </span>
           </p>
-        </TabContent>
+        </TradingToolsTabContent>
       ),
     },
   ];
 
-  return (
-    <div className="alpha-generation-tabs__wrapper">
-      <Tabs tabList={tabs} classname="alpha-generation-tabs" />
-    </div>
-  );
+  return <Tabs tabList={tabs} classname="trading-tools-tabs" />;
 };
 
 export default AlphaGenerationTabs;

@@ -8,7 +8,6 @@
 }
 
 .top-market--trading-tools {
-
   .top-market__text {
     font-size: 16px;
     line-height: 20px;
@@ -43,6 +42,7 @@
     @include desktop-xl {
       flex-wrap: wrap;
       justify-content: flex-start;
+      max-width: 90%;
     }
   }
 
@@ -86,14 +86,12 @@
     padding-top: 61px;
     padding-bottom: 200px;
     background: url("../../assets/images/bg/top-market-page/left/bottom-md.svg") no-repeat bottom;
-
   }
 
   @include desktop-lg {
     padding-top: 53px;
     padding-bottom: 143px;
     background: url("../../assets/images/bg/top-market-page/left/bottom-lg.svg") no-repeat bottom;
-
   }
 
   @include desktop-xl {
@@ -201,12 +199,7 @@
   }
 }
 
-.alpha-generation-tabs__wrapper {
-
-}
-
-.alpha-generation-tabs {
-
+.trading-tools-tabs {
   .tabs__panels {
     padding: 22px 0;
 
@@ -243,7 +236,6 @@
     border-radius: 31px;
     display: flex;
     align-items: center;
-    justify-content: center;
     text-transform: uppercase;
     font-weight: map-get($font-weight, "black");
     width: 152px;
@@ -252,12 +244,14 @@
     line-height: 10px;
     padding: 0 10px;
     margin: 0 10px 10px;
+    text-align: left;
 
     @include tablet {
       width: 320px;
       height: 62px;
       font-size: 17px;
       line-height: 21px;
+      padding: 0 33px;
     }
 
     @include desktop-lg {
@@ -274,108 +268,619 @@
 
     &--active {
       color: map-get($colors, "red");
-      background-color: map-get($colors, "white");
+      background-color: transparent;
       border-radius: 31px;
 
-      .alpha-generation-tabs__icon {
+      .trading-tools-tabs__icon {
         path {
-          fill: map-get($colors, "red");
+          fill: map-get($colors, "red") !important;
         }
       }
     }
   }
 
   &__icon {
-    max-height: 100%;
-    padding-right: 10px;
+    max-height: 15px;
+    width: auto;
+    margin-right: 10px;
 
     @include tablet {
-      padding-right: 20px;
+      max-height: 100%;
+      margin-right: 20px;
     }
+  }
+}
 
+.trading-tools-tab-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @include desktop-lg {
+    align-items: flex-start;
+    flex-direction: row;
   }
 
-  .tab-content {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  &__text-wrapper {
+    text-align: center;
 
     @include desktop-lg {
-      align-items: flex-start;
-      flex-direction: row;
+      text-align: unset;
+    }
+  }
+
+  &__title {
+    color: map-get($colors, "black-secondary");
+    margin: 0 0 20px;
+    font-weight: map-get($font-weight, "black");
+    font-size: 18px;
+    line-height: 22px;
+
+    @include tablet {
+      margin: 0 0 30px;
+      font-size: 40px;
+      line-height: 40px;
+    }
+    @include desktop-lg {
+      margin: 0 0 50px;
+    }
+  }
+
+  &__text,
+  &__text p {
+    color: map-get($colors, "black-secondary");
+    margin: 0 0 40px;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 18px;
+    line-height: 22px;
+
+    &:last-child {
+      margin: 0;
     }
 
-    &__text-wrapper {
-      text-align: center;
-
-      @include desktop-lg {
-        text-align: unset;
-      }
+    @include tablet {
+      font-size: 27px;
+      line-height: 40px;
     }
 
-    &__title {
-      color: map-get($colors, "black-secondary");
-      margin: 0 0 20px;
-      font-weight: map-get($font-weight, "black");
-      font-size: 18px;
-      line-height: 22px;
-
-      @include tablet {
-        margin: 0 0 30px;
-        font-size: 40px;
-        line-height: 40px;
-      }
-      @include desktop-lg {
-        margin: 0 0 50px;
-      }
+    @include desktop-lg {
+      font-size: 22px;
     }
 
-    &__text, &__text p {
-      color: map-get($colors, "black-secondary");
-      margin: 0 0 40px;
-      font-weight: map-get($font-weight, "regular");
-      font-size: 18px;
-      line-height: 22px;
+    @include desktop-xl {
+      font-size: 27px;
+    }
+  }
 
+  &__image-wrapper {
+    text-align: center;
+
+    @include desktop-lg {
+      padding-right: 37px;
+    }
+  }
+
+  &__image {
+    max-width: 100%;
+    margin: 0 0 20px;
+
+    @include tablet {
+      max-width: 479px;
+    }
+
+    @include desktop-lg {
       &:last-child {
         margin: 0;
       }
+    }
+  }
+}
 
-      @include tablet {
-        font-size: 27px;
-        line-height: 40px;
-      }
+.featured-ideas {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: url("../../assets/images/bg/trading-tools-page/ideas-sm.svg") no-repeat center;
+  background-size: cover;
+  padding-top: 37px;
+  padding-bottom: 200px;
+  @include content-alignment(0);
 
-      @include desktop-lg {
-        font-size: 22px;
-      }
+  @include tablet {
+    padding-top: 61px;
+    padding-bottom: 200px;
+    background: url("../../assets/images/bg/trading-tools-page/ideas-md.svg") no-repeat center;
+    background-size: cover;
 
-      @include desktop-xl {
-        font-size: 27px;
-      }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: url("../../assets/images/about-pages/career-line-bottom.svg") no-repeat;
+      background-size: contain;
+      width: 159px;
+      height: 163px;
+    }
+  }
+
+  @include desktop-lg {
+    padding-top: 53px;
+    padding-bottom: 143px;
+    background: url("../../assets/images/bg/trading-tools-page/ideas-lg.svg") no-repeat center;
+    background-size: cover;
+
+    &:after {
+      width: 239px;
+      height: 245px;
+    }
+  }
+
+  @include desktop-xl {
+    background: url("../../assets/images/bg/trading-tools-page/ideas-xl.svg") no-repeat center;
+    padding-top: 91px;
+    padding-bottom: 199px;
+    background-size: cover;
+
+    &:after {
+      display: none;
+    }
+  }
+
+  &__wrapper {
+    @include desktop-lg {
+      max-width: 940px;
+      margin: 0 auto;
     }
 
-    &__image-wrapper {
-      text-align: center;
-
-      @include desktop-lg {
-        padding-right: 37px;
-      }
+    @include custom-breakpoint {
+      max-width: 80%;
     }
 
-    &__image {
-      max-width: 100%;
+    @include desktop-xl {
+      max-width: 1218px;
+    }
+  }
+
+  &__title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &__title {
+    color: map-get($colors, "red");
+    margin: 0 0 20px;
+    font-weight: map-get($font-weight, "black");
+    font-size: 22px;
+    line-height: 27px;
+
+    @include tablet {
+      font-size: 35px;
+      line-height: 44px;
+    }
+    @include desktop-lg {
+      margin: 0 0 16px;
+      font-size: 39px;
+      line-height: 49px;
+    }
+    @include desktop-xl {
       margin: 0 0 20px;
+      font-size: 60px;
+      line-height: 50px;
+    }
+  }
 
-      @include tablet {
-        max-width: 479px;
-      }
+  &__subtitle {
+    color: map-get($colors, "white");
+    margin: 0 0 20px;
+    font-weight: map-get($font-weight, "black");
+    font-size: 18px;
+    line-height: 22px;
 
-      @include desktop-lg {
-        &:last-child {
-          margin: 0;
+    @include tablet {
+      font-size: 28px;
+      line-height: 35px;
+    }
+    @include desktop-lg {
+      margin: 0 0 16px;
+      font-size: 27px;
+      line-height: 34px;
+    }
+    @include desktop-xl {
+      margin: 0 0 20px;
+      font-size: 50px;
+      line-height: 50px;
+    }
+  }
+
+  &__description {
+    color: map-get($colors, "white");
+    margin: 0 0 79px;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 18px;
+    line-height: 22px;
+
+    @include tablet {
+      margin: 0 0 130px;
+      font-size: 28px;
+      line-height: 35px;
+    }
+    @include desktop-lg {
+      margin: 0 0 38px;
+      font-size: 27px;
+      line-height: 34px;
+    }
+    @include desktop-xl {
+      margin: 0 0 99px;
+      font-size: 28px;
+      line-height: 40px;
+    }
+  }
+
+  &__btn {
+    text-transform: unset;
+  }
+}
+
+.trading-tools-tab-content--black {
+  .trading-tools-tab-content__title {
+    color: map-get($colors, "red");
+  }
+
+  .trading-tools-tab-content__text, .trading-tools-tab-content__text p {
+    color: map-get($colors, "white");
+  }
+}
+
+.market-buzz {
+  position: relative;
+  background-size: cover;
+  background: url("../../assets/images/bg/contact-us.svg") no-repeat bottom left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 37px;
+  padding-bottom: 67px;
+  @include content-alignment(0);
+
+  @include tablet {
+    padding-top: 62px;
+    padding-bottom: 147px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: url("../../assets/images/about-pages/career-line-bottom.svg") no-repeat;
+      background-size: contain;
+      width: 159px;
+      height: 163px;
+    }
+  }
+
+  @include desktop-lg {
+    padding-top: 125px;
+    padding-bottom: 60px;
+
+    &:after {
+      display: none;
+    }
+  }
+
+  @include desktop-xl {
+    padding-top: 80px;
+    padding-bottom: 170px;
+
+    &:before {
+      background: url("../../assets/images/about-pages/ornament-top-xl.svg") no-repeat;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 261px;
+      height: 299px;
+    }
+
+    &:after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: unset;
+      left: unset;
+      bottom: 0;
+      right: 0;
+      background: url("../../assets/images/about-pages/ornament-bottom-xl.svg") no-repeat;
+      width: 261px;
+      height: 299px;
+    }
+  }
+
+  &__wrapper {
+    @include desktop-lg {
+      max-width: 940px;
+      margin: 0 auto;
+    }
+
+    @include custom-breakpoint {
+      max-width: 80%;
+    }
+
+    @include desktop-xl {
+      max-width: 1218px;
+    }
+  }
+
+  &__title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &__title {
+    color: map-get($colors, "red");
+    margin: 0 0 20px;
+    font-weight: map-get($font-weight, "black");
+    font-size: 22px;
+    line-height: 27px;
+
+    @include tablet {
+      font-size: 35px;
+      line-height: 44px;
+    }
+    @include desktop-lg {
+      margin: 0 0 16px;
+      font-size: 39px;
+      line-height: 49px;
+    }
+    @include desktop-xl {
+      margin: 0 0 20px;
+      font-size: 60px;
+      line-height: 50px;
+    }
+  }
+
+  &__subtitle {
+    color: map-get($colors, "black-secondary");
+    margin: 0 0 20px;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 18px;
+    line-height: 22px;
+
+    @include tablet {
+      font-size: 28px;
+      line-height: 35px;
+    }
+    @include desktop-lg {
+      margin: 0 0 16px;
+      font-size: 27px;
+      line-height: 34px;
+    }
+    @include desktop-xl {
+      margin: 0 0 20px;
+      font-size: 50px;
+      line-height: 50px;
+    }
+  }
+
+  &__description {
+    color: map-get($colors, "black-secondary");
+    margin: 0;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 18px;
+    line-height: 22px;
+
+    @include tablet {
+      font-size: 28px;
+      line-height: 35px;
+    }
+    @include desktop-lg {
+      font-size: 27px;
+      line-height: 34px;
+    }
+    @include desktop-xl {
+      font-size: 28px;
+      line-height: 40px;
+    }
+  }
+}
+
+.mb-info {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 0 40px;
+
+  @include tablet {
+    padding: 60px 0 70px;
+  }
+
+  @include desktop-lg {
+    padding: 50px 0 100px;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__img {
+    max-width: 281px;
+    width: auto;
+    margin: 0 auto 20px;
+
+    @include tablet {
+      max-width: 100%;
+    }
+
+    @include desktop-lg {
+      max-width: 655px;
+      margin: 0 auto 30px;
+    }
+  }
+
+  &__block {
+    padding: 0 15px;
+    border-right: 1px solid map-get($colors, "table-grey");
+
+    &:last-child {
+      border-right: none;
+    }
+
+    @include tablet {
+      padding: 0 30px;
+    }
+  }
+
+  &__title {
+    color: map-get($colors, "red");
+    margin: 0 0 5px;
+    font-weight: map-get($font-weight, "black");
+    font-size: 31px;
+    line-height: 39px;
+
+    @include tablet {
+      font-size: 48px;
+      line-height: 60px;
+    }
+    @include desktop-lg {
+      font-size: 83px;
+      line-height: 104px;
+    }
+    @include desktop-xl {
+      font-size: 93px;
+      line-height: 116px;
+    }
+  }
+
+  &__description {
+    color: map-get($colors, "black");
+    margin: 0;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 14px;
+    line-height: 18px;
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    @include desktop-lg {
+      font-size: 23px;
+      line-height: 28px;
+    }
+  }
+}
+
+.mb-block {
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column-reverse;
+
+  @include tablet {
+    padding: 40px 0;
+  }
+
+  @include desktop-lg {
+    flex-direction: row;
+
+    &:nth-child(odd) {
+      flex-direction: row-reverse;
+
+      .mb-block__title-wrapper {
+        padding-right: 30px;
+        padding-left: 0;
+
+        @include desktop-lg {
+          text-align: left;
         }
       }
+    }
+  }
+
+  @include desktop-xl {
+    padding: 60px 0;
+  }
+
+  &__img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__img {
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+
+    @include desktop-lg {
+      max-width: 479px;
+    }
+  }
+
+  &__title-wrapper {
+    text-align: center;
+    padding-right: 0;
+    padding-left: 30px;
+
+    @include desktop-lg {
+      text-align: right;
+    }
+  }
+
+  &__title {
+    color: map-get($colors, "red");
+    margin: 0 0 10px;
+    font-weight: map-get($font-weight, "black");
+    font-size: 20px;
+    line-height: 25px;
+
+    @include tablet {
+      font-size: 56px;
+      line-height: 60px;
+      margin: 0 0 20px;
+    }
+
+    @include desktop-lg {
+      font-size: 36px;
+      line-height: 60px;
+      margin: 0 0 10px;
+    }
+
+    @include desktop-xl {
+      font-size: 63px;
+      line-height: 60px;
+      margin: 0 0 20px;
+    }
+  }
+
+  &__description {
+    color: map-get($colors, "black-secondary");
+    margin: 0 0 10px;
+    font-weight: map-get($font-weight, "light");
+    font-size: 14px;
+    line-height: 18px;
+
+    @include tablet {
+      margin: 0 0 20px;
+      font-size: 28px;
+      line-height: 40px;
+    }
+
+    @include desktop-lg {
+      margin: 0;
+      font-size: 25px;
+      line-height: 40px;
+    }
+
+    @include desktop-xl {
+      font-size: 34px;
     }
   }
 }

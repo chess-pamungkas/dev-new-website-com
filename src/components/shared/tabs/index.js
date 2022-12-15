@@ -87,7 +87,7 @@ const Tabs = ({
                 onTabClick={() => handleTabClick(tabIndex)}
               >
                 {isTitleWithIcon && icon}
-                {title}
+                <span>{title}</span>
               </Tab>
             ))}
           </ul>

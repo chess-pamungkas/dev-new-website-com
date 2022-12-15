@@ -11,6 +11,7 @@ const AlphaGeneration = ({ className }) => {
 
   return (
     <section
+      id="alphaGeneration"
       className={cn("alpha-generation", className, {
         "alpha-generation--rtl": isRTL,
       })}

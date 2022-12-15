@@ -6,6 +6,11 @@ import cn from "classnames";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import promotion from "../../../assets/images/trading-tools/promotion.svg";
 import AlphaGeneration from "../../trading-tools/components/alpha-generation";
+import icon from "../../../assets/images/icon--white.svg";
+import { REGISTRATION_LINK } from "../../../helpers/constants";
+import TopMarketPromotion from "../../top-market-promotion";
+import FeaturedIdeas from "../../trading-tools/components/featured-ideas";
+import MarketBuzz from "../../trading-tools/components/market-buzz";
 
 const TradingToolsPageContent = () => {
   const { t } = useTranslation();
@@ -27,8 +32,14 @@ const TradingToolsPageContent = () => {
           />
         }
         btn1Title={t("trading-tools_top-market-btn1-title")}
+        link1="#alphaGeneration"
+        isAnchorLink1
         btn2Title={t("trading-tools_top-market-btn2-title")}
+        link2="#featuredIdeas"
+        isAnchorLink2
         btn3Title={t("trading-tools_top-market-btn3-title")}
+        link3="#marketBuzz"
+        isAnchorLink3
       >
         <HighlightedLocalizationText
           localizationText="trading-tools_top-market-promo-text"
@@ -38,6 +49,22 @@ const TradingToolsPageContent = () => {
         />
       </TopMarket>
       <AlphaGeneration />
+      <FeaturedIdeas />
+      <MarketBuzz />
+      <TopMarketPromotion
+        className="bottom-promotion"
+        image={icon}
+        btnClassName="button-link--red"
+        btnTitle={t("trading-tools_top-market-promo-btn3")}
+        link={REGISTRATION_LINK}
+      >
+        <HighlightedLocalizationText
+          localizationText="trading-tools_top-market-promo-text3"
+          wordsToHighlight="trading-tools_top-market-promo-text-accent3"
+          primaryClassName="highlighted-in-black"
+          accentClassName="highlighted-in-white"
+        />
+      </TopMarketPromotion>
     </>
   );
 };
