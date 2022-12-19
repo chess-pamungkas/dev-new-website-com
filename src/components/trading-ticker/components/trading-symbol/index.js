@@ -4,12 +4,11 @@ import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 
 const TradingSymbol = ({
   className,
-  name,
+  symbol,
   direction,
   bid,
   ask,
   spread,
-  trend,
 }) => {
   const isRTL = useRtlDirection();
 
@@ -21,7 +20,7 @@ const TradingSymbol = ({
     >
       <div className="trading-symbol__block">
         <div className="trading-symbol__title-wrapper">
-          <p className="trading-symbol__title">{name}</p>
+          <p className="trading-symbol__title">{symbol}</p>
           <span className="trading-symbol__title-delimiter" />
         </div>
         <div className="trading-symbol__data">
@@ -36,8 +35,8 @@ const TradingSymbol = ({
             <div className="trading-symbol__option-title">Ask</div>
             <div
               className={cn("trading-symbol__option-value", {
-                "trading-symbol__option-value--up": direction,
-                "trading-symbol__option-value--down": !direction,
+                "trading-symbol__option-value--up": direction === "up",
+                "trading-symbol__option-value--down": direction === "down",
               })}
             >
               {ask}
@@ -49,17 +48,6 @@ const TradingSymbol = ({
             <div className="trading-symbol__option-value">{spread}</div>
           </div>
 
-          <div className="trading-symbol__option">
-            <div className="trading-symbol__option-title">Trend</div>
-            <div
-              className={cn("trading-symbol__option-value", {
-                "trading-symbol__option-value--up": direction,
-                "trading-symbol__option-value--down": !direction,
-              })}
-            >
-              {trend}
-            </div>
-          </div>
         </div>
       </div>
       <div className="trading-symbol__actions">
