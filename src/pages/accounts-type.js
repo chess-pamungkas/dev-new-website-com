@@ -11,7 +11,10 @@ const AccountsTypePage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-accounts-type-title")} />
+      <Seo
+        title={t("page-accounts-type-title")}
+        description={t("page-accounts-type-description")}
+      />
       <AccountsTypePageContent />
     </Layout>
   );

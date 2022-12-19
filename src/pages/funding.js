@@ -11,7 +11,10 @@ const FundingPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-withdrawal-title")} />
+      <Seo
+        title={t("page-withdrawal-title")}
+        description={t("page-withdrawal-description")}
+      />
       <FundingPageContent />
     </Layout>
   );

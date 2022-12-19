@@ -11,7 +11,10 @@ const TradingViewPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-trading-view-title")} />
+      <Seo
+        title={t("page-trading-view-title")}
+        description={t("page-trading-view-description")}
+      />
       <TradingViewPageContent />
     </Layout>
   );

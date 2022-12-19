@@ -11,7 +11,10 @@ const MT4Page = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-mt4-title")} />
+      <Seo
+        title={t("page-mt4-title")}
+        description={t("page-mt4-description")}
+      />
       <Mt4PageContent />
     </Layout>
   );

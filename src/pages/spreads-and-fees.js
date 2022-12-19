@@ -11,7 +11,10 @@ const SpreadsFeesPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-spreads-title")} />
+      <Seo
+        title={t("page-spreads-title")}
+        description={t("page-spreads-description")}
+      />
       <SpreadsAndFeesPageContent />
     </Layout>
   );

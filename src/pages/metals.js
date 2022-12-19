@@ -16,10 +16,7 @@ import animation from "../assets/images/animations/commodities.json";
 import PromotionMarkets from "../components/promotion-markets";
 import TopMarketLayout from "../components/top-market-layout";
 import TableComponent from "../components/shared/table";
-import {
-  COLUMNS_METALS,
-  DATA_METALS,
-} from "../helpers/top-market-tables";
+import { COLUMNS_METALS, DATA_METALS } from "../helpers/top-market-tables";
 import Faq from "../components/faq";
 import { FAQ_METALS } from "../helpers/faq";
 
@@ -29,7 +26,10 @@ const MetalsPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-metals-title")} />
+      <Seo
+        title={t("page-metals-title")}
+        description={t("page-metals-description")}
+      />
       <TopMarket
         title={t("metals_top-market-title")}
         image={image}

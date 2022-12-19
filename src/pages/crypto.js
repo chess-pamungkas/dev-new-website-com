@@ -17,7 +17,10 @@ const CryptoPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-crypto-title")} />
+      <Seo
+        title={t("page-crypto-title")}
+        description={t("page-crypto-description")}
+      />
       <CryptoContent />
       <TopMarketLayout
         title={t("crypto_top-market-layout-title")}

@@ -26,7 +26,10 @@ const SharesPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-shares-title")} />
+      <Seo
+        title={t("page-shares-title")}
+        description={t("page-shares-description")}
+      />
       <TopMarket
         title={t("shares_top-market-title")}
         image={image}

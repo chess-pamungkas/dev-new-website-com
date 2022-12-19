@@ -16,7 +16,6 @@ import ForexContent from "../components/pages-content/forex-content";
 const ForexPage = () => {
   const { t } = useTranslation();
 
-  // TODO:get data from API
   const tabs = [
     {
       id: 1,
@@ -79,7 +78,10 @@ const ForexPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-forex-title")} />
+      <Seo
+        title={t("page-forex-title")}
+        description={t("page-forex-description")}
+      />
       <ForexContent />
       <TopMarketLayout
         title={t("forex_top-market-layout-title")}
