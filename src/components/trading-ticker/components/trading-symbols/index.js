@@ -7,7 +7,7 @@ const TradingSymbols = ({ className, symbols }) => {
     <div className={cn("trading-symbols-wrapper", className)}>
       <div className="trading-symbols">
         {symbols.map((symbol) => (
-          <TradingSymbol key={`TradingSymbol${symbol.id}`} {...symbol} />
+          <TradingSymbol key={`TradingSymbol${symbol.symbol}`} {...symbol} />
         ))}
       </div>
     </div>

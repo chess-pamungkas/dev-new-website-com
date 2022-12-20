@@ -2,9 +2,9 @@ import webTraderIcon from "../assets/images/icons/tools/webTrader.svg";
 import iosIcon from "../assets/images/icons/tools/ios.svg";
 import androidIcon from "../assets/images/icons/tools/android.svg";
 import windowsIcon from "../assets/images/icons/tools/windows.svg";
+import windows from "../assets/images/icons/tools/windows.svg";
 import metaTrader4Icon from "../assets/images/icons/tools/metaTrader4.svg";
 import metaTrader5Icon from "../assets/images/icons/tools/metaTrader5.svg";
-import windows from "../assets/images/icons/tools/windows.svg";
 import {
   AdvantageIcon1,
   AdvantageIcon2,
@@ -13,13 +13,13 @@ import {
   AdvantageIcon5,
   AdvantageIcon6,
   AdvantageIcon7,
-  QualityAdvantageIcon,
-  SafetyAdvantageIcon,
-  TrustAdvantageIcon,
   ProfQualificationAdvantageIcon1,
   ProfQualificationAdvantageIcon2,
   ProfQualificationAdvantageIcon3,
   ProfQualificationAdvantageIcon4,
+  QualityAdvantageIcon,
+  SafetyAdvantageIcon,
+  TrustAdvantageIcon,
 } from "../components/shared/icons";
 
 export const CYSEC_ADVANTAGES = [
@@ -186,52 +186,59 @@ export const PROFESSIONAL_QUALIFICATION_ADVANTAGES = [
 
 export const CYSEC_TRADING_SECTIONS = [
   {
-    id: 2,
-    title: "index_trading-ticker-section2",
+    id: "forex",
+    title: "index_trading-ticker-section-forex",
+  },
+  // No info provided for this section. Uncomment later
+  // {
+  //   id: "shares",
+  //   title: "index_trading-ticker-section-shares",
+  // },
+  {
+    id: "energies",
+    title: "index_trading-ticker-section-energies",
   },
   {
-    id: 3,
-    title: "index_trading-ticker-section3",
+    id: "metals",
+    title: "index_trading-ticker-section-metals",
   },
+  // {
+  //   id: "commodities",
+  //   title: "index_trading-ticker-section-commodities",
+  // },
   {
-    id: 4,
-    title: "index_trading-ticker-section4",
-  },
-  {
-    id: 5,
-    title: "index_trading-ticker-section5",
-  },
-  {
-    id: 6,
-    title: "index_trading-ticker-section6",
+    id: "indices",
+    title: "index_trading-ticker-section-indices",
   },
 ];
 
-
-
 export const FSA_TRADING_SECTIONS = [
   {
-    id: 1,
-    title: "index_trading-ticker-section1",
+    id: "crypto",
+    title: "index_trading-ticker-section-crypto",
   },
   {
-    id: 2,
-    title: "index_trading-ticker-section2",
+    id: "forex",
+    title: "index_trading-ticker-section-forex",
+  },
+  // {
+  //   id: "shares",
+  //   title: "index_trading-ticker-section-shares",
+  // },
+  {
+    id: "energies",
+    title: "index_trading-ticker-section-energies",
   },
   {
-    id: 3,
-    title: "index_trading-ticker-section3",
+    id: "metals",
+    title: "index_trading-ticker-section-metals",
   },
+  // {
+  //   id: "commodities",
+  //   title: "index_trading-ticker-section-commodities",
+  // },
   {
-    id: 4,
-    title: "index_trading-ticker-section4",
-  },
-  {
-    id: 5,
-    title: "index_trading-ticker-section5",
-  },
-  {
-    id: 6,
-    title: "index_trading-ticker-section6",
+    id: "indices",
+    title: "index_trading-ticker-section-indices",
   },
 ];
