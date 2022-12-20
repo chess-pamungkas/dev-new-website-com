@@ -128,6 +128,12 @@
   "index_trading-ticker-section-indices": "Indici",
   "index_trading-ticker-section-metals": "Metals",
 
+  "index_trading-ticker-buy": "Buy",
+  "index_trading-ticker-sell": "Sell",
+  "index_trading-ticker-bid": "Bid",
+  "index_trading-ticker-ask": "Ask",
+  "index_trading-ticker-spread": "Spread",
+
   "index_trade-with-promotion-title": "Fai Trading Adesso con",
   "trade-with-promotion-title-accent": "2",
   "index_trade-with-promotion-bitcoin": "Bitcoin",
