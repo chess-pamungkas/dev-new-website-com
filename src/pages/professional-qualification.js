@@ -24,7 +24,10 @@ const ProfessionalQualificationPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-professional-qualification-title")} />
+      <Seo
+        title={t("page-professional-qualification-title")}
+        description={t("page-professional-qualification-description")}
+      />
       <TopMarket
         className="top-market--professional-qualification"
         image={promotion}

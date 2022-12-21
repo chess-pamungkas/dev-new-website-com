@@ -21,6 +21,7 @@ const TableComponent = ({
   data,
   columns,
   isPagination,
+  isHideScroll = true,
   isSearch,
   isSorting,
   isWrapperPadding = false,
@@ -100,7 +101,7 @@ const TableComponent = ({
       </div>
       <div
         className={cn("table-scroll", {
-          "table-scroll--vertical": !isPagination,
+          "table-scroll--vertical": !isPagination && !isHideScroll,
         })}
       >
         <table

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import TradingSymbols from "./components/trading-symbols";
+import axios from "axios";
 import cn from "classnames";
+import TradingSymbols from "./components/trading-symbols";
 import {
   CYSEC_TRADING_SECTIONS,
   FSA_TRADING_SECTIONS,
@@ -8,115 +9,14 @@ import {
 import TradingSections from "./components/trading-sections";
 import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 
-// TO DO remove after provided API
-const TRADING_SYMBOLS = [
-  {
-    id: 1,
-    name: "BTCUSD",
-    direction: 1,
-    bid: 13.22,
-    ask: "0.95%",
-    spread: 13,
-    trend: "0.72%",
-  },
-  {
-    id: 2,
-    name: "BTCUSD",
-    direction: 1,
-    bid: 13.22,
-    ask: "0.95%",
-    spread: 13,
-    trend: "0.72%",
-  },
-  {
-    id: 3,
-    name: "BTCUSD",
-    direction: 1,
-    bid: 13.22,
-    ask: "0.95%",
-    spread: 13,
-    trend: "0.72%",
-  },
-  {
-    id: 4,
-    name: "BTCUSD",
-    direction: 1,
-    bid: 13.22,
-    ask: "0.95%",
-    spread: 13,
-    trend: "0.72%",
-  },
-  {
-    id: 5,
-    name: "BTCUSD",
-    direction: 1,
-    bid: 13.22,
-    ask: "0.95%",
-    spread: 13,
-    trend: "0.72%",
-  },
-  {
-    id: 6,
-    name: "BTCUSD",
-    direction: 1,
-    bid: 13.22,
-    ask: "0.95%",
-    spread: 13,
-    trend: "0.72%",
-  },
-  {
-    id: 7,
-    name: "BTCUSD",
-    direction: 1,
-    bid: 13.22,
-    ask: "0.95%",
-    spread: 13,
-    trend: "0.72%",
-  },
-  {
-    id: 8,
-    name: "BTCUSD",
-    direction: 1,
-    bid: 13.22,
-    ask: "0.95%",
-    spread: 13,
-    trend: "0.72%",
-  },
-  {
-    id: 9,
-    name: "BTCUSD",
-    direction: 1,
-    bid: 13.22,
-    ask: "0.95%",
-    spread: 13,
-    trend: "0.72%",
-  },
-  {
-    id: 10,
-    name: "BTCUSD",
-    direction: 1,
-    bid: 13.22,
-    ask: "0.95%",
-    spread: 13,
-    trend: "0.72%",
-  },
-  {
-    id: 11,
-    name: "BTCUSD",
-    direction: 1,
-    bid: 13.22,
-    ask: "0.95%",
-    spread: 13,
-    trend: "0.72%",
-  },
-];
+const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 
 const TradingTicker = ({ className, title }) => {
   const [tradingSection, setTradingSection] = useState(CYSEC_TRADING_SECTIONS);
   const [selectedSection, setSelectedSection] = useState(
     CYSEC_TRADING_SECTIONS[0]
   );
-  const [tradingSymbols, setTradingSymbols] = useState(TRADING_SYMBOLS);
+  const [tradingSymbols, setTradingSymbols] = useState([]);
 
   const { isCySEC } = useEntityPostfix();
 
@@ -132,25 +32,19 @@ const TradingTicker = ({ className, title }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      // to do remove changing trading symbols
-      setTradingSymbols(
-        TRADING_SYMBOLS.map((symbol) => {
-          return {
-            ...symbol,
-            direction: new Date().getTime() % 2 === 1 ? 1 : 0,
-            bid: new Date().getTime() % 2 === 1 ? 13.22 : 15.66,
-            ask: new Date().getTime() % 2 === 1 ? "0.95%" : "0.85%",
-            spread: new Date().getTime() % 2 === 1 ? 13 : 12,
-            trend: "0.72%",
-          };
-        })
-      );
-    }, 1000);
+      try {
+        axios
+          .get(`${API_URL}stock-quotes/${selectedSection.id}`)
+          .then((response) => {
+            setTradingSymbols(response.data);
+          });
+      } catch (e) {
+        console.log(e);
+      }
+    }, 700);
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  });
+    return () => clearInterval(intervalId);
+  }, [selectedSection]);
 
   return (
     <section className={cn("trading-ticker-wrapper", className)}>

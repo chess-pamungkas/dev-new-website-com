@@ -195,7 +195,8 @@
 }
 
 .promotion4.promotion--rtl {
-  background: url("../../assets/images/promotions/promo4-rtl.svg") no-repeat left;
+  background: url("../../assets/images/promotions/promo4-rtl.svg") no-repeat
+    left;
   background-size: cover;
 }
 
@@ -252,9 +253,8 @@
   }
 
   .top-market-promotion__btn--secondary {
-
     @include desktop-xl {
-      margin: 0 30px  0 0;
+      margin: 0 30px 0 0;
     }
   }
 }
@@ -377,21 +377,25 @@
 
 .legal-page-promotion--rtl {
   direction: rtl;
-  background: url("../../assets/images/bg/legal/banner-sm-rtl.svg") no-repeat center;
+  background: url("../../assets/images/bg/legal/banner-sm-rtl.svg") no-repeat
+    center;
   background-size: cover;
 
   @include tablet {
-    background: url("../../assets/images/bg/legal/banner-md-rtl.svg") no-repeat center;
+    background: url("../../assets/images/bg/legal/banner-md-rtl.svg") no-repeat
+      center;
     background-size: cover;
   }
 
   @include desktop-lg {
-    background: url("../../assets/images/bg/legal/banner-lg-rtl.svg") no-repeat center;
+    background: url("../../assets/images/bg/legal/banner-lg-rtl.svg") no-repeat
+      center;
     background-size: cover;
   }
 
   @include desktop-xl {
-    background: url("../../assets/images/bg/legal/banner-xl-rtl.svg") no-repeat center;
+    background: url("../../assets/images/bg/legal/banner-xl-rtl.svg") no-repeat
+      center;
     background-size: cover;
   }
 
@@ -641,21 +645,25 @@
 
 .split-bg--rtl {
   direction: rtl;
-  background: url("../../assets/images/bg/split-bg/bg-sm-rtl.svg") no-repeat center;
+  background: url("../../assets/images/bg/split-bg/bg-sm-rtl.svg") no-repeat
+    center;
   background-size: cover;
 
   @include tablet {
-    background: url("../../assets/images/bg/split-bg/bg-md-rtl.svg") no-repeat bottom;
+    background: url("../../assets/images/bg/split-bg/bg-md-rtl.svg") no-repeat
+      bottom;
     background-size: cover;
   }
 
   @include desktop-lg {
-    background: url("../../assets/images/bg/split-bg/bg-lg-rtl.svg") no-repeat right;
+    background: url("../../assets/images/bg/split-bg/bg-lg-rtl.svg") no-repeat
+      right;
     background-size: cover;
   }
 
   @include desktop-xl {
-    background: url("../../assets/images/bg/split-bg/bg-xl-rtl.svg") no-repeat center;
+    background: url("../../assets/images/bg/split-bg/bg-xl-rtl.svg") no-repeat
+      center;
     background-size: cover;
   }
 }
@@ -705,7 +713,6 @@
 }
 
 .partners-income--rtl {
-
   .partners-income__title {
     @include tablet {
       text-align: right;
@@ -782,7 +789,6 @@
 }
 
 .market-item-advantages-list--rtl {
-
   .market-item-advantages-list__title {
     text-align: right;
   }
@@ -797,7 +803,6 @@
   }
 }
 
-
 .career-page-promotion--rtl {
   direction: rtl;
 }
@@ -811,6 +816,74 @@
 
     @include desktop-xl {
       padding-left: 60px;
+    }
+  }
+}
+
+.top-market--trading-tools--rtl {
+  .top-market__btn {
+    @include desktop-xl {
+      &:first-child {
+        margin: 0 0 0 10px;
+      }
+
+      &:last-child {
+        margin: 49px 0 0 0;
+      }
+    }
+  }
+}
+
+.alpha-generation--rtl,
+.featured-ideas--rtl {
+  .trading-tools-tabs .tabs__tab {
+    text-align: right;
+  }
+
+  .trading-tools-tabs__icon {
+    margin-right: unset;
+    margin-left: 10px;
+
+    @include tablet {
+      margin-left: 20px;
+    }
+  }
+
+  .trading-tools-tab-content__image-wrapper {
+    @include desktop-lg {
+      padding-right: unset;
+      padding-left: 37px;
+    }
+  }
+}
+
+.mb-block--rtl {
+  @include desktop-lg {
+    &:nth-child(odd) {
+      .mb-block__title-wrapper {
+        padding-right: 0;
+        padding-left: 30px;
+
+        @include desktop-lg {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  .mb-block__title-wrapper {
+    padding-right: 30px;
+    padding-left: 0;
+
+    @include desktop-lg {
+      text-align: left;
+    }
+  }
+
+  .mb-block__title,
+  .mb-block__description {
+    @include desktop-lg {
+      text-align: right;
     }
   }
 }

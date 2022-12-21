@@ -12,7 +12,10 @@ const AllMarketsPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-allmarkets-title")} />
+      <Seo
+        title={t("page-allmarkets-title")}
+        description={t("page-allmarkets-description")}
+      />
       <AllMarkets />
       <MarketItemsList />
     </Layout>

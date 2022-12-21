@@ -15,7 +15,10 @@ const IndexPage = () => {
 
   return (
     <Layout setHeaderRef={setHeaderRef}>
-      <Seo title={t("page-main-title")} />
+      <Seo
+        title={t("page-main-title")}
+        description={t("page-main-description")}
+      />
       {/*isShowHero is workaround to hide hero image (e.g. Buffon)  */}
       <MainPromotion isShowHero={false} />
       <TradingTicker />

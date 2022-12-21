@@ -1,17 +1,11 @@
 import * as React from "react";
 import cn from "classnames";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
-const TradingSymbol = ({
-  className,
-  name,
-  direction,
-  bid,
-  ask,
-  spread,
-  trend,
-}) => {
+const TradingSymbol = ({ className, symbol, direction, bid, ask, spread }) => {
   const isRTL = useRtlDirection();
+  const { t } = useTranslation();
 
   return (
     <div
@@ -21,23 +15,27 @@ const TradingSymbol = ({
     >
       <div className="trading-symbol__block">
         <div className="trading-symbol__title-wrapper">
-          <p className="trading-symbol__title">{name}</p>
+          <p className="trading-symbol__title">{symbol}</p>
           <span className="trading-symbol__title-delimiter" />
         </div>
         <div className="trading-symbol__data">
           <div className="trading-symbol__option">
-            <div className="trading-symbol__option-title">Bid</div>
+            <div className="trading-symbol__option-title">
+              {t("index_trading-ticker-bid")}
+            </div>
             <div className="trading-symbol__option-value trading-symbol__option-value--up">
               {bid}
             </div>
           </div>
 
           <div className="trading-symbol__option">
-            <div className="trading-symbol__option-title">Ask</div>
+            <div className="trading-symbol__option-title">
+              {t("index_trading-ticker-ask")}
+            </div>
             <div
               className={cn("trading-symbol__option-value", {
-                "trading-symbol__option-value--up": direction,
-                "trading-symbol__option-value--down": !direction,
+                "trading-symbol__option-value--up": direction === "up",
+                "trading-symbol__option-value--down": direction === "down",
               })}
             >
               {ask}
@@ -45,26 +43,20 @@ const TradingSymbol = ({
           </div>
 
           <div className="trading-symbol__option">
-            <div className="trading-symbol__option-title">Spread</div>
-            <div className="trading-symbol__option-value">{spread}</div>
-          </div>
-
-          <div className="trading-symbol__option">
-            <div className="trading-symbol__option-title">Trend</div>
-            <div
-              className={cn("trading-symbol__option-value", {
-                "trading-symbol__option-value--up": direction,
-                "trading-symbol__option-value--down": !direction,
-              })}
-            >
-              {trend}
+            <div className="trading-symbol__option-title">
+              {t("index_trading-ticker-spread")}
             </div>
+            <div className="trading-symbol__option-value">{spread}</div>
           </div>
         </div>
       </div>
       <div className="trading-symbol__actions">
-        <button className="trading-symbol__buy">Buy</button>
-        <button className="trading-symbol__sell">Sell</button>
+        <button className="trading-symbol__buy">
+          {t("index_trading-ticker-buy")}
+        </button>
+        <button className="trading-symbol__sell">
+          {t("index_trading-ticker-sell")}
+        </button>
       </div>
     </div>
   );

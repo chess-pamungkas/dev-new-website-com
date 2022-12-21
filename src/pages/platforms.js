@@ -11,7 +11,10 @@ const PlatformsPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-platforms-title")} />
+      <Seo
+        title={t("page-platforms-title")}
+        description={t("page-platforms-description")}
+      />
       <PlatformsPageContent />
     </Layout>
   );

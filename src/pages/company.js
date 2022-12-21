@@ -15,7 +15,10 @@ const CompanyPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-company-title")} />
+      <Seo
+        title={t("page-company-title")}
+        description={t("page-company-description")}
+      />
       <VideoBanner
         title={t("company_banner-with-title-title")}
         subtitle={t("company_banner-with-title-subtitle")}

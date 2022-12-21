@@ -26,7 +26,10 @@ const EnergiesPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-energies-title")} />
+      <Seo
+        title={t("page-energies-title")}
+        description={t("page-energies-description")}
+      />
       <TopMarket
         title={t("energies_top-market-title")}
         image={image}

@@ -41,7 +41,10 @@ const IndicesPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-indices-title")} />
+      <Seo
+        title={t("page-indices-title")}
+        description={t("page-indices-description")}
+      />
       <TopMarket
         title={
           <HighlightedLocalizationText

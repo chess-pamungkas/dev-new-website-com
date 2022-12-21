@@ -11,7 +11,10 @@ const CTraderPage = () => {
 
   return (
     <Layout>
-      <Seo title={t("page-ctrader-title")} />
+      <Seo
+        title={t("page-ctrader-title")}
+        description={t("page-ctrader-description")}
+      />
       <CtraderPageContent />
     </Layout>
   );
