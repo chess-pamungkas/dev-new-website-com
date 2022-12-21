@@ -33,13 +33,11 @@ const TradingTicker = ({ className, title }) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       try {
-        if (API_URL) {
-          axios
-            .get(`${API_URL}stock-quotes/${selectedSection.id}`)
-            .then((response) => {
-              setTradingSymbols(response.data);
-            });
-        }
+        axios
+          .get(`${API_URL}stock-quotes/${selectedSection.id}`)
+          .then((response) => {
+            setTradingSymbols(response.data);
+          });
       } catch (e) {
         console.log(e);
       }
@@ -49,15 +47,19 @@ const TradingTicker = ({ className, title }) => {
   }, [selectedSection]);
 
   return (
-    <section className={cn("trading-ticker-wrapper", className)}>
-      <TradingSections
-        tradingSection={tradingSection}
-        title={title}
-        selectedSection={selectedSection}
-        setSelectedSection={setSelectedSection}
-      />
-      <TradingSymbols symbols={tradingSymbols} />
-    </section>
+    <>
+      {tradingSymbols.length > 0 && (
+        <section className={cn("trading-ticker-wrapper", className)}>
+          <TradingSections
+            tradingSection={tradingSection}
+            title={title}
+            selectedSection={selectedSection}
+            setSelectedSection={setSelectedSection}
+          />
+          <TradingSymbols symbols={tradingSymbols} />
+        </section>
+      )}
+    </>
   );
 };
 
