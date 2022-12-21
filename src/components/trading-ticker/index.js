@@ -49,19 +49,15 @@ const TradingTicker = ({ className, title }) => {
   }, [selectedSection]);
 
   return (
-    <>
-      {tradingSymbols.length > 0 && (
-        <section className={cn("trading-ticker-wrapper", className)}>
-          <TradingSections
-            tradingSection={tradingSection}
-            title={title}
-            selectedSection={selectedSection}
-            setSelectedSection={setSelectedSection}
-          />
-          <TradingSymbols symbols={tradingSymbols} />
-        </section>
-      )}
-    </>
+    <section className={cn("trading-ticker-wrapper", className)}>
+      <TradingSections
+        tradingSection={tradingSection}
+        title={title}
+        selectedSection={selectedSection}
+        setSelectedSection={setSelectedSection}
+      />
+      <TradingSymbols symbols={tradingSymbols} />
+    </section>
   );
 };
 
