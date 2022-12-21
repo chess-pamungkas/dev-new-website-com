@@ -52,7 +52,9 @@ const TradingToolsPageContent = () => {
       <FeaturedIdeas />
       <MarketBuzz />
       <TopMarketPromotion
-        className="bottom-promotion"
+        className={cn("bottom-promotion", {
+          "bottom-promotion--rtl": isRTL,
+        })}
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("trading-tools_top-market-promo-btn3")}

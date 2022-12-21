@@ -144,7 +144,9 @@ const Mt4PageContent = () => {
       </TopMarketLayout>
       {isXL && (
         <TopMarketPromotion
-          className="bottom-promotion"
+          className={cn("bottom-promotion", {
+            "bottom-promotion--rtl": isRTL,
+          })}
           image={icon}
           btnClassName="button-link--red"
           btnTitle={t("mt4_top-market-promo-btn3")}
