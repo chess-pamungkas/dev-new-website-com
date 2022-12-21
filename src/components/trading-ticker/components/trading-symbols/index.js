@@ -6,7 +6,7 @@ const TradingSymbols = ({ className, symbols }) => {
   return (
     <div className={cn("trading-symbols-wrapper", className)}>
       <div className="trading-symbols">
-        {symbols.map((symbol) => (
+        {symbols && symbols.map((symbol) => (
           <TradingSymbol key={`TradingSymbol${symbol.symbol}`} {...symbol} />
         ))}
       </div>

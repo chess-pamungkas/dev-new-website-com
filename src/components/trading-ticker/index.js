@@ -32,11 +32,15 @@ const TradingTicker = ({ className, title }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      axios
-        .get(`${API_URL}stock-quotes/${selectedSection.id}`)
-        .then((response) => {
-          setTradingSymbols(response.data);
-        });
+      try {
+        axios
+          .get(`${API_URL}stock-quotes/${selectedSection.id}`)
+          .then((response) => {
+            setTradingSymbols(response.data);
+          });
+      } catch (e) {
+        console.log(e);
+      }
     }, 700);
 
     return () => clearInterval(intervalId);
