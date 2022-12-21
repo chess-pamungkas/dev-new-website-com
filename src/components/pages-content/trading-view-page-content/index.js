@@ -120,7 +120,9 @@ const TradingViewPageContent = () => {
       />
 
       <TopMarketPromotion
-        className="bottom-promotion"
+        className={cn("bottom-promotion", {
+          "bottom-promotion--rtl": isRTL,
+        })}
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("trading-view_top-market-promo-btn3")}

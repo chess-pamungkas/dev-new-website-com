@@ -44,7 +44,9 @@ const CareerContent = () => {
       <CareerBenefits />
       <JobOpenings />
       <TopMarketPromotion
-        className="bottom-promotion"
+        className={cn("bottom-promotion", {
+          "bottom-promotion--rtl": isRTL,
+        })}
         image={icon}
         btnClassName="button-link--ghost"
         btnTitle={t("career_top-market-bot-promo-btn")}

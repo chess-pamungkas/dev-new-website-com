@@ -38,7 +38,9 @@ const AccountsTypePageContent = () => {
         link={REGISTRATION_LINK}
       />
       <TopMarketPromotion
-        className="bottom-promotion"
+        className={cn("bottom-promotion", {
+          "bottom-promotion--rtl": isRTL,
+        })}
         image={icon}
         btnClassName="button-link--ghost"
         btnTitle={t("accounts-type_top-market-bot-promo-btn")}
