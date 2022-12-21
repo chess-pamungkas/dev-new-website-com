@@ -92,13 +92,25 @@
 
 .trading-symbols {
   display: flex;
+  justify-content: center;
   flex-wrap: nowrap;
   padding: 0 0 6px 14px;
   overflow-x: scroll;
   margin-right: 14px;
 
   &::-webkit-scrollbar {
-    display: none;
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 25px;
+    background-color: map-get($colors, "table-grey");
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background-color: #9b9b9b;
   }
 
   @include tablet {
