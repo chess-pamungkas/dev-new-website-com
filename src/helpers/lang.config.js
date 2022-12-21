@@ -6,7 +6,7 @@ const LANG_CONFIG = [
     name: "English (UK)",
     isDefault: true,
   },
-  // German
+  /* // German
   {
     id: "de",
     icon: "DeFlagIcon",
@@ -41,14 +41,14 @@ const LANG_CONFIG = [
     id: "fi",
     icon: "FiFlagIcon",
     name: "Suomi",
-  },
+  },*/
   // Spanish
   {
     id: "es",
     icon: "EsFlagIcon",
     name: "Español",
   },
-  // Russian
+  /* // Russian
   {
     id: "ru",
     icon: "RuFlagIcon",
@@ -77,7 +77,7 @@ const LANG_CONFIG = [
     id: "ro",
     icon: "RoFlagIcon",
     name: "Română",
-  },
+  },*/
   // Italian
   {
     id: "it",
@@ -96,78 +96,78 @@ const LANG_CONFIG = [
     icon: "CnFlagIcon",
     name: "繁體中文",
   },
-  // Norwegian
-  {
-    id: "no",
-    icon: "NoFlagIcon",
-    name: "Norsk",
-  },
-  // Czech
-  {
-    id: "cz",
-    icon: "CzFlagIcon",
-    name: "Čeština",
-  },
-  // Vietnamese
-  {
-    id: "vn",
-    icon: "VnFlagIcon",
-    name: "Tiếng Việt",
-  },
-  // Thai
-  {
-    id: "th",
-    icon: "ThFlagIcon",
-    name: "แบบไทย",
-  },
-  // Malay (Malaysia)
-  {
-    id: "my",
-    icon: "MyFlagIcon",
-    name: "Melayu",
-  },
-  // Indonesian
-  {
-    id: "id",
-    icon: "IdFlagIcon",
-    name: "Bahasa Indonesia",
-  },
-  // Korean
-  {
-    id: "kr",
-    icon: "KrFlagIcon",
-    name: "한국인",
-  },
-  // Japanese
-  {
-    id: "jp",
-    icon: "JpFlagIcon",
-    name: "日本",
-  },
-  // Hindi (India)
-  {
-    id: "in",
-    icon: "InFlagIcon",
-    name: "नहीं",
-  },
-  // Bengali (Bangladesh)
-  {
-    id: "bd",
-    icon: "BdFlagIcon",
-    name: "বাংলা",
-  },
-  // Greek
-  {
-    id: "gr",
-    icon: "GrFlagIcon",
-    name: "Ελληνικά",
-  },
-  // Filipino
-  {
-    id: "ph",
-    icon: "PhFlagIcon",
-    name: "Filipino",
-  },
+  /*// Norwegian
+ {
+   id: "no",
+   icon: "NoFlagIcon",
+   name: "Norsk",
+ },
+ // Czech
+ {
+   id: "cz",
+   icon: "CzFlagIcon",
+   name: "Čeština",
+ },
+ // Vietnamese
+ {
+   id: "vn",
+   icon: "VnFlagIcon",
+   name: "Tiếng Việt",
+ },
+ // Thai
+ {
+   id: "th",
+   icon: "ThFlagIcon",
+   name: "แบบไทย",
+ },
+ // Malay (Malaysia)
+ {
+   id: "my",
+   icon: "MyFlagIcon",
+   name: "Melayu",
+ },
+ // Indonesian
+ {
+   id: "id",
+   icon: "IdFlagIcon",
+   name: "Bahasa Indonesia",
+ },
+ // Korean
+ {
+   id: "kr",
+   icon: "KrFlagIcon",
+   name: "한국인",
+ },
+ // Japanese
+ {
+   id: "jp",
+   icon: "JpFlagIcon",
+   name: "日本",
+ },
+ // Hindi (India)
+ {
+   id: "in",
+   icon: "InFlagIcon",
+   name: "नहीं",
+ },
+ // Bengali (Bangladesh)
+ {
+   id: "bd",
+   icon: "BdFlagIcon",
+   name: "বাংলা",
+ },
+ // Greek
+ {
+   id: "gr",
+   icon: "GrFlagIcon",
+   name: "Ελληνικά",
+ },
+ // Filipino
+ {
+   id: "ph",
+   icon: "PhFlagIcon",
+   name: "Filipino",
+ },*/
 ];
 
 const ARABIC_LANG_ID = "ar";
