@@ -33,11 +33,13 @@ const TradingTicker = ({ className, title }) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       try {
-        axios
-          .get(`${API_URL}stock-quotes/${selectedSection.id}`)
-          .then((response) => {
-            setTradingSymbols(response.data);
-          });
+        if (API_URL) {
+          axios
+            .get(`${API_URL}stock-quotes/${selectedSection.id}`)
+            .then((response) => {
+              setTradingSymbols(response.data);
+            });
+        }
       } catch (e) {
         console.log(e);
       }
