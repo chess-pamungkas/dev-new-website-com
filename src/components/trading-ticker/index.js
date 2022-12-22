@@ -31,14 +31,19 @@ const TradingTicker = ({ className, title }) => {
   }, [isCySEC]);
 
   useEffect(() => {
+    let previousOperation;
     const intervalId = setInterval(() => {
       try {
         if (API_URL) {
-          axios
-            .get(`${API_URL}stock-quotes/${selectedSection.id}`)
-            .then((response) => {
-              setTradingSymbols(response.data);
-            });
+          if (!previousOperation) {
+            previousOperation = axios
+              .get(`${API_URL}stock-quotes/${selectedSection.id}`)
+              .then((response) => {
+                setTradingSymbols(response.data);
+              })
+              .catch((err) => console.error(err))
+              .finally(() => (previousOperation = null));
+          }
         }
       } catch (e) {
         console.log(e);
