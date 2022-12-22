@@ -9,7 +9,7 @@ import {
 import TradingSections from "./components/trading-sections";
 import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 
-const API_URL = 'https://back.oqt-ima.eu/';
+const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 
 const TradingTicker = ({ className, title }) => {
   const [tradingSection, setTradingSection] = useState(CYSEC_TRADING_SECTIONS);
