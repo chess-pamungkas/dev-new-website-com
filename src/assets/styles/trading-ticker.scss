@@ -92,7 +92,6 @@
 
 .trading-symbols {
   display: flex;
-  justify-content: center;
   flex-wrap: nowrap;
   padding: 0 0 6px 14px;
   overflow-x: auto;
@@ -137,7 +136,7 @@
     min-width: unset;
     padding: 12px 21px;
     border-radius: 0;
-    margin-right: 0;
+    margin: 0 auto;
     flex-direction: row;
   }
 
