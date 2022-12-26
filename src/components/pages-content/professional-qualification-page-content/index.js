@@ -3,20 +3,15 @@ import TopMarket from "../../top-market";
 import promotion from "../../../assets/images/professional-qualification/promotion.svg";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import SplitTextPromotion from "../../split-text-promotion";
-import TopMarketLayout from "../../top-market-layout";
-import TableComponent from "../../shared/table";
-import {
-  COLUMNS_PROFESSIONAL_QUALIFICATION,
-  DATA_PROFESSIONAL_QUALIFICATION,
-} from "../../../helpers/copy-trading.config";
-import TextBanner from "../../text-banner";
-import { LOGIN_LINK, REGISTRATION_LINK } from "../../../helpers/constants";
+import { REGISTRATION_LINK } from "../../../helpers/constants";
 import TopMarketPromotion from "../../top-market-promotion";
 import cn from "classnames";
 import icon from "../../../assets/images/icon--white.svg";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import AdvantageList from "../../professional-qualification/advantage-list";
+import ButtonLink from "../../shared/button-link";
+import EligibilityList from "../../professional-qualification/eligibility-list";
 
 const ProfessionalQualificationPageContent = () => {
   const { t } = useTranslation();
@@ -55,101 +50,31 @@ const ProfessionalQualificationPageContent = () => {
             accentClassName="highlighted-in-red"
           />
         }
+        text={t("professional-qualification_performance-text")}
       />
       <SplitTextPromotion
-        title={t("professional-qualification_split-text-promotion-title")}
+        title={t("professional-qualification_text-banner-title")}
+        subtitle={t("professional-qualification_text-banner-note")}
         className="split-text-promotion--professional-qualification"
-        table={
-          <TopMarketLayout className="top-market-layout--professional-qualification">
-            <TableComponent
-              data={DATA_PROFESSIONAL_QUALIFICATION}
-              columns={COLUMNS_PROFESSIONAL_QUALIFICATION}
-              className="professional-qualification-table"
-            />
-          </TopMarketLayout>
+        button={
+          <ButtonLink
+            link={REGISTRATION_LINK}
+            className="button-link--red split-text-promotion__btn"
+          >
+            {t("professional-qualification_text-banner-btn")}
+          </ButtonLink>
+        }
+        buttonNote={
+          <HighlightedLocalizationText
+            localizationText="professional-qualification_text-banner-btn-note"
+            wordsToHighlight="professional-qualification_text-banner-btn-note-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
         }
       >
-        <span className="mocked-li">
-          <HighlightedLocalizationText
-            localizationText="professional-qualification_split-text-promotion-text1"
-            wordsToHighlight="professional-qualification_split-text-promotion-text1-accent"
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-red"
-          />
-        </span>
-        <span className="mocked-li">
-          <HighlightedLocalizationText
-            localizationText="professional-qualification_split-text-promotion-text2"
-            wordsToHighlight="professional-qualification_split-text-promotion-text2-accent"
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-red"
-          />
-        </span>
-        <span className="mocked-li">
-          <HighlightedLocalizationText
-            localizationText="professional-qualification_split-text-promotion-text3"
-            wordsToHighlight="professional-qualification_split-text-promotion-text3-accent"
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-red"
-          />
-        </span>
-        <span className="mocked-li">
-          <HighlightedLocalizationText
-            localizationText="professional-qualification_split-text-promotion-text4"
-            wordsToHighlight="professional-qualification_split-text-promotion-text4-accent"
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-red"
-          />
-        </span>
+        <EligibilityList />
       </SplitTextPromotion>
-      <TextBanner
-        title={
-          <HighlightedLocalizationText
-            localizationText="professional-qualification_text-banner-title"
-            wordsToHighlight="professional-qualification_text-banner-title-accent"
-            primaryClassName="highlighted-in-white"
-            accentClassName="highlighted-in-black"
-          />
-        }
-        note={
-          <HighlightedLocalizationText
-            localizationText="professional-qualification_text-banner-note"
-            wordsToHighlight="professional-qualification_text-banner-note-accent"
-            primaryClassName="highlighted-in-white"
-            accentClassName="highlighted-in-black"
-          />
-        }
-        btnTitle1={t("professional-qualification_text-banner-btn1")}
-        link1={REGISTRATION_LINK}
-        btnTitle2={t("professional-qualification_text-banner-btn2")}
-        link2={LOGIN_LINK}
-        id="eligibilityCriteria"
-      >
-        <span className="mocked-li">
-          <HighlightedLocalizationText
-            localizationText="professional-qualification_text-banner-text1"
-            wordsToHighlight="professional-qualification_text-banner-text1-accent"
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-white"
-          />
-        </span>
-        <span className="mocked-li">
-          <HighlightedLocalizationText
-            localizationText="professional-qualification_text-banner-text2"
-            wordsToHighlight="professional-qualification_text-banner-text2-accent"
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-white"
-          />
-        </span>
-        <span className="mocked-li">
-          <HighlightedLocalizationText
-            localizationText="professional-qualification_text-banner-text3"
-            wordsToHighlight="professional-qualification_text-banner-text3-accent"
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-white"
-          />
-        </span>
-      </TextBanner>
       <TopMarketPromotion
         className={cn("bottom-promotion", {
           "bottom-promotion--rtl": isRTL,

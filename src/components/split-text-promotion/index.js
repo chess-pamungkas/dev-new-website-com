@@ -10,6 +10,8 @@ const SplitTextPromotion = ({
   title,
   subtitle,
   table,
+  button,
+  buttonNote,
 }) => {
   const isRTL = useRtlDirection();
 
@@ -41,6 +43,10 @@ const SplitTextPromotion = ({
           )}
           <p className="split-text-promotion__text">{children}</p>
           {table && table}
+          {button && button}
+          {buttonNote && (
+            <p className="split-text-promotion__btn-note">{buttonNote}</p>
+          )}
         </div>
       </div>
     </section>
