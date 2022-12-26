@@ -68,7 +68,7 @@ const Mt5PageContent = () => {
             {t("mt5_mt-promotion-download-windows")}
           </Link>{" "}
           <Link to={MT5_DOWNLOAD_LINKS.webtrader}>
-            {t('"mt5_mt-promotion-download-webtrader"')}
+            {t("mt5_mt-promotion-download-webtrader")}
           </Link>
         </>
       ),
