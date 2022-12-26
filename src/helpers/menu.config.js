@@ -27,7 +27,8 @@ import {
   ALL_MARKETS_PAGE_LINK,
   COMING_SOON_PAGE_LINK,
   METALS_PAGE_LINK,
-  COMPANY_PAGE_LINK, CONTACT_US_PAGE_LINK,
+  COMPANY_PAGE_LINK,
+  CONTACT_US_PAGE_LINK,
   CRYPTO_PAGE_LINK,
   ENERGIES_PAGE_LINK,
   FAQ_PAGE_LINK,
@@ -42,7 +43,8 @@ import {
   PROFESSIONAL_QUALIFICATION_PAGE_LINK,
   SHARES_PAGE_LINK,
   SPREADS_AND_FEES_PAGE_LINK,
-  WITHDRAWAL_PAGE_LINK, TRADING_VIEW_PAGE_LINK,
+  WITHDRAWAL_PAGE_LINK,
+  TRADING_VIEW_PAGE_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
@@ -146,14 +148,7 @@ const FSA_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
   isSubtitle: true,
   icon: FundingWithdrawalsIcon,
   description: "",
-  subtitles: [
-    ...CYSEC_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM.subtitles,
-    {
-      title: "header-nav-tab-trading-funding-withdrawals-trading-title",
-      link: "",
-      description: "header-nav-tab-trading-funding-withdrawals-trading-desc",
-    },
-  ],
+  subtitles: CYSEC_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM.subtitles,
 };
 
 const TRADING_TAB_COPY_TRADING_ITEM = {
