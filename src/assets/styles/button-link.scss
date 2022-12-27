@@ -134,7 +134,9 @@
       border: 2px solid map-get($colors, "red");
       transition: all 0.3s;
 
-      &:hover, &:focus, &:active {
+      &:hover,
+      &:focus,
+      &:active {
         color: map-get($colors, "white");
         background-color: map-get($colors, "red");
       }
@@ -157,6 +159,12 @@
   position: relative;
   overflow: hidden;
   z-index: 0;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: map-get($colors, "red");
+  }
 
   .button-link--snake-animation-line-left,
   .button-link--snake-animation-line-top,
