@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 import "../../../assets/styles/index.scss";
 import Header from "../../header";
 import { ClientResolverProvider } from "../../../context/client-resolver-context";
 import { LanguageProvider } from "../../../context/language-context";
 import { MarketingContextProvider } from "../../../context/marketing-context";
 import { CookieProvider } from "../../../context/cookie-context";
-import { SearchProvider } from '../../../context/search-context';
+import { SearchProvider } from "../../../context/search-context";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import Footer from "../../footer";
 import { CookiesPopup } from "../../cookies-popup";
@@ -14,7 +14,7 @@ const Layout = ({
   children,
   isShowFooter = true,
   setHeaderRef,
-  isSearchBarAttached = true
+  isSearchBarAttached = true,
 }) => {
   const { width } = useWindowSize();
   const [sectionOptions, setSectionOptions] = useState(null);
@@ -32,10 +32,9 @@ const Layout = ({
     );
   }, [headerRef, sectionOptions, width]);
 
-
   useEffect(() => {
     if (headerRef && setHeaderRef) {
-      setHeaderRef(headerRef)
+      setHeaderRef(headerRef);
     }
   }, [headerRef, setHeaderRef]);
 
@@ -50,15 +49,15 @@ const Layout = ({
                 setSectionOptions={setSectionOptions}
                 isSearchBarAttached={isSearchBarAttached}
               />
-              <section
-                className="scroll-container"
-              >
+              <section className="scroll-container">
                 <main
                   style={{
                     marginTop: scrollHeight,
                   }}
                 >
-                  <CookiesPopup />
+                  <CookiesPopup
+                    isCysecNotification={sectionOptions?.isCysecNotification}
+                  />
                   {children}
                 </main>
                 {isShowFooter && <Footer />}
