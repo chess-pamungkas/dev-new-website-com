@@ -5,7 +5,7 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isBrowser } from "../../helpers/services/is-browser";
 import { sendClickEventToGA } from "../../helpers/services/google-analytics-service";
 
-export const CookiesPopup = ({ className }) => {
+export const CookiesPopup = ({ className, isCysecNotification }) => {
   const { t } = useTranslation();
   const {
     handleOpenGDPRPopup,
@@ -38,6 +38,7 @@ export const CookiesPopup = ({ className }) => {
       className={cn(
         "cookies-popup",
         { "cookies-popup--active": isShowCookiePopup && isReady },
+        { "cookies-popup--higher": isCysecNotification },
         className
       )}
     >
