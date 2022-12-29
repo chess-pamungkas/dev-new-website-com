@@ -37,6 +37,18 @@
     display: block;
   }
 
+  &--higher {
+    bottom: 200px;
+
+    @include tablet {
+      bottom: 120px;
+    }
+
+    @include desktop-lg {
+      bottom: 20px;
+    }
+  }
+
   &__header {
     height: 10px;
     background-color: map-get($colors, "red");

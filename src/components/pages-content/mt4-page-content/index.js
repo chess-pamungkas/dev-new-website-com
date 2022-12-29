@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT4.json";
-import { MT4_DOC } from "../../../helpers/documents";
+// import { MT4_DOC } from "../../../helpers/documents";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
 import {
@@ -15,7 +15,7 @@ import image from "../../../assets/images/mt4/MT4andMT5.png";
 import TopMarketLayout from "../../top-market-layout";
 import TableComponent from "../../shared/table";
 import icon from "../../../assets/images/icon--white.svg";
-import { REGISTRATION_LINK } from "../../../helpers/constants";
+import { REGISTRATION_LINK, HOME_PAGE_LINK } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { Link } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
@@ -89,7 +89,8 @@ const Mt4PageContent = () => {
           "button-link--ghost": isLG || isXL,
         })}
         btnTitle={t("mt4_top-market-promo-btn")}
-        link={MT4_DOC}
+        // link={MT4_DOC}
+        link={HOME_PAGE_LINK}
         isDocumentLink
         note={
           <HighlightedLocalizationText

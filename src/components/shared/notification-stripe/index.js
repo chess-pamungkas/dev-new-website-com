@@ -12,6 +12,7 @@ import {
   RISK_DISCLOSURE_DOC_FSA,
 } from "../../../helpers/documents";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 
 export const CysecStripe = ({ t, isCySEC }) => {
   return (
@@ -81,6 +82,8 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
 
   const [isHidden, setIsHidden] = useState(true);
 
+  const { isMobile, isMD } = useWindowSize();
+
   useEffect(() => {
     setSectionOptions({ isCysecNotification, isCysecRedirect });
 
@@ -102,6 +105,29 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
     isCysecRedirect,
     setSectionOptions,
   ]);
+
+  useEffect(() => {
+    if (isCysecNotification) {
+      let bottom;
+      switch (true) {
+        case isMobile:
+          bottom = "190px";
+          break;
+        case isMD:
+          bottom = "110px";
+          break;
+        default:
+          bottom = "10px";
+      }
+
+      let livechat = document.getElementById("convrs-chat-channel-container");
+
+      if (livechat) {
+        livechat.style.bottom = bottom;
+      }
+    }
+  }, [isCysecNotification, isMobile, isMD]);
+
   return (
     <>
       {!isHidden && (isCysecNotification || isCysecRedirect) && (
