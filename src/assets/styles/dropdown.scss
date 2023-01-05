@@ -10,7 +10,8 @@
   background-color: map-get($colors, "white");
   user-select: none;
   text-align: center;
-  transition: 0.2s;
+  // transition: 0.2s;
+  transition: all ease-in-out 0.5s;
 
   &--opened {
     box-shadow: 0 3px 24px #00000029;
@@ -41,8 +42,7 @@
         border-style: solid;
         border-width: 5px 4px 0 4px;
         border-radius: 4px;
-        border-color: map-get($colors, "red") transparent transparent
-          transparent;
+        border-color: map-get($colors, "red") transparent transparent transparent;
       }
     }
   }

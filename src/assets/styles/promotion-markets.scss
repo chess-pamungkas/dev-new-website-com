@@ -103,7 +103,7 @@
     bottom: -50px;
     left: 50%;
     transform: translateX(-50%);
-    transition: 0.1s;
+    transition: all ease-in 0.4s;
 
     @include tablet {
       line-height: 62px;

@@ -82,6 +82,7 @@
 
   .top-market-promotion__btn {
     text-transform: unset;
+    transition: all ease-in 0.4s;
 
     @include desktop-lg {
       color: map-get($colors, "white");

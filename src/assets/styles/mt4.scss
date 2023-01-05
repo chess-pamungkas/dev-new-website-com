@@ -10,8 +10,7 @@
   @include tablet {
     padding-top: 26px;
     padding-bottom: 33px;
-    background: url("../../assets/images/bg/split-bg/bg-md.svg") no-repeat
-      bottom;
+    background: url("../../assets/images/bg/split-bg/bg-md.svg") no-repeat bottom;
     background-size: cover;
   }
 
@@ -25,8 +24,7 @@
   @include desktop-xl {
     padding-top: 161px;
     padding-bottom: 112px;
-    background: url("../../assets/images/bg/split-bg/bg-xl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/split-bg/bg-xl.svg") no-repeat center;
     background-size: cover;
   }
 
@@ -62,6 +60,7 @@
 
   .top-market-promotion__btn {
     text-transform: unset;
+    transition: all ease-in 0.4s;
 
     @include desktop-lg {
       color: map-get($colors, "white");
