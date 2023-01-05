@@ -19,6 +19,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: all ease-in 0.4s;
 
   &:hover,
   &:active,
@@ -112,7 +113,7 @@
     font-weight: map-get($font-weight, "bold");
     text-transform: none;
     white-space: nowrap;
-
+    transition: all ease-in 0.4s;
     @include desktop-xl {
       height: 40px;
       font-size: 16px;
@@ -129,7 +130,7 @@
   &--ghost {
     border: 2px solid map-get($colors, "white");
     background: transparent;
-
+    transition: all ease-in 0.4s;
     &-red {
       border: 2px solid map-get($colors, "red");
       transition: all 0.3s;
@@ -177,23 +178,19 @@
   }
 
   .button-link--snake-animation-line-bottom {
-    animation: bottomLineMoveIn 0.25s linear 0s forwards,
-    bottomLineMoveOut 0.25s linear 0.75s forwards;
+    animation: bottomLineMoveIn 0.25s linear 0s forwards, bottomLineMoveOut 0.25s linear 0.75s forwards;
   }
 
   .button-link--snake-animation-line-left {
-    animation: leftLineMoveIn 0.25s linear 0.25s forwards,
-    leftLineMoveOut 0.25s linear 1s forwards;
+    animation: leftLineMoveIn 0.25s linear 0.25s forwards, leftLineMoveOut 0.25s linear 1s forwards;
   }
 
   .button-link--snake-animation-line-top {
-    animation: topLineMoveIn 0.25s linear 0.5s forwards,
-    topLineMoveOut 0.25s linear 1.25s forwards;
+    animation: topLineMoveIn 0.25s linear 0.5s forwards, topLineMoveOut 0.25s linear 1.25s forwards;
   }
 
   .button-link--snake-animation-line-right {
-    animation: rightLineMoveIn 0.25s linear 0.75s forwards,
-    rightLineMoveOut 0.25s linear 1.5s forwards;
+    animation: rightLineMoveIn 0.25s linear 0.75s forwards, rightLineMoveOut 0.25s linear 1.5s forwards;
   }
 
   .button-link--snake-animation-line-top {
