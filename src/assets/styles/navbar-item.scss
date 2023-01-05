@@ -63,7 +63,7 @@
     background-color: map-get($colors, "white");
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: all ease-in-out 0.4s;
 
     &:hover {
       cursor: default;

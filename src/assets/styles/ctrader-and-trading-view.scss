@@ -61,6 +61,7 @@
   .top-market-promotion__btn {
     text-transform: unset;
     color: map-get($colors, "white");
+    transition: all ease-in 0.4s;
 
     &:hover,
     &:focus,
@@ -73,7 +74,10 @@
 
 .trading-view-page-promotion {
   .top-market-promotion__btn {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     padding: 0 15px;
+    transition: all ease-in 0.4s;
   }
 }

@@ -189,6 +189,7 @@
   width: 46%;
   margin: 0 7px 25px 7px;
   z-index: 2;
+  transition: all ease-in-out 0.4s;
 
   &:hover {
     background: map-get($colors, "red");
