@@ -10,8 +10,7 @@
 .company-advantages {
   position: relative;
   background-size: cover;
-  background: url("../../assets/images/bg/company/company-advantages.svg")
-    no-repeat top right;
+  background: url("../../assets/images/bg/company/company-advantages.svg") no-repeat top right;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,8 +24,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: url("../../assets/images/bg/company/company-advantages-top-sm.svg")
-      no-repeat;
+    background: url("../../assets/images/bg/company/company-advantages-top-sm.svg") no-repeat;
     width: 124px;
     height: 161px;
   }
@@ -36,23 +34,20 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    background: url("../../assets/images/bg/company/company-advantages-bottom-sm.svg")
-      no-repeat;
+    background: url("../../assets/images/bg/company/company-advantages-bottom-sm.svg") no-repeat;
     width: 174px;
     height: 227px;
   }
 
   @include tablet {
     &:before {
-      background: url("../../assets/images/bg/company/company-advantages-top-md.svg")
-        no-repeat;
+      background: url("../../assets/images/bg/company/company-advantages-top-md.svg") no-repeat;
       width: 252px;
       height: 291px;
     }
 
     &:after {
-      background: url("../../assets/images/bg/company/company-advantages-bottom-md.svg")
-        no-repeat;
+      background: url("../../assets/images/bg/company/company-advantages-bottom-md.svg") no-repeat;
       width: 252px;
       height: 291px;
     }
@@ -60,15 +55,13 @@
 
   @include desktop-lg {
     &:before {
-      background: url("../../assets/images/bg/company/company-advantages-top-lg.svg")
-        no-repeat;
+      background: url("../../assets/images/bg/company/company-advantages-top-lg.svg") no-repeat;
       width: 261px;
       height: 299px;
     }
 
     &:after {
-      background: url("../../assets/images/bg/company/company-advantages-bottom-lg.svg")
-        no-repeat;
+      background: url("../../assets/images/bg/company/company-advantages-bottom-lg.svg") no-repeat;
       width: 261px;
       height: 299px;
     }
@@ -76,15 +69,13 @@
 
   @include desktop-xl {
     &:before {
-      background: url("../../assets/images/bg/company/company-advantages-top-xl.svg")
-        no-repeat;
+      background: url("../../assets/images/bg/company/company-advantages-top-xl.svg") no-repeat;
       width: 408px;
       height: 490px;
     }
 
     &:after {
-      background: url("../../assets/images/bg/company/company-advantages-bottom-xl.svg")
-        no-repeat;
+      background: url("../../assets/images/bg/company/company-advantages-bottom-xl.svg") no-repeat;
       width: 377px;
       height: 592px;
     }
@@ -154,19 +145,23 @@
   &:hover {
     @include desktop-lg {
       background: map-get($colors, "red");
+      transition: 0.2s;
     }
 
     & > .company-advantage-block__front {
       opacity: 0;
+      transition: 0.2s;
     }
 
     & > .company-advantage-block__back {
       opacity: 1;
+      transition: 0.6s;
     }
   }
 
   &__icon-wrapper {
     background: map-get($colors, "red");
+
     border-radius: 10px 10px 0 0;
     padding: 10px 20px;
   }
