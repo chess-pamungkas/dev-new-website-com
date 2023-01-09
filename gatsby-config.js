@@ -8,6 +8,9 @@ const {
 } = require(`${__dirname}/src/locales/processLanguages`);
 
 const indexedLocaleData = processLanguagesForConfig(languages.list);
+exports.onRenderBody = ({ setHtmlAttributes }) => {
+	setHtmlAttributes({ lang: languages.list.id });
+};
 
 module.exports = {
 	siteMetadata: {
@@ -71,11 +74,12 @@ module.exports = {
 				},
 			},
 		},
-		{
-			resolve: "gatsby-plugin-html-attributes",
-			options: {
-				lang: languages.list,
-			},
-		},
+
+		// {
+		// 	resolve: "gatsby-plugin-html-attributes",
+		// 	options: {
+		// 		lang: "",
+		// 	},
+		// },
 	],
 };
