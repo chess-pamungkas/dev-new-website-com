@@ -238,3 +238,22 @@
     }
   }
 }
+.notes-block {
+  margin: auto;
+  width: 60%;
+  &__text {
+    // text-align: center;
+    color: map-get($colors, "grey");
+    font-weight: map-get($font-weight, "light");
+    font-size: 10px;
+    line-height: 15px;
+
+    @include desktop-xl {
+      font-size: 10px;
+      line-height: 20px;
+    }
+  }
+  @include tablet {
+    width: 100%;
+  }
+}
