@@ -5,60 +5,71 @@ import { AngleDownIcon } from "../icons";
 import { sendClickEventToGA } from "../../../helpers/services/google-analytics-service";
 
 const Accordion = ({
-  children,
-  className,
-  title,
-  isOpen,
-  onSelect,
-  icon: Icon,
-  iconForActive: IconForActive,
+	children,
+	className,
+	title,
+	isOpen,
+	onSelect,
+	icon: Icon,
+	iconForActive: IconForActive,
 }) => {
-  const { t } = useTranslation();
+	const { t } = useTranslation();
 
-  const [isActive, setIsActive] = useState(isOpen);
+	const [isActive, setIsActive] = useState(isOpen);
 
-  const handleClick = (title) => {
-    if (onSelect) {
-      // in case handling is needed in the parent component
-      onSelect(title);
-    } else {
-      // default handling
-      setIsActive(!isActive);
-    }
-  };
+	const handleClick = (title) => {
+		if (onSelect) {
+			// in case handling is needed in the parent component
+			onSelect(title);
+		} else {
+			// default handling
+			setIsActive(!isActive);
+		}
+	};
 
-  useEffect(() => {
-    if (onSelect) {
-      setIsActive(isOpen);
-    }
-  }, [isOpen, onSelect]);
+	useEffect(() => {
+		if (onSelect) {
+			setIsActive(isOpen);
+		}
+	}, [isOpen, onSelect]);
 
-  const getIcon = useCallback(() => {
-    if (isActive) {
-      return IconForActive ? <IconForActive /> : <Icon />;
-    } else {
-      return <Icon />;
-    }
-  }, [isActive, IconForActive]);
+	const getIcon = useCallback(() => {
+		const clsA = { show: isActive, hide: !isActive };
+		const clsB = { show: !isActive, hide: isActive };
 
-  return (
-    <section
-      className={cn("accordion", { "accordion--open": isActive }, className)}
-    >
-      <button
-        type="button"
-        className="accordion__title"
-        onClick={(e) => {
-          handleClick(title);
-          sendClickEventToGA(e);
-        }}
-      >
-        <span>{t(title)}</span>
-        {Icon ? getIcon() : <AngleDownIcon className="accordion__icon" />}
-      </button>
-      {isActive && <div className="accordion__expandable">{children}</div>}
-    </section>
-  );
+		return (
+			<span className="btn-area">
+				{IconForActive ? (
+					<IconForActive className={cn(clsA)} />
+				) : (
+					<Icon className={cn(clsA)} />
+				)}
+				<Icon className={cn(clsB)} />
+				<Icon className="hidden" />
+			</span>
+		);
+	}, [isActive, IconForActive]);
+
+	return (
+		<section
+			className={cn("accordion", { "accordion--open": isActive }, className)}
+		>
+			<button
+				type="button"
+				className="accordion__title"
+				onClick={(e) => {
+					handleClick(title);
+					sendClickEventToGA(e);
+				}}
+			>
+				<span>{t(title)}</span>
+				{Icon ? getIcon() : <AngleDownIcon className="accordion__icon" />}
+			</button>
+			<div className={cn("accordion__expandable", { show: isActive })}>
+				{children}
+			</div>
+		</section>
+	);
 };
 
 export default Accordion;
