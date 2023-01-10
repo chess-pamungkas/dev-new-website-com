@@ -103,17 +103,17 @@
 
   @include tablet {
     padding-top: 133px;
-    padding-bottom: 118px;
+    padding-bottom: 50px;
   }
 
   @include desktop-lg {
     padding-top: 177px;
-    padding-bottom: 177px;
+    padding-bottom: 50px;
   }
 
   @include desktop-xl {
     padding-top: 157px;
-    padding-bottom: 228px;
+    padding-bottom: 50px;
   }
 
   .top-market-layout__wrapper {
@@ -240,20 +240,37 @@
 }
 .notes-block {
   margin: auto;
-  width: 60%;
+
+  @include mobile {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @include tablet {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @include desktop-lg {
+    width: 80%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @include desktop-xl {
+    width: 60%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
   &__text {
-    // text-align: center;
     color: map-get($colors, "grey");
     font-weight: map-get($font-weight, "light");
     font-size: 10px;
     line-height: 15px;
+    text-align: justify;
 
     @include desktop-xl {
       font-size: 10px;
       line-height: 20px;
     }
-  }
-  @include tablet {
-    width: 100%;
   }
 }

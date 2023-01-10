@@ -256,6 +256,8 @@
   "withdrawal_top-market-promo-text": "طرق سهلة للإيداع ، طرق سهلة للسحب!",
   "withdrawal_top-market-promo-note": "يتم تخزين أموالك بأمان في حسابات العملاء منفصلة في الطبقة العليا 1 البنك في أستراليا والمملكة المتحدة.",
   "withdrawal_top-market-promo-note-accent": "11,12,13,14,16,18",
+    "withdrawal_top-market-promo-note-EU":"Your money is safely stored in dedicated and segregated client accounts. You can have access to your money instantly* and withdraw in many ways.",
+  "withdrawal_top-market-promo-note-accent-EU": "4,7,9",
   "withdrawal_top-market-promo-text2-1": "الإيداع الفوري",
   "withdrawal_top-market-promo-text-accent2-1": "2",
   "withdrawal_top-market-promo-text2-2": "عمليات السحب في نفس اليوم*",
@@ -267,6 +269,9 @@
   "withdrawal_top-market-promo-text-accent3": "2",
   "withdrawal_tabs_title1": "الإيداع",
   "withdrawal_tabs_title2": "الانسحاب",
+  "withdrawal_disclaimer1":"*Please allow up to 1 hour. OQTIMA shall not be held liable for any delay of processing if that delay is out of the control of OQTIMA.",
+  "withdrawal_disclaimer2":"*Days are for indicative purposes and OQTIMA shall not be held liable for any delay of processing if that delay is out of the control of OQTIMA. OQTIMA's finance department works Monday to Friday 9 a.m. 3 p.m. (Eastern European Standard Time) Any requests after these hours will be processed on the next working day.",
+  "withdrawal_disclaimer3":"*OQTIMA doesn’t charge you any fee for processing your deposit or withdrawals, however, the method you decide to use may charge a fee and that’s outside of OQTIMA",
 
   "contact-us_top-market-title": "أوكتيما التركيز على تقديم دعم من الدرجة الأولى في كل خطوة من رحلة التداول الخاصة بك.",
   "contact-us_top-market-title-accent": "1,11,14,15",

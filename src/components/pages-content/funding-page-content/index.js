@@ -113,22 +113,9 @@ const FundingPageContent = () => {
 				<Tabs tabList={tabs} />
 			</TopMarketLayout>
 			<section className={cn("notes-block")}>
-				<p className="notes-block__text">
-					*Please allow up to 1 hour. OQTIMA shall not be held liable for any
-					delay of processing if that delay is out of the control of OQTIMA.
-				</p>
-				<p className="notes-block__text">
-					*Days are for indicative purposes and OQTIMA shall not be held liable
-					for any delay of processing if that delay is out of the control of
-					OQTIMA. OQTIMA's finance department works Monday to Friday 9 a.m. 3
-					p.m. (Eastern European Standard Time) Any requests after these hours
-					will be processed on the next working day.
-				</p>
-				<p className="notes-block__text">
-					*OQTIMA doesn’t charge you any fee for processing your deposit or
-					withdrawals, however, the method you decide to use may charge a fee
-					and that’s outside of OQTIMA
-				</p>
+				<p className="notes-block__text">{t("withdrawal_disclaimer1")}</p>
+				<p className="notes-block__text">{t("withdrawal_disclaimer2")}</p>
+				<p className="notes-block__text">{t("withdrawal_disclaimer3")}</p>
 			</section>
 			<TopMarketPromotion
 				className={cn("bottom-promotion", {
