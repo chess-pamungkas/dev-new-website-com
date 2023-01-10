@@ -7,66 +7,68 @@ import LanguageContext from "../../../../context/language-context";
 import Popup from "../../../shared/popup";
 import LangOptions from "../lang-options";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
+import { Helmet } from "gatsby-plugin-react-i18next";
 
 const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
-  const {
-    selectedLanguage,
-    selectedLanguage: { icon: Icon } = {},
-    setSelectedLanguage,
-  } = useContext(LanguageContext);
-  const { isShow, handleOpen, handleClose } = useModal();
+	const {
+		selectedLanguage,
+		selectedLanguage: { icon: Icon } = {},
+		setSelectedLanguage,
+	} = useContext(LanguageContext);
+	const { isShow, handleOpen, handleClose } = useModal();
 
-  const onLangSelect = (selected) => {
-    setSelectedLanguage(selected);
-    closePopup();
-  };
+	const onLangSelect = (selected) => {
+		setSelectedLanguage(selected);
+		closePopup();
+	};
 
-  const setIconColor = (isShow) => {
-    if (isHeader) {
-      return isShow ? ANGLE_ICON_COLOR.red : ANGLE_ICON_COLOR.white;
-    }
+	const setIconColor = (isShow) => {
+		if (isHeader) {
+			return isShow ? ANGLE_ICON_COLOR.red : ANGLE_ICON_COLOR.white;
+		}
 
-    return isShow ? ANGLE_ICON_COLOR.white : ANGLE_ICON_COLOR.red;
-  };
+		return isShow ? ANGLE_ICON_COLOR.white : ANGLE_ICON_COLOR.red;
+	};
 
-  const closePopup = () => {
-    setIsLangPopupOpened && setIsLangPopupOpened(false);
-    handleClose();
-  };
+	const closePopup = () => {
+		setIsLangPopupOpened && setIsLangPopupOpened(false);
+		handleClose();
+	};
 
-  return (
-    <>
-      <button
-        className={cn(
-          "lang-select",
-          { "lang-select--active": isShow },
-          className
-        )}
-        type="button"
-        onClick={(e) => {
-          handleOpen();
-          setIsLangPopupOpened && setIsLangPopupOpened(true);
-          sendClickEventToGA(e);
-        }}
-      >
-        {Icon && <Icon className="lang-select__flag" />}
+	return (
+		<>
+			<Helmet htmlAttributes={{ lang: selectedLanguage.id }} />
+			<button
+				className={cn(
+					"lang-select",
+					{ "lang-select--active": isShow },
+					className
+				)}
+				type="button"
+				onClick={(e) => {
+					handleOpen();
+					setIsLangPopupOpened && setIsLangPopupOpened(true);
+					sendClickEventToGA(e);
+				}}
+			>
+				{Icon && <Icon className="lang-select__flag" />}
 
-        <AngleDownIcon
-          className={cn("lang-select__icon", {
-            "lang-select__icon--up": isShow,
-          })}
-          color={setIconColor(isShow)}
-        />
-      </button>
+				<AngleDownIcon
+					className={cn("lang-select__icon", {
+						"lang-select__icon--up": isShow,
+					})}
+					color={setIconColor(isShow)}
+				/>
+			</button>
 
-      <Popup isPopupOpen={isShow} handlePopupClose={closePopup}>
-        <LangOptions
-          selectedLanguage={selectedLanguage}
-          languageSelectHandler={onLangSelect}
-        />
-      </Popup>
-    </>
-  );
+			<Popup isPopupOpen={isShow} handlePopupClose={closePopup}>
+				<LangOptions
+					selectedLanguage={selectedLanguage}
+					languageSelectHandler={onLangSelect}
+				/>
+			</Popup>
+		</>
+	);
 };
 
 export default LangSelect;
