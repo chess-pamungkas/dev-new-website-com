@@ -70,8 +70,8 @@
     margin: 0 0 10px;
     font-size: 17px;
     line-height: 20px;
-    display: flex;
-    align-items: center;
+    // display: flex;
+    // align-items: center;
     position: relative;
 
     @include tablet {
@@ -92,6 +92,7 @@
       font-size: 25px;
       line-height: 45px;
       margin: 0 0 60px;
+      text-align: center;
 
       @include tablet {
         font-size: 36px;
@@ -115,9 +116,7 @@
     padding-right: 15px;
 
     @include desktop-lg {
-      position: absolute;
-      right: 100%;
-      top: 27%;
+      position: initial;
     }
   }
 
