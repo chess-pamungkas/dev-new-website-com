@@ -87,13 +87,15 @@
     letter-spacing: 0;
     color: map-get($colors, "white");
     text-transform: uppercase;
-    transition: all 0.3s;
+    transition: all ease-in 0.4s;
 
     @include tablet {
       width: 234px;
     }
 
-    &:hover, &:active, &:focus {
+    &:hover,
+    &:active,
+    &:focus {
       background: map-get($colors, "white");
       color: map-get($colors, "red");
       border-color: map-get($colors, "red");
@@ -113,7 +115,9 @@
     cursor: pointer;
     transition: all 0.3s;
 
-    &:hover, &:active, &:focus {
+    &:hover,
+    &:active,
+    &:focus {
       text-decoration: none;
     }
   }

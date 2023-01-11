@@ -2,8 +2,7 @@
 @import "mixins";
 
 .accounts-type-page-promotion {
-  background: url("../../assets/images/accounts-type/promotion-bg.svg")
-    no-repeat center;
+  background: url("../../assets/images/accounts-type/promotion-bg.svg") no-repeat center;
   background-size: cover;
   padding-top: 40px;
   padding-bottom: 100px;
@@ -92,30 +91,26 @@
   &:before {
     content: "";
     position: absolute;
-    background: url("../../assets/images/accounts-type/mid-promo-bg-top-sm.svg")
-      no-repeat;
+    background: url("../../assets/images/accounts-type/mid-promo-bg-top-sm.svg") no-repeat;
     width: 92px;
     height: 110px;
     top: 0;
     left: 0;
 
     @include tablet {
-      background: url("../../assets/images/accounts-type/mid-promo-bg-top-md.svg")
-        no-repeat;
+      background: url("../../assets/images/accounts-type/mid-promo-bg-top-md.svg") no-repeat;
       width: 187px;
       height: 226px;
     }
 
     @include desktop-lg {
-      background: url("../../assets/images/accounts-type/mid-promo-bg-top-lg.svg")
-        no-repeat;
+      background: url("../../assets/images/accounts-type/mid-promo-bg-top-lg.svg") no-repeat;
       width: 177px;
       height: 213px;
     }
 
     @include desktop-xl {
-      background: url("../../assets/images/accounts-type/mid-promo-bg-top-xl.svg")
-        no-repeat;
+      background: url("../../assets/images/accounts-type/mid-promo-bg-top-xl.svg") no-repeat;
       width: 261px;
       height: 299px;
     }
@@ -124,30 +119,26 @@
   &:after {
     content: "";
     position: absolute;
-    background: url("../../assets/images/accounts-type/mid-promo-bg-bot-sm.svg")
-      no-repeat;
+    background: url("../../assets/images/accounts-type/mid-promo-bg-bot-sm.svg") no-repeat;
     width: 92px;
     height: 110px;
     bottom: 0;
     right: 0;
 
     @include tablet {
-      background: url("../../assets/images/accounts-type/mid-promo-bg-bot-md.svg")
-        no-repeat;
+      background: url("../../assets/images/accounts-type/mid-promo-bg-bot-md.svg") no-repeat;
       width: 188px;
       height: 225px;
     }
 
     @include desktop-lg {
-      background: url("../../assets/images/accounts-type/mid-promo-bg-bot-lg.svg")
-        no-repeat;
+      background: url("../../assets/images/accounts-type/mid-promo-bg-bot-lg.svg") no-repeat;
       width: 177px;
       height: 213px;
     }
 
     @include desktop-xl {
-      background: url("../../assets/images/accounts-type/mid-promo-bg-bot-xl.svg")
-        no-repeat;
+      background: url("../../assets/images/accounts-type/mid-promo-bg-bot-xl.svg") no-repeat;
       width: 261px;
       height: 299px;
     }
@@ -204,6 +195,7 @@
     color: map-get($colors, "red");
     background: map-get($colors, "black-secondary");
     border: 2px solid map-get($colors, "red");
+    transition: all ease-in 0.4s;
 
     &:hover {
       color: map-get($colors, "white");

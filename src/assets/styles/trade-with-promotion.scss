@@ -186,7 +186,7 @@
     width: 100%;
     line-height: 58px;
     font-size: 19px;
-    transition: 0.1s;
+    transition: all ease-in 0.4s;
 
     &:hover {
       background-color: map-get($colors, "white");

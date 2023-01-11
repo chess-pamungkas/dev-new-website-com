@@ -10,24 +10,21 @@
   @include tablet {
     padding-top: 42px;
     padding-bottom: 45px;
-    background: url("../../assets/images/bg/legal/banner-md.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/legal/banner-md.svg") no-repeat center;
     background-size: cover;
   }
 
   @include desktop-lg {
     padding-top: 20px;
     padding-bottom: 44px;
-    background: url("../../assets/images/bg/legal/banner-lg.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/legal/banner-lg.svg") no-repeat center;
     background-size: cover;
   }
 
   @include desktop-xl {
     padding-top: 145px;
     padding-bottom: 135px;
-    background: url("../../assets/images/bg/legal/banner-xl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/legal/banner-xl.svg") no-repeat center;
     background-size: cover;
   }
 
@@ -103,6 +100,7 @@
     color: map-get($colors, "red");
     background: map-get($colors, "white");
     margin: 0 auto;
+    transition: all ease-in 0.4s;
 
     @include tablet {
       font-size: 22px;
@@ -177,6 +175,7 @@
 
   .top-market-promotion__btn {
     font-size: 11px;
+    transition: all ease-in 0.4s;
 
     @include tablet {
       font-size: 22px;

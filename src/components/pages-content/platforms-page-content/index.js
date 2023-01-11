@@ -18,7 +18,11 @@ import platforms from "../../../assets/images/platforms/platforms.svg";
 const PlatformsPageContent = () => {
   const { t } = useTranslation();
   const { isXL } = useWindowSize();
-  const META_TRADERS = [META_TRADER_4, META_TRADER_5];
+  const META_TRADERS = [
+    // Temporary removed because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
+    // META_TRADER_4,
+    META_TRADER_5,
+  ];
   const isRTL = useRtlDirection();
 
   return (
@@ -30,7 +34,8 @@ const PlatformsPageContent = () => {
         image={platforms}
         subImageTemplate={
           <div className={cn("top-market__trader-tools")}>
-            <img src={META_TRADER_4.icon} alt={t(META_TRADER_4.title)} />
+            {/* Temporary removed because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166 */}
+            {/* <img src={META_TRADER_4.icon} alt={t(META_TRADER_4.title)} /> */}
             <img src={META_TRADER_5.icon} alt={t(META_TRADER_5.title)} />
           </div>
         }

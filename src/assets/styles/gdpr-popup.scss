@@ -217,6 +217,7 @@
     color: map-get($colors, "red");
     min-width: 123px;
     text-transform: uppercase;
+    transition: all ease-in 0.4s;
 
     &:hover {
       background: map-get($colors, "red") 0 0% no-repeat padding-box;

@@ -8,9 +8,12 @@ import { MarketingContext } from "../../context/marketing-context";
 import {
   CONTENT_HEROES,
   SECT1_TEXT_SEQUENCES,
+  CYSEC_DEFAULT_TEXT_SEQUENCE,
+  FSA_DEFAULT_TEXT_SEQUENCE,
 } from "../../helpers/marketing.config";
 import { transformParamToKey } from "../../helpers/services/marketing-service";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 
 const MainPromotion = ({ className, isShowHero = true }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
@@ -18,13 +21,16 @@ const MainPromotion = ({ className, isShowHero = true }) => {
   const { t } = useTranslation();
   const { content, sect1 } = useContext(MarketingContext);
   const isRTL = useRtlDirection();
+  const { isCySEC } = useEntityPostfix();
+  const DEFAULT_TEXT_SEQUENCE = isCySEC
+    ? CYSEC_DEFAULT_TEXT_SEQUENCE
+    : FSA_DEFAULT_TEXT_SEQUENCE;
 
   const hero =
     CONTENT_HEROES[transformParamToKey(content)] || CONTENT_HEROES.default;
 
   const titles =
-    SECT1_TEXT_SEQUENCES[transformParamToKey(sect1)] ||
-    SECT1_TEXT_SEQUENCES.default;
+    SECT1_TEXT_SEQUENCES[transformParamToKey(sect1)] || DEFAULT_TEXT_SEQUENCE;
 
   return (
     <section
