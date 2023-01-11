@@ -291,30 +291,31 @@
   }
 }
 
-.faq--spreads {
-  padding-top: 57px;
-  padding-bottom: 254px;
-  background: none;
+.swap-rate {
+  padding: 57px 15px 254px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: map-get($colors, "white");
+  @include content-alignment(0);
 
   @include tablet {
-    padding-top: 75px;
-    padding-bottom: 200px;
+    padding: 75px 35px 200px 35px;
   }
 
   @include desktop-lg {
-    padding-top: 87px;
-    padding-bottom: 221px;
-    background: url("../../assets/images/spreads-and-fees/faq/bg/lg.svg") no-repeat top;
+    padding: 87px 35px 221px 35px;
+    background: url("../../assets/images/spreads-and-fees/faq/bg/lg.svg")
+      no-repeat top;
   }
 
   @include desktop-xl {
-    padding-top: 100px;
-    padding-bottom: 356px;
-
-    background: url("../../assets/images/spreads-and-fees/faq/bg/xl.svg") no-repeat bottom;
+    padding: 100px 70px 356px 70px;
+    background: url("../../assets/images/spreads-and-fees/faq/bg/xl.svg")
+      no-repeat bottom;
   }
 
-  .faq__wrapper {
+  &__wrapper {
     @include tablet {
       max-width: 479px;
     }
@@ -328,7 +329,7 @@
     }
   }
 
-  .faq__title {
+  &__title {
     color: map-get($colors, "red");
     margin-top: 0;
     text-align: left;
@@ -351,50 +352,30 @@
     }
   }
 
-  .faq__subtitle-text {
+  &__subtitle-text {
     display: block;
+    margin-bottom: 35px;
+
+    &--bold {
+      font-weight: map-get($font-weight, "black");
+    }
   }
 
-  .faq__subtitle {
+  &__subtitle {
     font-size: 16px;
     line-height: 20px;
-    margin-bottom: 53px;
-
-    .faq__subtitle-text + .faq__subtitle-text {
-      margin-top: 35px;
-    }
 
     @include tablet {
       font-size: 22px;
       line-height: 27px;
-      margin-bottom: 82px;
-
-      .faq__subtitle-text + .faq__subtitle-text {
-        margin-top: 0;
-      }
     }
 
     @include desktop-lg {
-      .faq__subtitle-text + .faq__subtitle-text {
-        margin-top: 20px;
-      }
     }
 
     @include desktop-xl {
       font-size: 24px;
       line-height: 30px;
-      margin-bottom: 44px;
     }
-  }
-
-  .faq__accordion:last-child {
-    padding-bottom: 0;
-    margin-bottom: 0;
-    border-bottom: 0;
-    transition: all ease-in 0.4s;
-  }
-
-  .faq__delimiter {
-    display: none;
   }
 }
