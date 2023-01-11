@@ -14,6 +14,8 @@ const MT4Page = () => {
       <Seo
         title={t("page-mt4-title")}
         description={t("page-mt4-description")}
+        // Temporary added because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
+        robots={"noindex"}
       />
       <Mt4PageContent />
     </Layout>

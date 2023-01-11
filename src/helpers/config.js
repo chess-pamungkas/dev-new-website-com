@@ -117,10 +117,11 @@ export const PLATFORMS = {
     icon: androidIcon,
     title: "index_trading-tools-platforms-android",
   },
-  metaTrader4: {
-    icon: metaTrader4Icon,
-    title: "index_trading-tools-platforms-metatrader4",
-  },
+  // Temporary removed because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
+  // metaTrader4: {
+  //   icon: metaTrader4Icon,
+  //   title: "index_trading-tools-platforms-metatrader4",
+  // },
   metaTrader5: {
     icon: metaTrader5Icon,
     title: "index_trading-tools-platforms-metatrader5",
