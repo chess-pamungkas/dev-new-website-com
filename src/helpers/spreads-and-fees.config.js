@@ -367,34 +367,34 @@ export const COLUMNS_SPREADS_TABLE_2 = [
 export const DATA_SPREADS_TABLE_2 = [
   {
     col1: "USD",
-    col2: "LOREM 0.04 (USD 0.08 Round Turn)",
+    col2: "$ 3.50 per lot traded ($7 round turn)",
   },
   {
     col1: "EUR",
-    col2: "LOREM 0.04 (USD 0.08 Round Turn)",
+    col2: "€ 3.50 per lot traded (€7 round turn)",
   },
   {
     col1: "GBP",
-    col2: "LOREM 0.04 (USD 0.08 Round Turn)",
+    col2: "£ 3.00 per lot traded (£6 round turn)",
   },
   {
     col1: "CHF",
-    col2: "LOREM 0.04 (USD 0.08 Round Turn)",
+    col2: "₣ 3.50 per lot traded (₣ 7 round turn)",
   },
   {
     col1: "SGD",
-    col2: "LOREM 0.04 (USD 0.08 Round Turn)",
+    col2: "S$ 4 per lot traded (S$ 8 round turn)",
   },
   {
     col1: "JPY",
-    col2: "LOREM 0.04 (USD 0.08 Round Turn)",
+    col2: "¥500 per lot traded (¥1000 round turn)",
   },
   {
     col1: "CAD",
-    col2: "LOREM 0.04 (USD 0.08 Round Turn)",
+    col2: "Can$ 4.5 per lot traded (Can$ 9 per round turn)",
   },
   {
-    col1: "ZAD",
-    col2: "LOREM 0.04 (USD 0.08 Round Turn)",
+    col1: "ZAR",
+    col2: "R 60 per lot traded (R 120 per round turn)",
   },
 ];
