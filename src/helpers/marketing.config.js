@@ -65,14 +65,22 @@ export const CONTENT_HEROES = {
   },
 };
 
+export const CYSEC_DEFAULT_TEXT_SEQUENCE = [
+  "index_main-promotion-animated-text-forex-traders",
+  "index_main-promotion-animated-text-day-traders",
+  "index_main-promotion-animated-text-stock-traders",
+  "index_main-promotion-animated-text-you",
+];
+
+export const FSA_DEFAULT_TEXT_SEQUENCE = [
+  "index_main-promotion-animated-text-forex-traders",
+  "index_main-promotion-animated-text-day-traders",
+  "index_main-promotion-animated-text-crypto-traders",
+  "index_main-promotion-animated-text-stock-traders",
+  "index_main-promotion-animated-text-you",
+];
+
 export const SECT1_TEXT_SEQUENCES = {
-  default: [
-    "index_main-promotion-animated-text-forex-traders",
-    "index_main-promotion-animated-text-day-traders",
-    "index_main-promotion-animated-text-crypto-traders",
-    "index_main-promotion-animated-text-stock-traders",
-    "index_main-promotion-animated-text-you",
-  ],
   forex: [
     "index_main-promotion-animated-text-forex-traders",
     "index_main-promotion-animated-text-day-traders",
@@ -99,7 +107,7 @@ export const SECT1_TEXT_SEQUENCES = {
     "index_main-promotion-animated-text-scalpers",
     "index_main-promotion-animated-text-day-trader",
     "index_main-promotion-animated-text-quant-traders",
-    "index_main-promotion-animated-text-you"
+    "index_main-promotion-animated-text-you",
   ],
   expert: [
     "index_main-promotion-animated-text-expert-traders",
@@ -160,7 +168,7 @@ export const SECT2_TEXT_SEQUENCES = {
       "index_trade-with-promotion-SOL",
       "index_trade-with-promotion-SHIB",
       "index_trade-with-promotion-NEO",
-      "index_trade-with-promotion-BNB"
+      "index_trade-with-promotion-BNB",
     ],
     group2: SECT2_GROUP2_DEFAULT,
     symbols: [SECT2_LOGOS.shib, SECT2_LOGOS.eth],
