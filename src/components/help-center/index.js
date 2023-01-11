@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import {
 	FAQ_ALL,
 	FAQ_BEGINNERS,
-	FAQ_MARKET,
+	FSA_FAQ_MARKET,
+    CYSEC_FAQ_MARKET,
 	FAQ_QUICK_ANSWER,
 } from "../../helpers/faq";
 import Faq from "../faq";
@@ -13,11 +14,18 @@ import FaqSearchBar from "./faq-search-bar";
 import marketsIcon from "../../assets/images/icons/markets.svg";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
+import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 
 const HelpCenter = ({ className }) => {
 	const { t } = useTranslation();
 	const [searchResults, setSearchResults] = useState([]);
 	const isRTL = useRtlDirection();
+	const [faqMarket, setFaqMarket] = useState([]);
+    const { isCySEC } = useEntityPostfix();
+
+    useEffect(() => {
+      setFaqMarket(isCySEC ? CYSEC_FAQ_MARKET : FSA_FAQ_MARKET);
+    }, [isCySEC]);
 
 	const HelpCenterBlock = ({
 		title,
@@ -98,7 +106,7 @@ const HelpCenter = ({ className }) => {
 								</>
 							}
 							titleClassName="help-center__block-title--market"
-							faq={FAQ_MARKET}
+							faq={faqMarket}
 							classNames={["help-center--market"]}
 						/>
 						<HelpCenterBlock

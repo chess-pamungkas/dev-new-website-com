@@ -109,11 +109,12 @@ const TRADING_TAB_PLATFORMS_ITEM = {
   icon: PlatformsIcon,
   description: "header-nav-tab-trading-platforms-desc",
   subtitles: [
-    {
-      title: "header-nav-tab-trading-platforms-mt4-title",
-      link: MT4_PAGE_LINK,
-      description: "header-nav-tab-trading-platforms-mt4-desc",
-    },
+    // Temporary removed because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
+    // {
+    //   title: "header-nav-tab-trading-platforms-mt4-title",
+    //   link: MT4_PAGE_LINK,
+    //   description: "header-nav-tab-trading-platforms-mt4-desc",
+    // },
     {
       title: "header-nav-tab-trading-platforms-mt5-title",
       link: MT5_PAGE_LINK,
