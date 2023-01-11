@@ -1172,7 +1172,7 @@
   "accounts-type_account-type1-spreads-from-title": "Spreads a partire da",
   "accounts-type_account-type1-spreads-from-value": "0.0 pips",
   "accounts-type_account-type1-commissions-title": "Commissioni",
-  "accounts-type_account-type1-commissions-value": "3,5 comm per operazione singola ",
+  "accounts-type_account-type1-commissions-value": "$ 3.50 Per lot traded",
   "accounts-type_account-type1-min-deposit-title": "Deposito Minimo",
   "accounts-type_account-type1-min-deposit-value": "$200",
   "accounts-type_account-type1-max-leverage-title": "Massima Leva",
@@ -1186,9 +1186,11 @@
   "accounts-type_account-type1-withdrawals-fees-title": "Commissioni sui prelievi",
   "accounts-type_account-type1-withdrawals-fees-value": "$0",
   "accounts-type_account-type1-markets-title": "Mercati",
-  "accounts-type_account-type1-markets-value": "XX",
+  "accounts-type_account-type1-markets-value": "6",
+  "accounts-type_account-type1-markets-value-eu": "5",
   "accounts-type_account-type1-total-symbols-title": "Symboli totali",
-  "accounts-type_account-type1-total-symbols-value": "XX",
+  "accounts-type_account-type1-total-symbols-value": "300+",
+  "accounts-type_account-type1-total-symbols-value-eu": "1000+",
 
   "accounts-type_account-type2-title": "Tipo di Conto",
   "accounts-type_account-type2-name": "Oqtima ONE",
@@ -1196,7 +1198,7 @@
   "accounts-type_account-type2-spreads-from-title": "Spreads a partire da",
   "accounts-type_account-type2-spreads-from-value": "1.0 pips",
   "accounts-type_account-type2-commissions-title": "Commissioni",
-  "accounts-type_account-type2-commissions-value": "Nessuna",
+  "accounts-type_account-type2-commissions-value": "$ 3.50 Per lot traded",
   "accounts-type_account-type2-min-deposit-title": "Min. deposito",
   "accounts-type_account-type2-min-deposit-value": "$200",
   "accounts-type_account-type2-max-leverage-title": "Leva Massima",
@@ -1210,7 +1212,9 @@
   "accounts-type_account-type2-withdrawals-fees-title": "Commissioni sui prelievi",
   "accounts-type_account-type2-withdrawals-fees-value": "$0",
   "accounts-type_account-type2-markets-title": "Mercati",
-  "accounts-type_account-type2-markets-value": "XX",
+  "accounts-type_account-type2-markets-value": "6",
+  "accounts-type_account-type2-markets-value-eu": "5",
   "accounts-type_account-type2-total-symbols-title": "Symboli totali",
-  "accounts-type_account-type2-total-symbols-value": "XX"
+  "accounts-type_account-type2-total-symbols-value": "300+",
+  "accounts-type_account-type2-total-symbols-value-eu": "1000+"
 }
