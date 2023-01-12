@@ -14,13 +14,15 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import platforms from "../../../assets/images/platforms/platforms.svg";
+import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 
 const PlatformsPageContent = () => {
   const { t } = useTranslation();
   const { isXL } = useWindowSize();
+  const { isCySEC } = useEntityPostfix();
   const META_TRADERS = [
-    // Temporary removed because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
-    // META_TRADER_4,
+    // Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
+    ...(isCySEC ? [] : [META_TRADER_4]),
     META_TRADER_5,
   ];
   const isRTL = useRtlDirection();
@@ -34,8 +36,10 @@ const PlatformsPageContent = () => {
         image={platforms}
         subImageTemplate={
           <div className={cn("top-market__trader-tools")}>
-            {/* Temporary removed because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166 */}
-            {/* <img src={META_TRADER_4.icon} alt={t(META_TRADER_4.title)} /> */}
+            {/* Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166 */}
+            {!isCySEC && (
+              <img src={META_TRADER_4.icon} alt={t(META_TRADER_4.title)} />
+            )}
             <img src={META_TRADER_5.icon} alt={t(META_TRADER_5.title)} />
           </div>
         }

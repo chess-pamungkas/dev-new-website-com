@@ -104,11 +104,7 @@ export const MT4_PLATFORMS = {
   },
 };
 
-export const PLATFORMS = {
-  webTrader: {
-    icon: webTraderIcon,
-    title: "index_trading-tools-platforms-webtrader",
-  },
+export const MOBILE_PLATFORMS = {
   ios: {
     icon: iosIcon,
     title: "index_trading-tools-platforms-ios",
@@ -117,7 +113,33 @@ export const PLATFORMS = {
     icon: androidIcon,
     title: "index_trading-tools-platforms-android",
   },
-  // Temporary removed because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
+};
+
+export const FSA_PLATFORMS = {
+  webTrader: {
+    icon: webTraderIcon,
+    title: "index_trading-tools-platforms-webtrader",
+  },
+  ios: MOBILE_PLATFORMS.ios,
+  android: MOBILE_PLATFORMS.android,
+  metaTrader4: {
+    icon: metaTrader4Icon,
+    title: "index_trading-tools-platforms-metatrader4",
+  },
+  metaTrader5: {
+    icon: metaTrader5Icon,
+    title: "index_trading-tools-platforms-metatrader5",
+  },
+};
+
+export const CYSEC_PLATFORMS = {
+  webTrader: {
+    icon: webTraderIcon,
+    title: "index_trading-tools-platforms-webtrader",
+  },
+  ios: MOBILE_PLATFORMS.ios,
+  android: MOBILE_PLATFORMS.android,
+  // Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
   // metaTrader4: {
   //   icon: metaTrader4Icon,
   //   title: "index_trading-tools-platforms-metatrader4",

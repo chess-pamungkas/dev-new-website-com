@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { PLATFORMS } from "../../helpers/config";
+import { FSA_PLATFORMS, CYSEC_PLATFORMS } from "../../helpers/config";
 import PlatformBlock from "./components/platform-block";
 import ButtonLink from "../shared/button-link";
 import DeviceBlock from "./components/device-block";
@@ -10,6 +10,7 @@ import { useTrail } from "react-spring";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 
 const TradingTools = ({ className }) => {
   const { t } = useTranslation();
@@ -18,10 +19,16 @@ const TradingTools = ({ className }) => {
   const intersectionRef = useIntersectionObserver(containerRef, {
     freezeOnceVisible: true,
   });
+  const { isCySEC } = useEntityPostfix();
+  const [platforms, setPlatforms] = useState([]);
+
+  useEffect(() => {
+    setPlatforms(isCySEC ? CYSEC_PLATFORMS : FSA_PLATFORMS);
+  }, [isCySEC]);
 
   const [isAnimationStarted, setIsAnimationStarted] = useState(false);
 
-  const platformIconTrail = useTrail(Object.values(PLATFORMS).length, {
+  const platformIconTrail = useTrail(Object.values(platforms).length, {
     from: {
       position: "relative",
       bottom: "-40px",
@@ -55,9 +62,9 @@ const TradingTools = ({ className }) => {
           {platformIconTrail.map((styles, i) => {
             return (
               <PlatformBlock
-                key={`platform-${Object.values(PLATFORMS)[i].title}`}
-                icon={Object.values(PLATFORMS)[i].icon}
-                title={t(Object.values(PLATFORMS)[i].title)}
+                key={`platform-${Object.values(platforms)[i].title}`}
+                icon={Object.values(platforms)[i].icon}
+                title={t(Object.values(platforms)[i].title)}
                 animationStyle={styles}
               />
             );
@@ -69,8 +76,16 @@ const TradingTools = ({ className }) => {
         />
         <h2 className="trading-tools__title" ref={containerRef}>
           <HighlightedLocalizationText
-            localizationText="index_trading-tools-title"
-            wordsToHighlight="trading-tools-title-accent"
+            localizationText={
+              isCySEC
+                ? "index_trading-tools-title-cysec"
+                : "index_trading-tools-title-fsa"
+            }
+            wordsToHighlight={
+              isCySEC
+                ? "trading-tools-title-accent-cysec"
+                : "trading-tools-title-accent-fsa"
+            }
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
