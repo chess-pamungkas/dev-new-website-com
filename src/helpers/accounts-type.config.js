@@ -1,6 +1,6 @@
 import advantageIcon from "../assets/images/accounts-type/advantage-icon.svg";
 
-export const ACCOUNT_TYPES = [
+export const FSA_ACCOUNT_TYPES = [
   {
     title: "accounts-type_account-type1-title",
     name: "accounts-type_account-type1-name",
@@ -116,7 +116,7 @@ export const ACCOUNT_TYPES = [
     ],
   },
 ];
-export const ACCOUNT_TYPES_EU = [
+export const CYSEC_ACCOUNT_TYPES = [
   {
     title: "accounts-type_account-type1-title",
     name: "accounts-type_account-type1-name",

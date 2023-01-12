@@ -3,8 +3,8 @@ import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import HighlightedLocalizationText from "../../components/shared/highlighted-localization-text";
 import {
-  ACCOUNT_TYPES,
-  ACCOUNT_TYPES_EU,
+  FSA_ACCOUNT_TYPES,
+  CYSEC_ACCOUNT_TYPES,
 } from "../../helpers/accounts-type.config";
 import AccountType from "./account-type";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
@@ -13,7 +13,7 @@ import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 
 const getAccountTypeWithCysec = (isCySEC) =>
-  isCySEC ? ACCOUNT_TYPES_EU : ACCOUNT_TYPES;
+  isCySEC ? CYSEC_ACCOUNT_TYPES : FSA_ACCOUNT_TYPES;
 
 const AccountsType = ({ className }) => {
   const { t } = useTranslation();
