@@ -13,6 +13,7 @@ import {
 } from "../../../helpers/documents";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
+import { setRedirectOrBannedPopupShown } from "../../../helpers/services/set-redirect-or-banned-popup-shown";
 
 export const CysecStripe = ({ t, isCySEC }) => {
   return (
@@ -53,6 +54,7 @@ const CysecRedirect = ({ handleOpen, setIsHidden, setIsCysecRedirect, t }) => {
           type="button"
           className="notification-stripe__button"
           onClick={(e) => {
+            setRedirectOrBannedPopupShown();
             setIsCysecRedirect(false);
             setIsHidden(true);
             sendClickEventToGA(e);
