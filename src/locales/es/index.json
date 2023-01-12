@@ -834,6 +834,7 @@
   "mt4_market-items-list_adv7": "Ejecución rápida de órdenes",
   "mt4_market-items-list_adv8": "Depósitos fáciles e inmediatos y opciones de retiros inmediatos",
   "mt4_market-items-list_adv9": "Indicadores Oqtima pre-diseñados",
+
   "mt4_market-items-list_adv10": "MSQL4 para EA",
   "mt4_mt-promotion-download-android": "MT4 para Android",
   "mt4_mt-promotion-download-ios": "MT4 para IOS",
@@ -1186,7 +1187,7 @@
   "accounts-type_account-type1-spreads-from-title": "Spreads desde",
   "accounts-type_account-type1-spreads-from-value": "0.0 pips",
   "accounts-type_account-type1-commissions-title": "Comisiones",
-  "accounts-type_account-type1-commissions-value": "3.5 comisión por operación, por orden ejecutada",
+  "accounts-type_account-type1-commissions-value": "$ 3.50 Per lot traded",
   "accounts-type_account-type1-min-deposit-title": "Depósito mín.",
   "accounts-type_account-type1-min-deposit-value": "$200",
   "accounts-type_account-type1-max-leverage-title": "Max. apalancamiento",
@@ -1200,9 +1201,11 @@
   "accounts-type_account-type1-withdrawals-fees-title": "Comisiones por retiro",
   "accounts-type_account-type1-withdrawals-fees-value": "$0",
   "accounts-type_account-type1-markets-title": "Mercados",
-  "accounts-type_account-type1-markets-value": "XX",
+  "accounts-type_account-type1-markets-value": "6",
+  "accounts-type_account-type1-markets-value-eu": "5",
   "accounts-type_account-type1-total-symbols-title": "Símbolos totales",
-  "accounts-type_account-type1-total-symbols-value": "XX",
+  "accounts-type_account-type1-total-symbols-value": "300+",
+  "accounts-type_account-type1-total-symbols-value-eu": "1000+",
 
   "accounts-type_account-type2-title": "Tipo de cuenta",
   "accounts-type_account-type2-name": "Oqtima ONE",
@@ -1210,7 +1213,7 @@
   "accounts-type_account-type2-spreads-from-title": "Spreads desde",
   "accounts-type_account-type2-spreads-from-value": "1.0 pips",
   "accounts-type_account-type2-commissions-title": "Commisiones",
-  "accounts-type_account-type2-commissions-value": "Ninguna",
+  "accounts-type_account-type2-commissions-value": "$ 3.50 Per lot traded",
   "accounts-type_account-type2-min-deposit-title": "Depósito mínimo",
   "accounts-type_account-type2-min-deposit-value": "$200",
   "accounts-type_account-type2-max-leverage-title": "Max. apalancamiento",
@@ -1224,7 +1227,9 @@
   "accounts-type_account-type2-withdrawals-fees-title": " Comisiones por retiro",
   "accounts-type_account-type2-withdrawals-fees-value": "$0",
   "accounts-type_account-type2-markets-title": "Mercados",
-  "accounts-type_account-type2-markets-value": "XX",
+  "accounts-type_account-type2-markets-value": "6",
+  "accounts-type_account-type2-markets-value-eu": "5",
   "accounts-type_account-type2-total-symbols-title": "Símbolos totales",
-  "accounts-type_account-type2-total-symbols-value": "XX"
+  "accounts-type_account-type2-total-symbols-value": "300+",
+  "accounts-type_account-type2-total-symbols-value-eu": "1000+"
 }

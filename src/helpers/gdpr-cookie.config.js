@@ -42,3 +42,5 @@ export const GOOGLE_ANALYTICS_KEY = "_ga";
 
 export const GLOBAL_COOKIE_PATH = "/";
 export const DEFAULT_COOKIE_AGE = 60 * 60 * 24 * 30 * 12 * 2;
+
+export const REDIRECT_OR_BANNED_POPUP_SHOWN_KEY = "redirectOrBannedPopupShown";
