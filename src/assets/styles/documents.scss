@@ -195,32 +195,6 @@
     }
   }
 
-  &__date {
-    display: block;
-    text-align: center;
-    font-weight: map-get($font-weight, "regular");
-    color: map-get($colors, "black");
-    margin-bottom: 9px;
-    font-size: 10px;
-    line-height: 13px;
-
-    @include tablet {
-      font-size: 18px;
-      line-height: 22px;
-      margin-bottom: 18px;
-    }
-
-    @include desktop-lg {
-      font-size: 20px;
-      line-height: 25px;
-      margin-bottom: 29px;
-    }
-
-    @include desktop-xl {
-      margin-bottom: 17px;
-    }
-  }
-
   &__mock-btn {
     display: block;
     margin: 0 auto;

@@ -28,67 +28,54 @@ export const LEGAL_DOCS = [
     name: "document-client-categorisation-notice-name",
     file: clientCategorisationNotice,
     // TODO replace with the real data
-    date: "09/05/2022",
   },
   {
     name: "document-complaint-policy-name",
     file: complaintHandlingPolicy,
-    date: "09/05/2022",
   },
   {
     name: "document-conflict-of-interest-name",
     file: conflictOfInterestPolicy,
-    date: "09/05/2022",
   },
   {
     name: "document-terms-and-cond-name",
     file: termsAndConditions,
-    date: "09/05/2022",
   },
   {
     name: "document-investor-compensation-fund-name",
     file: investorCompensationFund,
-    date: "09/05/2022",
   },
   {
     name: "document-order-execution-name",
     file: orderExecutionPolicy,
-    date: "09/05/2022",
   },
   {
     name: "document-privacy-policy-name",
     file: privacyPolicy,
-    date: "09/05/2022",
   },
   {
     name: "document-risk-disclosure-name",
     file: riskDisclosure,
-    date: "09/05/2022",
   },
   {
     name: "document-key-FX-name",
     file: keyInformationFX,
-    date: "09/05/2022",
   },
   {
     name: "document-key-indices-name",
     file: keyInformationIndices,
-    date: "09/05/2022",
   },
   {
     name: "document-key-commodities-name",
     file: keyInformationCommodities,
-    date: "09/05/2022",
   },
   {
     name: "document-summary-statement-name",
     file: summaryStatement,
-    date: "09/05/2022",
   },
   {
     name: "document-discipline-report-name",
     file: disciplineReport,
-    date: "09/05/2022",
   },
 ];
 

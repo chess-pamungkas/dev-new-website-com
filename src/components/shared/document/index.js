@@ -16,7 +16,6 @@ const Document = ({ className, document }) => {
       >
         <DownloadIcon className="document__icon" />
         <span className="document__name">{t(document.name)}</span>
-        <span className="document__date">{document.date}</span>
         <span
           className={cn(
             "button-link",
