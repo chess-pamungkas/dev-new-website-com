@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT4.json";
@@ -58,7 +58,7 @@ const Mt4PageContent = () => {
           <Link to={MT4_DOWNLOAD_LINKS.android}>
             {t("mt4_mt-promotion-download-android")}
           </Link>
-          {isCysec && (
+          {isCySEC && (
             <Link to={MT4_DOWNLOAD_LINKS.ios}>
               {t("mt4_mt-promotion-download-ios")}
             </Link>
