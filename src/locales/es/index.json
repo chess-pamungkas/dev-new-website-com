@@ -954,6 +954,8 @@
   "withdrawal_top-market-promo-text-accent": "4,8",
   "withdrawal_top-market-promo-note": "Tu dinero se almacena de forma segura en cuentas segregadas de clientes en bancos de primer nivel de Australia y el Reino Unido.",
   "withdrawal_top-market-promo-note-accent": "11,12,13,14,16,18",
+    "withdrawal_top-market-promo-note-EU":"Your money is safely stored in dedicated and segregated client accounts. You can have access to your money instantly* and withdraw in many ways.",
+  "withdrawal_top-market-promo-note-accent-EU": "4,7,9",
   "withdrawal_top-market-promo-text2-1": "Depósito instantáneo",
   "withdrawal_top-market-promo-text-accent2-1": "2",
   "withdrawal_top-market-promo-text2-2": " Retiros el mismo día*",
@@ -965,6 +967,9 @@
   "withdrawal_top-market-promo-text-accent3": "2",
   "withdrawal_tabs_title1": "Depósito",
   "withdrawal_tabs_title2": "Retiro",
+  "withdrawal_disclaimer1":"*Please allow up to 1 hour. OQTIMA shall not be held liable for any delay of processing if that delay is out of the control of OQTIMA.",
+  "withdrawal_disclaimer2":"*Days are for indicative purposes and OQTIMA shall not be held liable for any delay of processing if that delay is out of the control of OQTIMA. OQTIMA's finance department works Monday to Friday 9 a.m. 3 p.m. (Eastern European Standard Time) Any requests after these hours will be processed on the next working day.",
+  "withdrawal_disclaimer3":"*OQTIMA doesn’t charge you any fee for processing your deposit or withdrawals, however, the method you decide to use may charge a fee and that’s outside of OQTIMA",
 
   "education_top-market-promo-note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
   "education_top-market-promo-note-accent": "1,5,9,17",
