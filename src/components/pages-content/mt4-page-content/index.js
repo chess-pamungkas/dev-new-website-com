@@ -8,7 +8,8 @@ import MtPromotion from "../../mt-promotion";
 import {
   COLUMNS_PLATFORMS,
   DATA_PLATFORMS,
-  MT4_ADVANTAGES,
+  CYSEC_MT4_ADVANTAGES,
+  FSA_MT4_ADVANTAGES,
   MT4_DOWNLOAD_LINKS,
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/MT4andMT5.png";
@@ -25,6 +26,11 @@ const Mt4PageContent = () => {
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
+  const [mt4Advantages, setMt4Advantages] = useState([]);
+
+  useEffect(() => {
+    setMt4Advantages(isCySEC ? CYSEC_MT4_ADVANTAGES : FSA_MT4_ADVANTAGES);
+  }, [isCySEC]);
 
   const getAnimationStyles = useCallback(() => {
     switch (true) {
@@ -50,6 +56,11 @@ const Mt4PageContent = () => {
           <Link to={MT4_DOWNLOAD_LINKS.android}>
             {t("mt4_mt-promotion-download-android")}
           </Link>
+          {isCysec && (
+            <Link to={MT4_DOWNLOAD_LINKS.ios}>
+              {t("mt4_mt-promotion-download-ios")}
+            </Link>
+          )}
         </>
       ),
     },
@@ -116,7 +127,7 @@ const Mt4PageContent = () => {
           />
         }
         advantagesTitle={t("mt4_market-items-list_title")}
-        advantages={MT4_ADVANTAGES}
+        advantages={mt4Advantages}
         downloadTitle={t("mt4_download-title")}
         image={image}
         tabs={tabs}

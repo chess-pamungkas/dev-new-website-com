@@ -169,7 +169,7 @@ export const CYSEC_MT5_ADVANTAGES = [
   },
 ];
 
-export const MT4_ADVANTAGES = [
+export const CYSEC_MT4_ADVANTAGES = [
   {
     key: "adv1",
     text: "mt4_market-items-list_adv1",
@@ -209,6 +209,61 @@ export const MT4_ADVANTAGES = [
   {
     key: "adv10",
     text: "mt4_market-items-list_adv10",
+  },
+];
+
+export const FSA_MT4_ADVANTAGES = [
+  {
+    key: "adv1",
+    text: "mt4_market-items-list_adv1_fsa",
+  },
+  {
+    key: "adv2",
+    text: "mt4_market-items-list_adv2_fsa",
+  },
+  {
+    key: "adv3",
+    text: "mt4_market-items-list_adv3_fsa",
+  },
+  {
+    key: "adv4",
+    text: "mt4_market-items-list_adv4_fsa",
+  },
+  {
+    key: "adv5",
+    text: "mt4_market-items-list_adv5_fsa",
+  },
+  {
+    key: "adv6",
+    text: "mt4_market-items-list_adv6_fsa",
+  },
+  {
+    key: "adv7",
+    text: "mt4_market-items-list_adv7_fsa",
+  },
+  {
+    key: "adv8",
+    text: "mt4_market-items-list_adv8_fsa",
+  },
+  {
+    key: "adv9",
+    text: "mt4_market-items-list_adv9_fsa",
+  },
+  {
+    key: "adv10",
+    text: "mt4_market-items-list_adv10_fsa",
+  },
+  {
+    key: "adv11",
+    text: "mt4_market-items-list_adv11_fsa",
+  },
+  {
+    key: "adv12",
+    text: "mt4_market-items-list_adv12_fsa",
+  },
+  {
+    key: "adv11",
+    text: "mt4_market-items-list_adv13_fsa",
   },
 ];
 
