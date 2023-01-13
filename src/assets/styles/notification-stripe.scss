@@ -103,6 +103,8 @@
 
   &__cysec-wrapper {
     padding: 7px;
+    display: flex;
+    align-items: center;
   }
 
   &__text {
@@ -120,7 +122,10 @@
       line-height: 22px;
     }
   }
-
+  &.collapsed {
+    height: 20px;
+    overflow: hidden;
+  }
   &__link {
     color: map-get($colors, "red");
     text-decoration: underline;
