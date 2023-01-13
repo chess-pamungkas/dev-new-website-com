@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import ButtonLink from "../shared/button-link";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { ADDITIONAL_PLATFORMS, PLATFORMS } from "../../helpers/config";
+import { ADDITIONAL_PLATFORMS, MOBILE_PLATFORMS } from "../../helpers/config";
 import MarketItemAdvantageList from "../all-markets/components/market-item-advantage-list";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
@@ -44,8 +44,8 @@ const MetaTrader = ({
   );
 
   const TRADER_TOOLS = [
-    PLATFORMS.ios,
-    PLATFORMS.android,
+    MOBILE_PLATFORMS.ios,
+    MOBILE_PLATFORMS.android,
     ADDITIONAL_PLATFORMS.windows,
   ];
 

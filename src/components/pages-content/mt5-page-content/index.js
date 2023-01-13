@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT5.json";
@@ -8,7 +8,8 @@ import MtPromotion from "../../mt-promotion";
 import {
   COLUMNS_PLATFORMS,
   DATA_PLATFORMS,
-  MT5_ADVANTAGES,
+  CYSEC_MT5_ADVANTAGES,
+  FSA_MT5_ADVANTAGES,
   MT5_DOWNLOAD_LINKS,
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/MT4andMT5.png";
@@ -20,11 +21,18 @@ import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { Link } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
+import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 
 const Mt5PageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
+  const { isCySEC } = useEntityPostfix();
+  const [mt5Advantages, setMt5Advantages] = useState([]);
+
+  useEffect(() => {
+    setMt5Advantages(isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES);
+  }, [isCySEC]);
 
   const getAnimationStyles = useCallback(() => {
     switch (true) {
@@ -119,30 +127,33 @@ const Mt5PageContent = () => {
           />
         }
         advantagesTitle={t("mt5_market-items-list_title")}
-        advantages={MT5_ADVANTAGES}
+        advantages={mt5Advantages}
         downloadTitle={t("mt5_download-title")}
         image={image}
         tabs={tabs}
       />
-      <TopMarketLayout
-        title={
-          <HighlightedLocalizationText
-            localizationText="mt5_top-market-layout-title"
-            wordsToHighlight="mt5_top-market-layout-title-accent"
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-red"
+      {/* Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-183 */}
+      {!isCySEC && (
+        <TopMarketLayout
+          title={
+            <HighlightedLocalizationText
+              localizationText="mt5_top-market-layout-title"
+              wordsToHighlight="mt5_top-market-layout-title-accent"
+              primaryClassName="highlighted-in-black"
+              accentClassName="highlighted-in-red"
+            />
+          }
+          className={cn("top-market-layout--mt", {
+            "top-market-layout--mt--rtl": isRTL,
+          })}
+        >
+          <TableComponent
+            data={DATA_PLATFORMS}
+            columns={COLUMNS_PLATFORMS}
+            tableClassName={isRTL ? "mt-table--rtl" : ""}
           />
-        }
-        className={cn("top-market-layout--mt", {
-          "top-market-layout--mt--rtl": isRTL,
-        })}
-      >
-        <TableComponent
-          data={DATA_PLATFORMS}
-          columns={COLUMNS_PLATFORMS}
-          tableClassName={isRTL ? "mt-table--rtl" : ""}
-        />
-      </TopMarketLayout>
+        </TopMarketLayout>
+      )}
       {isXL && (
         <TopMarketPromotion
           className={cn("bottom-promotion", {

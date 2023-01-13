@@ -35,7 +35,7 @@ export const MT5_DOWNLOAD_LINKS = {
   webtrader: "/",
 };
 
-export const MT5_ADVANTAGES = [
+export const FSA_MT5_ADVANTAGES = [
   {
     key: "adv1",
     text: "mt5_market-items-list_adv1",
@@ -91,6 +91,81 @@ export const MT5_ADVANTAGES = [
   {
     key: "adv14",
     text: "mt5_market-items-list_adv14",
+  },
+];
+
+export const CYSEC_MT5_ADVANTAGES = [
+  {
+    key: "adv1",
+    text: "mt5_market-items-list_adv1-cysec",
+  },
+  {
+    key: "adv2",
+    text: "mt5_market-items-list_adv2-cysec",
+  },
+  {
+    key: "adv3",
+    text: "mt5_market-items-list_adv3-cysec",
+  },
+  {
+    key: "adv4",
+    text: "mt5_market-items-list_adv4-cysec",
+  },
+  {
+    key: "adv5",
+    text: "mt5_market-items-list_adv5-cysec",
+  },
+  {
+    key: "adv6",
+    text: "mt5_market-items-list_adv6-cysec",
+  },
+  {
+    key: "adv7",
+    text: "mt5_market-items-list_adv7-cysec",
+  },
+  {
+    key: "adv8",
+    text: "mt5_market-items-list_adv8-cysec",
+  },
+  {
+    key: "adv9",
+    text: "mt5_market-items-list_adv9-cysec",
+  },
+  {
+    key: "adv10",
+    text: "mt5_market-items-list_adv10-cysec",
+  },
+  {
+    key: "adv11",
+    text: "mt5_market-items-list_adv11-cysec",
+  },
+  {
+    key: "adv12",
+    text: "mt5_market-items-list_adv12-cysec",
+  },
+  {
+    key: "adv13",
+    text: "mt5_market-items-list_adv13-cysec",
+  },
+  {
+    key: "adv14",
+    text: "mt5_market-items-list_adv14-cysec",
+  },
+  {
+    key: "adv15",
+    text: "mt5_market-items-list_adv15-cysec",
+  },
+  {
+    key: "adv16",
+    text: "mt5_market-items-list_adv16-cysec",
+  },
+  {
+    key: "adv17",
+    text: "mt5_market-items-list_adv17-cysec",
+  },
+  {
+    key: "adv18",
+    text: "mt5_market-items-list_adv18-cysec",
   },
 ];
 
