@@ -21,11 +21,13 @@ import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { Link } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
+import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 
 const Mt4PageContent = () => {
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
+  const { isCySEC } = useEntityPostfix();
   const [mt4Advantages, setMt4Advantages] = useState([]);
 
   useEffect(() => {
