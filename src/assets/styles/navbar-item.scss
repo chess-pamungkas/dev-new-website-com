@@ -92,7 +92,9 @@
           width: 18%;
         }
       }
-
+      @include desktop-lg {
+        height: 39%;
+      }
       @include desktop-xl {
         height: 400px;
         top: $header-height;

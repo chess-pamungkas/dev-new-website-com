@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import { LogoTextMain, Logo } from "../shared/icons";
@@ -11,11 +11,10 @@ import BurgerMenu from "./components/burger-menu";
 import ButtonLink from "../shared/button-link";
 import SearchBar from "./components/search-bar";
 import { CYSEC_MENU_ITEMS, FSA_MENU_ITEMS } from "../../helpers/menu.config";
-import ClientResolverContext from "../../context/client-resolver-context";
-import entities from "../../enums/entities";
 import NotificationStripe from "../shared/notification-stripe";
 import { GDPRPopup } from "../gdpr-popup";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 
 const Header = ({
   className,
@@ -25,14 +24,12 @@ const Header = ({
 }) => {
   const { t } = useTranslation();
   const [menu, setMenu] = useState([]);
-  const { currentEntity } = useContext(ClientResolverContext);
+  const { isCySEC } = useEntityPostfix();
   const isRTL = useRtlDirection();
 
   useEffect(() => {
-    setMenu(
-      currentEntity === entities.CYSEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS
-    );
-  }, [currentEntity]);
+    setMenu(isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS);
+  }, [isCySEC]);
 
   return (
     <div className={cn("header-wrapper", className)} ref={headerRef}>

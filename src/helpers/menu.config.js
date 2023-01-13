@@ -102,19 +102,39 @@ const FSA_TOP_MARKETS_TAB = {
   ],
 };
 
-const TRADING_TAB_PLATFORMS_ITEM = {
+const CYSEC_TRADING_TAB_PLATFORMS_ITEM = {
   title: "header-nav-tab-trading-platforms-title",
   link: PLATFORMS_LINK,
   isSubtitle: true,
   icon: PlatformsIcon,
   description: "header-nav-tab-trading-platforms-desc",
   subtitles: [
-    // Temporary removed because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
+    // Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
     // {
     //   title: "header-nav-tab-trading-platforms-mt4-title",
     //   link: MT4_PAGE_LINK,
     //   description: "header-nav-tab-trading-platforms-mt4-desc",
     // },
+    {
+      title: "header-nav-tab-trading-platforms-mt5-title",
+      link: MT5_PAGE_LINK,
+      description: "header-nav-tab-trading-platforms-mt5-desc",
+    },
+  ],
+};
+
+const FSA_TRADING_TAB_PLATFORMS_ITEM = {
+  title: "header-nav-tab-trading-platforms-title",
+  link: PLATFORMS_LINK,
+  isSubtitle: true,
+  icon: PlatformsIcon,
+  description: "header-nav-tab-trading-platforms-desc",
+  subtitles: [
+    {
+      title: "header-nav-tab-trading-platforms-mt4-title",
+      link: MT4_PAGE_LINK,
+      description: "header-nav-tab-trading-platforms-mt4-desc",
+    },
     {
       title: "header-nav-tab-trading-platforms-mt5-title",
       link: MT5_PAGE_LINK,
@@ -223,7 +243,7 @@ const CYSEC_TRADING_TAB = {
   title: "header-nav-tab-trading",
   isNested: true,
   subItems: [
-    TRADING_TAB_PLATFORMS_ITEM,
+    CYSEC_TRADING_TAB_PLATFORMS_ITEM,
     CYSEC_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM,
     TRADING_TAB_PRO_QUALIFICATION_ITEM,
   ],
@@ -233,7 +253,7 @@ const FSA_TRADING_TAB = {
   title: "header-nav-tab-trading",
   isNested: true,
   subItems: [
-    TRADING_TAB_PLATFORMS_ITEM,
+    FSA_TRADING_TAB_PLATFORMS_ITEM,
     FSA_TRADING_TAB_FUNDING_WITHDRAWALS_ITEM,
   ],
 };

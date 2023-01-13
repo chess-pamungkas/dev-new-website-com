@@ -16,10 +16,12 @@ import Tabs from "../../shared/tabs";
 import icon from "../../../assets/images/icon--white.svg";
 import { REGISTRATION_LINK } from "../../../helpers/constants";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
+import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 
 const FundingPageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
+  const { isCySEC } = useEntityPostfix();
 
   const tabs = [
     {
@@ -55,8 +57,16 @@ const FundingPageContent = () => {
         image={promotion}
         note={
           <HighlightedLocalizationText
-            localizationText="withdrawal_top-market-promo-note"
-            wordsToHighlight="withdrawal_top-market-promo-note-accent"
+            localizationText={t(
+              isCySEC
+                ? "withdrawal_top-market-promo-note-EU"
+                : "withdrawal_top-market-promo-note"
+            )}
+            wordsToHighlight={t(
+              isCySEC
+                ? "withdrawal_top-market-promo-note-accent-EU"
+                : "withdrawal_top-market-promo-note-accent"
+            )}
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-white"
           />
@@ -102,6 +112,11 @@ const FundingPageContent = () => {
       <TopMarketLayout className="top-market-layout--withdrawal">
         <Tabs tabList={tabs} />
       </TopMarketLayout>
+      <section className={cn("notes-block")}>
+        <p className="notes-block__text">{t("withdrawal_disclaimer1")}</p>
+        <p className="notes-block__text">{t("withdrawal_disclaimer2")}</p>
+        <p className="notes-block__text">{t("withdrawal_disclaimer3")}</p>
+      </section>
       <TopMarketPromotion
         className={cn("bottom-promotion", {
           "bottom-promotion--rtl": isRTL,
