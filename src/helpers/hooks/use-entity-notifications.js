@@ -1,6 +1,8 @@
 import { useState, useContext, useEffect } from "react";
 import ClientResolverContext from "../../context/client-resolver-context";
 import entities from "../../enums/entities";
+import { isBrowser } from "../services/is-browser";
+import { REDIRECT_OR_BANNED_POPUP_SHOWN_KEY } from "../gdpr-cookie.config";
 
 export const useEntityNotifications = (handlePopupOpen) => {
   const { clientConfig, currentEntity } = useContext(ClientResolverContext);
@@ -24,7 +26,9 @@ export const useEntityNotifications = (handlePopupOpen) => {
       clientConfig &&
       Object.keys(clientConfig).length &&
       clientConfig.recommendedRedirect &&
-      currentEntity !== entities.CYSEC
+      currentEntity !== entities.CYSEC &&
+      isBrowser() &&
+      !window.sessionStorage.getItem(REDIRECT_OR_BANNED_POPUP_SHOWN_KEY)
     ) {
       setIsCysecRedirect(true);
     }
@@ -32,7 +36,9 @@ export const useEntityNotifications = (handlePopupOpen) => {
     if (
       clientConfig &&
       Object.keys(clientConfig).length &&
-      clientConfig.banned
+      clientConfig.banned &&
+      isBrowser() &&
+      !window.sessionStorage.getItem(REDIRECT_OR_BANNED_POPUP_SHOWN_KEY)
     ) {
       if (handlePopupOpen) {
         handlePopupOpen();

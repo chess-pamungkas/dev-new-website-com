@@ -1,13 +1,15 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import {
   FAQ_ALL,
   FAQ_BEGINNERS,
-  FAQ_MARKET,
+  FSA_FAQ_MARKET,
+  CYSEC_FAQ_MARKET,
   FAQ_QUICK_ANSWER,
 } from "../../../helpers/faq";
 import { debounce } from "lodash";
+import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 
 const FaqSearchBar = ({ className, setSearchResults }) => {
   const COUNT_OF_SEARCH_CHARS = 3;
@@ -15,10 +17,17 @@ const FaqSearchBar = ({ className, setSearchResults }) => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [faqMarket, setFaqMarket] = useState([]);
+  const { isCySEC } = useEntityPostfix();
+
+  useEffect(() => {
+    setFaqMarket(isCySEC ? CYSEC_FAQ_MARKET : FSA_FAQ_MARKET);
+  }, [isCySEC]);
+
   const searchContent = [
     ...FAQ_QUICK_ANSWER,
     ...FAQ_ALL,
-    ...FAQ_MARKET,
+    ...faqMarket,
     ...FAQ_BEGINNERS,
   ];
 
