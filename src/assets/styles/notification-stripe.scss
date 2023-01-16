@@ -102,7 +102,6 @@
   }
 
   &__cysec-wrapper {
-    padding: 7px;
     display: flex;
     align-items: center;
   }
@@ -111,7 +110,12 @@
     color: map-get($colors, "black");
     font-size: 14px;
     line-height: 18px;
-
+    @include mobile {
+      &.collapsed {
+        height: 20px;
+        overflow: hidden;
+      }
+    }
     @include desktop-lg {
       font-size: 16px;
       line-height: 20px;
@@ -122,10 +126,7 @@
       line-height: 22px;
     }
   }
-  &.collapsed {
-    height: 20px;
-    overflow: hidden;
-  }
+
   &__link {
     color: map-get($colors, "red");
     text-decoration: underline;

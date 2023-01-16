@@ -12,12 +12,15 @@ import {
   RISK_DISCLOSURE_DOC_FSA,
 } from "../../../helpers/documents";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
-import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { setRedirectOrBannedPopupShown } from "../../../helpers/services/set-redirect-or-banned-popup-shown";
-import expandIcon from "../../../assets/images/icons/expand.svg";
-import collapseIcon from "../../../assets/images/icons/collapse.svg";
+import { useWindowSize } from "../../../helpers/hooks/use-window-size";
+import expandIcon from "../../../assets/images/icons/accordion.svg";
+import collapseIcon from "../../../assets/images/icons/accordion-active.svg";
+
 export const CysecStripe = ({ t, isCySEC }) => {
   const [expand, setExpand] = useState(true);
+  const { isMobile } = useWindowSize();
+
   return (
     <div className="notification-stripe__cysec-wrapper">
       <span className={cn("notification-stripe__text", { collapsed: !expand })}>
@@ -31,13 +34,15 @@ export const CysecStripe = ({ t, isCySEC }) => {
           {t("notification-stripe-cysec-link")}
         </a>
       </span>
-      <span>
-        <img
-          width="35"
-          onClick={() => setExpand(!expand)}
-          src={expand ? collapseIcon : expandIcon}
-        />
-      </span>
+      {isMobile && (
+        <span>
+          <img
+            width="25"
+            onClick={() => setExpand(!expand)}
+            src={expand ? collapseIcon : expandIcon}
+          />
+        </span>
+      )}
     </div>
   );
 };
