@@ -11,6 +11,14 @@ import TopMarketPromotion from "../../top-market-promotion";
 import crypto from "../../../assets/images/top-markets/images/crypto.svg";
 import PromotionMarkets from "../../promotion-markets";
 import animation from "../../../assets/images/animations/crypto.json";
+import TopMarketLayout from "../../top-market-layout";
+import {
+  COLUMNS_CRYPTO,
+  DATA_CRYPTO,
+} from "../../../helpers/top-market-tables";
+import TableComponent from "../../shared/table";
+import { FAQ_CRYPTO } from "../../../helpers/faq";
+import Faq from "../../faq";
 
 const CryptoContent = () => {
   const { t } = useTranslation();
@@ -98,6 +106,27 @@ const CryptoContent = () => {
           accentClassName="highlighted-in-red"
         />
       </PromotionMarkets>
+      <TopMarketLayout
+        title={t("crypto_top-market-layout-title")}
+        btnTitle={t("crypto_top-market-layout-btn")}
+        link={REGISTRATION_LINK}
+      >
+        <TableComponent
+          data={DATA_CRYPTO}
+          columns={COLUMNS_CRYPTO}
+          isWrapperPadding
+          tip={
+            <span>
+              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+              &nbsp;
+              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+              &nbsp;
+            </span>
+          }
+          isSearch
+        />
+      </TopMarketLayout>
+      <Faq faq={FAQ_CRYPTO} />
     </>
   );
 };

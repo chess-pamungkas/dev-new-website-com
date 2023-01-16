@@ -5,6 +5,7 @@ import SystemInfoComponent from "../components/shared/system-info";
 import image from "../assets/images/system-info/404.svg";
 import Layout from "../components/shared/layout";
 import { graphql } from "gatsby";
+import NotFoundContent from "../components/pages-content/not-found-page-content";
 
 const NotFoundPage = () => {
   const { t } = useTranslation();
@@ -12,12 +13,7 @@ const NotFoundPage = () => {
   return (
     <Layout>
       <Seo title={t("system-page-404-title")} />
-      <SystemInfoComponent
-        image={image}
-        title={t("system-page-404-title")}
-        subTitle={t("system-page-404-subtitle")}
-        goBackBtnTitle={t("system-page-go-back-btn")}
-      />
+      <NotFoundContent />
     </Layout>
   );
 };
