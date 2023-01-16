@@ -19,6 +19,7 @@ import PromotionMarkets from "../components/promotion-markets";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import indices from "../assets/images/top-markets/images/indices.svg";
 import TopMarketPromotion from "../components/top-market-promotion";
+import { INDICES_TRADING_SECTION } from "../helpers/config";
 
 const IndicesPage = () => {
   const { t } = useTranslation();
@@ -68,7 +69,10 @@ const IndicesPage = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
-      <TradingTicker title={t("indices_trading-ticker-title")} />
+      <TradingTicker
+        title={t("indices_trading-ticker-title")}
+        pageSpecificSection={INDICES_TRADING_SECTION}
+      />
       <TopMarketPromotion
         className="indices-promotion"
         image={indices}

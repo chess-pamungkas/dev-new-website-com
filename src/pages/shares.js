@@ -19,6 +19,7 @@ import { COLUMNS_SHARES, DATA_SHARES } from "../helpers/top-market-tables";
 import TopMarketLayout from "../components/top-market-layout";
 import Faq from "../components/faq";
 import { FAQ_SHARES } from "../helpers/faq";
+import { SHARES_TRADING_SECTION } from "../helpers/config";
 
 const SharesPage = () => {
   const { t } = useTranslation();
@@ -46,7 +47,10 @@ const SharesPage = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
-      <TradingTicker title={t("shares_trading-ticker-title")} />
+      <TradingTicker
+        title={t("shares_trading-ticker-title")}
+        pageSpecificSection={SHARES_TRADING_SECTION}
+      />
       <TopMarketPromotion
         className="shares-promotion"
         image={shares}

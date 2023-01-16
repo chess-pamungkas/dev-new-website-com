@@ -11,6 +11,7 @@ import PromotionMarkets from "../../promotion-markets";
 import animation from "../../../assets/images/animations/forex.json";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
+import { FOREX_TRADING_SECTION } from "../../../helpers/config";
 
 const ForexContent = () => {
   const { sitePostfix } = useEntityPostfix();
@@ -34,7 +35,10 @@ const ForexContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
-      <TradingTicker title={t("forex_trading-ticker-title")} />
+      <TradingTicker
+        title={t("forex_trading-ticker-title")}
+        pageSpecificSection={FOREX_TRADING_SECTION}
+      />
       <TopMarketPromotion
         className="forex-promotion"
         image={forex}
