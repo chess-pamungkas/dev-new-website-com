@@ -5,11 +5,9 @@ import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import Mt4PageContent from "../components/pages-content/mt4-page-content";
-import { useEntityPostfix } from "../helpers/use-entity-postfix";
 
 const MT4Page = () => {
   const { t } = useTranslation();
-  const { isCySEC } = useEntityPostfix();
 
   return (
     <Layout>
@@ -17,7 +15,8 @@ const MT4Page = () => {
         title={t("page-mt4-title")}
         description={t("page-mt4-description")}
         // Temporary added for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
-        robots={isCySEC ? "noindex" : ""}
+        fsaRobots={""}
+        cysecRobots={"noindex"}
       />
       <Mt4PageContent />
     </Layout>

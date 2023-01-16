@@ -5,20 +5,19 @@ import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import CryptoContent from "../components/pages-content/crypto-content";
-import { useEntityPostfix } from "../helpers/use-entity-postfix";
-import NotFoundContent from "../components/pages-content/not-found-page-content";
 
 const CryptoPage = () => {
   const { t } = useTranslation();
-  const { isCySEC } = useEntityPostfix();
 
   return (
     <Layout>
       <Seo
-        title={t(isCySEC ? "system-page-404-title" : "page-crypto-title")}
-        description={t(isCySEC ? "" : "page-crypto-description")}
+        fsaTitle={t("page-crypto-title")}
+        cysecTitle={t("system-page-404-title")}
+        fsaDescription={t("page-crypto-description")}
+        cysecDescription={""}
       />
-      {isCySEC ? <NotFoundContent /> : <CryptoContent />}
+      <CryptoContent />
     </Layout>
   );
 };
