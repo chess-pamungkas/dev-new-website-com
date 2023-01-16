@@ -20,6 +20,7 @@ import TableComponent from "../../shared/table";
 import { FAQ_CRYPTO } from "../../../helpers/faq";
 import Faq from "../../faq";
 import NotFoundContent from "../not-found-page-content";
+import { CRYPTO_TRADING_SECTION } from "../../../helpers/config";
 
 const CryptoContent = () => {
   const { t } = useTranslation();
@@ -47,7 +48,10 @@ const CryptoContent = () => {
               accentClassName="highlighted-in-white"
             />
           </TopMarket>
-          <TradingTicker title={t("crypto_trading-ticker-title")} />
+          <TradingTicker
+            title={t("crypto_trading-ticker-title")}
+            pageSpecificSection={CRYPTO_TRADING_SECTION}
+          />
           <TopMarketPromotion
             className="crypto-promotion"
             image={crypto}
