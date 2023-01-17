@@ -50,6 +50,7 @@ const SharesPage = () => {
       <TradingTicker
         title={t("shares_trading-ticker-title")}
         pageSpecificSection={SHARES_TRADING_SECTION}
+        isInfiniteAutoScroll={true}
       />
       <TopMarketPromotion
         className="shares-promotion"
