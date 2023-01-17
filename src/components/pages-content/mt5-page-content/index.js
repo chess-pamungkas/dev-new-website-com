@@ -82,7 +82,7 @@ const Mt5PageContent = () => {
       ),
     },
     {
-      id: 2,
+      id: 3,
       title: t("mt-promotion-tabs-webtrader"),
       content: (
         <>
