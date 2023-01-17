@@ -180,61 +180,40 @@ export const COMPANY_ADVANTAGES = [
   },
 ];
 
+export const CRYPTO_TRADING_SECTION = {
+  id: "crypto",
+  title: "index_trading-ticker-section-crypto",
+};
+export const FOREX_TRADING_SECTION = {
+  id: "forex",
+  title: "index_trading-ticker-section-forex",
+};
+export const SHARES_TRADING_SECTION = {
+  id: "shares",
+  title: "index_trading-ticker-section-shares",
+};
+export const ENERGIES_TRADING_SECTION = {
+  id: "energies",
+  title: "index_trading-ticker-section-energies",
+};
+export const METALS_TRADING_SECTION = {
+  id: "metals",
+  title: "index_trading-ticker-section-metals",
+};
+export const INDICES_TRADING_SECTION = {
+  id: "indices",
+  title: "index_trading-ticker-section-indices",
+};
+
 export const CYSEC_TRADING_SECTIONS = [
-  {
-    id: "forex",
-    title: "index_trading-ticker-section-forex",
-  },
-  // No info provided for this section. Uncomment later
-  // {
-  //   id: "shares",
-  //   title: "index_trading-ticker-section-shares",
-  // },
-  {
-    id: "energies",
-    title: "index_trading-ticker-section-energies",
-  },
-  {
-    id: "metals",
-    title: "index_trading-ticker-section-metals",
-  },
-  // {
-  //   id: "commodities",
-  //   title: "index_trading-ticker-section-commodities",
-  // },
-  {
-    id: "indices",
-    title: "index_trading-ticker-section-indices",
-  },
+  FOREX_TRADING_SECTION,
+  SHARES_TRADING_SECTION,
+  ENERGIES_TRADING_SECTION,
+  METALS_TRADING_SECTION,
+  INDICES_TRADING_SECTION,
 ];
 
 export const FSA_TRADING_SECTIONS = [
-  {
-    id: "crypto",
-    title: "index_trading-ticker-section-crypto",
-  },
-  {
-    id: "forex",
-    title: "index_trading-ticker-section-forex",
-  },
-  // {
-  //   id: "shares",
-  //   title: "index_trading-ticker-section-shares",
-  // },
-  {
-    id: "energies",
-    title: "index_trading-ticker-section-energies",
-  },
-  {
-    id: "metals",
-    title: "index_trading-ticker-section-metals",
-  },
-  // {
-  //   id: "commodities",
-  //   title: "index_trading-ticker-section-commodities",
-  // },
-  {
-    id: "indices",
-    title: "index_trading-ticker-section-indices",
-  },
+  CRYPTO_TRADING_SECTION,
+  ...CYSEC_TRADING_SECTIONS,
 ];

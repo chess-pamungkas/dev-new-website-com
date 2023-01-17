@@ -14,11 +14,10 @@ import TopMarketPromotion from "../components/top-market-promotion";
 import animation from "../assets/images/animations/shares.json";
 import PromotionMarkets from "../components/promotion-markets";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
-import TableComponent from "../components/shared/table";
-import { COLUMNS_SHARES, DATA_SHARES } from "../helpers/top-market-tables";
-import TopMarketLayout from "../components/top-market-layout";
+
 import Faq from "../components/faq";
 import { FAQ_SHARES } from "../helpers/faq";
+import { SHARES_TRADING_SECTION } from "../helpers/config";
 
 const SharesPage = () => {
   const { t } = useTranslation();
@@ -46,7 +45,11 @@ const SharesPage = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
-      <TradingTicker title={t("shares_trading-ticker-title")} />
+      <TradingTicker
+        title={t("shares_trading-ticker-title")}
+        pageSpecificSection={SHARES_TRADING_SECTION}
+        isInfiniteAutoScroll={true}
+      />
       <TopMarketPromotion
         className="shares-promotion"
         image={shares}
@@ -111,7 +114,8 @@ const SharesPage = () => {
           accentClassName="highlighted-in-red"
         />
       </PromotionMarkets>
-      <TopMarketLayout
+      {/*Removed due to ticket https://oqtima-website.atlassian.net/browse/OW-209?atlOrigin=eyJpIjoiMDlmNzI4YTk4NzZjNGYxMmIxMmRiMzE1NjdlYTdmMTIiLCJwIjoiaiJ9 */}
+      {/* <TopMarketLayout
         title={t("shares_top-market-layout-title")}
         btnTitle={t("shares_top-market-layout-btn")}
         link={REGISTRATION_LINK}
@@ -130,7 +134,7 @@ const SharesPage = () => {
           }
           isSearch
         />
-      </TopMarketLayout>
+      </TopMarketLayout> */}
 
       <Faq faq={FAQ_SHARES} />
     </Layout>

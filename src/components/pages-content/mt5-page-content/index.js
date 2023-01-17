@@ -81,6 +81,17 @@ const Mt5PageContent = () => {
         </>
       ),
     },
+    {
+      id: 3,
+      title: t("mt-promotion-tabs-webtrader"),
+      content: (
+        <>
+          <Link to={MT5_DOWNLOAD_LINKS.webtrader}>
+            {t("mt5_mt-promotion-download-webtrader")}
+          </Link>
+        </>
+      ),
+    },
   ];
 
   return (

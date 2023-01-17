@@ -77,6 +77,14 @@ const Mt4PageContent = () => {
           <Link to={MT4_DOWNLOAD_LINKS.windows}>
             {t("mt4_mt-promotion-download-windows")}
           </Link>
+        </>
+      ),
+    },
+    {
+      id: 3,
+      title: t("mt-promotion-tabs-webtrader"),
+      content: (
+        <>
           <Link to={MT4_DOWNLOAD_LINKS.webtrader}>
             {t("mt4_mt-promotion-download-webtrader")}
           </Link>

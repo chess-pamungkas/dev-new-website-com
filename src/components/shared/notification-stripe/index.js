@@ -12,13 +12,18 @@ import {
   RISK_DISCLOSURE_DOC_FSA,
 } from "../../../helpers/documents";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
-import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { setRedirectOrBannedPopupShown } from "../../../helpers/services/set-redirect-or-banned-popup-shown";
+import { useWindowSize } from "../../../helpers/hooks/use-window-size";
+import expandIcon from "../../../assets/images/icons/accordion.svg";
+import collapseIcon from "../../../assets/images/icons/accordion-active.svg";
 
 export const CysecStripe = ({ t, isCySEC }) => {
+  const [expand, setExpand] = useState(true);
+  const { isMobile } = useWindowSize();
+
   return (
     <div className="notification-stripe__cysec-wrapper">
-      <span className="notification-stripe__text">
+      <span className={cn("notification-stripe__text", { collapsed: !expand })}>
         {t("notification-stripe-cysec")}&nbsp;
         <a
           className="notification-stripe__link"
@@ -29,6 +34,15 @@ export const CysecStripe = ({ t, isCySEC }) => {
           {t("notification-stripe-cysec-link")}
         </a>
       </span>
+      {isMobile && (
+        <span>
+          <img
+            width="25"
+            onClick={() => setExpand(!expand)}
+            src={expand ? collapseIcon : expandIcon}
+          />
+        </span>
+      )}
     </div>
   );
 };

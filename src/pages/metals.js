@@ -19,6 +19,7 @@ import TableComponent from "../components/shared/table";
 import { COLUMNS_METALS, DATA_METALS } from "../helpers/top-market-tables";
 import Faq from "../components/faq";
 import { FAQ_METALS } from "../helpers/faq";
+import { METALS_TRADING_SECTION } from "../helpers/config";
 
 const MetalsPage = () => {
   const { t } = useTranslation();
@@ -45,7 +46,10 @@ const MetalsPage = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
-      <TradingTicker title={t("metals_trading-ticker-title")} />
+      <TradingTicker
+        title={t("metals_trading-ticker-title")}
+        pageSpecificSection={METALS_TRADING_SECTION}
+      />
       <TopMarketPromotion
         className="commodities-promotion"
         image={commodities}

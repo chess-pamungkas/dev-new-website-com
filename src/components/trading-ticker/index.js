@@ -11,7 +11,12 @@ import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 
-const TradingTicker = ({ className, title }) => {
+const TradingTicker = ({
+  className,
+  title,
+  pageSpecificSection,
+  isInfiniteAutoScroll,
+}) => {
   const [tradingSection, setTradingSection] = useState(CYSEC_TRADING_SECTIONS);
   const [selectedSection, setSelectedSection] = useState(
     CYSEC_TRADING_SECTIONS[0]
@@ -23,12 +28,12 @@ const TradingTicker = ({ className, title }) => {
   useEffect(() => {
     if (isCySEC) {
       setTradingSection(CYSEC_TRADING_SECTIONS);
-      setSelectedSection(CYSEC_TRADING_SECTIONS[0]);
+      setSelectedSection(pageSpecificSection || CYSEC_TRADING_SECTIONS[0]);
     } else {
       setTradingSection(FSA_TRADING_SECTIONS);
-      setSelectedSection(FSA_TRADING_SECTIONS[0]);
+      setSelectedSection(pageSpecificSection || FSA_TRADING_SECTIONS[0]);
     }
-  }, [isCySEC]);
+  }, [isCySEC, pageSpecificSection]);
 
   useEffect(() => {
     let previousOperation;
@@ -61,7 +66,10 @@ const TradingTicker = ({ className, title }) => {
         selectedSection={selectedSection}
         setSelectedSection={setSelectedSection}
       />
-      <TradingSymbols symbols={tradingSymbols} />
+      <TradingSymbols
+        symbols={tradingSymbols}
+        isInfiniteAutoScroll={isInfiniteAutoScroll}
+      />
     </section>
   );
 };

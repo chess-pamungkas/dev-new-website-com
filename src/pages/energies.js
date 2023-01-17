@@ -19,6 +19,7 @@ import { COLUMNS_ENERGIES, DATA_ENERGIES } from "../helpers/top-market-tables";
 import Faq from "../components/faq";
 import { FAQ_ENERGIES } from "../helpers/faq";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
+import { ENERGIES_TRADING_SECTION } from "../helpers/config";
 
 const EnergiesPage = () => {
   const { t } = useTranslation();
@@ -46,7 +47,10 @@ const EnergiesPage = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
-      <TradingTicker title={t("energies_trading-ticker-title")} />
+      <TradingTicker
+        title={t("energies_trading-ticker-title")}
+        pageSpecificSection={ENERGIES_TRADING_SECTION}
+      />
       <TopMarketPromotion
         className="energies-promotion"
         image={energies}
