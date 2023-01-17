@@ -69,6 +69,17 @@ const CtraderPageContent = () => {
         </>
       ),
     },
+    {
+      id: 2,
+      title: t("mt-promotion-tabs-webtrader"),
+      content: (
+        <>
+          <Link to={CTRADER_DOWNLOAD_LINKS.webtrader}>
+            {t("ctrader_mt-promotion-download-webtrader")}
+          </Link>
+        </>
+      ),
+    },
   ];
 
   return (
