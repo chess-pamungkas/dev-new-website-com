@@ -11,7 +11,8 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "split-locales": "node src/scripts/split-locales/index.js"
   },
   "dependencies": {
     "axios": "^0.27.2",

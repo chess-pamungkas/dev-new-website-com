@@ -36,31 +36,31 @@ const CryptoContent = () => {
           <TopMarket
             title={t(`crypto_top-market-title${sitePostfix}`)}
             image={image}
-            btn1Title={t("crypto_top-market-btn1")}
+            btn1Title={t(`crypto_top-market-btn1${sitePostfix}`)}
             link1={REGISTRATION_LINK}
-            btn2Title={t("crypto_top-market-btn2")}
+            btn2Title={t(`crypto_top-market-btn2${sitePostfix}`)}
             link2={REGISTRATION_LINK}
           >
             <HighlightedLocalizationText
-              localizationText="crypto_top-market-promo-text"
-              wordsToHighlight="crypto-top-market-promo-text-accent"
+              localizationText={`crypto_top-market-promo-text${sitePostfix}`}
+              wordsToHighlight={`crypto-top-market-promo-text-accent${sitePostfix}`}
               primaryClassName="highlighted-in-black"
               accentClassName="highlighted-in-white"
             />
           </TopMarket>
           <TradingTicker
-            title={t("crypto_trading-ticker-title")}
+            title={t(`crypto_trading-ticker-title${sitePostfix}`)}
             pageSpecificSection={CRYPTO_TRADING_SECTION}
           />
           <TopMarketPromotion
             className="crypto-promotion"
             image={crypto}
-            btnTitle={t("crypto_top-market-promo-btn")}
+            btnTitle={t(`crypto_top-market-promo-btn${sitePostfix}`)}
             link={REGISTRATION_LINK}
           >
             <HighlightedLocalizationText
-              localizationText="crypto_top-market-promotion-promo-text"
-              wordsToHighlight="crypto-top-market-promotion-promo-text-accent"
+              localizationText={`crypto_top-market-promotion-promo-text${sitePostfix}`}
+              wordsToHighlight={`crypto-top-market-promotion-promo-text-accent${sitePostfix}`}
               primaryClassName="highlighted-in-black"
               accentClassName="highlighted-in-red"
             />
@@ -70,54 +70,55 @@ const CryptoContent = () => {
             animationStyle={{
               height: isMobile ? 301 : 473,
             }}
-            btnTitle={t("crypto_promotion-markets-btn")}
+            btnTitle={t(`crypto_promotion-markets-btn${sitePostfix}`)}
           >
             <HighlightedLocalizationText
-              localizationText="crypto_promotion-markets-promo-text-1"
-              wordsToHighlight="crypto-promotion-markets-promo-text-accent-1"
+              // TODO: Check it out and change it to ${sitePostfix}, it doesn't display correctly on first render.
+              localizationText={`crypto_promotion-markets-promo-text-1-fsa`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-1-fsa`}
               primaryClassName="highlighted-in-black"
               accentClassName="highlighted-in-red"
             />
             <HighlightedLocalizationText
-              localizationText="crypto_promotion-markets-promo-text-2"
-              wordsToHighlight="crypto-promotion-markets-promo-text-accent-2"
+              localizationText={`crypto_promotion-markets-promo-text-2${sitePostfix}`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-2${sitePostfix}`}
               primaryClassName="highlighted-in-black"
               accentClassName="highlighted-in-red"
             />
             <HighlightedLocalizationText
-              localizationText="crypto_promotion-markets-promo-text-3"
-              wordsToHighlight="crypto-promotion-markets-promo-text-accent-3"
+              localizationText={`crypto_promotion-markets-promo-text-3${sitePostfix}`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-3${sitePostfix}`}
               primaryClassName="highlighted-in-black"
               accentClassName="highlighted-in-red"
             />
             <HighlightedLocalizationText
-              localizationText="crypto_promotion-markets-promo-text-4"
-              wordsToHighlight="crypto-promotion-markets-promo-text-accent-4"
+              localizationText={`crypto_promotion-markets-promo-text-4${sitePostfix}`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-4${sitePostfix}`}
               primaryClassName="highlighted-in-black"
               accentClassName="highlighted-in-red"
             />
             <HighlightedLocalizationText
-              localizationText="crypto_promotion-markets-promo-text-5"
-              wordsToHighlight="crypto-promotion-markets-promo-text-accent-5"
+              localizationText={`crypto_promotion-markets-promo-text-5${sitePostfix}`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-5${sitePostfix}`}
               primaryClassName="highlighted-in-black"
               accentClassName="highlighted-in-red"
             />
             <HighlightedLocalizationText
-              localizationText="crypto_promotion-markets-promo-text-6"
-              wordsToHighlight="crypto-promotion-markets-promo-text-accent-6"
+              localizationText={`crypto_promotion-markets-promo-text-6${sitePostfix}`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-6${sitePostfix}`}
               primaryClassName="highlighted-in-black"
               accentClassName="highlighted-in-red"
             />
             <HighlightedLocalizationText
-              localizationText="crypto_promotion-markets-promo-text-7"
-              wordsToHighlight="crypto-promotion-markets-promo-text-accent-7"
+              localizationText={`crypto_promotion-markets-promo-text-7${sitePostfix}`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-7${sitePostfix}`}
               primaryClassName="highlighted-in-black"
               accentClassName="highlighted-in-red"
             />
           </PromotionMarkets>
           <TopMarketLayout
-            title={t("crypto_top-market-layout-title")}
-            btnTitle={t("crypto_top-market-layout-btn")}
+            title={t(`crypto_top-market-layout-title${sitePostfix}`)}
+            btnTitle={t(`crypto_top-market-layout-btn${sitePostfix}`)}
             link={REGISTRATION_LINK}
           >
             <TableComponent
