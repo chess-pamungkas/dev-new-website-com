@@ -7,7 +7,7 @@
   "header-nav-tab-top-markets-commodities-title": "المعادن",
   "header-nav-tab-top-markets-commodities-desc": "الحصول على التعرض للتقلبات عبر أهم المعادن الثمينة.",
   "header-nav-tab-top-markets-shares-title": "الأسهم",
-  "header-nav-tab-top-markets-shares-desc": "أكثر من 8.000 سهم عقود الفروقات بالنسبة لك للتداول الآن",
+  "header-nav-tab-top-markets-shares-desc": "Trade the most sought after shares with the power of CFDs now (TRANSLATION REQUIRED!)",
   "header-nav-tab-top-markets-energies-title": "الطاقات",
   "header-nav-tab-top-markets-energies-desc": "خام غرب تكساس الوسيط وخام برنت والغاز الطبيعي والمزيد",
   "header-nav-tab-top-markets-allmarkets-title": "نظرة عامة على جميع الأسواق",
@@ -137,8 +137,13 @@
 
   "index_trade-with-promotion-title": "التجارة الآن مع",
   "index_trade-with-promotion-ending-call": "ما هو ساخن الآن!",
+
+  "index_trade-with-promotion-promo-text1-fsa": "More than",
+  "index_trade-with-promotion-promo-text-bold-fsa": "10.000",
+  "index_trade-with-promotion-promo-text2-fsa": "assets to trade directly on mobile, desktop or tablet anywhere anytime",
+
   "index_trade-with-promotion-promo-text1": "أكثر من",
-  "index_trade-with-promotion-promo-text-bold": "9.000",
+  "index_trade-with-promotion-promo-text-bold": "1000",
   "index_trade-with-promotion-promo-text2": "الأصول للتداول مباشرة على الهاتف المحمول أو سطح المكتب أو الجهاز اللوحي في أي مكان وفي أي وقت",
 
   "index_promotion1-text": "البدء في بناء محفظة التداول الخاصة بك مع 200 دولار أمريكي أو ما يعادلها في 8 العملات الأساسية المتاحة.",
@@ -258,10 +263,10 @@
   "mt4_top-market-promo-btn3": "افتح حساب",
 
   "withdrawal_top-market-promo-text": "طرق سهلة للإيداع ، طرق سهلة للسحب!",
-  "withdrawal_top-market-promo-note": "يتم تخزين أموالك بأمان في حسابات العملاء منفصلة في الطبقة العليا 1 البنك في أستراليا والمملكة المتحدة.",
-  "withdrawal_top-market-promo-note-accent": "11,12,13,14,16,18",
-  "withdrawal_top-market-promo-note-EU":"Your money is safely stored in dedicated and segregated client accounts. You can have access to your money instantly* and withdraw in many ways.",
-  "withdrawal_top-market-promo-note-accent-EU": "4,7,9",
+  "withdrawal_top-market-promo-note-fsa": "يتم تخزين أموالك بأمان في حسابات العملاء منفصلة في الطبقة العليا 1 البنك في أستراليا والمملكة المتحدة.",
+  "withdrawal_top-market-promo-note-accent-fsa": "11,12,13,14,16,18",
+  "withdrawal_top-market-promo-note":"Your money is safely stored in dedicated and segregated client accounts. You can have access to your money instantly* and withdraw in many ways. (TRANSLATION REQUIRED!)",
+  "withdrawal_top-market-promo-note-accent": "4,7,9",
   "withdrawal_top-market-promo-text2-1": "الإيداع الفوري",
   "withdrawal_top-market-promo-text-accent2-1": "2",
   "withdrawal_top-market-promo-text2-2": "عمليات السحب في نفس اليوم*",

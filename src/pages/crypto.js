@@ -12,9 +12,9 @@ const CryptoPage = () => {
   return (
     <Layout>
       <Seo
-        fsaTitle={t("page-crypto-title")}
+        fsaTitle={t("page-crypto-title-fsa")}
         cysecTitle={t("system-page-404-title")}
-        fsaDescription={t("page-crypto-description")}
+        fsaDescription={t("page-crypto-description-fsa")}
         cysecDescription={""}
       />
       <CryptoContent />

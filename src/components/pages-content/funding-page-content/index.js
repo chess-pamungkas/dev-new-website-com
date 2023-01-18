@@ -59,13 +59,13 @@ const FundingPageContent = () => {
           <HighlightedLocalizationText
             localizationText={t(
               isCySEC
-                ? "withdrawal_top-market-promo-note-EU"
-                : "withdrawal_top-market-promo-note"
+                ? "withdrawal_top-market-promo-note"
+                : "withdrawal_top-market-promo-note-fsa"
             )}
             wordsToHighlight={t(
               isCySEC
-                ? "withdrawal_top-market-promo-note-accent-EU"
-                : "withdrawal_top-market-promo-note-accent"
+                ? "withdrawal_top-market-promo-note-accent"
+                : "withdrawal_top-market-promo-note-accent-fsa"
             )}
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-white"
