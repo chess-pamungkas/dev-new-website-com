@@ -78,12 +78,12 @@ const TradingTools = ({ className }) => {
           <HighlightedLocalizationText
             localizationText={
               isCySEC
-                ? "index_trading-tools-title-cysec"
+                ? "index_trading-tools-title"
                 : "index_trading-tools-title-fsa"
             }
             wordsToHighlight={
               isCySEC
-                ? "trading-tools-title-accent-cysec"
+                ? "trading-tools-title-accent"
                 : "trading-tools-title-accent-fsa"
             }
             primaryClassName="highlighted-in-black"

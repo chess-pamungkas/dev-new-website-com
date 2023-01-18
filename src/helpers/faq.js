@@ -32,16 +32,16 @@ export const FAQ_FOREX = [
 
 export const FAQ_CRYPTO = [
   {
-    question: "crypto_faq-title1",
-    answer: ["crypto_faq-content1"],
+    question: "crypto_faq-title1-fsa",
+    answer: ["crypto_faq-content1-fsa"],
   },
   {
-    question: "crypto_faq-title2",
-    answer: ["crypto_faq-content2"],
+    question: "crypto_faq-title2-fsa",
+    answer: ["crypto_faq-content2-fsa"],
   },
   {
-    question: "crypto_faq-title3",
-    answer: ["crypto_faq-content3"],
+    question: "crypto_faq-title3-fsa",
+    answer: ["crypto_faq-content3-fsa"],
   },
 ];
 
