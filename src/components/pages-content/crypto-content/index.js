@@ -3,14 +3,14 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
-import crypto from "../../../assets/images/top-markets/images/crypto.svg";
+import image from "../../../assets/images/top-markets/cripto.svg";
 import { REGISTRATION_LINK } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
-import StaticImages from "../../../components/promotion-markets/static-images";
-import MarketingImage from "../../../assets/images/bg/promotions/crypto/crypto@2x.png";
-import animation from "../../../assets/images/bg/promotions/crypto/crypto.json";
+import crypto from "../../../assets/images/top-markets/images/crypto.svg";
+import PromotionMarkets from "../../promotion-markets";
+import animation from "../../../assets/images/animations/crypto.json";
 import TopMarketLayout from "../../top-market-layout";
 import {
   COLUMNS_CRYPTO,
@@ -35,7 +35,7 @@ const CryptoContent = () => {
         <>
           <TopMarket
             title={t(`crypto_top-market-title${sitePostfix}`)}
-            image={crypto}
+            image={image}
             btn1Title={t(`crypto_top-market-btn1${sitePostfix}`)}
             link1={REGISTRATION_LINK}
             btn2Title={t(`crypto_top-market-btn2${sitePostfix}`)}
@@ -65,11 +65,57 @@ const CryptoContent = () => {
               accentClassName="highlighted-in-red"
             />
           </TopMarketPromotion>
-          <StaticImages
-            image={MarketingImage}
-            height={isMobile ? 400 : 800}
+          <PromotionMarkets
             animation={animation}
-          />
+            animationStyle={{
+              height: isMobile ? 301 : 473,
+            }}
+            btnTitle={t(`crypto_promotion-markets-btn${sitePostfix}`)}
+          >
+            <HighlightedLocalizationText
+              // TODO: Check it out and change it to ${sitePostfix}, it doesn't display correctly on first render.
+              localizationText={`crypto_promotion-markets-promo-text-1-fsa`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-1-fsa`}
+              primaryClassName="highlighted-in-black"
+              accentClassName="highlighted-in-red"
+            />
+            <HighlightedLocalizationText
+              localizationText={`crypto_promotion-markets-promo-text-2${sitePostfix}`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-2${sitePostfix}`}
+              primaryClassName="highlighted-in-black"
+              accentClassName="highlighted-in-red"
+            />
+            <HighlightedLocalizationText
+              localizationText={`crypto_promotion-markets-promo-text-3${sitePostfix}`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-3${sitePostfix}`}
+              primaryClassName="highlighted-in-black"
+              accentClassName="highlighted-in-red"
+            />
+            <HighlightedLocalizationText
+              localizationText={`crypto_promotion-markets-promo-text-4${sitePostfix}`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-4${sitePostfix}`}
+              primaryClassName="highlighted-in-black"
+              accentClassName="highlighted-in-red"
+            />
+            <HighlightedLocalizationText
+              localizationText={`crypto_promotion-markets-promo-text-5${sitePostfix}`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-5${sitePostfix}`}
+              primaryClassName="highlighted-in-black"
+              accentClassName="highlighted-in-red"
+            />
+            <HighlightedLocalizationText
+              localizationText={`crypto_promotion-markets-promo-text-6${sitePostfix}`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-6${sitePostfix}`}
+              primaryClassName="highlighted-in-black"
+              accentClassName="highlighted-in-red"
+            />
+            <HighlightedLocalizationText
+              localizationText={`crypto_promotion-markets-promo-text-7${sitePostfix}`}
+              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-7${sitePostfix}`}
+              primaryClassName="highlighted-in-black"
+              accentClassName="highlighted-in-red"
+            />
+          </PromotionMarkets>
           <TopMarketLayout
             title={t(`crypto_top-market-layout-title${sitePostfix}`)}
             btnTitle={t(`crypto_top-market-layout-btn${sitePostfix}`)}
