@@ -12,6 +12,8 @@ import StaticImages from "../../../components/promotion-markets/static-images";
 import MarketingImage from "../../../assets/images/bg/promotions/crypto/crypto@2x.png";
 import animation from "../../../assets/images/bg/promotions/crypto/crypto.json";
 import TopMarketLayout from "../../top-market-layout";
+import crypto from "../../../assets/images/top-markets/images/crypto.svg";
+
 import {
   COLUMNS_CRYPTO,
   DATA_CRYPTO,
