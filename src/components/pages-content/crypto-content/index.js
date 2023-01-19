@@ -3,7 +3,7 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
-import image from "../../../assets/images/top-markets/cripto.svg";
+import crypto from "../../../assets/images/top-markets/images/crypto.svg";
 import { REGISTRATION_LINK } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
@@ -35,7 +35,7 @@ const CryptoContent = () => {
         <>
           <TopMarket
             title={t(`crypto_top-market-title${sitePostfix}`)}
-            image={image}
+            image={crypto}
             btn1Title={t(`crypto_top-market-btn1${sitePostfix}`)}
             link1={REGISTRATION_LINK}
             btn2Title={t(`crypto_top-market-btn2${sitePostfix}`)}
