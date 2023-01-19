@@ -11,6 +11,9 @@ import PromotionMarkets from "../../promotion-markets";
 import animation from "../../../assets/images/animations/shares.json";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
+import { SHARES_TRADING_SECTION } from "../../../helpers/config";
+import Faq from "../../faq";
+import { FAQ_SHARES } from "../../../helpers/faq";
 
 const SharesContent = () => {
   const { sitePostfix } = useEntityPostfix();
@@ -20,7 +23,7 @@ const SharesContent = () => {
   return (
     <>
       <TopMarket
-        title={t("shares_top-market-title")}
+        title={t(`shares_top-market-title${sitePostfix}`)}
         image={image}
         isChildrenHasSmallSize
         btn1Title={t("shares_top-market-btn1")}
@@ -30,12 +33,16 @@ const SharesContent = () => {
       >
         <HighlightedLocalizationText
           localizationText={`shares_top-market-promo-text${sitePostfix}`}
-          wordsToHighlight="shares-top-market-promo-text-accent"
+          wordsToHighlight={`shares_top-market-promo-text-accent${sitePostfix}`}
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
-      <TradingTicker title={t("shares_trading-ticker-title")} />
+      <TradingTicker
+        title={t("shares_trading-ticker-title")}
+        pageSpecificSection={SHARES_TRADING_SECTION}
+        isInfiniteAutoScroll={true}
+      />
       <TopMarketPromotion
         className="shares-promotion"
         image={shares}
@@ -43,8 +50,8 @@ const SharesContent = () => {
         link={REGISTRATION_LINK}
       >
         <HighlightedLocalizationText
-          localizationText="shares_top-market-promotion-promo-text"
-          wordsToHighlight="shares-top-market-promotion-promo-text-accent"
+          localizationText={`shares_top-market-promotion-promo-text${sitePostfix}`}
+          wordsToHighlight={`shares_top-market-promotion-promo-text-accent${sitePostfix}`}
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
@@ -100,6 +107,29 @@ const SharesContent = () => {
           accentClassName="highlighted-in-red"
         />
       </PromotionMarkets>
+      {/*Removed due to ticket https://oqtima-website.atlassian.net/browse/OW-209?atlOrigin=eyJpIjoiMDlmNzI4YTk4NzZjNGYxMmIxMmRiMzE1NjdlYTdmMTIiLCJwIjoiaiJ9 */}
+      {/* <TopMarketLayout
+        title={t("shares_top-market-layout-title")}
+        btnTitle={t("shares_top-market-layout-btn")}
+        link={REGISTRATION_LINK}
+      >
+        <TableComponent
+          data={DATA_SHARES}
+          columns={COLUMNS_SHARES}
+          isWrapperPadding
+          tip={
+            <span>
+              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+              &nbsp;
+              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+              &nbsp;
+            </span>
+          }
+          isSearch
+        />
+      </TopMarketLayout> */}
+
+      <Faq faq={FAQ_SHARES} />
     </>
   );
 };
