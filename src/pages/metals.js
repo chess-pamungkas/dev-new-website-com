@@ -12,13 +12,14 @@ import { useWindowSize } from "../helpers/hooks/use-window-size";
 import TradingTicker from "../components/trading-ticker";
 import commodities from "../assets/images/top-markets/images/commodities.svg";
 import TopMarketPromotion from "../components/top-market-promotion";
-import animation from "../assets/images/animations/commodities.json";
-import PromotionMarkets from "../components/promotion-markets";
 import TopMarketLayout from "../components/top-market-layout";
 import TableComponent from "../components/shared/table";
 import { COLUMNS_METALS, DATA_METALS } from "../helpers/top-market-tables";
 import Faq from "../components/faq";
 import { FAQ_METALS } from "../helpers/faq";
+import StaticImages from "../components/promotion-markets/static-images";
+import MarketingImage from "../assets/images/bg/promotions/metals/metals@2x.png";
+import animation from "../assets/images/bg/promotions/metals/metals.json";
 import { METALS_TRADING_SECTION } from "../helpers/config";
 
 const MetalsPage = () => {
@@ -64,56 +65,11 @@ const MetalsPage = () => {
           accentClassName="highlighted-in-red"
         />
       </TopMarketPromotion>
-      <PromotionMarkets
+      <StaticImages
+        image={MarketingImage}
+        height={isMobile ? 400 : 800}
         animation={animation}
-        animationStyle={{
-          height: isMobile ? 228 : 448,
-        }}
-        btnTitle={t("metals_promotion-markets-btn")}
-      >
-        <HighlightedLocalizationText
-          localizationText="metals_promotion-markets-promo-text-1"
-          wordsToHighlight="metals-promotion-markets-promo-text-accent-1"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="metals_promotion-markets-promo-text-2"
-          wordsToHighlight="metals-promotion-markets-promo-text-accent-2"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="metals_promotion-markets-promo-text-3"
-          wordsToHighlight="metals-promotion-markets-promo-text-accent-3"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="metals_promotion-markets-promo-text-4"
-          wordsToHighlight="metals-promotion-markets-promo-text-accent-4"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="metals_promotion-markets-promo-text-5"
-          wordsToHighlight="metals-promotion-markets-promo-text-accent-5"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="metals_promotion-markets-promo-text-6"
-          wordsToHighlight="metals-promotion-markets-promo-text-accent-6"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="metals_promotion-markets-promo-text-7"
-          wordsToHighlight="metals-promotion-markets-promo-text-accent-7"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-      </PromotionMarkets>
+      />
       <TopMarketLayout
         title={t("metals_top-market-layout-title")}
         btnTitle={t("metals_top-market-layout-btn")}
