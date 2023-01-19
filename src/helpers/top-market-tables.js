@@ -29,7 +29,7 @@ export const COLUMNS_FOREX = [
   },
   {
     id: "group3",
-    Header: "OQTIMA ONE",
+    Header: "OQTIMA ONE ACCOUNT",
     columns: [
       {
         Header: "Min",
@@ -155,7 +155,7 @@ export const COLUMNS_CRYPTO = [
   },
   {
     id: "group3",
-    Header: "OQTIMA ONE",
+    Header: "OQTIMA ONE ACCOUNT",
     columns: [
       {
         Header: "Min",
@@ -662,7 +662,7 @@ export const COLUMNS_ENERGIES = [
   },
   {
     id: "group3",
-    Header: "OQTIMA ONE",
+    Header: "OQTIMA ONE ACCOUNT",
     columns: [
       {
         Header: "Min",
