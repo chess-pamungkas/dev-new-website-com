@@ -155,7 +155,7 @@ export const COLUMNS_CRYPTO = [
   },
   {
     id: "group3",
-    Header: "OQTIMA ONE",
+    Header: "OQTIMA ONE ACCOUNT",
     columns: [
       {
         Header: "Min",
