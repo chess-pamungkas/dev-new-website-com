@@ -8,10 +8,12 @@ import { REGISTRATION_LINK } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
-import crypto from "../../../assets/images/top-markets/images/crypto.svg";
-import PromotionMarkets from "../../promotion-markets";
-import animation from "../../../assets/images/animations/crypto.json";
+import StaticImages from "../../../components/promotion-markets/static-images";
+import MarketingImage from "../../../assets/images/bg/promotions/crypto/crypto@2x.png";
+import animation from "../../../assets/images/bg/promotions/crypto/crypto.json";
 import TopMarketLayout from "../../top-market-layout";
+import crypto from "../../../assets/images/top-markets/images/crypto.svg";
+
 import {
   COLUMNS_CRYPTO,
   DATA_CRYPTO,
@@ -65,57 +67,11 @@ const CryptoContent = () => {
               accentClassName="highlighted-in-red"
             />
           </TopMarketPromotion>
-          <PromotionMarkets
+          <StaticImages
+            image={MarketingImage}
+            height={isMobile ? 400 : 800}
             animation={animation}
-            animationStyle={{
-              height: isMobile ? 301 : 473,
-            }}
-            btnTitle={t(`crypto_promotion-markets-btn${sitePostfix}`)}
-          >
-            <HighlightedLocalizationText
-              // TODO: Check it out and change it to ${sitePostfix}, it doesn't display correctly on first render.
-              localizationText={`crypto_promotion-markets-promo-text-1-fsa`}
-              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-1-fsa`}
-              primaryClassName="highlighted-in-black"
-              accentClassName="highlighted-in-red"
-            />
-            <HighlightedLocalizationText
-              localizationText={`crypto_promotion-markets-promo-text-2${sitePostfix}`}
-              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-2${sitePostfix}`}
-              primaryClassName="highlighted-in-black"
-              accentClassName="highlighted-in-red"
-            />
-            <HighlightedLocalizationText
-              localizationText={`crypto_promotion-markets-promo-text-3${sitePostfix}`}
-              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-3${sitePostfix}`}
-              primaryClassName="highlighted-in-black"
-              accentClassName="highlighted-in-red"
-            />
-            <HighlightedLocalizationText
-              localizationText={`crypto_promotion-markets-promo-text-4${sitePostfix}`}
-              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-4${sitePostfix}`}
-              primaryClassName="highlighted-in-black"
-              accentClassName="highlighted-in-red"
-            />
-            <HighlightedLocalizationText
-              localizationText={`crypto_promotion-markets-promo-text-5${sitePostfix}`}
-              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-5${sitePostfix}`}
-              primaryClassName="highlighted-in-black"
-              accentClassName="highlighted-in-red"
-            />
-            <HighlightedLocalizationText
-              localizationText={`crypto_promotion-markets-promo-text-6${sitePostfix}`}
-              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-6${sitePostfix}`}
-              primaryClassName="highlighted-in-black"
-              accentClassName="highlighted-in-red"
-            />
-            <HighlightedLocalizationText
-              localizationText={`crypto_promotion-markets-promo-text-7${sitePostfix}`}
-              wordsToHighlight={`crypto-promotion-markets-promo-text-accent-7${sitePostfix}`}
-              primaryClassName="highlighted-in-black"
-              accentClassName="highlighted-in-red"
-            />
-          </PromotionMarkets>
+          />
           <TopMarketLayout
             title={t(`crypto_top-market-layout-title${sitePostfix}`)}
             btnTitle={t(`crypto_top-market-layout-btn${sitePostfix}`)}
