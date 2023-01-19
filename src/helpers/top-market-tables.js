@@ -288,7 +288,7 @@ export const COLUMNS_SHARES = [
   },
   {
     id: "group3",
-    Header: "OQTIMA ONE",
+    Header: "OQTIMA ONE ACCOUNT",
     columns: [
       {
         Header: "Min",
