@@ -11,14 +11,15 @@ import HighlightedLocalizationText from "../components/shared/highlighted-locali
 import TradingTicker from "../components/trading-ticker";
 import TopMarketPromotion from "../components/top-market-promotion";
 import energies from "../assets/images/top-markets/images/energies.svg";
-import PromotionMarkets from "../components/promotion-markets";
-import animation from "../assets/images/animations/energies.json";
 import TopMarketLayout from "../components/top-market-layout";
 import TableComponent from "../components/shared/table";
 import { COLUMNS_ENERGIES, DATA_ENERGIES } from "../helpers/top-market-tables";
 import Faq from "../components/faq";
 import { FAQ_ENERGIES } from "../helpers/faq";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
+import StaticImages from "../components/promotion-markets/static-images";
+import MarketingImage from "../assets/images/bg/promotions/energies/energies@2x.png";
+import animation from "../assets/images/bg/promotions/energies/energy.json";
 import { ENERGIES_TRADING_SECTION } from "../helpers/config";
 
 const EnergiesPage = () => {
@@ -64,56 +65,11 @@ const EnergiesPage = () => {
           accentClassName="highlighted-in-red"
         />
       </TopMarketPromotion>
-      <PromotionMarkets
+      <StaticImages
+        image={MarketingImage}
+        height={isMobile ? 400 : 800}
         animation={animation}
-        animationStyle={{
-          height: isMobile ? 250 : 334,
-        }}
-        btnTitle={t("energies_promotion-markets-btn")}
-      >
-        <HighlightedLocalizationText
-          localizationText="energies_promotion-markets-promo-text-1"
-          wordsToHighlight="energies-promotion-markets-promo-text-accent-1"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="energies_promotion-markets-promo-text-2"
-          wordsToHighlight="energies-promotion-markets-promo-text-accent-2"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="energies_promotion-markets-promo-text-3"
-          wordsToHighlight="energies-promotion-markets-promo-text-accent-3"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="energies_promotion-markets-promo-text-4"
-          wordsToHighlight="energies-promotion-markets-promo-text-accent-4"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="energies_promotion-markets-promo-text-5"
-          wordsToHighlight="energies-promotion-markets-promo-text-accent-5"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="energies_promotion-markets-promo-text-6"
-          wordsToHighlight="energies-promotion-markets-promo-text-accent-6"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="energies_promotion-markets-promo-text-7"
-          wordsToHighlight="energies-promotion-markets-promo-text-accent-7"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-      </PromotionMarkets>
+      />
       <TopMarketLayout
         title={t("energies_top-market-layout-title")}
         btnTitle={t("energies_top-market-layout-btn")}
