@@ -144,7 +144,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
         livechat.style.bottom = bottom;
       }
     }
-  }, [isCysecNotification, isMobile, isMD]);
+  }, [isCysecNotification, isMobile, isMD, expand]);
 
   return (
     <>
