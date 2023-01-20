@@ -9,6 +9,7 @@ import { SearchProvider } from "../../../context/search-context";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import Footer from "../../footer";
 import { CookiesPopup } from "../../cookies-popup";
+import { NotificationStripeProvider } from "../../../context/notification-stripe-context";
 
 const Layout = ({
   children,
@@ -44,24 +45,26 @@ const Layout = ({
         <MarketingContextProvider>
           <LanguageProvider>
             <SearchProvider>
-              <Header
-                headerRef={headerRef}
-                setSectionOptions={setSectionOptions}
-                isSearchBarAttached={isSearchBarAttached}
-              />
-              <section className="scroll-container">
-                <main
-                  style={{
-                    marginTop: scrollHeight,
-                  }}
-                >
-                  <CookiesPopup
-                    isCysecNotification={sectionOptions?.isCysecNotification}
-                  />
-                  {children}
-                </main>
-                {isShowFooter && <Footer />}
-              </section>
+              <NotificationStripeProvider>
+                <Header
+                  headerRef={headerRef}
+                  setSectionOptions={setSectionOptions}
+                  isSearchBarAttached={isSearchBarAttached}
+                />
+                <section className="scroll-container">
+                  <main
+                    style={{
+                      marginTop: scrollHeight,
+                    }}
+                  >
+                    <CookiesPopup
+                      isCysecNotification={sectionOptions?.isCysecNotification}
+                    />
+                    {children}
+                  </main>
+                  {isShowFooter && <Footer />}
+                </section>
+              </NotificationStripeProvider>
             </SearchProvider>
           </LanguageProvider>
         </MarketingContextProvider>
