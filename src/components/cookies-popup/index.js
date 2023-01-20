@@ -4,6 +4,7 @@ import CookieContext from "../../context/cookie-context";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isBrowser } from "../../helpers/services/is-browser";
 import { sendClickEventToGA } from "../../helpers/services/google-analytics-service";
+import NotificationStripeContext from "../../context/notification-stripe-context";
 
 export const CookiesPopup = ({ className, isCysecNotification }) => {
   const { t } = useTranslation();
@@ -13,6 +14,7 @@ export const CookiesPopup = ({ className, isCysecNotification }) => {
     isShowCookiePopup,
     handleCloseCookiePopup,
   } = useContext(CookieContext);
+  const { expand } = useContext(NotificationStripeContext);
 
   const [isReady, setIsReady] = useState(false);
 
@@ -38,7 +40,10 @@ export const CookiesPopup = ({ className, isCysecNotification }) => {
       className={cn(
         "cookies-popup",
         { "cookies-popup--active": isShowCookiePopup && isReady },
-        { "cookies-popup--higher": isCysecNotification },
+        { "cookies-popup--higher": isCysecNotification && expand },
+        {
+          "cookies-popup--higher-if-collapsed": isCysecNotification && !expand,
+        },
         className
       )}
     >
