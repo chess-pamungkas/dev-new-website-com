@@ -112,7 +112,7 @@
 .trading-symbols {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   margin-right: 14px;
@@ -165,21 +165,6 @@
     @include tablet {
       top: 19px;
     }
-  }
-
-  &::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    border-radius: 25px;
-    background-color: map-get($colors, "table-grey");
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 25px;
-    background-color: #9b9b9b;
   }
 
   @include tablet {

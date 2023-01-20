@@ -16,9 +16,10 @@ import { setRedirectOrBannedPopupShown } from "../../../helpers/services/set-red
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import expandIcon from "../../../assets/images/icons/accordion.svg";
 import collapseIcon from "../../../assets/images/icons/accordion-active.svg";
+import NotificationStripeContext from "../../../context/notification-stripe-context";
 
 export const CysecStripe = ({ t, isCySEC }) => {
-  const [expand, setExpand] = useState(true);
+  const { expand, setExpand } = useContext(NotificationStripeContext);
   const { isMobile } = useWindowSize();
 
   return (
@@ -99,6 +100,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
   const [isHidden, setIsHidden] = useState(true);
 
   const { isMobile, isMD } = useWindowSize();
+  const { expand } = useContext(NotificationStripeContext);
 
   useEffect(() => {
     setSectionOptions({ isCysecNotification, isCysecRedirect });
@@ -127,7 +129,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
       let bottom;
       switch (true) {
         case isMobile:
-          bottom = "190px";
+          bottom = expand ? "190px" : "65px";
           break;
         case isMD:
           bottom = "110px";
@@ -142,7 +144,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
         livechat.style.bottom = bottom;
       }
     }
-  }, [isCysecNotification, isMobile, isMD]);
+  }, [isCysecNotification, isMobile, isMD, expand]);
 
   return (
     <>

@@ -7,11 +7,13 @@ import HighlightedLocalizationText from "../../shared/highlighted-localization-t
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
 import forex from "../../../assets/images/top-markets/images/forex.svg";
-import PromotionMarkets from "../../promotion-markets";
-import animation from "../../../assets/images/animations/forex.json";
+
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { FOREX_TRADING_SECTION } from "../../../helpers/config";
+import StaticImages from "../../../components/promotion-markets/static-images";
+import MarketingImage from "../../../assets/images/bg/promotions/forex/forex@2x.png";
+import animation from "../../../assets/images/bg/promotions/forex/forex.json";
 
 const ForexContent = () => {
   const { sitePostfix } = useEntityPostfix();
@@ -52,56 +54,11 @@ const ForexContent = () => {
           accentClassName="highlighted-in-red"
         />
       </TopMarketPromotion>
-      <PromotionMarkets
+      <StaticImages
+        image={MarketingImage}
+        height={isMobile ? 400 : 800}
         animation={animation}
-        animationStyle={{
-          height: isMobile ? 246 : 382,
-        }}
-        btnTitle={t("forex_promotion-markets-btn")}
-      >
-        <HighlightedLocalizationText
-          localizationText="forex_promotion-markets-promo-text-1"
-          wordsToHighlight="forex-promotion-markets-promo-text-accent-1"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="forex_promotion-markets-promo-text-2"
-          wordsToHighlight="forex-promotion-markets-promo-text-accent-2"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="forex_promotion-markets-promo-text-3"
-          wordsToHighlight="forex-promotion-markets-promo-text-accent-3"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="forex_promotion-markets-promo-text-4"
-          wordsToHighlight="forex-promotion-markets-promo-text-accent-4"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="forex_promotion-markets-promo-text-5"
-          wordsToHighlight="forex-promotion-markets-promo-text-accent-5"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="forex_promotion-markets-promo-text-6"
-          wordsToHighlight="forex-promotion-markets-promo-text-accent-6"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="forex_promotion-markets-promo-text-7"
-          wordsToHighlight="forex-promotion-markets-promo-text-accent-7"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-      </PromotionMarkets>
+      />
     </>
   );
 };

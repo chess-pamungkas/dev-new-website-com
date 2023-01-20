@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
@@ -14,31 +14,17 @@ import TableComponent from "../components/shared/table";
 import { COLUMNS_INDICES, DATA_INDICES } from "../helpers/top-market-tables";
 import Faq from "../components/faq";
 import { FAQ_INDICES } from "../helpers/faq";
-import animation from "../assets/images/animations/indices.json";
-import PromotionMarkets from "../components/promotion-markets";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import indices from "../assets/images/top-markets/images/indices.svg";
 import TopMarketPromotion from "../components/top-market-promotion";
+import StaticImages from "../components/promotion-markets/static-images";
+import MarketingImage from "../assets/images/bg/promotions/indices/indices@2x.png";
+import animation from "../assets/images/bg/promotions/indices/indices.json";
 import { INDICES_TRADING_SECTION } from "../helpers/config";
 
 const IndicesPage = () => {
   const { t } = useTranslation();
-  const { isMobile, isTablet, isLG, isXL } = useWindowSize();
-
-  const getAnimationStyles = useCallback(() => {
-    switch (true) {
-      case isXL:
-        return { height: 536 };
-      case isLG:
-        return { height: 311 };
-      case isTablet:
-        return { height: 383 };
-      case isMobile:
-        return { height: 276 };
-      default:
-        return { height: 276 };
-    }
-  }, [isMobile, isTablet, isLG, isXL]);
+  const { isMobile } = useWindowSize();
 
   return (
     <Layout>
@@ -87,54 +73,11 @@ const IndicesPage = () => {
           accentClassName="highlighted-in-red"
         />
       </TopMarketPromotion>
-      <PromotionMarkets
+      <StaticImages
+        image={MarketingImage}
+        height={isMobile ? 400 : 800}
         animation={animation}
-        animationStyle={getAnimationStyles()}
-        btnTitle={t("indices_promotion-markets-btn")}
-      >
-        <HighlightedLocalizationText
-          localizationText="indices_promotion-markets-promo-text-1"
-          wordsToHighlight="indices-promotion-markets-promo-text-accent-1"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="indices_promotion-markets-promo-text-2"
-          wordsToHighlight="indices-promotion-markets-promo-text-accent-2"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="indices_promotion-markets-promo-text-3"
-          wordsToHighlight="indices-promotion-markets-promo-text-accent-3"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="indices_promotion-markets-promo-text-4"
-          wordsToHighlight="indices-promotion-markets-promo-text-accent-4"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="indices_promotion-markets-promo-text-5"
-          wordsToHighlight="indices-promotion-markets-promo-text-accent-5"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="indices_promotion-markets-promo-text-6"
-          wordsToHighlight="indices-promotion-markets-promo-text-accent-6"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="indices_promotion-markets-promo-text-7"
-          wordsToHighlight="indices-promotion-markets-promo-text-accent-7"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-      </PromotionMarkets>
+      />
       <TopMarketLayout
         title={t("indices_top-market-layout-title")}
         btnTitle={t("indices_top-market-layout-btn")}

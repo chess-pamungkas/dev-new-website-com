@@ -1,14 +1,23 @@
 let locales = require("../../locales/en/index.json");
 let fs = require("fs");
 
+let onlyFsaKeys = [];
 let fsaLocales = {};
 let cysecLocales = {};
 
+// Find only FSA specific keys and write the rest to cysecLocales
 Object.keys(locales).forEach((key) => {
   if (key.endsWith("-fsa")) {
-    fsaLocales[key] = locales[key];
+    onlyFsaKeys.push(key);
   } else {
     cysecLocales[key] = locales[key];
+  }
+});
+
+// Exclude duplicates and write fsaLocales
+Object.keys(locales).forEach((key) => {
+  if (!onlyFsaKeys.includes(key + "-fsa")) {
+    fsaLocales[key] = locales[key];
   }
 });
 
