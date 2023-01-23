@@ -188,7 +188,7 @@
   "index_trade-with-promotion-BNB": "BNB",
   "index_trade-with-promotion-TBC": "TBC",
   "index_trade-with-promotion-promo-text1-fsa": "Más de",
-  "index_trade-with-promotion-promo-text-bold-fsa": "10.000",
+  "index_trade-with-promotion-promo-text-bold-fsa": "1.000",
   "index_trade-with-promotion-promo-text2-fsa": "activos para negociar directamente en el móvil, ordernador o tablet en cualquier lugar y en cualquier momento",
 
   "index_trade-with-promotion-promo-text1": "Más de",
@@ -246,7 +246,7 @@
   "performance-advantage5-accent-fsa": "4",
   "index_performance-advantage5": "Apalancamiento hasta de 1:30",
   "performance-advantage5-accent": "4",
-  "index_performance-advantage6": "9.000 productos para operar.",
+  "index_performance-advantage6": "1000+ productos para operar.",
   "performance-advantage6-accent": "1",
   "index_performance-advantage6-fsa": "10.000 productos para operar.",
   "performance-advantage6-accent-fsa": "1",
@@ -255,8 +255,13 @@
 
   "footer-text-fsa": "Gracias a su estable y rápido entorno de trading ECN+ Oqtima es una carta de amor para los traders. Creado por líderes experimentados de la industria con más de 30 años de experiencia combinada en el sector del Trading, Oqtima representa el siguiente nivel en términos de experiencia de trading y accesibilidad a los mercados.",
   "footer-text": "Gracias a su estable y rápido entorno de trading ECN+ Oqtima es una carta de amor para los traders. Creado por líderes experimentados de la industria con más de 30 años de experiencia combinada en el sector del Trading, Oqtima representa el siguiente nivel en términos de experiencia de trading y accesibilidad a los mercados.",
-  "footer-copyright-paragraph1-fsa": "CDE Global Markets Ltd (operando bajo el nombre de “Oqtima”) registrada en Seychelles con el número de compañía 8430031-1, es regulada por la Autoridad de Servicios Financieros de Seychelles (The Financial Services Authority of Seychelles) con el número de licencia SD109.",
-  "footer-copyright-paragraph2-fsa": "La información facilitada en este sitio web es de carácter general y no constituye asesoramiento financiero personal. Antes de actuar sobre la base de cualquier información contenida en este sitio web, usted debe considerar la idoneidad de la información teniendo en cuenta sus objetivos, situación financiera y necesidades. Invertir en CFDs y Contratos de Margen FX conlleva riesgos significativos y no es adecuado para todos los inversores. Puede perder más que su depósito inicial. Usted no posee ni tiene interés alguno sobre los activos subyacentes. Le recomendamos que busque asesoramiento independiente y se asegure de que comprende plenamente los riesgos que implica antes de operar. Es importante que lea y tenga en cuenta los documentos informativos antes de adquirir cualquier producto ofrecido en este sitio web. La información y los anuncios ofrecidos en este sitio web no están destinados a ser utilizados por ninguna persona en ningún país o jurisdicción donde dicho uso sea contrario a las leyes y normativas locales. Los productos y servicios ofrecidos en este sitio web no están destinados a los residentes de Estados Unidos, Irán y Corea del Norte, ni a ninguna persona de ningún país o jurisdicción donde su distribución o uso sea contrario a la legislación o normativa local.",
+  "footer-copyright-paragraph1-fsa": "CDE Global Markets Ltd, duly authorized to operate under the  “Oqtima” brand, is a Securities Dealer registered in Seychelles with company registration number 8430031-1 and is regulated by the Financial Services Authority (FSA)  with Licence Number SD109. The registered office of CDE Global Markets Ltd is at F20, 1st Floor, Eden Plaza, Eden Island, Seychelles. (TRANSLATION REQUIRED!)",
+  "footer-copyright-paragraph2-fsa": "Risk Warning: The information provided on this website is general in nature and does not constitute personal financial advice. Before acting on any information on this website, you should consider the appropriateness of the information having regard to your objectives, financial situation and needs. Investing in CFDs and Margin FX Contracts carries significant risks and is not suitable for all investors. You may lose more than your initial deposit. You don’t own, or have, any interest in the underlying assets. (TRANSLATION REQUIRED!)",
+  "footer-copyright-paragraph3-part1-fsa": "We recommend that you seek independent advice and ensure that you fully understand the risks involved before trading. It is important that you read and consider our",
+  "footer-copyright-paragraph3-link-fsa": "disclosure documents",
+  "footer-copyright-paragraph3-part2-fsa": "before using our services. The information and advertisements offered on this website are not intended for use by any person in any country or jurisdiction where such use is contrary to the local laws and regulations and should not be regarded as an offer or solicitation to any person in any jurisdiction in which such an offer or solicitation is not authorized or to any person to whom it would be unlawful to make such an offer or solicitation, nor regarded as recommendation to buy, sell or otherwise deal with any particular currency or precious metal trade. (TRANSLATION REQUIRED!)",
+  "footer-copyright-paragraph4-fsa": "Products and services offered on this website are not directed at or intended for residents of the United States, Iran and North Korea, and are not intended for distribution to, or use by  any person in any country or jurisdiction where such distribution or use would be contrary to local law or regulation. (TRANSLATION REQUIRED!)",
+
   "footer-copyright-paragraph1": "Oqtima es el nombre comercial utilizado por Nordskov Capital Ltd.",
   "footer-copyright-paragraph2": "Nordskov Capital Ltd está registrada como una empresa de inversión en Chipre (Cyprus Investment Firm - CIF), autorizada y licenciada por la Comisión de Bolsa y Valores de Chipre (Cyprus Securities and Exchange Commission - CySEC), con licencia número 406/21.",
   "footer-copyright-paragraph3": "Advertencia de riesgo: Los CFDs son instrumentos complejos y conllevan un alto riesgo de perder dinero rápidamente debido al apalancamiento. La gran mayoría de las cuentas de los inversores minoristas pierden dinero cuando operan con CFDs. Debe considerar si entiende cómo funcionan los CFDs y si puede permitirse asumir el alto riesgo de perder su dinero. Tenga en cuenta nuestra",
@@ -287,30 +292,66 @@
   "table-tip1": "mínimo,",
   "table-tip2": "promedio",
 
-  "page-main-title": "Oqtima página de trading",
-  "page-allmarkets-title": "Oqtima Todos los mercados",
-  "page-platforms-title": "Plataformas",
-  "page-metals-title": "Oqtima Metales",
-  "page-crypto-title-fsa": "Oqtima Cripto",
-  "page-energies-title": "Oqtima Energías",
-  "page-forex-title": "Oqtima Forex",
-  "page-indices-title": "Oqtima Índices",
-  "page-search-title": "Oqtima Buscar",
-  "page-shares-title": "Oqtima Acciones",
-  "page-company-title": "Oqtima Página de empresa",
-  "page-legal-title": "Oqtima Aviso legal",
-  "page-contact-title": "Contáctanos",
-  "page-ctrader-title": "Oqtima Página de CTrader ",
-  "page-trading-view-title": "Oqtima página de Trading View",
-  "page-mt4-title": "Oqtima Página de MT4",
-  "page-mt5-title": "Oqtima Página de MT5",
-  "page-professional-qualification-title": "Oqtima Cualificación professional",
-  "page-withdrawal-title": "Página de Depósito/Retiro",
-  "page-spreads-title": "Spreads y comisiones",
-  "page-partners-title": "Introductor de Broker (IB)",
-  "page-accounts-type-title": "Tipos de cuenta",
+  "page-main-title": "CFD Trading en Forex, Acciones, Índices, Petróleo, Oro por Oqtima™",
+  "page-main-description": "CFDs Trading en Forex, Acciones, Índices, Petróleo y Oro con las plataformas de trading más avanzadas. Opera con Oqtima™, un Broker de Forex autorizado.",
+
+  "page-allmarkets-title": "¡Opera con Oqtima en los principales mercados con el poder de los CFDs!",
+  "page-allmarkets-description": "Accede a Forex, Metales, Energías, Índices y Acciones con el broker de CFDs Oqtima. Spreads competitivos, soporte 5 estrellas y herramientas de trading excepcionales.",
+
+  "page-platforms-title": "Opera CFDs en Oqtima con nuestras plataformas personalizadas Metaquotes y Ctrader",
+  "page-platforms-description": "Experimenta operar CFDs de forma fluida y fiable con las plataformas líderes del sector MetaTrader y cTrader en Oqtima. Ambas plataformas ofrecen una amplia gama de funciones y herramientas avanzadas para ayudarte a operar con confianza y tomar decisiones informadas.",
+
+  "page-metals-title": "Opera con CFDs de oro, plata y otros metales con un Broker de confianza - Empieza ahora",
+  "page-metals-description": "Maximiza tus beneficios operando con CFDs en metales. Nuestro Broker de confianza ofrece una amplia gama de CFDs de metales incluyendo oro, plata y más. Disfruta de spreads competitivos y de una plataforma fácil de usar. Regístrate ahora y empieza a operar metales con Oqtima.",
+
+  "page-crypto-title-fsa": "Opere con Criptomonedas con CFDs en Oqtima.",
+  "page-crypto-description-fsa": "Accede al mercado cripto con el poder de los CFDs en Oqtima. Opera con las monedas más famosas como BTC y ETH y muchas Alt Coins contra las divisas más importantes. Empieza hoy.",
+
+  "page-energies-title": "Opera CFDs de petróleo, gas y otras energías con un Broker regulado - ¡Empieza ahora!",
+  "page-energies-description": "Accede al mercado energético con el Broker de CFDs Oqtima. Opera con CFDs de petróleo, gas y otras energías con spreads competitivos, soporte 5 estrellas y herramientas de trading excepcionales... empieza a operar CFDs sobre energía hoy.",
+
+  "page-forex-title": "Opera CFDs de Forex con un broker líder en CFDs - ¡Oqtima!",
+  "page-forex-description": "Opera en Forex con Oqtima, un broker global de CFDs de confianza. Nuestra plataforma ofrece spreads competitivos y todas las herramientas que necesitas en tu viaje de trading. ¡Regístrate ahora y empieza a operar hoy mismo!",
+
+  "page-indices-title": "Opera Índices con nuestra Plataforma de CFDs: Soporte experto y Spreads súper competitivos",
+  "page-indices-description": "Únete a la plataforma de CFDs de Oqtima y empieza a operar índices con confianza. Broker de CFDs regulado con más de 20 índices de todo el mundo para operar. Regístrate ahora y comienza tu viaje de trading hoy.",
+
+  "page-shares-title": "Opera miles de CFDs de Acciones con Oqtima",
+  "page-shares-description": "Opera en acciones de grandes empresas de todo el mundo con un Broker de confianza. Nuestra plataforma ofrece spreads competitivos y tecnología de vanguardia. Regístrate ahora y empieza a operar CFDs de acciones hoy.",
+
+  "page-company-title": "Vivimos en un mundo financiero complejo. Queremos que puedas aprovecharlo.",
+  "page-company-description": "Oqtima fue creado con un objetivo en mente: Ofrecer a los traders de MT, sin importar su nivel de experiencia en trading, la mejor experiencia hecha a su medida.",
+
+  "page-ctrader-title": "Opera en Forex y CFDs en la avanzada plataforma cTrader con Oqtima",
+  "page-ctrader-description": "Experimenta el poder de la avanzada plataforma cTrader con Oqtima. Con una amplia gama de características y herramientas para ayudarte a operar con eficacia, cTrader es una opción popular entre los traders profesionales. Opera en Forex y CFDs con confianza y toma decisiones informadas con las avanzadas herramientas de análisis y gráficos de cTrader. Empieza a operar con cTrader Oqtima hoy.",
+
+  "page-trading-view-title": "Libera el poder del análisis técnico con la plataforma TradingView en Oqtima",
+  "page-trading-view-description": "Lleva tus operaciones al siguiente nivel con TradingView, la principal plataforma de análisis técnico. Con una gama de potentes herramientas de gráficos y análisis, TradingView te ayuda a identificar tendencias, detectar oportunidades y tomar decisiones informadas. Tanto si eres principiante como un trader experimentado, TradingView tiene algo que ofrecerte. Pruébalo hoy en Oqtima y comprueba la diferencia que puede suponer para tu trading.",
+
+  "page-mt4-title": "Opera CFDs de Forex y mucho más con la líder de la industria Oqtima MetaTrader 4",
+  "page-mt4-description": "Disfruta la potencia y fiabilidad de la Plataforma MetaTrader 4, estándar del sector para operar en Forex y trading de CFDs. Con gráficos avanzados, Expert Advisors y una amplia gama de opciones de personalización, Mt4 está diseñada para ayudarte a operar con confianza y tomar decisiones informadas. Comienza a operar con Mt4 en nuestro broker hoy.",
+
+  "page-mt5-title": "Opera en una amplia gama de mercados con la avanzada plataforma MetaTrader 5 de Oqtima",
+  "page-mt5-description": "Lleva tu trading al siguiente nivel con la avanzada plataforma MetaTrader 5. Con soporte para una amplia gama de mercados, gráficos avanzados, herramientas de análisis y asesores expertos personalizables, MT5 es la plataforma de trading definitiva para los traders experimentados. Empieza a operar con MT5 Oqtima.",
+
+  "page-professional-qualification-title": "Comprueba si cumples los requisitos para convertirte en Trader Profesional de Oqtima",
+  "page-professional-qualification-description": "Si deseas solicitar la recualificación Profesional de tu cuenta minorista estás en el lugar adecuado. Comprueba si cumples los requisitos básicos para solicitar la Cualificación Profesional con Oqtima.",
+
+  "page-withdrawal-title": "Opciones de financiación y retirada de fondos inmediatas y seguras con Oqtima",
+  "page-withdrawal-description": "Con Oqtima puedes depositar fondos en tu cuenta y retirar tus ganancias de forma rápida y segura. Ofrecemos una gama de opciones que incluyen depósitos con tarjeta de crédito, transferencias de monederos electrónicos y transferencias bancarias. Además, puedes retirar fondos el mismo día para acceder a ellos cuando lo necesites. Elige nuestro broker para depositar y retirar fondos sin complicaciones.",
+
+  "page-spreads-title": "Spreads competitivos y comisiones bajas y transparentes en Oqtima.",
+  "page-spreads-description": "Elige Oqtima también por nuestros spreads competitivos y bajas comisiones. Ofrecemos algunos de los precios más competitivos de la industria, para que puedas centrarte en tus operaciones sin preocuparte por los altos costes ocultos. Además, con comisiones transparentes y directas, siempre sabrás lo que estás pagando. Empieza a operar con Oqtima hoy.",
+
+  "page-accounts-type-title": "Encuentra el tipo de cuenta adecuado para tus necesidades de trading con Oqtima",
+  "page-accounts-type-description": "Oqtima ofrece 2 tipos de cuenta para adaptarse a las necesidades de los diferentes traders. Tanto si eres un principiante como un profesional experimentado, tenemos un tipo de cuenta adecuado para ti. Con opciones como las cuentas ECN+ y la cuenta ONE, puedes elegir el tipo de trader que deseas ser. Explora hoy nuestros tipos de cuenta y encuentra la más adecuada para ti.",
+
   "page-faq-title": "FAQ",
   "page-education-title": "Educación Oqtima",
+  "page-search-title": "Oqtima Buscar",
+  "page-partners-title": "Introductor de Broker (IB)",
+  "page-legal-title": "Oqtima Aviso legal",
+  "page-contact-title": "Contáctanos",
 
   "notification-stripe-cysec": "Los CFDs son instrumentos complejos y conllevan un alto riesgo de perder dinero rápidamente debido al apalancamiento. La gran mayoría de las cuentas de los inversores minoristas pierden dinero cuando operan con CFDs. Debes considerar si entiendes cómo funcionan los CFDs y si puedes permitirte asumir el alto riesgo de perder tu dinero. Lee la declaración de riesgos de Oqtima",
   "notification-stripe-cysec-link": "aquí.",

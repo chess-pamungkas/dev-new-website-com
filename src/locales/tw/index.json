@@ -187,7 +187,7 @@
   "index_trade-with-promotion-BNB": "BNB",
   "index_trade-with-promotion-TBC": "TBC",
   "index_trade-with-promotion-promo-text1-fsa": "超过",
-  "index_trade-with-promotion-promo-text-bold-fsa": "10.000",
+  "index_trade-with-promotion-promo-text-bold-fsa": "1.000",
   "index_trade-with-promotion-promo-text2-fsa": "随时随地在手机、平板或电脑上直接交易",
 
   "index_trade-with-promotion-promo-text1": "超过",
@@ -245,7 +245,7 @@
   "performance-advantage5-accent-fsa": "4",
   "index_performance-advantage5": "杠杆高达1:30",
   "performance-advantage5-accent": "4",
-  "index_performance-advantage6": "9.000可交易产品.",
+  "index_performance-advantage6": "1000+ 可交易产品.",
   "performance-advantage6-accent": "1",
   "index_performance-advantage6-fsa": "10.000 可交易产品.",
   "performance-advantage6-accent-fsa": "1",
@@ -254,8 +254,13 @@
 
   "footer-text-fsa": "就像Oqtima写给交易者的一封温暖的情书，为其提供稳定快速的 ECN+ 交易环境跃然纸上. Oqtima 由在交易行业拥有超过 30 年综合专业知识的行业领导者创立，代表了现在最好的交易体验和当今市场的最高水平.",
   "footer-text": "就像Oqtima写给交易者的一封温暖的情书，为其提供稳定快速的 ECN+ 交易环境跃然纸上. Oqtima 由在交易行业拥有超过 30 年综合专业知识的行业领导者创立，代表了现在最好的交易体验和当今市场的最高水平.  ",
-  "footer-copyright-paragraph1-fsa": " CDE Global Markets Ltd（以 \"Oqtima\" 的名义运作）在塞舌尔注册，公司编号为8430031-1，由塞舌尔金融服务管理局监管，许可证编号为SD109。.",
-  "footer-copyright-paragraph2-fsa": "本网站提供的信息仅具有一般性，不构成个人财务建议。在根据本网站上的任何信息采取行动之前，您应该根据您的目标、财务状况和需求考虑这些信息是否合适。投资差价合约和外汇保证金合约具有重大风险，不适合所有投资者。您的损失可能超过您的初始存款。您并不拥有或拥有相关资产的任何权益。我们建议您寻求独立的决定，并确保您在交易前充分了解所涉及的风险。在您交易网站上所列的任何产品之前，您必须阅读和考虑披露文件。本网站提供的信息和广告不打算提供给任何国家或司法管辖区的违反了当地的法律和法规的任何人使用。本网站提供的产品和服务不提供给美国、伊朗和朝鲜的居民.",
+  "footer-copyright-paragraph1-fsa": "CDE Global Markets Ltd, duly authorized to operate under the  “Oqtima” brand, is a Securities Dealer registered in Seychelles with company registration number 8430031-1 and is regulated by the Financial Services Authority (FSA)  with Licence Number SD109. The registered office of CDE Global Markets Ltd is at F20, 1st Floor, Eden Plaza, Eden Island, Seychelles. (TRANSLATION REQUIRED!)",
+  "footer-copyright-paragraph2-fsa": "Risk Warning: The information provided on this website is general in nature and does not constitute personal financial advice. Before acting on any information on this website, you should consider the appropriateness of the information having regard to your objectives, financial situation and needs. Investing in CFDs and Margin FX Contracts carries significant risks and is not suitable for all investors. You may lose more than your initial deposit. You don’t own, or have, any interest in the underlying assets. (TRANSLATION REQUIRED!)",
+  "footer-copyright-paragraph3-part1-fsa": "We recommend that you seek independent advice and ensure that you fully understand the risks involved before trading. It is important that you read and consider our",
+  "footer-copyright-paragraph3-link-fsa": "disclosure documents",
+  "footer-copyright-paragraph3-part2-fsa": "before using our services. The information and advertisements offered on this website are not intended for use by any person in any country or jurisdiction where such use is contrary to the local laws and regulations and should not be regarded as an offer or solicitation to any person in any jurisdiction in which such an offer or solicitation is not authorized or to any person to whom it would be unlawful to make such an offer or solicitation, nor regarded as recommendation to buy, sell or otherwise deal with any particular currency or precious metal trade. (TRANSLATION REQUIRED!)",
+  "footer-copyright-paragraph4-fsa": "Products and services offered on this website are not directed at or intended for residents of the United States, Iran and North Korea, and are not intended for distribution to, or use by  any person in any country or jurisdiction where such distribution or use would be contrary to local law or regulation. (TRANSLATION REQUIRED!)",
+
   "footer-copyright-paragraph1": " Oqtima是Nordskov Capital Ltd使用的商品名。.",
   "footer-copyright-paragraph2": " Nordskov Capital Ltd注册在塞浦路斯的投资公司（CIF），由塞浦路斯证券交易委员会（CySEC）授权和许可，许可证号为406/21。.",
   "footer-copyright-paragraph3": "风险警告。差价合约是复杂的教育工具，由于杠杆作用，有迅速亏损的高风险。绝大多数零售投资者的账户在交易差价合约时都会亏钱。您应该考虑您是否了解差价合约的运作方式，以及您是否能够承担亏损的高风险。请考虑我们的",
