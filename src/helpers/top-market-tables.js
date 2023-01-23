@@ -2,57 +2,6 @@ import React from "react";
 import ButtonLink from "../components/shared/button-link";
 import cn from "classnames";
 
-export const COLUMNS_FOREX = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "ECN+ Account",
-    columns: [
-      {
-        Header: "Min",
-        accessor: "col2",
-      },
-      {
-        Header: "Avg",
-        accessor: "col3",
-      },
-    ],
-  },
-  {
-    id: "group3",
-    Header: "OQTIMA ONE ACCOUNT",
-    columns: [
-      {
-        Header: "Min",
-        accessor: "col4",
-      },
-      {
-        Header: "Avg",
-        accessor: "col5",
-      },
-    ],
-  },
-  {
-    id: "group4",
-    Header: "",
-    columns: [
-      {
-        Header: "Live",
-        accessor: "col6",
-      },
-    ],
-  },
-];
-
 const FOREX_COLUMNS_WITH_BTN = (
   <div className="table__info-column">
     <div className="table__params">
@@ -125,57 +74,6 @@ export const DATA_FOREX = [
     col4: "0",
     col5: "0.4",
     col6: FOREX_COLUMNS_WITH_BTN,
-  },
-];
-
-export const COLUMNS_CRYPTO = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "ECN+ Account",
-    columns: [
-      {
-        Header: "Min",
-        accessor: "col2",
-      },
-      {
-        Header: "Avg",
-        accessor: "col3",
-      },
-    ],
-  },
-  {
-    id: "group3",
-    Header: "OQTIMA ONE ACCOUNT",
-    columns: [
-      {
-        Header: "Min",
-        accessor: "col4",
-      },
-      {
-        Header: "Avg",
-        accessor: "col5",
-      },
-    ],
-  },
-  {
-    id: "group4",
-    Header: "",
-    columns: [
-      {
-        Header: "Live",
-        accessor: "col6",
-      },
-    ],
   },
 ];
 
@@ -261,57 +159,6 @@ export const DATA_CRYPTO = [
   },
 ];
 
-export const COLUMNS_SHARES = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "ECN+ Account",
-    columns: [
-      {
-        Header: "Min",
-        accessor: "col2",
-      },
-      {
-        Header: "Avg",
-        accessor: "col3",
-      },
-    ],
-  },
-  {
-    id: "group3",
-    Header: "OQTIMA ONE ACCOUNT",
-    columns: [
-      {
-        Header: "Min",
-        accessor: "col4",
-      },
-      {
-        Header: "Avg",
-        accessor: "col5",
-      },
-    ],
-  },
-  {
-    id: "group4",
-    Header: "",
-    columns: [
-      {
-        Header: "Live",
-        accessor: "col6",
-      },
-    ],
-  },
-];
-
 const SHARES_COLUMNS_WITH_BTN = (
   <div className="table__info-column">
     <div className="table__params">
@@ -387,57 +234,6 @@ export const DATA_SHARES = [
   },
 ];
 
-export const COLUMNS_METALS = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "ECN+ Account",
-    columns: [
-      {
-        Header: "Min",
-        accessor: "col2",
-      },
-      {
-        Header: "Avg",
-        accessor: "col3",
-      },
-    ],
-  },
-  {
-    id: "group3",
-    Header: "OQTIMA ONE ACCOUNT",
-    columns: [
-      {
-        Header: "Min",
-        accessor: "col4",
-      },
-      {
-        Header: "Avg",
-        accessor: "col5",
-      },
-    ],
-  },
-  {
-    id: "group4",
-    Header: "",
-    columns: [
-      {
-        Header: "Live",
-        accessor: "col6",
-      },
-    ],
-  },
-];
-
 const METALS_COLUMNS_WITH_BTN = (
   <div className="table__info-column">
     <div className="table__params">
@@ -509,46 +305,6 @@ export const DATA_METALS = [
     col4: "1061.00",
     col5: "1617.68",
     col6: METALS_COLUMNS_WITH_BTN,
-  },
-];
-export const COLUMNS_INDICES = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "ECN+ Account",
-    columns: [
-      {
-        Header: "Min",
-        accessor: "col2",
-      },
-      {
-        Header: "Avg",
-        accessor: "col3",
-      },
-    ],
-  },
-  {
-    id: "group3",
-    Header: "OQTIMA ONE ACCOUNT",
-    columns: [
-      {
-        Header: "Min",
-        accessor: "col4",
-      },
-      {
-        Header: "Avg",
-        accessor: "col5",
-      },
-    ],
   },
 ];
 
@@ -632,57 +388,6 @@ export const DATA_INDICES = [
     col4: "3",
     col5: "3.6",
     col6: INDICES_COLUMNS_WITH_BTN,
-  },
-];
-
-export const COLUMNS_ENERGIES = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "ECN+ Account",
-    columns: [
-      {
-        Header: "Min",
-        accessor: "col2",
-      },
-      {
-        Header: "Avg",
-        accessor: "col3",
-      },
-    ],
-  },
-  {
-    id: "group3",
-    Header: "OQTIMA ONE ACCOUNT",
-    columns: [
-      {
-        Header: "Min",
-        accessor: "col4",
-      },
-      {
-        Header: "Avg",
-        accessor: "col5",
-      },
-    ],
-  },
-  {
-    id: "group4",
-    Header: "",
-    columns: [
-      {
-        Header: "Live",
-        accessor: "col6",
-      },
-    ],
   },
 ];
 

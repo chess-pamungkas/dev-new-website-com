@@ -1283,5 +1283,8 @@
   "accounts-type_account-type2-markets-value-eu": "5",
   "accounts-type_account-type2-total-symbols-title": "Symboli totali",
   "accounts-type_account-type2-total-symbols-value": "300+",
-  "accounts-type_account-type2-total-symbols-value-eu": "1000+"
+  "accounts-type_account-type2-total-symbols-value-eu": "1000+",
+
+  "oqtima-one-account": "Oqtima ONE Account",
+  "oqtima-ecn-account": "ECN+ Account"
 }

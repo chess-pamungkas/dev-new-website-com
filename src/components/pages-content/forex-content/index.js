@@ -23,7 +23,6 @@ const ForexContent = () => {
     <>
       <TopMarket
         title={t("forex_top-market-title")}
-        isTitleUppercase
         image={image}
         btn1Title={t("forex_top-market-btn1")}
         link1={REGISTRATION_LINK}

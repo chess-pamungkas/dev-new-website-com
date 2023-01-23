@@ -466,7 +466,7 @@
 
   "crypto_top-market-title-fsa": "You can now trade more than 170 crypto pairs!",
   "crypto_top-market-btn1-fsa": "Try our demo account",
-  "crypto_top-market-btn2-fsa": "Trade now crypto cfc",
+  "crypto_top-market-btn2-fsa": "Trade now crypto CFD",
   "crypto_trading-ticker-title-fsa": "Popular crypto to trade",
   "crypto_top-market-promo-btn-fsa": "Start trading crypto CFD",
   "crypto_top-market-layout-title-fsa": "Crypto CFD Trading Spreads",
@@ -601,7 +601,7 @@
   "indices-promotion-markets-promo-text-accent-7": "1,2,3",
   "indices_promotion-markets-btn": "Start Now",
   "energies_faq-title1": "Is there commission when trading Energies?",
-  "energies_faq-content1": "The term Spot simply refers to the fact you are trading using the current delivery price, as opposed to a future contract. Unlike future contracts, you have no expiration date with spot contracts.",
+  "energies_faq-content1": "There are no extra commission fees charged when opening or closing positions on energies. The cost of the trade is the spread only and this can be calculated in real time depending on your trade size.",
   "energies_faq-title2": "What is the spot price?",
   "energies_faq-content2-1": "The term Spot simply refers to the fact you are trading using the current delivery price, as opposed to a future contract. Unlike future contracts, you have no expiration date with spot contracts.",
   "energies_faq-content2-2": "Trading CFD spot energies, but you are not taking physical ownership of the goods, you are simply trading based on price speculation.",
@@ -1466,5 +1466,8 @@
   "trading-tools_mb-block_title1": "Harness online news with powerful AI",
   "trading-tools_mb-block_text1": "Don't spend countless hours to scroll through long list of headlines. Find the buzz that is driving the markets and act upon it.",
   "trading-tools_mb-block_title2": "All your news content in one beautiful solution",
-  "trading-tools_mb-block_text2": "There are more news sources than ever before - integrate timely updates from traditional news sources, blogs and social media within your platform."
+  "trading-tools_mb-block_text2": "There are more news sources than ever before - integrate timely updates from traditional news sources, blogs and social media within your platform.",
+
+  "oqtima-one-account": "Oqtima ONE Account",
+  "oqtima-ecn-account": "ECN+ Account"
 }
