@@ -187,7 +187,7 @@
   "index_trade-with-promotion-BNB": "BNB",
   "index_trade-with-promotion-TBC": "TBC",
   "index_trade-with-promotion-promo-text1-fsa": " più di",
-  "index_trade-with-promotion-promo-text-bold-fsa": "10.000",
+  "index_trade-with-promotion-promo-text-bold-fsa": "1.000",
   "index_trade-with-promotion-promo-text2-fsa": "Strumenti con cui fare trading direttamente su cellulare, desktop o tablet ovunque e in qualsiasi momento",
 
   "index_trade-with-promotion-promo-text1": "più di",
@@ -245,7 +245,7 @@
   "performance-advantage5-accent-fsa": "4",
   "index_performance-advantage5": "Leva fino a 1:30",
   "performance-advantage5-accent": "4",
-  "index_performance-advantage6": "9.000+ prodotti con cui fare trading",
+  "index_performance-advantage6": "1000+ prodotti con cui fare trading",
   "performance-advantage6-accent": "1",
   "index_performance-advantage6-fsa": "10.000+ prodotti con cui fare trading",
   "performance-advantage6-accent-fsa": "1",
@@ -254,8 +254,13 @@
 
   "footer-text-fsa": " Grazie al suo ambiente di trading ECN+ stabile e veloce, Oqtima è una lettera d'amore per i trader.  Creato da esperti leader del settore con oltre 30 anni di esperienza combinata nell'industria del trading, Oqtima rappresenta il livello successivo in termini di esperienza di trading e accessibilità ai mercati.",
   "footer-text": " Grazie al suo ambiente di trading ECN+ stabile e veloce, Oqtima è una lettera d'amore per i trader.  Creato da esperti leader del settore con oltre 30 anni di esperienza combinata nell'industria del trading, Oqtima rappresenta il livello successivo in termini di esperienza di trading e accessibilità ai mercati.",
-  "footer-copyright-paragraph1-fsa": " CDE Global Markets Ltd (che opera con il nome di \"Oqtima\"), registrata alle Seychelles con il numero di società 8430031-1, è regolamentata dalla Financial Services Authority delle Seychelles con licenza numero SD109.",
-  "footer-copyright-paragraph2-fsa": " Le informazioni fornite in questo sito web sono di carattere generale e non costituiscono una consulenza finanziaria personale. Prima di agire in base alle informazioni contenute in questo sito web, dovreste valutare l'adeguatezza delle informazioni in base ai vostri obiettivi, alla vostra situazione finanziaria e alle vostre esigenze. L'investimento in CFD e contratti FX con margine comporta rischi significativi e non è adatto a tutti gli investitori. Potreste perdere più del vostro deposito iniziale. Non possedete o avete alcun interesse nelle attività sottostanti. Vi consigliamo di richiedere una consulenza indipendente e di assicurarvi di aver compreso appieno i rischi connessi prima di operare. È importante che leggiate e consideriate i documenti informativi prima di acquistare qualsiasi prodotto elencato sul sito web. Le informazioni e le pubblicità offerte su questo sito web non sono destinate all'uso da parte di persone in paesi o giurisdizioni in cui tale uso è contrario alle leggi e ai regolamenti locali. I prodotti e i servizi offerti su questo sito web non sono destinati ai residenti degli Stati Uniti, dell'Iran e della Corea del Nord, o a qualsiasi persona in qualsiasi paese o giurisdizione in cui la distribuzione o l'uso sarebbero contrari alle leggi o ai regolamenti locali.",
+  "footer-copyright-paragraph1-fsa": "CDE Global Markets Ltd, duly authorized to operate under the  “Oqtima” brand, is a Securities Dealer registered in Seychelles with company registration number 8430031-1 and is regulated by the Financial Services Authority (FSA)  with Licence Number SD109. The registered office of CDE Global Markets Ltd is at F20, 1st Floor, Eden Plaza, Eden Island, Seychelles. (TRANSLATION REQUIRED!)",
+  "footer-copyright-paragraph2-fsa": "Risk Warning: The information provided on this website is general in nature and does not constitute personal financial advice. Before acting on any information on this website, you should consider the appropriateness of the information having regard to your objectives, financial situation and needs. Investing in CFDs and Margin FX Contracts carries significant risks and is not suitable for all investors. You may lose more than your initial deposit. You don’t own, or have, any interest in the underlying assets. (TRANSLATION REQUIRED!)",
+  "footer-copyright-paragraph3-part1-fsa": "We recommend that you seek independent advice and ensure that you fully understand the risks involved before trading. It is important that you read and consider our",
+  "footer-copyright-paragraph3-link-fsa": "disclosure documents",
+  "footer-copyright-paragraph3-part2-fsa": "before using our services. The information and advertisements offered on this website are not intended for use by any person in any country or jurisdiction where such use is contrary to the local laws and regulations and should not be regarded as an offer or solicitation to any person in any jurisdiction in which such an offer or solicitation is not authorized or to any person to whom it would be unlawful to make such an offer or solicitation, nor regarded as recommendation to buy, sell or otherwise deal with any particular currency or precious metal trade. (TRANSLATION REQUIRED!)",
+  "footer-copyright-paragraph4-fsa": "Products and services offered on this website are not directed at or intended for residents of the United States, Iran and North Korea, and are not intended for distribution to, or use by  any person in any country or jurisdiction where such distribution or use would be contrary to local law or regulation. (TRANSLATION REQUIRED!)",
+
   "footer-copyright-paragraph1": " Oqtima è il tradename utilizzato da Nordskov Capital Ltd.",
   "footer-copyright-paragraph2": " Nordskov Capital Ltd è registrata come società di investimento cipriota (CIF), autorizzata e autorizzata dalla Cyprus Securities and Exchange Commission (CySEC), con numero di licenza 406/21.",
   "footer-copyright-paragraph3": "Attenzione al rischio: I CFD sono strumenti complessi e comportano un rischio elevato di perdere rapidamente denaro a causa della leva finanziaria. La stragrande maggioranza dei conti degli investitori al dettaglio perde denaro quando opera con i CFD. Dovete valutare se avete compreso il funzionamento dei CFD e se potete permettervi di correre il rischio elevato di perdere il vostro denaro. Considerate il nostro",

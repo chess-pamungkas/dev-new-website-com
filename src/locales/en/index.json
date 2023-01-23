@@ -197,7 +197,7 @@
   "index_trade-with-promotion-BNB": "BNB",
   "index_trade-with-promotion-TBC": "TBC",
   "index_trade-with-promotion-promo-text1-fsa": "More than",
-  "index_trade-with-promotion-promo-text-bold-fsa": "10.000",
+  "index_trade-with-promotion-promo-text-bold-fsa": "1.000",
   "index_trade-with-promotion-promo-text2-fsa": "assets to trade directly on mobile, desktop or tablet anywhere anytime",
 
   "index_trade-with-promotion-promo-text1": "More than",
@@ -255,7 +255,7 @@
   "performance-advantage5-accent-fsa": "4",
   "index_performance-advantage5": "Leverage up to 1:30",
   "performance-advantage5-accent": "4",
-  "index_performance-advantage6": "9.000 tradeable products.",
+  "index_performance-advantage6": "1000+ tradeable products.",
   "performance-advantage6-accent": "1",
   "index_performance-advantage6-fsa": "10.000 tradeable products.",
   "performance-advantage6-accent-fsa": "1",
@@ -264,8 +264,13 @@
 
   "footer-text-fsa": "Thanks to it’s stable and fast ECN+ trading environment, Oqtima is a love letter to traders.  Created by experienced industry leaders with more than 30 years of combined expertise in the trading industry, Oqtima represents the next level in terms of trading experience and market accessibility.",
   "footer-text": "Thanks to it’s stable and fast ECN+ trading environment, Oqtima is a love letter to traders.  Created by experienced industry leaders with more than 30 years of combined experience in the trading industry, Oqtima represents the next level in terms of trading experience and market accessibility.  ",
-  "footer-copyright-paragraph1-fsa": "CDE Global Markets Ltd (operating under the name “Oqtima”) registered in Seychelles with the company number 8430031-1, is regulated by the Financial Services Authority of Seychelles With Licence Number SD109.",
-  "footer-copyright-paragraph2-fsa": "The information provided on this website is general in nature only and does not constitute personal financial advice. Before acting on any information on this website, you should consider the appropriateness of the information having regard to your objectives, financial situation and needs. Investing in CFDs and Margin FX Contracts carries significant risks and is not suitable for all investors. You may lose more than your initial deposit. You don’t own, or have, any interest in the underlying assets. We recommend that you seek independent advice and ensure that you fully understand the risks involved before trading. It is important that you read and consider disclosure documents before you acquire any product listed on the website. The information and advertisements offered on this website are not intended for use by any person in any country or jurisdiction where such use is contrary to the local laws and regulations. Products and Services offered on this website are not intended for residents of the United States, Iran and North Korea, or any person in any country or jurisdviction where such distribution or use would be contrary to local law or regulation.",
+  "footer-copyright-paragraph1-fsa": "CDE Global Markets Ltd, duly authorized to operate under the  “Oqtima” brand, is a Securities Dealer registered in Seychelles with company registration number 8430031-1 and is regulated by the Financial Services Authority (FSA)  with Licence Number SD109. The registered office of CDE Global Markets Ltd is at F20, 1st Floor, Eden Plaza, Eden Island, Seychelles.",
+  "footer-copyright-paragraph2-fsa": "Risk Warning: The information provided on this website is general in nature and does not constitute personal financial advice. Before acting on any information on this website, you should consider the appropriateness of the information having regard to your objectives, financial situation and needs. Investing in CFDs and Margin FX Contracts carries significant risks and is not suitable for all investors. You may lose more than your initial deposit. You don’t own, or have, any interest in the underlying assets.",
+  "footer-copyright-paragraph3-part1-fsa": "We recommend that you seek independent advice and ensure that you fully understand the risks involved before trading. It is important that you read and consider our",
+  "footer-copyright-paragraph3-link-fsa": "disclosure documents",
+  "footer-copyright-paragraph3-part2-fsa": "before using our services. The information and advertisements offered on this website are not intended for use by any person in any country or jurisdiction where such use is contrary to the local laws and regulations and should not be regarded as an offer or solicitation to any person in any jurisdiction in which such an offer or solicitation is not authorized or to any person to whom it would be unlawful to make such an offer or solicitation, nor regarded as recommendation to buy, sell or otherwise deal with any particular currency or precious metal trade.",
+  "footer-copyright-paragraph4-fsa": "Products and services offered on this website are not directed at or intended for residents of the United States, Iran and North Korea, and are not intended for distribution to, or use by  any person in any country or jurisdiction where such distribution or use would be contrary to local law or regulation.",
+  
   "footer-copyright-paragraph1": "Oqtima is the trade name used by Nordskov Capital Ltd.",
   "footer-copyright-paragraph2": "Nordskov Capital Ltd is registered as a Cyprus Investment Firm (CIF), authorized and licensed by the Cyprus Securities and Exchange Commission (CySEC), with licence number 406/21.",
   "footer-copyright-paragraph3": "Risk Warning: CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. The vast majority of retail investor accounts lose money when trading CFDs. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. Please consider our",
