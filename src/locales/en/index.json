@@ -1060,7 +1060,7 @@
   "faq_account-a1": "It only takes a couple of minutes, and your account application will be sent to our experienced team to be processed. You will receive an email as soon as your account is ready to go!",
   "faq_account-q2": "Which documents do I need to open my account?",
   "faq_account-a2": "You will need a clear colour copy of your valid identification document and a proof of residence.",
-  "faq_account-q3": "Which documents do I need to open my account?",
+  "faq_account-q3": "Which proof of identity document do I need to open my account?",
   "faq_account-a3": "An acceptable document can be one of the following.",
   "faq_account-a3-2": "- Passport",
   "faq_account-a3-3": "- Drivers Licence",
@@ -1095,7 +1095,7 @@
   "faq_trading-a3": "Yes, Expert Advisors (EAs) can be used for automated trading.",
   "faq_trading-q4": "What fees are charged when trading?",
   "faq_trading-a4": "Depending on the account type you choose, you will either have a spread only account with no additional commission, or a commission account with spreads starting from zero pips.",
-  "faq_trading-q5": "What spreads to you offer?",
+  "faq_trading-q5": "What spreads do you offer?",
   "faq_trading-a5": "Our spreads are floating, which means that they will fluctuate depending on the market conditions. Depending on the account type you choose, our spreads start from zero pips.",
 
   "faq_market-title": "Oqtima Markets",
