@@ -13,7 +13,7 @@ import TopMarketPromotion from "../components/top-market-promotion";
 import energies from "../assets/images/top-markets/images/energies.svg";
 import TopMarketLayout from "../components/top-market-layout";
 import TableComponent from "../components/shared/table";
-import { COLUMNS_ENERGIES, DATA_ENERGIES } from "../helpers/top-market-tables";
+import { DATA_ENERGIES } from "../helpers/top-market-tables";
 import Faq from "../components/faq";
 import { FAQ_ENERGIES } from "../helpers/faq";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
@@ -25,6 +25,57 @@ import { ENERGIES_TRADING_SECTION } from "../helpers/config";
 const EnergiesPage = () => {
   const { t } = useTranslation();
   const { isMobile } = useWindowSize();
+
+  const COLUMNS_ENERGIES = [
+    {
+      id: "group1",
+      Header: "",
+      columns: [
+        {
+          Header: "",
+          accessor: "col1",
+        },
+      ],
+    },
+    {
+      id: "group2",
+      Header: t("oqtima-ecn-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col2",
+        },
+        {
+          Header: "Avg",
+          accessor: "col3",
+        },
+      ],
+    },
+    {
+      id: "group3",
+      Header: t("oqtima-one-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col4",
+        },
+        {
+          Header: "Avg",
+          accessor: "col5",
+        },
+      ],
+    },
+    {
+      id: "group4",
+      Header: "",
+      columns: [
+        {
+          Header: "Live",
+          accessor: "col6",
+        },
+      ],
+    },
+  ];
 
   return (
     <Layout>
