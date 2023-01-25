@@ -9,7 +9,6 @@ import TopMarketPromotion from "../../top-market-promotion";
 import forex from "../../../assets/images/top-markets/images/forex.svg";
 
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { FOREX_TRADING_SECTION } from "../../../helpers/config";
 import animation from "../../../assets/images/bg/promotions/forex/forex.json";
 import MarketingCircle from "../../marketing-circle";
@@ -17,7 +16,7 @@ import MarketingCircle from "../../marketing-circle";
 const ForexContent = () => {
   const { sitePostfix } = useEntityPostfix();
   const { t } = useTranslation();
-  const { isMobile } = useWindowSize();
+
   return (
     <>
       <TopMarket
