@@ -8,7 +8,6 @@ import image from "../assets/images/top-markets/commodities.svg";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
-import { useWindowSize } from "../helpers/hooks/use-window-size";
 import TradingTicker from "../components/trading-ticker";
 import commodities from "../assets/images/top-markets/images/commodities.svg";
 import TopMarketPromotion from "../components/top-market-promotion";
@@ -17,14 +16,12 @@ import TableComponent from "../components/shared/table";
 import { DATA_METALS } from "../helpers/top-market-tables";
 import Faq from "../components/faq";
 import { FAQ_METALS } from "../helpers/faq";
-import StaticImages from "../components/promotion-markets/static-images";
-import MarketingImage from "../assets/images/bg/promotions/metals/metals@2x.png";
 import animation from "../assets/images/bg/promotions/metals/metals.json";
 import { METALS_TRADING_SECTION } from "../helpers/config";
+import MarketingCircle from "../components/marketing-circle";
 
 const MetalsPage = () => {
   const { t } = useTranslation();
-  const { isMobile } = useWindowSize();
 
   const COLUMNS_METALS = [
     {
@@ -116,10 +113,56 @@ const MetalsPage = () => {
           accentClassName="highlighted-in-red"
         />
       </TopMarketPromotion>
-      <StaticImages
-        image={MarketingImage}
-        height={isMobile ? 400 : 800}
+      <MarketingCircle
         animation={animation}
+        upper={
+          <HighlightedLocalizationText
+            localizationText="metals_marketing-circle-upper"
+            wordsToHighlight="metals_marketing-circle-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        leftUpper={
+          <HighlightedLocalizationText
+            localizationText="metals_marketing-circle-left-upper"
+            wordsToHighlight="metals_marketing-circle-left-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        rightUpper={
+          <HighlightedLocalizationText
+            localizationText="metals_marketing-circle-right-upper"
+            wordsToHighlight="metals_marketing-circle-right-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        bottom={
+          <HighlightedLocalizationText
+            localizationText="metals_marketing-circle-bottom"
+            wordsToHighlight="metals_marketing-circle-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        leftBottom={
+          <HighlightedLocalizationText
+            localizationText="metals_marketing-circle-left-bottom"
+            wordsToHighlight="metals_marketing-circle-left-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        rightBottom={
+          <HighlightedLocalizationText
+            localizationText="metals_marketing-circle-right-bottom"
+            wordsToHighlight="metals_marketing-circle-right-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
       />
       <TopMarketLayout
         title={t("metals_top-market-layout-title")}
