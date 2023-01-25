@@ -1,0 +1,144 @@
+@import "vars";
+@import "mixins";
+
+.marketing-circle {
+  width: 100%;
+  background-position: center;
+  // background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/marketing-circle/bg-sm.svg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding-top: 230px;
+  padding-bottom: 100px;
+  flex-direction: column;
+
+  @include tablet {
+    background-image: url("../../assets/images/marketing-circle/bg-md.svg");
+    padding-top: 230px;
+    height: 1010px;
+  }
+
+  @include desktop-lg {
+    background-image: url("../../assets/images/marketing-circle/bg-lg.svg");
+    padding-top: 230px;
+    padding-bottom: unset;
+    height: 880px;
+  }
+
+  @include desktop-xl {
+    background-image: url("../../assets/images/marketing-circle/bg-xl.svg");
+    padding-top: 285px;
+    padding-bottom: 100px;
+    height: 1276px;
+  }
+
+  &__wrapper {
+    position: absolute;
+    display: grid;
+    grid-template-areas: ". upper ." "left-upper . right-upper" "left-bottom . right-bottom" ". bottom .";
+    align-items: center;
+    justify-items: center;
+    grid-gap: 90px 0px;
+    top: 100px;
+
+    @include tablet {
+      grid-gap: 106px 0px;
+      top: 109px;
+    }
+
+    @include desktop-lg {
+      grid-gap: 89px 43px;
+      top: 163px;
+    }
+
+    @include desktop-xl {
+      grid-gap: 127px 90px;
+      top: 130px;
+    }
+  }
+
+  &__item {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 10px #00000029;
+    border-radius: 60px;
+    font: normal normal 900 9px/12px $font;
+    max-width: 130px;
+    min-height: 37px;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: fit-content;
+
+    @include tablet {
+      font: normal normal 900 17px/21px $font;
+      max-width: 255px;
+      min-height: 77px;
+      padding: 17px 20px;
+    }
+
+    @include desktop-lg {
+      font: normal normal 900 20px/25px $font;
+      max-width: 290px;
+      min-height: 76px;
+      padding: 12px 30px;
+    }
+
+    @include desktop-xl {
+      font: normal normal 900 32px/40px $font;
+      max-width: 500px;
+      min-height: 120px;
+      padding: 20px 45px;
+    }
+  }
+
+  &__item-text {
+    margin: 0;
+  }
+
+  &__upper-item {
+    grid-area: upper;
+  }
+
+  &__left-upper-item {
+    grid-area: left-upper;
+  }
+
+  &__right-upper-item {
+    grid-area: right-upper;
+  }
+
+  &__bottom-item {
+    grid-area: bottom;
+  }
+
+  &__left-bottom-item {
+    grid-area: left-bottom;
+  }
+
+  &__right-bottom-item {
+    grid-area: right-bottom;
+  }
+
+  &__btn {
+    margin-top: 245px;
+
+    @include tablet {
+      font: normal normal 900 24px/62px $font;
+      width: 380px;
+      margin-top: 235px;
+    }
+
+    @include desktop-lg {
+      margin-top: 174px;
+    }
+
+    @include desktop-xl {
+      margin-top: 320px;
+    }
+  }
+}
