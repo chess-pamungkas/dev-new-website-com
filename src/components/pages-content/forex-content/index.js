@@ -11,9 +11,8 @@ import forex from "../../../assets/images/top-markets/images/forex.svg";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { FOREX_TRADING_SECTION } from "../../../helpers/config";
-import StaticImages from "../../../components/promotion-markets/static-images";
-import MarketingImage from "../../../assets/images/bg/promotions/forex/forex@2x.png";
 import animation from "../../../assets/images/bg/promotions/forex/forex.json";
+import MarketingCircle from "../../marketing-circle";
 
 const ForexContent = () => {
   const { sitePostfix } = useEntityPostfix();
@@ -53,10 +52,56 @@ const ForexContent = () => {
           accentClassName="highlighted-in-red"
         />
       </TopMarketPromotion>
-      <StaticImages
-        image={MarketingImage}
-        height={isMobile ? 400 : 800}
+      <MarketingCircle
         animation={animation}
+        upper={
+          <HighlightedLocalizationText
+            localizationText="forex_marketing-circle-upper"
+            wordsToHighlight="forex_marketing-circle-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        leftUpper={
+          <HighlightedLocalizationText
+            localizationText="forex_marketing-circle-left-upper"
+            wordsToHighlight="forex_marketing-circle-left-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        rightUpper={
+          <HighlightedLocalizationText
+            localizationText="forex_marketing-circle-right-upper"
+            wordsToHighlight="forex_marketing-circle-right-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        bottom={
+          <HighlightedLocalizationText
+            localizationText="forex_marketing-circle-bottom"
+            wordsToHighlight="forex_marketing-circle-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        leftBottom={
+          <HighlightedLocalizationText
+            localizationText="forex_marketing-circle-left-bottom"
+            wordsToHighlight="forex_marketing-circle-left-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        rightBottom={
+          <HighlightedLocalizationText
+            localizationText="forex_marketing-circle-right-bottom"
+            wordsToHighlight="forex_marketing-circle-right-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
       />
     </>
   );
