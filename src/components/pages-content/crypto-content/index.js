@@ -20,6 +20,7 @@ import { FAQ_CRYPTO } from "../../../helpers/faq";
 import Faq from "../../faq";
 import NotFoundContent from "../not-found-page-content";
 import { CRYPTO_TRADING_SECTION } from "../../../helpers/config";
+import MarketingCircle from "../../marketing-circle";
 
 const CryptoContent = () => {
   const { t } = useTranslation();
@@ -115,10 +116,56 @@ const CryptoContent = () => {
               accentClassName="highlighted-in-red"
             />
           </TopMarketPromotion>
-          <StaticImages
-            image={MarketingImage}
-            height={isMobile ? 400 : 800}
+          <MarketingCircle
             animation={animation}
+            upper={
+              <HighlightedLocalizationText
+                localizationText={`crypto_marketing-circle-upper${sitePostfix}`}
+                wordsToHighlight={`crypto_marketing-circle-upper-accent${sitePostfix}`}
+                primaryClassName="highlighted-in-black"
+                accentClassName="highlighted-in-red"
+              />
+            }
+            leftUpper={
+              <HighlightedLocalizationText
+                localizationText={`crypto_marketing-circle-left-upper${sitePostfix}`}
+                wordsToHighlight={`crypto_marketing-circle-left-upper-accent${sitePostfix}`}
+                primaryClassName="highlighted-in-black"
+                accentClassName="highlighted-in-red"
+              />
+            }
+            rightUpper={
+              <HighlightedLocalizationText
+                localizationText={`crypto_marketing-circle-right-upper${sitePostfix}`}
+                wordsToHighlight={`crypto_marketing-circle-right-upper-accent${sitePostfix}`}
+                primaryClassName="highlighted-in-black"
+                accentClassName="highlighted-in-red"
+              />
+            }
+            bottom={
+              <HighlightedLocalizationText
+                localizationText={`crypto_marketing-circle-bottom${sitePostfix}`}
+                wordsToHighlight={`crypto_marketing-circle-bottom-accent${sitePostfix}`}
+                primaryClassName="highlighted-in-black"
+                accentClassName="highlighted-in-red"
+              />
+            }
+            leftBottom={
+              <HighlightedLocalizationText
+                localizationText={`crypto_marketing-circle-left-bottom${sitePostfix}`}
+                wordsToHighlight={`crypto_marketing-circle-left-bottom-accent${sitePostfix}`}
+                primaryClassName="highlighted-in-black"
+                accentClassName="highlighted-in-red"
+              />
+            }
+            rightBottom={
+              <HighlightedLocalizationText
+                localizationText={`crypto_marketing-circle-right-bottom${sitePostfix}`}
+                wordsToHighlight={`crypto_marketing-circle-right-bottom-accent${sitePostfix}`}
+                primaryClassName="highlighted-in-black"
+                accentClassName="highlighted-in-red"
+              />
+            }
           />
           <TopMarketLayout
             title={t(`crypto_top-market-layout-title${sitePostfix}`)}
