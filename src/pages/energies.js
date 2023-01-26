@@ -16,15 +16,12 @@ import TableComponent from "../components/shared/table";
 import { DATA_ENERGIES } from "../helpers/top-market-tables";
 import Faq from "../components/faq";
 import { FAQ_ENERGIES } from "../helpers/faq";
-import { useWindowSize } from "../helpers/hooks/use-window-size";
-import StaticImages from "../components/promotion-markets/static-images";
-import MarketingImage from "../assets/images/bg/promotions/energies/energies@2x.png";
 import animation from "../assets/images/bg/promotions/energies/energy.json";
 import { ENERGIES_TRADING_SECTION } from "../helpers/config";
+import MarketingCircle from "../components/marketing-circle";
 
 const EnergiesPage = () => {
   const { t } = useTranslation();
-  const { isMobile } = useWindowSize();
 
   const COLUMNS_ENERGIES = [
     {
@@ -116,10 +113,56 @@ const EnergiesPage = () => {
           accentClassName="highlighted-in-red"
         />
       </TopMarketPromotion>
-      <StaticImages
-        image={MarketingImage}
-        height={isMobile ? 400 : 800}
+      <MarketingCircle
         animation={animation}
+        upper={
+          <HighlightedLocalizationText
+            localizationText="energies_marketing-circle-upper"
+            wordsToHighlight="energies_marketing-circle-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        leftUpper={
+          <HighlightedLocalizationText
+            localizationText="energies_marketing-circle-left-upper"
+            wordsToHighlight="energies_marketing-circle-left-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        rightUpper={
+          <HighlightedLocalizationText
+            localizationText="energies_marketing-circle-right-upper"
+            wordsToHighlight="energies_marketing-circle-right-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        bottom={
+          <HighlightedLocalizationText
+            localizationText="energies_marketing-circle-bottom"
+            wordsToHighlight="energies_marketing-circle-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        leftBottom={
+          <HighlightedLocalizationText
+            localizationText="energies_marketing-circle-left-bottom"
+            wordsToHighlight="energies_marketing-circle-left-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        rightBottom={
+          <HighlightedLocalizationText
+            localizationText="energies_marketing-circle-right-bottom"
+            wordsToHighlight="energies_marketing-circle-right-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
       />
       <TopMarketLayout
         title={t("energies_top-market-layout-title")}
