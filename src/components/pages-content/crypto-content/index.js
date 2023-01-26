@@ -1,6 +1,5 @@
 import React from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/cripto.svg";
@@ -8,8 +7,6 @@ import { REGISTRATION_LINK } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
-import StaticImages from "../../../components/promotion-markets/static-images";
-import MarketingImage from "../../../assets/images/bg/promotions/crypto/crypto@2x.png";
 import animation from "../../../assets/images/bg/promotions/crypto/crypto.json";
 import TopMarketLayout from "../../top-market-layout";
 import crypto from "../../../assets/images/top-markets/images/crypto.svg";
@@ -24,7 +21,6 @@ import MarketingCircle from "../../marketing-circle";
 
 const CryptoContent = () => {
   const { t } = useTranslation();
-  const { isMobile } = useWindowSize();
   const { sitePostfix, isCySEC } = useEntityPostfix();
 
   const COLUMNS_CRYPTO = [
