@@ -16,7 +16,6 @@ const TradingSymbol = ({ className, symbol, direction, bid, ask, spread }) => {
       <div className="trading-symbol__block">
         <div className="trading-symbol__title-wrapper">
           <p className="trading-symbol__title">{symbol}</p>
-          <span className="trading-symbol__title-delimiter" />
         </div>
         <div className="trading-symbol__data">
           <div className="trading-symbol__option">

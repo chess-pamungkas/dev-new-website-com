@@ -235,13 +235,6 @@
     }
   }
 
-  &__title-delimiter {
-    display: block;
-    width: 28px;
-    height: 2px;
-    background: map-get($colors, "red");
-  }
-
   &__data {
     display: flex;
     flex-wrap: wrap;

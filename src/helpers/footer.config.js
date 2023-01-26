@@ -1,3 +1,4 @@
+import { LEGAL_PAGE_LINK } from "./constants";
 import { RISK_DISCLOSURE_DOC } from "./documents";
 
 export const FOOTER_TEXT = "footer-text";
@@ -14,6 +15,11 @@ export const FOOTER_COPYRIGHT = {
 export const FOOTER_COPYRIGHT_FSA = {
   p1: "footer-copyright-paragraph1-fsa",
   p2: "footer-copyright-paragraph2-fsa",
+  p3_1: "footer-copyright-paragraph3-part1-fsa",
+  p3_2: "footer-copyright-paragraph3-part2-fsa",
+  p4: "footer-copyright-paragraph4-fsa",
+  p3_a1: "footer-copyright-paragraph3-link-fsa",
+  p3_link1: LEGAL_PAGE_LINK,
 };
 
 export const FOOTER_FOR_FUNDING = {

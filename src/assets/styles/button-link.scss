@@ -19,6 +19,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   transition: all ease-in 0.4s;
+  min-width: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
 
   &:hover,
   &:active,

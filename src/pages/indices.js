@@ -11,20 +11,58 @@ import HighlightedLocalizationText from "../components/shared/highlighted-locali
 import TradingTicker from "../components/trading-ticker";
 import TopMarketLayout from "../components/top-market-layout";
 import TableComponent from "../components/shared/table";
-import { COLUMNS_INDICES, DATA_INDICES } from "../helpers/top-market-tables";
+import { DATA_INDICES } from "../helpers/top-market-tables";
 import Faq from "../components/faq";
 import { FAQ_INDICES } from "../helpers/faq";
-import { useWindowSize } from "../helpers/hooks/use-window-size";
 import indices from "../assets/images/top-markets/images/indices.svg";
 import TopMarketPromotion from "../components/top-market-promotion";
-import StaticImages from "../components/promotion-markets/static-images";
-import MarketingImage from "../assets/images/bg/promotions/indices/indices@2x.png";
 import animation from "../assets/images/bg/promotions/indices/indices.json";
 import { INDICES_TRADING_SECTION } from "../helpers/config";
+import MarketingCircle from "../components/marketing-circle";
 
 const IndicesPage = () => {
   const { t } = useTranslation();
-  const { isMobile } = useWindowSize();
+
+  const COLUMNS_INDICES = [
+    {
+      id: "group1",
+      Header: "",
+      columns: [
+        {
+          Header: "",
+          accessor: "col1",
+        },
+      ],
+    },
+    {
+      id: "group2",
+      Header: t("oqtima-ecn-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col2",
+        },
+        {
+          Header: "Avg",
+          accessor: "col3",
+        },
+      ],
+    },
+    {
+      id: "group3",
+      Header: t("oqtima-one-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col4",
+        },
+        {
+          Header: "Avg",
+          accessor: "col5",
+        },
+      ],
+    },
+  ];
 
   return (
     <Layout>
@@ -73,10 +111,56 @@ const IndicesPage = () => {
           accentClassName="highlighted-in-red"
         />
       </TopMarketPromotion>
-      <StaticImages
-        image={MarketingImage}
-        height={isMobile ? 400 : 800}
+      <MarketingCircle
         animation={animation}
+        upper={
+          <HighlightedLocalizationText
+            localizationText="indices_marketing-circle-upper"
+            wordsToHighlight="indices_marketing-circle-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        leftUpper={
+          <HighlightedLocalizationText
+            localizationText="indices_marketing-circle-left-upper"
+            wordsToHighlight="indices_marketing-circle-left-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        rightUpper={
+          <HighlightedLocalizationText
+            localizationText="indices_marketing-circle-right-upper"
+            wordsToHighlight="indices_marketing-circle-right-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        bottom={
+          <HighlightedLocalizationText
+            localizationText="indices_marketing-circle-bottom"
+            wordsToHighlight="indices_marketing-circle-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        leftBottom={
+          <HighlightedLocalizationText
+            localizationText="indices_marketing-circle-left-bottom"
+            wordsToHighlight="indices_marketing-circle-left-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        rightBottom={
+          <HighlightedLocalizationText
+            localizationText="indices_marketing-circle-right-bottom"
+            wordsToHighlight="indices_marketing-circle-right-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
       />
       <TopMarketLayout
         title={t("indices_top-market-layout-title")}

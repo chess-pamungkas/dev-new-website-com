@@ -53,6 +53,19 @@ const CopyRightContent = () => {
     <>
       <p>{t(FOOTER_COPYRIGHT_FSA.p1)}</p>
       <p>{t(FOOTER_COPYRIGHT_FSA.p2)}</p>
+      <p>
+        {t(FOOTER_COPYRIGHT_FSA.p3_1)}&nbsp;
+        <a
+          href={FOOTER_COPYRIGHT_FSA.p3_link1}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {t(FOOTER_COPYRIGHT_FSA.p3_a1)}
+        </a>
+        &nbsp;
+        {t(FOOTER_COPYRIGHT_FSA.p3_2)}
+      </p>
+      <p>{t(FOOTER_COPYRIGHT_FSA.p4)}</p>
       {additionalText}
     </>
   );
