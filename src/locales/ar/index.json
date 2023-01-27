@@ -30,8 +30,6 @@
   "header-nav-tab-trading-funding-withdrawals-spreads-desc": "شفافة كما يحصل",
   "header-nav-tab-trading-funding-withdrawals-accounts-title": "نوع الحسابات",
   "header-nav-tab-trading-funding-withdrawals-accounts-desc": "أوبتيما يقدم لك نهجا مرنا للتجارة",
-  "header-nav-tab-trading-funding-withdrawals-trading-title": "التداول مع الرافعة المالية",
-  "header-nav-tab-trading-funding-withdrawals-trading-desc": "أبجد هوز دولور الجلوس أميت ، الإدمان النخبة.",
   "header-nav-tab-trading-copy-trading-title": "نسخ التداول",
   "header-nav-tab-trading-copy-trading-desc": "أبجد هوز دولور الجلوس أميت ، الإدمان النخبة",
   "header-nav-tab-trading-professional-qualification-title": "المؤهلات المهنية",
@@ -58,10 +56,6 @@
   "header-nav-tab-company-contact-desc": "طرق متعددة للتواصل معنا بسهولة",
   "header-nav-tab-company-legal-title": "قانوني",
   "header-nav-tab-company-legal-desc": "الطريقة التي يتم بها تنظيم الأمور",
-  "header-nav-tab-company-career-title": "مهنة",
-  "header-nav-tab-company-career-desc": "أبجد هوز دولور الجلوس أميت ، الإدمان النخبة",
-  "header-nav-tab-company-press-and-news-title": "الصحافة والأخبار",
-  "header-nav-tab-company-press-and-news-desc": "أبجد هوز دولور الجلوس أميت ، الإدمان النخبة",
   "header-nav-tab-company-help-center-title": "مركز المساعدة",
   "header-nav-tab-company-help-center-desc": "كيف يمكننا المساعدة?",
 
@@ -125,7 +119,6 @@
   "index_trading-ticker-section-forex": "الفوركس",
   "index_trading-ticker-section-shares": "الأسهم",
   "index_trading-ticker-section-energies": "الطاقات",
-  "index_trading-ticker-section-commodities": "السلع الأساسية",
   "index_trading-ticker-section-indices": "المؤشرات",
   "index_trading-ticker-section-metals": "المعادن",
 
@@ -153,7 +146,6 @@
   "index_promotion2-btn-text": "شاهد المزيد",
 
   "index_promotion3-text": "البدء في بناء محفظة التداول الخاصة بك مع 200 دولار أمريكي أو ما يعادلها في 8 العملات الأساسية المتاحة.",
-  "index_promotion3-btn-text": "شاهد المزيد",
 
   "index_promotion4-text": "البدء في بناء محفظة التداول الخاصة بك مع 200 دولار أمريكي أو ما يعادلها في 8 العملات الأساسية المتاحة.",
   "index_promotion4-btn-text": "شاهد المزيد",
@@ -172,7 +164,6 @@
   "crypto_trading-ticker-title": "التشفير الشعبي للتجارة",
   "crypto_top-market-promotion-promo-text": "العملات المشفرة هي عالم جديد من الفرص والإثارة للتجار من جميع أنحاء العالم ، والانضمام إلى جيش أوكتيما من التجار التشفير.",
   "crypto_top-market-promo-btn": "ابدأ تداول عقود الفروقات المشفرة",
-  "crypto_promotion-markets-btn": "ابدأ الآن",
   "crypto_top-market-layout-title": "أسعار شفافة",
   "crypto_top-market-layout-btn": "محاولة الأمثل",
 
@@ -369,8 +360,6 @@
   "education_top-market-promo-note-accent": "1,5,9,17",
   "education_top-market-promo-text": "الأمثل التعليمية",
   "education_top-market-promo-text-accent": "2",
-  "education_top-market-promo-text-2": "أبجد هوز دولور الجلوس أميت, ضبط باستمرار النخبة, ولكن هل تم ضرب دوم له من العمل والألم.",
-  "education_top-market-promo-text-accent-2": "",
 
   "partners_top-market-promo-btn": "قدم الآن",
   "partners_top-market-promo-text": "شريك مع وسيط موثوق به والحصول على جزء من عائداتنا من نشاط التداول لكل عميل نشط تشير إلينا",
