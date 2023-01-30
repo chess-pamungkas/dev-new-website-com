@@ -283,28 +283,64 @@
   "table-tip1": "minimo,",
   "table-tip2": "medio",
 
-  "page-main-title": "Pagina di trading di Oqtima",
-  "page-allmarkets-title": "Tutti i Mercati",
-  "page-platforms-title": "Piattaforme",
-  "page-metals-title": "Oqtima Metalli",
-  "page-crypto-title-fsa": "Oqtima Crypto ",
-  "page-energies-title": "Oqtima Fonti di Energia",
-  "page-forex-title": "Oqtima Forex",
-  "page-indices-title": "Oqtima Indici",
+  "page-main-title": "Fai Trading di Forex e CFD su azioni, indici, Energie, Metalli con Oqtima",
+  "page-main-description": "Forex, cfd trading su azioni, indici, petrolio e metallo con le piattaforme di trading più avanzate. Fate trading con Oqtima™, un broker forex autorizzato.",
+
+  "page-allmarkets-title": "Trade with Oqtima all the major markets with the power of CFDs!",
+  "page-allmarkets-description": "Accedi al mercato dell'energia con il broker CFD Oqtima. Fate trading su petrolio, gas e altri CFD sull'energia con spread competitivi, supporto a 5 stelle e strumenti di trading eccezionali. iniziate a fare trading sui CFD sull'energia oggi stesso.",
+
+  "page-platforms-title": "Negoziare CFD su Oqtima con le nostre piattaforme personalizzate Metaquote e Ctrader",
+  "page-platforms-description": "Utilizza un Broker di CFD affidabile e stabile che offre le piattaforme MetaTrader e cTrader. Entrambe le piattaforme offrono una serie di funzioni e strumenti avanzati per aiutarvi a operare con fiducia e a prendere decisioni informate.",
+
+  "page-metals-title": "Fai Trading di CFD su oro, argento e altri metalli con un broker affidabile - Inizia adesso",
+  "page-metals-description": "Massimizzate i vostri profitti con il trading di CFD sui metalli. Oqtima affidabile offre una gamma di CFD sui metalli, tra cui oro, argento e altro ancora. Approfittate di spread competitivi e di una piattaforma facile da usare. Iscrivetevi ora e iniziate a fare trading sui metalli con Oqtima.",
+
+  "page-crypto-title-fsa": "Negoziare criptovalute con i CFD su Oqtima",
+  "page-crypto-description-fsa": "Accedete al mercato delle criptovalute con la potenza dei CFD di Oqtima. Negoziate le monete più famose come BTC e ETH e molte Alt Coins contro le valute più importanti. Iniziate oggi stesso.",
+
+  "page-energies-title": "Fai Trading di CFD su petrolio, gas e altre energie con un broker regolamentato - Inizia ora!",
+  "page-energies-description": "Accedete al mercato dell'energia con il broker CFD Oqtima. Fate trading su petrolio, gas e altri CFD sull'energia con spread competitivi, supporto a 5 stelle e strumenti di trading eccezionali. iniziate a fare trading sui CFD sull'energia oggi stesso.",
+
+  "page-forex-title": "Fai Trading di CFD con Forex con un broker CFD leader del settore - Oqtima!",
+  "page-forex-description": "Fai trading sul forex con Oqtima, un broker CFD globale di fiducia. La nostra piattaforma offre spread competitivi e tutti gli strumenti necessari per il tuo trading. Registrati ora e inizia a fare trading oggi stesso!",
+
+  "page-indices-title": "Opera sul mercato con gli indici con la nostra piattaforma di broker CFD: Supporto specializzato e spread ultra-competitivi",
+  "page-indices-description": "Con la  piattaforma di broker CFD Oqtima inizia a fare trading di indici con fiducia. Broker CFD regolamentato con oltre 20 indici in tutto il mondo da negoziare. Iscrivetevi ora e iniziate il vostro percorso di trading oggi stesso",
+
+  "page-shares-title": "Fai Trading con Migliaia di CFD su Azioni con Oqtima",
+  "page-shares-description": "Negoziate le azioni delle principali società di tutto il mondo con un broker di fiducia. La nostra piattaforma offre spread competitivi e tecnologia all'avanguardia. Iscrivetevi ora e iniziate a negoziare CFD su azioni oggi stesso.",
+
+  "page-company-title": "Viviamo in un mondo finanziario complesso. Vogliamo che possiate trarne vantaggio.",
+  "page-company-description": "Oqtima è stata creata con un unico obiettivo: Offrire ai trader che usano Meta Trader, indipendentemente dal loro livello di competenza, la migliore esperienza su misura della categoria.",
+
+  "page-ctrader-title": "Negoziare su Forex e CFD con la piattaforma avanzata cTrader con Oqtima",
+  "page-ctrader-description": "Provate la potenza della piattaforma avanzata cTrader con Oqtima. Con una serie di funzioni e strumenti per aiutarvi a fare trading in modo efficace, cTrader è una scelta popolare tra i trader professionisti. Fate trading su forex e CFD con fiducia e prendete decisioni informate con gli strumenti avanzati di analisi e grafici di cTrader. Iniziate a fare trading con cTrader Oqtima oggi stesso.",
+
+  "page-trading-view-title": "Liberate il potere dell'analisi tecnica con la piattaforma TradingView di Oqtima",
+  "page-trading-view-description": "Portate il vostro trading a un livello superiore con TradingView, la principale piattaforma di analisi tecnica. Con una serie di potenti strumenti grafici e di analisi, TradingView vi aiuta a identificare le tendenze, a individuare le opportunità e a prendere decisioni informate. Che siate principianti o trader esperti, TradingView ha qualcosa da offrire. Provatelo oggi stesso su Oqtima e vedrete la differenza che può fare per il vostro trading.",
+
+  "page-mt4-title": "Fate trading su Forex, CFD e altro ancora con la MetaTrader 4 di Oqtima, leader del settore.",
+  "page-mt4-description": "Provate la potenza e l'affidabilità della piattaforma MetaTrader 4, lo standard del settore per il trading su forex e CFD. Con grafici avanzati, funzionalita’ per EA ed una serie di opzioni di personalizzazione per Oqtima.  MT4 è progettata per aiutarvi a fare trading con fiducia e a prendere decisioni informate.",
+
+  "page-mt5-title": "Negoziate su un'ampia gamma di mercati con la piattaforma avanzata Oqtima MetaTrader 5",
+  "page-mt5-description": "Portate il vostro trading al livello successivo con l'avanzata piattaforma MetaTrader 5. Con il supporto di un'ampia gamma di mercati, strumenti di analisi e grafici avanzati e EA personalizzabili, MT5 è la piattaforma di trading definitiva per i trader esperti. Prova MT5 Oqtima.",
+
+  "page-professional-qualification-title": "Verifica la tua idoneità a diventare un Trader Professionista Oqtima",
+  "page-professional-qualification-description": "Se desiderate richiedere la riqualificazione professionale del vostro conto retail, siete nel posto giusto. Verificate se soddisfate i requisiti di base per richiedere la qualifica professionale con Oqtima.",
+
+  "page-withdrawal-title": "Opzioni di deposito e prelievo immediate e sicure con Oqtima",
+  "page-withdrawal-description": "Con Oqtima potete finanziare il vostro conto e ritirare i vostri profitti in modo rapido e sicuro. Offriamo una serie di opzioni, tra cui depositi con carta di credito, trasferimenti tramite portafoglio elettronico e bonifici bancari. Inoltre, sono disponibili prelievi in giornata, in modo da poter accedere ai vostri fondi quando ne avete bisogno. Scegliete il nostro broker per avere fondi e prelievi senza problemi.",
+
+  "page-spreads-title": "Spread competitivi e commissioni basse e trasparenti con Oqtima",
+  "page-spreads-description": "Scegliete Oqtima anche per i nostri spread competitivi e le basse commissioni. Offriamo alcuni dei prezzi più competitivi del settore, in modo che possiate concentrarvi sulle vostre operazioni senza preoccuparvi di alti costi nascosti. Inoltre, grazie a commissioni trasparenti e dirette, saprete sempre cosa state pagando. Iniziate a fare trading con Oqtima oggi stesso.",
+
+  "page-accounts-type-title": "Trova il tipo di conto giusto per le tue esigenze di trading con Oqtima",
+  "page-accounts-type-description": "Oqtima offre 2 tipi di conto per soddisfare le esigenze di diversi trader. Che siate principianti o professionisti esperti, abbiamo il tipo di conto che fa per voi. Con opzioni come i conti ECN e il conto ONE, potete scegliere il tipo di trader che desiderate. Esplorate oggi stesso i nostri tipi di conto e trovate quello giusto per voi.",
+
   "page-search-title": "Oqtima Cerca",
-  "page-shares-title": "Oqtima Azioni",
-  "page-company-title": "Oqtima Azienda",
   "page-legal-title": "Oqtima Documenti Legali",
   "page-contact-title": "Contattaci",
-  "page-ctrader-title": "Oqtima CTrader",
-  "page-trading-view-title": "Oqtima Trading View",
-  "page-mt4-title": "Oqtima MT4",
-  "page-mt5-title": "Oqtima MT5",
-  "page-professional-qualification-title": "Oqtima Qualificazione Professionale",
-  "page-withdrawal-title": "Depositi e Prelievi",
-  "page-spreads-title": "Spread e Commissioni",
   "page-partners-title": "Introducing Brokers (IB)",
-  "page-accounts-type-title": "Tipi di Conto",
   "page-faq-title": "FAQ",
   "page-education-title": "Sezione Educativa",
 
@@ -922,8 +958,8 @@
   "professional-qualification_split-text-promotion-text3-accent": "7,8,9,10",
   "professional-qualification_split-text-promotion-text4": " Le restrizioni sulla leva finanziaria non si applicano a voi.",
   "professional-qualification_split-text-promotion-text4-accent": "3,4",
-  "professional-qualification_performance-title": "Come clienti di Oqtima Pro avrete accesso a una pletora di vantaggi",
-  "professional-qualification_performance-title-accent": "3,4,11,12,13",
+  "professional-qualification_performance-title": "As a potential OQtima Pro client please note: (TRANSLATION REQUIRED!)",
+  "professional-qualification_performance-title-accent": "4,5",
   "professional-qualification_performance-text": "TRANSLATION REQUIRED!",
   "professional-qualification_text-banner-title": "Criteri di ammissibilità",
   "professional-qualification_text-banner-note": " Per avere diritto a un account Oqtima Pro, è necessario soddisfare i criteri di idoneità per i clienti professionali. Se rispondete sì a due di queste tre domande, potreste essere idonei.",
