@@ -1,31 +1,30 @@
 import React, { useState } from "react";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
-import image from "../../../assets/images/top-markets/shares.svg";
-import shares from "../../../assets/images/top-markets/images/shares.svg";
+import image from "../../../assets/images/top-markets/energies.svg";
 import { REGISTRATION_LINK } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
+import energies from "../../../assets/images/top-markets/images/energies.svg";
+
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { SHARES_TRADING_SECTION } from "../../../helpers/config";
-import Faq from "../../faq";
-import { FAQ_SHARES } from "../../../helpers/faq";
-import animation from "../../../assets/images/bg/promotions/shares/shares.json";
+import { ENERGIES_TRADING_SECTION } from "../../../helpers/config";
+import animation from "../../../assets/images/bg/promotions/indices/indices.json";
 import MarketingCircle from "../../marketing-circle";
-import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
-import { DATA_SHARES } from "../../../helpers/top-market-tables";
 import TopMarketLayout from "../../top-market-layout";
+import Faq from "../../faq";
+import { FAQ_ENERGIES } from "../../../helpers/faq";
 import TableComponent from "../../shared/table";
+import { DATA_ENERGIES } from "../../../helpers/top-market-tables";
+import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 
-const SharesContent = () => {
-  const { sitePostfix } = useEntityPostfix();
+const EnergiesContent = () => {
   const { t } = useTranslation();
-  const [tradingSymbols, setTradingSymbols] = useState([]);
+  const [ tradingSymbols, setTradingSymbols ] = useState([]);
 
-  updateTableDataWithLiveColumn(DATA_SHARES, tradingSymbols);
+  updateTableDataWithLiveColumn(DATA_ENERGIES, tradingSymbols);
 
-  const COLUMNS_SHARES = [
+  const COLUMNS_ENERGIES = [
     {
       id: "group1",
       Header: "",
@@ -79,37 +78,36 @@ const SharesContent = () => {
   return (
     <>
       <TopMarket
-        title={t(`shares_top-market-title${sitePostfix}`)}
+        title={t("energies_top-market-title")}
         image={image}
-        isChildrenHasSmallSize
-        btn1Title={t("shares_top-market-btn1")}
+        btn1Title={t("energies_top-market-btn1")}
         link1={REGISTRATION_LINK}
-        btn2Title={t("shares_top-market-btn2")}
+        btn2Title={t("energies_top-market-btn2")}
         link2={REGISTRATION_LINK}
+        isChildrenHasSmallSize
       >
         <HighlightedLocalizationText
-          localizationText={`shares_top-market-promo-text${sitePostfix}`}
-          wordsToHighlight={`shares_top-market-promo-text-accent${sitePostfix}`}
+          localizationText="energies_top-market-promo-text"
+          wordsToHighlight="energies-top-market-promo-text-accent"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
       <TradingTicker
-        title={t("shares_trading-ticker-title")}
-        pageSpecificSection={SHARES_TRADING_SECTION}
-        isInfiniteAutoScroll={true}
+        title={t("energies_trading-ticker-title")}
+        pageSpecificSection={ENERGIES_TRADING_SECTION}
         tradingSymbols={tradingSymbols}
         setTradingSymbols={setTradingSymbols}
       />
       <TopMarketPromotion
-        className="shares-promotion"
-        image={shares}
-        btnTitle={t("shares_top-market-promo-btn")}
+        className="energies-promotion"
+        image={energies}
+        btnTitle={t("energies_top-market-promo-btn")}
         link={REGISTRATION_LINK}
       >
         <HighlightedLocalizationText
-          localizationText={`shares_top-market-promotion-promo-text${sitePostfix}`}
-          wordsToHighlight={`shares_top-market-promotion-promo-text-accent${sitePostfix}`}
+          localizationText="energies_top-market-promotion-promo-text"
+          wordsToHighlight="energies-top-market-promotion-promo-text-accent"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
@@ -118,62 +116,61 @@ const SharesContent = () => {
         animation={animation}
         upper={
           <HighlightedLocalizationText
-            localizationText="shares_marketing-circle-upper"
-            wordsToHighlight="shares_marketing-circle-upper-accent"
+            localizationText="energies_marketing-circle-upper"
+            wordsToHighlight="energies_marketing-circle-upper-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
         leftUpper={
           <HighlightedLocalizationText
-            localizationText="shares_marketing-circle-left-upper"
-            wordsToHighlight="shares_marketing-circle-left-upper-accent"
+            localizationText="energies_marketing-circle-left-upper"
+            wordsToHighlight="energies_marketing-circle-left-upper-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
         rightUpper={
           <HighlightedLocalizationText
-            localizationText="shares_marketing-circle-right-upper"
-            wordsToHighlight="shares_marketing-circle-right-upper-accent"
+            localizationText="energies_marketing-circle-right-upper"
+            wordsToHighlight="energies_marketing-circle-right-upper-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
         bottom={
           <HighlightedLocalizationText
-            localizationText="shares_marketing-circle-bottom"
-            wordsToHighlight="shares_marketing-circle-bottom-accent"
+            localizationText="energies_marketing-circle-bottom"
+            wordsToHighlight="energies_marketing-circle-bottom-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
         leftBottom={
           <HighlightedLocalizationText
-            localizationText="shares_marketing-circle-left-bottom"
-            wordsToHighlight="shares_marketing-circle-left-bottom-accent"
+            localizationText="energies_marketing-circle-left-bottom"
+            wordsToHighlight="energies_marketing-circle-left-bottom-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
         rightBottom={
           <HighlightedLocalizationText
-            localizationText="shares_marketing-circle-right-bottom"
-            wordsToHighlight="shares_marketing-circle-right-bottom-accent"
+            localizationText="energies_marketing-circle-right-bottom"
+            wordsToHighlight="energies_marketing-circle-right-bottom-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
       />
-      {/*Removed due to ticket https://oqtima-website.atlassian.net/browse/OW-209?atlOrigin=eyJpIjoiMDlmNzI4YTk4NzZjNGYxMmIxMmRiMzE1NjdlYTdmMTIiLCJwIjoiaiJ9 */}
-      {/* <TopMarketLayout
-        title={t("shares_top-market-layout-title")}
-        btnTitle={t("shares_top-market-layout-btn")}
+      <TopMarketLayout
+        title={t("energies_top-market-layout-title")}
+        btnTitle={t("energies_top-market-layout-btn")}
         link={REGISTRATION_LINK}
       >
         <TableComponent
-          data={DATA_SHARES}
-          columns={COLUMNS_SHARES}
+          data={DATA_ENERGIES}
+          columns={COLUMNS_ENERGIES}
           isWrapperPadding
           tip={
             <span>
@@ -185,11 +182,10 @@ const SharesContent = () => {
           }
           isSearch
         />
-      </TopMarketLayout> */}
-
-      <Faq faq={FAQ_SHARES} />
+      </TopMarketLayout>
+      <Faq faq={FAQ_ENERGIES} />
     </>
   );
 };
 
-export default SharesContent;
+export default EnergiesContent;

@@ -1,31 +1,30 @@
 import React, { useState } from "react";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
-import image from "../../../assets/images/top-markets/shares.svg";
-import shares from "../../../assets/images/top-markets/images/shares.svg";
+import indicesSvg from "../../../assets/images/top-markets/indices.svg";
 import { REGISTRATION_LINK } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
-import { useTranslation } from "gatsby-plugin-react-i18next";
-import { SHARES_TRADING_SECTION } from "../../../helpers/config";
-import Faq from "../../faq";
-import { FAQ_SHARES } from "../../../helpers/faq";
-import animation from "../../../assets/images/bg/promotions/shares/shares.json";
-import MarketingCircle from "../../marketing-circle";
-import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
-import { DATA_SHARES } from "../../../helpers/top-market-tables";
-import TopMarketLayout from "../../top-market-layout";
-import TableComponent from "../../shared/table";
+import indices from "../../../assets/images/top-markets/images/indices.svg";
 
-const SharesContent = () => {
-  const { sitePostfix } = useEntityPostfix();
+import { useTranslation } from "gatsby-plugin-react-i18next";
+import { INDICES_TRADING_SECTION } from "../../../helpers/config";
+import animation from "../../../assets/images/bg/promotions/indices/indices.json";
+import MarketingCircle from "../../marketing-circle";
+import TopMarketLayout from "../../top-market-layout";
+import Faq from "../../faq";
+import { FAQ_INDICES } from "../../../helpers/faq";
+import TableComponent from "../../shared/table";
+import { DATA_INDICES } from "../../../helpers/top-market-tables";
+import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
+
+const IndicesContent = () => {
   const { t } = useTranslation();
   const [tradingSymbols, setTradingSymbols] = useState([]);
 
-  updateTableDataWithLiveColumn(DATA_SHARES, tradingSymbols);
+  updateTableDataWithLiveColumn(DATA_INDICES, tradingSymbols);
 
-  const COLUMNS_SHARES = [
+  const COLUMNS_INDICES = [
     {
       id: "group1",
       Header: "",
@@ -79,37 +78,44 @@ const SharesContent = () => {
   return (
     <>
       <TopMarket
-        title={t(`shares_top-market-title${sitePostfix}`)}
-        image={image}
+        title={
+          <HighlightedLocalizationText
+            localizationText="indices_top-market-title"
+            wordsToHighlight="indices-top-market-title-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-white"
+          />
+        }
         isChildrenHasSmallSize
-        btn1Title={t("shares_top-market-btn1")}
+        image={indicesSvg}
+        btn1Title={t("indices_top-market-btn1")}
         link1={REGISTRATION_LINK}
-        btn2Title={t("shares_top-market-btn2")}
+        btn2Title={t("indices_top-market-btn2")}
         link2={REGISTRATION_LINK}
       >
         <HighlightedLocalizationText
-          localizationText={`shares_top-market-promo-text${sitePostfix}`}
-          wordsToHighlight={`shares_top-market-promo-text-accent${sitePostfix}`}
+          localizationText="indices_top-market-promo-text"
+          wordsToHighlight="indices-top-market-promo-text-accent"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
       <TradingTicker
-        title={t("shares_trading-ticker-title")}
-        pageSpecificSection={SHARES_TRADING_SECTION}
-        isInfiniteAutoScroll={true}
+        title={t("indices_trading-ticker-title")}
+        pageSpecificSection={INDICES_TRADING_SECTION}
         tradingSymbols={tradingSymbols}
         setTradingSymbols={setTradingSymbols}
       />
       <TopMarketPromotion
-        className="shares-promotion"
-        image={shares}
-        btnTitle={t("shares_top-market-promo-btn")}
+        className="indices-promotion"
+        image={indices}
+        btnTitle={t("indices_top-market-promo-btn")}
         link={REGISTRATION_LINK}
+        note={t("indices_top-market-promotion-promo-note")}
       >
         <HighlightedLocalizationText
-          localizationText={`shares_top-market-promotion-promo-text${sitePostfix}`}
-          wordsToHighlight={`shares_top-market-promotion-promo-text-accent${sitePostfix}`}
+          localizationText="indices_top-market-promotion-promo-text"
+          wordsToHighlight="indices-top-market-promotion-promo-text-accent"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
@@ -118,62 +124,61 @@ const SharesContent = () => {
         animation={animation}
         upper={
           <HighlightedLocalizationText
-            localizationText="shares_marketing-circle-upper"
-            wordsToHighlight="shares_marketing-circle-upper-accent"
+            localizationText="indices_marketing-circle-upper"
+            wordsToHighlight="indices_marketing-circle-upper-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
         leftUpper={
           <HighlightedLocalizationText
-            localizationText="shares_marketing-circle-left-upper"
-            wordsToHighlight="shares_marketing-circle-left-upper-accent"
+            localizationText="indices_marketing-circle-left-upper"
+            wordsToHighlight="indices_marketing-circle-left-upper-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
         rightUpper={
           <HighlightedLocalizationText
-            localizationText="shares_marketing-circle-right-upper"
-            wordsToHighlight="shares_marketing-circle-right-upper-accent"
+            localizationText="indices_marketing-circle-right-upper"
+            wordsToHighlight="indices_marketing-circle-right-upper-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
         bottom={
           <HighlightedLocalizationText
-            localizationText="shares_marketing-circle-bottom"
-            wordsToHighlight="shares_marketing-circle-bottom-accent"
+            localizationText="indices_marketing-circle-bottom"
+            wordsToHighlight="indices_marketing-circle-bottom-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
         leftBottom={
           <HighlightedLocalizationText
-            localizationText="shares_marketing-circle-left-bottom"
-            wordsToHighlight="shares_marketing-circle-left-bottom-accent"
+            localizationText="indices_marketing-circle-left-bottom"
+            wordsToHighlight="indices_marketing-circle-left-bottom-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
         rightBottom={
           <HighlightedLocalizationText
-            localizationText="shares_marketing-circle-right-bottom"
-            wordsToHighlight="shares_marketing-circle-right-bottom-accent"
+            localizationText="indices_marketing-circle-right-bottom"
+            wordsToHighlight="indices_marketing-circle-right-bottom-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
       />
-      {/*Removed due to ticket https://oqtima-website.atlassian.net/browse/OW-209?atlOrigin=eyJpIjoiMDlmNzI4YTk4NzZjNGYxMmIxMmRiMzE1NjdlYTdmMTIiLCJwIjoiaiJ9 */}
-      {/* <TopMarketLayout
-        title={t("shares_top-market-layout-title")}
-        btnTitle={t("shares_top-market-layout-btn")}
+      <TopMarketLayout
+        title={t("indices_top-market-layout-title")}
+        btnTitle={t("indices_top-market-layout-btn")}
         link={REGISTRATION_LINK}
       >
         <TableComponent
-          data={DATA_SHARES}
-          columns={COLUMNS_SHARES}
+          data={DATA_INDICES}
+          columns={COLUMNS_INDICES}
           isWrapperPadding
           tip={
             <span>
@@ -185,11 +190,10 @@ const SharesContent = () => {
           }
           isSearch
         />
-      </TopMarketLayout> */}
-
-      <Faq faq={FAQ_SHARES} />
+      </TopMarketLayout>
+      <Faq faq={FAQ_INDICES} />
     </>
   );
 };
 
-export default SharesContent;
+export default IndicesContent;
