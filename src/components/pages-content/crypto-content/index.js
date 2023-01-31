@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
@@ -18,10 +18,17 @@ import Faq from "../../faq";
 import NotFoundContent from "../not-found-page-content";
 import { CRYPTO_TRADING_SECTION } from "../../../helpers/config";
 import MarketingCircle from "../../marketing-circle";
+import ButtonLink from "../../shared/button-link";
+import cn from "classnames";
+import TableLiveColumn from "../../trading-ticker/components/table-live-column";
+import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 
 const CryptoContent = () => {
   const { t } = useTranslation();
   const { sitePostfix, isCySEC } = useEntityPostfix();
+  const [tradingSymbols, setTradingSymbols] = useState([]);
+
+  updateTableDataWithLiveColumn(DATA_CRYPTO, tradingSymbols);
 
   const COLUMNS_CRYPTO = [
     {
@@ -98,6 +105,8 @@ const CryptoContent = () => {
           <TradingTicker
             title={t(`crypto_trading-ticker-title${sitePostfix}`)}
             pageSpecificSection={CRYPTO_TRADING_SECTION}
+            tradingSymbols={tradingSymbols}
+            setTradingSymbols={setTradingSymbols}
           />
           <TopMarketPromotion
             className="crypto-promotion"

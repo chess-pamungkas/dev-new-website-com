@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/shares.svg";
@@ -13,10 +13,17 @@ import Faq from "../../faq";
 import { FAQ_SHARES } from "../../../helpers/faq";
 import animation from "../../../assets/images/bg/promotions/shares/shares.json";
 import MarketingCircle from "../../marketing-circle";
+import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
+import { DATA_SHARES } from "../../../helpers/top-market-tables";
+import TopMarketLayout from "../../top-market-layout";
+import TableComponent from "../../shared/table";
 
 const SharesContent = () => {
   const { sitePostfix } = useEntityPostfix();
   const { t } = useTranslation();
+  const [tradingSymbols, setTradingSymbols] = useState([]);
+
+  updateTableDataWithLiveColumn(DATA_SHARES, tradingSymbols);
 
   //unused code block.
   // const COLUMNS_SHARES = [
@@ -99,6 +106,8 @@ const SharesContent = () => {
         title={t("shares_trading-ticker-title")}
         pageSpecificSection={SHARES_TRADING_SECTION}
         isInfiniteAutoScroll={true}
+        tradingSymbols={tradingSymbols}
+        setTradingSymbols={setTradingSymbols}
       />
       <TopMarketPromotion
         className="shares-promotion"
