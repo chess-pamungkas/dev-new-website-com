@@ -18,61 +18,69 @@ const SharesContent = () => {
   const { sitePostfix } = useEntityPostfix();
   const { t } = useTranslation();
 
-  const COLUMNS_SHARES = [
-    {
-      id: "group1",
-      Header: "",
-      columns: [
-        {
-          Header: "",
-          accessor: "col1",
-        },
-      ],
-    },
-    {
-      id: "group2",
-      Header: t("oqtima-ecn-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col2",
-        },
-        {
-          Header: "Avg",
-          accessor: "col3",
-        },
-      ],
-    },
-    {
-      id: "group3",
-      Header: t("oqtima-one-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col4",
-        },
-        {
-          Header: "Avg",
-          accessor: "col5",
-        },
-      ],
-    },
-    {
-      id: "group4",
-      Header: "",
-      columns: [
-        {
-          Header: "Live",
-          accessor: "col6",
-        },
-      ],
-    },
-  ];
+  //unused code block.
+  // const COLUMNS_SHARES = [
+  //   {
+  //     id: "group1",
+  //     Header: "",
+  //     columns: [
+  //       {
+  //         Header: "",
+  //         accessor: "col1",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: "group2",
+  //     Header: t("oqtima-ecn-account"),
+  //     columns: [
+  //       {
+  //         Header: "Min",
+  //         accessor: "col2",
+  //       },
+  //       {
+  //         Header: "Avg",
+  //         accessor: "col3",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: "group3",
+  //     Header: t("oqtima-one-account"),
+  //     columns: [
+  //       {
+  //         Header: "Min",
+  //         accessor: "col4",
+  //       },
+  //       {
+  //         Header: "Avg",
+  //         accessor: "col5",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: "group4",
+  //     Header: "",
+  //     columns: [
+  //       {
+  //         Header: "Live",
+  //         accessor: "col6",
+  //       },
+  //     ],
+  //   },
+  // ];
 
   return (
     <>
       <TopMarket
-        title={t(`shares_top-market-title${sitePostfix}`)}
+        title={
+          <HighlightedLocalizationText
+            localizationText={t(`shares_top-market-title${sitePostfix}`)}
+            wordsToHighlight="shares_top-market-title-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-white"
+          />
+        }
         image={image}
         isChildrenHasSmallSize
         btn1Title={t("shares_top-market-btn1")}
