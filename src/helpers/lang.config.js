@@ -6,29 +6,29 @@ const LANG_CONFIG = [
     name: "English (UK)",
     isDefault: true,
   },
-  /* // German
-  {
-    id: "de",
-    icon: "DeFlagIcon",
-    name: "Deutsch",
-  },
   // French
   {
     id: "fr",
     icon: "FrFlagIcon",
     name: "Français",
   },
+  // Portuguese
+  {
+    id: "pt",
+    icon: "BrFlagIcon",
+    name: "Português",
+  },
+  /* // German
+  {
+    id: "de",
+    icon: "DeFlagIcon",
+    name: "Deutsch",
+  },
   // Polish
   {
     id: "pl",
     icon: "PlFlagIcon",
     name: "Polski",
-  },
-  // Portuguese
-  {
-    id: "pt",
-    icon: "PtFlagIcon",
-    name: "Português",
   },
   // Danish
   {
@@ -176,5 +176,5 @@ module.exports = {
   LANG_CONFIG,
   ARABIC_LANG_ID,
   list: LANG_CONFIG.map(({ id }) => id),
-  defaultLangKey: LANG_CONFIG.find(({ isDefault }) => isDefault).id
+  defaultLangKey: LANG_CONFIG.find(({ isDefault }) => isDefault).id,
 };

@@ -26,6 +26,7 @@ import {
   SwFlagIcon,
   ThFlagIcon,
   VnFlagIcon,
+  BrFlagIcon,
 } from "../components/shared/icons";
 import { LANG_CONFIG } from "./lang.config";
 
@@ -57,6 +58,7 @@ const IconComponents = {
   BdFlagIcon: BdFlagIcon,
   GrFlagIcon: GrFlagIcon,
   PhFlagIcon: PhFlagIcon,
+  BrFlagIcon: BrFlagIcon,
 };
 
 export const LANG_SELECT_OPTIONS = LANG_CONFIG.map((languageItem) => {
