@@ -13,7 +13,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "split-locales": "node src/scripts/split-locales/index.js",
-    "scan-locales": "node src/scripts/scan-locales/index.js"
+    "scan-locales": "node src/scripts/scan-locales/index.js",
+    "apply-translation": "node src/scripts/apply-translation/index.js"
   },
   "dependencies": {
     "axios": "^0.27.2",
