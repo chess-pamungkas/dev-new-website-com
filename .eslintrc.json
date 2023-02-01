@@ -19,6 +19,17 @@
   "plugins": ["react"],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "react/prop-types": "warn"
+    "react/prop-types": "warn",
+    "no-invalid-this": "error",
+    "no-return-assign": "error",
+    "no-unused-expressions": ["error", { "allowTernary": true }],
+    "no-useless-concat": "error",
+    "no-useless-return": "error",
+    "no-use-before-define": "error",
+    "no-confusing-arrow": "error",
+    "no-duplicate-imports": "error",
+    "no-var": "error",
+    "object-shorthand": "error",
+    "prefer-const": "error"
   }
 }

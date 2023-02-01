@@ -16,12 +16,13 @@ const TradingTicker = ({
   title,
   pageSpecificSection,
   isInfiniteAutoScroll,
+  tradingSymbols,
+  setTradingSymbols,
 }) => {
   const [tradingSection, setTradingSection] = useState(CYSEC_TRADING_SECTIONS);
   const [selectedSection, setSelectedSection] = useState(
     CYSEC_TRADING_SECTIONS[0]
   );
-  const [tradingSymbols, setTradingSymbols] = useState([]);
 
   const { isCySEC } = useEntityPostfix();
 

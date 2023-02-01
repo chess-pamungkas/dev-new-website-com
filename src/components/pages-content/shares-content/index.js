@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/shares.svg";
@@ -13,66 +13,81 @@ import Faq from "../../faq";
 import { FAQ_SHARES } from "../../../helpers/faq";
 import animation from "../../../assets/images/bg/promotions/shares/shares.json";
 import MarketingCircle from "../../marketing-circle";
+import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
+import { DATA_SHARES } from "../../../helpers/top-market-tables";
+import TopMarketLayout from "../../top-market-layout";
+import TableComponent from "../../shared/table";
 
 const SharesContent = () => {
   const { sitePostfix } = useEntityPostfix();
   const { t } = useTranslation();
+  const [tradingSymbols, setTradingSymbols] = useState([]);
 
-  const COLUMNS_SHARES = [
-    {
-      id: "group1",
-      Header: "",
-      columns: [
-        {
-          Header: "",
-          accessor: "col1",
-        },
-      ],
-    },
-    {
-      id: "group2",
-      Header: t("oqtima-ecn-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col2",
-        },
-        {
-          Header: "Avg",
-          accessor: "col3",
-        },
-      ],
-    },
-    {
-      id: "group3",
-      Header: t("oqtima-one-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col4",
-        },
-        {
-          Header: "Avg",
-          accessor: "col5",
-        },
-      ],
-    },
-    {
-      id: "group4",
-      Header: "",
-      columns: [
-        {
-          Header: "Live",
-          accessor: "col6",
-        },
-      ],
-    },
-  ];
+  updateTableDataWithLiveColumn(DATA_SHARES, tradingSymbols);
+
+  //unused code block.
+  // const COLUMNS_SHARES = [
+  //   {
+  //     id: "group1",
+  //     Header: "",
+  //     columns: [
+  //       {
+  //         Header: "",
+  //         accessor: "col1",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: "group2",
+  //     Header: t("oqtima-ecn-account"),
+  //     columns: [
+  //       {
+  //         Header: "Min",
+  //         accessor: "col2",
+  //       },
+  //       {
+  //         Header: "Avg",
+  //         accessor: "col3",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: "group3",
+  //     Header: t("oqtima-one-account"),
+  //     columns: [
+  //       {
+  //         Header: "Min",
+  //         accessor: "col4",
+  //       },
+  //       {
+  //         Header: "Avg",
+  //         accessor: "col5",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: "group4",
+  //     Header: "",
+  //     columns: [
+  //       {
+  //         Header: "Live",
+  //         accessor: "col6",
+  //       },
+  //     ],
+  //   },
+  // ];
 
   return (
     <>
       <TopMarket
-        title={t(`shares_top-market-title${sitePostfix}`)}
+        title={
+          <HighlightedLocalizationText
+            localizationText={t(`shares_top-market-title${sitePostfix}`)}
+            wordsToHighlight="shares_top-market-title-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-white"
+          />
+        }
         image={image}
         isChildrenHasSmallSize
         btn1Title={t("shares_top-market-btn1")}
@@ -91,6 +106,8 @@ const SharesContent = () => {
         title={t("shares_trading-ticker-title")}
         pageSpecificSection={SHARES_TRADING_SECTION}
         isInfiniteAutoScroll={true}
+        tradingSymbols={tradingSymbols}
+        setTradingSymbols={setTradingSymbols}
       />
       <TopMarketPromotion
         className="shares-promotion"

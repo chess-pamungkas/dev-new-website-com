@@ -888,6 +888,15 @@ export const PhFlagIcon = ({ className }) => (
   />
 );
 
+export const BrFlagIcon = ({ className }) => (
+  <StaticImage
+    className={className}
+    src="../../../assets/images/icons/languages/br.png"
+    alt="pt"
+    width={FLAG_WIDTH}
+  />
+);
+
 export const SearchIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

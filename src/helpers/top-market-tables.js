@@ -2,29 +2,6 @@ import React from "react";
 import ButtonLink from "../components/shared/button-link";
 import cn from "classnames";
 
-const FOREX_COLUMNS_WITH_BTN = (
-  <div className="table__info-column">
-    <div className="table__params">
-      <div className="table__param">
-        <span className="table__param-name">Bid</span>
-        <span className="table__param-value">0.77</span>
-      </div>
-      <div className="table__param">
-        <span className="table__param-name">Ask</span>
-        <span className="table__param-value">0.77</span>
-      </div>
-    </div>
-    <div className="table__btn-wrapper">
-      <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-        Buy
-      </ButtonLink>
-      <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-        Sell
-      </ButtonLink>
-    </div>
-  </div>
-);
-
 export const DATA_FOREX = [
   {
     col1: "AUDNZD",
@@ -32,7 +9,6 @@ export const DATA_FOREX = [
     col3: "1.12",
     col4: "1.00",
     col5: "2.12",
-    col6: FOREX_COLUMNS_WITH_BTN,
   },
   {
     col1: "AUDUSD",
@@ -40,7 +16,6 @@ export const DATA_FOREX = [
     col3: "0.14",
     col4: "1.00",
     col5: "1.14",
-    col6: FOREX_COLUMNS_WITH_BTN,
   },
   {
     col1: "AUDCAD",
@@ -48,7 +23,6 @@ export const DATA_FOREX = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: FOREX_COLUMNS_WITH_BTN,
   },
   {
     col1: "AUDCAD",
@@ -56,7 +30,6 @@ export const DATA_FOREX = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: FOREX_COLUMNS_WITH_BTN,
   },
   {
     col1: "AUDCAD",
@@ -64,7 +37,6 @@ export const DATA_FOREX = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: FOREX_COLUMNS_WITH_BTN,
   },
 
   {
@@ -73,32 +45,8 @@ export const DATA_FOREX = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: FOREX_COLUMNS_WITH_BTN,
   },
 ];
-
-const CRYPTO_COLUMNS_WITH_BTN = (
-  <div className="table__info-column">
-    <div className="table__params">
-      <div className="table__param">
-        <span className="table__param-name">Bid</span>
-        <span className="table__param-value">0.77</span>
-      </div>
-      <div className="table__param">
-        <span className="table__param-name">Ask</span>
-        <span className="table__param-value">0.77</span>
-      </div>
-    </div>
-    <div className="table__btn-wrapper">
-      <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-        Buy
-      </ButtonLink>
-      <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-        Sell
-      </ButtonLink>
-    </div>
-  </div>
-);
 
 export const DATA_CRYPTO = [
   {
@@ -107,7 +55,6 @@ export const DATA_CRYPTO = [
     col3: "2.16",
     col4: "2.9",
     col5: "3.16",
-    col6: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "MATUSD",
@@ -115,7 +62,6 @@ export const DATA_CRYPTO = [
     col3: "2.32",
     col4: "3.1",
     col5: "3.32",
-    col6: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "ADAUSD",
@@ -123,7 +69,6 @@ export const DATA_CRYPTO = [
     col3: "2.38",
     col4: "3.1",
     col5: "3.38",
-    col6: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "XRPUSD",
@@ -131,7 +76,6 @@ export const DATA_CRYPTO = [
     col3: "2.66",
     col4: "3.1",
     col5: "3.66",
-    col6: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "EOSUSD",
@@ -139,7 +83,6 @@ export const DATA_CRYPTO = [
     col3: "9.07",
     col4: "3.1",
     col5: "10.07",
-    col6: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "DOTUSD",
@@ -147,7 +90,6 @@ export const DATA_CRYPTO = [
     col3: "2.27",
     col4: "3.2",
     col5: "3.27",
-    col6: CRYPTO_COLUMNS_WITH_BTN,
   },
   {
     col1: "LNKUSD",
@@ -155,32 +97,8 @@ export const DATA_CRYPTO = [
     col3: "2.42",
     col4: "3.3",
     col5: "3.42",
-    col6: CRYPTO_COLUMNS_WITH_BTN,
   },
 ];
-
-const SHARES_COLUMNS_WITH_BTN = (
-  <div className="table__info-column">
-    <div className="table__params">
-      <div className="table__param">
-        <span className="table__param-name">Bid</span>
-        <span className="table__param-value">0.77</span>
-      </div>
-      <div className="table__param">
-        <span className="table__param-name">Ask</span>
-        <span className="table__param-value">0.77</span>
-      </div>
-    </div>
-    <div className="table__btn-wrapper">
-      <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-        Buy
-      </ButtonLink>
-      <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-        Sell
-      </ButtonLink>
-    </div>
-  </div>
-);
 
 export const DATA_SHARES = [
   {
@@ -189,7 +107,6 @@ export const DATA_SHARES = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: SHARES_COLUMNS_WITH_BTN,
   },
   {
     col1: "AUDCAD",
@@ -197,7 +114,6 @@ export const DATA_SHARES = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: SHARES_COLUMNS_WITH_BTN,
   },
   {
     col1: "AUDCAD",
@@ -205,7 +121,6 @@ export const DATA_SHARES = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: SHARES_COLUMNS_WITH_BTN,
   },
   {
     col1: "AUDCAD",
@@ -213,7 +128,6 @@ export const DATA_SHARES = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: SHARES_COLUMNS_WITH_BTN,
   },
   {
     col1: "AUDCAD",
@@ -221,7 +135,6 @@ export const DATA_SHARES = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: SHARES_COLUMNS_WITH_BTN,
   },
 
   {
@@ -230,32 +143,8 @@ export const DATA_SHARES = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: SHARES_COLUMNS_WITH_BTN,
   },
 ];
-
-const METALS_COLUMNS_WITH_BTN = (
-  <div className="table__info-column">
-    <div className="table__params">
-      <div className="table__param">
-        <span className="table__param-name">Bid</span>
-        <span className="table__param-value">0.77</span>
-      </div>
-      <div className="table__param">
-        <span className="table__param-name">Ask</span>
-        <span className="table__param-value">0.77</span>
-      </div>
-    </div>
-    <div className="table__btn-wrapper">
-      <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-        Buy
-      </ButtonLink>
-      <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-        Sell
-      </ButtonLink>
-    </div>
-  </div>
-);
 
 export const DATA_METALS = [
   {
@@ -264,7 +153,6 @@ export const DATA_METALS = [
     col3: "1.05",
     col4: "1.20",
     col5: "2.05",
-    col6: METALS_COLUMNS_WITH_BTN,
   },
   {
     col1: "XAGEUR",
@@ -272,7 +160,6 @@ export const DATA_METALS = [
     col3: "0.50",
     col4: "1.50",
     col5: "1.50",
-    col6: METALS_COLUMNS_WITH_BTN,
   },
   {
     col1: "XAUEUR",
@@ -280,7 +167,6 @@ export const DATA_METALS = [
     col3: "0.50",
     col4: "1.50",
     col5: "1.50",
-    col6: METALS_COLUMNS_WITH_BTN,
   },
   {
     col1: "XAUUSD",
@@ -288,7 +174,6 @@ export const DATA_METALS = [
     col3: "0.79",
     col4: "1.70",
     col5: "1.79",
-    col6: METALS_COLUMNS_WITH_BTN,
   },
   {
     col1: "XPTUSD",
@@ -296,7 +181,6 @@ export const DATA_METALS = [
     col3: "32.10",
     col4: "8.10",
     col5: "33.10",
-    col6: METALS_COLUMNS_WITH_BTN,
   },
   {
     col1: "XPDUSD",
@@ -304,32 +188,8 @@ export const DATA_METALS = [
     col3: "1616.68",
     col4: "1061.00",
     col5: "1617.68",
-    col6: METALS_COLUMNS_WITH_BTN,
   },
 ];
-
-const INDICES_COLUMNS_WITH_BTN = (
-  <div className="table__info-column">
-    <div className="table__params">
-      <div className="table__param">
-        <span className="table__param-name">Bid</span>
-        <span className="table__param-value">0.77</span>
-      </div>
-      <div className="table__param">
-        <span className="table__param-name">Ask</span>
-        <span className="table__param-value">0.77</span>
-      </div>
-    </div>
-    <div className="table__btn-wrapper">
-      <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-        Buy
-      </ButtonLink>
-      <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-        Sell
-      </ButtonLink>
-    </div>
-  </div>
-);
 
 export const DATA_INDICES = [
   {
@@ -338,7 +198,6 @@ export const DATA_INDICES = [
     col3: "0.03",
     col4: "1.02",
     col5: "1.03",
-    col6: INDICES_COLUMNS_WITH_BTN,
   },
   {
     col1: "US2000",
@@ -346,7 +205,6 @@ export const DATA_INDICES = [
     col3: "0.3",
     col4: "1.08",
     col5: "1.3",
-    col6: INDICES_COLUMNS_WITH_BTN,
   },
   {
     col1: "TW88",
@@ -354,7 +212,6 @@ export const DATA_INDICES = [
     col3: "0.4",
     col4: "1.09",
     col5: "1.4",
-    col6: INDICES_COLUMNS_WITH_BTN,
   },
   {
     col1: "VIX",
@@ -362,7 +219,6 @@ export const DATA_INDICES = [
     col3: "0.4",
     col4: "1.09",
     col5: "1.1",
-    col6: INDICES_COLUMNS_WITH_BTN,
   },
   {
     col1: "NETH25",
@@ -370,7 +226,6 @@ export const DATA_INDICES = [
     col3: "0.4",
     col4: "1.3",
     col5: "1.4",
-    col6: INDICES_COLUMNS_WITH_BTN,
   },
 
   {
@@ -379,7 +234,6 @@ export const DATA_INDICES = [
     col3: "3.1",
     col4: "3",
     col5: "4.1",
-    col6: INDICES_COLUMNS_WITH_BTN,
   },
   {
     col1: "UK100",
@@ -387,32 +241,8 @@ export const DATA_INDICES = [
     col3: "2.6",
     col4: "3",
     col5: "3.6",
-    col6: INDICES_COLUMNS_WITH_BTN,
   },
 ];
-
-const ENERGIES_COLUMNS_WITH_BTN = (
-  <div className="table__info-column">
-    <div className="table__params">
-      <div className="table__param">
-        <span className="table__param-name">Bid</span>
-        <span className="table__param-value">0.77</span>
-      </div>
-      <div className="table__param">
-        <span className="table__param-name">Ask</span>
-        <span className="table__param-value">0.77</span>
-      </div>
-    </div>
-    <div className="table__btn-wrapper">
-      <ButtonLink link="/" className={cn("table__btn", "table__btn--green")}>
-        Buy
-      </ButtonLink>
-      <ButtonLink link="/" className={cn("table__btn", "table__btn--red")}>
-        Sell
-      </ButtonLink>
-    </div>
-  </div>
-);
 
 export const DATA_ENERGIES = [
   {
@@ -421,7 +251,6 @@ export const DATA_ENERGIES = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: ENERGIES_COLUMNS_WITH_BTN,
   },
   {
     col1: "EUSTX50",
@@ -429,7 +258,6 @@ export const DATA_ENERGIES = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: ENERGIES_COLUMNS_WITH_BTN,
   },
   {
     col1: "FRA40",
@@ -437,7 +265,6 @@ export const DATA_ENERGIES = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: ENERGIES_COLUMNS_WITH_BTN,
   },
   {
     col1: "GER30",
@@ -445,7 +272,6 @@ export const DATA_ENERGIES = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: ENERGIES_COLUMNS_WITH_BTN,
   },
   {
     col1: "NAS100",
@@ -453,7 +279,6 @@ export const DATA_ENERGIES = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: ENERGIES_COLUMNS_WITH_BTN,
   },
 
   {
@@ -462,6 +287,5 @@ export const DATA_ENERGIES = [
     col3: "0.4",
     col4: "0",
     col5: "0.4",
-    col6: ENERGIES_COLUMNS_WITH_BTN,
   },
 ];
