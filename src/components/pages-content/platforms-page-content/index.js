@@ -46,7 +46,7 @@ const PlatformsPageContent = () => {
       >
         <HighlightedLocalizationText
           localizationText="platforms_top-market-promo-text"
-          wordsToHighlight="platforms_top-market-promo-text-accent"
+          wordsToHighlight="platforms-top-market-promo-text-accent"
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />

@@ -165,9 +165,10 @@ const SpreadsAndFeesPageContent = () => {
             <span className="swap-rate__subtitle-text swap-rate__subtitle-text--bold">
               {t("spreads_faq-subtitle3")}
             </span>
-            <span className="swap-rate__subtitle-text swap-rate__subtitle-text--bold">
+            {/* removed based on this ticket https://oqtima-website.atlassian.net/browse/OW-239 */}
+            {/* <span className="swap-rate__subtitle-text swap-rate__subtitle-text--bold">
               {t("spreads_faq-subtitle4")}
-            </span>
+            </span> */}
           </div>
         </div>
       </section>

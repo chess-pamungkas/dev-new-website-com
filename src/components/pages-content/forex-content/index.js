@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/forex.svg";
@@ -9,16 +9,135 @@ import TopMarketPromotion from "../../top-market-promotion";
 import forex from "../../../assets/images/top-markets/images/forex.svg";
 
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { FOREX_TRADING_SECTION } from "../../../helpers/config";
-import StaticImages from "../../../components/promotion-markets/static-images";
-import MarketingImage from "../../../assets/images/bg/promotions/forex/forex@2x.png";
 import animation from "../../../assets/images/bg/promotions/forex/forex.json";
+import MarketingCircle from "../../marketing-circle";
+import TopMarketLayout from "../../top-market-layout";
+import Faq from "../../faq";
+import { FAQ_FOREX } from "../../../helpers/faq";
+import TableComponent from "../../shared/table";
+import { DATA_FOREX } from "../../../helpers/top-market-tables";
+import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
+import Tabs from "../../shared/tabs";
 
 const ForexContent = () => {
   const { sitePostfix } = useEntityPostfix();
   const { t } = useTranslation();
-  const { isMobile } = useWindowSize();
+  const [tradingSymbols, setTradingSymbols] = useState([]);
+
+  updateTableDataWithLiveColumn(DATA_FOREX, tradingSymbols);
+
+  const COLUMNS_FOREX = [
+    {
+      id: "group1",
+      Header: "",
+      columns: [
+        {
+          Header: "",
+          accessor: "col1",
+        },
+      ],
+    },
+    {
+      id: "group2",
+      Header: t("oqtima-ecn-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col2",
+        },
+        {
+          Header: "Avg",
+          accessor: "col3",
+        },
+      ],
+    },
+    {
+      id: "group3",
+      Header: t("oqtima-one-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col4",
+        },
+        {
+          Header: "Avg",
+          accessor: "col5",
+        },
+      ],
+    },
+    {
+      id: "group4",
+      Header: "",
+      columns: [
+        {
+          Header: "Live",
+          accessor: "col6",
+        },
+      ],
+    },
+  ];
+
+  const tabs = [
+    {
+      id: 1,
+      title: "Major",
+      content: (
+        <TableComponent
+          data={DATA_FOREX}
+          columns={COLUMNS_FOREX}
+          tip={
+            <span>
+              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+              &nbsp;
+              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+              &nbsp;
+            </span>
+          }
+          isSearch
+        />
+      ),
+    },
+    {
+      id: 2,
+      title: "Minor",
+      content: (
+        <TableComponent
+          data={DATA_FOREX}
+          columns={COLUMNS_FOREX}
+          tip={
+            <span>
+              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+              &nbsp;
+              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+              &nbsp;
+            </span>
+          }
+          isSearch
+        />
+      ),
+    },
+    {
+      id: 3,
+      title: "Exotic",
+      content: (
+        <TableComponent
+          data={DATA_FOREX}
+          columns={COLUMNS_FOREX}
+          tip={
+            <span>
+              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+              &nbsp;
+              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+              &nbsp;
+            </span>
+          }
+          isSearch
+        />
+      ),
+    },
+  ];
+
   return (
     <>
       <TopMarket
@@ -39,6 +158,8 @@ const ForexContent = () => {
       <TradingTicker
         title={t("forex_trading-ticker-title")}
         pageSpecificSection={FOREX_TRADING_SECTION}
+        tradingSymbols={tradingSymbols}
+        setTradingSymbols={setTradingSymbols}
       />
       <TopMarketPromotion
         className="forex-promotion"
@@ -53,11 +174,65 @@ const ForexContent = () => {
           accentClassName="highlighted-in-red"
         />
       </TopMarketPromotion>
-      <StaticImages
-        image={MarketingImage}
-        height={isMobile ? 400 : 800}
+      <MarketingCircle
         animation={animation}
+        upper={
+          <HighlightedLocalizationText
+            localizationText="forex_marketing-circle-upper"
+            wordsToHighlight="forex_marketing-circle-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        leftUpper={
+          <HighlightedLocalizationText
+            localizationText="forex_marketing-circle-left-upper"
+            wordsToHighlight="forex_marketing-circle-left-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        rightUpper={
+          <HighlightedLocalizationText
+            localizationText="forex_marketing-circle-right-upper"
+            wordsToHighlight="forex_marketing-circle-right-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        bottom={
+          <HighlightedLocalizationText
+            localizationText="forex_marketing-circle-bottom"
+            wordsToHighlight="forex_marketing-circle-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        leftBottom={
+          <HighlightedLocalizationText
+            localizationText="forex_marketing-circle-left-bottom"
+            wordsToHighlight="forex_marketing-circle-left-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        rightBottom={
+          <HighlightedLocalizationText
+            localizationText="forex_marketing-circle-right-bottom"
+            wordsToHighlight="forex_marketing-circle-right-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
       />
+      <TopMarketLayout
+        title={t("forex_top-market-layout-title")}
+        btnTitle={t("forex_top-market-layout-btn")}
+        link={REGISTRATION_LINK}
+      >
+        <Tabs tabList={tabs} />
+      </TopMarketLayout>
+      <Faq faq={FAQ_FOREX} />
     </>
   );
 };

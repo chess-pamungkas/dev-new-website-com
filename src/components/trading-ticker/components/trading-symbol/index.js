@@ -2,6 +2,8 @@ import * as React from "react";
 import cn from "classnames";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import upArrow from "../../../../assets/images/trading-ticker/up-arrow.svg";
+import downArrow from "../../../../assets/images/trading-ticker/down-arrow.svg";
 
 const TradingSymbol = ({ className, symbol, direction, bid, ask, spread }) => {
   const isRTL = useRtlDirection();
@@ -16,6 +18,10 @@ const TradingSymbol = ({ className, symbol, direction, bid, ask, spread }) => {
       <div className="trading-symbol__block">
         <div className="trading-symbol__title-wrapper">
           <p className="trading-symbol__title">{symbol}</p>
+          <img
+            src={direction === "up" ? upArrow : downArrow}
+            className="trading-symbol__arrow"
+          />
         </div>
         <div className="trading-symbol__data">
           <div className="trading-symbol__option">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/shares.svg";
@@ -7,74 +7,87 @@ import { REGISTRATION_LINK } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
-import PromotionMarkets from "../../promotion-markets";
-import animation from "../../../assets/images/animations/shares.json";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { SHARES_TRADING_SECTION } from "../../../helpers/config";
 import Faq from "../../faq";
 import { FAQ_SHARES } from "../../../helpers/faq";
+import animation from "../../../assets/images/bg/promotions/shares/shares.json";
+import MarketingCircle from "../../marketing-circle";
+import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
+import { DATA_SHARES } from "../../../helpers/top-market-tables";
+import TopMarketLayout from "../../top-market-layout";
+import TableComponent from "../../shared/table";
 
 const SharesContent = () => {
   const { sitePostfix } = useEntityPostfix();
   const { t } = useTranslation();
-  const { isMobile } = useWindowSize();
+  const [tradingSymbols, setTradingSymbols] = useState([]);
 
-  const COLUMNS_SHARES = [
-    {
-      id: "group1",
-      Header: "",
-      columns: [
-        {
-          Header: "",
-          accessor: "col1",
-        },
-      ],
-    },
-    {
-      id: "group2",
-      Header: t("oqtima-ecn-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col2",
-        },
-        {
-          Header: "Avg",
-          accessor: "col3",
-        },
-      ],
-    },
-    {
-      id: "group3",
-      Header: t("oqtima-one-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col4",
-        },
-        {
-          Header: "Avg",
-          accessor: "col5",
-        },
-      ],
-    },
-    {
-      id: "group4",
-      Header: "",
-      columns: [
-        {
-          Header: "Live",
-          accessor: "col6",
-        },
-      ],
-    },
-  ];
+  updateTableDataWithLiveColumn(DATA_SHARES, tradingSymbols);
+
+  //unused code block.
+  // const COLUMNS_SHARES = [
+  //   {
+  //     id: "group1",
+  //     Header: "",
+  //     columns: [
+  //       {
+  //         Header: "",
+  //         accessor: "col1",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: "group2",
+  //     Header: t("oqtima-ecn-account"),
+  //     columns: [
+  //       {
+  //         Header: "Min",
+  //         accessor: "col2",
+  //       },
+  //       {
+  //         Header: "Avg",
+  //         accessor: "col3",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: "group3",
+  //     Header: t("oqtima-one-account"),
+  //     columns: [
+  //       {
+  //         Header: "Min",
+  //         accessor: "col4",
+  //       },
+  //       {
+  //         Header: "Avg",
+  //         accessor: "col5",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: "group4",
+  //     Header: "",
+  //     columns: [
+  //       {
+  //         Header: "Live",
+  //         accessor: "col6",
+  //       },
+  //     ],
+  //   },
+  // ];
 
   return (
     <>
       <TopMarket
-        title={t(`shares_top-market-title${sitePostfix}`)}
+        title={
+          <HighlightedLocalizationText
+            localizationText={t(`shares_top-market-title${sitePostfix}`)}
+            wordsToHighlight="shares_top-market-title-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-white"
+          />
+        }
         image={image}
         isChildrenHasSmallSize
         btn1Title={t("shares_top-market-btn1")}
@@ -93,6 +106,8 @@ const SharesContent = () => {
         title={t("shares_trading-ticker-title")}
         pageSpecificSection={SHARES_TRADING_SECTION}
         isInfiniteAutoScroll={true}
+        tradingSymbols={tradingSymbols}
+        setTradingSymbols={setTradingSymbols}
       />
       <TopMarketPromotion
         className="shares-promotion"
@@ -107,57 +122,57 @@ const SharesContent = () => {
           accentClassName="highlighted-in-red"
         />
       </TopMarketPromotion>
-      <PromotionMarkets
-        className="promotion-markets--shares"
+      <MarketingCircle
         animation={animation}
-        animationStyle={{
-          height: isMobile ? 301 : 473,
-        }}
-        btnTitle={t("shares_promotion-markets-btn")}
-      >
-        <HighlightedLocalizationText
-          localizationText="shares_promotion-markets-promo-text-1"
-          wordsToHighlight="shares-promotion-markets-promo-text-accent-1"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="shares_promotion-markets-promo-text-2"
-          wordsToHighlight="shares-promotion-markets-promo-text-accent-2"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="shares_promotion-markets-promo-text-3"
-          wordsToHighlight="shares-promotion-markets-promo-text-accent-3"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="shares_promotion-markets-promo-text-4"
-          wordsToHighlight="shares-promotion-markets-promo-text-accent-4"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="shares_promotion-markets-promo-text-5"
-          wordsToHighlight="shares-promotion-markets-promo-text-accent-5"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="shares_promotion-markets-promo-text-6"
-          wordsToHighlight="shares-promotion-markets-promo-text-accent-6"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-        <HighlightedLocalizationText
-          localizationText="shares_promotion-markets-promo-text-7"
-          wordsToHighlight="shares-promotion-markets-promo-text-accent-7"
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-red"
-        />
-      </PromotionMarkets>
+        upper={
+          <HighlightedLocalizationText
+            localizationText="shares_marketing-circle-upper"
+            wordsToHighlight="shares_marketing-circle-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        leftUpper={
+          <HighlightedLocalizationText
+            localizationText="shares_marketing-circle-left-upper"
+            wordsToHighlight="shares_marketing-circle-left-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        rightUpper={
+          <HighlightedLocalizationText
+            localizationText="shares_marketing-circle-right-upper"
+            wordsToHighlight="shares_marketing-circle-right-upper-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        bottom={
+          <HighlightedLocalizationText
+            localizationText="shares_marketing-circle-bottom"
+            wordsToHighlight="shares_marketing-circle-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        leftBottom={
+          <HighlightedLocalizationText
+            localizationText="shares_marketing-circle-left-bottom"
+            wordsToHighlight="shares_marketing-circle-left-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+        rightBottom={
+          <HighlightedLocalizationText
+            localizationText="shares_marketing-circle-right-bottom"
+            wordsToHighlight="shares_marketing-circle-right-bottom-accent"
+            primaryClassName="highlighted-in-black"
+            accentClassName="highlighted-in-red"
+          />
+        }
+      />
       {/*Removed due to ticket https://oqtima-website.atlassian.net/browse/OW-209?atlOrigin=eyJpIjoiMDlmNzI4YTk4NzZjNGYxMmIxMmRiMzE1NjdlYTdmMTIiLCJwIjoiaiJ9 */}
       {/* <TopMarketLayout
         title={t("shares_top-market-layout-title")}
