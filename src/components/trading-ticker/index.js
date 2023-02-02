@@ -24,6 +24,9 @@ const TradingTicker = ({
     CYSEC_TRADING_SECTIONS[0]
   );
 
+  [tradingSymbols, setTradingSymbols] = tradingSymbols
+    ? [tradingSymbols, setTradingSymbols]
+    : useState([]);
   const { isCySEC } = useEntityPostfix();
 
   useEffect(() => {
