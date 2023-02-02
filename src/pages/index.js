@@ -12,7 +12,6 @@ import PromotionContent from "../components/pages-content/main-page-content/prom
 const IndexPage = () => {
   const { t } = useTranslation();
   const [headerRef, setHeaderRef] = useState(null);
-  const [tradingSymbols, setTradingSymbols] = useState([]);
 
   return (
     <Layout setHeaderRef={setHeaderRef}>
@@ -22,10 +21,7 @@ const IndexPage = () => {
       />
       {/*isShowHero is workaround to hide hero image (e.g. Buffon)  */}
       <MainPromotion isShowHero={false} />
-      <TradingTicker
-        tradingSymbols={tradingSymbols}
-        setTradingSymbols={setTradingSymbols}
-      />
+      <TradingTicker />
       <PromotionContent headerRef={headerRef} />
       <PerformanceContent />
     </Layout>

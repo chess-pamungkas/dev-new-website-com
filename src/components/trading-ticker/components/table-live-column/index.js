@@ -10,7 +10,6 @@ const TableLiveColumn = ({ symbol, tradingSymbols }) => {
   const [direction, setDirection] = useState("up");
 
   useEffect(() => {
-    console.log(tradingSymbols, symbol);
     let symbolData =
       tradingSymbols.find((item) => item.symbol === symbol) || {};
     setBidValue(symbolData.bid || NO_VALUE);
