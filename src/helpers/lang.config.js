@@ -18,6 +18,18 @@ const LANG_CONFIG = [
     icon: "BrFlagIcon",
     name: "Português",
   },
+  // Vietnamese
+  {
+    id: "vn",
+    icon: "VnFlagIcon",
+    name: "Tiếng Việt",
+  },
+  // Thai
+  {
+    id: "th",
+    icon: "ThFlagIcon",
+    name: "แบบไทย",
+  },
   /* // German
   {
     id: "de",
@@ -108,18 +120,6 @@ const LANG_CONFIG = [
    icon: "CzFlagIcon",
    name: "Čeština",
  },
- // Vietnamese
- {
-   id: "vn",
-   icon: "VnFlagIcon",
-   name: "Tiếng Việt",
- },
- // Thai
- {
-   id: "th",
-   icon: "ThFlagIcon",
-   name: "แบบไทย",
- },
  // Malay (Malaysia)
  {
    id: "my",
@@ -170,10 +170,57 @@ const LANG_CONFIG = [
  },*/
 ];
 
+const CYSEC_LANG_CONFIG = [
+  // English
+  {
+    id: "en",
+    icon: "EnFlagIcon",
+    name: "English (UK)",
+    isDefault: true,
+  },
+  // French
+  {
+    id: "fr",
+    icon: "FrFlagIcon",
+    name: "Français",
+  },
+  // Portuguese
+  {
+    id: "pt",
+    icon: "BrFlagIcon",
+    name: "Português",
+  },
+  // Spanish
+  {
+    id: "es",
+    icon: "EsFlagIcon",
+    name: "Español",
+  },
+  // Italian
+  {
+    id: "it",
+    icon: "ItFlagIcon",
+    name: "Italiano",
+  },
+  // Chinese
+  {
+    id: "cn",
+    icon: "CnFlagIcon",
+    name: "简体中文",
+  },
+  // Taiwan
+  {
+    id: "tw",
+    icon: "CnFlagIcon",
+    name: "繁體中文",
+  },
+];
+
 const ARABIC_LANG_ID = "ar";
 
 module.exports = {
   LANG_CONFIG,
+  CYSEC_LANG_CONFIG,
   ARABIC_LANG_ID,
   list: LANG_CONFIG.map(({ id }) => id),
   defaultLangKey: LANG_CONFIG.find(({ isDefault }) => isDefault).id,
