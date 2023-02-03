@@ -40,8 +40,8 @@
     grid-template-areas: ". upper ." "left-upper . right-upper" "left-bottom . right-bottom" ". bottom .";
     align-items: center;
     justify-items: center;
-    grid-gap: 92px 0px;
-    top: 84px;
+    grid-gap: 88px 0px;
+    top: 100px;
 
     @include tablet {
       grid-gap: 94px 0px;
@@ -49,7 +49,7 @@
     }
 
     @include desktop-lg {
-      grid-gap: 75px 10px;
+      grid-gap: 75px 43px;
       top: 163px;
     }
 
@@ -82,17 +82,16 @@
 
     @include desktop-lg {
       font: normal normal 900 20px/25px $font;
-      max-width: unset;
+      max-width: 290px;
       min-height: 76px;
       padding: 12px 30px;
-      width: 330px;
     }
 
     @include desktop-xl {
       font: normal normal 900 32px/40px $font;
+      max-width: 500px;
       min-height: 120px;
       padding: 20px 30px;
-      width: 550px;
     }
   }
 
