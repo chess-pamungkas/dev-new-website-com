@@ -90,7 +90,7 @@ body {
 
     & main {
       flex-grow: 1;
-      overflow-x: hidden;
+      // overflow-x: hidden; checking if solved the problem
     }
   }
 }
