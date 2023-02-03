@@ -28,7 +28,7 @@ import {
   VnFlagIcon,
   BrFlagIcon,
 } from "../components/shared/icons";
-import { LANG_CONFIG, FSA_LANG_CONFIG, CYSEC_LANG_CONFIG } from "./lang.config";
+import { LANG_CONFIG } from "./lang.config";
 
 const IconComponents = {
   EnFlagIcon: EnFlagIcon,
@@ -66,13 +66,5 @@ export const LANG_SELECT_OPTIONS = LANG_CONFIG.map((languageItem) => {
 
   return languageItem;
 });
-
-export const CYSEC_LANG_SELECT_OPTIONS = CYSEC_LANG_CONFIG.map(
-  (languageItem) => {
-    languageItem.icon = IconComponents[languageItem.icon];
-
-    return languageItem;
-  }
-);
 
 export const SHOULD_BE_SMALLER_LANGUAGES = ["Русский", "Ελληνικά"];
