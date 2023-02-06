@@ -15,8 +15,6 @@ import animation from "../../../assets/images/bg/promotions/shares/shares.json";
 import MarketingCircle from "../../marketing-circle";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import { DATA_SHARES } from "../../../helpers/top-market-tables";
-import TopMarketLayout from "../../top-market-layout";
-import TableComponent from "../../shared/table";
 
 const SharesContent = () => {
   const { sitePostfix } = useEntityPostfix();
