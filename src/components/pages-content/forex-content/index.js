@@ -16,7 +16,11 @@ import TopMarketLayout from "../../top-market-layout";
 import Faq from "../../faq";
 import { FAQ_FOREX } from "../../../helpers/faq";
 import TableComponent from "../../shared/table";
-import { DATA_FOREX } from "../../../helpers/top-market-tables";
+import {
+  DATA_FOREX_MINOR,
+  DATA_FOREX_MAJOR,
+  DATA_FOREX_EXOTIC,
+} from "../../../helpers/top-market-tables";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import Tabs from "../../shared/tabs";
 
@@ -25,7 +29,9 @@ const ForexContent = () => {
   const { t } = useTranslation();
   const [tradingSymbols, setTradingSymbols] = useState([]);
 
-  updateTableDataWithLiveColumn(DATA_FOREX, tradingSymbols);
+  updateTableDataWithLiveColumn(DATA_FOREX_MINOR, tradingSymbols);
+  updateTableDataWithLiveColumn(DATA_FOREX_MAJOR, tradingSymbols);
+  // updateTableDataWithLiveColumn(DATA_FOREX_EXOTIC, tradingSymbols);
 
   const COLUMNS_FOREX = [
     {
@@ -84,7 +90,7 @@ const ForexContent = () => {
       title: "Major",
       content: (
         <TableComponent
-          data={DATA_FOREX}
+          data={DATA_FOREX_MAJOR}
           columns={COLUMNS_FOREX}
           tip={
             <span>
@@ -103,7 +109,7 @@ const ForexContent = () => {
       title: "Minor",
       content: (
         <TableComponent
-          data={DATA_FOREX}
+          data={DATA_FOREX_MINOR}
           columns={COLUMNS_FOREX}
           tip={
             <span>
@@ -117,25 +123,25 @@ const ForexContent = () => {
         />
       ),
     },
-    {
-      id: 3,
-      title: "Exotic",
-      content: (
-        <TableComponent
-          data={DATA_FOREX}
-          columns={COLUMNS_FOREX}
-          tip={
-            <span>
-              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
-              &nbsp;
-              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
-              &nbsp;
-            </span>
-          }
-          isSearch
-        />
-      ),
-    },
+    // {
+    //   id: 3,
+    //   title: "Exotic",
+    //   content: (
+    //     <TableComponent
+    //       data={DATA_FOREX}
+    //       columns={COLUMNS_FOREX}
+    //       tip={
+    //         <span>
+    //           <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+    //           &nbsp;
+    //           <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+    //           &nbsp;
+    //         </span>
+    //       }
+    //       isSearch
+    //     />
+    //   ),
+    // },
   ];
 
   return (
