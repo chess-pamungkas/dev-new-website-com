@@ -3,10 +3,10 @@ import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import TableComponent from "../../shared/table";
 import {
-  COLUMNS_DEPOSIT,
-  COLUMNS_WITHDRAWAL,
-  DATA_DEPOSIT,
-  DATA_WITHDRAWAL,
+  ColumnDeposit,
+  ColumnWithdrawal,
+  DataDeposit,
+  DataWithdrawal,
 } from "../../../helpers/withdrawal.config";
 import TopMarketPromotion from "../../top-market-promotion";
 import promotion from "../../../assets/images/withdrawal/promotion.svg";
@@ -29,8 +29,8 @@ const FundingPageContent = () => {
       title: t("withdrawal_tabs_title1"),
       content: (
         <TableComponent
-          data={DATA_DEPOSIT}
-          columns={COLUMNS_DEPOSIT}
+          data={DataDeposit()}
+          columns={ColumnDeposit()}
           className="withdrawal-table"
         />
       ),
@@ -40,8 +40,8 @@ const FundingPageContent = () => {
       title: t("withdrawal_tabs_title2"),
       content: (
         <TableComponent
-          data={DATA_WITHDRAWAL}
-          columns={COLUMNS_WITHDRAWAL}
+          data={DataWithdrawal()}
+          columns={ColumnWithdrawal()}
           className={cn("withdrawal-table", "withdrawal-table--wide")}
         />
       ),

@@ -9,10 +9,10 @@ import Tabs from "../../shared/tabs";
 import TableComponent from "../../shared/table";
 import {
   COLUMNS_SPREADS_TABLE_2,
-  COLUMNS_SPREADS_TABLE_COMMODITIES,
+  ColumnsSpreadTableCommodities,
   COLUMNS_SPREADS_TABLE_CRYPTO,
-  COLUMNS_SPREADS_TABLE_FOREX,
-  COLUMNS_SPREADS_TABLE_INDICES,
+  ColumnsSpreadTableForex,
+  ColumnsSpreadTableIndices,
   DATA_SPREADS_TABLE_2,
   DATA_SPREADS_TABLE_COMMODITIES,
   DATA_SPREADS_TABLE_CRYPTO,
@@ -39,7 +39,7 @@ const SpreadsAndFeesPageContent = () => {
         <>
           <TableComponent
             data={DATA_SPREADS_TABLE_FOREX}
-            columns={COLUMNS_SPREADS_TABLE_FOREX}
+            columns={ColumnsSpreadTableForex()}
             className={cn("spreads--common-table", "spreads--table")}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
           />
@@ -56,7 +56,7 @@ const SpreadsAndFeesPageContent = () => {
         <>
           <TableComponent
             data={DATA_SPREADS_TABLE_INDICES}
-            columns={COLUMNS_SPREADS_TABLE_INDICES}
+            columns={ColumnsSpreadTableIndices()}
             className={cn("spreads--common-table", "spreads--table")}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
           />
@@ -73,7 +73,7 @@ const SpreadsAndFeesPageContent = () => {
         <>
           <TableComponent
             data={DATA_SPREADS_TABLE_COMMODITIES}
-            columns={COLUMNS_SPREADS_TABLE_COMMODITIES}
+            columns={ColumnsSpreadTableCommodities()}
             className={cn("spreads--common-table", "spreads--table")}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
           />

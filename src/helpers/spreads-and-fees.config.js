@@ -1,44 +1,49 @@
-export const COLUMNS_SPREADS_TABLE_FOREX = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "Currency Pair",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "Oqtima ECN+ Account",
-    columns: [
-      {
-        Header: "Minimum",
-        accessor: "col2",
-      },
-      {
-        Header: "Average",
-        accessor: "col3",
-      },
-    ],
-  },
-  {
-    id: "group3",
-    Header: "Oqtima One Account",
-    columns: [
-      {
-        Header: "Minimum",
-        accessor: "col4",
-      },
-      {
-        Header: "Average",
-        accessor: "col5",
-      },
-    ],
-  },
-];
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
+const ColumnsSpreadTableForex = () => {
+  const { t } = useTranslation();
+  const COLUMNS_SPREADS_TABLE_FOREX = [
+    {
+      id: "group1",
+      Header: "",
+      columns: [
+        {
+          Header: t("spreads_account-group1-header1"),
+          accessor: "col1",
+        },
+      ],
+    },
+    {
+      id: "group2",
+      Header: t("spreads_account-group2-table-name1"),
+      columns: [
+        {
+          Header: t("spreads_account-group2-header1"),
+          accessor: "col2",
+        },
+        {
+          Header: t("spreads_account-group2-header2"),
+          accessor: "col3",
+        },
+      ],
+    },
+    {
+      id: "group3",
+      Header: t("spreads_account-group2-table-name2"),
+      columns: [
+        {
+          Header: t("spreads_account-group2-header1"),
+          accessor: "col4",
+        },
+        {
+          Header: t("spreads_account-group2-header2"),
+          accessor: "col5",
+        },
+      ],
+    },
+  ];
+  return COLUMNS_SPREADS_TABLE_FOREX;
+};
 export const DATA_SPREADS_TABLE_FOREX = [
   {
     col1: "AUDCAD",
@@ -84,33 +89,36 @@ export const DATA_SPREADS_TABLE_FOREX = [
     col5: "0.4",
   },
 ];
-
-export const COLUMNS_SPREADS_TABLE_INDICES = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "Index",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "Oqtima ECN+ Account / Oqtima One Account",
-    columns: [
-      {
-        Header: "Symbol",
-        accessor: "col2",
-      },
-      {
-        Header: "Minimum Spread",
-        accessor: "col3",
-      },
-    ],
-  },
-];
+const ColumnsSpreadTableIndices = () => {
+  const { t } = useTranslation();
+  const COLUMNS_SPREADS_TABLE_INDICES = [
+    {
+      id: "group1",
+      Header: "",
+      columns: [
+        {
+          Header: t("spreads_account-indices-group2-header1"),
+          accessor: "col1",
+        },
+      ],
+    },
+    {
+      id: "group2",
+      Header: t("spreads_account-indices-group2-table-name"),
+      columns: [
+        {
+          Header: t("spreads_account-indices-group2-header2"),
+          accessor: "col2",
+        },
+        {
+          Header: t("spreads_account-indices-group2-header3"),
+          accessor: "col3",
+        },
+      ],
+    },
+  ];
+  return COLUMNS_SPREADS_TABLE_INDICES;
+};
 
 export const DATA_SPREADS_TABLE_INDICES = [
   {
@@ -139,50 +147,52 @@ export const DATA_SPREADS_TABLE_INDICES = [
     col3: "0.4",
   },
 ];
-
-export const COLUMNS_SPREADS_TABLE_COMMODITIES = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "Instrument",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "Oqtima ECN+ / Oqtima One",
-    columns: [
-      {
-        Header: "Symbol",
-        accessor: "col2",
-      },
-      {
-        Header: "Contract Size Per Lot",
-        accessor: "col3",
-      },
-      {
-        Header: "Contract Value Per Full Point",
-        accessor: "col4",
-      },
-      {
-        Header: "Minimum Spread",
-        accessor: "col5",
-      },
-      {
-        Header: "Average Spread*",
-        accessor: "col6",
-      },
-      {
-        Header: "Retail Leverage",
-        accessor: "col7",
-      },
-    ],
-  },
-];
-
+const ColumnsSpreadTableCommodities = () => {
+  const { t } = useTranslation();
+  const COLUMNS_SPREADS_TABLE_COMMODITIES = [
+    {
+      id: "group1",
+      Header: "",
+      columns: [
+        {
+          Header: t("spreads_account_commodities-group1-header1"),
+          accessor: "col1",
+        },
+      ],
+    },
+    {
+      id: "group2",
+      Header: t("spreads_account-commodities-group2-table-name"),
+      columns: [
+        {
+          Header: t("spreads_account_commodities-group2-header1"),
+          accessor: "col2",
+        },
+        {
+          Header: t("spreads_account_commodities-group2-header2"),
+          accessor: "col3",
+        },
+        {
+          Header: t("spreads_account_commodities-group2-header3"),
+          accessor: "col4",
+        },
+        {
+          Header: t("spreads_account_commodities-group2-header4"),
+          accessor: "col5",
+        },
+        {
+          Header: t("spreads_account_commodities-group2-header5"),
+          accessor: "col6",
+        },
+        {
+          Header: t("spreads_account_commodities-group2-header6"),
+          accessor: "col7",
+        },
+      ],
+    },
+  ];
+  return COLUMNS_SPREADS_TABLE_COMMODITIES;
+};
 export const DATA_SPREADS_TABLE_COMMODITIES = [
   {
     col1: "Spot Gold ($)",
@@ -398,3 +408,9 @@ export const DATA_SPREADS_TABLE_2 = [
     col2: "R 60 per lot traded (R 120 per round turn)",
   },
 ];
+
+export {
+  ColumnsSpreadTableForex,
+  ColumnsSpreadTableIndices,
+  ColumnsSpreadTableCommodities,
+};
