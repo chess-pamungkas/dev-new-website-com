@@ -6,3 +6,4 @@ public
 .env.production
 .vscode
 .gitignore
+.DS_Store

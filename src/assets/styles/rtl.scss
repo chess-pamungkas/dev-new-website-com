@@ -25,7 +25,7 @@
       border-top: $header-height-small solid transparent;
       content: "";
       height: 100%;
-      right: -25px;
+      right: -24px;
       position: absolute;
 
       @include desktop-xl {
@@ -195,8 +195,7 @@
 }
 
 .promotion4.promotion--rtl {
-  background: url("../../assets/images/promotions/promo4-rtl.svg") no-repeat
-    left;
+  background: url("../../assets/images/promotions/promo4-rtl.svg") no-repeat left;
   background-size: cover;
 }
 
@@ -377,25 +376,21 @@
 
 .legal-page-promotion--rtl {
   direction: rtl;
-  background: url("../../assets/images/bg/legal/banner-sm-rtl.svg") no-repeat
-    center;
+  background: url("../../assets/images/bg/legal/banner-sm-rtl.svg") no-repeat center;
   background-size: cover;
 
   @include tablet {
-    background: url("../../assets/images/bg/legal/banner-md-rtl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/legal/banner-md-rtl.svg") no-repeat center;
     background-size: cover;
   }
 
   @include desktop-lg {
-    background: url("../../assets/images/bg/legal/banner-lg-rtl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/legal/banner-lg-rtl.svg") no-repeat center;
     background-size: cover;
   }
 
   @include desktop-xl {
-    background: url("../../assets/images/bg/legal/banner-xl-rtl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/legal/banner-xl-rtl.svg") no-repeat center;
     background-size: cover;
   }
 
@@ -645,25 +640,21 @@
 
 .split-bg--rtl {
   direction: rtl;
-  background: url("../../assets/images/bg/split-bg/bg-sm-rtl.svg") no-repeat
-    center;
+  background: url("../../assets/images/bg/split-bg/bg-sm-rtl.svg") no-repeat center;
   background-size: cover;
 
   @include tablet {
-    background: url("../../assets/images/bg/split-bg/bg-md-rtl.svg") no-repeat
-      bottom;
+    background: url("../../assets/images/bg/split-bg/bg-md-rtl.svg") no-repeat bottom;
     background-size: cover;
   }
 
   @include desktop-lg {
-    background: url("../../assets/images/bg/split-bg/bg-lg-rtl.svg") no-repeat
-      right;
+    background: url("../../assets/images/bg/split-bg/bg-lg-rtl.svg") no-repeat right;
     background-size: cover;
   }
 
   @include desktop-xl {
-    background: url("../../assets/images/bg/split-bg/bg-xl-rtl.svg") no-repeat
-      center;
+    background: url("../../assets/images/bg/split-bg/bg-xl-rtl.svg") no-repeat center;
     background-size: cover;
   }
 }
