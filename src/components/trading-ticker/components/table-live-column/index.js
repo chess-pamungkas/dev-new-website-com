@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { REGISTRATION_LINK } from "../../../../helpers/constants";
 import ButtonLink from "../../../shared/button-link";
 import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const TableLiveColumn = ({ symbol, tradingSymbols }) => {
   const NO_VALUE = "N/A";
   const [bidValue, setBidValue] = useState(NO_VALUE);
   const [askValue, setAskValue] = useState(NO_VALUE);
   const [direction, setDirection] = useState("up");
-
+  const { t } = useTranslation();
   useEffect(() => {
     let symbolData =
       tradingSymbols.find((item) => item.symbol === symbol) || {};
@@ -34,13 +35,13 @@ const TableLiveColumn = ({ symbol, tradingSymbols }) => {
           link={REGISTRATION_LINK}
           className={cn("table__btn", "table__btn--green")}
         >
-          Buy
+          {t("index_trading-ticker-buy")}
         </ButtonLink>
         <ButtonLink
           link={REGISTRATION_LINK}
           className={cn("table__btn", "table__btn--red")}
         >
-          Sell
+          {t("index_trading-ticker-sell")}
         </ButtonLink>
       </div>
     </div>

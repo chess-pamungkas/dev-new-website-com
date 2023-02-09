@@ -8,12 +8,12 @@ import TopMarketLayout from "../../top-market-layout";
 import Tabs from "../../shared/tabs";
 import TableComponent from "../../shared/table";
 import {
-  COLUMNS_SPREADS_TABLE_2,
+  ColumnsSpreadTable2,
   ColumnsSpreadTableCommodities,
   COLUMNS_SPREADS_TABLE_CRYPTO,
   ColumnsSpreadTableForex,
   ColumnsSpreadTableIndices,
-  DATA_SPREADS_TABLE_2,
+  DataSpreadTable2,
   DataSpreadTableCommodities,
   DATA_SPREADS_TABLE_CRYPTO,
   DATA_SPREADS_TABLE_FOREX,
@@ -146,8 +146,8 @@ const SpreadsAndFeesPageContent = () => {
         }
       >
         <TableComponent
-          data={DATA_SPREADS_TABLE_2}
-          columns={COLUMNS_SPREADS_TABLE_2}
+          data={DataSpreadTable2()}
+          columns={ColumnsSpreadTable2()}
           className={cn("spreads--common-table", "spreads--second-table")}
         />
       </TopMarketLayout>
