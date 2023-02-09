@@ -68,7 +68,7 @@ const IndicesContent = () => {
       Header: "",
       columns: [
         {
-          Header: "Live",
+          Header: t("indices_table-market-header-group4"),
           accessor: "col6",
         },
       ],
