@@ -20,7 +20,7 @@ import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-
 
 const EnergiesContent = () => {
   const { t } = useTranslation();
-  const [ tradingSymbols, setTradingSymbols ] = useState([]);
+  const [tradingSymbols, setTradingSymbols] = useState([]);
 
   updateTableDataWithLiveColumn(DATA_ENERGIES, tradingSymbols);
 
@@ -68,7 +68,7 @@ const EnergiesContent = () => {
       Header: "",
       columns: [
         {
-          Header: "Live",
+          Header: t("indices_table-market-header-group4"),
           accessor: "col6",
         },
       ],
