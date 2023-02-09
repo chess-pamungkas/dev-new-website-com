@@ -193,53 +193,58 @@ const ColumnsSpreadTableCommodities = () => {
   ];
   return COLUMNS_SPREADS_TABLE_COMMODITIES;
 };
-export const DATA_SPREADS_TABLE_COMMODITIES = [
-  {
-    col1: "Spot Gold ($)",
-    col2: "XAUUSD",
-    col3: "100 Ounces",
-    col4: "100 USD",
-    col5: "0.05",
-    col6: "0.13",
-    col7: "20:1",
-  },
-  {
-    col1: "Spot Silver ($)",
-    col2: "XAGUSD",
-    col3: "5000 Ounces",
-    col4: "50 USD",
-    col5: "0.5",
-    col6: "1.09",
-    col7: "10:1",
-  },
-  {
-    col1: "Spo Platinum",
-    col2: "XPTUSD",
-    col3: "100 Ounces",
-    col4: "10 USD",
-    col5: "2.33",
-    col6: "4.94",
-    col7: "10:1",
-  },
-  {
-    col1: "Spot Palladium",
-    col2: "XPDUSD",
-    col3: "100 Ounces",
-    col4: "10 USD",
-    col5: "17.39",
-    col6: "17.31",
-    col7: "10:1",
-  },
-  {
-    col1: "High-Grade Copper",
-    col2: "Copper",
-    col3: "2000 Lbs",
-    col4: "2 USD",
-    col5: "2.60",
-    col6: "2.60",
-    col7: "10:1",
-  },
-];
+
+const DataSpreadTableCommodities = () => {
+  const { t } = useTranslation();
+  const DATA_SPREADS_TABLE_COMMODITIES = [
+    {
+      col1: "Spot Gold ($)",
+      col2: "XAUUSD",
+      col3: "100 Ounces",
+      col4: "100 USD",
+      col5: "0.05",
+      col6: "0.13",
+      col7: "20:1",
+    },
+    {
+      col1: "Spot Silver ($)",
+      col2: "XAGUSD",
+      col3: "5000 Ounces",
+      col4: "50 USD",
+      col5: "0.5",
+      col6: "1.09",
+      col7: "10:1",
+    },
+    {
+      col1: "Spo Platinum",
+      col2: "XPTUSD",
+      col3: "100 Ounces",
+      col4: "10 USD",
+      col5: "2.33",
+      col6: "4.94",
+      col7: "10:1",
+    },
+    {
+      col1: "Spot Palladium",
+      col2: "XPDUSD",
+      col3: "100 Ounces",
+      col4: "10 USD",
+      col5: "17.39",
+      col6: "17.31",
+      col7: "10:1",
+    },
+    {
+      col1: "High-Grade Copper",
+      col2: "Copper",
+      col3: "2000 Lbs",
+      col4: "2 USD",
+      col5: "2.60",
+      col6: "2.60",
+      col7: "10:1",
+    },
+  ];
+  return DATA_SPREADS_TABLE_COMMODITIES;
+};
 
 export const COLUMNS_SPREADS_TABLE_CRYPTO = [
   {
@@ -413,4 +418,5 @@ export {
   ColumnsSpreadTableForex,
   ColumnsSpreadTableIndices,
   ColumnsSpreadTableCommodities,
+  DataSpreadTableCommodities,
 };

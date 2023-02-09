@@ -14,7 +14,7 @@ import {
   ColumnsSpreadTableForex,
   ColumnsSpreadTableIndices,
   DATA_SPREADS_TABLE_2,
-  DATA_SPREADS_TABLE_COMMODITIES,
+  DataSpreadTableCommodities,
   DATA_SPREADS_TABLE_CRYPTO,
   DATA_SPREADS_TABLE_FOREX,
   DATA_SPREADS_TABLE_INDICES,
@@ -72,7 +72,7 @@ const SpreadsAndFeesPageContent = () => {
       content: (
         <>
           <TableComponent
-            data={DATA_SPREADS_TABLE_COMMODITIES}
+            data={DataSpreadTableCommodities()}
             columns={ColumnsSpreadTableCommodities()}
             className={cn("spreads--common-table", "spreads--table")}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
