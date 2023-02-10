@@ -66,6 +66,7 @@ export const PROFESSIONAL_QUALIFICATION_PAGE_LINK =
   "/professional-qualification";
 export const PARTNERS_PAGE_LINK = "/partners";
 export const ACCOUNTS_TYPE_PAGE_LINK = "/accounts-type";
+export const ETF_PAGE_LINK = "/etf";
 
 export const ANGLE_ICON_COLOR = {
   black: "#232323",
