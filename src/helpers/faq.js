@@ -30,6 +30,41 @@ export const FAQ_FOREX = [
   },
 ];
 
+export const FAQ_ETF = [
+  {
+    question: "etf_faq-title1",
+    answer: ["etf_faq-content1"],
+  },
+  {
+    question: "etf_faq-title2",
+    answer: ["etf_faq-content2"],
+  },
+  {
+    question: "etf_faq-title3",
+    answer: ["etf_faq-content3"],
+  },
+  {
+    question: "etf_faq-title4",
+    answer: ["etf_faq-content4"],
+  },
+  {
+    question: "etf_faq-title5",
+    answer: ["etf_faq-content5"],
+  },
+  {
+    question: "etf_faq-title6",
+    answer: ["etf_faq-content6"],
+  },
+  {
+    question: "etf_faq-title7",
+    answer: ["etf_faq-content7"],
+  },
+  {
+    question: "etf_faq-title8",
+    answer: ["etf_faq-content8"],
+  },
+];
+
 export const FAQ_CRYPTO = [
   {
     question: "crypto_faq-title1-fsa",
