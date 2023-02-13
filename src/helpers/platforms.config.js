@@ -22,15 +22,18 @@ export const TRADING_VIEW_DOWNLOAD_LINKS = {
 export const MT4_DOWNLOAD_LINKS = {
   android: "/",
   ios: "/",
-  windows: "/",
+  windows:
+    "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
   mac: "/",
   webtrader: "/",
 };
 
 export const MT5_DOWNLOAD_LINKS = {
-  android: "/",
+  android:
+    "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live",
   ios: "/",
-  windows: "/",
+  windows:
+    "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
   mac: "/",
   webtrader: "/",
 };
