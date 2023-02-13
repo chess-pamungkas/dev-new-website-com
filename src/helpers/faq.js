@@ -43,6 +43,26 @@ export const FAQ_ETF = [
     question: "etf_faq-title3",
     answer: ["etf_faq-content3"],
   },
+  {
+    question: "etf_faq-title4",
+    answer: ["etf_faq-content4"],
+  },
+  {
+    question: "etf_faq-title5",
+    answer: ["etf_faq-content5"],
+  },
+  {
+    question: "etf_faq-title6",
+    answer: ["etf_faq-content6"],
+  },
+  {
+    question: "etf_faq-title7",
+    answer: ["etf_faq-content7"],
+  },
+  {
+    question: "etf_faq-title8",
+    answer: ["etf_faq-content8"],
+  },
 ];
 
 export const FAQ_CRYPTO = [
