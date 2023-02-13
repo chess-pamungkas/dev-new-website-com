@@ -15,6 +15,8 @@ import riskDisclosure from "../assets/documents/eu/Risk_Disclosure.pdf";
 import keyInformationFX from "../assets/documents/eu/Key_Information_Document_FX.pdf";
 import keyInformationIndices from "../assets/documents/eu/Key_Information_Document_Indices.pdf";
 import keyInformationCommodities from "../assets/documents/eu/Key_Information_commo.pdf";
+import keyInformationETF from "../assets/documents/eu/Key_Information_Document_ETFs_Oqtima.pdf";
+import keyInformationStocks from "../assets/documents/eu/Key_Information_Document_Stocks_Oqtima.pdf";
 import summaryStatement from "../assets/documents/eu/Execution_Quality_Summary_Statement_-_2021-1.pdf";
 import disciplineReport from "../assets/documents/eu/Disclosure_and_Market_Discipline_Report_Pillar_III_2021.pdf";
 
@@ -69,6 +71,14 @@ export const LEGAL_DOCS = [
   {
     name: "document-key-commodities-name",
     file: keyInformationCommodities,
+  },
+  {
+    name: "document-key-etf-name",
+    file: keyInformationETF,
+  },
+  {
+    name: "document-key-stocks-name",
+    file: keyInformationStocks,
   },
   {
     name: "document-summary-statement-name",

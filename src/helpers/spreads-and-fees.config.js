@@ -1,44 +1,49 @@
-export const COLUMNS_SPREADS_TABLE_FOREX = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "Currency Pair",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "Oqtima ECN+ Account",
-    columns: [
-      {
-        Header: "Minimum",
-        accessor: "col2",
-      },
-      {
-        Header: "Average",
-        accessor: "col3",
-      },
-    ],
-  },
-  {
-    id: "group3",
-    Header: "Oqtima One Account",
-    columns: [
-      {
-        Header: "Minimum",
-        accessor: "col4",
-      },
-      {
-        Header: "Average",
-        accessor: "col5",
-      },
-    ],
-  },
-];
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
+const ColumnsSpreadTableForex = () => {
+  const { t } = useTranslation();
+  const COLUMNS_SPREADS_TABLE_FOREX = [
+    {
+      id: "group1",
+      Header: "",
+      columns: [
+        {
+          Header: t("spreads_account-group1-header1"),
+          accessor: "col1",
+        },
+      ],
+    },
+    {
+      id: "group2",
+      Header: t("spreads_account-group2-table-name1"),
+      columns: [
+        {
+          Header: t("spreads_account-group2-header1"),
+          accessor: "col2",
+        },
+        {
+          Header: t("spreads_account-group2-header2"),
+          accessor: "col3",
+        },
+      ],
+    },
+    {
+      id: "group3",
+      Header: t("spreads_account-group2-table-name2"),
+      columns: [
+        {
+          Header: t("spreads_account-group2-header1"),
+          accessor: "col4",
+        },
+        {
+          Header: t("spreads_account-group2-header2"),
+          accessor: "col5",
+        },
+      ],
+    },
+  ];
+  return COLUMNS_SPREADS_TABLE_FOREX;
+};
 export const DATA_SPREADS_TABLE_FOREX = [
   {
     col1: "AUDCAD",
@@ -84,33 +89,36 @@ export const DATA_SPREADS_TABLE_FOREX = [
     col5: "0.4",
   },
 ];
-
-export const COLUMNS_SPREADS_TABLE_INDICES = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "Index",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "Oqtima ECN+ Account / Oqtima One Account",
-    columns: [
-      {
-        Header: "Symbol",
-        accessor: "col2",
-      },
-      {
-        Header: "Minimum Spread",
-        accessor: "col3",
-      },
-    ],
-  },
-];
+const ColumnsSpreadTableIndices = () => {
+  const { t } = useTranslation();
+  const COLUMNS_SPREADS_TABLE_INDICES = [
+    {
+      id: "group1",
+      Header: "",
+      columns: [
+        {
+          Header: t("spreads_account-indices-group2-header1"),
+          accessor: "col1",
+        },
+      ],
+    },
+    {
+      id: "group2",
+      Header: t("spreads_account-indices-group2-table-name"),
+      columns: [
+        {
+          Header: t("spreads_account-indices-group2-header2"),
+          accessor: "col2",
+        },
+        {
+          Header: t("spreads_account-indices-group2-header3"),
+          accessor: "col3",
+        },
+      ],
+    },
+  ];
+  return COLUMNS_SPREADS_TABLE_INDICES;
+};
 
 export const DATA_SPREADS_TABLE_INDICES = [
   {
@@ -139,97 +147,104 @@ export const DATA_SPREADS_TABLE_INDICES = [
     col3: "0.4",
   },
 ];
+const ColumnsSpreadTableCommodities = () => {
+  const { t } = useTranslation();
+  const COLUMNS_SPREADS_TABLE_COMMODITIES = [
+    {
+      id: "group1",
+      Header: "",
+      columns: [
+        {
+          Header: t("spreads_account_commodities-group1-header1"),
+          accessor: "col1",
+        },
+      ],
+    },
+    {
+      id: "group2",
+      Header: t("spreads_account-commodities-group2-table-name"),
+      columns: [
+        {
+          Header: t("spreads_account_commodities-group2-header1"),
+          accessor: "col2",
+        },
+        {
+          Header: t("spreads_account_commodities-group2-header2"),
+          accessor: "col3",
+        },
+        {
+          Header: t("spreads_account_commodities-group2-header3"),
+          accessor: "col4",
+        },
+        {
+          Header: t("spreads_account_commodities-group2-header4"),
+          accessor: "col5",
+        },
+        {
+          Header: t("spreads_account_commodities-group2-header5"),
+          accessor: "col6",
+        },
+        {
+          Header: t("spreads_account_commodities-group2-header6"),
+          accessor: "col7",
+        },
+      ],
+    },
+  ];
+  return COLUMNS_SPREADS_TABLE_COMMODITIES;
+};
 
-export const COLUMNS_SPREADS_TABLE_COMMODITIES = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "Instrument",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "Oqtima ECN+ / Oqtima One",
-    columns: [
-      {
-        Header: "Symbol",
-        accessor: "col2",
-      },
-      {
-        Header: "Contract Size Per Lot",
-        accessor: "col3",
-      },
-      {
-        Header: "Contract Value Per Full Point",
-        accessor: "col4",
-      },
-      {
-        Header: "Minimum Spread",
-        accessor: "col5",
-      },
-      {
-        Header: "Average Spread*",
-        accessor: "col6",
-      },
-      {
-        Header: "Retail Leverage",
-        accessor: "col7",
-      },
-    ],
-  },
-];
-
-export const DATA_SPREADS_TABLE_COMMODITIES = [
-  {
-    col1: "Spot Gold ($)",
-    col2: "XAUUSD",
-    col3: "100 Ounces",
-    col4: "100 USD",
-    col5: "0.05",
-    col6: "0.13",
-    col7: "20:1",
-  },
-  {
-    col1: "Spot Silver ($)",
-    col2: "XAGUSD",
-    col3: "5000 Ounces",
-    col4: "50 USD",
-    col5: "0.5",
-    col6: "1.09",
-    col7: "10:1",
-  },
-  {
-    col1: "Spo Platinum",
-    col2: "XPTUSD",
-    col3: "100 Ounces",
-    col4: "10 USD",
-    col5: "2.33",
-    col6: "4.94",
-    col7: "10:1",
-  },
-  {
-    col1: "Spot Palladium",
-    col2: "XPDUSD",
-    col3: "100 Ounces",
-    col4: "10 USD",
-    col5: "17.39",
-    col6: "17.31",
-    col7: "10:1",
-  },
-  {
-    col1: "High-Grade Copper",
-    col2: "Copper",
-    col3: "2000 Lbs",
-    col4: "2 USD",
-    col5: "2.60",
-    col6: "2.60",
-    col7: "10:1",
-  },
-];
+const DataSpreadTableCommodities = () => {
+  const { t } = useTranslation();
+  const DATA_SPREADS_TABLE_COMMODITIES = [
+    {
+      col1: t("spreads_account_tables-commodities-col1"),
+      col2: "XAUUSD",
+      col3: t("spreads_account_tables-commodities-col1_3"),
+      col4: "100 USD",
+      col5: "0.05",
+      col6: "0.13",
+      col7: "20:1",
+    },
+    {
+      col1: t("spreads_account_tables-commodities-col2"),
+      col2: "XAGUSD",
+      col3: t("spreads_account_tables-commodities-col2_3"),
+      col4: "50 USD",
+      col5: "0.5",
+      col6: "1.09",
+      col7: "10:1",
+    },
+    {
+      col1: t("spreads_account_tables-commodities-col3"),
+      col2: "XPTUSD",
+      col3: t("spreads_account_tables-commodities-col3_3"),
+      col4: "10 USD",
+      col5: "2.33",
+      col6: "4.94",
+      col7: "10:1",
+    },
+    {
+      col1: t("spreads_account_tables-commodities-col4"),
+      col2: "XPDUSD",
+      col3: t("spreads_account_tables-commodities-col4_3"),
+      col4: "10 USD",
+      col5: "17.39",
+      col6: "17.31",
+      col7: "10:1",
+    },
+    {
+      col1: t("spreads_account_tables-commodities-col5"),
+      col2: "Copper",
+      col3: t("spreads_account_tables-commodities-col5_3"),
+      col4: "2 USD",
+      col5: "2.60",
+      col6: "2.60",
+      col7: "10:1",
+    },
+  ];
+  return DATA_SPREADS_TABLE_COMMODITIES;
+};
 
 export const COLUMNS_SPREADS_TABLE_CRYPTO = [
   {
@@ -353,48 +368,65 @@ export const DATA_SPREADS_TABLE_SHARES = [
   },
 ];
 
-export const COLUMNS_SPREADS_TABLE_2 = [
-  {
-    accessor: "col1",
-    Header: "Trading Account Currency",
-  },
-  {
-    accessor: "col2",
-    Header: "Commission Per 1 Lot (100,000 Base Currency)",
-  },
-];
+const ColumnsSpreadTable2 = () => {
+  const { t } = useTranslation();
+  const COLUMNS_SPREADS_TABLE_2 = [
+    {
+      accessor: "col1",
+      Header: t("spreads_account-columns-table2-col1-header1"),
+    },
+    {
+      accessor: "col2",
+      Header: t("spreads_account-columns-table2-col2-header2"),
+    },
+  ];
+  return COLUMNS_SPREADS_TABLE_2;
+};
 
-export const DATA_SPREADS_TABLE_2 = [
-  {
-    col1: "USD",
-    col2: "$ 3.50 per lot traded ($7 round turn)",
-  },
-  {
-    col1: "EUR",
-    col2: "€ 3.50 per lot traded (€7 round turn)",
-  },
-  {
-    col1: "GBP",
-    col2: "£ 3.00 per lot traded (£6 round turn)",
-  },
-  {
-    col1: "CHF",
-    col2: "₣ 3.50 per lot traded (₣ 7 round turn)",
-  },
-  {
-    col1: "SGD",
-    col2: "S$ 4 per lot traded (S$ 8 round turn)",
-  },
-  {
-    col1: "JPY",
-    col2: "¥500 per lot traded (¥1000 round turn)",
-  },
-  {
-    col1: "CAD",
-    col2: "Can$ 4.5 per lot traded (Can$ 9 per round turn)",
-  },
-  {
-    col1: "ZAR",
-    col2: "R 60 per lot traded (R 120 per round turn)",
-  },
-];
+const DataSpreadTable2 = () => {
+  const { t } = useTranslation();
+  const DATA_SPREADS_TABLE_2 = [
+    {
+      col1: "USD",
+      col2: t("spreads_account-data-table2-col2-1"),
+    },
+    {
+      col1: "EUR",
+      col2: t("spreads_account-data-table2-col2-2"),
+    },
+    {
+      col1: "GBP",
+      col2: t("spreads_account-data-table2-col2-3"),
+    },
+    {
+      col1: "CHF",
+      col2: t("spreads_account-data-table2-col2-4"),
+    },
+    {
+      col1: "SGD",
+      col2: t("spreads_account-data-table2-col2-5"),
+    },
+    {
+      col1: "JPY",
+      col2: t("spreads_account-data-table2-col2-6"),
+    },
+    {
+      col1: "CAD",
+      col2: t("spreads_account-data-table2-col2-7"),
+    },
+    {
+      col1: "ZAR",
+      col2: t("spreads_account-data-table2-col2-8"),
+    },
+  ];
+  return DATA_SPREADS_TABLE_2;
+};
+
+export {
+  ColumnsSpreadTableForex,
+  ColumnsSpreadTableIndices,
+  ColumnsSpreadTableCommodities,
+  DataSpreadTableCommodities,
+  ColumnsSpreadTable2,
+  DataSpreadTable2,
+};

@@ -8,13 +8,13 @@ import TopMarketLayout from "../../top-market-layout";
 import Tabs from "../../shared/tabs";
 import TableComponent from "../../shared/table";
 import {
-  COLUMNS_SPREADS_TABLE_2,
-  COLUMNS_SPREADS_TABLE_COMMODITIES,
+  ColumnsSpreadTable2,
+  ColumnsSpreadTableCommodities,
   COLUMNS_SPREADS_TABLE_CRYPTO,
-  COLUMNS_SPREADS_TABLE_FOREX,
-  COLUMNS_SPREADS_TABLE_INDICES,
-  DATA_SPREADS_TABLE_2,
-  DATA_SPREADS_TABLE_COMMODITIES,
+  ColumnsSpreadTableForex,
+  ColumnsSpreadTableIndices,
+  DataSpreadTable2,
+  DataSpreadTableCommodities,
   DATA_SPREADS_TABLE_CRYPTO,
   DATA_SPREADS_TABLE_FOREX,
   DATA_SPREADS_TABLE_INDICES,
@@ -39,7 +39,7 @@ const SpreadsAndFeesPageContent = () => {
         <>
           <TableComponent
             data={DATA_SPREADS_TABLE_FOREX}
-            columns={COLUMNS_SPREADS_TABLE_FOREX}
+            columns={ColumnsSpreadTableForex()}
             className={cn("spreads--common-table", "spreads--table")}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
           />
@@ -56,7 +56,7 @@ const SpreadsAndFeesPageContent = () => {
         <>
           <TableComponent
             data={DATA_SPREADS_TABLE_INDICES}
-            columns={COLUMNS_SPREADS_TABLE_INDICES}
+            columns={ColumnsSpreadTableIndices()}
             className={cn("spreads--common-table", "spreads--table")}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
           />
@@ -72,8 +72,8 @@ const SpreadsAndFeesPageContent = () => {
       content: (
         <>
           <TableComponent
-            data={DATA_SPREADS_TABLE_COMMODITIES}
-            columns={COLUMNS_SPREADS_TABLE_COMMODITIES}
+            data={DataSpreadTableCommodities()}
+            columns={ColumnsSpreadTableCommodities()}
             className={cn("spreads--common-table", "spreads--table")}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
           />
@@ -146,8 +146,8 @@ const SpreadsAndFeesPageContent = () => {
         }
       >
         <TableComponent
-          data={DATA_SPREADS_TABLE_2}
-          columns={COLUMNS_SPREADS_TABLE_2}
+          data={DataSpreadTable2()}
+          columns={ColumnsSpreadTable2()}
           className={cn("spreads--common-table", "spreads--second-table")}
         />
       </TopMarketLayout>
