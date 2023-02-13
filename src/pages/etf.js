@@ -4,23 +4,23 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
-import PartnersPageContent from "../components/pages-content/partners-page-content";
+import ETFContent from "../components/pages-content/etf-page-content";
 
-const PartnersPage = () => {
+const ETFPage = () => {
   const { t } = useTranslation();
 
   return (
     <Layout>
       <Seo
-        title={t("page-partners-title")}
-        description={t("page-partners-description")}
+        title={t("page-etf-title")}
+        description={t("page-etf-description")}
       />
-      <PartnersPageContent />
+      <ETFContent />
     </Layout>
   );
 };
 
-export default PartnersPage;
+export default ETFPage;
 
 export const query = graphql`
   query ($language: String!) {
