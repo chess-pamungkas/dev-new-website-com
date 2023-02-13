@@ -204,6 +204,10 @@ export const INDICES_TRADING_SECTION = {
   id: "indices",
   title: "index_trading-ticker-section-indices",
 };
+export const ETF_TRADING_SECTION = {
+  id: "etf",
+  title: "index_trading-ticker-section-etf",
+};
 
 export const CYSEC_TRADING_SECTIONS = [
   FOREX_TRADING_SECTION,
@@ -211,6 +215,7 @@ export const CYSEC_TRADING_SECTIONS = [
   ENERGIES_TRADING_SECTION,
   METALS_TRADING_SECTION,
   INDICES_TRADING_SECTION,
+  ETF_TRADING_SECTION,
 ];
 
 export const FSA_TRADING_SECTIONS = [

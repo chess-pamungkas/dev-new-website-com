@@ -425,3 +425,7 @@ export const DATA_ENERGIES = [
     col5: "6.43",
   },
 ];
+
+export const DATA_ETF = [
+
+];

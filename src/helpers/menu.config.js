@@ -21,6 +21,7 @@ import {
   ProfessionalQualificationIcon,
   SharesIcon,
   TradingToolsIcon,
+  ETFIcon,
 } from "../components/shared/icons";
 import {
   ACCOUNTS_TYPE_PAGE_LINK,
@@ -45,6 +46,7 @@ import {
   SPREADS_AND_FEES_PAGE_LINK,
   WITHDRAWAL_PAGE_LINK,
   TRADING_VIEW_PAGE_LINK,
+  ETF_PAGE_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
@@ -79,6 +81,12 @@ const CYSEC_TOP_MARKETS_TAB = {
       link: ENERGIES_PAGE_LINK,
       icon: EnergiesIcon,
       description: "header-nav-tab-top-markets-energies-desc",
+    },
+    {
+      title: "header-nav-tab-top-markets-etf-title",
+      link: ETF_PAGE_LINK,
+      icon: ETFIcon,
+      description: "header-nav-tab-top-markets-etf-desc",
     },
     {
       title: "header-nav-tab-top-markets-allmarkets-title",
