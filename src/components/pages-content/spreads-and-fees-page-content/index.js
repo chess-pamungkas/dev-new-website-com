@@ -77,6 +77,9 @@ const SpreadsAndFeesPageContent = () => {
             className={cn("spreads--common-table", "spreads--table")}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
           />
+          <Link className="spreads__table-link" to="/">
+            {t("spreads_tabs_bottom_link_title_Metals")}
+          </Link>
         </>
       ),
     },

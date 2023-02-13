@@ -7,7 +7,7 @@ import HighlightedLocalizationText from "../../shared/highlighted-localization-t
 import MtPromotion from "../../mt-promotion";
 import {
   COLUMNS_PLATFORMS,
-  DATA_PLATFORMS,
+  DataPlatforms,
   CYSEC_MT4_ADVANTAGES,
   FSA_MT4_ADVANTAGES,
   MT4_DOWNLOAD_LINKS,
@@ -156,7 +156,7 @@ const Mt4PageContent = () => {
         })}
       >
         <TableComponent
-          data={DATA_PLATFORMS}
+          data={DataPlatforms()}
           columns={COLUMNS_PLATFORMS}
           tableClassName={isRTL ? "mt-table--rtl" : ""}
         />

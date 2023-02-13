@@ -7,7 +7,7 @@ import HighlightedLocalizationText from "../../shared/highlighted-localization-t
 import MtPromotion from "../../mt-promotion";
 import {
   COLUMNS_PLATFORMS,
-  DATA_PLATFORMS,
+  DataPlatforms,
   CYSEC_MT5_ADVANTAGES,
   FSA_MT5_ADVANTAGES,
   MT5_DOWNLOAD_LINKS,
@@ -77,9 +77,6 @@ const Mt5PageContent = () => {
           <Link to={MT5_DOWNLOAD_LINKS.windows}>
             {t("mt5_mt-promotion-download-windows")}
           </Link>{" "}
-          <Link to={MT5_DOWNLOAD_LINKS.webtrader}>
-            {t("mt5_mt-promotion-download-webtrader")}
-          </Link>
         </>
       ),
     },
@@ -161,7 +158,7 @@ const Mt5PageContent = () => {
           })}
         >
           <TableComponent
-            data={DATA_PLATFORMS}
+            data={DataPlatforms()}
             columns={COLUMNS_PLATFORMS}
             tableClassName={isRTL ? "mt-table--rtl" : ""}
           />
