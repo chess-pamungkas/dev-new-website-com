@@ -16,12 +16,13 @@ import image from "../../../assets/images/mt4/MT4andMT5.png";
 import TopMarketLayout from "../../top-market-layout";
 import TableComponent from "../../shared/table";
 import icon from "../../../assets/images/icon--white.svg";
-import { REGISTRATION_LINK, HOME_PAGE_LINK } from "../../../helpers/constants";
+import { REGISTRATION_LINK } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { Link } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 
 const Mt4PageContent = () => {
   const { t } = useTranslation();
@@ -33,6 +34,21 @@ const Mt4PageContent = () => {
   useEffect(() => {
     setMt4Advantages(isCySEC ? CYSEC_MT4_ADVANTAGES : FSA_MT4_ADVANTAGES);
   }, [isCySEC]);
+
+  const getOSDevice = useCallback(() => {
+    switch (true) {
+      case isIOS:
+        return;
+      case isAndroid:
+        return MT4_DOWNLOAD_LINKS.android;
+      case isWindows:
+        return MT4_DOWNLOAD_LINKS.windows;
+      case isMacOs:
+        return MT4_DOWNLOAD_LINKS.mac;
+      default:
+        return { width: "359px", height: "202px" };
+    }
+  }, [isIOS, isAndroid, isWindows, isMacOs]);
 
   const getAnimationStyles = useCallback(() => {
     switch (true) {
@@ -108,7 +124,7 @@ const Mt4PageContent = () => {
         })}
         btnTitle={t("mt4_top-market-promo-btn")}
         // link={MT4_DOC}
-        link={HOME_PAGE_LINK}
+        link={getOSDevice()}
         isDocumentLink
         note={
           <HighlightedLocalizationText
@@ -142,6 +158,7 @@ const Mt4PageContent = () => {
         image={image}
         tabs={tabs}
       />
+      <div id="downloadSection">ss</div>
       <TopMarketLayout
         title={
           <HighlightedLocalizationText

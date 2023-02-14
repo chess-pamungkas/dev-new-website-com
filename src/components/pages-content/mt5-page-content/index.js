@@ -16,12 +16,13 @@ import image from "../../../assets/images/mt4/MT4andMT5.png";
 import TopMarketLayout from "../../top-market-layout";
 import TableComponent from "../../shared/table";
 import icon from "../../../assets/images/icon--white.svg";
-import { REGISTRATION_LINK, HOME_PAGE_LINK } from "../../../helpers/constants";
+import { REGISTRATION_LINK } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { Link } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 
 const Mt5PageContent = () => {
   const { t } = useTranslation();
@@ -34,6 +35,20 @@ const Mt5PageContent = () => {
     setMt5Advantages(isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES);
   }, [isCySEC]);
 
+  const getOSDevice = useCallback(() => {
+    switch (true) {
+      case isIOS:
+        return;
+      case isAndroid:
+        return MT5_DOWNLOAD_LINKS.android;
+      case isWindows:
+        return MT5_DOWNLOAD_LINKS.windows;
+      case isMacOs:
+        return MT5_DOWNLOAD_LINKS.mac;
+      default:
+        return MT5_DOWNLOAD_LINKS.windows;
+    }
+  }, [isIOS, isAndroid, isWindows, isMacOs]);
   const getAnimationStyles = useCallback(() => {
     switch (true) {
       case isXL:
@@ -108,7 +123,7 @@ const Mt5PageContent = () => {
         })}
         btnTitle={t("mt5_top-market-promo-btn")}
         // link={MT4_DOC}
-        link={HOME_PAGE_LINK}
+        link={getOSDevice()}
         isDocumentLink
         note={
           <HighlightedLocalizationText

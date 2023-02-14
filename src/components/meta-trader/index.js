@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import cn from "classnames";
 import ButtonLink from "../shared/button-link";
 import { useTranslation } from "gatsby-plugin-react-i18next";
@@ -7,14 +7,15 @@ import MarketItemAdvantageList from "../all-markets/components/market-item-advan
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
-
+import { MT4_DOWNLOAD_LINKS } from "../../helpers/platforms.config"; // import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
+//TODO CONTINUE HERE
 const MetaTrader = ({
   classname,
   title,
   text,
   icon,
   learMoreLink,
-  downloadLink,
   learMoreLinkTitle,
   downloadLinkTitle,
   advantages,
@@ -23,7 +24,20 @@ const MetaTrader = ({
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
-
+  const getOSDevice = useCallback(() => {
+    switch (true) {
+      case isIOS:
+        return;
+      case isAndroid:
+        return MT4_DOWNLOAD_LINKS.android;
+      case isWindows:
+        return MT4_DOWNLOAD_LINKS.windows;
+      case isMacOs:
+        return MT4_DOWNLOAD_LINKS.mac;
+      default:
+        return { width: "359px", height: "202px" };
+    }
+  }, [isIOS, isAndroid, isWindows, isMacOs]);
   const AdvantagesTemplate = (
     <div className={cn("meta-trader__advantages")}>
       {!isLG && (
@@ -87,7 +101,7 @@ const MetaTrader = ({
                 {t(learMoreLinkTitle)}
               </ButtonLink>
               <ButtonLink
-                link={downloadLink}
+                link={getOSDevice()}
                 className={cn("meta-trader__download-link", "button-link--red")}
               >
                 {t(downloadLinkTitle)}

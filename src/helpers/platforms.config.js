@@ -4,11 +4,11 @@ import { MT4_PAGE_LINK, MT5_PAGE_LINK } from "./constants";
 import { MT4_DOC, MT5_DOC } from "./documents";
 
 export const CTRADER_DOWNLOAD_LINKS = {
-  android: "/",
+  android: "https://play.google.com/store/apps/details?id=com.oqtima.app",
   ios: "/",
-  windows: "/",
+  windows: "https://oqtima.ctrader.com/cbroker-oqtima-setup.exe",
   mac: "/",
-  webtrader: "/",
+  webtrader: "https://app.oqtima.com/",
 };
 
 export const TRADING_VIEW_DOWNLOAD_LINKS = {
@@ -21,10 +21,10 @@ export const TRADING_VIEW_DOWNLOAD_LINKS = {
 
 export const MT4_DOWNLOAD_LINKS = {
   android: "/",
-  ios: "/",
+  ios: "downloadSection",
   windows:
     "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
-  mac: "/",
+  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt4.macos",
   webtrader: "/",
 };
 
@@ -34,7 +34,7 @@ export const MT5_DOWNLOAD_LINKS = {
   ios: "/",
   windows:
     "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
-  mac: "/",
+  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt5.macos",
   webtrader: "/",
 };
 
@@ -273,7 +273,7 @@ export const META_TRADER_4 = {
   text: ["platforms_meta-trader-4-text-1", "platforms_meta-trader-4-text-2"],
   isGrayBackground: false,
   learMoreLink: MT4_PAGE_LINK,
-  downloadLink: MT4_DOC,
+  downloadLink: MT4_DOWNLOAD_LINKS,
   learMoreLinkTitle: "platforms_meta-trader-4-more-link-title",
   downloadLinkTitle: "platforms_meta-trader-4-download-link-title",
   advantages: [
