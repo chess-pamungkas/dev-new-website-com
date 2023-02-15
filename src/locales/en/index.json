@@ -284,31 +284,66 @@
   "table-tip1": "minimum,",
   "table-tip2": "average",
 
-  "page-main-title": "Oqtima trading page",
-  "page-allmarkets-title": "Oqtima All Markets",
-  "page-platforms-title": "Platforms",
-  "page-metals-title": "Oqtima Metals",
-  "page-crypto-title-fsa": "Oqtima Crypto",
-  "page-energies-title": "Oqtima Energies",
-  "page-forex-title": "Oqtima Forex",
-  "page-indices-title": "Oqtima Indices",
-  "page-search-title": "Oqtima Search",
-  "page-shares-title": "Oqtima Shares",
-  "page-company-title": "Oqtima Company page",
-  "page-legal-title": "Oqtima Legal page",
-  "page-contact-title": "Contact us",
-  "page-ctrader-title": "Oqtima CTrader page",
-  "page-trading-view-title": "Oqtima Trading View page",
-  "page-mt4-title": "Oqtima MT4 page",
-  "page-mt5-title": "Oqtima MT5 page",
-  "page-professional-qualification-title": "Oqtima Professional Qualification",
-  "page-withdrawal-title": "Deposit/withdrawal page",
-  "page-spreads-title": "Spreads and Fees",
+  "page-main-title": "Forex & CFD Trading on Stocks, Indices, Oil, Gold by Oqtima™",
+  "page-main-description": "Forex, cfd trading on stocks, indices, oil and gold with the most advanced trading platforms. Trade with Oqtima™, a licensed forex broker.",
+
+  "page-allmarkets-title": "Trade with Oqtima all the major markets with the power of CFDs!",
+  "page-allmarkets-description": "Get access to the Forex, Metals, Energy, Indices and Shares with Oqtima CFD broker. competitive spreads, 5 stars support and exceptional trading tools.",
+
+  "page-platforms-title": "Trade CFD on Oqtima with our custom Metaquote and Ctrader platforms",
+  "page-platforms-description": "Experience seamless and reliable CFD trading with the industry-leading MetaTrader and cTrader platforms at Oqtima. Both platforms offer a range of advanced features and tools to help you trade with confidence and make informed decisions.",
+
+  "page-metals-title": "Trade Gold, Silver, and Other Metal CFDs with a Trusted Broker - Start Now",
+  "page-metals-description": "Maximize your profits with metal CFD trading. Our reliable broker offers a range of metal CFDs, including gold, silver, and more. Enjoy competitive spreads, and a user-friendly platform. Sign up now and start trading metal with Oqtima",
+
+  "page-crypto-title-fsa": "Trade Cryptocurrencies with CFDs at Oqtima",
+  "page-crypto-description-fsa": "Get access to the crypto market with the power of CFDs at Oqtima. Trade the most famous coins like BTC and ETH and many Alt Coins against the most important currencies. Start Today.",
+
+  "page-energies-title": "Trade Oil, Gas, and Other Energy CFDs with a regulated Broker - Start Now!",
+  "page-energies-description": "Get access to the energy market with Oqtima CFD broker. Trade oil, gas, and other energy CFDs with competitive spreads, 5 stars support and exceptional trading tools.. start trading energy CFDs today",
+
+  "page-forex-title": "Trade Forex CFDs with a Leading CFD Broker - Oqtima!",
+  "page-forex-description": "Trade forex with Oqtima a trusted Global CFD broker. Our platform offers competitive spreads and all the tools you need in your trading journey. Sign up now and start trading today!",
+
+  "page-indices-title": "Trade Indices with Our CFD Broker Platform: Expert Support and ultra-competitive spread",
+  "page-indices-description": "Join Oqtima  CFD broker platform and start trading indices with confidence. Regulated CFD brokers with 20+ indices around the world to trade. Sign up now and start your trading journey today",
+
+  "page-shares-title": "Trade thousands of Shares CFD with Oqtima",
+  "page-shares-description": "Trade shares of major companies around the world with a trusted broker. Our platform offers competitive spreads, and cutting-edge tech. Sign up now and start trading shares CFDs today",
+
+  "page-company-title": "We live in a complex financial world. We want you to be able to take advantage of it.",
+  "page-company-description": "Oqtima was created with one goal in mind: Offering MT traders no matter their trading skills level, the best in class tailored experience.",
+
+  "page-ctrader-title": "Trade Forex and CFDs with the Advanced cTrader Platform with Oqtima",
+  "page-ctrader-description": "Experience the power of the advanced cTrader platform with Oqtima. With a range of features and tools to help you trade effectively, cTrader is a popular choice among professional traders. Trade forex and CFDs with confidence and make informed decisions with cTrader's advanced charting and analysis tools. Start trading with cTrader Oqtima today",
+
+  "page-trading-view-title": "Unleash the Power of Technical Analysis with TradingView platform at Oqtima",
+  "page-trading-view-description": "Take your trading to the next level with TradingView, the premier platform for technical analysis. With a range of powerful charting and analysis tools, TradingView helps you identify trends, spot opportunities, and make informed decisions. Whether you're a beginner or an experienced trader, TradingView has something to offer. Try it out today at Oqtima and see the difference it can make for your trading.",
+
+  "page-mt4-title": "Trade Forex, CFDs, and More with the Industry-Leading Oqtima MetaTrader 4",
+  "page-mt4-description": "Experience the power and reliability of the MetaTrader 4 platform, the industry standard for forex and CFD trading. With advanced charting, expert advisors, and a range of customization options, MT4 is designed to help you trade with confidence and make informed decisions. Start trading with MT4 at our broker today.",
+
+  "page-mt5-title": "Trade a Wide Range of Markets with the Advanced Oqtima MetaTrader 5 Platform",
+  "page-mt5-description": "Take your trading to the next level with the advanced MetaTrader 5 platform. With support for a wide range of markets, advanced charting and analysis tools, and customizable expert advisors, MT5 is the ultimate trading platform for experienced traders. Start trading with MT5 Oqtima.",
+
+  "page-professional-qualification-title": "Check your eligibility to become a Oqtima Professional Trader",
+  "page-professional-qualification-description": "If you wish to apply for a Professional Re-qualification of your retail account you are in the right place. Check if you fulfil the basic requirements to apply for the Professional qualification with Oqtima.",
+
+  "page-withdrawal-title": "Immediate and Secure Funding and Withdrawal Options with Oqtima",
+  "page-withdrawal-description": "With Oqtima you can fund your account and withdraw your profits quickly and securely. We offer a range of options including credit card deposits, e-wallet transfers, and bank transfers. Plus, same-day withdrawals are available so you can access your funds when you need them. Choose our broker for hassle-free funding and withdrawals.",
+
+  "page-spreads-title": "Competitive Spreads and Low Transparent Fees at Oqtima",
+  "page-spreads-description": "Choose Oqtima also for our competitive spreads and low fees. We offer some of the most competitive pricing in the industry, so you can focus on your trades without worrying about high hidden costs. Plus, with transparent and straightforward fees, you'll always know what you're paying. Start trading with Oqtima today.",
+
+  "page-accounts-type-title": "Find the Right Account Type for Your Trading Needs with Oqtima",
+  "page-accounts-type-description": "Oqtima offers 2 account types to suit the needs of different traders. Whether you're a beginner or a seasoned pro, we have an account type that's right for you. With options such as ECN accounts and ONE account, you can choose the type of trader you want to be. Explore our account types today and find the right one for you.",
 
   "page-partners-title": "Become a partner of our competitive Referral Program ",
   "page-partners-description": "Join our Partnership Referral Program and earn extra income by referring clients to trade with us. Maximize your profits and benefit from our competitive commission rates. Start earning now!",
 
-  "page-accounts-type-title": "Accounts Type",
+  "page-search-title": "Oqtima Search",
+  "page-legal-title": "Oqtima Legal page",
+  "page-contact-title": "Contact us",
   "page-faq-title": "FAQ",
   "page-education-title": "Oqtima Educational",
 
