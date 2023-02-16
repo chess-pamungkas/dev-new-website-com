@@ -12,8 +12,8 @@ export const useEntityPostfix = () => {
   useEffect(() => {
     setIsCySEC(currentEntity === entities.CYSEC);
     setSitePostfix(currentEntity === entities.FSA ? FSA_POSTFIX : "");
-    // setIsCySEC(false);
-    // setSitePostfix(FSA_POSTFIX);
+    setIsCySEC(false);
+    setSitePostfix(FSA_POSTFIX);
   }, [currentEntity]);
 
   return {
