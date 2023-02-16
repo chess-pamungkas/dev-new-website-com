@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect, useRef } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT5.json";
@@ -30,6 +30,11 @@ const Mt5PageContent = () => {
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const { isCySEC } = useEntityPostfix();
   const [mt5Advantages, setMt5Advantages] = useState([]);
+  const ref = useRef(null);
+
+  const handleClick = () => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     setMt5Advantages(isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES);
@@ -42,13 +47,17 @@ const Mt5PageContent = () => {
       case isAndroid:
         return MT5_DOWNLOAD_LINKS.android;
       case isWindows:
-        return MT5_DOWNLOAD_LINKS.windows;
+        return handleClick();
       case isMacOs:
         return MT5_DOWNLOAD_LINKS.mac;
       default:
         return MT5_DOWNLOAD_LINKS.windows;
     }
   }, [isIOS, isAndroid, isWindows, isMacOs]);
+  console.log(isWindows, "WINDOWS");
+  console.log(getOSDevice);
+
+  console.log(handleClick, "button");
   const getAnimationStyles = useCallback(() => {
     switch (true) {
       case isXL:
@@ -122,8 +131,7 @@ const Mt5PageContent = () => {
           "button-link--ghost": isLG || isXL,
         })}
         btnTitle={t("mt5_top-market-promo-btn")}
-        // link={MT4_DOC}
-        link={getOSDevice()}
+        link={getOSDevice()} //TUTO EN TO PATON
         isDocumentLink
         note={
           <HighlightedLocalizationText
@@ -141,6 +149,7 @@ const Mt5PageContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarketPromotion>
+      <div ref={ref}></div>
 
       <MtPromotion
         title={

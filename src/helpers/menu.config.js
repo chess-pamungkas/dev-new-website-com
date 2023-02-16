@@ -47,6 +47,7 @@ import {
   WITHDRAWAL_PAGE_LINK,
   TRADING_VIEW_PAGE_LINK,
   ETF_PAGE_LINK,
+  MT5_WEB_TRADER_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
@@ -128,6 +129,11 @@ const CYSEC_TRADING_TAB_PLATFORMS_ITEM = {
       link: MT5_PAGE_LINK,
       description: "header-nav-tab-trading-platforms-mt5-desc",
     },
+    {
+      title: "header-nav-tab-trading-platforms-mt5-title",
+      link: MT5_WEB_TRADER_LINK,
+      description: "header-nav-tab-trading-platforms-mt5-desc",
+    },
   ],
 };
 
@@ -146,6 +152,11 @@ const FSA_TRADING_TAB_PLATFORMS_ITEM = {
     {
       title: "header-nav-tab-trading-platforms-mt5-title",
       link: MT5_PAGE_LINK,
+      description: "header-nav-tab-trading-platforms-mt5-desc",
+    },
+    {
+      title: "header-nav-tab-trading-platforms-mt5-title",
+      link: MT5_WEB_TRADER_LINK,
       description: "header-nav-tab-trading-platforms-mt5-desc",
     },
   ],
