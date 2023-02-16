@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import ClientResolverContext from "../context/client-resolver-context";
-// import entities from "../enums/entities";
+import entities from "../enums/entities";
 import { FSA_POSTFIX } from "./constants";
 
 export const useEntityPostfix = () => {
@@ -10,8 +10,8 @@ export const useEntityPostfix = () => {
   const [isCySEC, setIsCySEC] = useState(null);
 
   useEffect(() => {
-    // setIsCySEC(currentEntity === entities.CYSEC);
-    // setSitePostfix(currentEntity === entities.FSA ? FSA_POSTFIX : "");
+    setIsCySEC(currentEntity === entities.CYSEC);
+    setSitePostfix(currentEntity === entities.FSA ? FSA_POSTFIX : "");
     setIsCySEC(false);
     setSitePostfix(FSA_POSTFIX);
   }, [currentEntity]);
