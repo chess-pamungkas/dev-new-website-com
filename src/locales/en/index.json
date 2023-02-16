@@ -245,8 +245,8 @@
   "index_performance-advantage7": "100% focus on our trader's experience.",
   "performance-advantage7-accent": "1",
 
-  "footer-text-fsa": "Thanks to it’s stable and fast ECN+ trading environment, Oqtima is a love letter to traders.  Created by experienced industry leaders with more than 30 years of combined expertise in the trading industry, Oqtima represents the next level in terms of trading experience and market accessibility.",
-  "footer-text": "Thanks to it’s stable and fast ECN+ trading environment, Oqtima is a love letter to traders.  Created by experienced industry leaders with more than 30 years of combined experience in the trading industry, Oqtima represents the next level in terms of trading experience and market accessibility.  ",
+  "footer-text-fsa": "Thanks to its stable and fast ECN+ trading environment, Oqtima is a love letter to traders.  Created by experienced industry leaders with more than 30 years of combined expertise in the trading industry, Oqtima represents the next level in terms of trading experience and market accessibility.",
+  "footer-text": "Thanks to its stable and fast ECN+ trading environment, Oqtima is a love letter to traders.  Created by experienced industry leaders with more than 30 years of combined experience in the trading industry, Oqtima represents the next level in terms of trading experience and market accessibility.  ",
   "footer-copyright-paragraph1-fsa": "CDE Global Markets Ltd, duly authorized to operate under the  “Oqtima” brand, is a Securities Dealer registered in Seychelles with company registration number 8430031-1 and is regulated by the Financial Services Authority (FSA)  with Licence Number SD109. The registered office of CDE Global Markets Ltd is at F20, 1st Floor, Eden Plaza, Eden Island, Seychelles.",
   "footer-copyright-paragraph2-fsa": "Risk Warning: The information provided on this website is general in nature and does not constitute personal financial advice. Before acting on any information on this website, you should consider the appropriateness of the information having regard to your objectives, financial situation and needs. Investing in CFDs and Margin FX Contracts carries significant risks and is not suitable for all investors. You may lose more than your initial deposit. You don’t own, or have, any interest in the underlying assets.",
   "footer-copyright-paragraph3-part1-fsa": "We recommend that you seek independent advice and ensure that you fully understand the risks involved before trading. It is important that you read and consider our",
@@ -284,31 +284,66 @@
   "table-tip1": "minimum,",
   "table-tip2": "average",
 
-  "page-main-title": "Oqtima trading page",
-  "page-allmarkets-title": "Oqtima All Markets",
-  "page-platforms-title": "Platforms",
-  "page-metals-title": "Oqtima Metals",
-  "page-crypto-title-fsa": "Oqtima Crypto",
-  "page-energies-title": "Oqtima Energies",
-  "page-forex-title": "Oqtima Forex",
-  "page-indices-title": "Oqtima Indices",
-  "page-search-title": "Oqtima Search",
-  "page-shares-title": "Oqtima Shares",
-  "page-company-title": "Oqtima Company page",
-  "page-legal-title": "Oqtima Legal page",
-  "page-contact-title": "Contact us",
-  "page-ctrader-title": "Oqtima CTrader page",
-  "page-trading-view-title": "Oqtima Trading View page",
-  "page-mt4-title": "Oqtima MT4 page",
-  "page-mt5-title": "Oqtima MT5 page",
-  "page-professional-qualification-title": "Oqtima Professional Qualification",
-  "page-withdrawal-title": "Deposit/withdrawal page",
-  "page-spreads-title": "Spreads and Fees",
+  "page-main-title": "Forex & CFD Trading on Stocks, Indices, Oil, Gold by Oqtima™",
+  "page-main-description": "Forex, cfd trading on stocks, indices, oil and gold with the most advanced trading platforms. Trade with Oqtima™, a licensed forex broker.",
+
+  "page-allmarkets-title": "Trade with Oqtima all the major markets with the power of CFDs!",
+  "page-allmarkets-description": "Get access to the Forex, Metals, Energy, Indices and Shares with Oqtima CFD broker. competitive spreads, 5 stars support and exceptional trading tools.",
+
+  "page-platforms-title": "Trade CFD on Oqtima with our custom Metaquote and Ctrader platforms",
+  "page-platforms-description": "Experience seamless and reliable CFD trading with the industry-leading MetaTrader and cTrader platforms at Oqtima. Both platforms offer a range of advanced features and tools to help you trade with confidence and make informed decisions.",
+
+  "page-metals-title": "Trade Gold, Silver, and Other Metal CFDs with a Trusted Broker - Start Now",
+  "page-metals-description": "Maximize your profits with metal CFD trading. Our reliable broker offers a range of metal CFDs, including gold, silver, and more. Enjoy competitive spreads, and a user-friendly platform. Sign up now and start trading metal with Oqtima",
+
+  "page-crypto-title-fsa": "Trade Cryptocurrencies with CFDs at Oqtima",
+  "page-crypto-description-fsa": "Get access to the crypto market with the power of CFDs at Oqtima. Trade the most famous coins like BTC and ETH and many Alt Coins against the most important currencies. Start Today.",
+
+  "page-energies-title": "Trade Oil, Gas, and Other Energy CFDs with a regulated Broker - Start Now!",
+  "page-energies-description": "Get access to the energy market with Oqtima CFD broker. Trade oil, gas, and other energy CFDs with competitive spreads, 5 stars support and exceptional trading tools.. start trading energy CFDs today",
+
+  "page-forex-title": "Trade Forex CFDs with a Leading CFD Broker - Oqtima!",
+  "page-forex-description": "Trade forex with Oqtima a trusted Global CFD broker. Our platform offers competitive spreads and all the tools you need in your trading journey. Sign up now and start trading today!",
+
+  "page-indices-title": "Trade Indices with Our CFD Broker Platform: Expert Support and ultra-competitive spread",
+  "page-indices-description": "Join Oqtima  CFD broker platform and start trading indices with confidence. Regulated CFD brokers with 20+ indices around the world to trade. Sign up now and start your trading journey today",
+
+  "page-shares-title": "Trade thousands of Shares CFD with Oqtima",
+  "page-shares-description": "Trade shares of major companies around the world with a trusted broker. Our platform offers competitive spreads, and cutting-edge tech. Sign up now and start trading shares CFDs today",
+
+  "page-company-title": "We live in a complex financial world. We want you to be able to take advantage of it.",
+  "page-company-description": "Oqtima was created with one goal in mind: Offering MT traders no matter their trading skills level, the best in class tailored experience.",
+
+  "page-ctrader-title": "Trade Forex and CFDs with the Advanced cTrader Platform with Oqtima",
+  "page-ctrader-description": "Experience the power of the advanced cTrader platform with Oqtima. With a range of features and tools to help you trade effectively, cTrader is a popular choice among professional traders. Trade forex and CFDs with confidence and make informed decisions with cTrader's advanced charting and analysis tools. Start trading with cTrader Oqtima today",
+
+  "page-trading-view-title": "Unleash the Power of Technical Analysis with TradingView platform at Oqtima",
+  "page-trading-view-description": "Take your trading to the next level with TradingView, the premier platform for technical analysis. With a range of powerful charting and analysis tools, TradingView helps you identify trends, spot opportunities, and make informed decisions. Whether you're a beginner or an experienced trader, TradingView has something to offer. Try it out today at Oqtima and see the difference it can make for your trading.",
+
+  "page-mt4-title": "Trade Forex, CFDs, and More with the Industry-Leading Oqtima MetaTrader 4",
+  "page-mt4-description": "Experience the power and reliability of the MetaTrader 4 platform, the industry standard for forex and CFD trading. With advanced charting, expert advisors, and a range of customization options, MT4 is designed to help you trade with confidence and make informed decisions. Start trading with MT4 at our broker today.",
+
+  "page-mt5-title": "Trade a Wide Range of Markets with the Advanced Oqtima MetaTrader 5 Platform",
+  "page-mt5-description": "Take your trading to the next level with the advanced MetaTrader 5 platform. With support for a wide range of markets, advanced charting and analysis tools, and customizable expert advisors, MT5 is the ultimate trading platform for experienced traders. Start trading with MT5 Oqtima.",
+
+  "page-professional-qualification-title": "Check your eligibility to become a Oqtima Professional Trader",
+  "page-professional-qualification-description": "If you wish to apply for a Professional Re-qualification of your retail account you are in the right place. Check if you fulfil the basic requirements to apply for the Professional qualification with Oqtima.",
+
+  "page-withdrawal-title": "Immediate and Secure Funding and Withdrawal Options with Oqtima",
+  "page-withdrawal-description": "With Oqtima you can fund your account and withdraw your profits quickly and securely. We offer a range of options including credit card deposits, e-wallet transfers, and bank transfers. Plus, same-day withdrawals are available so you can access your funds when you need them. Choose our broker for hassle-free funding and withdrawals.",
+
+  "page-spreads-title": "Competitive Spreads and Low Transparent Fees at Oqtima",
+  "page-spreads-description": "Choose Oqtima also for our competitive spreads and low fees. We offer some of the most competitive pricing in the industry, so you can focus on your trades without worrying about high hidden costs. Plus, with transparent and straightforward fees, you'll always know what you're paying. Start trading with Oqtima today.",
+
+  "page-accounts-type-title": "Find the Right Account Type for Your Trading Needs with Oqtima",
+  "page-accounts-type-description": "Oqtima offers 2 account types to suit the needs of different traders. Whether you're a beginner or a seasoned pro, we have an account type that's right for you. With options such as ECN accounts and ONE account, you can choose the type of trader you want to be. Explore our account types today and find the right one for you.",
 
   "page-partners-title": "Become a partner of our competitive Referral Program ",
   "page-partners-description": "Join our Partnership Referral Program and earn extra income by referring clients to trade with us. Maximize your profits and benefit from our competitive commission rates. Start earning now!",
 
-  "page-accounts-type-title": "Accounts Type",
+  "page-search-title": "Oqtima Search",
+  "page-legal-title": "Oqtima Legal page",
+  "page-contact-title": "Contact us",
   "page-faq-title": "FAQ",
   "page-education-title": "Oqtima Educational",
 
@@ -534,7 +569,7 @@
   "metals_marketing-circle-bottom-accent": "2",
   "metals_marketing-circle-left-bottom": "Deep liquidity also during high volatility",
   "metals_marketing-circle-left-bottom-accent": "1,2",
-  "metals_marketing-circle-right-bottom": "Trade Gold and Silver on Metaquote on mobile, desktop and table",
+  "metals_marketing-circle-right-bottom": "Trade Gold and Silver on Metaquotes on mobile, desktop and table",
   "metals_marketing-circle-right-bottom-accent": "1",
 
   "indices_top-market-title": "20 stock indexes to capture the markets using leverage",
@@ -846,6 +881,27 @@
   "mt-promotion-tabs-desktop": "Desktop",
   "mt-promotion-tabs-webtrader": "Webtrader",
 
+  "NEED TO CHECK THE COMMENT FOR THE TABLE": "",
+  "mt4_table-data-platform-col1-1": "Old Execution Types",
+  "mt4_table-data-platform-col1-2": "Pending Old Types",
+  "mt4_table-data-platform-col1-3": "Symbols",
+  "mt4_table-data-platform-col1-4": "Technical Indicators",
+  "mt4_table-data-platform-col1-5": "Programming Language",
+  "mt4_table-data-platform-col1-6": "Time Frames",
+  "mt4_table-data-platform-col1-7": "Analytical Objects",
+  "mt4_table-data-platform-col1-8": "Strategy Tester",
+  "mt4_table-data-platform-col2-8": "Multi-Threaded",
+  "mt4_table-data-platform-col3-8": "Single Thread",
+  "mt4_table-data-platform-col1-9": "Trading Signals & Copy Trading",
+  "mt4_table-data-platform-col2-9": "Yes",
+  "mt4_table-data-platform-col3-9": "No",
+  "mt4_table-data-platform-col1-10": "Reports",
+  "mt4_table-data-platform-col2-10": "Charts (HTML 5) & Tables",
+  "mt4_table-data-platform-col3-10": "Tables Only",
+  "mt4_table-data-platform-col1-11": "Built Economic Calendar",
+  "mt4_table-data-platform-col2-11": "Yes",
+  "mt4_table-data-platform-col3-11": "No",
+
   "mt5_top-market-promo-text": "Oqtima’s MetaTrader 5 is the next generation of trading platform from Metaquotes.",
   "mt5_top-market-promo-text-accent": "2,3,12",
   "mt5_top-market-promo-note": "You have now access to hedge your positions, more advanced pending orders and the newest tools and indicators along with the ECN pricing environment offered by Oqtima , low latency and ultra-competitive spreads.",
@@ -884,7 +940,7 @@
   "mt5_market-items-list_adv15": "Integrated economic calendar",
   "mt5_market-items-list_adv16": "Download on Windows, MAC, Mobile and Tablet",
   "mt5_market-items-list_adv17": "Expert Advisors with backtesting capability",
-  "mt5_market-items-list_adv18": "MySQL 5 for EA programming",
+  "mt5_market-items-list_adv18": "MSQL 5 for EA programming",
 
   "mt5_top-market-promo-text2": "What makes Oqtima MT5 one of the most superior choices in the market for every level of trader?",
   "mt5_top-market-promo-text-accent2": "3,4,16,17,18",
@@ -981,6 +1037,7 @@
   "spreads_tabs_title4": "Cryptocurrencies",
   "spreads_tabs_bottom_link_title1": "Click here for full details on all our 61 Currency pairs",
   "spreads_tabs_bottom_link_title2": "Click here for full details on all our 20 Indices",
+  "spreads_tabs_bottom_link_title_Metals": "Click here for full details on all our Metals (TR)",
   "spreads_top-market-promo-btn3": "Open an account",
   "spreads_top-market-promo-text3": "Experience Oqtima now.",
   "spreads_top-market-promo-text-accent3": "2",
@@ -1269,8 +1326,10 @@
   "accounts-type_account-type1-commissions-value": "$ 3.50 Per lot traded",
   "accounts-type_account-type1-min-deposit-title": "Min. deposit",
   "accounts-type_account-type1-min-deposit-value": "$200",
+  "accounts-type_account-type1-min-deposit-value-fsa": "$20",
   "accounts-type_account-type1-max-leverage-title": "Max. leverage",
   "accounts-type_account-type1-max-leverage-value": "1:30",
+  "accounts-type_account-type1-max-leverage-value-fsa": "1:500",
   "accounts-type_account-type1-ending-allowed-title": "Hedging Allowed",
   "accounts-type_account-type1-scalpers-welcome-title": "EA and Scalpers welcome",
   "accounts-type_account-type1-currencies-title": "Base Currencies",
@@ -1297,6 +1356,8 @@
   "accounts-type_account-type2-min-deposit-value": "$200",
   "accounts-type_account-type2-max-leverage-title": "Max. leverage",
   "accounts-type_account-type2-max-leverage-value": "1:30",
+  "accounts-type_account-type2-max-leverage-value-fsa": "1:500",
+
   "accounts-type_account-type2-ending-allowed-title": "Hedging Allowed",
   "accounts-type_account-type2-scalpers-welcome-title": "EA and Scalpers welcome",
   "accounts-type_account-type2-currencies-title": "Base Currencies",
