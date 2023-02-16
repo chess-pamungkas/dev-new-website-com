@@ -120,7 +120,7 @@
   "index_trading-ticker-section-energies": "Fonti di Energia",
   "index_trading-ticker-section-indices": "Indici",
   "index_trading-ticker-section-metals": "Metalli",
-  "index_trading-ticker-section-etf": "ETF (TRANSLATION REQUIRED!)",
+  "index_trading-ticker-section-etf": "ETF",
 
   "index_trading-ticker-buy": "Comprare",
   "index_trading-ticker-sell": "Vendere",
@@ -1362,6 +1362,6 @@
   "page-etf-title": "ETF (TRANSLATION REQUIRED!)",
   "page-etf-description": "ETF description (TRANSLATION REQUIRED!)",
 
-  "header-nav-tab-top-markets-etf-title": "ETF (TRANSLATION REQUIRED!)",
+  "header-nav-tab-top-markets-etf-title": "ETF",
   "header-nav-tab-top-markets-etf-desc": "Fai trading di centinaia dei più popolari Exchange Traded Fund"
 }
