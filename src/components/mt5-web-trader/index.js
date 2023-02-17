@@ -4,9 +4,9 @@ const WebTraderLink = () => {
   return (
     <div style={{}}>
       <iframe
-        src="https://webtrader.oqtima.eu/terminal?mode=connect&lang=en&scheme=light"
+        src="https://webtrader.oqtima.eu/terminal?mode=connect&lang=en&theme=light"
         width="100%"
-        height="600px"
+        height="900px"
       ></iframe>
     </div>
   );

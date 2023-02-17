@@ -130,9 +130,9 @@ const CYSEC_TRADING_TAB_PLATFORMS_ITEM = {
       description: "header-nav-tab-trading-platforms-mt5-desc",
     },
     {
-      title: "header-nav-tab-trading-platforms-mt5-title",
+      title: "page-MT5-web-trader-title",
       link: MT5_WEB_TRADER_LINK,
-      description: "header-nav-tab-trading-platforms-mt5-desc",
+      description: "page-MT5-web-trader-description",
     },
   ],
 };
