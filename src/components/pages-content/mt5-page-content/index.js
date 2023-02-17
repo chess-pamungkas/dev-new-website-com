@@ -43,7 +43,7 @@ const Mt5PageContent = () => {
   const getOSDevice = useCallback(() => {
     switch (true) {
       case isIOS:
-        return;
+        return MT5_DOWNLOAD_LINKS.iosPlatform;
       case isAndroid:
         return MT5_DOWNLOAD_LINKS.android;
       case isWindows:

@@ -158,7 +158,6 @@ const Mt4PageContent = () => {
         image={image}
         tabs={tabs}
       />
-      <div id="downloadSection">ss</div>
       <TopMarketLayout
         title={
           <HighlightedLocalizationText
