@@ -3,6 +3,7 @@ import complaintHandlingPolicyFSA from "../assets/documents/fsa/Complaint_Handli
 import privacyPolicyFSA from "../assets/documents/fsa/Privacy_Policy_V1.pdf";
 import riskDisclosureNoticeFSA from "../assets/documents/fsa/Risk_Disclosure_Notice_V1.pdf";
 import cookiePolicyFSA from "../assets/documents/fsa/Cookie_Policy_V1.pdf";
+import clientAgreementFSA from "../assets/documents/fsa/Client_Agreement_V1.pdf";
 
 import privacyPolicy from "../assets/documents/eu/Privacy_Policy-.pdf";
 import clientCategorisationNotice from "../assets/documents/eu/Client_Categorisation_Notice.pdf";
@@ -110,6 +111,10 @@ export const LEGAL_DOCS_FSA = [
   {
     name: "document-cookie-policy-fsa",
     file: cookiePolicyFSA,
+  },
+  {
+    name: "document-client-agreement-fsa",
+    file: clientAgreementFSA,
   },
 ];
 
