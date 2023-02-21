@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useState, useRef } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT5.json";
-
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
+import { Link } from "gatsby";
 import {
   COLUMNS_PLATFORMS,
   DataPlatforms,
@@ -109,7 +109,11 @@ const Mt5PageContent = () => {
       title: t("mt-promotion-tabs-webtrader"),
       content: (
         <>
-          <a href={MT5_DOWNLOAD_LINKS.webtrader}>
+          <a
+            href={MT5_DOWNLOAD_LINKS.webtrader}
+            target="_blank"
+            rel="noreferrer"
+          >
             {t("mt5_mt-promotion-download-webtrader")}
           </a>
         </>

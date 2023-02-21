@@ -3,6 +3,8 @@ import metaTrader4 from "../assets/images/icons/tools/metaTrader4.svg";
 import metaTrader5 from "../assets/images/icons/tools/metaTrader5.svg";
 import { MT4_PAGE_LINK, MT5_PAGE_LINK } from "./constants";
 import { MT4_DOC, MT5_DOC } from "./documents";
+import { MT5_WEB_TRADER_LINK } from "./constants";
+
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 
@@ -39,7 +41,7 @@ export const MT5_DOWNLOAD_LINKS = {
   windows:
     "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt5.macos",
-  webtrader: "/",
+  webtrader: MT5_WEB_TRADER_LINK,
 };
 
 export const FSA_MT5_ADVANTAGES = [
