@@ -18,7 +18,6 @@ import TableComponent from "../../shared/table";
 import icon from "../../../assets/images/icon--white.svg";
 import { REGISTRATION_LINK } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
-import { Link } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
@@ -45,7 +44,9 @@ const Mt5PageContent = () => {
       case isIOS:
         return MT5_DOWNLOAD_LINKS.ios;
       case isAndroid:
-        return MT5_DOWNLOAD_LINKS.android;
+        return isCySEC
+          ? MT5_DOWNLOAD_LINKS.androidFSA
+          : MT5_DOWNLOAD_LINKS.androidEU;
       case isWindows:
         return MT5_DOWNLOAD_LINKS.windows;
       case isMacOs:

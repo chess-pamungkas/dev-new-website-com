@@ -24,14 +24,15 @@ export const MT4_DOWNLOAD_LINKS = {
   android: null,
   ios: null,
   windows:
-    null,
+    "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt4.macos",
   webtrader: "/",
 };
 
 export const MT5_DOWNLOAD_LINKS = {
-  android:
+  androidEU:
     "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live",
+  androidFSA: null,
   ios: null,
   windows:
     "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",

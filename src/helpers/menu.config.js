@@ -154,11 +154,6 @@ const FSA_TRADING_TAB_PLATFORMS_ITEM = {
       link: MT5_PAGE_LINK,
       description: "header-nav-tab-trading-platforms-mt5-desc",
     },
-    {
-      title: "page-MT5-web-trader-title",
-      link: MT5_WEB_TRADER_LINK,
-      description: "page-MT5-web-trader-description",
-    },
   ],
 };
 
