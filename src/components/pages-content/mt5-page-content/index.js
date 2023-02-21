@@ -43,11 +43,11 @@ const Mt5PageContent = () => {
   const getOSDevice = useCallback(() => {
     switch (true) {
       case isIOS:
-        return MT5_DOWNLOAD_LINKS.iosPlatform;
+        return MT5_DOWNLOAD_LINKS.ios;
       case isAndroid:
         return MT5_DOWNLOAD_LINKS.android;
       case isWindows:
-        return scrollToTarget;
+        return MT5_DOWNLOAD_LINKS.windows;
       case isMacOs:
         return MT5_DOWNLOAD_LINKS.mac;
       default:
@@ -94,12 +94,12 @@ const Mt5PageContent = () => {
       title: t("mt-promotion-tabs-desktop"),
       content: (
         <>
-          <a to={MT5_DOWNLOAD_LINKS.mac}>
+          <a href={MT5_DOWNLOAD_LINKS.mac}>
             {t("mt5_mt-promotion-download-mac")}
           </a>
-          <a to={MT5_DOWNLOAD_LINKS.windows}>
+          <a href={MT5_DOWNLOAD_LINKS.windows}>
             {t("mt5_mt-promotion-download-windows")}
-          </a>{" "}
+          </a>
         </>
       ),
     },
@@ -108,7 +108,7 @@ const Mt5PageContent = () => {
       title: t("mt-promotion-tabs-webtrader"),
       content: (
         <>
-          <a to={MT5_DOWNLOAD_LINKS.webtrader}>
+          <a href={MT5_DOWNLOAD_LINKS.webtrader}>
             {t("mt5_mt-promotion-download-webtrader")}
           </a>
         </>

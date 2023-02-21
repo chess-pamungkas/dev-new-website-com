@@ -41,7 +41,7 @@ const Mt4PageContent = () => {
   const getOSDevice = useCallback(() => {
     switch (true) {
       case isIOS:
-        return scrollToTarget;
+        return MT4_DOWNLOAD_LINKS.ios;
       case isAndroid:
         return MT4_DOWNLOAD_LINKS.android;
       case isWindows:
@@ -74,11 +74,11 @@ const Mt4PageContent = () => {
       title: t("mt-promotion-tabs-mobile"),
       content: (
         <>
-          <a to={MT4_DOWNLOAD_LINKS.android}>
+          <a href={MT4_DOWNLOAD_LINKS.android}>
             {t("mt4_mt-promotion-download-android")}
           </a>
           {isCySEC && (
-            <a to={MT4_DOWNLOAD_LINKS.ios}>
+            <a href={MT4_DOWNLOAD_LINKS.ios}>
               {t("mt4_mt-promotion-download-ios")}
             </a>
           )}
@@ -90,10 +90,10 @@ const Mt4PageContent = () => {
       title: t("mt-promotion-tabs-desktop"),
       content: (
         <>
-          <a to={MT4_DOWNLOAD_LINKS.mac}>
+          <a href={MT4_DOWNLOAD_LINKS.mac}>
             {t("mt4_mt-promotion-download-mac")}
           </a>
-          <a to={MT4_DOWNLOAD_LINKS.windows}>
+          <a href={MT4_DOWNLOAD_LINKS.windows}>
             {t("mt4_mt-promotion-download-windows")}
           </a>
         </>
@@ -104,7 +104,7 @@ const Mt4PageContent = () => {
       title: t("mt-promotion-tabs-webtrader"),
       content: (
         <>
-          <a to={MT4_DOWNLOAD_LINKS.webtrader}>
+          <a href={MT4_DOWNLOAD_LINKS.webtrader}>
             {t("mt4_mt-promotion-download-webtrader")}
           </a>
         </>
