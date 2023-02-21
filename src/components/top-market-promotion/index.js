@@ -13,6 +13,7 @@ const TopMarketPromotion = ({
   image,
   btnClassName,
   btnTitle,
+  btnOnClick,
   link,
   btnClassName2,
   btnTitle2,
@@ -38,6 +39,7 @@ const TopMarketPromotion = ({
               "top-market-promotion__btn",
               btnClassName
             )}
+            onClick={btnOnClick}
             href={link}
             target="_blank"
             rel="noreferrer"
