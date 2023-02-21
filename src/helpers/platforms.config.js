@@ -3,7 +3,6 @@ import metaTrader5 from "../assets/images/icons/tools/metaTrader5.svg";
 import { MT4_PAGE_LINK, MT5_PAGE_LINK } from "./constants";
 import { MT4_DOC, MT5_DOC } from "./documents";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-
 export const CTRADER_DOWNLOAD_LINKS = {
   android: "/",
   ios: "/",
