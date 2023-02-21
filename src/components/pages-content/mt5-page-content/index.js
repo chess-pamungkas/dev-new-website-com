@@ -47,7 +47,7 @@ const Mt5PageContent = () => {
         return { height: 358 };
     }
   }, [isMobile, isTablet, isLG, isXL]);
-
+  //TODO REFACTOR
   const DATA_PLATFORMS = [
     {
       col1: t("mt4_table-data-platform-col1-1"),
