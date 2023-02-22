@@ -2,6 +2,10 @@ import { useCallback } from "react";
 import metaTrader4 from "../assets/images/icons/tools/metaTrader4.svg";
 import metaTrader5 from "../assets/images/icons/tools/metaTrader5.svg";
 import { MT4_PAGE_LINK, MT5_PAGE_LINK } from "./constants";
+import { MT4_DOC, MT5_DOC } from "./documents";
+import { MT5_WEB_TRADER_LINK } from "./constants";
+
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 
 export const CTRADER_DOWNLOAD_LINKS = {
@@ -21,9 +25,8 @@ export const TRADING_VIEW_DOWNLOAD_LINKS = {
 };
 
 export const MT4_DOWNLOAD_LINKS = {
-  android: "/",
-  ios: "/",
-  iosPlatform: "/mt5",
+  android: null,
+  ios: null,
   windows:
     "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt4.macos",
@@ -31,14 +34,14 @@ export const MT4_DOWNLOAD_LINKS = {
 };
 
 export const MT5_DOWNLOAD_LINKS = {
-  android:
+  androidEU:
     "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live",
-  ios: "/",
-  iosPlatform: "/mt5",
+  androidFSA: null,
+  ios: null,
   windows:
     "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt5.macos",
-  webtrader: "/",
+  webtrader: MT5_WEB_TRADER_LINK,
 };
 
 export const FSA_MT5_ADVANTAGES = [
@@ -561,62 +564,68 @@ export const COLUMNS_PLATFORMS = [
   },
 ];
 
-export const DATA_PLATFORMS = [
-  {
-    col1: "Old Execution Types",
-    col2: "4",
-    col3: "3",
-  },
-  {
-    col1: "Pending Old Types",
-    col2: "6",
-    col3: "3",
-  },
-  {
-    col1: "Symbols",
-    col2: "Untitled",
-    col3: "3",
-  },
-  {
-    col1: "Technical Indicators",
-    col2: "38",
-    col3: "38",
-  },
-  {
-    col1: "Programming Language",
-    col2: "Mql5",
-    col3: "Mql4",
-  },
-  {
-    col1: "Time Frames",
-    col2: "21",
-    col3: "9",
-  },
-  {
-    col1: "Analytical Objects",
-    col2: "44",
-    col3: "31",
-  },
-  {
-    col1: "Strategy Tester",
-    col2: "Multi-Threaded",
-    col3: "Single Thread",
-  },
-  {
-    col1: "Trading Signals & Copy Trading",
-    col2: "Yes",
-    col3: "No",
-  },
-  {
-    col1: "Reports",
-    col2: "Charts (HTML 5) & Tables",
-    col3: "Tables Only",
-  },
-  {
-    col1: "Built Economic Calendar",
-    col2: "Yes",
-    col3: "No",
-  },
-];
+const DataPlatforms = () => {
+  const { t } = useTranslation();
+  const DATA_PLATFORMS = [
+    {
+      col1: t("mt4_table-data-platform-col1-1"),
+      col2: "4",
+      col3: "3",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-2"),
+      col2: "6",
+      col3: "3",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-3"),
+      col2: "Untitled",
+      col3: "3",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-4"),
+      col2: "38",
+      col3: "38",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-5"),
+      col2: "Mql5",
+      col3: "Mql4",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-6"),
+      col2: "21",
+      col3: "9",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-7"),
+      col2: "44",
+      col3: "31",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-8"),
+      col2: t("mt4_table-data-platform-col2-8"),
+      col3: t("mt4_table-data-platform-col3-8"),
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-9"),
+      col2: t("mt4_table-data-platform-col2-9"),
+      col3: t("mt4_table-data-platform-col3-9"),
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-10"),
+      col2: t("mt4_table-data-platform-col2-10"),
+      col3: t("mt4_table-data-platform-col3-10"),
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-11"),
+      col2: t("mt4_table-data-platform-col2-11"),
+      col3: t("mt4_table-data-platform-col3-11"),
+    },
+  ];
+  return DATA_PLATFORMS;
+};
+
+export { DataPlatforms };
 
 export { MetaTrader4info, MetaTrader5info };

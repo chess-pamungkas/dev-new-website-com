@@ -3,6 +3,7 @@ import complaintHandlingPolicyFSA from "../assets/documents/fsa/Complaint_Handli
 import privacyPolicyFSA from "../assets/documents/fsa/Privacy_Policy_V1.pdf";
 import riskDisclosureNoticeFSA from "../assets/documents/fsa/Risk_Disclosure_Notice_V1.pdf";
 import cookiePolicyFSA from "../assets/documents/fsa/Cookie_Policy_V1.pdf";
+import clientAgreementFSA from "../assets/documents/fsa/Client_Agreement_V1.pdf";
 
 import privacyPolicy from "../assets/documents/eu/Privacy_Policy-.pdf";
 import clientCategorisationNotice from "../assets/documents/eu/Client_Categorisation_Notice.pdf";
@@ -15,6 +16,8 @@ import riskDisclosure from "../assets/documents/eu/Risk_Disclosure.pdf";
 import keyInformationFX from "../assets/documents/eu/Key_Information_Document_FX.pdf";
 import keyInformationIndices from "../assets/documents/eu/Key_Information_Document_Indices.pdf";
 import keyInformationCommodities from "../assets/documents/eu/Key_Information_commo.pdf";
+import keyInformationETF from "../assets/documents/eu/Key_Information_Document_ETFs_Oqtima.pdf";
+import keyInformationStocks from "../assets/documents/eu/Key_Information_Document_Stocks_Oqtima.pdf";
 import summaryStatement from "../assets/documents/eu/Execution_Quality_Summary_Statement_-_2021-1.pdf";
 import disciplineReport from "../assets/documents/eu/Disclosure_and_Market_Discipline_Report_Pillar_III_2021.pdf";
 
@@ -71,6 +74,14 @@ export const LEGAL_DOCS = [
     file: keyInformationCommodities,
   },
   {
+    name: "document-key-etf-name",
+    file: keyInformationETF,
+  },
+  {
+    name: "document-key-stocks-name",
+    file: keyInformationStocks,
+  },
+  {
     name: "document-summary-statement-name",
     file: summaryStatement,
   },
@@ -100,6 +111,10 @@ export const LEGAL_DOCS_FSA = [
   {
     name: "document-cookie-policy-fsa",
     file: cookiePolicyFSA,
+  },
+  {
+    name: "document-client-agreement-fsa",
+    file: clientAgreementFSA,
   },
 ];
 

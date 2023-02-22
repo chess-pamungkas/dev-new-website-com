@@ -1,13 +1,12 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useRef } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT4.json";
-// import { MT4_DOC } from "../../../helpers/documents";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
 import {
   COLUMNS_PLATFORMS,
-  DATA_PLATFORMS,
+  DataPlatforms,
   CYSEC_MT4_ADVANTAGES,
   FSA_MT4_ADVANTAGES,
   MT4_DOWNLOAD_LINKS,
@@ -18,7 +17,6 @@ import TableComponent from "../../shared/table";
 import icon from "../../../assets/images/icon--white.svg";
 import { REGISTRATION_LINK } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
-import { Link } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
@@ -31,6 +29,11 @@ const Mt4PageContent = () => {
   const { isCySEC } = useEntityPostfix();
   const [mt4Advantages, setMt4Advantages] = useState([]);
 
+  const downloadRef = useRef(null);
+
+  const scrollToTarget = () => {
+    downloadRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   useEffect(() => {
     setMt4Advantages(isCySEC ? CYSEC_MT4_ADVANTAGES : FSA_MT4_ADVANTAGES);
   }, [isCySEC]);
@@ -38,7 +41,7 @@ const Mt4PageContent = () => {
   const getOSDevice = useCallback(() => {
     switch (true) {
       case isIOS:
-        return;
+        return MT4_DOWNLOAD_LINKS.ios;
       case isAndroid:
         return MT4_DOWNLOAD_LINKS.android;
       case isWindows:
@@ -46,7 +49,7 @@ const Mt4PageContent = () => {
       case isMacOs:
         return MT4_DOWNLOAD_LINKS.mac;
       default:
-        return { width: "359px", height: "202px" };
+        return MT4_DOWNLOAD_LINKS.windows;
     }
   }, [isIOS, isAndroid, isWindows, isMacOs]);
 
@@ -71,13 +74,13 @@ const Mt4PageContent = () => {
       title: t("mt-promotion-tabs-mobile"),
       content: (
         <>
-          <Link to={MT4_DOWNLOAD_LINKS.android}>
+          <a href={MT4_DOWNLOAD_LINKS.android}>
             {t("mt4_mt-promotion-download-android")}
-          </Link>
+          </a>
           {isCySEC && (
-            <Link to={MT4_DOWNLOAD_LINKS.ios}>
+            <a href={MT4_DOWNLOAD_LINKS.ios}>
               {t("mt4_mt-promotion-download-ios")}
-            </Link>
+            </a>
           )}
         </>
       ),
@@ -87,12 +90,12 @@ const Mt4PageContent = () => {
       title: t("mt-promotion-tabs-desktop"),
       content: (
         <>
-          <Link to={MT4_DOWNLOAD_LINKS.mac}>
+          <a href={MT4_DOWNLOAD_LINKS.mac}>
             {t("mt4_mt-promotion-download-mac")}
-          </Link>
-          <Link to={MT4_DOWNLOAD_LINKS.windows}>
+          </a>
+          <a href={MT4_DOWNLOAD_LINKS.windows}>
             {t("mt4_mt-promotion-download-windows")}
-          </Link>
+          </a>
         </>
       ),
     },
@@ -101,9 +104,9 @@ const Mt4PageContent = () => {
       title: t("mt-promotion-tabs-webtrader"),
       content: (
         <>
-          <Link to={MT4_DOWNLOAD_LINKS.webtrader}>
+          <a href={MT4_DOWNLOAD_LINKS.webtrader}>
             {t("mt4_mt-promotion-download-webtrader")}
-          </Link>
+          </a>
         </>
       ),
     },
@@ -124,6 +127,7 @@ const Mt4PageContent = () => {
         })}
         btnTitle={t("mt4_top-market-promo-btn")}
         // link={MT4_DOC}
+        btnOnClick={scrollToTarget}
         link={getOSDevice()}
         isDocumentLink
         note={
@@ -157,6 +161,7 @@ const Mt4PageContent = () => {
         downloadTitle={t("mt4_download-title")}
         image={image}
         tabs={tabs}
+        ref={downloadRef}
       />
       <TopMarketLayout
         title={
@@ -172,7 +177,7 @@ const Mt4PageContent = () => {
         })}
       >
         <TableComponent
-          data={DATA_PLATFORMS}
+          data={DataPlatforms()}
           columns={COLUMNS_PLATFORMS}
           tableClassName={isRTL ? "mt-table--rtl" : ""}
         />

@@ -1,13 +1,13 @@
-import React, { useCallback, useState, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useState, useRef } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT5.json";
-// import { MT5_DOC } from "../../../helpers/documents";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
+import { Link } from "gatsby";
 import {
   COLUMNS_PLATFORMS,
-  DATA_PLATFORMS,
+  DataPlatforms,
   CYSEC_MT5_ADVANTAGES,
   FSA_MT5_ADVANTAGES,
   MT5_DOWNLOAD_LINKS,
@@ -18,7 +18,6 @@ import TableComponent from "../../shared/table";
 import icon from "../../../assets/images/icon--white.svg";
 import { REGISTRATION_LINK } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
-import { Link } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
@@ -30,10 +29,10 @@ const Mt5PageContent = () => {
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const { isCySEC } = useEntityPostfix();
   const [mt5Advantages, setMt5Advantages] = useState([]);
-  const ref = useRef(null);
+  const downloadRef = useRef(null);
 
-  const handleClick = () => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToTarget = () => {
+    downloadRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -43,11 +42,13 @@ const Mt5PageContent = () => {
   const getOSDevice = useCallback(() => {
     switch (true) {
       case isIOS:
-        return MT5_DOWNLOAD_LINKS.iosPlatform;
+        return MT5_DOWNLOAD_LINKS.ios;
       case isAndroid:
-        return MT5_DOWNLOAD_LINKS.android;
+        return isCySEC
+          ? MT5_DOWNLOAD_LINKS.androidFSA
+          : MT5_DOWNLOAD_LINKS.androidEU;
       case isWindows:
-        return handleClick();
+        return MT5_DOWNLOAD_LINKS.windows;
       case isMacOs:
         return MT5_DOWNLOAD_LINKS.mac;
       default:
@@ -57,7 +58,6 @@ const Mt5PageContent = () => {
   console.log(isWindows, "WINDOWS");
   console.log(getOSDevice);
 
-  console.log(handleClick, "button");
   const getAnimationStyles = useCallback(() => {
     switch (true) {
       case isXL:
@@ -79,9 +79,9 @@ const Mt5PageContent = () => {
       title: t("mt-promotion-tabs-mobile"),
       content: (
         <>
-          <Link to={MT5_DOWNLOAD_LINKS.android}>
+          <a to={MT5_DOWNLOAD_LINKS.android}>
             {t("mt5_mt-promotion-download-android")}
-          </Link>
+          </a>
           {/*
           Metaquotes Apps are no longer available for iOS unless you have downloaded them before September 2022
            <Link to={MT5_DOWNLOAD_LINKS.ios}>
@@ -95,12 +95,12 @@ const Mt5PageContent = () => {
       title: t("mt-promotion-tabs-desktop"),
       content: (
         <>
-          <Link to={MT5_DOWNLOAD_LINKS.mac}>
+          <a href={MT5_DOWNLOAD_LINKS.mac}>
             {t("mt5_mt-promotion-download-mac")}
-          </Link>
-          <Link to={MT5_DOWNLOAD_LINKS.windows}>
+          </a>
+          <a href={MT5_DOWNLOAD_LINKS.windows}>
             {t("mt5_mt-promotion-download-windows")}
-          </Link>{" "}
+          </a>
         </>
       ),
     },
@@ -109,9 +109,13 @@ const Mt5PageContent = () => {
       title: t("mt-promotion-tabs-webtrader"),
       content: (
         <>
-          <Link to={MT5_DOWNLOAD_LINKS.webtrader}>
+          <a
+            href={MT5_DOWNLOAD_LINKS.webtrader}
+            target="_blank"
+            rel="noreferrer"
+          >
             {t("mt5_mt-promotion-download-webtrader")}
-          </Link>
+          </a>
         </>
       ),
     },
@@ -131,7 +135,8 @@ const Mt5PageContent = () => {
           "button-link--ghost": isLG || isXL,
         })}
         btnTitle={t("mt5_top-market-promo-btn")}
-        link={getOSDevice()} //TUTO EN TO PATON
+        btnOnClick={scrollToTarget}
+        link={getOSDevice()}
         isDocumentLink
         note={
           <HighlightedLocalizationText
@@ -149,8 +154,6 @@ const Mt5PageContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarketPromotion>
-      <div ref={ref}></div>
-
       <MtPromotion
         title={
           <HighlightedLocalizationText
@@ -165,6 +168,7 @@ const Mt5PageContent = () => {
         downloadTitle={t("mt5_download-title")}
         image={image}
         tabs={tabs}
+        ref={downloadRef}
       />
       {/* Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-183 */}
       {!isCySEC && (
@@ -182,7 +186,7 @@ const Mt5PageContent = () => {
           })}
         >
           <TableComponent
-            data={DATA_PLATFORMS}
+            data={DataPlatforms()}
             columns={COLUMNS_PLATFORMS}
             tableClassName={isRTL ? "mt-table--rtl" : ""}
           />

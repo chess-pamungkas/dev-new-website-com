@@ -19,7 +19,6 @@ import TableComponent from "../../shared/table";
 import {
   DATA_FOREX_MINOR,
   DATA_FOREX_MAJOR,
-  DATA_FOREX_EXOTIC,
 } from "../../../helpers/top-market-tables";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import Tabs from "../../shared/tabs";
@@ -77,7 +76,7 @@ const ForexContent = () => {
       Header: "",
       columns: [
         {
-          Header: "Live",
+          Header: t("indices_table-market-header-group4"),
           accessor: "col6",
         },
       ],
