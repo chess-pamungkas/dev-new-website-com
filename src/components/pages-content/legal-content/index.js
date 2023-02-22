@@ -3,7 +3,7 @@ import TopMarketPromotion from "../../top-market-promotion";
 import cn from "classnames";
 import image from "../../../assets/images/about-pages/legal-banner.svg";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
-import cysec from "../../../assets/images/about-pages/cysec.png";
+import cysec from "../../../assets/images/about-pages/cysec.svg";
 import fsa from "../../../assets/images/about-pages/fsa.png";
 import Documents from "../../documents";
 import { LEGAL_DOCS, LEGAL_DOCS_FSA } from "../../../helpers/documents";
@@ -14,9 +14,10 @@ import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 
 const LegalContent = () => {
   const { t } = useTranslation();
-  const { isXL } = useWindowSize();
+  const { isXL, isLG } = useWindowSize();
   const { sitePostfix, isCySEC } = useEntityPostfix();
   const isRTL = useRtlDirection();
+  const cysecImg = isXL || isLG ? cysec : null;
 
   return (
     <>
@@ -41,7 +42,7 @@ const LegalContent = () => {
         className={cn("legal-page-esma", {
           "legal-page-esma--rtl": isRTL,
         })}
-        image={isCySEC ? cysec : fsa}
+        image={isCySEC ? cysecImg : fsa}
         btnTitle={isCySEC ? t("legal_top-market-promo-btn2") : null}
         note={
           isCySEC ? (
