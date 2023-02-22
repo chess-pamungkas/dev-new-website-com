@@ -626,6 +626,4 @@ const DataPlatforms = () => {
   return DATA_PLATFORMS;
 };
 
-export { DataPlatforms };
-
-export { MetaTrader4info, MetaTrader5info };
+export { MetaTrader4info, MetaTrader5info, DataPlatforms };
