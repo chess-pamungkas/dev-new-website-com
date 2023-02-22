@@ -1,25 +1,22 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import {
   CYSEC_ALL_MARKETS,
   FSA_ALL_MARKETS,
 } from "../../../../helpers/all-markets.config";
-import ClientResolverContext from "../../../../context/client-resolver-context";
-import entities from "../../../../enums/entities";
 import MarketItem from "../market-item";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../../../helpers/constants";
+import { useEntityPostfix } from "../../../../helpers/use-entity-postfix";
 
 const MarketItemsList = ({ className }) => {
   const [markets, setMarkets] = useState([]);
-  const { currentEntity } = useContext(ClientResolverContext);
   const isRTL = useRtlDirection();
+  const { isCySEC } = useEntityPostfix();
 
   useEffect(() => {
-    setMarkets(
-      currentEntity === entities.CYSEC ? CYSEC_ALL_MARKETS : FSA_ALL_MARKETS
-    );
-  }, [currentEntity]);
+    setMarkets(isCySEC ? CYSEC_ALL_MARKETS : FSA_ALL_MARKETS);
+  }, [isCySEC]);
 
   return (
     <section
