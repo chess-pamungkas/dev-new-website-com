@@ -39,6 +39,64 @@ const Mt5PageContent = () => {
     setMt5Advantages(isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES);
   }, [isCySEC]);
 
+  const DATA_PLATFORMS = [
+    {
+      col1: t("mt4_table-data-platform-col1-1"),
+      col2: "4",
+      col3: "3",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-2"),
+      col2: "6",
+      col3: "3",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-3"),
+      col2: "Untitled",
+      col3: "3",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-4"),
+      col2: "38",
+      col3: "38",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-5"),
+      col2: "Mql5",
+      col3: "Mql4",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-6"),
+      col2: "21",
+      col3: "9",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-7"),
+      col2: "44",
+      col3: "31",
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-8"),
+      col2: t("mt4_table-data-platform-col2-8"),
+      col3: t("mt4_table-data-platform-col3-8"),
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-9"),
+      col2: t("mt4_table-data-platform-col2-9"),
+      col3: t("mt4_table-data-platform-col3-9"),
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-10"),
+      col2: t("mt4_table-data-platform-col2-10"),
+      col3: t("mt4_table-data-platform-col3-10"),
+    },
+    {
+      col1: t("mt4_table-data-platform-col1-11"),
+      col2: t("mt4_table-data-platform-col2-11"),
+      col3: t("mt4_table-data-platform-col3-11"),
+    },
+  ];
+
   const getOSDevice = useCallback(() => {
     switch (true) {
       case isIOS:
@@ -186,7 +244,7 @@ const Mt5PageContent = () => {
           })}
         >
           <TableComponent
-            data={DataPlatforms()}
+            data={DATA_PLATFORMS}
             columns={COLUMNS_PLATFORMS}
             tableClassName={isRTL ? "mt-table--rtl" : ""}
           />
