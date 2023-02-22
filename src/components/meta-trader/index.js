@@ -14,11 +14,11 @@ const MetaTrader = ({
   text,
   icon,
   learMoreLink,
-  downloadLink,
   learMoreLinkTitle,
   downloadLinkTitle,
   advantages,
   isGrayBackground,
+  downloadLink,
 }) => {
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();

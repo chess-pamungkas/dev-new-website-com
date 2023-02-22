@@ -1,15 +1,19 @@
+import { useCallback } from "react";
 import metaTrader4 from "../assets/images/icons/tools/metaTrader4.svg";
 import metaTrader5 from "../assets/images/icons/tools/metaTrader5.svg";
 import { MT4_PAGE_LINK, MT5_PAGE_LINK } from "./constants";
 import { MT4_DOC, MT5_DOC } from "./documents";
+import { MT5_WEB_TRADER_LINK } from "./constants";
+
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 
 export const CTRADER_DOWNLOAD_LINKS = {
-  android: "/",
+  android: "https://play.google.com/store/apps/details?id=com.oqtima.app",
   ios: "/",
-  windows: "/",
+  windows: "https://oqtima.ctrader.com/cbroker-oqtima-setup.exe",
   mac: "/",
-  webtrader: "/",
+  webtrader: "https://app.oqtima.com/",
 };
 
 export const TRADING_VIEW_DOWNLOAD_LINKS = {
@@ -21,19 +25,23 @@ export const TRADING_VIEW_DOWNLOAD_LINKS = {
 };
 
 export const MT4_DOWNLOAD_LINKS = {
-  android: "/",
-  ios: "/",
-  windows: "/",
-  mac: "/",
+  android: null,
+  ios: null,
+  windows:
+    "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
+  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt4.macos",
   webtrader: "/",
 };
 
 export const MT5_DOWNLOAD_LINKS = {
-  android: "/",
-  ios: "/",
-  windows: "/",
-  mac: "/",
-  webtrader: "/",
+  androidEU:
+    "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live",
+  androidFSA: null,
+  ios: null,
+  windows:
+    "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
+  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt5.macos",
+  webtrader: MT5_WEB_TRADER_LINK,
 };
 
 export const FSA_MT5_ADVANTAGES = [
@@ -263,117 +271,150 @@ export const FSA_MT4_ADVANTAGES = [
     text: "mt4_market-items-list_adv13_fsa",
   },
 ];
-
-export const META_TRADER_4 = {
-  key: "mtTrader4",
-  icon: metaTrader4,
-  title: "platforms_meta-trader-4-title",
-  text: ["platforms_meta-trader-4-text-1", "platforms_meta-trader-4-text-2"],
-  isGrayBackground: false,
-  learMoreLink: MT4_PAGE_LINK,
-  downloadLink: MT4_DOC,
-  learMoreLinkTitle: "platforms_meta-trader-4-more-link-title",
-  downloadLinkTitle: "platforms_meta-trader-4-download-link-title",
-  advantages: [
-    {
-      key: "mtTrader4-advantage-1",
-      text: "platforms_meta-trader-4-advantage-1",
-    },
-    {
-      key: "mtTrader4-advantage-2",
-      text: "platforms_meta-trader-4-advantage-2",
-    },
-    {
-      key: "mtTrader4-advantage-3",
-      text: "platforms_meta-trader-4-advantage-3",
-    },
-    {
-      key: "mtTrader4-advantage-4",
-      text: "platforms_meta-trader-4-advantage-4",
-    },
-    {
-      key: "mtTrader4-advantage-5",
-      text: "platforms_meta-trader-4-advantage-5",
-    },
-    {
-      key: "mtTrader4-advantage-6",
-      text: "platforms_meta-trader-4-advantage-6",
-    },
-    {
-      key: "mtTrader4-advantage-7",
-      text: "platforms_meta-trader-4-advantage-7",
-    },
-    {
-      key: "mtTrader4-advantage-8",
-      text: "platforms_meta-trader-4-advantage-8",
-    },
-    {
-      key: "mtTrader4-advantage-9",
-      text: "platforms_meta-trader-4-advantage-9",
-    },
-    {
-      key: "mtTrader4-advantage-10",
-      text: "platforms_meta-trader-4-advantage-10",
-    },
-  ],
+const MetaTrader4info = () => {
+  const getOSDeviceMT4 = useCallback(() => {
+    switch (true) {
+      case isIOS:
+        return MT4_PAGE_LINK;
+      case isAndroid:
+        return MT4_PAGE_LINK;
+      case isWindows:
+        return MT4_DOWNLOAD_LINKS.windows;
+      case isMacOs:
+        return MT4_DOWNLOAD_LINKS.mac;
+      default:
+        return { width: "359px", height: "202px" };
+    }
+  }, [isIOS, isAndroid, isWindows, isMacOs]);
+  const META_TRADER_4 = {
+    key: "mtTrader4",
+    icon: metaTrader4,
+    title: "platforms_meta-trader-4-title",
+    text: ["platforms_meta-trader-4-text-1", "platforms_meta-trader-4-text-2"],
+    isGrayBackground: false,
+    learMoreLink: MT4_PAGE_LINK,
+    downloadLink: getOSDeviceMT4(),
+    learMoreLinkTitle: "platforms_meta-trader-4-more-link-title",
+    downloadLinkTitle: "platforms_meta-trader-4-download-link-title",
+    advantages: [
+      {
+        key: "mtTrader4-advantage-1",
+        text: "platforms_meta-trader-4-advantage-1",
+      },
+      {
+        key: "mtTrader4-advantage-2",
+        text: "platforms_meta-trader-4-advantage-2",
+      },
+      {
+        key: "mtTrader4-advantage-3",
+        text: "platforms_meta-trader-4-advantage-3",
+      },
+      {
+        key: "mtTrader4-advantage-4",
+        text: "platforms_meta-trader-4-advantage-4",
+      },
+      {
+        key: "mtTrader4-advantage-5",
+        text: "platforms_meta-trader-4-advantage-5",
+      },
+      {
+        key: "mtTrader4-advantage-6",
+        text: "platforms_meta-trader-4-advantage-6",
+      },
+      {
+        key: "mtTrader4-advantage-7",
+        text: "platforms_meta-trader-4-advantage-7",
+      },
+      {
+        key: "mtTrader4-advantage-8",
+        text: "platforms_meta-trader-4-advantage-8",
+      },
+      {
+        key: "mtTrader4-advantage-9",
+        text: "platforms_meta-trader-4-advantage-9",
+      },
+      {
+        key: "mtTrader4-advantage-10",
+        text: "platforms_meta-trader-4-advantage-10",
+      },
+    ],
+  };
+  return META_TRADER_4;
 };
 
-export const META_TRADER_5 = {
-  key: "mtTrader5",
-  icon: metaTrader5,
-  title: "platforms_meta-trader-5-title",
-  text: ["platforms_meta-trader-5-text-1"],
-  isGrayBackground: true,
-  learMoreLink: MT5_PAGE_LINK,
-  downloadLink: MT5_DOC,
-  learMoreLinkTitle: "platforms_meta-trader-5-more-link-title",
-  downloadLinkTitle: "platforms_meta-trader-5-download-link-title",
-  advantages: [
-    {
-      key: "mtTrader5-advantage-1",
-      text: "platforms_meta-trader-5-advantage-1",
-    },
-    {
-      key: "mtTrader5-advantage-2",
-      text: "platforms_meta-trader-5-advantage-2",
-    },
-    {
-      key: "mtTrader5-advantage-3",
-      text: "platforms_meta-trader-5-advantage-3",
-    },
-    {
-      key: "mtTrader5-advantage-4",
-      text: "platforms_meta-trader-5-advantage-4",
-    },
-    {
-      key: "mtTrader5-advantage-5",
-      text: "platforms_meta-trader-5-advantage-5",
-    },
-    {
-      key: "mtTrader5-advantage-6",
-      text: "platforms_meta-trader-5-advantage-6",
-    },
-    {
-      key: "mtTrader5-advantage-7",
-      text: "platforms_meta-trader-5-advantage-7",
-    },
-    {
-      key: "mtTrader5-advantage-8",
-      text: "platforms_meta-trader-5-advantage-8",
-    },
-    {
-      key: "mtTrader5-advantage-9",
-      text: "platforms_meta-trader-5-advantage-9",
-    },
-    {
-      key: "mtTrader5-advantage-10",
-      text: "platforms_meta-trader-5-advantage-10",
-    },
-    {
-      key: "mtTrader5-advantage-11",
-      text: "platforms_meta-trader-5-advantage-11",
-    },
-  ],
+const MetaTrader5info = () => {
+  const getOSDeviceMT5 = useCallback(() => {
+    switch (true) {
+      case isIOS:
+        return MT5_PAGE_LINK;
+      case isAndroid:
+        return MT5_DOWNLOAD_LINKS.android;
+      case isWindows:
+        return MT5_DOWNLOAD_LINKS.windows;
+      case isMacOs:
+        return MT5_DOWNLOAD_LINKS.mac;
+      default:
+        return MT5_DOWNLOAD_LINKS.windows;
+    }
+  }, [isIOS, isAndroid, isWindows, isMacOs]);
+  const META_TRADER_5 = {
+    key: "mtTrader5",
+    icon: metaTrader5,
+    title: "platforms_meta-trader-5-title",
+    text: ["platforms_meta-trader-5-text-1"],
+    isGrayBackground: true,
+    learMoreLink: MT5_PAGE_LINK,
+    downloadLink: getOSDeviceMT5(),
+    learMoreLinkTitle: "platforms_meta-trader-5-more-link-title",
+    downloadLinkTitle: "platforms_meta-trader-5-download-link-title",
+    advantages: [
+      {
+        key: "mtTrader5-advantage-1",
+        text: "platforms_meta-trader-5-advantage-1",
+      },
+      {
+        key: "mtTrader5-advantage-2",
+        text: "platforms_meta-trader-5-advantage-2",
+      },
+      {
+        key: "mtTrader5-advantage-3",
+        text: "platforms_meta-trader-5-advantage-3",
+      },
+      {
+        key: "mtTrader5-advantage-4",
+        text: "platforms_meta-trader-5-advantage-4",
+      },
+      {
+        key: "mtTrader5-advantage-5",
+        text: "platforms_meta-trader-5-advantage-5",
+      },
+      {
+        key: "mtTrader5-advantage-6",
+        text: "platforms_meta-trader-5-advantage-6",
+      },
+      {
+        key: "mtTrader5-advantage-7",
+        text: "platforms_meta-trader-5-advantage-7",
+      },
+      {
+        key: "mtTrader5-advantage-8",
+        text: "platforms_meta-trader-5-advantage-8",
+      },
+      {
+        key: "mtTrader5-advantage-9",
+        text: "platforms_meta-trader-5-advantage-9",
+      },
+      {
+        key: "mtTrader5-advantage-10",
+        text: "platforms_meta-trader-5-advantage-10",
+      },
+      {
+        key: "mtTrader5-advantage-11",
+        text: "platforms_meta-trader-5-advantage-11",
+      },
+    ],
+  };
+  return META_TRADER_5;
 };
 
 export const CTRADER_ADVANTAGES = [
@@ -586,3 +627,5 @@ const DataPlatforms = () => {
 };
 
 export { DataPlatforms };
+
+export { MetaTrader4info, MetaTrader5info };
