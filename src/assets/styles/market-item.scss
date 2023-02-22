@@ -62,10 +62,12 @@
       padding-left: 44px;
       padding-top: unset;
       padding-right: unset;
+      padding-top: 30px;
     }
 
     @include desktop-xl {
       padding-left: 74px;
+      padding-top: 50px;
     }
   }
 
@@ -123,6 +125,14 @@
       font: normal normal map-get($font-weight, "black") 24px/30px $font;
       padding-top: 13px;
       margin-left: unset;
+    }
+  
+    @include desktop-lg {
+      margin-top: 100px;
+    }
+
+    @include desktop-xl {
+      margin-top: 150px;
     }
 
     &:hover {
