@@ -95,6 +95,26 @@ export const FAQ_METALS = [
       "metals_faq-content2-5",
     ],
   },
+  {
+    question: "metals_faq-title3",
+    answer: ["metals_faq-content3"],
+  },
+  {
+    question: "metals_faq-title4",
+    answer: ["metals_faq-content4"],
+  },
+  {
+    question: "metals_faq-title5",
+    answer: ["metals_faq-content5"],
+  },
+  {
+    question: "metals_faq-title6",
+    answer: ["metals_faq-content6"],
+  },
+  {
+    question: "metals_faq-title7",
+    answer: ["metals_faq-content7"],
+  },
 ];
 
 export const FAQ_SHARES = [
