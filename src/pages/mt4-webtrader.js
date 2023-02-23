@@ -4,20 +4,20 @@ import { graphql } from "gatsby";
 import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
-import WebTraderLink from "../components/mt5-web-trader";
+import Mt4WebTraderLink from "../components/mt4-webtrader";
 
-const MT5WebTraderPage = () => {
+const MT4WebTraderPage = () => {
   // const { t } = useTranslation();
 
   return (
     <Layout>
-      <Seo title={"MT5 Web Trader"} description={"need description"} />
-      <WebTraderLink />
+      <Seo title={"MT4 Web Trader"} description={"need description"} />
+      <Mt4WebTraderLink />
     </Layout>
   );
 };
 
-export default MT5WebTraderPage;
+export default MT4WebTraderPage;
 
 export const query = graphql`
   query ($language: String!) {
