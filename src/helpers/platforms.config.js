@@ -1,9 +1,12 @@
 import { useCallback } from "react";
 import metaTrader4 from "../assets/images/icons/tools/metaTrader4.svg";
 import metaTrader5 from "../assets/images/icons/tools/metaTrader5.svg";
-import { MT4_PAGE_LINK, MT5_PAGE_LINK } from "./constants";
-import { MT4_DOC, MT5_DOC } from "./documents";
-import { MT5_WEB_TRADER_LINK } from "./constants";
+import {
+  MT4_PAGE_LINK,
+  MT4_WEB_TRADER_LINK,
+  MT5_PAGE_LINK,
+  MT5_WEB_TRADER_LINK,
+} from "./constants";
 
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
@@ -30,7 +33,7 @@ export const MT4_DOWNLOAD_LINKS = {
   windows:
     "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt4.macos",
-  webtrader: "/",
+  webtrader: MT4_WEB_TRADER_LINK,
 };
 
 export const MT5_DOWNLOAD_LINKS = {

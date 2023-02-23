@@ -4,7 +4,6 @@ import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT5.json";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
-import { Link } from "gatsby";
 import {
   COLUMNS_PLATFORMS,
   CYSEC_MT5_ADVANTAGES,

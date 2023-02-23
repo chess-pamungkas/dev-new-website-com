@@ -104,7 +104,11 @@ const Mt4PageContent = () => {
       title: t("mt-promotion-tabs-webtrader"),
       content: (
         <>
-          <a href={MT4_DOWNLOAD_LINKS.webtrader}>
+          <a
+            href={MT4_DOWNLOAD_LINKS.webtrader}
+            target="_blank"
+            rel="noreferrer"
+          >
             {t("mt4_mt-promotion-download-webtrader")}
           </a>
         </>
