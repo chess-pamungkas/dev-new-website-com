@@ -10,7 +10,7 @@ import {
 
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
-
+import { useEntityPostfix } from "./use-entity-postfix";
 export const CTRADER_DOWNLOAD_LINKS = {
   android: "/",
   ios: "/",
@@ -41,9 +41,11 @@ export const MT5_DOWNLOAD_LINKS = {
   androidEU:
     "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live",
   androidFSA: null,
-  ios: "https://download.mql5.com/cdn/mobile/mt5/ios?server=OqtimaEU-Live",
-  windows:
+  iosEU: "https://download.mql5.com/cdn/mobile/mt5/ios?server=OqtimaEU-Live",
+  iosFSA: null,
+  windowsEU:
     "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
+  windowsFSA: null,
   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt5.macos",
   webtrader: MT5_WEB_TRADER_LINK,
 };
@@ -279,9 +281,9 @@ const MetaTrader4info = () => {
   const getOSDeviceMT4 = useCallback(() => {
     switch (true) {
       case isIOS:
-        return MT4_PAGE_LINK;
+        return MT4_DOWNLOAD_LINKS.ios;
       case isAndroid:
-        return MT4_PAGE_LINK;
+        return MT4_DOWNLOAD_LINKS.android;
       case isWindows:
         return MT4_DOWNLOAD_LINKS.windows;
       case isMacOs:
@@ -347,18 +349,25 @@ const MetaTrader4info = () => {
 };
 
 const MetaTrader5info = () => {
+  const { isCySEC } = useEntityPostfix();
   const getOSDeviceMT5 = useCallback(() => {
     switch (true) {
       case isIOS:
-        return MT5_PAGE_LINK;
+        return isCySEC ? MT5_DOWNLOAD_LINKS.iosEU : MT5_DOWNLOAD_LINKS.iosFSA;
       case isAndroid:
-        return MT5_DOWNLOAD_LINKS.android;
+        return isCySEC
+          ? MT5_DOWNLOAD_LINKS.androidFSA
+          : MT5_DOWNLOAD_LINKS.androidEU;
       case isWindows:
-        return MT5_DOWNLOAD_LINKS.windows;
+        return isCySEC
+          ? MT5_DOWNLOAD_LINKS.windowsEU
+          : MT5_DOWNLOAD_LINKS.windowsFSA;
       case isMacOs:
         return MT5_DOWNLOAD_LINKS.mac;
       default:
-        return MT5_DOWNLOAD_LINKS.windows;
+        return isCySEC
+          ? MT5_DOWNLOAD_LINKS.windowsEU
+          : MT5_DOWNLOAD_LINKS.windowsFSA;
     }
   }, [isIOS, isAndroid, isWindows, isMacOs]);
   const META_TRADER_5 = {
