@@ -3,21 +3,14 @@ import metaTrader4 from "../assets/images/icons/tools/metaTrader4.svg";
 import metaTrader5 from "../assets/images/icons/tools/metaTrader5.svg";
 import {
   MT4_PAGE_LINK,
-  MT4_WEB_TRADER_LINK,
   MT5_PAGE_LINK,
   MT5_WEB_TRADER_LINK,
+  MT4_WEB_TRADER_LINK,
 } from "./constants";
 
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 
-// export const CTRADER_DOWNLOAD_LINKS = {
-//   android: "https://play.google.com/store/apps/details?id=com.oqtima.app",
-//   ios: "/",
-//   windows: "https://oqtima.ctrader.com/cbroker-oqtima-setup.exe",
-//   mac: "/",
-//   webtrader: "https://app.oqtima.com/",
-// };
 export const CTRADER_DOWNLOAD_LINKS = {
   android: "/",
   ios: "/",
@@ -34,41 +27,24 @@ export const TRADING_VIEW_DOWNLOAD_LINKS = {
   webtrader: "/",
 };
 
-//TODO remove 41-47 when all links are available and uncomment below
-// export const MT4_DOWNLOAD_LINKS = {
-//   android: null,
-//   ios: null,
-//   windows:
-//     "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
-//   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt4.macos",
-//   webtrader: MT4_WEB_TRADER_LINK,
-// };
 export const MT4_DOWNLOAD_LINKS = {
-  android: "/",
-  ios: "/",
-  windows: "/",
-  mac: "/",
-  webtrader: "/",
+  android: null,
+  ios: null,
+  windows:
+    "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
+  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt4.macos",
+  webtrader: MT4_WEB_TRADER_LINK,
 };
 
-//TODO remove 50-59 when all links are available and uncomment below
-// export const MT5_DOWNLOAD_LINKS = {
-//   androidEU:
-//     "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live",
-//   androidFSA: null,
-//   ios: null,
-//   windows:
-//     "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
-//   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt5.macos",
-//   webtrader: MT5_WEB_TRADER_LINK,
-// };
 export const MT5_DOWNLOAD_LINKS = {
-  androidEU: "/",
-  androidFSA: "/",
-  ios: "/",
-  windows: "/",
-  mac: "/",
-  webtrader: "/",
+  androidEU:
+    "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live",
+  androidFSA: null,
+  ios: "https://download.mql5.com/cdn/mobile/mt5/ios?server=OqtimaEU-Live",
+  windows:
+    "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
+  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt5.macos",
+  webtrader: MT5_WEB_TRADER_LINK,
 };
 
 export const FSA_MT5_ADVANTAGES = [

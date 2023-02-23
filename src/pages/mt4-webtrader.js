@@ -10,7 +10,7 @@ const MT4WebTraderPage = () => {
   // const { t } = useTranslation();
 
   return (
-    <Layout>
+    <Layout isSearchBarAttached={false}>
       <Seo title={"MT4 Web Trader"} description={"need description"} />
       <Mt4WebTraderLink />
     </Layout>
