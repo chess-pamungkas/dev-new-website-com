@@ -47,6 +47,7 @@ import {
   WITHDRAWAL_PAGE_LINK,
   TRADING_VIEW_PAGE_LINK,
   ETF_PAGE_LINK,
+  MT5_WEB_TRADER_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {

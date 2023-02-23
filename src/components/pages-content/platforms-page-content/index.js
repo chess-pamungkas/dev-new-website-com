@@ -2,8 +2,8 @@ import React from "react";
 import cn from "classnames";
 import TopMarket from "../../top-market";
 import {
-  META_TRADER_4,
-  META_TRADER_5,
+  MetaTrader5info,
+  MetaTrader4info,
 } from "../../../helpers/platforms.config";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MetaTrader from "../../meta-trader";
@@ -22,8 +22,8 @@ const PlatformsPageContent = () => {
   const { isCySEC } = useEntityPostfix();
   const META_TRADERS = [
     // Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
-    ...(isCySEC ? [] : [META_TRADER_4]),
-    META_TRADER_5,
+    ...(isCySEC ? [] : [MetaTrader4info()]),
+    MetaTrader5info(),
   ];
   const isRTL = useRtlDirection();
 
@@ -38,9 +38,15 @@ const PlatformsPageContent = () => {
           <div className={cn("top-market__trader-tools")}>
             {/* Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166 */}
             {!isCySEC && (
-              <img src={META_TRADER_4.icon} alt={t(META_TRADER_4.title)} />
+              <img
+                src={MetaTrader4info().icon}
+                alt={t(MetaTrader4info().title)}
+              />
             )}
-            <img src={META_TRADER_5.icon} alt={t(META_TRADER_5.title)} />
+            <img
+              src={MetaTrader5info().icon}
+              alt={t(MetaTrader5info().title)}
+            />
           </div>
         }
       >

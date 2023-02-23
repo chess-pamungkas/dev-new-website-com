@@ -67,6 +67,7 @@ export const PROFESSIONAL_QUALIFICATION_PAGE_LINK =
 export const PARTNERS_PAGE_LINK = "/partners";
 export const ACCOUNTS_TYPE_PAGE_LINK = "/accounts-type";
 export const ETF_PAGE_LINK = "/etf";
+export const MT5_WEB_TRADER_LINK = "/MT5-web-trader";
 
 export const ANGLE_ICON_COLOR = {
   black: "#232323",

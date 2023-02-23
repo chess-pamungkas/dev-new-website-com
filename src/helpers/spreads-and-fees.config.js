@@ -259,7 +259,7 @@ export const COLUMNS_SPREADS_TABLE_CRYPTO = [
   },
   {
     id: "group2",
-    Header: "Oqtima ECN+ / Oqtima One",
+    Header: "OQtima ECN+ / OQtima One",
     columns: [
       {
         Header: "Symbol",
@@ -335,7 +335,7 @@ export const COLUMNS_SPREADS_TABLE_SHARES = [
   },
   {
     id: "group2",
-    Header: "Oqtima ECN+ / Oqtima One",
+    Header: "OQtima ECN+ / OQtima One",
     columns: [
       {
         Header: "CFDs Minimum",

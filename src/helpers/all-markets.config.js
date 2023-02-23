@@ -5,6 +5,7 @@ import {
   FOREX_PAGE_LINK,
   INDICES_PAGE_LINK,
   SHARES_PAGE_LINK,
+  ETF_PAGE_LINK,
 } from "./constants";
 import forexIcon from "../assets/images/all-markets/forex.svg";
 import IndicesIcon from "../assets/images/all-markets/indices.svg";
@@ -12,8 +13,9 @@ import sharesIcon from "../assets/images/all-markets/shares.svg";
 import CommoditiesIcon from "../assets/images/all-markets/commodities.svg";
 import EnergiesIcon from "../assets/images/all-markets/energies.svg";
 import CryptoIcon from "../assets/images/all-markets/crypto.svg";
+import EtfIcon from "../assets/images/all-markets/etf.svg";
 
-const FSA_FOREX = {
+const CYSEC_FOREX = {
   key: "forex",
   icon: forexIcon,
   title: "all-markets_market-items-list-forex-title",
@@ -51,23 +53,23 @@ const FSA_FOREX = {
     },
   ],
 };
-const CYSEC_FOREX = {
-  ...FSA_FOREX,
-  text: ["all-markets_market-items-list-forex-text-eu"],
+const FSA_FOREX = {
+  ...CYSEC_FOREX,
+  text: ["all-markets_market-items-list-forex-text"],
   advantages: [
     {
       key: "adv1",
-      text: "all-markets_market-items-list-forex-adv1-eu",
+      text: "all-markets_market-items-list-forex-adv1",
     },
     {
       key: "adv2",
-      text: "all-markets_market-items-list-forex-adv2-eu",
+      text: "all-markets_market-items-list-forex-adv2-fsa",
     },
-    ...FSA_FOREX.advantages.slice(2),
+    ...CYSEC_FOREX.advantages.slice(2),
   ],
 };
 
-const FSA_INDICES = {
+const CYSEC_INDICES = {
   key: "indices",
   icon: IndicesIcon,
   title: "all-markets_market-items-list-indices-title",
@@ -109,22 +111,22 @@ const FSA_INDICES = {
     },
   ],
 };
-const CYSEC_INDICES = {
-  ...FSA_INDICES,
+const FSA_INDICES = {
+  ...CYSEC_INDICES,
   advantages: [
     {
       key: "adv1",
-      text: "all-markets_market-items-list-indices-adv1-eu",
+      text: "all-markets_market-items-list-indices-adv1",
     },
     {
       key: "adv2",
-      text: "all-markets_market-items-list-indices-adv2-eu",
+      text: "all-markets_market-items-list-indices-adv2-fsa",
     },
-    ...FSA_INDICES.advantages.slice(2),
+    ...CYSEC_INDICES.advantages.slice(2),
   ],
 };
 
-const FSA_SHARES = {
+const CYSEC_SHARES = {
   key: "shares",
   icon: sharesIcon,
   title: "all-markets_market-items-list-shares-title",
@@ -162,23 +164,23 @@ const FSA_SHARES = {
     },
   ],
 };
-const CYSEC_SHARES = {
-  ...FSA_SHARES,
-  text: ["all-markets_market-items-list-shares-text-eu"],
+const FSA_SHARES = {
+  ...CYSEC_SHARES,
+  text: ["all-markets_market-items-list-shares-text-fsa"],
   advantages: [
     {
       key: "adv1",
-      text: "all-markets_market-items-list-shares-adv1-eu",
+      text: "all-markets_market-items-list-shares-adv1-fsa",
     },
     {
       key: "adv2",
-      text: "all-markets_market-items-list-shares-adv2-eu",
+      text: "all-markets_market-items-list-shares-adv2-fsa",
     },
-    ...FSA_SHARES.advantages.slice(2),
+    ...CYSEC_SHARES.advantages.slice(2),
   ],
 };
 
-const FSA_COMMODITIES = {
+const CYSEC_METALS = {
   key: "commodities",
   icon: CommoditiesIcon,
   title: "all-markets_market-items-list-commodities-title",
@@ -219,8 +221,8 @@ const FSA_COMMODITIES = {
     },
   ],
 };
-const CYSEC_COMMODITIES = {
-  ...FSA_COMMODITIES,
+const FSA_METALS = {
+  ...CYSEC_METALS,
   advantages: [
     {
       key: "adv1",
@@ -228,13 +230,13 @@ const CYSEC_COMMODITIES = {
     },
     {
       key: "adv2",
-      text: "all-markets_market-items-list-commodities-adv2-eu",
+      text: "all-markets_market-items-list-commodities-adv2-fsa",
     },
-    ...FSA_COMMODITIES.advantages.slice(2),
+    ...CYSEC_METALS.advantages.slice(2),
   ],
 };
 
-const FSA_ENERGIES = {
+const CYSEC_ENERGIES = {
   key: "energies",
   icon: EnergiesIcon,
   title: "all-markets_market-items-list-energies-title",
@@ -272,8 +274,8 @@ const FSA_ENERGIES = {
     },
   ],
 };
-const CYSEC_ENERGIES = {
-  ...FSA_ENERGIES,
+const FSA_ENERGIES = {
+  ...CYSEC_ENERGIES,
   advantages: [
     {
       key: "adv1",
@@ -281,48 +283,102 @@ const CYSEC_ENERGIES = {
     },
     {
       key: "adv2",
-      text: "all-markets_market-items-list-energies-adv2-eu",
+      text: "all-markets_market-items-list-energies-adv2-fsa",
     },
-    ...FSA_ENERGIES.advantages.slice(2),
+    ...CYSEC_ENERGIES.advantages.slice(2),
   ],
 };
 
 const CRYPTO = {
   key: "crypto",
   icon: CryptoIcon,
-  title: "all-markets_market-items-list-crypto-title",
-  text: ["all-markets_market-items-list-crypto-text"],
+  title: "all-markets_market-items-list-crypto-title-fsa",
+  text: ["all-markets_market-items-list-crypto-text-fsa"],
   isGrayBackground: true,
   link: CRYPTO_PAGE_LINK,
   advantages: [
     {
       key: "adv1",
-      text: "all-markets_market-items-list-crypto-adv1",
+      text: "all-markets_market-items-list-crypto-adv1-fsa",
     },
     {
       key: "adv2",
-      text: "all-markets_market-items-list-crypto-adv2",
+      text: "all-markets_market-items-list-crypto-adv2-fsa",
     },
     {
       key: "adv3",
-      text: "all-markets_market-items-list-crypto-adv3",
+      text: "all-markets_market-items-list-crypto-adv3-fsa",
     },
     {
       key: "adv4",
-      text: "all-markets_market-items-list-crypto-adv4",
+      text: "all-markets_market-items-list-crypto-adv4-fsa",
     },
     {
       key: "adv5",
-      text: "all-markets_market-items-list-crypto-adv5",
+      text: "all-markets_market-items-list-crypto-adv5-fsa",
     },
     {
       key: "adv6",
-      text: "all-markets_market-items-list-crypto-adv6",
+      text: "all-markets_market-items-list-crypto-adv6-fsa",
     },
     {
       key: "adv7",
-      text: "all-markets_market-items-list-crypto-adv7",
+      text: "all-markets_market-items-list-crypto-adv7-fsa",
     },
+  ],
+};
+
+const CYSEC_ETF = {
+  key: "etf",
+  icon: EtfIcon,
+  title: "all-markets_market-items-list-etf-title",
+  text: ["all-markets_market-items-list-etf-text"],
+  isGrayBackground: true,
+  link: ETF_PAGE_LINK,
+  advantages: [
+    {
+      key: "adv1",
+      text: "all-markets_market-items-list-etf-adv1",
+    },
+    {
+      key: "adv2",
+      text: "all-markets_market-items-list-etf-adv2",
+    },
+    {
+      key: "adv3",
+      text: "all-markets_market-items-list-etf-adv3",
+    },
+    {
+      key: "adv4",
+      text: "all-markets_market-items-list-etf-adv4",
+    },
+    {
+      key: "adv5",
+      text: "all-markets_market-items-list-etf-adv5",
+    },
+    {
+      key: "adv6",
+      text: "all-markets_market-items-list-etf-adv6",
+    },
+    {
+      key: "adv7",
+      text: "all-markets_market-items-list-etf-adv7",
+    },
+  ],
+};
+const FSA_ETF = {
+  ...CYSEC_ETF,
+  isGrayBackground: false,
+  advantages: [
+    {
+      key: "adv1",
+      text: "all-markets_market-items-list-etf-adv1",
+    },
+    {
+      key: "adv2",
+      text: "all-markets_market-items-list-etf-adv2-fsa",
+    },
+    ...CYSEC_ETF.advantages.slice(2),
   ],
 };
 
@@ -330,15 +386,17 @@ export const CYSEC_ALL_MARKETS = [
   CYSEC_FOREX,
   CYSEC_INDICES,
   CYSEC_SHARES,
-  CYSEC_COMMODITIES,
+  CYSEC_METALS,
   CYSEC_ENERGIES,
+  CYSEC_ETF,
 ];
 
 export const FSA_ALL_MARKETS = [
   FSA_FOREX,
   FSA_INDICES,
   FSA_SHARES,
-  FSA_COMMODITIES,
+  FSA_METALS,
   FSA_ENERGIES,
   CRYPTO,
+  FSA_ETF,
 ];
