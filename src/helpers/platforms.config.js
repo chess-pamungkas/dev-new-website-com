@@ -292,20 +292,20 @@ export const FSA_MT4_ADVANTAGES = [
   },
 ];
 const MetaTrader4info = () => {
-  const getOSDeviceMT4 = useCallback(() => {
-    switch (true) {
-      case isIOS:
-        return MT4_PAGE_LINK;
-      case isAndroid:
-        return MT4_PAGE_LINK;
-      case isWindows:
-        return MT4_DOWNLOAD_LINKS.windows;
-      case isMacOs:
-        return MT4_DOWNLOAD_LINKS.mac;
-      default:
-        return { width: "359px", height: "202px" };
-    }
-  }, [isIOS, isAndroid, isWindows, isMacOs]);
+  // const getOSDeviceMT4 = useCallback(() => {
+  //   switch (true) {
+  //     case isIOS:
+  //       return MT4_PAGE_LINK;
+  //     case isAndroid:
+  //       return MT4_PAGE_LINK;
+  //     case isWindows:
+  //       return MT4_DOWNLOAD_LINKS.windows;
+  //     case isMacOs:
+  //       return MT4_DOWNLOAD_LINKS.mac;
+  //     default:
+  //       return { width: "359px", height: "202px" };
+  //   }
+  // }, [isIOS, isAndroid, isWindows, isMacOs]);
   const META_TRADER_4 = {
     key: "mtTrader4",
     icon: metaTrader4,
@@ -313,7 +313,7 @@ const MetaTrader4info = () => {
     text: ["platforms_meta-trader-4-text-1", "platforms_meta-trader-4-text-2"],
     isGrayBackground: false,
     learMoreLink: MT4_PAGE_LINK,
-    downloadLink: getOSDeviceMT4(),
+    downloadLink: "/",
     learMoreLinkTitle: "platforms_meta-trader-4-more-link-title",
     downloadLinkTitle: "platforms_meta-trader-4-download-link-title",
     advantages: [
@@ -363,20 +363,20 @@ const MetaTrader4info = () => {
 };
 
 const MetaTrader5info = () => {
-  const getOSDeviceMT5 = useCallback(() => {
-    switch (true) {
-      case isIOS:
-        return MT5_PAGE_LINK;
-      case isAndroid:
-        return MT5_DOWNLOAD_LINKS.android;
-      case isWindows:
-        return MT5_DOWNLOAD_LINKS.windows;
-      case isMacOs:
-        return MT5_DOWNLOAD_LINKS.mac;
-      default:
-        return MT5_DOWNLOAD_LINKS.windows;
-    }
-  }, [isIOS, isAndroid, isWindows, isMacOs]);
+  // const getOSDeviceMT5 = useCallback(() => {
+  //   switch (true) {
+  //     case isIOS:
+  //       return MT5_PAGE_LINK;
+  //     case isAndroid:
+  //       return MT5_DOWNLOAD_LINKS.android;
+  //     case isWindows:
+  //       return MT5_DOWNLOAD_LINKS.windows;
+  //     case isMacOs:
+  //       return MT5_DOWNLOAD_LINKS.mac;
+  //     default:
+  //       return MT5_DOWNLOAD_LINKS.windows;
+  //   }
+  // }, [isIOS, isAndroid, isWindows, isMacOs]);
   const META_TRADER_5 = {
     key: "mtTrader5",
     icon: metaTrader5,
@@ -384,7 +384,7 @@ const MetaTrader5info = () => {
     text: ["platforms_meta-trader-5-text-1"],
     isGrayBackground: true,
     learMoreLink: MT5_PAGE_LINK,
-    downloadLink: getOSDeviceMT5(),
+    downloadLink: "/",
     learMoreLinkTitle: "platforms_meta-trader-5-more-link-title",
     downloadLinkTitle: "platforms_meta-trader-5-download-link-title",
     advantages: [
