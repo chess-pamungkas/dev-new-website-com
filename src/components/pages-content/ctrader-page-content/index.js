@@ -1,8 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useRef } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_cTrader.json";
-import { CTRADER_DOC } from "../../../helpers/documents";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
 import {
@@ -13,14 +12,34 @@ import image from "../../../assets/images/mt4/cTrader.png";
 import icon from "../../../assets/images/icon--white.svg";
 import { REGISTRATION_LINK } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
-import { Link } from "gatsby";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import cn from "classnames";
+import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 
 const CtraderPageContent = () => {
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
+
+  const downloadRef = useRef(null);
+  const scrollToTarget = () => {
+    downloadRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const getOSDevice = useCallback(() => {
+    switch (true) {
+      case isIOS:
+        return CTRADER_DOWNLOAD_LINKS.ios;
+      case isAndroid:
+        return CTRADER_DOWNLOAD_LINKS.android;
+      case isWindows:
+        return CTRADER_DOWNLOAD_LINKS.windows;
+      case isMacOs:
+        return CTRADER_DOWNLOAD_LINKS.mac;
+      default:
+        return CTRADER_DOWNLOAD_LINKS.windows;
+    }
+  }, [isIOS, isAndroid, isWindows, isMacOs]);
 
   const getAnimationStyles = useCallback(() => {
     switch (true) {
@@ -43,12 +62,12 @@ const CtraderPageContent = () => {
       title: t("mt-promotion-tabs-mobile"),
       content: (
         <>
-          <Link to={CTRADER_DOWNLOAD_LINKS.android}>
+          <a href={CTRADER_DOWNLOAD_LINKS.android}>
             {t("ctrader_mt-promotion-download-android")}
-          </Link>
-          <Link to={CTRADER_DOWNLOAD_LINKS.ios}>
+          </a>
+          <a href={CTRADER_DOWNLOAD_LINKS.ios}>
             {t("ctrader_mt-promotion-download-ios")}
-          </Link>
+          </a>
         </>
       ),
     },
@@ -57,15 +76,12 @@ const CtraderPageContent = () => {
       title: t("mt-promotion-tabs-desktop"),
       content: (
         <>
-          <Link to={CTRADER_DOWNLOAD_LINKS.mac}>
+          <a href={CTRADER_DOWNLOAD_LINKS.mac}>
             {t("ctrader_mt-promotion-download-mac")}
-          </Link>
-          <Link to={CTRADER_DOWNLOAD_LINKS.windows}>
+          </a>
+          <a href={CTRADER_DOWNLOAD_LINKS.windows}>
             {t("ctrader_mt-promotion-download-windows")}
-          </Link>
-          <Link to={CTRADER_DOWNLOAD_LINKS.webtrader}>
-            {t("ctrader_mt-promotion-download-webtrader")}
-          </Link>
+          </a>
         </>
       ),
     },
@@ -74,9 +90,13 @@ const CtraderPageContent = () => {
       title: t("mt-promotion-tabs-webtrader"),
       content: (
         <>
-          <Link to={CTRADER_DOWNLOAD_LINKS.webtrader}>
+          <a
+            href={CTRADER_DOWNLOAD_LINKS.webtrader}
+            target="_blank"
+            rel="noreferrer"
+          >
             {t("ctrader_mt-promotion-download-webtrader")}
-          </Link>
+          </a>
         </>
       ),
     },
@@ -94,7 +114,8 @@ const CtraderPageContent = () => {
         lottieStyle={getAnimationStyles()}
         btnClassName="button-link--ghost"
         btnTitle={t("ctrader_top-market-promo-btn")}
-        link={CTRADER_DOC}
+        btnOnClick={scrollToTarget}
+        link={getOSDevice()}
         isDocumentLink
         note={
           <HighlightedLocalizationText
@@ -127,6 +148,7 @@ const CtraderPageContent = () => {
         downloadTitle={t("ctrader_download-title")}
         image={image}
         tabs={tabs}
+        ref={downloadRef}
         className="mt-promotion--ctrader"
       />
       <TopMarketPromotion
