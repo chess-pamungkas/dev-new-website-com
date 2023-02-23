@@ -11,12 +11,19 @@ import {
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 
+// export const CTRADER_DOWNLOAD_LINKS = {
+//   android: "https://play.google.com/store/apps/details?id=com.oqtima.app",
+//   ios: "/",
+//   windows: "https://oqtima.ctrader.com/cbroker-oqtima-setup.exe",
+//   mac: "/",
+//   webtrader: "https://app.oqtima.com/",
+// };
 export const CTRADER_DOWNLOAD_LINKS = {
-  android: "https://play.google.com/store/apps/details?id=com.oqtima.app",
+  android: "/",
   ios: "/",
-  windows: "https://oqtima.ctrader.com/cbroker-oqtima-setup.exe",
+  windows: "/",
   mac: "/",
-  webtrader: "https://app.oqtima.com/",
+  webtrader: "/",
 };
 
 export const TRADING_VIEW_DOWNLOAD_LINKS = {
