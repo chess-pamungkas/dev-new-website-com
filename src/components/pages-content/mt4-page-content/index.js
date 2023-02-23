@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT4.json";
@@ -20,8 +20,8 @@ import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
-import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
-
+// import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
+import { Link } from "gatsby";
 const Mt4PageContent = () => {
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
@@ -29,29 +29,29 @@ const Mt4PageContent = () => {
   const { isCySEC } = useEntityPostfix();
   const [mt4Advantages, setMt4Advantages] = useState([]);
 
-  const downloadRef = useRef(null);
+  // const downloadRef = useRef(null);
 
-  const scrollToTarget = () => {
-    downloadRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToTarget = () => {
+  //   downloadRef.current?.scrollIntoView({ behavior: "smooth" });
+  // };
   useEffect(() => {
     setMt4Advantages(isCySEC ? CYSEC_MT4_ADVANTAGES : FSA_MT4_ADVANTAGES);
   }, [isCySEC]);
 
-  const getOSDevice = useCallback(() => {
-    switch (true) {
-      case isIOS:
-        return MT4_DOWNLOAD_LINKS.ios;
-      case isAndroid:
-        return MT4_DOWNLOAD_LINKS.android;
-      case isWindows:
-        return MT4_DOWNLOAD_LINKS.windows;
-      case isMacOs:
-        return MT4_DOWNLOAD_LINKS.mac;
-      default:
-        return MT4_DOWNLOAD_LINKS.windows;
-    }
-  }, [isIOS, isAndroid, isWindows, isMacOs]);
+  // const getOSDevice = useCallback(() => {
+  //   switch (true) {
+  //     case isIOS:
+  //       return MT4_DOWNLOAD_LINKS.ios;
+  //     case isAndroid:
+  //       return MT4_DOWNLOAD_LINKS.android;
+  //     case isWindows:
+  //       return MT4_DOWNLOAD_LINKS.windows;
+  //     case isMacOs:
+  //       return MT4_DOWNLOAD_LINKS.mac;
+  //     default:
+  //       return MT4_DOWNLOAD_LINKS.windows;
+  //   }
+  // }, [isIOS, isAndroid, isWindows, isMacOs]);
 
   const getAnimationStyles = useCallback(() => {
     switch (true) {
@@ -74,13 +74,13 @@ const Mt4PageContent = () => {
       title: t("mt-promotion-tabs-mobile"),
       content: (
         <>
-          <a href={MT4_DOWNLOAD_LINKS.android}>
+          <Link to={MT4_DOWNLOAD_LINKS.android}>
             {t("mt4_mt-promotion-download-android")}
-          </a>
+          </Link>
           {isCySEC && (
-            <a href={MT4_DOWNLOAD_LINKS.ios}>
+            <Link to={MT4_DOWNLOAD_LINKS.ios}>
               {t("mt4_mt-promotion-download-ios")}
-            </a>
+            </Link>
           )}
         </>
       ),
@@ -90,12 +90,12 @@ const Mt4PageContent = () => {
       title: t("mt-promotion-tabs-desktop"),
       content: (
         <>
-          <a href={MT4_DOWNLOAD_LINKS.mac}>
+          <Link to={MT4_DOWNLOAD_LINKS.mac}>
             {t("mt4_mt-promotion-download-mac")}
-          </a>
-          <a href={MT4_DOWNLOAD_LINKS.windows}>
+          </Link>
+          <Link to={MT4_DOWNLOAD_LINKS.windows}>
             {t("mt4_mt-promotion-download-windows")}
-          </a>
+          </Link>
         </>
       ),
     },
@@ -104,13 +104,13 @@ const Mt4PageContent = () => {
       title: t("mt-promotion-tabs-webtrader"),
       content: (
         <>
-          <a
-            href={MT4_DOWNLOAD_LINKS.webtrader}
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            to={MT4_DOWNLOAD_LINKS.webtrader}
+            // target="_blank"
+            // rel="noreferrer"
           >
             {t("mt4_mt-promotion-download-webtrader")}
-          </a>
+          </Link>
         </>
       ),
     },
@@ -131,8 +131,9 @@ const Mt4PageContent = () => {
         })}
         btnTitle={t("mt4_top-market-promo-btn")}
         // link={MT4_DOC}
-        btnOnClick={scrollToTarget}
-        link={getOSDevice()}
+        // btnOnClick={scrollToTarget}
+        // link={getOSDevice()}
+        link={MT4_DOWNLOAD_LINKS.windows}
         isDocumentLink
         note={
           <HighlightedLocalizationText
@@ -165,7 +166,7 @@ const Mt4PageContent = () => {
         downloadTitle={t("mt4_download-title")}
         image={image}
         tabs={tabs}
-        ref={downloadRef}
+        // ref={downloadRef}
       />
       <TopMarketLayout
         title={

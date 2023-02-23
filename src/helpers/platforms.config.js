@@ -27,24 +27,41 @@ export const TRADING_VIEW_DOWNLOAD_LINKS = {
   webtrader: "/",
 };
 
+//TODO remove 41-47 when all links are available and uncomment below
+// export const MT4_DOWNLOAD_LINKS = {
+//   android: null,
+//   ios: null,
+//   windows:
+//     "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
+//   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt4.macos",
+//   webtrader: MT4_WEB_TRADER_LINK,
+// };
 export const MT4_DOWNLOAD_LINKS = {
-  android: null,
-  ios: null,
-  windows:
-    "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
-  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt4.macos",
-  webtrader: MT4_WEB_TRADER_LINK,
+  android: "/",
+  ios: "/",
+  windows: "/",
+  mac: "/",
+  webtrader: "/",
 };
 
+//TODO remove 50-59 when all links are available and uncomment below
+// export const MT5_DOWNLOAD_LINKS = {
+//   androidEU:
+//     "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live",
+//   androidFSA: null,
+//   ios: null,
+//   windows:
+//     "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
+//   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt5.macos",
+//   webtrader: MT5_WEB_TRADER_LINK,
+// };
 export const MT5_DOWNLOAD_LINKS = {
-  androidEU:
-    "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live",
-  androidFSA: null,
-  ios: null,
-  windows:
-    "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
-  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt5.macos",
-  webtrader: MT5_WEB_TRADER_LINK,
+  androidEU: "/",
+  androidFSA: "/",
+  ios: "/",
+  windows: "/",
+  mac: "/",
+  webtrader: "/",
 };
 
 export const FSA_MT5_ADVANTAGES = [
