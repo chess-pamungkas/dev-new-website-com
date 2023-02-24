@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import metaTrader4 from "../assets/images/icons/tools/metaTrader4.svg";
 import metaTrader5 from "../assets/images/icons/tools/metaTrader5.svg";
 import {
@@ -12,11 +11,11 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 import { useEntityPostfix } from "./use-entity-postfix";
 export const CTRADER_DOWNLOAD_LINKS = {
-  android: "/",
-  ios: "/",
-  windows: "/",
-  mac: "/",
-  webtrader: "/",
+  android: "https://play.google.com/store/apps/details?id=com.oqtima.app",
+  ios: "https://apps.apple.com/cy/app/oqtima-ctrader/id1672522637",
+  windows: "https://oqtima.ctrader.com/cbroker-oqtima-setup.exe",
+  mac: null,
+  webtrader: "https://app.oqtima.com/",
 };
 
 export const TRADING_VIEW_DOWNLOAD_LINKS = {
@@ -278,7 +277,7 @@ export const FSA_MT4_ADVANTAGES = [
   },
 ];
 const MetaTrader4info = () => {
-  const getOSDeviceMT4 = useCallback(() => {
+  const getOSDeviceMT4 = () => {
     switch (true) {
       case isIOS:
         return MT4_DOWNLOAD_LINKS.ios;
@@ -289,9 +288,9 @@ const MetaTrader4info = () => {
       case isMacOs:
         return MT4_DOWNLOAD_LINKS.mac;
       default:
-        return { width: "359px", height: "202px" };
+        return MT4_DOWNLOAD_LINKS.windows;
     }
-  }, [isIOS, isAndroid, isWindows, isMacOs]);
+  };
   const META_TRADER_4 = {
     key: "mtTrader4",
     icon: metaTrader4,
@@ -350,7 +349,7 @@ const MetaTrader4info = () => {
 
 const MetaTrader5info = () => {
   const { isCySEC } = useEntityPostfix();
-  const getOSDeviceMT5 = useCallback(() => {
+  const getOSDeviceMT5 = () => {
     switch (true) {
       case isIOS:
         return isCySEC ? MT5_DOWNLOAD_LINKS.iosEU : MT5_DOWNLOAD_LINKS.iosFSA;
@@ -369,7 +368,7 @@ const MetaTrader5info = () => {
           ? MT5_DOWNLOAD_LINKS.windowsEU
           : MT5_DOWNLOAD_LINKS.windowsFSA;
     }
-  }, [isIOS, isAndroid, isWindows, isMacOs]);
+  };
   const META_TRADER_5 = {
     key: "mtTrader5",
     icon: metaTrader5,

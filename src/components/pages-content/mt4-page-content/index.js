@@ -129,7 +129,6 @@ const Mt4PageContent = () => {
           "button-link--ghost": isLG || isXL,
         })}
         btnTitle={t("mt4_top-market-promo-btn")}
-        // link={MT4_DOC}
         btnOnClick={scrollToTarget}
         link={getOSDevice()}
         isDocumentLink
