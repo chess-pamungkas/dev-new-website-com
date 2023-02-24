@@ -34,8 +34,6 @@ const CtraderPageContent = () => {
         return CTRADER_DOWNLOAD_LINKS.android;
       case isWindows:
         return CTRADER_DOWNLOAD_LINKS.windows;
-      case isMacOs:
-        return CTRADER_DOWNLOAD_LINKS.mac;
       default:
         return CTRADER_DOWNLOAD_LINKS.windows;
     }
@@ -76,9 +74,6 @@ const CtraderPageContent = () => {
       title: t("mt-promotion-tabs-desktop"),
       content: (
         <>
-          <a href={CTRADER_DOWNLOAD_LINKS.mac}>
-            {t("ctrader_mt-promotion-download-mac")}
-          </a>
           <a href={CTRADER_DOWNLOAD_LINKS.windows}>
             {t("ctrader_mt-promotion-download-windows")}
           </a>
