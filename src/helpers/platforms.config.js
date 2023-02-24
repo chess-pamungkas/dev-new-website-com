@@ -32,7 +32,7 @@ export const MT4_DOWNLOAD_LINKS = {
   ios: "https://download.mql5.com/cdn/mobile/mt4/ios?server=OqtimaGlobal-Demo,OqtimaGlobal-Server",
   windows:
     "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
-  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt4.macos",
+  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg",
   webtrader: MT4_WEB_TRADER_LINK,
 };
 
@@ -45,7 +45,7 @@ export const MT5_DOWNLOAD_LINKS = {
   windowsEU:
     "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
   windowsFSA: null,
-  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt5.macos",
+  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg",
   webtrader: MT5_WEB_TRADER_LINK,
 };
 
