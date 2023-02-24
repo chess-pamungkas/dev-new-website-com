@@ -1,21 +1,20 @@
-import { useCallback } from "react";
 import metaTrader4 from "../assets/images/icons/tools/metaTrader4.svg";
 import metaTrader5 from "../assets/images/icons/tools/metaTrader5.svg";
 import {
   MT4_PAGE_LINK,
-  MT4_WEB_TRADER_LINK,
   MT5_PAGE_LINK,
   MT5_WEB_TRADER_LINK,
+  MT4_WEB_TRADER_LINK,
 } from "./constants";
 
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
-
+import { useEntityPostfix } from "./use-entity-postfix";
 export const CTRADER_DOWNLOAD_LINKS = {
   android: "https://play.google.com/store/apps/details?id=com.oqtima.app",
-  ios: "/",
+  ios: "https://apps.apple.com/cy/app/oqtima-ctrader/id1672522637",
   windows: "https://oqtima.ctrader.com/cbroker-oqtima-setup.exe",
-  mac: "/",
+  mac: null,
   webtrader: "https://app.oqtima.com/",
 };
 
@@ -27,41 +26,27 @@ export const TRADING_VIEW_DOWNLOAD_LINKS = {
   webtrader: "/",
 };
 
-//TODO remove 41-47 when all links are available and uncomment below
-// export const MT4_DOWNLOAD_LINKS = {
-//   android: null,
-//   ios: null,
-//   windows:
-//     "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
-//   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt4.macos",
-//   webtrader: MT4_WEB_TRADER_LINK,
-// };
 export const MT4_DOWNLOAD_LINKS = {
-  android: "/",
-  ios: "/",
-  windows: "/",
-  mac: "/",
-  webtrader: "/",
+  android:
+    "https://download.mql5.com/cdn/mobile/mt4/android?server=OqtimaGlobal-Demo,OqtimaGlobal-Server",
+  ios: "https://download.mql5.com/cdn/mobile/mt4/ios?server=OqtimaGlobal-Demo,OqtimaGlobal-Server",
+  windows:
+    "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
+  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt4.macos",
+  webtrader: MT4_WEB_TRADER_LINK,
 };
 
-//TODO remove 50-59 when all links are available and uncomment below
-// export const MT5_DOWNLOAD_LINKS = {
-//   androidEU:
-//     "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live",
-//   androidFSA: null,
-//   ios: null,
-//   windows:
-//     "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
-//   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt5.macos",
-//   webtrader: MT5_WEB_TRADER_LINK,
-// };
 export const MT5_DOWNLOAD_LINKS = {
-  androidEU: "/",
-  androidFSA: "/",
-  ios: "/",
-  windows: "/",
-  mac: "/",
-  webtrader: "/",
+  androidEU:
+    "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live",
+  androidFSA: null,
+  iosEU: "https://download.mql5.com/cdn/mobile/mt5/ios?server=OqtimaEU-Live",
+  iosFSA: null,
+  windowsEU:
+    "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
+  windowsFSA: null,
+  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg?utm_source=www.metatrader4.com&utm_campaign=download.mt5.macos",
+  webtrader: MT5_WEB_TRADER_LINK,
 };
 
 export const FSA_MT5_ADVANTAGES = [
@@ -292,20 +277,20 @@ export const FSA_MT4_ADVANTAGES = [
   },
 ];
 const MetaTrader4info = () => {
-  // const getOSDeviceMT4 = useCallback(() => {
-  //   switch (true) {
-  //     case isIOS:
-  //       return MT4_PAGE_LINK;
-  //     case isAndroid:
-  //       return MT4_PAGE_LINK;
-  //     case isWindows:
-  //       return MT4_DOWNLOAD_LINKS.windows;
-  //     case isMacOs:
-  //       return MT4_DOWNLOAD_LINKS.mac;
-  //     default:
-  //       return { width: "359px", height: "202px" };
-  //   }
-  // }, [isIOS, isAndroid, isWindows, isMacOs]);
+  const getOSDeviceMT4 = () => {
+    switch (true) {
+      case isIOS:
+        return MT4_DOWNLOAD_LINKS.ios;
+      case isAndroid:
+        return MT4_DOWNLOAD_LINKS.android;
+      case isWindows:
+        return MT4_DOWNLOAD_LINKS.windows;
+      case isMacOs:
+        return MT4_DOWNLOAD_LINKS.mac;
+      default:
+        return MT4_DOWNLOAD_LINKS.windows;
+    }
+  };
   const META_TRADER_4 = {
     key: "mtTrader4",
     icon: metaTrader4,
@@ -313,7 +298,7 @@ const MetaTrader4info = () => {
     text: ["platforms_meta-trader-4-text-1", "platforms_meta-trader-4-text-2"],
     isGrayBackground: false,
     learMoreLink: MT4_PAGE_LINK,
-    downloadLink: "/",
+    downloadLink: getOSDeviceMT4(),
     learMoreLinkTitle: "platforms_meta-trader-4-more-link-title",
     downloadLinkTitle: "platforms_meta-trader-4-download-link-title",
     advantages: [
@@ -363,20 +348,27 @@ const MetaTrader4info = () => {
 };
 
 const MetaTrader5info = () => {
-  // const getOSDeviceMT5 = useCallback(() => {
-  //   switch (true) {
-  //     case isIOS:
-  //       return MT5_PAGE_LINK;
-  //     case isAndroid:
-  //       return MT5_DOWNLOAD_LINKS.android;
-  //     case isWindows:
-  //       return MT5_DOWNLOAD_LINKS.windows;
-  //     case isMacOs:
-  //       return MT5_DOWNLOAD_LINKS.mac;
-  //     default:
-  //       return MT5_DOWNLOAD_LINKS.windows;
-  //   }
-  // }, [isIOS, isAndroid, isWindows, isMacOs]);
+  const { isCySEC } = useEntityPostfix();
+  const getOSDeviceMT5 = () => {
+    switch (true) {
+      case isIOS:
+        return isCySEC ? MT5_DOWNLOAD_LINKS.iosEU : MT5_DOWNLOAD_LINKS.iosFSA;
+      case isAndroid:
+        return isCySEC
+          ? MT5_DOWNLOAD_LINKS.androidFSA
+          : MT5_DOWNLOAD_LINKS.androidEU;
+      case isWindows:
+        return isCySEC
+          ? MT5_DOWNLOAD_LINKS.windowsEU
+          : MT5_DOWNLOAD_LINKS.windowsFSA;
+      case isMacOs:
+        return MT5_DOWNLOAD_LINKS.mac;
+      default:
+        return isCySEC
+          ? MT5_DOWNLOAD_LINKS.windowsEU
+          : MT5_DOWNLOAD_LINKS.windowsFSA;
+    }
+  };
   const META_TRADER_5 = {
     key: "mtTrader5",
     icon: metaTrader5,
@@ -384,7 +376,7 @@ const MetaTrader5info = () => {
     text: ["platforms_meta-trader-5-text-1"],
     isGrayBackground: true,
     learMoreLink: MT5_PAGE_LINK,
-    downloadLink: "/",
+    downloadLink: getOSDeviceMT5(),
     learMoreLinkTitle: "platforms_meta-trader-5-more-link-title",
     downloadLinkTitle: "platforms_meta-trader-5-download-link-title",
     advantages: [

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useRef } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT5.json";
@@ -19,7 +19,7 @@ import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
-// import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
+import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 import { Link } from "gatsby";
 const Mt5PageContent = () => {
   const { t } = useTranslation();
@@ -27,11 +27,11 @@ const Mt5PageContent = () => {
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const { isCySEC } = useEntityPostfix();
   const [mt5Advantages, setMt5Advantages] = useState([]);
-  // const downloadRef = useRef(null);
+  const downloadRef = useRef(null);
 
-  // const scrollToTarget = () => {
-  //   downloadRef.current?.scrollIntoView({ behavior: "smooth" });
-  // };
+  const scrollToTarget = () => {
+    downloadRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     setMt5Advantages(isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES);
@@ -96,22 +96,26 @@ const Mt5PageContent = () => {
     },
   ];
 
-  // const getOSDevice = useCallback(() => {
-  //   switch (true) {
-  //     case isIOS:
-  //       return MT5_DOWNLOAD_LINKS.ios;
-  //     case isAndroid:
-  //       return isCySEC
-  //         ? MT5_DOWNLOAD_LINKS.androidFSA
-  //         : MT5_DOWNLOAD_LINKS.androidEU;
-  //     case isWindows:
-  //       return MT5_DOWNLOAD_LINKS.windows;
-  //     case isMacOs:
-  //       return MT5_DOWNLOAD_LINKS.mac;
-  //     default:
-  //       return MT5_DOWNLOAD_LINKS.windows;
-  //   }
-  // }, [isIOS, isAndroid, isWindows, isMacOs]);
+  const getOSDevice = useCallback(() => {
+    switch (true) {
+      case isIOS:
+        return isCySEC ? MT5_DOWNLOAD_LINKS.iosEU : MT5_DOWNLOAD_LINKS.iosFSA;
+      case isAndroid:
+        return isCySEC
+          ? MT5_DOWNLOAD_LINKS.androidEU
+          : MT5_DOWNLOAD_LINKS.androidFSA;
+      case isWindows:
+        return isCySEC
+          ? MT5_DOWNLOAD_LINKS.windowsEU
+          : MT5_DOWNLOAD_LINKS.windowsFSA;
+      case isMacOs:
+        return MT5_DOWNLOAD_LINKS.mac;
+      default:
+        return isCySEC
+          ? MT5_DOWNLOAD_LINKS.windowsEU
+          : MT5_DOWNLOAD_LINKS.windowsFSA;
+    }
+  }, [isIOS, isAndroid, isWindows, isMacOs]);
 
   const getAnimationStyles = useCallback(() => {
     switch (true) {
@@ -132,46 +136,61 @@ const Mt5PageContent = () => {
     {
       id: 1,
       title: t("mt-promotion-tabs-mobile"),
-      content: (
+      content: isCySEC ? (
         <>
-          <Link to={MT5_DOWNLOAD_LINKS.android}>
+          <a href={MT5_DOWNLOAD_LINKS.androidEU}>
             {t("mt5_mt-promotion-download-android")}
-          </Link>
+          </a>
           {/*
           Metaquotes Apps are no longer available for iOS unless you have downloaded them before September 2022
            <Link to={MT5_DOWNLOAD_LINKS.ios}>
             {t("mt5_mt-promotion-download-ios")}
           </Link> */}
         </>
+      ) : (
+        <a href={MT5_DOWNLOAD_LINKS.androidFSA}>
+          {t("mt5_mt-promotion-download-android")}
+        </a>
       ),
     },
     {
       id: 2,
       title: t("mt-promotion-tabs-desktop"),
-      content: (
+      content: isCySEC ? (
         <>
-          <Link to={MT5_DOWNLOAD_LINKS.mac}>
+          <a href={MT5_DOWNLOAD_LINKS.mac}>
             {t("mt5_mt-promotion-download-mac")}
-          </Link>
-          <Link to={MT5_DOWNLOAD_LINKS.windows}>
+          </a>
+          <a href={MT5_DOWNLOAD_LINKS.windowsEU}>
             {t("mt5_mt-promotion-download-windows")}
-          </Link>
+          </a>
+        </>
+      ) : (
+        <>
+          <a href={MT5_DOWNLOAD_LINKS.mac}>
+            {t("mt5_mt-promotion-download-mac")}
+          </a>
+          <a href={MT5_DOWNLOAD_LINKS.windowsFSA}>
+            {t("mt5_mt-promotion-download-windows")}
+          </a>
         </>
       ),
     },
     {
       id: 3,
       title: t("mt-promotion-tabs-webtrader"),
-      content: (
+      content: isCySEC ? (
         <>
-          <Link
-            to={MT5_DOWNLOAD_LINKS.webtrader}
-            // target="_blank"
-            // rel="noreferrer"
+          <a
+            href={MT5_DOWNLOAD_LINKS.webtrader}
+            target="_blank"
+            rel="noreferrer"
           >
             {t("mt5_mt-promotion-download-webtrader")}
-          </Link>
+          </a>
         </>
+      ) : (
+        <Link to="/"> {t("mt5_mt-promotion-download-webtrader")}</Link>
       ),
     },
   ];
@@ -190,9 +209,8 @@ const Mt5PageContent = () => {
           "button-link--ghost": isLG || isXL,
         })}
         btnTitle={t("mt5_top-market-promo-btn")}
-        // btnOnClick={scrollToTarget}
-        // link={getOSDevice()}
-        link={MT5_DOWNLOAD_LINKS.windows}
+        btnOnClick={scrollToTarget}
+        link={getOSDevice()}
         isDocumentLink
         note={
           <HighlightedLocalizationText
@@ -224,7 +242,7 @@ const Mt5PageContent = () => {
         downloadTitle={t("mt5_download-title")}
         image={image}
         tabs={tabs}
-        // ref={downloadRef}
+        ref={downloadRef}
       />
       {/* Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-183 */}
       {!isCySEC && (

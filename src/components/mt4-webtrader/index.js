@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const Mt4WebTraderLink = () => {
-  const [htmlFileString, setHtmlFileString] = useState();
-  async function fetchHtml() {
-    setHtmlFileString(await (await fetch(`mt4-webtrader.html`)).text());
-  }
-  useEffect(() => {
-    fetchHtml();
-  }, []);
   return (
-    <div className="App">
-      <div dangerouslySetInnerHTML={{ __html: htmlFileString }}></div>
+    <div style={{}}>
+      <iframe src="/mt4-webtrader.html" width="100%" height="650px"></iframe>
     </div>
   );
 };

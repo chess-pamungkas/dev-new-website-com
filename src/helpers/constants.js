@@ -68,9 +68,8 @@ export const PARTNERS_PAGE_LINK = "/partners";
 export const ACCOUNTS_TYPE_PAGE_LINK = "/accounts-type";
 export const ETF_PAGE_LINK = "/etf";
 
-//TODO ENABLE TO HAVE ACCESS TO WEBTRADER
-// export const MT5_WEB_TRADER_LINK = "/mt5-webtrader";
-// export const MT4_WEB_TRADER_LINK = "/mt4-webtrader";
+export const MT5_WEB_TRADER_LINK = "/mt5-webtrader";
+export const MT4_WEB_TRADER_LINK = "/mt4-webtrader";
 
 export const ANGLE_ICON_COLOR = {
   black: "#232323",
