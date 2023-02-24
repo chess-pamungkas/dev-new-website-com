@@ -148,11 +148,12 @@ const FSA_TRADING_TAB_PLATFORMS_ITEM = {
       link: MT5_PAGE_LINK,
       description: "header-nav-tab-trading-platforms-mt5-desc",
     },
-    {
-      title: "header-nav-tab-trading-platforms-ctrader-title",
-      link: CTRADER_PAGE_LINK,
-      description: "header-nav-tab-trading-platforms-ctrader-desc",
-    },
+    //TODO CTRADER SERVER IS NOT READY YET. REMOVED
+    // {
+    //   title: "header-nav-tab-trading-platforms-ctrader-title",
+    //   link: CTRADER_PAGE_LINK,
+    //   description: "header-nav-tab-trading-platforms-ctrader-desc",
+    // },
   ],
 };
 
