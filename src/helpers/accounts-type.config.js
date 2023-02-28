@@ -152,7 +152,7 @@ export const CYSEC_ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type1-currencies-title",
-        value: "accounts-type_account-type1-currencies-value",
+        value: "accounts-type_account-type1-currencies-value-CySec",
         smallValue: true,
       },
       {
@@ -209,7 +209,7 @@ export const CYSEC_ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type2-currencies-title",
-        value: "accounts-type_account-type2-currencies-value",
+        value: "accounts-type_account-type2-currencies-value-CySec",
         smallValue: true,
       },
       {

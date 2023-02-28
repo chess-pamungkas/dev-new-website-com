@@ -168,14 +168,15 @@ const ColumnsSpreadTableCommodities = () => {
           Header: t("spreads_account_commodities-group2-header1"),
           accessor: "col2",
         },
-        {
-          Header: t("spreads_account_commodities-group2-header2"),
-          accessor: "col3",
-        },
-        {
-          Header: t("spreads_account_commodities-group2-header3"),
-          accessor: "col4",
-        },
+        //Removed as per Ticket 278 https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-278
+        // {
+        //   Header: t("spreads_account_commodities-group2-header2"),
+        //   accessor: "col3",
+        // },
+        // {
+        //   Header: t("spreads_account_commodities-group2-header3"),
+        //   accessor: "col4",
+        // },
         {
           Header: t("spreads_account_commodities-group2-header4"),
           accessor: "col5",
@@ -184,10 +185,10 @@ const ColumnsSpreadTableCommodities = () => {
           Header: t("spreads_account_commodities-group2-header5"),
           accessor: "col6",
         },
-        {
-          Header: t("spreads_account_commodities-group2-header6"),
-          accessor: "col7",
-        },
+        // {
+        //   Header: t("spreads_account_commodities-group2-header6"),
+        //   accessor: "col7",
+        // },
       ],
     },
   ];
