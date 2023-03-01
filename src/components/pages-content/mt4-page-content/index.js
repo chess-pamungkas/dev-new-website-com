@@ -21,7 +21,6 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
-
 const Mt4PageContent = () => {
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
@@ -78,7 +77,7 @@ const Mt4PageContent = () => {
             {t("mt4_mt-promotion-download-android")}
           </a>
           {isCySEC && (
-            <a href={MT4_DOWNLOAD_LINKS.ios}>
+            <a to={MT4_DOWNLOAD_LINKS.ios}>
               {t("mt4_mt-promotion-download-ios")}
             </a>
           )}
@@ -104,7 +103,11 @@ const Mt4PageContent = () => {
       title: t("mt-promotion-tabs-webtrader"),
       content: (
         <>
-          <a href={MT4_DOWNLOAD_LINKS.webtrader}>
+          <a
+            href={MT4_DOWNLOAD_LINKS.webtrader}
+            target="_blank"
+            rel="noreferrer"
+          >
             {t("mt4_mt-promotion-download-webtrader")}
           </a>
         </>
@@ -126,7 +129,6 @@ const Mt4PageContent = () => {
           "button-link--ghost": isLG || isXL,
         })}
         btnTitle={t("mt4_top-market-promo-btn")}
-        // link={MT4_DOC}
         btnOnClick={scrollToTarget}
         link={getOSDevice()}
         isDocumentLink

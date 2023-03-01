@@ -47,7 +47,6 @@ import {
   WITHDRAWAL_PAGE_LINK,
   TRADING_VIEW_PAGE_LINK,
   ETF_PAGE_LINK,
-  MT5_WEB_TRADER_LINK,
 } from "./constants";
 
 const CYSEC_TOP_MARKETS_TAB = {
@@ -149,6 +148,12 @@ const FSA_TRADING_TAB_PLATFORMS_ITEM = {
       link: MT5_PAGE_LINK,
       description: "header-nav-tab-trading-platforms-mt5-desc",
     },
+    //TODO CTRADER SERVER IS NOT READY YET. REMOVED
+    // {
+    //   title: "header-nav-tab-trading-platforms-ctrader-title",
+    //   link: CTRADER_PAGE_LINK,
+    //   description: "header-nav-tab-trading-platforms-ctrader-desc",
+    // },
   ],
 };
 

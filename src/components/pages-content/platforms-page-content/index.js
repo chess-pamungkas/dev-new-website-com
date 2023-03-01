@@ -20,11 +20,15 @@ const PlatformsPageContent = () => {
   const { t } = useTranslation();
   const { isXL } = useWindowSize();
   const { isCySEC } = useEntityPostfix();
-  const META_TRADERS = [
-    // Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
-    ...(isCySEC ? [] : [MetaTrader4info()]),
-    MetaTrader5info(),
-  ];
+  //converted this way as before was rendering [] and then again same data
+  const META_TRADERS = isCySEC
+    ? [MetaTrader5info()]
+    : [MetaTrader4info(), MetaTrader5info()];
+  // const META_TRADERS = [
+  //   // Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
+  //   ...(isCySEC ? [] : [MetaTrader4info()]),
+  //   MetaTrader5info(),
+  // ];
   const isRTL = useRtlDirection();
 
   return (

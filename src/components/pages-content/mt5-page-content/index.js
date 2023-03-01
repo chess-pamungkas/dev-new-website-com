@@ -4,10 +4,8 @@ import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT5.json";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
-import { Link } from "gatsby";
 import {
   COLUMNS_PLATFORMS,
-  DataPlatforms,
   CYSEC_MT5_ADVANTAGES,
   FSA_MT5_ADVANTAGES,
   MT5_DOWNLOAD_LINKS,
@@ -22,7 +20,7 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
-
+import { Link } from "gatsby";
 const Mt5PageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
@@ -39,6 +37,7 @@ const Mt5PageContent = () => {
     setMt5Advantages(isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES);
   }, [isCySEC]);
 
+  //TODO REFACTOR
   const DATA_PLATFORMS = [
     {
       col1: t("mt4_table-data-platform-col1-1"),
@@ -100,21 +99,23 @@ const Mt5PageContent = () => {
   const getOSDevice = useCallback(() => {
     switch (true) {
       case isIOS:
-        return MT5_DOWNLOAD_LINKS.ios;
+        return isCySEC ? MT5_DOWNLOAD_LINKS.iosEU : MT5_DOWNLOAD_LINKS.iosFSA;
       case isAndroid:
         return isCySEC
-          ? MT5_DOWNLOAD_LINKS.androidFSA
-          : MT5_DOWNLOAD_LINKS.androidEU;
+          ? MT5_DOWNLOAD_LINKS.androidEU
+          : MT5_DOWNLOAD_LINKS.androidFSA;
       case isWindows:
-        return MT5_DOWNLOAD_LINKS.windows;
+        return isCySEC
+          ? MT5_DOWNLOAD_LINKS.windowsEU
+          : MT5_DOWNLOAD_LINKS.windowsFSA;
       case isMacOs:
         return MT5_DOWNLOAD_LINKS.mac;
       default:
-        return MT5_DOWNLOAD_LINKS.windows;
+        return isCySEC
+          ? MT5_DOWNLOAD_LINKS.windowsEU
+          : MT5_DOWNLOAD_LINKS.windowsFSA;
     }
   }, [isIOS, isAndroid, isWindows, isMacOs]);
-  console.log(isWindows, "WINDOWS");
-  console.log(getOSDevice);
 
   const getAnimationStyles = useCallback(() => {
     switch (true) {
@@ -135,9 +136,9 @@ const Mt5PageContent = () => {
     {
       id: 1,
       title: t("mt-promotion-tabs-mobile"),
-      content: (
+      content: isCySEC ? (
         <>
-          <a to={MT5_DOWNLOAD_LINKS.android}>
+          <a href={MT5_DOWNLOAD_LINKS.androidEU}>
             {t("mt5_mt-promotion-download-android")}
           </a>
           {/*
@@ -146,17 +147,30 @@ const Mt5PageContent = () => {
             {t("mt5_mt-promotion-download-ios")}
           </Link> */}
         </>
+      ) : (
+        <a href={MT5_DOWNLOAD_LINKS.androidFSA}>
+          {t("mt5_mt-promotion-download-android")}
+        </a>
       ),
     },
     {
       id: 2,
       title: t("mt-promotion-tabs-desktop"),
-      content: (
+      content: isCySEC ? (
         <>
           <a href={MT5_DOWNLOAD_LINKS.mac}>
             {t("mt5_mt-promotion-download-mac")}
           </a>
-          <a href={MT5_DOWNLOAD_LINKS.windows}>
+          <a href={MT5_DOWNLOAD_LINKS.windowsEU}>
+            {t("mt5_mt-promotion-download-windows")}
+          </a>
+        </>
+      ) : (
+        <>
+          <a href={MT5_DOWNLOAD_LINKS.mac}>
+            {t("mt5_mt-promotion-download-mac")}
+          </a>
+          <a href={MT5_DOWNLOAD_LINKS.windowsFSA}>
             {t("mt5_mt-promotion-download-windows")}
           </a>
         </>
@@ -165,7 +179,7 @@ const Mt5PageContent = () => {
     {
       id: 3,
       title: t("mt-promotion-tabs-webtrader"),
-      content: (
+      content: isCySEC ? (
         <>
           <a
             href={MT5_DOWNLOAD_LINKS.webtrader}
@@ -175,6 +189,8 @@ const Mt5PageContent = () => {
             {t("mt5_mt-promotion-download-webtrader")}
           </a>
         </>
+      ) : (
+        <Link to="/"> {t("mt5_mt-promotion-download-webtrader")}</Link>
       ),
     },
   ];

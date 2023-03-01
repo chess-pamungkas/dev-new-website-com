@@ -28,6 +28,26 @@ export const FAQ_FOREX = [
       "forex_faq-content3-6",
     ],
   },
+  {
+    question: "forex_faq-title4",
+    answer: ["forex_faq-content4"],
+  },
+  {
+    question: "forex_faq-title5",
+    answer: ["forex_faq-content5"],
+  },
+  {
+    question: "forex_faq-title6",
+    answer: ["forex_faq-content6"],
+  },
+  {
+    question: "forex_faq-title7",
+    answer: ["forex_faq-content7"],
+  },
+  {
+    question: "forex_faq-title8",
+    answer: ["forex_faq-content8"],
+  },
 ];
 
 export const FAQ_ETF = [
@@ -95,6 +115,30 @@ export const FAQ_METALS = [
       "metals_faq-content2-5",
     ],
   },
+  {
+    question: "metals_faq-title3",
+    answer: ["metals_faq-content3"],
+  },
+  {
+    question: "metals_faq-title4",
+    answer: ["metals_faq-content4"],
+  },
+  {
+    question: "metals_faq-title5",
+    answer: ["metals_faq-content5"],
+  },
+  {
+    question: "metals_faq-title6",
+    answer: ["metals_faq-content6"],
+  },
+  {
+    question: "metals_faq-title7",
+    answer: ["metals_faq-content7"],
+  },
+  {
+    question: "metals_faq-title8",
+    answer: ["metals_faq-content8"],
+  },
 ];
 
 export const FAQ_SHARES = [
@@ -114,6 +158,26 @@ export const FAQ_SHARES = [
     // specify array of content indexes which should be bold, e.g. "shares_faq-content2-4" and "shares_faq-content2-5" will be bold
     bold: [3, 4],
   },
+  {
+    question: "shares_faq-title3",
+    answer: ["shares_faq-content3"],
+  },
+  {
+    question: "shares_faq-title4",
+    answer: ["shares_faq-content4"],
+  },
+  {
+    question: "shares_faq-title5",
+    answer: ["shares_faq-content5"],
+  },
+  {
+    question: "shares_faq-title6",
+    answer: ["shares_faq-content6"],
+  },
+  {
+    question: "shares_faq-title7",
+    answer: ["shares_faq-content7"],
+  },
 ];
 
 export const FAQ_INDICES = [
@@ -125,6 +189,26 @@ export const FAQ_INDICES = [
     question: "indices_faq-title2",
     answer: ["indices_faq-content2"],
   },
+  {
+    question: "indices_faq-title3",
+    answer: ["indices_faq-content3"],
+  },
+  {
+    question: "indices_faq-title4",
+    answer: ["indices_faq-content4"],
+  },
+  {
+    question: "indices_faq-title5",
+    answer: ["indices_faq-content5"],
+  },
+  {
+    question: "indices_faq-title6",
+    answer: ["metals_faq-content6"],
+  },
+  {
+    question: "indices_faqtitle7",
+    answer: ["indices_faq-content7"],
+  },
 ];
 
 export const FAQ_ENERGIES = [
@@ -135,6 +219,30 @@ export const FAQ_ENERGIES = [
   {
     question: "energies_faq-title2",
     answer: ["energies_faq-content2-1", "energies_faq-content2-2"],
+  },
+  {
+    question: "energies_faq-title3",
+    answer: ["energies_faq-content3"],
+  },
+  {
+    question: "energies_faq-title4",
+    answer: ["energies_faq-content4"],
+  },
+  {
+    question: "energies_faq-title5",
+    answer: ["energies_faq-content5"],
+  },
+  {
+    question: "energies_faq-title6",
+    answer: ["energies_faq-content6"],
+  },
+  {
+    question: "energies_faq-title7",
+    answer: ["energies_faq-content7"],
+  },
+  {
+    question: "energies_faq-title8",
+    answer: ["energies_faq-content8"],
   },
 ];
 

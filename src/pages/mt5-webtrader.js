@@ -4,13 +4,13 @@ import { graphql } from "gatsby";
 import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
-import WebTraderLink from "../components/mt5-web-trader";
+import WebTraderLink from "../components/mt5-webtrader";
 
 const MT5WebTraderPage = () => {
   // const { t } = useTranslation();
 
   return (
-    <Layout>
+    <Layout isSearchBarAttached={false}>
       <Seo title={"MT5 Web Trader"} description={"need description"} />
       <WebTraderLink />
     </Layout>
