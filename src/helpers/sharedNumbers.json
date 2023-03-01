@@ -1,6 +1,5 @@
 {
     "shares-number": "880",
-    "shares-number-plus": "800",
     "shares-number-fsa": "50",
     "assets-number": "1.000",
     "assets-number-fsa": "1.000",
@@ -28,7 +27,9 @@
     "mt5-symbols-number": "1000",
     "mt4-symbols-number": "350",
     "mt5-assets-number": "6",
+    "mt5-assets-number-fsa": "7",
     "mt4-assets-number": "6",
+    "mt4-assets-number-fsa": "7",
     "trading-view-indicators": "100",
     "trading-view-community-indicators": "100,000",
     "mt5-timeframes": "21",
