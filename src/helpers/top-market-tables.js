@@ -252,7 +252,7 @@ export const DATA_CRYPTO = [
   {
     col1: "LNKUSD",
     col2: "2.3",
-    col3: "2.42",
+    col3: "2.3",
     col4: "3.3",
     col5: "3.42",
   },
@@ -426,6 +426,4 @@ export const DATA_ENERGIES = [
   },
 ];
 
-export const DATA_ETF = [
-
-];
+export const DATA_ETF = [];

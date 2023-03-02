@@ -46,47 +46,53 @@ const ColumnsSpreadTableForex = () => {
 };
 export const DATA_SPREADS_TABLE_FOREX = [
   {
-    col1: "AUDCAD",
-    col2: "0",
-    col3: "0.4",
-    col4: "0",
-    col5: "0.4",
+    col1: "AUDNZD",
+    col2: "0.00",
+    col3: "1.12",
+    col4: "1.00",
+    col5: "2.12",
   },
   {
-    col1: "AUDCAD",
-    col2: "0",
-    col3: "0.4",
-    col4: "0",
-    col5: "0.4",
+    col1: "AUDUSD",
+    col2: "0.00",
+    col3: "0.14",
+    col4: "1.00",
+    col5: "1.14",
   },
   {
-    col1: "AUDCAD",
-    col2: "0",
-    col3: "0.4",
-    col4: "0",
-    col5: "0.4",
+    col1: "EURJPY",
+    col2: "0.00",
+    col3: "0.80",
+    col4: "1.00",
+    col5: "1.80",
   },
   {
-    col1: "AUDCAD",
-    col2: "0",
-    col3: "0.4",
-    col4: "0",
-    col5: "0.4",
+    col1: "EURUSD",
+    col2: "0.00",
+    col3: "0.12",
+    col4: "1.00",
+    col5: "1.12",
   },
   {
-    col1: "AUDCAD",
-    col2: "0",
-    col3: "0.4",
-    col4: "0",
-    col5: "0.4",
+    col1: "GBPCAD",
+    col2: "0.00",
+    col3: "2.09",
+    col4: "1.00",
+    col5: "3.09",
   },
-
   {
-    col1: "USDEUR",
-    col2: "0",
-    col3: "0.4",
-    col4: "0",
-    col5: "0.4",
+    col1: "GBPJPY",
+    col2: "0.00",
+    col3: "1.61",
+    col4: "1.00",
+    col5: "2.61",
+  },
+  {
+    col1: "GBPUSD",
+    col2: "0.00",
+    col3: "0.36",
+    col4: "1.00",
+    col5: "1.36",
   },
 ];
 const ColumnsSpreadTableIndices = () => {
@@ -122,19 +128,19 @@ const ColumnsSpreadTableIndices = () => {
 
 export const DATA_SPREADS_TABLE_INDICES = [
   {
-    col1: "US30",
-    col2: "US30",
-    col3: "2.4",
+    col1: "USIDX",
+    col2: "USIDX",
+    col3: "0.02",
   },
   {
-    col1: "GER40",
-    col2: "GER40",
-    col3: "0.9",
+    col1: "US2000",
+    col2: "US2000",
+    col3: "0.08",
   },
   {
-    col1: "UK100",
-    col2: "UK100",
-    col3: "1.0",
+    col1: "TW88",
+    col2: "TW88",
+    col3: "0.09",
   },
   {
     col1: "NAS100",
@@ -142,9 +148,25 @@ export const DATA_SPREADS_TABLE_INDICES = [
     col3: "1.0",
   },
   {
-    col1: "US500",
-    col2: "US500",
+    col1: "VIX",
+    col2: "VIX",
+    col3: "0.09",
+  },
+  {
+    col1: "NETH25",
+    col2: "NETH25",
     col3: "0.4",
+  },
+
+  {
+    col1: "FRA40",
+    col2: "FRA40",
+    col3: "3.1",
+  },
+  {
+    col1: "UK100",
+    col2: "UK100",
+    col3: "2.6",
   },
 ];
 const ColumnsSpreadTableCommodities = () => {
@@ -209,23 +231,32 @@ const DataSpreadTableCommodities = () => {
     },
 
     {
-      col1: t("spreads_account_tables-commodities-col1"),
+      col1: "need instrument data",
+      col2: "XAGEUR",
+      col3: t("spreads_account_tables-commodities-col1_3"),
+      col4: "100 USD",
+      col5: "0.50",
+      col6: "0.13",
+      col7: "20:1",
+    },
+    {
+      col1: "need instrument data",
+      col2: "XAUEUR",
+      col3: t("spreads_account_tables-commodities-col3_3"),
+      col4: "10 USD",
+      col5: "2.33",
+      col6: "4.94",
+      col7: "10:1",
+    },
+
+    {
+      col1: "need instrument data",
       col2: "XAUUSD",
       col3: t("spreads_account_tables-commodities-col1_3"),
       col4: "100 USD",
       col5: "0.05",
       col6: "0.13",
       col7: "20:1",
-    },
-
-    {
-      col1: t("spreads_account_tables-commodities-col5"),
-      col2: "Copper",
-      col3: t("spreads_account_tables-commodities-col5_3"),
-      col4: "2 USD",
-      col5: "2.60",
-      col6: "2.60",
-      col7: "10:1",
     },
     {
       col1: t("spreads_account_tables-commodities-col3"),
@@ -282,46 +313,46 @@ export const COLUMNS_SPREADS_TABLE_CRYPTO = [
 
 export const DATA_SPREADS_TABLE_CRYPTO = [
   {
-    col1: "Bitcoin",
-    col2: "BTCUSD",
-    col3: "17.00",
-    col4: "30.50",
-  },
-  {
-    col1: "Bitcoin Cash",
-    col2: "BCHUSD",
-    col3: "0.28",
-    col4: "0.50",
-  },
-  {
-    col1: "Ethereum Cash",
-    col2: "ETHUSD",
-    col3: "3.00",
-    col4: "5.30",
-  },
-  {
     col1: "Dogecoin",
     col2: "DOGEUSD",
-    col3: "0.00",
-    col4: "0.00",
+    col3: "1.9",
+    col4: "2.16",
+  },
+  {
+    col1: "Matic Aave",
+    col2: "MATUSD",
+    col3: "2.1",
+    col4: "2.32",
+  },
+  {
+    col1: "Cardano",
+    col2: "ADAUSD",
+    col3: "2.1",
+    col4: "2.38",
   },
   {
     col1: "Ripple",
     col2: "XRPUSD",
-    col3: "0.00",
-    col4: "0.00",
+    col3: "2.1",
+    col4: "2.66",
   },
   {
-    col1: "Crypto10 Index",
-    col2: "Crypt010",
-    col3: "90.00",
-    col4: "90.00",
+    col1: "EOS",
+    col2: "EOSUSD",
+    col3: "2.1",
+    col4: "9.07",
   },
   {
-    col1: "Crypto20 Index",
-    col2: "Crypt020",
-    col3: "130.00",
-    col4: "130.00",
+    col1: "Polkadot",
+    col2: "DOTUSD",
+    col3: "2.2",
+    col4: "2.27",
+  },
+  {
+    col1: "Chainlink",
+    col2: "LNKUSD",
+    col3: "2.3",
+    col4: "2.3",
   },
 ];
 
