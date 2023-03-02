@@ -199,6 +199,16 @@ const DataSpreadTableCommodities = () => {
   const { t } = useTranslation();
   const DATA_SPREADS_TABLE_COMMODITIES = [
     {
+      col1: t("spreads_account_tables-commodities-col2"),
+      col2: "XAGUSD",
+      col3: t("spreads_account_tables-commodities-col2_3"),
+      col4: "50 USD",
+      col5: "0.5",
+      col6: "1.09",
+      col7: "10:1",
+    },
+
+    {
       col1: t("spreads_account_tables-commodities-col1"),
       col2: "XAUUSD",
       col3: t("spreads_account_tables-commodities-col1_3"),
@@ -207,13 +217,14 @@ const DataSpreadTableCommodities = () => {
       col6: "0.13",
       col7: "20:1",
     },
+
     {
-      col1: t("spreads_account_tables-commodities-col2"),
-      col2: "XAGUSD",
-      col3: t("spreads_account_tables-commodities-col2_3"),
-      col4: "50 USD",
-      col5: "0.5",
-      col6: "1.09",
+      col1: t("spreads_account_tables-commodities-col5"),
+      col2: "Copper",
+      col3: t("spreads_account_tables-commodities-col5_3"),
+      col4: "2 USD",
+      col5: "2.60",
+      col6: "2.60",
       col7: "10:1",
     },
     {
@@ -232,15 +243,6 @@ const DataSpreadTableCommodities = () => {
       col4: "10 USD",
       col5: "17.39",
       col6: "17.31",
-      col7: "10:1",
-    },
-    {
-      col1: t("spreads_account_tables-commodities-col5"),
-      col2: "Copper",
-      col3: t("spreads_account_tables-commodities-col5_3"),
-      col4: "2 USD",
-      col5: "2.60",
-      col6: "2.60",
       col7: "10:1",
     },
   ];
