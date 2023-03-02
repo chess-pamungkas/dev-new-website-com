@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
 import TopMarket from "../../top-market";
@@ -9,15 +9,12 @@ import Tabs from "../../shared/tabs";
 import TableComponent from "../../shared/table";
 import {
   ColumnsSpreadTable2,
-  ColumnsSpreadTableCommodities,
-  COLUMNS_SPREADS_TABLE_CRYPTO,
-  ColumnsSpreadTableForex,
-  ColumnsSpreadTableIndices,
+  DATA_SPREADS_TABLE_COMMODITIES,
   DataSpreadTable2,
-  DataSpreadTableCommodities,
   DATA_SPREADS_TABLE_CRYPTO,
   DATA_SPREADS_TABLE_FOREX,
   DATA_SPREADS_TABLE_INDICES,
+  GeneralSpreadsTable,
 } from "../../../helpers/spreads-and-fees.config";
 import TopMarketPromotion from "../../top-market-promotion";
 import icon from "../../../assets/images/icon--white.svg";
@@ -25,12 +22,19 @@ import { REGISTRATION_LINK } from "../../../helpers/constants";
 import { Link } from "gatsby";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 
 const SpreadsAndFeesPageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
   const { isCySEC } = useEntityPostfix();
+  //TODO REFACTOR 31-37
+  const tradingSymbols = useState([]);
 
+  updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_INDICES, tradingSymbols);
+  updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_FOREX, tradingSymbols);
+  updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_COMMODITIES, tradingSymbols);
+  updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_CRYPTO, tradingSymbols);
   const tabs = [
     {
       id: 1,
@@ -38,10 +42,19 @@ const SpreadsAndFeesPageContent = () => {
       content: (
         <>
           <TableComponent
+            isWrapperPadding
             data={DATA_SPREADS_TABLE_FOREX}
-            columns={ColumnsSpreadTableForex()}
-            className={cn("spreads--common-table", "spreads--table")}
+            columns={GeneralSpreadsTable()}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
+            tip={
+              <span>
+                <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+                &nbsp;
+                <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+                &nbsp;
+              </span>
+            }
+            isSearch
           />
           <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title1")}
@@ -55,10 +68,19 @@ const SpreadsAndFeesPageContent = () => {
       content: (
         <>
           <TableComponent
+            isWrapperPadding
             data={DATA_SPREADS_TABLE_INDICES}
-            columns={ColumnsSpreadTableIndices()}
-            className={cn("spreads--common-table", "spreads--table")}
+            columns={GeneralSpreadsTable()}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
+            tip={
+              <span>
+                <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+                &nbsp;
+                <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+                &nbsp;
+              </span>
+            }
+            isSearch
           />
           <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title2")}
@@ -72,10 +94,19 @@ const SpreadsAndFeesPageContent = () => {
       content: (
         <>
           <TableComponent
-            data={DataSpreadTableCommodities()}
-            columns={ColumnsSpreadTableCommodities()}
-            className={cn("spreads--common-table", "spreads--table")}
+            isWrapperPadding
+            data={DATA_SPREADS_TABLE_COMMODITIES}
+            columns={GeneralSpreadsTable()}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
+            tip={
+              <span>
+                <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+                &nbsp;
+                <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+                &nbsp;
+              </span>
+            }
+            isSearch
           />
           <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title_Metals")}
@@ -92,10 +123,21 @@ const SpreadsAndFeesPageContent = () => {
             content: (
               <>
                 <TableComponent
+                  isWrapperPadding
                   data={DATA_SPREADS_TABLE_CRYPTO}
-                  columns={COLUMNS_SPREADS_TABLE_CRYPTO}
-                  className={cn("spreads--common-table", "spreads--table")}
+                  columns={GeneralSpreadsTable()}
                   tableClassName={isRTL ? "spreads-table--rtl" : ""}
+                  tip={
+                    <span>
+                      <span className="bold">*MIN</span>&nbsp;-&nbsp;
+                      {t("table-tip1")}
+                      &nbsp;
+                      <span className="bold">AVG</span>&nbsp;-&nbsp;
+                      {t("table-tip2")}
+                      &nbsp;
+                    </span>
+                  }
+                  isSearch
                 />
                 <Link className="spreads__table-link" to="/">
                   {t("spreads_tabs_bottom_link_title")}
