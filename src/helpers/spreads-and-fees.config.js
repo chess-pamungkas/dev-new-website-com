@@ -55,6 +55,60 @@ const GeneralSpreadsTable = () => {
   return GENERAL_SPREAD_TABLE;
 };
 
+const ColumnsSpreadTableForex = () => {
+  const { t } = useTranslation();
+  const COLUMNS_SPREADS_TABLE_FOREX = [
+    {
+      id: "group1",
+      Header: "",
+      columns: [
+        {
+          Header: "",
+          accessor: "col1",
+        },
+      ],
+    },
+    {
+      id: "group2",
+      Header: t("oqtima-ecn-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col2",
+        },
+        {
+          Header: "Avg",
+          accessor: "col3",
+        },
+      ],
+    },
+    {
+      id: "group3",
+      Header: t("oqtima-one-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col4",
+        },
+        {
+          Header: "Avg",
+          accessor: "col5",
+        },
+      ],
+    },
+    {
+      id: "group4",
+      Header: "",
+      columns: [
+        {
+          Header: t("indices_table-market-header-group4"),
+          accessor: "col6",
+        },
+      ],
+    },
+  ];
+  return COLUMNS_SPREADS_TABLE_FOREX;
+};
 export const DATA_SPREADS_TABLE_FOREX = [
   {
     col1: "AUDNZD",
@@ -114,22 +168,46 @@ const ColumnsSpreadTableIndices = () => {
       Header: "",
       columns: [
         {
-          Header: t("spreads_account-indices-group2-header1"),
+          Header: "",
           accessor: "col1",
         },
       ],
     },
     {
       id: "group2",
-      Header: t("spreads_account-indices-group2-table-name"),
+      Header: t("oqtima-ecn-account"),
       columns: [
         {
-          Header: t("spreads_account-indices-group2-header2"),
+          Header: "Min",
           accessor: "col2",
         },
         {
-          Header: t("spreads_account-indices-group2-header3"),
+          Header: "Avg",
           accessor: "col3",
+        },
+      ],
+    },
+    {
+      id: "group3",
+      Header: t("oqtima-one-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col4",
+        },
+        {
+          Header: "Avg",
+          accessor: "col5",
+        },
+      ],
+    },
+    {
+      id: "group4",
+      Header: "",
+      columns: [
+        {
+          Header: t("indices_table-market-header-group4"),
+          accessor: "col6",
         },
       ],
     },
@@ -197,40 +275,47 @@ const ColumnsSpreadTableCommodities = () => {
       Header: "",
       columns: [
         {
-          Header: t("spreads_account_commodities-group1-header1"),
+          Header: "",
           accessor: "col1",
         },
       ],
     },
     {
       id: "group2",
-      Header: t("spreads_account-commodities-group2-table-name"),
+      Header: t("oqtima-ecn-account"),
       columns: [
         {
-          Header: t("spreads_account_commodities-group2-header1"),
+          Header: "Min",
           accessor: "col2",
         },
-        //Removed as per Ticket 278 https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-278
-        // {
-        //   Header: t("spreads_account_commodities-group2-header2"),
-        //   accessor: "col3",
-        // },
-        // {
-        //   Header: t("spreads_account_commodities-group2-header3"),
-        //   accessor: "col4",
-        // },
         {
-          Header: t("spreads_account_commodities-group2-header4"),
+          Header: "Avg",
+          accessor: "col3",
+        },
+      ],
+    },
+    {
+      id: "group3",
+      Header: t("oqtima-one-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col4",
+        },
+        {
+          Header: "Avg",
           accessor: "col5",
         },
+      ],
+    },
+    {
+      id: "group4",
+      Header: "",
+      columns: [
         {
-          Header: t("spreads_account_commodities-group2-header5"),
+          Header: t("indices_table-market-header-group4"),
           accessor: "col6",
         },
-        // {
-        //   Header: t("spreads_account_commodities-group2-header6"),
-        //   accessor: "col7",
-        // },
       ],
     },
   ];
@@ -281,37 +366,60 @@ export const DATA_SPREADS_TABLE_COMMODITIES = [
     col5: "1617.68",
   },
 ];
-
-export const COLUMNS_SPREADS_TABLE_CRYPTO = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "Cryptocurrency",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "OQtima ECN+ / OQtima One",
-    columns: [
-      {
-        Header: "Symbol",
-        accessor: "col2",
-      },
-      {
-        Header: "Minimum Spread",
-        accessor: "col3",
-      },
-      {
-        Header: "Average Spread",
-        accessor: "col4",
-      },
-    ],
-  },
-];
+const ColumnsSpreadTableCrypto = () => {
+  const { t } = useTranslation();
+  const COLUMNS_SPREADS_TABLE_CRYPTO = [
+    {
+      id: "group1",
+      Header: "",
+      columns: [
+        {
+          Header: "",
+          accessor: "col1",
+        },
+      ],
+    },
+    {
+      id: "group2",
+      Header: t("oqtima-ecn-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col2",
+        },
+        {
+          Header: "Avg",
+          accessor: "col3",
+        },
+      ],
+    },
+    {
+      id: "group3",
+      Header: t("oqtima-one-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col4",
+        },
+        {
+          Header: "Avg",
+          accessor: "col5",
+        },
+      ],
+    },
+    {
+      id: "group4",
+      Header: "",
+      columns: [
+        {
+          Header: t("indices_table-market-header-group4"),
+          accessor: "col6",
+        },
+      ],
+    },
+  ];
+  return COLUMNS_SPREADS_TABLE_CRYPTO;
+};
 
 export const DATA_SPREADS_TABLE_CRYPTO = [
   {
@@ -383,6 +491,16 @@ export const COLUMNS_SPREADS_TABLE_SHARES = [
       {
         Header: "CFDs Minimum",
         accessor: "col2",
+      },
+    ],
+  },
+  {
+    id: "group4",
+    Header: "",
+    columns: [
+      {
+        Header: "live",
+        accessor: "col3",
       },
     ],
   },
@@ -466,9 +584,10 @@ const DataSpreadTable2 = () => {
 };
 
 export {
-  GeneralSpreadsTable,
   ColumnsSpreadTableIndices,
   ColumnsSpreadTableCommodities,
   ColumnsSpreadTable2,
   DataSpreadTable2,
+  ColumnsSpreadTableForex,
+  ColumnsSpreadTableCrypto,
 };
