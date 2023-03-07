@@ -2,7 +2,7 @@ import React from "react";
 import TopMarketPromotion from "../../top-market-promotion";
 import promotion from "../../../assets/images/partners/promotion.svg";
 import cn from "classnames";
-import { REGISTRATION_LINK } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import IncomeSlider from "../../partners/components/income-slider";
 import PartnersAdvantages from "../../partners/components/advantages";
@@ -25,7 +25,7 @@ const PartnersPageContent = () => {
         image={promotion}
         btnClassName={cn("button-link--ghost")}
         btnTitle={t("partners_top-market-promo-btn")}
-        link={REGISTRATION_LINK}
+        link={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
           localizationText="partners_top-market-promo-text"

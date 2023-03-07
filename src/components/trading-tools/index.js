@@ -5,7 +5,7 @@ import { FSA_PLATFORMS, CYSEC_PLATFORMS } from "../../helpers/config";
 import PlatformBlock from "./components/platform-block";
 import ButtonLink from "../shared/button-link";
 import DeviceBlock from "./components/device-block";
-import { DIR_LTR, DIR_RTL, REGISTRATION_LINK } from "../../helpers/constants";
+import { DIR_LTR, DIR_RTL, GetRegistrationLink } from "../../helpers/constants";
 import { useTrail } from "react-spring";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
@@ -90,7 +90,7 @@ const TradingTools = ({ className }) => {
             accentClassName="highlighted-in-red"
           />
         </h2>
-        <ButtonLink link={REGISTRATION_LINK} className="trading-tools__btn">
+        <ButtonLink link={GetRegistrationLink()} className="trading-tools__btn">
           {t("index_trading-tools-btn-text")}
         </ButtonLink>
       </div>

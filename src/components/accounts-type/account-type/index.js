@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import ButtonLink from "../../shared/button-link";
-import { REGISTRATION_LINK } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import AccountTypeAdvantage from "../account-type-advantage";
 import { stringTransformToKebabCase } from "../../../helpers/services/string-service";
 
@@ -27,7 +27,7 @@ const AccountType = ({
           {...block}
         />
       ))}
-      <ButtonLink link={REGISTRATION_LINK} className="account-type__btn">
+      <ButtonLink link={GetRegistrationLink()} className="account-type__btn">
         {t(btnTitle)}
       </ButtonLink>
     </div>

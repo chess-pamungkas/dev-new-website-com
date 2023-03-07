@@ -3,7 +3,7 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/cripto.svg";
-import { REGISTRATION_LINK } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
@@ -88,9 +88,9 @@ const CryptoContent = () => {
             title={t(`crypto_top-market-title${sitePostfix}`)}
             image={image}
             btn1Title={t(`crypto_top-market-btn1${sitePostfix}`)}
-            link1={REGISTRATION_LINK}
+            link1={GetRegistrationLink()}
             btn2Title={t(`crypto_top-market-btn2${sitePostfix}`)}
-            link2={REGISTRATION_LINK}
+            link2={GetRegistrationLink()}
           >
             <HighlightedLocalizationText
               localizationText={`crypto_top-market-promo-text${sitePostfix}`}
@@ -109,7 +109,7 @@ const CryptoContent = () => {
             className="crypto-promotion"
             image={crypto}
             btnTitle={t(`crypto_top-market-promo-btn${sitePostfix}`)}
-            link={REGISTRATION_LINK}
+            link={GetRegistrationLink()}
           >
             <HighlightedLocalizationText
               localizationText={`crypto_top-market-promotion-promo-text${sitePostfix}`}
@@ -172,7 +172,7 @@ const CryptoContent = () => {
           <TopMarketLayout
             title={t(`crypto_top-market-layout-title${sitePostfix}`)}
             btnTitle={t(`crypto_top-market-layout-btn${sitePostfix}`)}
-            link={REGISTRATION_LINK}
+            link={GetRegistrationLink()}
           >
             <TableComponent
               data={DATA_CRYPTO}
