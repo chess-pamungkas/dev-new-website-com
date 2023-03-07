@@ -426,6 +426,4 @@ export const DATA_ENERGIES = [
   },
 ];
 
-export const DATA_ETF = [
-
-];
+export const DATA_ETF = [];
