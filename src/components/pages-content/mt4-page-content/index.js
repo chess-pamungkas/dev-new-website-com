@@ -15,7 +15,7 @@ import image from "../../../assets/images/mt4/MT4andMT5.png";
 import TopMarketLayout from "../../top-market-layout";
 import TableComponent from "../../shared/table";
 import icon from "../../../assets/images/icon--white.svg";
-import { REGISTRATION_LINK } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
@@ -192,7 +192,7 @@ const Mt4PageContent = () => {
           image={icon}
           btnClassName="button-link--red"
           btnTitle={t("mt4_top-market-promo-btn3")}
-          link={REGISTRATION_LINK}
+          link={GetRegistrationLink()}
         >
           <HighlightedLocalizationText
             localizationText="mt4_top-market-promo-text3"

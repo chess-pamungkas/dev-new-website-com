@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TopMarket from "../../top-market";
 import indicesSvg from "../../../assets/images/top-markets/indices.svg";
-import { REGISTRATION_LINK } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
@@ -89,9 +89,9 @@ const IndicesContent = () => {
         isChildrenHasSmallSize
         image={indicesSvg}
         btn1Title={t("indices_top-market-btn1")}
-        link1={REGISTRATION_LINK}
+        link1={GetRegistrationLink()}
         btn2Title={t("indices_top-market-btn2")}
-        link2={REGISTRATION_LINK}
+        link2={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
           localizationText="indices_top-market-promo-text"
@@ -110,7 +110,7 @@ const IndicesContent = () => {
         className="indices-promotion"
         image={indices}
         btnTitle={t("indices_top-market-promo-btn")}
-        link={REGISTRATION_LINK}
+        link={GetRegistrationLink()}
         note={t("indices_top-market-promotion-promo-note")}
       >
         <HighlightedLocalizationText
@@ -174,7 +174,7 @@ const IndicesContent = () => {
       <TopMarketLayout
         title={t("indices_top-market-layout-title")}
         btnTitle={t("indices_top-market-layout-btn")}
-        link={REGISTRATION_LINK}
+        link={GetRegistrationLink()}
       >
         <TableComponent
           data={DATA_INDICES}

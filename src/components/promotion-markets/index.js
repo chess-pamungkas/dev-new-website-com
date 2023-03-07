@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
 import Lottie from "lottie-react";
-import { DIR_LTR, DIR_RTL, REGISTRATION_LINK } from "../../helpers/constants";
+import { DIR_LTR, DIR_RTL, GetRegistrationLink } from "../../helpers/constants";
 import ButtonLink from "../shared/button-link";
 import {
   OPACITY_0,
@@ -259,7 +259,7 @@ const PromotionMarkets = ({
         </h2>
 
         <ButtonLink
-          link={REGISTRATION_LINK}
+          link={GetRegistrationLink()}
           className="promotion-markets__btn button-link button-link--red"
         >
           {btnTitle}
