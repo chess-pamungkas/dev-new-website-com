@@ -352,7 +352,7 @@
   "accounts-type_account-type2-spreads-from-title": "ينتشر من",
   "accounts-type_account-type2-spreads-from-value": "{{ account-type2-spreads-from }} نقطة",
   "accounts-type_account-type2-commissions-title": "اللجان",
-  "accounts-type_account-type2-commissions-value": "$ {{ account-type2-commissions }} Per lot traded",
+  "accounts-type_account-type2-commissions-value": "Free of commissions (TR)",
   "accounts-type_account-type2-min-deposit-title": "دقيقة. الإيداع",
   "accounts-type_account-type2-min-deposit-value": "${{ account-type2-min-deposit }}",
   "accounts-type_account-type2-max-leverage-title": "Max. leverage",
