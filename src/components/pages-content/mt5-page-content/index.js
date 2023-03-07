@@ -141,11 +141,10 @@ const Mt5PageContent = () => {
           <a href={MT5_DOWNLOAD_LINKS.androidEU}>
             {t("mt5_mt-promotion-download-android")}
           </a>
-          {/*
-          Metaquotes Apps are no longer available for iOS unless you have downloaded them before September 2022
-           <Link to={MT5_DOWNLOAD_LINKS.ios}>
+
+          <a href={MT5_DOWNLOAD_LINKS.iosEU}>
             {t("mt5_mt-promotion-download-ios")}
-          </Link> */}
+          </a>
         </>
       ) : (
         <a href={MT5_DOWNLOAD_LINKS.androidFSA}>

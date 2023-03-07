@@ -40,7 +40,7 @@ const Mt4PageContent = () => {
   const getOSDevice = useCallback(() => {
     switch (true) {
       case isIOS:
-        return MT4_DOWNLOAD_LINKS.ios;
+        return MT4_DOWNLOAD_LINKS.iosFSA;
       case isAndroid:
         return MT4_DOWNLOAD_LINKS.android;
       case isWindows:
@@ -76,8 +76,8 @@ const Mt4PageContent = () => {
           <a href={MT4_DOWNLOAD_LINKS.android}>
             {t("mt4_mt-promotion-download-android")}
           </a>
-          {isCySEC && (
-            <a to={MT4_DOWNLOAD_LINKS.ios}>
+          {!isCySEC && (
+            <a href={MT4_DOWNLOAD_LINKS.iosFSA}>
               {t("mt4_mt-promotion-download-ios")}
             </a>
           )}
