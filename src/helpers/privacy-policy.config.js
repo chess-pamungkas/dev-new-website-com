@@ -243,7 +243,7 @@ export const PRIVACY_POLICY_CONTENT = [
         text: "The Company reserves the right to disclose your personally identifiable information as required by rules and regulations and when the Company believes that disclosure is necessary to protect our rights and/or to comply with a judicial proceeding, court order, or legal process served. The Company will not be liable for misuse or loss of personal information resulting from cookies on the Company’s site(s) that the Company does not have access to or control over. The Company will not be liable for unlawful or unauthorized use of your personal information due to misuse or misplacement of your passwords, negligent or malicious.",
       },
       {
-        text: "Further information on Company’s Privacy is available upon request from Company’s offices at: Tel. +357 25585379, or e-mail: compliance@oqtima.euAddress",
+        text: "Further information on Company’s Privacy is available upon request from Company’s offices at: Tel. +357 25585379, or e-mail: compliance@oqtima.eu",
       },
       {
         text: "Address: Franklin Roosevelt 247, Block C, 1st Floor, Office 101, 3046, Zakaki, Limassol Cyprus.",
