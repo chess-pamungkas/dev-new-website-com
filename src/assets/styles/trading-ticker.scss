@@ -324,6 +324,7 @@
     background: 0;
     text-transform: uppercase;
     cursor: pointer;
+    max-width: fit-content;
 
     @include tablet {
       display: block;
@@ -336,6 +337,16 @@
   &__buy {
     color: #00ff66;
 
+    &:hover,
+    &:active,
+    &:focus {
+      color: #00ff66;
+      
+      @include tablet {
+        border-bottom: 1px solid map-get($colors, "red");
+      }
+    }
+
     @include tablet {
       border-bottom: 1px solid map-get($colors, "red");
     }
@@ -343,6 +354,12 @@
 
   &__sell {
     color: #ff0000;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #ff0000;
+    }
   }
 
   &__arrow {

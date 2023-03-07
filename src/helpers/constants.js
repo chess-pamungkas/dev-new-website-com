@@ -40,26 +40,23 @@ export const CONTACT_EMAIL = "support@oqtima.eu";
 export const CONTACT_EMAIL_FSA = "support@oqtima.com";
 
 export const HOME_PAGE_LINK = "/";
-export const LOGIN_LINK = "https://my.oqtima.eu/login";
-export const REGIS = "https://my.oqtima.eu/register/";
-export const DEPOSIT_LINK = "https://my.oqtima.eu/funds/deposit";
 
 export const GetRegistrationLink = () => {
   const { isCySEC } = useEntityPostfix();
-  
-  return `https://my.oqtima.${isCySEC ? ".eu": ".com"}/register/`
+
+  return `https://my.oqtima.${isCySEC ? "eu" : "com"}/register/`;
 };
 
 export const GetLoginLink = () => {
   const { isCySEC } = useEntityPostfix();
-  
-  return `https://my.oqtima.${isCySEC ? ".eu": ".com"}/login/`
+
+  return `https://my.oqtima.${isCySEC ? "eu" : "com"}/login/`;
 };
 
 export const GetDepositLink = () => {
   const { isCySEC } = useEntityPostfix();
-  
-  return `https://my.oqtima.${isCySEC ? ".eu": ".com"}/funds/deposit/`
+
+  return `https://my.oqtima.${isCySEC ? "eu" : "com"}/funds/deposit/`;
 };
 
 export const COMING_SOON_PAGE_LINK = "/coming-soon";
