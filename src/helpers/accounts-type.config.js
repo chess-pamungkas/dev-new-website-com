@@ -36,7 +36,7 @@ export const FSA_ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type1-currencies-title",
-        value: "accounts-type_account-type1-currencies-value",
+        value: "accounts-type_account-type1-currencies-value-fsa",
         smallValue: true,
       },
       {
@@ -49,11 +49,11 @@ export const FSA_ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type1-markets-title",
-        value: "accounts-type_account-type1-markets-value",
+        value: "accounts-type_account-type1-markets-value-fsa",
       },
       {
         title: "accounts-type_account-type1-total-symbols-title",
-        value: "accounts-type_account-type1-total-symbols-value",
+        value: "accounts-type_account-type1-total-symbols-value-fsa",
         skipHr: true,
       },
     ],
@@ -106,11 +106,11 @@ export const FSA_ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type2-markets-title",
-        value: "accounts-type_account-type2-markets-value",
+        value: "accounts-type_account-type2-markets-value-fsa",
       },
       {
         title: "accounts-type_account-type2-total-symbols-title",
-        value: "accounts-type_account-type2-total-symbols-value",
+        value: "accounts-type_account-type2-total-symbols-value-fsa",
         skipHr: true,
       },
     ],
@@ -165,11 +165,11 @@ export const CYSEC_ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type1-markets-title",
-        value: "accounts-type_account-type1-markets-value-eu",
+        value: "accounts-type_account-type1-markets-value",
       },
       {
         title: "accounts-type_account-type1-total-symbols-title",
-        value: "accounts-type_account-type1-total-symbols-value-eu",
+        value: "accounts-type_account-type1-total-symbols-value",
         skipHr: true,
       },
     ],
@@ -209,7 +209,7 @@ export const CYSEC_ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type2-currencies-title",
-        value: "accounts-type_account-type2-currencies-value",
+        value: "accounts-type_account-type2-currencies-value-CySec",
         smallValue: true,
       },
       {
@@ -222,11 +222,11 @@ export const CYSEC_ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type2-markets-title",
-        value: "accounts-type_account-type2-markets-value-eu",
+        value: "accounts-type_account-type2-markets-value",
       },
       {
         title: "accounts-type_account-type2-total-symbols-title",
-        value: "accounts-type_account-type2-total-symbols-value-eu",
+        value: "accounts-type_account-type2-total-symbols-value",
         skipHr: true,
       },
     ],

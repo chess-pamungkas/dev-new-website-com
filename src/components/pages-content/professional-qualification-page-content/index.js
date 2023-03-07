@@ -3,7 +3,7 @@ import TopMarket from "../../top-market";
 import promotion from "../../../assets/images/professional-qualification/promotion.svg";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import SplitTextPromotion from "../../split-text-promotion";
-import { REGISTRATION_LINK } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import TopMarketPromotion from "../../top-market-promotion";
 import cn from "classnames";
 import icon from "../../../assets/images/icon--white.svg";
@@ -58,7 +58,7 @@ const ProfessionalQualificationPageContent = () => {
         className="split-text-promotion--professional-qualification"
         button={
           <ButtonLink
-            link={REGISTRATION_LINK}
+            link={GetRegistrationLink()}
             className="button-link--red split-text-promotion__btn"
           >
             {t("professional-qualification_text-banner-btn")}
@@ -82,7 +82,7 @@ const ProfessionalQualificationPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("professional-qualification_top-market-promo-btn3")}
-        link={REGISTRATION_LINK}
+        link={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
           localizationText="professional-qualification_top-market-promo-text3"

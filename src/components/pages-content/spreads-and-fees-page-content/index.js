@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
 import TopMarket from "../../top-market";
@@ -9,28 +9,83 @@ import Tabs from "../../shared/tabs";
 import TableComponent from "../../shared/table";
 import {
   ColumnsSpreadTable2,
-  ColumnsSpreadTableCommodities,
-  COLUMNS_SPREADS_TABLE_CRYPTO,
-  ColumnsSpreadTableForex,
-  ColumnsSpreadTableIndices,
+  DATA_SPREADS_TABLE_COMMODITIES,
   DataSpreadTable2,
-  DataSpreadTableCommodities,
   DATA_SPREADS_TABLE_CRYPTO,
   DATA_SPREADS_TABLE_FOREX,
   DATA_SPREADS_TABLE_INDICES,
+  ColumnsSpreadTableIndices,
+  ColumnsSpreadTableForex,
+  ColumnsSpreadTableCommodities,
 } from "../../../helpers/spreads-and-fees.config";
 import TopMarketPromotion from "../../top-market-promotion";
 import icon from "../../../assets/images/icon--white.svg";
-import { REGISTRATION_LINK } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import { Link } from "gatsby";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 
 const SpreadsAndFeesPageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
   const { isCySEC } = useEntityPostfix();
-
+  //TODO REFACTOR 31-88
+  const tradingSymbols = useState([]);
+  const COLUMNS_SPREADS_TABLE_CRYPTO = [
+    {
+      id: "group1",
+      Header: "",
+      columns: [
+        {
+          Header: "",
+          accessor: "col1",
+        },
+      ],
+    },
+    {
+      id: "group2",
+      Header: t("oqtima-ecn-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col2",
+        },
+        {
+          Header: "Avg",
+          accessor: "col3",
+        },
+      ],
+    },
+    {
+      id: "group3",
+      Header: t("oqtima-one-account"),
+      columns: [
+        {
+          Header: "Min",
+          accessor: "col4",
+        },
+        {
+          Header: "Avg",
+          accessor: "col5",
+        },
+      ],
+    },
+    {
+      id: "group4",
+      Header: "",
+      columns: [
+        {
+          Header: t("indices_table-market-header-group4"),
+          accessor: "col6",
+        },
+      ],
+    },
+  ];
+  updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_INDICES, tradingSymbols);
+  updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_FOREX, tradingSymbols);
+  updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_COMMODITIES, tradingSymbols);
+  updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_CRYPTO, tradingSymbols);
   const tabs = [
     {
       id: 1,
@@ -38,10 +93,19 @@ const SpreadsAndFeesPageContent = () => {
       content: (
         <>
           <TableComponent
+            isWrapperPadding
             data={DATA_SPREADS_TABLE_FOREX}
             columns={ColumnsSpreadTableForex()}
-            className={cn("spreads--common-table", "spreads--table")}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
+            tip={
+              <span>
+                <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+                &nbsp;
+                <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+                &nbsp;
+              </span>
+            }
+            isSearch
           />
           <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title1")}
@@ -55,10 +119,19 @@ const SpreadsAndFeesPageContent = () => {
       content: (
         <>
           <TableComponent
+            isWrapperPadding
             data={DATA_SPREADS_TABLE_INDICES}
             columns={ColumnsSpreadTableIndices()}
-            className={cn("spreads--common-table", "spreads--table")}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
+            tip={
+              <span>
+                <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+                &nbsp;
+                <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+                &nbsp;
+              </span>
+            }
+            isSearch
           />
           <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title2")}
@@ -72,10 +145,19 @@ const SpreadsAndFeesPageContent = () => {
       content: (
         <>
           <TableComponent
-            data={DataSpreadTableCommodities()}
+            isWrapperPadding
+            data={DATA_SPREADS_TABLE_COMMODITIES}
             columns={ColumnsSpreadTableCommodities()}
-            className={cn("spreads--common-table", "spreads--table")}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
+            tip={
+              <span>
+                <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+                &nbsp;
+                <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+                &nbsp;
+              </span>
+            }
+            isSearch
           />
           <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title_Metals")}
@@ -83,28 +165,41 @@ const SpreadsAndFeesPageContent = () => {
         </>
       ),
     },
-    ...(isCySEC
-      ? []
-      : [
-          {
-            id: 4,
-            title: t("spreads_tabs_title4"),
-            content: (
-              <>
-                <TableComponent
-                  data={DATA_SPREADS_TABLE_CRYPTO}
-                  columns={COLUMNS_SPREADS_TABLE_CRYPTO}
-                  className={cn("spreads--common-table", "spreads--table")}
-                  tableClassName={isRTL ? "spreads-table--rtl" : ""}
-                />
-                <Link className="spreads__table-link" to="/">
-                  {t("spreads_tabs_bottom_link_title")}
-                </Link>
-              </>
-            ),
-          },
-        ]),
   ];
+
+  const tabs2 = isCySEC
+    ? tabs
+    : [
+        ...tabs,
+        {
+          id: 4,
+          title: t("spreads_tabs_title4"),
+          content: (
+            <>
+              <TableComponent
+                isWrapperPadding
+                data={DATA_SPREADS_TABLE_CRYPTO}
+                columns={COLUMNS_SPREADS_TABLE_CRYPTO}
+                tableClassName={isRTL ? "spreads-table--rtl" : ""}
+                tip={
+                  <span>
+                    <span className="bold">*MIN</span>&nbsp;-&nbsp;
+                    {t("table-tip1")}
+                    &nbsp;
+                    <span className="bold">AVG</span>&nbsp;-&nbsp;
+                    {t("table-tip2")}
+                    &nbsp;
+                  </span>
+                }
+                isSearch
+              />
+              <Link className="spreads__table-link" to="/">
+                {t("spreads_tabs_bottom_link_title")}
+              </Link>
+            </>
+          ),
+        },
+      ];
 
   return (
     <>
@@ -132,7 +227,7 @@ const SpreadsAndFeesPageContent = () => {
         className="top-market-layout--spreads"
         title={t("spreads_first-table-title")}
       >
-        <Tabs tabList={tabs} isMobileDropdown />
+        <Tabs tabList={tabs2} isMobileDropdown />
       </TopMarketLayout>
 
       <TopMarketLayout
@@ -183,7 +278,7 @@ const SpreadsAndFeesPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("spreads_top-market-promo-btn3")}
-        link={REGISTRATION_LINK}
+        link={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
           localizationText="spreads_top-market-promo-text3"

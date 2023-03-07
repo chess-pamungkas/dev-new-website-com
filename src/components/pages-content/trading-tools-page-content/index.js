@@ -7,7 +7,7 @@ import HighlightedLocalizationText from "../../shared/highlighted-localization-t
 import promotion from "../../../assets/images/trading-tools/promotion.svg";
 import AlphaGeneration from "../../trading-tools/components/alpha-generation";
 import icon from "../../../assets/images/icon--white.svg";
-import { REGISTRATION_LINK } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import TopMarketPromotion from "../../top-market-promotion";
 import FeaturedIdeas from "../../trading-tools/components/featured-ideas";
 import MarketBuzz from "../../trading-tools/components/market-buzz";
@@ -58,7 +58,7 @@ const TradingToolsPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("trading-tools_top-market-promo-btn3")}
-        link={REGISTRATION_LINK}
+        link={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
           localizationText="trading-tools_top-market-promo-text3"

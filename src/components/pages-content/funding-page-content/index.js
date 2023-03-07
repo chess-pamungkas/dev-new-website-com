@@ -14,7 +14,7 @@ import HighlightedLocalizationText from "../../shared/highlighted-localization-t
 import TopMarketLayout from "../../top-market-layout";
 import Tabs from "../../shared/tabs";
 import icon from "../../../assets/images/icon--white.svg";
-import { REGISTRATION_LINK } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 
@@ -124,7 +124,7 @@ const FundingPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("withdrawal_top-market-promo-btn3")}
-        link={REGISTRATION_LINK}
+        link={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
           localizationText="withdrawal_top-market-promo-text3"

@@ -28,7 +28,7 @@ const LANG_CONFIG = [
   {
     id: "th",
     icon: "ThFlagIcon",
-    name: "แบบไทย",
+    name: "ภาษาไทย",
   },
   /* // German
   {

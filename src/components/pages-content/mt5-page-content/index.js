@@ -14,7 +14,7 @@ import image from "../../../assets/images/mt4/MT4andMT5.png";
 import TopMarketLayout from "../../top-market-layout";
 import TableComponent from "../../shared/table";
 import icon from "../../../assets/images/icon--white.svg";
-import { REGISTRATION_LINK } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
@@ -141,11 +141,10 @@ const Mt5PageContent = () => {
           <a href={MT5_DOWNLOAD_LINKS.androidEU}>
             {t("mt5_mt-promotion-download-android")}
           </a>
-          {/*
-          Metaquotes Apps are no longer available for iOS unless you have downloaded them before September 2022
-           <Link to={MT5_DOWNLOAD_LINKS.ios}>
+
+          <a href={MT5_DOWNLOAD_LINKS.iosEU}>
             {t("mt5_mt-promotion-download-ios")}
-          </Link> */}
+          </a>
         </>
       ) : (
         <a href={MT5_DOWNLOAD_LINKS.androidFSA}>
@@ -274,7 +273,7 @@ const Mt5PageContent = () => {
           image={icon}
           btnClassName="button-link--red"
           btnTitle={t("mt5_top-market-promo-btn3")}
-          link={REGISTRATION_LINK}
+          link={GetRegistrationLink()}
         >
           <HighlightedLocalizationText
             localizationText="mt5_top-market-promo-text3"

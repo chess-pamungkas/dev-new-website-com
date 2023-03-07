@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/commodities.svg";
-import { REGISTRATION_LINK } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
@@ -81,9 +81,9 @@ const MetalsContent = () => {
         title={t("metals_top-market-title")}
         image={image}
         btn1Title={t("metals_top-market-btn1")}
-        link1={REGISTRATION_LINK}
+        link1={GetRegistrationLink()}
         btn2Title={t("metals_top-market-btn2")}
-        link2={REGISTRATION_LINK}
+        link2={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
           localizationText="metals_top-market-promo-text"
@@ -102,7 +102,7 @@ const MetalsContent = () => {
         className="commodities-promotion"
         image={commodities}
         btnTitle={t("metals_top-market-promo-btn")}
-        link={REGISTRATION_LINK}
+        link={GetRegistrationLink()}
         note={t("metals_top-market-promotion-promo-note")}
       >
         <HighlightedLocalizationText
@@ -166,7 +166,7 @@ const MetalsContent = () => {
       <TopMarketLayout
         title={t("metals_top-market-layout-title")}
         btnTitle={t("metals_top-market-layout-btn")}
-        link={REGISTRATION_LINK}
+        link={GetRegistrationLink()}
       >
         <TableComponent
           data={DATA_METALS}
