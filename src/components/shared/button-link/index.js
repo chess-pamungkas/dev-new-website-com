@@ -8,18 +8,33 @@ const ButtonLink = ({ children, className, link }) => {
   const {
     clientConfig: { banned },
   } = useContext(ClientResolverContext);
-
-  return (
-    <Link
-      to={link}
-      className={cn("button-link", className, {
-        "button-link--disabled": banned,
-      })}
-      onClick={(e) => sendClickEventToGA(e)}
-    >
-      {children}
-    </Link>
-  );
+  if (String(link).startsWith("http")) {
+    return (
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn("button-link", className, {
+          "button-link--disabled": banned,
+        })}
+        onClick={(e) => sendClickEventToGA(e)}
+      >
+        {children}
+      </a>
+    );
+  } else {
+    return (
+      <Link
+        to={link}
+        className={cn("button-link", className, {
+          "button-link--disabled": banned,
+        })}
+        onClick={(e) => sendClickEventToGA(e)}
+      >
+        {children}
+      </Link>
+    );
+  }
 };
 
 export default ButtonLink;
