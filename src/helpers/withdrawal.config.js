@@ -39,10 +39,7 @@ export const ColumnDeposit = () => {
 const DEPOSIT_COLUMNS_WITH_BTN = () => {
   const { t } = useTranslation();
   return (
-    <ButtonLink
-      link={GetDepositLink()}
-      className={cn("withdrawal-table__btn")}
-    >
+    <ButtonLink link={GetDepositLink()} className={cn("withdrawal-table__btn")}>
       {t("withdrawal_data_btn")}
     </ButtonLink>
   );

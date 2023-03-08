@@ -99,7 +99,9 @@ const Mt5PageContent = () => {
   const getOSDevice = useCallback(() => {
     switch (true) {
       case isIOS:
-        return isCySEC ? MT5_DOWNLOAD_LINKS.iosEU : MT5_DOWNLOAD_LINKS.iosFSA;
+        //enable when fsa links available,
+        // return isCySEC ? MT5_DOWNLOAD_LINKS.iosEU : MT5_DOWNLOAD_LINKS.iosFSA;
+        return MT5_DOWNLOAD_LINKS.iosEU;
       case isAndroid:
         return isCySEC
           ? MT5_DOWNLOAD_LINKS.androidEU
