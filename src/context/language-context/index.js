@@ -10,10 +10,15 @@ import { navigate } from "gatsby";
 import { I18nextContext } from "gatsby-plugin-react-i18next";
 import { detectBrowserLanguage } from "../../helpers/services/detect-browser-settings";
 import ClientResolverContext from "../client-resolver-context";
-import { LANG_SELECT_OPTIONS } from "../../helpers/lang-options.config";
+import {
+  FXBO_LANG_COOKIE_KEYS_MAP,
+  LANG_SELECT_OPTIONS,
+} from "../../helpers/lang-options.config";
 import CookieContext from "../cookie-context";
 import {
+  FXBO_LAST_LANGUAGE_KEY,
   LAST_LANGUAGE_KEY,
+  NECESSARY_COOKIE_KEY,
   PERFORMANCE_COOKIE_KEY,
 } from "../../helpers/gdpr-cookie.config";
 import { isBrowser } from "../../helpers/services/is-browser";
@@ -80,6 +85,11 @@ export const LanguageProvider = ({ children }) => {
 
   useEffect(() => {
     setCookie(LAST_LANGUAGE_KEY, selectedLanguage.id, PERFORMANCE_COOKIE_KEY);
+    setCookie(
+      FXBO_LAST_LANGUAGE_KEY,
+      FXBO_LANG_COOKIE_KEYS_MAP[selectedLanguage.id],
+      NECESSARY_COOKIE_KEY
+    );
   }, [setCookie, selectedLanguage]);
 
   return (
