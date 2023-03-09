@@ -44,22 +44,19 @@ export const HOME_PAGE_LINK = "/";
 export const GetRegistrationLink = () => {
   const { isCySEC } = useEntityPostfix();
 
-  // return `https://my.oqtima.${isCySEC ? "eu" : "com"}/register/`;
-  return `/`;
+  return `https://my.oqtima.${isCySEC ? "eu" : "com"}/register/`;
 };
 
 export const GetLoginLink = () => {
   const { isCySEC } = useEntityPostfix();
 
-  // return `https://my.oqtima.${isCySEC ? "eu" : "com"}/login/`;
-  return `/`;
+  return `https://my.oqtima.${isCySEC ? "eu" : "com"}/login/`;
 };
 
 export const GetDepositLink = () => {
   const { isCySEC } = useEntityPostfix();
 
-  // return `https://my.oqtima.${isCySEC ? "eu" : "com"}/funds/deposit/`;
-  return `/`;
+  return `https://my.oqtima.${isCySEC ? "eu" : "com"}/funds/deposit/`;
 };
 
 export const COMING_SOON_PAGE_LINK = "/coming-soon";
