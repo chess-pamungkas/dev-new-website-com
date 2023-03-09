@@ -76,3 +76,27 @@ export const CYSEC_LANG_SELECT_OPTIONS = CYSEC_LANG_CONFIG.map(
 );
 
 export const SHOULD_BE_SMALLER_LANGUAGES = ["Русский", "Ελληνικά"];
+
+export const FXBO_LANG_COOKIE_KEYS_MAP = {
+  en: "en",
+  es: "es",
+  tw: "zh_Hant",
+  fr: "ft",
+  it: "it",
+  pt: "pt",
+  cn: "zh",
+  vn: "vi",
+  th: "th",
+};
+
+export const FXBO_LANG_URL_KEYS_MAP = {
+  en: "",
+  es: "/es",
+  tw: "/zh_Hant",
+  fr: "/ft",
+  it: "/it",
+  pt: "/pt",
+  cn: "/zh",
+  vn: "/vi",
+  th: "/th",
+};
