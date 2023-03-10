@@ -8,7 +8,7 @@ import ButtonLink from "../../../shared/button-link";
 import {
   DIR_LTR,
   DIR_RTL,
-  REGISTRATION_LINK,
+  GetRegistrationLink,
 } from "../../../../helpers/constants";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { getArrows } from "./get-arrows";
@@ -40,7 +40,7 @@ const HowToStart = ({ className }) => {
           ))}
       </div>
       <ButtonLink
-        link={REGISTRATION_LINK}
+        link={GetRegistrationLink()}
         className={cn("partners-start__btn")}
       >
         {t("partners_start-btn")}

@@ -1,28 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import PrivacyPolicyItem from "./privacy-policy-item";
-import { PRIVACY_POLICY_CONTENT } from "../../../helpers/privacy-policy.config";
+import {
+  PRIVACY_POLICY_CONTENT,
+  PRIVACY_POLICY_CONTENT_FSA,
+} from "../../../helpers/privacy-policy.config";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
-import NotFoundContent from "../not-found-page-content";
 
 const PrivacyPolicyContent = ({ className }) => {
+  const [policyContent, setPolicyContent] = useState([]);
   const { isCySEC } = useEntityPostfix();
 
+  useEffect(() => {
+    setPolicyContent(
+      isCySEC ? PRIVACY_POLICY_CONTENT : PRIVACY_POLICY_CONTENT_FSA
+    );
+  }, [isCySEC]);
+
   return (
-    <>
-      {isCySEC ? (
-        <NotFoundContent />
-      ) : (
-        <section className={cn("privacy-policy", className)}>
-          <div className="privacy-policy__wrapper">
-            <h2 className="privacy-policy__title">{"Privacy Policy"}</h2>
-            {PRIVACY_POLICY_CONTENT.map((item) => (
-              <PrivacyPolicyItem {...item} />
-            ))}
-          </div>
-        </section>
-      )}
-    </>
+    <section className={cn("privacy-policy", className)}>
+      <div className="privacy-policy__wrapper">
+        <h2 className="privacy-policy__title">{"Privacy Policy"}</h2>
+        {policyContent.map((item) => (
+          <PrivacyPolicyItem {...item} />
+        ))}
+      </div>
+    </section>
   );
 };
 

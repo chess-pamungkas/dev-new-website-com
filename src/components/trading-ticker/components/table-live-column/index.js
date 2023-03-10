@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { REGISTRATION_LINK } from "../../../../helpers/constants";
+import { GetRegistrationLink } from "../../../../helpers/constants";
 import ButtonLink from "../../../shared/button-link";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
@@ -32,13 +32,13 @@ const TableLiveColumn = ({ symbol, tradingSymbols }) => {
       </div>
       <div className="table__btn-wrapper">
         <ButtonLink
-          link={REGISTRATION_LINK}
+          link={GetRegistrationLink()}
           className={cn("table__btn", "table__btn--green")}
         >
           {t("index_trading-ticker-buy")}
         </ButtonLink>
         <ButtonLink
-          link={REGISTRATION_LINK}
+          link={GetRegistrationLink()}
           className={cn("table__btn", "table__btn--red")}
         >
           {t("index_trading-ticker-sell")}

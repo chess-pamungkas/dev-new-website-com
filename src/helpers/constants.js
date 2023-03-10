@@ -5,6 +5,10 @@ import netellerLogo from "../assets/images/icons/payments/neteller.png";
 import revolutLogo from "../assets/images/icons/payments/revolut.png";
 import skrillLogo from "../assets/images/icons/payments/skrill.png";
 import wiseLogo from "../assets/images/icons/payments/wise.png";
+import { useEntityPostfix } from "./use-entity-postfix";
+import LanguageContext from "../context/language-context";
+import { useContext } from "react";
+import { FXBO_LANG_URL_KEYS_MAP } from "./lang-options.config";
 
 export const WINDOW_SIZE_SM = 375;
 export const WINDOW_SIZE_MD = 768;
@@ -39,8 +43,33 @@ export const CONTACT_EMAIL = "support@oqtima.eu";
 export const CONTACT_EMAIL_FSA = "support@oqtima.com";
 
 export const HOME_PAGE_LINK = "/";
-export const LOGIN_LINK = "/";
-export const REGISTRATION_LINK = "/";
+
+export const GetRegistrationLink = () => {
+  const { isCySEC } = useEntityPostfix();
+  const { selectedLanguage } = useContext(LanguageContext);
+
+  return `https://my.oqtima.${isCySEC ? "eu" : "com"}${
+    FXBO_LANG_URL_KEYS_MAP[selectedLanguage.id]
+  }/register/`;
+};
+
+export const GetLoginLink = () => {
+  const { isCySEC } = useEntityPostfix();
+  const { selectedLanguage } = useContext(LanguageContext);
+
+  return `https://my.oqtima.${isCySEC ? "eu" : "com"}${
+    FXBO_LANG_URL_KEYS_MAP[selectedLanguage.id]
+  }/login/`;
+};
+
+export const GetDepositLink = () => {
+  const { isCySEC } = useEntityPostfix();
+  const { selectedLanguage } = useContext(LanguageContext);
+
+  return `https://my.oqtima.${isCySEC ? "eu" : "com"}${
+    FXBO_LANG_URL_KEYS_MAP[selectedLanguage.id]
+  }/funds/deposit/`;
+};
 
 export const COMING_SOON_PAGE_LINK = "/coming-soon";
 export const COMPANY_PAGE_LINK = "/company";

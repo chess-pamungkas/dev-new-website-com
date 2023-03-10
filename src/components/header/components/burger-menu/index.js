@@ -4,7 +4,7 @@ import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import { BURGER_MENU_LINES_COUNT } from "../../../../helpers/constants";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
-import { REGISTRATION_LINK } from "../../../../helpers/constants";
+import { GetRegistrationLink } from "../../../../helpers/constants";
 import ButtonLink from "../../../shared/button-link";
 import LangSelect from "../lang-select";
 import SearchBar from "../search-bar";
@@ -96,7 +96,7 @@ const BurgerMenu = ({ className }) => {
               {!isMobile && (
                 <>
                   <ButtonLink
-                    link={REGISTRATION_LINK}
+                    link={GetRegistrationLink()}
                     className="button-link--header burger-menu__start"
                   >
                     {t("button-get-started")}
@@ -115,7 +115,7 @@ const BurgerMenu = ({ className }) => {
 
           <li className="burger-menu__item">
             <ButtonLink
-              link={REGISTRATION_LINK}
+              link={GetRegistrationLink()}
               className="button-link--blank burger-menu__signin"
             >
               {t("button-sign-in")}
@@ -123,7 +123,7 @@ const BurgerMenu = ({ className }) => {
 
             {isMobile && (
               <ButtonLink
-                link={REGISTRATION_LINK}
+                link={GetRegistrationLink()}
                 className="button-link--blank burger-menu__start--tablet"
               >
                 {t("button-get-started")}

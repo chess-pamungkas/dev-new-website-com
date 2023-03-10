@@ -93,6 +93,22 @@
     }
   }
 
+  &--without-bg-trading {
+    background: transparent;
+    text-decoration: none;
+    text-transform: none;
+    width: auto;
+    border-radius: unset;
+    border: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+      background: transparent;
+    }
+  }
+
   &--with-red-border {
     border: 2px solid map-get($colors, "red");
 

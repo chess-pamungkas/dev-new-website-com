@@ -1,7 +1,7 @@
 import ButtonLink from "../components/shared/button-link";
 import cn from "classnames";
 import React from "react";
-import { PAYMENT_SYSTEMS, REGISTRATION_LINK } from "./constants";
+import { PAYMENT_SYSTEMS, GetDepositLink } from "./constants";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 
 export const ColumnDeposit = () => {
@@ -39,10 +39,7 @@ export const ColumnDeposit = () => {
 const DEPOSIT_COLUMNS_WITH_BTN = () => {
   const { t } = useTranslation();
   return (
-    <ButtonLink
-      link={REGISTRATION_LINK}
-      className={cn("withdrawal-table__btn")}
-    >
+    <ButtonLink link={GetDepositLink()} className={cn("withdrawal-table__btn")}>
       {t("withdrawal_data_btn")}
     </ButtonLink>
   );

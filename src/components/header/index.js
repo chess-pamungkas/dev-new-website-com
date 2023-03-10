@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import { LogoTextMain, Logo } from "../shared/icons";
-import { DIR_LTR, DIR_RTL, HOME_PAGE_LINK } from "../../helpers/constants";
+import { DIR_LTR, DIR_RTL, HOME_PAGE_LINK, GetLoginLink } from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
-import { REGISTRATION_LINK } from "../../helpers/constants";
+import { GetRegistrationLink } from "../../helpers/constants";
 import NavbarItem from "./components/navbar-item";
 import LangSelect from "./components/lang-select";
 import BurgerMenu from "./components/burger-menu";
@@ -66,13 +66,13 @@ const Header = ({
           <div className="header__controls">
             <LangSelect className="lang-select--header" isHeader={true} />
             <ButtonLink
-              link={REGISTRATION_LINK}
+              link={GetLoginLink()}
               className="button-link--header button-link--ghost header__signin"
             >
               {t("button-sign-in")}
             </ButtonLink>
             <ButtonLink
-              link={REGISTRATION_LINK}
+              link={GetRegistrationLink()}
               className="button-link--header header__start"
             >
               {t("button-get-started")}
