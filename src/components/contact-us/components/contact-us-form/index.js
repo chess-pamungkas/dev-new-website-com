@@ -106,7 +106,12 @@ const ContactUsForm = () => {
             placeholder={t("contact-us_form_placeholder")}
           />
           {SITE_KEY && (
-            <ReCAPTCHA sitekey={SITE_KEY} size="invisible" ref={reCaptchaRef} />
+            <ReCAPTCHA
+              badge="bottomleft"
+              sitekey={SITE_KEY}
+              size="invisible"
+              ref={reCaptchaRef}
+            />
           )}
           <button
             type="submit"

@@ -163,6 +163,28 @@ export const COMPANY_ADVANTAGES = [
     icon: SafetyAdvantageIcon,
     textArray: [
       "company_company-advantages-text1-1",
+      "company_company-advantages-text1-2-fsa",
+      "company_company-advantages-text1-3",
+      "company_company-advantages-text1-4",
+    ],
+  },
+  {
+    title: "company_company-advantages-title2",
+    icon: QualityAdvantageIcon,
+    textArray: ["company_company-advantages-text2"],
+  },
+  {
+    title: "company_company-advantages-title3",
+    icon: TrustAdvantageIcon,
+    textArray: ["company_company-advantages-text3"],
+  },
+];
+export const CYSEC_COMPANY_ADVANTAGES = [
+  {
+    title: "company_company-advantages-title1",
+    icon: SafetyAdvantageIcon,
+    textArray: [
+      "company_company-advantages-text1-1",
       "company_company-advantages-text1-2",
       "company_company-advantages-text1-3",
       "company_company-advantages-text1-4",
