@@ -91,6 +91,11 @@
   display: flex;
   justify-content: center;
   position: relative;
+  height: 177px;
+
+  @include tablet {
+    height: 99px;
+  }
 
   &--infinite-auto-scroll {
     justify-content: unset;
