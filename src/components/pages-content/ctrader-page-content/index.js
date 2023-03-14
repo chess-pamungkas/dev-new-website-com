@@ -15,12 +15,12 @@ import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import cn from "classnames";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
-
+import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 const CtraderPageContent = () => {
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
-
+  const { isCySEC } = useEntityPostfix();
   const downloadRef = useRef(null);
   const scrollToTarget = () => {
     downloadRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -29,13 +29,17 @@ const CtraderPageContent = () => {
   const getOSDevice = useCallback(() => {
     switch (true) {
       case isIOS:
-        return CTRADER_DOWNLOAD_LINKS.ios;
+        return CTRADER_DOWNLOAD_LINKS.iosFSA;
       case isAndroid:
-        return CTRADER_DOWNLOAD_LINKS.android;
+        return CTRADER_DOWNLOAD_LINKS.androidFSA;
       case isWindows:
-        return CTRADER_DOWNLOAD_LINKS.windows;
+        return isCySEC
+          ? CTRADER_DOWNLOAD_LINKS.windowsEU
+          : CTRADER_DOWNLOAD_LINKS.windowsFSA;
       default:
-        return CTRADER_DOWNLOAD_LINKS.windows;
+        return isCySEC
+          ? CTRADER_DOWNLOAD_LINKS.windowsEU
+          : CTRADER_DOWNLOAD_LINKS.windowsFSA;
     }
   }, [isIOS, isAndroid, isWindows, isMacOs]);
 
@@ -58,12 +62,21 @@ const CtraderPageContent = () => {
     {
       id: 1,
       title: t("mt-promotion-tabs-mobile"),
-      content: (
+      content: isCySEC ? (
         <>
-          <a href={CTRADER_DOWNLOAD_LINKS.android}>
+          <a href={CTRADER_DOWNLOAD_LINKS.androidEU}>
             {t("ctrader_mt-promotion-download-android")}
           </a>
-          <a href={CTRADER_DOWNLOAD_LINKS.ios}>
+          <a href={CTRADER_DOWNLOAD_LINKS.iosEU}>
+            {t("ctrader_mt-promotion-download-ios")}
+          </a>
+        </>
+      ) : (
+        <>
+          <a href={CTRADER_DOWNLOAD_LINKS.androidFSA}>
+            {t("ctrader_mt-promotion-download-android")}
+          </a>
+          <a href={CTRADER_DOWNLOAD_LINKS.iosFSA}>
             {t("ctrader_mt-promotion-download-ios")}
           </a>
         </>
@@ -72,9 +85,15 @@ const CtraderPageContent = () => {
     {
       id: 2,
       title: t("mt-promotion-tabs-desktop"),
-      content: (
+      content: isCySEC ? (
         <>
-          <a href={CTRADER_DOWNLOAD_LINKS.windows}>
+          <a href={CTRADER_DOWNLOAD_LINKS.windowsEU}>
+            {t("ctrader_mt-promotion-download-windows")}
+          </a>
+        </>
+      ) : (
+        <>
+          <a href={CTRADER_DOWNLOAD_LINKS.windowsFSA}>
             {t("ctrader_mt-promotion-download-windows")}
           </a>
         </>
@@ -83,10 +102,20 @@ const CtraderPageContent = () => {
     {
       id: 3,
       title: t("mt-promotion-tabs-webtrader"),
-      content: (
+      content: isCySEC ? (
         <>
           <a
-            href={CTRADER_DOWNLOAD_LINKS.webtrader}
+            href={CTRADER_DOWNLOAD_LINKS.webtraderEU}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t("ctrader_mt-promotion-download-webtrader")}
+          </a>
+        </>
+      ) : (
+        <>
+          <a
+            href={CTRADER_DOWNLOAD_LINKS.webtraderFSA}
             target="_blank"
             rel="noreferrer"
           >
