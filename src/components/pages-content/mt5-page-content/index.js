@@ -149,9 +149,11 @@ const Mt5PageContent = () => {
           </a>
         </>
       ) : (
-        <a href={MT5_DOWNLOAD_LINKS.androidFSA}>
-          {t("mt5_mt-promotion-download-android")}
-        </a>
+        <>
+          <a href={MT5_DOWNLOAD_LINKS.androidFSA}>
+            {t("mt5_mt-promotion-download-android")}
+          </a>
+        </>
       ),
     },
     {
