@@ -6,7 +6,7 @@ import {
   CONTACT_EMAIL,
   CONTACT_EMAIL_FSA,
   CONTACT_PHONE,
-  CONTACT_PHONE_LINK,
+  CONTACT_PHONE_FSA,
   DIR_LTR,
   DIR_RTL,
 } from "../../helpers/constants";
@@ -20,6 +20,10 @@ const ContactUs = ({ className }) => {
 
   const getEmail = useCallback(() => {
     return isCySEC ? CONTACT_EMAIL : CONTACT_EMAIL_FSA;
+  }, [isCySEC]);
+
+  const getPhoneNumber = useCallback(() => {
+    return isCySEC ? CONTACT_PHONE : CONTACT_PHONE_FSA;
   }, [isCySEC]);
 
   return (
@@ -44,19 +48,17 @@ const ContactUs = ({ className }) => {
               {getEmail()}
             </a>
           </div>
-          {isCySEC && (
-            <div className="contact-us__contact-block">
+          <div className="contact-us__contact-block">
               <p className="contact-us__contact-block-title">
                 {t("contact-us_phone")}
               </p>
               <a
                 className="contact-us__contact-block-href"
-                href={`tel:${CONTACT_PHONE_LINK}`}
+                href={`tel:${getPhoneNumber()}`}
               >
-                {CONTACT_PHONE}
+                {`+${getPhoneNumber()}`}
               </a>
             </div>
-          )}
         </div>
         <div className="contact-us__block">
           <ContactUsForm />
