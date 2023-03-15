@@ -18,6 +18,7 @@ const TradingTicker = ({
   isInfiniteAutoScroll,
   tradingSymbols,
   setTradingSymbols,
+  animationDuration,
 }) => {
   const [tradingSection, setTradingSection] = useState(CYSEC_TRADING_SECTIONS);
   const [selectedSection, setSelectedSection] = useState(
@@ -73,6 +74,7 @@ const TradingTicker = ({
       <TradingSymbols
         symbols={tradingSymbols}
         isInfiniteAutoScroll={isInfiniteAutoScroll}
+        animationDuration={animationDuration}
       />
     </section>
   );
