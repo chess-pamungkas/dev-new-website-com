@@ -4,7 +4,12 @@ import cn from "classnames";
 import scrollArrow from "../../../../assets/images/trading-ticker/scroll-arrow.svg";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 
-const TradingSymbols = ({ className, symbols, isInfiniteAutoScroll }) => {
+const TradingSymbols = ({
+  className,
+  symbols,
+  isInfiniteAutoScroll,
+  animationDuration,
+}) => {
   const symbolsRef = useRef();
   const [scrollX, setScrollX] = useState(0);
   const [scrollEnd, setScrollEnd] = useState(false);
@@ -58,11 +63,19 @@ const TradingSymbols = ({ className, symbols, isInfiniteAutoScroll }) => {
         })}
         ref={symbolsRef}
         onScroll={scrollCheck}
+        style={
+          animationDuration ? { animationDuration: animationDuration } : {}
+        }
       >
         {symbols &&
-          symbols.map((symbol) => (
-            <TradingSymbol key={`TradingSymbol${symbol.symbol}`} {...symbol} />
-          ))}
+          (isInfiniteAutoScroll ? symbols.concat(symbols) : symbols).map(
+            (symbol) => (
+              <TradingSymbol
+                key={`TradingSymbol${symbol.symbol}`}
+                {...symbol}
+              />
+            )
+          )}
         {scrollX > 0 && (
           <img
             src={scrollArrow}

@@ -94,6 +94,8 @@ const ETFContent = () => {
       </TopMarket>
       <TradingTicker
         title={t("etf_trading-ticker-title")}
+        isInfiniteAutoScroll={true}
+        animationDuration={"36s"}
         pageSpecificSection={ETF_TRADING_SECTION}
         tradingSymbols={tradingSymbols}
         setTradingSymbols={setTradingSymbols}
