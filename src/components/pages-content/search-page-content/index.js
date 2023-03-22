@@ -121,6 +121,7 @@ const SearchPageContent = () => {
             <ButtonLink
               link={HOME_PAGE_LINK}
               className="button-link button-link--ghost-red search-page__no-results-btn"
+              ignoreDisabling={true}
             >
               {t("search-go-back-btn")}
             </ButtonLink>
@@ -151,6 +152,7 @@ const SearchPageContent = () => {
                       <ButtonLink
                         link={`${page.url}`}
                         className="search-page__btn button-link--ghost-red"
+                        ignoreDisabling={true}
                       >
                         {t("search-submit-btn")}
                       </ButtonLink>
