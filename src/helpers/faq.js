@@ -206,7 +206,7 @@ export const FAQ_INDICES = [
     answer: ["metals_faq-content6"],
   },
   {
-    question: "indices_faqtitle7",
+    question: "indices_faq-title7",
     answer: ["indices_faq-content7"],
   },
 ];
