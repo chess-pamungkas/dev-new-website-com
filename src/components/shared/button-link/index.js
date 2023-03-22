@@ -4,7 +4,7 @@ import cn from "classnames";
 import ClientResolverContext from "../../../context/client-resolver-context";
 import { sendClickEventToGA } from "../../../helpers/services/google-analytics-service";
 
-const ButtonLink = ({ children, className, link }) => {
+const ButtonLink = ({ children, className, link, ignoreDisabling }) => {
   const {
     clientConfig: { banned },
   } = useContext(ClientResolverContext);
@@ -15,7 +15,7 @@ const ButtonLink = ({ children, className, link }) => {
         target="_blank"
         rel="noopener noreferrer"
         className={cn("button-link", className, {
-          "button-link--disabled": banned,
+          "button-link--disabled": banned && !ignoreDisabling,
         })}
         onClick={(e) => sendClickEventToGA(e)}
       >
@@ -27,7 +27,7 @@ const ButtonLink = ({ children, className, link }) => {
       <Link
         to={link}
         className={cn("button-link", className, {
-          "button-link--disabled": banned,
+          "button-link--disabled": banned && !ignoreDisabling,
         })}
         onClick={(e) => sendClickEventToGA(e)}
       >
