@@ -331,6 +331,7 @@
   "contact-us_page-text": "ต้องการติดต่อเราใช่หรือไม่ คุณสามารถกรอกคำถามของคุณในแบบฟอร์มหรือดูอีเมลติดต่อของหน่วยงานที่เกี่ยวข้องของเราตามที่คุณต้องการด้านล่างนี้",
   "contact-us_email": "อีเมล",
   "contact-us_phone": "โทรศัพท์",
+  "contact-us_address": "Address (TR)",
   "contact-us_form_name": "ชื่อ-นามสกุล",
   "contact-us_form_error_message_required": "จำเป็นต้องกรอกข้อมูลในช่องนี้",
   "contact-us_form_error_message_invalid": "มีบางอย่างไม่ถูกต้อง แบบฟอร์มไม่สมบูรณ์",

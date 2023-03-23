@@ -3,6 +3,7 @@ import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
 import {
+  CONTACT_ADDRESS,
   CONTACT_EMAIL,
   CONTACT_EMAIL_FSA,
   CONTACT_PHONE,
@@ -49,16 +50,26 @@ const ContactUs = ({ className }) => {
             </a>
           </div>
           <div className="contact-us__contact-block">
+            <p className="contact-us__contact-block-title">
+              {t("contact-us_phone")}
+            </p>
+            <a
+              className="contact-us__contact-block-href"
+              href={`tel:${getPhoneNumber()}`}
+            >
+              {`+${getPhoneNumber()}`}
+            </a>
+          </div>
+          {isCySEC && (
+            <div className="contact-us__contact-block">
               <p className="contact-us__contact-block-title">
-                {t("contact-us_phone")}
+                {t("contact-us_address")}
               </p>
-              <a
-                className="contact-us__contact-block-href"
-                href={`tel:${getPhoneNumber()}`}
-              >
-                {`+${getPhoneNumber()}`}
-              </a>
+              <p className="contact-us__contact-block-text">
+                {CONTACT_ADDRESS}
+              </p>
             </div>
+          )}
         </div>
         <div className="contact-us__block">
           <ContactUsForm />

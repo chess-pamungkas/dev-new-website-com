@@ -433,6 +433,7 @@
   "contact-us_page-text": "¿Necesitas ponerte en contacto con nosotros? Rellena el formulario con tu consulta o busca a continuación el correo electrónico del departamento con el que deseas ponerte en contacto.",
   "contact-us_email": "Correo electrónico",
   "contact-us_phone": "Teléfono",
+  "contact-us_address": "Address (TR)",
   "contact-us_form_name": "Nombre completo",
   "contact-us_form_error_message_required": "Este campo es requerido.",
   "contact-us_form_error_message_invalid": " Algo va mal. El formulario no es válido.",
