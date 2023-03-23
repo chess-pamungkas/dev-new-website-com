@@ -125,11 +125,22 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
   ]);
 
   useEffect(() => {
+    if (isMobile) {
+      let livechatindex = document.getElementById(
+        "convrs-chat-channel-container"
+      );
+
+      if (livechatindex) {
+        livechatindex.style.setProperty("z-index", "1");
+      }
+    }
     if (isCysecNotification) {
       let bottom;
+
       switch (true) {
         case isMobile:
           bottom = expand ? "190px" : "65px";
+
           break;
         case isMD:
           bottom = "110px";

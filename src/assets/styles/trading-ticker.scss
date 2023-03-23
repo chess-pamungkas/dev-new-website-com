@@ -91,6 +91,11 @@
   display: flex;
   justify-content: center;
   position: relative;
+  height: 177px;
+
+  @include tablet {
+    height: 99px;
+  }
 
   &--infinite-auto-scroll {
     justify-content: unset;
@@ -104,8 +109,8 @@
     visibility: visible;
   }
   100% {
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -121,7 +126,6 @@
 
   &--infinite-auto-scroll {
     overflow: unset;
-    padding-left: 99%;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-name: auto-scroll-animation;

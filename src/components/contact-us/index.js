@@ -3,10 +3,11 @@ import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
 import {
+  CONTACT_ADDRESS,
   CONTACT_EMAIL,
   CONTACT_EMAIL_FSA,
   CONTACT_PHONE,
-  CONTACT_PHONE_LINK,
+  CONTACT_PHONE_FSA,
   DIR_LTR,
   DIR_RTL,
 } from "../../helpers/constants";
@@ -20,6 +21,10 @@ const ContactUs = ({ className }) => {
 
   const getEmail = useCallback(() => {
     return isCySEC ? CONTACT_EMAIL : CONTACT_EMAIL_FSA;
+  }, [isCySEC]);
+
+  const getPhoneNumber = useCallback(() => {
+    return isCySEC ? CONTACT_PHONE : CONTACT_PHONE_FSA;
   }, [isCySEC]);
 
   return (
@@ -44,17 +49,25 @@ const ContactUs = ({ className }) => {
               {getEmail()}
             </a>
           </div>
+          <div className="contact-us__contact-block">
+            <p className="contact-us__contact-block-title">
+              {t("contact-us_phone")}
+            </p>
+            <a
+              className="contact-us__contact-block-href"
+              href={`tel:${getPhoneNumber()}`}
+            >
+              {`+${getPhoneNumber()}`}
+            </a>
+          </div>
           {isCySEC && (
             <div className="contact-us__contact-block">
               <p className="contact-us__contact-block-title">
-                {t("contact-us_phone")}
+                {t("contact-us_address")}
               </p>
-              <a
-                className="contact-us__contact-block-href"
-                href={`tel:${CONTACT_PHONE_LINK}`}
-              >
-                {CONTACT_PHONE}
-              </a>
+              <p className="contact-us__contact-block-text">
+                {CONTACT_ADDRESS}
+              </p>
             </div>
           )}
         </div>

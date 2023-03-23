@@ -416,7 +416,7 @@
   "company_company-advantages-title1": "Seguridad",
   "company_company-advantages-text1-1": "OQtima entiende la importancia de cumplir todas las leyes y normativas pertinentes para proteger a los clientes. En OQtima tenemos controles estrictos en nuestro entorno de cumplimiento y auditorías internas periódicas para mejorar nuestro rendimiento.",
   "company_company-advantages-text1-2": "Como entidad regulada por CySEC, OQtima debe cumplir estrictas normas financieras, incluidos requisitos de adecuación del capital y auditoría.",
-  "company_company-advantages-text1-3": "OQtima mantiene el dinero de los clientes en cuentas fiduciarias segregadas con bancos de primer nivel. Todo el dinero de los clientes se gestiona de acuerdo con las normas MiFID de gestión del dinero de los clientes y se mantiene separado de los fondos de la empresa OQtima. El dinero de los clientes no se utiliza para ningún otro propósito que no sea facilitar la actividad comercial de los clientes.",
+  "company_company-advantages-text1-3": "OQtima holds Clients Money in Segregated trust accounts with top tier banks. All Client money is held separately to OQtima company funds. Client money is not used for any purpose other than to facilitate clients trading activity. (TR)",
   "company_company-advantages-text1-4": "OQtima mantiene controles adecuados y supervisa la transferencia de información confidencial y sensible de los clientes dentro y fuera de la empresa en función de la necesidad de conocimiento. OQtima no revela deliberadamente la información del cliente a menos que sea a petición del cliente, o cuando sea requerido por la ley.",
 
   "company_company-advantages-title2": "Calidad",
@@ -433,6 +433,7 @@
   "contact-us_page-text": "¿Necesitas ponerte en contacto con nosotros? Rellena el formulario con tu consulta o busca a continuación el correo electrónico del departamento con el que deseas ponerte en contacto.",
   "contact-us_email": "Correo electrónico",
   "contact-us_phone": "Teléfono",
+  "contact-us_address": "Address (TR)",
   "contact-us_form_name": "Nombre completo",
   "contact-us_form_error_message_required": "Este campo es requerido.",
   "contact-us_form_error_message_invalid": " Algo va mal. El formulario no es válido.",

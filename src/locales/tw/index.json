@@ -379,7 +379,7 @@
   "company_company-advantages-title1": "安全性",
   "company_company-advantages-text1-1": "OQtima了解且完全遵守所有相关法律和法规以保护客户的重要性。在OQtima，我们有严格的合规审核和定期的内部审计以提高我们的业务能力.",
   "company_company-advantages-text1-2": "作为CySEC监管的实体，OQtima需要满足严格的财务标准，包括资本充足率和审计要求.",
-  "company_company-advantages-text1-3": "OQtima 在顶级银行的独立账户中隔离持有客户资金。 所有客户资金均根据 MiFID 客户资金处理规则进行管理，并与 OQtima 公司资金分开持有。 客户资金不用于除支持客户交易活动以外的任何活动.",
+  "company_company-advantages-text1-3": "OQtima holds Clients Money in Segregated trust accounts with top tier banks. All Client money is held separately to OQtima company funds. Client money is not used for any purpose other than to facilitate clients trading activity. (TR)",
   "company_company-advantages-text1-4": "OQtima致力于保证客户的信息安全性，仅在受监督的情况下处理公司内外部的客户信息转移。 OQtima永远不会主动披露客户的个人信息，除非应客户本人要求或法律要求.",
 
   "company_company-advantages-title2": "可靠性",
@@ -396,6 +396,7 @@
   "contact-us_page-text": "需要联系我们吗？填写您的查询表格或在下面找到您想要联系部门的电子邮件.",
   "contact-us_email": "电子邮件",
   "contact-us_phone": "联系电话",
+  "contact-us_address": "Address (TR)",
   "contact-us_form_name": "姓名",
   "contact-us_form_error_message_required": "这是必填项.",
   "contact-us_form_error_message_invalid": "出了点问题，此表格无效.",

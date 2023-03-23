@@ -6,6 +6,9 @@ import revolutLogo from "../assets/images/icons/payments/revolut.png";
 import skrillLogo from "../assets/images/icons/payments/skrill.png";
 import wiseLogo from "../assets/images/icons/payments/wise.png";
 import { useEntityPostfix } from "./use-entity-postfix";
+import LanguageContext from "../context/language-context";
+import { useContext } from "react";
+import { FXBO_LANG_URL_KEYS_MAP } from "./lang-options.config";
 
 export const WINDOW_SIZE_SM = 375;
 export const WINDOW_SIZE_MD = 768;
@@ -34,15 +37,17 @@ export const FSA_POSTFIX = "-fsa";
 export const DIR_LTR = "ltr";
 export const DIR_RTL = "rtl";
 
-export const CONTACT_PHONE = "±35725585379";
-export const CONTACT_PHONE_LINK = "35725585379";
+export const CONTACT_PHONE = "35725010490";
+export const CONTACT_PHONE_FSA = "442045867126";
 export const CONTACT_EMAIL = "support@oqtima.eu";
 export const CONTACT_EMAIL_FSA = "support@oqtima.com";
+export const CONTACT_ADDRESS = "Franklin Roosevelt 247-block C, Office 101, Limassol 3046";
 
 export const HOME_PAGE_LINK = "/";
 
 export const GetRegistrationLink = () => {
   const { isCySEC } = useEntityPostfix();
+  const { selectedLanguage } = useContext(LanguageContext);
 
   // return `https://my.oqtima.${isCySEC ? "eu" : "com"}/register/`;
   return `/`;
@@ -50,6 +55,7 @@ export const GetRegistrationLink = () => {
 
 export const GetLoginLink = () => {
   const { isCySEC } = useEntityPostfix();
+  const { selectedLanguage } = useContext(LanguageContext);
 
   // return `https://my.oqtima.${isCySEC ? "eu" : "com"}/login/`;
   return `/`;
@@ -57,6 +63,7 @@ export const GetLoginLink = () => {
 
 export const GetDepositLink = () => {
   const { isCySEC } = useEntityPostfix();
+  const { selectedLanguage } = useContext(LanguageContext);
 
   // return `https://my.oqtima.${isCySEC ? "eu" : "com"}/funds/deposit/`;
   return `/`;
