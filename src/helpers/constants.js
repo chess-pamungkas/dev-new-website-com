@@ -41,6 +41,7 @@ export const CONTACT_PHONE = "35725010490";
 export const CONTACT_PHONE_FSA = "442045867126";
 export const CONTACT_EMAIL = "support@oqtima.eu";
 export const CONTACT_EMAIL_FSA = "support@oqtima.com";
+export const CONTACT_ADDRESS = "Franklin Roosevelt 247-block C, Office 101, Limassol 3046";
 
 export const HOME_PAGE_LINK = "/";
 
