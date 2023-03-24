@@ -81,30 +81,30 @@ module.exports = {
       },
     },
   ],
-  headers: {
-    "/public/**/*.html": [
-      {
-        key: "Cache-Control",
-        value: "public, max-age=0, must-revalidate",
-      },
-    ],
-    "/public/page-data/*": [
-      {
-        key: "Cache-Control",
-        value: "public, max-age=0, must-revalidate",
-      },
-    ],
-    "/public/**/*.js": [
-      {
-        key: "Cache-Control",
-        value: "public, max-age=31536000, immutable",
-      },
-    ],
-    "/public/**/*.css": [
-      {
-        key: "Cache-Control",
-        value: "public, max-age=31536000, immutable",
-      },
-    ],
-  },
+//   headers: {
+//     "/public/**/*.html": [
+//       {
+//         key: "Cache-Control",
+//         value: "public, max-age=0, must-revalidate",
+//       },
+//     ],
+//     "/public/page-data/*": [
+//       {
+//         key: "Cache-Control",
+//         value: "public, max-age=0, must-revalidate",
+//       },
+//     ],
+//     "/public/**/*.js": [
+//       {
+//         key: "Cache-Control",
+//         value: "public, max-age=31536000, immutable",
+//       },
+//     ],
+//     "/public/**/*.css": [
+//       {
+//         key: "Cache-Control",
+//         value: "public, max-age=31536000, immutable",
+//       },
+//     ],
+//   },
 };
