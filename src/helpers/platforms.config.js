@@ -12,7 +12,7 @@ import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 import { useEntityPostfix } from "./use-entity-postfix";
 export const CTRADER_DOWNLOAD_LINKS = {
   androidFSA: "https://play.google.com/store/apps/details?id=com.oqtima.app",
-  androidEU: "",
+  androidEU: " https://play.google.com/store/apps/details?id=eu.oqtima.app  ",
   iosFSA: "https://apps.apple.com/cy/app/oqtima-ctrader/id1672522637",
   iosEU: "",
   windowsFSA: "https://getctrader.com/oqtima/ctrader-oqtima-setup.exe",

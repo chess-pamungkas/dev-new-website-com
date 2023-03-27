@@ -31,7 +31,9 @@ const CtraderPageContent = () => {
       case isIOS:
         return CTRADER_DOWNLOAD_LINKS.iosFSA;
       case isAndroid:
-        return CTRADER_DOWNLOAD_LINKS.androidFSA;
+        return isCySEC
+          ? CTRADER_DOWNLOAD_LINKS.androidEU
+          : CTRADER_DOWNLOAD_LINKS.androidFSA;
       case isWindows:
         return isCySEC
           ? CTRADER_DOWNLOAD_LINKS.windowsEU
