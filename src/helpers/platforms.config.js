@@ -180,10 +180,10 @@ export const CYSEC_MT5_ADVANTAGES = [
     key: "adv16",
     text: "mt5_market-items-list_adv16",
   },
-  {
-    key: "adv17",
-    text: "mt5_market-items-list_adv17",
-  },
+  // {
+  //   key: "adv17",
+  //   text: "mt5_market-items-list_adv17",
+  // },
 ];
 
 export const CYSEC_MT4_ADVANTAGES = [
