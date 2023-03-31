@@ -152,13 +152,6 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
         }
       }
 
-      // let mt5Path = window.location.href == "/mt5-webtrader";
-      // console.log(mt5Path, "what path is");
-      // if (mt5Path && isBrowser()) {
-      //   livechatindex.style.setProperty("z-index", "-1");
-      //   console.log(mt5Path, "what path is");
-      // }
-
       if (livechatindex) {
         livechatindex.style.setProperty("z-index", "1");
       }
