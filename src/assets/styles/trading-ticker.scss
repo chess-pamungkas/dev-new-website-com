@@ -117,12 +117,18 @@
 .trading-symbols {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: hidden;
+  overflow-x: scroll;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   margin-right: 14px;
   margin-left: 14px;
   padding-bottom: 6px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &--infinite-auto-scroll {
     overflow: unset;

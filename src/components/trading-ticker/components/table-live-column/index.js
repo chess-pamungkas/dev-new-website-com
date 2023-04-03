@@ -22,11 +22,15 @@ const TableLiveColumn = ({ symbol, tradingSymbols }) => {
     <div className="table__info-column">
       <div className="table__params">
         <div className="table__param">
-          <span className="table__param-name">Bid</span>
+          <span className="table__param-name">
+            {t("index_trading-ticker-bid")}
+          </span>
           <span className="table__param-value--up">{bidValue}</span>
         </div>
         <div className="table__param">
-          <span className="table__param-name">Ask</span>
+          <span className="table__param-name">
+            {t("index_trading-ticker-ask")}
+          </span>
           <span className={`table__param-value--${direction}`}>{askValue}</span>
         </div>
       </div>

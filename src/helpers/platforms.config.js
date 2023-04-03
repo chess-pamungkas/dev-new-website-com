@@ -12,7 +12,7 @@ import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 import { useEntityPostfix } from "./use-entity-postfix";
 export const CTRADER_DOWNLOAD_LINKS = {
   androidFSA: "https://play.google.com/store/apps/details?id=com.oqtima.app",
-  androidEU: "",
+  androidEU: " https://play.google.com/store/apps/details?id=eu.oqtima.app  ",
   iosFSA: "https://apps.apple.com/cy/app/oqtima-ctrader/id1672522637",
   iosEU: "",
   windowsFSA: "https://getctrader.com/oqtima/ctrader-oqtima-setup.exe",
@@ -180,10 +180,10 @@ export const CYSEC_MT5_ADVANTAGES = [
     key: "adv16",
     text: "mt5_market-items-list_adv16",
   },
-  {
-    key: "adv17",
-    text: "mt5_market-items-list_adv17",
-  },
+  // {
+  //   key: "adv17",
+  //   text: "mt5_market-items-list_adv17",
+  // },
 ];
 
 export const CYSEC_MT4_ADVANTAGES = [
@@ -550,99 +550,4 @@ export const TRADING_VIEW_ADVANTAGES = [
   },
 ];
 
-export const COLUMNS_PLATFORMS = [
-  {
-    id: "group1",
-    Header: "",
-    columns: [
-      {
-        Header: "",
-        accessor: "col1",
-      },
-    ],
-  },
-  {
-    id: "group2",
-    Header: "MetaTrader 5",
-    columns: [
-      {
-        Header: "",
-        accessor: "col2",
-      },
-    ],
-  },
-  {
-    id: "group3",
-    Header: "MetaTrader 4",
-    columns: [
-      {
-        Header: "",
-        accessor: "col3",
-      },
-    ],
-  },
-];
-
-const DataPlatforms = () => {
-  const { t } = useTranslation();
-  const DATA_PLATFORMS = [
-    {
-      col1: t("mt4_table-data-platform-col1-1"),
-      col2: "4",
-      col3: "3",
-    },
-    {
-      col1: t("mt4_table-data-platform-col1-2"),
-      col2: "6",
-      col3: "3",
-    },
-    {
-      col1: t("mt4_table-data-platform-col1-3"),
-      col2: "Untitled",
-      col3: "3",
-    },
-    {
-      col1: t("mt4_table-data-platform-col1-4"),
-      col2: "38",
-      col3: "38",
-    },
-    {
-      col1: t("mt4_table-data-platform-col1-5"),
-      col2: "Mql5",
-      col3: "Mql4",
-    },
-    {
-      col1: t("mt4_table-data-platform-col1-6"),
-      col2: "21",
-      col3: "9",
-    },
-    {
-      col1: t("mt4_table-data-platform-col1-7"),
-      col2: "44",
-      col3: "31",
-    },
-    {
-      col1: t("mt4_table-data-platform-col1-8"),
-      col2: t("mt4_table-data-platform-col2-8"),
-      col3: t("mt4_table-data-platform-col3-8"),
-    },
-    {
-      col1: t("mt4_table-data-platform-col1-9"),
-      col2: t("mt4_table-data-platform-col2-9"),
-      col3: t("mt4_table-data-platform-col3-9"),
-    },
-    {
-      col1: t("mt4_table-data-platform-col1-10"),
-      col2: t("mt4_table-data-platform-col2-10"),
-      col3: t("mt4_table-data-platform-col3-10"),
-    },
-    {
-      col1: t("mt4_table-data-platform-col1-11"),
-      col2: t("mt4_table-data-platform-col2-11"),
-      col3: t("mt4_table-data-platform-col3-11"),
-    },
-  ];
-  return DATA_PLATFORMS;
-};
-
-export { MetaTrader4info, MetaTrader5info, DataPlatforms };
+export { MetaTrader4info, MetaTrader5info };

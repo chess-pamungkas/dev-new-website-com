@@ -5,15 +5,11 @@ import animation from "../../../assets/images/animations/aggregator_MT4.json";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
 import {
-  COLUMNS_PLATFORMS,
-  DataPlatforms,
   CYSEC_MT4_ADVANTAGES,
   FSA_MT4_ADVANTAGES,
   MT4_DOWNLOAD_LINKS,
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/MT4andMT5.png";
-import TopMarketLayout from "../../top-market-layout";
-import TableComponent from "../../shared/table";
 import icon from "../../../assets/images/icon--white.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
@@ -165,25 +161,6 @@ const Mt4PageContent = () => {
         tabs={tabs}
         ref={downloadRef}
       />
-      <TopMarketLayout
-        title={
-          <HighlightedLocalizationText
-            localizationText="mt4_top-market-layout-title"
-            wordsToHighlight="mt4_top-market-layout-title-accent"
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-red"
-          />
-        }
-        className={cn("top-market-layout--mt", {
-          "top-market-layout--mt--rtl": isRTL,
-        })}
-      >
-        <TableComponent
-          data={DataPlatforms()}
-          columns={COLUMNS_PLATFORMS}
-          tableClassName={isRTL ? "mt-table--rtl" : ""}
-        />
-      </TopMarketLayout>
       {isXL && (
         <TopMarketPromotion
           className={cn("bottom-promotion", {
