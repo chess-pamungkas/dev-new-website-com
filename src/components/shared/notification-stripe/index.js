@@ -135,21 +135,21 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
       );
 
       if (isBrowser()) {
+        let livechatisMobile = document.getElementById(
+          "convrs-chat-channel-container"
+        );
+
         const path = window.location.pathname;
         console.log(path, "what path is");
-        const page = path.substring(0, path.length - 1);
-        switch (page) {
-          case MT5_WEB_TRADER_LINK:
-            livechatindex.style.display = "none";
-            if (isCysecNotification) {
-              setIsHidden(true);
-            }
-            break;
-          case MT4_WEB_TRADER_LINK:
-            livechatindex.style.display = "none";
-            break;
-          default:
+        const pageMt5 = path.endsWith("/mt5-webtrader/");
+        const pageMt4 = path.endsWith("/mt4-webtrader/");
+        if (pageMt5) {
+          livechatisMobile.style.display = "none";
+          if (isCysecNotification) {
+            setIsHidden(true);
+          }
         }
+        if (pageMt4) livechatisMobile.style.display = "none";
       }
 
       if (livechatindex) {
