@@ -140,7 +140,6 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
         );
 
         const path = window.location.pathname;
-        console.log(path, "what path is");
         const pageMt5 = path.endsWith("/mt5-webtrader/");
         const pageMt4 = path.endsWith("/mt4-webtrader/");
         if (pageMt5) {
