@@ -1,6 +1,7 @@
 import { useCallback, useContext } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { I18nextContext } from "gatsby-plugin-react-i18next";
+import { replaceLocaleVariables } from "../services/replace-locale-variables";
 
 export const useSearchData = () => {
   const { language } = useContext(I18nextContext); // current selected language
@@ -49,6 +50,10 @@ export const useSearchData = () => {
             it
             cn
             tw
+            fr
+            pt
+            vn
+            th
           }
         }
       }
@@ -65,7 +70,8 @@ export const useSearchData = () => {
         return [];
 
       const results = currentLocaleIndexedData.reduce((acc, piece) => {
-        const [url, content] = piece.split("_");
+        var [url, content] = piece.split("_");
+        content = replaceLocaleVariables(content)
         if (!url || !content) return acc;
 
         const transformedContent = content.toLowerCase();
