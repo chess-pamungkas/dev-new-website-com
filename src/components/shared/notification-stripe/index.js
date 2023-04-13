@@ -17,7 +17,11 @@ import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import expandIcon from "../../../assets/images/icons/accordion.svg";
 import collapseIcon from "../../../assets/images/icons/accordion-active.svg";
 import NotificationStripeContext from "../../../context/notification-stripe-context";
-
+import { isBrowser } from "../../../helpers/services/is-browser";
+import {
+  MT5_WEB_TRADER_LINK,
+  MT4_WEB_TRADER_LINK,
+} from "../../../helpers/constants";
 export const CysecStripe = ({ t, isCySEC }) => {
   const { expand, setExpand } = useContext(NotificationStripeContext);
   const { isMobile } = useWindowSize();
@@ -130,6 +134,23 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
         "convrs-chat-channel-container"
       );
 
+      if (isBrowser()) {
+        let livechatisMobile = document.getElementById(
+          "convrs-chat-channel-container"
+        );
+
+        const path = window.location.pathname;
+        const pageMt5 = path.endsWith("/mt5-webtrader/");
+        const pageMt4 = path.endsWith("/mt4-webtrader/");
+        if (pageMt5) {
+          livechatisMobile.style.display = "none";
+          if (isCysecNotification) {
+            setIsHidden(true);
+          }
+        }
+        if (pageMt4) livechatisMobile.style.display = "none";
+      }
+
       if (livechatindex) {
         livechatindex.style.setProperty("z-index", "1");
       }
@@ -140,7 +161,6 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
       switch (true) {
         case isMobile:
           bottom = expand ? "190px" : "65px";
-
           break;
         case isMD:
           bottom = "110px";

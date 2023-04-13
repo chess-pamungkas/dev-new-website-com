@@ -107,9 +107,9 @@ const SpreadsAndFeesPageContent = () => {
             }
             isSearch
           />
-          <Link className="spreads__table-link" to="/">
+          {/* <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title1")}
-          </Link>
+          </Link> */}
         </>
       ),
     },
@@ -133,9 +133,9 @@ const SpreadsAndFeesPageContent = () => {
             }
             isSearch
           />
-          <Link className="spreads__table-link" to="/">
+          {/* <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title2")}
-          </Link>
+          </Link> */}
         </>
       ),
     },
@@ -159,9 +159,9 @@ const SpreadsAndFeesPageContent = () => {
             }
             isSearch
           />
-          <Link className="spreads__table-link" to="/">
+          {/* <Link className="spreads__table-link" to="/">
             {t("spreads_tabs_bottom_link_title_Metals")}
-          </Link>
+          </Link> */}
         </>
       ),
     },
@@ -193,9 +193,9 @@ const SpreadsAndFeesPageContent = () => {
                 }
                 isSearch
               />
-              <Link className="spreads__table-link" to="/">
+              {/* <Link className="spreads__table-link" to="/">
                 {t("spreads_tabs_bottom_link_title")}
-              </Link>
+              </Link> */}
             </>
           ),
         },
