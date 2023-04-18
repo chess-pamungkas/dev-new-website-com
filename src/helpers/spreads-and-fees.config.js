@@ -1,4 +1,5 @@
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useEntityPostfix } from "./use-entity-postfix";
 
 const GeneralSpreadsTable = () => {
   const { t } = useTranslation();
@@ -545,8 +546,9 @@ const ColumnsSpreadTable2 = () => {
 };
 
 const DataSpreadTable2 = () => {
+  const { isCySEC } = useEntityPostfix();
   const { t } = useTranslation();
-  const DATA_SPREADS_TABLE_2 = [
+  const DATA_SPREADS_TABLE_2_CYSEC = [
     {
       col1: "USD",
       col2: t("spreads_account-data-table2-col2-1"),
@@ -563,6 +565,9 @@ const DataSpreadTable2 = () => {
       col1: "CHF",
       col2: t("spreads_account-data-table2-col2-4"),
     },
+  ];
+  const DATA_SPREADS_TABLE_2_FSA = [
+    ...DATA_SPREADS_TABLE_2_CYSEC,
     {
       col1: "SGD",
       col2: t("spreads_account-data-table2-col2-5"),
@@ -580,7 +585,7 @@ const DataSpreadTable2 = () => {
       col2: t("spreads_account-data-table2-col2-8"),
     },
   ];
-  return DATA_SPREADS_TABLE_2;
+  return isCySEC ? DATA_SPREADS_TABLE_2_CYSEC : DATA_SPREADS_TABLE_2_FSA;
 };
 
 export {
