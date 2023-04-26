@@ -31,7 +31,6 @@ import {
   INDICES_TRADING_SECTION,
   METALS_TRADING_SECTION,
   CRYPTO_TRADING_SECTION,
-  SPREADS_PAGE_SECTIONS,
 } from "../../../helpers/config";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
@@ -42,9 +41,7 @@ const SpreadsAndFeesPageContent = () => {
   const { isCySEC } = useEntityPostfix();
   //TODO REFACTOR 31-88
   const [tradingSymbols, setTradingSymbols] = useState([]);
-  const [selectedSection, setSelectedSection] = useState(
-    SPREADS_PAGE_SECTIONS[0]
-  );
+  const [selectedSection, setSelectedSection] = useState(FOREX_TRADING_SECTION);
 
   const COLUMNS_SPREADS_TABLE_CRYPTO = [
     {
