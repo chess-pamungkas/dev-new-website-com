@@ -8,6 +8,7 @@ import {
 } from "../../helpers/config";
 import TradingSections from "./components/trading-sections";
 import { useEntityPostfix } from "../../helpers/use-entity-postfix";
+import { filterSymbols } from "../../helpers/services/filter-symbols";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 
@@ -72,7 +73,7 @@ const TradingTicker = ({
         setSelectedSection={setSelectedSection}
       />
       <TradingSymbols
-        symbols={tradingSymbols}
+        symbols={filterSymbols(tradingSymbols, selectedSection.id)}
         isInfiniteAutoScroll={isInfiniteAutoScroll}
         animationDuration={animationDuration}
       />
