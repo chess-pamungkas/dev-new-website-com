@@ -79,17 +79,24 @@ const Tabs = ({
         ) : (
           // eslint-disable-next-line
           <ul role="tablist" className="tabs__tablist">
-            {tabList.map(({ title, isTitleWithIcon, icon }, tabIndex) => (
-              <Tab
-                key={`${stringTransformToKebabCase(title)}_tab`}
-                tabIndex={tabIndex}
-                isSelected={currentTabIndex === tabIndex}
-                onTabClick={() => handleTabClick(tabIndex)}
-              >
-                {isTitleWithIcon && icon}
-                <span>{title}</span>
-              </Tab>
-            ))}
+            {tabList.map(
+              ({ title, isTitleWithIcon, icon, onClick }, tabIndex) => (
+                <Tab
+                  key={`${stringTransformToKebabCase(title)}_tab`}
+                  tabIndex={tabIndex}
+                  isSelected={currentTabIndex === tabIndex}
+                  onTabClick={() => {
+                    if (onClick) {
+                      onClick();
+                    }
+                    handleTabClick(tabIndex);
+                  }}
+                >
+                  {isTitleWithIcon && icon}
+                  <span>{title}</span>
+                </Tab>
+              )
+            )}
           </ul>
         )}
       </div>
