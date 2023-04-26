@@ -3,6 +3,7 @@ import cn from "classnames";
 import React from "react";
 import { PAYMENT_SYSTEMS, GetDepositLink } from "./constants";
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useEntityPostfix } from "./use-entity-postfix";
 
 export const ColumnDeposit = () => {
   const { t } = useTranslation();
@@ -45,8 +46,13 @@ const DEPOSIT_COLUMNS_WITH_BTN = () => {
   );
 };
 
+const FSA_CURRENCIES = "USD, BRL, EUR, AUD, CHE, JPY, CNY, CAD";
+const CYSEC_CURRENCIES = "EUR, USD, GBP, CHF";
+
 export const DataDeposit = () => {
+  const { isCySEC } = useEntityPostfix();
   const { t } = useTranslation();
+  const CURRENCIES = isCySEC ? CYSEC_CURRENCIES : FSA_CURRENCIES;
   const DATA_DEPOSIT = [
     {
       col1: (
@@ -75,7 +81,7 @@ export const DataDeposit = () => {
       col2: t("withdrawal_data_col1"),
       col3: "$200",
       col4: t("withdrawal_data_col3"),
-      col5: "USD, BRL, EUR, AUD, CHE, JPY, CNY, CAD",
+      col5: CURRENCIES,
       col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
     {
@@ -97,7 +103,7 @@ export const DataDeposit = () => {
       col2: t("withdrawal_data_col1"),
       col3: "$200",
       col4: t("withdrawal_data_col3"),
-      col5: "USD, BRL, EUR, AUD, CHE, JPY, CNY, CAD",
+      col5: CURRENCIES,
       col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
     {
@@ -115,7 +121,7 @@ export const DataDeposit = () => {
       col2: t("withdrawal_data_col2"),
       col3: "$200",
       col4: t("withdrawal_data_col3"),
-      col5: "USD, BRL, EUR, AUD, CHE, JPY, CNY, CAD",
+      col5: CURRENCIES,
       col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
   ];
