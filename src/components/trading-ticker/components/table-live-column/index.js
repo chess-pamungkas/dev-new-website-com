@@ -4,19 +4,21 @@ import ButtonLink from "../../../shared/button-link";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 
+const NO_VALUE = "N/A";
+
+function parseSymbols(symbol, tradingSymbols) {
+  let symbolData = tradingSymbols.find((item) => item.symbol === symbol) || {};
+
+  return {
+    bid: symbolData.bid || NO_VALUE,
+    ask: symbolData.ask || NO_VALUE,
+    direction: symbolData.direction || NO_VALUE,
+  };
+}
+
 const TableLiveColumn = ({ symbol, tradingSymbols }) => {
-  const NO_VALUE = "N/A";
-  const [bidValue, setBidValue] = useState(NO_VALUE);
-  const [askValue, setAskValue] = useState(NO_VALUE);
-  const [direction, setDirection] = useState("up");
   const { t } = useTranslation();
-  useEffect(() => {
-    let symbolData =
-      tradingSymbols.find((item) => item.symbol === symbol) || {};
-    setBidValue(symbolData.bid || NO_VALUE);
-    setAskValue(symbolData.ask || NO_VALUE);
-    setDirection(symbolData.direction || "up");
-  }, [tradingSymbols, symbol]);
+  const { bid, ask, direction } = parseSymbols(symbol, tradingSymbols);
 
   return (
     <div className="table__info-column">
@@ -25,13 +27,13 @@ const TableLiveColumn = ({ symbol, tradingSymbols }) => {
           <span className="table__param-name">
             {t("index_trading-ticker-bid")}
           </span>
-          <span className="table__param-value--up">{bidValue}</span>
+          <span className="table__param-value--up">{bid}</span>
         </div>
         <div className="table__param">
           <span className="table__param-name">
             {t("index_trading-ticker-ask")}
           </span>
-          <span className={`table__param-value--${direction}`}>{askValue}</span>
+          <span className={`table__param-value--${direction}`}>{ask}</span>
         </div>
       </div>
       <div className="table__btn-wrapper">
