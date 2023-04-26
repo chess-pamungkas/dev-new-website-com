@@ -53,6 +53,7 @@ const ProfessionalQualificationPageContent = () => {
         text={t("professional-qualification_performance-text")}
       />
       <SplitTextPromotion
+        id="eligibilityCriteria"
         title={t("professional-qualification_text-banner-title")}
         subtitle={t("professional-qualification_text-banner-note")}
         className="split-text-promotion--professional-qualification"
