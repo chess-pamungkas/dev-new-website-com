@@ -13,7 +13,6 @@ const EligibilityList = ({ className }) => {
       className={cn("pq-eligibility-list", className, {
         "pq-eligibility-list--rtl": isRTL,
       })}
-      id="eligibilityCriteria"
       dir={isRTL ? DIR_RTL : DIR_LTR}
     >
       {ELIGIBILITY_LIST.map((item) => (

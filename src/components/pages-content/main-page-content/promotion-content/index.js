@@ -5,7 +5,7 @@ import cn from "classnames";
 import promo1 from "../../../../assets/images/promotions/promo1.svg";
 import {
   ALL_MARKETS_PAGE_LINK,
-  COMING_SOON_PAGE_LINK,
+  GetRegistrationLink,
   WITHDRAWAL_PAGE_LINK,
 } from "../../../../helpers/constants";
 import promo2 from "../../../../assets/images/promotions/promo2.svg";
@@ -290,7 +290,7 @@ const PromotionContent = ({ headerRef }) => {
         sectionRef={promo4Ref}
         image={promo4}
         btnTitle={t("index_promotion4-btn-text")}
-        link={COMING_SOON_PAGE_LINK}
+        link={GetRegistrationLink()}
         isRedPalette
         isReverseOrder
       >

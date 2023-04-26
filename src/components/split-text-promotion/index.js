@@ -12,11 +12,13 @@ const SplitTextPromotion = ({
   table,
   button,
   buttonNote,
+  id,
 }) => {
   const isRTL = useRtlDirection();
 
   return (
     <section
+      id={id}
       className={cn("split-text-promotion", className, {
         "split-text-promotion--rtl": isRTL,
       })}
