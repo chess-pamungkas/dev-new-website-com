@@ -18,6 +18,7 @@ import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 import { Link } from "gatsby";
+
 const Mt5PageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
@@ -26,15 +27,16 @@ const Mt5PageContent = () => {
   const [mt5Advantages, setMt5Advantages] = useState([]);
   const downloadRef = useRef(null);
 
-  const scrollToTarget = () => {
-    downloadRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  //No need at MT5 as theres no null value at download section.  Enable when MT5 is at .COM and empty values
+  // const scrollToTarget = () => {
+  //   downloadRef.current?.scrollIntoView({ behavior: "smooth" });
+  // };
 
   useEffect(() => {
     setMt5Advantages(isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES);
   }, [isCySEC]);
 
-  const getOSDevice = useCallback(() => {
+  const getOSDevice = () => {
     switch (true) {
       case isIOS:
         //enable when fsa links available,
@@ -55,7 +57,7 @@ const Mt5PageContent = () => {
           ? MT5_DOWNLOAD_LINKS.windowsEU
           : MT5_DOWNLOAD_LINKS.windowsFSA;
     }
-  }, [isIOS, isAndroid, isWindows, isMacOs]);
+  };
 
   const getAnimationStyles = useCallback(() => {
     switch (true) {
@@ -150,7 +152,6 @@ const Mt5PageContent = () => {
           "button-link--ghost": isLG || isXL,
         })}
         btnTitle={t("mt5_top-market-promo-btn")}
-        btnOnClick={scrollToTarget}
         link={getOSDevice()}
         isDocumentLink
         note={
