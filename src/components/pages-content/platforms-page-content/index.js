@@ -14,12 +14,11 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import platforms from "../../../assets/images/platforms/platforms.svg";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import { isCySEC } from "../../../helpers/entity-resolver";
 
 const PlatformsPageContent = () => {
   const { t } = useTranslation();
   const { isXL } = useWindowSize();
-  const { isCySEC } = useEntityPostfix();
   //converted this way as before was rendering [] and then again same data
   const META_TRADERS = isCySEC
     ? [MetaTrader5info()]

@@ -5,10 +5,10 @@ import netellerLogo from "../assets/images/icons/payments/neteller.png";
 import revolutLogo from "../assets/images/icons/payments/revolut.png";
 import skrillLogo from "../assets/images/icons/payments/skrill.png";
 import wiseLogo from "../assets/images/icons/payments/wise.png";
-import { useEntityPostfix } from "./use-entity-postfix";
 import LanguageContext from "../context/language-context";
 import { useContext } from "react";
 import { FXBO_LANG_URL_KEYS_MAP } from "./lang-options.config";
+import { isCySEC } from "./entity-resolver";
 
 export const WINDOW_SIZE_SM = 375;
 export const WINDOW_SIZE_MD = 768;
@@ -47,7 +47,6 @@ export const CONTACT_ADDRESS =
 export const HOME_PAGE_LINK = "/";
 
 export const GetRegistrationLink = () => {
-  const { isCySEC } = useEntityPostfix();
   const { selectedLanguage } = useContext(LanguageContext);
 
   return isCySEC
@@ -58,7 +57,6 @@ export const GetRegistrationLink = () => {
 };
 
 export const GetLoginLink = () => {
-  const { isCySEC } = useEntityPostfix();
   const { selectedLanguage } = useContext(LanguageContext);
 
   return isCySEC
@@ -69,7 +67,6 @@ export const GetLoginLink = () => {
 };
 
 export const GetDepositLink = () => {
-  const { isCySEC } = useEntityPostfix();
   const { selectedLanguage } = useContext(LanguageContext);
 
   return isCySEC

@@ -15,23 +15,20 @@ import { GetRegistrationLink } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
+import { isCySEC } from "../../../helpers/entity-resolver";
+
 const Mt4PageContent = () => {
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
-  const { isCySEC } = useEntityPostfix();
-  const [mt4Advantages, setMt4Advantages] = useState([]);
+  const mt4Advantages = isCySEC ? CYSEC_MT4_ADVANTAGES : FSA_MT4_ADVANTAGES;
 
   const downloadRef = useRef(null);
 
   const scrollToTarget = () => {
     downloadRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-  useEffect(() => {
-    setMt4Advantages(isCySEC ? CYSEC_MT4_ADVANTAGES : FSA_MT4_ADVANTAGES);
-  }, [isCySEC]);
 
   const getOSDevice = useCallback(() => {
     switch (true) {

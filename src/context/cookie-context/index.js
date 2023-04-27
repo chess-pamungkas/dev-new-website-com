@@ -14,6 +14,7 @@ import { useModal } from "../../helpers/hooks/use-modal";
 import { postClientConsent } from "../../helpers/services/client-consent-service";
 import { isBrowser } from "../../helpers/services/is-browser";
 import ClientResolverContext from "../client-resolver-context";
+import { currentEntity } from "../../helpers/entity-resolver";
 
 const CookieContext = createContext({});
 
@@ -37,7 +38,7 @@ export const CookieProvider = ({ children }) => {
   const [cookieConsent, setCookieConsent] = useState(
     cookies.get(COOKIE_CONSENT_KEY) || {}
   );
-  const { clientConfig, currentEntity } = useContext(ClientResolverContext);
+  const { clientConfig } = useContext(ClientResolverContext);
 
   useEffect(() => {
     if (isBrowser() && cookieConsent[SEGMENTATION_COOKIE_KEY]) {

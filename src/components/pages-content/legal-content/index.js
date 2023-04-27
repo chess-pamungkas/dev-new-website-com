@@ -9,13 +9,12 @@ import Documents from "../../documents";
 import { LEGAL_DOCS, LEGAL_DOCS_FSA } from "../../../helpers/documents";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
+import { isCySEC, sitePostfix } from "../../../helpers/entity-resolver";
 
 const LegalContent = () => {
   const { t } = useTranslation();
   const { isXL, isLG } = useWindowSize();
-  const { sitePostfix, isCySEC } = useEntityPostfix();
   const isRTL = useRtlDirection();
   const cysecImg = isXL || isLG ? cysec : null;
 

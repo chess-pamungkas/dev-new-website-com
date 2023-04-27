@@ -7,7 +7,7 @@ import {
   SHOULD_BE_SMALLER_LANGUAGES,
 } from "../../../../helpers/lang-options.config";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
-import { useEntityPostfix } from "../../../../helpers/use-entity-postfix";
+import { isCySEC } from "../../../../helpers/entity-resolver";
 
 const LangSelectItem = ({
   language: { id, icon: Icon, name } = {},
@@ -50,12 +50,7 @@ const LangOptions = ({
   languageSelectHandler,
 }) => {
   const { t } = useTranslation();
-  const [langOptions, setLangOptions] = useState([]);
-  const { isCySEC } = useEntityPostfix();
-
-  useEffect(() => {
-    setLangOptions(isCySEC ? CYSEC_LANG_SELECT_OPTIONS : LANG_SELECT_OPTIONS);
-  }, [isCySEC]);
+  const langOptions = isCySEC ? CYSEC_LANG_SELECT_OPTIONS : LANG_SELECT_OPTIONS;
 
   return (
     <div className={cn("lang-options", className)}>

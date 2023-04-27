@@ -13,7 +13,7 @@ import {
 } from "../../helpers/marketing.config";
 import { transformParamToKey } from "../../helpers/services/marketing-service";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
-import { useEntityPostfix } from "../../helpers/use-entity-postfix";
+import { isCySEC } from "../../helpers/entity-resolver";
 
 const MainPromotion = ({ className, isShowHero = true }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
@@ -21,7 +21,6 @@ const MainPromotion = ({ className, isShowHero = true }) => {
   const { t } = useTranslation();
   const { content, sect1 } = useContext(MarketingContext);
   const isRTL = useRtlDirection();
-  const { isCySEC } = useEntityPostfix();
   const DEFAULT_TEXT_SEQUENCE = isCySEC
     ? CYSEC_DEFAULT_TEXT_SEQUENCE
     : FSA_DEFAULT_TEXT_SEQUENCE;

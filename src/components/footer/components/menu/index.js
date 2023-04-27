@@ -7,16 +7,11 @@ import {
   CYSEC_MENU_ITEMS,
   FSA_MENU_ITEMS,
 } from "../../../../helpers/menu.config";
-import { useEntityPostfix } from "../../../../helpers/use-entity-postfix";
+import { isCySEC } from "../../../../helpers/entity-resolver";
 
 const Menu = ({ className }) => {
   const { t } = useTranslation();
-  const [menu, setMenu] = useState([]);
-  const { isCySEC } = useEntityPostfix();
-
-  useEffect(() => {
-    setMenu(isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS);
-  }, [isCySEC]);
+  const menu = isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS;
 
   return (
     <div className={cn("menu", className)}>
