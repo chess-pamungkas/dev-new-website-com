@@ -24,7 +24,6 @@ import icon from "../../../assets/images/icon--white.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
 import { Link } from "gatsby";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import {
   FOREX_TRADING_SECTION,
@@ -32,13 +31,13 @@ import {
   METALS_TRADING_SECTION,
   CRYPTO_TRADING_SECTION,
 } from "../../../helpers/config";
+import { isCySEC } from "../../../helpers/entity-resolver";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 
 const SpreadsAndFeesPageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
-  const { isCySEC } = useEntityPostfix();
   //TODO REFACTOR 31-88
   const [tradingSymbols, setTradingSymbols] = useState([]);
   const [selectedSection, setSelectedSection] = useState(FOREX_TRADING_SECTION);

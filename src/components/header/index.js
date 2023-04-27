@@ -14,7 +14,7 @@ import { CYSEC_MENU_ITEMS, FSA_MENU_ITEMS } from "../../helpers/menu.config";
 import NotificationStripe from "../shared/notification-stripe";
 import { GDPRPopup } from "../gdpr-popup";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
-import { useEntityPostfix } from "../../helpers/use-entity-postfix";
+import { isCySEC } from "../../helpers/entity-resolver";
 
 const Header = ({
   className,
@@ -23,13 +23,8 @@ const Header = ({
   isSearchBarAttached,
 }) => {
   const { t } = useTranslation();
-  const [menu, setMenu] = useState([]);
-  const { isCySEC } = useEntityPostfix();
+  const menu = isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS;
   const isRTL = useRtlDirection();
-
-  useEffect(() => {
-    setMenu(isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS);
-  }, [isCySEC]);
 
   return (
     <div className={cn("header-wrapper", className)} ref={headerRef}>

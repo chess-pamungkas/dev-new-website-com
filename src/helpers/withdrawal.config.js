@@ -3,7 +3,7 @@ import cn from "classnames";
 import React from "react";
 import { PAYMENT_SYSTEMS, GetDepositLink } from "./constants";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { useEntityPostfix } from "./use-entity-postfix";
+import { isCySEC } from "./entity-resolver";
 
 export const ColumnDeposit = () => {
   const { t } = useTranslation();
@@ -50,7 +50,6 @@ const FSA_CURRENCIES = "USD, BRL, EUR, AUD, CHE, JPY, CNY, CAD";
 const CYSEC_CURRENCIES = "EUR, USD, GBP, CHF";
 
 export const DataDeposit = () => {
-  const { isCySEC } = useEntityPostfix();
   const { t } = useTranslation();
   const CURRENCIES = isCySEC ? CYSEC_CURRENCIES : FSA_CURRENCIES;
   const DATA_DEPOSIT = [

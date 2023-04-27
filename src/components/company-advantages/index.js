@@ -8,14 +8,13 @@ import {
 } from "../../helpers/config";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
-import { useEntityPostfix } from "../../helpers/use-entity-postfix";
+import { isCySEC } from "../../helpers/entity-resolver";
 
 const getCompanyAdvantagesBlock = (isCySEC) =>
   isCySEC ? CYSEC_COMPANY_ADVANTAGES : COMPANY_ADVANTAGES;
 
 const CompanyAdvantages = ({ className }) => {
   const isRTL = useRtlDirection();
-  const { isCySEC } = useEntityPostfix();
   return (
     <section
       className={cn("company-advantages", className, {

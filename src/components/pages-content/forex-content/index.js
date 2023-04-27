@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/forex.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
@@ -22,9 +21,9 @@ import {
 } from "../../../helpers/top-market-tables";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import Tabs from "../../shared/tabs";
+import { sitePostfix } from "../../../helpers/entity-resolver";
 
 const ForexContent = () => {
-  const { sitePostfix } = useEntityPostfix();
   const { t } = useTranslation();
   const [tradingSymbols, setTradingSymbols] = useState([]);
 

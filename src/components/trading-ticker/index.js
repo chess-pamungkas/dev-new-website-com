@@ -7,8 +7,8 @@ import {
   FSA_TRADING_SECTIONS,
 } from "../../helpers/config";
 import TradingSections from "./components/trading-sections";
-import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 import { filterSymbols } from "../../helpers/services/filter-symbols";
+import { isCySEC } from "../../helpers/entity-resolver";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 
@@ -21,25 +21,14 @@ const TradingTicker = ({
   setTradingSymbols,
   animationDuration,
 }) => {
-  const [tradingSection, setTradingSection] = useState(CYSEC_TRADING_SECTIONS);
+  const tradingSection = isCySEC ? CYSEC_TRADING_SECTIONS: FSA_TRADING_SECTIONS;
   const [selectedSection, setSelectedSection] = useState(
-    CYSEC_TRADING_SECTIONS[0]
+    pageSpecificSection || CYSEC_TRADING_SECTIONS[0]
   );
 
   [tradingSymbols, setTradingSymbols] = tradingSymbols
     ? [tradingSymbols, setTradingSymbols]
     : useState([]);
-  const { isCySEC } = useEntityPostfix();
-
-  useEffect(() => {
-    if (isCySEC) {
-      setTradingSection(CYSEC_TRADING_SECTIONS);
-      setSelectedSection(pageSpecificSection || CYSEC_TRADING_SECTIONS[0]);
-    } else {
-      setTradingSection(FSA_TRADING_SECTIONS);
-      setSelectedSection(pageSpecificSection || FSA_TRADING_SECTIONS[0]);
-    }
-  }, [isCySEC, pageSpecificSection]);
 
   useEffect(() => {
     let previousOperation;

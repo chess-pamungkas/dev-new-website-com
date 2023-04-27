@@ -10,7 +10,7 @@ import AccountType from "./account-type";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
-import { useEntityPostfix } from "../../helpers/use-entity-postfix";
+import { isCySEC } from "../../helpers/entity-resolver";
 
 const getAccountTypeWithCysec = (isCySEC) =>
   isCySEC ? CYSEC_ACCOUNT_TYPES : FSA_ACCOUNT_TYPES;
@@ -18,7 +18,6 @@ const getAccountTypeWithCysec = (isCySEC) =>
 const AccountsType = ({ className }) => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
-  const { isCySEC } = useEntityPostfix();
 
   return (
     <section

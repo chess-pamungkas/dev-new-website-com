@@ -3,9 +3,10 @@ import ClientResolverContext from "../../context/client-resolver-context";
 import entities from "../../enums/entities";
 import { isBrowser } from "../services/is-browser";
 import { REDIRECT_OR_BANNED_POPUP_SHOWN_KEY } from "../gdpr-cookie.config";
+import { currentEntity } from "../entity-resolver";
 
 export const useEntityNotifications = (handlePopupOpen) => {
-  const { clientConfig, currentEntity } = useContext(ClientResolverContext);
+  const { clientConfig } = useContext(ClientResolverContext);
 
   const [isCysecNotification, setIsCysecNotification] = useState(false);
   const [isCysecRedirect, setIsCysecRedirect] = useState(false);

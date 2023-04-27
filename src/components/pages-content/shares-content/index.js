@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/shares.svg";
 import shares from "../../../assets/images/top-markets/images/shares.svg";
@@ -15,9 +14,9 @@ import animation from "../../../assets/images/bg/promotions/shares/shares.json";
 import MarketingCircle from "../../marketing-circle";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import { DATA_SHARES } from "../../../helpers/top-market-tables";
+import { sitePostfix } from "../../../helpers/entity-resolver";
 
 const SharesContent = () => {
-  const { sitePostfix } = useEntityPostfix();
   const { t } = useTranslation();
   const [tradingSymbols, setTradingSymbols] = useState([]);
 

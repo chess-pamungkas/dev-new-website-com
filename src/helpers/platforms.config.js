@@ -9,7 +9,8 @@ import {
 
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
-import { useEntityPostfix } from "./use-entity-postfix";
+import { isCySEC } from "./entity-resolver";
+
 export const CTRADER_DOWNLOAD_LINKS = {
   androidFSA: "https://play.google.com/store/apps/details?id=com.oqtima.app",
   androidEU: " https://play.google.com/store/apps/details?id=eu.oqtima.app  ",
@@ -355,7 +356,6 @@ const MetaTrader4info = () => {
 };
 
 const MetaTrader5info = () => {
-  const { isCySEC } = useEntityPostfix();
   const getOSDeviceMT5 = () => {
     switch (true) {
       case isIOS:

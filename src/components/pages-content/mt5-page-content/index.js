@@ -15,26 +15,21 @@ import { GetRegistrationLink } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 import { Link } from "gatsby";
+import { isCySEC } from "../../../helpers/entity-resolver";
 
 const Mt5PageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
-  const { isCySEC } = useEntityPostfix();
-  const [mt5Advantages, setMt5Advantages] = useState([]);
+  const mt5Advantages = isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES;
   const downloadRef = useRef(null);
 
   //No need at MT5 as theres no null value at download section.  Enable when MT5 is at .COM and empty values
   // const scrollToTarget = () => {
   //   downloadRef.current?.scrollIntoView({ behavior: "smooth" });
   // };
-
-  useEffect(() => {
-    setMt5Advantages(isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES);
-  }, [isCySEC]);
 
   const getOSDevice = () => {
     switch (true) {
