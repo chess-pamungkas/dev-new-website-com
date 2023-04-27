@@ -1,5 +1,5 @@
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { useEntityPostfix } from "./use-entity-postfix";
+import { isCySEC } from "./entity-resolver";
 
 const GeneralSpreadsTable = () => {
   const { t } = useTranslation();
@@ -553,7 +553,6 @@ const ColumnsSpreadTable2 = () => {
 };
 
 const DataSpreadTable2 = () => {
-  const { isCySEC } = useEntityPostfix();
   const { t } = useTranslation();
   const DATA_SPREADS_TABLE_2_CYSEC = [
     {

@@ -6,13 +6,12 @@ import {
   FOOTER_COPYRIGHT_FSA,
   FOOTER_FOR_FUNDING,
 } from "../../../../helpers/footer.config";
-import { useEntityPostfix } from "../../../../helpers/use-entity-postfix";
 import { WITHDRAWAL_PAGE_LINK } from "../../../../helpers/constants";
 import { isBrowser } from "../../../../helpers/services/is-browser";
+import { isCySEC } from "../../../../helpers/entity-resolver";
 
 const CopyRightContent = () => {
   const { t } = useTranslation();
-  const { isCySEC } = useEntityPostfix();
 
   const [additionalText, setAdditionalText] = useState(null);
 

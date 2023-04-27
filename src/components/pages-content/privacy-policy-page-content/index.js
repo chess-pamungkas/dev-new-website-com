@@ -5,17 +5,10 @@ import {
   PRIVACY_POLICY_CONTENT,
   PRIVACY_POLICY_CONTENT_FSA,
 } from "../../../helpers/privacy-policy.config";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import { isCySEC } from "../../../helpers/entity-resolver";
 
 const PrivacyPolicyContent = ({ className }) => {
-  const [policyContent, setPolicyContent] = useState([]);
-  const { isCySEC } = useEntityPostfix();
-
-  useEffect(() => {
-    setPolicyContent(
-      isCySEC ? PRIVACY_POLICY_CONTENT : PRIVACY_POLICY_CONTENT_FSA
-    );
-  }, [isCySEC]);
+  const policyContent = isCySEC ? PRIVACY_POLICY_CONTENT : PRIVACY_POLICY_CONTENT_FSA;
 
   return (
     <section className={cn("privacy-policy", className)}>

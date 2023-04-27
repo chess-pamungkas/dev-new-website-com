@@ -16,12 +16,11 @@ import Tabs from "../../shared/tabs";
 import icon from "../../../assets/images/icon--white.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import { isCySEC } from "../../../helpers/entity-resolver";
 
 const FundingPageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
-  const { isCySEC } = useEntityPostfix();
 
   const tabs = [
     {

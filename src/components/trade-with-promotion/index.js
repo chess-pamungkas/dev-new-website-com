@@ -32,14 +32,13 @@ import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-ob
 import { INTERSECTION_OBSERVER_CONFIG } from "../../helpers/animation.config";
 import { useSectionAnimation } from "./use-section-animation";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
-import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { sitePostfix } from "../../helpers/entity-resolver";
 
 const TradeWithPromotion = ({ className, sectionRef }) => {
   const typingContainerRef = useRef();
 
   const { t } = useTranslation();
-  const { sitePostfix } = useEntityPostfix();
   const isRTL = useRtlDirection();
 
   const sectionIntersectionRef = useIntersectionObserver(

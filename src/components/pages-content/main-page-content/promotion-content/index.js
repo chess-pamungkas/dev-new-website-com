@@ -27,13 +27,12 @@ import {
 import { useSpring } from "react-spring";
 import { usePromotionAnimation } from "../../../promotion/use-promotion-animation";
 import { scrollTo } from "../../../../helpers/scroll-to";
-import { useEntityPostfix } from "../../../../helpers/use-entity-postfix";
+import { sitePostfix } from "../../../../helpers/entity-resolver";
 
 const PromotionContent = ({ headerRef }) => {
   const XL_HEIGHT = 1080;
   const { t } = useTranslation();
   const { isMobile, height } = useWindowSize();
-  const { sitePostfix } = useEntityPostfix();
 
   const [isTradePromoScrolled, setIsTradePromoScrolled] = useState(false);
   const [isPromo1Scrolled, setIsPromo1Scrolled] = useState(false);

@@ -15,12 +15,12 @@ import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import cn from "classnames";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import { isCySEC } from "../../../helpers/entity-resolver";
+
 const CtraderPageContent = () => {
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
-  const { isCySEC } = useEntityPostfix();
   const downloadRef = useRef(null);
   const scrollToTarget = () => {
     downloadRef.current?.scrollIntoView({ behavior: "smooth" });

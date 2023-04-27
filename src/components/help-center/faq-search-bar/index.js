@@ -9,7 +9,7 @@ import {
   FAQ_QUICK_ANSWER,
 } from "../../../helpers/faq";
 import { debounce } from "lodash";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
+import { isCySEC } from "../../../helpers/entity-resolver";
 
 const FaqSearchBar = ({ className, setSearchResults }) => {
   const COUNT_OF_SEARCH_CHARS = 3;
@@ -17,12 +17,7 @@ const FaqSearchBar = ({ className, setSearchResults }) => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
 
-  const [faqMarket, setFaqMarket] = useState([]);
-  const { isCySEC } = useEntityPostfix();
-
-  useEffect(() => {
-    setFaqMarket(isCySEC ? CYSEC_FAQ_MARKET : FSA_FAQ_MARKET);
-  }, [isCySEC]);
+  const faqMarket = isCySEC ? CYSEC_FAQ_MARKET : FSA_FAQ_MARKET;
 
   const searchContent = [
     ...FAQ_QUICK_ANSWER,

@@ -7,16 +7,11 @@ import {
 import MarketItem from "../market-item";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../../../helpers/constants";
-import { useEntityPostfix } from "../../../../helpers/use-entity-postfix";
+import { isCySEC } from "../../../../helpers/entity-resolver";
 
 const MarketItemsList = ({ className }) => {
-  const [markets, setMarkets] = useState([]);
+  const markets = isCySEC ? CYSEC_ALL_MARKETS : FSA_ALL_MARKETS;
   const isRTL = useRtlDirection();
-  const { isCySEC } = useEntityPostfix();
-
-  useEffect(() => {
-    setMarkets(isCySEC ? CYSEC_ALL_MARKETS : FSA_ALL_MARKETS);
-  }, [isCySEC]);
 
   return (
     <section

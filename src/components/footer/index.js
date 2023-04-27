@@ -5,13 +5,12 @@ import CopyRightBlock from "./components/copy-right-block";
 import { LogoTextMain } from "../shared/icons";
 import { FOOTER_TEXT, FOOTER_TEXT_FSA } from "../../helpers/footer.config";
 import Menu from "./components/menu";
-import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
+import { isCySEC } from "../../helpers/entity-resolver";
 
 const Footer = ({ className }) => {
   const { t } = useTranslation();
-  const { isCySEC } = useEntityPostfix();
   const isRTL = useRtlDirection();
 
   return (

@@ -13,9 +13,9 @@ import {
   CYSEC_MENU_ITEMS,
   FSA_MENU_ITEMS,
 } from "../../../../helpers/menu.config";
-import ClientResolverContext from "../../../../context/client-resolver-context";
 import entities from "../../../../enums/entities";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
+import { isCySEC } from "../../../../helpers/entity-resolver";
 
 const BurgerMenu = ({ className }) => {
   const { t } = useTranslation();
@@ -25,15 +25,8 @@ const BurgerMenu = ({ className }) => {
   const [selectedNavItem, setSelectedNavItem] = useState(
     FSA_MENU_ITEMS[0].title
   );
-  const [menu, setMenu] = useState([]);
+  const menu = isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS;
   const [isLangPopupOpened, setIsLangPopupOpened] = useState(false);
-  const { currentEntity } = useContext(ClientResolverContext);
-
-  useEffect(() => {
-    setMenu(
-      currentEntity === entities.CYSEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS
-    );
-  }, [currentEntity]);
 
   const onTriggerChange = (e) => {
     typeof window !== "undefined" && isNavbarOpen

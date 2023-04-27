@@ -7,14 +7,13 @@ import cn from "classnames";
 import { ContactUsSchema } from "../../../../validations/contact-us";
 import axios from "axios";
 import ReCAPTCHA from "react-google-recaptcha";
-import ClientResolverContext from "../../../../context/client-resolver-context";
+import { currentEntity } from "../../../../helpers/entity-resolver";
 
 const ContactUsForm = () => {
   const { t } = useTranslation();
   const [isSentSuccessful, setIsSentSuccessful] = useState(null);
   const API_URL = process.env.GATSBY_OQTIMA_API_URL;
   const SITE_KEY = process.env.GOOGLE_CAPTCHA_SITE_KEY;
-  const { currentEntity } = useContext(ClientResolverContext);
 
   const reCaptchaRef = useRef();
 

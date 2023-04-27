@@ -11,7 +11,6 @@ import {
   RISK_DISCLOSURE_DOC,
   RISK_DISCLOSURE_DOC_FSA,
 } from "../../../helpers/documents";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import { setRedirectOrBannedPopupShown } from "../../../helpers/services/set-redirect-or-banned-popup-shown";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import expandIcon from "../../../assets/images/icons/accordion.svg";
@@ -22,6 +21,8 @@ import {
   MT5_WEB_TRADER_LINK,
   MT4_WEB_TRADER_LINK,
 } from "../../../helpers/constants";
+import { entityToRedirect, currentEntity, isCySEC } from "../../../helpers/entity-resolver";
+
 export const CysecStripe = ({ t, isCySEC }) => {
   const { expand, setExpand } = useContext(NotificationStripeContext);
   const { isMobile } = useWindowSize();
@@ -87,7 +88,7 @@ const CysecRedirect = ({ handleOpen, setIsHidden, setIsCysecRedirect, t }) => {
 };
 
 const NotificationStripe = ({ className, setSectionOptions }) => {
-  const { clientConfig, currentEntity, entityToRedirect } = useContext(
+  const { clientConfig } = useContext(
     ClientResolverContext
   );
   const { isShow, handleOpen, handleClose } = useModal();
@@ -99,7 +100,6 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
   } = useEntityNotifications(handleOpen);
   const { getCookie } = useContext(CookieContext);
   const { t } = useTranslation();
-  const { isCySEC } = useEntityPostfix();
 
   const [isHidden, setIsHidden] = useState(true);
 

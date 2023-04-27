@@ -1,6 +1,6 @@
 import React from "react";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import { Helmet } from "react-helmet";
+import { isCySEC } from "../../../helpers/entity-resolver";
 
 const Seo = ({
   title,
@@ -12,7 +12,6 @@ const Seo = ({
   fsaRobots,
   cysecRobots,
 }) => {
-  const { isCySEC } = useEntityPostfix();
 
   return (
     <Helmet>

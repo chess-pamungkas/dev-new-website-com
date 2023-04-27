@@ -10,7 +10,7 @@ import { useTrail } from "react-spring";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
-import { useEntityPostfix } from "../../helpers/use-entity-postfix";
+import { isCySEC } from "../../helpers/entity-resolver";
 
 const TradingTools = ({ className }) => {
   const { t } = useTranslation();
@@ -19,12 +19,7 @@ const TradingTools = ({ className }) => {
   const intersectionRef = useIntersectionObserver(containerRef, {
     freezeOnceVisible: true,
   });
-  const { isCySEC } = useEntityPostfix();
-  const [platforms, setPlatforms] = useState([]);
-
-  useEffect(() => {
-    setPlatforms(isCySEC ? CYSEC_PLATFORMS : FSA_PLATFORMS);
-  }, [isCySEC]);
+  const platforms = isCySEC ? CYSEC_PLATFORMS : FSA_PLATFORMS;
 
   const [isAnimationStarted, setIsAnimationStarted] = useState(false);
 

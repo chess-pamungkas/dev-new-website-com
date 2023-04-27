@@ -14,18 +14,13 @@ import FaqSearchBar from "./faq-search-bar";
 import marketsIcon from "../../assets/images/icons/markets.svg";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
-import { useEntityPostfix } from "../../helpers/use-entity-postfix";
+import { isCySEC } from "../../helpers/entity-resolver";
 
 const HelpCenter = ({ className }) => {
 	const { t } = useTranslation();
 	const [searchResults, setSearchResults] = useState([]);
 	const isRTL = useRtlDirection();
-	const [faqMarket, setFaqMarket] = useState([]);
-    const { isCySEC } = useEntityPostfix();
-
-    useEffect(() => {
-      setFaqMarket(isCySEC ? CYSEC_FAQ_MARKET : FSA_FAQ_MARKET);
-    }, [isCySEC]);
+	const faqMarket = isCySEC ? CYSEC_FAQ_MARKET : FSA_FAQ_MARKET;
 
 	const HelpCenterBlock = ({
 		title,
