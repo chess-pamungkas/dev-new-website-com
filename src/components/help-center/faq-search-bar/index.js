@@ -11,8 +11,8 @@ import {
 import { debounce } from "lodash";
 import { isCySEC } from "../../../helpers/entity-resolver";
 
-const FaqSearchBar = ({ className, setSearchResults }) => {
-  const COUNT_OF_SEARCH_CHARS = 3;
+const FaqSearchBar = ({ className, setSearchResults, setNoSearchResult }) => {
+  const COUNT_OF_SEARCH_CHARS = 1;
 
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
@@ -29,19 +29,29 @@ const FaqSearchBar = ({ className, setSearchResults }) => {
   const handleSearchValue = (value) => {
     if (value.length >= COUNT_OF_SEARCH_CHARS) {
       const _value = value.toLowerCase();
-      const results = searchContent.filter((topic) => {
+      const contentDeepCopy = JSON.parse(JSON.stringify(searchContent));
+      const results = contentDeepCopy.filter((topic) => {
         // check if maps with faq content contain the search query
-        return (
-          (topic.title && t(topic.title).toLowerCase().includes(_value)) ||
-          topic.content.some(
-            (item) =>
-              t(item.question).toLowerCase().includes(_value) ||
-              item.answer.some((el) => t(el).toLowerCase().includes(_value))
-          )
-        );
+        let includeTopic = false;
+        let content = [];
+        for (const item of topic.content.values()) {
+          if (
+            t(item.question).toLowerCase().includes(_value) ||
+            item.answer.some((el) => t(el).toLowerCase().includes(_value))
+          ) {
+            includeTopic = true;
+            content.push(item);
+          }
+        }
+        topic.content = content;
+        return includeTopic;
       });
+      if (results.length === 0) {
+        setNoSearchResult(true);
+      }
       setSearchResults(results);
     } else if (value.length === 0) {
+      setNoSearchResult(false);
       setSearchResults([]);
     }
   };
@@ -53,6 +63,7 @@ const FaqSearchBar = ({ className, setSearchResults }) => {
   );
 
   const handleSearchInputChange = (e) => {
+    setNoSearchResult(false);
     setSearchTerm(e.target.value);
     debouncedHandleSearchValue(e.target.value);
   };
