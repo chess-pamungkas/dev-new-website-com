@@ -15,7 +15,7 @@ function detectEntity() {
     
         const AWS_SERVER = 's3-website.eu-central-1.amazonaws.com';
         const name = hostname?.replace(AWS_SERVER, '') || '';
-        return name.includes('.eu') ? entities.CYSEC : entities.FSA;
+        return (name.includes('.eu') || name.includes('-eu')) ? entities.CYSEC : entities.FSA;
     }
 }
 
