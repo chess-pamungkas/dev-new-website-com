@@ -128,7 +128,7 @@ export const SECT1_TEXT_SEQUENCES = {
 export const SECT2_GROUP1_COUNT_OF_WORDS_DEFAULT = 5;
 
 export const SECT2_GROUP1_DEFAULT = [
-  "index_trade-with-promotion-bitcoin",
+  // "index_trade-with-promotion-bitcoin",
   "index_trade-with-promotion-gold",
   "index_trade-with-promotion-EUR/USD",
   "index_trade-with-promotion-crude-oil-wti",

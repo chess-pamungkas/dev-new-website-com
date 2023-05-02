@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
+import axios from "axios";
 import TopMarket from "../../top-market";
 import promotion from "../../../assets/images/spreads-and-fees/promotion.svg";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
@@ -23,15 +24,24 @@ import icon from "../../../assets/images/icon--white.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
 import { Link } from "gatsby";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
+import {
+  FOREX_TRADING_SECTION,
+  INDICES_TRADING_SECTION,
+  METALS_TRADING_SECTION,
+  CRYPTO_TRADING_SECTION,
+} from "../../../helpers/config";
+import { isCySEC } from "../../../helpers/entity-resolver";
+
+const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 
 const SpreadsAndFeesPageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
-  const { isCySEC } = useEntityPostfix();
   //TODO REFACTOR 31-88
-  const tradingSymbols = useState([]);
+  const [tradingSymbols, setTradingSymbols] = useState([]);
+  const [selectedSection, setSelectedSection] = useState(FOREX_TRADING_SECTION);
+
   const COLUMNS_SPREADS_TABLE_CRYPTO = [
     {
       id: "group1",
@@ -90,6 +100,7 @@ const SpreadsAndFeesPageContent = () => {
     {
       id: 1,
       title: t("spreads_tabs_title1"),
+      onClick: () => setSelectedSection(FOREX_TRADING_SECTION),
       content: (
         <>
           <TableComponent
@@ -116,6 +127,7 @@ const SpreadsAndFeesPageContent = () => {
     {
       id: 2,
       title: t("spreads_tabs_title2"),
+      onClick: () => setSelectedSection(INDICES_TRADING_SECTION),
       content: (
         <>
           <TableComponent
@@ -142,6 +154,7 @@ const SpreadsAndFeesPageContent = () => {
     {
       id: 3,
       title: t("spreads_tabs_title3"),
+      onClick: () => setSelectedSection(METALS_TRADING_SECTION),
       content: (
         <>
           <TableComponent
@@ -174,6 +187,7 @@ const SpreadsAndFeesPageContent = () => {
         {
           id: 4,
           title: t("spreads_tabs_title4"),
+          onClick: () => setSelectedSection(CRYPTO_TRADING_SECTION),
           content: (
             <>
               <TableComponent
@@ -200,6 +214,29 @@ const SpreadsAndFeesPageContent = () => {
           ),
         },
       ];
+
+  useEffect(() => {
+    let previousOperation;
+    const intervalId = setInterval(() => {
+      try {
+        if (API_URL) {
+          if (!previousOperation) {
+            previousOperation = axios
+              .get(`${API_URL}stock-quotes/${selectedSection.id}`)
+              .then((response) => {
+                setTradingSymbols(response.data);
+              })
+              .catch((err) => console.error(err))
+              .finally(() => (previousOperation = null));
+          }
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }, 700);
+
+    return () => clearInterval(intervalId);
+  }, [selectedSection]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import {
@@ -14,18 +14,14 @@ import FaqSearchBar from "./faq-search-bar";
 import marketsIcon from "../../assets/images/icons/markets.svg";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
-import { useEntityPostfix } from "../../helpers/use-entity-postfix";
+import { isCySEC } from "../../helpers/entity-resolver";
 
 const HelpCenter = ({ className }) => {
   const { t } = useTranslation();
   const [searchResults, setSearchResults] = useState([]);
+  const [noSearchResult, setNoSearchResult] = useState(false);
   const isRTL = useRtlDirection();
-  const [faqMarket, setFaqMarket] = useState([]);
-  const { isCySEC } = useEntityPostfix();
-
-  useEffect(() => {
-    setFaqMarket(isCySEC ? CYSEC_FAQ_MARKET : FSA_FAQ_MARKET);
-  }, [isCySEC]);
+  const faqMarket = isCySEC ? CYSEC_FAQ_MARKET : FSA_FAQ_MARKET;
 
   const HelpCenterBlock = ({
     title,
@@ -75,8 +71,13 @@ const HelpCenter = ({ className }) => {
     >
       <div className="help-center__wrapper">
         <h2 className="help-center__title">{t("faq-title")}</h2>
-        <FaqSearchBar setSearchResults={setSearchResults} />
-        {searchResults.length > 0 ? (
+        <FaqSearchBar
+          setSearchResults={setSearchResults}
+          setNoSearchResult={setNoSearchResult}
+        />
+        {noSearchResult ? (
+          <h2 className="help-center__title">{t("search-no-results-text")}</h2>
+        ) : searchResults.length > 0 ? (
           <HelpCenterBlock
             faq={searchResults}
             classNames={["help-center--market"]}

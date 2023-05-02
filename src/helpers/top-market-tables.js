@@ -4,13 +4,6 @@ import cn from "classnames";
 
 export const DATA_FOREX_MAJOR = [
   {
-    col1: "AUDNZD",
-    col2: "0.00",
-    col3: "1.12",
-    col4: "1.00",
-    col5: "2.12",
-  },
-  {
     col1: "AUDUSD",
     col2: "0.00",
     col3: "0.14",
@@ -51,6 +44,20 @@ export const DATA_FOREX_MAJOR = [
     col3: "0.36",
     col4: "1.00",
     col5: "1.36",
+  },
+  {
+    col1: "USDCHF",
+    col2: "0.00",
+    col3: "0.60",
+    col4: "1.00",
+    col5: "1.60",
+  },
+  {
+    col1: "NZDUSD",
+    col2: "0.00",
+    col3: "0.40",
+    col4: "1.00",
+    col5: "1.40",
   },
 ];
 

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { useEntityPostfix } from "../../../helpers/use-entity-postfix";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/cripto.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
@@ -19,10 +18,10 @@ import NotFoundContent from "../not-found-page-content";
 import { CRYPTO_TRADING_SECTION } from "../../../helpers/config";
 import MarketingCircle from "../../marketing-circle";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
+import { isCySEC, sitePostfix } from "../../../helpers/entity-resolver";
 
 const CryptoContent = () => {
   const { t } = useTranslation();
-  const { sitePostfix, isCySEC } = useEntityPostfix();
   const [tradingSymbols, setTradingSymbols] = useState([]);
 
   updateTableDataWithLiveColumn(DATA_CRYPTO, tradingSymbols);

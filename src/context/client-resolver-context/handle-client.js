@@ -1,4 +1,4 @@
-const handleClient = (clientConfig, entityToRedirect, setIsPopupShown) => {
+const handleClient = (clientConfig, setIsPopupShown) => {
   if (clientConfig.banned || clientConfig.recommendedRedirect) {
     setIsPopupShown(true);
   }

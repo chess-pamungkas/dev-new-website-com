@@ -1,5 +1,4 @@
 import React, { useCallback } from "react";
-import { useEntityPostfix } from "../../helpers/use-entity-postfix";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
 import {
@@ -13,19 +12,13 @@ import {
 } from "../../helpers/constants";
 import ContactUsForm from "./components/contact-us-form";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { isCySEC } from "../../helpers/entity-resolver";
 
 const ContactUs = ({ className }) => {
-  const { isCySEC } = useEntityPostfix();
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
-
-  const getEmail = useCallback(() => {
-    return isCySEC ? CONTACT_EMAIL : CONTACT_EMAIL_FSA;
-  }, [isCySEC]);
-
-  const getPhoneNumber = useCallback(() => {
-    return isCySEC ? CONTACT_PHONE : CONTACT_PHONE_FSA;
-  }, [isCySEC]);
+  const email = isCySEC ? CONTACT_EMAIL : CONTACT_EMAIL_FSA;
+  const phone = isCySEC ? CONTACT_PHONE : CONTACT_PHONE_FSA;
 
   return (
     <section
@@ -44,9 +37,9 @@ const ContactUs = ({ className }) => {
             </p>
             <a
               className="contact-us__contact-block-href"
-              href={`mailto:${getEmail()}`}
+              href={`mailto:${email}`}
             >
-              {getEmail()}
+              {email}
             </a>
           </div>
           <div className="contact-us__contact-block">
@@ -55,9 +48,9 @@ const ContactUs = ({ className }) => {
             </p>
             <a
               className="contact-us__contact-block-href"
-              href={`tel:${getPhoneNumber()}`}
+              href={`tel:${phone}`}
             >
-              {`+${getPhoneNumber()}`}
+              {`+${phone}`}
             </a>
           </div>
           {isCySEC && (
