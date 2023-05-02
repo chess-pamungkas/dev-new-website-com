@@ -143,11 +143,12 @@ const FSA_TRADING_TAB_PLATFORMS_ITEM = {
       link: MT4_PAGE_LINK,
       description: "header-nav-tab-trading-platforms-mt4-desc",
     },
-    {
-      title: "header-nav-tab-trading-platforms-mt5-title",
-      link: MT5_PAGE_LINK,
-      description: "header-nav-tab-trading-platforms-mt5-desc",
-    },
+    // Temporarily removed for the COM because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-316
+    // {
+    //   title: "header-nav-tab-trading-platforms-mt5-title",
+    //   link: MT5_PAGE_LINK,
+    //   description: "header-nav-tab-trading-platforms-mt5-desc",
+    // },
     //TODO CTRADER SERVER IS NOT READY YET. REMOVED
     // {
     //   title: "header-nav-tab-trading-platforms-ctrader-title",
