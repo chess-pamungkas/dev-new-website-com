@@ -203,7 +203,11 @@ export const FAQ_INDICES = [
   },
   {
     question: "indices_faq-title6",
-    answer: ["metals_faq-content6"],
+    answer: [
+      "indices_faq-content6-a",
+      "indices_faq-content6-b",
+      "indices_faq-content6-c",
+    ],
   },
   {
     question: "indices_faq-title7",
