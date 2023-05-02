@@ -22,5 +22,5 @@ function detectEntity() {
 export const isCySEC = currentEntity === entities.CYSEC;
 export const isFSA = currentEntity === entities.FSA;
 
-export const entityToRedirect = isFSA ? CYSEC_ENTITY_DOMAIN: FSA_ENTITY_DOMAIN;
-export const sitePostfix = isFSA ? FSA_POSTFIX : "";
+export const entityToRedirect = isCySEC ? FSA_ENTITY_DOMAIN: CYSEC_ENTITY_DOMAIN;
+export const sitePostfix = isCySEC ? "" : "-fsa";

@@ -17,6 +17,7 @@ const EXCLUDE_FOREX = [
   "GBPCHF",
   "USDSGD",
 ];
+const EXCLUDE_CRYPTO = ["MATUSD"];
 const EXCLUDE_DEFAULT = [];
 
 export const filterSymbols = (symbols, section) => {
@@ -27,6 +28,9 @@ export const filterSymbols = (symbols, section) => {
       break;
     case "forex":
       toExclude = EXCLUDE_FOREX;
+      break;
+    case "crypto":
+      toExclude = EXCLUDE_CRYPTO;
       break;
     default:
       toExclude = EXCLUDE_DEFAULT;
