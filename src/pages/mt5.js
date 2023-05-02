@@ -5,6 +5,9 @@ import "../assets/styles/index.scss";
 import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import Mt5PageContent from "../components/pages-content/mt5-page-content";
+import { isCySEC } from "../helpers/entity-resolver";
+import comingSoonImage from "../assets/images/system-info/coming-soon.svg";
+import SystemInfoComponent from "../components/shared/system-info";
 
 const MT5Page = () => {
   const { t } = useTranslation();
@@ -12,10 +15,23 @@ const MT5Page = () => {
   return (
     <Layout>
       <Seo
-        title={t("page-mt5-title")}
-        description={t("page-mt5-description")}
+        fsaTitle={t("system-page-coming-soon-title")}
+        fsaDescription={""}
+        cysecTitle={t("page-mt5-title")}
+        cysecDescription={t("page-mt5-description")}
+        fsaRobots={"noindex"}
+        cysecRobots={""}
       />
-      <Mt5PageContent />
+      {isCySEC ? (
+        <Mt5PageContent />
+      ) : (
+        <SystemInfoComponent
+          image={comingSoonImage}
+          title={t("system-page-coming-soon-title")}
+          subTitle={t("system-page-coming-soon-subtitle")}
+          goBackBtnTitle={t("system-page-go-back-btn")}
+        />
+      )}
     </Layout>
   );
 };

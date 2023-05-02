@@ -19,7 +19,7 @@ import keyInformationCommodities from "../assets/documents/eu/Key_Information_co
 import keyInformationETF from "../assets/documents/eu/Key_Information_Document_ETFs_Oqtima.pdf";
 import keyInformationStocks from "../assets/documents/eu/Key_Information_Document_Stocks_Oqtima.pdf";
 import summaryStatement from "../assets/documents/eu/Execution_Quality_Summary_Statement_2022_Nordskov_Capital.pdf";
-import disciplineReport from "../assets/documents/eu/Disclosure_and_Market_Discipline_Report_Pillar_III_2021.pdf";
+import disciplineReport from "../assets/documents/eu/Disclosure_and_Market_Discipline_Report_Pillar_III_2022.pdf";
 
 // TODO replace with the real doc
 export const MT4_DOC = summaryStatement;
