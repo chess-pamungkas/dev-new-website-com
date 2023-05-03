@@ -1,10 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import { BURGER_MENU_LINES_COUNT } from "../../../../helpers/constants";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
-import { GetRegistrationLink } from "../../../../helpers/constants";
+import { GetRegistrationLink, GetLoginLink } from "../../../../helpers/constants";
 import ButtonLink from "../../../shared/button-link";
 import LangSelect from "../lang-select";
 import SearchBar from "../search-bar";
@@ -13,7 +13,6 @@ import {
   CYSEC_MENU_ITEMS,
   FSA_MENU_ITEMS,
 } from "../../../../helpers/menu.config";
-import entities from "../../../../enums/entities";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
 import { isCySEC } from "../../../../helpers/entity-resolver";
 
@@ -108,7 +107,7 @@ const BurgerMenu = ({ className }) => {
 
           <li className="burger-menu__item">
             <ButtonLink
-              link={GetRegistrationLink()}
+              link={GetLoginLink()}
               className="button-link--blank burger-menu__signin"
             >
               {t("button-sign-in")}
