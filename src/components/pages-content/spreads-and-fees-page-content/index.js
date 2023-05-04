@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
-import axios from "axios";
 import TopMarket from "../../top-market";
 import promotion from "../../../assets/images/spreads-and-fees/promotion.svg";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
@@ -22,7 +21,6 @@ import {
 import TopMarketPromotion from "../../top-market-promotion";
 import icon from "../../../assets/images/icon--white.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
-import { Link } from "gatsby";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import {
@@ -34,22 +32,15 @@ import {
 import { isCySEC } from "../../../helpers/entity-resolver";
 import TradingContext from "../../../context/trading-context";
 
-const API_URL = process.env.GATSBY_OQTIMA_API_URL;
-
 const SpreadsAndFeesPageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
   //TODO REFACTOR 31-88
   const {
     tradingSymbols,
-    setTradingSymbols,
-    selectedSection,
     setSelectedSection,
-    needToLoadSymbols,
     setNeedToLoadSymbols,
   } = useContext(TradingContext);
-  // const [tradingSymbols, setTradingSymbols] = useState([]);
-  // const [selectedSection, setSelectedSection] = useState(FOREX_TRADING_SECTION);
 
   const COLUMNS_SPREADS_TABLE_CRYPTO = [
     {
@@ -227,7 +218,6 @@ const SpreadsAndFeesPageContent = () => {
   useEffect(() => {
     setSelectedSection(FOREX_TRADING_SECTION);
     setNeedToLoadSymbols(true);
-    console.log("MOUNT!");
 
     return () => setNeedToLoadSymbols(false);
   }, []);
