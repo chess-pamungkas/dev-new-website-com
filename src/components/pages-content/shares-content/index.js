@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/shares.svg";
 import shares from "../../../assets/images/top-markets/images/shares.svg";
@@ -12,67 +12,10 @@ import Faq from "../../faq";
 import { FAQ_SHARES } from "../../../helpers/faq";
 import animation from "../../../assets/images/bg/promotions/shares/shares.json";
 import MarketingCircle from "../../marketing-circle";
-import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
-import { DATA_SHARES } from "../../../helpers/top-market-tables";
 import { sitePostfix } from "../../../helpers/entity-resolver";
 
 const SharesContent = () => {
   const { t } = useTranslation();
-  const [tradingSymbols, setTradingSymbols] = useState([]);
-
-  updateTableDataWithLiveColumn(DATA_SHARES, tradingSymbols);
-
-  //unused code block.
-  // const COLUMNS_SHARES = [
-  //   {
-  //     id: "group1",
-  //     Header: "",
-  //     columns: [
-  //       {
-  //         Header: "",
-  //         accessor: "col1",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     id: "group2",
-  //     Header: t("oqtima-ecn-account"),
-  //     columns: [
-  //       {
-  //         Header: "Min",
-  //         accessor: "col2",
-  //       },
-  //       {
-  //         Header: "Avg",
-  //         accessor: "col3",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     id: "group3",
-  //     Header: t("oqtima-one-account"),
-  //     columns: [
-  //       {
-  //         Header: "Min",
-  //         accessor: "col4",
-  //       },
-  //       {
-  //         Header: "Avg",
-  //         accessor: "col5",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     id: "group4",
-  //     Header: "",
-  //     columns: [
-  //       {
-  //         Header: "Live",
-  //         accessor: "col6",
-  //       },
-  //     ],
-  //   },
-  // ];
 
   return (
     <>
@@ -104,8 +47,6 @@ const SharesContent = () => {
         pageSpecificSection={SHARES_TRADING_SECTION}
         isInfiniteAutoScroll={true}
         animationDuration={"180s"}
-        tradingSymbols={tradingSymbols}
-        setTradingSymbols={setTradingSymbols}
       />
       <TopMarketPromotion
         className="shares-promotion"

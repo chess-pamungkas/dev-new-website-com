@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import cn from "classnames";
 import { stringTransformToKebabCase } from "../../../helpers/services/string-service";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import Dropdown from "../dropdown";
+import Tab from "./components/tab";
+import TabPanel from "./components/tab-panel";
 
 const Tabs = ({
   classname,
@@ -11,46 +13,10 @@ const Tabs = ({
   isMobileDropdown = false,
 }) => {
   const [currentTabIndex, setCurrentTabIndex] = useState(activeTabIndex);
-  const [isDropdownOpened, setIsDropdownOpened] = useState(false);
   const { isTablet } = useWindowSize();
 
   const handleTabClick = (index) => {
     setCurrentTabIndex(index);
-  };
-
-  const Tab = ({ children, isSelected, tabIndex, onTabClick }) => {
-    return (
-      <li
-        className={cn("tabs__tab", { "tabs__tab--active": isSelected })}
-        // eslint-disable-next-line
-        role="tab"
-        id={`tab-${tabIndex}`}
-        aria-selected={isSelected}
-        aria-controls={`panel-${tabIndex}`}
-        tabIndex={tabIndex}
-        onClick={onTabClick}
-        onKeyPress={(event) => {
-          if (event.key === "Enter") {
-            onTabClick();
-          }
-        }}
-      >
-        {children}
-      </li>
-    );
-  };
-
-  const TabPanel = ({ children, isSelected, tabIndex }) => {
-    return (
-      <div
-        className={cn("tabs__panel", { "tabs__panel--active": isSelected })}
-        role="tabpanel"
-        id={`panel-${tabIndex}`}
-        aria-labelledby={`tab-${tabIndex}`}
-      >
-        {children}
-      </div>
-    );
   };
 
   return (
@@ -63,18 +29,17 @@ const Tabs = ({
               title: tabList[currentTabIndex].title,
               value: currentTabIndex,
             }}
-            items={tabList.map(({ id, title }, tabIndex) => {
+            items={tabList.map(({ id, title, onClick }, tabIndex) => {
               return {
                 title: title,
                 value: tabIndex,
+                onClick: onClick,
               };
             })}
             setSelectedItem={({ value }) => {
               setCurrentTabIndex(value);
             }}
             isDropdownShown
-            isOpen={isDropdownOpened}
-            setIsOpen={setIsDropdownOpened}
           />
         ) : (
           // eslint-disable-next-line

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/energies.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
@@ -17,10 +17,11 @@ import { FAQ_ENERGIES } from "../../../helpers/faq";
 import TableComponent from "../../shared/table";
 import { DATA_ENERGIES } from "../../../helpers/top-market-tables";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
+import TradingContext from "../../../context/trading-context";
 
 const EnergiesContent = () => {
   const { t } = useTranslation();
-  const [tradingSymbols, setTradingSymbols] = useState([]);
+  const { tradingSymbols } = useContext(TradingContext);
 
   updateTableDataWithLiveColumn(DATA_ENERGIES, tradingSymbols);
 
@@ -96,8 +97,6 @@ const EnergiesContent = () => {
       <TradingTicker
         title={t("energies_trading-ticker-title")}
         pageSpecificSection={ENERGIES_TRADING_SECTION}
-        tradingSymbols={tradingSymbols}
-        setTradingSymbols={setTradingSymbols}
       />
       <TopMarketPromotion
         className="energies-promotion"

@@ -10,6 +10,7 @@ import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import Footer from "../../footer";
 import { CookiesPopup } from "../../cookies-popup";
 import { NotificationStripeProvider } from "../../../context/notification-stripe-context";
+import { TradingProvider } from "../../../context/trading-context";
 
 const Layout = ({
   children,
@@ -46,24 +47,28 @@ const Layout = ({
           <LanguageProvider>
             <SearchProvider>
               <NotificationStripeProvider>
-                <Header
-                  headerRef={headerRef}
-                  setSectionOptions={setSectionOptions}
-                  isSearchBarAttached={isSearchBarAttached}
-                />
-                <section className="scroll-container">
-                  <main
-                    style={{
-                      marginTop: scrollHeight,
-                    }}
-                  >
-                    <CookiesPopup
-                      isCysecNotification={sectionOptions?.isCysecNotification}
-                    />
-                    {children}
-                  </main>
-                  {isShowFooter && <Footer />}
-                </section>
+                <TradingProvider>
+                  <Header
+                    headerRef={headerRef}
+                    setSectionOptions={setSectionOptions}
+                    isSearchBarAttached={isSearchBarAttached}
+                  />
+                  <section className="scroll-container">
+                    <main
+                      style={{
+                        marginTop: scrollHeight,
+                      }}
+                    >
+                      <CookiesPopup
+                        isCysecNotification={
+                          sectionOptions?.isCysecNotification
+                        }
+                      />
+                      {children}
+                    </main>
+                    {isShowFooter && <Footer />}
+                  </section>
+                </TradingProvider>
               </NotificationStripeProvider>
             </SearchProvider>
           </LanguageProvider>
