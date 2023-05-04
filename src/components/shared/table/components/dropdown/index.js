@@ -5,7 +5,6 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const TableShowByDropdown = ({ state, setPageSize }) => {
   const { t } = useTranslation();
-  const [isDropdownOpened, setIsDropdownOpened] = useState(false);
 
   return (
     <div className="table__dropdown">
@@ -26,8 +25,6 @@ const TableShowByDropdown = ({ state, setPageSize }) => {
           setPageSize(value);
         }}
         isDropdownShown
-        isOpen={isDropdownOpened}
-        setIsOpen={setIsDropdownOpened}
       />
     </div>
   );

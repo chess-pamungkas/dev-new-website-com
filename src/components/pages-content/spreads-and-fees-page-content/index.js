@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
 import axios from "axios";
@@ -32,6 +32,7 @@ import {
   CRYPTO_TRADING_SECTION,
 } from "../../../helpers/config";
 import { isCySEC } from "../../../helpers/entity-resolver";
+import TradingContext from "../../../context/trading-context";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 
@@ -39,8 +40,16 @@ const SpreadsAndFeesPageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
   //TODO REFACTOR 31-88
-  const [tradingSymbols, setTradingSymbols] = useState([]);
-  const [selectedSection, setSelectedSection] = useState(FOREX_TRADING_SECTION);
+  const {
+    tradingSymbols,
+    setTradingSymbols,
+    selectedSection,
+    setSelectedSection,
+    needToLoadSymbols,
+    setNeedToLoadSymbols,
+  } = useContext(TradingContext);
+  // const [tradingSymbols, setTradingSymbols] = useState([]);
+  // const [selectedSection, setSelectedSection] = useState(FOREX_TRADING_SECTION);
 
   const COLUMNS_SPREADS_TABLE_CRYPTO = [
     {
@@ -216,27 +225,12 @@ const SpreadsAndFeesPageContent = () => {
       ];
 
   useEffect(() => {
-    let previousOperation;
-    const intervalId = setInterval(() => {
-      try {
-        if (API_URL) {
-          if (!previousOperation) {
-            previousOperation = axios
-              .get(`${API_URL}stock-quotes/${selectedSection.id}`)
-              .then((response) => {
-                setTradingSymbols(response.data);
-              })
-              .catch((err) => console.error(err))
-              .finally(() => (previousOperation = null));
-          }
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    }, 700);
+    setSelectedSection(FOREX_TRADING_SECTION);
+    setNeedToLoadSymbols(true);
+    console.log("MOUNT!");
 
-    return () => clearInterval(intervalId);
-  }, [selectedSection]);
+    return () => setNeedToLoadSymbols(false);
+  }, []);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/etf.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
@@ -11,69 +11,11 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import { ETF_TRADING_SECTION } from "../../../helpers/config";
 import animation from "../../../assets/images/bg/promotions/etf/etf.json";
 import MarketingCircle from "../../marketing-circle";
-import TopMarketLayout from "../../top-market-layout";
 import Faq from "../../faq";
 import { FAQ_ETF } from "../../../helpers/faq";
-import TableComponent from "../../shared/table";
-import { DATA_ETF } from "../../../helpers/top-market-tables";
-import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 
 const ETFContent = () => {
   const { t } = useTranslation();
-  const [tradingSymbols, setTradingSymbols] = useState([]);
-
-  updateTableDataWithLiveColumn(DATA_ETF, tradingSymbols);
-
-  const COLUMNS_ETF = [
-    {
-      id: "group1",
-      Header: "",
-      columns: [
-        {
-          Header: "",
-          accessor: "col1",
-        },
-      ],
-    },
-    {
-      id: "group2",
-      Header: t("oqtima-ecn-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col2",
-        },
-        {
-          Header: "Avg",
-          accessor: "col3",
-        },
-      ],
-    },
-    {
-      id: "group3",
-      Header: t("oqtima-one-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col4",
-        },
-        {
-          Header: "Avg",
-          accessor: "col5",
-        },
-      ],
-    },
-    {
-      id: "group4",
-      Header: "",
-      columns: [
-        {
-          Header: "Live",
-          accessor: "col6",
-        },
-      ],
-    },
-  ];
 
   return (
     <>
@@ -97,8 +39,6 @@ const ETFContent = () => {
         isInfiniteAutoScroll={true}
         animationDuration={"36s"}
         pageSpecificSection={ETF_TRADING_SECTION}
-        tradingSymbols={tradingSymbols}
-        setTradingSymbols={setTradingSymbols}
       />
       <TopMarketPromotion
         className="etf-promotion"
@@ -172,27 +112,6 @@ const ETFContent = () => {
           />
         }
       />
-      {/* Table should be hidden for now */}
-      {/* <TopMarketLayout
-        title={t("energies_top-market-layout-title")}
-        btnTitle={t("energies_top-market-layout-btn")}
-        link={GetRegistrationLink()}
-      >
-        <TableComponent
-          data={DATA_ETF}
-          columns={COLUMNS_ETF}
-          isWrapperPadding
-          tip={
-            <span>
-              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
-              &nbsp;
-              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
-              &nbsp;
-            </span>
-          }
-          isSearch
-        />
-      </TopMarketLayout> */}
       <Faq faq={FAQ_ETF} />
     </>
   );

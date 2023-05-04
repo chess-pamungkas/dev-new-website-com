@@ -49,7 +49,7 @@ const PartnersPageContent = () => {
       <HowToStart />
       <TopMarketPromotion
         className={cn("partners-page-bottom-promotion", {
-            "partners-page-bottom-promotion--rtl": isRTL
+          "partners-page-bottom-promotion--rtl": isRTL,
         })}
         image={icon}
       >

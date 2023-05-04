@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/cripto.svg";
@@ -19,10 +19,11 @@ import { CRYPTO_TRADING_SECTION } from "../../../helpers/config";
 import MarketingCircle from "../../marketing-circle";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import { isCySEC, sitePostfix } from "../../../helpers/entity-resolver";
+import TradingContext from "../../../context/trading-context";
 
 const CryptoContent = () => {
   const { t } = useTranslation();
-  const [tradingSymbols, setTradingSymbols] = useState([]);
+  const { tradingSymbols } = useContext(TradingContext);
 
   updateTableDataWithLiveColumn(DATA_CRYPTO, tradingSymbols);
 
@@ -101,8 +102,6 @@ const CryptoContent = () => {
           <TradingTicker
             title={t(`crypto_trading-ticker-title${sitePostfix}`)}
             pageSpecificSection={CRYPTO_TRADING_SECTION}
-            tradingSymbols={tradingSymbols}
-            setTradingSymbols={setTradingSymbols}
           />
           <TopMarketPromotion
             className="crypto-promotion"
