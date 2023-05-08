@@ -57,4 +57,4 @@ const AccountsTypePageContent = () => {
   );
 };
 
-export default AccountsTypePageContent
+export default AccountsTypePageContent;

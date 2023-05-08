@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
-import axios from "axios";
 import TopMarket from "../../top-market";
 import promotion from "../../../assets/images/spreads-and-fees/promotion.svg";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
@@ -22,7 +21,6 @@ import {
 import TopMarketPromotion from "../../top-market-promotion";
 import icon from "../../../assets/images/icon--white.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
-import { Link } from "gatsby";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import {
@@ -32,15 +30,17 @@ import {
   CRYPTO_TRADING_SECTION,
 } from "../../../helpers/config";
 import { isCySEC } from "../../../helpers/entity-resolver";
-
-const API_URL = process.env.GATSBY_OQTIMA_API_URL;
+import TradingContext from "../../../context/trading-context";
 
 const SpreadsAndFeesPageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
   //TODO REFACTOR 31-88
-  const [tradingSymbols, setTradingSymbols] = useState([]);
-  const [selectedSection, setSelectedSection] = useState(FOREX_TRADING_SECTION);
+  const {
+    tradingSymbols,
+    setSelectedSection,
+    setNeedToLoadSymbols,
+  } = useContext(TradingContext);
 
   const COLUMNS_SPREADS_TABLE_CRYPTO = [
     {
@@ -216,27 +216,11 @@ const SpreadsAndFeesPageContent = () => {
       ];
 
   useEffect(() => {
-    let previousOperation;
-    const intervalId = setInterval(() => {
-      try {
-        if (API_URL) {
-          if (!previousOperation) {
-            previousOperation = axios
-              .get(`${API_URL}stock-quotes/${selectedSection.id}`)
-              .then((response) => {
-                setTradingSymbols(response.data);
-              })
-              .catch((err) => console.error(err))
-              .finally(() => (previousOperation = null));
-          }
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    }, 700);
+    setSelectedSection(FOREX_TRADING_SECTION);
+    setNeedToLoadSymbols(true);
 
-    return () => clearInterval(intervalId);
-  }, [selectedSection]);
+    return () => setNeedToLoadSymbols(false);
+  }, []);
 
   return (
     <>

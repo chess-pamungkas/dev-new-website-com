@@ -8,7 +8,9 @@ import {
 import { isCySEC } from "../../../helpers/entity-resolver";
 
 const PrivacyPolicyContent = ({ className }) => {
-  const policyContent = isCySEC ? PRIVACY_POLICY_CONTENT : PRIVACY_POLICY_CONTENT_FSA;
+  const policyContent = isCySEC
+    ? PRIVACY_POLICY_CONTENT
+    : PRIVACY_POLICY_CONTENT_FSA;
 
   return (
     <section className={cn("privacy-policy", className)}>

@@ -11,7 +11,6 @@ const TradingSections = ({
   setSelectedSection,
   tradingSection,
 }) => {
-  const [isDropdownOpened, setIsDropdownOpened] = useState(false);
   const { isMobile } = useWindowSize();
 
   return (
@@ -38,8 +37,6 @@ const TradingSections = ({
                 });
               }}
               isDropdownShown
-              isOpen={isDropdownOpened}
-              setIsOpen={setIsDropdownOpened}
             />
           ) : (
             tradingSection.map((section) => (

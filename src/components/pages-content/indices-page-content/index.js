@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import TopMarket from "../../top-market";
 import indicesSvg from "../../../assets/images/top-markets/indices.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
@@ -17,10 +17,11 @@ import { FAQ_INDICES } from "../../../helpers/faq";
 import TableComponent from "../../shared/table";
 import { DATA_INDICES } from "../../../helpers/top-market-tables";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
+import TradingContext from "../../../context/trading-context";
 
 const IndicesContent = () => {
   const { t } = useTranslation();
-  const [tradingSymbols, setTradingSymbols] = useState([]);
+  const { tradingSymbols } = useContext(TradingContext);
 
   updateTableDataWithLiveColumn(DATA_INDICES, tradingSymbols);
 
@@ -103,8 +104,6 @@ const IndicesContent = () => {
       <TradingTicker
         title={t("indices_trading-ticker-title")}
         pageSpecificSection={INDICES_TRADING_SECTION}
-        tradingSymbols={tradingSymbols}
-        setTradingSymbols={setTradingSymbols}
       />
       <TopMarketPromotion
         className="indices-promotion"

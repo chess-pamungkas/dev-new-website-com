@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/commodities.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
@@ -17,10 +17,11 @@ import { FAQ_METALS } from "../../../helpers/faq";
 import TableComponent from "../../shared/table";
 import { DATA_METALS } from "../../../helpers/top-market-tables";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
+import TradingContext from "../../../context/trading-context";
 
 const MetalsContent = () => {
   const { t } = useTranslation();
-  const [tradingSymbols, setTradingSymbols] = useState([]);
+  const { tradingSymbols } = useContext(TradingContext);
 
   updateTableDataWithLiveColumn(DATA_METALS, tradingSymbols);
 
@@ -95,8 +96,6 @@ const MetalsContent = () => {
       <TradingTicker
         title={t("metals_trading-ticker-title")}
         pageSpecificSection={METALS_TRADING_SECTION}
-        tradingSymbols={tradingSymbols}
-        setTradingSymbols={setTradingSymbols}
       />
       <TopMarketPromotion
         className="commodities-promotion"

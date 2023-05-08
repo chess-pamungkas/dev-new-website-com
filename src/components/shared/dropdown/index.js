@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 
@@ -7,13 +7,15 @@ const Dropdown = ({
   items,
   selectedItem,
   setSelectedItem,
-  isOpen,
-  setIsOpen,
   isDropdownShown,
 }) => {
   const { t } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
 
   const onSelectionByClick = (item) => {
+    if (item.onClick) {
+      item.onClick();
+    }
     setSelectedItem(item);
     setIsOpen(false);
   };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/forex.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
@@ -22,10 +22,11 @@ import {
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import Tabs from "../../shared/tabs";
 import { sitePostfix } from "../../../helpers/entity-resolver";
+import TradingContext from "../../../context/trading-context";
 
 const ForexContent = () => {
   const { t } = useTranslation();
-  const [tradingSymbols, setTradingSymbols] = useState([]);
+  const { tradingSymbols } = useContext(TradingContext);
 
   updateTableDataWithLiveColumn(DATA_FOREX_MINOR, tradingSymbols);
   updateTableDataWithLiveColumn(DATA_FOREX_MAJOR, tradingSymbols);
@@ -162,8 +163,6 @@ const ForexContent = () => {
       <TradingTicker
         title={t("forex_trading-ticker-title")}
         pageSpecificSection={FOREX_TRADING_SECTION}
-        tradingSymbols={tradingSymbols}
-        setTradingSymbols={setTradingSymbols}
       />
       <TopMarketPromotion
         className="forex-promotion"

@@ -152,7 +152,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
       }
 
       if (livechatindex) {
-        livechatindex.style.setProperty("z-index", "1");
+        livechatindex.style.setProperty("z-index", "21");
       }
     }
     if (isCysecNotification) {
