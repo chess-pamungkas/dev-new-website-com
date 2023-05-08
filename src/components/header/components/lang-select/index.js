@@ -7,7 +7,6 @@ import LanguageContext from "../../../../context/language-context";
 import Popup from "../../../shared/popup";
 import LangOptions from "../lang-options";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
-import { Helmet } from "gatsby-plugin-react-i18next";
 
 const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
   const {
@@ -37,7 +36,6 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
 
   return (
     <>
-      <Helmet htmlAttributes={{ lang: selectedLanguage.id }} />
       <button
         className={cn(
           "lang-select",
