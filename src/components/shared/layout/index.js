@@ -21,6 +21,7 @@ const Layout = ({
   const { width } = useWindowSize();
   const [sectionOptions, setSectionOptions] = useState(null);
   const [scrollHeight, setScrollHeight] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const headerRef = useRef();
 
@@ -40,6 +41,10 @@ const Layout = ({
     }
   }, [headerRef, setHeaderRef]);
 
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
   return (
     <ClientResolverProvider>
       <CookieProvider>
@@ -48,26 +53,30 @@ const Layout = ({
             <SearchProvider>
               <NotificationStripeProvider>
                 <TradingProvider>
-                  <Header
-                    headerRef={headerRef}
-                    setSectionOptions={setSectionOptions}
-                    isSearchBarAttached={isSearchBarAttached}
-                  />
-                  <section className="scroll-container">
-                    <main
-                      style={{
-                        marginTop: scrollHeight,
-                      }}
-                    >
-                      <CookiesPopup
-                        isCysecNotification={
-                          sectionOptions?.isCysecNotification
-                        }
+                  {isLoaded && (
+                    <>
+                      <Header
+                        headerRef={headerRef}
+                        setSectionOptions={setSectionOptions}
+                        isSearchBarAttached={isSearchBarAttached}
                       />
-                      {children}
-                    </main>
-                    {isShowFooter && <Footer />}
-                  </section>
+                      <section className="scroll-container">
+                        <main
+                          style={{
+                            marginTop: scrollHeight,
+                          }}
+                        >
+                          <CookiesPopup
+                            isCysecNotification={
+                              sectionOptions?.isCysecNotification
+                            }
+                          />
+                          {children}
+                        </main>
+                        {isShowFooter && <Footer />}
+                      </section>
+                    </>
+                  )}
                 </TradingProvider>
               </NotificationStripeProvider>
             </SearchProvider>
