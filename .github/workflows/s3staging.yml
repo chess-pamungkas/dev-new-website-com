@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 18
       - run: mv .env_staging_com .env.production
-      - run: npm ci --legacy-peer-deps
+      - run: npm ci
       - run: npm run build
 
       - name: Configure AWS Credentials
@@ -43,7 +43,7 @@ jobs:
         with:
           node-version: 18
       - run: mv .env_staging_eu .env.production
-      - run: npm ci --legacy-peer-deps
+      - run: npm ci
       - run: npm run build
 
       - name: Configure AWS Credentials
