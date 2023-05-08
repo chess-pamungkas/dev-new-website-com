@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { isCySEC } from "../../../helpers/entity-resolver";
+import LanguageContext from "../../../context/language-context";
 
 const noIndex = Boolean(Number(process.env.GATSBY_NOINDEX));
 const microsoftAds = process.env.GATSBY_MICROSOFT_ADS;
@@ -15,8 +16,12 @@ const Seo = ({
   fsaRobots,
   cysecRobots,
 }) => {
+  const {
+    selectedLanguage,
+  } = useContext(LanguageContext);
+
   return (
-    <Helmet>
+    <Helmet htmlAttributes={{ lang: selectedLanguage.id }}>
       <title>{title || (isCySEC ? cysecTitle : fsaTitle)}</title>
       <meta
         name="description"
