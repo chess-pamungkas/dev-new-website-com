@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 18
       - run: mv .env_dev_com .env.production
-      - run: npm ci
+      - run: npm ci --legacy-peer-deps
       - run: npm run build
 
       - name: Configure AWS Credentials
