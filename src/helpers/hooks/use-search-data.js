@@ -71,7 +71,7 @@ export const useSearchData = () => {
 
       const results = currentLocaleIndexedData.reduce((acc, piece) => {
         var [url, content] = piece.split("_");
-        content = replaceLocaleVariables(content)
+        content = replaceLocaleVariables(content);
         if (!url || !content) return acc;
 
         const transformedContent = content.toLowerCase();
@@ -117,7 +117,10 @@ export const useSearchData = () => {
             fullMatch = transformedContent[i - 1] + fullMatch;
           }
 
-          acc.push({ url, content, fullMatch });
+          // exclude accent strings from the results (e.g. strings like '12,13,22,25,23')
+          if (!/^[0-9,]+$/.test(content)) {
+            acc.push({ url, content, fullMatch });
+          }
         }
 
         return acc;
