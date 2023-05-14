@@ -17,6 +17,7 @@ import {
   ColumnsSpreadTableIndices,
   ColumnsSpreadTableForex,
   ColumnsSpreadTableCommodities,
+  GeneralTableColumns,
 } from "../../../helpers/spreads-and-fees.config";
 import TopMarketPromotion from "../../top-market-promotion";
 import icon from "../../../assets/images/icon--white.svg";
@@ -58,13 +59,13 @@ const SpreadsAndFeesPageContent = () => {
       Header: t("oqtima-ecn-account"),
       columns: [
         {
-          Header: "Min",
-          accessor: "col2",
+          Header: "",
+          accessor: "col23_mobile",
         },
-        {
-          Header: "Avg",
-          accessor: "col3",
-        },
+        // {
+        //   Header: "Avg",
+        //   accessor: "col3",
+        // },
       ],
     },
     {
@@ -72,13 +73,13 @@ const SpreadsAndFeesPageContent = () => {
       Header: t("oqtima-one-account"),
       columns: [
         {
-          Header: "Min",
-          accessor: "col4",
+          Header: "",
+          accessor: "col45_mobile",
         },
-        {
-          Header: "Avg",
-          accessor: "col5",
-        },
+        // {
+        //   Header: "Avg",
+        //   accessor: "col5",
+        // },
       ],
     },
     {
@@ -86,7 +87,7 @@ const SpreadsAndFeesPageContent = () => {
       Header: "",
       columns: [
         {
-          Header: t("indices_table-market-header-group4"),
+          Header: "",
           accessor: "col6",
         },
       ],
@@ -193,7 +194,7 @@ const SpreadsAndFeesPageContent = () => {
               <TableComponent
                 isWrapperPadding
                 data={DATA_SPREADS_TABLE_CRYPTO}
-                columns={COLUMNS_SPREADS_TABLE_CRYPTO}
+                columns={GeneralTableColumns()}
                 tableClassName={isRTL ? "spreads-table--rtl" : ""}
                 tip={
                   <span>

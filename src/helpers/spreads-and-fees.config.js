@@ -1,5 +1,63 @@
+import React from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isCySEC } from "./entity-resolver";
+import { useWindowSize } from "./hooks/use-window-size";
+
+const GeneralTableColumns = () => {
+  const { t } = useTranslation();
+  const { isMobile } = useWindowSize();
+  const COLUMNS = [
+    {
+      id: "group1",
+      Header: "",
+      columns: [
+        {
+          Header: "",
+          accessor: "col1",
+        },
+      ],
+    },
+    {
+      id: "group2",
+      Header: t("oqtima-ecn-account"),
+      columns: [
+        {
+          Header: isMobile ? "": "Min",
+          accessor: isMobile ? "col23_mobile": "col2",
+        },
+        ...isMobile ? []: [{
+          Header: "Avg",
+          accessor: "col3",
+        }],
+      ],
+    },
+    {
+      id: "group3",
+      Header: t("oqtima-one-account"),
+      columns: [
+        {
+          Header: isMobile ? "": "Min",
+          accessor: isMobile ? "col45_mobile": "col4",
+        },
+        ...isMobile ? []: [{
+          Header: "Avg",
+          accessor: "col5",
+        }],
+      ],
+    },
+    {
+      id: "group4",
+      Header: "",
+      columns: [
+        {
+          Header: t("indices_table-market-header-group4"),
+          accessor: "col6",
+        },
+      ],
+    },
+  ];
+  return COLUMNS;
+};
 
 const GeneralSpreadsTable = () => {
   const { t } = useTranslation();
@@ -429,6 +487,17 @@ const ColumnsSpreadTableCrypto = () => {
   return COLUMNS_SPREADS_TABLE_CRYPTO;
 };
 
+const MobileCell = (min, avg) => {
+  return (
+    <div className="mobile-cell">
+      <p className="mobile-cell__title">Min</p>
+      <p className="mobile-cell__value">{min}</p>
+      <p className="mobile-cell__title">Avg</p>
+      <p className="mobile-cell__value">{avg}</p>
+    </div>
+  )
+}
+
 export const DATA_SPREADS_TABLE_CRYPTO = [
   {
     col1: "DOGEUSD",
@@ -436,6 +505,8 @@ export const DATA_SPREADS_TABLE_CRYPTO = [
     col3: "2.16",
     col4: "2.9",
     col5: "3.16",
+    col23_mobile: MobileCell("1.90", "2.16"),
+    col45_mobile: MobileCell("2.90", "3.16"),
   },
   {
     col1: "MATUSD",
@@ -443,6 +514,8 @@ export const DATA_SPREADS_TABLE_CRYPTO = [
     col3: "2.32",
     col4: "3.1",
     col5: "3.32",
+    col23_mobile: MobileCell("2.10", "2.32"),
+    col45_mobile: MobileCell("3.10", "3.32"),
   },
   {
     col1: "ADAUSD",
@@ -450,6 +523,8 @@ export const DATA_SPREADS_TABLE_CRYPTO = [
     col3: "2.38",
     col4: "3.1",
     col5: "3.38",
+    col23_mobile: MobileCell("2.10", "2.38"),
+    col45_mobile: MobileCell("3.10", "3.38"),
   },
   {
     col1: "XRPUSD",
@@ -457,6 +532,8 @@ export const DATA_SPREADS_TABLE_CRYPTO = [
     col3: "2.66",
     col4: "3.1",
     col5: "3.66",
+    col23_mobile: MobileCell("2.10", "2.66"),
+    col45_mobile: MobileCell("3.10", "3.66"),
   },
   {
     col1: "EOSUSD",
@@ -464,6 +541,8 @@ export const DATA_SPREADS_TABLE_CRYPTO = [
     col3: "9.07",
     col4: "3.1",
     col5: "10.07",
+    col23_mobile: MobileCell("2.10", "9.01"),
+    col45_mobile: MobileCell("3.10", "10.07"),
   },
   {
     col1: "DOTUSD",
@@ -471,6 +550,8 @@ export const DATA_SPREADS_TABLE_CRYPTO = [
     col3: "2.27",
     col4: "3.2",
     col5: "3.27",
+    col23_mobile: MobileCell("2.20", "2.27"),
+    col45_mobile: MobileCell("3.20", "3.27"),
   },
   {
     col1: "LNKUSD",
@@ -478,6 +559,8 @@ export const DATA_SPREADS_TABLE_CRYPTO = [
     col3: "2.3",
     col4: "3.3",
     col5: "3.42",
+    col23_mobile: MobileCell("2.30", "2.30"),
+    col45_mobile: MobileCell("3.30", "3.42"),
   },
 ];
 
@@ -601,4 +684,5 @@ export {
   DataSpreadTable2,
   ColumnsSpreadTableForex,
   ColumnsSpreadTableCrypto,
+  GeneralTableColumns,
 };
