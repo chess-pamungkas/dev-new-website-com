@@ -1,9 +1,10 @@
 import React, { createContext, useEffect, useState } from "react";
-import axios from "axios";
 import { CYSEC_TRADING_SECTIONS } from "../../helpers/config";
+import { io } from "socket.io-client";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 const TradingContext = createContext({});
+const socket = io(`${API_URL}ws-stocks/`);
 
 export const TradingProvider = ({ children }) => {
   const [selectedSection, setSelectedSection] = useState(
@@ -15,19 +16,13 @@ export const TradingProvider = ({ children }) => {
   useEffect(() => {
     let intervalId = undefined;
     if (needToLoadSymbols) {
-      let previousOperation;
       intervalId = setInterval(() => {
         try {
           if (API_URL) {
-            if (!previousOperation) {
-              previousOperation = axios
-                .get(`${API_URL}stock-quotes/${selectedSection.id}`)
-                .then((response) => {
-                  setTradingSymbols(response.data);
-                })
-                .catch((err) => console.error(err))
-                .finally(() => (previousOperation = null));
-            }
+            socket.emit("stocks", selectedSection.id);
+            socket.on("reply", (data) => {
+              if (data) setTradingSymbols(data);
+            });
           }
         } catch (e) {
           console.log(e);
