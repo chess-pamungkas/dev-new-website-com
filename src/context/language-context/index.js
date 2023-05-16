@@ -9,7 +9,6 @@ import React, {
 import { navigate } from "gatsby";
 import { I18nextContext } from "gatsby-plugin-react-i18next";
 import { detectBrowserLanguage } from "../../helpers/services/detect-browser-settings";
-import ClientResolverContext from "../client-resolver-context";
 import {
   FXBO_LANG_COOKIE_KEYS_MAP,
   LANG_SELECT_OPTIONS,
@@ -26,7 +25,6 @@ import { isBrowser } from "../../helpers/services/is-browser";
 const LanguageContext = createContext({});
 
 export const LanguageProvider = ({ children }) => {
-  const { clientConfig } = useContext(ClientResolverContext);
   const { getCookie, setCookie } = useContext(CookieContext);
   const { language: i18Language } = useContext(I18nextContext);
   const browserLanguage = useMemo(() => detectBrowserLanguage(), []);
@@ -56,16 +54,14 @@ export const LanguageProvider = ({ children }) => {
   );
 
   useEffect(() => {
-    if (isBrowser() && clientConfig.forceToEnglish !== undefined) {
+    if (isBrowser()) {
       const lastLanguage = getCookie(LAST_LANGUAGE_KEY);
 
       if (lastLanguage !== undefined) {
         setSelectedLanguage(findLanguage(lastLanguage));
-      } else if (clientConfig.forceToEnglish) {
-        setSelectedLanguage(defaultLang);
       }
     }
-  }, [clientConfig, getCookie, defaultLang, findLanguage]);
+  }, [getCookie, defaultLang, findLanguage]);
 
   useEffect(() => {
     if (!selectedLanguage.id) return;
