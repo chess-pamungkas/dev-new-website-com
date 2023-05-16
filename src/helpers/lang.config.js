@@ -208,12 +208,6 @@ const CYSEC_LANG_CONFIG = [
     icon: "CnFlagIcon",
     name: "简体中文",
   },
-  // Taiwan
-  {
-    id: "tw",
-    icon: "CnFlagIcon",
-    name: "繁體中文",
-  },
 ];
 
 const ARABIC_LANG_ID = "ar";
