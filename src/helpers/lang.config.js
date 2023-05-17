@@ -108,6 +108,12 @@ const LANG_CONFIG = [
     icon: "CnFlagIcon",
     name: "繁體中文",
   },
+  // Indonesian
+  {
+    id: "id",
+    icon: "IdFlagIcon",
+    name: "Bahasa Indonesia",
+  },
   /*// Norwegian
  {
    id: "no",
@@ -125,12 +131,6 @@ const LANG_CONFIG = [
    id: "my",
    icon: "MyFlagIcon",
    name: "Melayu",
- },
- // Indonesian
- {
-   id: "id",
-   icon: "IdFlagIcon",
-   name: "Bahasa Indonesia",
  },
  // Korean
  {
@@ -207,12 +207,6 @@ const CYSEC_LANG_CONFIG = [
     id: "cn",
     icon: "CnFlagIcon",
     name: "简体中文",
-  },
-  // Taiwan
-  {
-    id: "tw",
-    icon: "CnFlagIcon",
-    name: "繁體中文",
   },
 ];
 

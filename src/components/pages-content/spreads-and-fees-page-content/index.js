@@ -14,9 +14,6 @@ import {
   DATA_SPREADS_TABLE_CRYPTO,
   DATA_SPREADS_TABLE_FOREX,
   DATA_SPREADS_TABLE_INDICES,
-  ColumnsSpreadTableIndices,
-  ColumnsSpreadTableForex,
-  ColumnsSpreadTableCommodities,
 } from "../../../helpers/spreads-and-fees.config";
 import TopMarketPromotion from "../../top-market-promotion";
 import icon from "../../../assets/images/icon--white.svg";
@@ -31,67 +28,14 @@ import {
 } from "../../../helpers/config";
 import { isCySEC } from "../../../helpers/entity-resolver";
 import TradingContext from "../../../context/trading-context";
+import { GeneralTableColumns } from "../../../helpers/top-market-tables";
 
 const SpreadsAndFeesPageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
-  //TODO REFACTOR 31-88
-  const {
-    tradingSymbols,
-    setSelectedSection,
-    setNeedToLoadSymbols,
-  } = useContext(TradingContext);
+  const { tradingSymbols, setSelectedSection, setNeedToLoadSymbols } =
+    useContext(TradingContext);
 
-  const COLUMNS_SPREADS_TABLE_CRYPTO = [
-    {
-      id: "group1",
-      Header: "",
-      columns: [
-        {
-          Header: "",
-          accessor: "col1",
-        },
-      ],
-    },
-    {
-      id: "group2",
-      Header: t("oqtima-ecn-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col2",
-        },
-        {
-          Header: "Avg",
-          accessor: "col3",
-        },
-      ],
-    },
-    {
-      id: "group3",
-      Header: t("oqtima-one-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col4",
-        },
-        {
-          Header: "Avg",
-          accessor: "col5",
-        },
-      ],
-    },
-    {
-      id: "group4",
-      Header: "",
-      columns: [
-        {
-          Header: t("indices_table-market-header-group4"),
-          accessor: "col6",
-        },
-      ],
-    },
-  ];
   updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_INDICES, tradingSymbols);
   updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_FOREX, tradingSymbols);
   updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_COMMODITIES, tradingSymbols);
@@ -106,7 +50,7 @@ const SpreadsAndFeesPageContent = () => {
           <TableComponent
             isWrapperPadding
             data={DATA_SPREADS_TABLE_FOREX}
-            columns={ColumnsSpreadTableForex()}
+            columns={GeneralTableColumns()}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
             tip={
               <span>
@@ -133,7 +77,7 @@ const SpreadsAndFeesPageContent = () => {
           <TableComponent
             isWrapperPadding
             data={DATA_SPREADS_TABLE_INDICES}
-            columns={ColumnsSpreadTableIndices()}
+            columns={GeneralTableColumns()}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
             tip={
               <span>
@@ -160,7 +104,7 @@ const SpreadsAndFeesPageContent = () => {
           <TableComponent
             isWrapperPadding
             data={DATA_SPREADS_TABLE_COMMODITIES}
-            columns={ColumnsSpreadTableCommodities()}
+            columns={GeneralTableColumns()}
             tableClassName={isRTL ? "spreads-table--rtl" : ""}
             tip={
               <span>
@@ -193,7 +137,7 @@ const SpreadsAndFeesPageContent = () => {
               <TableComponent
                 isWrapperPadding
                 data={DATA_SPREADS_TABLE_CRYPTO}
-                columns={COLUMNS_SPREADS_TABLE_CRYPTO}
+                columns={GeneralTableColumns()}
                 tableClassName={isRTL ? "spreads-table--rtl" : ""}
                 tip={
                   <span>

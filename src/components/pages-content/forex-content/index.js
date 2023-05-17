@@ -18,6 +18,7 @@ import TableComponent from "../../shared/table";
 import {
   DATA_FOREX_MINOR,
   DATA_FOREX_MAJOR,
+  GeneralTableColumns,
 } from "../../../helpers/top-market-tables";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import Tabs from "../../shared/tabs";
@@ -32,57 +33,6 @@ const ForexContent = () => {
   updateTableDataWithLiveColumn(DATA_FOREX_MAJOR, tradingSymbols);
   // updateTableDataWithLiveColumn(DATA_FOREX_EXOTIC, tradingSymbols);
 
-  const COLUMNS_FOREX = [
-    {
-      id: "group1",
-      Header: "",
-      columns: [
-        {
-          Header: "",
-          accessor: "col1",
-        },
-      ],
-    },
-    {
-      id: "group2",
-      Header: t("oqtima-ecn-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col2",
-        },
-        {
-          Header: "Avg",
-          accessor: "col3",
-        },
-      ],
-    },
-    {
-      id: "group3",
-      Header: t("oqtima-one-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col4",
-        },
-        {
-          Header: "Avg",
-          accessor: "col5",
-        },
-      ],
-    },
-    {
-      id: "group4",
-      Header: "",
-      columns: [
-        {
-          Header: t("indices_table-market-header-group4"),
-          accessor: "col6",
-        },
-      ],
-    },
-  ];
-
   const tabs = [
     {
       id: 1,
@@ -90,7 +40,7 @@ const ForexContent = () => {
       content: (
         <TableComponent
           data={DATA_FOREX_MAJOR}
-          columns={COLUMNS_FOREX}
+          columns={GeneralTableColumns()}
           tip={
             <span>
               <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
@@ -109,7 +59,7 @@ const ForexContent = () => {
       content: (
         <TableComponent
           data={DATA_FOREX_MINOR}
-          columns={COLUMNS_FOREX}
+          columns={GeneralTableColumns()}
           tip={
             <span>
               <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}

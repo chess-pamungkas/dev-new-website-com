@@ -126,10 +126,11 @@ export const FSA_PLATFORMS = {
     icon: metaTrader4Icon,
     title: "index_trading-tools-platforms-metatrader4",
   },
-  metaTrader5: {
-    icon: metaTrader5Icon,
-    title: "index_trading-tools-platforms-metatrader5",
-  },
+  // Temporarily removed for the FSA
+  // metaTrader5: {
+  //   icon: metaTrader5Icon,
+  //   title: "index_trading-tools-platforms-metatrader5",
+  // },
 };
 
 export const CYSEC_PLATFORMS = {

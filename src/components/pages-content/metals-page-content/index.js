@@ -15,7 +15,10 @@ import TopMarketLayout from "../../top-market-layout";
 import Faq from "../../faq";
 import { FAQ_METALS } from "../../../helpers/faq";
 import TableComponent from "../../shared/table";
-import { DATA_METALS } from "../../../helpers/top-market-tables";
+import {
+  DATA_METALS,
+  GeneralTableColumns,
+} from "../../../helpers/top-market-tables";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import TradingContext from "../../../context/trading-context";
 
@@ -24,57 +27,6 @@ const MetalsContent = () => {
   const { tradingSymbols } = useContext(TradingContext);
 
   updateTableDataWithLiveColumn(DATA_METALS, tradingSymbols);
-
-  const COLUMNS_METALS = [
-    {
-      id: "group1",
-      Header: "",
-      columns: [
-        {
-          Header: "",
-          accessor: "col1",
-        },
-      ],
-    },
-    {
-      id: "group2",
-      Header: t("oqtima-ecn-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col2",
-        },
-        {
-          Header: "Avg",
-          accessor: "col3",
-        },
-      ],
-    },
-    {
-      id: "group3",
-      Header: t("oqtima-one-account"),
-      columns: [
-        {
-          Header: "Min",
-          accessor: "col4",
-        },
-        {
-          Header: "Avg",
-          accessor: "col5",
-        },
-      ],
-    },
-    {
-      id: "group4",
-      Header: "",
-      columns: [
-        {
-          Header: t("indices_table-market-header-group4"),
-          accessor: "col6",
-        },
-      ],
-    },
-  ];
 
   return (
     <>
@@ -169,7 +121,7 @@ const MetalsContent = () => {
       >
         <TableComponent
           data={DATA_METALS}
-          columns={COLUMNS_METALS}
+          columns={GeneralTableColumns()}
           isWrapperPadding
           tip={
             <span>
