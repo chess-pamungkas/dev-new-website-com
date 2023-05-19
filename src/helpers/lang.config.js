@@ -114,6 +114,12 @@ const LANG_CONFIG = [
     icon: "IdFlagIcon",
     name: "Bahasa Indonesia",
   },
+  // Japanese
+  {
+    id: "jp",
+    icon: "JpFlagIcon",
+    name: "日本",
+  },
   /*// Norwegian
  {
    id: "no",
@@ -137,12 +143,6 @@ const LANG_CONFIG = [
    id: "kr",
    icon: "KrFlagIcon",
    name: "한국인",
- },
- // Japanese
- {
-   id: "jp",
-   icon: "JpFlagIcon",
-   name: "日本",
  },
  // Hindi (India)
  {
