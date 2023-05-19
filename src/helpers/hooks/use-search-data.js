@@ -54,6 +54,8 @@ export const useSearchData = () => {
             pt
             vn
             th
+            id
+            jp
           }
         }
       }
