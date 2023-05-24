@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "../../../assets/styles/index.scss";
 import Header from "../../header";
 import { ClientResolverProvider } from "../../../context/client-resolver-context";
@@ -11,41 +11,21 @@ import Footer from "../../footer";
 import { CookiesPopup } from "../../cookies-popup";
 import { NotificationStripeProvider } from "../../../context/notification-stripe-context";
 import { TradingProvider } from "../../../context/trading-context";
+import CommonContext, { CommonProvider } from "../../../context/common-context";
 
 const Layout = ({
   children,
   isShowFooter = true,
-  setHeaderRef,
   isSearchBarAttached = true,
 }) => {
-  const { width } = useWindowSize();
-  const [sectionOptions, setSectionOptions] = useState(null);
-  const [scrollHeight, setScrollHeight] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-
-  const headerRef = useRef();
-
-  useEffect(() => {
-    setScrollHeight(
-      (sectionOptions?.isCysecNotification ||
-        sectionOptions?.isCysecRedirect) &&
-        headerRef?.current?.offsetHeight
-        ? headerRef?.current?.offsetHeight + "px"
-        : null
-    );
-  }, [headerRef, sectionOptions, width]);
-
-  useEffect(() => {
-    if (headerRef && setHeaderRef) {
-      setHeaderRef(headerRef);
-    }
-  }, [headerRef, setHeaderRef]);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
   return (
+    <CommonProvider>
     <ClientResolverProvider>
       <CookieProvider>
         <MarketingContextProvider>
@@ -56,21 +36,11 @@ const Layout = ({
                   {isLoaded && (
                     <>
                       <Header
-                        headerRef={headerRef}
-                        setSectionOptions={setSectionOptions}
                         isSearchBarAttached={isSearchBarAttached}
                       />
                       <section className="scroll-container">
-                        <main
-                          style={{
-                            marginTop: scrollHeight,
-                          }}
-                        >
-                          <CookiesPopup
-                            isCysecNotification={
-                              sectionOptions?.isCysecNotification
-                            }
-                          />
+                        <main id="main-container">
+                          <CookiesPopup />
                           {children}
                         </main>
                         {isShowFooter && <Footer />}
@@ -84,6 +54,7 @@ const Layout = ({
         </MarketingContextProvider>
       </CookieProvider>
     </ClientResolverProvider>
+    </CommonProvider>
   );
 };
 

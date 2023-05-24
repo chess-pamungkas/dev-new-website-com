@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { AngleDownIcon } from "../../../shared/icons";
 import { ANGLE_ICON_COLOR } from "../../../../helpers/constants";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import NavbarSubItem from "../navbar-sub-item";
+import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
+import CommonContext from "../../../../context/common-context";
 
 const NavbarItem = ({
   className,
@@ -14,9 +16,37 @@ const NavbarItem = ({
   isNested = false,
 }) => {
   const { t } = useTranslation();
+  const dropdownRef = useRef();
+  const [offset, setOffset] = useState(null);
+  const { width } = useWindowSize();
+  const { sectionOptions } = useContext(CommonContext);
+
+  const hideDropdown = () => {
+    if (dropdownRef?.current) {
+      dropdownRef.current.style.visibility = "hidden";
+      dropdownRef.current.style.opacity = "0";
+    }
+  };
+
+  const showDropdown = () => {
+    if (dropdownRef?.current) {
+      dropdownRef.current.style.visibility = "visible";
+      dropdownRef.current.style.opacity = "1";
+    }
+  };
+
+  useEffect(() => {
+    if (headerRef?.current) {
+      setOffset(headerRef.current.offsetHeight);
+    }
+  }, [headerRef, setOffset, width, sectionOptions]);
 
   return (
-    <li className={cn("navbar-item", className)}>
+    <li
+      className={cn("navbar-item", className)}
+      onMouseEnter={showDropdown}
+      onMouseLeave={hideDropdown}
+    >
       <span className="navbar-item__title">{t(title)}</span>
 
       <AngleDownIcon
@@ -26,20 +56,18 @@ const NavbarItem = ({
 
       {!!subItems.length && (
         <ul
+          ref={dropdownRef}
           className={cn("navbar-item__dropdown", {
             "navbar-item__dropdown--nested": isNested,
           })}
-          style={
-            headerRef?.current
-              ? { top: headerRef?.current.offsetHeight + "px" }
-              : null
-          }
+          style={{ top: offset + "px" }}
         >
           {subItems.map((subItem, i) => (
             <NavbarSubItem
               key={`header-menu-${stringTransformToKebabCase(subItem.title)}`}
               subItem={subItem}
               className={isNested && i === 0 ? "dropdown-item--grow" : null}
+              onClick={hideDropdown}
             />
           ))}
         </ul>

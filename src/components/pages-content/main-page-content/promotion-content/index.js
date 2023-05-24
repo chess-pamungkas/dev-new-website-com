@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 import Promotion from "../../../promotion";
 import cn from "classnames";
@@ -28,11 +28,13 @@ import { useSpring } from "react-spring";
 import { usePromotionAnimation } from "../../../promotion/use-promotion-animation";
 import { scrollTo } from "../../../../helpers/scroll-to";
 import { sitePostfix } from "../../../../helpers/entity-resolver";
+import CommonContext from "../../../../context/common-context";
 
-const PromotionContent = ({ headerRef }) => {
+const PromotionContent = () => {
   const XL_HEIGHT = 1080;
   const { t } = useTranslation();
   const { isMobile, height } = useWindowSize();
+  const { headerRef } = useContext(CommonContext);
 
   const [isTradePromoScrolled, setIsTradePromoScrolled] = useState(false);
   const [isPromo1Scrolled, setIsPromo1Scrolled] = useState(false);

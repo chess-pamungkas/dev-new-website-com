@@ -5,8 +5,9 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isBrowser } from "../../helpers/services/is-browser";
 import { sendClickEventToGA } from "../../helpers/services/google-analytics-service";
 import NotificationStripeContext from "../../context/notification-stripe-context";
+import CommonContext from "../../context/common-context";
 
-export const CookiesPopup = ({ className, isCysecNotification }) => {
+export const CookiesPopup = ({ className }) => {
   const { t } = useTranslation();
   const {
     handleOpenGDPRPopup,
@@ -15,6 +16,8 @@ export const CookiesPopup = ({ className, isCysecNotification }) => {
     handleCloseCookiePopup,
   } = useContext(CookieContext);
   const { expand } = useContext(NotificationStripeContext);
+  const { sectionOptions } = useContext(CommonContext);
+  const isCysecNotification = sectionOptions?.isCysecNotification;
 
   const [isReady, setIsReady] = useState(false);
 

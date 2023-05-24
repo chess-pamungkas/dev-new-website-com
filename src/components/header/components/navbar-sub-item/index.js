@@ -3,14 +3,14 @@ import cn from "classnames";
 import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 
-const NavbarSubItem = ({ className, subItem = {} }) => {
+const NavbarSubItem = ({ className, subItem = {}, onClick }) => {
   const { title, link, icon: Icon, description } = subItem;
   const { t } = useTranslation();
   const isItemHasSubtitles =
     subItem.isSubtitle && subItem.subtitles && !!subItem.subtitles.length;
 
   return (
-    <li className={cn("dropdown-item", className)}>
+    <li className={cn("dropdown-item", className)} onClick={onClick}>
       <Link className="dropdown-item__link" to={link}>
         {Icon && <Icon className="dropdown-item__icon" />}
 

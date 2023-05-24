@@ -2,7 +2,6 @@ import React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
-import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import Mt4PageContent from "../components/pages-content/mt4-page-content";
 import { isCySEC } from "../helpers/entity-resolver";
@@ -13,7 +12,7 @@ const MT4Page = () => {
   const { t } = useTranslation();
 
   return (
-    <Layout>
+    <>
       <Seo
         fsaTitle={t("page-mt4-title")}
         fsaDescription={t("page-mt4-description")}
@@ -33,7 +32,7 @@ const MT4Page = () => {
       ) : (
         <Mt4PageContent />
       )}
-    </Layout>
+    </>
   );
 };
 
