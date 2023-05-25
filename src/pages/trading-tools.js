@@ -2,7 +2,6 @@ import React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
-import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import TradingToolsPageContent from "../components/pages-content/trading-tools-page-content";
 
@@ -10,10 +9,10 @@ const TradingToolsPage = () => {
   const { t } = useTranslation();
 
   return (
-    <Layout>
+    <>
       <Seo title={t("page-trading-tools-title")} />
       <TradingToolsPageContent />
-    </Layout>
+    </>
   );
 };
 

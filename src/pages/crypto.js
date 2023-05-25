@@ -2,7 +2,6 @@ import React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
-import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import CryptoContent from "../components/pages-content/crypto-content";
 
@@ -10,7 +9,7 @@ const CryptoPage = () => {
   const { t } = useTranslation();
 
   return (
-    <Layout>
+    <>
       <Seo
         fsaTitle={t("page-crypto-title-fsa")}
         cysecTitle={t("system-page-404-title")}
@@ -18,7 +17,7 @@ const CryptoPage = () => {
         cysecDescription={""}
       />
       <CryptoContent />
-    </Layout>
+    </>
   );
 };
 

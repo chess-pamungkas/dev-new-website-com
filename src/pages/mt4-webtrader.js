@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { graphql } from "gatsby";
-// import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
-import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import Mt4WebTraderLink from "../components/mt4-webtrader";
+import CommonContext from "../context/common-context";
 
 const MT4WebTraderPage = () => {
-  // const { t } = useTranslation();
+  const { setIsSearchBarAttached } = useContext(CommonContext);
+
+  useEffect(() => {
+    setIsSearchBarAttached(false);
+
+    return () => setIsSearchBarAttached(true);
+  }, []);
 
   return (
-    <Layout isSearchBarAttached={false}>
+    <>
       <Seo title={"MT4 Web Trader"} description={"need description"} />
       <Mt4WebTraderLink />
-    </Layout>
+    </>
   );
 };
 

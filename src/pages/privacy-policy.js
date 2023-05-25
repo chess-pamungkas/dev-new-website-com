@@ -2,7 +2,6 @@ import React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
-import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import PrivacyPolicyContent from "../components/pages-content/privacy-policy-page-content";
 
@@ -10,10 +9,10 @@ const PrivacyPolicyPage = () => {
   const { t } = useTranslation();
 
   return (
-    <Layout>
+    <>
       <Seo title={"Privacy Policy"} />
       <PrivacyPolicyContent />
-    </Layout>
+    </>
   );
 };
 

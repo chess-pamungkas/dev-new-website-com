@@ -2,7 +2,6 @@ import React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
-import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import PlatformsPageContent from "../components/pages-content/platforms-page-content";
 
@@ -10,13 +9,13 @@ const PlatformsPage = () => {
   const { t } = useTranslation();
 
   return (
-    <Layout>
+    <>
       <Seo
         title={t("page-platforms-title")}
         description={t("page-platforms-description")}
       />
       <PlatformsPageContent />
-    </Layout>
+    </>
   );
 };
 
