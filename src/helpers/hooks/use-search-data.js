@@ -56,6 +56,7 @@ export const useSearchData = () => {
             th
             id
             jp
+            br
           }
         }
       }
