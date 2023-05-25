@@ -87,6 +87,8 @@ export const FXBO_LANG_COOKIE_KEYS_MAP = {
   cn: "zh",
   vn: "vi",
   th: "th",
+  id: "id",
+  jp: "ja",
 };
 
 export const FXBO_LANG_URL_KEYS_MAP = {
@@ -99,4 +101,6 @@ export const FXBO_LANG_URL_KEYS_MAP = {
   cn: "/zh",
   vn: "/vi",
   th: "/th",
+  id: "/id",
+  jp: "/ja",
 };
