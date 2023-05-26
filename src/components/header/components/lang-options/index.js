@@ -3,11 +3,9 @@ import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import {
   LANG_SELECT_OPTIONS,
-  CYSEC_LANG_SELECT_OPTIONS,
   SHOULD_BE_SMALLER_LANGUAGES,
 } from "../../../../helpers/lang-options.config";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
-import { isCySEC } from "../../../../helpers/entity-resolver";
 
 const LangSelectItem = ({
   language: { id, icon: Icon, name } = {},
@@ -50,14 +48,13 @@ const LangOptions = ({
   languageSelectHandler,
 }) => {
   const { t } = useTranslation();
-  const langOptions = isCySEC ? CYSEC_LANG_SELECT_OPTIONS : LANG_SELECT_OPTIONS;
 
   return (
     <div className={cn("lang-options", className)}>
       <h2 className="lang-options__title">{t("lang-select-popup-title")}</h2>
 
       <ul className="lang-options__list">
-        {langOptions.map((option) => (
+        {LANG_SELECT_OPTIONS.map((option) => (
           <LangSelectItem
             key={option.id}
             selectedLanguage={selectedLanguage}

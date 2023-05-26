@@ -8,38 +8,8 @@ export const useSearchData = () => {
   const currentPageUrl =
     typeof window !== "undefined" && window.location.pathname;
 
-  //  Query for all languages
-  /*  indexedLocaleData {
-    en
-    de
-    fr
-    pl
-    pt
-    da
-    fi
-    es
-    ru
-    ar
-    nl
-    sw
-    ro
-    it
-    cn
-    tw
-    no
-    cz
-    vn
-    th
-    my
-    id
-    kr
-    jp
-    in
-    bd
-    gr
-    ph
-  }*/
-
+  //Note: It is important to list all existing languages ​​here (from both entities).
+  //And, of course, it's important to store associated locales in `indexedLocaleData`.
   const { site } = useStaticQuery(graphql`
     query {
       site {

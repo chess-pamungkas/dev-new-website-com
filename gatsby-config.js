@@ -9,7 +9,7 @@ const {
 
 const sharedNumbers = require(`${__dirname}/src/helpers/sharedNumbers.json`);
 
-const indexedLocaleData = processLanguagesForConfig(languages.list);
+const indexedLocaleData = processLanguagesForConfig(languages.uniqueList);
 exports.onRenderBody = ({ setHtmlAttributes }) => {
   setHtmlAttributes({ lang: languages.list.id });
 };
