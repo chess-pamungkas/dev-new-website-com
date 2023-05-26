@@ -25,7 +25,7 @@ jobs:
             aws-secret-access-key: ${{ secrets.S3_KEY }}
             aws-region: ap-east-1
       - name: Deploy static site to S3 bucket
-        run: aws s3 sync ./public/ s3://oqtima.com --delete
+        run: aws s3 sync ./public/ s3://tmp-oqtima.com --delete
   deploy_eu:
     name: Deploy eu
     runs-on: ubuntu-latest
