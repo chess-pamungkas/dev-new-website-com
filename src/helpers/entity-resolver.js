@@ -1,5 +1,4 @@
 import entities from "../enums/entities";
-import { FSA_POSTFIX } from "./constants";
 
 const FSA_ENTITY_DOMAIN = process.env.GATSBY_FSA_ENTITY_DOMAIN;
 const CYSEC_ENTITY_DOMAIN = process.env.GATSBY_CYSEC_ENTITY_DOMAIN;
@@ -14,4 +13,4 @@ export const isFSA = currentEntity === entities.FSA;
 export const entityToRedirect = isCySEC
   ? FSA_ENTITY_DOMAIN
   : CYSEC_ENTITY_DOMAIN;
-export const sitePostfix = isCySEC ? "" : FSA_POSTFIX;
+export const sitePostfix = isCySEC ? "" : "-fsa";
