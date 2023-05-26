@@ -47,15 +47,15 @@ module.exports = {
         path: `${__dirname}/src/locales/`,
       },
     },
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: [process.env.GATSBY_GA],
-        gtagConfig: {
-          anonymize_ip: false,
-        },
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-gtag`,
+    //   options: {
+    //     trackingIds: [process.env.GATSBY_GA],
+    //     gtagConfig: {
+    //       anonymize_ip: false,
+    //     },
+    //   },
+    // },
     {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
