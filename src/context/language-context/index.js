@@ -56,7 +56,6 @@ export const LanguageProvider = ({ children }) => {
   useEffect(() => {
     if (isBrowser()) {
       const lastLanguage = getCookie(LAST_LANGUAGE_KEY);
-
       if (lastLanguage !== undefined) {
         setSelectedLanguage(findLanguage(lastLanguage));
       }

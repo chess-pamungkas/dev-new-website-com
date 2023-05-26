@@ -184,12 +184,6 @@ const CYSEC_LANG_CONFIG = [
     icon: "FrFlagIcon",
     name: "Français",
   },
-  // Portuguese
-  {
-    id: "pt",
-    icon: "PtFlagIcon",
-    name: "Português",
-  },
   // Spanish
   {
     id: "es",
@@ -208,19 +202,32 @@ const CYSEC_LANG_CONFIG = [
     icon: "CnFlagIcon",
     name: "简体中文",
   },
+  // Portuguese
+  {
+    id: "pt",
+    icon: "PtFlagIcon",
+    name: "Português",
+  },
 ];
 
 const ARABIC_LANG_ID = "ar";
-const allUniqueLang = [...CYSEC_LANG_CONFIG, ...LANG_CONFIG].filter(
+const allUniqueLanguages = [...CYSEC_LANG_CONFIG, ...LANG_CONFIG].filter(
   (obj, index, self) => {
     return index === self.findIndex((lang) => lang.id === obj.id);
   }
 );
 
+const CURRENT_ENTITY = process.env.GATSBY_ENTITY;
+
+const ENTITY_LANGUAGES =
+  CURRENT_ENTITY == "FSA" ? LANG_CONFIG : CYSEC_LANG_CONFIG;
+
 module.exports = {
   LANG_CONFIG,
   CYSEC_LANG_CONFIG,
+  ENTITY_LANGUAGES,
   ARABIC_LANG_ID,
-  list: allUniqueLang.map(({ id }) => id),
-  defaultLangKey: allUniqueLang.find(({ isDefault }) => isDefault).id,
+  uniqueList: allUniqueLanguages.map(({ id }) => id),
+  list: ENTITY_LANGUAGES.map(({ id }) => id),
+  defaultLangKey: ENTITY_LANGUAGES.find(({ isDefault }) => isDefault).id,
 };
