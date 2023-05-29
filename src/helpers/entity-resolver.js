@@ -1,4 +1,5 @@
 import entities from "../enums/entities";
+import { isBrowser } from "./services/is-browser";
 
 const FSA_ENTITY_DOMAIN = process.env.GATSBY_FSA_ENTITY_DOMAIN;
 const CYSEC_ENTITY_DOMAIN = process.env.GATSBY_CYSEC_ENTITY_DOMAIN;
