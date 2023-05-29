@@ -16,8 +16,8 @@ import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
-import { Link } from "gatsby";
 import { isCySEC } from "../../../helpers/entity-resolver";
+import InternalLink from "../../shared/internal-link";
 
 const Mt5PageContent = () => {
   const { t } = useTranslation();
@@ -128,7 +128,10 @@ const Mt5PageContent = () => {
           </a>
         </>
       ) : (
-        <Link to="/"> {t("mt5_mt-promotion-download-webtrader")}</Link>
+        <InternalLink to="/">
+          {" "}
+          {t("mt5_mt-promotion-download-webtrader")}
+        </InternalLink>
       ),
     },
   ];

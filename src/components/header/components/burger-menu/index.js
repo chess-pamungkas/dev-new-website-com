@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import cn from "classnames";
-import { Link, useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { BURGER_MENU_LINES_COUNT } from "../../../../helpers/constants";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
-import { GetRegistrationLink, GetLoginLink } from "../../../../helpers/constants";
+import {
+  GetRegistrationLink,
+  GetLoginLink,
+} from "../../../../helpers/constants";
 import ButtonLink from "../../../shared/button-link";
 import LangSelect from "../lang-select";
 import SearchBar from "../search-bar";
@@ -15,6 +18,7 @@ import {
 } from "../../../../helpers/menu.config";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
 import { isCySEC } from "../../../../helpers/entity-resolver";
+import InternalLink from "../../../shared/internal-link";
 
 const BurgerMenu = ({ className }) => {
   const { t } = useTranslation();
@@ -149,13 +153,13 @@ const BurgerMenu = ({ className }) => {
                               )}`}
                               className="burger-menu__link-item"
                             >
-                              <Link
+                              <InternalLink
                                 className="burger-menu__link"
                                 to={link}
                                 onClick={onTriggerChange}
                               >
                                 {t(title)}
-                              </Link>
+                              </InternalLink>
 
                               {isSubtitle && !!subtitles.length && (
                                 <ul className="burger-menu__subtitles">
@@ -166,13 +170,13 @@ const BurgerMenu = ({ className }) => {
                                       )}`}
                                       className="burger-menu__link-item"
                                     >
-                                      <Link
+                                      <InternalLink
                                         className="burger-menu__link"
                                         to={subtitle.link}
                                         onClick={onTriggerChange}
                                       >
                                         {t(subtitle.title)}
-                                      </Link>
+                                      </InternalLink>
                                     </li>
                                   ))}
                                 </ul>

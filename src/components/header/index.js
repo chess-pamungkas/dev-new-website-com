@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import cn from "classnames";
-import { Link, useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { LogoTextMain, Logo } from "../shared/icons";
 import {
   DIR_LTR,
@@ -21,6 +21,7 @@ import { GDPRPopup } from "../gdpr-popup";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { isCySEC } from "../../helpers/entity-resolver";
 import CommonContext from "../../context/common-context";
+import InternalLink from "../shared/internal-link";
 
 const Header = ({ className }) => {
   const { t } = useTranslation();
@@ -40,10 +41,10 @@ const Header = ({ className }) => {
         dir={isRTL ? DIR_RTL : DIR_LTR}
       >
         <div className="header__left">
-          <Link to={HOME_PAGE_LINK}>
+          <InternalLink to={HOME_PAGE_LINK}>
             <Logo className="header__logo" />
             <LogoTextMain className="header__logo-text-main" />
-          </Link>
+          </InternalLink>
 
           <ul className="header__navigation">
             {menu.map(({ title, subItems, isNested = false }) => (
