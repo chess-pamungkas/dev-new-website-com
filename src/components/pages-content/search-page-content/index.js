@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Link, useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useSearchData } from "../../../helpers/hooks/use-search-data";
 import SearchContext from "../../../context/search-context";
 import {
@@ -23,6 +23,7 @@ import { Logo, SearchIcon, SearchNoResultsImg } from "../../shared/icons";
 import { ArabicNumbers } from "react-native-arabic-numbers";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import cn from "classnames";
+import InternalLink from "../../shared/internal-link";
 
 const SearchPageContent = () => {
   const { t } = useTranslation();
@@ -134,7 +135,10 @@ const SearchPageContent = () => {
                   .slice(0, resultsBundleCount * SEARCH_RESULTS_BUNDLE_SIZE)
                   .map((page, i) => (
                     <li key={`search-page-${i}`} className="search-page__item">
-                      <Link to={`${page.url}`} className="search-page__link">
+                      <InternalLink
+                        to={`${page.url}`}
+                        className="search-page__link"
+                      >
                         <div className="search-page__icon-wrapper">
                           <Logo className="search-page__icon" />
                         </div>
@@ -145,7 +149,7 @@ const SearchPageContent = () => {
                             {`${window.location.origin}${page.url}`}
                           </p>
                         </div>
-                      </Link>
+                      </InternalLink>
 
                       <p className="search-page__text">{page.content}</p>
 

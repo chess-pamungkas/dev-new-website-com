@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import cn from "classnames";
-import { Link, useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { LogoTextMain, Logo } from "../shared/icons";
-import { DIR_LTR, DIR_RTL, HOME_PAGE_LINK, GetLoginLink } from "../../helpers/constants";
+import {
+  DIR_LTR,
+  DIR_RTL,
+  HOME_PAGE_LINK,
+  GetLoginLink,
+} from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import { GetRegistrationLink } from "../../helpers/constants";
 import NavbarItem from "./components/navbar-item";
@@ -15,16 +20,15 @@ import NotificationStripe from "../shared/notification-stripe";
 import { GDPRPopup } from "../gdpr-popup";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { isCySEC } from "../../helpers/entity-resolver";
+import CommonContext from "../../context/common-context";
+import InternalLink from "../shared/internal-link";
 
-const Header = ({
-  className,
-  setSectionOptions,
-  headerRef,
-  isSearchBarAttached,
-}) => {
+const Header = ({ className }) => {
   const { t } = useTranslation();
   const menu = isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS;
   const isRTL = useRtlDirection();
+  const { headerRef, setSectionOptions, isSearchBarAttached } =
+    useContext(CommonContext);
 
   return (
     <div className={cn("header-wrapper", className)} ref={headerRef}>
@@ -37,10 +41,10 @@ const Header = ({
         dir={isRTL ? DIR_RTL : DIR_LTR}
       >
         <div className="header__left">
-          <Link to={HOME_PAGE_LINK}>
+          <InternalLink to={HOME_PAGE_LINK}>
             <Logo className="header__logo" />
             <LogoTextMain className="header__logo-text-main" />
-          </Link>
+          </InternalLink>
 
           <ul className="header__navigation">
             {menu.map(({ title, subItems, isNested = false }) => (

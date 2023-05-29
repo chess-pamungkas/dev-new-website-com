@@ -12,11 +12,11 @@ const LANG_CONFIG = [
     icon: "FrFlagIcon",
     name: "Français",
   },
-  // Portuguese
+  // Brazilian
   {
-    id: "pt",
+    id: "br",
     icon: "BrFlagIcon",
-    name: "Português",
+    name: "Brazilian",
   },
   // Vietnamese
   {
@@ -30,66 +30,12 @@ const LANG_CONFIG = [
     icon: "ThFlagIcon",
     name: "ภาษาไทย",
   },
-  /* // German
-  {
-    id: "de",
-    icon: "DeFlagIcon",
-    name: "Deutsch",
-  },
-  // Polish
-  {
-    id: "pl",
-    icon: "PlFlagIcon",
-    name: "Polski",
-  },
-  // Danish
-  {
-    id: "da",
-    icon: "DaFlagIcon",
-    name: "Dansk",
-  },
-  // Finnish
-  {
-    id: "fi",
-    icon: "FiFlagIcon",
-    name: "Suomi",
-  },*/
   // Spanish
   {
     id: "es",
     icon: "EsFlagIcon",
     name: "Español",
   },
-  /* // Russian
-  {
-    id: "ru",
-    icon: "RuFlagIcon",
-    name: "Русский",
-  },
-  // Arabic
-  {
-    id: "ar",
-    icon: "ArFlagIcon",
-    name: "عربي",
-  },
-  // Dutch (Netherlands)
-  {
-    id: "nl",
-    icon: "NlFlagIcon",
-    name: "Nederlands",
-  },
-  // Swedish
-  {
-    id: "sw",
-    icon: "SwFlagIcon",
-    name: "Svenska",
-  },
-  // Romanian
-  {
-    id: "ro",
-    icon: "RoFlagIcon",
-    name: "Română",
-  },*/
   // Italian
   {
     id: "it",
@@ -120,7 +66,61 @@ const LANG_CONFIG = [
     icon: "JpFlagIcon",
     name: "日本",
   },
-  /*// Norwegian
+  /*// German
+  {
+    id: "de",
+    icon: "DeFlagIcon",
+    name: "Deutsch",
+  },
+  // Polish
+  {
+    id: "pl",
+    icon: "PlFlagIcon",
+    name: "Polski",
+  },
+  // Danish
+  {
+    id: "da",
+    icon: "DaFlagIcon",
+    name: "Dansk",
+  },
+  // Finnish
+  {
+    id: "fi",
+    icon: "FiFlagIcon",
+    name: "Suomi",
+  },
+  // Russian
+  {
+    id: "ru",
+    icon: "RuFlagIcon",
+    name: "Русский",
+  },
+  // Arabic
+  {
+    id: "ar",
+    icon: "ArFlagIcon",
+    name: "عربي",
+  },
+  // Dutch (Netherlands)
+  {
+    id: "nl",
+    icon: "NlFlagIcon",
+    name: "Nederlands",
+  },
+  // Swedish
+  {
+    id: "sw",
+    icon: "SwFlagIcon",
+    name: "Svenska",
+  },
+  // Romanian
+  {
+    id: "ro",
+    icon: "RoFlagIcon",
+    name: "Română",
+  },
+  // Norwegian
  {
    id: "no",
    icon: "NoFlagIcon",
@@ -184,12 +184,6 @@ const CYSEC_LANG_CONFIG = [
     icon: "FrFlagIcon",
     name: "Français",
   },
-  // Portuguese
-  {
-    id: "pt",
-    icon: "BrFlagIcon",
-    name: "Português",
-  },
   // Spanish
   {
     id: "es",
@@ -208,14 +202,32 @@ const CYSEC_LANG_CONFIG = [
     icon: "CnFlagIcon",
     name: "简体中文",
   },
+  // Portuguese
+  {
+    id: "pt",
+    icon: "PtFlagIcon",
+    name: "Português",
+  },
 ];
 
 const ARABIC_LANG_ID = "ar";
+const allUniqueLanguages = [...CYSEC_LANG_CONFIG, ...LANG_CONFIG].filter(
+  (obj, index, self) => {
+    return index === self.findIndex((lang) => lang.id === obj.id);
+  }
+);
+
+const CURRENT_ENTITY = process.env.GATSBY_ENTITY;
+
+const ENTITY_LANGUAGES =
+  CURRENT_ENTITY == "FSA" ? LANG_CONFIG : CYSEC_LANG_CONFIG;
 
 module.exports = {
   LANG_CONFIG,
   CYSEC_LANG_CONFIG,
+  ENTITY_LANGUAGES,
   ARABIC_LANG_ID,
-  list: LANG_CONFIG.map(({ id }) => id),
-  defaultLangKey: LANG_CONFIG.find(({ isDefault }) => isDefault).id,
+  uniqueList: allUniqueLanguages.map(({ id }) => id),
+  list: ENTITY_LANGUAGES.map(({ id }) => id),
+  defaultLangKey: ENTITY_LANGUAGES.find(({ isDefault }) => isDefault).id,
 };

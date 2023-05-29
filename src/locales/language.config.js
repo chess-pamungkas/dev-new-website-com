@@ -1,6 +1,7 @@
-const { list, defaultLangKey } = require("../helpers/lang.config");
+const { list, defaultLangKey, uniqueList } = require("../helpers/lang.config");
 
 module.exports = {
   list,
-  defaultLangKey
+  defaultLangKey,
+  uniqueList,
 };

@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import SearchPageContent from "../components/pages-content/search-page-content";
+import CommonContext from "../context/common-context";
 
 const SearchPage = () => {
   const { t } = useTranslation();
+  const { setIsSearchBarAttached } = useContext(CommonContext);
+
+  useEffect(() => {
+    setIsSearchBarAttached(false);
+
+    return () => setIsSearchBarAttached(true);
+  }, []);
 
   return (
-    <Layout isSearchBarAttached={false}>
+    <>
       <Seo title={t("page-search-title")} />
       <SearchPageContent />
-    </Layout>
+    </>
   );
 };
 
@@ -20,7 +27,7 @@ export default SearchPage;
 
 export const query = graphql`
   query ($language: String!) {
-    locales: allLocale(filter: {language: {eq: $language}}) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
           ns

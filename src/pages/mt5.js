@@ -2,7 +2,6 @@ import React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
-import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import Mt5PageContent from "../components/pages-content/mt5-page-content";
 import { isCySEC } from "../helpers/entity-resolver";
@@ -13,7 +12,7 @@ const MT5Page = () => {
   const { t } = useTranslation();
 
   return (
-    <Layout>
+    <>
       <Seo
         fsaTitle={t("system-page-coming-soon-title")}
         fsaDescription={""}
@@ -32,7 +31,7 @@ const MT5Page = () => {
           goBackBtnTitle={t("system-page-go-back-btn")}
         />
       )}
-    </Layout>
+    </>
   );
 };
 

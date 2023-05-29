@@ -1,7 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import TopMarket from "../components/top-market";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
@@ -12,7 +11,7 @@ const ContactUsPage = () => {
   const { t } = useTranslation();
 
   return (
-    <Layout>
+    <>
       <Seo title={t("page-contact-title")} />
       <TopMarket
         title={
@@ -33,7 +32,7 @@ const ContactUsPage = () => {
         />
       </TopMarket>
       <ContactUs />
-    </Layout>
+    </>
   );
 };
 

@@ -1,7 +1,8 @@
 import React from "react";
 import cn from "classnames";
-import { Link, useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
+import InternalLink from "../../../shared/internal-link";
 
 const MenuColumn = ({ className, items }) => {
   const { t } = useTranslation();
@@ -17,9 +18,9 @@ const MenuColumn = ({ className, items }) => {
             className="menu-column__item"
             key={`footer-menu-${stringTransformToKebabCase(item.title)}`}
           >
-            <Link className={cn("menu-column__link")} to={item.link}>
+            <InternalLink className={cn("menu-column__link")} to={item.link}>
               {t(item.title)}
-            </Link>
+            </InternalLink>
 
             {isItemHasSubtitles && (
               <ul className="menu-column__subtitles">
@@ -30,9 +31,12 @@ const MenuColumn = ({ className, items }) => {
                       subitem.title
                     )}`}
                   >
-                    <Link className="menu-column__link" to={subitem.link}>
+                    <InternalLink
+                      className="menu-column__link"
+                      to={subitem.link}
+                    >
                       {t(subitem.title)}
-                    </Link>
+                    </InternalLink>
                   </li>
                 ))}
               </ul>

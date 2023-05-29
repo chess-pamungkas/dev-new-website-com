@@ -1,16 +1,15 @@
 import * as React from "react";
-import {useTranslation} from "gatsby-plugin-react-i18next";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import Seo from "../components/shared/seo";
 import SystemInfoComponent from "../components/shared/system-info";
 import image from "../assets/images/system-info/coming-soon.svg";
-import Layout from "../components/shared/layout";
-import {graphql} from "gatsby";
+import { graphql } from "gatsby";
 
 const ComingSoonPage = () => {
   const { t } = useTranslation();
 
   return (
-    <Layout>
+    <>
       <Seo title={t("system-page-coming-soon-title")} />
       <SystemInfoComponent
         image={image}
@@ -18,7 +17,7 @@ const ComingSoonPage = () => {
         subTitle={t("system-page-coming-soon-subtitle")}
         goBackBtnTitle={t("system-page-go-back-btn")}
       />
-    </Layout>
+    </>
   );
 };
 

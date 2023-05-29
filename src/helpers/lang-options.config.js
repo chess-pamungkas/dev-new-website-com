@@ -28,7 +28,7 @@ import {
   VnFlagIcon,
   BrFlagIcon,
 } from "../components/shared/icons";
-import { LANG_CONFIG, FSA_LANG_CONFIG, CYSEC_LANG_CONFIG } from "./lang.config";
+import { ENTITY_LANGUAGES } from "./lang.config";
 
 const IconComponents = {
   EnFlagIcon: EnFlagIcon,
@@ -61,19 +61,11 @@ const IconComponents = {
   BrFlagIcon: BrFlagIcon,
 };
 
-export const LANG_SELECT_OPTIONS = LANG_CONFIG.map((languageItem) => {
+export const LANG_SELECT_OPTIONS = ENTITY_LANGUAGES.map((languageItem) => {
   languageItem.icon = IconComponents[languageItem.icon];
 
   return languageItem;
 });
-
-export const CYSEC_LANG_SELECT_OPTIONS = CYSEC_LANG_CONFIG.map(
-  (languageItem) => {
-    languageItem.icon = IconComponents[languageItem.icon];
-
-    return languageItem;
-  }
-);
 
 export const SHOULD_BE_SMALLER_LANGUAGES = ["Русский", "Ελληνικά"];
 
@@ -84,6 +76,7 @@ export const FXBO_LANG_COOKIE_KEYS_MAP = {
   fr: "fr",
   it: "it",
   pt: "pt",
+  br: "pt",
   cn: "zh",
   vn: "vi",
   th: "th",
@@ -98,6 +91,7 @@ export const FXBO_LANG_URL_KEYS_MAP = {
   fr: "/fr",
   it: "/it",
   pt: "/pt",
+  br: "/pt",
   cn: "/zh",
   vn: "/vi",
   th: "/th",

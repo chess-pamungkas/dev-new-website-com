@@ -14,8 +14,8 @@ import image from "../../../assets/images/mt4/trading-view.png";
 import icon from "../../../assets/images/icon--white.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
-import { Link } from "gatsby";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
+import InternalLink from "../../shared/internal-link";
 
 const TradingViewPageContent = () => {
   const { t } = useTranslation();
@@ -43,12 +43,12 @@ const TradingViewPageContent = () => {
       title: t("mt-promotion-tabs-mobile"),
       content: (
         <>
-          <Link to={TRADING_VIEW_DOWNLOAD_LINKS.android}>
+          <InternalLink to={TRADING_VIEW_DOWNLOAD_LINKS.android}>
             {t("trading-view_mt-promotion-download-android")}
-          </Link>
-          <Link to={TRADING_VIEW_DOWNLOAD_LINKS.ios}>
+          </InternalLink>
+          <InternalLink to={TRADING_VIEW_DOWNLOAD_LINKS.ios}>
             {t("trading-view_mt-promotion-download-ios")}
-          </Link>
+          </InternalLink>
         </>
       ),
     },
@@ -57,15 +57,15 @@ const TradingViewPageContent = () => {
       title: t("mt-promotion-tabs-desktop"),
       content: (
         <>
-          <Link to={TRADING_VIEW_DOWNLOAD_LINKS.mac}>
+          <InternalLink to={TRADING_VIEW_DOWNLOAD_LINKS.mac}>
             {t("trading-view_mt-promotion-download-mac")}
-          </Link>
-          <Link to={TRADING_VIEW_DOWNLOAD_LINKS.windows}>
+          </InternalLink>
+          <InternalLink to={TRADING_VIEW_DOWNLOAD_LINKS.windows}>
             {t("trading-view_mt-promotion-download-windows")}
-          </Link>
-          <Link to={TRADING_VIEW_DOWNLOAD_LINKS.webtrader}>
+          </InternalLink>
+          <InternalLink to={TRADING_VIEW_DOWNLOAD_LINKS.webtrader}>
             {t("trading-view_mt-promotion-download-webtrader")}
-          </Link>
+          </InternalLink>
         </>
       ),
     },

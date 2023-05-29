@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useRef, useState } from "react";
 import cn from "classnames";
 import { navigate } from "gatsby";
-import { Link, useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import SearchContext from "../../../../context/search-context";
 import { useOnClickOutside } from "../../../../helpers/hooks/use-on-click-outside";
 import {
@@ -16,6 +16,7 @@ import { useSearchData } from "../../../../helpers/hooks/use-search-data";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { ArabicNumbers } from "react-native-arabic-numbers";
+import InternalLink from "../../../shared/internal-link";
 
 const SearchBar = ({
   className,
@@ -135,7 +136,7 @@ const SearchBar = ({
                     className="search-bar__results-item"
                     key={`search-bar-${i}`}
                   >
-                    <Link
+                    <InternalLink
                       to={`${page.url}`}
                       className="search-bar__results-link"
                     >
@@ -143,13 +144,13 @@ const SearchBar = ({
                       <span className="search-bar__results-title">
                         {page.content}
                       </span>
-                    </Link>
+                    </InternalLink>
                   </li>
                 ))}
 
               {searchState.results.length > DROPDOWN_SEARCH_ITEMS_TO_SHOW && (
                 <li className="search-bar__results-item">
-                  <Link
+                  <InternalLink
                     to={`${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(
                       searchState.query
                     )}`}
@@ -159,7 +160,7 @@ const SearchBar = ({
                     <span className="search-bar__results-title search-bar__results-title--bold">
                       {t("search-more-results")}
                     </span>
-                  </Link>
+                  </InternalLink>
                 </li>
               )}
             </>

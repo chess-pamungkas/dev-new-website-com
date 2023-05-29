@@ -1,17 +1,18 @@
 import React from "react";
 import cn from "classnames";
-import { Link, useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
+import InternalLink from "../../../shared/internal-link";
 
-const NavbarSubItem = ({ className, subItem = {} }) => {
+const NavbarSubItem = ({ className, subItem = {}, onClick }) => {
   const { title, link, icon: Icon, description } = subItem;
   const { t } = useTranslation();
   const isItemHasSubtitles =
     subItem.isSubtitle && subItem.subtitles && !!subItem.subtitles.length;
 
   return (
-    <li className={cn("dropdown-item", className)}>
-      <Link className="dropdown-item__link" to={link}>
+    <li className={cn("dropdown-item", className)} onClick={onClick}>
+      <InternalLink className="dropdown-item__link" to={link}>
         {Icon && <Icon className="dropdown-item__icon" />}
 
         <div className="dropdown-item__content">
@@ -21,7 +22,7 @@ const NavbarSubItem = ({ className, subItem = {} }) => {
             <p className="dropdown-item__description">{t(description)}</p>
           )}
         </div>
-      </Link>
+      </InternalLink>
 
       {isItemHasSubtitles && (
         <ul className="dropdown-item__subtitles">
@@ -30,7 +31,7 @@ const NavbarSubItem = ({ className, subItem = {} }) => {
               className="menu-column__item"
               key={`footer-menu-${stringTransformToKebabCase(subtitle.title)}`}
             >
-              <Link className="menu-column__link" to={subtitle.link}>
+              <InternalLink className="menu-column__link" to={subtitle.link}>
                 <span className="dropdown-item__title">
                   {t(subtitle.title)}
                 </span>
@@ -40,7 +41,7 @@ const NavbarSubItem = ({ className, subItem = {} }) => {
                     {t(subtitle.description)}
                   </p>
                 )}
-              </Link>
+              </InternalLink>
             </li>
           ))}
         </ul>

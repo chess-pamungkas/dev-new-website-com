@@ -2,7 +2,6 @@ import React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
-import Layout from "../components/shared/layout";
 import Seo from "../components/shared/seo";
 import VideoBanner from "../components/video-banner";
 import SplitTextPromotion from "../components/split-text-promotion";
@@ -14,7 +13,7 @@ const CompanyPage = () => {
   const { t } = useTranslation();
 
   return (
-    <Layout>
+    <>
       <Seo
         title={t("page-company-title")}
         description={t("page-company-description")}
@@ -44,7 +43,7 @@ const CompanyPage = () => {
         />
       </SplitTextPromotion>
       <CompanyAdvantages />
-    </Layout>
+    </>
   );
 };
 
