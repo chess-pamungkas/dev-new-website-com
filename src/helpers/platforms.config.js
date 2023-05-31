@@ -362,8 +362,8 @@ const MetaTrader5info = () => {
         return isCySEC ? MT5_DOWNLOAD_LINKS.iosEU : MT5_DOWNLOAD_LINKS.iosFSA;
       case isAndroid:
         return isCySEC
-          ? MT5_DOWNLOAD_LINKS.androidFSA
-          : MT5_DOWNLOAD_LINKS.androidEU;
+          ? MT5_DOWNLOAD_LINKS.androidEU
+          : MT5_DOWNLOAD_LINKS.androidFSA;
       case isWindows:
         return isCySEC
           ? MT5_DOWNLOAD_LINKS.windowsEU
