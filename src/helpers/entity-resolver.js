@@ -13,7 +13,7 @@ export const isFSA = currentEntity === entities.FSA;
 function DetectIsLandingPage() {
   if (isBrowser()) {
     const hostname = window.location.hostname;
-    return hostname.includes(".lp");
+    return hostname.includes("lp.");
   }
 }
 
