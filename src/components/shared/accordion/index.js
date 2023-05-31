@@ -65,9 +65,11 @@ const Accordion = ({
         <span>{t(title)}</span>
         {Icon ? getIcon() : <AngleDownIcon className="accordion__icon" />}
       </button>
-      <div className={cn("accordion__expandable", { show: isActive })}>
-        {children}
-      </div>
+      {
+        <div className={cn("accordion__expandable", { show: isActive })}>
+          {children}
+        </div>
+      }
     </section>
   );
 };
