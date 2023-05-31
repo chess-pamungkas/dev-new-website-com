@@ -183,21 +183,6 @@
 
     & .accordion__expandable {
       margin-top: 12px;
-      padding-top: 10px;
-      color: map-get($colors, "grey");
-      font-size: 12px;
-      line-height: 15px;
-      font-weight: map-get($font-weight, "light");
-      max-height: 0;
-      visibility: hidden;
-      opacity: 0;
-
-      &.show {
-        visibility: visible;
-        opacity: 1;
-        display: block;
-        max-height: 30%;
-      }
 
       @include tablet {
         margin-top: 19px;
