@@ -69,9 +69,9 @@ const TradingSymbols = ({
       >
         {symbols &&
           (isInfiniteAutoScroll ? symbols.concat(symbols) : symbols).map(
-            (symbol) => (
+            (symbol, key) => (
               <TradingSymbol
-                key={`TradingSymbol${symbol.symbol}`}
+                key={`TradingSymbol${symbol.symbol}-${key}`}
                 {...symbol}
               />
             )
