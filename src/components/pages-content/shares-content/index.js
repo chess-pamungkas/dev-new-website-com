@@ -65,7 +65,7 @@ const SharesContent = () => {
         animation={animation}
         upper={
           <HighlightedLocalizationText
-            localizationText="shares_marketing-circle-upper"
+            localizationText={`shares_marketing-circle-upper${sitePostfix}`}
             wordsToHighlight="shares_marketing-circle-upper-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"

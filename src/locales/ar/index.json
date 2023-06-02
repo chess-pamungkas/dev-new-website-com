@@ -356,6 +356,7 @@
   "accounts-type_account-type2-commissions-value": "Free of commissions (TR)",
   "accounts-type_account-type2-min-deposit-title": "دقيقة. الإيداع",
   "accounts-type_account-type2-min-deposit-value": "${{ account-type2-min-deposit }}",
+  "accounts-type_account-type2-min-deposit-value-fsa": "${{ account-type2-min-deposit-fsa }}",
   "accounts-type_account-type2-max-leverage-title": "Max. leverage",
   "accounts-type_account-type2-max-leverage-value": "{{ account-type2-max-leverage }}",
   "accounts-type_account-type2-max-leverage-value-fsa": "{{ account-type2-max-leverage-fsa }}",
