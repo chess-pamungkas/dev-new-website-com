@@ -152,8 +152,8 @@ export const FAQ_SHARES = [
       "shares_faq-content2-1",
       "shares_faq-content2-2",
       "shares_faq-content2-3",
-      "shares_faq-content2-4",
-      "shares_faq-content2-5",
+      // "shares_faq-content2-4",
+      // "shares_faq-content2-5",
     ],
     // specify array of content indexes which should be bold, e.g. "shares_faq-content2-4" and "shares_faq-content2-5" will be bold
     bold: [3, 4],
