@@ -27,6 +27,7 @@ export const useSearchData = () => {
             id
             jp
             br
+            de
           }
         }
       }

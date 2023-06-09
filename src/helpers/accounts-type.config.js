@@ -75,7 +75,7 @@ export const FSA_ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type2-min-deposit-title",
-        value: "accounts-type_account-type2-min-deposit-value",
+        value: "accounts-type_account-type2-min-deposit-value-fsa",
       },
       {
         title: "accounts-type_account-type2-max-leverage-title",

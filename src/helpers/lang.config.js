@@ -208,6 +208,12 @@ const CYSEC_LANG_CONFIG = [
     icon: "PtFlagIcon",
     name: "Português",
   },
+  // German
+  {
+    id: "de",
+    icon: "DeFlagIcon",
+    name: "Deutsch",
+  },
 ];
 
 const ARABIC_LANG_ID = "ar";
