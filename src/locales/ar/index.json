@@ -430,7 +430,7 @@
   "etf_top-market-btn2": "Start trading ETF now (TRANSLATION REQUIRED!)",
   "etf_trading-ticker-title": "Popular ETF to trade (TRANSLATION REQUIRED!)",
   "etf_top-market-promo-btn": "Trade ETFs now (TRANSLATION REQUIRED!)",
-  "etf_top-market-promo-text": "OQtima offers an extensive list of Exchange Traded Funds (ETFs) to trade with based on your interest in specific market thematic, sector, or based on countries top-mid and lower performers. More than 100 ETFs to pick and trade with leverage. (TRANSLATION REQUIRED!)",
+  "etf_top-market-promo-text": "OQtima offers an extensive list of Exchange Traded Funds (ETFs) to trade with based on your interest in specific market thematic, sector, or based on countries top-mid and lower performers. More than {{ etf-number }} ETFs to pick and trade with leverage. (TRANSLATION REQUIRED!)",
   "etf-top-market-promo-text-accent": "1,7,8,9,10,33,34",
   "etf_top-market-promotion-promo-text": "CFD ETF Trading allows you to trade multiple assets in different markets, using leverage, with just one trade. (TRANSLATION REQUIRED!)",
   "etf-top-market-promotion-promo-text-accent": "2,13,14",
