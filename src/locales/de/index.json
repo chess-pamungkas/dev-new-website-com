@@ -1367,7 +1367,7 @@
   "etf_top-market-btn2": "Beginnen Sie jetzt mit dem ETF-Handel",
   "etf_trading-ticker-title": "Beliebte ETFs zum Handeln",
   "etf_top-market-promo-btn": "Handeln Sie jetzt ETFs",
-  "etf_top-market-promo-text": "OQtima bietet eine umfangreiche Liste von börsengehandelten Fonds (ETFs) zum Handeln an, basierend auf Ihrem Interesse an bestimmten Marktthemen, Sektoren oder den besten und schlechtesten Performern eines Landes. Über 100 ETFs zur Auswahl und zum Handel mit Hebelwirkung.",
+  "etf_top-market-promo-text": "OQtima bietet eine umfangreiche Liste von börsengehandelten Fonds (ETFs) zum Handeln an, basierend auf Ihrem Interesse an bestimmten Marktthemen, Sektoren oder den besten und schlechtesten Performern eines Landes. Über {{ etf-number }} ETFs zur Auswahl und zum Handel mit Hebelwirkung.",
   "etf-top-market-promo-text-accent": "1,7,8,9,10,33,34",
   "etf_top-market-promotion-promo-text": "Der CFD-ETF-Handel ermöglicht es Ihnen, mehrere Vermögenswerte in verschiedenen Märkten mit Hebelwirkung in nur einem Trade zu handeln.",
   "etf-top-market-promotion-promo-text-accent": "2,13,14",

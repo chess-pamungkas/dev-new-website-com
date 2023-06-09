@@ -1365,7 +1365,7 @@
   "etf_top-market-btn2": "Comece a negociar ETFs agora",
   "etf_trading-ticker-title": "ETFs populares para negociação",
   "etf_top-market-promo-btn": "Negocie ETFs agora",
-  "etf_top-market-promo-text": "A OQtima oferece uma extensa lista de Exchange Traded Funds (ETFs) para negociar com base em seu interesse em temas específicos de mercado, setores ou com base nos principais desempenhos de países de médio e baixo porte. Mais de 100 ETFs para escolher e negociar com alavancagem.",
+  "etf_top-market-promo-text": "A OQtima oferece uma extensa lista de Exchange Traded Funds (ETFs) para negociar com base em seu interesse em temas específicos de mercado, setores ou com base nos principais desempenhos de países de médio e baixo porte. Mais de {{ etf-number }} ETFs para escolher e negociar com alavancagem.",
   "etf-top-market-promo-text-accent": "1,7,8,9,10,33,34",
   "etf_top-market-promotion-promo-text": "A negociação de ETFs por CFD permite negociar vários ativos em diferentes mercados, com alavancagem, com apenas uma negociação.",
   "etf-top-market-promotion-promo-text-accent": "2,13,14",
