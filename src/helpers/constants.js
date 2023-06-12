@@ -8,7 +8,7 @@ import wiseLogo from "../assets/images/icons/payments/wise.png";
 import LanguageContext from "../context/language-context";
 import { useContext } from "react";
 import { FXBO_LANG_URL_KEYS_MAP } from "./lang-options.config";
-import { isCySEC } from "./entity-resolver";
+import { topLevelDomain } from "./entity-resolver";
 
 export const WINDOW_SIZE_SM = 375;
 export const WINDOW_SIZE_MD = 768;
@@ -49,31 +49,25 @@ export const HOME_PAGE_LINK = "/";
 export const GetRegistrationLink = () => {
   const { selectedLanguage } = useContext(LanguageContext);
 
-  return isCySEC
-    ? `https://my.oqtima.eu${
-        FXBO_LANG_URL_KEYS_MAP[selectedLanguage.id]
-      }/register/`
-    : "/";
+  return `https://my.oqtima.${topLevelDomain}${
+    FXBO_LANG_URL_KEYS_MAP[selectedLanguage.id]
+  }/register/`;
 };
 
 export const GetLoginLink = () => {
   const { selectedLanguage } = useContext(LanguageContext);
 
-  return isCySEC
-    ? `https://my.oqtima.eu${
-        FXBO_LANG_URL_KEYS_MAP[selectedLanguage.id]
-      }/login/`
-    : "/";
+  return `https://my.oqtima.${topLevelDomain}${
+    FXBO_LANG_URL_KEYS_MAP[selectedLanguage.id]
+  }/login/`;
 };
 
 export const GetDepositLink = () => {
   const { selectedLanguage } = useContext(LanguageContext);
 
-  return isCySEC
-    ? `https://my.oqtima.eu${
-        FXBO_LANG_URL_KEYS_MAP[selectedLanguage.id]
-      }/funds/deposit/`
-    : "/";
+  return `https://my.oqtima.${topLevelDomain}${
+    FXBO_LANG_URL_KEYS_MAP[selectedLanguage.id]
+  }/funds/deposit/`;
 };
 
 export const COMING_SOON_PAGE_LINK = "/coming-soon";
