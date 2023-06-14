@@ -19,7 +19,7 @@ export const ColumnDeposit = () => {
     },
     {
       accessor: "col3",
-      Header: t("withdrawal_column_title3"),
+      Header: t("deposit_column_title3"),
     },
     {
       accessor: "col4",
