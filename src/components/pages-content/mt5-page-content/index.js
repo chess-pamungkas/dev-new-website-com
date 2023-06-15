@@ -82,6 +82,10 @@ const Mt5PageContent = () => {
           <a href={MT5_DOWNLOAD_LINKS.iosEU}>
             {t("mt5_mt-promotion-download-ios")}
           </a>
+
+          <a href={MT5_DOWNLOAD_LINKS.huaweiEU}>
+            {t("mt5_mt-promotion-download-huawei")}
+          </a>
         </>
       ) : (
         <>
