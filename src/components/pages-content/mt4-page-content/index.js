@@ -64,16 +64,25 @@ const Mt4PageContent = () => {
     {
       id: 1,
       title: t("mt-promotion-tabs-mobile"),
-      content: (
+      content: isCySEC ? (
         <>
           <a href={MT4_DOWNLOAD_LINKS.android}>
             {t("mt4_mt-promotion-download-android")}
           </a>
-          {!isCySEC && (
-            <a href={MT4_DOWNLOAD_LINKS.iosFSA}>
-              {t("mt4_mt-promotion-download-ios")}
-            </a>
-          )}
+        </>
+      ) : (
+        <>
+          <a href={MT4_DOWNLOAD_LINKS.android}>
+            {t("mt4_mt-promotion-download-android")}
+          </a>
+
+          <a href={MT4_DOWNLOAD_LINKS.iosFSA}>
+            {t("mt4_mt-promotion-download-ios")}
+          </a>
+
+          <a href={MT4_DOWNLOAD_LINKS.huaweiFSA}>
+            {t("mt4_mt-promotion-download-huawei")}
+          </a>
         </>
       ),
     },
