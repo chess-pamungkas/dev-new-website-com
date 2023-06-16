@@ -160,7 +160,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
 
       switch (true) {
         case isMobile:
-          bottom = expand ? "190px" : "65px";
+          bottom = expand ? "155px" : "65px";
           break;
         case isMD:
           bottom = "110px";

@@ -108,8 +108,8 @@
 
   &__text {
     color: map-get($colors, "black");
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 10.5px;
+    line-height: 16px;
     @include mobile {
       &.collapsed {
         height: 20px;
