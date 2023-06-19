@@ -25,7 +25,7 @@
   // height: 703px;
   @include content-alignment(0);
   padding-top: 75px;
-  padding-bottom: 75px;
+  padding-bottom: 90px;
 
   @include tablet {
     background: url("../images/bg/main-promotion-md.svg") no-repeat left;
@@ -195,7 +195,7 @@
   &__person {
     position: absolute;
     bottom: 20px;
-    max-width: 146px;
+    max-width: 220px;
 
     @include tablet {
       bottom: 60px;
