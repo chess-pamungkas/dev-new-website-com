@@ -10,6 +10,7 @@ import coffeeIcon from "../assets/images/icons/companies/marketing/coffee.svg";
 import sp500Icon from "../assets/images/icons/companies/marketing/sp500.svg";
 import dowJonesIcon from "../assets/images/icons/companies/marketing/dowJones.svg";
 import nikkeiIcon from "../assets/images/icons/companies/marketing/nikkei.svg";
+import { sitePostfix } from "./entity-resolver";
 
 export const MARKETING_GET_PARAMS = {
   sect1: "_sect1",
@@ -36,7 +37,7 @@ export const CONTENT_HEROES = {
   default: {
     image: heroImage,
     name: "index_main-promotion-hero-gianluigi-buffon-name",
-    text: "index_main-promotion-hero-gianluigi-buffon-text",
+    text: `index_main-promotion-hero-gianluigi-buffon-text${sitePostfix}`,
   },
   sea: {
     image: heroImage,
