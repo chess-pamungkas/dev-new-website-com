@@ -1,5 +1,5 @@
 import webTraderIcon from "../assets/images/icons/tools/webTrader.svg";
-import iosIcon from "../assets/images/icons/tools/ios.svg";
+import iosIcon from "../assets/images/icons/tools/ios_black.svg";
 import androidIcon from "../assets/images/icons/tools/android.svg";
 import windowsIcon from "../assets/images/icons/tools/windows.svg";
 import windows from "../assets/images/icons/tools/windows.svg";
