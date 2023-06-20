@@ -191,15 +191,6 @@ export const DATA_SPREADS_TABLE_COMMODITIES = [
     col23_mobile: MobileCell("7.10", "32.10"),
     col45_mobile: MobileCell("8.10", "33.10"),
   },
-  {
-    col1: "XPDUSD",
-    col2: "1060.00",
-    col3: "1616.68",
-    col4: "1061.00",
-    col5: "1617.68",
-    col23_mobile: MobileCell("1060.00", "1616.68"),
-    col45_mobile: MobileCell("1061.00", "1617.68"),
-  },
 ];
 
 export const DATA_SPREADS_TABLE_CRYPTO = [

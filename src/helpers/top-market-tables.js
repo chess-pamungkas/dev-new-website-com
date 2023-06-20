@@ -78,15 +78,6 @@ export const DATA_FOREX_MAJOR = [
     col45_mobile: MobileCell("1.00", "1.14"),
   },
   {
-    col1: "EURJPY",
-    col2: "0.00",
-    col3: "0.80",
-    col4: "1.00",
-    col5: "1.80",
-    col23_mobile: MobileCell("0.00", "0.80"),
-    col45_mobile: MobileCell("1.00", "1.80"),
-  },
-  {
     col1: "EURUSD",
     col2: "0.00",
     col3: "0.12",
@@ -103,15 +94,6 @@ export const DATA_FOREX_MAJOR = [
     col5: "3.09",
     col23_mobile: MobileCell("0.00", "2.09"),
     col45_mobile: MobileCell("1.00", "3.09"),
-  },
-  {
-    col1: "GBPJPY",
-    col2: "0.00",
-    col3: "1.61",
-    col4: "1.00",
-    col5: "2.61",
-    col23_mobile: MobileCell("0.00", "1.61"),
-    col45_mobile: MobileCell("1.00", "2.61"),
   },
   {
     col1: "GBPUSD",
@@ -272,11 +254,11 @@ export const DATA_FOREX_MINOR = [
   {
     col1: "EURJPY",
     col2: "0.00",
-    col3: "7.95",
+    col3: "0.80",
     col4: "1.00",
-    col5: "8.95",
-    col23_mobile: MobileCell("0.00", "7.95"),
-    col45_mobile: MobileCell("1.00", "8.95"),
+    col5: "1.80",
+    col23_mobile: MobileCell("0.00", "0.80"),
+    col45_mobile: MobileCell("1.00", "1.80"),
   },
   {
     col1: "EURNZD",
@@ -317,11 +299,11 @@ export const DATA_FOREX_MINOR = [
   {
     col1: "GBPJPY",
     col2: "0.00",
-    col3: "1.60",
+    col3: "1.61",
     col4: "1.00",
-    col5: "2.60",
-    col23_mobile: MobileCell("0.00", "1.60"),
-    col45_mobile: MobileCell("1.00", "2.60"),
+    col5: "2.61",
+    col23_mobile: MobileCell("0.00", "1.61"),
+    col45_mobile: MobileCell("1.00", "2.61"),
   },
   {
     col1: "USDSGD",
@@ -493,15 +475,6 @@ export const DATA_METALS = [
     col5: "33.10",
     col23_mobile: MobileCell("7.10", "32.10"),
     col45_mobile: MobileCell("8.10", "33.10"),
-  },
-  {
-    col1: "XPDUSD",
-    col2: "1060.00",
-    col3: "1616.68",
-    col4: "1061.00",
-    col5: "1617.68",
-    col23_mobile: MobileCell("1060.00", "1616.68"),
-    col45_mobile: MobileCell("1061.00", "1617.68"),
   },
 ];
 

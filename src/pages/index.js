@@ -7,7 +7,6 @@ import TradingTicker from "../components/trading-ticker";
 import Seo from "../components/shared/seo";
 import PerformanceContent from "../components/pages-content/main-page-content/performance-content";
 import PromotionContent from "../components/pages-content/main-page-content/promotion-content";
-import { isCySEC } from "../helpers/entity-resolver";
 
 const IndexPage = () => {
   const { t } = useTranslation();
@@ -19,7 +18,7 @@ const IndexPage = () => {
         description={t("page-main-description")}
       />
       {/*isShowHero is workaround to hide hero image (e.g. Buffon)  */}
-      <MainPromotion isShowHero={isCySEC} />
+      <MainPromotion isShowHero />
       <TradingTicker />
       <PromotionContent />
       <PerformanceContent />

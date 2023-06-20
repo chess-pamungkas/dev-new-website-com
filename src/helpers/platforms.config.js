@@ -42,6 +42,7 @@ export const MT4_DOWNLOAD_LINKS = {
     "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg",
   webtrader: MT4_WEB_TRADER_LINK,
+  huaweiFSA: "https://appgallery.huawei.com/#/app/C102015319",
 };
 
 export const MT5_DOWNLOAD_LINKS = {
@@ -55,6 +56,7 @@ export const MT5_DOWNLOAD_LINKS = {
   windowsFSA: null,
   mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg",
   webtrader: MT5_WEB_TRADER_LINK,
+  huaweiEU: "https://appgallery.huawei.com/#/app/C102015329",
 };
 
 export const FSA_MT5_ADVANTAGES = [
