@@ -6,6 +6,7 @@ const CYSEC_ENTITY_DOMAIN = process.env.GATSBY_CYSEC_ENTITY_DOMAIN;
 
 // FSA or CYSEC, change it right here for development if needed
 export const currentEntity = process.env.GATSBY_ENTITY;
+// export const currentEntity = "FSA";
 
 export const isCySEC = currentEntity === entities.CYSEC;
 export const isFSA = currentEntity === entities.FSA;
