@@ -33,6 +33,18 @@ export const LanguageProvider = ({ children }) => {
     []
   );
 
+  const changeLanguage = (selectedLang) => {
+    if (selectedLang.id !== i18Language) {
+      if (isBrowser()) {
+        const { pathname, search } = window.location;
+        console.log(selectedLang);
+        const navigatePath =
+          `${selectedLang.URIPart}` + pathname.replace(`/${i18Language}/`, "/");
+        navigate(`${navigatePath}${search}`);
+      }
+    }
+  };
+
   const findLanguage = useCallback(
     (languageId) => {
       return (
@@ -43,40 +55,18 @@ export const LanguageProvider = ({ children }) => {
     [defaultLang]
   );
 
-  const initialLanguageDetection = useCallback(() => {
-    if (i18Language !== defaultLang.id) return findLanguage(i18Language);
-
-    return findLanguage(getCookie(LAST_LANGUAGE_KEY) || browserLanguage);
-  }, [i18Language, defaultLang, findLanguage, getCookie, browserLanguage]);
+  const initialLanguageDetection = useCallback(
+    () => findLanguage(getCookie(LAST_LANGUAGE_KEY) || browserLanguage),
+    [i18Language]
+  );
 
   const [selectedLanguage, setSelectedLanguage] = useState(
     initialLanguageDetection()
   );
 
   useEffect(() => {
-    if (isBrowser()) {
-      const lastLanguage = getCookie(LAST_LANGUAGE_KEY);
-      if (lastLanguage !== undefined) {
-        setSelectedLanguage(findLanguage(lastLanguage));
-      }
-    }
-  }, [getCookie, defaultLang, findLanguage]);
-
-  useEffect(() => {
-    if (!selectedLanguage.id) return;
-
-    const { pathname, search } = window.location;
-    if (selectedLanguage.id === defaultLang.id) {
-      const processedPathname = pathname.replace(`/${i18Language}/`, "/");
-      const navigatePath = processedPathname || "/";
-      navigate(`${navigatePath}${search}`);
-      return;
-    }
-
-    const navigatePath =
-      `/${selectedLanguage.id}` + pathname.replace(`/${i18Language}/`, "/");
-    navigate(`${navigatePath}${search}`);
-  }, [selectedLanguage, defaultLang, i18Language]);
+    changeLanguage(selectedLanguage);
+  }, [selectedLanguage]);
 
   useEffect(() => {
     setCookie(LAST_LANGUAGE_KEY, selectedLanguage.id, PERFORMANCE_COOKIE_KEY);
