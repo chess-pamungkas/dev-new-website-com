@@ -5,77 +5,77 @@ const LANG_CONFIG = [
     icon: "EnFlagIcon",
     name: "English (UK)",
     isDefault: true,
-    URIPart: "/",
+    URIPart: "",
   },
   // French
   {
     id: "fr",
     icon: "FrFlagIcon",
     name: "Français",
-    URIPart: "/fr/",
+    URIPart: "/fr",
   },
   // Brazilian
   {
     id: "br",
     icon: "BrFlagIcon",
     name: "Brazilian",
-    URIPart: "/br/",
+    URIPart: "/br",
   },
   // Vietnamese
   {
     id: "vn",
     icon: "VnFlagIcon",
     name: "Tiếng Việt",
-    URIPart: "/vn/",
+    URIPart: "/vn",
   },
   // Thai
   {
     id: "th",
     icon: "ThFlagIcon",
     name: "ภาษาไทย",
-    URIPart: "/th/",
+    URIPart: "/th",
   },
   // Spanish
   {
     id: "es",
     icon: "EsFlagIcon",
     name: "Español",
-    URIPart: "/es/",
+    URIPart: "/es",
   },
   // Italian
   {
     id: "it",
     icon: "ItFlagIcon",
     name: "Italiano",
-    URIPart: "/it/",
+    URIPart: "/it",
   },
   // Chinese
   {
     id: "cn",
     icon: "CnFlagIcon",
     name: "简体中文",
-    URIPart: "/cn/",
+    URIPart: "/cn",
   },
   // Taiwan
   {
     id: "tw",
     icon: "CnFlagIcon",
     name: "繁體中文",
-    URIPart: "/tw/",
+    URIPart: "/tw",
   },
   // Indonesian
   {
     id: "id",
     icon: "IdFlagIcon",
     name: "Bahasa Indonesia",
-    URIPart: "/id/",
+    URIPart: "/id",
   },
   // Japanese
   {
     id: "jp",
     icon: "JpFlagIcon",
     name: "日本",
-    URIPart: "/jp/",
+    URIPart: "/jp",
   },
   /*// German
   {
