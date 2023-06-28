@@ -5,7 +5,7 @@ const LANG_CONFIG = [
     icon: "EnFlagIcon",
     name: "English (UK)",
     isDefault: true,
-    URIPart: "/",
+    URIPart: "",
   },
   // French
   {
@@ -188,7 +188,7 @@ const CYSEC_LANG_CONFIG = [
     icon: "EnFlagIcon",
     name: "English (UK)",
     isDefault: true,
-    URIPart: "/",
+    URIPart: "",
   },
   // French
   {
