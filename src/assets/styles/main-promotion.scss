@@ -92,14 +92,6 @@
     @include tablet {
       width: 50%;
     }
-
-    @include desktop-lg {
-      padding-top: 115px;
-    }
-
-    @include desktop-xl {
-      padding-top: unset;
-    }
   }
 
   &__title-wrapper {
@@ -128,7 +120,7 @@
     @include tablet {
       font-size: 31px;
       line-height: 39px;
-      max-width: 370px;
+      max-width: 326px;
     }
 
     @include desktop-xl {

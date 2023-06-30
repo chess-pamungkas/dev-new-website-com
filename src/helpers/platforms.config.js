@@ -290,7 +290,7 @@ const MetaTrader4info = () => {
   const getOSDeviceMT4 = () => {
     switch (true) {
       case isIOS:
-        return MT4_DOWNLOAD_LINKS.iosFSA;
+        return MT4_DOWNLOAD_LINKS.ios;
       case isAndroid:
         return MT4_DOWNLOAD_LINKS.android;
       case isWindows:
