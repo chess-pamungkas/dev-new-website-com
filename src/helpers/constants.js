@@ -9,6 +9,7 @@ import LanguageContext from "../context/language-context";
 import { useContext } from "react";
 import { FXBO_LANG_URL_KEYS_MAP } from "./lang-options.config";
 import { topLevelDomain } from "./entity-resolver";
+import { setIBparamsToLink } from "./services/ib-service";
 
 export const WINDOW_SIZE_SM = 375;
 export const WINDOW_SIZE_MD = 768;
@@ -51,7 +52,7 @@ export const GetRegistrationLink = () => {
 
   return `https://my.oqtima.${topLevelDomain}${
     FXBO_LANG_URL_KEYS_MAP[selectedLanguage.id]
-  }/register/`;
+  }/register/${setIBparamsToLink()}`;
 };
 
 export const GetLoginLink = () => {
