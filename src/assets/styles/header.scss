@@ -27,7 +27,7 @@
       display: none;
     }
 
-    @include desktop-xl {
+    @include desktop-lg {
       display: none;
 
       &-text-main {
