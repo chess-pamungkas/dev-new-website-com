@@ -7,6 +7,7 @@ import {
   ColumnWithdrawal,
   DataDeposit,
   DataWithdrawal,
+  WithdrawalDisclaimer,
 } from "../../../helpers/withdrawal.config";
 import TopMarketPromotion from "../../top-market-promotion";
 import promotion from "../../../assets/images/withdrawal/promotion.svg";
@@ -16,7 +17,7 @@ import Tabs from "../../shared/tabs";
 import icon from "../../../assets/images/icon--white.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
-import { isCySEC } from "../../../helpers/entity-resolver";
+import { isCySEC, sitePostfix } from "../../../helpers/entity-resolver";
 
 const FundingPageContent = () => {
   const { t } = useTranslation();
@@ -93,7 +94,7 @@ const FundingPageContent = () => {
         </span>
         <span className="display-block">
           <HighlightedLocalizationText
-            localizationText="withdrawal_top-market-promo-text2-2"
+            localizationText={`withdrawal_top-market-promo-text2-2${sitePostfix}`}
             wordsToHighlight="withdrawal_top-market-promo-text-accent2-2"
             primaryClassName="highlighted-in-white"
             accentClassName="highlighted-in-red"
@@ -101,7 +102,7 @@ const FundingPageContent = () => {
         </span>
         <span className="display-block">
           <HighlightedLocalizationText
-            localizationText="withdrawal_top-market-promo-text2-3"
+            localizationText={`withdrawal_top-market-promo-text2-3${sitePostfix}`}
             wordsToHighlight="withdrawal_top-market-promo-text-accent2-3"
             primaryClassName="highlighted-in-white"
             accentClassName="highlighted-in-red"
@@ -112,9 +113,7 @@ const FundingPageContent = () => {
         <Tabs tabList={tabs} />
       </TopMarketLayout>
       <section className={cn("notes-block")}>
-        <p className="notes-block__text">{t("withdrawal_disclaimer1")}</p>
-        <p className="notes-block__text">{t("withdrawal_disclaimer2")}</p>
-        <p className="notes-block__text">{t("withdrawal_disclaimer3")}</p>
+        {WithdrawalDisclaimer()}
       </section>
       <TopMarketPromotion
         className={cn("bottom-promotion", {
