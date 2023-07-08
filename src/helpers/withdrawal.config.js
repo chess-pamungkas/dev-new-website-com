@@ -3,7 +3,7 @@ import cn from "classnames";
 import React from "react";
 import { PAYMENT_SYSTEMS, GetDepositLink } from "./constants";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { isCySEC } from "./entity-resolver";
+import { isCySEC, sitePostfix } from "./entity-resolver";
 
 export const ColumnDeposit = () => {
   const { t } = useTranslation();
@@ -79,7 +79,7 @@ export const DataDeposit = () => {
       ),
       col2: t("withdrawal_data_col1"),
       col3: "$200",
-      col4: t("withdrawal_data_col3"),
+      col4: t("deposit_data_col3"),
       col5: CURRENCIES,
       col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
@@ -101,7 +101,7 @@ export const DataDeposit = () => {
       ),
       col2: t("withdrawal_data_col1"),
       col3: "$200",
-      col4: t("withdrawal_data_col3"),
+      col4: t("deposit_data_col3"),
       col5: CURRENCIES,
       col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
@@ -117,9 +117,9 @@ export const DataDeposit = () => {
           </div>
         </>
       ),
-      col2: t("withdrawal_data_col2"),
+      col2: t("deposit_data_col2"),
       col3: "$200",
-      col4: t("withdrawal_data_col3"),
+      col4: t("deposit_data_col3"),
       col5: CURRENCIES,
       col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
@@ -175,9 +175,9 @@ export const DataWithdrawal = () => {
           </div>
         </>
       ),
-      col2: t("withdrawal_data_col4"),
+      col2: t(`withdrawal_data_col4${sitePostfix}`),
       col3: "$100",
-      col4: t("withdrawal_data_col3"),
+      col4: t(`withdrawal_data_col3_v1${sitePostfix}`),
     },
     {
       col1: (
@@ -195,9 +195,9 @@ export const DataWithdrawal = () => {
           </div>
         </>
       ),
-      col2: t("withdrawal_data_col4"),
+      col2: t(`withdrawal_data_col4${sitePostfix}`),
       col3: "$100",
-      col4: t("withdrawal_data_col3"),
+      col4: t(`withdrawal_data_col3_v1${sitePostfix}`),
     },
     {
       col1: (
@@ -211,10 +211,31 @@ export const DataWithdrawal = () => {
           </div>
         </>
       ),
-      col2: t("withdrawal_data_col2"),
+      col2: t(`withdrawal_data_col2${sitePostfix}`),
       col3: "$100",
-      col4: t("withdrawal_data_col3"),
+      col4: t(`withdrawal_data_col3_v2${sitePostfix}`),
     },
   ];
   return DATA_WITHDRAWAL;
+};
+
+export const WithdrawalDisclaimer = () => {
+  const { t } = useTranslation();
+  return isCySEC ? (
+    <>
+      <p className="notes-block__text">{t("withdrawal_disclaimer1")}</p>
+      <p className="notes-block__text">{t("withdrawal_disclaimer2")}</p>
+      <p className="notes-block__text">{t("withdrawal_disclaimer3_1")}</p>
+      <p className="notes-block__text notes-block__text--pl">
+        {t("withdrawal_disclaimer3_2")}
+      </p>
+      <p className="notes-block__text">{t("withdrawal_disclaimer4")}</p>
+    </>
+  ) : (
+    <>
+      <p className="notes-block__text">{t("withdrawal_disclaimer1-fsa")}</p>
+      <p className="notes-block__text">{t("withdrawal_disclaimer2-fsa")}</p>
+      <p className="notes-block__text">{t("withdrawal_disclaimer3-fsa")}</p>
+    </>
+  );
 };

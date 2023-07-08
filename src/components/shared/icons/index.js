@@ -648,7 +648,7 @@ const FLAG_WIDTH = 25;
 export const EnFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/en.png"
+    src="../../../assets/images/icons/languages/en.svg"
     alt="en"
     width={FLAG_WIDTH}
   />
@@ -657,7 +657,7 @@ export const EnFlagIcon = ({ className }) => (
 export const DeFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/de.png"
+    src="../../../assets/images/icons/languages/de.svg"
     alt="de"
     width={FLAG_WIDTH}
   />
@@ -666,7 +666,7 @@ export const DeFlagIcon = ({ className }) => (
 export const FrFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/fr.png"
+    src="../../../assets/images/icons/languages/fr.svg"
     alt="fr"
     width={FLAG_WIDTH}
   />
@@ -684,7 +684,7 @@ export const PlFlagIcon = ({ className }) => (
 export const PtFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/pt.png"
+    src="../../../assets/images/icons/languages/pt.svg"
     alt="pt"
     width={FLAG_WIDTH}
   />
@@ -711,7 +711,7 @@ export const FiFlagIcon = ({ className }) => (
 export const EsFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/es.png"
+    src="../../../assets/images/icons/languages/es.svg"
     alt="es"
     width={FLAG_WIDTH}
   />
@@ -720,7 +720,7 @@ export const EsFlagIcon = ({ className }) => (
 export const RuFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/ru.png"
+    src="../../../assets/images/icons/languages/ru.svg"
     alt="ru"
     width={FLAG_WIDTH}
   />
@@ -765,7 +765,7 @@ export const RoFlagIcon = ({ className }) => (
 export const ItFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/it.png"
+    src="../../../assets/images/icons/languages/it.svg"
     alt="it"
     width={FLAG_WIDTH}
   />
@@ -774,7 +774,7 @@ export const ItFlagIcon = ({ className }) => (
 export const CnFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/cn.png"
+    src="../../../assets/images/icons/languages/cn.svg"
     alt="cn"
     width={FLAG_WIDTH}
   />
@@ -801,7 +801,7 @@ export const CzFlagIcon = ({ className }) => (
 export const VnFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/vn.png"
+    src="../../../assets/images/icons/languages/vn.svg"
     alt="vn"
     width={FLAG_WIDTH}
   />
@@ -810,7 +810,7 @@ export const VnFlagIcon = ({ className }) => (
 export const ThFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/th.png"
+    src="../../../assets/images/icons/languages/th.svg"
     alt="th"
     width={FLAG_WIDTH}
   />
@@ -828,7 +828,7 @@ export const MyFlagIcon = ({ className }) => (
 export const IdFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/id.png"
+    src="../../../assets/images/icons/languages/id.svg"
     alt="id"
     width={FLAG_WIDTH}
   />
@@ -846,7 +846,7 @@ export const KrFlagIcon = ({ className }) => (
 export const JpFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/jp.png"
+    src="../../../assets/images/icons/languages/jp.svg"
     alt="jp"
     width={FLAG_WIDTH}
   />
@@ -891,7 +891,7 @@ export const PhFlagIcon = ({ className }) => (
 export const BrFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/br.png"
+    src="../../../assets/images/icons/languages/br.svg"
     alt="pt"
     width={FLAG_WIDTH}
   />
