@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import TableComponent from "../../shared/table";
@@ -8,6 +8,7 @@ import {
   DataDeposit,
   DataWithdrawal,
   WithdrawalDisclaimer,
+  DepositDisclaimer,
 } from "../../../helpers/withdrawal.config";
 import TopMarketPromotion from "../../top-market-promotion";
 import promotion from "../../../assets/images/withdrawal/promotion.svg";
@@ -22,11 +23,13 @@ import { isCySEC, sitePostfix } from "../../../helpers/entity-resolver";
 const FundingPageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
+  const [isDepositTab, setIsDepositTab] = useState(true);
 
   const tabs = [
     {
       id: 1,
       title: t("withdrawal_tabs_title1"),
+      onClick: () => setIsDepositTab(true),
       content: (
         <TableComponent
           data={DataDeposit()}
@@ -38,6 +41,7 @@ const FundingPageContent = () => {
     {
       id: 2,
       title: t("withdrawal_tabs_title2"),
+      onClick: () => setIsDepositTab(false),
       content: (
         <TableComponent
           data={DataWithdrawal()}
@@ -113,7 +117,7 @@ const FundingPageContent = () => {
         <Tabs tabList={tabs} />
       </TopMarketLayout>
       <section className={cn("notes-block")}>
-        {WithdrawalDisclaimer()}
+        {isDepositTab ? DepositDisclaimer(): WithdrawalDisclaimer()}
       </section>
       <TopMarketPromotion
         className={cn("bottom-promotion", {
