@@ -998,6 +998,7 @@
   "withdrawal_data_col2": "1-3 Días",
   "withdrawal_data_col3": "Ninguno",
   "withdrawal_data_col4": "Mismo Día",
+  "withdrawal_data_col4-fsa": "1-3 Días",
   "withdrawal_data_btn": "Depósito",
   "withdrawal_disclaimer1": "Estamos aquí para ti en cualquier momento del día, pero no todas las instituciones financieras trabajan las 24 horas del día. Nuestro equipo de procesamiento se asegurará de que tus retiros se procesen dentro del día laboral, de lunes a viernes de 9:00 a 15:00 (hora estándar de Europa del Este).",
   "withdrawal_disclaimer2": "No te cobraremos ni un centavo de nuestro lado, pero tu banco o método de financiamiento puede cobrar una tarifa de su lado que está fuera de nuestro control.",
