@@ -119,7 +119,7 @@ export const DataDeposit = () => {
       ),
       col2: t("deposit_data_col2"),
       col3: "$200",
-      col4: t("deposit_data_col3"),
+      col4: t("deposit_data_col3_v2"),
       col5: CURRENCIES,
       col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
