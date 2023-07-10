@@ -77,7 +77,7 @@ export const DataDeposit = () => {
           </div>
         </>
       ),
-      col2: <><span>{t("withdrawal_data_col1")}</span>&nbsp;<sup>1</sup></>,
+      col2: <><span>{t("withdrawal_data_col1")}</span>&nbsp;<sup>{isCySEC ? "1": ""}</sup></>,
       col3: "$200",
       col4: t("withdrawal_data_col3"),
       col5: CURRENCIES,
@@ -99,7 +99,7 @@ export const DataDeposit = () => {
           </div>
         </>
       ),
-      col2: <><span>{t("withdrawal_data_col1")}</span>&nbsp;<sup>1</sup></>,
+      col2: <><span>{t("withdrawal_data_col1")}</span>&nbsp;<sup>{isCySEC ? "1": ""}</sup></>,
       col3: "$200",
       col4: t("withdrawal_data_col3"),
       col5: CURRENCIES,
@@ -119,7 +119,7 @@ export const DataDeposit = () => {
       ),
       col2: t("withdrawal_data_col2"),
       col3: "$200",
-      col4: <><span>{t("withdrawal_data_col3")}</span>&nbsp;<sup>2</sup></>,
+      col4: <><span>{t("withdrawal_data_col3")}</span>&nbsp;<sup>{isCySEC ? "2": ""}</sup></>,
       col5: CURRENCIES,
       col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
@@ -175,9 +175,9 @@ export const DataWithdrawal = () => {
           </div>
         </>
       ),
-      col2: <><span>{t("withdrawal_data_col4")}</span>&nbsp;<sup>1</sup></>,
+      col2: <><span>{t("withdrawal_data_col4")}</span>&nbsp;<sup>{isCySEC ? "1": "*"}</sup></>,
       col3: "$100",
-      col4: <><span>{t("withdrawal_data_col3")}</span>&nbsp;<sup>3</sup></>,
+      col4: <><span>{t("withdrawal_data_col3")}</span>&nbsp;<sup>{isCySEC ? "3": ""}</sup></>,
     },
     {
       col1: (
@@ -195,9 +195,9 @@ export const DataWithdrawal = () => {
           </div>
         </>
       ),
-      col2: <><span>{t("withdrawal_data_col4")}</span>&nbsp;<sup>1</sup></>,
+      col2: <><span>{t("withdrawal_data_col4")}</span>&nbsp;<sup>{isCySEC ? "1": "*"}</sup></>,
       col3: "$100",
-      col4: <><span>{t("withdrawal_data_col3")}</span>&nbsp;<sup>3</sup></>,
+      col4: <><span>{t("withdrawal_data_col3")}</span>&nbsp;<sup>{isCySEC ? "3": ""}</sup></>,
     },
     {
       col1: (
@@ -211,9 +211,9 @@ export const DataWithdrawal = () => {
           </div>
         </>
       ),
-      col2: <><span>{t("withdrawal_data_col4")}</span>&nbsp;<sup>2</sup></>,
+      col2: <><span>{t(`withdrawal_data_col4${sitePostfix}`)}</span>&nbsp;<sup>{isCySEC ? "2": ""}</sup></>,
       col3: "$100",
-      col4: <><span>{t("withdrawal_data_col3")}</span>&nbsp;<sup>4</sup></>,
+      col4: <><span>{t("withdrawal_data_col3")}</span>&nbsp;<sup>{isCySEC ? "4": ""}</sup></>,
     },
   ];
   return DATA_WITHDRAWAL;
