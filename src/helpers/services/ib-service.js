@@ -1,3 +1,4 @@
+import { navigate } from "gatsby";
 import { isFSA } from "../entity-resolver";
 import { isBrowser } from "./is-browser";
 
@@ -23,6 +24,9 @@ export const getIBParamsAndSetToStorage = () => {
         IB_PARAMS.pid,
         getParamsFromUrl().get(IB_PARAMS.pid)
       );
+
+      const { pathname } = window.location;
+      navigate(pathname);
     }
   }
 };
