@@ -37,7 +37,6 @@ export const LanguageProvider = ({ children }) => {
     if (selectedLang.id !== i18Language) {
       if (isBrowser()) {
         const { pathname, search } = window.location;
-        console.log(selectedLang);
         const navigatePath =
           `${selectedLang.URIPart}` + pathname.replace(`/${i18Language}/`, "/");
         navigate(`${navigatePath}${search}`);

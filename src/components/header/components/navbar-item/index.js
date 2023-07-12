@@ -1,25 +1,16 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useRef, useContext } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { AngleDownIcon } from "../../../shared/icons";
 import { ANGLE_ICON_COLOR } from "../../../../helpers/constants";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import NavbarSubItem from "../navbar-sub-item";
-import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import CommonContext from "../../../../context/common-context";
 
-const NavbarItem = ({
-  className,
-  headerRef,
-  title,
-  subItems = [],
-  isNested = false,
-}) => {
+const NavbarItem = ({ className, title, subItems = [], isNested = false }) => {
   const { t } = useTranslation();
   const dropdownRef = useRef();
-  const [offset, setOffset] = useState(null);
-  const { width } = useWindowSize();
-  const { sectionOptions } = useContext(CommonContext);
+  const { heightOffset } = useContext(CommonContext);
 
   const hideDropdown = () => {
     if (dropdownRef?.current) {
@@ -34,12 +25,6 @@ const NavbarItem = ({
       dropdownRef.current.style.opacity = "1";
     }
   };
-
-  useEffect(() => {
-    if (headerRef?.current) {
-      setOffset(headerRef.current.offsetHeight);
-    }
-  }, [headerRef, setOffset, width, sectionOptions]);
 
   return (
     <li
@@ -60,7 +45,7 @@ const NavbarItem = ({
           className={cn("navbar-item__dropdown", {
             "navbar-item__dropdown--nested": isNested,
           })}
-          style={{ top: offset + "px" }}
+          style={{ top: `${heightOffset}px` }}
         >
           {subItems.map((subItem, i) => (
             <NavbarSubItem

@@ -11,12 +11,9 @@ import { CookiesPopup } from "../../cookies-popup";
 import { NotificationStripeProvider } from "../../../context/notification-stripe-context";
 import { TradingProvider } from "../../../context/trading-context";
 import { CommonProvider } from "../../../context/common-context";
+import MainContainer from "../main-container";
 
-const Layout = ({
-  children,
-  isShowFooter = true,
-  isSearchBarAttached = true,
-}) => {
+const Layout = ({ children }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -24,36 +21,32 @@ const Layout = ({
   }, []);
 
   return (
-    <CommonProvider>
-      <ClientResolverProvider>
-        <CookieProvider>
-          <MarketingContextProvider>
-            <LanguageProvider>
+    <ClientResolverProvider>
+      <CookieProvider>
+        <MarketingContextProvider>
+          <LanguageProvider>
+            <CommonProvider>
               <SearchProvider>
                 <NotificationStripeProvider>
                   <TradingProvider>
                     {isLoaded && (
                       <>
-                        <Header
-                          isSearchBarAttached={isSearchBarAttached}
-                        />
+                        <Header />
+                        <CookiesPopup />
                         <section className="scroll-container">
-                          <main id="main-container">
-                            <CookiesPopup />
-                            {children}
-                          </main>
-                          {isShowFooter && <Footer />}
+                          <MainContainer>{children}</MainContainer>
+                          <Footer />
                         </section>
                       </>
                     )}
                   </TradingProvider>
                 </NotificationStripeProvider>
               </SearchProvider>
-            </LanguageProvider>
-          </MarketingContextProvider>
-        </CookieProvider>
-      </ClientResolverProvider>
-    </CommonProvider>
+            </CommonProvider>
+          </LanguageProvider>
+        </MarketingContextProvider>
+      </CookieProvider>
+    </ClientResolverProvider>
   );
 };
 
