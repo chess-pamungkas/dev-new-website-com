@@ -1,6 +1,8 @@
 import React, { createContext, useEffect, useRef, useState } from "react";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { isBrowser } from "../../helpers/services/is-browser";
+import LanguageContext from "../language-context";
+import { useContext } from "react";
 
 const CommonContext = createContext({});
 
@@ -9,13 +11,21 @@ export const CommonProvider = ({ children }) => {
   const [sectionOptions, setSectionOptions] = useState(null);
   const [headerRef, setHeaderRef] = useState(useRef());
   const [isSearchBarAttached, setIsSearchBarAttached] = useState(true);
+  const [heightOffset, setHeightOffset] = useState(0);
+  const { selectedLanguage } = useContext(LanguageContext);
 
   useEffect(() => {
-    if (isBrowser()) {
-      let main = document.getElementById("main-container");
-      if (main) main.style.marginTop = headerRef?.current?.offsetHeight + "px";
-    }
-  }, [headerRef, sectionOptions, width]);
+    const updateOffset = () => {
+      if (isBrowser() && headerRef?.current?.offsetHeight) {
+        setHeightOffset(headerRef.current.offsetHeight);
+      }
+    };
+
+    // workaround to actually update offset, doesn't work without timeout
+    setTimeout(() => {
+      updateOffset();
+    }, 100);
+  }, [headerRef, sectionOptions, width, selectedLanguage]);
 
   return (
     <CommonContext.Provider
@@ -26,6 +36,7 @@ export const CommonProvider = ({ children }) => {
         setHeaderRef,
         isSearchBarAttached,
         setIsSearchBarAttached,
+        heightOffset,
       }}
     >
       {children}
