@@ -17,11 +17,7 @@ import expandIcon from "../../../assets/images/icons/accordion.svg";
 import collapseIcon from "../../../assets/images/icons/accordion-active.svg";
 import NotificationStripeContext from "../../../context/notification-stripe-context";
 import { isBrowser } from "../../../helpers/services/is-browser";
-import {
-  MT5_WEB_TRADER_LINK,
-  MT4_WEB_TRADER_LINK,
-} from "../../../helpers/constants";
-import { entityToRedirect, currentEntity, isCySEC } from "../../../helpers/entity-resolver";
+import { currentEntity, isCySEC } from "../../../helpers/entity-resolver";
 
 export const CysecStripe = ({ t, isCySEC }) => {
   const { expand, setExpand } = useContext(NotificationStripeContext);
@@ -88,9 +84,7 @@ const CysecRedirect = ({ handleOpen, setIsHidden, setIsCysecRedirect, t }) => {
 };
 
 const NotificationStripe = ({ className, setSectionOptions }) => {
-  const { clientConfig } = useContext(
-    ClientResolverContext
-  );
+  const { clientConfig } = useContext(ClientResolverContext);
   const { isShow, handleOpen, handleClose } = useModal();
   const {
     isCysecNotification,
@@ -204,7 +198,6 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
         handleClose={handleClose}
         setIsCysecRedirect={setIsCysecRedirect}
         getCookie={getCookie}
-        redirectEntity={entityToRedirect}
       />
     </>
   );
