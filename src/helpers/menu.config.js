@@ -180,11 +180,11 @@ const TRADING_TAB_FUNDING_WITHDRAWALS_ITEM = {
 };
 
 const TRADING_TAB_PRO_QUALIFICATION_ITEM = {
-  title: "header-nav-tab-trading-professional-qualification-title",
+  title: "header-nav-tab-trading-professional-qualification-title-cysec",
   link: PROFESSIONAL_QUALIFICATION_PAGE_LINK,
   isSubtitle: true,
   icon: ProfessionalQualificationIcon,
-  description: "header-nav-tab-trading-professional-qualification-desc",
+  description: "header-nav-tab-trading-professional-qualification-desc-cysec",
 };
 
 // Note: there are some unused items, we might use them later, so don't remove them for a while

@@ -11,6 +11,7 @@ import HowToStart from "../../partners/components/how-to-start";
 import icon from "../../../assets/images/icon--white.svg";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
+import { sitePostfix } from "../../../helpers/entity-resolver";
 
 const PartnersPageContent = () => {
   const { t } = useTranslation();
@@ -24,12 +25,12 @@ const PartnersPageContent = () => {
         })}
         image={promotion}
         btnClassName={cn("button-link--ghost")}
-        btnTitle={t("partners_top-market-promo-btn")}
+        btnTitle={t(`partners_top-market-promo-btn${sitePostfix}`)}
         link={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
-          localizationText="partners_top-market-promo-text"
-          wordsToHighlight="partners_top-market-promo-text-accent"
+          localizationText={`partners_top-market-promo-text${sitePostfix}`}
+          wordsToHighlight={`partners_top-market-promo-text-accent${sitePostfix}`}
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
@@ -38,8 +39,8 @@ const PartnersPageContent = () => {
       <PartnersAdvantages
         title={
           <HighlightedLocalizationText
-            localizationText="partners_advantages-title"
-            wordsToHighlight="partners_advantages-title-accent"
+            localizationText={`partners_advantages-title${sitePostfix}`}
+            wordsToHighlight={`partners_advantages-title-accent${sitePostfix}`}
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
@@ -54,8 +55,8 @@ const PartnersPageContent = () => {
         image={icon}
       >
         <HighlightedLocalizationText
-          localizationText="partners_top-market-bot-promo-text"
-          wordsToHighlight="partners_top-market-bot-promo-text-accent"
+          localizationText={`partners_top-market-bot-promo-text${sitePostfix}`}
+          wordsToHighlight={`partners_top-market-bot-promo-text-accent${sitePostfix}`}
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
