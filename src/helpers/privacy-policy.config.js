@@ -1,4 +1,6 @@
-export const PRIVACY_POLICY_CONTENT = [
+import { isCySEC } from "./entity-resolver";
+
+const PRIVACY_POLICY_CONTENT = [
   // FYI: There is no need to translate this text into other languages, so we don't need to store it in locales.
   {
     title: "Introduction",
@@ -255,7 +257,7 @@ export const PRIVACY_POLICY_CONTENT = [
   },
 ];
 
-export const PRIVACY_POLICY_CONTENT_FSA = [
+const PRIVACY_POLICY_CONTENT_FSA = [
   // FYI: There is no need to translate this text into other languages, so we don't need to store it in locales.
   {
     title: "1. INTRODUCTION",
@@ -929,3 +931,6 @@ export const PRIVACY_POLICY_CONTENT_FSA = [
     ],
   },
 ];
+
+export const getPrivacyPolicyContent = () =>
+  isCySEC ? PRIVACY_POLICY_CONTENT : PRIVACY_POLICY_CONTENT_FSA;

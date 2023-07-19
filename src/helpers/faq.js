@@ -7,6 +7,7 @@ import cryptoIcon from "../assets/images/all-markets/crypto.svg";
 import accountIcon from "../assets/images/icons/account.svg";
 import fundingIcon from "../assets/images/icons/funding.svg";
 import tradingIcon from "../assets/images/icons/trading.svg";
+import { isCySEC } from "./entity-resolver";
 
 export const FAQ_FOREX = [
   {
@@ -396,120 +397,6 @@ export const FAQ_ALL = [
   },
 ];
 
-export const FSA_FAQ_MARKET = [
-  {
-    title: "faq_forex-title",
-    icon: forexIcon,
-    content: [
-      {
-        question: "faq_forex-q1",
-        answer: ["faq_forex-a1"],
-      },
-      {
-        question: "faq_forex-q2",
-        answer: ["faq_forex-a2"],
-      },
-      {
-        question: "faq_forex-q3",
-        answer: ["faq_forex-a3"],
-      },
-      {
-        question: "faq_forex-q4",
-        answer: [
-          "faq_forex-a4",
-          "faq_forex-a4-2",
-          "faq_forex-a4-3",
-          "faq_forex-a4-4",
-          "faq_forex-a4-5",
-          "faq_forex-a4-6",
-          "faq_forex-a4-7",
-          "faq_forex-a4-8",
-        ],
-      },
-    ],
-  },
-  {
-    title: "faq_cryptocurrencies-title",
-    icon: cryptoIcon,
-    content: [
-      {
-        question: "faq_cryptocurrencies-q1",
-        answer: ["faq_cryptocurrencies-a1"],
-      },
-      {
-        question: "faq_cryptocurrencies-q2",
-        answer: ["faq_cryptocurrencies-a2"],
-      },
-      {
-        question: "faq_cryptocurrencies-q3",
-        answer: ["faq_cryptocurrencies-a3"],
-      },
-    ],
-  },
-  {
-    title: "faq_metals-title",
-    icon: commoditiesIcon,
-    content: [
-      {
-        question: "faq_metals-q1",
-        answer: ["faq_metals-a1"],
-      },
-      {
-        question: "faq_metals-q2",
-        answer: [
-          "faq_metals-a2",
-          "faq_metals-a2-2",
-          "faq_metals-a2-3",
-          "faq_metals-a2-4",
-          "faq_metals-a2-5",
-        ],
-      },
-    ],
-  },
-  {
-    title: "faq_energies-title",
-    icon: energiesIcon,
-    content: [
-      {
-        question: "faq_energies-q1",
-        answer: ["faq_energies-a1"],
-      },
-      {
-        question: "faq_energies-q2",
-        answer: ["faq_energies-a2"],
-      },
-    ],
-  },
-  {
-    title: "faq_shares-title",
-    icon: sharesIcon,
-    content: [
-      {
-        question: "faq_shares-q1",
-        answer: ["faq_shares-a1"],
-      },
-      {
-        question: "faq_shares-q2",
-        answer: ["faq_shares-a2", "faq_shares-a2-2", "faq_shares-a2-3"],
-      },
-    ],
-  },
-  {
-    title: "faq_indices-title",
-    icon: indicesIcon,
-    content: [
-      {
-        question: "faq_indices-q1",
-        answer: ["faq_indices-a1"],
-      },
-      {
-        question: "faq_indices-q2",
-        answer: ["faq_indices-a2", "faq_indices-a2-2"],
-      },
-    ],
-  },
-];
-
 export const CYSEC_FAQ_MARKET = [
   {
     title: "faq_forex-title",
@@ -605,6 +492,30 @@ export const CYSEC_FAQ_MARKET = [
     ],
   },
 ];
+
+export const FSA_FAQ_MARKET = [
+  ...CYSEC_FAQ_MARKET,
+  {
+    title: "faq_cryptocurrencies-title-fsa",
+    icon: cryptoIcon,
+    content: [
+      {
+        question: "faq_cryptocurrencies-q1-fsa",
+        answer: ["faq_cryptocurrencies-a1-fsa"],
+      },
+      {
+        question: "faq_cryptocurrencies-q2-fsa",
+        answer: ["faq_cryptocurrencies-a2-fsa"],
+      },
+      {
+        question: "faq_cryptocurrencies-q3-fsa",
+        answer: ["faq_cryptocurrencies-a3-fsa"],
+      },
+    ],
+  },
+];
+
+export const getFAQMarket = () => (isCySEC ? CYSEC_FAQ_MARKET : FSA_FAQ_MARKET);
 
 export const FAQ_BEGINNERS = [
   {

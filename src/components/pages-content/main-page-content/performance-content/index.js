@@ -1,8 +1,7 @@
 import React from "react";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 import Performance from "../../../performance";
-import { CYSEC_ADVANTAGES, FSA_ADVANTAGES } from "../../../../helpers/config";
-import { isCySEC } from "../../../../helpers/entity-resolver";
+import { ADVANTAGES } from "../../../../helpers/config";
 
 const PerformanceContent = () => {
   return (
@@ -23,7 +22,7 @@ const PerformanceContent = () => {
           />
         </HighlightedLocalizationText>
       }
-      advantages={isCySEC ? CYSEC_ADVANTAGES : FSA_ADVANTAGES}
+      advantages={ADVANTAGES}
     />
   );
 };

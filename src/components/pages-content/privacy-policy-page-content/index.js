@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import cn from "classnames";
 import PrivacyPolicyItem from "./privacy-policy-item";
-import {
-  PRIVACY_POLICY_CONTENT,
-  PRIVACY_POLICY_CONTENT_FSA,
-} from "../../../helpers/privacy-policy.config";
-import { isCySEC } from "../../../helpers/entity-resolver";
+import { getPrivacyPolicyContent } from "../../../helpers/privacy-policy.config";
 
 const PrivacyPolicyContent = ({ className }) => {
-  const policyContent = isCySEC
-    ? PRIVACY_POLICY_CONTENT
-    : PRIVACY_POLICY_CONTENT_FSA;
+  const policyContent = getPrivacyPolicyContent();
 
   return (
     <section className={cn("privacy-policy", className)}>

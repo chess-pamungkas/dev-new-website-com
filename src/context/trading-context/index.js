@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import { CYSEC_TRADING_SECTIONS } from "../../helpers/config";
+import { getTradingSections } from "../../helpers/config";
 import { io } from "socket.io-client";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
@@ -8,7 +8,7 @@ const socket = io(`${API_URL}ws-stocks/`);
 
 export const TradingProvider = ({ children }) => {
   const [selectedSection, setSelectedSection] = useState(
-    CYSEC_TRADING_SECTIONS[0]
+    getTradingSections()[0]
   );
   const [tradingSymbols, setTradingSymbols] = useState([]);
   const [needToLoadSymbols, setNeedToLoadSymbols] = useState(false);

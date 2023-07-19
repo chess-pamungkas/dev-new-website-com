@@ -18,7 +18,7 @@ function DetectIsLandingPage() {
 export const isLandingPage = DetectIsLandingPage();
 // export const isLandingPage = true;
 
-export const sitePostfix = isCySEC ? "" : "-fsa";
+export const sitePostfix = isCySEC ? "-cysec" : "-fsa";
 
 export const topLevelDomain = isCySEC ? "eu" : "com";
 export const oppositeTopLevelDomain = isCySEC ? "com" : "eu";

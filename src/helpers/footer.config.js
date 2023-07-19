@@ -1,18 +1,23 @@
+import React from "react";
 import { LEGAL_PAGE_LINK } from "./constants";
 import { RISK_DISCLOSURE_DOC } from "./documents";
+import { isCySEC } from "./entity-resolver";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
-export const FOOTER_TEXT = "footer-text";
-export const FOOTER_TEXT_FSA = "footer-text-fsa";
+const FOOTER_TEXT = "footer-text-cysec";
+const FOOTER_TEXT_FSA = "footer-text-fsa";
 
-export const FOOTER_COPYRIGHT = {
-  p1: "footer-copyright-paragraph1",
-  p2: "footer-copyright-paragraph2",
-  p3: "footer-copyright-paragraph3",
-  a1: "footer-copyright-paragraph-link",
+export const getFooterText = () => (isCySEC ? FOOTER_TEXT : FOOTER_TEXT_FSA);
+
+const FOOTER_COPYRIGHT = {
+  p1: "footer-copyright-paragraph1-cysec",
+  p2: "footer-copyright-paragraph2-cysec",
+  p3: "footer-copyright-paragraph3-cysec",
+  a1: "footer-copyright-paragraph-link-cysec",
   link1: RISK_DISCLOSURE_DOC,
 };
 
-export const FOOTER_COPYRIGHT_FSA = {
+const FOOTER_COPYRIGHT_FSA = {
   p1: "footer-copyright-paragraph1-fsa",
   p1_2: "footer-copyright-paragraph1_2-fsa",
   p2: "footer-copyright-paragraph2-fsa",
@@ -26,4 +31,40 @@ export const FOOTER_COPYRIGHT_FSA = {
 export const FOOTER_FOR_FUNDING = {
   p1: "footer-funding-1",
   p2: "footer-funding-2",
+};
+
+export const getFooterCopyright = () => {
+  const { t } = useTranslation();
+
+  return isCySEC ? (
+    <>
+      <p>{t(FOOTER_COPYRIGHT.p1)}</p>
+      <p>{t(FOOTER_COPYRIGHT.p2)}</p>
+      <p>
+        {t(FOOTER_COPYRIGHT.p3)}&nbsp;
+        <a href={FOOTER_COPYRIGHT.link1} target="_blank" rel="noreferrer">
+          {t(FOOTER_COPYRIGHT.a1)}
+        </a>
+      </p>
+    </>
+  ) : (
+    <>
+      <p>{t(FOOTER_COPYRIGHT_FSA.p1)}</p>
+      <p>{t(FOOTER_COPYRIGHT_FSA.p1_2)}</p>
+      <p>{t(FOOTER_COPYRIGHT_FSA.p2)}</p>
+      <p>
+        {t(FOOTER_COPYRIGHT_FSA.p3_1)}&nbsp;
+        <a
+          href={FOOTER_COPYRIGHT_FSA.p3_link1}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {t(FOOTER_COPYRIGHT_FSA.p3_a1)}
+        </a>
+        &nbsp;
+        {t(FOOTER_COPYRIGHT_FSA.p3_2)}
+      </p>
+      <p>{t(FOOTER_COPYRIGHT_FSA.p4)}</p>
+    </>
+  );
 };

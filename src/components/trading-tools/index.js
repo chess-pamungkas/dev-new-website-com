@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { FSA_PLATFORMS, CYSEC_PLATFORMS } from "../../helpers/config";
+import { getPlatforms } from "../../helpers/config";
 import PlatformBlock from "./components/platform-block";
 import ButtonLink from "../shared/button-link";
 import DeviceBlock from "./components/device-block";
@@ -10,7 +10,7 @@ import { useTrail } from "react-spring";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
-import { isCySEC } from "../../helpers/entity-resolver";
+import { sitePostfix } from "../../helpers/entity-resolver";
 
 const TradingTools = ({ className }) => {
   const { t } = useTranslation();
@@ -19,7 +19,7 @@ const TradingTools = ({ className }) => {
   const intersectionRef = useIntersectionObserver(containerRef, {
     freezeOnceVisible: true,
   });
-  const platforms = isCySEC ? CYSEC_PLATFORMS : FSA_PLATFORMS;
+  const platforms = getPlatforms();
 
   const [isAnimationStarted, setIsAnimationStarted] = useState(false);
 
@@ -71,16 +71,8 @@ const TradingTools = ({ className }) => {
         />
         <h2 className="trading-tools__title" ref={containerRef}>
           <HighlightedLocalizationText
-            localizationText={
-              isCySEC
-                ? "index_trading-tools-title"
-                : "index_trading-tools-title-fsa"
-            }
-            wordsToHighlight={
-              isCySEC
-                ? "trading-tools-title-accent"
-                : "trading-tools-title-accent-fsa"
-            }
+            localizationText={`index_trading-tools-title${sitePostfix}`}
+            wordsToHighlight={`trading-tools-title-accent${sitePostfix}`}
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />

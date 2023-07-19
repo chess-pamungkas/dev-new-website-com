@@ -4,12 +4,10 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import {
   FAQ_ALL,
   FAQ_BEGINNERS,
-  FSA_FAQ_MARKET,
-  CYSEC_FAQ_MARKET,
   FAQ_QUICK_ANSWER,
+  getFAQMarket,
 } from "../../../helpers/faq";
 import { debounce } from "lodash";
-import { isCySEC } from "../../../helpers/entity-resolver";
 
 const FaqSearchBar = ({ className, setSearchResults, setNoSearchResult }) => {
   const COUNT_OF_SEARCH_CHARS = 1;
@@ -17,7 +15,7 @@ const FaqSearchBar = ({ className, setSearchResults, setNoSearchResult }) => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
 
-  const faqMarket = isCySEC ? CYSEC_FAQ_MARKET : FSA_FAQ_MARKET;
+  const faqMarket = getFAQMarket();
 
   const searchContent = [
     ...FAQ_QUICK_ANSWER,

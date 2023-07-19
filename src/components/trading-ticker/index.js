@@ -1,13 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import cn from "classnames";
 import TradingSymbols from "./components/trading-symbols";
-import {
-  CYSEC_TRADING_SECTIONS,
-  FSA_TRADING_SECTIONS,
-} from "../../helpers/config";
+import { getTradingSections } from "../../helpers/config";
 import TradingSections from "./components/trading-sections";
 import { filterSymbols } from "../../helpers/services/filter-symbols";
-import { isCySEC } from "../../helpers/entity-resolver";
 import TradingContext from "../../context/trading-context";
 
 const TradingTicker = ({
@@ -17,9 +13,7 @@ const TradingTicker = ({
   isInfiniteAutoScroll,
   animationDuration,
 }) => {
-  const tradingSection = isCySEC
-    ? CYSEC_TRADING_SECTIONS
-    : FSA_TRADING_SECTIONS;
+  const tradingSection = getTradingSections();
   const {
     tradingSymbols,
     selectedSection,

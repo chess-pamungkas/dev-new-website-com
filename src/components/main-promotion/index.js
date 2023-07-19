@@ -8,12 +8,10 @@ import { MarketingContext } from "../../context/marketing-context";
 import {
   CONTENT_HEROES,
   SECT1_TEXT_SEQUENCES,
-  CYSEC_DEFAULT_TEXT_SEQUENCE,
-  FSA_DEFAULT_TEXT_SEQUENCE,
+  getDefaultTextSequence,
 } from "../../helpers/marketing.config";
 import { transformParamToKey } from "../../helpers/services/marketing-service";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
-import { isCySEC } from "../../helpers/entity-resolver";
 
 const MainPromotion = ({ className, isShowHero = true }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
@@ -21,9 +19,7 @@ const MainPromotion = ({ className, isShowHero = true }) => {
   const { t } = useTranslation();
   const { content, sect1 } = useContext(MarketingContext);
   const isRTL = useRtlDirection();
-  const DEFAULT_TEXT_SEQUENCE = isCySEC
-    ? CYSEC_DEFAULT_TEXT_SEQUENCE
-    : FSA_DEFAULT_TEXT_SEQUENCE;
+  const DEFAULT_TEXT_SEQUENCE = getDefaultTextSequence();
 
   const hero =
     CONTENT_HEROES[transformParamToKey(content)] || CONTENT_HEROES.default;

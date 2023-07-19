@@ -1,12 +1,11 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
+import React, { useCallback, useRef } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT5.json";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
 import {
-  CYSEC_MT5_ADVANTAGES,
-  FSA_MT5_ADVANTAGES,
+  getMT5Advantages,
   MT5_DOWNLOAD_LINKS,
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/MT4andMT5.png";
@@ -23,7 +22,7 @@ const Mt5PageContent = () => {
   const { t } = useTranslation();
   const isRTL = useRtlDirection();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
-  const mt5Advantages = isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES;
+  const mt5Advantages = getMT5Advantages();
   const downloadRef = useRef(null);
 
   //No need at MT5 as theres no null value at download section.  Enable when MT5 is at .COM and empty values
