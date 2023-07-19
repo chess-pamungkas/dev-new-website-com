@@ -4,9 +4,8 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import {
   FAQ_ALL,
   FAQ_BEGINNERS,
-  FSA_FAQ_MARKET,
-  CYSEC_FAQ_MARKET,
   FAQ_QUICK_ANSWER,
+  getFAQMarket,
 } from "../../helpers/faq";
 import Faq from "../faq";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
@@ -14,14 +13,13 @@ import FaqSearchBar from "./faq-search-bar";
 import marketsIcon from "../../assets/images/icons/markets.svg";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
-import { isCySEC } from "../../helpers/entity-resolver";
 
 const HelpCenter = ({ className }) => {
   const { t } = useTranslation();
   const [searchResults, setSearchResults] = useState([]);
   const [noSearchResult, setNoSearchResult] = useState(false);
   const isRTL = useRtlDirection();
-  const faqMarket = isCySEC ? CYSEC_FAQ_MARKET : FSA_FAQ_MARKET;
+  const faqMarket = getFAQMarket();
 
   const HelpCenterBlock = ({
     title,

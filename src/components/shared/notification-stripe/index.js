@@ -7,25 +7,19 @@ import { useEntityNotifications } from "../../../helpers/hooks/use-entity-notifi
 import CookieContext from "../../../context/cookie-context";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { sendClickEventToGA } from "../../../helpers/services/google-analytics-service";
-import {
-  RISK_DISCLOSURE_DOC,
-  RISK_DISCLOSURE_DOC_FSA,
-} from "../../../helpers/documents";
+import { getRiskDisclosureDoc } from "../../../helpers/documents";
 import { setRedirectOrBannedPopupShown } from "../../../helpers/services/set-redirect-or-banned-popup-shown";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import expandIcon from "../../../assets/images/icons/accordion.svg";
 import collapseIcon from "../../../assets/images/icons/accordion-active.svg";
 import NotificationStripeContext from "../../../context/notification-stripe-context";
 import { isBrowser } from "../../../helpers/services/is-browser";
-import {
-  MT5_WEB_TRADER_LINK,
-  MT4_WEB_TRADER_LINK,
-} from "../../../helpers/constants";
-import { entityToRedirect, currentEntity, isCySEC } from "../../../helpers/entity-resolver";
+import { currentEntity } from "../../../helpers/entity-resolver";
 
-export const CysecStripe = ({ t, isCySEC }) => {
+export const CysecStripe = () => {
   const { expand, setExpand } = useContext(NotificationStripeContext);
   const { isMobile } = useWindowSize();
+  const { t } = useTranslation();
 
   return (
     <div className="notification-stripe__cysec-wrapper">
@@ -33,7 +27,7 @@ export const CysecStripe = ({ t, isCySEC }) => {
         {t("notification-stripe-cysec")}&nbsp;
         <a
           className="notification-stripe__link"
-          href={isCySEC ? RISK_DISCLOSURE_DOC : RISK_DISCLOSURE_DOC_FSA}
+          href={getRiskDisclosureDoc()}
           target="_blank"
           rel="noreferrer"
         >
@@ -88,9 +82,7 @@ const CysecRedirect = ({ handleOpen, setIsHidden, setIsCysecRedirect, t }) => {
 };
 
 const NotificationStripe = ({ className, setSectionOptions }) => {
-  const { clientConfig } = useContext(
-    ClientResolverContext
-  );
+  const { clientConfig } = useContext(ClientResolverContext);
   const { isShow, handleOpen, handleClose } = useModal();
   const {
     isCysecNotification,
@@ -191,7 +183,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
               />
             )}
 
-            {isCysecNotification && <CysecStripe t={t} isCySEC={isCySEC} />}
+            {isCysecNotification && <CysecStripe />}
           </div>
         </div>
       )}
@@ -204,7 +196,6 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
         handleClose={handleClose}
         setIsCysecRedirect={setIsCysecRedirect}
         getCookie={getCookie}
-        redirectEntity={entityToRedirect}
       />
     </>
   );

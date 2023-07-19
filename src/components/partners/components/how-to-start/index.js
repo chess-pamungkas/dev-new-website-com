@@ -13,6 +13,7 @@ import {
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { getArrows } from "./get-arrows";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
+import { sitePostfix } from "../../../../helpers/entity-resolver";
 
 const HowToStart = ({ className }) => {
   const { t } = useTranslation();
@@ -27,7 +28,7 @@ const HowToStart = ({ className }) => {
       })}
       dir={isRTL ? DIR_RTL : DIR_LTR}
     >
-      <h2 className="partners-start__title">{t("partners_start-title")}</h2>
+      <h2 className="partners-start__title">{t(`partners_start-title${sitePostfix}`)}</h2>
       <div className="partners-start__items">
         {START_STEPS.length > 0 &&
           START_STEPS.map((block) => (
@@ -43,7 +44,7 @@ const HowToStart = ({ className }) => {
         link={GetRegistrationLink()}
         className={cn("partners-start__btn")}
       >
-        {t("partners_start-btn")}
+        {t(`partners_start-btn${sitePostfix}`)}
       </ButtonLink>
       <img src={arrow1} alt="" className="partners-start__arrow1" />
       <img src={arrow2} alt="" className="partners-start__arrow2" />

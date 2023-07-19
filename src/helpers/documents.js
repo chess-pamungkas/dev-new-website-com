@@ -20,18 +20,17 @@ import keyInformationETF from "../assets/documents/eu/Key_Information_Document_E
 import keyInformationStocks from "../assets/documents/eu/Key_Information_Document_Stocks_Oqtima.pdf";
 import summaryStatement from "../assets/documents/eu/Execution_Quality_Summary_Statement_2022_Nordskov_Capital.pdf";
 import disciplineReport from "../assets/documents/eu/Disclosure_and_Market_Discipline_Report_Pillar_III_2022.pdf";
+import { isCySEC } from "./entity-resolver";
 
-// TODO replace with the real doc
 export const MT4_DOC = summaryStatement;
 export const MT5_DOC = summaryStatement;
 export const CTRADER_DOC = summaryStatement;
 export const TRADING_VIEW_DOC = summaryStatement;
 
-export const LEGAL_DOCS = [
+const LEGAL_DOCS = [
   {
     name: "document-client-categorisation-notice-name",
     file: clientCategorisationNotice,
-    // TODO replace with the real data
   },
   {
     name: "document-complaint-policy-name",
@@ -91,7 +90,7 @@ export const LEGAL_DOCS = [
   },
 ];
 
-export const LEGAL_DOCS_FSA = [
+const LEGAL_DOCS_FSA = [
   {
     name: "document-best-execution-policy-fsa",
     file: bestExecutionPolicyFSA,
@@ -118,5 +117,9 @@ export const LEGAL_DOCS_FSA = [
   },
 ];
 
-export const RISK_DISCLOSURE_DOC_FSA = riskDisclosureNoticeFSA;
+const RISK_DISCLOSURE_DOC_FSA = riskDisclosureNoticeFSA;
 export const RISK_DISCLOSURE_DOC = riskDisclosure;
+
+export const getLegalDocs = () => (isCySEC ? LEGAL_DOCS : LEGAL_DOCS_FSA);
+export const getRiskDisclosureDoc = () =>
+  isCySEC ? RISK_DISCLOSURE_DOC : RISK_DISCLOSURE_DOC_FSA;

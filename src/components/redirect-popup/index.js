@@ -7,6 +7,11 @@ import { CONSENT_TYPES } from "../../helpers/consent-types.config";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { sendClickEventToGA } from "../../helpers/services/google-analytics-service";
 import { setRedirectOrBannedPopupShown } from "../../helpers/services/set-redirect-or-banned-popup-shown";
+import { isBrowser } from "../../helpers/services/is-browser";
+import {
+  oppositeTopLevelDomain,
+  topLevelDomain,
+} from "../../helpers/entity-resolver";
 
 const RedirectPopup = ({
   clientConfig,
@@ -14,7 +19,6 @@ const RedirectPopup = ({
   isPopupOpen,
   handleClose,
   isBannedPopup,
-  redirectEntity,
   setIsCysecRedirect,
   getCookie,
 }) => {
@@ -46,6 +50,15 @@ const RedirectPopup = ({
       </p>
     </>
   );
+
+  const redirectToOppositeEntity = () => {
+    if (isBrowser()) {
+      const host = window.location.hostname;
+      const oppositeHost = host.replace(topLevelDomain, oppositeTopLevelDomain);
+
+      window.location.replace(`https://${oppositeHost}${window.location.pathname}`);
+    }
+  };
 
   const getButtons = () => {
     if (isBannedPopup) {
@@ -91,7 +104,7 @@ const RedirectPopup = ({
               CONSENT_TYPES["redirectDoNotConfirm"]
             );
             sendClickEventToGA(e);
-            window.location.replace(redirectEntity + window.location.pathname);
+            redirectToOppositeEntity();
           },
           subTitle:
             currentEntity === entities.FSA

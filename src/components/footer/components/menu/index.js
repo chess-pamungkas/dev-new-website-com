@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import MenuColumn from "../menu-column";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
-import {
-  CYSEC_MENU_ITEMS,
-  FSA_MENU_ITEMS,
-} from "../../../../helpers/menu.config";
-import { isCySEC } from "../../../../helpers/entity-resolver";
+import { getMenuItems } from "../../../../helpers/menu.config";
 
 const Menu = ({ className }) => {
   const { t } = useTranslation();
-  const menu = isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS;
+  const menu = getMenuItems();
 
   return (
     <div className={cn("menu", className)}>

@@ -25,7 +25,7 @@ let total = 0;
 console.log(`Scanning the EN locale file.....\n`);
 
 Object.keys(locales).forEach((key) => {
-  if (!key.endsWith("-fsa")) {
+  if (!key.endsWith("-fsa") && !key.endsWith("-cysec")) {
     let usageObj = {
       count: 0,
     };

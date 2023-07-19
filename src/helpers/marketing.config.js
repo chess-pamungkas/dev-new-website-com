@@ -10,7 +10,7 @@ import coffeeIcon from "../assets/images/icons/companies/marketing/coffee.svg";
 import sp500Icon from "../assets/images/icons/companies/marketing/sp500.svg";
 import dowJonesIcon from "../assets/images/icons/companies/marketing/dowJones.svg";
 import nikkeiIcon from "../assets/images/icons/companies/marketing/nikkei.svg";
-import { sitePostfix } from "./entity-resolver";
+import { isCySEC, sitePostfix } from "./entity-resolver";
 
 export const MARKETING_GET_PARAMS = {
   sect1: "_sect1",
@@ -66,20 +66,23 @@ export const CONTENT_HEROES = {
   },
 };
 
-export const CYSEC_DEFAULT_TEXT_SEQUENCE = [
+const CYSEC_DEFAULT_TEXT_SEQUENCE = [
   "index_main-promotion-animated-text-forex-traders",
   "index_main-promotion-animated-text-day-traders",
   "index_main-promotion-animated-text-stock-traders",
   "index_main-promotion-animated-text-you",
 ];
 
-export const FSA_DEFAULT_TEXT_SEQUENCE = [
+const FSA_DEFAULT_TEXT_SEQUENCE = [
   "index_main-promotion-animated-text-forex-traders",
   "index_main-promotion-animated-text-day-traders",
-  "index_main-promotion-animated-text-crypto-traders",
+  "index_main-promotion-animated-text-crypto-traders-fsa",
   "index_main-promotion-animated-text-stock-traders",
   "index_main-promotion-animated-text-you",
 ];
+
+export const getDefaultTextSequence = () =>
+  isCySEC ? CYSEC_DEFAULT_TEXT_SEQUENCE : FSA_DEFAULT_TEXT_SEQUENCE;
 
 export const SECT1_TEXT_SEQUENCES = {
   forex: [
@@ -90,7 +93,7 @@ export const SECT1_TEXT_SEQUENCES = {
     "index_main-promotion-animated-text-you",
   ],
   crypto: [
-    "index_main-promotion-animated-text-crypto-traders",
+    "index_main-promotion-animated-text-crypto-traders-fsa",
     "index_main-promotion-animated-text-ea-traders",
     "index_main-promotion-animated-text-crypto-cfds-enthusiast",
     "index_main-promotion-animated-text-btc-signals-expert",

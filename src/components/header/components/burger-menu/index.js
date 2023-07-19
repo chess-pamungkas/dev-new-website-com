@@ -12,12 +12,8 @@ import ButtonLink from "../../../shared/button-link";
 import LangSelect from "../lang-select";
 import SearchBar from "../search-bar";
 import Accordion from "../../../shared/accordion";
-import {
-  CYSEC_MENU_ITEMS,
-  FSA_MENU_ITEMS,
-} from "../../../../helpers/menu.config";
+import { getMenuItems } from "../../../../helpers/menu.config";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
-import { isCySEC } from "../../../../helpers/entity-resolver";
 import InternalLink from "../../../shared/internal-link";
 
 const BurgerMenu = ({ className }) => {
@@ -25,10 +21,8 @@ const BurgerMenu = ({ className }) => {
   const { isMobile } = useWindowSize();
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
-  const [selectedNavItem, setSelectedNavItem] = useState(
-    FSA_MENU_ITEMS[0].title
-  );
-  const menu = isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS;
+  const menu = getMenuItems();
+  const [selectedNavItem, setSelectedNavItem] = useState(menu[0].title);
   const [isLangPopupOpened, setIsLangPopupOpened] = useState(false);
 
   const onTriggerChange = (e) => {
