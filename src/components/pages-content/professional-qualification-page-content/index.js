@@ -12,6 +12,7 @@ import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import AdvantageList from "../../professional-qualification/advantage-list";
 import ButtonLink from "../../shared/button-link";
 import EligibilityList from "../../professional-qualification/eligibility-list";
+import { sitePostfix } from "../../../helpers/entity-resolver";
 
 const ProfessionalQualificationPageContent = () => {
   const { t } = useTranslation();
@@ -22,21 +23,21 @@ const ProfessionalQualificationPageContent = () => {
       <TopMarket
         className="top-market--professional-qualification"
         image={promotion}
-        btn1Title={t("professional-qualification_top-market-btn")}
+        btn1Title={t(`professional-qualification_top-market-btn${sitePostfix}`)}
         link1="#eligibilityCriteria"
         isAnchorLink1
         title={
           <HighlightedLocalizationText
-            localizationText="professional-qualification_top-market-text"
-            wordsToHighlight="professional-qualification_top-market-text-accent"
+            localizationText={`professional-qualification_top-market-text${sitePostfix}`}
+            wordsToHighlight={`professional-qualification_top-market-text-accent${sitePostfix}`}
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-white"
           />
         }
       >
         <HighlightedLocalizationText
-          localizationText="professional-qualification_top-market-note"
-          wordsToHighlight="professional-qualification_top-market-note-accent"
+          localizationText={`professional-qualification_top-market-note${sitePostfix}`}
+          wordsToHighlight={`professional-qualification_top-market-note-accent${sitePostfix}`}
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
@@ -44,31 +45,33 @@ const ProfessionalQualificationPageContent = () => {
       <AdvantageList
         title={
           <HighlightedLocalizationText
-            localizationText="professional-qualification_performance-title"
-            wordsToHighlight="professional-qualification_performance-title-accent"
+            localizationText={`professional-qualification_performance-title${sitePostfix}`}
+            wordsToHighlight={`professional-qualification_performance-title-accent${sitePostfix}`}
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
         }
-        text={t("professional-qualification_performance-text")}
+        text={t(`professional-qualification_performance-text${sitePostfix}`)}
       />
       <SplitTextPromotion
         id="eligibilityCriteria"
-        title={t("professional-qualification_text-banner-title")}
-        subtitle={t("professional-qualification_text-banner-note")}
+        title={t(`professional-qualification_text-banner-title${sitePostfix}`)}
+        subtitle={t(
+          `professional-qualification_text-banner-note${sitePostfix}`
+        )}
         className="split-text-promotion--professional-qualification"
         button={
           <ButtonLink
             link={GetRegistrationLink()}
             className="button-link--red split-text-promotion__btn"
           >
-            {t("professional-qualification_text-banner-btn")}
+            {t(`professional-qualification_text-banner-btn${sitePostfix}`)}
           </ButtonLink>
         }
         buttonNote={
           <HighlightedLocalizationText
-            localizationText="professional-qualification_text-banner-btn-note"
-            wordsToHighlight="professional-qualification_text-banner-btn-note-accent"
+            localizationText={`professional-qualification_text-banner-btn-note${sitePostfix}`}
+            wordsToHighlight={`professional-qualification_text-banner-btn-note-accent${sitePostfix}`}
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />
@@ -82,12 +85,14 @@ const ProfessionalQualificationPageContent = () => {
         })}
         image={icon}
         btnClassName="button-link--red"
-        btnTitle={t("professional-qualification_top-market-promo-btn3")}
+        btnTitle={t(
+          `professional-qualification_top-market-promo-btn3${sitePostfix}`
+        )}
         link={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
-          localizationText="professional-qualification_top-market-promo-text3"
-          wordsToHighlight="professional-qualification_top-market-promo-text-accent3"
+          localizationText={`professional-qualification_top-market-promo-text3${sitePostfix}`}
+          wordsToHighlight={`professional-qualification_top-market-promo-text-accent3${sitePostfix}`}
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />

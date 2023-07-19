@@ -1,12 +1,11 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
+import React, { useCallback, useRef } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT4.json";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
 import {
-  CYSEC_MT4_ADVANTAGES,
-  FSA_MT4_ADVANTAGES,
+  getMT4Advantages,
   MT4_DOWNLOAD_LINKS,
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/MT4andMT5.png";
@@ -22,7 +21,7 @@ const Mt4PageContent = () => {
   const { t } = useTranslation();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
-  const mt4Advantages = isCySEC ? CYSEC_MT4_ADVANTAGES : FSA_MT4_ADVANTAGES;
+  const mt4Advantages = getMT4Advantages();
 
   const downloadRef = useRef(null);
 

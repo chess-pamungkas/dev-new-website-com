@@ -8,7 +8,7 @@ import wiseLogo from "../assets/images/icons/payments/wise.png";
 import LanguageContext from "../context/language-context";
 import { useContext } from "react";
 import { FXBO_LANG_URL_KEYS_MAP } from "./lang-options.config";
-import { topLevelDomain } from "./entity-resolver";
+import { isCySEC, topLevelDomain } from "./entity-resolver";
 import { setIBparamsToLink } from "./services/ib-service";
 
 export const WINDOW_SIZE_SM = 375;
@@ -38,14 +38,19 @@ export const FSA_POSTFIX = "-fsa";
 export const DIR_LTR = "ltr";
 export const DIR_RTL = "rtl";
 
-export const CONTACT_PHONE = "35725010490";
-export const CONTACT_PHONE_FSA = "442045867126";
-export const CONTACT_EMAIL = "support@oqtima.eu";
-export const CONTACT_EMAIL_FSA = "support@oqtima.com";
+const CONTACT_PHONE = "35725010490";
+const CONTACT_PHONE_FSA = "442045867126";
+const CONTACT_EMAIL = "support@oqtima.eu";
+const CONTACT_EMAIL_FSA = "support@oqtima.com";
 export const CONTACT_ADDRESS =
   "Franklin Roosevelt 247-block C, Office 101, Limassol 3046";
 
 export const HOME_PAGE_LINK = "/";
+
+export const getContactPhone = () =>
+  isCySEC ? CONTACT_PHONE : CONTACT_PHONE_FSA;
+export const getContactEmail = () =>
+  isCySEC ? CONTACT_EMAIL : CONTACT_EMAIL_FSA;
 
 export const GetRegistrationLink = () => {
   const { selectedLanguage } = useContext(LanguageContext);

@@ -6,7 +6,7 @@ import HighlightedLocalizationText from "../../shared/highlighted-localization-t
 import cysec from "../../../assets/images/about-pages/cysec.svg";
 import fsa from "../../../assets/images/about-pages/fsa.png";
 import Documents from "../../documents";
-import { LEGAL_DOCS, LEGAL_DOCS_FSA } from "../../../helpers/documents";
+import { getLegalDocs } from "../../../helpers/documents";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
@@ -42,10 +42,10 @@ const LegalContent = () => {
           "legal-page-esma--rtl": isRTL,
         })}
         image={isCySEC ? cysecImg : fsa}
-        btnTitle={isCySEC ? t("legal_top-market-promo-btn2") : null}
+        btnTitle={isCySEC ? t("legal_top-market-promo-btn2-cysec") : null}
         note={
           isCySEC ? (
-            t("legal_top-market-promo-note")
+            t("legal_top-market-promo-note-cysec")
           ) : (
             <>
               <span className="bold">
@@ -76,8 +76,10 @@ const LegalContent = () => {
         text={
           isCySEC ? (
             <>
-              <span className="bold">{t("legal_documents-text-bold")}</span>
-              <span>{t("legal_documents-text")}</span>
+              <span className="bold">
+                {t("legal_documents-text-bold-cysec")}
+              </span>
+              <span>{t("legal_documents-text-cysec")}</span>
             </>
           ) : (
             <>
@@ -93,7 +95,7 @@ const LegalContent = () => {
             </>
           )
         }
-        documents={isCySEC ? LEGAL_DOCS : LEGAL_DOCS_FSA}
+        documents={getLegalDocs()}
       />
     </>
   );

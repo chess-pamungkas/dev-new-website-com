@@ -15,17 +15,16 @@ import LangSelect from "./components/lang-select";
 import BurgerMenu from "./components/burger-menu";
 import ButtonLink from "../shared/button-link";
 import SearchBar from "./components/search-bar";
-import { CYSEC_MENU_ITEMS, FSA_MENU_ITEMS } from "../../helpers/menu.config";
+import { getMenuItems } from "../../helpers/menu.config";
 import NotificationStripe from "../shared/notification-stripe";
 import { GDPRPopup } from "../gdpr-popup";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
-import { isCySEC } from "../../helpers/entity-resolver";
 import CommonContext from "../../context/common-context";
 import InternalLink from "../shared/internal-link";
 
 const Header = ({ className }) => {
   const { t } = useTranslation();
-  const menu = isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS;
+  const menu = getMenuItems();
   const isRTL = useRtlDirection();
   const { headerRef, setSectionOptions, isSearchBarAttached } =
     useContext(CommonContext);

@@ -18,7 +18,7 @@ import Tabs from "../../shared/tabs";
 import icon from "../../../assets/images/icon--white.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
-import { isCySEC, sitePostfix } from "../../../helpers/entity-resolver";
+import { sitePostfix } from "../../../helpers/entity-resolver";
 
 const FundingPageContent = () => {
   const { t } = useTranslation();
@@ -62,14 +62,10 @@ const FundingPageContent = () => {
         note={
           <HighlightedLocalizationText
             localizationText={t(
-              isCySEC
-                ? "withdrawal_top-market-promo-note"
-                : "withdrawal_top-market-promo-note-fsa"
+              `withdrawal_top-market-promo-note${sitePostfix}`
             )}
             wordsToHighlight={t(
-              isCySEC
-                ? "withdrawal_top-market-promo-note-accent"
-                : "withdrawal_top-market-promo-note-accent-fsa"
+              `withdrawal_top-market-promo-note-accent${sitePostfix}`
             )}
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-white"
@@ -117,7 +113,7 @@ const FundingPageContent = () => {
         <Tabs tabList={tabs} />
       </TopMarketLayout>
       <section className={cn("notes-block")}>
-        {isDepositTab ? DepositDisclaimer(): WithdrawalDisclaimer()}
+        {isDepositTab ? DepositDisclaimer() : WithdrawalDisclaimer()}
       </section>
       <TopMarketPromotion
         className={cn("bottom-promotion", {

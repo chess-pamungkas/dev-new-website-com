@@ -7,7 +7,6 @@ import {
   MT4_WEB_TRADER_LINK,
 } from "./constants";
 
-import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 import { isCySEC } from "./entity-resolver";
 
@@ -59,7 +58,7 @@ export const MT5_DOWNLOAD_LINKS = {
   huaweiEU: "https://appgallery.huawei.com/#/app/C102015329",
 };
 
-export const FSA_MT5_ADVANTAGES = [
+const FSA_MT5_ADVANTAGES = [
   {
     key: "adv1",
     text: "mt5_market-items-list_adv1-fsa",
@@ -118,174 +117,176 @@ export const FSA_MT5_ADVANTAGES = [
   },
 ];
 
-export const CYSEC_MT5_ADVANTAGES = [
+const CYSEC_MT5_ADVANTAGES = [
   {
     key: "adv1",
-    text: "mt5_market-items-list_adv1",
+    text: "mt5_market-items-list_adv1-cysec",
   },
   {
     key: "adv2",
-    text: "mt5_market-items-list_adv2",
+    text: "mt5_market-items-list_adv2-cysec",
   },
   {
     key: "adv3",
-    text: "mt5_market-items-list_adv3",
+    text: "mt5_market-items-list_adv3-cysec",
   },
   {
     key: "adv4",
-    text: "mt5_market-items-list_adv4",
+    text: "mt5_market-items-list_adv4-cysec",
   },
   {
     key: "adv5",
-    text: "mt5_market-items-list_adv5",
+    text: "mt5_market-items-list_adv5-cysec",
   },
   {
     key: "adv6",
-    text: "mt5_market-items-list_adv6",
+    text: "mt5_market-items-list_adv6-cysec",
   },
   {
     key: "adv7",
-    text: "mt5_market-items-list_adv7",
+    text: "mt5_market-items-list_adv7-cysec",
   },
   {
     key: "adv8",
-    text: "mt5_market-items-list_adv8",
+    text: "mt5_market-items-list_adv8-cysec",
   },
   {
     key: "adv9",
-    text: "mt5_market-items-list_adv9",
+    text: "mt5_market-items-list_adv9-cysec",
   },
   {
     key: "adv10",
-    text: "mt5_market-items-list_adv10",
+    text: "mt5_market-items-list_adv10-cysec",
   },
   {
     key: "adv11",
-    text: "mt5_market-items-list_adv11",
+    text: "mt5_market-items-list_adv11-cysec",
   },
   {
     key: "adv12",
-    text: "mt5_market-items-list_adv12",
+    text: "mt5_market-items-list_adv12-cysec",
   },
   {
     key: "adv13",
-    text: "mt5_market-items-list_adv13",
+    text: "mt5_market-items-list_adv13-cysec",
   },
   {
     key: "adv14",
-    text: "mt5_market-items-list_adv14",
+    text: "mt5_market-items-list_adv14-cysec",
   },
   {
     key: "adv15",
-    text: "mt5_market-items-list_adv15",
+    text: "mt5_market-items-list_adv15-cysec",
   },
   {
     key: "adv16",
-    text: "mt5_market-items-list_adv16",
-  },
-  // {
-  //   key: "adv17",
-  //   text: "mt5_market-items-list_adv17",
-  // },
-];
-
-export const CYSEC_MT4_ADVANTAGES = [
-  {
-    key: "adv1",
-    text: "mt4_market-items-list_adv1",
-  },
-  {
-    key: "adv2",
-    text: "mt4_market-items-list_adv2",
-  },
-  {
-    key: "adv3",
-    text: "mt4_market-items-list_adv3",
-  },
-  {
-    key: "adv4",
-    text: "mt4_market-items-list_adv4",
-  },
-  {
-    key: "adv5",
-    text: "mt4_market-items-list_adv5",
-  },
-  {
-    key: "adv6",
-    text: "mt4_market-items-list_adv6",
-  },
-  {
-    key: "adv7",
-    text: "mt4_market-items-list_adv7",
-  },
-  {
-    key: "adv8",
-    text: "mt4_market-items-list_adv8",
-  },
-  {
-    key: "adv9",
-    text: "mt4_market-items-list_adv9",
-  },
-  {
-    key: "adv10",
-    text: "mt4_market-items-list_adv10",
+    text: "mt5_market-items-list_adv16-cysec",
   },
 ];
 
-export const FSA_MT4_ADVANTAGES = [
+const CYSEC_MT4_ADVANTAGES = [
   {
     key: "adv1",
-    text: "mt4_market-items-list_adv1_fsa",
+    text: "mt4_market-items-list_adv1-cysec",
   },
   {
     key: "adv2",
-    text: "mt4_market-items-list_adv2_fsa",
+    text: "mt4_market-items-list_adv2-cysec",
   },
   {
     key: "adv3",
-    text: "mt4_market-items-list_adv3_fsa",
+    text: "mt4_market-items-list_adv3-cysec",
   },
   {
     key: "adv4",
-    text: "mt4_market-items-list_adv4_fsa",
+    text: "mt4_market-items-list_adv4-cysec",
   },
   {
     key: "adv5",
-    text: "mt4_market-items-list_adv5_fsa",
+    text: "mt4_market-items-list_adv5-cysec",
   },
   {
     key: "adv6",
-    text: "mt4_market-items-list_adv6_fsa",
+    text: "mt4_market-items-list_adv6-cysec",
   },
   {
     key: "adv7",
-    text: "mt4_market-items-list_adv7_fsa",
+    text: "mt4_market-items-list_adv7-cysec",
   },
   {
     key: "adv8",
-    text: "mt4_market-items-list_adv8_fsa",
+    text: "mt4_market-items-list_adv8-cysec",
   },
   {
     key: "adv9",
-    text: "mt4_market-items-list_adv9_fsa",
+    text: "mt4_market-items-list_adv9-cysec",
   },
   {
     key: "adv10",
-    text: "mt4_market-items-list_adv10_fsa",
+    text: "mt4_market-items-list_adv10-cysec",
+  },
+];
+
+const FSA_MT4_ADVANTAGES = [
+  {
+    key: "adv1",
+    text: "mt4_market-items-list_adv1-fsa",
+  },
+  {
+    key: "adv2",
+    text: "mt4_market-items-list_adv2-fsa",
+  },
+  {
+    key: "adv3",
+    text: "mt4_market-items-list_adv3-fsa",
+  },
+  {
+    key: "adv4",
+    text: "mt4_market-items-list_adv4-fsa",
+  },
+  {
+    key: "adv5",
+    text: "mt4_market-items-list_adv5-fsa",
+  },
+  {
+    key: "adv6",
+    text: "mt4_market-items-list_adv6-fsa",
+  },
+  {
+    key: "adv7",
+    text: "mt4_market-items-list_adv7-fsa",
+  },
+  {
+    key: "adv8",
+    text: "mt4_market-items-list_adv8-fsa",
+  },
+  {
+    key: "adv9",
+    text: "mt4_market-items-list_adv9-fsa",
+  },
+  {
+    key: "adv10",
+    text: "mt4_market-items-list_adv10-fsa",
   },
   {
     key: "adv11",
-    text: "mt4_market-items-list_adv11_fsa",
+    text: "mt4_market-items-list_adv11-fsa",
   },
   {
     key: "adv12",
-    text: "mt4_market-items-list_adv12_fsa",
+    text: "mt4_market-items-list_adv12-fsa",
   },
   {
     key: "adv11",
-    text: "mt4_market-items-list_adv13_fsa",
+    text: "mt4_market-items-list_adv13-fsa",
   },
 ];
+
+export const getMT4Advantages = () =>
+  isCySEC ? CYSEC_MT4_ADVANTAGES : FSA_MT4_ADVANTAGES;
+export const getMT5Advantages = () =>
+  isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES;
+
 const MetaTrader4info = () => {
   const getOSDeviceMT4 = () => {
     switch (true) {

@@ -130,7 +130,7 @@ const SpreadsAndFeesPageContent = () => {
         ...tabs,
         {
           id: 4,
-          title: t("spreads_tabs_title4"),
+          title: t("spreads_tabs_title4-fsa"),
           onClick: () => setSelectedSection(CRYPTO_TRADING_SECTION),
           content: (
             <>
