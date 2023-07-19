@@ -15,7 +15,8 @@
     "split-locales": "node src/scripts/split-locales/index.js",
     "scan-locales": "node src/scripts/scan-locales/index.js",
     "apply-translation": "node src/scripts/apply-translation/index.js",
-    "check-missing": "node src/scripts/check-missing/index.js"
+    "check-missing": "node src/scripts/check-missing/index.js",
+    "reorder-locales": "node src/scripts/reorder-locales/index.js"
   },
   "dependencies": {
     "axios": "^0.27.2",
