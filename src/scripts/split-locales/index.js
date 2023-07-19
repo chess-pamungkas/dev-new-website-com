@@ -5,13 +5,14 @@ let fsaLocales = {};
 let OnlyFsaLocales = {};
 let cysecLocales = {};
 let onlyCysecLocales = {};
+let otherEntitiesLocales = {};
 
 // Find only FSA specific keys and all keys related to FSA
 Object.keys(locales).forEach((key) => {
   if (key.endsWith("-fsa")) {
     OnlyFsaLocales[key] = locales[key];
     fsaLocales[key] = locales[key];
-  } else if (!key.endsWith("-cysec")) {
+  } else if (!key.endsWith("-cysec") && !key.endsWith("--global-only")) {
     fsaLocales[key] = locales[key];
   }
 });
@@ -21,9 +22,16 @@ Object.keys(locales).forEach((key) => {
   if (key.endsWith("-cysec")) {
     onlyCysecLocales[key] = locales[key];
     cysecLocales[key] = locales[key];
-  } else if (!key.endsWith("-fsa")) {
+  } else if (!key.endsWith("-fsa") && !key.endsWith("--global-only")) {
     cysecLocales[key] = locales[key];
   }
+});
+
+Object.keys(locales).forEach((key) => {
+  if (key.endsWith("--global-only")) {
+    otherEntitiesLocales[key] = locales[key];
+  }
+  // add more logic if needed
 });
 
 fs.writeFile(
@@ -50,6 +58,13 @@ fs.writeFile(
 fs.writeFile(
   "src/scripts/split-locales/splitted-locales/only-cysec-locales.json",
   JSON.stringify(onlyCysecLocales, null, "\t"),
+  (e) => {
+    console.log(e);
+  }
+);
+fs.writeFile(
+  "src/scripts/split-locales/splitted-locales/other-entities-locales.json",
+  JSON.stringify(otherEntitiesLocales, null, "\t"),
   (e) => {
     console.log(e);
   }
