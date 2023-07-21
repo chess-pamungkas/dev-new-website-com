@@ -44,6 +44,15 @@ export const LanguageProvider = ({ children }) => {
     }
   };
 
+  const getLangFromUrl = () => {
+    const { pathname } = window.location;
+    const matches = pathname.match(/\/[a-z]{2}\//);
+    if (matches) {
+      const langCode = matches[0].slice(1, 3);
+      return langCode;
+    }
+  };
+
   const findLanguage = useCallback(
     (languageId) => {
       return (
@@ -55,7 +64,11 @@ export const LanguageProvider = ({ children }) => {
   );
 
   const initialLanguageDetection = useCallback(
-    () => findLanguage(getCookie(LAST_LANGUAGE_KEY) || browserLanguage),
+    // Language resolution order: language from URL -> language from cookie -> language from browser -> default (en)
+    () =>
+      findLanguage(
+        getLangFromUrl() || getCookie(LAST_LANGUAGE_KEY) || browserLanguage
+      ),
     [i18Language]
   );
 
