@@ -45,11 +45,13 @@ export const LanguageProvider = ({ children }) => {
   };
 
   const getLangFromUrl = () => {
-    const { pathname } = window.location;
-    const matches = pathname.match(/\/[a-z]{2}\//);
-    if (matches) {
-      const langCode = matches[0].slice(1, 3);
-      return langCode;
+    if (isBrowser()) {
+      const { pathname } = window.location;
+      const matches = pathname.match(/\/[a-z]{2}\//);
+      if (matches) {
+        const langCode = matches[0].slice(1, 3);
+        return langCode;
+      }
     }
   };
 
