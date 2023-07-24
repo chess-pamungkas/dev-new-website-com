@@ -22,18 +22,6 @@
   &__logo {
     height: 33px;
     width: auto;
-
-    &-text-main {
-      display: none;
-    }
-
-    @include desktop-lg {
-      display: none;
-
-      &-text-main {
-        display: block;
-      }
-    }
   }
 
   &__left {
