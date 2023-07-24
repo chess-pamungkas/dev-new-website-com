@@ -41,8 +41,7 @@ const Header = ({ className }) => {
       >
         <div className="header__left">
           <InternalLink to={HOME_PAGE_LINK}>
-            <Logo className="header__logo" />
-            <LogoTextMain className="header__logo-text-main" />
+            <LogoTextMain className="header__logo" />
           </InternalLink>
 
           <ul className="header__navigation">
