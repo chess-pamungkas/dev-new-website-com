@@ -7,12 +7,13 @@ import TradingTicker from "../components/trading-ticker";
 import Seo from "../components/shared/seo";
 import PerformanceContent from "../components/pages-content/main-page-content/performance-content";
 import PromotionContent from "../components/pages-content/main-page-content/promotion-content";
+import PageLayout from "../components/shared/page-layout";
 
 const HeroIndexPage = () => {
   const { t } = useTranslation();
 
   return (
-    <>
+    <PageLayout>
       <Seo
         title={t("page-main-title")}
         description={t("page-main-description")}
@@ -24,7 +25,7 @@ const HeroIndexPage = () => {
       <TradingTicker />
       <PromotionContent />
       <PerformanceContent />
-    </>
+    </PageLayout>
   );
 };
 export default HeroIndexPage;
