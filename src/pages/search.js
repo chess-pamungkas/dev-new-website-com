@@ -4,6 +4,7 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import Seo from "../components/shared/seo";
 import SearchPageContent from "../components/pages-content/search-page-content";
 import CommonContext from "../context/common-context";
+import PageLayout from "../components/shared/page-layout";
 
 const SearchPage = () => {
   const { t } = useTranslation();
@@ -16,10 +17,10 @@ const SearchPage = () => {
   }, []);
 
   return (
-    <>
+    <PageLayout>
       <Seo title={t("page-search-title")} />
       <SearchPageContent />
-    </>
+    </PageLayout>
   );
 };
 

@@ -1,46 +1,52 @@
 import React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
 import {
   LANG_SELECT_OPTIONS,
   SHOULD_BE_SMALLER_LANGUAGES,
 } from "../../../../helpers/lang-options.config";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
+import { Link, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 
 const LangSelectItem = ({
   language: { id, icon: Icon, name } = {},
   language,
   selectedLanguage: { id: selectedId } = {},
   languageSelectHandler,
-}) => (
-  <li
-    className={cn("lang-options__item", {
-      "lang-options__item--selected": selectedId === id,
-    })}
-  >
-    <button
-      className="lang-options__select"
-      type="button"
-      onClick={(e) => {
-        languageSelectHandler(language);
-        document.documentElement.setAttribute("lang", language.id);
-        sendClickEventToGA(e);
-      }}
-    >
-      {Icon && <Icon className="lang-options__flag" />}
+}) => {
+  const { originalPath } = useI18next();
 
-      <span
-        className={
-          SHOULD_BE_SMALLER_LANGUAGES.includes(name)
-            ? "lang-options__name--small"
-            : "lang-options__name"
-        }
+  return (
+    <li
+      className={cn("lang-options__item", {
+        "lang-options__item--selected": selectedId === id,
+      })}
+    >
+      <Link
+        to={originalPath}
+        language={language.id}
+        className="lang-options__select"
+        // type="button"
+        onClick={(e) => {
+          languageSelectHandler(language);
+          document.documentElement.setAttribute("lang", language.id);
+          sendClickEventToGA(e);
+        }}
       >
-        {name}
-      </span>
-    </button>
-  </li>
-);
+        {Icon && <Icon className="lang-options__flag" />}
+
+        <span
+          className={
+            SHOULD_BE_SMALLER_LANGUAGES.includes(name)
+              ? "lang-options__name--small"
+              : "lang-options__name"
+          }
+        >
+          {name}
+        </span>
+      </Link>
+    </li>
+  );
+};
 
 const LangOptions = ({
   className,

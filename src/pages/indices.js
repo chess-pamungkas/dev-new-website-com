@@ -4,18 +4,19 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import IndicesContent from "../components/pages-content/indices-page-content";
+import PageLayout from "../components/shared/page-layout";
 
 const IndicesPage = () => {
   const { t } = useTranslation();
 
   return (
-    <>
+    <PageLayout>
       <Seo
         title={t("page-indices-title")}
         description={t("page-indices-description")}
       />
       <IndicesContent />
-    </>
+    </PageLayout>
   );
 };
 

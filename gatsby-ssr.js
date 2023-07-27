@@ -80,17 +80,18 @@ export const onPreRenderHTML = ({
   replaceHeadComponents(orderedComponents);
 };
 
-export const wrapPageElement = ({ element }) => {
+export const wrapRootElement = ({ element }) => {
   // We have to do it if we want to use localization plugin for Layout content
-  const newElement = cloneElement(
-    element,
-    element.props,
-    cloneElement(
-      element.props.children,
-      element.props.children.props,
-      createElement(Layout, undefined, element.props.children.props.children)
-    )
-  );
+  // const newElement = cloneElement(
+  //   element,
+  //   element.props,
+  //   cloneElement(
+  //     element.props.children,
+  //     element.props.children.props,
+  //     createElement(Layout, undefined, element.props.children.props.children)
+  //   )
+  // );
+  // return newElement;
 
-  return newElement;
+  return <Layout>{element}</Layout>
 };
