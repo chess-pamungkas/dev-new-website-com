@@ -4,15 +4,16 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import CopyTradingPageContent from "../components/pages-content/copy-trading-page-content";
+import PageLayout from "../components/shared/page-layout";
 
 const CopyTradingPage = () => {
   const { t } = useTranslation();
 
   return (
-    <>
+    <PageLayout>
       <Seo title={t("page-copy-trading-title")} />
       <CopyTradingPageContent />
-    </>
+    </PageLayout>
   );
 };
 

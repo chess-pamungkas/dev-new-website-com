@@ -46,7 +46,7 @@ const TypingAnimation = ({ keywords }) => {
     onRest: (_result, _spring, item) => {
       if (keywordIndex + 1 !== keywords.length) {
         if (!removeChars && item.key === chars.length - 1) {
-          setWrapperRefWidth(wrapperRef.current.offsetWidth);
+          setWrapperRefWidth(wrapperRef?.current?.offsetWidth);
           setTimeout(() => {
             setRemoveChars(true);
             setChars(chars.slice(0, chars.length - 1));

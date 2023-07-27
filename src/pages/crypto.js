@@ -4,12 +4,13 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import CryptoContent from "../components/pages-content/crypto-content";
+import PageLayout from "../components/shared/page-layout";
 
 const CryptoPage = () => {
   const { t } = useTranslation();
 
   return (
-    <>
+    <PageLayout>
       <Seo
         fsaTitle={t("page-crypto-title-fsa")}
         cysecTitle={t("system-page-404-title")}
@@ -17,7 +18,7 @@ const CryptoPage = () => {
         cysecDescription={""}
       />
       <CryptoContent />
-    </>
+    </PageLayout>
   );
 };
 

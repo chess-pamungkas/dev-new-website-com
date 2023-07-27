@@ -4,18 +4,19 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import ProfessionalQualificationPageContent from "../components/pages-content/professional-qualification-page-content";
+import PageLayout from "../components/shared/page-layout";
 
 const ProfessionalQualificationPage = () => {
   const { t } = useTranslation();
 
   return (
-    <>
+    <PageLayout>
       <Seo
         title={t("page-professional-qualification-title")}
         description={t("page-professional-qualification-description")}
       />
       <ProfessionalQualificationPageContent />
-    </>
+    </PageLayout>
   );
 };
 

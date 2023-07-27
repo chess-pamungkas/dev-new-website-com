@@ -4,18 +4,19 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import TradingViewPageContent from "../components/pages-content/trading-view-page-content";
+import PageLayout from "../components/shared/page-layout";
 
 const TradingViewPage = () => {
   const { t } = useTranslation();
 
   return (
-    <>
+    <PageLayout>
       <Seo
         title={t("page-trading-view-title")}
         description={t("page-trading-view-description")}
       />
       <TradingViewPageContent />
-    </>
+    </PageLayout>
   );
 };
 

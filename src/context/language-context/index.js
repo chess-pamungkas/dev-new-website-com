@@ -1,18 +1,6 @@
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { navigate } from "gatsby";
-import { I18nextContext } from "gatsby-plugin-react-i18next";
-import { detectBrowserLanguage } from "../../helpers/services/detect-browser-settings";
-import {
-  FXBO_LANG_COOKIE_KEYS_MAP,
-  LANG_SELECT_OPTIONS,
-} from "../../helpers/lang-options.config";
+import { FXBO_LANG_COOKIE_KEYS_MAP } from "../../helpers/lang-options.config";
 import CookieContext from "../cookie-context";
 import {
   FXBO_LAST_LANGUAGE_KEY,
@@ -21,61 +9,26 @@ import {
   PERFORMANCE_COOKIE_KEY,
 } from "../../helpers/gdpr-cookie.config";
 import { isBrowser } from "../../helpers/services/is-browser";
+import { detectInitialLanguage } from "../../helpers/services/language-service";
 
 const LanguageContext = createContext({});
 
 export const LanguageProvider = ({ children }) => {
-  const { getCookie, setCookie } = useContext(CookieContext);
-  const { language: i18Language } = useContext(I18nextContext);
-  const browserLanguage = useMemo(() => detectBrowserLanguage(), []);
-  const defaultLang = useMemo(
-    () => LANG_SELECT_OPTIONS.find(({ isDefault }) => isDefault),
-    []
-  );
+  const { setCookie } = useContext(CookieContext);
 
   const changeLanguage = (selectedLang) => {
-    if (selectedLang.id !== i18Language) {
-      if (isBrowser()) {
-        const { pathname, search } = window.location;
+    if (isBrowser()) {
+      const { pathname, search } = window.location;
+      if (!pathname.startsWith(`/${selectedLang.id}/`)) {
         const navigatePath =
-          `${selectedLang.URIPart}` + pathname.replace(`/${i18Language}/`, "/");
+          `${selectedLang.URIPart}` + pathname.replace(/\/[a-z]{2}\//, "/");
         navigate(`${navigatePath}${search}`);
       }
     }
   };
 
-  const getLangFromUrl = () => {
-    if (isBrowser()) {
-      const { pathname } = window.location;
-      const matches = pathname.match(/\/[a-z]{2}\//);
-      if (matches) {
-        const langCode = matches[0].slice(1, 3);
-        return langCode;
-      }
-    }
-  };
-
-  const findLanguage = useCallback(
-    (languageId) => {
-      return (
-        LANG_SELECT_OPTIONS.find((item) => item.id === languageId) ||
-        defaultLang
-      );
-    },
-    [defaultLang]
-  );
-
-  const initialLanguageDetection = useCallback(
-    // Language resolution order: language from URL -> language from cookie -> language from browser -> default (en)
-    () =>
-      findLanguage(
-        getLangFromUrl() || getCookie(LAST_LANGUAGE_KEY) || browserLanguage
-      ),
-    [i18Language]
-  );
-
   const [selectedLanguage, setSelectedLanguage] = useState(
-    initialLanguageDetection()
+    detectInitialLanguage()
   );
 
   useEffect(() => {

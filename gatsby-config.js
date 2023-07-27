@@ -3,6 +3,7 @@ require("dotenv").config({
 });
 
 const languages = require(`${__dirname}/src/locales/language.config`);
+// const layout = require(`${__dirname}/src/components/shared/layout/index.js`);
 const {
   processLanguagesForConfig,
 } = require(`${__dirname}/src/locales/processLanguages`);
@@ -70,6 +71,7 @@ module.exports = {
         languages: languages.list,
         defaultLanguage: languages.defaultLangKey,
         fallbackLanguage: languages.defaultLangKey,
+        redirect: false,
         i18nextOptions: {
           keySeparator: false,
           nsSeparator: false,
@@ -80,31 +82,11 @@ module.exports = {
         },
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-layout`,
+    //   options: {
+    //     component: require.resolve(`./src/components/shared/layout`),
+    //   },
+    // },
   ],
-//   headers: {
-//     "/public/**/*.html": [
-//       {
-//         key: "Cache-Control",
-//         value: "public, max-age=0, must-revalidate",
-//       },
-//     ],
-//     "/public/page-data/*": [
-//       {
-//         key: "Cache-Control",
-//         value: "public, max-age=0, must-revalidate",
-//       },
-//     ],
-//     "/public/**/*.js": [
-//       {
-//         key: "Cache-Control",
-//         value: "public, max-age=31536000, immutable",
-//       },
-//     ],
-//     "/public/**/*.css": [
-//       {
-//         key: "Cache-Control",
-//         value: "public, max-age=31536000, immutable",
-//       },
-//     ],
-//   },
 };

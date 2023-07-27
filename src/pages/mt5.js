@@ -7,12 +7,13 @@ import Mt5PageContent from "../components/pages-content/mt5-page-content";
 import { isCySEC } from "../helpers/entity-resolver";
 import comingSoonImage from "../assets/images/system-info/coming-soon.svg";
 import SystemInfoComponent from "../components/shared/system-info";
+import PageLayout from "../components/shared/page-layout";
 
 const MT5Page = () => {
   const { t } = useTranslation();
 
   return (
-    <>
+    <PageLayout>
       <Seo
         fsaTitle={t("system-page-coming-soon-title")}
         fsaDescription={""}
@@ -31,7 +32,7 @@ const MT5Page = () => {
           goBackBtnTitle={t("system-page-go-back-btn")}
         />
       )}
-    </>
+    </PageLayout>
   );
 };
 
