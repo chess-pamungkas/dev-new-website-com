@@ -7,13 +7,12 @@ import Mt4PageContent from "../components/pages-content/mt4-page-content";
 import { isCySEC } from "../helpers/entity-resolver";
 import comingSoonImage from "../assets/images/system-info/coming-soon.svg";
 import SystemInfoComponent from "../components/shared/system-info";
-import PageLayout from "../components/shared/page-layout";
 
 const MT4Page = () => {
   const { t } = useTranslation();
 
   return (
-    <PageLayout>
+    <>
       <Seo
         fsaTitle={t("page-mt4-title")}
         fsaDescription={t("page-mt4-description")}
@@ -33,7 +32,7 @@ const MT4Page = () => {
       ) : (
         <Mt4PageContent />
       )}
-    </PageLayout>
+    </>
   );
 };
 

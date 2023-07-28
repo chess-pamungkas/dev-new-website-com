@@ -8,13 +8,12 @@ import SplitTextPromotion from "../components/split-text-promotion";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import CompanyAdvantages from "../components/company-advantages";
 import video from "../assets/video/about.mp4";
-import PageLayout from "../components/shared/page-layout";
 
 const CompanyPage = () => {
   const { t } = useTranslation();
 
   return (
-    <PageLayout>
+    <>
       <Seo
         title={t("page-company-title")}
         description={t("page-company-description")}
@@ -44,7 +43,7 @@ const CompanyPage = () => {
         />
       </SplitTextPromotion>
       <CompanyAdvantages />
-    </PageLayout>
+    </>
   );
 };
 
