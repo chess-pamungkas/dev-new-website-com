@@ -1,5 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { navigate } from "gatsby";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useMemo,
+} from "react";
 import { FXBO_LANG_COOKIE_KEYS_MAP } from "../../helpers/lang-options.config";
 import CookieContext from "../cookie-context";
 import {
@@ -8,31 +13,32 @@ import {
   NECESSARY_COOKIE_KEY,
   PERFORMANCE_COOKIE_KEY,
 } from "../../helpers/gdpr-cookie.config";
-import { isBrowser } from "../../helpers/services/is-browser";
-import { detectInitialLanguage } from "../../helpers/services/language-service";
+import {
+  detectInitialLanguage,
+  changeI18nLanguage,
+} from "../../helpers/services/language-service";
+import ClientResolverContext from "../client-resolver-context";
 
 const LanguageContext = createContext({});
 
 export const LanguageProvider = ({ children }) => {
   const { setCookie } = useContext(CookieContext);
-
-  const changeLanguage = (selectedLang) => {
-    if (isBrowser()) {
-      const { pathname, search } = window.location;
-      if (!pathname.startsWith(`/${selectedLang.id}/`)) {
-        const navigatePath =
-          `${selectedLang.URIPart}` + pathname.replace(/\/[a-z]{2}\//, "/");
-        navigate(`${navigatePath}${search}`);
-      }
-    }
-  };
-
-  const [selectedLanguage, setSelectedLanguage] = useState(
-    detectInitialLanguage()
+  const { clientConfig } = useContext(ClientResolverContext);
+  const initialLang = useMemo(
+    () => detectInitialLanguage(clientConfig?.recommendedLanguage),
+    [clientConfig]
   );
 
+  const [selectedLanguage, setSelectedLanguage] = useState(initialLang);
+
   useEffect(() => {
-    changeLanguage(selectedLanguage);
+    // update actual language if initital was changed (e.g. if clientConfig was updated)
+    setSelectedLanguage(initialLang);
+  }, [initialLang]);
+
+  useEffect(() => {
+    // update the actual path with the selected language (e.g. from /forex to /fr/forex)
+    changeI18nLanguage(selectedLanguage);
   }, [selectedLanguage]);
 
   useEffect(() => {

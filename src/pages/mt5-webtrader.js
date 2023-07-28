@@ -4,7 +4,6 @@ import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import WebTraderLink from "../components/mt5-webtrader";
 import CommonContext from "../context/common-context";
-import PageLayout from "../components/shared/page-layout";
 
 const MT5WebTraderPage = () => {
   const { setIsSearchBarAttached } = useContext(CommonContext);
@@ -16,10 +15,10 @@ const MT5WebTraderPage = () => {
   }, []);
 
   return (
-    <PageLayout>
+    <>
       <Seo title={"MT5 Web Trader"} description={"need description"} />
       <WebTraderLink />
-    </PageLayout>
+    </>
   );
 };
 

@@ -6,13 +6,12 @@ import TopMarket from "../components/top-market";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import image from "../assets/images/about-pages/contact-us.svg";
 import ContactUs from "../components/contact-us";
-import PageLayout from "../components/shared/page-layout";
 
 const ContactUsPage = () => {
   const { t } = useTranslation();
 
   return (
-    <PageLayout>
+    <>
       <Seo title={t("page-contact-title")} />
       <TopMarket
         title={
@@ -33,7 +32,7 @@ const ContactUsPage = () => {
         />
       </TopMarket>
       <ContactUs />
-    </PageLayout>
+    </>
   );
 };
 

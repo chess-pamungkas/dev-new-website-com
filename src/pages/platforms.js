@@ -4,19 +4,18 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import PlatformsPageContent from "../components/pages-content/platforms-page-content";
-import PageLayout from "../components/shared/page-layout";
 
 const PlatformsPage = () => {
   const { t } = useTranslation();
 
   return (
-    <PageLayout>
+    <>
       <Seo
         title={t("page-platforms-title")}
         description={t("page-platforms-description")}
       />
       <PlatformsPageContent />
-    </PageLayout>
+    </>
   );
 };
 
