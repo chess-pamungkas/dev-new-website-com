@@ -4,19 +4,18 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import ETFContent from "../components/pages-content/etf-page-content";
-import PageLayout from "../components/shared/page-layout";
 
 const ETFPage = () => {
   const { t } = useTranslation();
 
   return (
-    <PageLayout>
+    <>
       <Seo
         title={t("page-etf-title")}
         description={t("page-etf-description")}
       />
       <ETFContent />
-    </PageLayout>
+    </>
   );
 };
 

@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../../assets/styles/index.scss";
+import Header from "../../header";
 import { ClientResolverProvider } from "../../../context/client-resolver-context";
 import { LanguageProvider } from "../../../context/language-context";
 import { MarketingContextProvider } from "../../../context/marketing-context";
 import { CookieProvider } from "../../../context/cookie-context";
 import { SearchProvider } from "../../../context/search-context";
+import Footer from "../../footer";
+import { CookiesPopup } from "../../cookies-popup";
 import { NotificationStripeProvider } from "../../../context/notification-stripe-context";
 import { TradingProvider } from "../../../context/trading-context";
 import { CommonProvider } from "../../../context/common-context";
+import MainContainer from "../main-container";
 
 const Layout = ({ children }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
   return (
     <ClientResolverProvider>
       <CookieProvider>
@@ -18,7 +28,18 @@ const Layout = ({ children }) => {
             <CommonProvider>
               <SearchProvider>
                 <NotificationStripeProvider>
-                  <TradingProvider>{children}</TradingProvider>
+                  <TradingProvider>
+                    {isLoaded && (
+                      <>
+                        <Header />
+                        <CookiesPopup />
+                        <section className="scroll-container">
+                          <MainContainer>{children}</MainContainer>
+                          <Footer />
+                        </section>
+                      </>
+                    )}
+                  </TradingProvider>
                 </NotificationStripeProvider>
               </SearchProvider>
             </CommonProvider>
