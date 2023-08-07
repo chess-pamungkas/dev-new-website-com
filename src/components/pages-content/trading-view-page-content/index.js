@@ -12,7 +12,7 @@ import {
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/trading-view.png";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { GetLoginLink } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import InternalLink from "../../shared/internal-link";
@@ -126,7 +126,7 @@ const TradingViewPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("trading-view_top-market-promo-btn3")}
-        link={GetRegistrationLink()}
+        link={GetLoginLink()}
       >
         <HighlightedLocalizationText
           localizationText="trading-view_top-market-promo-text3"

@@ -8,7 +8,7 @@ import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { LogoTextMain } from "../../shared/icons";
 import CareerPros from "../../career-pros";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { GetLoginLink } from "../../../helpers/constants";
 import CareerBenefits from "../../career-benefits";
 import JobOpenings from "../../job-openings";
 
@@ -50,7 +50,7 @@ const CareerContent = () => {
         image={icon}
         btnClassName="button-link--ghost"
         btnTitle={t("career_top-market-bot-promo-btn")}
-        link={GetRegistrationLink()}
+        link={GetLoginLink()}
       >
         <HighlightedLocalizationText
           localizationText="career_top-market-bot-promo-text"

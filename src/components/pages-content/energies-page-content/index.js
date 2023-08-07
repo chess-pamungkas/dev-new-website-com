@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/energies.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { GetLoginLink } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
@@ -34,9 +34,9 @@ const EnergiesContent = () => {
         title={t("energies_top-market-title")}
         image={image}
         btn1Title={t("energies_top-market-btn1")}
-        link1={GetRegistrationLink()}
+        link1={GetLoginLink()}
         btn2Title={t("energies_top-market-btn2")}
-        link2={GetRegistrationLink()}
+        link2={GetLoginLink()}
         isChildrenHasSmallSize
       >
         <HighlightedLocalizationText
@@ -54,7 +54,7 @@ const EnergiesContent = () => {
         className="energies-promotion"
         image={energies}
         btnTitle={t("energies_top-market-promo-btn")}
-        link={GetRegistrationLink()}
+        link={GetLoginLink()}
       >
         <HighlightedLocalizationText
           localizationText="energies_top-market-promotion-promo-text"
@@ -117,7 +117,7 @@ const EnergiesContent = () => {
       <TopMarketLayout
         title={t("energies_top-market-layout-title")}
         btnTitle={t("energies_top-market-layout-btn")}
-        link={GetRegistrationLink()}
+        link={GetLoginLink()}
       >
         <TableComponent
           data={DATA_ENERGIES}

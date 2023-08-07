@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/cripto.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { GetLoginLink } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
@@ -40,9 +40,10 @@ const CryptoContent = () => {
             title={t(`crypto_top-market-title${sitePostfix}`)}
             image={image}
             btn1Title={t(`crypto_top-market-btn1${sitePostfix}`)}
-            link1={GetRegistrationLink()}
+            link1={GetLoginLink()}
             btn2Title={t(`crypto_top-market-btn2${sitePostfix}`)}
-            link2={GetRegistrationLink()}
+            btnClassName2={"button-link--lowercase"}
+            link2={GetLoginLink()}
           >
             <HighlightedLocalizationText
               localizationText={`crypto_top-market-promo-text${sitePostfix}`}
@@ -59,7 +60,8 @@ const CryptoContent = () => {
             className="crypto-promotion"
             image={crypto}
             btnTitle={t(`crypto_top-market-promo-btn${sitePostfix}`)}
-            link={GetRegistrationLink()}
+            btnClassName={"button-link--lowercase"}
+            link={GetLoginLink()}
           >
             <HighlightedLocalizationText
               localizationText={`crypto_top-market-promotion-promo-text${sitePostfix}`}
@@ -122,7 +124,7 @@ const CryptoContent = () => {
           <TopMarketLayout
             title={t(`crypto_top-market-layout-title${sitePostfix}`)}
             btnTitle={t(`crypto_top-market-layout-btn${sitePostfix}`)}
-            link={GetRegistrationLink()}
+            link={GetLoginLink()}
           >
             <TableComponent
               data={DATA_CRYPTO}

@@ -10,7 +10,7 @@ import {
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/cTrader.png";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { GetLoginLink } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import cn from "classnames";
@@ -184,7 +184,7 @@ const CtraderPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("ctrader_top-market-promo-btn3")}
-        link={GetRegistrationLink()}
+        link={GetLoginLink()}
       >
         <HighlightedLocalizationText
           localizationText="ctrader_top-market-promo-text3"
