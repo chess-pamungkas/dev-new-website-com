@@ -22,6 +22,9 @@ const TopMarket = ({
   isAnchorLink1 = false,
   isAnchorLink2 = false,
   isAnchorLink3 = false,
+  btnClassName1,
+  btnClassName2,
+  btnClassName3,
 }) => {
   const isRTL = useRtlDirection();
 
@@ -83,21 +86,21 @@ const TopMarket = ({
                   btn1Title,
                   link1,
                   isAnchorLink1,
-                  "top-market__btn--black"
+                  cn("top-market__btn--black", btnClassName1)
                 )}
               {btn2Title &&
                 getButton(
                   btn2Title,
                   link2,
                   isAnchorLink2,
-                  "top-market__btn--white"
+                  cn("top-market__btn--white", btnClassName2)
                 )}
               {btn3Title &&
                 getButton(
                   btn3Title,
                   link3,
                   isAnchorLink3,
-                  "top-market__btn--white"
+                  cn("top-market__btn--white", btnClassName3)
                 )}
             </div>
           )}

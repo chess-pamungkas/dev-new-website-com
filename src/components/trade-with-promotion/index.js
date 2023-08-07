@@ -16,7 +16,7 @@ import rippleIcon from "../../assets/images/icons/companies/ripple.svg";
 import teslaIcon from "../../assets/images/icons/companies/tesla.svg";
 import womanIcon from "../../assets/images/icons/companies/woman.svg";
 import ButtonLink from "../shared/button-link";
-import { DIR_LTR, DIR_RTL, GetRegistrationLink } from "../../helpers/constants";
+import { DIR_LTR, DIR_RTL, GetLoginLink } from "../../helpers/constants";
 import TypingAnimation from "../shared/typing-animation";
 import { MarketingContext } from "../../context/marketing-context";
 import {
@@ -228,7 +228,7 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
           <div className="trade-with-promotion__block">
             <div className="trade-with-promotion__btn-wrapper">
               <ButtonLink
-                link={GetRegistrationLink()}
+                link={GetLoginLink()}
                 className="trade-with-promotion__btn"
               >
                 {t("button-start-now")}

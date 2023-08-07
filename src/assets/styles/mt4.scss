@@ -10,7 +10,8 @@
   @include tablet {
     padding-top: 26px;
     padding-bottom: 33px;
-    background: url("../../assets/images/bg/split-bg/bg-md.svg") no-repeat bottom;
+    background: url("../../assets/images/bg/split-bg/bg-md.svg") no-repeat
+      bottom;
     background-size: cover;
   }
 
@@ -24,7 +25,8 @@
   @include desktop-xl {
     padding-top: 161px;
     padding-bottom: 112px;
-    background: url("../../assets/images/bg/split-bg/bg-xl.svg") no-repeat center;
+    background: url("../../assets/images/bg/split-bg/bg-xl.svg") no-repeat
+      center;
     background-size: cover;
   }
 
@@ -55,6 +57,27 @@
     @include desktop-xl {
       font-size: 58px;
       line-height: 60px;
+    }
+  }
+
+  .top-market-promotion__note {
+    font-weight: map-get($font-weight, "black");
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+
+    @include tablet {
+      font-size: 22px;
+      line-height: 27px;
+    }
+
+    @include desktop-lg {
+      text-align: left;
+    }
+
+    @include desktop-xl {
+      font-size: 28px;
+      line-height: 45px;
     }
   }
 

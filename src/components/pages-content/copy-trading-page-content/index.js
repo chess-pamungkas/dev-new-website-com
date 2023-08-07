@@ -13,7 +13,7 @@ import {
 } from "../../../helpers/copy-trading.config";
 import { FAQ_COPY_TRADING } from "../../../helpers/faq";
 import Faq from "../../faq";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { GetLoginLink } from "../../../helpers/constants";
 
 const CopyTradingPageContent = () => {
   const { t } = useTranslation();
@@ -29,7 +29,7 @@ const CopyTradingPageContent = () => {
         image={promotion}
         btnClassName="button-link--ghost"
         btnTitle={t("copy-trading_top-market-promo-btn")}
-        link={GetRegistrationLink()}
+        link={GetLoginLink()}
         note={
           <>
             <span className="display-block">
@@ -126,14 +126,14 @@ const CopyTradingPageContent = () => {
               advantages={ADVANTAGES_FOR_INVESTORS}
               className="copy-trading-market-item-advantages"
               btnTitle={t("copy-trading_advantages1_btn")}
-              link={GetRegistrationLink()}
+              link={GetLoginLink()}
             />
             <MarketItemAdvantageList
               title={t("copy-trading_advantages2_title")}
               advantages={ADVANTAGES_FOR_PROVIDERS}
               className="copy-trading-market-item-advantages"
               btnTitle={t("copy-trading_advantages2_btn")}
-              link={GetRegistrationLink()}
+              link={GetLoginLink()}
             />
           </div>
         }

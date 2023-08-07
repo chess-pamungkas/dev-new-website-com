@@ -339,7 +339,7 @@ const MetaTrader4info = () => {
       },
       {
         key: "mtTrader4-advantage-7",
-        text: "platforms_meta-trader-4-advantage-7",
+        text: "platforms_meta-trader-4-advantage-7-fsa",
       },
       {
         key: "mtTrader4-advantage-8",
