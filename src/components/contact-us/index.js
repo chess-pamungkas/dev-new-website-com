@@ -7,10 +7,11 @@ import {
   getContactPhone,
   getContactEmail,
   CONTACT_ADDRESS,
+  CONTACT_PHONE_FSA_2,
 } from "../../helpers/constants";
 import ContactUsForm from "./components/contact-us-form";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
-import { isCySEC } from "../../helpers/entity-resolver";
+import { isCySEC, isFSA } from "../../helpers/entity-resolver";
 
 const ContactUs = ({ className }) => {
   const { t } = useTranslation();
@@ -47,6 +48,14 @@ const ContactUs = ({ className }) => {
             <a className="contact-us__contact-block-href" href={`tel:${phone}`}>
               {`+${phone}`}
             </a>
+            {isFSA && (
+              <a
+                className="contact-us__contact-block-href"
+                href={`tel:${CONTACT_PHONE_FSA_2}`}
+              >
+                {`+${CONTACT_PHONE_FSA_2}`}
+              </a>
+            )}
           </div>
           {isCySEC && (
             <div className="contact-us__contact-block">

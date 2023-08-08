@@ -1,3 +1,4 @@
+import React from "react";
 import metaTrader4 from "../assets/images/icons/tools/metaTrader4.svg";
 import metaTrader5 from "../assets/images/icons/tools/metaTrader5.svg";
 import {
@@ -9,17 +10,25 @@ import {
 
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 import { isCySEC } from "./entity-resolver";
+import { useWindowSize } from "./hooks/use-window-size";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 export const CTRADER_DOWNLOAD_LINKS = {
-  androidFSA: "https://play.google.com/store/apps/details?id=com.oqtima.app",
-  androidEU: " https://play.google.com/store/apps/details?id=eu.oqtima.app  ",
-  iosFSA: "https://apps.apple.com/cy/app/oqtima-ctrader/id1672522637",
-  iosEU: "",
-  windowsFSA: "https://getctrader.com/oqtima/ctrader-oqtima-setup.exe",
-  windowsEU: "https://getctrader.com/oqtimaeu/ctrader-oqtimaeu-setup.exe",
-  mac: null,
-  webtraderFSA: "https://app.oqtima.com/",
-  webtraderEU: "https://app.oqtima.eu/",
+  getAndroidLink: () =>
+    isCySEC
+      ? "https://play.google.com/store/apps/details?id=eu.oqtima.app"
+      : "https://play.google.com/store/apps/details?id=com.oqtima.app",
+  getIOSLink: () =>
+    isCySEC
+      ? null
+      : "https://apps.apple.com/cy/app/oqtima-ctrader/id1672522637",
+  getWindowsLink: () =>
+    isCySEC
+      ? "https://getctrader.com/oqtimaeu/ctrader-oqtimaeu-setup.exe"
+      : "https://getctrader.com/oqtima/ctrader-oqtima-setup.exe",
+  getWebTraderLink: () =>
+    isCySEC ? "https://app.oqtima.eu/" : "https://app.oqtima.com/",
+  getMacLink: () => (isCySEC ? null : null),
 };
 
 export const TRADING_VIEW_DOWNLOAD_LINKS = {
@@ -31,31 +40,77 @@ export const TRADING_VIEW_DOWNLOAD_LINKS = {
 };
 
 export const MT4_DOWNLOAD_LINKS = {
-  android:
-    "https://download.mql5.com/cdn/mobile/mt4/android?server=OqtimaGlobal-Demo,OqtimaGlobal-Server",
-
-  iosFSA:
-    "https://download.mql5.com/cdn/mobile/mt4/ios?server=OqtimaGlobal-Demo,OqtimaGlobal-Server",
-
-  windows:
-    "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
-  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg",
-  webtrader: MT4_WEB_TRADER_LINK,
-  huaweiFSA: "https://appgallery.huawei.com/#/app/C102015319",
+  getAndroidLink: () =>
+    isCySEC
+      ? null
+      : "https://download.mql5.com/cdn/mobile/mt4/android?server=OqtimaGlobal-Demo,OqtimaGlobal-Server",
+  getIOSLink: () =>
+    isCySEC
+      ? null
+      : "https://download.mql5.com/cdn/mobile/mt4/ios?server=OqtimaGlobal-Demo,OqtimaGlobal-Server",
+  getWindowsLink: () =>
+    isCySEC
+      ? null
+      : "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
+  getWebTraderLink: () => (isCySEC ? null : MT4_WEB_TRADER_LINK),
+  getMacLink: () =>
+    isCySEC
+      ? null
+      : "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg",
+  getHuaweiLink: () =>
+    isCySEC ? null : "https://appgallery.huawei.com/#/app/C102015319",
 };
 
 export const MT5_DOWNLOAD_LINKS = {
-  androidEU:
-    "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live",
-  androidFSA: null,
-  iosEU: "https://download.mql5.com/cdn/mobile/mt5/ios?server=OqtimaEU-Live",
-  iosFSA: null,
-  windowsEU:
-    "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe",
-  windowsFSA: null,
-  mac: "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg",
-  webtrader: MT5_WEB_TRADER_LINK,
-  huaweiEU: "https://appgallery.huawei.com/#/app/C102015329",
+  getAndroidLink: () =>
+    isCySEC
+      ? "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live"
+      : null,
+  getIOSLink: () =>
+    isCySEC
+      ? "https://download.mql5.com/cdn/mobile/mt5/ios?server=OqtimaEU-Live"
+      : null,
+  getWindowsLink: () =>
+    isCySEC
+      ? "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe"
+      : null,
+  getWebTraderLink: () => (isCySEC ? MT5_WEB_TRADER_LINK : null),
+  getMacLink: () =>
+    isCySEC
+      ? "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg"
+      : null,
+  getHuaweiLink: () =>
+    isCySEC ? "https://appgallery.huawei.com/#/app/C102015329" : null,
+};
+
+export const getMT4DownloadLink = () => {
+  switch (true) {
+    case isIOS:
+      return MT4_DOWNLOAD_LINKS.getIOSLink();
+    case isAndroid:
+      return MT4_DOWNLOAD_LINKS.getAndroidLink();
+    case isWindows:
+      return MT4_DOWNLOAD_LINKS.getWindowsLink();
+    case isMacOs:
+      return MT4_DOWNLOAD_LINKS.getMacLink();
+    default:
+      return MT4_DOWNLOAD_LINKS.getWindowsLink();
+  }
+};
+
+export const getMT5DownloadLink = () => {
+  switch (true) {
+    case isIOS:
+      return MT5_DOWNLOAD_LINKS.getIOSLink();
+    case isAndroid:
+      return MT5_DOWNLOAD_LINKS.getAndroidLink();
+    case isWindows:
+      return MT5_DOWNLOAD_LINKS.getWindowsLink();
+    case isMacOs:
+      return MT5_DOWNLOAD_LINKS.getMacLink();
+    default:
+      return MT5_DOWNLOAD_LINKS.getWindowsLink();
+  }
 };
 
 const FSA_MT5_ADVANTAGES = [
@@ -288,20 +343,6 @@ export const getMT5Advantages = () =>
   isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES;
 
 const MetaTrader4info = () => {
-  const getOSDeviceMT4 = () => {
-    switch (true) {
-      case isIOS:
-        return MT4_DOWNLOAD_LINKS.iosFSA;
-      case isAndroid:
-        return MT4_DOWNLOAD_LINKS.android;
-      case isWindows:
-        return MT4_DOWNLOAD_LINKS.windows;
-      case isMacOs:
-        return MT4_DOWNLOAD_LINKS.mac;
-      default:
-        return MT4_DOWNLOAD_LINKS.windows;
-    }
-  };
   const META_TRADER_4 = {
     key: "mtTrader4",
     icon: metaTrader4,
@@ -309,7 +350,7 @@ const MetaTrader4info = () => {
     text: ["platforms_meta-trader-4-text-1", "platforms_meta-trader-4-text-2"],
     isGrayBackground: false,
     learMoreLink: MT4_PAGE_LINK,
-    downloadLink: getOSDeviceMT4(),
+    downloadLink: getMT4DownloadLink(),
     learMoreLinkTitle: "platforms_meta-trader-4-more-link-title",
     downloadLinkTitle: "platforms_meta-trader-4-download-link-title",
     advantages: [
@@ -359,26 +400,6 @@ const MetaTrader4info = () => {
 };
 
 const MetaTrader5info = () => {
-  const getOSDeviceMT5 = () => {
-    switch (true) {
-      case isIOS:
-        return isCySEC ? MT5_DOWNLOAD_LINKS.iosEU : MT5_DOWNLOAD_LINKS.iosFSA;
-      case isAndroid:
-        return isCySEC
-          ? MT5_DOWNLOAD_LINKS.androidEU
-          : MT5_DOWNLOAD_LINKS.androidFSA;
-      case isWindows:
-        return isCySEC
-          ? MT5_DOWNLOAD_LINKS.windowsEU
-          : MT5_DOWNLOAD_LINKS.windowsFSA;
-      case isMacOs:
-        return MT5_DOWNLOAD_LINKS.mac;
-      default:
-        return isCySEC
-          ? MT5_DOWNLOAD_LINKS.windowsEU
-          : MT5_DOWNLOAD_LINKS.windowsFSA;
-    }
-  };
   const META_TRADER_5 = {
     key: "mtTrader5",
     icon: metaTrader5,
@@ -386,7 +407,7 @@ const MetaTrader5info = () => {
     text: ["platforms_meta-trader-5-text-1"],
     isGrayBackground: true,
     learMoreLink: MT5_PAGE_LINK,
-    downloadLink: getOSDeviceMT5(),
+    downloadLink: getMT5DownloadLink(),
     learMoreLinkTitle: "platforms_meta-trader-5-more-link-title",
     downloadLinkTitle: "platforms_meta-trader-5-download-link-title",
     advantages: [
@@ -554,3 +575,190 @@ export const TRADING_VIEW_ADVANTAGES = [
 ];
 
 export { MetaTrader4info, MetaTrader5info };
+
+export const getCTraderDownloadLink = () => {
+  switch (true) {
+    case isIOS:
+      return CTRADER_DOWNLOAD_LINKS.getIOSLink();
+    case isAndroid:
+      return CTRADER_DOWNLOAD_LINKS.getAndroidLink();
+    case isWindows:
+      return CTRADER_DOWNLOAD_LINKS.getWindowsLink();
+    default:
+      return CTRADER_DOWNLOAD_LINKS.getWindowsLink();
+  }
+};
+
+export const cTraderDownloadTabs = () => {
+  const { t } = useTranslation();
+  return [
+    {
+      id: 1,
+      title: t("mt-promotion-tabs-mobile"),
+      content: (
+        <>
+          <a href={CTRADER_DOWNLOAD_LINKS.getAndroidLink()}>
+            {t("ctrader_mt-promotion-download-android")}
+          </a>
+          <a href={CTRADER_DOWNLOAD_LINKS.getIOSLink()}>
+            {t("ctrader_mt-promotion-download-ios")}
+          </a>
+        </>
+      ),
+    },
+    {
+      id: 2,
+      title: t("mt-promotion-tabs-desktop"),
+      content: (
+        <>
+          <a href={CTRADER_DOWNLOAD_LINKS.getWindowsLink()}>
+            {t("ctrader_mt-promotion-download-windows")}
+          </a>
+        </>
+      ),
+    },
+    {
+      id: 3,
+      title: t("mt-promotion-tabs-webtrader"),
+      content: (
+        <>
+          <a
+            href={CTRADER_DOWNLOAD_LINKS.getWebTraderLink()}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t("ctrader_mt-promotion-download-webtrader")}
+          </a>
+        </>
+      ),
+    },
+  ];
+};
+
+export const mt4DownloadTabs = () => {
+  const { t } = useTranslation();
+  return [
+    {
+      id: 1,
+      title: t("mt-promotion-tabs-mobile"),
+      content: (
+        <>
+          <a href={MT4_DOWNLOAD_LINKS.getAndroidLink()}>
+            {t("mt4_mt-promotion-download-android")}
+          </a>
+
+          <a href={MT4_DOWNLOAD_LINKS.getIOSLink()}>
+            {t("mt4_mt-promotion-download-ios")}
+          </a>
+
+          <a href={MT4_DOWNLOAD_LINKS.getHuaweiLink()}>
+            {t("mt4_mt-promotion-download-huawei")}
+          </a>
+        </>
+      ),
+    },
+    {
+      id: 2,
+      title: t("mt-promotion-tabs-desktop"),
+      content: (
+        <>
+          <a href={MT4_DOWNLOAD_LINKS.getMacLink()}>
+            {t("mt4_mt-promotion-download-mac")}
+          </a>
+          <a href={MT4_DOWNLOAD_LINKS.getWindowsLink()}>
+            {t("mt4_mt-promotion-download-windows")}
+          </a>
+        </>
+      ),
+    },
+    {
+      id: 3,
+      title: t("mt-promotion-tabs-webtrader"),
+      content: (
+        <>
+          <a
+            href={MT4_DOWNLOAD_LINKS.getWebTraderLink()}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t("mt4_mt-promotion-download-webtrader")}
+          </a>
+        </>
+      ),
+    },
+  ];
+};
+
+export const mt5DownloadTabs = () => {
+  const { t } = useTranslation();
+  return [
+    {
+      id: 1,
+      title: t("mt-promotion-tabs-mobile"),
+      content: (
+        <>
+          <a href={MT5_DOWNLOAD_LINKS.getAndroidLink()}>
+            {t("mt5_mt-promotion-download-android")}
+          </a>
+
+          <a href={MT5_DOWNLOAD_LINKS.getIOSLink()}>
+            {t("mt5_mt-promotion-download-ios")}
+          </a>
+
+          <a href={MT5_DOWNLOAD_LINKS.getHuaweiLink()}>
+            {t("mt5_mt-promotion-download-huawei")}
+          </a>
+        </>
+      ),
+    },
+    {
+      id: 2,
+      title: t("mt-promotion-tabs-desktop"),
+      content: (
+        <>
+          <a href={MT5_DOWNLOAD_LINKS.getMacLink()}>
+            {t("mt5_mt-promotion-download-mac")}
+          </a>
+          <a href={MT5_DOWNLOAD_LINKS.getWindowsLink()}>
+            {t("mt5_mt-promotion-download-windows")}
+          </a>
+        </>
+      ),
+    },
+    {
+      id: 3,
+      title: t("mt-promotion-tabs-webtrader"),
+      content: (
+        <>
+          <a
+            href={MT5_DOWNLOAD_LINKS.getWebTraderLink()}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t("mt5_mt-promotion-download-webtrader")}
+          </a>
+        </>
+      ),
+    },
+  ];
+};
+
+export const getTradersList = () =>
+  isCySEC ? [MetaTrader5info()] : [MetaTrader4info()];
+
+export const getAnimationStyle = () => {
+  const { isMobile, isTablet, isLG, isXL } = useWindowSize();
+
+  switch (true) {
+    case isXL:
+      return { height: 700 };
+    case isLG:
+      return { height: 444 };
+    case isTablet:
+      return { height: 540 };
+    case isMobile:
+      return { height: 358 };
+    default:
+      return { height: 358 };
+  }
+};
