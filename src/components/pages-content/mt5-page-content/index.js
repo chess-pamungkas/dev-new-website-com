@@ -6,7 +6,9 @@ import HighlightedLocalizationText from "../../shared/highlighted-localization-t
 import MtPromotion from "../../mt-promotion";
 import {
   getMT5Advantages,
-  MT5_DOWNLOAD_LINKS,
+  getMT5DownloadLink,
+  mt5DownloadTabs,
+  getAnimationStyle,
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/MT4andMT5.png";
 import icon from "../../../assets/images/icon--white.svg";
@@ -15,8 +17,6 @@ import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
-import { isCySEC } from "../../../helpers/entity-resolver";
-import InternalLink from "../../shared/internal-link";
 
 const Mt5PageContent = () => {
   const { t } = useTranslation();
@@ -30,114 +30,19 @@ const Mt5PageContent = () => {
   //   downloadRef.current?.scrollIntoView({ behavior: "smooth" });
   // };
 
-  const getOSDevice = () => {
-    switch (true) {
-      case isIOS:
-        //enable when fsa links available,
-        // return isCySEC ? MT5_DOWNLOAD_LINKS.iosEU : MT5_DOWNLOAD_LINKS.iosFSA;
-        return MT5_DOWNLOAD_LINKS.iosEU;
-      case isAndroid:
-        return isCySEC
-          ? MT5_DOWNLOAD_LINKS.androidEU
-          : MT5_DOWNLOAD_LINKS.androidFSA;
-      case isWindows:
-        return isCySEC
-          ? MT5_DOWNLOAD_LINKS.windowsEU
-          : MT5_DOWNLOAD_LINKS.windowsFSA;
-      case isMacOs:
-        return MT5_DOWNLOAD_LINKS.mac;
-      default:
-        return isCySEC
-          ? MT5_DOWNLOAD_LINKS.windowsEU
-          : MT5_DOWNLOAD_LINKS.windowsFSA;
-    }
-  };
+  const getMT5DownloadLinkByDevice = useCallback(getMT5DownloadLink, [
+    isIOS,
+    isAndroid,
+    isWindows,
+    isMacOs,
+  ]);
 
-  const getAnimationStyles = useCallback(() => {
-    switch (true) {
-      case isXL:
-        return { height: 700 };
-      case isLG:
-        return { height: 444 };
-      case isTablet:
-        return { height: 540 };
-      case isMobile:
-        return { height: 358 };
-      default:
-        return { height: 358 };
-    }
-  }, [isMobile, isTablet, isLG, isXL]);
-
-  const tabs = [
-    {
-      id: 1,
-      title: t("mt-promotion-tabs-mobile"),
-      content: isCySEC ? (
-        <>
-          <a href={MT5_DOWNLOAD_LINKS.androidEU}>
-            {t("mt5_mt-promotion-download-android")}
-          </a>
-
-          <a href={MT5_DOWNLOAD_LINKS.iosEU}>
-            {t("mt5_mt-promotion-download-ios")}
-          </a>
-
-          <a href={MT5_DOWNLOAD_LINKS.huaweiEU}>
-            {t("mt5_mt-promotion-download-huawei")}
-          </a>
-        </>
-      ) : (
-        <>
-          <a href={MT5_DOWNLOAD_LINKS.androidFSA}>
-            {t("mt5_mt-promotion-download-android")}
-          </a>
-        </>
-      ),
-    },
-    {
-      id: 2,
-      title: t("mt-promotion-tabs-desktop"),
-      content: isCySEC ? (
-        <>
-          <a href={MT5_DOWNLOAD_LINKS.mac}>
-            {t("mt5_mt-promotion-download-mac")}
-          </a>
-          <a href={MT5_DOWNLOAD_LINKS.windowsEU}>
-            {t("mt5_mt-promotion-download-windows")}
-          </a>
-        </>
-      ) : (
-        <>
-          <a href={MT5_DOWNLOAD_LINKS.mac}>
-            {t("mt5_mt-promotion-download-mac")}
-          </a>
-          <a href={MT5_DOWNLOAD_LINKS.windowsFSA}>
-            {t("mt5_mt-promotion-download-windows")}
-          </a>
-        </>
-      ),
-    },
-    {
-      id: 3,
-      title: t("mt-promotion-tabs-webtrader"),
-      content: isCySEC ? (
-        <>
-          <a
-            href={MT5_DOWNLOAD_LINKS.webtrader}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t("mt5_mt-promotion-download-webtrader")}
-          </a>
-        </>
-      ) : (
-        <InternalLink to="/">
-          {" "}
-          {t("mt5_mt-promotion-download-webtrader")}
-        </InternalLink>
-      ),
-    },
-  ];
+  const getAnimationStyles = useCallback(getAnimationStyle, [
+    isMobile,
+    isTablet,
+    isLG,
+    isXL,
+  ]);
 
   return (
     <>
@@ -153,7 +58,7 @@ const Mt5PageContent = () => {
           "button-link--ghost": isLG || isXL,
         })}
         btnTitle={t("mt5_top-market-promo-btn")}
-        link={getOSDevice()}
+        link={getMT5DownloadLinkByDevice()}
         isDocumentLink
         note={
           <HighlightedLocalizationText
@@ -184,7 +89,7 @@ const Mt5PageContent = () => {
         advantages={mt5Advantages}
         downloadTitle={t("mt5_download-title")}
         image={image}
-        tabs={tabs}
+        tabs={mt5DownloadTabs()}
         ref={downloadRef}
       />
       {isXL && (
