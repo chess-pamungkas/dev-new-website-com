@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/forex.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { GetLoginLink } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
@@ -99,9 +99,9 @@ const ForexContent = () => {
         title={t("forex_top-market-title")}
         image={image}
         btn1Title={t("forex_top-market-btn1")}
-        link1={GetRegistrationLink()}
+        link1={GetLoginLink()}
         btn2Title={t("forex_top-market-btn2")}
-        link2={GetRegistrationLink()}
+        link2={GetLoginLink()}
       >
         <HighlightedLocalizationText
           localizationText="forex_top-market-promo-text"
@@ -118,7 +118,7 @@ const ForexContent = () => {
         className="forex-promotion"
         image={forex}
         btnTitle={t("forex_top-market-promo-btn")}
-        link={GetRegistrationLink()}
+        link={GetLoginLink()}
       >
         <HighlightedLocalizationText
           localizationText={`forex_top-market-promotion-promo-text${sitePostfix}`}
@@ -181,7 +181,7 @@ const ForexContent = () => {
       <TopMarketLayout
         title={t("forex_top-market-layout-title")}
         btnTitle={t("forex_top-market-layout-btn")}
-        link={GetRegistrationLink()}
+        link={GetLoginLink()}
       >
         <Tabs tabList={tabs} />
       </TopMarketLayout>

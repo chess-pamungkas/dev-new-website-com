@@ -6,16 +6,17 @@ import HighlightedLocalizationText from "../../shared/highlighted-localization-t
 import MtPromotion from "../../mt-promotion";
 import {
   CTRADER_ADVANTAGES,
-  CTRADER_DOWNLOAD_LINKS,
+  getCTraderDownloadLink,
+  cTraderDownloadTabs,
+  getAnimationStyle,
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/cTrader.png";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { GetLoginLink } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import cn from "classnames";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
-import { isCySEC } from "../../../helpers/entity-resolver";
 
 const CtraderPageContent = () => {
   const { t } = useTranslation();
@@ -26,107 +27,19 @@ const CtraderPageContent = () => {
     downloadRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const getOSDevice = useCallback(() => {
-    switch (true) {
-      case isIOS:
-        return CTRADER_DOWNLOAD_LINKS.iosFSA;
-      case isAndroid:
-        return isCySEC
-          ? CTRADER_DOWNLOAD_LINKS.androidEU
-          : CTRADER_DOWNLOAD_LINKS.androidFSA;
-      case isWindows:
-        return isCySEC
-          ? CTRADER_DOWNLOAD_LINKS.windowsEU
-          : CTRADER_DOWNLOAD_LINKS.windowsFSA;
-      default:
-        return isCySEC
-          ? CTRADER_DOWNLOAD_LINKS.windowsEU
-          : CTRADER_DOWNLOAD_LINKS.windowsFSA;
-    }
-  }, [isIOS, isAndroid, isWindows, isMacOs]);
+  const getCTraderDownloadLinkByDevice = useCallback(getCTraderDownloadLink, [
+    isIOS,
+    isAndroid,
+    isWindows,
+    isMacOs,
+  ]);
 
-  const getAnimationStyles = useCallback(() => {
-    switch (true) {
-      case isXL:
-        return { height: 700 };
-      case isLG:
-        return { height: 444 };
-      case isTablet:
-        return { height: 540 };
-      case isMobile:
-        return { height: 358 };
-      default:
-        return { height: 358 };
-    }
-  }, [isMobile, isTablet, isLG, isXL]);
-
-  const tabs = [
-    {
-      id: 1,
-      title: t("mt-promotion-tabs-mobile"),
-      content: isCySEC ? (
-        <>
-          <a href={CTRADER_DOWNLOAD_LINKS.androidEU}>
-            {t("ctrader_mt-promotion-download-android")}
-          </a>
-          <a href={CTRADER_DOWNLOAD_LINKS.iosEU}>
-            {t("ctrader_mt-promotion-download-ios")}
-          </a>
-        </>
-      ) : (
-        <>
-          <a href={CTRADER_DOWNLOAD_LINKS.androidFSA}>
-            {t("ctrader_mt-promotion-download-android")}
-          </a>
-          <a href={CTRADER_DOWNLOAD_LINKS.iosFSA}>
-            {t("ctrader_mt-promotion-download-ios")}
-          </a>
-        </>
-      ),
-    },
-    {
-      id: 2,
-      title: t("mt-promotion-tabs-desktop"),
-      content: isCySEC ? (
-        <>
-          <a href={CTRADER_DOWNLOAD_LINKS.windowsEU}>
-            {t("ctrader_mt-promotion-download-windows")}
-          </a>
-        </>
-      ) : (
-        <>
-          <a href={CTRADER_DOWNLOAD_LINKS.windowsFSA}>
-            {t("ctrader_mt-promotion-download-windows")}
-          </a>
-        </>
-      ),
-    },
-    {
-      id: 3,
-      title: t("mt-promotion-tabs-webtrader"),
-      content: isCySEC ? (
-        <>
-          <a
-            href={CTRADER_DOWNLOAD_LINKS.webtraderEU}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t("ctrader_mt-promotion-download-webtrader")}
-          </a>
-        </>
-      ) : (
-        <>
-          <a
-            href={CTRADER_DOWNLOAD_LINKS.webtraderFSA}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t("ctrader_mt-promotion-download-webtrader")}
-          </a>
-        </>
-      ),
-    },
-  ];
+  const getAnimationStyles = useCallback(getAnimationStyle, [
+    isMobile,
+    isTablet,
+    isLG,
+    isXL,
+  ]);
 
   return (
     <>
@@ -141,7 +54,7 @@ const CtraderPageContent = () => {
         btnClassName="button-link--ghost"
         btnTitle={t("ctrader_top-market-promo-btn")}
         btnOnClick={scrollToTarget}
-        link={getOSDevice()}
+        link={getCTraderDownloadLinkByDevice()}
         isDocumentLink
         note={
           <HighlightedLocalizationText
@@ -173,7 +86,7 @@ const CtraderPageContent = () => {
         advantages={CTRADER_ADVANTAGES}
         downloadTitle={t("ctrader_download-title")}
         image={image}
-        tabs={tabs}
+        tabs={cTraderDownloadTabs()}
         ref={downloadRef}
         className="mt-promotion--ctrader"
       />
@@ -184,7 +97,7 @@ const CtraderPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("ctrader_top-market-promo-btn3")}
-        link={GetRegistrationLink()}
+        link={GetLoginLink()}
       >
         <HighlightedLocalizationText
           localizationText="ctrader_top-market-promo-text3"

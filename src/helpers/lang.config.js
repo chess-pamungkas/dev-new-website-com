@@ -18,7 +18,7 @@ const LANG_CONFIG = [
   {
     id: "br",
     icon: "BrFlagIcon",
-    name: "Brazilian",
+    name: "Português",
     URIPart: "/br",
   },
   // Vietnamese

@@ -6,16 +6,17 @@ import HighlightedLocalizationText from "../../shared/highlighted-localization-t
 import MtPromotion from "../../mt-promotion";
 import {
   getMT4Advantages,
-  MT4_DOWNLOAD_LINKS,
+  mt4DownloadTabs,
+  getMT4DownloadLink,
+  getAnimationStyle,
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/MT4andMT5.png";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { GetLoginLink } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
-import { isCySEC } from "../../../helpers/entity-resolver";
 
 const Mt4PageContent = () => {
   const { t } = useTranslation();
@@ -29,92 +30,19 @@ const Mt4PageContent = () => {
     downloadRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const getOSDevice = useCallback(() => {
-    switch (true) {
-      case isIOS:
-        return MT4_DOWNLOAD_LINKS.iosFSA;
-      case isAndroid:
-        return MT4_DOWNLOAD_LINKS.android;
-      case isWindows:
-        return MT4_DOWNLOAD_LINKS.windows;
-      case isMacOs:
-        return MT4_DOWNLOAD_LINKS.mac;
-      default:
-        return MT4_DOWNLOAD_LINKS.windows;
-    }
-  }, [isIOS, isAndroid, isWindows, isMacOs]);
+  const getMT4DownloadLinkByDevice = useCallback(getMT4DownloadLink, [
+    isIOS,
+    isAndroid,
+    isWindows,
+    isMacOs,
+  ]);
 
-  const getAnimationStyles = useCallback(() => {
-    switch (true) {
-      case isXL:
-        return { height: 700 };
-      case isLG:
-        return { height: 444 };
-      case isTablet:
-        return { height: 540 };
-      case isMobile:
-        return { height: 358 };
-      default:
-        return { height: 358 };
-    }
-  }, [isMobile, isTablet, isLG, isXL]);
-
-  const tabs = [
-    {
-      id: 1,
-      title: t("mt-promotion-tabs-mobile"),
-      content: isCySEC ? (
-        <>
-          <a href={MT4_DOWNLOAD_LINKS.android}>
-            {t("mt4_mt-promotion-download-android")}
-          </a>
-        </>
-      ) : (
-        <>
-          <a href={MT4_DOWNLOAD_LINKS.android}>
-            {t("mt4_mt-promotion-download-android")}
-          </a>
-
-          <a href={MT4_DOWNLOAD_LINKS.iosFSA}>
-            {t("mt4_mt-promotion-download-ios")}
-          </a>
-
-          <a href={MT4_DOWNLOAD_LINKS.huaweiFSA}>
-            {t("mt4_mt-promotion-download-huawei")}
-          </a>
-        </>
-      ),
-    },
-    {
-      id: 2,
-      title: t("mt-promotion-tabs-desktop"),
-      content: (
-        <>
-          <a href={MT4_DOWNLOAD_LINKS.mac}>
-            {t("mt4_mt-promotion-download-mac")}
-          </a>
-          <a href={MT4_DOWNLOAD_LINKS.windows}>
-            {t("mt4_mt-promotion-download-windows")}
-          </a>
-        </>
-      ),
-    },
-    {
-      id: 3,
-      title: t("mt-promotion-tabs-webtrader"),
-      content: (
-        <>
-          <a
-            href={MT4_DOWNLOAD_LINKS.webtrader}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t("mt4_mt-promotion-download-webtrader")}
-          </a>
-        </>
-      ),
-    },
-  ];
+  const getAnimationStyles = useCallback(getAnimationStyle, [
+    isMobile,
+    isTablet,
+    isLG,
+    isXL,
+  ]);
 
   return (
     <>
@@ -131,7 +59,7 @@ const Mt4PageContent = () => {
         })}
         btnTitle={t("mt4_top-market-promo-btn")}
         btnOnClick={scrollToTarget}
-        link={getOSDevice()}
+        link={getMT4DownloadLinkByDevice()}
         isDocumentLink
         note={
           <HighlightedLocalizationText
@@ -163,7 +91,7 @@ const Mt4PageContent = () => {
         advantages={mt4Advantages}
         downloadTitle={t("mt4_download-title")}
         image={image}
-        tabs={tabs}
+        tabs={mt4DownloadTabs()}
         ref={downloadRef}
       />
       {isXL && (
@@ -174,7 +102,7 @@ const Mt4PageContent = () => {
           image={icon}
           btnClassName="button-link--red"
           btnTitle={t("mt4_top-market-promo-btn3")}
-          link={GetRegistrationLink()}
+          link={GetLoginLink()}
         >
           <HighlightedLocalizationText
             localizationText="mt4_top-market-promo-text3"

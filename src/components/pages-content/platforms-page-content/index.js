@@ -1,31 +1,21 @@
 import React from "react";
 import cn from "classnames";
 import TopMarket from "../../top-market";
-import {
-  MetaTrader5info,
-  MetaTrader4info,
-} from "../../../helpers/platforms.config";
+import { getTradersList } from "../../../helpers/platforms.config";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MetaTrader from "../../meta-trader";
 import TopMarketPromotion from "../../top-market-promotion";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { GetLoginLink } from "../../../helpers/constants";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import platforms from "../../../assets/images/platforms/platforms.svg";
-import { isCySEC, isFSA } from "../../../helpers/entity-resolver";
 
 const PlatformsPageContent = () => {
   const { t } = useTranslation();
   const { isXL } = useWindowSize();
-  //converted this way as before was rendering [] and then again same data
-  const META_TRADERS = isCySEC ? [MetaTrader5info()] : [MetaTrader4info()];
-  // const META_TRADERS = [
-  //   // Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
-  //   ...(isCySEC ? [] : [MetaTrader4info()]),
-  //   MetaTrader5info(),
-  // ];
+  const META_TRADERS = getTradersList();
   const isRTL = useRtlDirection();
 
   return (
@@ -37,19 +27,9 @@ const PlatformsPageContent = () => {
         image={platforms}
         subImageTemplate={
           <div className={cn("top-market__trader-tools")}>
-            {/* Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166 */}
-            {isFSA && (
-              <img
-                src={MetaTrader4info().icon}
-                alt={t(MetaTrader4info().title)}
-              />
-            )}
-            {isCySEC && (
-              <img
-                src={MetaTrader5info().icon}
-                alt={t(MetaTrader5info().title)}
-              />
-            )}
+            {META_TRADERS.map((trader) => (
+              <img key={trader.title} src={trader.icon} alt={t(trader.title)} />
+            ))}
           </div>
         }
       >
@@ -71,7 +51,7 @@ const PlatformsPageContent = () => {
           image={icon}
           btnClassName="button-link--red"
           btnTitle={t("platforms_bottom-top-market-promo-btn")}
-          link={GetRegistrationLink()}
+          link={GetLoginLink()}
         >
           <HighlightedLocalizationText
             localizationText="platforms_bottom-top-market-promo-text"

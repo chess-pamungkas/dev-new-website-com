@@ -38,8 +38,9 @@ export const FSA_POSTFIX = "-fsa";
 export const DIR_LTR = "ltr";
 export const DIR_RTL = "rtl";
 
-const CONTACT_PHONE = "35725010490";
-const CONTACT_PHONE_FSA = "442045867126";
+const CONTACT_PHONE = "357 25010490";
+const CONTACT_PHONE_FSA = "44 2045867126";
+export const CONTACT_PHONE_FSA_2 = "248 4632034";
 const CONTACT_EMAIL = "support@oqtima.eu";
 const CONTACT_EMAIL_FSA = "support@oqtima.com";
 export const CONTACT_ADDRESS =

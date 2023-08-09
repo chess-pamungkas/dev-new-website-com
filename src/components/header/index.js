@@ -7,9 +7,9 @@ import {
   DIR_RTL,
   HOME_PAGE_LINK,
   GetLoginLink,
+  GetRegistrationLink,
 } from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
-import { GetRegistrationLink } from "../../helpers/constants";
 import NavbarItem from "./components/navbar-item";
 import LangSelect from "./components/lang-select";
 import BurgerMenu from "./components/burger-menu";

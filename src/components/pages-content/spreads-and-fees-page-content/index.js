@@ -17,7 +17,7 @@ import {
 } from "../../../helpers/spreads-and-fees.config";
 import TopMarketPromotion from "../../top-market-promotion";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { GetLoginLink } from "../../../helpers/constants";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import {
@@ -62,9 +62,6 @@ const SpreadsAndFeesPageContent = () => {
             }
             isSearch
           />
-          {/* <Link className="spreads__table-link" to="/">
-            {t("spreads_tabs_bottom_link_title1")}
-          </Link> */}
         </>
       ),
     },
@@ -89,9 +86,6 @@ const SpreadsAndFeesPageContent = () => {
             }
             isSearch
           />
-          {/* <Link className="spreads__table-link" to="/">
-            {t("spreads_tabs_bottom_link_title2")}
-          </Link> */}
         </>
       ),
     },
@@ -116,9 +110,6 @@ const SpreadsAndFeesPageContent = () => {
             }
             isSearch
           />
-          {/* <Link className="spreads__table-link" to="/">
-            {t("spreads_tabs_bottom_link_title_Metals")}
-          </Link> */}
         </>
       ),
     },
@@ -151,9 +142,6 @@ const SpreadsAndFeesPageContent = () => {
                 }
                 isSearch
               />
-              {/* <Link className="spreads__table-link" to="/">
-                {t("spreads_tabs_bottom_link_title")}
-              </Link> */}
             </>
           ),
         },
@@ -243,7 +231,7 @@ const SpreadsAndFeesPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("spreads_top-market-promo-btn3")}
-        link={GetRegistrationLink()}
+        link={GetLoginLink()}
       >
         <HighlightedLocalizationText
           localizationText="spreads_top-market-promo-text3"

@@ -2,7 +2,7 @@ import React from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/shares.svg";
 import shares from "../../../assets/images/top-markets/images/shares.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { GetLoginLink } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
@@ -24,16 +24,16 @@ const SharesContent = () => {
           <HighlightedLocalizationText
             localizationText={t(`shares_top-market-title${sitePostfix}`)}
             wordsToHighlight="shares_top-market-title-accent"
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-white"
+            primaryClassName="highlighted-in-white"
+            accentClassName="highlighted-in-black"
           />
         }
         image={image}
         isChildrenHasSmallSize
         btn1Title={t("shares_top-market-btn1")}
-        link1={GetRegistrationLink()}
+        link1={GetLoginLink()}
         btn2Title={t("shares_top-market-btn2")}
-        link2={GetRegistrationLink()}
+        link2={GetLoginLink()}
       >
         <HighlightedLocalizationText
           localizationText={`shares_top-market-promo-text${sitePostfix}`}
@@ -52,7 +52,7 @@ const SharesContent = () => {
         className="shares-promotion"
         image={shares}
         btnTitle={t("shares_top-market-promo-btn")}
-        link={GetRegistrationLink()}
+        link={GetLoginLink()}
       >
         <HighlightedLocalizationText
           localizationText={`shares_top-market-promotion-promo-text${sitePostfix}`}
@@ -116,7 +116,7 @@ const SharesContent = () => {
       {/* <TopMarketLayout
         title={t("shares_top-market-layout-title")}
         btnTitle={t("shares_top-market-layout-btn")}
-        link={GetRegistrationLink()}
+        link={GetLoginLink()}
       >
         <TableComponent
           data={DATA_SHARES}
