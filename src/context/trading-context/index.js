@@ -14,20 +14,24 @@ export const TradingProvider = ({ children }) => {
   const [needToLoadSymbols, setNeedToLoadSymbols] = useState(false);
 
   useEffect(() => {
+    const fetchData = () => {
+      try {
+        if (API_URL) {
+          socket.emit("stocks", selectedSection.id);
+          socket.on("reply", (data) => {
+            if (data) setTradingSymbols(data);
+          });
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    fetchData(); // Initial fetch
+
     let intervalId = undefined;
     if (needToLoadSymbols) {
-      intervalId = setInterval(() => {
-        try {
-          if (API_URL) {
-            socket.emit("stocks", selectedSection.id);
-            socket.on("reply", (data) => {
-              if (data) setTradingSymbols(data);
-            });
-          }
-        } catch (e) {
-          console.log(e);
-        }
-      }, 700);
+      intervalId = setInterval(fetchData, 700);
     } else {
       clearInterval(intervalId);
     }

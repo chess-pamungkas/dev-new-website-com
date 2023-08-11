@@ -15,11 +15,9 @@ const MT5Page = () => {
     <>
       <Seo
         fsaTitle={t("system-page-coming-soon-title")}
-        fsaDescription={""}
         cysecTitle={t("page-mt5-title")}
         cysecDescription={t("page-mt5-description")}
         fsaRobots={"noindex"}
-        cysecRobots={""}
       />
       {isCySEC ? (
         <Mt5PageContent />
