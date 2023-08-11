@@ -4,9 +4,13 @@ import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import Mt4WebTraderLink from "../components/mt4-webtrader";
 import CommonContext from "../context/common-context";
+import NotFoundContent from "../components/pages-content/not-found-page-content";
+import { isCySEC } from "../helpers/entity-resolver";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const MT4WebTraderPage = () => {
   const { setIsSearchBarAttached } = useContext(CommonContext);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsSearchBarAttached(false);
@@ -16,8 +20,12 @@ const MT4WebTraderPage = () => {
 
   return (
     <>
-      <Seo title={"MT4 Web Trader"} description={"need description"} />
-      <Mt4WebTraderLink />
+      <Seo
+        fsaTitle={"MT4 Web Trader"}
+        cysecTitle={t("system-page-404-title")}
+        cysecRobots={"noindex"}
+      />
+      {isCySEC ? <NotFoundContent /> : <Mt4WebTraderLink />}
     </>
   );
 };

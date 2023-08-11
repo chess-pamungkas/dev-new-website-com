@@ -5,8 +5,7 @@ import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import Mt4PageContent from "../components/pages-content/mt4-page-content";
 import { isCySEC } from "../helpers/entity-resolver";
-import comingSoonImage from "../assets/images/system-info/coming-soon.svg";
-import SystemInfoComponent from "../components/shared/system-info";
+import NotFoundContent from "../components/pages-content/not-found-page-content";
 
 const MT4Page = () => {
   const { t } = useTranslation();
@@ -16,22 +15,10 @@ const MT4Page = () => {
       <Seo
         fsaTitle={t("page-mt4-title")}
         fsaDescription={t("page-mt4-description")}
-        cysecTitle={t("system-page-coming-soon-title")}
-        cysecDescription={""}
-        // Temporary added for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
-        fsaRobots={""}
+        cysecTitle={t("system-page-404-title")}
         cysecRobots={"noindex"}
       />
-      {isCySEC ? (
-        <SystemInfoComponent
-          image={comingSoonImage}
-          title={t("system-page-coming-soon-title")}
-          subTitle={t("system-page-coming-soon-subtitle")}
-          goBackBtnTitle={t("system-page-go-back-btn")}
-        />
-      ) : (
-        <Mt4PageContent />
-      )}
+      {isCySEC ? <NotFoundContent /> : <Mt4PageContent />}
     </>
   );
 };
