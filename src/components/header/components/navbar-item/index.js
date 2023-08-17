@@ -7,7 +7,7 @@ import { stringTransformToKebabCase } from "../../../../helpers/services/string-
 import NavbarSubItem from "../navbar-sub-item";
 import CommonContext from "../../../../context/common-context";
 
-const NavbarItem = ({ className, title, subItems = [], isNested = false }) => {
+const NavbarItem = ({ className, title, subItems = [] }) => {
   const { t } = useTranslation();
   const dropdownRef = useRef();
   const { heightOffset } = useContext(CommonContext);
@@ -42,16 +42,13 @@ const NavbarItem = ({ className, title, subItems = [], isNested = false }) => {
       {!!subItems.length && (
         <ul
           ref={dropdownRef}
-          className={cn("navbar-item__dropdown", {
-            "navbar-item__dropdown--nested": isNested,
-          })}
+          className={cn("navbar-item__dropdown")}
           style={{ top: `${heightOffset}px` }}
         >
           {subItems.map((subItem, i) => (
             <NavbarSubItem
               key={`header-menu-${stringTransformToKebabCase(subItem.title)}`}
               subItem={subItem}
-              className={isNested && i === 0 ? "dropdown-item--grow" : null}
               onClick={hideDropdown}
             />
           ))}
