@@ -90,6 +90,20 @@
   "header-nav-tab-top-markets-crypto-title-fsa": "加密貨幣",
   "header-nav-tab-top-markets-crypto-desc-fsa": "交易包括世界上最重要貨幣的加密貨幣對",
   "header-nav-tab-trading": "交易",
+
+  "BELOW TO REMOVE": "",
+
+  "header-nav-tab-trading-platforms-title": "交易平台",
+  "header-nav-tab-trading-platforms-desc": "",
+  "header-nav-tab-trading-platforms-mt4-title": "MT4",
+  "header-nav-tab-trading-platforms-mt4-desc": "下載並使用MT4,世界上最受歡迎的交易平台",
+  "header-nav-tab-trading-platforms-mt5-title": "MT5",
+  "header-nav-tab-trading-platforms-mt5-desc": "Metaquote平台的未來,了解MT5的新增增強功能",
+  "header-nav-tab-trading-platforms-ctrader-title": "Ctrader",
+  "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader描述",
+
+  "END TO REMOVE": "",
+
   "header-nav-tab-platforms-title": "交易平台",
   "header-nav-tab-platforms-desc": "",
   "header-nav-tab-platforms-mt4-title": "MT4",

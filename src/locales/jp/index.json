@@ -15,6 +15,20 @@
   "header-nav-tab-top-markets-crypto-title-fsa": "仮想通貨",
   "header-nav-tab-top-markets-crypto-desc-fsa": "人気の仮想通貨CFD商品のお取引",
   "header-nav-tab-trading": "トレード",
+
+  "BELOW TO REMOVE": "",
+
+  "header-nav-tab-trading-platforms-title": "プラットフォーム",
+  "header-nav-tab-trading-platforms-desc": "",
+  "header-nav-tab-trading-platforms-mt4-title": "MT4",
+  "header-nav-tab-trading-platforms-mt4-desc": "MT4プラットフォームダウンロード",
+  "header-nav-tab-trading-platforms-mt5-title": "MT5",
+  "header-nav-tab-trading-platforms-mt5-desc": "MT5プラットフォームダウンロード",
+  "header-nav-tab-trading-platforms-ctrader-title": "Ctrader",
+  "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader ダウンロード",
+
+  "END TO REMOVE": "",
+
   "header-nav-tab-platforms-title": "プラットフォーム",
   "header-nav-tab-platforms-desc": "",
   "header-nav-tab-platforms-mt4-title": "MT4",

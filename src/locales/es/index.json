@@ -15,6 +15,20 @@
   "header-nav-tab-top-markets-crypto-title-fsa": "Cripto",
   "header-nav-tab-top-markets-crypto-desc-fsa": "Opera pares de criptomonedas con las divisas más importantes del mundo",
   "header-nav-tab-trading": "Trading",
+
+  "BELOW TO REMOVE": "",
+
+  "header-nav-tab-trading-platforms-title": "Plataformas",
+  "header-nav-tab-trading-platforms-desc": "",
+  "header-nav-tab-trading-platforms-mt4-title": "MT4",
+  "header-nav-tab-trading-platforms-mt4-desc": "Descarga y opera con Mt4, la plataforma más popular del mundo",
+  "header-nav-tab-trading-platforms-mt5-title": "MT5",
+  "header-nav-tab-trading-platforms-mt5-desc": "El futuro de la plataforma MetaQuotes. Encuentra las nuevas características mejoradas en MT5",
+  "header-nav-tab-trading-platforms-ctrader-title": "Ctrader (TR)",
+  "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader Description (TR)",
+
+  "END TO REMOVE": "",
+
   "header-nav-tab-platforms-title": "Plataformas",
   "header-nav-tab-platforms-desc": "",
   "header-nav-tab-platforms-mt4-title": "MT4",

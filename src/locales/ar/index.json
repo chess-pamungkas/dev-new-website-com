@@ -18,7 +18,21 @@
   "footer-text-cysec": "بفضل انها مستقرة وسريعة إن + بيئة التداول أوكتيما هو رسالة حب للتجار.  تم إنشاؤها من قبل قادة الصناعة ذوي الخبرة مع أكثر من 30 عاما من الخبرة المشتركة في صناعة التداول ، تمثل أوكتيما المستوى التالي من حيث الخبرة التجارية وإمكانية الوصول إلى الأسواق.",
 
   "header-nav-tab-trading": "التداول",
-  "header-nav-tab-trading-title": "المنصات",
+
+  "BELOW TO REMOVE": "",
+
+  "header-nav-tab-trading-platforms-title": "المنصات",
+  "header-nav-tab-trading-platforms-desc": "",
+  "header-nav-tab-trading-platforms-mt4-title": "مت 4",
+  "header-nav-tab-trading-platforms-mt4-desc": "تحميل والتجارة مع 4 منصة الأكثر شعبية في العالم",
+  "header-nav-tab-trading-platforms-mt5-title": "مت 5",
+  "header-nav-tab-trading-platforms-mt5-desc": "مستقبل منصة ميتاكوتس. ابحث عن الميزات المحسنة الجديدة على جبل",
+  "header-nav-tab-trading-platforms-ctrader-title": "Ctrader (TR)",
+  "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader Description (TR)",
+
+  "END TO REMOVE": "",
+
+  "header-nav-tab-platforms-title": "المنصات",
   "header-nav-tab-platforms-desc": "",
   "header-nav-tab-platforms-mt4-title": "مت 4",
   "header-nav-tab-platforms-mt4-desc": "تحميل والتجارة مع 4 منصة الأكثر شعبية في العالم",

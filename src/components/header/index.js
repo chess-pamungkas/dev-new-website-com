@@ -45,11 +45,12 @@ const Header = ({ className }) => {
           </InternalLink>
 
           <ul className="header__navigation">
-            {menu.map(({ title, subItems }) => (
+            {menu.map(({ title, subItems, isNested = false }) => (
               <NavbarItem
                 key={`header-menu-${stringTransformToKebabCase(title)}`}
                 title={title}
                 subItems={subItems}
+                isNested={isNested}
               />
             ))}
           </ul>

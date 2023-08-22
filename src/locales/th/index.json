@@ -15,6 +15,20 @@
   "header-nav-tab-top-markets-crypto-title-fsa": "คริปโต",
   "header-nav-tab-top-markets-crypto-desc-fsa": "ซื้อขายคู่เงินคริปโตกับสกุลเงินต่างๆ ที่สำคัญที่สุดของโลก",
   "header-nav-tab-trading": "การซื้อขาย",
+
+  "BELOW TO REMOVE": "",
+
+  "header-nav-tab-trading-platforms-title": "แพลตฟอร์ม",
+  "header-nav-tab-trading-platforms-desc": "",
+  "header-nav-tab-trading-platforms-mt4-title": "MT4",
+  "header-nav-tab-trading-platforms-mt4-desc": "ดาวน์โหลดและซื้อขายผ่าน MT4 แพลตฟอร์มที่เป็นที่นิยมมากที่สุดในโลก",
+  "header-nav-tab-trading-platforms-mt5-title": "MT5",
+  "header-nav-tab-trading-platforms-mt5-desc": "แพลตฟอร์ม Metaquote ในอนาคต ค้นพบลูกเล่นใหม่ๆ บน MT5",
+  "header-nav-tab-trading-platforms-ctrader-title": "Ctrader (TR)",
+  "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader Description (TR)",
+
+  "END TO REMOVE": "",
+
   "header-nav-tab-platforms-title": "แพลตฟอร์ม",
   "header-nav-tab-platforms-desc": "",
   "header-nav-tab-platforms-mt4-title": "MT4",

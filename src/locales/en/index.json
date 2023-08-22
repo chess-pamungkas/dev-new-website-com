@@ -15,6 +15,19 @@
   "header-nav-tab-top-markets-crypto-title-fsa": "Crypto",
   "header-nav-tab-top-markets-crypto-desc-fsa": "Trade crypto pairs with the most important currencies in the world",
 
+  "BELOW TO REMOVE": "",
+
+  "header-nav-tab-trading-platforms-title": "Platforms",
+  "header-nav-tab-trading-platforms-desc": "",
+  "header-nav-tab-trading-platforms-mt4-title": "MT4",
+  "header-nav-tab-trading-platforms-mt4-desc": "Download and trade with MT4, the most popular platform in the world",
+  "header-nav-tab-trading-platforms-mt5-title": "MT5",
+  "header-nav-tab-trading-platforms-mt5-desc": "The future of Metaquote platforms. Find the new enhanced features on MT5",
+  "header-nav-tab-trading-platforms-ctrader-title": "Ctrader",
+  "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader Description",
+
+  "END TO REMOVE": "",
+
   "header-nav-tab-platforms-title": "Platforms",
   "header-nav-tab-platforms-desc": "",
   "header-nav-tab-platforms-general-title": "Overview",

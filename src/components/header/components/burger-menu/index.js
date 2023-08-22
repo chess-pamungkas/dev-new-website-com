@@ -134,22 +134,50 @@ const BurgerMenu = ({ className }) => {
                   >
                     {!!subItems.length && (
                       <ul className="burger-menu__links">
-                        {subItems.map(({ link, title }) => (
-                          <li
-                            key={`burger-menu-${stringTransformToKebabCase(
-                              title
-                            )}`}
-                            className="burger-menu__link-item"
-                          >
-                            <InternalLink
-                              className="burger-menu__link"
-                              to={link}
-                              onClick={onTriggerChange}
+                        {subItems.map(
+                          ({
+                            link,
+                            title,
+                            isSubtitle = false,
+                            subtitles = [],
+                          }) => (
+                            <li
+                              key={`burger-menu-${stringTransformToKebabCase(
+                                title
+                              )}`}
+                              className="burger-menu__link-item"
                             >
-                              {t(title)}
-                            </InternalLink>
-                          </li>
-                        ))}
+                              <InternalLink
+                                className="burger-menu__link"
+                                to={link}
+                                onClick={onTriggerChange}
+                              >
+                                {t(title)}
+                              </InternalLink>
+
+                              {isSubtitle && !!subtitles.length && (
+                                <ul className="burger-menu__subtitles">
+                                  {subtitles.map((subtitle) => (
+                                    <li
+                                      key={`burger-menu-${stringTransformToKebabCase(
+                                        subtitle.title
+                                      )}`}
+                                      className="burger-menu__link-item"
+                                    >
+                                      <InternalLink
+                                        className="burger-menu__link"
+                                        to={subtitle.link}
+                                        onClick={onTriggerChange}
+                                      >
+                                        {t(subtitle.title)}
+                                      </InternalLink>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          )
+                        )}
                       </ul>
                     )}
                   </Accordion>
