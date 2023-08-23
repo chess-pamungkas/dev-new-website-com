@@ -15,6 +15,9 @@
   "header-nav-tab-top-markets-crypto-title-fsa": "Krypto",
   "header-nav-tab-top-markets-crypto-desc-fsa": "Handeln Sie Kryptowährungspaare mit den wichtigsten Währungen der Welt",
   "header-nav-tab-trading": "Handel",
+
+  "BELOW TO REMOVE": "",
+
   "header-nav-tab-trading-platforms-title": "Plattformen",
   "header-nav-tab-trading-platforms-desc": "",
   "header-nav-tab-trading-platforms-mt4-title": "MT4",
@@ -23,8 +26,19 @@
   "header-nav-tab-trading-platforms-mt5-desc": "Die Zukunft der Metaquote-Plattformen. Entdecken Sie die neuen erweiterten Funktionen auf MT5",
   "header-nav-tab-trading-platforms-ctrader-title": "Ctrader",
   "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader-Beschreibung",
+
+  "END TO REMOVE": "",
+
+  "header-nav-tab-platforms-title": "Plattformen",
+  "header-nav-tab-platforms-desc": "",
+  "header-nav-tab-platforms-mt4-title": "MT4",
+  "header-nav-tab-platforms-mt4-desc": "Laden Sie MT4 herunter und handeln Sie mit der weltweit beliebtesten Plattform",
+  "header-nav-tab-platforms-mt5-title": "MT5",
+  "header-nav-tab-platforms-mt5-desc": "Die Zukunft der Metaquote-Plattformen. Entdecken Sie die neuen erweiterten Funktionen auf MT5",
+  "header-nav-tab-platforms-ctrader-title": "Ctrader",
+  "header-nav-tab-platforms-ctrader-desc": "Ctrader-Beschreibung",
   "header-nav-tab-trading-funding-withdrawals-title": "Finanzierung & Auszahlungen",
-  "header-nav-tab-trading-funding-withdrawals-desc": "",
+  "header-nav-tab-trading-funding-withdrawals-desc": "Sicher, schnell und einfach",
   "header-nav-tab-trading-funding-withdrawals-spreads-title": "Spreads und Gebühren",
   "header-nav-tab-trading-funding-withdrawals-spreads-desc": "So transparent wie möglich",
   "header-nav-tab-trading-funding-withdrawals-accounts-title": "Kontotypen",

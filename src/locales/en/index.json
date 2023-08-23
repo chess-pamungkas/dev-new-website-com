@@ -15,7 +15,8 @@
   "header-nav-tab-top-markets-crypto-title-fsa": "Crypto",
   "header-nav-tab-top-markets-crypto-desc-fsa": "Trade crypto pairs with the most important currencies in the world",
 
-  "header-nav-tab-trading": "Trading",
+  "BELOW TO REMOVE": "",
+
   "header-nav-tab-trading-platforms-title": "Platforms",
   "header-nav-tab-trading-platforms-desc": "",
   "header-nav-tab-trading-platforms-mt4-title": "MT4",
@@ -24,8 +25,23 @@
   "header-nav-tab-trading-platforms-mt5-desc": "The future of Metaquote platforms. Find the new enhanced features on MT5",
   "header-nav-tab-trading-platforms-ctrader-title": "Ctrader",
   "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader Description",
+
+  "END TO REMOVE": "",
+
+  "header-nav-tab-platforms-title": "Platforms",
+  "header-nav-tab-platforms-desc": "",
+  "header-nav-tab-platforms-general-title": "Overview",
+  "header-nav-tab-platforms-general-desc": "some description goes here",
+  "header-nav-tab-platforms-mt4-title": "MT4",
+  "header-nav-tab-platforms-mt4-desc": "Download and trade with MT4, the most popular platform in the world",
+  "header-nav-tab-platforms-mt5-title": "MT5",
+  "header-nav-tab-platforms-mt5-desc": "The future of Metaquote platforms. Find the new enhanced features on MT5",
+  "header-nav-tab-platforms-ctrader-title": "Ctrader",
+  "header-nav-tab-platforms-ctrader-desc": "Ctrader Description",
+
+  "header-nav-tab-trading": "Trading",
   "header-nav-tab-trading-funding-withdrawals-title": "Funding & Withdrawals",
-  "header-nav-tab-trading-funding-withdrawals-desc": "",
+  "header-nav-tab-trading-funding-withdrawals-desc": "Safe, fast and easy",
   "header-nav-tab-trading-funding-withdrawals-spreads-title": "Spreads and Fees",
   "header-nav-tab-trading-funding-withdrawals-spreads-desc": "As transparent as it gets",
   "header-nav-tab-trading-funding-withdrawals-accounts-title": "Account Types",
@@ -585,7 +601,7 @@
   "metals_faq-content2-1": "All metals have their own internationally recognised 3 letter codes. XAU is the code for Gold and as all our metals are traded against US Dollar you will see the pair XAUUSD. This shows us 1 ounce of gold price per dollar unit.",
   "metals_faq-content2-2": "Below are all our available metals:",
   "metals_faq-content2-3": "Gold – XAUUSD",
-  "metals_faq-content2-4": "Silver – XAGUSDD",
+  "metals_faq-content2-4": "Silver – XAGUSD",
   "metals_faq-content2-5": "Platinum – XPTUSD",
   "metals_faq-title3": "What are metals CFDs?",
   "metals_faq-content3": "Metals CFDs are financial derivatives that allow traders to speculate on the price movements of metals such as gold, silver, platinum, and copper without owning the underlying asset. CFDs stands for Contract for Difference, and they represent an agreement between the trader and the CFD provider to exchange the difference in the price of the metal between the opening and closing of the contract.",

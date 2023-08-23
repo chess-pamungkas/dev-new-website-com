@@ -4,6 +4,8 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import ProfessionalQualificationPageContent from "../components/pages-content/professional-qualification-page-content";
+import { isCySEC } from "../helpers/entity-resolver";
+import NotFoundContent from "../components/pages-content/not-found-page-content";
 
 const ProfessionalQualificationPage = () => {
   const { t } = useTranslation();
@@ -11,10 +13,12 @@ const ProfessionalQualificationPage = () => {
   return (
     <>
       <Seo
-        title={t("page-professional-qualification-title")}
-        description={t("page-professional-qualification-description")}
+        fsaTitle={t("system-page-404-title")}
+        cysecTitle={t("page-professional-qualification-title")}
+        cysecDescription={t("page-professional-qualification-description")}
+        fsaRobots={"noindex"}
       />
-      <ProfessionalQualificationPageContent />
+      {isCySEC ? <ProfessionalQualificationPageContent /> : <NotFoundContent />}
     </>
   );
 };

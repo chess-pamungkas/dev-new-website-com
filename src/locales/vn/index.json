@@ -15,6 +15,9 @@
   "header-nav-tab-top-markets-crypto-title-fsa": "Tiền điện tử",
   "header-nav-tab-top-markets-crypto-desc-fsa": "Giao dịch các cặp tiền điện tử với các loại tiền tệ quan trọng nhất trên thế giới",
   "header-nav-tab-trading": "Giao dịch",
+
+  "BELOW TO REMOVE": "",
+
   "header-nav-tab-trading-platforms-title": "Nền tảng",
   "header-nav-tab-trading-platforms-desc": "",
   "header-nav-tab-trading-platforms-mt4-title": "MT4",
@@ -23,8 +26,19 @@
   "header-nav-tab-trading-platforms-mt5-desc": "Tương lai của nền tảng Metaquote. Tìm các tính năng nâng cao mới trên MT5",
   "header-nav-tab-trading-platforms-ctrader-title": "Ctrader (TR)",
   "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader Description (TR)",
+
+  "END TO REMOVE": "",
+
+  "header-nav-tab-platforms-title": "Nền tảng",
+  "header-nav-tab-platforms-desc": "",
+  "header-nav-tab-platforms-mt4-title": "MT4",
+  "header-nav-tab-platforms-mt4-desc": "Tải xuống và giao dịch với MT4, nền tảng phổ biến nhất trên thế giới",
+  "header-nav-tab-platforms-mt5-title": "MT5",
+  "header-nav-tab-platforms-mt5-desc": "Tương lai của nền tảng Metaquote. Tìm các tính năng nâng cao mới trên MT5",
+  "header-nav-tab-platforms-ctrader-title": "Ctrader (TR)",
+  "header-nav-tab-platforms-ctrader-desc": "Ctrader Description (TR)",
   "header-nav-tab-trading-funding-withdrawals-title": "Nạp tiền & Rút tiền",
-  "header-nav-tab-trading-funding-withdrawals-desc": "",
+  "header-nav-tab-trading-funding-withdrawals-desc": "An toàn, nhanh chóng và dễ dàng",
   "header-nav-tab-trading-funding-withdrawals-spreads-title": "Chênh lệch và phí",
   "header-nav-tab-trading-funding-withdrawals-spreads-desc": "Hoàn toàn minh bạch",
   "header-nav-tab-trading-funding-withdrawals-accounts-title": "Loại tài khoản",
