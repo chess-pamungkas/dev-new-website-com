@@ -16,19 +16,6 @@
   "header-nav-tab-top-markets-crypto-desc-fsa": "ซื้อขายคู่เงินคริปโตกับสกุลเงินต่างๆ ที่สำคัญที่สุดของโลก",
   "header-nav-tab-trading": "การซื้อขาย",
 
-  "BELOW TO REMOVE": "",
-
-  "header-nav-tab-trading-platforms-title": "แพลตฟอร์ม",
-  "header-nav-tab-trading-platforms-desc": "",
-  "header-nav-tab-trading-platforms-mt4-title": "MT4",
-  "header-nav-tab-trading-platforms-mt4-desc": "ดาวน์โหลดและซื้อขายผ่าน MT4 แพลตฟอร์มที่เป็นที่นิยมมากที่สุดในโลก",
-  "header-nav-tab-trading-platforms-mt5-title": "MT5",
-  "header-nav-tab-trading-platforms-mt5-desc": "แพลตฟอร์ม Metaquote ในอนาคต ค้นพบลูกเล่นใหม่ๆ บน MT5",
-  "header-nav-tab-trading-platforms-ctrader-title": "Ctrader (TR)",
-  "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader Description (TR)",
-
-  "END TO REMOVE": "",
-
   "header-nav-tab-platforms-title": "แพลตฟอร์ม",
   "header-nav-tab-platforms-desc": "",
   "header-nav-tab-platforms-mt4-title": "MT4",
@@ -61,7 +48,7 @@
   "header-nav-tab-trading-education-desc": "เรามีข้อมูลคลอบคลุมจากบทเรียนระดับพื้นฐานถึงระดับที่ซับซ้อนที่สุดเพื่อคุณ",
   "header-nav-tab-trading-education-how-to-videos-title": "วีดีโอวิธีการใช้งาน",
   "header-nav-tab-trading-education-how-to-videos-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  "header-nav-tab-company": "บริษัท",
+  "header-nav-tab-company": "ข้อมูลเพิ่มเติม",
   "header-nav-tab-company-about-title": "เกี่ยวกับ",
   "header-nav-tab-company-about-desc": "ค้นพบ ทำไมต้อง OQtima",
   "header-nav-tab-company-contact-title": "ติกต่อเรา",
@@ -75,6 +62,7 @@
   "header-nav-tab-partners-collaboration-partnership-desc-fsa": "เป็นพันธมิตรกับโบรกเกอร์ที่มีค่าการเปลี่ยนแปลงสูงและมีชื่อเสียง",
   "header-nav-tab-partners-affiliate-partnership-title": "พันธมิตรทางธุรกิจ",
   "header-nav-tab-partners-affiliate-partnership-desc": "แบบจำลอง CPA สำหรับการอ้างอิงของพันธมิตรทางธุรกิจ",
+  "header-nav-tab-corner-pro-title-cysec": "OQtima Pro",
   "cookie-title": "ศูนย์การตั้งค่าความเป็นส่วนตัว",
   "cookie-description": " เมื่อคุณเข้าชมเว็บไซต์ใดๆ เว็บไซต์นั้นๆ อาจจัดเก็บหรือดังข้อมูลบนเบราว์เซอร์ของคุณ โดยส่วนมากจะดำเนินการในรูปแบบของคุกกี้ ข้อมูลดังกล่าวอาจเกี่ยวข้องกับคุณ การตั้งค่าของคุณ หรืออุปกรณ์ของคุณ และส่วนมากจะถูกนำไปใช้เพื่อทำให้เว็บไซต์สามารถทำงานได้ตามความคาดหวังของคุณ ข้อมูลมักจะไม่มีการระบุตัวตนของคุณโดยตรง แต่มันสามารถมอบประสบการณ์การใช้เว็บไซต์แบบเฉพาะตัวมากขึ้นให้กับคุณได้ เนื่องจากเราให้ความเคารพต่อสิทธิความเป็นส่วนตัวของคุณ คุณจึงสามารถเลือกที่จะไม่ให้อนุญาตคุกกี้บางประเภทได้ ตลิกที่หัวข้อหมวดหมู่ต่างๆ เพื่อดูข้อมูลเพิ่มเติมและเปลี่ยนแปลงการตั้งต่าเริ่มต้นของเรา อย่างไรก็ตาม การปิดกั้นคุกกี้บางประเภทอาจส่งผลกระทบต่อประสบการณ์การใช้เว็บไซต์และบริการต่างๆ ที่เราจะสามารถนำเสนอให้กับคุณ",
   "cookie-consent-title": "จัดการการให้ความยินยอม",

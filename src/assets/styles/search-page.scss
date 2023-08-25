@@ -3,18 +3,18 @@
 
 .search-page {
   &__container {
-    padding-top: 40px;
+    padding-top: 200px;
     padding-bottom: 40px;
     min-height: 400px;
     @include content-alignment;
 
     @include tablet {
-      padding-top: 48px;
+      padding-top: 200px;
       padding-bottom: 48px;
     }
 
     @include desktop-xl {
-      padding-top: 59px;
+      padding-top: 250px;
       padding-bottom: 59px;
     }
   }

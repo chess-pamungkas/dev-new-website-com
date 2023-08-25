@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { LogoTextMain, Logo } from "../shared/icons";
+import { LogoTextMain, LogoWhite } from "../shared/icons";
 import {
   DIR_LTR,
   DIR_RTL,
@@ -11,68 +11,99 @@ import {
 } from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import NavbarItem from "./components/navbar-item";
-import LangSelect from "./components/lang-select";
 import BurgerMenu from "./components/burger-menu";
 import ButtonLink from "../shared/button-link";
 import SearchBar from "./components/search-bar";
-import { getMenuItems } from "../../helpers/menu.config";
+import { getCornerItems, getMenuItems } from "../../helpers/menu.config";
 import NotificationStripe from "../shared/notification-stripe";
 import { GDPRPopup } from "../gdpr-popup";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import CommonContext from "../../context/common-context";
 import InternalLink from "../shared/internal-link";
+import CornerPanel from "./components/corner-panel";
+import { useWindowSize } from "../../helpers/hooks/use-window-size";
 
 const Header = ({ className }) => {
   const { t } = useTranslation();
   const menu = getMenuItems();
   const isRTL = useRtlDirection();
-  const { headerRef, setSectionOptions, isSearchBarAttached } =
-    useContext(CommonContext);
+  const { isDesktop, isTablet } = useWindowSize();
+  const {
+    headerRef,
+    headerMainWrapperRef,
+    setSectionOptions,
+    isSearchBarAttached,
+    isScrolled,
+  } = useContext(CommonContext);
 
   return (
     <div className={cn("header-wrapper", className)} ref={headerRef}>
       <NotificationStripe setSectionOptions={setSectionOptions} />
       <GDPRPopup />
       <header
-        className={cn("header", className, {
-          "header--rtl": isRTL,
-        })}
+        className={cn(
+          "header",
+          className,
+          {
+            "header--rtl": isRTL,
+          },
+          { "header--small": isScrolled && isDesktop },
+          { "header--big": !isScrolled && isDesktop }
+        )}
         dir={isRTL ? DIR_RTL : DIR_LTR}
       >
-        <div className="header__left">
-          <InternalLink to={HOME_PAGE_LINK}>
-            <LogoTextMain className="header__logo" />
-          </InternalLink>
+        {isDesktop && <CornerPanel items={getCornerItems()} />}
+        <div className="header__main-wrapper" ref={headerMainWrapperRef}>
+          <div className="header__left">
+            <InternalLink to={HOME_PAGE_LINK}>
+              {/* Desktop only, where header transition */}
+              {isDesktop &&
+                (isScrolled ? (
+                  <LogoTextMain className="header__logo" />
+                ) : (
+                  <LogoWhite className="header__logo" />
+                ))}
 
-          <ul className="header__navigation">
-            {menu.map(({ title, subItems, isNested = false }) => (
-              <NavbarItem
-                key={`header-menu-${stringTransformToKebabCase(title)}`}
-                title={title}
-                subItems={subItems}
-                isNested={isNested}
-              />
-            ))}
-          </ul>
-        </div>
+              {/* Mobile and Table only, where no header transition */}
+              {isTablet && <LogoTextMain className="header__logo" />}
+            </InternalLink>
+          </div>
 
-        <div className="header__right">
-          <BurgerMenu />
+          <div className="header__center">
+            <ul className="header__navigation">
+              {menu.map(({ title, subItems }) => (
+                <NavbarItem
+                  key={`header-menu-${stringTransformToKebabCase(title)}`}
+                  title={title}
+                  subItems={subItems}
+                  isNested={isNested}
+                />
+              ))}
+            </ul>
+          </div>
 
-          <div className="header__controls">
-            <LangSelect className="lang-select--header" isHeader={true} />
-            <ButtonLink
-              link={GetLoginLink()}
-              className="button-link--header button-link--ghost header__signin"
-            >
-              {t("button-sign-in")}
-            </ButtonLink>
-            <ButtonLink
-              link={GetRegistrationLink()}
-              className="button-link--header header__start"
-            >
-              {t("button-get-started")}
-            </ButtonLink>
+          <div className="header__right">
+            <BurgerMenu />
+
+            <div className="header__controls">
+              <ButtonLink
+                link={GetLoginLink()}
+                className={cn(
+                  "button-link--header button-link--ghost header__signin",
+                  { "header__signin--red": isScrolled }
+                )}
+              >
+                {t("button-sign-in")}
+              </ButtonLink>
+              <ButtonLink
+                link={GetRegistrationLink()}
+                className={cn("button-link--header header__start", {
+                  "header__start--red": isScrolled,
+                })}
+              >
+                {t("button-get-started")}
+              </ButtonLink>
+            </div>
           </div>
         </div>
 

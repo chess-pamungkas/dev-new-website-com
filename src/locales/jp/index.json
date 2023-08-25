@@ -16,19 +16,6 @@
   "header-nav-tab-top-markets-crypto-desc-fsa": "人気の仮想通貨CFD商品のお取引",
   "header-nav-tab-trading": "トレード",
 
-  "BELOW TO REMOVE": "",
-
-  "header-nav-tab-trading-platforms-title": "プラットフォーム",
-  "header-nav-tab-trading-platforms-desc": "",
-  "header-nav-tab-trading-platforms-mt4-title": "MT4",
-  "header-nav-tab-trading-platforms-mt4-desc": "MT4プラットフォームダウンロード",
-  "header-nav-tab-trading-platforms-mt5-title": "MT5",
-  "header-nav-tab-trading-platforms-mt5-desc": "MT5プラットフォームダウンロード",
-  "header-nav-tab-trading-platforms-ctrader-title": "Ctrader",
-  "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader ダウンロード",
-
-  "END TO REMOVE": "",
-
   "header-nav-tab-platforms-title": "プラットフォーム",
   "header-nav-tab-platforms-desc": "",
   "header-nav-tab-platforms-mt4-title": "MT4",
@@ -59,7 +46,7 @@
   "header-nav-tab-trading-education-desc": "基本的な内容から高度な内容まで全てを網羅しています。",
   "header-nav-tab-trading-education-how-to-videos-title": "ハウ・ツー動画",
   "header-nav-tab-trading-education-how-to-videos-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  "header-nav-tab-company": "会社概要",
+  "header-nav-tab-company": "追加情報",
   "header-nav-tab-company-about-title": "弊社について",
   "header-nav-tab-company-about-desc": "オクティマの優位性をご案内",
   "header-nav-tab-company-contact-title": "お問合せ",
@@ -73,6 +60,7 @@
   "header-nav-tab-partners-collaboration-partnership-desc-fsa": "信頼性の高いブローカーにてパートナー活動を開始",
   "header-nav-tab-partners-affiliate-partnership-title": "アフィリエイト・パートナー",
   "header-nav-tab-partners-affiliate-partnership-desc": "CPAモデルのアフィリエイトパートナーとして活動を開始",
+  "header-nav-tab-corner-pro-title-cysec": "OQtima Pro",
   "cookie-title": "プライバシー設定",
   "cookie-description": "お客様がウェブサイトを利用される際に、サイトのナビゲーションやユーザーエクスペリエンス向上分析の為に、お客様やお客様の設定、もしくはデバイスに関する情報がクッキー形式にて取得・保存される場合がございます。この情報により、直接的にお客様を特定することはありませんが、より個別化されたウェブエクスペリエンスの提供を可能にします。お客様のプライバシー尊重の為、一部もしくは特定のクッキーを非許可にする事が出来ます。一部もしくは特定のクッキーを許可しない場合、サイトのエキスペリエンス、もしくは提供可能なサービス・情報に影響する可能性がございますのでご注意下さい。",
   "cookie-consent-title": "プライバシー設定管理",

@@ -23,7 +23,7 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
 
   const setIconColor = (isShow) => {
     if (isHeader) {
-      return isShow ? ANGLE_ICON_COLOR.red : ANGLE_ICON_COLOR.white;
+      return isShow ? ANGLE_ICON_COLOR.white : ANGLE_ICON_COLOR.white;
     }
 
     return isShow ? ANGLE_ICON_COLOR.white : ANGLE_ICON_COLOR.red;
@@ -50,6 +50,10 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
         }}
       >
         {Icon && <Icon className="lang-select__flag" />}
+
+        {isHeader && (
+          <span className="lang-select__title">{selectedLanguage.id}</span>
+        )}
 
         <AngleDownIcon
           className={cn("lang-select__icon", {

@@ -1,0 +1,26 @@
+import React from "react";
+import cn from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
+import InternalLink from "../../../shared/internal-link";
+import LangSelect from "../lang-select";
+
+const CornerPanel = ({ className, items }) => {
+  const { t } = useTranslation();
+
+  return (
+    <div className={cn("corner-panel", className)}>
+      {items.map((item, key) => (
+        <div key={`corner-item-${key}`} className="corner-panel__item">
+          <InternalLink className="corner-panel__link" to={item.link}>
+            {t(item.title)}
+          </InternalLink>
+          <div className="corner-panel__separator">{"|"}</div>
+        </div>
+      ))}
+
+      <LangSelect className="lang-select--header" isHeader={true} />
+    </div>
+  );
+};
+
+export default CornerPanel;

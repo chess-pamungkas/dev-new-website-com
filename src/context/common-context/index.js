@@ -12,12 +12,41 @@ export const CommonProvider = ({ children }) => {
   const [headerRef, setHeaderRef] = useState(useRef());
   const [isSearchBarAttached, setIsSearchBarAttached] = useState(true);
   const [heightOffset, setHeightOffset] = useState(0);
+  const [dropdownHeightOffset, setDropdownHeightOffset] = useState(0);
   const { selectedLanguage } = useContext(LanguageContext);
+  const headerMainWrapperRef = useRef();
+  const riskWarningRef = useRef();
+  const [isScrolled, setIsScrolled] = useState("");
+
+  const checkIsScrolled = () => {
+    if (isBrowser()) {
+      setIsScrolled(window.scrollY > 0);
+    }
+  };
+
+  useEffect(() => {
+    if (isBrowser()) {
+      window.addEventListener("scroll", checkIsScrolled);
+
+      return () => {
+        window.removeEventListener("scroll", checkIsScrolled);
+      };
+    }
+  }, []);
 
   useEffect(() => {
     const updateOffset = () => {
-      if (isBrowser() && headerRef?.current?.offsetHeight) {
-        setHeightOffset(headerRef.current.offsetHeight);
+      if (isBrowser() && riskWarningRef?.current?.offsetHeight) {
+        setHeightOffset(riskWarningRef.current.offsetHeight);
+      }
+    };
+
+    const updateDropdownOffset = () => {
+      if (isBrowser() && headerMainWrapperRef?.current?.offsetTop) {
+        setDropdownHeightOffset(
+          headerMainWrapperRef.current.offsetTop +
+            headerMainWrapperRef.current.offsetHeight
+        );
       }
     };
 
@@ -25,7 +54,12 @@ export const CommonProvider = ({ children }) => {
     setTimeout(() => {
       updateOffset();
     }, 100);
-  }, [headerRef, sectionOptions, width, selectedLanguage]);
+
+    // We should do this after header transition (0.4s) ends
+    setTimeout(() => {
+      updateDropdownOffset();
+    }, 500);
+  }, [headerRef, sectionOptions, width, selectedLanguage, isScrolled]);
 
   return (
     <CommonContext.Provider
@@ -37,6 +71,10 @@ export const CommonProvider = ({ children }) => {
         isSearchBarAttached,
         setIsSearchBarAttached,
         heightOffset,
+        headerMainWrapperRef,
+        dropdownHeightOffset,
+        isScrolled,
+        riskWarningRef,
       }}
     >
       {children}

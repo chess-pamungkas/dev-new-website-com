@@ -23,7 +23,7 @@
 
   &__trigger {
     position: absolute;
-    top: 25px;
+    top: 20px;
     right: 26px;
     padding: 0;
     background: transparent;
@@ -67,6 +67,10 @@
 
     & + & {
       margin-top: 7px;
+    }
+
+    &--red {
+      background-color: map-get($colors, "red");
     }
   }
 

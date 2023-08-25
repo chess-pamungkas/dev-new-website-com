@@ -19,19 +19,6 @@
 
   "header-nav-tab-trading": "التداول",
 
-  "BELOW TO REMOVE": "",
-
-  "header-nav-tab-trading-platforms-title": "المنصات",
-  "header-nav-tab-trading-platforms-desc": "",
-  "header-nav-tab-trading-platforms-mt4-title": "مت 4",
-  "header-nav-tab-trading-platforms-mt4-desc": "تحميل والتجارة مع 4 منصة الأكثر شعبية في العالم",
-  "header-nav-tab-trading-platforms-mt5-title": "مت 5",
-  "header-nav-tab-trading-platforms-mt5-desc": "مستقبل منصة ميتاكوتس. ابحث عن الميزات المحسنة الجديدة على جبل",
-  "header-nav-tab-trading-platforms-ctrader-title": "Ctrader (TR)",
-  "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader Description (TR)",
-
-  "END TO REMOVE": "",
-
   "header-nav-tab-platforms-title": "المنصات",
   "header-nav-tab-platforms-desc": "",
   "header-nav-tab-platforms-mt4-title": "مت 4",
@@ -80,6 +67,8 @@
   "header-nav-tab-partners-collaboration-partnership-desc-fsa": "شريك مع وسيط تحويل عالية والسمعة الطيبة",
   "header-nav-tab-partners-affiliate-partnership-title": "الشراكة التابعة",
   "header-nav-tab-partners-affiliate-partnership-desc": "أبجد هوز دولور الجلوس أميت ، الإدمان النخبة",
+
+  "header-nav-tab-corner-pro-title-cysec": "OQtima Pro",
 
   "button-sign-in": "تسجيل الدخول",
   "button-get-started": "البدء",
