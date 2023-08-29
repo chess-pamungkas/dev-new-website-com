@@ -20,6 +20,9 @@ export const SM_MAX_WIDTH = 767;
 export const MD_MAX_WIDTH = 1023;
 export const LG_MAX_WIDTH = 1919;
 
+export const HEADER_BIG_HEIGHT = 203;
+export const HEADER_SMALL_HEIGHT = 65;
+
 export const BURGER_MENU_LINES_COUNT = 3;
 export const DROPDOWN_SEARCH_ITEMS_TO_SHOW = 3;
 export const SEARCH_RESULTS_FIRST_BUNDLE = 1;

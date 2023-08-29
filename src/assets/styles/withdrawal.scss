@@ -5,18 +5,19 @@
   position: relative;
   background: url("../../assets/images/bg/split-bg/bg-sm.svg") no-repeat bottom;
   background-size: cover;
-  padding-top: 44px;
+  padding-top: 90px;
   padding-bottom: 67px;
 
   @include tablet {
     padding-top: 107px;
     padding-bottom: 102px;
-    background: url("../../assets/images/bg/split-bg/bg-md.svg") no-repeat bottom;
+    background: url("../../assets/images/bg/split-bg/bg-md.svg") no-repeat
+      bottom;
     background-size: cover;
   }
 
   @include desktop-lg {
-    padding-top: 113px;
+    padding-top: 170px;
     padding-bottom: 108px;
     background: url("../../assets/images/bg/split-bg/bg-lg.svg") no-repeat right;
     background-size: cover;
@@ -25,7 +26,8 @@
   @include desktop-xl {
     padding-top: 188px;
     padding-bottom: 94px;
-    background: url("../../assets/images/bg/split-bg/bg-xl.svg") no-repeat center;
+    background: url("../../assets/images/bg/split-bg/bg-xl.svg") no-repeat
+      center;
     background-size: cover;
   }
 

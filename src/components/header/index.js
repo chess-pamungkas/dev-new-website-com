@@ -76,7 +76,6 @@ const Header = ({ className }) => {
                   key={`header-menu-${stringTransformToKebabCase(title)}`}
                   title={title}
                   subItems={subItems}
-                  isNested={isNested}
                 />
               ))}
             </ul>
