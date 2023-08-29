@@ -6,6 +6,7 @@ import promo1 from "../../../../assets/images/promotions/promo1.svg";
 import {
   ALL_MARKETS_PAGE_LINK,
   GetLoginLink,
+  HEADER_SMALL_HEIGHT,
   WITHDRAWAL_PAGE_LINK,
 } from "../../../../helpers/constants";
 import promo2 from "../../../../assets/images/promotions/promo2.svg";
@@ -33,14 +34,13 @@ import CommonContext from "../../../../context/common-context";
 const PromotionContent = () => {
   const XL_HEIGHT = 1080;
   const { t } = useTranslation();
-  const { isMobile, isXL, height } = useWindowSize();
-  const { headerRef } = useContext(CommonContext);
+  const { isMobile, isDesktop, height } = useWindowSize();
+  const { headerRef, riskWarningRef } = useContext(CommonContext);
 
-  const HEADER_HEIGHT = 115;
-  const bgOffsetY = headerRef?.current?.clientHeight
-    ? headerRef?.current?.clientHeight - HEADER_HEIGHT
-    : 0;
-  // TODO: Fix Tablet and desktop LG animation (1 to 2 promo probably)
+  const bgOffsetY =
+    isDesktop && riskWarningRef?.current?.clientHeight
+      ? riskWarningRef?.current?.clientHeight + HEADER_SMALL_HEIGHT
+      : HEADER_SMALL_HEIGHT;
 
   const [isTradePromoScrolled, setIsTradePromoScrolled] = useState(false);
   const [isPromo1Scrolled, setIsPromo1Scrolled] = useState(false);
