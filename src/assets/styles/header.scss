@@ -187,8 +187,13 @@
   &__search {
     display: none;
     position: absolute;
-    top: calc(100% + 30px);
+    top: 70%;
     right: 54px;
+    transition: all 0.4s ease-in-out;
+
+    &--small {
+      top: calc(100% + 30px);
+    }
 
     @include desktop-lg {
       display: block;

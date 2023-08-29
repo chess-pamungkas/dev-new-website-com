@@ -71,13 +71,16 @@ const Header = ({ className }) => {
 
           <div className="header__center">
             <ul className="header__navigation">
-              {menu.map(({ title, subItems }) => (
-                <NavbarItem
-                  key={`header-menu-${stringTransformToKebabCase(title)}`}
-                  title={title}
-                  subItems={subItems}
-                />
-              ))}
+              {menu.map(
+                ({ title, subItems, mobileOnly }) =>
+                  !mobileOnly && (
+                    <NavbarItem
+                      key={`header-menu-${stringTransformToKebabCase(title)}`}
+                      title={title}
+                      subItems={subItems}
+                    />
+                  )
+              )}
             </ul>
           </div>
 
@@ -107,7 +110,11 @@ const Header = ({ className }) => {
         </div>
 
         {isSearchBarAttached && (
-          <div className="header__search">
+          <div
+            className={cn("header__search", {
+              "header__search--small": isScrolled,
+            })}
+          >
             <SearchBar isExpandable={true} />
           </div>
         )}

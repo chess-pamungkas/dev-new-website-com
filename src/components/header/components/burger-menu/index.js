@@ -137,22 +137,25 @@ const BurgerMenu = ({ className }) => {
                   >
                     {!!subItems.length && (
                       <ul className="burger-menu__links">
-                        {subItems.map(({ link, title }) => (
-                          <li
-                            key={`burger-menu-${stringTransformToKebabCase(
-                              title
-                            )}`}
-                            className="burger-menu__link-item"
-                          >
-                            <InternalLink
-                              className="burger-menu__link"
-                              to={link}
-                              onClick={onTriggerChange}
-                            >
-                              {t(title)}
-                            </InternalLink>
-                          </li>
-                        ))}
+                        {subItems.map(
+                          ({ link, title, desktopOnly }) =>
+                            !desktopOnly && (
+                              <li
+                                key={`burger-menu-${stringTransformToKebabCase(
+                                  title
+                                )}`}
+                                className="burger-menu__link-item"
+                              >
+                                <InternalLink
+                                  className="burger-menu__link"
+                                  to={link}
+                                  onClick={onTriggerChange}
+                                >
+                                  {t(title)}
+                                </InternalLink>
+                              </li>
+                            )
+                        )}
                       </ul>
                     )}
                   </Accordion>

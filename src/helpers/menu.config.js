@@ -120,12 +120,12 @@ const FSA_TOP_MARKETS_TAB = {
 const CYSEC_PLATFORMS_TAB = {
   title: "header-nav-tab-platforms-title",
   subItems: [
-    {
-      title: "header-nav-tab-platforms-general-title",
-      link: PLATFORMS_LINK,
-      icon: PlatformsIcon,
-      description: "header-nav-tab-platforms-general-desc",
-    },
+    // {
+    //   title: "header-nav-tab-platforms-general-title",
+    //   link: PLATFORMS_LINK,
+    //   icon: PlatformsIcon,
+    //   description: "header-nav-tab-platforms-general-desc",
+    // },
     {
       title: "header-nav-tab-platforms-mt5-title",
       link: MT5_PAGE_LINK,
@@ -138,12 +138,12 @@ const CYSEC_PLATFORMS_TAB = {
 const FSA_PLATFORMS_TAB = {
   title: "header-nav-tab-platforms-title",
   subItems: [
-    {
-      title: "header-nav-tab-platforms-general-title",
-      link: PLATFORMS_LINK,
-      icon: PlatformsIcon,
-      description: "header-nav-tab-platforms-general-desc",
-    },
+    // {
+    //   title: "header-nav-tab-platforms-general-title",
+    //   link: PLATFORMS_LINK,
+    //   icon: PlatformsIcon,
+    //   description: "header-nav-tab-platforms-general-desc",
+    // },
     {
       title: "header-nav-tab-platforms-mt4-title",
       link: MT4_PAGE_LINK,
@@ -261,10 +261,18 @@ const COMPANY_TAB = {
       icon: HelpCenterIcon,
       description: "header-nav-tab-company-help-center-desc",
     },
+    {
+      desktopOnly: true,
+      title: "header-nav-tab-partners-collaboration-partnership-title-fsa",
+      link: PARTNERS_PAGE_LINK,
+      icon: CollaborationPartnershipIcon,
+      description: "header-nav-tab-partners-collaboration-partnership-desc-fsa",
+    },
   ],
 };
 
 const FSA_PARTNERS_TAB = {
+  mobileOnly: true,
   title: "header-nav-tab-partners-fsa",
   subItems: [
     {
