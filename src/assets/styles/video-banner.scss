@@ -7,6 +7,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: $header-height-small-mobile;
+
+  @include desktop-lg {
+    padding-top: unset;
+  }
 
   &__video {
     width: 100%;

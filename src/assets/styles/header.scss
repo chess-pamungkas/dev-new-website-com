@@ -1,6 +1,40 @@
 @import "vars";
 @import "mixins";
 
+.corner-panel {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 26px;
+
+  @include desktop-lg {
+    padding-top: 17px;
+    padding-bottom: 20px;
+    padding-right: 68px;
+  }
+
+  &__link {
+    text-align: center;
+    font: normal normal normal 14px/18px $font;
+    letter-spacing: 0.28px;
+    color: map-get($colors, "white");
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__separator {
+    text-align: center;
+    font: normal normal normal 14px/18px $font;
+    letter-spacing: 0.28px;
+    color: map-get($colors, "white");
+    padding: 0px 8px;
+  }
+}
+
 .header {
   &-wrapper {
     position: fixed;
@@ -9,32 +43,65 @@
     width: 100%;
   }
 
-  width: 100%;
-  height: $header-height-small;
-  display: flex;
-  align-items: stretch;
-  box-shadow: 0 6px 8px #00000029;
+  &__main-wrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    justify-content: space-between;
 
-  @include desktop-xl {
-    height: $header-height;
+    @include desktop-lg {
+      justify-content: space-around;
+    }
   }
+
+  &--small {
+    background: map-get($colors, "white") 0% 0% no-repeat padding-box;
+    height: $header-height-small;
+    transition: all 0.4s ease-in-out;
+    transform: translateY(-50px);
+    box-shadow: 0 6px 8px #00000029;
+
+    // @include desktop-xl {
+    //   height: 140px;
+    // }
+  }
+
+  &--big {
+    background: transparent linear-gradient(180deg, #ff4400 0%, #ff440000 100%)
+      0% 0% no-repeat padding-box;
+    height: $header-height;
+    transition: all 0.4s ease-in-out;
+    box-shadow: unset;
+  }
+
+  width: 100%;
+
+  background: map-get($colors, "white") 0% 0% no-repeat padding-box;
+  height: $header-height-small-mobile;
+  box-shadow: 0 6px 8px #00000029;
 
   &__logo {
     height: 33px;
     width: auto;
   }
 
-  &__left {
-    padding-left: 30px;
+  &__center {
     display: flex;
     align-items: center;
-    flex-grow: 1;
-    gap: 24px;
-    background-color: map-get($colors, "white");
+  }
+
+  &__left {
+    padding-top: 15px;
+    padding-left: 26px;
+    display: flex;
+    align-items: center;
+
+    @include desktop-lg {
+      padding-top: unset;
+      padding-left: unset;
+    }
 
     @include desktop-xl {
-      padding-left: 73px;
-      gap: 30px;
     }
   }
 
@@ -43,34 +110,32 @@
     position: relative;
     display: flex;
     align-items: center;
-    background-color: map-get($colors, "red");
-
-    &::before {
-      content: "";
-      height: 100%;
-      position: absolute;
-      left: -24px;
-      border-top: $header-height-small solid transparent;
-      border-right: 25px solid map-get($colors, "red");
-    }
 
     @include desktop-lg {
-      padding: 0 34px;
       width: initial;
     }
 
-    @include desktop-xl {
-      padding: 0 73px;
+    // @include desktop-xl {
 
-      &::before {
-        border-top: $header-height solid transparent;
-      }
-    }
+    //   &::before {
+    //     border-top: $header-height solid transparent;
+    //   }
+    // }
   }
 
   &__signin {
     margin-left: 26px;
     padding: 0 33px;
+
+    &--red {
+      color: map-get($colors, "red");
+
+      &:hover,
+      &:active,
+      &:focus {
+        border: 2px solid map-get($colors, "red");
+      }
+    }
 
     @include desktop-xl {
       margin-left: 50px;
@@ -85,6 +150,10 @@
     color: map-get($colors, "red");
     text-transform: uppercase;
     border: 2px solid map-get($colors, "white");
+
+    &--red {
+      border: 2px solid map-get($colors, "red");
+    }
 
     @include desktop-xl {
       padding: 0 36px;
@@ -118,8 +187,13 @@
   &__search {
     display: none;
     position: absolute;
-    top: calc(100% + 30px);
+    top: 70%;
     right: 54px;
+    transition: all 0.4s ease-in-out;
+
+    &--small {
+      top: calc(100% + 30px);
+    }
 
     @include desktop-lg {
       display: block;

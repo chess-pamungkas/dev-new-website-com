@@ -12,15 +12,18 @@ const Menu = ({ className }) => {
   return (
     <div className={cn("menu", className)}>
       {menu.length > 0 &&
-        menu.map((item) => (
-          <div
-            key={`footer-menu-${stringTransformToKebabCase(item.title)}`}
-            className="menu__wrapper"
-          >
-            <h4 className="menu__column-title">{t(item.title)}</h4>
-            <MenuColumn items={item.subItems} />
-          </div>
-        ))}
+        menu.map(
+          (item) =>
+            !item.mobileOnly && (
+              <div
+                key={`footer-menu-${stringTransformToKebabCase(item.title)}`}
+                className="menu__wrapper"
+              >
+                <h4 className="menu__column-title">{t(item.title)}</h4>
+                <MenuColumn items={item.subItems} />
+              </div>
+            )
+        )}
     </div>
   );
 };

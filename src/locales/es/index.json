@@ -16,19 +16,6 @@
   "header-nav-tab-top-markets-crypto-desc-fsa": "Opera pares de criptomonedas con las divisas más importantes del mundo",
   "header-nav-tab-trading": "Trading",
 
-  "BELOW TO REMOVE": "",
-
-  "header-nav-tab-trading-platforms-title": "Plataformas",
-  "header-nav-tab-trading-platforms-desc": "",
-  "header-nav-tab-trading-platforms-mt4-title": "MT4",
-  "header-nav-tab-trading-platforms-mt4-desc": "Descarga y opera con Mt4, la plataforma más popular del mundo",
-  "header-nav-tab-trading-platforms-mt5-title": "MT5",
-  "header-nav-tab-trading-platforms-mt5-desc": "El futuro de la plataforma MetaQuotes. Encuentra las nuevas características mejoradas en MT5",
-  "header-nav-tab-trading-platforms-ctrader-title": "Ctrader (TR)",
-  "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader Description (TR)",
-
-  "END TO REMOVE": "",
-
   "header-nav-tab-platforms-title": "Plataformas",
   "header-nav-tab-platforms-desc": "",
   "header-nav-tab-platforms-mt4-title": "MT4",
@@ -61,7 +48,7 @@
   "header-nav-tab-trading-education-desc": "Desde la lección más básica hasta la más avanzada, te tenemos cubierto.",
   "header-nav-tab-trading-education-how-to-videos-title": "Vídeos sobre “¿Cómo hacer…?”",
   "header-nav-tab-trading-education-how-to-videos-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  "header-nav-tab-company": "Compañía",
+  "header-nav-tab-company": "Más",
   "header-nav-tab-company-about-title": "Acerca de",
   "header-nav-tab-company-about-desc": "Descubre, ¿Por qué OQtima?",
   "header-nav-tab-company-contact-title": "Contáctanos",
@@ -75,6 +62,7 @@
   "header-nav-tab-partners-collaboration-partnership-desc-fsa": "Asociáte con un Broker de alta conversión y reputación",
   "header-nav-tab-partners-affiliate-partnership-title": "Afiliación de asociados",
   "header-nav-tab-partners-affiliate-partnership-desc": "Modelo CPA para para la afiliación de referidos",
+  "header-nav-tab-corner-pro-title-cysec": "OQtima Pro",
   "cookie-title": "Centro de preferencias de privacidad",
   "cookie-description": "Cuando usted visita un sitio web, éste puede almacenar o recuperar información en su navegador, principalmente en forma de cookies. Esta información puede ser sobre usted, sus preferencias o su dispositivo y se utiliza principalmente para que el sitio funcione como usted lo espera. La información no suele identificarle directamente, pero puede ofrecerle una experiencia web más personalizada. Como respetamos su derecho a la privacidad, puede elegir no permitir algunos tipos de cookies. Haga click en los títulos de las diferentes categorías para obtener más información y cambiar nuestra configuración por defecto. Sin embargo, el bloqueo de algunos tipos de cookies puede afectar su experiencia en el sitio y los servicios que podemos ofrecer.",
   "cookie-consent-title": "Gestionar preferencias de consentimiento",

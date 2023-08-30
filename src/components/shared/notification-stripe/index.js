@@ -15,6 +15,7 @@ import collapseIcon from "../../../assets/images/icons/accordion-active.svg";
 import NotificationStripeContext from "../../../context/notification-stripe-context";
 import { isBrowser } from "../../../helpers/services/is-browser";
 import { currentEntity } from "../../../helpers/entity-resolver";
+import CommonContext from "../../../context/common-context";
 
 export const CysecStripe = () => {
   const { expand, setExpand } = useContext(NotificationStripeContext);
@@ -91,6 +92,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
     isBannedPopup,
   } = useEntityNotifications(handleOpen);
   const { getCookie } = useContext(CookieContext);
+  const { riskWarningRef } = useContext(CommonContext);
   const { t } = useTranslation();
 
   const [isHidden, setIsHidden] = useState(true);
@@ -172,7 +174,10 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
   return (
     <>
       {!isHidden && (isCysecNotification || isCysecRedirect) && (
-        <div className={cn("notification-stripe", className)}>
+        <div
+          className={cn("notification-stripe", className)}
+          ref={riskWarningRef}
+        >
           <div className={cn("notification-stripe__wrapper")}>
             {isCysecRedirect && (
               <CysecRedirect

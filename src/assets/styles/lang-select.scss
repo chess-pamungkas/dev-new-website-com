@@ -13,19 +13,17 @@
   cursor: pointer;
   outline: none;
 
+  &__title {
+    font: normal normal normal 14px/18px $font;
+    letter-spacing: 0px;
+    color: map-get($colors, "white");
+    text-transform: uppercase;
+  }
+
   &--header {
-    height: 34px;
-    padding: 0 18px 0 27px;
-    border-color: map-get($colors, "white");
-
-    @include desktop-xl {
-      height: 40px;
-      padding: 0 30px;
-    }
-
-    &.lang-select--active {
-      background: map-get($colors, "white");
-    }
+    height: 25px;
+    padding: unset;
+    border: unset;
   }
 
   &--active {

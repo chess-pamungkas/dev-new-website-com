@@ -91,19 +91,6 @@
   "header-nav-tab-top-markets-crypto-desc-fsa": "交易包括世界上最重要貨幣的加密貨幣對",
   "header-nav-tab-trading": "交易",
 
-  "BELOW TO REMOVE": "",
-
-  "header-nav-tab-trading-platforms-title": "交易平台",
-  "header-nav-tab-trading-platforms-desc": "",
-  "header-nav-tab-trading-platforms-mt4-title": "MT4",
-  "header-nav-tab-trading-platforms-mt4-desc": "下載並使用MT4,世界上最受歡迎的交易平台",
-  "header-nav-tab-trading-platforms-mt5-title": "MT5",
-  "header-nav-tab-trading-platforms-mt5-desc": "Metaquote平台的未來,了解MT5的新增增強功能",
-  "header-nav-tab-trading-platforms-ctrader-title": "Ctrader",
-  "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader描述",
-
-  "END TO REMOVE": "",
-
   "header-nav-tab-platforms-title": "交易平台",
   "header-nav-tab-platforms-desc": "",
   "header-nav-tab-platforms-mt4-title": "MT4",
@@ -136,7 +123,7 @@
   "header-nav-tab-trading-education-desc": "從基礎到最高級的課程,我們都為您準備好了。",
   "header-nav-tab-trading-education-how-to-videos-title": "教學影片",
   "header-nav-tab-trading-education-how-to-videos-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit。",
-  "header-nav-tab-company": "公司",
+  "header-nav-tab-company": "額外資訊",
   "header-nav-tab-company-about-title": "關於",
   "header-nav-tab-company-about-desc": "了解為何選擇 OQtima？",
   "header-nav-tab-company-contact-title": "聯絡我們",
@@ -150,6 +137,7 @@
   "header-nav-tab-partners-collaboration-partnership-desc-fsa": "與高轉換率和聲譽良好的經紀人合作",
   "header-nav-tab-partners-affiliate-partnership-title": "聯盟合作夥伴",
   "header-nav-tab-partners-affiliate-partnership-desc": "CPA模式的聯盟推薦",
+  "header-nav-tab-corner-pro-title-cysec": "OQtima Pro",
   "cookie-title": "隱私權偏好中心",
   "cookie-description": "當您訪問任何網站時,它可能會在您的瀏覽器中存儲或檢索信息,大多數情況下以cookie的形式。這些信息可能是關於您,您的偏好或您的設備,並且主要用於使站點按照您的期望工作。該信息通常不直接識別您,但它可以為您提供更加個性化的網絡體驗。因為我們尊重您的隱私權,您可以選擇不允許某些類型的cookie。點擊不同的類別標題以獲取更多信息並更改我們的默認設置。但是,阻止某些類型的cookie可能會影響您對站點的體驗以及我們能夠提供的服務。",
   "cookie-consent-title": "管理同意偏好設置",

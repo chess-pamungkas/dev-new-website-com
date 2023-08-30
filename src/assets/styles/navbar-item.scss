@@ -50,7 +50,7 @@
 
   &__dropdown {
     position: fixed;
-    top: $header-height-small;
+    top: $header-height;
     left: 0;
     width: 100%;
     padding: 75px;
@@ -70,8 +70,6 @@
     }
 
     @include desktop-xl {
-      top: $header-height;
-      padding-left: 450px;
       grid-auto-columns: 300px;
     }
 
@@ -104,8 +102,13 @@
   }
 
   &__title {
-    font-weight: map-get($font-weight, "bold");
+    font-weight: medium;
     font-size: 16px;
-    line-height: 20px;
+    line-height: 19px;
+    color: map-get($colors, "white");
+
+    &--black {
+      color: map-get($colors, "black");
+    }
   }
 }

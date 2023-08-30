@@ -4,6 +4,7 @@ import { isBrowser } from "./services/is-browser";
 // FSA or CYSEC, change it right here for development if needed
 export const currentEntity = process.env.GATSBY_ENTITY;
 // export const currentEntity = "FSA";
+// export const currentEntity = "CYSEC";
 
 export const isCySEC = currentEntity === entities.CYSEC;
 export const isFSA = currentEntity === entities.FSA;

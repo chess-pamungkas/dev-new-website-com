@@ -2,7 +2,7 @@
 @import "mixins";
 
 .help-center {
-  padding-top: 61px;
+  padding-top: 90px;
   padding-bottom: 145px;
   @include content-alignment(0);
 
@@ -12,7 +12,7 @@
   }
 
   @include desktop-lg {
-    padding-top: 154px;
+    padding-top: 195px;
     padding-bottom: 103px;
   }
 

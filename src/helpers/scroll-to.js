@@ -10,12 +10,18 @@ export const scrollTo = ({
     return;
   }
 
+  const offsetY =
+    typeof headerRef === "number"
+      ? headerRef
+      : headerRef?.current
+      ? headerRef?.current.clientHeight
+      : 0;
+
   animateScroll({
     targetPosition:
       typeof ref === "number"
-        ? ref - (headerRef?.current ? headerRef?.current.clientHeight : 0)
-        : ref?.current.offsetTop -
-          (headerRef?.current ? headerRef?.current.clientHeight : 0),
+        ? ref - offsetY
+        : ref?.current.offsetTop - offsetY,
     initialPosition: window.scrollY,
     duration,
   });

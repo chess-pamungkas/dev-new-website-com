@@ -16,19 +16,6 @@
   "header-nav-tab-top-markets-crypto-desc-fsa": "Handeln Sie Kryptowährungspaare mit den wichtigsten Währungen der Welt",
   "header-nav-tab-trading": "Handel",
 
-  "BELOW TO REMOVE": "",
-
-  "header-nav-tab-trading-platforms-title": "Plattformen",
-  "header-nav-tab-trading-platforms-desc": "",
-  "header-nav-tab-trading-platforms-mt4-title": "MT4",
-  "header-nav-tab-trading-platforms-mt4-desc": "Laden Sie MT4 herunter und handeln Sie mit der weltweit beliebtesten Plattform",
-  "header-nav-tab-trading-platforms-mt5-title": "MT5",
-  "header-nav-tab-trading-platforms-mt5-desc": "Die Zukunft der Metaquote-Plattformen. Entdecken Sie die neuen erweiterten Funktionen auf MT5",
-  "header-nav-tab-trading-platforms-ctrader-title": "Ctrader",
-  "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader-Beschreibung",
-
-  "END TO REMOVE": "",
-
   "header-nav-tab-platforms-title": "Plattformen",
   "header-nav-tab-platforms-desc": "",
   "header-nav-tab-platforms-mt4-title": "MT4",
@@ -61,7 +48,7 @@
   "header-nav-tab-trading-education-desc": "Von den grundlegenden bis zu den fortschrittlichsten Lektionen haben wir Sie abgedeckt.",
   "header-nav-tab-trading-education-how-to-videos-title": "Anleitungsvideos",
   "header-nav-tab-trading-education-how-to-videos-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  "header-nav-tab-company": "Unternehmen",
+  "header-nav-tab-company": "Mehr",
   "header-nav-tab-company-about-title": "Über uns",
   "header-nav-tab-company-about-desc": "Erfahren Sie mehr über OQtima",
   "header-nav-tab-company-contact-title": "Kontaktieren Sie uns",
@@ -75,6 +62,7 @@
   "header-nav-tab-partners-collaboration-partnership-desc-fsa": "Arbeiten Sie mit einem umsatzstarken und renommierten Broker zusammen",
   "header-nav-tab-partners-affiliate-partnership-title": "Partnerprogramm",
   "header-nav-tab-partners-affiliate-partnership-desc": "CPA-Modell für Affiliate-Verweis",
+  "header-nav-tab-corner-pro-title-cysec": "OQtima Pro",
   "cookie-title": "Einstellungen für Datenschutzpräferenzen",
   "cookie-description": "Wenn Sie eine Website besuchen, kann sie Informationen in Ihrem Browser speichern oder abrufen, meistens in Form von Cookies. Diese Informationen können sich auf Sie, Ihre Einstellungen oder Ihr Gerät beziehen und werden hauptsächlich verwendet, um die Website so zu gestalten, wie Sie es erwarten. Die Informationen identifizieren Sie normalerweise nicht direkt, können Ihnen jedoch ein personalisiertes Web-Erlebnis bieten. Da wir Ihr Recht auf Datenschutz respektieren, können Sie bestimmte Arten von Cookies nicht zulassen. Klicken Sie auf die verschiedenen Kategorienüberschriften, um mehr zu erfahren und unsere Standardeinstellungen zu ändern. Das Blockieren bestimmter Arten von Cookies kann sich jedoch auf Ihre Erfahrung mit der Website und den von uns angebotenen Diensten auswirken.",
   "cookie-consent-title": "Einwilligungseinstellungen verwalten",
