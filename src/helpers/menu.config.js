@@ -234,7 +234,7 @@ const CYSEC_TRADING_TAB = {
   ],
 };
 
-const COMPANY_TAB = {
+const CYSEC_COMPANY_TAB = {
   title: "header-nav-tab-company",
   subItems: [
     {
@@ -261,6 +261,13 @@ const COMPANY_TAB = {
       icon: HelpCenterIcon,
       description: "header-nav-tab-company-help-center-desc",
     },
+  ],
+};
+
+const FSA_COMPANY_TAB = {
+  title: "header-nav-tab-company",
+  subItems: [
+    ...CYSEC_COMPANY_TAB.subItems,
     {
       desktopOnly: true,
       title: "header-nav-tab-partners-collaboration-partnership-title-fsa",
@@ -288,7 +295,7 @@ const FSA_MENU_ITEMS = [
   FSA_TOP_MARKETS_TAB,
   FSA_TRADING_TAB,
   FSA_PLATFORMS_TAB,
-  COMPANY_TAB,
+  FSA_COMPANY_TAB,
   FSA_PARTNERS_TAB,
 ];
 
@@ -296,7 +303,7 @@ const CYSEC_MENU_ITEMS = [
   CYSEC_TOP_MARKETS_TAB,
   CYSEC_TRADING_TAB,
   CYSEC_PLATFORMS_TAB,
-  COMPANY_TAB,
+  CYSEC_COMPANY_TAB,
 ];
 
 export const getMenuItems = () => (isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS);
