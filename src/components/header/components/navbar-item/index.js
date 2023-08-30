@@ -7,10 +7,10 @@ import { stringTransformToKebabCase } from "../../../../helpers/services/string-
 import NavbarSubItem from "../navbar-sub-item";
 import CommonContext from "../../../../context/common-context";
 
-const NavbarItem = ({ className, title, subItems = [], isNested = false }) => {
+const NavbarItem = ({ className, title, subItems = [] }) => {
   const { t } = useTranslation();
   const dropdownRef = useRef();
-  const { heightOffset } = useContext(CommonContext);
+  const { dropdownHeightOffset, isScrolled } = useContext(CommonContext);
 
   const hideDropdown = () => {
     if (dropdownRef?.current) {
@@ -32,26 +32,29 @@ const NavbarItem = ({ className, title, subItems = [], isNested = false }) => {
       onMouseEnter={showDropdown}
       onMouseLeave={hideDropdown}
     >
-      <span className="navbar-item__title">{t(title)}</span>
+      <span
+        className={cn("navbar-item__title", {
+          "navbar-item__title--black": isScrolled,
+        })}
+      >
+        {t(title)}
+      </span>
 
       <AngleDownIcon
         className="navbar-item__icon"
-        color={ANGLE_ICON_COLOR.black}
+        color={isScrolled ? ANGLE_ICON_COLOR.black : ANGLE_ICON_COLOR.white}
       />
 
       {!!subItems.length && (
         <ul
           ref={dropdownRef}
-          className={cn("navbar-item__dropdown", {
-            "navbar-item__dropdown--nested": isNested,
-          })}
-          style={{ top: `${heightOffset}px` }}
+          className={cn("navbar-item__dropdown")}
+          style={{ top: `${dropdownHeightOffset}px` }}
         >
           {subItems.map((subItem, i) => (
             <NavbarSubItem
               key={`header-menu-${stringTransformToKebabCase(subItem.title)}`}
               subItem={subItem}
-              className={isNested && i === 0 ? "dropdown-item--grow" : null}
               onClick={hideDropdown}
             />
           ))}

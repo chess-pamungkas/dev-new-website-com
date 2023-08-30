@@ -50,6 +50,15 @@ export const LanguageProvider = ({ children }) => {
     );
   }, [setCookie, selectedLanguage]);
 
+  useEffect(() => {
+    // used to set specific font for JP language. Need to modify if we will have a few more specific fonts
+    if (selectedLanguage.id === "jp") {
+      document.body.classList.add("jp-font");
+    } else {
+      document.body.classList.remove("jp-font");
+    }
+  }, [selectedLanguage]);
+
   return (
     <LanguageContext.Provider
       value={{

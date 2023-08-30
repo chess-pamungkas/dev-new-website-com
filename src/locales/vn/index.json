@@ -16,19 +16,6 @@
   "header-nav-tab-top-markets-crypto-desc-fsa": "Giao dịch các cặp tiền điện tử với các loại tiền tệ quan trọng nhất trên thế giới",
   "header-nav-tab-trading": "Giao dịch",
 
-  "BELOW TO REMOVE": "",
-
-  "header-nav-tab-trading-platforms-title": "Nền tảng",
-  "header-nav-tab-trading-platforms-desc": "",
-  "header-nav-tab-trading-platforms-mt4-title": "MT4",
-  "header-nav-tab-trading-platforms-mt4-desc": "Tải xuống và giao dịch với MT4, nền tảng phổ biến nhất trên thế giới",
-  "header-nav-tab-trading-platforms-mt5-title": "MT5",
-  "header-nav-tab-trading-platforms-mt5-desc": "Tương lai của nền tảng Metaquote. Tìm các tính năng nâng cao mới trên MT5",
-  "header-nav-tab-trading-platforms-ctrader-title": "Ctrader (TR)",
-  "header-nav-tab-trading-platforms-ctrader-desc": "Ctrader Description (TR)",
-
-  "END TO REMOVE": "",
-
   "header-nav-tab-platforms-title": "Nền tảng",
   "header-nav-tab-platforms-desc": "",
   "header-nav-tab-platforms-mt4-title": "MT4",
@@ -61,7 +48,7 @@
   "header-nav-tab-trading-education-desc": "Từ những bài học cơ bản đến nâng cao nhất, chúng tôi sẽ giúp bạn.",
   "header-nav-tab-trading-education-how-to-videos-title": "Videos hướng dẫn",
   "header-nav-tab-trading-education-how-to-videos-desc": "Khách hàng là thượng đế, khách hàng sẽ được theo bởi khách hàng.",
-  "header-nav-tab-company": "Công ty",
+  "header-nav-tab-company": "Thêm",
   "header-nav-tab-company-about-title": "Về chúng tôi",
   "header-nav-tab-company-about-desc": "Tìm hiểu, tại sao OQtima?",
   "header-nav-tab-company-contact-title": "Liên hệ chúng tôi",
@@ -75,6 +62,7 @@
   "header-nav-tab-partners-collaboration-partnership-desc-fsa": "Hợp tác với một nhà môi giới có uy tín và sự chuyển đổi cao",
   "header-nav-tab-partners-affiliate-partnership-title": "Quan hệ đối tác liên kết",
   "header-nav-tab-partners-affiliate-partnership-desc": "Mô hình CPA cho giới thiệu liên kết",
+  "header-nav-tab-corner-pro-title-cysec": "OQtima Pro",
   "cookie-title": "Trung tâm tùy chọn quyền riêng tư",
   "cookie-description": " Khi bạn truy cập bất kỳ trang web nào, nó có thể lưu trữ hoặc truy xuất thông tin trên trình duyệt của bạn, chủ yếu ở dạng cookie. Thông tin này có thể là về bạn, tùy chọn của bạn hoặc thiết bị của bạn và chủ yếu được sử dụng để làm cho trang web hoạt động như bạn mong đợi. Thông tin thường không trực tiếp nhận dạng bạn, nhưng nó có thể mang lại cho bạn trải nghiệm web được cá nhân hóa hơn. Vì chúng tôi tôn trọng quyền riêng tư của bạn nên bạn có thể chọn không cho phép một số loại cookie. Nhấp vào các tiêu đề danh mục khác nhau để tìm hiểu thêm và thay đổi cài đặt mặc định của chúng tôi. Tuy nhiên, việc chặn một số loại cookie có thể ảnh hưởng đến trải nghiệm của bạn đối với trang web và các dịch vụ mà chúng tôi có thể cung cấp.",
   "cookie-consent-title": "Quản lý tùy chọn đồng ý",

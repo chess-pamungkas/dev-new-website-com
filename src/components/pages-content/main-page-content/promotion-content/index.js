@@ -6,6 +6,7 @@ import promo1 from "../../../../assets/images/promotions/promo1.svg";
 import {
   ALL_MARKETS_PAGE_LINK,
   GetLoginLink,
+  HEADER_SMALL_HEIGHT,
   WITHDRAWAL_PAGE_LINK,
 } from "../../../../helpers/constants";
 import promo2 from "../../../../assets/images/promotions/promo2.svg";
@@ -33,8 +34,13 @@ import CommonContext from "../../../../context/common-context";
 const PromotionContent = () => {
   const XL_HEIGHT = 1080;
   const { t } = useTranslation();
-  const { isMobile, height } = useWindowSize();
-  const { headerRef } = useContext(CommonContext);
+  const { isMobile, isDesktop, height } = useWindowSize();
+  const { headerRef, riskWarningRef } = useContext(CommonContext);
+
+  const bgOffsetY =
+    isDesktop && riskWarningRef?.current?.clientHeight
+      ? riskWarningRef?.current?.clientHeight + HEADER_SMALL_HEIGHT
+      : HEADER_SMALL_HEIGHT;
 
   const [isTradePromoScrolled, setIsTradePromoScrolled] = useState(false);
   const [isPromo1Scrolled, setIsPromo1Scrolled] = useState(false);
@@ -113,7 +119,7 @@ const PromotionContent = () => {
     ) {
       scrollTo({
         ref: tradePromoRef,
-        headerRef,
+        headerRef: bgOffsetY,
         duration: BACKGROUND_ANIMATION_DURATION,
         callback: () => {
           setIsTradePromoScrolled(true);
@@ -138,7 +144,7 @@ const PromotionContent = () => {
     ) {
       scrollTo({
         ref: promo1Ref,
-        headerRef,
+        headerRef: bgOffsetY,
         duration: BACKGROUND_ANIMATION_DURATION,
         callback: () => {
           setIsPromo1Scrolled(true);
@@ -162,12 +168,12 @@ const PromotionContent = () => {
     if (isPromo12Bg) {
       scrollTo({
         ref: promo2Ref,
-        headerRef,
+        headerRef: bgOffsetY,
         duration: BACKGROUND_ANIMATION_DURATION,
       });
       bgAnimationApi.start({
         backgroundPositionX: "50%",
-        backgroundPositionY: headerRef?.current.clientHeight,
+        backgroundPositionY: bgOffsetY,
         config: { duration: BACKGROUND_ANIMATION_DURATION },
         onRest: () => {
           setIsPromo2Scrolled(true);
@@ -179,12 +185,12 @@ const PromotionContent = () => {
     if (isPromo23Bg) {
       scrollTo({
         ref: promo3Ref,
-        headerRef,
+        headerRef: bgOffsetY,
         duration: BACKGROUND_ANIMATION_DURATION,
       });
       bgAnimationApi.start({
         backgroundPositionX: "100%",
-        backgroundPositionY: headerRef?.current.clientHeight,
+        backgroundPositionY: bgOffsetY,
         config: { duration: BACKGROUND_ANIMATION_DURATION },
         onRest: () => {
           setIsPromo3Scrolled(true);
@@ -195,12 +201,12 @@ const PromotionContent = () => {
     if (isPromo32Bg) {
       scrollTo({
         ref: promo2Ref,
-        headerRef,
+        headerRef: bgOffsetY,
         duration: BACKGROUND_ANIMATION_DURATION,
       });
       bgAnimationApi.start({
         backgroundPositionX: "50%",
-        backgroundPositionY: headerRef?.current.clientHeight,
+        backgroundPositionY: bgOffsetY,
         config: { duration: BACKGROUND_ANIMATION_DURATION },
         onRest: () => {
           setIsPromo3Scrolled(false);
@@ -211,12 +217,12 @@ const PromotionContent = () => {
     if (isPromo21Bg) {
       scrollTo({
         ref: promo1Ref,
-        headerRef,
+        headerRef: bgOffsetY,
         duration: BACKGROUND_ANIMATION_DURATION,
       });
       bgAnimationApi.start({
         backgroundPositionX: "0",
-        backgroundPositionY: headerRef?.current.clientHeight,
+        backgroundPositionY: bgOffsetY,
         config: { duration: BACKGROUND_ANIMATION_DURATION },
         onRest: () => {
           setIsPromo2Scrolled(false);

@@ -24,20 +24,20 @@
   background-size: cover;
   // height: 703px;
   @include content-alignment(0);
-  padding-top: 75px;
+  padding-top: 90px;
   padding-bottom: 90px;
 
   @include tablet {
     background: url("../images/bg/main-promotion-md.svg") no-repeat left;
     background-size: cover;
     height: 949px;
-    padding: 75px 55px;
+    padding: 120px 55px;
   }
 
   @include desktop-lg {
     background: url("../images/bg/main-promotion-lg.svg") no-repeat left;
     background-size: cover;
-    height: 693px;
+    height: 760px;
     padding: 75px 120px;
   }
 
@@ -52,7 +52,7 @@
   @include desktop-xl {
     background: url("../images/bg/main-promotion-xl.svg") no-repeat;
     background-size: cover;
-    height: 902px;
+    height: 1000px;
     @include content-alignment(0);
   }
 
@@ -163,7 +163,7 @@
     right: -33px;
 
     @include tablet {
-      bottom: -23px;
+      bottom: -50px;
       right: -37px;
     }
     @include desktop-lg {

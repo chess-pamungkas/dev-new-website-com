@@ -15,13 +15,13 @@
   }
 
   @include desktop-lg {
-    padding: 77px 0 60px;
+    padding: 200px 0 60px;
     background: url("../../assets/images/system-info/bg-lg.svg") no-repeat
       bottom;
   }
 
   @include desktop-xl {
-    padding: 85px 0;
+    padding: 200px 0 85px;
     background: url("../../assets/images/system-info/bg-xl.svg") no-repeat
       bottom;
   }
