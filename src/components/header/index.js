@@ -22,6 +22,7 @@ import CommonContext from "../../context/common-context";
 import InternalLink from "../shared/internal-link";
 import CornerPanel from "./components/corner-panel";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
+import ClientResolverContext from "../../context/client-resolver-context";
 
 const Header = ({ className }) => {
   const { t } = useTranslation();
@@ -35,6 +36,7 @@ const Header = ({ className }) => {
     isSearchBarAttached,
     isScrolled,
   } = useContext(CommonContext);
+  const { clientConfig } = useContext(ClientResolverContext);
 
   return (
     <div className={cn("header-wrapper", className)} ref={headerRef}>
@@ -99,9 +101,15 @@ const Header = ({ className }) => {
               </ButtonLink>
               <ButtonLink
                 link={GetRegistrationLink()}
-                className={cn("button-link--header header__start", {
-                  "header__start--red": isScrolled,
-                })}
+                className={cn(
+                  "button-link--header header__start",
+                  {
+                    "header__start--red": isScrolled,
+                  },
+                  {
+                    "header__start--disabled": clientConfig?.banned,
+                  }
+                )}
               >
                 {t("button-get-started")}
               </ButtonLink>

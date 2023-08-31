@@ -155,6 +155,12 @@
       border: 2px solid map-get($colors, "red");
     }
 
+    &--disabled {
+      background: map-get($colors, "bg-grey") 0% 0% no-repeat padding-box;
+      color: map-get($colors, "table-grey");
+      border: unset;
+    }
+
     @include desktop-xl {
       padding: 0 36px;
     }

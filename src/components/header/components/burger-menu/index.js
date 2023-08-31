@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { BURGER_MENU_LINES_COUNT } from "../../../../helpers/constants";
@@ -15,10 +15,12 @@ import Accordion from "../../../shared/accordion";
 import { getMenuItems } from "../../../../helpers/menu.config";
 import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
 import InternalLink from "../../../shared/internal-link";
+import ClientResolverContext from "../../../../context/client-resolver-context";
 
 const BurgerMenu = ({ className }) => {
   const { t } = useTranslation();
   const { isMobile } = useWindowSize();
+  const { clientConfig } = useContext(ClientResolverContext);
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const menu = getMenuItems();
@@ -90,7 +92,9 @@ const BurgerMenu = ({ className }) => {
                 <>
                   <ButtonLink
                     link={GetRegistrationLink()}
-                    className="button-link--header burger-menu__start"
+                    className={cn("button-link--header burger-menu__start", {
+                      "burger-menu__start--disabled": clientConfig?.banned,
+                    })}
                   >
                     {t("button-get-started")}
                   </ButtonLink>
