@@ -3,6 +3,8 @@ import { LAST_LANGUAGE_KEY } from "../gdpr-cookie.config";
 import { LANG_SELECT_OPTIONS } from "../lang-options.config";
 import { isBrowser } from "./is-browser";
 import Cookies from "universal-cookie";
+import { useContext } from "react";
+import LanguageContext from "../../context/language-context";
 
 const cookies = new Cookies();
 
@@ -47,4 +49,10 @@ export const detectInitialLanguage = (recommendedLanguage) => {
   return findLangById(
     getLangFromUrl() || langFromCookie || recommendedLanguage
   );
+};
+
+export const setLangParam = () => {
+  const { selectedLanguage } = useContext(LanguageContext);
+
+  return `?lang=${selectedLanguage.id}`;
 };

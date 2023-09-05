@@ -5,12 +5,9 @@ import React, {
   useState,
   useMemo,
 } from "react";
-import { FXBO_LANG_COOKIE_KEYS_MAP } from "../../helpers/lang-options.config";
 import CookieContext from "../cookie-context";
 import {
-  FXBO_LAST_LANGUAGE_KEY,
   LAST_LANGUAGE_KEY,
-  NECESSARY_COOKIE_KEY,
   PERFORMANCE_COOKIE_KEY,
 } from "../../helpers/gdpr-cookie.config";
 import {
@@ -43,11 +40,6 @@ export const LanguageProvider = ({ children }) => {
 
   useEffect(() => {
     setCookie(LAST_LANGUAGE_KEY, selectedLanguage.id, PERFORMANCE_COOKIE_KEY);
-    setCookie(
-      FXBO_LAST_LANGUAGE_KEY,
-      FXBO_LANG_COOKIE_KEYS_MAP[selectedLanguage.id],
-      NECESSARY_COOKIE_KEY
-    );
   }, [setCookie, selectedLanguage]);
 
   useEffect(() => {
