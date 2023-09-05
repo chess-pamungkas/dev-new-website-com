@@ -5,11 +5,9 @@ import netellerLogo from "../assets/images/icons/payments/neteller.png";
 import revolutLogo from "../assets/images/icons/payments/revolut.png";
 import skrillLogo from "../assets/images/icons/payments/skrill.png";
 import wiseLogo from "../assets/images/icons/payments/wise.png";
-import LanguageContext from "../context/language-context";
-import { useContext } from "react";
-import { FXBO_LANG_URL_KEYS_MAP } from "./lang-options.config";
 import { isCySEC, topLevelDomain } from "./entity-resolver";
 import { setIBparamsToLink } from "./services/ib-service";
+import { setLangParam } from "./services/language-service";
 
 export const WINDOW_SIZE_SM = 375;
 export const WINDOW_SIZE_MD = 768;
@@ -53,29 +51,14 @@ export const getContactPhone = () =>
 export const getContactEmail = () =>
   isCySEC ? CONTACT_EMAIL : CONTACT_EMAIL_FSA;
 
-export const GetRegistrationLink = () => {
-  const { selectedLanguage } = useContext(LanguageContext);
+export const GetRegistrationLink = () =>
+  `https://portal.oqtima.${topLevelDomain}/register/${setLangParam()}${setIBparamsToLink()}`;
 
-  return `https://my.oqtima.${topLevelDomain}${
-    FXBO_LANG_URL_KEYS_MAP[selectedLanguage.id]
-  }/register/${setIBparamsToLink()}`;
-};
+export const GetLoginLink = () =>
+  `https://portal.oqtima.${topLevelDomain}/login/${setLangParam()}`;
 
-export const GetLoginLink = () => {
-  const { selectedLanguage } = useContext(LanguageContext);
-
-  return `https://my.oqtima.${topLevelDomain}${
-    FXBO_LANG_URL_KEYS_MAP[selectedLanguage.id]
-  }/login/`;
-};
-
-export const GetDepositLink = () => {
-  const { selectedLanguage } = useContext(LanguageContext);
-
-  return `https://my.oqtima.${topLevelDomain}${
-    FXBO_LANG_URL_KEYS_MAP[selectedLanguage.id]
-  }/funds/deposit/`;
-};
+export const GetDepositLink = () =>
+  `https://portal.oqtima.${topLevelDomain}/funds/deposit/${setLangParam()}`;
 
 export const COMING_SOON_PAGE_LINK = "/coming-soon";
 export const COMPANY_PAGE_LINK = "/company";

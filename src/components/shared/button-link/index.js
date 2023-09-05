@@ -8,7 +8,7 @@ const ButtonLink = ({ children, className, link, ignoreDisabling }) => {
   const {
     clientConfig: { banned },
   } = useContext(ClientResolverContext);
-  if (String(link).startsWith("http") && String(link).includes("my.")) {
+  if (String(link).startsWith("http") && String(link).includes("portal.")) {
     return (
       <a
         href={link}
