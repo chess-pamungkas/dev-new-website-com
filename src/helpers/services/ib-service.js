@@ -36,7 +36,7 @@ export const setIBparamsToLink = () => {
     const pid = localStorage.getItem(IB_PARAMS.pid);
     const lid = localStorage.getItem(IB_PARAMS.lid);
 
-    if (pid && lid) return `?${IB_PARAMS.lid}=${lid}&${IB_PARAMS.pid}=${pid}`;
+    if (pid && lid) return `&${IB_PARAMS.lid}=${lid}&${IB_PARAMS.pid}=${pid}`;
   }
 
   return "";

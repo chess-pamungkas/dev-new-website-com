@@ -68,35 +68,3 @@ export const LANG_SELECT_OPTIONS = ENTITY_LANGUAGES.map((languageItem) => {
 });
 
 export const SHOULD_BE_SMALLER_LANGUAGES = ["Русский", "Ελληνικά"];
-
-export const FXBO_LANG_COOKIE_KEYS_MAP = {
-  en: "en",
-  es: "es",
-  tw: "zh_Hant",
-  fr: "fr",
-  it: "it",
-  pt: "pt",
-  br: "pt",
-  cn: "zh",
-  vn: "vi",
-  th: "th",
-  id: "id",
-  jp: "ja",
-  de: "de",
-};
-
-export const FXBO_LANG_URL_KEYS_MAP = {
-  en: "",
-  es: "/es",
-  tw: "/zh_Hant",
-  fr: "/fr",
-  it: "/it",
-  pt: "/pt",
-  br: "/pt",
-  cn: "/zh",
-  vn: "/vi",
-  th: "/th",
-  id: "/id",
-  jp: "/ja",
-  de: "/de",
-};
