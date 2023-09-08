@@ -61,12 +61,16 @@
     border: none;
     outline: none;
     color: map-get($colors, "white");
-    font: normal normal map-get($font-weight, "bold") 16px/20px $font;
+    font-weight: map-get($font-weight, "bold");
+    font-size: 16px;
+    line-height: 20px;
     transition: width 0.3s;
 
     &::placeholder {
       color: map-get($colors, "white");
-      font: normal normal map-get($font-weight, "bold") 14px/18px $font;
+      font-weight: map-get($font-weight, "bold");
+      font-size: 14px;
+      line-height: 18px;
     }
 
     &--expandable {
@@ -85,7 +89,9 @@
     border-radius: 23px;
     cursor: pointer;
     outline: none;
-    font: normal normal map-get($font-weight, "black") 16px/20px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 16px;
+    line-height: 20px;
     text-transform: uppercase;
     transition: all 0.3s;
 
@@ -175,7 +181,9 @@
 
     &-title {
       color: map-get($colors, "black-secondary");
-      font: normal normal 300 14px/18px $font;
+      font-weight: map-get($font-weight, "light");
+      font-size: 14px;
+      line-height: 18px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;

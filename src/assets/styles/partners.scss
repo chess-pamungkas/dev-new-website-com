@@ -40,12 +40,15 @@
   }
 
   .top-market-promotion__text {
-    font: normal normal map-get($font-weight, "black") 28px/35px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 28px;
+    line-height: 35px;
     text-align: center;
     padding-bottom: 85px;
 
     @include tablet {
-      font: normal normal map-get($font-weight, "black") 41px/51px $font;
+      font-size: 41px;
+      line-height: 51px;
       padding-bottom: 78px;
     }
 
@@ -55,7 +58,8 @@
     }
 
     @include desktop-xl {
-      font: normal normal map-get($font-weight, "black") 48px/60px $font;
+      font-size: 48px;
+      line-height: 60px;
       text-align: left;
     }
   }
@@ -121,22 +125,27 @@
   }
 
   .top-market-promotion__text {
-    font: normal normal map-get($font-weight, "black") 19px/23px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 19px;
+    line-height: 23px;
     text-align: center;
     padding-top: 25px;
 
     @include tablet {
-      font: normal normal map-get($font-weight, "black") 23px/28px $font;
+      font-size: 23px;
+      line-height: 28px;
       padding-top: 31px;
     }
 
     @include desktop-lg {
-      font: normal normal map-get($font-weight, "black") 32px/40px $font;
+      font-size: 32px;
+      line-height: 40px;
       padding-top: 45px;
     }
 
     @include desktop-xl {
-      font: normal normal map-get($font-weight, "black") 60px/75px $font;
+      font-size: 60px;
+      line-height: 75px;
       padding-top: 56px;
     }
   }
@@ -190,7 +199,9 @@
   }
 
   &__title {
-    font: normal normal normal 15px/19px $font;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 15px;
+    line-height: 19px;
     margin: 0;
     width: 233px;
     grid-area: title;
@@ -198,25 +209,30 @@
     text-align: center;
 
     @include tablet {
-      font: normal normal normal 21px/26px $font;
+      font-size: 21px;
+      line-height: 26px;
       width: 287px;
       justify-self: start;
       text-align: left;
     }
 
     @include desktop-lg {
-      font: normal normal normal 34px/42px $font;
+      font-size: 34px;
+      line-height: 42px;
       width: 480px;
     }
 
     @include desktop-xl {
-      font: normal normal normal 48px/60px $font;
+      font-size: 48px;
+      line-height: 60px;
       width: 823px;
     }
   }
 
   &__description {
-    font: normal normal normal 10px/13px $font;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 10px;
+    line-height: 13px;
     color: map-get($colors, "grey");
     margin: 0;
     width: 264px;
@@ -225,14 +241,16 @@
     text-align: center;
 
     @include tablet {
-      font: normal normal normal 18px/22px $font;
+      font-size: 18px;
+      line-height: 22px;
       justify-self: right;
       width: 291px;
       text-align: left;
     }
 
     @include desktop-lg {
-      font: normal normal normal 22px/27px $font;
+      font-size: 22px;
+      line-height: 27px;
       width: 356px;
     }
 
@@ -287,27 +305,35 @@
   }
 
   &__total-num {
-    font: normal normal map-get($font-weight, "black") 16px/20px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 16px;
+    line-height: 20px;
     margin: 0;
 
     @include tablet {
-      font: normal normal map-get($font-weight, "black") 25px/31px $font;
+      font-size: 25px;
+      line-height: 31px;
     }
 
     @include desktop-lg {
-      font: normal normal map-get($font-weight, "black") 60px/75px $font;
+      font-size: 60px;
+      line-height: 75px;
     }
   }
 
   &__total-note {
-    font: normal normal map-get($font-weight, "black") 9px/12px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 9px;
+    line-height: 12px;
 
     @include tablet {
-      font: normal normal map-get($font-weight, "black") 15px/19px $font;
+      font-size: 15px;
+      line-height: 19px;
     }
 
     @include desktop-lg {
-      font: normal normal map-get($font-weight, "black") 16px/20px $font;
+      font-size: 16px;
+      line-height: 20px;
     }
   }
 
@@ -412,22 +438,27 @@
 
     &-number {
       top: 23px;
-      font: normal normal normal 7px/9px $font;
+      font-weight: map-get($font-weight, "regular");
+      font-size: 7px;
+      line-height: 9px;
       color: map-get($colors, "grey");
 
       @include tablet {
         top: 43px;
-        font: normal normal normal 13px/17px $font;
+        font-size: 13px;
+        line-height: 17px;
       }
 
       @include desktop-lg {
         top: 92px;
-        font: normal normal normal 8px/10px $font;
+        font-size: 8px;
+        line-height: 10px;
       }
 
       @include desktop-xl {
         top: 100px;
-        font: normal normal normal 18px/22px $font;
+        font-size: 18px;
+        line-height: 22px;
       }
     }
   }
@@ -497,14 +528,18 @@
     }
 
     .advantage-block__text {
-      font: normal normal map-get($font-weight, "black") 10px/13px $font;
+      font-weight: map-get($font-weight, "black");
+      font-size: 10px;
+      line-height: 13px;
 
       @include tablet {
-        font: normal normal map-get($font-weight, "black") 16px/20px $font;
+        font-size: 16px;
+        line-height: 20px;
       }
 
       @include desktop-xl {
-        font: normal normal map-get($font-weight, "black") 20px/25px $font;
+        font-size: 20px;
+        line-height: 25px;
       }
     }
 
@@ -522,21 +557,26 @@
   }
 
   &__title {
-    font: normal normal map-get($font-weight, "black") 22px/27px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 22px;
+    line-height: 27px;
     text-align: center;
     max-width: 202px;
 
     @include tablet {
-      font: normal normal map-get($font-weight, "black") 36px/45px $font;
+      font-size: 36px;
+      line-height: 45px;
       max-width: unset;
     }
 
     @include desktop-lg {
-      font: normal normal map-get($font-weight, "black") 40px/50px $font;
+      font-size: 40px;
+      line-height: 50px;
     }
 
     @include desktop-xl {
-      font: normal normal map-get($font-weight, "black") 60px/75px $font;
+      font-size: 60px;
+      line-height: 75px;
     }
   }
 }
@@ -632,23 +672,28 @@
   }
 
   &__title {
-    font: normal normal map-get($font-weight, "black") 18px/22px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 18px;
+    line-height: 22px;
     color: map-get($colors, "red");
     padding-bottom: 49px;
     margin: 0;
 
     @include tablet {
-      font: normal normal map-get($font-weight, "black") 26px/32px $font;
+      font-size: 26px;
+      line-height: 32px;
       padding-bottom: 67px;
     }
 
     @include desktop-lg {
-      font: normal normal map-get($font-weight, "black") 30px/37px $font;
+      font-size: 30px;
+      line-height: 37px;
       padding-bottom: 70px;
     }
 
     @include desktop-xl {
-      font: normal normal map-get($font-weight, "black") 60px/75px $font;
+      font-size: 60px;
+      line-height: 75px;
       padding-bottom: 134px;
     }
   }
@@ -656,11 +701,14 @@
   &__items {
     display: grid;
     grid-template-areas: "a b c";
-    font: normal normal map-get($font-weight, "black") 12px/15px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 12px;
+    line-height: 15px;
     z-index: 2;
 
     @include tablet {
-      font: normal normal map-get($font-weight, "black") 18px/22px $font;
+      font-size: 18px;
+      line-height: 22px;
     }
 
     @include desktop-lg {
@@ -670,13 +718,16 @@
     }
 
     @include desktop-xl {
-      font: normal normal map-get($font-weight, "black") 24px/30px $font;
+      font-size: 24px;
+      line-height: 30px;
     }
   }
 
   &__btn {
     background: map-get($colors, "black-secondary");
-    font: normal normal map-get($font-weight, "black") 11px/31px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 11px;
+    line-height: 31px;
     border: 1px solid map-get($colors, "red");
     width: 190px;
 
@@ -687,7 +738,8 @@
     }
 
     @include tablet {
-      font: normal normal map-get($font-weight, "black") 24px/62px $font;
+      font-size: 24px;
+      line-height: 62px;
       width: 380px;
     }
   }

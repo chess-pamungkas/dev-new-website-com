@@ -73,32 +73,40 @@
 
   &__title {
     margin: 0;
-    font: normal normal map-get($font-weight, "black") 36px/45px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 36px;
+    line-height: 45px;
     color: map-get($colors, "black-secondary");
 
     @include tablet {
-      font: normal normal map-get($font-weight, "black") 54px/67px $font;
+      font-size: 54px;
+      line-height: 67px;
     }
   }
 
   &__text {
-    font: normal normal map-get($font-weight, "regular") 12px/20px $font;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 12px;
+    line-height: 20px;
     color: map-get($colors, "black-secondary");
     padding-top: 30px;
     padding-bottom: 30px;
 
     @include tablet {
-      font: normal normal map-get($font-weight, "regular") 28px/45px $font;
+      font-size: 28px;
+      line-height: 45px;
       padding-top: 39px;
       padding-bottom: 40px;
     }
 
     @include desktop-lg {
-      font: normal normal map-get($font-weight, "regular") 24px/35px $font;
+      font-size: 24px;
+      line-height: 35px;
     }
 
     @include desktop-xl {
-      font: normal normal map-get($font-weight, "regular") 28px/45px $font;
+      font-size: 28px;
+      line-height: 45px;
     }
 
     span {
@@ -113,7 +121,9 @@
     width: 254px;
     height: 42px;
     text-align: center;
-    font: normal normal map-get($font-weight, "black") 16px/20px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 16px;
+    line-height: 20px;
     color: map-get($colors, "white");
     text-transform: uppercase;
     padding-top: 9px;
@@ -122,11 +132,12 @@
     @include tablet {
       width: 380px;
       height: 62px;
-      font: normal normal map-get($font-weight, "black") 24px/30px $font;
+      font-size: 24px;
+      line-height: 30px;
       padding-top: 13px;
       margin-left: unset;
     }
-  
+
     @include desktop-lg {
       margin-top: 100px;
     }

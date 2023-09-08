@@ -63,7 +63,9 @@
     background: #ffffff 0% 0% no-repeat padding-box;
     box-shadow: 0px 0px 10px #00000029;
     border-radius: 60px;
-    font: normal normal 900 9px/12px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 9px;
+    line-height: 12px;
     max-width: 136px;
     min-height: 37px;
     padding: 7px;
@@ -74,14 +76,16 @@
     width: fit-content;
 
     @include tablet {
-      font: normal normal 900 17px/21px $font;
+      font-size: 17px;
+      line-height: 21px;
       max-width: 255px;
       min-height: 77px;
       padding: 17px 20px;
     }
 
     @include desktop-lg {
-      font: normal normal 900 20px/25px $font;
+      font-size: 20px;
+      line-height: 25px;
       max-width: unset;
       min-height: 76px;
       padding: 12px 30px;
@@ -89,7 +93,8 @@
     }
 
     @include desktop-xl {
-      font: normal normal 900 32px/40px $font;
+      font-size: 32px;
+      line-height: 40px;
       min-height: 120px;
       padding: 20px 30px;
       width: 550px;
@@ -128,7 +133,9 @@
     margin-top: 245px;
 
     @include tablet {
-      font: normal normal 900 24px/62px $font;
+      font-weight: map-get($font-weight, "black");
+      font-size: 24px;
+      line-height: 62px;
       width: 380px;
       margin-top: 235px;
     }

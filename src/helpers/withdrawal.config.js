@@ -192,7 +192,7 @@ export const DataWithdrawal = () => {
       ),
       col2: (
         <>
-          <span>{t("withdrawal_data_col4-cysec")}</span>&nbsp;
+          <span>{t(`withdrawal_data_col4${sitePostfix}`)}</span>&nbsp;
           <sup>{isCySEC ? "1" : "*"}</sup>
         </>
       ),
@@ -222,7 +222,7 @@ export const DataWithdrawal = () => {
       ),
       col2: (
         <>
-          <span>{t("withdrawal_data_col4-cysec")}</span>&nbsp;
+          <span>{t(`withdrawal_data_col4${sitePostfix}`)}</span>&nbsp;
           <sup>{isCySEC ? "1" : "*"}</sup>
         </>
       ),

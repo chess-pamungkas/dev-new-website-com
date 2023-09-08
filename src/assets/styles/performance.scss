@@ -5,7 +5,8 @@
   scroll-snap-align: start;
   position: relative;
   background-size: cover;
-  background: url("../../assets/images/bg/performance/performance-sm.svg") no-repeat bottom;
+  background: url("../../assets/images/bg/performance/performance-sm.svg")
+    no-repeat bottom;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +20,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: url("../../assets/images/bg/performance/performance-top-sm.svg") no-repeat;
+    background: url("../../assets/images/bg/performance/performance-top-sm.svg")
+      no-repeat;
     width: 174px;
     height: 227px;
   }
@@ -29,7 +31,8 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    background: url("../../assets/images/bg/performance/performance-bottom-sm.svg") no-repeat;
+    background: url("../../assets/images/bg/performance/performance-bottom-sm.svg")
+      no-repeat;
     width: 174px;
     height: 227px;
   }
@@ -38,16 +41,19 @@
     padding-top: 87px;
     padding-bottom: 130px;
     background-size: cover;
-    background: url("../../assets/images/bg/performance/performance-md.svg") no-repeat bottom;
+    background: url("../../assets/images/bg/performance/performance-md.svg")
+      no-repeat bottom;
 
     &:before {
-      background: url("../../assets/images/bg/performance/performance-top-md.svg") no-repeat;
+      background: url("../../assets/images/bg/performance/performance-top-md.svg")
+        no-repeat;
       width: 210px;
       height: 295px;
     }
 
     &:after {
-      background: url("../../assets/images/bg/performance/performance-bottom-md.svg") no-repeat;
+      background: url("../../assets/images/bg/performance/performance-bottom-md.svg")
+        no-repeat;
       width: 258px;
       height: 297px;
     }
@@ -57,16 +63,19 @@
     padding-top: 70px;
     padding-bottom: 180px;
     background-size: cover;
-    background: url("../../assets/images/bg/performance/performance-lg.svg") no-repeat bottom;
+    background: url("../../assets/images/bg/performance/performance-lg.svg")
+      no-repeat bottom;
 
     &:before {
-      background: url("../../assets/images/bg/performance/performance-top-lg.svg") no-repeat;
+      background: url("../../assets/images/bg/performance/performance-top-lg.svg")
+        no-repeat;
       width: 190px;
       height: 285px;
     }
 
     &:after {
-      background: url("../../assets/images/bg/performance/performance-bottom-lg.svg") no-repeat;
+      background: url("../../assets/images/bg/performance/performance-bottom-lg.svg")
+        no-repeat;
       width: 257px;
       height: 297px;
     }
@@ -76,16 +85,19 @@
     padding-top: 120px;
     padding-bottom: 120px;
     background-size: cover;
-    background: url("../../assets/images/bg/performance/performance-xl.svg") no-repeat bottom;
+    background: url("../../assets/images/bg/performance/performance-xl.svg")
+      no-repeat bottom;
 
     &:before {
-      background: url("../../assets/images/bg/performance/performance-top-xl.svg") no-repeat;
+      background: url("../../assets/images/bg/performance/performance-top-xl.svg")
+        no-repeat;
       width: 408px;
       height: 490px;
     }
 
     &:after {
-      background: url("../../assets/images/bg/performance/performance-bottom-xl.svg") no-repeat;
+      background: url("../../assets/images/bg/performance/performance-bottom-xl.svg")
+        no-repeat;
       width: 377px;
       height: 592px;
     }
