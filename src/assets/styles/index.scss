@@ -148,4 +148,20 @@ a {
 
 .jp-font {
   font-family: $fontJP;
+
+  button {
+    font-family: $fontJP;
+  }
+
+  input {
+    font-family: $fontJP;
+  }
+}
+
+button {
+  font-family: $font;
+}
+
+input {
+  font-family: $font;
 }

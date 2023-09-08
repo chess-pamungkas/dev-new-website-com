@@ -11,7 +11,8 @@
   @include tablet {
     padding-top: 138px;
     padding-bottom: 102px;
-    background: url("../../assets/images/bg/split-bg/bg-md.svg") no-repeat bottom;
+    background: url("../../assets/images/bg/split-bg/bg-md.svg") no-repeat
+      bottom;
     background-size: cover;
   }
 
@@ -25,7 +26,8 @@
   @include desktop-xl {
     padding-top: 219px;
     padding-bottom: 261px;
-    background: url("../../assets/images/bg/split-bg/bg-xl.svg") no-repeat center;
+    background: url("../../assets/images/bg/split-bg/bg-xl.svg") no-repeat
+      center;
     background-size: cover;
   }
 

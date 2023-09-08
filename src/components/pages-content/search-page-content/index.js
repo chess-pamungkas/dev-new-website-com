@@ -16,6 +16,7 @@ import {
   SEARCH_RESULTS_BUNDLE_SIZE,
   DIR_RTL,
   DIR_LTR,
+  INITIAL_SEARCH_STATE,
 } from "../../../helpers/constants";
 import { getUrlParamValue } from "../../../helpers/services/get-url-param-value";
 import ButtonLink from "../../shared/button-link";
@@ -92,6 +93,11 @@ const SearchPageContent = () => {
       });
     }
   };
+
+  // reset search state
+  useEffect(() => {
+    return () => setSearchState(INITIAL_SEARCH_STATE);
+  }, []);
 
   return (
     <section className="search-page__container" dir={isRTL ? DIR_RTL : DIR_LTR}>

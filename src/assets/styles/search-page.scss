@@ -69,7 +69,9 @@
       border: none;
       outline: none;
       color: map-get($colors, "black-secondaty");
-      font: normal normal map-get($font-weight, "bold") 16px/20px $font;
+      font-weight: map-get($font-weight, "bold");
+      font-size: 16px;
+      line-height: 20px;
     }
   }
 
@@ -155,49 +157,61 @@
   &__title {
     margin: 0 0 4px;
     color: map-get($colors, "red");
-    font: normal normal map-get($font-weight, "black") 22px/27px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 22px;
+    line-height: 27px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
     @include tablet {
-      font: normal normal map-get($font-weight, "black") 32px/40px $font;
+      font-size: 32px;
+      line-height: 40px;
     }
 
     @include desktop-lg {
-      font: normal normal map-get($font-weight, "black") 25px/31px $font;
+      font-size: 25px;
+      line-height: 31px;
     }
 
     @include desktop-xl {
-      font: normal normal map-get($font-weight, "black") 35px/44px $font;
+      font-size: 35px;
+      line-height: 44px;
     }
   }
 
   &__ref {
     margin: 0;
     color: map-get($colors, "red");
-    font: normal normal map-get($font-weight, "normal") 17px/21px $font;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 17px;
+    line-height: 21px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
     @include tablet {
-      font: normal normal map-get($font-weight, "normal") 24px/30px $font;
+      font-size: 24px;
+      line-height: 30px;
     }
 
     @include desktop-lg {
-      font: normal normal map-get($font-weight, "normal") 20px/25px $font;
+      font-size: 20px;
+      line-height: 25px;
     }
 
     @include desktop-xl {
-      font: normal normal map-get($font-weight, "normal") 24px/30px $font;
+      font-size: 24px;
+      line-height: 30px;
     }
   }
 
   &__text {
     margin: 0 0 20px;
     color: map-get($colors, "black-secondary");
-    font: normal normal map-get($font-weight, "light") 20px/25px $font;
+    font-weight: map-get($font-weight, "light");
+    font-size: 20px;
+    line-height: 25px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
@@ -205,34 +219,42 @@
 
     @include tablet {
       margin-bottom: 16px;
-      font: normal normal map-get($font-weight, "light") 30px/37px $font;
+      font-size: 30px;
+      line-height: 37px;
     }
 
     @include desktop-lg {
       margin-bottom: 10px;
-      font: normal normal map-get($font-weight, "light") 20px/25px $font;
+      font-size: 20px;
+      line-height: 25px;
     }
 
     @include desktop-xl {
-      font: normal normal map-get($font-weight, "light") 24px/30px $font;
+      font-size: 24px;
+      line-height: 30px;
     }
   }
 
   &__btn {
     width: 100%;
-    font: normal normal map-get($font-weight, "black") 13px/27px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 13px;
+    line-height: 27px;
 
     @include tablet {
-      font: normal normal map-get($font-weight, "black") 15px/34px $font;
+      font-size: 15px;
+      line-height: 34px;
     }
 
     @include desktop-lg {
       width: 162px;
-      font: normal normal map-get($font-weight, "black") 15px/25px $font;
+      font-size: 15px;
+      line-height: 25px;
     }
 
     @include desktop-xl {
-      font: normal normal map-get($font-weight, "black") 15px/36px $font;
+      font-size: 15px;
+      line-height: 36px;
     }
   }
 
@@ -258,20 +280,25 @@
     &-title {
       margin: 0 0 20px;
       color: map-get($colors, "red");
-      font: normal normal map-get($font-weight, "black") 34px/42px $font;
+      font-weight: map-get($font-weight, "black");
+      font-size: 34px;
+      line-height: 42px;
 
       @include tablet {
         margin-bottom: 30px;
-        font: normal normal map-get($font-weight, "black") 60px/75px $font;
+        font-size: 60px;
+        line-height: 75px;
       }
 
       @include desktop-lg {
-        font: normal normal map-get($font-weight, "black") 40px/50px $font;
+        font-size: 40px;
+        line-height: 50px;
       }
 
       @include desktop-xl {
         margin-bottom: 20px;
-        font: normal normal map-get($font-weight, "black") 60px/75px $font;
+        font-size: 60px;
+        line-height: 75px;
       }
     }
 
@@ -283,19 +310,24 @@
   &__note {
     margin: 0 0 30px;
     color: map-get($colors, "black-secondary");
-    font: normal normal map-get($font-weight, "black") 24px/30px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 24px;
+    line-height: 30px;
     text-align: center;
 
     @include tablet {
-      font: normal normal map-get($font-weight, "black") 36px/45px $font;
+      font-size: 36px;
+      line-height: 45px;
     }
 
     @include desktop-lg {
-      font: normal normal map-get($font-weight, "black") 30px/37px $font;
+      font-size: 30px;
+      line-height: 37px;
     }
 
     @include desktop-xl {
-      font: normal normal map-get($font-weight, "black") 36px/45px $font;
+      font-size: 36px;
+      line-height: 45px;
     }
   }
 }
