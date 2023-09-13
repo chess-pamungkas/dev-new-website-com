@@ -16,7 +16,9 @@
 
   &__link {
     text-align: center;
-    font: normal normal normal 14px/18px $font;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 14px;
+    line-height: 18px;
     letter-spacing: 0.28px;
     color: map-get($colors, "white");
   }
@@ -28,7 +30,9 @@
 
   &__separator {
     text-align: center;
-    font: normal normal normal 14px/18px $font;
+    font-weight: map-get($font-weight, "regular");
+    font-size: 14px;
+    line-height: 18px;
     letter-spacing: 0.28px;
     color: map-get($colors, "white");
     padding: 0px 8px;

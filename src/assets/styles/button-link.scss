@@ -170,7 +170,9 @@
     width: fit-content;
     border: none;
     text-transform: none;
-    font: normal normal bold 16px/20px $font;
+    font-weight: map-get($font-weight, "bold");
+    font-size: 16px;
+    line-height: 20px;
   }
 
   &--disabled {

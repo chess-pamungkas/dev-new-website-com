@@ -21,11 +21,14 @@
 
   &__title {
     color: map-get($colors, "black-secondary");
-    font: normal normal 900 14px/18px $font;
+    font-weight: map-get($font-weight, "black");
+    font-size: 14px;
+    line-height: 18px;
     transition: color 0.2s;
 
     @include desktop-xl {
-      font: normal normal 900 16px/20px $font;
+      font-size: 16px;
+      line-height: 20px;
     }
 
     &:hover {
@@ -36,10 +39,13 @@
   &__description {
     margin: 6px 0 0;
     color: map-get($colors, "black-secondary");
-    font: normal normal 300 12px/15px $font;
+    font-weight: map-get($font-weight, "light");
+    font-size: 12px;
+    line-height: 15px;
 
     @include desktop-xl {
-      font: normal normal 300 14px/18px $font;
+      font-size: 14px;
+      line-height: 18px;
     }
   }
 

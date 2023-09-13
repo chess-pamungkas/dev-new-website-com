@@ -17,6 +17,7 @@ import { sendClickEventToGA } from "../../../../helpers/services/google-analytic
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { ArabicNumbers } from "react-native-arabic-numbers";
 import InternalLink from "../../../shared/internal-link";
+import LanguageContext from "../../../../context/language-context";
 
 const SearchBar = ({
   className,
@@ -27,6 +28,7 @@ const SearchBar = ({
   const { t } = useTranslation();
   const { getSearchResults } = useSearchData();
   const { searchState, setSearchState } = useContext(SearchContext);
+  const { selectedLanguage } = useContext(LanguageContext);
   const isRTL = useRtlDirection();
 
   const [isActive, setIsActive] = useState(false);
@@ -83,7 +85,9 @@ const SearchBar = ({
     if (onSubmit) onSubmit(e);
 
     navigate(
-      `${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(
+      `${
+        selectedLanguage.URIPart
+      }${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(
         searchState.query
       )}`
     );
