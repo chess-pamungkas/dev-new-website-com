@@ -40,13 +40,6 @@ export const CookieProvider = ({ children }) => {
   );
   const { clientConfig } = useContext(ClientResolverContext);
 
-  useEffect(() => {
-    if (isBrowser() && cookieConsent[SEGMENTATION_COOKIE_KEY]) {
-      // enable GA
-      window[`ga-disable-${process.env.GATSBY_GA}`] = false;
-    }
-  }, [cookieConsent]);
-
   const getCookie = (cookieKey) => {
     return cookies.get(cookieKey);
   };

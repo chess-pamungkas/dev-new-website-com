@@ -13,7 +13,6 @@ import LangSelect from "../lang-select";
 import SearchBar from "../search-bar";
 import Accordion from "../../../shared/accordion";
 import { getMenuItems } from "../../../../helpers/menu.config";
-import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
 import InternalLink from "../../../shared/internal-link";
 import ClientResolverContext from "../../../../context/client-resolver-context";
 
@@ -33,7 +32,6 @@ const BurgerMenu = ({ className }) => {
       : document.body.classList.add("overflow-hidden");
 
     setIsNavbarOpen(!isNavbarOpen);
-    sendClickEventToGA(e);
   };
 
   const onSelect = (title) => setSelectedNavItem(title);

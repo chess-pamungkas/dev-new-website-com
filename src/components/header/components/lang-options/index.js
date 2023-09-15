@@ -4,7 +4,6 @@ import {
   LANG_SELECT_OPTIONS,
   SHOULD_BE_SMALLER_LANGUAGES,
 } from "../../../../helpers/lang-options.config";
-import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
 import { Link, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 
 const LangSelectItem = ({
@@ -29,7 +28,6 @@ const LangSelectItem = ({
         onClick={(e) => {
           languageSelectHandler(language);
           document.documentElement.setAttribute("lang", language.id);
-          sendClickEventToGA(e);
         }}
       >
         {Icon && <Icon className="lang-options__flag" />}

@@ -6,7 +6,6 @@ import RedirectPopup from "../../redirect-popup";
 import { useEntityNotifications } from "../../../helpers/hooks/use-entity-notifications";
 import CookieContext from "../../../context/cookie-context";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { sendClickEventToGA } from "../../../helpers/services/google-analytics-service";
 import { getRiskDisclosureDoc } from "../../../helpers/documents";
 import { setRedirectOrBannedPopupShown } from "../../../helpers/services/set-redirect-or-banned-popup-shown";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
@@ -60,7 +59,6 @@ const CysecRedirect = ({ handleOpen, setIsHidden, setIsCysecRedirect, t }) => {
           className="notification-stripe__button"
           onClick={(e) => {
             handleOpen();
-            sendClickEventToGA(e);
           }}
         >
           {t("notification-stripe-change-btn")}
@@ -72,7 +70,6 @@ const CysecRedirect = ({ handleOpen, setIsHidden, setIsCysecRedirect, t }) => {
             setRedirectOrBannedPopupShown();
             setIsCysecRedirect(false);
             setIsHidden(true);
-            sendClickEventToGA(e);
           }}
         >
           {t("notification-stripe-close-btn")}

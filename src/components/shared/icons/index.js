@@ -773,15 +773,6 @@ export const FrFlagIcon = ({ className }) => (
   />
 );
 
-export const PlFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/pl.png"
-    alt="pl"
-    width={FLAG_WIDTH}
-  />
-);
-
 export const PtFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
@@ -791,74 +782,11 @@ export const PtFlagIcon = ({ className }) => (
   />
 );
 
-export const DaFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/da.png"
-    alt="da"
-    width={FLAG_WIDTH}
-  />
-);
-
-export const FiFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/fi.png"
-    alt="fi"
-    width={FLAG_WIDTH}
-  />
-);
-
 export const EsFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
     src="../../../assets/images/icons/languages/es.svg"
     alt="es"
-    width={FLAG_WIDTH}
-  />
-);
-
-export const RuFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/ru.svg"
-    alt="ru"
-    width={FLAG_WIDTH}
-  />
-);
-
-export const ArFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/ar.png"
-    alt="ar"
-    width={FLAG_WIDTH}
-  />
-);
-
-export const NlFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/nl.png"
-    alt="nl"
-    width={FLAG_WIDTH}
-  />
-);
-
-export const SwFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/sw.png"
-    alt="sw"
-    width={FLAG_WIDTH}
-  />
-);
-
-export const RoFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/ro.png"
-    alt="ro"
     width={FLAG_WIDTH}
   />
 );
@@ -881,24 +809,6 @@ export const CnFlagIcon = ({ className }) => (
   />
 );
 
-export const NoFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/no.png"
-    alt="no"
-    width={FLAG_WIDTH}
-  />
-);
-
-export const CzFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/cz.png"
-    alt="cz"
-    width={FLAG_WIDTH}
-  />
-);
-
 export const VnFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
@@ -917,15 +827,6 @@ export const ThFlagIcon = ({ className }) => (
   />
 );
 
-export const MyFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/my.png"
-    alt="my"
-    width={FLAG_WIDTH}
-  />
-);
-
 export const IdFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
@@ -935,56 +836,11 @@ export const IdFlagIcon = ({ className }) => (
   />
 );
 
-export const KrFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/kr.png"
-    alt="kr"
-    width={FLAG_WIDTH}
-  />
-);
-
 export const JpFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
     src="../../../assets/images/icons/languages/jp.svg"
     alt="jp"
-    width={FLAG_WIDTH}
-  />
-);
-
-export const InFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/in.png"
-    alt="in"
-    width={FLAG_WIDTH}
-  />
-);
-
-export const BdFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/bd.png"
-    alt="bd"
-    width={FLAG_WIDTH}
-  />
-);
-
-export const GrFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/gr.png"
-    alt="gr"
-    width={FLAG_WIDTH}
-  />
-);
-
-export const PhFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/ph.png"
-    alt="ph"
     width={FLAG_WIDTH}
   />
 );

@@ -5,7 +5,6 @@ import entities from "../../enums/entities";
 import { postClientConsent } from "../../helpers/services/client-consent-service";
 import { CONSENT_TYPES } from "../../helpers/consent-types.config";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { sendClickEventToGA } from "../../helpers/services/google-analytics-service";
 import { setRedirectOrBannedPopupShown } from "../../helpers/services/set-redirect-or-banned-popup-shown";
 import { isBrowser } from "../../helpers/services/is-browser";
 import {
@@ -74,7 +73,6 @@ const RedirectPopup = ({
               getCookie,
               CONSENT_TYPES["bannedClose"]
             );
-            sendClickEventToGA(e);
           },
         },
         {
@@ -88,7 +86,6 @@ const RedirectPopup = ({
               getCookie,
               CONSENT_TYPES["bannedContinue"]
             );
-            sendClickEventToGA(e);
           },
         },
       ];
@@ -103,7 +100,6 @@ const RedirectPopup = ({
               getCookie,
               CONSENT_TYPES["redirectDoNotConfirm"]
             );
-            sendClickEventToGA(e);
             redirectToOppositeEntity();
           },
           subTitle:
@@ -123,7 +119,6 @@ const RedirectPopup = ({
             );
             setIsCysecRedirect(false);
             handleClose(false);
-            sendClickEventToGA(e);
           },
         },
       ];
