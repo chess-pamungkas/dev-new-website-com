@@ -196,12 +196,12 @@
   "partners_income-slider-income-note-fsa": "Your income per month",
   "accounts-type_account-type1-min-deposit-value-fsa": "${{ account-type1-min-deposit-fsa }}",
   "accounts-type_account-type1-max-leverage-value-fsa": "{{ account-type1-max-leverage-fsa }}",
-  "accounts-type_account-type1-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, CHF, SGD, AED, ZAR",
+  "accounts-type_account-type1-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, CHF, SGD, ZAR",
   "accounts-type_account-type1-markets-value-fsa": "{{ account-type1-markets-fsa }}",
   "accounts-type_account-type1-total-symbols-value-fsa": "{{ account-type1-total-symbols-fsa }}+",
   "accounts-type_account-type2-min-deposit-value-fsa": "${{ account-type2-min-deposit-fsa }}",
   "accounts-type_account-type2-max-leverage-value-fsa": "{{ account-type2-max-leverage-fsa }}",
-  "accounts-type_account-type2-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, CHF, SGD, AED, ZAR",
+  "accounts-type_account-type2-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, CHF, SGD, ZAR",
   "accounts-type_account-type2-markets-value-fsa": "{{ account-type2-markets-fsa }}",
   "accounts-type_account-type2-total-symbols-value-fsa": "{{ account-type2-total-symbols-fsa }}+"
 }
