@@ -2,7 +2,7 @@ import React from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/shares.svg";
 import shares from "../../../assets/images/top-markets/images/shares.svg";
-import { GetLoginLink } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
@@ -31,9 +31,9 @@ const SharesContent = () => {
         image={image}
         isChildrenHasSmallSize
         btn1Title={t("shares_top-market-btn1")}
-        link1={GetLoginLink()}
+        link1={GetRegistrationLink()}
         btn2Title={t("shares_top-market-btn2")}
-        link2={GetLoginLink()}
+        link2={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
           localizationText={`shares_top-market-promo-text${sitePostfix}`}
@@ -52,7 +52,7 @@ const SharesContent = () => {
         className="shares-promotion"
         image={shares}
         btnTitle={t("shares_top-market-promo-btn")}
-        link={GetLoginLink()}
+        link={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
           localizationText={`shares_top-market-promotion-promo-text${sitePostfix}`}
@@ -116,7 +116,7 @@ const SharesContent = () => {
       {/* <TopMarketLayout
         title={t("shares_top-market-layout-title")}
         btnTitle={t("shares_top-market-layout-btn")}
-        link={GetLoginLink()}
+        link={GetRegistrationLink()}
       >
         <TableComponent
           data={DATA_SHARES}

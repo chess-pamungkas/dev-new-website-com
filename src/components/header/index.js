@@ -6,8 +6,8 @@ import {
   DIR_LTR,
   DIR_RTL,
   HOME_PAGE_LINK,
-  GetLoginLink,
   GetRegistrationLink,
+  GetLoginLink,
 } from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import NavbarItem from "./components/navbar-item";
