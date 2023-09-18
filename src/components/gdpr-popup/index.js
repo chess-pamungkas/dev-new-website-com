@@ -5,10 +5,8 @@ import { CookieCategoryItem } from "./components/cookie-category-item";
 import {
   GDPR_COOKIE_CATEGORIES,
   DEFAULT_COOKIE_CONSENT,
-  SEGMENTATION_COOKIE_KEY,
 } from "../../helpers/gdpr-cookie.config";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { sendClickEventToGA } from "../../helpers/services/google-analytics-service";
 
 export const GDPRPopup = ({ className }) => {
   const { t } = useTranslation();
@@ -24,12 +22,10 @@ export const GDPRPopup = ({ className }) => {
   } = useContext(CookieContext);
 
   const onAcceptAll = (e) => {
-    sendClickEventToGA(e, true);
     acceptAllCookies();
     handleCloseGDPRPopup();
   };
   const onAcceptSelected = (e) => {
-    sendClickEventToGA(e, acceptedCookies[SEGMENTATION_COOKIE_KEY]);
     acceptCookies(acceptedCookies);
     handleCloseGDPRPopup();
   };

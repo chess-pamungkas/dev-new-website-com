@@ -50,12 +50,6 @@ export const onRenderBody = ({
     />,
   ]);
   setHeadComponents([
-    <script
-      key="disable-ga"
-      dangerouslySetInnerHTML={{
-        __html: `window['ga-disable-${process.env.GATSBY_GA}'] = true;`,
-      }}
-    />,
     // Default title and description for Google bot fast mode
     <title key="default-title">
       Forex & CFD Trading on Stocks, Indices, Oil, Gold by OQtima™
@@ -66,18 +60,6 @@ export const onRenderBody = ({
       content="Forex, cfd trading on stocks, indices, oil and gold with the most advanced trading platforms. Trade with OQtima™, a licensed forex broker."
     />,
   ]);
-};
-
-export const onPreRenderHTML = ({
-  getHeadComponents,
-  replaceHeadComponents,
-}) => {
-  const headComponents = getHeadComponents();
-
-  const orderedComponents = headComponents.sort((item) =>
-    item.key === "disable-ga" ? -1 : 1
-  );
-  replaceHeadComponents(orderedComponents);
 };
 
 export const wrapPageElement = ({ element }) => {

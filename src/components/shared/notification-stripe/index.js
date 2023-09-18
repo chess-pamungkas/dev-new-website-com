@@ -1,12 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import cn from "classnames";
-import ClientResolverContext from "../../../context/client-resolver-context";
 import { useModal } from "../../../helpers/hooks/use-modal";
-import RedirectPopup from "../../redirect-popup";
-import { useEntityNotifications } from "../../../helpers/hooks/use-entity-notifications";
-import CookieContext from "../../../context/cookie-context";
+import RedirectOrBannedPopup from "../../redirect-popup";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { sendClickEventToGA } from "../../../helpers/services/google-analytics-service";
 import { getRiskDisclosureDoc } from "../../../helpers/documents";
 import { setRedirectOrBannedPopupShown } from "../../../helpers/services/set-redirect-or-banned-popup-shown";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
@@ -14,10 +10,10 @@ import expandIcon from "../../../assets/images/icons/accordion.svg";
 import collapseIcon from "../../../assets/images/icons/accordion-active.svg";
 import NotificationStripeContext from "../../../context/notification-stripe-context";
 import { isBrowser } from "../../../helpers/services/is-browser";
-import { currentEntity } from "../../../helpers/entity-resolver";
 import CommonContext from "../../../context/common-context";
+import { useEntityNotifications } from "../../../helpers/hooks/use-entity-notifications";
 
-export const CysecStripe = () => {
+export const RiskWarningNotification = () => {
   const { expand, setExpand } = useContext(NotificationStripeContext);
   const { isMobile } = useWindowSize();
   const { t } = useTranslation();
@@ -48,7 +44,13 @@ export const CysecStripe = () => {
   );
 };
 
-const CysecRedirect = ({ handleOpen, setIsHidden, setIsCysecRedirect, t }) => {
+const RecommendedRedirectNotification = ({
+  handleOpen,
+  setIsHidden,
+  setIsRecommendedRedirectNotification,
+}) => {
+  const { t } = useTranslation();
+
   return (
     <div className="notification-stripe__redirection-wrapper">
       <div className="notification-stripe__content">
@@ -60,7 +62,6 @@ const CysecRedirect = ({ handleOpen, setIsHidden, setIsCysecRedirect, t }) => {
           className="notification-stripe__button"
           onClick={(e) => {
             handleOpen();
-            sendClickEventToGA(e);
           }}
         >
           {t("notification-stripe-change-btn")}
@@ -70,9 +71,8 @@ const CysecRedirect = ({ handleOpen, setIsHidden, setIsCysecRedirect, t }) => {
           className="notification-stripe__button"
           onClick={(e) => {
             setRedirectOrBannedPopupShown();
-            setIsCysecRedirect(false);
+            setIsRecommendedRedirectNotification(false);
             setIsHidden(true);
-            sendClickEventToGA(e);
           }}
         >
           {t("notification-stripe-close-btn")}
@@ -82,43 +82,43 @@ const CysecRedirect = ({ handleOpen, setIsHidden, setIsCysecRedirect, t }) => {
   );
 };
 
-const NotificationStripe = ({ className, setSectionOptions }) => {
-  const { clientConfig } = useContext(ClientResolverContext);
+const NotificationsContainer = ({ className, setSectionOptions }) => {
   const { isShow, handleOpen, handleClose } = useModal();
+
   const {
-    isCysecNotification,
-    isCysecRedirect,
-    setIsCysecRedirect,
+    isRiskWarningNotification,
+    isRecommendedRedirectNotification,
+    setIsRecommendedRedirectNotification,
     isBannedPopup,
   } = useEntityNotifications(handleOpen);
-  const { getCookie } = useContext(CookieContext);
+
   const { riskWarningRef } = useContext(CommonContext);
-  const { t } = useTranslation();
-
   const [isHidden, setIsHidden] = useState(true);
-
   const { isMobile, isMD } = useWindowSize();
   const { expand } = useContext(NotificationStripeContext);
 
   useEffect(() => {
-    setSectionOptions({ isCysecNotification, isCysecRedirect });
+    setSectionOptions({
+      isRiskWarningNotification,
+      isRecommendedRedirectNotification,
+    });
 
-    if (isCysecNotification) {
+    if (isRiskWarningNotification) {
       setIsHidden(false);
     }
 
-    if (isCysecRedirect) {
+    if (isRecommendedRedirectNotification) {
       setIsHidden(false);
     }
 
-    if (!isCysecRedirect && !isCysecNotification) {
+    if (!isRiskWarningNotification && !isRecommendedRedirectNotification) {
       setIsHidden(true);
     }
   }, [
-    clientConfig,
-    currentEntity,
-    isCysecNotification,
-    isCysecRedirect,
+    // clientConfig,
+    // currentEntity,
+    isRiskWarningNotification,
+    isRecommendedRedirectNotification,
     setSectionOptions,
   ]);
 
@@ -138,7 +138,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
         const pageMt4 = path.endsWith("/mt4-webtrader/");
         if (pageMt5) {
           livechatisMobile.style.display = "none";
-          if (isCysecNotification) {
+          if (isRiskWarningNotification) {
             setIsHidden(true);
           }
         }
@@ -149,7 +149,7 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
         livechatindex.style.setProperty("z-index", "21");
       }
     }
-    if (isCysecNotification) {
+    if (isRiskWarningNotification) {
       let bottom;
 
       switch (true) {
@@ -169,41 +169,42 @@ const NotificationStripe = ({ className, setSectionOptions }) => {
         livechat.style.bottom = bottom;
       }
     }
-  }, [isCysecNotification, isMobile, isMD, expand]);
+  }, [isRiskWarningNotification, isMobile, isMD, expand]);
 
   return (
     <>
-      {!isHidden && (isCysecNotification || isCysecRedirect) && (
-        <div
-          className={cn("notification-stripe", className)}
-          ref={riskWarningRef}
-        >
-          <div className={cn("notification-stripe__wrapper")}>
-            {isCysecRedirect && (
-              <CysecRedirect
-                handleOpen={handleOpen}
-                setIsHidden={setIsHidden}
-                setIsCysecRedirect={setIsCysecRedirect}
-                t={t}
-              />
-            )}
+      {!isHidden &&
+        (isRiskWarningNotification || isRecommendedRedirectNotification) && (
+          <div
+            className={cn("notification-stripe", className)}
+            ref={riskWarningRef}
+          >
+            <div className={cn("notification-stripe__wrapper")}>
+              {isRecommendedRedirectNotification && (
+                <RecommendedRedirectNotification
+                  handleOpen={handleOpen}
+                  setIsHidden={setIsHidden}
+                  setIsRecommendedRedirectNotification={
+                    setIsRecommendedRedirectNotification
+                  }
+                />
+              )}
 
-            {isCysecNotification && <CysecStripe />}
+              {isRiskWarningNotification && <RiskWarningNotification />}
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      <RedirectPopup
-        clientConfig={clientConfig}
-        currentEntity={currentEntity}
-        isBannedPopup={isBannedPopup}
+      <RedirectOrBannedPopup
         isPopupOpen={isShow}
         handleClose={handleClose}
-        setIsCysecRedirect={setIsCysecRedirect}
-        getCookie={getCookie}
+        setIsRecommendedRedirectNotification={
+          setIsRecommendedRedirectNotification
+        }
+        isBannedPopup={isBannedPopup}
       />
     </>
   );
 };
 
-export default NotificationStripe;
+export default NotificationsContainer;

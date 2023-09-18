@@ -13,7 +13,6 @@ import {
 } from "../../../../helpers/constants";
 import { SearchIcon } from "../../../shared/icons";
 import { useSearchData } from "../../../../helpers/hooks/use-search-data";
-import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { ArabicNumbers } from "react-native-arabic-numbers";
 import InternalLink from "../../../shared/internal-link";
@@ -108,7 +107,6 @@ const SearchBar = ({
         type="button"
         onClick={(e) => {
           onBarExpand();
-          sendClickEventToGA(e);
         }}
       >
         <SearchIcon />

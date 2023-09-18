@@ -6,7 +6,6 @@ import { useModal } from "../../../../helpers/hooks/use-modal";
 import LanguageContext from "../../../../context/language-context";
 import Popup from "../../../shared/popup";
 import LangOptions from "../lang-options";
-import { sendClickEventToGA } from "../../../../helpers/services/google-analytics-service";
 
 const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
   const {
@@ -46,7 +45,6 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
         onClick={(e) => {
           handleOpen();
           setIsLangPopupOpened && setIsLangPopupOpened(true);
-          sendClickEventToGA(e);
         }}
       >
         {Icon && <Icon className="lang-select__flag" />}
