@@ -3,7 +3,6 @@ import cn from "classnames";
 import CookieContext from "../../context/cookie-context";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isBrowser } from "../../helpers/services/is-browser";
-import { sendClickEventToGA } from "../../helpers/services/google-analytics-service";
 import NotificationStripeContext from "../../context/notification-stripe-context";
 import CommonContext from "../../context/common-context";
 
@@ -28,7 +27,6 @@ export const CookiesPopup = ({ className }) => {
   }, []);
 
   const acceptAll = (e) => {
-    sendClickEventToGA(e, true);
     acceptAllCookies();
     handleCloseCookiePopup();
   };

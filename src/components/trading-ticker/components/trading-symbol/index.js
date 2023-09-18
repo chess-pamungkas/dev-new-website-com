@@ -5,7 +5,7 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import upArrow from "../../../../assets/images/trading-ticker/up-arrow.svg";
 import downArrow from "../../../../assets/images/trading-ticker/down-arrow.svg";
 import ButtonLink from "../../../shared/button-link";
-import { GetLoginLink } from "../../../../helpers/constants";
+import { GetRegistrationLink } from "../../../../helpers/constants";
 
 const TradingSymbol = ({ className, symbol, direction, bid, ask, spread }) => {
   const isRTL = useRtlDirection();
@@ -59,13 +59,13 @@ const TradingSymbol = ({ className, symbol, direction, bid, ask, spread }) => {
       </div>
       <div className="trading-symbol__actions">
         <ButtonLink
-          link={GetLoginLink()}
+          link={GetRegistrationLink()}
           className="trading-symbol__buy button-link--without-bg-trading"
         >
           {t("index_trading-ticker-buy")}
         </ButtonLink>
         <ButtonLink
-          link={GetLoginLink()}
+          link={GetRegistrationLink()}
           className="trading-symbol__sell button-link--without-bg-trading"
         >
           {t("index_trading-ticker-sell")}

@@ -6,8 +6,8 @@ import {
   DIR_LTR,
   DIR_RTL,
   HOME_PAGE_LINK,
-  GetLoginLink,
   GetRegistrationLink,
+  GetLoginLink,
 } from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import NavbarItem from "./components/navbar-item";
@@ -15,7 +15,7 @@ import BurgerMenu from "./components/burger-menu";
 import ButtonLink from "../shared/button-link";
 import SearchBar from "./components/search-bar";
 import { getCornerItems, getMenuItems } from "../../helpers/menu.config";
-import NotificationStripe from "../shared/notification-stripe";
+import NotificationsContainer from "../shared/notification-stripe";
 import { GDPRPopup } from "../gdpr-popup";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import CommonContext from "../../context/common-context";
@@ -40,7 +40,7 @@ const Header = ({ className }) => {
 
   return (
     <div className={cn("header-wrapper", className)} ref={headerRef}>
-      <NotificationStripe setSectionOptions={setSectionOptions} />
+      <NotificationsContainer setSectionOptions={setSectionOptions} />
       <GDPRPopup />
       <header
         className={cn(

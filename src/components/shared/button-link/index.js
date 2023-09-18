@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import cn from "classnames";
 import ClientResolverContext from "../../../context/client-resolver-context";
-import { sendClickEventToGA } from "../../../helpers/services/google-analytics-service";
 import InternalLink from "../internal-link";
 
 const ButtonLink = ({ children, className, link, ignoreDisabling }) => {
@@ -17,7 +16,6 @@ const ButtonLink = ({ children, className, link, ignoreDisabling }) => {
         className={cn("button-link", className, {
           "button-link--disabled": banned && !ignoreDisabling,
         })}
-        onClick={(e) => sendClickEventToGA(e)}
       >
         {children}
       </a>
@@ -29,7 +27,6 @@ const ButtonLink = ({ children, className, link, ignoreDisabling }) => {
         className={cn("button-link", className, {
           "button-link--disabled": banned && !ignoreDisabling,
         })}
-        // onClick={(e) => sendClickEventToGA(e)}
       >
         {children}
       </InternalLink>

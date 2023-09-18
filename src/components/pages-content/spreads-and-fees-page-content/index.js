@@ -17,7 +17,7 @@ import {
 } from "../../../helpers/spreads-and-fees.config";
 import TopMarketPromotion from "../../top-market-promotion";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetLoginLink } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import {
@@ -231,7 +231,7 @@ const SpreadsAndFeesPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("spreads_top-market-promo-btn3")}
-        link={GetLoginLink()}
+        link={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
           localizationText="spreads_top-market-promo-text3"

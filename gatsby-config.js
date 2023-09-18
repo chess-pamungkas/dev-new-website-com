@@ -3,7 +3,6 @@ require("dotenv").config({
 });
 
 const languages = require(`${__dirname}/src/locales/language.config`);
-// const layout = require(`${__dirname}/src/components/shared/layout/index.js`);
 const {
   processLanguagesForConfig,
 } = require(`${__dirname}/src/locales/processLanguages`);
@@ -48,15 +47,6 @@ module.exports = {
         path: `${__dirname}/src/locales/`,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-google-gtag`,
-    //   options: {
-    //     trackingIds: [process.env.GATSBY_GA],
-    //     gtagConfig: {
-    //       anonymize_ip: false,
-    //     },
-    //   },
-    // },
     {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
@@ -82,11 +72,5 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-layout`,
-    //   options: {
-    //     component: require.resolve(`./src/components/shared/layout`),
-    //   },
-    // },
   ],
 };
