@@ -66,12 +66,7 @@ export const CookieProvider = ({ children }) => {
     const consent = `${CONSENT_TYPES["cookie"]} ${Object.keys(acceptedCookies)
       .filter((item) => acceptedCookies[item])
       .join(", ")}`;
-    postClientConsent(
-      clientConfig.ipAddress,
-      currentEntity,
-      getCookie,
-      consent
-    );
+    postClientConsent(clientConfig.ipAddress, consent);
   };
 
   const acceptAllCookies = () => {

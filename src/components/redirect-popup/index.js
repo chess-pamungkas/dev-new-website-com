@@ -1,27 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import Popup from "../shared/popup";
 import cn from "classnames";
-import entities from "../../enums/entities";
 import { postClientConsent } from "../../helpers/services/client-consent-service";
 import { CONSENT_TYPES } from "../../helpers/consent-types.config";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { setRedirectOrBannedPopupShown } from "../../helpers/services/set-redirect-or-banned-popup-shown";
 import { isBrowser } from "../../helpers/services/is-browser";
 import {
+  isCySEC,
   oppositeTopLevelDomain,
   topLevelDomain,
 } from "../../helpers/entity-resolver";
+import ClientResolverContext from "../../context/client-resolver-context";
 
-const RedirectPopup = ({
-  clientConfig,
-  currentEntity,
+const RedirectOrBannedPopup = ({
   isPopupOpen,
   handleClose,
   isBannedPopup,
-  setIsCysecRedirect,
-  getCookie,
+  setIsRecommendedRedirectNotification,
 }) => {
   const { t } = useTranslation();
+  const { clientConfig } = useContext(ClientResolverContext);
+
   const bannedPopupDescription = (country, entity) => (
     <>
       <p className="popup__paragraph">
@@ -55,7 +55,9 @@ const RedirectPopup = ({
       const host = window.location.hostname;
       const oppositeHost = host.replace(topLevelDomain, oppositeTopLevelDomain);
 
-      window.location.replace(`https://${oppositeHost}${window.location.pathname}`);
+      window.location.replace(
+        `https://${oppositeHost}${window.location.pathname}`
+      );
     }
   };
 
@@ -69,8 +71,6 @@ const RedirectPopup = ({
             handleClose(false);
             postClientConsent(
               clientConfig.ipAddress,
-              currentEntity,
-              getCookie,
               CONSENT_TYPES["bannedClose"]
             );
           },
@@ -82,8 +82,6 @@ const RedirectPopup = ({
             handleClose(false);
             postClientConsent(
               clientConfig.ipAddress,
-              currentEntity,
-              getCookie,
               CONSENT_TYPES["bannedContinue"]
             );
           },
@@ -96,16 +94,11 @@ const RedirectPopup = ({
           onClick: (e) => {
             postClientConsent(
               clientConfig.ipAddress,
-              currentEntity,
-              getCookie,
               CONSENT_TYPES["redirectDoNotConfirm"]
             );
             redirectToOppositeEntity();
           },
-          subTitle:
-            currentEntity === entities.FSA
-              ? "Redirect me to the EU related entity"
-              : "",
+          subTitle: isCySEC ? "" : "Redirect me to the EU related entity",
         },
         {
           text: t("popup-redirect-confirm-btn"),
@@ -113,11 +106,9 @@ const RedirectPopup = ({
             setRedirectOrBannedPopupShown();
             postClientConsent(
               clientConfig.ipAddress,
-              currentEntity,
-              getCookie,
               CONSENT_TYPES["redirectConfirm"]
             );
-            setIsCysecRedirect(false);
+            setIsRecommendedRedirectNotification(false);
             handleClose(false);
           },
         },
@@ -161,9 +152,7 @@ const RedirectPopup = ({
         {isBannedPopup &&
           bannedPopupDescription(
             clientConfig.countryName,
-            currentEntity === entities.FSA
-              ? t("fsa-entity-name")
-              : t("cysec-entity-name")
+            isCySEC ? t("cysec-entity-name") : t("fsa-entity-name")
           )}
         {!isBannedPopup && softRedirectionDescription()}
       </div>
@@ -172,4 +161,4 @@ const RedirectPopup = ({
   );
 };
 
-export default RedirectPopup;
+export default RedirectOrBannedPopup;

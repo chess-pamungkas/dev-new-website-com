@@ -1,15 +1,18 @@
 import { useState, useContext, useEffect } from "react";
 import ClientResolverContext from "../../context/client-resolver-context";
-import entities from "../../enums/entities";
 import { isBrowser } from "../services/is-browser";
 import { REDIRECT_OR_BANNED_POPUP_SHOWN_KEY } from "../gdpr-cookie.config";
-import { currentEntity } from "../entity-resolver";
+import { isCySEC } from "../entity-resolver";
 
 export const useEntityNotifications = (handlePopupOpen) => {
   const { clientConfig } = useContext(ClientResolverContext);
 
-  const [isCysecNotification, setIsCysecNotification] = useState(false);
-  const [isCysecRedirect, setIsCysecRedirect] = useState(false);
+  const [isRiskWarningNotification, setIsRiskWarningNotification] =
+    useState(false);
+  const [
+    isRecommendedRedirectNotification,
+    setIsRecommendedRedirectNotification,
+  ] = useState(false);
   const [isBannedPopup, setIsBannedPopup] = useState(false);
 
   useEffect(() => {
@@ -18,20 +21,20 @@ export const useEntityNotifications = (handlePopupOpen) => {
       Object.keys(clientConfig).length &&
       !clientConfig.banned &&
       !clientConfig.recommendedRedirect &&
-      currentEntity === entities.CYSEC
+      isCySEC
     ) {
-      setIsCysecNotification(true);
+      setIsRiskWarningNotification(true);
     }
 
     if (
       clientConfig &&
       Object.keys(clientConfig).length &&
       clientConfig.recommendedRedirect &&
-      currentEntity !== entities.CYSEC &&
+      !isCySEC &&
       isBrowser() &&
       !window.sessionStorage.getItem(REDIRECT_OR_BANNED_POPUP_SHOWN_KEY)
     ) {
-      setIsCysecRedirect(true);
+      setIsRecommendedRedirectNotification(true);
     }
 
     if (
@@ -49,12 +52,12 @@ export const useEntityNotifications = (handlePopupOpen) => {
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [clientConfig, currentEntity]);
+  }, [clientConfig]);
 
   return {
-    isCysecNotification,
-    isCysecRedirect,
-    setIsCysecRedirect,
+    isRiskWarningNotification,
+    isRecommendedRedirectNotification,
+    setIsRecommendedRedirectNotification,
     isBannedPopup,
   };
 };

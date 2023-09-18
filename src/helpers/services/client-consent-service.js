@@ -1,16 +1,11 @@
 import axios from "axios";
-import { GOOGLE_ANALYTICS_KEY } from "../gdpr-cookie.config";
+import { currentEntity } from "../entity-resolver";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 
-export const postClientConsent = (
-  ipAddress,
-  currentEntity,
-  getCookie,
-  consentString
-) => {
+export const postClientConsent = (ipAddress, consentString) => {
   const data = {
-    gaId: getCookie(GOOGLE_ANALYTICS_KEY),
+    gaId: null, // we removed GA after we started use GTM
     ipAddress: ipAddress,
     entity: currentEntity,
     consentType: consentString,

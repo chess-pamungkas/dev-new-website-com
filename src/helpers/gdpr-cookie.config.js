@@ -38,7 +38,6 @@ export const DEFAULT_COOKIE_CONSENT = {
 export const COOKIE_CONSENT_KEY = "cookieConsent";
 export const IS_SHOW_COOKIE_POPUP_KEY = "isShowCookiePopup";
 export const LAST_LANGUAGE_KEY = "lastLanguage";
-export const GOOGLE_ANALYTICS_KEY = "_ga";
 
 export const GLOBAL_COOKIE_PATH = "/";
 export const DEFAULT_COOKIE_AGE = 60 * 60 * 24 * 30 * 12 * 2;
