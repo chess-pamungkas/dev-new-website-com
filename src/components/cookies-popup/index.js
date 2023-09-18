@@ -16,7 +16,7 @@ export const CookiesPopup = ({ className }) => {
   } = useContext(CookieContext);
   const { expand } = useContext(NotificationStripeContext);
   const { sectionOptions } = useContext(CommonContext);
-  const isCysecNotification = sectionOptions?.isCysecNotification;
+  const isRiskWarningNotification = sectionOptions?.isRiskWarningNotification;
 
   const [isReady, setIsReady] = useState(false);
 
@@ -41,9 +41,9 @@ export const CookiesPopup = ({ className }) => {
       className={cn(
         "cookies-popup",
         { "cookies-popup--active": isShowCookiePopup && isReady },
-        { "cookies-popup--higher": isCysecNotification && expand },
+        { "cookies-popup--higher": isRiskWarningNotification && expand },
         {
-          "cookies-popup--higher-if-collapsed": isCysecNotification && !expand,
+          "cookies-popup--higher-if-collapsed": isRiskWarningNotification && !expand,
         },
         className
       )}
