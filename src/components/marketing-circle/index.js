@@ -2,7 +2,7 @@ import React from "react";
 import Lottie from "lottie-react";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import ButtonLink from "../shared/button-link";
-import { GetLoginLink } from "../../helpers/constants";
+import { GetRegistrationLink } from "../../helpers/constants";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 
 export const MarketingCircle = ({
@@ -36,7 +36,7 @@ export const MarketingCircle = ({
         style={{ height: animationHeight }}
       />
       <ButtonLink
-        link={GetLoginLink()}
+        link={GetRegistrationLink()}
         className="button-link button-link--red marketing-circle__btn"
       >
         {t("button-start-now")}

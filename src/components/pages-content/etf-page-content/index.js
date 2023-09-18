@@ -1,7 +1,7 @@
 import React from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/etf.svg";
-import { GetLoginLink } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
@@ -25,9 +25,9 @@ const ETFContent = () => {
         btn1Title={t("etf_top-market-btn1")}
         btnClassName1={"button-link--lowercase"}
         btnClassName2={"button-link--lowercase"}
-        link1={GetLoginLink()}
+        link1={GetRegistrationLink()}
         btn2Title={t("etf_top-market-btn2")}
-        link2={GetLoginLink()}
+        link2={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
           localizationText="etf_top-market-promo-text"
@@ -47,7 +47,7 @@ const ETFContent = () => {
         image={etf}
         btnTitle={t("etf_top-market-promo-btn")}
         btnClassName={"button-link--lowercase"}
-        link={GetLoginLink()}
+        link={GetRegistrationLink()}
         note={
           <HighlightedLocalizationText
             localizationText="etf_top-market-promotion-promo-note"

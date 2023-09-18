@@ -5,7 +5,7 @@ import cn from "classnames";
 import promo1 from "../../../../assets/images/promotions/promo1.svg";
 import {
   ALL_MARKETS_PAGE_LINK,
-  GetLoginLink,
+  GetRegistrationLink,
   HEADER_SMALL_HEIGHT,
   WITHDRAWAL_PAGE_LINK,
 } from "../../../../helpers/constants";
@@ -297,7 +297,7 @@ const PromotionContent = () => {
         sectionRef={promo4Ref}
         image={promo4}
         btnTitle={t("index_promotion4-btn-text")}
-        link={GetLoginLink()}
+        link={GetRegistrationLink()}
         isRedPalette
         isReverseOrder
       >

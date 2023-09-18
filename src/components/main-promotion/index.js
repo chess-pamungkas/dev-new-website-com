@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import ButtonLink from "../shared/button-link";
-import { GetLoginLink } from "../../helpers/constants";
+import { GetRegistrationLink } from "../../helpers/constants";
 import TitlesAnimation from "../shared/titles-animation";
 import { MarketingContext } from "../../context/marketing-context";
 import {
@@ -67,7 +67,7 @@ const MainPromotion = ({ className, isShowHero = true }) => {
             </span>
           </h1>
           <ButtonLink
-            link={GetLoginLink()}
+            link={GetRegistrationLink()}
             className={cn({
               "button-link--snake-animation": isAnimationFinished,
             })}

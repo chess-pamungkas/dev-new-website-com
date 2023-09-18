@@ -5,7 +5,7 @@ import promotion from "../../../assets/images/accounts-type/promotion.svg";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import AccountsType from "../../accounts-type";
 import middlePromotion from "../../../assets/images/accounts-type/middle-promotion.svg";
-import { GetLoginLink } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import icon from "../../../assets/images/icon--white.svg";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import cn from "classnames";
@@ -35,7 +35,7 @@ const AccountsTypePageContent = () => {
         image={middlePromotion}
         btnClassName="button-link--ghost"
         btnTitle={t("accounts-type_top-market-mid-promo-btn")}
-        link={GetLoginLink()}
+        link={GetRegistrationLink()}
       />
       <TopMarketPromotion
         className={cn("bottom-promotion", {
@@ -44,7 +44,7 @@ const AccountsTypePageContent = () => {
         image={icon}
         btnClassName="button-link--ghost"
         btnTitle={t("accounts-type_top-market-bot-promo-btn")}
-        link={GetLoginLink()}
+        link={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
           localizationText="accounts-type_top-market-bot-promo-text"

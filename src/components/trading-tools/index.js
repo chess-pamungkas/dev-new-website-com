@@ -5,7 +5,7 @@ import { getPlatforms } from "../../helpers/config";
 import PlatformBlock from "./components/platform-block";
 import ButtonLink from "../shared/button-link";
 import DeviceBlock from "./components/device-block";
-import { DIR_LTR, DIR_RTL, GetLoginLink } from "../../helpers/constants";
+import { DIR_LTR, DIR_RTL, GetRegistrationLink } from "../../helpers/constants";
 import { useTrail } from "react-spring";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
@@ -77,7 +77,7 @@ const TradingTools = ({ className }) => {
             accentClassName="highlighted-in-red"
           />
         </h2>
-        <ButtonLink link={GetLoginLink()} className="trading-tools__btn">
+        <ButtonLink link={GetRegistrationLink()} className="trading-tools__btn">
           {t("index_trading-tools-btn-text")}
         </ButtonLink>
       </div>

@@ -6,7 +6,7 @@ import HighlightedLocalizationText from "../../shared/highlighted-localization-t
 import MetaTrader from "../../meta-trader";
 import TopMarketPromotion from "../../top-market-promotion";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetLoginLink } from "../../../helpers/constants";
+import { GetRegistrationLink } from "../../../helpers/constants";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
@@ -51,7 +51,7 @@ const PlatformsPageContent = () => {
           image={icon}
           btnClassName="button-link--red"
           btnTitle={t("platforms_bottom-top-market-promo-btn")}
-          link={GetLoginLink()}
+          link={GetRegistrationLink()}
         >
           <HighlightedLocalizationText
             localizationText="platforms_bottom-top-market-promo-text"
