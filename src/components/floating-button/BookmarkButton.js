@@ -3,7 +3,7 @@ import "../../assets/styles/Bookmark.scss";
 import ButtonLink from "../shared/button-link";
 import { GetRegistrationLink } from "../../helpers/constants";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-
+import ChevronIcon from "../../assets/images/icons/chevron.svg";
 function Bookmark() {
   const [isExpanded, setExpanded] = useState(false);
   const [isVisible, setVisible] = useState(false);
@@ -72,9 +72,11 @@ function Bookmark() {
           {t("button-sign-up")}
         </ButtonLink>
       ) : (
-        <div className={`text ${isBlinking ? "blinking" : ""}`}>
-          <span> {"<"} </span>
-        </div>
+        <img
+          src={ChevronIcon}
+          alt="Chevron"
+          className={`text ${isBlinking ? "blinking" : ""}`}
+        />
       )}
     </div>
   );
