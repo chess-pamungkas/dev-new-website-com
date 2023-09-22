@@ -7,9 +7,21 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 function Bookmark() {
   const [isExpanded, setExpanded] = useState(false);
   const [isVisible, setVisible] = useState(false);
+  const [isBlinking, setBlinking] = useState(true);
+
   const bookmarkRef = useRef(null);
   const { t } = useTranslation();
 
+  useEffect(() => {
+    // Start blinking when first appears
+    if (isVisible && !isExpanded) {
+      const timeout = setTimeout(() => {
+        setBlinking(false); // stop blinking after 5 seconds
+      }, 5000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [isVisible, isExpanded]);
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -59,7 +71,9 @@ function Bookmark() {
           {t("button-sign-up")}
         </ButtonLink>
       ) : (
-        "<"
+        <div className={`text ${isBlinking ? "blinking" : ""}`}>
+          <span> {"<"} </span>
+        </div>
       )}
     </div>
   );

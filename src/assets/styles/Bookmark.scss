@@ -55,10 +55,19 @@
    }
 
    &.closed {
-      background-color: gray;
-      opacity: 1;
-      background-color: rgba(244, 240, 242, 0.67);
-      color: map-get($colors, "red"); // This ensures the "<" symbol is also white.
+      background-color: rgba(204, 204, 204, 0.4);
+
+      &.text {
+         opacity: 1; // Override to ensure .text has full opacity
+      }
+   }
+
+   .text {
+      font-weight: 700;
+      font-size: 30px; // Adjust this to your desired size
+      justify-content: center;
+      align-items: center;
+      color: map-get($colors, "red");
    }
 
    &.expanded {
@@ -74,5 +83,20 @@
 
    @media (min-width: 769px) {
       display: none;
+   }
+   @keyframes blink {
+      0% {
+         opacity: 0.2;
+      }
+      50% {
+         opacity: 1;
+      }
+      100% {
+         opacity: 0.2;
+      }
+   }
+
+   .blinking {
+      animation: blink 1s infinite;
    }
 }
