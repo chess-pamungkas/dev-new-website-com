@@ -40,7 +40,7 @@ function Bookmark() {
     setExpanded(!isExpanded);
   };
 
-  const bookmarkClass = `${isExpanded ? "expanded" : ""} ${
+  const bookmarkClass = `${isExpanded ? "expanded" : "closed"} ${
     isVisible ? "" : "hidden"
   }`;
 
@@ -56,7 +56,7 @@ function Bookmark() {
           link={GetRegistrationLink()}
           className={"button-link--header header__start"}
         >
-          {t("button-get-started")}
+          {t("button-sign-up")}
         </ButtonLink>
       ) : (
         "<"

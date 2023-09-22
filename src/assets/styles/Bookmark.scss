@@ -4,8 +4,6 @@
    bottom: 250px;
    z-index: 9999;
    padding: 10px;
-   background-color: #fff;
-   border: 1px solid #ddd;
    border-radius: 50%;
    transition:
       background-color 0.3s,
@@ -17,8 +15,14 @@
    align-items: center;
    cursor: pointer;
 
+   &.closed {
+      background-color: gray;
+      color: #fff;
+   }
+
    &.expanded {
-      background-color: orange;
+      background-color: red;
+      color: white;
       width: 120px;
       border-radius: 20px;
    }
