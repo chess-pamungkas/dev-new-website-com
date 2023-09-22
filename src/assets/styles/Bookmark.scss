@@ -58,11 +58,13 @@
       background-color: rgba(204, 204, 204, 0.4);
 
       &.text {
+         pointer-events: none;
          opacity: 1; // Override to ensure .text has full opacity
       }
    }
 
    .text {
+      pointer-events: none;
       font-weight: 700;
       font-size: 30px; // Adjust this to your desired size
       justify-content: center;

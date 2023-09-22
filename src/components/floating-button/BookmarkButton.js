@@ -25,11 +25,12 @@ function Bookmark() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 500) {
+      if (scrollPosition > 100) {
         // Adjust this value as per your first section height
         setVisible(true);
       } else {
         setVisible(false);
+        setBlinking(true); // Reset blinking when it disappears
       }
     };
 
