@@ -54,7 +54,7 @@ function Bookmark() {
       {isExpanded ? (
         <ButtonLink
           link={GetRegistrationLink()}
-          className={"button-link--header header__start"}
+          className="bookmark-button-link"
         >
           {t("button-sign-up")}
         </ButtonLink>
