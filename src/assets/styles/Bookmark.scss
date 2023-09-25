@@ -3,16 +3,15 @@
 
 .bookmark {
    position: fixed;
-   right: -10px;
+   right: -5px;
    bottom: 250px;
    z-index: 8;
    padding: 10px;
-   border-radius: 50%;
+
    transition:
       background-color 0.3s,
       width 0.3s;
-   width: 30px;
-   height: 30px;
+
    display: flex;
    justify-content: center;
    align-items: center;
@@ -56,6 +55,9 @@
 
    &.closed {
       background-color: rgba(204, 204, 204, 0.4);
+      border-radius: 31%;
+      width: 0px;
+      height: 30px;
 
       &.text {
          pointer-events: none;
