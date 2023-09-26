@@ -13,22 +13,22 @@ const CTraderPage = () => {
   return (
     // Hidden for now
     <>
-      {/* <Seo
+      <Seo
         title={t("page-ctrader-title")}
         description={t("page-ctrader-description")}
-      /> */}
-      <Seo
+      />
+      {/* <Seo
         title={t("system-page-coming-soon-title")}
         fsaRobots={"noindex"}
         cysecRobots={"noindex"}
-      />
-      {/* <CtraderPageContent /> */}
-      <SystemInfoComponent
-          image={comingSoonImage}
-          title={t("system-page-coming-soon-title")}
-          subTitle={t("system-page-coming-soon-subtitle")}
-          goBackBtnTitle={t("system-page-go-back-btn")}
-        />
+      /> */}
+      <CtraderPageContent />
+      {/* <SystemInfoComponent
+        image={comingSoonImage}
+        title={t("system-page-coming-soon-title")}
+        subTitle={t("system-page-coming-soon-subtitle")}
+        goBackBtnTitle={t("system-page-go-back-btn")}
+      /> */}
     </>
   );
 };
