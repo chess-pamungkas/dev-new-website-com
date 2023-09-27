@@ -12,8 +12,7 @@ import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 import { isCySEC } from "./entity-resolver";
 import { useWindowSize } from "./hooks/use-window-size";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-const isAppleSilicon = /Macintosh(.*?)AppleWebKit/.test(navigator.userAgent);
-console.log(isAppleSilicon, "what is");
+
 export const CTRADER_DOWNLOAD_LINKS = {
   getAndroidLink: () =>
     isCySEC
@@ -30,8 +29,6 @@ export const CTRADER_DOWNLOAD_LINKS = {
   getWebTraderLink: () =>
     isCySEC ? "https://app.oqtima.eu/" : "https://app.oqtima.com/",
   getMacLink: () => (isCySEC ? null : null),
-  getSiliconMacLink: () =>
-    "https://apps.apple.com/cy/app/oqtima-ctrader/id1672522637",
 };
 
 export const TRADING_VIEW_DOWNLOAD_LINKS = {
@@ -585,8 +582,6 @@ export const getCTraderDownloadLink = () => {
       return CTRADER_DOWNLOAD_LINKS.getIOSLink();
     case isAndroid:
       return CTRADER_DOWNLOAD_LINKS.getAndroidLink();
-    case isAppleSilicon:
-      return CTRADER_DOWNLOAD_LINKS.getSiliconMacLink();
     case isWindows:
       return CTRADER_DOWNLOAD_LINKS.getWindowsLink();
     default:
@@ -618,13 +613,6 @@ export const cTraderDownloadTabs = () => {
         <>
           <a href={CTRADER_DOWNLOAD_LINKS.getWindowsLink()}>
             {t("ctrader_mt-promotion-download-windows")}
-          </a>
-          <a
-            href={CTRADER_DOWNLOAD_LINKS.getSiliconMacLink()}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {t("ctrader_mt-promotion-download-mac-silicon")}
           </a>
         </>
       ),
