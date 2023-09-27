@@ -10,7 +10,8 @@
 
    transition:
       background-color 0.3s,
-      width 0.3s;
+      width 0.3s,
+      border-radius 0.3s; // Adding transition for border-radius
 
    display: flex;
    justify-content: center;
@@ -55,8 +56,11 @@
 
    &.closed {
       background-color: rgba(204, 204, 204, 0.4);
-      border-radius: 31%;
-      width: 0px;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      width: 0px; // You might want to adjust this since it'll make the element essentially invisible.
       height: 30px;
 
       &.text {
