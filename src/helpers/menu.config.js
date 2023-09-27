@@ -128,17 +128,18 @@ const CYSEC_PLATFORMS_TAB = {
     //   icon: PlatformsIcon,
     //   description: "header-nav-tab-platforms-general-desc",
     // },
-    {
-      title: "header-nav-tab-platforms-ctrader-title",
-      link: CTRADER_PAGE_LINK,
-      icon: CTraderIcon,
-      description: "header-nav-tab-platforms-ctrader-desc",
-    },
+
     {
       title: "header-nav-tab-platforms-mt5-title",
       link: MT5_PAGE_LINK,
       icon: MT5Icon,
       description: "header-nav-tab-platforms-mt5-desc",
+    },
+    {
+      title: "header-nav-tab-platforms-ctrader-title",
+      link: CTRADER_PAGE_LINK,
+      icon: CTraderIcon,
+      description: "header-nav-tab-platforms-ctrader-desc",
     },
   ],
 };
@@ -153,17 +154,16 @@ const FSA_PLATFORMS_TAB = {
     //   description: "header-nav-tab-platforms-general-desc",
     // },
     {
-      title: "header-nav-tab-platforms-ctrader-title",
-      link: CTRADER_PAGE_LINK,
-      icon: CTraderIcon,
-      description: "header-nav-tab-platforms-ctrader-desc",
-    },
-
-    {
       title: "header-nav-tab-platforms-mt4-title",
       link: MT4_PAGE_LINK,
       icon: MT4Icon,
       description: "header-nav-tab-platforms-mt4-desc",
+    },
+    {
+      title: "header-nav-tab-platforms-ctrader-title",
+      link: CTRADER_PAGE_LINK,
+      icon: CTraderIcon,
+      description: "header-nav-tab-platforms-ctrader-desc",
     },
   ],
 };
