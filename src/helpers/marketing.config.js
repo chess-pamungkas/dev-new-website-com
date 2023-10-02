@@ -38,6 +38,7 @@ export const CONTENT_HEROES = {
     image: heroImage,
     name: "index_main-promotion-hero-gianluigi-buffon-name",
     text: `index_main-promotion-hero-gianluigi-buffon-text${sitePostfix}`,
+    surname: "index_main-promotion-hero-gianluigi-buffon-surname", // Add surname field
   },
   sea: {
     image: heroImage,
@@ -80,10 +81,16 @@ const FSA_DEFAULT_TEXT_SEQUENCE = [
   "index_main-promotion-animated-text-stock-traders",
   "index_main-promotion-animated-text-you",
 ];
+const JP_DEFAULT_TEXT_NO_SEQUENCE = [
+  "index_main-promotion-animated-text-all-customers", // ticket https://oqtima-website.atlassian.net/browse/OW-429
+];
 
-export const getDefaultTextSequence = () =>
-  isCySEC ? CYSEC_DEFAULT_TEXT_SEQUENCE : FSA_DEFAULT_TEXT_SEQUENCE;
-
+export const getDefaultTextSequence = (currentLanguage) => {
+  if (currentLanguage === "jp") {
+    return JP_DEFAULT_TEXT_NO_SEQUENCE;
+  }
+  return isCySEC ? CYSEC_DEFAULT_TEXT_SEQUENCE : FSA_DEFAULT_TEXT_SEQUENCE;
+};
 export const SECT1_TEXT_SEQUENCES = {
   forex: [
     "index_main-promotion-animated-text-forex-traders",

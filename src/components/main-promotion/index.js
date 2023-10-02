@@ -16,10 +16,10 @@ import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 const MainPromotion = ({ className, isShowHero = true }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { content, sect1 } = useContext(MarketingContext);
   const isRTL = useRtlDirection();
-  const DEFAULT_TEXT_SEQUENCE = getDefaultTextSequence();
+  const DEFAULT_TEXT_SEQUENCE = getDefaultTextSequence(i18n.language); // Pass the current language here
 
   const hero =
     CONTENT_HEROES[transformParamToKey(content)] || CONTENT_HEROES.default;
@@ -37,6 +37,10 @@ const MainPromotion = ({ className, isShowHero = true }) => {
         <>
           <div className="main-promotion__person">
             <span className="main-promotion__name">{t(hero.name)}</span>
+            {i18n.language === "jp" &&
+              hero.surname && ( // Conditionally render surname for Japanese locale
+                <span className="main-promotion__name">{t(hero.surname)}</span>
+              )}
             <span className="main-promotion__description">{t(hero.text)}</span>
           </div>
           <div className="main-promotion__photo">
@@ -59,11 +63,15 @@ const MainPromotion = ({ className, isShowHero = true }) => {
               {t("index_main-promotion-title")}
             </span>
             <span className="main-promotion__title main-promotion__title--big">
-              <TitlesAnimation
-                titles={titles}
-                isAnimationFinished={isAnimationFinished}
-                setIsAnimationFinished={setIsAnimationFinished}
-              />
+              {i18n.language !== "jp" ? (
+                <TitlesAnimation
+                  titles={titles}
+                  isAnimationFinished={isAnimationFinished}
+                  setIsAnimationFinished={setIsAnimationFinished}
+                />
+              ) : (
+                <span>{t(titles[0])}</span>
+              )}
             </span>
           </h1>
           <ButtonLink
