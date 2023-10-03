@@ -27,6 +27,7 @@ const Performance = ({ className, title, advantages }) => {
               key={`advantage-${stringTransformToKebabCase(block.text)}`}
               icon={block.icon}
               text={block.text}
+              subtext={block.subtext}
               accent={block.accent}
             />
           ))}

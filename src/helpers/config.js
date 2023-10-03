@@ -24,36 +24,43 @@ export const ADVANTAGES = [
     icon: AdvantageIcon1,
     text: "index_performance-advantage1",
     accent: "performance-advantage1-accent",
+    subtext: "index_performance-advantage1-subtext", // added this for jp
   },
   {
     icon: AdvantageIcon2,
     text: `index_performance-advantage2${sitePostfix}`,
     accent: `performance-advantage2-accent${sitePostfix}`,
+    subtext: "index_performance-advantage2-subtext", // added this for jp
   },
   {
     icon: AdvantageIcon3,
     text: "index_performance-advantage3",
     accent: "performance-advantage3-accent",
+    subtext: "index_performance-advantage3-subtext", // added this for jp
   },
   {
     icon: AdvantageIcon4,
     text: "index_performance-advantage4",
     accent: "performance-advantage4-accent",
+    subtext: "index_performance-advantage4-subtext", // added this for jp
   },
   {
     icon: AdvantageIcon5,
     text: `index_performance-advantage5${sitePostfix}`,
     accent: `performance-advantage5-accent${sitePostfix}`,
+    subtext: "index_performance-advantage5-subtext", // added this for jp
   },
   {
     icon: AdvantageIcon6,
     text: `index_performance-advantage6${sitePostfix}`,
     accent: `performance-advantage6-accent${sitePostfix}`,
+    subtext: "index_performance-advantage6-subtext", // added this for jp
   },
   {
     icon: AdvantageIcon7,
     text: "index_performance-advantage7",
     accent: "performance-advantage7-accent",
+    subtext: "index_performance-advantage7-subtext", // added this for jp
   },
 ];
 
