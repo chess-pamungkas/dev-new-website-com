@@ -5313,40 +5313,23 @@ export const MT5Icon = ({ className }) => (
 
 export const CTraderIcon = ({ className }) => (
   <svg
+    version="1.1"
     className={className}
     id="Group_9634"
-    data-name="Group 9634"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
-    width="34.709"
-    height="34.703"
-    viewBox="0 0 34.709 34.703"
+    x="0px"
+    y="0px"
+    viewBox="0 0 34.7 34.7"
+    style={{ enableBackground: "new 0 0 34.7 34.7" }}
+    xmlSpace="preserve"
   >
-    <defs>
-      <clipPath id="clip-path">
-        <rect
-          id="Rectangle_8200"
-          data-name="Rectangle 8200"
-          width="34.709"
-          height="34.703"
-          fill="none"
-        />
-      </clipPath>
-    </defs>
-    <g
-      id="Group_9634-2"
-      data-name="Group 9634"
-      transform="translate(0 0)"
-      clipPath="url(#clip-path)"
-    >
-      <path
-        id="Path_16788"
-        data-name="Path 16788"
-        d="M17.355,0A17.352,17.352,0,1,0,34.708,17.351,17.355,17.355,0,0,0,17.355,0m0,1.9A15.7,15.7,0,0,1,32.2,13.029a11.611,11.611,0,0,1-2.432,10.663,14.808,14.808,0,0,1-5.577,3.752c-4.662,1.863-9.559.323-11.023-3.279s1.126-8.048,5.777-9.939a10.443,10.443,0,0,1,7.034-.425l.85-4.24-.511-.1a30.811,30.811,0,0,0-6.184-.643c-11.25,0-16.722,7.78-16.722,14.953,0,.087,0,.174,0,.263A15.46,15.46,0,0,1,17.355,1.9"
-        transform="translate(0 0)"
-        fill="#f40"
-      />
-    </g>
+    <style type="text/css">{`.st0{fill:#FF4400;}`}</style>
+    <path
+      id="Path_16788"
+      className="st0"
+      d="M17.4,0C7.8,0,0,7.8,0,17.4s7.8,17.4,17.4,17.4s17.4-7.8,17.4-17.4C34.7,7.8,26.9,0,17.4,0 M17.4,1.9C24.2,2,30.2,6.5,32.2,13c1,3.7,0.1,7.7-2.4,10.7c-1.5,1.7-3.5,2.9-5.6,3.8c-4.7,1.9-9.6,0.3-11-3.3s1.1-8,5.8-9.9c2.2-1,4.7-1.1,7-0.4l0.9-4.2l-0.5-0.1c-2-0.4-4.1-0.6-6.2-0.6c-11.2,0-16.7,7.8-16.7,15c0,0.1,0,0.2,0,0.3C-0.3,16.3,3,7.1,10.7,3.4C12.8,2.4,15,1.9,17.4,1.9"
+    />
   </svg>
 );
 
