@@ -4,12 +4,16 @@ import ButtonLink from "../shared/button-link";
 import { GetRegistrationLink } from "../../helpers/constants";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import ChevronIcon from "../../assets/images/icons/chevron.svg";
+
 function Bookmark() {
   const [isExpanded, setExpanded] = useState(false);
   const [isVisible, setVisible] = useState(false);
   const [isBlinking, setBlinking] = useState(true);
+  const [isShaking, setShaking] = useState(false);
+  const [isClosing, setClosing] = useState(false);
 
   const bookmarkRef = useRef(null);
+  const buttonRef = useRef(null);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -22,6 +26,7 @@ function Bookmark() {
       return () => clearTimeout(timeout);
     }
   }, [isVisible, isExpanded]);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -50,11 +55,32 @@ function Bookmark() {
   }, []);
 
   const handleBookmarkClick = () => {
-    setExpanded(!isExpanded);
+    if (!isExpanded) {
+      // Expand the bookmark
+      setExpanded(true);
+      // Set the shake effect after 1 second
+      setTimeout(() => {
+        setShaking(true);
+        // Set the closing effect after 2 seconds
+        setTimeout(() => {
+          setShaking(false);
+          setClosing(true);
+          // Close the bookmark after 0.5 seconds
+          setTimeout(() => {
+            setExpanded(false);
+            setClosing(false);
+          }, 500);
+        }, 2000);
+      }, 1000);
+    }
   };
 
   const bookmarkClass = `${isExpanded ? "expanded" : "closed"} ${
     isVisible ? "" : "hidden"
+  }`;
+
+  const buttonClass = `${isShaking ? "shaking" : ""} ${
+    isClosing ? "closing" : ""
   }`;
 
   return (
@@ -66,8 +92,9 @@ function Bookmark() {
       {/* If expanded, show 'Close' otherwise show the bookmark icon */}
       {isExpanded ? (
         <ButtonLink
+          ref={buttonRef}
           link={GetRegistrationLink()}
-          className="bookmark-button-link"
+          className={`bookmark-button-link ${buttonClass}`}
         >
           {t("button-sign-up")}
         </ButtonLink>

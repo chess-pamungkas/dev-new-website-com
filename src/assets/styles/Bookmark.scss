@@ -73,7 +73,23 @@
       align-items: center;
       color: map-get($colors, "red");
    }
+   .shaking {
+      animation: shake 0.5s ease-in-out infinite;
+   }
 
+   @keyframes shake {
+      0%,
+      100% {
+         transform: translateX(0);
+      }
+      25%,
+      75% {
+         transform: translateX(-2px); /* Adjust the amount of translation */
+      }
+      50% {
+         transform: translateX(2px); /* Adjust the amount of translation */
+      }
+   }
    &.expanded {
       // background-color: red;
       color: map-get($colors, "white"); // Ensuring the text color inside the expanded bookmark is white.
