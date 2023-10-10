@@ -600,9 +600,9 @@ export const cTraderDownloadTabs = () => {
           <a href={CTRADER_DOWNLOAD_LINKS.getAndroidLink()}>
             {t("ctrader_mt-promotion-download-android")}
           </a>
-          <a href={CTRADER_DOWNLOAD_LINKS.getIOSLink()}>
+          {!isCySEC && <a href={CTRADER_DOWNLOAD_LINKS.getIOSLink()}>
             {t("ctrader_mt-promotion-download-ios")}
-          </a>
+          </a>}
         </>
       ),
     },
