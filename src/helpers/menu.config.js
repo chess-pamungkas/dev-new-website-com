@@ -135,12 +135,12 @@ const CYSEC_PLATFORMS_TAB = {
       icon: MT5Icon,
       description: "header-nav-tab-platforms-mt5-desc",
     },
-    // {
-    //   title: "header-nav-tab-platforms-ctrader-title",
-    //   link: CTRADER_PAGE_LINK,
-    //   icon: CTraderIcon,
-    //   description: "header-nav-tab-platforms-ctrader-desc",
-    // },
+    {
+      title: "header-nav-tab-platforms-ctrader-title",
+      link: CTRADER_PAGE_LINK,
+      icon: CTraderIcon,
+      description: "header-nav-tab-platforms-ctrader-desc",
+    },
   ],
 };
 
