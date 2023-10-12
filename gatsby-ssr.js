@@ -48,6 +48,11 @@ export const onRenderBody = ({
       id="convrs-webchat"
       src={process.env.GATSBY_CONVRS_LIVECHAT}
     />,
+    <script
+      key="mt-widget"
+      type="text/javascript"
+      src="https://metatraderweb.app/trade/widget.js"
+    />,
   ]);
   setHeadComponents([
     // Default title and description for Google bot fast mode
