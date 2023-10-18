@@ -857,7 +857,7 @@ export const BrFlagIcon = ({ className }) => (
 export const MyFlagIcon = ({ className }) => (
   <StaticImage
     className={className}
-    src="../../../assets/images/icons/languages/en.svg"
+    src="../../../assets/images/icons/languages/my.svg"
     alt="my"
     width={FLAG_WIDTH}
   />
