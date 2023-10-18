@@ -854,6 +854,15 @@ export const BrFlagIcon = ({ className }) => (
   />
 );
 
+export const MyFlagIcon = ({ className }) => (
+  <StaticImage
+    className={className}
+    src="../../../assets/images/icons/languages/en.svg"
+    alt="my"
+    width={FLAG_WIDTH}
+  />
+);
+
 export const SearchIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

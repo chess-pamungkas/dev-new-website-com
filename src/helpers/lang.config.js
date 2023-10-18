@@ -77,6 +77,13 @@ const LANG_CONFIG = [
     name: "日本",
     URIPart: "/jp",
   },
+  // Malay (Malaysia)
+  {
+    id: "my",
+    icon: "MyFlagIcon",
+    name: "Melayu",
+    URIPart: "/my",
+  },
   /*// German
   {
     id: "de",
@@ -142,12 +149,6 @@ const LANG_CONFIG = [
    id: "cz",
    icon: "CzFlagIcon",
    name: "Čeština",
- },
- // Malay (Malaysia)
- {
-   id: "my",
-   icon: "MyFlagIcon",
-   name: "Melayu",
  },
  // Korean
  {
