@@ -28,6 +28,7 @@ export const useSearchData = () => {
             jp
             br
             de
+            my
           }
         }
       }
