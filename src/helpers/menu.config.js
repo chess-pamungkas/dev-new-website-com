@@ -52,6 +52,7 @@ import {
   SPREADS_AND_FEES_PAGE_LINK,
   WITHDRAWAL_PAGE_LINK,
   TRADING_VIEW_PAGE_LINK,
+  TRADING_TOOLS_PAGE_LINK,
   ETF_PAGE_LINK,
   GetRegistrationLink,
 } from "./constants";
@@ -189,6 +190,12 @@ const FSA_TRADING_TAB = {
       icon: SpreadAndFeesIcon,
       description: "header-nav-tab-trading-funding-withdrawals-spreads-desc",
     },
+    {
+      title: "header-nav-tab-trading-trading-tools-title",
+      link: TRADING_TOOLS_PAGE_LINK,
+      icon: TradingToolsIcon,
+      description: "header-nav-tab-trading-trading-tools-desc",
+    },
     // Probably we will need these items later
     // {
     //   title: "header-nav-tab-trading-copy-trading-title",
@@ -201,12 +208,6 @@ const FSA_TRADING_TAB = {
     //   link: "",
     //   icon: Logo,
     //   description: "header-nav-tab-trading-why-trade-with-desc",
-    // },
-    // {
-    //   title: "header-nav-tab-trading-trading-tools-title",
-    //   link: "",
-    //   icon: Logo,
-    //   description: "header-nav-tab-trading-trading-tools-desc",
     // },
     // {
     //   title: "header-nav-tab-trading-trading-tools-tradeview-title",
