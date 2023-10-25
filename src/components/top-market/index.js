@@ -18,13 +18,17 @@ const TopMarket = ({
   link2,
   btn3Title,
   link3,
+  btn4Title,
+  link4,
   subImageTemplate,
   isAnchorLink1 = false,
   isAnchorLink2 = false,
   isAnchorLink3 = false,
+  isAnchorLink4 = false,
   btnClassName1,
   btnClassName2,
   btnClassName3,
+  btnClassName4,
 }) => {
   const isRTL = useRtlDirection();
 
@@ -101,6 +105,13 @@ const TopMarket = ({
                   link3,
                   isAnchorLink3,
                   cn("top-market__btn--white", btnClassName3)
+                )}
+              {btn4Title &&
+                getButton(
+                  btn4Title,
+                  link4,
+                  isAnchorLink4,
+                  cn("top-market__btn--white", btnClassName4)
                 )}
             </div>
           )}

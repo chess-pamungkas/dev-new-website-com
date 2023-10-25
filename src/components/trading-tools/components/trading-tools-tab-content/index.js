@@ -1,7 +1,14 @@
 import React from "react";
 import cn from "classnames";
 
-const TradingToolsTabContent = ({ className, img1, img2, title, children }) => (
+const TradingToolsTabContent = ({
+  className,
+  img1,
+  img2,
+  title,
+  children,
+  darkBG = false,
+}) => (
   <div className={cn("trading-tools-tab-content", className)}>
     <div className="trading-tools-tab-content__image-wrapper">
       <img
@@ -18,8 +25,20 @@ const TradingToolsTabContent = ({ className, img1, img2, title, children }) => (
       )}
     </div>
     <div className="trading-tools-tab-content__text-wrapper">
-      <h3 className="trading-tools-tab-content__title">{title}</h3>
-      <div className="trading-tools-tab-content__text">{children}</div>
+      <h3
+        className={cn("trading-tools-tab-content__title", {
+          "trading-tools-tab-content__title--red": darkBG,
+        })}
+      >
+        {title}
+      </h3>
+      <div
+        className={cn("trading-tools-tab-content__text", {
+          "trading-tools-tab-content__text--white": darkBG,
+        })}
+      >
+        {children}
+      </div>
     </div>
   </div>
 );
