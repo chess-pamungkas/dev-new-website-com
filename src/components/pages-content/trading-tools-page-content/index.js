@@ -11,6 +11,7 @@ import { GetRegistrationLink } from "../../../helpers/constants";
 import TopMarketPromotion from "../../top-market-promotion";
 import FeaturedIdeas from "../../trading-tools/components/featured-ideas";
 import MarketBuzz from "../../trading-tools/components/market-buzz";
+import TradingCalendar from "../../trading-tools/components/trading-calendar";
 
 const TradingToolsPageContent = () => {
   const { t } = useTranslation();
@@ -32,7 +33,7 @@ const TradingToolsPageContent = () => {
           />
         }
         btn1Title={t("trading-tools_top-market-btn1-title")}
-        link1="#alphaGeneration"
+        link1="#tradingCalendar"
         isAnchorLink1
         btn2Title={t("trading-tools_top-market-btn2-title")}
         link2="#featuredIdeas"
@@ -40,6 +41,9 @@ const TradingToolsPageContent = () => {
         btn3Title={t("trading-tools_top-market-btn3-title")}
         link3="#marketBuzz"
         isAnchorLink3
+        btn4Title={t("trading-tools_top-market-btn4-title")}
+        link4="#alphaGeneration"
+        isAnchorLink4
       >
         <HighlightedLocalizationText
           localizationText="trading-tools_top-market-promo-text"
@@ -48,9 +52,10 @@ const TradingToolsPageContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
-      <AlphaGeneration />
+      <TradingCalendar />
       <FeaturedIdeas />
       <MarketBuzz />
+      <AlphaGeneration />
       <TopMarketPromotion
         className={cn("bottom-promotion", {
           "bottom-promotion--rtl": isRTL,
