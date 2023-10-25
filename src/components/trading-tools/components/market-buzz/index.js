@@ -2,11 +2,16 @@ import React from "react";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
-import { DIR_LTR, DIR_RTL } from "../../../../helpers/constants";
+import {
+  DIR_LTR,
+  DIR_RTL,
+  GetRegistrationLink,
+} from "../../../../helpers/constants";
 import MarketBuzzInfo from "../market-buzz-info";
 import { MARKET_BUZZ_BLOCKS } from "../../../../helpers/trading-tools.config";
 import MarketBuzzBlock from "../market-buzz-block";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
+import ButtonLink from "../../../shared/button-link";
 
 const MarketBuzz = ({ className }) => {
   const isRTL = useRtlDirection();
@@ -41,6 +46,12 @@ const MarketBuzz = ({ className }) => {
             img={item.image}
           />
         ))}
+        <ButtonLink
+          link={GetRegistrationLink()}
+          className="button-link button-link--red trading-tools-btn"
+        >
+          {t("trading-tools_top-market-promo-btn3")}
+        </ButtonLink>
       </div>
     </section>
   );

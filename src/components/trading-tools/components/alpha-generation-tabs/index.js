@@ -7,7 +7,7 @@ import {
 } from "../../../shared/icons";
 import Tabs from "../../../shared/tabs";
 import alpha1 from "../../../../assets/images/trading-tools/alpha1.png";
-import alpha21 from "../../../../assets/images/trading-tools/alpha21.png";
+import alpha21 from "../../../../assets/images/trading-tools/alpha2_1.png";
 import alpha22 from "../../../../assets/images/trading-tools/alpha2_2.png";
 import alpha3 from "../../../../assets/images/trading-tools/alpha3.png";
 import TradingToolsTabContent from "../trading-tools-tab-content";
@@ -23,6 +23,7 @@ const AlphaGenerationTabs = () => {
       icon: <AlphaGeneration1 className="trading-tools-tabs__icon" />,
       content: (
         <TradingToolsTabContent
+          darkBG
           img1={alpha1}
           title={t("trading-tools_alpha-generation_tabs_content1_title")}
         >
@@ -37,6 +38,7 @@ const AlphaGenerationTabs = () => {
       icon: <AlphaGeneration2 className="trading-tools-tabs__icon" />,
       content: (
         <TradingToolsTabContent
+          darkBG
           img1={alpha21}
           img2={alpha22}
           title={t("trading-tools_alpha-generation_tabs_content2_title")}
@@ -70,6 +72,7 @@ const AlphaGenerationTabs = () => {
       icon: <AlphaGeneration3 className="trading-tools-tabs__icon" />,
       content: (
         <TradingToolsTabContent
+          darkBG
           img1={alpha3}
           title={t("trading-tools_alpha-generation_tabs_content3_title")}
         >

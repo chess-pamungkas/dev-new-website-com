@@ -1,9 +1,14 @@
 import React from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
-import { DIR_LTR, DIR_RTL } from "../../../../helpers/constants";
+import {
+  DIR_LTR,
+  DIR_RTL,
+  GetRegistrationLink,
+} from "../../../../helpers/constants";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import FeaturedIdeasTabs from "../featured-ideas-tabs";
+import ButtonLink from "../../../shared/button-link";
 
 const FeaturedIdeas = ({ className }) => {
   const isRTL = useRtlDirection();
@@ -30,6 +35,12 @@ const FeaturedIdeas = ({ className }) => {
           </p>
         </div>
         <FeaturedIdeasTabs />
+        <ButtonLink
+          link={GetRegistrationLink()}
+          className="button-link button-link--red trading-tools-btn"
+        >
+          {t("trading-tools_top-market-promo-btn3")}
+        </ButtonLink>
       </div>
     </section>
   );
