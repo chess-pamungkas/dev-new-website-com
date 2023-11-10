@@ -55,6 +55,7 @@ import {
   TRADING_TOOLS_PAGE_LINK,
   ETF_PAGE_LINK,
   GetRegistrationLink,
+  VPS_PAGE_LINK,
 } from "./constants";
 import { isCySEC } from "./entity-resolver";
 import ClientResolverContext from "../context/client-resolver-context";
@@ -195,6 +196,12 @@ const FSA_TRADING_TAB = {
       link: TRADING_TOOLS_PAGE_LINK,
       icon: TradingToolsIcon,
       description: "header-nav-tab-trading-trading-tools-desc",
+    },
+    {
+      title: "header-nav-tab-trading-vps-title",
+      link: VPS_PAGE_LINK,
+      icon: TradingToolsIcon,
+      description: "header-nav-tab-trading-vps-desc",
     },
     // Probably we will need these items later
     // {
