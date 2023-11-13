@@ -1,0 +1,52 @@
+import React from "react";
+import cn from "classnames";
+import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
+import { useTranslation } from "gatsby-plugin-react-i18next";
+import ButtonLink from "../../../shared/button-link";
+import { GetRegistrationLink } from "../../../../helpers/constants";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
+import VPSAdvantageItem from "../vps-advantage-item";
+import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
+
+const VPSAdvantages = ({ className, advantages }) => {
+  const { t } = useTranslation();
+  const isRTL = useRtlDirection();
+
+  return (
+    <section
+      className={cn("vps-advantages", className, {
+        "vps-advantages--rtl": isRTL,
+      })}
+    >
+      <h2 className="vps-advantages__title">
+        {
+          <HighlightedLocalizationText
+            localizationText="vps_advantages-title"
+            wordsToHighlight="vps_advantages-title-accent"
+            primaryClassName="highlighted-in-white"
+            accentClassName="highlighted-in-red"
+          />
+        }
+      </h2>
+      <div className="vps-advantages__items">
+        {advantages.length > 0 &&
+          advantages.map((item) => (
+            <VPSAdvantageItem
+              key={`start-item-${stringTransformToKebabCase(item.title)}`}
+              icon={item.img}
+              text={item.text}
+              title={item.title}
+            />
+          ))}
+      </div>
+      <ButtonLink
+        link={GetRegistrationLink()}
+        className={cn("vps-advantages__btn")}
+      >
+        {t("vps_advantages-btn")}
+      </ButtonLink>
+    </section>
+  );
+};
+
+export default VPSAdvantages;

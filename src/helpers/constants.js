@@ -82,6 +82,7 @@ export const MT5_PAGE_LINK = "/mt5";
 export const CTRADER_PAGE_LINK = "/ctrader";
 export const TRADING_VIEW_PAGE_LINK = "/trading-view";
 export const TRADING_TOOLS_PAGE_LINK = "/trading-tools";
+export const VPS_PAGE_LINK = "/vps";
 export const WITHDRAWAL_PAGE_LINK = "/funding";
 export const SPREADS_AND_FEES_PAGE_LINK = "/spreads-and-fees";
 export const PROFESSIONAL_QUALIFICATION_PAGE_LINK =

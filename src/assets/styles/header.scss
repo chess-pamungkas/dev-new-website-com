@@ -5,12 +5,10 @@
   display: flex;
   justify-content: flex-end;
   padding-top: 10px;
-  padding-bottom: 10px;
   padding-right: 26px;
 
   @include desktop-lg {
     padding-top: 17px;
-    padding-bottom: 20px;
     padding-right: 68px;
   }
 
@@ -62,7 +60,7 @@
     background: map-get($colors, "white") 0% 0% no-repeat padding-box;
     height: $header-height-small;
     transition: all 0.4s ease-in-out;
-    transform: translateY(-50px);
+    transform: translateY(-40px);
     box-shadow: 0 6px 8px #00000029;
 
     // @include desktop-xl {
