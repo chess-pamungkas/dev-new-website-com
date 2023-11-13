@@ -28,6 +28,7 @@ import {
   AccountsIcon,
   SpreadAndFeesIcon,
   CTraderIcon,
+  VPSIcon,
 } from "../components/shared/icons";
 import {
   ACCOUNTS_TYPE_PAGE_LINK,
@@ -200,7 +201,7 @@ const FSA_TRADING_TAB = {
     {
       title: "header-nav-tab-trading-vps-title",
       link: VPS_PAGE_LINK,
-      icon: TradingToolsIcon,
+      icon: VPSIcon,
       description: "header-nav-tab-trading-vps-desc",
     },
     // Probably we will need these items later

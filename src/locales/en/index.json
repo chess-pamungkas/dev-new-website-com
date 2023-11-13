@@ -360,7 +360,7 @@
   "page-trading-tools-title": "Trading Tools",
   "page-trading-tools-description": "",
 
-  "page-vps-title": "VPS",
+  "page-vps-title": "Private VPS",
   "page-vps-description": "",
 
   "notification-stripe-cysec": "CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. The vast majority of retail investor accounts lose money when trading CFDs. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. Read OQtima Risk disclosure",
@@ -1732,8 +1732,8 @@
   "vps_advantages-adv3-text": "Let your Expert Advisors (EA) work uninterrupted. Our VPS ensures that your automated trading strategies run consistently and efficiently, with no downtime.",
   "vps_advantages-adv4-title": "Trade from Anywhere",
   "vps_advantages-adv4-text": "Access your trading platform on our VPS from any device, at any time. Whether you’re at home, in the office, or on the go, your trading platform is always within reach.",
-  "header-nav-tab-trading-vps-title": "VPS",
-  "header-nav-tab-trading-vps-desc": "Trade hundreds of the hottest Exchange Traded funds",
+  "header-nav-tab-trading-vps-title": "Private VPS",
+	"header-nav-tab-trading-vps-desc": "Get a high-performance Forex VPS with OQtima",
 
   "footer-copyright-paragraph1--global-only": "OQtima Global Limited, duly authorized to operated under the OQtima Brand",
   "footer-copyright-paragraph2--global-only": "Risk Warning: The information provided on this website is general in nature and does not constitute personal financial advice. Before acting on any information on this website, you should consider the appropriateness of the information having regard to your objectives, financial situation and needs. Investing in CFDs and Margin FX Contracts carries significant risks and is not suitable for all investors. You may lose more than your initial deposit. You don’t own, or have, any interest in the underlying assets.",
