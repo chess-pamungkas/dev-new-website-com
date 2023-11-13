@@ -863,6 +863,15 @@ export const MyFlagIcon = ({ className }) => (
   />
 );
 
+export const ArFlagIcon = ({ className }) => (
+  <StaticImage
+    className={className}
+    src="../../../assets/images/icons/languages/ar.svg"
+    alt="ar"
+    width={FLAG_WIDTH}
+  />
+);
+
 export const SearchIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

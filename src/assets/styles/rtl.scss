@@ -15,23 +15,8 @@
 
 .header--rtl {
   .header__left {
-    padding-right: 73px;
+    padding-right: 26px;
     padding-left: unset;
-  }
-
-  .header__right {
-    &:after {
-      border-left: 25px solid map-get($colors, "red");
-      border-top: $header-height-small solid transparent;
-      content: "";
-      height: 100%;
-      right: -24px;
-      position: absolute;
-
-      @include desktop-xl {
-        border-top: $header-height solid transparent;
-      }
-    }
   }
 
   .header__signin {
@@ -66,11 +51,6 @@
     flex-direction: row-reverse;
   }
 
-  .navbar-item__dropdown {
-    align-content: flex-end;
-    justify-content: flex-end;
-  }
-
   .navbar-item__title {
     order: 2;
   }
@@ -83,6 +63,30 @@
   .dropdown-item__icon {
     margin-right: unset;
     margin-left: 10px;
+  }
+
+  .burger-menu__trigger {
+    left: 26px;
+    right: unset;
+  }
+
+  .burger-menu__signin {
+    margin-left: unset;
+    margin-right: auto;
+  }
+
+  .burger-menu__start--tablet {
+    margin-left: unset;
+    margin-right: auto;
+  }
+
+  .burger-menu__accordion {
+    text-align: left;
+  }
+
+  .burger-menu__navbar {
+    right: 10%;
+    left: 0;
   }
 }
 
