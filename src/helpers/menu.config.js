@@ -247,7 +247,30 @@ const FSA_TRADING_TAB = {
 const CYSEC_TRADING_TAB = {
   title: "header-nav-tab-trading",
   subItems: [
-    ...FSA_TRADING_TAB.subItems,
+    {
+      title: "header-nav-tab-trading-funding-withdrawals-accounts-title",
+      link: ACCOUNTS_TYPE_PAGE_LINK,
+      icon: AccountsIcon,
+      description: "header-nav-tab-trading-funding-withdrawals-accounts-desc",
+    },
+    {
+      title: "header-nav-tab-trading-funding-withdrawals-title",
+      link: WITHDRAWAL_PAGE_LINK,
+      icon: FundingWithdrawalsIcon,
+      description: "header-nav-tab-trading-funding-withdrawals-desc",
+    },
+    {
+      title: "header-nav-tab-trading-funding-withdrawals-spreads-title",
+      link: SPREADS_AND_FEES_PAGE_LINK,
+      icon: SpreadAndFeesIcon,
+      description: "header-nav-tab-trading-funding-withdrawals-spreads-desc",
+    },
+    {
+      title: "header-nav-tab-trading-trading-tools-title",
+      link: TRADING_TOOLS_PAGE_LINK,
+      icon: TradingToolsIcon,
+      description: "header-nav-tab-trading-trading-tools-desc",
+    },
     {
       title: "header-nav-tab-trading-professional-qualification-title-cysec",
       link: PROFESSIONAL_QUALIFICATION_PAGE_LINK,
