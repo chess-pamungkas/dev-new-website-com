@@ -11,74 +11,70 @@ function Bookmark() {
   const [isBlinking, setBlinking] = useState(true);
   const [isShaking, setShaking] = useState(false);
   const [isClosing, setClosing] = useState(false);
+  const [hasBeenClosed, setHasBeenClosed] = useState(false);
 
   const bookmarkRef = useRef(null);
   const buttonRef = useRef(null);
   const { t } = useTranslation();
 
+  const initiateClosingSequence = () => {
+    setShaking(true);
+    setTimeout(() => {
+      setShaking(false);
+      setClosing(true);
+      setTimeout(() => {
+        setExpanded(false);
+        setClosing(false);
+        setHasBeenClosed(true);
+        setBlinking(false);
+      }, 500);
+    }, 2000);
+  };
   useEffect(() => {
-    // Start blinking when first appears
-    if (isVisible && !isExpanded) {
-      const timeout = setTimeout(() => {
-        setBlinking(false); // stop blinking after 5 seconds
-      }, 5000);
-
-      return () => clearTimeout(timeout);
+    if (isVisible && !isExpanded && !hasBeenClosed) {
+      const autoOpenTimeout = setTimeout(() => {
+        setExpanded(true);
+        const autoCloseTimeout = setTimeout(initiateClosingSequence, 2000);
+        return () => clearTimeout(autoCloseTimeout);
+      }, 4000);
+      return () => clearTimeout(autoOpenTimeout);
     }
-  }, [isVisible, isExpanded]);
+  }, [isVisible, isExpanded, hasBeenClosed]);
+
+  const resetBookmark = () => {
+    setExpanded(false);
+    setBlinking(true);
+    setShaking(false);
+    setClosing(false);
+    setHasBeenClosed(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 100) {
-        // Adjust this value as per your first section height
-        setVisible(true);
-      } else {
-        setVisible(false);
-        setBlinking(true); // Reset blinking when it disappears
-      }
-    };
+      const wasVisible = isVisible;
+      setVisible(scrollPosition > 100);
 
-    const handleClickOutside = (e) => {
-      if (bookmarkRef.current && !bookmarkRef.current.contains(e.target)) {
-        setExpanded(false);
+      if (wasVisible && scrollPosition <= 100) {
+        // Reset states when scrolled back to top
+        resetBookmark();
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("click", handleClickOutside);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isVisible]);
 
   const handleBookmarkClick = () => {
     if (!isExpanded) {
-      // Expand the bookmark
       setExpanded(true);
-      // Set the shake effect after 1 second
-      setTimeout(() => {
-        setShaking(true);
-        // Set the closing effect after 2 seconds
-        setTimeout(() => {
-          setShaking(false);
-          setClosing(true);
-          // Close the bookmark after 0.5 seconds
-          setTimeout(() => {
-            setExpanded(false);
-            setClosing(false);
-          }, 500);
-        }, 2000);
-      }, 1000);
+      setTimeout(initiateClosingSequence, 1000);
     }
   };
 
   const bookmarkClass = `${isExpanded ? "expanded" : "closed"} ${
     isVisible ? "" : "hidden"
   }`;
-
   const buttonClass = `${isShaking ? "shaking" : ""} ${
     isClosing ? "closing" : ""
   }`;
@@ -89,7 +85,6 @@ function Bookmark() {
       className={`bookmark ${bookmarkClass}`}
       onClick={handleBookmarkClick}
     >
-      {/* If expanded, show 'Close' otherwise show the bookmark icon */}
       {isExpanded ? (
         <ButtonLink
           ref={buttonRef}
