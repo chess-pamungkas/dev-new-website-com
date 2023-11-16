@@ -29,6 +29,7 @@ import {
   SpreadAndFeesIcon,
   CTraderIcon,
   VPSIcon,
+  SwapFreeIcon,
 } from "../components/shared/icons";
 import {
   ACCOUNTS_TYPE_PAGE_LINK,
@@ -57,6 +58,7 @@ import {
   ETF_PAGE_LINK,
   GetRegistrationLink,
   VPS_PAGE_LINK,
+  SWAP_FREE_PAGE_LINK,
 } from "./constants";
 import { isCySEC } from "./entity-resolver";
 import ClientResolverContext from "../context/client-resolver-context";
@@ -203,6 +205,12 @@ const FSA_TRADING_TAB = {
       link: VPS_PAGE_LINK,
       icon: VPSIcon,
       description: "header-nav-tab-trading-vps-desc",
+    },
+    {
+      title: "header-nav-tab-trading-swap-free-title",
+      link: SWAP_FREE_PAGE_LINK,
+      icon: SwapFreeIcon,
+      description: "header-nav-tab-trading-swap-free-desc",
     },
     // Probably we will need these items later
     // {
