@@ -3,11 +3,16 @@ import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
-import ButtonLink from "../../../shared/button-link";
 
 const SwapFreeBottomPromotion = ({ className }) => {
   const isRTL = useRtlDirection();
   const { t } = useTranslation();
+
+  const startConvrsSession = () => {
+    if (ConvrsChat) {
+      ConvrsChat.ShowWebChat();
+    }
+  };
 
   return (
     <section
@@ -28,9 +33,12 @@ const SwapFreeBottomPromotion = ({ className }) => {
       <p className="swap-free-bottom-promotion__text">
         {t("swap-free_bottom-promotion-text")}
       </p>
-      <ButtonLink className={"swap-free-bottom-promotion__btn"}>
+      <button
+        onClick={startConvrsSession}
+        className="button-link swap-free-bottom-promotion__btn"
+      >
         {t("swap-free_bottom-promotion-btn")}
-      </ButtonLink>
+      </button>
     </section>
   );
 };
