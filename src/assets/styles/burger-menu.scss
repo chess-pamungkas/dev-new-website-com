@@ -148,11 +148,6 @@
       margin-top: 20px;
       margin-left: auto;
     }
-
-    &--disabled {
-      background: map-get($colors, "bg-grey") 0% 0% no-repeat padding-box;
-      color: map-get($colors, "table-grey");
-    }
   }
 
   &__search {
