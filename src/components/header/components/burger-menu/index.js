@@ -90,9 +90,7 @@ const BurgerMenu = ({ className }) => {
                 <>
                   <ButtonLink
                     link={GetRegistrationLink()}
-                    className={cn("button-link--header burger-menu__start", {
-                      "burger-menu__start--disabled": clientConfig?.banned,
-                    })}
+                    className={cn("button-link--header burger-menu__start")}
                   >
                     {t("button-get-started")}
                   </ButtonLink>

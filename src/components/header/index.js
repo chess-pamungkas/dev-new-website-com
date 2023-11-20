@@ -101,15 +101,9 @@ const Header = ({ className }) => {
               </ButtonLink>
               <ButtonLink
                 link={GetRegistrationLink()}
-                className={cn(
-                  "button-link--header header__start",
-                  {
-                    "header__start--red": isScrolled,
-                  },
-                  {
-                    "header__start--disabled": clientConfig?.banned,
-                  }
-                )}
+                className={cn("button-link--header header__start", {
+                  "header__start--red": isScrolled,
+                })}
               >
                 {t("button-get-started")}
               </ButtonLink>
