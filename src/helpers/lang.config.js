@@ -84,6 +84,13 @@ const LANG_CONFIG = [
     name: "Melayu",
     URIPart: "/my",
   },
+  // Arabic
+  {
+    id: "ar",
+    icon: "ArFlagIcon",
+    name: "عربي",
+    URIPart: "/ar",
+  },
   /*// German
   {
     id: "de",

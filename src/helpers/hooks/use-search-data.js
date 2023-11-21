@@ -29,6 +29,7 @@ export const useSearchData = () => {
             br
             de
             my
+            ar
           }
         }
       }

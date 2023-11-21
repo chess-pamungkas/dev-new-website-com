@@ -203,7 +203,7 @@ const SpreadsAndFeesPageContent = () => {
         />
       </TopMarketLayout>
 
-      <section className="swap-rate">
+      <section className={cn("swap-rate", { "swap-rate--rtl": isRTL })}>
         <div className="swap-rate__wrapper">
           <h2 className="swap-rate__title">{t("spreads_faq-title")}</h2>
           <div className="swap-rate__subtitle">

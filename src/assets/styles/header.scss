@@ -6,10 +6,12 @@
   justify-content: flex-end;
   padding-top: 10px;
   padding-right: 26px;
+  padding-left: 26px;
 
   @include desktop-lg {
     padding-top: 17px;
     padding-right: 68px;
+    padding-left: 68px;
   }
 
   &__link {
