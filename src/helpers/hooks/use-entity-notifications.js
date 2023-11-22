@@ -40,7 +40,7 @@ export const useEntityNotifications = (handlePopupOpen) => {
     if (
       clientConfig &&
       Object.keys(clientConfig).length &&
-      clientConfig.banned &&
+      (clientConfig.banned || clientConfig.forceRedirectPopup) &&
       isBrowser() &&
       !window.sessionStorage.getItem(REDIRECT_OR_BANNED_POPUP_SHOWN_KEY)
     ) {
@@ -48,7 +48,9 @@ export const useEntityNotifications = (handlePopupOpen) => {
         handlePopupOpen();
       }
       setIsBannedPopup(
-        clientConfig.banned && !clientConfig.recommendedRedirect
+        clientConfig.banned &&
+          !clientConfig.recommendedRedirect &&
+          !clientConfig.forceRedirectPopup
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
