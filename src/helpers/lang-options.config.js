@@ -12,6 +12,7 @@ import {
   VnFlagIcon,
   BrFlagIcon,
   MyFlagIcon,
+  ArFlagIcon,
 } from "../components/shared/icons";
 import { ENTITY_LANGUAGES } from "./lang.config";
 
@@ -29,6 +30,7 @@ const IconComponents = {
   JpFlagIcon: JpFlagIcon,
   BrFlagIcon: BrFlagIcon,
   MyFlagIcon: MyFlagIcon,
+  ArFlagIcon: ArFlagIcon,
 };
 
 export const LANG_SELECT_OPTIONS = ENTITY_LANGUAGES.map((languageItem) => {
@@ -55,4 +57,5 @@ export const MT_LANGUAGES_MAP = {
   pt: "pt",
   de: "de",
   my: "ms",
+  ar: "ar",
 };

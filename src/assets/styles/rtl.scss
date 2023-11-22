@@ -15,23 +15,8 @@
 
 .header--rtl {
   .header__left {
-    padding-right: 73px;
+    padding-right: 26px;
     padding-left: unset;
-  }
-
-  .header__right {
-    &:after {
-      border-left: 25px solid map-get($colors, "red");
-      border-top: $header-height-small solid transparent;
-      content: "";
-      height: 100%;
-      right: -24px;
-      position: absolute;
-
-      @include desktop-xl {
-        border-top: $header-height solid transparent;
-      }
-    }
   }
 
   .header__signin {
@@ -66,11 +51,6 @@
     flex-direction: row-reverse;
   }
 
-  .navbar-item__dropdown {
-    align-content: flex-end;
-    justify-content: flex-end;
-  }
-
   .navbar-item__title {
     order: 2;
   }
@@ -83,6 +63,30 @@
   .dropdown-item__icon {
     margin-right: unset;
     margin-left: 10px;
+  }
+
+  .burger-menu__trigger {
+    left: 26px;
+    right: unset;
+  }
+
+  .burger-menu__signin {
+    margin-left: unset;
+    margin-right: auto;
+  }
+
+  .burger-menu__start--tablet {
+    margin-left: unset;
+    margin-right: auto;
+  }
+
+  .burger-menu__accordion {
+    text-align: left;
+  }
+
+  .burger-menu__navbar {
+    right: 10%;
+    left: 0;
   }
 }
 
@@ -99,32 +103,33 @@
 }
 
 .main-promotion--rtl {
-  @include desktop-lg {
-    flex-direction: row-reverse;
-  }
-
-  .main-promotion__wrapper {
-    @include desktop-xl {
-      justify-content: flex-start;
-    }
-  }
-
   .main-promotion__photo {
+    right: unset;
+    left: -33px;
+
+    @include tablet {
+      right: unset;
+      left: -90px;
+    }
+
     @include desktop-lg {
-      right: 295px;
+      right: unset;
+      left: 70px;
     }
 
     @include custom-breakpoint-1200 {
-      right: 30%;
+      right: unset;
+      left: 15%;
     }
 
     @include custom-breakpoint-1600 {
-      right: 35%;
+      right: unset;
+      left: 20%;
     }
 
     @include desktop-xl {
-      right: 185px;
       left: unset;
+      right: 200px;
     }
   }
 
@@ -167,12 +172,40 @@
 }
 
 .trading-symbol--rtl {
+  margin-right: unset;
+  margin-left: 10px;
   .trading-symbol__title-wrapper {
     direction: rtl;
   }
 
   .trading-symbol__title {
     margin: 0 0 0 10px;
+  }
+}
+
+@keyframes auto-scroll-animation-rtl {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(50%, 0, 0);
+    transform: translate3d(50%, 0, 0);
+  }
+}
+
+.trading-symbols-wrapper--rtl {
+  .trading-symbols--infinite-auto-scroll {
+    overflow: unset;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: auto-scroll-animation-rtl;
+    animation-duration: 180s;
+
+    &:hover {
+      animation-play-state: paused;
+    }
   }
 }
 
@@ -883,6 +916,58 @@
   .mb-block__title,
   .mb-block__description {
     @include desktop-lg {
+      text-align: right;
+    }
+  }
+}
+
+.swap-rate--rtl {
+  .swap-rate__title {
+    text-align: right;
+  }
+}
+
+.swap-free-promotion--rtl {
+  .swap-free-promotion__title {
+    @include tablet {
+      text-align: right;
+    }
+  }
+
+  .swap-free-promotion__description {
+    @include tablet {
+      text-align: right;
+    }
+  }
+
+  .swap-free-promotion__text {
+    @include tablet {
+      text-align: right;
+    }
+  }
+
+  .swap-free-promotion__img-block {
+    @include desktop-xl {
+      padding-left: 200px;
+    }
+  }
+}
+
+.vps-promotion--rtl {
+  .vps-promotion__title {
+    @include desktop-xl {
+      text-align: right;
+    }
+  }
+
+  .vps-promotion__note {
+    @include desktop-xl {
+      text-align: right;
+    }
+  }
+
+  .vps-promotion__text {
+    @include desktop-xl {
       text-align: right;
     }
   }

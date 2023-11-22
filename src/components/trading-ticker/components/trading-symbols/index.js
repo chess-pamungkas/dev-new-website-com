@@ -3,6 +3,7 @@ import TradingSymbol from "../trading-symbol";
 import cn from "classnames";
 import scrollArrow from "../../../../assets/images/trading-ticker/scroll-arrow.svg";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 
 const TradingSymbols = ({
   className,
@@ -15,6 +16,7 @@ const TradingSymbols = ({
   const [scrollEnd, setScrollEnd] = useState(false);
   const { width } = useWindowSize();
   const defaultScrollOffset = width * 0.8;
+  const isRTL = useRtlDirection();
 
   const isEndOfScroll = () => {
     if (
@@ -28,15 +30,27 @@ const TradingSymbols = ({
     }
   };
 
+  const isEndOfScrollRTL = () => {
+    if (
+      Math.floor(
+        symbolsRef.current.scrollWidth + symbolsRef.current.scrollLeft
+      ) <= symbolsRef.current.offsetWidth
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const scrollLeft = (scrollOffset) => {
     symbolsRef.current.scrollLeft += scrollOffset;
     setScrollX(scrollX + scrollOffset);
-    setScrollEnd(isEndOfScroll());
+    setScrollEnd(isRTL ? isEndOfScrollRTL() : isEndOfScroll());
   };
 
   const scrollCheck = () => {
     setScrollX(symbolsRef.current.scrollLeft);
-    setScrollEnd(isEndOfScroll());
+    setScrollEnd(isRTL ? isEndOfScrollRTL() : isEndOfScroll());
   };
 
   useEffect(() => {
@@ -53,9 +67,16 @@ const TradingSymbols = ({
 
   return (
     <div
-      className={cn("trading-symbols-wrapper", className, {
-        "trading-symbols-wrapper--infinite-auto-scroll": isInfiniteAutoScroll,
-      })}
+      className={cn(
+        "trading-symbols-wrapper",
+        className,
+        {
+          "trading-symbols-wrapper--infinite-auto-scroll": isInfiniteAutoScroll,
+        },
+        {
+          "trading-symbols-wrapper--rtl": isRTL,
+        }
+      )}
     >
       <div
         className={cn("trading-symbols", {
@@ -76,7 +97,7 @@ const TradingSymbols = ({
               />
             )
           )}
-        {scrollX > 0 && (
+        {((scrollX > 0 && !isRTL) || (!scrollEnd && isRTL)) && (
           <img
             src={scrollArrow}
             alt=""
@@ -88,7 +109,7 @@ const TradingSymbols = ({
             }}
           />
         )}
-        {!scrollEnd && (
+        {(!scrollEnd & !isRTL || (scrollX < 0 && isRTL)) && (
           <img
             src={scrollArrow}
             alt=""
