@@ -5,13 +5,9 @@ import { postClientConsent } from "../../helpers/services/client-consent-service
 import { CONSENT_TYPES } from "../../helpers/consent-types.config";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { setRedirectOrBannedPopupShown } from "../../helpers/services/set-redirect-or-banned-popup-shown";
-import { isBrowser } from "../../helpers/services/is-browser";
-import {
-  isCySEC,
-  oppositeTopLevelDomain,
-  topLevelDomain,
-} from "../../helpers/entity-resolver";
+import { isCySEC } from "../../helpers/entity-resolver";
 import ClientResolverContext from "../../context/client-resolver-context";
+import { redirectToOppositeEntity } from "../../helpers/services/redirect-to-opposite-entity";
 
 const RedirectOrBannedPopup = ({
   isPopupOpen,
@@ -35,31 +31,21 @@ const RedirectOrBannedPopup = ({
     </>
   );
 
-  const softRedirectionDescription = () => (
+  const softRedirectionDescription = (country) => (
     <>
       <p className="popup__paragraph">
-        {t("popup-redirect-description-part1")}{" "}
-        <span className="highlighted-in-red">{t("fsa-entity-name")}</span>{" "}
-        {t("popup-redirect-description-part2")}
+        {t("popup-redirect-description-part1")}&nbsp;
+        <span className="highlighted-in-red">{country}</span>
+        {". "}
+        {t("popup-redirect-description-part2")}&nbsp;
+        <span className="highlighted-in-red">{t("fsa-entity-name")}</span>&nbsp;
+        {t("popup-redirect-description-part3")}
       </p>
       <p className="popup__paragraph">
-        {t("popup-redirect-description-part3")}{" "}
-        <span className="highlighted-in-red">{t("fsa-entity-name")}</span>{" "}
-        {t("popup-redirect-description-part4")}
+        {t("popup-redirect-description-part4")}&nbsp;
       </p>
     </>
   );
-
-  const redirectToOppositeEntity = () => {
-    if (isBrowser()) {
-      const host = window.location.hostname;
-      const oppositeHost = host.replace(topLevelDomain, oppositeTopLevelDomain);
-
-      window.location.replace(
-        `https://${oppositeHost}${window.location.pathname}`
-      );
-    }
-  };
 
   const getButtons = () => {
     if (isBannedPopup) {
@@ -98,7 +84,6 @@ const RedirectOrBannedPopup = ({
             );
             redirectToOppositeEntity();
           },
-          subTitle: isCySEC ? "" : "Redirect me to the EU related entity",
         },
         {
           text: t("popup-redirect-confirm-btn"),
@@ -129,10 +114,6 @@ const RedirectOrBannedPopup = ({
               >
                 {button.text}
               </button>
-
-              {button.subTitle && (
-                <div className="popup__button-subtitle">{button.subTitle}</div>
-              )}
             </div>
           );
         })}
@@ -154,7 +135,7 @@ const RedirectOrBannedPopup = ({
             clientConfig.countryName,
             isCySEC ? t("cysec-entity-name") : t("fsa-entity-name")
           )}
-        {!isBannedPopup && softRedirectionDescription()}
+        {!isBannedPopup && softRedirectionDescription(clientConfig.countryName)}
       </div>
       {buildButtons(getButtons())}
     </Popup>

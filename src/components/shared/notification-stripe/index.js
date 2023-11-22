@@ -12,6 +12,7 @@ import NotificationStripeContext from "../../../context/notification-stripe-cont
 import { isBrowser } from "../../../helpers/services/is-browser";
 import CommonContext from "../../../context/common-context";
 import { useEntityNotifications } from "../../../helpers/hooks/use-entity-notifications";
+import { redirectToOppositeEntity } from "../../../helpers/services/redirect-to-opposite-entity";
 
 export const RiskWarningNotification = () => {
   const { expand, setExpand } = useContext(NotificationStripeContext);
@@ -61,7 +62,7 @@ const RecommendedRedirectNotification = ({
           type="button"
           className="notification-stripe__button"
           onClick={(e) => {
-            handleOpen();
+            redirectToOppositeEntity();
           }}
         >
           {t("notification-stripe-change-btn")}
