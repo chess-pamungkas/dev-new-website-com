@@ -1777,5 +1777,25 @@
   "header-nav-tab-trading-swap-free-title": "Swap-Free account",
 	"header-nav-tab-trading-swap-free-desc": "Seamless Trading Experience with OQtima",
   "page-swap-free-title": "Swap-Free account",
-  "page-swap-free-description": ""
+  "page-swap-free-description": "",
+
+  "data-deletion_top-title": "OQtima Data Deletion Request",
+  "data-deletion_top-title-accent": "1",
+  "data-deletion-form_intro-title": "Introduction",
+  "data-deletion-form_intro-description": "Welcome to the OQtima data deletion request page. We understand the importance of your privacy and are committed to ensuring the security of your personal data. If you wish to delete your account or specific data associated with it, please follow the steps below.",
+  "data-deletion-form_intro-description-accent": "4",
+  "data-deletion-form_form-title": "User Identification",
+  "data-deletion-form_form-description": "To begin the deletion process, please provide your account information:",
+  "data-deletion-form_form-email-field": "Email used for your cTrader account",
+  "data-deletion-form_form-account-field": "cTrader Account number",
+  "data-deletion-form_form-complete-field-title": "Complete Account Deletion",
+  "data-deletion-form_form-complete-field-note": "This will permanently remove your entire account and all associated data from the OQtima Ctrader platform.",
+  "data-deletion-form_form-complete-field-text": "Complete Account Deletion: This will permanently remove your entire account and all associated data from the OQtima Ctrader platform.",
+  "data-deletion-form_form-complete-field-text-accent": "1,2,3",
+  "data-deletion-form_form-privacy-p1": "Privacy Policy and Terms of Service:",
+  "data-deletion-form_form-privacy-p2": "We recommend reviewing our",
+  "data-deletion-form_form-privacy-p3": "and",
+  "data-deletion-form_form-privacy-p4": "for detailed information on our data handling practices.",
+  "data-deletion-form_form-privacy-privacy-text": "Privacy Policy",
+  "data-deletion-form_form-privacy-terms-text": "Terms of Service"
 }
