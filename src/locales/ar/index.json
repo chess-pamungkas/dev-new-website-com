@@ -1521,5 +1521,27 @@
   "header-nav-tab-trading-swap-free-title": "Swap-Free account",
   "header-nav-tab-trading-swap-free-desc": "Seamless Trading Experience with OQtima",
   "page-swap-free-title": "Swap-Free account",
-  "page-swap-free-description": ""
+  "page-swap-free-description": "",
+
+  "data-deletion_top-title": "طلب حذف البيانات من OQtima",
+  "data-deletion_top-title-accent": "1",
+  "data-deletion-form_intro-title": "مقدمة",
+  "data-deletion-form_intro-description": "مرحبًا بك في صفحة طلب حذف بيانات OQtima. نحن ندرك أهمية خصوصيتك وملتزمون بضمان أمان بياناتك الشخصية. إذا كنت ترغب في حذف حسابك أو بيانات معينة مرتبطة به، يرجى اتباع الخطوات أدناه.",
+  "data-deletion-form_intro-description-accent": "4",
+  "data-deletion-form_form-title": "تحديد الهوية للمستخدم",
+  "data-deletion-form_form-description": "لبدء عملية الحذف، يرجى تقديم معلومات حسابك:",
+  "data-deletion-form_form-email-field": "البريد الإلكتروني المستخدم لحساب cTrader الخاص بك",
+  "data-deletion-form_form-account-field": "رقم حساب cTrader",
+  "data-deletion-form_form-complete-field-title": "حذف الحساب بالكامل",
+  "data-deletion-form_form-complete-field-note": "هذا سيؤدي إلى إزالة حسابك بالكامل وجميع البيانات المرتبطة به من منصة OQtima Ctrader بشكل دائم.",
+  "data-deletion-form_form-complete-field-text": "حذف الحساب بالكامل: هذا سيؤدي إلى إزالة حسابك بالكامل وجميع البيانات المرتبطة به من منصة OQtima Ctrader بشكل دائم.",
+  "data-deletion-form_form-complete-field-text-accent": "1,2,3",
+  "data-deletion-form_form-privacy-p1": "سياسة الخصوصية وشروط الخدمة:",
+  "data-deletion-form_form-privacy-p2": "نوصي بمراجعة",
+  "data-deletion-form_form-privacy-p3": "و",
+  "data-deletion-form_form-privacy-p4": "للحصول على معلومات مفصلة حول ممارساتنا في التعامل مع البيانات.",
+  "data-deletion-form_form-privacy-privacy-text": "سياسة الخصوصية",
+  "data-deletion-form_form-privacy-terms-text": "شروط الخدمة",
+  "page-data-deletion-title": "طلب حذف البيانات من OQtima",
+  "page-data-deletion-description": ""
 }
