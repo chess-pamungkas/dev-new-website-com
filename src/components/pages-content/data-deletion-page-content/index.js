@@ -1,12 +1,10 @@
 import React from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import DataDeletionForm from "../../data-deletion/components/deletion-form";
 
 const DataDeletionContent = () => {
   const { t } = useTranslation();
-  const isRTL = useRtlDirection();
 
   return (
     <>

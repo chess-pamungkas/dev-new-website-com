@@ -8,8 +8,8 @@
   text-align: center;
   padding: 191px 10px 131px 10px;
   background: url("../../assets/images/data-deletion/top-bg.svg") no-repeat
-      bottom;
-    background-size: cover;
+    bottom;
+  background-size: cover;
 
   @include tablet {
     padding: 224px 20px 150px 20px;
@@ -104,7 +104,7 @@
       font-size: 18px;
       line-height: 30px;
       padding-top: 38px;
-    padding-bottom: 50px;
+      padding-bottom: 50px;
     }
 
     @include desktop-lg {
@@ -183,6 +183,12 @@
       width: 100%;
       font-size: 18px;
       line-height: 52px;
+    }
+
+    &--disabled {
+      background: map-get($colors, "bg-grey") 0% 0% no-repeat padding-box;
+      color: map-get($colors, "table-grey");
+      pointer-events: none;
     }
   }
 

@@ -16,6 +16,7 @@ const DataDeletionForm = () => {
   const [isSentSuccessful, setIsSentSuccessful] = useState(null);
   const API_URL = process.env.GATSBY_OQTIMA_API_URL;
   const SITE_KEY = process.env.GOOGLE_CAPTCHA_SITE_KEY;
+  const [ completeDeletion, setCompleteDeletion ] = useState(false);
 
   const reCaptchaRef = useRef();
 
@@ -30,7 +31,7 @@ const DataDeletionForm = () => {
   const handleForm = async (values) => {
     const token = await reCaptchaRef.current.executeAsync();
     axios
-      .post(`${API_URL}mail`, {
+      .post(`${API_URL}data-deletion-mail`, {
         ...values,
         entity: currentEntity,
         token,
@@ -46,10 +47,9 @@ const DataDeletionForm = () => {
 
   return (
     <Formik
-      initialValues={{ email: "", accountNumber: "", completeDeletion: false }}
+      initialValues={{ email: "", accountNumber: "" }}
       validationSchema={DataDeletionSchema}
       onSubmit={(values, { resetForm }) => {
-        console.log(values);
         handleForm(values);
         resetForm();
       }}
@@ -96,11 +96,8 @@ const DataDeletionForm = () => {
                 accentClassName="highlighted-in-red"
               />
             }
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.completeDeletion}
-            isError={errors.completeDeletion && touched.completeDeletion}
-            errorMessage={errors.completeDeletion}
+            checked={completeDeletion}
+            onChange={() => setCompleteDeletion(!completeDeletion)}
           />
           <p className="data-deletion-form__privacy-text">
             <span className="data-deletion-form__privacy-text--bold">
@@ -142,9 +139,9 @@ const DataDeletionForm = () => {
               "button-link--with-red-border",
               "data-deletion-form__btn",
               {
-                "button-link--disabled":
+                "data-deletion-form__btn--disabled":
                   Object.values(errors).length > 0 ||
-                  Object.values(touched).length === 0,
+                  Object.values(touched).length === 0 || !completeDeletion,
               }
             )}
           >

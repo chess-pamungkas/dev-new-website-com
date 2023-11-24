@@ -1527,5 +1527,27 @@
   "header-nav-tab-trading-swap-free-title": "Swap-freies Konto",
 	"header-nav-tab-trading-swap-free-desc": "Nahtlose Handelserfahrung mit OQtima",
   "page-swap-free-title": "Swap-freies Konto",
-  "page-swap-free-description": ""
+  "page-swap-free-description": "",
+
+  "data-deletion_top-title": "OQtima Datenlöschungsanfrage",
+  "data-deletion_top-title-accent": "1",
+  "data-deletion-form_intro-title": "Einführung",
+  "data-deletion-form_intro-description": "Willkommen auf der Seite für die Datenlöschungsanfrage von OQtima. Wir verstehen die Wichtigkeit Ihrer Privatsphäre und sind verpflichtet, die Sicherheit Ihrer persönlichen Daten zu gewährleisten. Wenn Sie Ihr Konto oder bestimmte damit verbundene Daten löschen möchten, folgen Sie bitte den untenstehenden Schritten.",
+  "data-deletion-form_intro-description-accent": "4",
+  "data-deletion-form_form-title": "Benutzeridentifikation",
+  "data-deletion-form_form-description": "Um den Löschvorgang zu beginnen, geben Sie bitte Ihre Kontoinformationen an:",
+  "data-deletion-form_form-email-field": "Für Ihr cTrader-Konto verwendete E-Mail",
+  "data-deletion-form_form-account-field": "cTrader-Kontonummer",
+  "data-deletion-form_form-complete-field-title": "Vollständige Kontolöschung",
+  "data-deletion-form_form-complete-field-note": "Dies wird Ihr gesamtes Konto und alle damit verbundenen Daten dauerhaft von der OQtima Ctrader-Plattform entfernen.",
+  "data-deletion-form_form-complete-field-text": "Vollständige Kontolöschung: Dies wird Ihr gesamtes Konto und alle damit verbundenen Daten dauerhaft von der OQtima Ctrader-Plattform entfernen.",
+  "data-deletion-form_form-complete-field-text-accent": "1,2,3",
+  "data-deletion-form_form-privacy-p1": "Datenschutzrichtlinie und Nutzungsbedingungen:",
+  "data-deletion-form_form-privacy-p2": "Wir empfehlen, unsere",
+  "data-deletion-form_form-privacy-p3": "und",
+  "data-deletion-form_form-privacy-p4": "für detaillierte Informationen über unsere Datenverarbeitungspraktiken zu überprüfen.",
+  "data-deletion-form_form-privacy-privacy-text": "Datenschutzrichtlinie",
+  "data-deletion-form_form-privacy-terms-text": "Nutzungsbedingungen",
+  "page-data-deletion-title": "OQtima Datenlöschungsanfrage",
+  "page-data-deletion-description": ""
 }

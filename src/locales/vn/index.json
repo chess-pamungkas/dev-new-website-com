@@ -1651,5 +1651,27 @@
   "header-nav-tab-trading-swap-free-title": "Tài Khoản Không Swap",
 	"header-nav-tab-trading-swap-free-desc": "Trải Nghiệm Giao Dịch Liền Mạch với OQtima",
   "page-swap-free-title": "Tài Khoản Không Swap",
-  "page-swap-free-description": ""
+  "page-swap-free-description": "",
+
+  "data-deletion_top-title": "Yêu Cầu Xóa Dữ Liệu OQtima",
+  "data-deletion_top-title-accent": "1",
+  "data-deletion-form_intro-title": "Giới Thiệu",
+  "data-deletion-form_intro-description": "Chào mừng bạn đến với trang yêu cầu xóa dữ liệu của OQtima. Chúng tôi hiểu tầm quan trọng của quyền riêng tư của bạn và cam kết bảo vệ an toàn cho dữ liệu cá nhân của bạn. Nếu bạn muốn xóa tài khoản của mình hoặc dữ liệu cụ thể liên quan đến nó, vui lòng làm theo các bước dưới đây.",
+  "data-deletion-form_intro-description-accent": "4",
+  "data-deletion-form_form-title": "Xác Minh Người Dùng",
+  "data-deletion-form_form-description": "Để bắt đầu quá trình xóa, vui lòng cung cấp thông tin tài khoản của bạn:",
+  "data-deletion-form_form-email-field": "Email sử dụng cho tài khoản cTrader của bạn",
+  "data-deletion-form_form-account-field": "Số tài khoản cTrader",
+  "data-deletion-form_form-complete-field-title": "Xóa Tài Khoản Hoàn Toàn",
+  "data-deletion-form_form-complete-field-note": "Điều này sẽ xóa vĩnh viễn toàn bộ tài khoản của bạn và tất cả dữ liệu liên quan khỏi nền tảng OQtima Ctrader.",
+  "data-deletion-form_form-complete-field-text": "Xóa Tài Khoản Hoàn Toàn: Điều này sẽ xóa vĩnh viễn toàn bộ tài khoản của bạn và tất cả dữ liệu liên quan khỏi nền tảng OQtima Ctrader.",
+  "data-deletion-form_form-complete-field-text-accent": "1,2,3",
+  "data-deletion-form_form-privacy-p1": "Chính Sách Bảo Mật và Điều Khoản Dịch Vụ:",
+  "data-deletion-form_form-privacy-p2": "Chúng tôi khuyến nghị bạn xem xét",
+  "data-deletion-form_form-privacy-p3": "và",
+  "data-deletion-form_form-privacy-p4": "của chúng tôi để biết thông tin chi tiết về cách xử lý dữ liệu của chúng tôi.",
+  "data-deletion-form_form-privacy-privacy-text": "Chính Sách Bảo Mật",
+  "data-deletion-form_form-privacy-terms-text": "Điều Khoản Dịch Vụ",
+  "page-data-deletion-title": "Yêu Cầu Xóa Dữ Liệu OQtima",
+  "page-data-deletion-description": ""
 }
