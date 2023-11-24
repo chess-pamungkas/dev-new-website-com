@@ -1,0 +1,211 @@
+@import "vars";
+@import "mixins";
+
+.data-deletion-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 191px 10px 131px 10px;
+  background: url("../../assets/images/data-deletion/top-bg.svg") no-repeat
+    bottom;
+  background-size: cover;
+
+  @include tablet {
+    padding: 224px 20px 150px 20px;
+  }
+
+  @include desktop-lg {
+    padding: 281px 20px 145px 20px;
+  }
+
+  @include desktop-xl {
+    justify-content: unset;
+    padding: 281px 351px 145px 351px;
+  }
+
+  &__title {
+    font-weight: map-get($font-weight, "black");
+    font-size: 30px;
+    line-height: 40px;
+    margin: 0;
+
+    @include tablet {
+      font-size: 36px;
+      line-height: 50px;
+    }
+
+    @include desktop-lg {
+      font-size: 48px;
+      line-height: 70px;
+    }
+  }
+}
+
+.data-deletion-form-container {
+  scroll-snap-align: start;
+  padding: 30px 10px 70px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet {
+    padding: 64px 20px 80px 20px;
+  }
+
+  @include desktop-lg {
+    background: url("../../assets/images/data-deletion/form-bg.svg") no-repeat
+      bottom;
+  }
+
+  @include desktop-xl {
+    justify-content: unset;
+    align-items: unset;
+    padding: 78px 351px;
+  }
+
+  &__wrapper {
+    @include tablet {
+      max-width: 728px;
+    }
+
+    @include desktop-xl {
+      max-width: 1220px;
+    }
+  }
+
+  &__title {
+    font-weight: map-get($font-weight, "bold");
+    font-size: 24px;
+    line-height: 50px;
+    margin: 0;
+
+    @include tablet {
+      font-size: 30px;
+      line-height: 50px;
+    }
+
+    @include desktop-lg {
+      font-size: 42px;
+      line-height: 50px;
+    }
+  }
+
+  &__description {
+    font-weight: map-get($font-weight, "regular");
+    font-size: 14px;
+    line-height: 25px;
+    margin: 0;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    @include tablet {
+      font-size: 18px;
+      line-height: 30px;
+      padding-top: 38px;
+      padding-bottom: 50px;
+    }
+
+    @include desktop-lg {
+      font-size: 24px;
+      line-height: 40px;
+      padding-top: 51px;
+      padding-bottom: 70px;
+    }
+  }
+}
+
+.data-deletion-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  @include tablet {
+    max-width: 728px;
+  }
+
+  @include desktop-lg {
+    max-width: 830px;
+    margin: 0;
+  }
+
+  &__privacy-text {
+    color: map-get($colors, "black-secondary");
+    font-weight: map-get($font-weight, "regular");
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0;
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    @include desktop-lg {
+      font-size: 16px;
+      line-height: 25px;
+    }
+
+    &--bold {
+      font-weight: map-get($font-weight, "bold");
+    }
+
+    a {
+      color: map-get($colors, "red");
+      text-decoration: underline;
+      transition: all 0.3s;
+
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__btn {
+    margin: 30px auto 0;
+    width: 345px;
+    font-size: 18px;
+    line-height: 50px;
+    color: map-get($colors, "white");
+    background: map-get($colors, "red");
+
+    &:hover {
+      color: map-get($colors, "red");
+      background: map-get($colors, "white");
+      border: 2px solid map-get($colors, "red");
+    }
+
+    @include tablet {
+      margin: 30px 0 0;
+      width: 100%;
+      font-size: 18px;
+      line-height: 52px;
+    }
+
+    &--disabled {
+      background: map-get($colors, "bg-grey") 0% 0% no-repeat padding-box;
+      color: map-get($colors, "table-grey");
+      pointer-events: none;
+    }
+  }
+
+  &__message {
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    line-height: 20px;
+    color: map-get($colors, "green");
+
+    @include tablet {
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    &--failure {
+      color: map-get($colors, "black");
+    }
+  }
+}
