@@ -36,8 +36,8 @@ export const CommonProvider = ({ children }) => {
 
   useEffect(() => {
     const updateOffset = () => {
-      if (isBrowser() && riskWarningRef?.current?.offsetHeight) {
-        setHeightOffset(riskWarningRef.current.offsetHeight);
+      if (isBrowser()) {
+        setHeightOffset(riskWarningRef?.current?.offsetHeight || 0);
       }
     };
 
@@ -59,7 +59,7 @@ export const CommonProvider = ({ children }) => {
     setTimeout(() => {
       updateDropdownOffset();
     }, 500);
-  }, [headerRef, sectionOptions, width, selectedLanguage, isScrolled]);
+  }, [headerRef, sectionOptions, width, selectedLanguage, isScrolled, riskWarningRef]);
 
   return (
     <CommonContext.Provider
