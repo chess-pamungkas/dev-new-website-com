@@ -81,7 +81,7 @@ const LANG_CONFIG = [
   {
     id: "my",
     icon: "MyFlagIcon",
-    name: "Melayu",
+    name: "Bahasa Malaysia",
     URIPart: "/my",
   },
   // Arabic
