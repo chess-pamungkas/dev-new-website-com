@@ -19,3 +19,26 @@ export const wrapPageElement = ({ element }) => {
 
   return element;
 };
+
+export const onClientEntry = async () => {
+  if (process.env.NODE_ENV === "production") {
+    try {
+      const response = await fetch("/asset-manifest.json");
+      const manifest = await response.json();
+      const currentHash = manifest.compilationHash;
+
+      const storedHash = window.localStorage.getItem(
+        "gatsby-reload-compilation-hash"
+      );
+      if (storedHash !== currentHash) {
+        window.localStorage.setItem(
+          "gatsby-reload-compilation-hash",
+          currentHash
+        );
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error("Error fetching asset manifest:", error);
+    }
+  }
+};
