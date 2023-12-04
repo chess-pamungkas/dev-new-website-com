@@ -65,4 +65,30 @@
       display: block;
     }
   }
+
+  &__images {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  &__img {
+    width: 34px;
+    box-shadow: 0 0 10px rgba(0,0,0, .16);
+    border-radius: 5px;
+
+    @include tablet {
+      width: 38px;
+    }
+
+    @include desktop-lg {
+      width: 54px;
+    }
+
+    @include desktop-xl {
+      width: 63px;
+    }
+  }
 }
