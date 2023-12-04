@@ -89,5 +89,9 @@
     "spreads-table2-col2-8-per-lot": "60",
     "spreads-table2-col2-8-round-turn": "120",
 
-    "por-max-days": "180"
+    "por-max-days": "180",
+
+    "deposit-minutes": "10",
+    "deposit-days": "3-5",
+    "min-deposit": "$20"
 }

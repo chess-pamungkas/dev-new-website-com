@@ -3,10 +3,10 @@ import cn from "classnames";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import TableComponent from "../../shared/table";
 import {
-  ColumnDeposit,
-  ColumnWithdrawal,
-  DataDeposit,
-  DataWithdrawal,
+  getColumnDeposit,
+  getColumnWithdrawal,
+  getDataDeposit,
+  getDataWithdrawal,
   WithdrawalDisclaimer,
   DepositDisclaimer,
 } from "../../../helpers/withdrawal.config";
@@ -16,9 +16,12 @@ import HighlightedLocalizationText from "../../shared/highlighted-localization-t
 import TopMarketLayout from "../../top-market-layout";
 import Tabs from "../../shared/tabs";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import {
+  GetRegistrationLink,
+  PAYMENT_SYSTEMS_FSA,
+} from "../../../helpers/constants";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
-import { sitePostfix } from "../../../helpers/entity-resolver";
+import { sitePostfix, isCySEC } from "../../../helpers/entity-resolver";
 
 const FundingPageContent = () => {
   const { t } = useTranslation();
@@ -32,8 +35,8 @@ const FundingPageContent = () => {
       onClick: () => setIsDepositTab(true),
       content: (
         <TableComponent
-          data={DataDeposit()}
-          columns={ColumnDeposit()}
+          data={getDataDeposit()}
+          columns={getColumnDeposit()}
           className="withdrawal-table"
         />
       ),
@@ -44,8 +47,8 @@ const FundingPageContent = () => {
       onClick: () => setIsDepositTab(false),
       content: (
         <TableComponent
-          data={DataWithdrawal()}
-          columns={ColumnWithdrawal()}
+          data={getDataWithdrawal()}
+          columns={getColumnWithdrawal()}
           className={cn("withdrawal-table", "withdrawal-table--wide")}
         />
       ),
@@ -110,7 +113,7 @@ const FundingPageContent = () => {
         </span>
       </TopMarketPromotion>
       <TopMarketLayout className="top-market-layout--withdrawal">
-        <Tabs tabList={tabs} />
+        <Tabs tabList={tabs} images={!isCySEC ? PAYMENT_SYSTEMS_FSA : []} />
       </TopMarketLayout>
       <section className={cn("notes-block")}>
         {isDepositTab ? DepositDisclaimer() : WithdrawalDisclaimer()}
