@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import Input from "../../../shared/form/input";
 import cn from "classnames";
 import axios from "axios";
-import ReCAPTCHA from "react-google-recaptcha";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { currentEntity } from "../../../../helpers/entity-resolver";
 import { DataDeletionSchema } from "../../../../validations/data-deletion";
 import Checkbox from "../../../shared/form/checkbox";
@@ -15,13 +15,10 @@ const DataDeletionForm = () => {
   const { t } = useTranslation();
   const [isSentSuccessful, setIsSentSuccessful] = useState(null);
   const API_URL = process.env.GATSBY_OQTIMA_API_URL;
-  const SITE_KEY = process.env.GOOGLE_CAPTCHA_SITE_KEY;
-  const [ completeDeletion, setCompleteDeletion ] = useState(false);
-
-  const reCaptchaRef = useRef();
+  const [completeDeletion, setCompleteDeletion] = useState(false);
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleApiResponse = (isSuccessful) => {
-    reCaptchaRef.current.reset();
     setIsSentSuccessful(isSuccessful);
     setTimeout(() => {
       setIsSentSuccessful(null);
@@ -29,7 +26,7 @@ const DataDeletionForm = () => {
   };
 
   const handleForm = async (values) => {
-    const token = await reCaptchaRef.current.executeAsync();
+    const token = await executeRecaptcha("data_deletion");
     axios
       .post(`${API_URL}data-deletion-mail`, {
         ...values,
@@ -124,14 +121,6 @@ const DataDeletionForm = () => {
             &nbsp;
             {t(DATA_DELETION_POLICY_BLOCK.p4)}
           </p>
-          {SITE_KEY && (
-            <ReCAPTCHA
-              badge="bottomleft"
-              sitekey={SITE_KEY}
-              size="invisible"
-              ref={reCaptchaRef}
-            />
-          )}
           <button
             type="submit"
             className={cn(
@@ -141,7 +130,8 @@ const DataDeletionForm = () => {
               {
                 "data-deletion-form__btn--disabled":
                   Object.values(errors).length > 0 ||
-                  Object.values(touched).length === 0 || !completeDeletion,
+                  Object.values(touched).length === 0 ||
+                  !completeDeletion,
               }
             )}
           >
