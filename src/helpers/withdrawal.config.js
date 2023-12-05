@@ -1,7 +1,7 @@
 import ButtonLink from "../components/shared/button-link";
 import cn from "classnames";
 import React from "react";
-import { PAYMENT_SYSTEMS, GetDepositLink } from "./constants";
+import { PAYMENT_SYSTEMS, GetDepositLink, GetWithdrawalLink } from "./constants";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isCySEC, sitePostfix } from "./entity-resolver";
 import { useWindowSize } from "./hooks/use-window-size";
@@ -141,11 +141,11 @@ const WITHDRAWAL_COLUMNS_WITH_BTN = () => {
   const { t } = useTranslation();
   const { isMobile } = useWindowSize();
   return isMobile ? (
-    <a href={GetDepositLink()} target="_blank" rel="noreferrer">
+    <a href={GetWithdrawalLink()} target="_blank" rel="noreferrer">
       <img src={withdrawArrow} alt="withdraw" />
     </a>
   ) : (
-    <ButtonLink link={GetDepositLink()} className={cn("withdrawal-table__btn")}>
+    <ButtonLink link={GetWithdrawalLink()} className={cn("withdrawal-table__btn")}>
       {t("withdrawal_data_withdrawal-btn")}
     </ButtonLink>
   );

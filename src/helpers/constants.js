@@ -79,6 +79,9 @@ export const GetLoginLink = () =>
 export const GetDepositLink = () =>
   `https://portal.oqtima.${topLevelDomain}/funds/deposit/${setLangParam()}`;
 
+export const GetWithdrawalLink = () =>
+  `https://portal.oqtima.${topLevelDomain}/funds/withdraw/${setLangParam()}`;
+
 export const COMING_SOON_PAGE_LINK = "/coming-soon";
 export const COMPANY_PAGE_LINK = "/company";
 export const LEGAL_PAGE_LINK = "/legal";
