@@ -1,6 +1,6 @@
-import React, { cloneElement, createElement } from "react";
+import { cloneElement, createElement } from "react";
 import Layout from "./src/components/shared/layout";
-
+import { isCySEC } from "./src/helpers/entity-resolver";
 export const wrapPageElement = ({ element }) => {
   // Don't remove the if statement, it will break everything!!!
   // Workaround to apply localization to layout content, plugin doesn't do this by default
@@ -21,7 +21,7 @@ export const wrapPageElement = ({ element }) => {
 };
 
 export const onClientEntry = async () => {
-  if (process.env.NODE_ENV === "production") {
+  if (isCySEC() && process.env.NODE_ENV === "production") {
     try {
       const response = await fetch("/asset-manifest.json");
       const manifest = await response.json();
