@@ -1,8 +1,7 @@
-const { isCySEC } = require("./src/helpers/entity-resolver");
 const WebpackAssetsManifest = require("webpack-assets-manifest");
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
-  if (stage === "build-javascript" && isCySEC()) {
+  if (stage === "build-javascript") {
     actions.setWebpackConfig({
       plugins: [
         new WebpackAssetsManifest({
