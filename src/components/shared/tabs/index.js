@@ -11,6 +11,7 @@ const Tabs = ({
   tabList = [],
   activeTabIndex = 0,
   isMobileDropdown = false,
+  images,
 }) => {
   const [currentTabIndex, setCurrentTabIndex] = useState(activeTabIndex);
   const { isTablet } = useWindowSize();
@@ -77,6 +78,18 @@ const Tabs = ({
             {content}
           </TabPanel>
         ))}
+        {images && (
+          <div className="tabs__images">
+            {images.map((imageItem, key) => (
+              <img
+                key={`tabs-img-${key}`}
+                src={imageItem.logo}
+                alt={imageItem.alt}
+                className="tabs__img"
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

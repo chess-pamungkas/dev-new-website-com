@@ -1,9 +1,244 @@
 import ButtonLink from "../components/shared/button-link";
 import cn from "classnames";
 import React from "react";
-import { PAYMENT_SYSTEMS, GetDepositLink } from "./constants";
+import { PAYMENT_SYSTEMS, GetDepositLink, GetWithdrawalLink } from "./constants";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { isCySEC, sitePostfix } from "./entity-resolver";
+import { useWindowSize } from "./hooks/use-window-size";
+import depositArrow from "../assets/images/withdrawal/deposit.png";
+import withdrawArrow from "../assets/images/withdrawal/withdraw.png";
+
+const PAYMENT_METHODS_COLUMNS_FSA = [
+  {
+    methodName: "withdrawal_data-method-card-fsa",
+    depositCol2: "withdrawal_data_col-instant-fsa",
+    depositCol3: "withdrawal_data_col-min-dep-fsa",
+    depositCol4: "withdrawal_data_col-zero-fees-fsa",
+    depositCol5: "withdrawal_data-method-card-currencies-fsa",
+    withdrawCol2: "withdrawal_data_col-one-day-fsa",
+    withdrawCol3: "withdrawal_data_col-zero-fees-fsa",
+    withdrawCol4: "withdrawal_data-method-card-currencies-fsa",
+  },
+  {
+    methodName: "withdrawal_data-method-crypto-fsa",
+    depositCol2: "withdrawal_data_col-instant-fsa",
+    depositCol3: "withdrawal_data_col-min-dep-fsa",
+    depositCol4: "withdrawal_data_col-zero-fees-fsa",
+    depositCol5: "withdrawal_data-method-crypto-currencies-fsa",
+    withdrawCol2: "withdrawal_data_col-one-day-fsa",
+    withdrawCol3: "withdrawal_data_col-zero-fees-fsa",
+    withdrawCol4: "withdrawal_data-method-crypto-currencies-fsa",
+  },
+  {
+    methodName: "withdrawal_data-method-int-bank-fsa",
+    depositCol2: "withdrawal_data_col-few-days-fsa",
+    depositCol3: "withdrawal_data_col-min-dep-fsa",
+    depositCol4: "withdrawal_data_col-zero-fees-fsa",
+    depositCol5: "withdrawal_data-method-int-bank-currencies-fsa",
+    withdrawCol2: "withdrawal_data_col-one-day-fsa",
+    withdrawCol3: "withdrawal_data_col-zero-fees-fsa",
+    withdrawCol4: "withdrawal_data-method-int-bank-currencies-fsa",
+  },
+  {
+    methodName: "withdrawal_data-method-uk-bank-fsa",
+    depositCol2: "withdrawal_data_col-instant-if-fsa",
+    depositCol3: "withdrawal_data_col-min-dep-fsa",
+    depositCol4: "withdrawal_data_col-zero-fees-fsa",
+    depositCol5: "withdrawal_data-method-uk-bank-currencies-fsa",
+    withdrawCol2: "withdrawal_data_col-one-day-fsa",
+    withdrawCol3: "withdrawal_data_col-zero-fees-fsa",
+    withdrawCol4: "withdrawal_data-method-uk-bank-currencies-fsa",
+  },
+  {
+    methodName: "withdrawal_data-method-local-bank-fsa",
+    depositCol2: "withdrawal_data_col-minutes-if-fsa",
+    depositCol3: "withdrawal_data_col-min-dep-fsa",
+    depositCol4: "withdrawal_data_col-zero-fees-fsa",
+    depositCol5: "withdrawal_data-method-local-bank-currencies-fsa",
+    withdrawCol2: "withdrawal_data_col-one-day-fsa",
+    withdrawCol3: "withdrawal_data_col-zero-fees-fsa",
+    withdrawCol4: "withdrawal_data-method-local-bank-currencies-fsa",
+  },
+  {
+    methodName: "withdrawal_data-method-sticpay-fsa",
+    depositCol2: "withdrawal_data_col-instant-fsa",
+    depositCol3: "withdrawal_data_col-min-dep-fsa",
+    depositCol4: "withdrawal_data_col-zero-fees-fsa",
+    depositCol5: "withdrawal_data-method-sticpay-currencies-fsa",
+    withdrawCol2: "withdrawal_data_col-one-day-fsa",
+    withdrawCol3: "withdrawal_data_col-zero-fees-fsa",
+    withdrawCol4: "withdrawal_data-method-sticpay-currencies-fsa",
+  },
+  {
+    methodName: "withdrawal_data-method-pix-fsa",
+    depositCol2: "withdrawal_data_col-instant-fsa",
+    depositCol3: "withdrawal_data_col-min-dep-fsa",
+    depositCol4: "withdrawal_data_col-zero-fees-fsa",
+    depositCol5: "withdrawal_data-method-pix-currencies-fsa",
+    withdrawCol2: "withdrawal_data_col-one-day-fsa",
+    withdrawCol3: "withdrawal_data_col-zero-fees-fsa",
+    withdrawCol4: "withdrawal_data-method-pix-currencies-fsa",
+  },
+  {
+    methodName: "withdrawal_data-method-e-wallet-fsa",
+    depositCol2: "withdrawal_data_col-instant-fsa",
+    depositCol3: "withdrawal_data_col-min-dep-fsa",
+    depositCol4: "withdrawal_data_col-zero-fees-fsa",
+    depositCol5: "withdrawal_data-method-e-wallet-currencies-fsa",
+    withdrawCol2: "withdrawal_data_col-one-day-fsa",
+    withdrawCol3: "withdrawal_data_col-zero-fees-fsa",
+    withdrawCol4: "withdrawal_data-method-e-wallet-currencies-fsa",
+  },
+];
+
+export const ColumnDepositFSA = () => {
+  const { t } = useTranslation();
+
+  const COLUMNS_DEPOSIT = [
+    {
+      accessor: "col1",
+      Header: t("deposit_column_title1-fsa"),
+    },
+    {
+      accessor: "col2",
+      Header: t("deposit_column_title2-fsa"),
+    },
+    {
+      accessor: "col3",
+      Header: t("deposit_column_title3-fsa"),
+    },
+    {
+      accessor: "col4",
+      Header: t("deposit_column_title4-fsa"),
+    },
+    {
+      accessor: "col5",
+      Header: t("deposit_column_title5-fsa"),
+    },
+    {
+      accessor: "col6",
+      Header: "",
+    },
+  ];
+  return COLUMNS_DEPOSIT;
+};
+
+const DEPOSIT_COLUMNS_WITH_BTN = () => {
+  const { t } = useTranslation();
+  const { isMobile } = useWindowSize();
+  return isMobile ? (
+    <a href={GetDepositLink()} target="_blank" rel="noreferrer">
+      <img src={depositArrow} alt="deposit" />
+    </a>
+  ) : (
+    <ButtonLink link={GetDepositLink()} className={cn("withdrawal-table__btn")}>
+      {t("withdrawal_data_deposit-btn")}
+    </ButtonLink>
+  );
+};
+
+const WITHDRAWAL_COLUMNS_WITH_BTN = () => {
+  const { t } = useTranslation();
+  const { isMobile } = useWindowSize();
+  return isMobile ? (
+    <a href={GetWithdrawalLink()} target="_blank" rel="noreferrer">
+      <img src={withdrawArrow} alt="withdraw" />
+    </a>
+  ) : (
+    <ButtonLink link={GetWithdrawalLink()} className={cn("withdrawal-table__btn")}>
+      {t("withdrawal_data_withdrawal-btn")}
+    </ButtonLink>
+  );
+};
+
+export const DataDepositFSA = () => {
+  const { t } = useTranslation();
+  const DATA_DEPOSIT = [
+    ...PAYMENT_METHODS_COLUMNS_FSA.map((methodItem) => ({
+      col1: (
+        <>
+          <span>{t(methodItem.methodName)}</span>
+        </>
+      ),
+      col2: (
+        <>
+          <span>{t(methodItem.depositCol2)}</span>
+        </>
+      ),
+      col3: (
+        <>
+          <span>{t(methodItem.depositCol3)}</span>
+        </>
+      ),
+      col4: (
+        <>
+          <span>{t(methodItem.depositCol4)}</span>
+        </>
+      ),
+      col5: (
+        <>
+          <span>{t(methodItem.depositCol5)}</span>
+        </>
+      ),
+      col6: DEPOSIT_COLUMNS_WITH_BTN(),
+    })),
+  ];
+  return DATA_DEPOSIT;
+};
+export const ColumnWithdrawalFSA = () => {
+  const { t } = useTranslation();
+  const COLUMNS_WITHDRAWAL = [
+    {
+      accessor: "col1",
+      Header: t("withdrawal_column_title1-fsa"),
+    },
+    {
+      accessor: "col2",
+      Header: t("withdrawal_column_title2-fsa"),
+    },
+    {
+      accessor: "col3",
+      Header: t("withdrawal_column_title4-fsa"),
+    },
+    {
+      accessor: "col4",
+      Header: t("withdrawal_column_title5-fsa"),
+    },
+    {
+      accessor: "col5",
+    },
+  ];
+  return COLUMNS_WITHDRAWAL;
+};
+export const DataWithdrawalFSA = () => {
+  const { t } = useTranslation();
+  const DATA_WITHDRAWAL = [
+    ...PAYMENT_METHODS_COLUMNS_FSA.map((methodItem) => ({
+      col1: (
+        <>
+          <span>{t(methodItem.methodName)}</span>
+        </>
+      ),
+      col2: (
+        <>
+          <span>{t(methodItem.withdrawCol2)}</span>
+        </>
+      ),
+      col3: (
+        <>
+          <span>{t(methodItem.withdrawCol3)}</span>
+        </>
+      ),
+      col4: (
+        <>
+          <span>{t(methodItem.withdrawCol4)}</span>
+        </>
+      ),
+      col5: WITHDRAWAL_COLUMNS_WITH_BTN(),
+    })),
+  ];
+  return DATA_WITHDRAWAL;
+};
 
 export const ColumnDeposit = () => {
   const { t } = useTranslation();
@@ -37,21 +272,10 @@ export const ColumnDeposit = () => {
   return COLUMNS_DEPOSIT;
 };
 
-const DEPOSIT_COLUMNS_WITH_BTN = () => {
-  const { t } = useTranslation();
-  return (
-    <ButtonLink link={GetDepositLink()} className={cn("withdrawal-table__btn")}>
-      {t("withdrawal_data_btn")}
-    </ButtonLink>
-  );
-};
-
-const FSA_CURRENCIES = "USD, BRL, EUR, AUD, CHE, JPY, CNY, CAD";
 const CYSEC_CURRENCIES = "EUR, USD, GBP, CHF";
 
 export const DataDeposit = () => {
   const { t } = useTranslation();
-  const CURRENCIES = isCySEC ? CYSEC_CURRENCIES : FSA_CURRENCIES;
   const DATA_DEPOSIT = [
     {
       col1: (
@@ -80,12 +304,12 @@ export const DataDeposit = () => {
       col2: (
         <>
           <span>{t("withdrawal_data_col1")}</span>&nbsp;
-          <sup>{isCySEC ? "1" : ""}</sup>
+          <sup>{"1"}</sup>
         </>
       ),
-      col3: isCySEC ? "$200" : "$20",
+      col3: "$200",
       col4: t("withdrawal_data_col3"),
-      col5: CURRENCIES,
+      col5: CYSEC_CURRENCIES,
       col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
     {
@@ -107,12 +331,12 @@ export const DataDeposit = () => {
       col2: (
         <>
           <span>{t("withdrawal_data_col1")}</span>&nbsp;
-          <sup>{isCySEC ? "1" : ""}</sup>
+          <sup>{"1"}</sup>
         </>
       ),
-      col3: isCySEC ? "$200" : "$20",
+      col3: "$200",
       col4: t("withdrawal_data_col3"),
-      col5: CURRENCIES,
+      col5: CYSEC_CURRENCIES,
       col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
     {
@@ -128,14 +352,14 @@ export const DataDeposit = () => {
         </>
       ),
       col2: t("withdrawal_data_col2"),
-      col3: isCySEC ? "$200" : "$20",
+      col3: "$200",
       col4: (
         <>
           <span>{t("withdrawal_data_col3")}</span>&nbsp;
-          <sup>{isCySEC ? "2" : ""}</sup>
+          <sup>{"2"}</sup>
         </>
       ),
-      col5: CURRENCIES,
+      col5: CYSEC_CURRENCIES,
       col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
   ];
@@ -193,14 +417,14 @@ export const DataWithdrawal = () => {
       col2: (
         <>
           <span>{t(`withdrawal_data_col4${sitePostfix}`)}</span>&nbsp;
-          <sup>{isCySEC ? "1" : "*"}</sup>
+          <sup>{"1"}</sup>
         </>
       ),
-      col3: isCySEC ? "$100" : "$20",
+      col3: "$100",
       col4: (
         <>
           <span>{t("withdrawal_data_col3")}</span>&nbsp;
-          <sup>{isCySEC ? "3" : ""}</sup>
+          <sup>{"3"}</sup>
         </>
       ),
     },
@@ -223,14 +447,14 @@ export const DataWithdrawal = () => {
       col2: (
         <>
           <span>{t(`withdrawal_data_col4${sitePostfix}`)}</span>&nbsp;
-          <sup>{isCySEC ? "1" : "*"}</sup>
+          <sup>{"1"}</sup>
         </>
       ),
-      col3: isCySEC ? "$100" : "$20",
+      col3: "$100",
       col4: (
         <>
           <span>{t("withdrawal_data_col3")}</span>&nbsp;
-          <sup>{isCySEC ? "3" : ""}</sup>
+          <sup>{"3"}</sup>
         </>
       ),
     },
@@ -249,20 +473,29 @@ export const DataWithdrawal = () => {
       col2: (
         <>
           <span>{t(`withdrawal_data_col4${sitePostfix}`)}</span>&nbsp;
-          <sup>{isCySEC ? "2" : ""}</sup>
+          <sup>{"2"}</sup>
         </>
       ),
-      col3: isCySEC ? "$100" : "$20",
+      col3: "$100",
       col4: (
         <>
           <span>{t("withdrawal_data_col3")}</span>&nbsp;
-          <sup>{isCySEC ? "4" : ""}</sup>
+          <sup>{"4"}</sup>
         </>
       ),
     },
   ];
   return DATA_WITHDRAWAL;
 };
+
+export const getDataDeposit = () =>
+  isCySEC ? DataDeposit() : DataDepositFSA();
+export const getColumnDeposit = () =>
+  isCySEC ? ColumnDeposit() : ColumnDepositFSA();
+export const getDataWithdrawal = () =>
+  isCySEC ? DataWithdrawal() : DataWithdrawalFSA();
+export const getColumnWithdrawal = () =>
+  isCySEC ? ColumnWithdrawal() : ColumnWithdrawalFSA();
 
 export const WithdrawalDisclaimer = () => {
   const { t } = useTranslation();

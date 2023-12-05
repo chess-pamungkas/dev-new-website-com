@@ -1,5 +1,21 @@
 import visaLogo from "../assets/images/icons/payments/visa.png";
-import masterCardLogo from "../assets/images/icons/payments/mastercard.png";
+import masterCardLogo from "../assets/images/icons/payments/masterCard.png";
+import danaLogo from "../assets/images/icons/payments/dana.png";
+import duitNowLogo from "../assets/images/icons/payments/duitNow.png";
+import equalsLogo from "../assets/images/icons/payments/equals.png";
+import momoLogo from "../assets/images/icons/payments/momo.png";
+import orisLogo from "../assets/images/icons/payments/oris.png";
+import ovoLogo from "../assets/images/icons/payments/ovo.png";
+import pembayaranBankLogo from "../assets/images/icons/payments/pembayaranBank.png";
+import pixLogo from "../assets/images/icons/payments/pix.png";
+import shopeePayLogo from "../assets/images/icons/payments/shopeePay.png";
+import sticpayLogo from "../assets/images/icons/payments/sticpay.png";
+import thaiqrLogo from "../assets/images/icons/payments/thaiQR.png";
+import trueMoneyLogo from "../assets/images/icons/payments/trueMoney.png";
+import vietqrLogo from "../assets/images/icons/payments/vietQR.png";
+import vnPayLogo from "../assets/images/icons/payments/vnPay.png";
+import visaLogoEU from "../assets/images/icons/payments/visaEU.png";
+import masterCardLogoEU from "../assets/images/icons/payments/mastercardEU.png";
 import bankwireLogo from "../assets/images/icons/payments/bankwire.png";
 import netellerLogo from "../assets/images/icons/payments/neteller.png";
 import revolutLogo from "../assets/images/icons/payments/revolut.png";
@@ -63,6 +79,9 @@ export const GetLoginLink = () =>
 export const GetDepositLink = () =>
   `https://portal.oqtima.${topLevelDomain}/funds/deposit/${setLangParam()}`;
 
+export const GetWithdrawalLink = () =>
+  `https://portal.oqtima.${topLevelDomain}/funds/withdraw/${setLangParam()}`;
+
 export const COMING_SOON_PAGE_LINK = "/coming-soon";
 export const COMPANY_PAGE_LINK = "/company";
 export const LEGAL_PAGE_LINK = "/legal";
@@ -103,14 +122,81 @@ export const ANGLE_ICON_COLOR = {
 
 export const TABLE_PAGE_SIZES = [5, 10, 15];
 
-export const PAYMENT_SYSTEMS = {
-  visa: {
+export const PAYMENT_SYSTEMS_FSA = [
+  {
     alt: "Visa",
     logo: visaLogo,
   },
-  masterCard: {
+  {
     alt: "MasterCard",
     logo: masterCardLogo,
+  },
+  {
+    alt: "Dana",
+    logo: danaLogo,
+  },
+  {
+    alt: "Duit Now",
+    logo: duitNowLogo,
+  },
+  {
+    alt: "Equals",
+    logo: equalsLogo,
+  },
+  {
+    alt: "Momo",
+    logo: momoLogo,
+  },
+  {
+    alt: "Ovo",
+    logo: ovoLogo,
+  },
+  {
+    alt: "Pembayaran Bank",
+    logo: pembayaranBankLogo,
+  },
+  {
+    alt: "Pix",
+    logo: pixLogo,
+  },
+  {
+    alt: "Oris",
+    logo: orisLogo,
+  },
+  {
+    alt: "Shopee Pay",
+    logo: shopeePayLogo,
+  },
+  {
+    alt: "Sticpay",
+    logo: sticpayLogo,
+  },
+  {
+    alt: "ThaiQR",
+    logo: thaiqrLogo,
+  },
+  {
+    alt: "VietQR",
+    logo: vietqrLogo,
+  },
+  {
+    alt: "Vn Pay",
+    logo: vnPayLogo,
+  },
+  {
+    alt: "True Money",
+    logo: trueMoneyLogo,
+  },
+];
+
+export const PAYMENT_SYSTEMS = {
+  visa: {
+    alt: "Visa",
+    logo: visaLogoEU,
+  },
+  masterCard: {
+    alt: "MasterCard",
+    logo: masterCardLogoEU,
   },
   bankwire: {
     alt: "Bank Wire",
