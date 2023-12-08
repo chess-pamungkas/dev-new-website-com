@@ -3,7 +3,7 @@ import Popup from "../shared/popup";
 import cn from "classnames";
 import { postClientConsent } from "../../helpers/services/client-consent-service";
 import { CONSENT_TYPES } from "../../helpers/consent-types.config";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { setRedirectOrBannedPopupShown } from "../../helpers/services/set-redirect-or-banned-popup-shown";
 import { isCySEC } from "../../helpers/entity-resolver";
 import ClientResolverContext from "../../context/client-resolver-context";
@@ -15,7 +15,7 @@ const RedirectOrBannedPopup = ({
   isBannedPopup,
   setIsRecommendedRedirectNotification,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { clientConfig } = useContext(ClientResolverContext);
 
   const bannedPopupDescription = (country, entity) => (

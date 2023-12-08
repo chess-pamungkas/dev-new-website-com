@@ -3,7 +3,7 @@ import cn from "classnames";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import HowToStartItem from "../how-to-start-item";
 import { START_STEPS } from "../../../../helpers/partners.config";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import ButtonLink from "../../../shared/button-link";
 import {
   DIR_LTR,
@@ -16,7 +16,7 @@ import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { sitePostfix } from "../../../../helpers/entity-resolver";
 
 const HowToStart = ({ className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
   const { arrow1, arrow2 } = getArrows(isMobile, isTablet, isLG, isXL);

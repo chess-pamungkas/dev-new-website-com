@@ -3,14 +3,14 @@ import cn from "classnames";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 import { CAREER_PROS } from "../../helpers/career.config";
 import ProsBlock from "./components/pros-block";
 
 const CareerPros = ({ className }) => {
   const isRTL = useRtlDirection();
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <section

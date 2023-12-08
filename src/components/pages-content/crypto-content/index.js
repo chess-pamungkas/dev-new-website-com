@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/cripto.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
@@ -24,7 +24,7 @@ import { sitePostfix } from "../../../helpers/entity-resolver";
 import TradingContext from "../../../context/trading-context";
 
 const CryptoContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { tradingSymbols } = useContext(TradingContext);
 
   updateTableDataWithLiveColumn(DATA_CRYPTO, tradingSymbols);

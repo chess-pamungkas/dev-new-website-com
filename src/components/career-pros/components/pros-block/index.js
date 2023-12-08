@@ -1,12 +1,12 @@
 import React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 import { Logo } from "../../../shared/icons";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 
 const ProsBlock = ({ className, title, titleAccent, text }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <div className={cn("pros-block", className)}>

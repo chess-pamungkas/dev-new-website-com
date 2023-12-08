@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import ButtonLink from "../../shared/button-link";
 import { GetRegistrationLink } from "../../../helpers/constants";
 import AccountTypeAdvantage from "../account-type-advantage";
@@ -14,7 +14,7 @@ const AccountType = ({
   gridArea,
   advantages,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <div className={cn("account-type", className, gridArea)}>

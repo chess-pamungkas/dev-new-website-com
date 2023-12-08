@@ -7,7 +7,7 @@ import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
 import forex from "../../../assets/images/top-markets/images/forex.svg";
 
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { FOREX_TRADING_SECTION } from "../../../helpers/config";
 import animation from "../../../assets/images/bg/promotions/forex/forex.json";
 import MarketingCircle from "../../marketing-circle";
@@ -26,7 +26,7 @@ import { sitePostfix } from "../../../helpers/entity-resolver";
 import TradingContext from "../../../context/trading-context";
 
 const ForexContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { tradingSymbols } = useContext(TradingContext);
 
   updateTableDataWithLiveColumn(DATA_FOREX_MINOR, tradingSymbols);

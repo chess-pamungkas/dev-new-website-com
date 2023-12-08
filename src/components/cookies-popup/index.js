@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import cn from "classnames";
 import CookieContext from "../../context/cookie-context";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { isBrowser } from "../../helpers/services/is-browser";
 import NotificationStripeContext from "../../context/notification-stripe-context";
 import CommonContext from "../../context/common-context";
 
 export const CookiesPopup = ({ className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const {
     handleOpenGDPRPopup,
     acceptAllCookies,

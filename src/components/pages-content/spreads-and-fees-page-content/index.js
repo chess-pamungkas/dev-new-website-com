@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import cn from "classnames";
 import TopMarket from "../../top-market";
 import promotion from "../../../assets/images/spreads-and-fees/promotion.svg";
@@ -31,7 +31,7 @@ import TradingContext from "../../../context/trading-context";
 import { GeneralTableColumns } from "../../../helpers/top-market-tables";
 
 const SpreadsAndFeesPageContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
   const { tradingSymbols, setSelectedSection, setNeedToLoadSymbols } =
     useContext(TradingContext);

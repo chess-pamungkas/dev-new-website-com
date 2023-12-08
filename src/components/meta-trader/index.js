@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import ButtonLink from "../shared/button-link";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { ADDITIONAL_PLATFORMS, MOBILE_PLATFORMS } from "../../helpers/config";
 import MarketItemAdvantageList from "../all-markets/components/market-item-advantage-list";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
@@ -20,7 +20,7 @@ const MetaTrader = ({
   isGrayBackground,
   downloadLink,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
 

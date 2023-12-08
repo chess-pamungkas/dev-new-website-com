@@ -1,17 +1,27 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 import Seo from "../components/shared/seo";
 import TopMarket from "../components/top-market";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
 import image from "../assets/images/about-pages/contact-us.svg";
 import ContactUs from "../components/contact-us";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 const ContactUsPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
-    <>
+    <GoogleReCaptchaProvider
+      reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY}
+      container={{
+        element: "captcha-placeholder",
+        parameters: {
+          badge: "bottomleft",
+          theme: "light",
+        },
+      }}
+    >
       <Seo title={t("page-contact-title")} />
       <TopMarket
         title={
@@ -32,7 +42,8 @@ const ContactUsPage = () => {
         />
       </TopMarket>
       <ContactUs />
-    </>
+      <div id="captcha-placeholder" />
+    </GoogleReCaptchaProvider>
   );
 };
 

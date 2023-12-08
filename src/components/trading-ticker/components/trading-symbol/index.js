@@ -1,7 +1,7 @@
 import * as React from "react";
 import cn from "classnames";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import upArrow from "../../../../assets/images/trading-ticker/up-arrow.svg";
 import downArrow from "../../../../assets/images/trading-ticker/down-arrow.svg";
 import ButtonLink from "../../../shared/button-link";
@@ -9,7 +9,7 @@ import { GetRegistrationLink } from "../../../../helpers/constants";
 
 const TradingSymbol = ({ className, symbol, direction, bid, ask, spread }) => {
   const isRTL = useRtlDirection();
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <div

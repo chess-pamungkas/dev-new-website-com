@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import {
   FAQ_ALL,
   FAQ_BEGINNERS,
@@ -15,7 +15,7 @@ import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const HelpCenter = ({ className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const [searchResults, setSearchResults] = useState([]);
   const [noSearchResult, setNoSearchResult] = useState(false);
   const isRTL = useRtlDirection();

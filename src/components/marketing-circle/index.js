@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import ButtonLink from "../shared/button-link";
 import { GetRegistrationLink } from "../../helpers/constants";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 
 export const MarketingCircle = ({
   animation,
@@ -15,7 +15,7 @@ export const MarketingCircle = ({
   rightBottom,
 }) => {
   const { isMobile, isMD, isLG } = useWindowSize();
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   let animationHeight = 492;
   if (isMobile) {

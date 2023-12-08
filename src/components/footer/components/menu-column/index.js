@@ -1,11 +1,11 @@
 import React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import InternalLink from "../../../shared/internal-link";
 
 const MenuColumn = ({ className, items }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <ul className={cn("menu-column", className)}>

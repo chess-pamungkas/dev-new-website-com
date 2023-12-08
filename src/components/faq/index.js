@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import Accordion from "../shared/accordion";
 import { AccordionActiveIcon, AccordionIcon } from "../shared/icons";
 import ButtonLink from "../shared/button-link";
@@ -8,7 +8,7 @@ import { DIR_LTR, DIR_RTL, FAQ_PAGE_LINK } from "../../helpers/constants";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 
 const Faq = ({ className, title, faq, isFaqBtnHidden, subTitleTemplate }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
 
   return (

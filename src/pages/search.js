@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { graphql } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 import Seo from "../components/shared/seo";
 import SearchPageContent from "../components/pages-content/search-page-content";
 import CommonContext from "../context/common-context";
 
 const SearchPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { setIsSearchBarAttached } = useContext(CommonContext);
 
   useEffect(() => {

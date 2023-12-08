@@ -2,7 +2,7 @@ import ButtonLink from "../components/shared/button-link";
 import cn from "classnames";
 import React from "react";
 import { PAYMENT_SYSTEMS, GetDepositLink, GetWithdrawalLink } from "./constants";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
 import { isCySEC, sitePostfix } from "./entity-resolver";
 import { useWindowSize } from "./hooks/use-window-size";
 import depositArrow from "../assets/images/withdrawal/deposit.png";
@@ -92,7 +92,7 @@ const PAYMENT_METHODS_COLUMNS_FSA = [
 ];
 
 export const ColumnDepositFSA = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   const COLUMNS_DEPOSIT = [
     {
@@ -124,7 +124,7 @@ export const ColumnDepositFSA = () => {
 };
 
 const DEPOSIT_COLUMNS_WITH_BTN = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
   return isMobile ? (
     <a href={GetDepositLink()} target="_blank" rel="noreferrer">
@@ -138,7 +138,7 @@ const DEPOSIT_COLUMNS_WITH_BTN = () => {
 };
 
 const WITHDRAWAL_COLUMNS_WITH_BTN = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
   return isMobile ? (
     <a href={GetWithdrawalLink()} target="_blank" rel="noreferrer">
@@ -152,7 +152,7 @@ const WITHDRAWAL_COLUMNS_WITH_BTN = () => {
 };
 
 export const DataDepositFSA = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const DATA_DEPOSIT = [
     ...PAYMENT_METHODS_COLUMNS_FSA.map((methodItem) => ({
       col1: (
@@ -186,7 +186,7 @@ export const DataDepositFSA = () => {
   return DATA_DEPOSIT;
 };
 export const ColumnWithdrawalFSA = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const COLUMNS_WITHDRAWAL = [
     {
       accessor: "col1",
@@ -211,7 +211,7 @@ export const ColumnWithdrawalFSA = () => {
   return COLUMNS_WITHDRAWAL;
 };
 export const DataWithdrawalFSA = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const DATA_WITHDRAWAL = [
     ...PAYMENT_METHODS_COLUMNS_FSA.map((methodItem) => ({
       col1: (
@@ -241,7 +241,7 @@ export const DataWithdrawalFSA = () => {
 };
 
 export const ColumnDeposit = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   const COLUMNS_DEPOSIT = [
     {
@@ -275,7 +275,7 @@ export const ColumnDeposit = () => {
 const CYSEC_CURRENCIES = "EUR, USD, GBP, CHF";
 
 export const DataDeposit = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const DATA_DEPOSIT = [
     {
       col1: (
@@ -366,7 +366,7 @@ export const DataDeposit = () => {
   return DATA_DEPOSIT;
 };
 export const ColumnWithdrawal = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const COLUMNS_WITHDRAWAL = [
     {
       accessor: "col1",
@@ -388,7 +388,7 @@ export const ColumnWithdrawal = () => {
   return COLUMNS_WITHDRAWAL;
 };
 export const DataWithdrawal = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const DATA_WITHDRAWAL = [
     {
       col1: (
@@ -498,7 +498,7 @@ export const getColumnWithdrawal = () =>
   isCySEC ? ColumnWithdrawal() : ColumnWithdrawalFSA();
 
 export const WithdrawalDisclaimer = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   return isCySEC ? (
     <>
       <p className="notes-block__text">1 {t("withdrawal_disclaimer1-cysec")}</p>
@@ -521,7 +521,7 @@ export const WithdrawalDisclaimer = () => {
 };
 
 export const DepositDisclaimer = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   return isCySEC ? (
     <>
       <p className="notes-block__text">1 {t("withdrawal_disclaimer5-cysec")}</p>

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "../../assets/styles/Bookmark.scss";
 import ButtonLink from "../shared/button-link";
 import { GetRegistrationLink } from "../../helpers/constants";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import ChevronIcon from "../../assets/images/icons/chevron.svg";
 
 function Bookmark() {
@@ -15,7 +15,7 @@ function Bookmark() {
 
   const bookmarkRef = useRef(null);
   const buttonRef = useRef(null);
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   const initiateClosingSequence = () => {
     setShaking(true);

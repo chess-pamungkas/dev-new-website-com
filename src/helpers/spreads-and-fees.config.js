@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
 import { isCySEC } from "./entity-resolver";
 import { MobileCell } from "../components/shared/table/components/mobile-cell";
 
@@ -260,7 +260,7 @@ export const DATA_SPREADS_TABLE_CRYPTO = [
 ];
 
 export const ColumnsSpreadTable2 = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const COLUMNS_SPREADS_TABLE_2 = [
     {
       accessor: "col1",
@@ -275,7 +275,7 @@ export const ColumnsSpreadTable2 = () => {
 };
 
 export const DataSpreadTable2 = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const DATA_SPREADS_TABLE_2_CYSEC = [
     {
       col1: "USD",

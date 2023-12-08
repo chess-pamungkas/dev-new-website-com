@@ -7,7 +7,7 @@ import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
 import indices from "../../../assets/images/top-markets/images/indices.svg";
 
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { INDICES_TRADING_SECTION } from "../../../helpers/config";
 import animation from "../../../assets/images/bg/promotions/indices/indices.json";
 import MarketingCircle from "../../marketing-circle";
@@ -23,7 +23,7 @@ import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-
 import TradingContext from "../../../context/trading-context";
 
 const IndicesContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { tradingSymbols } = useContext(TradingContext);
 
   updateTableDataWithLiveColumn(DATA_INDICES, tradingSymbols);

@@ -7,7 +7,7 @@ import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
 import etf from "../../../assets/images/top-markets/images/etf.svg";
 
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { ETF_TRADING_SECTION } from "../../../helpers/config";
 import animation from "../../../assets/images/bg/promotions/etf/etf.json";
 import MarketingCircle from "../../marketing-circle";
@@ -15,7 +15,7 @@ import Faq from "../../faq";
 import { FAQ_ETF } from "../../../helpers/faq";
 
 const ETFContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <>

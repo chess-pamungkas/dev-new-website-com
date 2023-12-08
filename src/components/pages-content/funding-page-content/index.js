@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import TableComponent from "../../shared/table";
 import {
   getColumnDeposit,
@@ -24,7 +24,7 @@ import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { sitePostfix, isCySEC } from "../../../helpers/entity-resolver";
 
 const FundingPageContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
   const [isDepositTab, setIsDepositTab] = useState(true);
 

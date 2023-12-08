@@ -13,6 +13,7 @@ import { TradingProvider } from "../../../context/trading-context";
 import { CommonProvider } from "../../../context/common-context";
 import MainContainer from "../main-container";
 import Bookmark from "../../floating-button/BookmarkButton";
+
 const Layout = ({ children }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 

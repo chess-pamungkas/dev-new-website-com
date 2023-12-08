@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import cn from "classnames";
 import {
   DIR_LTR,
@@ -14,7 +14,7 @@ import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { isCySEC, isFSA } from "../../helpers/entity-resolver";
 
 const ContactUs = ({ className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
   const email = getContactEmail();
   const phone = getContactPhone();

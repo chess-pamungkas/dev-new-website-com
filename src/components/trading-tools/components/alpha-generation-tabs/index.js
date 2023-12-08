@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import {
   AlphaGeneration1,
   AlphaGeneration2,
@@ -13,7 +13,7 @@ import alpha3 from "../../../../assets/images/trading-tools/alpha3.png";
 import TradingToolsTabContent from "../trading-tools-tab-content";
 
 const AlphaGenerationTabs = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   const tabs = [
     {

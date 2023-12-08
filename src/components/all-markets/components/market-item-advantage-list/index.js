@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import icon from "../../../../assets/images/all-markets/advantage-icon.svg";
 import iconSm from "../../../../assets/images/all-markets/advantage-icon-sm.svg";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import ButtonLink from "../../../shared/button-link";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
@@ -15,7 +15,7 @@ const MarketItemAdvantageList = ({
   link,
   btnClassName,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
   const isRTL = useRtlDirection();
 

@@ -2,11 +2,13 @@ import { useCallback, useContext } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { I18nextContext } from "gatsby-plugin-react-i18next";
 import { replaceLocaleVariables } from "../services/replace-locale-variables";
+import { getLocalizationVariables } from "../localization-variables";
 
 export const useSearchData = () => {
   const { language } = useContext(I18nextContext); // current selected language
   const currentPageUrl =
     typeof window !== "undefined" && window.location.pathname;
+  const localizationVariables = getLocalizationVariables();
 
   //Note: It is important to list all existing languages ​​here (from both entities).
   //And, of course, it's important to store associated locales in `indexedLocaleData`.
@@ -47,7 +49,7 @@ export const useSearchData = () => {
 
       const results = currentLocaleIndexedData.reduce((acc, piece) => {
         var [url, content] = piece.split("_");
-        content = replaceLocaleVariables(content);
+        content = replaceLocaleVariables(content, localizationVariables);
         if (!url || !content) return acc;
 
         const transformedContent = content.toLowerCase();
@@ -104,7 +106,7 @@ export const useSearchData = () => {
 
       return results;
     },
-    [currentLocaleIndexedData, currentPageUrl]
+    [currentLocaleIndexedData, currentPageUrl, localizationVariables]
   );
 
   return {

@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import cn from "classnames";
 import {
   DIR_LTR,
@@ -12,7 +12,7 @@ import ButtonLink from "../../../shared/button-link";
 
 const FeaturedIdeas = ({ className }) => {
   const isRTL = useRtlDirection();
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <section

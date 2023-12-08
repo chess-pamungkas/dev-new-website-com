@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import Slider from "../../../shared/slider";
 import { useState } from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import {
   CLIENTS_MARKS,
   COST_PER_CLIENT,
@@ -16,7 +16,7 @@ import { DIR_LTR, DIR_RTL } from "../../../../helpers/constants";
 import { sitePostfix } from "../../../../helpers/entity-resolver";
 
 const IncomeSlider = ({ className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
   const [clientsCount, setClientsCount] = useState(DEFAULT_CLIENTS);
   const [totalIncome, setTotalIncome] = useState(

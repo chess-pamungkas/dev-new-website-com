@@ -7,11 +7,11 @@ import CommonContext from "../context/common-context";
 import comingSoonImage from "../assets/images/system-info/coming-soon.svg";
 import SystemInfoComponent from "../components/shared/system-info";
 import { isCySEC } from "../helpers/entity-resolver";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 
 const MT5WebTraderPage = () => {
   const { setIsSearchBarAttached } = useContext(CommonContext);
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   useEffect(() => {
     setIsSearchBarAttached(false);

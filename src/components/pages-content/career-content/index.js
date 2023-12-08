@@ -3,7 +3,7 @@ import TopMarketPromotion from "../../top-market-promotion";
 import cn from "classnames";
 import image from "../../../assets/images/about-pages/career.svg";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { LogoTextMain } from "../../shared/icons";
 import CareerPros from "../../career-pros";
@@ -13,7 +13,7 @@ import CareerBenefits from "../../career-benefits";
 import JobOpenings from "../../job-openings";
 
 const CareerContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
 
   return (

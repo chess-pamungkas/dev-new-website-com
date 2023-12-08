@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 
 export const CookieCategoryItem = ({
   title,
@@ -11,7 +11,7 @@ export const CookieCategoryItem = ({
   setAcceptedCookies,
   className,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const [checked, setChecked] = useState(initialValue);
 
   const onClick = () => {

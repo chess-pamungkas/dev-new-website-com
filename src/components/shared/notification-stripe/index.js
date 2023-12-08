@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import cn from "classnames";
 import { useModal } from "../../../helpers/hooks/use-modal";
 import RedirectOrBannedPopup from "../../redirect-popup";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { getRiskDisclosureDoc } from "../../../helpers/documents";
 import { setRedirectOrBannedPopupShown } from "../../../helpers/services/set-redirect-or-banned-popup-shown";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
@@ -17,7 +17,7 @@ import { redirectToOppositeEntity } from "../../../helpers/services/redirect-to-
 export const RiskWarningNotification = () => {
   const { expand, setExpand } = useContext(NotificationStripeContext);
   const { isMobile } = useWindowSize();
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <div className="notification-stripe__cysec-wrapper">
@@ -50,7 +50,7 @@ const RecommendedRedirectNotification = ({
   setIsHidden,
   setIsRecommendedRedirectNotification,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <div className="notification-stripe__redirection-wrapper">

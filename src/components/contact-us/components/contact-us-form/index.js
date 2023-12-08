@@ -1,24 +1,21 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import Input from "../../../shared/form/input";
 import Textarea from "../../../shared/form/textarea";
 import cn from "classnames";
 import { ContactUsSchema } from "../../../../validations/contact-us";
 import axios from "axios";
-import ReCAPTCHA from "react-google-recaptcha";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { currentEntity } from "../../../../helpers/entity-resolver";
 
 const ContactUsForm = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const [isSentSuccessful, setIsSentSuccessful] = useState(null);
   const API_URL = process.env.GATSBY_OQTIMA_API_URL;
-  const SITE_KEY = process.env.GOOGLE_CAPTCHA_SITE_KEY;
-
-  const reCaptchaRef = useRef();
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleApiResponse = (isSuccessful) => {
-    reCaptchaRef.current.reset();
     setIsSentSuccessful(isSuccessful);
     setTimeout(() => {
       setIsSentSuccessful(null);
@@ -26,7 +23,7 @@ const ContactUsForm = () => {
   };
 
   const handleContactForm = async (values) => {
-    const token = await reCaptchaRef.current.executeAsync();
+    const token = await executeRecaptcha("contact_us");
     axios
       .post(`${API_URL}mail`, {
         ...values,
@@ -104,14 +101,6 @@ const ContactUsForm = () => {
             errorMessage={errors.message}
             placeholder={t("contact-us_form_placeholder")}
           />
-          {SITE_KEY && (
-            <ReCAPTCHA
-              badge="bottomleft"
-              sitekey={SITE_KEY}
-              size="invisible"
-              ref={reCaptchaRef}
-            />
-          )}
           <button
             type="submit"
             className={cn(

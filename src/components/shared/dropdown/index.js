@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 
 const Dropdown = ({
   className,
@@ -9,7 +9,7 @@ const Dropdown = ({
   setSelectedItem,
   isDropdownShown,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const [isOpen, setIsOpen] = useState(false);
 
   const onSelectionByClick = (item) => {

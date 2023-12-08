@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import TopMarketPromotion from "../../top-market-promotion";
 import cn from "classnames";
 import animation from "../../../assets/images/animations/aggregator_Trading.json";
@@ -18,7 +18,7 @@ import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import InternalLink from "../../shared/internal-link";
 
 const TradingViewPageContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
 

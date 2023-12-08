@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 import "../assets/styles/index.scss";
 import MainPromotion from "../components/main-promotion";
 import TradingTicker from "../components/trading-ticker";
@@ -9,7 +9,7 @@ import PerformanceContent from "../components/pages-content/main-page-content/pe
 import PromotionContent from "../components/pages-content/main-page-content/promotion-content";
 
 const IndexPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <>

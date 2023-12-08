@@ -1,11 +1,11 @@
 import React from "react";
 import cn from "classnames";
 import ButtonLink from "../../../shared/button-link";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 
 const Vacancy = ({ className, location, area, description, link }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
 
   return (

@@ -1,12 +1,12 @@
 import React from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import cn from "classnames";
 import image from "../../../../assets/images/trading-tools/market-buzz.png";
 import { MARKET_BUZZ_INFO } from "../../../../helpers/trading-tools.config";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 
 const MarketBuzzInfo = ({ className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <div className={cn("mb-info", className)}>

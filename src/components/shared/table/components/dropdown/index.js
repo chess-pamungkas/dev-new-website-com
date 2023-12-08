@@ -1,10 +1,10 @@
 import Dropdown from "../../../dropdown";
 import React, { useState } from "react";
 import { TABLE_PAGE_SIZES } from "../../../../../helpers/constants";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../../helpers/hooks/use-translation-with-vars";
 
 const TableShowByDropdown = ({ state, setPageSize }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <div className="table__dropdown">

@@ -6,10 +6,10 @@ import {
   GDPR_COOKIE_CATEGORIES,
   DEFAULT_COOKIE_CONSENT,
 } from "../../helpers/gdpr-cookie.config";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 
 export const GDPRPopup = ({ className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const [acceptedCookies, setAcceptedCookies] = useState(
     DEFAULT_COOKIE_CONSENT
   );

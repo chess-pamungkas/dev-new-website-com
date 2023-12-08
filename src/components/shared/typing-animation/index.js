@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react";
 import { animated, useTransition, easings } from "react-spring";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import {
   DEFAULT_WRAPPER_WIDTH,
   DELAY_BEFORE_NEXT_KEYWORD
 } from "../../../helpers/animation.config";
 
 const TypingAnimation = ({ keywords }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   const buildChars = str => {
     return [...t(str)].map((char, key) => ({ char, key }));

@@ -1,7 +1,7 @@
 import React, { useRef, useContext } from "react";
 import cn from "classnames";
 import { animated } from "react-spring";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import airbnbIcon from "../../assets/images/icons/companies/airbnb.svg";
 import amazonIcon from "../../assets/images/icons/companies/amazon.svg";
 import appleIcon from "../../assets/images/icons/companies/apple.svg";
@@ -38,7 +38,7 @@ import { sitePostfix } from "../../helpers/entity-resolver";
 const TradeWithPromotion = ({ className, sectionRef }) => {
   const typingContainerRef = useRef();
 
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
 
   const sectionIntersectionRef = useIntersectionObserver(

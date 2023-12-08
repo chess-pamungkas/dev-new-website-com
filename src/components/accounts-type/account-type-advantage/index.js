@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 
 const AccountTypeAdvantage = ({
   className,
@@ -12,7 +12,7 @@ const AccountTypeAdvantage = ({
   smallValue,
   higherLine,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <div className={cn("account-type-advantage", className)}>

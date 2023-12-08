@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import {
   FAQ_ALL,
   FAQ_BEGINNERS,
@@ -12,7 +12,7 @@ import { debounce } from "lodash";
 const FaqSearchBar = ({ className, setSearchResults, setNoSearchResult }) => {
   const COUNT_OF_SEARCH_CHARS = 1;
 
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const [searchTerm, setSearchTerm] = useState("");
 
   const faqMarket = getFAQMarket();

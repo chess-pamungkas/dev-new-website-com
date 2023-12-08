@@ -1,6 +1,6 @@
 import React, { useRef, useContext } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { AngleDownIcon } from "../../../shared/icons";
 import { ANGLE_ICON_COLOR } from "../../../../helpers/constants";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
@@ -8,7 +8,7 @@ import NavbarSubItem from "../navbar-sub-item";
 import CommonContext from "../../../../context/common-context";
 
 const NavbarItem = ({ className, title, subItems = [] }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const dropdownRef = useRef();
   const { dropdownHeightOffset, isScrolled } = useContext(CommonContext);
 

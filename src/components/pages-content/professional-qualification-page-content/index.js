@@ -7,7 +7,7 @@ import { GetRegistrationLink } from "../../../helpers/constants";
 import TopMarketPromotion from "../../top-market-promotion";
 import cn from "classnames";
 import icon from "../../../assets/images/icon--white.svg";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import AdvantageList from "../../professional-qualification/advantage-list";
 import ButtonLink from "../../shared/button-link";
@@ -15,7 +15,7 @@ import EligibilityList from "../../professional-qualification/eligibility-list";
 import { sitePostfix } from "../../../helpers/entity-resolver";
 
 const ProfessionalQualificationPageContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
 
   return (

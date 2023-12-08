@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import TopMarket from "../../top-market";
 import topPromo from "../../../assets/images/vps/top-promo.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
@@ -11,7 +11,7 @@ import VPSAdvantages from "../../vps/components/vps-advantages";
 import { VPS_ADVANTAGES } from "../../../helpers/vps.config";
 
 const VPSContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <>

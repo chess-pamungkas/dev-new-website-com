@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GetRegistrationLink } from "../../../../helpers/constants";
 import ButtonLink from "../../../shared/button-link";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 
 const NO_VALUE = "N/A";
 
@@ -17,7 +17,7 @@ function parseSymbols(symbol, tradingSymbols) {
 }
 
 const TableLiveColumn = ({ symbol, tradingSymbols }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { bid, ask, direction } = parseSymbols(symbol, tradingSymbols);
 
   return (

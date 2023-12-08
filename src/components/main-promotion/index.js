@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import ButtonLink from "../shared/button-link";
 import { GetRegistrationLink } from "../../helpers/constants";
 import TitlesAnimation from "../shared/titles-animation";
@@ -12,14 +12,16 @@ import {
 } from "../../helpers/marketing.config";
 import { transformParamToKey } from "../../helpers/services/marketing-service";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import LanguageContext from "../../context/language-context";
 
 const MainPromotion = ({ className, isShowHero = true }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslationWithVariables();
+  const { selectedLanguage } = useContext(LanguageContext);
   const { content, sect1 } = useContext(MarketingContext);
   const isRTL = useRtlDirection();
-  const DEFAULT_TEXT_SEQUENCE = getDefaultTextSequence(i18n.language); // Pass the current language here
+  const DEFAULT_TEXT_SEQUENCE = getDefaultTextSequence(selectedLanguage.id); // Pass the current language here
 
   const hero =
     CONTENT_HEROES[transformParamToKey(content)] || CONTENT_HEROES.default;
@@ -37,7 +39,7 @@ const MainPromotion = ({ className, isShowHero = true }) => {
         <>
           <div className="main-promotion__person">
             <span className="main-promotion__name">{t(hero.name)}</span>
-            {i18n.language === "jp" &&
+            {selectedLanguage.id === "jp" &&
               hero.surname && ( // Conditionally render surname for Japanese locale
                 <span className="main-promotion__name">{t(hero.surname)}</span>
               )}
@@ -63,7 +65,7 @@ const MainPromotion = ({ className, isShowHero = true }) => {
               {t("index_main-promotion-title")}
             </span>
             <span className="main-promotion__title main-promotion__title--big">
-              {i18n.language !== "jp" ? (
+              {selectedLanguage.id !== "jp" ? (
                 <TitlesAnimation
                   titles={titles}
                   isAnimationFinished={isAnimationFinished}
