@@ -8,12 +8,12 @@ import fsa from "../../../assets/images/about-pages/fsa.png";
 import Documents from "../../documents";
 import { getLegalDocs } from "../../../helpers/documents";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { isCySEC, sitePostfix } from "../../../helpers/entity-resolver";
 
 const LegalContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { isXL, isLG } = useWindowSize();
   const isRTL = useRtlDirection();
   const cysecImg = isXL || isLG ? cysec : null;

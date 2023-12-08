@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 import { VACANCY } from "../../helpers/career.config";
 import Accordion from "../shared/accordion";
@@ -11,7 +11,7 @@ import { AccordionActiveIcon, AccordionIcon } from "../shared/icons";
 
 const JobOpenings = ({ className }) => {
   const isRTL = useRtlDirection();
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <section

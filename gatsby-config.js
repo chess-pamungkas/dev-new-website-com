@@ -7,8 +7,6 @@ const {
   processLanguagesForConfig,
 } = require(`${__dirname}/src/locales/processLanguages`);
 
-const sharedNumbers = require(`${__dirname}/src/helpers/sharedNumbers.json`);
-
 const indexedLocaleData = processLanguagesForConfig(languages.uniqueList);
 exports.onRenderBody = ({ setHtmlAttributes }) => {
   setHtmlAttributes({ lang: languages.list.id });
@@ -65,10 +63,6 @@ module.exports = {
         i18nextOptions: {
           keySeparator: false,
           nsSeparator: false,
-
-          interpolation: {
-            defaultVariables: sharedNumbers,
-          },
         },
       },
     },

@@ -6,11 +6,11 @@ import Mt4WebTraderLink from "../components/mt4-webtrader";
 import CommonContext from "../context/common-context";
 import NotFoundContent from "../components/pages-content/not-found-page-content";
 import { isCySEC } from "../helpers/entity-resolver";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 
 const MT4WebTraderPage = () => {
   const { setIsSearchBarAttached } = useContext(CommonContext);
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   useEffect(() => {
     setIsSearchBarAttached(false);

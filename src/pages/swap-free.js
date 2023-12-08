@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import NotFoundContent from "../components/pages-content/not-found-page-content";
@@ -8,7 +8,7 @@ import { isCySEC } from "../helpers/entity-resolver";
 import SwapFreeContent from "../components/pages-content/swap-free-page-content";
 
 const SwapFreePage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <>

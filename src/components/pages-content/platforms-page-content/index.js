@@ -7,13 +7,13 @@ import MetaTrader from "../../meta-trader";
 import TopMarketPromotion from "../../top-market-promotion";
 import icon from "../../../assets/images/icon--white.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import platforms from "../../../assets/images/platforms/platforms.svg";
 
 const PlatformsPageContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { isXL } = useWindowSize();
   const META_TRADERS = getTradersList();
   const isRTL = useRtlDirection();

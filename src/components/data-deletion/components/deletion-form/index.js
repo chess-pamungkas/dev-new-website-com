@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Formik } from "formik";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import Input from "../../../shared/form/input";
 import cn from "classnames";
 import axios from "axios";
@@ -12,7 +12,7 @@ import HighlightedLocalizationText from "../../../shared/highlighted-localizatio
 import { DATA_DELETION_POLICY_BLOCK } from "../../../../helpers/data-deletion.config";
 
 const DataDeletionForm = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const [isSentSuccessful, setIsSentSuccessful] = useState(null);
   const API_URL = process.env.GATSBY_OQTIMA_API_URL;
   const SITE_KEY = process.env.GOOGLE_CAPTCHA_SITE_KEY;

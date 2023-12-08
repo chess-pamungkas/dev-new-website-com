@@ -1,10 +1,10 @@
 import React from "react";
 import { useWindowSize } from "./hooks/use-window-size";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
 import { MobileCell } from "../components/shared/table/components/mobile-cell";
 
 export const GeneralTableColumns = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
   const COLUMNS = [
     {

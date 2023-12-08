@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 import { VPS_PROMO_ADVANTAGES } from "../../../../helpers/vps.config";
@@ -9,7 +9,7 @@ import { stringTransformToKebabCase } from "../../../../helpers/services/string-
 
 const VPSCenterPromotion = ({ className }) => {
   const isRTL = useRtlDirection();
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <section

@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import bottomPromo from "../../../../assets/images/vps/bottom-promo.svg";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
@@ -8,7 +8,7 @@ import ButtonLink from "../../../shared/button-link";
 
 const VPSBottomPromotion = ({ className }) => {
   const isRTL = useRtlDirection();
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <section

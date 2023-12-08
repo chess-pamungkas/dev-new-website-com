@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import ButtonLink from "../../../shared/button-link";
 import MarketItemAdvantageList from "../market-item-advantage-list";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 
 const MarketItem = ({
   className,
@@ -13,7 +13,7 @@ const MarketItem = ({
   link,
   advantages,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   return (
     <div
       className={cn("market-item", className, {

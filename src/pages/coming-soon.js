@@ -1,12 +1,12 @@
 import * as React from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 import Seo from "../components/shared/seo";
 import SystemInfoComponent from "../components/shared/system-info";
 import image from "../assets/images/system-info/coming-soon.svg";
 import { graphql } from "gatsby";
 
 const ComingSoonPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <>

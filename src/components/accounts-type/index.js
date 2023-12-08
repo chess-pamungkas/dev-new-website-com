@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import HighlightedLocalizationText from "../../components/shared/highlighted-localization-text";
 import { ACCOUNT_TYPES } from "../../helpers/accounts-type.config";
 import AccountType from "./account-type";
@@ -9,7 +9,7 @@ import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const AccountsType = ({ className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
 
   return (

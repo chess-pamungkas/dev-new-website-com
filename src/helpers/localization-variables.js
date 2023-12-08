@@ -1,4 +1,41 @@
-{
+import React, { useContext } from "react";
+import LanguageContext from "../context/language-context";
+import ClientResolverContext from "../context/client-resolver-context";
+
+const JP_CONTRY_CODE = "JP";
+const JP_LANG_CODE = "jp";
+
+export const getLocalizationVariables = () => {
+  const { clientConfig } = useContext(ClientResolverContext);
+  const { selectedLanguage } = useContext(LanguageContext);
+
+  const isJapaneseVariables = () =>
+    (clientConfig?.countryCode &&
+      clientConfig.countryCode === JP_CONTRY_CODE) ||
+    selectedLanguage.id === JP_LANG_CODE;
+
+  const isIncreasedMinDeposit = () => {
+    const HIGHER_DEPOSIT_COUNTRIES = [
+      "CA", // Canada
+      "GB", // UK
+      JP_CONTRY_CODE, // Japan
+      "AU", // Australia
+      "SG", // Singapore
+      "AE", // UAE
+      "SA", // Saudi Arabia
+      "QA", // Qatar
+    ];
+    // we need this condition because we should increase deposit in case if JP IP OR JP language selected
+    // in the other cases (the rest countries) we checking only the IP, no need to check language
+    return (
+      isJapaneseVariables() ||
+      (clientConfig &&
+        clientConfig.countryCode &&
+        HIGHER_DEPOSIT_COUNTRIES.includes(clientConfig.countryCode))
+    );
+  };
+
+  const VARS = {
     "shares-number": "880",
     "shares-number-fsa": "91",
     "assets-number": "1.000",
@@ -10,7 +47,7 @@
     "execution-time": "30",
     "leverage-up-to": "1:30",
     "shares-leverage-up-to": "1:5",
-    "leverage-up-to-fsa": "1:500",
+    "leverage-up-to-fsa": isJapaneseVariables() ? "1:500" : "1:1000",
     "tradeable-products": "1000",
     "tradeable-products-fsa": "1000",
     "execution-time-fsa": "30",
@@ -38,9 +75,11 @@
     "account-type1-spreads-from": "0.0",
     "account-type1-commissions": "3.50",
     "account-type1-min-deposit": "200",
-    "account-type1-min-deposit-fsa": "20",
+    "account-type1-min-deposit-fsa": isIncreasedMinDeposit() ? "100" : "20",
     "account-type1-max-leverage": "1:30",
-    "account-type1-max-leverage-fsa": "1:500",
+    "account-type1-max-leverage-fsa": isJapaneseVariables()
+      ? "1:500"
+      : "1:1000",
     "account-type1-funding-fees": "0",
     "account-type1-withdrawals-fees": "0",
     "account-type1-markets": "6",
@@ -50,9 +89,11 @@
     "account-type2-spreads-from": "1.0",
     "account-type2-commissions": "3.50",
     "account-type2-min-deposit": "200",
-    "account-type2-min-deposit-fsa": "20",
+    "account-type2-min-deposit-fsa": isIncreasedMinDeposit() ? "100" : "20",
     "account-type2-max-leverage": "1:30",
-    "account-type2-max-leverage-fsa": "1:500",
+    "account-type2-max-leverage-fsa": isJapaneseVariables()
+      ? "1:500"
+      : "1:1000",
     "account-type2-funding-fees": "0",
     "account-type2-withdrawals-fees": "0",
     "account-type2-markets": "6",
@@ -93,5 +134,8 @@
 
     "deposit-minutes": "10",
     "deposit-days": "3-5",
-    "min-deposit": "$20"
-}
+    "min-deposit": isIncreasedMinDeposit() ? "$100" : "$20",
+  };
+
+  return VARS;
+};

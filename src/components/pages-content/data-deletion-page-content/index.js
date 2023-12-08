@@ -1,10 +1,10 @@
 import React from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import DataDeletionForm from "../../data-deletion/components/deletion-form";
 
 const DataDeletionContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <>

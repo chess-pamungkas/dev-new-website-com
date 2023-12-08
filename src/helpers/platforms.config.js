@@ -11,7 +11,7 @@ import {
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 import { isCySEC } from "./entity-resolver";
 import { useWindowSize } from "./hooks/use-window-size";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
 
 export const CTRADER_DOWNLOAD_LINKS = {
   getAndroidLink: () =>
@@ -590,7 +590,7 @@ export const getCTraderDownloadLink = () => {
 };
 
 export const cTraderDownloadTabs = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   return [
     {
       id: 1,
@@ -636,7 +636,7 @@ export const cTraderDownloadTabs = () => {
 };
 
 export const mt4DownloadTabs = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   return [
     {
       id: 1,
@@ -690,7 +690,7 @@ export const mt4DownloadTabs = () => {
 };
 
 export const mt5DownloadTabs = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   return [
     {
       id: 1,

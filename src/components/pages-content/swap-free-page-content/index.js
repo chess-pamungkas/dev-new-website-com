@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import TopMarket from "../../top-market";
 import topPromo from "../../../assets/images/swap-free/top-promo.png";
 import { GetRegistrationLink } from "../../../helpers/constants";
@@ -11,7 +11,7 @@ import { SWAP_FREE_ADVANTAGES } from "../../../helpers/swap-free.config";
 import SwapFreeBottomPromotion from "../../swap-free/components/bottom-promotion";
 
 const SwapFreeContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { AngleDownIcon } from "../icons";
 
 const Accordion = ({
@@ -12,7 +12,7 @@ const Accordion = ({
   icon: Icon,
   iconForActive: IconForActive,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   const [isActive, setIsActive] = useState(isOpen);
 

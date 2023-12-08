@@ -6,7 +6,7 @@ import { GetRegistrationLink } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { SHARES_TRADING_SECTION } from "../../../helpers/config";
 import Faq from "../../faq";
 import { FAQ_SHARES } from "../../../helpers/faq";
@@ -15,7 +15,7 @@ import MarketingCircle from "../../marketing-circle";
 import { sitePostfix } from "../../../helpers/entity-resolver";
 
 const SharesContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <>

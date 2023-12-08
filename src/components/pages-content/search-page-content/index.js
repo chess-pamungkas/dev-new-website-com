@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useSearchData } from "../../../helpers/hooks/use-search-data";
 import SearchContext from "../../../context/search-context";
 import {
@@ -27,7 +27,7 @@ import cn from "classnames";
 import InternalLink from "../../shared/internal-link";
 
 const SearchPageContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { getSearchResults } = useSearchData();
   const { searchState, setSearchState } = useContext(SearchContext);
   const searchResultsRef = useRef();

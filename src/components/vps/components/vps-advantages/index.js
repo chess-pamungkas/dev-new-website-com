@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import ButtonLink from "../../../shared/button-link";
 import { GetRegistrationLink } from "../../../../helpers/constants";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
@@ -9,7 +9,7 @@ import VPSAdvantageItem from "../vps-advantage-item";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 
 const VPSAdvantages = ({ className, advantages }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
 
   return (

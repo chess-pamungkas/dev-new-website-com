@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import CopyRightBlock from "./components/copy-right-block";
 import { LogoTextMain } from "../shared/icons";
 import { getFooterText } from "../../helpers/footer.config";
@@ -9,7 +9,7 @@ import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const Footer = ({ className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
 
   return (

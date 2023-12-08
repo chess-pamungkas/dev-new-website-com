@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useRef, useState } from "react";
 import cn from "classnames";
 import { navigate } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import SearchContext from "../../../../context/search-context";
 import { useOnClickOutside } from "../../../../helpers/hooks/use-on-click-outside";
 import {
@@ -24,7 +24,7 @@ const SearchBar = ({
   isNavbarOpen = false,
   onSubmit,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { getSearchResults } = useSearchData();
   const { searchState, setSearchState } = useContext(SearchContext);
   const { selectedLanguage } = useContext(LanguageContext);

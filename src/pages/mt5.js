@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import Mt5PageContent from "../components/pages-content/mt5-page-content";
@@ -9,7 +9,7 @@ import comingSoonImage from "../assets/images/system-info/coming-soon.svg";
 import SystemInfoComponent from "../components/shared/system-info";
 
 const MT5Page = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { LogoTextMain, LogoWhite } from "../shared/icons";
 import {
   DIR_LTR,
@@ -25,7 +25,7 @@ import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import ClientResolverContext from "../../context/client-resolver-context";
 
 const Header = ({ className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const menu = getMenuItems();
   const isRTL = useRtlDirection();
   const { isDesktop, isTablet } = useWindowSize();

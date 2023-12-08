@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import {
   FeaturedIdeas1,
   FeaturedIdeas2,
@@ -12,7 +12,7 @@ import idea3 from "../../../../assets/images/trading-tools/idea3.png";
 import TradingToolsTabContent from "../trading-tools-tab-content";
 
 const FeaturedIdeasTabs = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   const tabs = [
     {

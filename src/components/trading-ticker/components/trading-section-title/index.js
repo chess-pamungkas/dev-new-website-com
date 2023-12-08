@@ -1,6 +1,6 @@
 import * as React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 
 const TradingSectionTitle = ({
   section,
@@ -8,7 +8,7 @@ const TradingSectionTitle = ({
   setSelectedSection,
   className,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <div

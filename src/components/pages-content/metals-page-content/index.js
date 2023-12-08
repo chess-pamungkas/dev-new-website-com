@@ -7,7 +7,7 @@ import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
 import commodities from "../../../assets/images/top-markets/images/commodities.svg";
 
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { METALS_TRADING_SECTION } from "../../../helpers/config";
 import animation from "../../../assets/images/bg/promotions/metals/metals.json";
 import MarketingCircle from "../../marketing-circle";
@@ -23,7 +23,7 @@ import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-
 import TradingContext from "../../../context/trading-context";
 
 const MetalsContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { tradingSymbols } = useContext(TradingContext);
 
   updateTableDataWithLiveColumn(DATA_METALS, tradingSymbols);

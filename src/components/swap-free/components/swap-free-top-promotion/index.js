@@ -1,7 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
-//TODO: change img
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import vpsImg from "../../../../assets/images/swap-free/swap-free.svg";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
@@ -9,7 +8,7 @@ import { SWAP_FREE_PROMO_LIST } from "../../../../helpers/swap-free.config";
 
 const SwapFreeTopPromotion = ({ className }) => {
   const isRTL = useRtlDirection();
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <section

@@ -1,10 +1,10 @@
 import React from "react";
 import cn from "classnames";
 import { DownloadIcon } from "../icons";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 
 const Document = ({ className, document }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <div className={cn("document", className)}>

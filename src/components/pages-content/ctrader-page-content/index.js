@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_cTrader.json";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
@@ -19,7 +19,7 @@ import cn from "classnames";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
 
 const CtraderPageContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
   const downloadRef = useRef(null);

@@ -1,11 +1,11 @@
 import React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import InternalLink from "../../../shared/internal-link";
 import LangSelect from "../lang-select";
 
 const CornerPanel = ({ className, items }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <div className={cn("corner-panel", className)}>

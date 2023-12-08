@@ -2,7 +2,7 @@ import React from "react";
 import { LEGAL_PAGE_LINK } from "./constants";
 import { RISK_DISCLOSURE_DOC } from "./documents";
 import { isCySEC } from "./entity-resolver";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
 
 const FOOTER_TEXT = "footer-text-cysec";
 const FOOTER_TEXT_FSA = "footer-text-fsa";
@@ -34,7 +34,7 @@ export const FOOTER_FOR_FUNDING = {
 };
 
 export const getFooterCopyright = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return isCySEC ? (
     <>

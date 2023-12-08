@@ -1,6 +1,4 @@
-import sharedNumbers from "../sharedNumbers.json";
-
-export const replaceLocaleVariables = (text) => {
+export const replaceLocaleVariables = (text, variables) => {
   const pattern = /{{\s*([\w\s-]+)\s*}}/g;
   const matches = text.match(pattern);
   let toReplace = {};
@@ -8,7 +6,7 @@ export const replaceLocaleVariables = (text) => {
   if (matches) {
     for (const match of matches) {
       const key = match.replace(/{{\s*([\w\s-]+)\s*}}/, "$1").trim();
-      toReplace[match] = sharedNumbers[key];
+      toReplace[match] = variables[key];
     }
   }
 

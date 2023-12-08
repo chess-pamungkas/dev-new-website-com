@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { animated, useSpring } from "react-spring";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import {
   TITLES_ANIMATION_DEFAULT_FROM_CONFIG,
   TITLES_ANIMATION_DEFAULT_TO_STEP_1_CONFIG,
@@ -16,7 +16,7 @@ const TitlesAnimation = ({
   animationToStep1Config,
   animationToStep2Config,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   const [activeItem, setActiveItem] = useState(
     isChildrenAnimation ? React.Children.toArray(children[0]) : t(titles[0])

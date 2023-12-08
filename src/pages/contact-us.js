@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 import Seo from "../components/shared/seo";
 import TopMarket from "../components/top-market";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
@@ -8,7 +8,7 @@ import image from "../assets/images/about-pages/contact-us.svg";
 import ContactUs from "../components/contact-us";
 
 const ContactUsPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <>

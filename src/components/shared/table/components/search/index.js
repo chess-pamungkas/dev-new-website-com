@@ -1,11 +1,11 @@
 import React from "react";
 import cn from "classnames";
 import { useAsyncDebounce } from "react-table";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../../helpers/hooks/use-translation-with-vars";
 import { SearchIcon } from "../../../icons";
 
 const TableSearch = ({ globalFilter, setGlobalFilter }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   const [value, setValue] = React.useState(globalFilter);
   const onChange = useAsyncDebounce((value) => {

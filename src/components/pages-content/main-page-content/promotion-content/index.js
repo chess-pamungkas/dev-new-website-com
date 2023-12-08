@@ -14,7 +14,7 @@ import promo3 from "../../../../assets/images/promotions/promo3.svg";
 import TradingTools from "../../../trading-tools";
 import promo4 from "../../../../assets/images/promotions/promo4.svg";
 import TradeWithPromotion from "../../../trade-with-promotion";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { useIntersectionObserver } from "../../../../helpers/hooks/use-intersection-observer";
 import {
@@ -33,7 +33,7 @@ import CommonContext from "../../../../context/common-context";
 
 const PromotionContent = () => {
   const XL_HEIGHT = 1080;
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { isMobile, isDesktop, height } = useWindowSize();
   const { headerRef, riskWarningRef } = useContext(CommonContext);
 

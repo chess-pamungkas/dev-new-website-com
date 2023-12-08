@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { BURGER_MENU_LINES_COUNT } from "../../../../helpers/constants";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
@@ -17,7 +17,7 @@ import InternalLink from "../../../shared/internal-link";
 import ClientResolverContext from "../../../../context/client-resolver-context";
 
 const BurgerMenu = ({ className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
   const { clientConfig } = useContext(ClientResolverContext);
 

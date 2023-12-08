@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import TopMarketPromotion from "../../top-market-promotion";
 import cn from "classnames";
 import promotion from "../../../assets/images/copy-trading/promotion.svg";
@@ -16,7 +16,7 @@ import Faq from "../../faq";
 import { GetRegistrationLink } from "../../../helpers/constants";
 
 const CopyTradingPageContent = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
 
   return (

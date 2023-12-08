@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { getPlatforms } from "../../helpers/config";
 import PlatformBlock from "./components/platform-block";
 import ButtonLink from "../shared/button-link";
@@ -13,7 +13,7 @@ import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { sitePostfix } from "../../helpers/entity-resolver";
 
 const TradingTools = ({ className }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
   const containerRef = useRef();
   const intersectionRef = useIntersectionObserver(containerRef, {

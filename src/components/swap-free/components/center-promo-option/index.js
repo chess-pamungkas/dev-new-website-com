@@ -2,11 +2,11 @@ import React from "react";
 import cn from "classnames";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 
 const CenterPromoOption = ({ img, title, titleAccent, text, btnTitle }) => {
   const isRTL = useRtlDirection();
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   const startConvrsSession = () => {
     if (ConvrsChat) {

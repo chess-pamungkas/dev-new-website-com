@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import cn from "classnames";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import LanguageContext from "../../../../context/language-context";
 
 const AdvantageBlock = ({ className, icon: Icon, text, accent, subtext }) => {
-  const { i18n } = useTranslation();
+  const { selectedLanguage } = useContext(LanguageContext);
 
   return (
     <div className={cn("advantage-block", className)}>
@@ -19,7 +19,7 @@ const AdvantageBlock = ({ className, icon: Icon, text, accent, subtext }) => {
           accentClassName="highlighted-in-red"
         />
       </p>
-      {i18n.language === "jp" &&
+      {selectedLanguage.id === "jp" &&
         subtext && ( // Conditionally render subtext for Japanese locale
           <p className="advantage-block__text">
             <HighlightedLocalizationText

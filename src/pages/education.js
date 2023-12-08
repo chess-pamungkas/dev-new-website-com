@@ -1,11 +1,11 @@
 import React from "react";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 import Seo from "../components/shared/seo";
 import { graphql } from "gatsby";
 import EducationPageContent from "../components/pages-content/education-page-content";
 
 const EducationPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <>

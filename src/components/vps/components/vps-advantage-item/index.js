@@ -1,9 +1,9 @@
 import React from "react";
 import cn from "classnames";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 
 const VPSAdvantageItem = ({ className, icon, title, text }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
   return (
     <div className={cn("vps-advantage-item", className)}>
       <img src={icon} alt="" className="vps-advantage-item__icon" />

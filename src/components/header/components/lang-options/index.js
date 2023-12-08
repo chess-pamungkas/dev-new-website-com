@@ -4,7 +4,8 @@ import {
   LANG_SELECT_OPTIONS,
   SHOULD_BE_SMALLER_LANGUAGES,
 } from "../../../../helpers/lang-options.config";
-import { Link, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
+import { Link, useI18next } from "gatsby-plugin-react-i18next";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 
 const LangSelectItem = ({
   language: { id, icon: Icon, name } = {},
@@ -51,7 +52,7 @@ const LangOptions = ({
   selectedLanguage,
   languageSelectHandler,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWithVariables();
 
   return (
     <div className={cn("lang-options", className)}>
