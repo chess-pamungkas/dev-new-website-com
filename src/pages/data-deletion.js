@@ -4,18 +4,29 @@ import { useTranslationWithVariables } from "../helpers/hooks/use-translation-wi
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import DataDeletionContent from "../components/pages-content/data-deletion-page-content";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 const DataDeletionPage = () => {
   const { t } = useTranslationWithVariables();
 
   return (
-    <>
-    <Seo
-      title={t("page-data-deletion-title")}
-      description={t("page-data-deletion-description")}
-    />
-    <DataDeletionContent />
-  </>
+    <GoogleReCaptchaProvider
+      reCaptchaKey={process.env.GOOGLE_CAPTCHA_SITE_KEY}
+      container={{
+        element: "captcha-placeholder",
+        parameters: {
+          badge: "bottomleft",
+          theme: "light",
+        },
+      }}
+    >
+      <Seo
+        title={t("page-data-deletion-title")}
+        description={t("page-data-deletion-description")}
+      />
+      <DataDeletionContent />
+      <div id="captcha-placeholder" />
+    </GoogleReCaptchaProvider>
   );
 };
 
