@@ -28,7 +28,7 @@ export const CTRADER_DOWNLOAD_LINKS = {
       : "https://getctrader.com/oqtima/ctrader-oqtima-setup.exe",
   getWebTraderLink: () =>
     isCySEC ? "https://app.oqtima.eu/" : "https://app.oqtima.com/",
-  getMacLink: () => (isCySEC ? null : null),
+  getMacLink: () => "https://getctradermac.com/spotware/ctrader-spotware-setup.dmg", // generic link for both entities
 };
 
 export const TRADING_VIEW_DOWNLOAD_LINKS = {
@@ -613,6 +613,9 @@ export const cTraderDownloadTabs = () => {
         <>
           <a href={CTRADER_DOWNLOAD_LINKS.getWindowsLink()}>
             {t("ctrader_mt-promotion-download-windows")}
+          </a>
+          <a href={CTRADER_DOWNLOAD_LINKS.getMacLink()}>
+            {t("ctrader_mt-promotion-download-mac")}
           </a>
         </>
       ),
