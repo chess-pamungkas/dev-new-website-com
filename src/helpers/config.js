@@ -34,8 +34,8 @@ export const ADVANTAGES = [
   },
   {
     icon: AdvantageIcon3,
-    text: "index_performance-advantage3",
-    accent: "performance-advantage3-accent",
+    text: `index_performance-advantage3${sitePostfix}`,
+    accent: `performance-advantage3-accent${sitePostfix}`,
     subtext: "index_performance-advantage3-subtext", // added this for jp
   },
   {
