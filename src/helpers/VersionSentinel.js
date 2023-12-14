@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { versionService } from "./versionService"; // Adjust the path as necessary
-import { hasFeature, POLLING_INTERVAL, COMMIT_HASH } from "~/config";
-
+import { hasFeature } from "./features";
+import { POLLING_INTERVAL } from "./queries";
 const VersionSentinel = () => {
+  const COMMIT_HASH = process.env.GATSBY_COMMIT_HASH; // Accessing the commit hash from environment variables
+
   const [serverHash, setServerHash] = useState(COMMIT_HASH);
 
   useEffect(() => {
