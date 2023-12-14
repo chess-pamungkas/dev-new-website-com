@@ -7,12 +7,13 @@ import TradingTicker from "../components/trading-ticker";
 import Seo from "../components/shared/seo";
 import PerformanceContent from "../components/pages-content/main-page-content/performance-content";
 import PromotionContent from "../components/pages-content/main-page-content/promotion-content";
-
+import VersionSentinel from "../helpers/VersionSentinel";
 const IndexPage = () => {
   const { t } = useTranslationWithVariables();
 
   return (
     <>
+      <VersionSentinel />
       <Seo
         title={t("page-main-title")}
         description={t("page-main-description")}
