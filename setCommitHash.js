@@ -6,7 +6,7 @@ function getGitCommitHash() {
     return execSync("git rev-parse --short HEAD").toString().trim();
   } catch (error) {
     console.error("Error fetching git commit hash:", error);
-    return null;
+    return "";
   }
 }
 
@@ -32,7 +32,6 @@ function updateEnvFile(commitHash, envFilePath) {
 }
 
 const commitHash = getGitCommitHash();
-
 const envFilePaths = [
   "./.env_staging_com",
   "./.env_staging_eu",
