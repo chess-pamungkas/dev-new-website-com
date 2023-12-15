@@ -5,13 +5,10 @@ const KEYS = {
   HASH: "HASH",
 };
 
-const serverHashQuery = {
+export const serverHashQuery = {
   queryKey: [KEYS.HASH],
   queryFn: versionService.getVersion,
 };
 
-const setHashQueryData = (hash) => {
+export const setHashQueryData = (hash) =>
   client.setQueryData([KEYS.HASH], hash);
-};
-
-export { serverHashQuery, setHashQueryData };

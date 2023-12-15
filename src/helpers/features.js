@@ -5,7 +5,7 @@ const features = {
 
 const getEnv = () => {
   if (window.location.hostname === "localhost") return "local";
-  return "production"; // Adjust this based on your environment setup
+  return "production";
 };
 
 const hasFeature = (feature) => {
@@ -14,5 +14,3 @@ const hasFeature = (feature) => {
 };
 
 export { hasFeature };
-
-// stages.js
