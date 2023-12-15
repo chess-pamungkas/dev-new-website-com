@@ -1,17 +1,16 @@
 import { stages } from "./stages";
 import { isBrowser } from "./services/is-browser";
-
 const features = {
   versionSentinel: "deployed",
 };
 
 const getEnv = () => {
-  if (isBrowser) {
+  if (isBrowser()) {
     if (window.location.hostname === "localhost") return "local";
     return "production";
   }
-
-  return "server";
+  // Default or fallback environment
+  return "server"; // or any default environment you prefer
 };
 
 const hasFeature = (feature) => {
