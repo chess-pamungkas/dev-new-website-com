@@ -20,12 +20,18 @@ const VersionSentinel = () => {
   }, []);
 
   useEffect(() => {
-    if (hasFeature("versionSentinel") && serverHash !== COMMIT_HASH) {
+    if (
+      hasFeature("versionSentinel") &&
+      serverHash !== COMMIT_HASH &&
+      !localStorage.getItem("reloaded")
+    ) {
       console.log(
         `Version mismatch detected. Current: ${COMMIT_HASH}, Server: ${serverHash}`
       );
-      // Optionally notify the user here before reloading
-      window.location.reload();
+      localStorage.setItem("reloaded", "true");
+      setTimeout(() => window.location.reload(), 2000); // Add a delay before reload
+    } else {
+      localStorage.removeItem("reloaded"); // Clear the flag if hashes match
     }
   }, [serverHash]);
 
