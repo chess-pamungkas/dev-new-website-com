@@ -5,7 +5,7 @@ import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import VersionSentinel from "../helpers/VersionSentinel";
 import { lazified } from "../helpers/lazified";
-import LoadingSpinner from "../components/loading-spinner"; // Example fallback component
+import LoadingSpinner from "../components/loading-spinner";
 
 const IndexPage = () => {
   const { t } = useTranslationWithVariables();
