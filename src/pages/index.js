@@ -9,7 +9,7 @@ import { lazified } from "../helpers/lazified";
 
 const IndexPage = () => {
   const MainPromotion = lazified(() => import("../components/main-promotion"));
-  const TradingTicker = lazified(() => import("./components/trading-ticker"));
+  const TradingTicker = lazified(() => import("../components/trading-ticker"));
   const PerformanceContent = lazified(() =>
     import("../components/pages-content/main-page-content/performance-content")
   );
