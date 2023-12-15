@@ -26,6 +26,7 @@ const IndexPage = () => {
         description={t("page-main-description")}
       />
       <MainPromotion isShowHero />
+      {/*isShowHero is workaround to hide hero image (e.g. Buffon)  */}
       <TradingTicker />
       <PromotionContent />
       <PerformanceContent />

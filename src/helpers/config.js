@@ -234,10 +234,5 @@ const FSA_TRADING_SECTIONS = [
   ...CYSEC_TRADING_SECTIONS,
 ];
 
-export const getTradingSections = () => {
-  if (isCySEC) {
-    return CYSEC_TRADING_SECTIONS;
-  } else {
-    return FSA_TRADING_SECTIONS;
-  }
-};
+export const getTradingSections = () =>
+  isCySEC ? CYSEC_TRADING_SECTIONS : FSA_TRADING_SECTIONS;
