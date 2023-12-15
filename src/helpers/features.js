@@ -4,8 +4,12 @@ const features = {
 };
 
 const getEnv = () => {
-  if (window.location.hostname === "localhost") return "local";
-  return "production";
+  if (typeof window !== "undefined") {
+    if (window.location.hostname === "localhost") return "local";
+    return "production";
+  }
+
+  return "server";
 };
 
 const hasFeature = (feature) => {
