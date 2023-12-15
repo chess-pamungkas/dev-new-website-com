@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { versionService } from "./versionService";
 import { hasFeature } from "./features";
-import { POLLING_INTERVAL } from "./queries";
 
 const VersionSentinel = () => {
   const COMMIT_HASH = process.env.GATSBY_COMMIT_HASH;
   const [serverHash, setServerHash] = useState(COMMIT_HASH);
-  const [reloaded, setReloaded] = useState(false);
 
   useEffect(() => {
     const fetchServerHash = async () => {
@@ -19,24 +17,23 @@ const VersionSentinel = () => {
     };
 
     fetchServerHash();
-    const intervalId = setInterval(fetchServerHash, POLLING_INTERVAL);
-
-    return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
     if (
       hasFeature("versionSentinel") &&
       serverHash !== COMMIT_HASH &&
-      !reloaded
+      !localStorage.getItem("reloaded")
     ) {
       console.log(
         `Version mismatch detected. Current: ${COMMIT_HASH}, Server: ${serverHash}`
       );
-      setReloaded(true);
-      window.location.reload();
+      localStorage.setItem("reloaded", "true");
+      setTimeout(() => window.location.reload(), 2000); // Add a delay before reload
+    } else {
+      localStorage.removeItem("reloaded"); // Clear the flag if hashes match
     }
-  }, [serverHash, reloaded]);
+  }, [serverHash]);
 
   return null;
 };

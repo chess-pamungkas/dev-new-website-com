@@ -23,7 +23,8 @@ jobs:
       - run: mv .env_dev_com .env.production
       - run: npm ci
       - run: npm run build
-
+      - name: Check hash.json content
+        run: cat ./public/hash.json
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -49,6 +50,8 @@ jobs:
       - run: mv .env_dev_eu .env.production
       - run: npm ci
       - run: npm run build
+      - name: Check hash.json content
+        run: cat ./public/hash.json
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1

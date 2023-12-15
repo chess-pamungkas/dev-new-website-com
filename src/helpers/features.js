@@ -1,4 +1,3 @@
-import { isBrowser } from "./services/is-browser";
 const stages = {
   off: [],
   dev: ["local", "development"],
@@ -12,10 +11,10 @@ const features = {
 };
 
 const getEnv = () => {
-  if (isBrowser() && window.location.hostname === "localhost") {
-    return "local";
-  }
-  return "production";
+  // Use an environment variable to set the current environment
+  // If NODE_ENV is not set, default to "production"
+  const env = process.env.NODE_ENV || "production";
+  return env;
 };
 
 const hasFeature = (feature) => {
