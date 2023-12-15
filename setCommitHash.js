@@ -5,7 +5,7 @@ function getGitCommitHash() {
   try {
     return execSync("git rev-parse --short HEAD").toString().trim();
   } catch (error) {
-    console.error("Error fetching git commit hash:", error);
+    console.error("Error fetching git commit hashs:", error);
     return "";
   }
 }
