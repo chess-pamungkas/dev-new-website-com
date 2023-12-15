@@ -11,11 +11,9 @@ export const lazified = (importer) => {
       return await importer();
     } catch (error) {
       const serverHash = await versionService.getVersion();
-      console.error(
-        "Dynamic module load error",
-        { serverHash, commitHash: COMMIT_HASH },
-        error.message
-      );
+      console.error("Dynamic module load error", error.message);
+      console.log(`Server hash: ${serverHash}`);
+      console.log(`Current hash: ${COMMIT_HASH}`);
 
       if (hasFeature("versionSentinel") && serverHash !== COMMIT_HASH) {
         setHashQueryData(serverHash);
