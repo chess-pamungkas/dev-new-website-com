@@ -1,16 +1,21 @@
-import { stages } from "./stages";
 import { isBrowser } from "./services/is-browser";
+const stages = {
+  off: [],
+  dev: ["local", "development"],
+  test: ["local", "development", "staging"],
+  prod: ["local", "development", "staging", "production"],
+  deployed: ["development", "staging", "production"],
+};
+
 const features = {
   versionSentinel: "deployed",
 };
 
 const getEnv = () => {
-  if (isBrowser()) {
-    if (window.location.hostname === "localhost") return "local";
-    return "production";
+  if (isBrowser() && window.location.hostname === "localhost") {
+    return "local";
   }
-  // Default or fallback environment
-  return "server"; // or any default environment you prefer
+  return "production";
 };
 
 const hasFeature = (feature) => {
@@ -18,4 +23,4 @@ const hasFeature = (feature) => {
   return stages[stage].includes(getEnv());
 };
 
-export { hasFeature };
+export { hasFeature, stages };
