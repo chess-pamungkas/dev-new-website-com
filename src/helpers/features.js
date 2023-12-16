@@ -1,3 +1,5 @@
+import { isBrowser } from "./services/is-browser";
+
 const stages = {
   off: [],
   dev: ["local", "development"],
@@ -11,8 +13,11 @@ const features = {
 };
 
 const getEnv = () => {
-  // Use an environment variable to set the current environment
-  // If NODE_ENV is not set, default to "production"
+  // Check if running in a browser and if the hostname is localhost
+  if (isBrowser() && window.location.hostname === "localhost") {
+    return "local";
+  }
+
   const env = process.env.NODE_ENV || "production";
   return env;
 };
