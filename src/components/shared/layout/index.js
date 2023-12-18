@@ -13,10 +13,10 @@ import Bookmark from "../../floating-button/BookmarkButton";
 import VersionSentinel from "../../../helpers/VersionSentinel";
 import { lazified } from "../../../helpers/lazified";
 import LoadingSpinner from "../../loading-spinner";
-import Header from "../../header";
-import Footer from "../../footer";
 
 const MainContainer = lazified(() => import("../main-container"));
+const Header = lazified(() => import("../../header"));
+const Footer = lazified(() => import("../../footer"));
 
 const Layout = ({ children }) => {
   const [isLoaded, setIsLoaded] = useState(false);
