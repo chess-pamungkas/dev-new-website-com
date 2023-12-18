@@ -5,7 +5,6 @@ import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import { lazified } from "../helpers/lazified";
 import LoadingSpinner from "../components/loading-spinner";
-import VersionSentinel from "../helpers/VersionSentinel";
 
 const MainPromotion = lazified(() => import("../components/main-promotion"));
 const TradingTicker = lazified(() => import("../components/trading-ticker"));
@@ -21,7 +20,6 @@ const IndexPage = () => {
   return (
     <>
       <Suspense fallback={<LoadingSpinner />}>
-        <VersionSentinel />
         <Seo
           title={t("page-main-title")}
           description={t("page-main-description")}
