@@ -1,8 +1,13 @@
-import React, { createContext, useEffect, useRef, useState } from "react";
+import React, {
+  useContext,
+  createContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { isBrowser } from "../../helpers/services/is-browser";
 import LanguageContext from "../language-context";
-import { useContext } from "react";
 
 const CommonContext = createContext({});
 
@@ -59,7 +64,14 @@ export const CommonProvider = ({ children }) => {
     setTimeout(() => {
       updateDropdownOffset();
     }, 500);
-  }, [headerRef, sectionOptions, width, selectedLanguage, isScrolled, riskWarningRef]);
+  }, [
+    headerRef,
+    sectionOptions,
+    width,
+    selectedLanguage,
+    isScrolled,
+    riskWarningRef,
+  ]);
 
   return (
     <CommonContext.Provider
