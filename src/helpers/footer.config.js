@@ -12,7 +12,6 @@ export const getFooterText = () => (isCySEC ? FOOTER_TEXT : FOOTER_TEXT_FSA);
 const FOOTER_COPYRIGHT = {
   p1: "footer-copyright-paragraph1-cysec",
   p2: "footer-copyright-paragraph2-cysec",
-  p3: "footer-copyright-paragraph3-cysec",
   a1: "footer-copyright-paragraph-link-cysec",
   link1: RISK_DISCLOSURE_DOC,
 };
@@ -26,6 +25,7 @@ const FOOTER_COPYRIGHT_FSA = {
   p4: "footer-copyright-paragraph4-fsa",
   p3_a1: "footer-copyright-paragraph3-link-fsa",
   p3_link1: LEGAL_PAGE_LINK,
+  p5: "footer-copyright-paragraph5-fsa",
 };
 
 export const FOOTER_FOR_FUNDING = {
@@ -39,9 +39,8 @@ export const getFooterCopyright = () => {
   return isCySEC ? (
     <>
       <p>{t(FOOTER_COPYRIGHT.p1)}</p>
-      <p>{t(FOOTER_COPYRIGHT.p2)}</p>
       <p>
-        {t(FOOTER_COPYRIGHT.p3)}&nbsp;
+        {t(FOOTER_COPYRIGHT.p2)}&nbsp;
         <a href={FOOTER_COPYRIGHT.link1} target="_blank" rel="noreferrer">
           {t(FOOTER_COPYRIGHT.a1)}
         </a>
@@ -65,6 +64,7 @@ export const getFooterCopyright = () => {
         {t(FOOTER_COPYRIGHT_FSA.p3_2)}
       </p>
       <p>{t(FOOTER_COPYRIGHT_FSA.p4)}</p>
+      <p>{t(FOOTER_COPYRIGHT_FSA.p5)}</p>
     </>
   );
 };

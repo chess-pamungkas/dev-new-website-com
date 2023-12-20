@@ -1,7 +1,7 @@
-import privacyPolicyFSA from "../assets/documents/fsa/Privacy_Policy_V1.pdf";
-import clientAgreementFSA from "../assets/documents/fsa/Client_Agreement_V1.pdf";
-import privacyPolicy from "../assets/documents/eu/Privacy_Policy-.pdf";
-import termsAndConditions from "../assets/documents/eu/Terms-and-Conditions-OQTIMA_SEPT-2022-v1.1.pdf";
+import privacyPolicyFSA from "../assets/documents/fsa/Privacy_Policy_2.1.pdf";
+import clientAgreementFSA from "../assets/documents/fsa/Client_Agreement_1.1.pdf";
+import privacyPolicy from "../assets/documents/eu/Privacy_Policy_OQtima_EU_V.1.2.pdf";
+import termsAndConditions from "../assets/documents/eu/Terms_and_Conditions_OQtima_EU_V.1.2.pdf";
 import { isCySEC } from "./entity-resolver";
 
 export const DATA_DELETION_POLICY_BLOCK = {

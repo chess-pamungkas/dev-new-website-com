@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
 import CommonContext from "../../../context/common-context";
-import { useContext } from "react";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 
 const MainContainer = ({ children }) => {
