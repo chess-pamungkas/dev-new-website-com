@@ -28,7 +28,8 @@ export const CTRADER_DOWNLOAD_LINKS = {
       : "https://getctrader.com/oqtima/ctrader-oqtima-setup.exe",
   getWebTraderLink: () =>
     isCySEC ? "https://app.oqtima.eu/" : "https://app.oqtima.com/",
-  getMacLink: () => "https://getctradermac.com/spotware/ctrader-spotware-setup.dmg", // generic link for both entities
+  getMacLink: () =>
+    "https://getctradermac.com/spotware/ctrader-spotware-setup.dmg", // generic link for both entities
 };
 
 export const TRADING_VIEW_DOWNLOAD_LINKS = {
@@ -56,7 +57,7 @@ export const MT4_DOWNLOAD_LINKS = {
   getMacLink: () =>
     isCySEC
       ? null
-      : "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.dmg",
+      : "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.pkg.zip",
   getHuaweiLink: () =>
     isCySEC ? null : "https://appgallery.huawei.com/#/app/C102015319",
 };
@@ -77,7 +78,7 @@ export const MT5_DOWNLOAD_LINKS = {
   getWebTraderLink: () => (isCySEC ? MT5_WEB_TRADER_LINK : null),
   getMacLink: () =>
     isCySEC
-      ? "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg"
+      ? "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.pkg.zip"
       : null,
   getHuaweiLink: () =>
     isCySEC ? "https://appgallery.huawei.com/#/app/C102015329" : null,
@@ -600,9 +601,11 @@ export const cTraderDownloadTabs = () => {
           <a href={CTRADER_DOWNLOAD_LINKS.getAndroidLink()}>
             {t("ctrader_mt-promotion-download-android")}
           </a>
-          {!isCySEC && <a href={CTRADER_DOWNLOAD_LINKS.getIOSLink()}>
-            {t("ctrader_mt-promotion-download-ios")}
-          </a>}
+          {!isCySEC && (
+            <a href={CTRADER_DOWNLOAD_LINKS.getIOSLink()}>
+              {t("ctrader_mt-promotion-download-ios")}
+            </a>
+          )}
         </>
       ),
     },
