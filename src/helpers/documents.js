@@ -1,26 +1,47 @@
-import bestExecutionPolicyFSA from "../assets/documents/fsa/Best_Execution_Policy_V1.pdf";
-import complaintHandlingPolicyFSA from "../assets/documents/fsa/Complaint_Handling_Policy_V1.pdf";
-import privacyPolicyFSA from "../assets/documents/fsa/Privacy_Policy_2.1.pdf";
-import riskDisclosureNoticeFSA from "../assets/documents/fsa/Risk_Disclosure_Notice_V1.pdf";
-import cookiePolicyFSA from "../assets/documents/fsa/Cookie_Policy_V1.pdf";
-import clientAgreementFSA from "../assets/documents/fsa/Client_Agreement_1.1.pdf";
-
-import privacyPolicy from "../assets/documents/eu/Privacy_Policy_OQtima_EU_V.1.2.pdf";
-import clientCategorisationNotice from "../assets/documents/eu/Client_Categorisation_Notice_OQtima_EU_V.1.2.pdf";
-import complaintHandlingPolicy from "../assets/documents/eu/Complaint_Handling_Policy_OQtima_EU_V.1.2.pdf";
-import conflictOfInterestPolicy from "../assets/documents/eu/Conflict_of_Interest_Policy_OQtima_EU_V.1.2.pdf";
-import termsAndConditions from "../assets/documents/eu/Terms_and_Conditions_OQtima_EU_V.1.2.pdf";
-import investorCompensationFund from "../assets/documents/eu/Investor_Compensation_Fund_OQtima_EU_V.1.2.pdf";
-import orderExecutionPolicy from "../assets/documents/eu/Order_Execution_Policy_OQtima_EU_V.1.2.pdf";
-import riskDisclosure from "../assets/documents/eu/Risk_Disclosure_OQtima_EU_V.1.2.pdf";
-import keyInformationFX from "../assets/documents/eu/Key_Information_Document_FX.pdf";
-import keyInformationIndices from "../assets/documents/eu/Key_Information_Document_Indices.pdf";
-import keyInformationCommodities from "../assets/documents/eu/Key_Information_commo.pdf";
-import keyInformationETF from "../assets/documents/eu/Key_Information_Document_ETFs_Oqtima.pdf";
-import keyInformationStocks from "../assets/documents/eu/Key_Information_Document_Stocks_Oqtima.pdf";
-import summaryStatement from "../assets/documents/eu/Execution_Quality_Summary_Statement_2022_OQtima_EU_V.1.2.pdf";
-import disciplineReport from "../assets/documents/eu/Disclosure_and_Market_Discipline_Report_Pillar_III_2022_OQtima_EU_V.1.2.pdf";
 import { isCySEC } from "./entity-resolver";
+// FSA docs
+const bestExecutionPolicyFSA =
+  "https://docs.oqtima.com/legal/Best_Execution_Policy.pdf";
+const complaintHandlingPolicyFSA =
+  "https://docs.oqtima.com/legal/Complaint_Handling_Policy.pdf";
+const riskDisclosureNoticeFSA =
+  "https://docs.oqtima.com/legal/Risk_Disclosure_Notice.pdf";
+const cookiePolicyFSA = "https://docs.oqtima.com/legal/Cookie_Policy.pdf";
+export const privacyPolicyFSA =
+  "https://docs.oqtima.com/legal/Privacy_Policy.pdf";
+export const clientAgreementFSA =
+  "https://docs.oqtima.com/legal/Client_Agreement.pdf";
+// EU docs
+const clientCategorisationNotice =
+  "https://docs.oqtima.eu/legal/Client_Categorisation_Notice_OQtima_EU.pdf";
+const complaintHandlingPolicy =
+  "https://docs.oqtima.eu/legal/Complaint_Handling_Policy_OQtima_EU.pdf";
+const conflictOfInterestPolicy =
+  "https://docs.oqtima.eu/legal/Conflict_of_Interest_Policy_OQtima_EU.pdf";
+const investorCompensationFund =
+  "https://docs.oqtima.eu/legal/Investor_Compensation_Fund_OQtima_EU.pdf";
+const orderExecutionPolicy =
+  "https://docs.oqtima.eu/legal/Order_Execution_Policy_OQtima_EU.pdf";
+const riskDisclosure =
+  "https://docs.oqtima.eu/legal/Risk_Disclosure_OQtima_EU.pdf";
+const keyInformationFX =
+  "https://docs.oqtima.eu/legal/Key_Information_Document_FX.pdf";
+const keyInformationIndices =
+  "https://docs.oqtima.eu/legal/Key_Information_Document_Indices.pdf";
+const keyInformationCommodities =
+  "https://docs.oqtima.eu/legal/Key_Information_commo.pdf";
+const keyInformationETF =
+  "https://docs.oqtima.eu/legal/Key_Information_Document_ETFs_Oqtima.pdf";
+const keyInformationStocks =
+  "https://docs.oqtima.eu/legal/Key_Information_Document_Stocks_Oqtima.pdf";
+const summaryStatement =
+  "https://docs.oqtima.eu/legal/Execution_Quality_Summary_Statement_2022_OQtima_EU.pdf";
+const disciplineReport =
+  "https://docs.oqtima.eu/legal/Disclosure_and_Market_Discipline_Report_Pillar_III_2022_OQtima_EU.pdf";
+export const privacyPolicy =
+  "https://docs.oqtima.eu/legal/Privacy_Policy_OQtima_EU.pdf";
+export const termsAndConditions =
+  "https://docs.oqtima.eu/legal/Terms_and_Conditions_OQtima_EU.pdf";
 
 export const MT4_DOC = summaryStatement;
 export const MT5_DOC = summaryStatement;
