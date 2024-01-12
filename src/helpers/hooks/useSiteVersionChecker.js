@@ -1,53 +1,61 @@
 import { useEffect } from "react";
 
-const useSiteVersionChecker = (pagePath) => {
-  // Function to fetch and return the content of a JSON file
+const useSiteVersionChecker = () => {
   const fetchJsonData = async (path) => {
     try {
       const response = await fetch(path);
-      return response.json();
+      if (
+        response.ok &&
+        response.headers.get("content-type")?.includes("application/json")
+      ) {
+        return await response.json();
+      } else {
+        console.error(`Response not OK or not JSON for path: ${path}`);
+        return null;
+      }
     } catch (error) {
       console.error(`Error fetching JSON data from ${path}:`, error);
       return null;
     }
   };
 
-  // Function to check and handle version updates
   const checkVersionUpdates = async () => {
-    const appData = await fetchJsonData("/app-data.json");
-    const pageData = await fetchJsonData(`${pagePath}/page-data.json`);
-
+    const appData = await fetchJsonData("/page-data/app-data.json");
     const currentAppHash = sessionStorage.getItem(
       "gatsby-app-compilation-hash"
     );
-    const currentPageHash = sessionStorage.getItem(
-      "gatsby-page-compilation-hash"
-    );
-    const reloadMatchHash = sessionStorage.getItem(
-      "gatsby-reload-compilation-hash-match"
-    );
-
     const newAppHash = appData?.webpackCompilationHash;
-    const newPageHash = pageData?.result?.pageContext?.__N_SSG; // Or appropriate property for page hash
 
     let shouldReload = false;
-    if (currentAppHash !== newAppHash || currentPageHash !== newPageHash) {
+    if (currentAppHash !== newAppHash) {
+      sessionStorage.setItem("gatsby-app-compilation-hash", newAppHash);
+      shouldReload = true;
+    }
+
+    // Check page-specific data
+    const pagePath = window.location.pathname.endsWith("/")
+      ? window.location.pathname
+      : window.location.pathname + "/";
+    const pageData = await fetchJsonData(`/page-data${pagePath}page-data.json`);
+    const currentPageData = sessionStorage.getItem("gatsby-page-data");
+    const newPageData = JSON.stringify(pageData);
+
+    if (currentPageData !== newPageData) {
+      sessionStorage.setItem("gatsby-page-data", newPageData);
       shouldReload = true;
     }
 
     if (shouldReload) {
-      sessionStorage.setItem("gatsby-app-compilation-hash", newAppHash);
-      sessionStorage.setItem("gatsby-page-compilation-hash", newPageHash);
       sessionStorage.setItem("gatsby-reload-compilation-hash-match", "1");
       window.location.reload(true);
-    } else if (reloadMatchHash !== "1") {
-      sessionStorage.setItem("gatsby-reload-compilation-hash-match", "1");
     }
   };
 
   useEffect(() => {
     checkVersionUpdates();
     // Optional: Set an interval for periodic checks
+    // const interval = setInterval(checkVersionUpdates, 60000); // e.g., check every minute
+    // return () => clearInterval(interval);
   }, []);
 
   return null;
