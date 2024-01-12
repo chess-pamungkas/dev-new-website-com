@@ -1,7 +1,6 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
-const { execSync } = require("child_process");
 
 const languages = require(`${__dirname}/src/locales/language.config`);
 const {
@@ -12,12 +11,11 @@ const indexedLocaleData = processLanguagesForConfig(languages.uniqueList);
 exports.onRenderBody = ({ setHtmlAttributes }) => {
   setHtmlAttributes({ lang: languages.list.id });
 };
-const COMMIT_HASH = execSync("git rev-parse --short HEAD").toString().trim();
 
 module.exports = {
   siteMetadata: {
     title: `website`,
-    commitHash: COMMIT_HASH,
+
     siteUrl: `https://www.yourdomain.tld`,
     indexedLocaleData,
   },
