@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../assets/styles/index.scss";
 import { ClientResolverProvider } from "../../../context/client-resolver-context";
 import { LanguageProvider } from "../../../context/language-context";
@@ -10,52 +10,46 @@ import { NotificationStripeProvider } from "../../../context/notification-stripe
 import { TradingProvider } from "../../../context/trading-context";
 import { CommonProvider } from "../../../context/common-context";
 import Bookmark from "../../floating-button/BookmarkButton";
-import VersionSentinel from "../../../helpers/VersionSentinel";
-import { lazified } from "../../../helpers/lazified";
-import LoadingSpinner from "../../loading-spinner";
-
-const MainContainer = lazified(() => import("../main-container"));
-const Header = lazified(() => import("../../header"));
-const Footer = lazified(() => import("../../footer"));
+import useSiteVersionChecker from "../../../helpers/hooks/useSiteVersionChecker";
+import MainContainer from "../main-container";
+import Header from "../../header";
+import Footer from "../../footer";
 
 const Layout = ({ children }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-
+  useSiteVersionChecker();
   useEffect(() => {
     setIsLoaded(true);
   }, []);
 
   return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <VersionSentinel />
-      <ClientResolverProvider>
-        <CookieProvider>
-          <MarketingContextProvider>
-            <LanguageProvider>
-              <CommonProvider>
-                <SearchProvider>
-                  <NotificationStripeProvider>
-                    <TradingProvider>
-                      {isLoaded && (
-                        <>
-                          <Header />
-                          <CookiesPopup />
-                          <section className="scroll-container">
-                            <MainContainer>{children}</MainContainer>
-                            <Footer />
-                          </section>
-                        </>
-                      )}
-                      <Bookmark />
-                    </TradingProvider>
-                  </NotificationStripeProvider>
-                </SearchProvider>
-              </CommonProvider>
-            </LanguageProvider>
-          </MarketingContextProvider>
-        </CookieProvider>
-      </ClientResolverProvider>
-    </Suspense>
+    <ClientResolverProvider>
+      <CookieProvider>
+        <MarketingContextProvider>
+          <LanguageProvider>
+            <CommonProvider>
+              <SearchProvider>
+                <NotificationStripeProvider>
+                  <TradingProvider>
+                    {isLoaded && (
+                      <>
+                        <Header />
+                        <CookiesPopup />
+                        <section className="scroll-container">
+                          <MainContainer>{children}</MainContainer>
+                          <Footer />
+                        </section>
+                      </>
+                    )}
+                    <Bookmark />
+                  </TradingProvider>
+                </NotificationStripeProvider>
+              </SearchProvider>
+            </CommonProvider>
+          </LanguageProvider>
+        </MarketingContextProvider>
+      </CookieProvider>
+    </ClientResolverProvider>
   );
 };
 
