@@ -10,14 +10,14 @@ import { NotificationStripeProvider } from "../../../context/notification-stripe
 import { TradingProvider } from "../../../context/trading-context";
 import { CommonProvider } from "../../../context/common-context";
 import Bookmark from "../../floating-button/BookmarkButton";
-
+import useSiteVersionChecker from "../../../helpers/hooks/useSiteVersionChecker";
 import MainContainer from "../main-container";
 import Header from "../../header";
 import Footer from "../../footer";
 
 const Layout = ({ children }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-
+  useSiteVersionChecker();
   useEffect(() => {
     setIsLoaded(true);
   }, []);

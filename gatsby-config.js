@@ -67,14 +67,14 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: "gatsby-plugin-tidy",
-      options: {
-        cleanPublic: true,
-        cleanCache: true,
-        removeHashes: true,
-        removeArtifacts: true,
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-tidy",
+    //   options: {
+    //     cleanPublic: true,
+    //     cleanCache: true,
+    //     removeHashes: true,
+    //     removeArtifacts: false,
+    //   },
+    // },
   ],
 };
