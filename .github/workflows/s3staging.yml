@@ -14,8 +14,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set Commit Hash in .env.production
-        run: echo "GATSBY_COMMIT_HASH=$(git rev-parse --short HEAD)" >> .env.production
       - name: Build
         uses: actions/setup-node@v3
         with:
@@ -23,8 +21,6 @@ jobs:
       - run: mv .env_staging_com .env.production
       - run: npm ci
       - run: npm run build
-      - name: Check hash.json content
-        run: cat ./public/hash.json
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -42,8 +38,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set Commit Hash in .env.production
-        run: echo "GATSBY_COMMIT_HASH=$(git rev-parse --short HEAD)" >> .env.production
       - name: Build
         uses: actions/setup-node@v3
         with:
@@ -51,8 +45,6 @@ jobs:
       - run: mv .env_staging_eu .env.production
       - run: npm ci
       - run: npm run build
-      - name: Check hash.json content
-        run: cat ./public/hash.json
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1

@@ -1,8 +1,12 @@
 const fs = require("fs");
-const { execSync } = require("child_process");
+const path = require("path");
 
-exports.onPostBuild = async () => {
-  const commitHash = execSync("git rev-parse --short HEAD").toString().trim();
+exports.onPostBuild = () => {
+  const version = new Date().toISOString();
+  console.log("Generating new version:", version); // Debugging log
 
-  fs.writeFileSync("public/hash.json", commitHash);
+  const filePath = path.join(__dirname, "public", "version.json");
+  fs.writeFileSync(filePath, JSON.stringify({ version }));
+
+  console.log("Written version to:", filePath); // Debugging log
 };
