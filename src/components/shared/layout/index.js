@@ -13,9 +13,11 @@ import Bookmark from "../../floating-button/BookmarkButton";
 import MainContainer from "../main-container";
 import Header from "../../header";
 import Footer from "../../footer";
+import useVersionCheck from "../../../helpers/hooks/UseVersionCheck";
 
 const Layout = ({ children }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  useVersionCheck();
   useEffect(() => {
     setIsLoaded(true);
   }, []);
