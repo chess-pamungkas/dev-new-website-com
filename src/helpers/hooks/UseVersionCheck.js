@@ -10,36 +10,33 @@ const useVersionCheck = () => {
       return await response.json();
     } catch (error) {
       console.error(`Error fetching JSON data from ${path}:`, error);
-      // Consider how to handle fetch errors. Maybe a retry logic or a user notification.
+      // Hard refresh if there's an error fetching the new version
+      window.location.reload(true);
       return null;
     }
   };
 
   const checkVersion = async () => {
     const appVersionData = await fetchJsonData("/version.json");
-    const currentVersion = sessionStorage.getItem("site-version");
 
+    // If there's an error fetching, the function will have already triggered a hard refresh
     if (!appVersionData) {
-      // Handle the scenario where version.json could not be fetched.
-      console.warn("Could not fetch version data. Skipping version check.");
       return;
     }
 
-    if (!currentVersion) {
-      // First-time visit or session storage cleared.
-      sessionStorage.setItem("site-version", appVersionData.version);
-    } else if (currentVersion !== appVersionData.version) {
-      // Version mismatch detected, trigger a reload.
-      sessionStorage.setItem("site-version", appVersionData.version);
+    const currentVersion = localStorage.getItem("site-version");
+
+    if (currentVersion !== appVersionData.version) {
+      // Clear the current version and reload flag before setting new version
+      localStorage.removeItem("site-version");
+      localStorage.removeItem("has-reloaded-for-version");
+      localStorage.setItem("site-version", appVersionData.version);
       window.location.reload(true);
     }
   };
 
   useEffect(() => {
     checkVersion();
-    // Optional: Set an interval for periodic checks
-    // const interval = setInterval(checkVersion, 60000); // e.g., check every minute
-    // return () => clearInterval(interval);
   }, []);
 
   return null;
