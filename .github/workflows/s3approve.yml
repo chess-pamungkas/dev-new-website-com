@@ -25,7 +25,10 @@ jobs:
             aws-secret-access-key: ${{ secrets.S3_KEY }}
             aws-region: ap-east-1
       - name: Deploy static site to S3 bucket
-        run: aws s3 sync ./public/ s3://oqtima.com --delete
+        run: |
+          aws s3 sync ./public/ s3://oqtima.com --delete --exclude "*" --include "*.html" --include "page-data/*" --include "app-data.json" --cache-control "public, max-age=0, must-revalidate"
+          aws s3 sync ./public/ s3://oqtima.com --delete --exclude "*.html" --exclude "page-data/*" --exclude "app-data.json" --cache-control "public, max-age=31536000, immutable"
+          aws s3 cp ./public/sw.js s3://oqtima.com/sw.js --cache-control "public, max-age=0, must-revalidate"
   deploy_eu:
     name: Deploy eu
     runs-on: ubuntu-latest
@@ -49,4 +52,7 @@ jobs:
             aws-secret-access-key: ${{ secrets.S3_KEY }}
             aws-region: eu-central-1
       - name: Deploy static site to S3 bucket
-        run: aws s3 sync ./public/ s3://oqtima.eu --delete
+        run: |
+          aws s3 sync ./public/ s3://oqtima.eu --delete --exclude "*" --include "*.html" --include "page-data/*" --include "app-data.json" --cache-control "public, max-age=0, must-revalidate"
+          aws s3 sync ./public/ s3://oqtima.eu --delete --exclude "*.html" --exclude "page-data/*" --exclude "app-data.json" --cache-control "public, max-age=31536000, immutable"
+          aws s3 cp ./public/sw.js s3://oqtima.eu/sw.js --cache-control "public, max-age=0, must-revalidate"
