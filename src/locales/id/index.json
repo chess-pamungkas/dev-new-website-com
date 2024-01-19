@@ -233,6 +233,7 @@
   "footer-copyright-paragraph-link-cysec": "Pendedahan Risiko.",
   "footer-funding-1": "* Jika permintaan dibuat sebelum pukul 11 pagi Eastern European Time",
   "footer-funding-2": "* Kami tidak akan membebankan biaya, tetapi Anda mungkin dikenakan biaya oleh bank Anda tergantung pada metode yang Anda gunakan.",
+  "footer-company-name-text": "© 2024 OQtima Group | Hak cipta dilindungi.",
   "button-sign-in": "Masuk",
   "button-get-started": "Mulai",
   "button-trade-now": "Dagang sekarang",
@@ -1569,7 +1570,7 @@
   "vps_advantages-adv4-title": "Trading dari Mana Saja",
   "vps_advantages-adv4-text": "Akses platform perdagangan Anda di VPS kami dari perangkat apa pun, kapan pun. Baik Anda di rumah, di kantor, atau sedang dalam perjalanan, platform perdagangan Anda selalu dapat dijangkau.",
   "header-nav-tab-trading-vps-title": "VPS Pribadi",
-	"header-nav-tab-trading-vps-desc": "Dapatkan VPS Forex berkinerja tinggi dengan OQtima",
+  "header-nav-tab-trading-vps-desc": "Dapatkan VPS Forex berkinerja tinggi dengan OQtima",
 
   "swap-free_top-market-title": "Akun Bebas Swap Islam",
   "swap-free_top-market-title-accent": "1,3",
@@ -1611,7 +1612,7 @@
   "swap-free_advantages-adv4-p2": "untuk mengetahui lebih lanjut.",
   "swap-free_advantages-adv4-accent": "",
   "header-nav-tab-trading-swap-free-title": "Akun Bebas Swap",
-	"header-nav-tab-trading-swap-free-desc": "Pengalaman Trading Lancar dengan OQtim",
+  "header-nav-tab-trading-swap-free-desc": "Pengalaman Trading Lancar dengan OQtim",
   "page-swap-free-title": "Akun Bebas Swap",
   "page-swap-free-description": "",
 

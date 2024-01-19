@@ -226,6 +226,7 @@
   "footer-copyright-paragraph-link-cysec": "Aviso de Risco.",
   "footer-funding-1": "* Se uma solicitação for feita antes das 11h, horário da Europa Oriental",
   "footer-funding-2": "* Não cobramos nenhuma taxa, mas você pode incorrer em taxas cobradas pelo seu banco, dependendo do método que você usar.",
+  "footer-company-name-text": "© 2024 OQtima Group | Todos os direitos reservados.",
   "button-sign-in": "Entrar",
   "button-get-started": "Começar",
   "button-trade-now": "Negociar agora",
@@ -1518,7 +1519,7 @@
   "vps_advantages-adv4-title": "Negocie de Qualquer Lugar",
   "vps_advantages-adv4-text": "Acesse a sua plataforma de negociação no nosso VPS de qualquer dispositivo, a qualquer hora. Quer esteja em casa, no escritório ou em movimento, a sua plataforma de negociação está sempre ao seu alcance.",
   "header-nav-tab-trading-vps-title": "VPS Privado",
-	"header-nav-tab-trading-vps-desc": "Obtenha um VPS Forex de alto desempenho com OQtima",
+  "header-nav-tab-trading-vps-desc": "Obtenha um VPS Forex de alto desempenho com OQtima",
 
   "swap-free_top-market-title": "Contas Islâmicas Swap-Free",
   "swap-free_top-market-title-accent": "1,3",
@@ -1560,7 +1561,7 @@
   "swap-free_advantages-adv4-p2": "para saber mais.",
   "swap-free_advantages-adv4-accent": "",
   "header-nav-tab-trading-swap-free-title": "Conta Sem Swap",
-	"header-nav-tab-trading-swap-free-desc": "Experiência de Negociação Contínua com OQtima",
+  "header-nav-tab-trading-swap-free-desc": "Experiência de Negociação Contínua com OQtima",
   "page-swap-free-title": "Conta Sem Swap",
   "page-swap-free-description": "",
 
