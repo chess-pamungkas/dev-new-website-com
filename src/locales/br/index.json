@@ -963,9 +963,17 @@
   "withdrawal_data-method-pix-currencies-fsa": "BRL, USD",
   "withdrawal_data-method-e-wallet-fsa": "Carteiras Eletrônicas",
   "withdrawal_data-method-e-wallet-currencies-fsa": "Moedas Locais Aceitas",
-  "withdrawal_disclaimer1-fsa": "A equipe de processamento financeiro é rápida!!! mas às vezes há atrasos que estão fora do nosso controle. Prometemos mantê-lo informado sobre o status do seu depósito.",
-  "withdrawal_disclaimer2-fsa": "Estamos aqui para você a qualquer momento do dia, mas nem todas as instituições financeiras trabalham 24 horas por dia. Nossa equipe de processamento garantirá que seus saques sejam processados dentro do dia útil, de segunda a sexta-feira, das 9h às 15h (Horário Padrão da Europa Oriental).",
-  "withdrawal_disclaimer3-fsa": "Não cobraremos um centavo do nosso lado, mas o seu banco ou método de financiamento pode cobrar uma taxa do lado deles que está fora do nosso controle.",
+
+  "deposit_disclaimer1-fsa": "A equipe de processamento financeiro é rápida!!! mas às vezes há atrasos que estão fora do nosso controle. Prometemos mantê-lo informado sobre o status do seu depósito.",
+  "deposit_disclaimer2-fsa": "Estamos aqui para você a qualquer momento do dia, mas nem todas as instituições financeiras trabalham 24 horas por dia. Nossa equipe de processamento garantirá que seus saques sejam processados dentro do dia útil, de segunda a sexta-feira, das 9h às 15h (Horário Padrão da Europa Oriental).",
+  "deposit_disclaimer3-fsa": "Não cobraremos um centavo do nosso lado, mas o seu banco ou método de financiamento pode cobrar uma taxa do lado deles que está fora do nosso controle.",
+
+  "withdrawal_disclaimer1-fsa": "Estamos aqui por você a qualquer hora do dia, mas nem todas as instituições financeiras funcionam ininterruptamente. Nossa equipe de processamento garantirá que suas retiradas sejam processadas durante o dia útil, de segunda a sexta-feira, das 9h às 15h (Horário Padrão da Europa Oriental).",
+  "withdrawal_disclaimer2-fsa": "Não cobraremos nenhum centavo do nosso lado, mas seu banco ou método de financiamento pode cobrar uma taxa do lado deles, o que está além do nosso controle.",
+  "withdrawal_disclaimer3_1-fsa": "Reservamo-nos o direito de cobrar uma taxa de 3% caso você solicite mais de 5 retiradas mensais.",
+  "withdrawal_disclaimer3_2-fsa": "Também reservamo-nos o direito de cobrar uma taxa de 3% se uma retirada for solicitada com atividade de negociação mínima ou nenhuma.",
+  "withdrawal_disclaimer4-fsa": "Retiradas via transferência bancária podem levar de 3 a 5 dias para serem recebidas.",
+
   "education_top-market-promo-note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
   "education_top-market-promo-note-accent": "1,5,9,17",
   "education_top-market-promo-text": "OQTIMA Educacional",

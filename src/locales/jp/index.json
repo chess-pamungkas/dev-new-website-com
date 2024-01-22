@@ -935,9 +935,17 @@
   "withdrawal_data-method-pix-currencies-fsa": "BRL, USD",
   "withdrawal_data-method-e-wallet-fsa": "E-ウォレット",
   "withdrawal_data-method-e-wallet-currencies-fsa": "ローカル通貨受け入れ",
-  "withdrawal_disclaimer1-fsa": "弊社経理部門では、お客様からのご入出金申請お迅速に処理させて頂いておりますが、弊社でのコントロール外の事象により処理に遅延が発生する場合もございますのでご了承ください。お客様からのご入出金申請はメールにてご案内させて頂いております。",
-  "withdrawal_disclaimer2-fsa": "お客様からのご出金申請は、平日（月曜日～金曜日）弊社営業時間午前9時～午後15時（東ヨーロッパ標準時）の間に処理させて頂いております。尚、ご利用の金融機関の営業時間対応外の場合は、金融機関の営業時間に準拠しますのでご了承ください。",
-  "withdrawal_disclaimer3-fsa": "弊社サービス利用に関して、弊社でのご入出金手数料は発生しませんが、お客様ご利用の金融機関や決済サービスにて発生する手数料をご負担頂く必要がございますのでご注意下さい。",
+
+  "deposit_disclaimer1-fsa": "弊社経理部門では、お客様からのご入出金申請お迅速に処理させて頂いておりますが、弊社でのコントロール外の事象により処理に遅延が発生する場合もございますのでご了承ください。お客様からのご入出金申請はメールにてご案内させて頂いております。",
+  "deposit_disclaimer2-fsa": "お客様からのご出金申請は、平日（月曜日～金曜日）弊社営業時間午前9時～午後15時（東ヨーロッパ標準時）の間に処理させて頂いております。尚、ご利用の金融機関の営業時間対応外の場合は、金融機関の営業時間に準拠しますのでご了承ください。",
+  "deposit_disclaimer3-fsa": "弊社サービス利用に関して、弊社でのご入出金手数料は発生しませんが、お客様ご利用の金融機関や決済サービスにて発生する手数料をご負担頂く必要がございますのでご注意下さい。",
+  
+  "withdrawal_disclaimer1-fsa": "私たちはいつでもあなたのためにここにいますが、すべての金融機関が24時間稼働しているわけではありません。私たちの処理チームは、あなたの出金が月曜日から金曜日の9時から15時（東ヨーロッパ標準時）の営業日内に処理されるようにします。",
+  "withdrawal_disclaimer2-fsa": "私たちの側からは一切費用を請求しませんが、お客様の銀行や資金調達方法によっては、私たちのコントロールを超えた側から手数料が発生する可能性があります。",
+  "withdrawal_disclaimer3_1-fsa": "月間で5回以上の出金を要求する場合、3％の手数料を請求する権利を留保します。",
+  "withdrawal_disclaimer3_2-fsa": "また、最小限または無取引活動で出金を要求された場合にも3％の手数料を請求する権利を留保します。",
+  "withdrawal_disclaimer4-fsa": "銀行振込による出金には、受け取るまでに3～5日かかる場合があります。",
+
   "education_top-market-promo-note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
   "education_top-market-promo-note-accent": "",
   "education_top-market-promo-text": "オクティマ 教育・学習",

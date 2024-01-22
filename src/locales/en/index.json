@@ -1138,11 +1138,19 @@
   "withdrawal_disclaimer3_1-cysec": "We reserve the right to charge you a fee of 3% in case you request more than 2 withdrawals on a monthly basis",
   "withdrawal_disclaimer3_2-cysec": "We reserve the right to charge you a fee of 3% if a withdrawal is requested with minimal or no trading activity",
   "withdrawal_disclaimer4-cysec": "Bank wire withdrawals may take 3-5 days to be received",
-  "withdrawal_disclaimer5-cysec": "The finance processing team are fast!!! but sometimes there are delays that are outside of our control. We promise to keep you informed on the status of your deposit/withdrawal.",
 
-  "withdrawal_disclaimer1-fsa": "The finance processing team are fast!!! but sometimes there are delays that are outside of our control. We promise to keep you informed on the status of your deposit/withdrawal.",
-  "withdrawal_disclaimer2-fsa": "We are here for you any time of the day but not all financial institutions work around the clock. Our processing team will make sure your withdrawals are processed within the working day, Monday to Friday 9am - 3pm (Eastern European Standard Time).",
-  "withdrawal_disclaimer3-fsa": "We won't charge you a cent from our side but your bank or funding method may charge a fee from their side which is beyond our control.",
+  "deposit_disclaimer1-cysec": "The finance processing team are fast!!! but sometimes there are delays that are outside of our control. We promise to keep you informed on the status of your deposit/withdrawal.",
+  "deposit_disclaimer2-cysec": "We won't charge you a cent from our side but your bank or funding method may charge a fee from their side which is beyond our control.",
+
+  "deposit_disclaimer1-fsa": "The finance processing team are fast!!! but sometimes there are delays that are outside of our control. We promise to keep you informed on the status of your deposit/withdrawal.",
+  "deposit_disclaimer2-fsa": "We are here for you any time of the day but not all financial institutions work around the clock. Our processing team will make sure your withdrawals are processed within the working day, Monday to Friday 9am - 3pm (Eastern European Standard Time).",
+  "deposit_disclaimer3-fsa": "We won't charge you a cent from our side but your bank or funding method may charge a fee from their side which is beyond our control.",
+
+  "withdrawal_disclaimer1-fsa": "We are here for you any time of the day but not all financial institutions work around the clock. Our processing team will make sure your withdrawals are processed within the working day, Monday to Friday 9am - 3pm (Eastern European Standard Time).",
+  "withdrawal_disclaimer2-fsa": "We won't charge you a cent from our side but your bank or funding method may charge a fee from their side which is beyond our control.",
+  "withdrawal_disclaimer3_1-fsa": "We reserve the right to charge you a fee of 3% in case you request more than 5 withdrawals on a monthly basis",
+  "withdrawal_disclaimer3_2-fsa": "We reserve the right to charge you a fee of 3% if a withdrawal is requested with minimal or no trading activity",
+  "withdrawal_disclaimer4-fsa": "Bank wire withdrawals may take 3-5 days to be received",
 
   "education_top-market-promo-note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
   "education_top-market-promo-note-accent": "1,5,9,17",
