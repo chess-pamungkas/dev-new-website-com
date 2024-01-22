@@ -531,8 +531,8 @@ export const DepositDisclaimer = () => {
   const { t } = useTranslationWithVariables();
   return isCySEC ? (
     <>
-      <p className="notes-block__text">1 {t("withdrawal_disclaimer5-cysec")}</p>
-      <p className="notes-block__text">2 {t("withdrawal_disclaimer2-cysec")}</p>
+      <p className="notes-block__text">1 {t("deposit_disclaimer1-cysec")}</p>
+      <p className="notes-block__text">2 {t("deposit_disclaimer2-cysec")}</p>
     </>
   ) : (
     <>
