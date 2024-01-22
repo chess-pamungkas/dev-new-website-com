@@ -1,7 +1,11 @@
 import ButtonLink from "../components/shared/button-link";
 import cn from "classnames";
 import React from "react";
-import { PAYMENT_SYSTEMS, GetDepositLink, GetWithdrawalLink } from "./constants";
+import {
+  PAYMENT_SYSTEMS,
+  GetDepositLink,
+  GetWithdrawalLink,
+} from "./constants";
 import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
 import { isCySEC, sitePostfix } from "./entity-resolver";
 import { useWindowSize } from "./hooks/use-window-size";
@@ -145,7 +149,10 @@ const WITHDRAWAL_COLUMNS_WITH_BTN = () => {
       <img src={withdrawArrow} alt="withdraw" />
     </a>
   ) : (
-    <ButtonLink link={GetWithdrawalLink()} className={cn("withdrawal-table__btn")}>
+    <ButtonLink
+      link={GetWithdrawalLink()}
+      className={cn("withdrawal-table__btn")}
+    >
       {t("withdrawal_data_withdrawal-btn")}
     </ButtonLink>
   );
@@ -499,23 +506,23 @@ export const getColumnWithdrawal = () =>
 
 export const WithdrawalDisclaimer = () => {
   const { t } = useTranslationWithVariables();
-  return isCySEC ? (
+  return (
     <>
-      <p className="notes-block__text">1 {t("withdrawal_disclaimer1-cysec")}</p>
-      <p className="notes-block__text">2 {t("withdrawal_disclaimer2-cysec")}</p>
       <p className="notes-block__text">
-        3 {t("withdrawal_disclaimer3_1-cysec")}
+        1 {t(`withdrawal_disclaimer1${sitePostfix}`)}
+      </p>
+      <p className="notes-block__text">
+        2 {t(`withdrawal_disclaimer2${sitePostfix}`)}
+      </p>
+      <p className="notes-block__text">
+        3 {t(`withdrawal_disclaimer3_1${sitePostfix}`)}
       </p>
       <p className="notes-block__text notes-block__text--pl">
-        {t("withdrawal_disclaimer3_2-cysec")}
+        {t(`withdrawal_disclaimer3_2${sitePostfix}`)}
       </p>
-      <p className="notes-block__text">4 {t("withdrawal_disclaimer4-cysec")}</p>
-    </>
-  ) : (
-    <>
-      <p className="notes-block__text">*{t("withdrawal_disclaimer1-fsa")}</p>
-      <p className="notes-block__text">*{t("withdrawal_disclaimer2-fsa")}</p>
-      <p className="notes-block__text">*{t("withdrawal_disclaimer3-fsa")}</p>
+      <p className="notes-block__text">
+        4 {t(`withdrawal_disclaimer4${sitePostfix}`)}
+      </p>
     </>
   );
 };
@@ -529,9 +536,9 @@ export const DepositDisclaimer = () => {
     </>
   ) : (
     <>
-      <p className="notes-block__text">*{t("withdrawal_disclaimer1-fsa")}</p>
-      <p className="notes-block__text">*{t("withdrawal_disclaimer2-fsa")}</p>
-      <p className="notes-block__text">*{t("withdrawal_disclaimer3-fsa")}</p>
+      <p className="notes-block__text">*{t("deposit_disclaimer1-fsa")}</p>
+      <p className="notes-block__text">*{t("deposit_disclaimer2-fsa")}</p>
+      <p className="notes-block__text">*{t("deposit_disclaimer3-fsa")}</p>
     </>
   );
 };

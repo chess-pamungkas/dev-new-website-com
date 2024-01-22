@@ -977,9 +977,17 @@
   "withdrawal_data-method-pix-currencies-fsa": "BRL, USD",
   "withdrawal_data-method-e-wallet-fsa": "Dompet Elektronik",
   "withdrawal_data-method-e-wallet-currencies-fsa": "Mata Uang Lokal Diterima",
-  "withdrawal_disclaimer1-fsa": "Tim pemrosesan keuangan kami cepat!!! tetapi terkadang ada keterlambatan yang di luar kendali kami. Kami berjanji akan memberi informasi tentang status deposit/penarikan Anda.",
-  "withdrawal_disclaimer2-fsa": "Kami siap membantu Anda kapan saja tapi tidak semua institusi keuangan bekerja 24 jam. Tim pemrosesan kami akan memastikan penarikan Anda diproses dalam hari kerja, Senin-Jumat 9 pagi - 3 siang (Eastern European Standard Time).",
-  "withdrawal_disclaimer3-fsa": "Kami tidak akan membebankan biaya dari pihak kami tapi bank atau metode pendanaan Anda mungkin akan mengenakan biaya dari pihak mereka yang berada di luar kendali kami.",
+
+  "deposit_disclaimer1-fsa": "Tim pemrosesan keuangan kami cepat!!! tetapi terkadang ada keterlambatan yang di luar kendali kami. Kami berjanji akan memberi informasi tentang status deposit/penarikan Anda.",
+  "deposit_disclaimer2-fsa": "Kami siap membantu Anda kapan saja tapi tidak semua institusi keuangan bekerja 24 jam. Tim pemrosesan kami akan memastikan penarikan Anda diproses dalam hari kerja, Senin-Jumat 9 pagi - 3 siang (Eastern European Standard Time).",
+  "deposit_disclaimer3-fsa": "Kami tidak akan membebankan biaya dari pihak kami tapi bank atau metode pendanaan Anda mungkin akan mengenakan biaya dari pihak mereka yang berada di luar kendali kami.",
+
+  "withdrawal_disclaimer1-fsa": "Kami ada di sini untuk Anda kapan saja, tetapi tidak semua lembaga keuangan beroperasi sepanjang waktu. Tim pengolahan kami akan memastikan penarikan Anda diproses dalam hari kerja, Senin sampai Jumat jam 9 pagi - 3 sore (Waktu Standar Eropa Timur).",
+  "withdrawal_disclaimer2-fsa": "Kami tidak akan memungut biaya sepeser pun dari pihak kami, tetapi bank Anda atau metode pendanaan mungkin memungut biaya dari pihak mereka yang di luar kendali kami.",
+  "withdrawal_disclaimer3_1-fsa": "Kami berhak memungut biaya sebesar 3% jika Anda meminta lebih dari 5 penarikan dalam satu bulan.",
+  "withdrawal_disclaimer3_2-fsa": "Kami juga berhak memungut biaya 3% jika penarikan diminta dengan aktivitas perdagangan minimal atau tidak ada.",
+  "withdrawal_disclaimer4-fsa": "Penarikan melalui transfer bank mungkin membutuhkan waktu 3-5 hari untuk diterima.",
+
   "education_top-market-promo-note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
   "education_top-market-promo-note-accent": "1,5,9,17",
   "education_top-market-promo-text": "Pendidikan OQTIMA",

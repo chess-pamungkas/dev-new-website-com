@@ -871,9 +871,17 @@
   "withdrawal_data-method-pix-currencies-fsa": "BRL, USD",
   "withdrawal_data-method-e-wallet-fsa": "Ví Điện Tử",
   "withdrawal_data-method-e-wallet-currencies-fsa": "Tiền Tệ Địa Phương Được Chấp Nhận",
-  "withdrawal_disclaimer1-fsa": "Đội ngũ xử lý tài chính rất nhanh chóng!!! nhưng đôi khi có sự trì hoãn nằm ngoài tầm kiểm soát của chúng tôi. Chúng tôi cam kết sẽ thông báo cho bạn về trạng thái khoản tiền gửi của bạn.",
-  "withdrawal_disclaimer2-fsa": "Chúng tôi có sẵn ở đây để hỗ trợ bạn bất cứ lúc nào trong ngày, nhưng không phải tất cả các tổ chức tài chính đều làm việc xuyên suốt cả ngày. Đội ngũ xử lý của chúng tôi sẽ đảm bảo rút tiền của bạn được xử lý trong ngày làm việc, từ thứ hai đến thứ sáu từ 9:00 sáng đến 3:00 chiều (giờ chuẩn Đông Âu).",
-  "withdrawal_disclaimer3-fsa": "Chúng tôi sẽ không tính bất kỳ khoản phí nào từ phía chúng tôi, nhưng ngân hàng hoặc phương thức tài chính của bạn có thể tính phí từ phía họ, điều này nằm ngoài tầm kiểm soát của chúng tôi.",
+
+  "deposit_disclaimer1-fsa": "Đội ngũ xử lý tài chính rất nhanh chóng!!! nhưng đôi khi có sự trì hoãn nằm ngoài tầm kiểm soát của chúng tôi. Chúng tôi cam kết sẽ thông báo cho bạn về trạng thái khoản tiền gửi của bạn.",
+  "deposit_disclaimer2-fsa": "Chúng tôi có sẵn ở đây để hỗ trợ bạn bất cứ lúc nào trong ngày, nhưng không phải tất cả các tổ chức tài chính đều làm việc xuyên suốt cả ngày. Đội ngũ xử lý của chúng tôi sẽ đảm bảo rút tiền của bạn được xử lý trong ngày làm việc, từ thứ hai đến thứ sáu từ 9:00 sáng đến 3:00 chiều (giờ chuẩn Đông Âu).",
+  "deposit_disclaimer3-fsa": "Chúng tôi sẽ không tính bất kỳ khoản phí nào từ phía chúng tôi, nhưng ngân hàng hoặc phương thức tài chính của bạn có thể tính phí từ phía họ, điều này nằm ngoài tầm kiểm soát của chúng tôi.",
+
+  "withdrawal_disclaimer1-fsa": "Chúng tôi ở đây vì bạn bất cứ lúc nào trong ngày, nhưng không phải tất cả các tổ chức tài chính đều hoạt động suốt 24 giờ. Đội ngũ xử lý của chúng tôi sẽ đảm bảo rằng yêu cầu rút tiền của bạn được xử lý trong ngày làm việc, từ thứ Hai đến thứ Sáu từ 9 giờ sáng đến 3 giờ chiều (Giờ Chuẩn Đông Âu).",
+  "withdrawal_disclaimer2-fsa": "Chúng tôi sẽ không thu bất kỳ khoản phí nào từ phía chúng tôi, nhưng ngân hàng hoặc phương thức tài trợ của bạn có thể thu phí từ phía họ, điều này nằm ngoài tầm kiểm soát của chúng tôi.",
+  "withdrawal_disclaimer3_1-fsa": "Chúng tôi có quyền thu phí 3% trong trường hợp bạn yêu cầu rút tiền nhiều hơn 5 lần trong một tháng.",
+  "withdrawal_disclaimer3_2-fsa": "Chúng tôi cũng có quyền thu phí 3% nếu yêu cầu rút tiền được thực hiện với hoạt động giao dịch tối thiểu hoặc không có.",
+  "withdrawal_disclaimer4-fsa": "Rút tiền qua chuyển khoản ngân hàng có thể mất 3-5 ngày để nhận được.",
+
   "education_top-market-promo-note": "Chăm sóc khách hàng rất quan trong, khách hàng sẽ theo khách hàng, như lúc chuyển dạ và những cơn đau.",
   "education_top-market-promo-note-accent": "1,5,9,17",
   "education_top-market-promo-text": "OQTIMA giáo dục ",
