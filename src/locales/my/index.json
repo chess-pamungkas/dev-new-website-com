@@ -228,6 +228,7 @@
   "footer-copyright-paragraph5-fsa": "Kandungan, produk, dan perkhidmatan laman web ini tidak bertujuan atau ditujukan kepada orang yang berumur bawah 18 tahun.",
   "footer-funding-1": "* Jika permintaan dibuat sebelum jam 11 pagi Waktu Eropah Timur",
   "footer-funding-2": "* Kami tidak akan mengenakan sebarang yuran, tetapi anda mungkin menanggung yuran yang dikenakan oleh bank anda bergantung pada kaedah yang anda gunakan.",
+  "footer-company-name-text": "© 2024 OQtima Group | Hak cipta terpelihara.",
   "button-sign-in": "Log Masuk",
   "button-get-started": "Mula Sekarang",
   "button-trade-now": "Berjual Beli Sekarang",
@@ -1524,7 +1525,7 @@
   "vps_advantages-adv4-title": "Perdagangan dari Mana-mana",
   "vps_advantages-adv4-text": "Akses platform perdagangan anda di VPS kami dari mana-mana peranti, pada bila-bila masa. Sama ada anda di rumah, di pejabat, atau dalam perjalanan, platform perdagangan anda selalu dalam jangkauan.",
   "header-nav-tab-trading-vps-title": "VPS Peribadi",
-	"header-nav-tab-trading-vps-desc": "Dapatkan VPS Forex berprestasi tinggi dengan OQtima",
+  "header-nav-tab-trading-vps-desc": "Dapatkan VPS Forex berprestasi tinggi dengan OQtima",
 
   "swap-free_top-market-title": "Akaun Bebas Swap Islamik",
   "swap-free_top-market-title-accent": "1,3",
@@ -1566,7 +1567,7 @@
   "swap-free_advantages-adv4-p2": "untuk mengetahui lebih lanjut.",
   "swap-free_advantages-adv4-accent": "",
   "header-nav-tab-trading-swap-free-title": "Akaun Swap-Free",
-	"header-nav-tab-trading-swap-free-desc": "Pengalaman Dagangan Lancar dengan OQtima",
+  "header-nav-tab-trading-swap-free-desc": "Pengalaman Dagangan Lancar dengan OQtima",
   "page-swap-free-title": "Akaun Swap-Free",
   "page-swap-free-description": "",
 

@@ -238,6 +238,7 @@
   "footer-copyright-paragraph5-fsa": "このウェブサイトのコンテンツ、製品、サービスは18歳未満の人向けではありません。",
   "footer-funding-1": "* 東ヨーロッパ（EET）時間、午前11時以前にリスクエスト頂いた場合",
   "footer-funding-2": "* 弊社では、ご入出金において手数料は掛かりませんが、利用される決済会社並びに銀行によっては手数料が発生する場合がございますのでご注意下さい。",
+  "footer-company-name-text": "© 2024 OQtima Group | すべての権利を保有します。",
   "button-sign-in": "サイン・イン",
   "button-get-started": "ライブ口座開設",
   "button-trade-now": "今すぐお取引を開始",
@@ -1531,7 +1532,7 @@
   "vps_advantages-adv4-title": "どこからでも取引",
   "vps_advantages-adv4-text": "いつでも、どのデバイスからでも、当社のVPS上で取引プラットフォームにアクセスできます。自宅にいても、オフィスにいても、移動中であっても、取引プラットフォームは常に手の届くところにあります。",
   "header-nav-tab-trading-vps-title": "プライベートVPS",
-	"header-nav-tab-trading-vps-desc": "OQtimaで高性能Forex VPSを入手",
+  "header-nav-tab-trading-vps-desc": "OQtimaで高性能Forex VPSを入手",
 
   "swap-free_top-market-title": "イスラム教徒のためのスワップフリーアカウント",
   "swap-free_top-market-title-accent": "1,3",
@@ -1573,7 +1574,7 @@
   "swap-free_advantages-adv4-p2": "して詳細をご覧ください。",
   "swap-free_advantages-adv4-accent": "",
   "header-nav-tab-trading-swap-free-title": "スワップフリーアカウント",
-	"header-nav-tab-trading-swap-free-desc": "OQtima でのシームレスな取引体験",
+  "header-nav-tab-trading-swap-free-desc": "OQtima でのシームレスな取引体験",
   "page-swap-free-title": "スワップフリーアカウント",
   "page-swap-free-description": "",
 

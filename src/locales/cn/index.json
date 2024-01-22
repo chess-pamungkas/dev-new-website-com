@@ -253,6 +253,7 @@
   "footer-copyright-paragraph-link-cysec": "风险披露.",
   "footer-funding-1": "* 如果在东欧时间上午11点之前提出申请.",
   "footer-funding-2": "*我们不会收取任何费用，但根据您选择的方式，可能会被您的银行端收取费用.",
+  "footer-company-name-text": "© 2024 OQtima Group | 版权所有。",
   "button-sign-in": "登录",
   "button-get-started": "开始",
   "button-trade-now": "开始交易",
@@ -1430,7 +1431,7 @@
   "trading-tools_top-market-promo-btn3": "开设账户",
   "trading-tools_top-market-promo-text3": "现在就体验OQtima.",
   "trading-tools_top-market-promo-text-accent3": "",
-  
+
   "trading-tools_trading-calendar_title": "交易日历",
   "trading-tools_trading-calendar_subtitle": "在OQtima，我们的主要目标是赋予客户在交易世界中取得成功的能力。",
   "trading-tools_trading-calendar_description": "OQtima的交易日历，由Trading Central支持，对于希望充满信心地航行金融市场的交易员和投资者来说，是一个无价之宝的资源。我们坚信为您提供成功所需的工具，而我们的交易日历就是这一承诺的明证。",
@@ -1660,7 +1661,7 @@
   "vps_advantages-adv4-title": "随时随地交易",
   "vps_advantages-adv4-text": "随时使用任何设备通过我们的VPS访问您的交易平台。无论您是在家中、办公室还是在外，您的交易平台始终触手可及。",
   "header-nav-tab-trading-vps-title": "私有VPS",
-	"header-nav-tab-trading-vps-desc": "获得OQtima高性能外汇VPS",
+  "header-nav-tab-trading-vps-desc": "获得OQtima高性能外汇VPS",
 
   "swap-free_top-market-title": "伊斯兰无掉期账户",
   "swap-free_top-market-title-accent": "1,3",
@@ -1702,7 +1703,7 @@
   "swap-free_advantages-adv4-p2": "了解更多信息。",
   "swap-free_advantages-adv4-accent": "",
   "header-nav-tab-trading-swap-free-title": "免掉期账户",
-	"header-nav-tab-trading-swap-free-desc": "与 OQtima 的顺畅交易体验",
+  "header-nav-tab-trading-swap-free-desc": "与 OQtima 的顺畅交易体验",
   "page-swap-free-title": "免掉期账户",
   "page-swap-free-description": "",
 
