@@ -226,6 +226,7 @@
   "footer-copyright-paragraph-link-cysec": "Risikoaufklärung.",
   "footer-funding-1": "* Wenn eine Anfrage vor 11:00 Uhr Osteuropäischer Zeit gestellt wird",
   "footer-funding-2": "* Wir berechnen keine Gebühren, jedoch können je nach verwendeter Methode Gebühren von Ihrer Bank erhoben werden.",
+  "footer-company-name-text": "© 2024 OQtima Group | Alle Rechte vorbehalten.",
   "button-sign-in": "Anmelden",
   "button-get-started": "Loslegen",
   "button-trade-now": "Jetzt handeln",
@@ -919,15 +920,27 @@
   "withdrawal_data-method-pix-currencies-fsa": "BRL, USD",
   "withdrawal_data-method-e-wallet-fsa": "E-Wallets",
   "withdrawal_data-method-e-wallet-currencies-fsa": "Lokale Währungen Akzeptiert",
+
   "withdrawal_disclaimer1-cysec": "Tage dienen nur zur Orientierung und OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen. Die Finanzabteilung von OQTIMA arbeitet von Montag bis Freitag von 9 bis 15 Uhr (Osteuropäische Standardzeit). Anfragen nach diesen Zeiten werden am nächsten Arbeitstag bearbeitet.",
   "withdrawal_disclaimer2-cysec": "OQTIMA berechnet Ihnen keine Gebühren für die Bearbeitung Ihrer Einzahlungen oder Auszahlungen. Allerdings kann die von Ihnen gewählte Methode Gebühren erheben, die außerhalb von OQTIMA liegen.",
   "withdrawal_disclaimer3_1-cysec": "Wir behalten uns das Recht vor, Ihnen eine Gebühr von 3% zu berechnen, wenn Sie mehr als 2 Abhebungen pro Monat beantragen.",
   "withdrawal_disclaimer3_2-cysec": "Wir behalten uns das Recht vor, Ihnen eine Gebühr von 3% zu berechnen, wenn eine Auszahlung bei minimaler oder keiner Handelsaktivität angefordert wird.",
   "withdrawal_disclaimer4-cysec": "Banküberweisungen können 3-5 Tage dauern, um eingehen zu können.",
   "withdrawal_disclaimer5-cysec": "Bitte erlauben Sie bis zu 1 Stunde. OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen.",
-  "withdrawal_disclaimer1-fsa": "Bitte erlauben Sie bis zu 1 Stunde. OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen.",
-  "withdrawal_disclaimer2-fsa": "Tage dienen nur zur Orientierung und OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen. Die Finanzabteilung von OQTIMA arbeitet von Montag bis Freitag von 9 bis 15 Uhr (Osteuropäische Standardzeit). Anfragen nach diesen Zeiten werden am nächsten Arbeitstag bearbeitet.",
-  "withdrawal_disclaimer3-fsa": "OQTIMA berechnet Ihnen keine Gebühren für die Bearbeitung Ihrer Einzahlungen oder Auszahlungen. Allerdings kann die von Ihnen gewählte Methode Gebühren erheben, die außerhalb von OQTIMA liegen.",
+  
+  "deposit_disclaimer1-cysec": "Bitte erlauben Sie bis zu 1 Stunde. OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen.",
+  "deposit_disclaimer2-cysec": "OQTIMA berechnet Ihnen keine Gebühren für die Bearbeitung Ihrer Einzahlungen oder Auszahlungen. Allerdings kann die von Ihnen gewählte Methode Gebühren erheben, die außerhalb von OQTIMA liegen.",
+
+  "deposit_disclaimer1-fsa": "Bitte erlauben Sie bis zu 1 Stunde. OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen.",
+  "deposit_disclaimer2-fsa": "Tage dienen nur zur Orientierung und OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen. Die Finanzabteilung von OQTIMA arbeitet von Montag bis Freitag von 9 bis 15 Uhr (Osteuropäische Standardzeit). Anfragen nach diesen Zeiten werden am nächsten Arbeitstag bearbeitet.",
+  "deposit_disclaimer3-fsa": "OQTIMA berechnet Ihnen keine Gebühren für die Bearbeitung Ihrer Einzahlungen oder Auszahlungen. Allerdings kann die von Ihnen gewählte Methode Gebühren erheben, die außerhalb von OQTIMA liegen.",
+  
+  "withdrawal_disclaimer1-fsa": "Tage dienen nur zur Orientierung und OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen. Die Finanzabteilung von OQTIMA arbeitet von Montag bis Freitag von 9 bis 15 Uhr (Osteuropäische Standardzeit). Anfragen nach diesen Zeiten werden am nächsten Arbeitstag bearbeitet.",
+  "withdrawal_disclaimer2-fsa": "OQTIMA berechnet Ihnen keine Gebühren für die Bearbeitung Ihrer Einzahlungen oder Auszahlungen. Allerdings kann die von Ihnen gewählte Methode Gebühren erheben, die außerhalb von OQTIMA liegen.",
+  "withdrawal_disclaimer3_1-fsa": "Wir behalten uns das Recht vor, Ihnen eine Gebühr von 3% zu berechnen, wenn Sie mehr als 5 Abhebungen pro Monat beantragen.",
+  "withdrawal_disclaimer3_2-fsa": "Wir behalten uns das Recht vor, Ihnen eine Gebühr von 3% zu berechnen, wenn eine Auszahlung bei minimaler oder keiner Handelsaktivität angefordert wird.",
+  "withdrawal_disclaimer4-fsa": "Banküberweisungen können 3-5 Tage dauern, um eingehen zu können.",
+
   "education_top-market-promo-note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
   "education_top-market-promo-note-accent": "1,5,9,17",
   "education_top-market-promo-text": "OQTIMA Bildung",
@@ -1516,7 +1529,7 @@
   "vps_advantages-adv4-title": "Handeln von überall",
   "vps_advantages-adv4-text": "Zugriff auf Ihre Handelsplattform auf unserem VPS von jedem Gerät aus, zu jeder Zeit. Ob Sie zu Hause, im Büro oder unterwegs sind, Ihre Handelsplattform ist immer erreichbar.",
   "header-nav-tab-trading-vps-title": "Privater VPS",
-	"header-nav-tab-trading-vps-desc": "Erhalten Sie einen leistungsstarken Forex VPS mit OQtima",
+  "header-nav-tab-trading-vps-desc": "Erhalten Sie einen leistungsstarken Forex VPS mit OQtima",
 
   "swap-free_top-market-title": "Islamische Swap-freie Konten",
   "swap-free_top-market-title-accent": "1,3",
@@ -1558,7 +1571,7 @@
   "swap-free_advantages-adv4-p2": "um mehr zu erfahren.",
   "swap-free_advantages-adv4-accent": "",
   "header-nav-tab-trading-swap-free-title": "Swap-freies Konto",
-	"header-nav-tab-trading-swap-free-desc": "Nahtlose Handelserfahrung mit OQtima",
+  "header-nav-tab-trading-swap-free-desc": "Nahtlose Handelserfahrung mit OQtima",
   "page-swap-free-title": "Swap-freies Konto",
   "page-swap-free-description": "",
 

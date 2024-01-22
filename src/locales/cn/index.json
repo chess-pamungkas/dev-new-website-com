@@ -240,7 +240,7 @@
   "performance-advantage7-accent": "",
   "footer-text-fsa": "凭借稳定且快速的ECN+交易环境，OQtima宛如一封写给交易者的热情洋溢情书.由在交易行业拥有超过30年综合经验和专业知识的行业领导者创立. OQtima代表了交易体验和市场可达性的新高度.",
   "footer-text-cysec": "凭借稳定且快速的ECN+交易环境，OQtima宛如一封写给交易者的热情洋溢情书.由在交易行业拥有超过30年综合经验和专业知识的行业领导者创立. OQtima代表了交易体验和市场可达性的新高度.",
-  "footer-copyright-paragraph1-fsa": "CDE Global Markets Ltd，已获得在“OQtima”品牌下运营的授权，是在塞舌尔注册的证券经销商，公司注册号为8430031-1，并受到Financial Services Authority (FSA)的监管，许可证号为SD109。 CDE Global Markets Ltd的注册办公地址位于塞舌尔Eden Island的Eden Plaza，F20，1楼。 CDE Global Markets Ltd的商务地址位于塞舌尔Ile Du Port的IMAD COMPLEX，Office 7, UNIT 204, 2楼。",
+  "footer-copyright-paragraph1-fsa": "CDE Global Markets Ltd，经过授权以“OQtima”品牌运营，是在塞舌尔注册的证券经纪公司，公司注册号为8430031-1，受金融服务管理局（FSA）监管，许可证号为SD109。 CDE Global Markets Ltd的注册办公地址位于塞舌尔Mahe的Ile Du Port，IMAD Complex，三楼，办公室12。 CDE Global Markets Ltd的营业地址位于塞舌尔Ile Du Port的IMAD COMPLEX，一楼，UNIT 204，办公室7。",
   "footer-copyright-paragraph1_2-fsa": "在此网站上购买的服务的支付处理服务由Ipso Facto Ltd提供，该公司是CDE Global Markets Limited的关联实体，在塞浦路斯注册，注册号为HE 445939。Ipso Facto Ltd的注册办公地址位于塞浦路斯Limassol的John Kennedy 8, Iris Building, 7楼, Flat/Office 740B, 3106。上述实体均获得在OQtima品牌下运营的授权。",
   "footer-copyright-paragraph2-fsa": "风险警告：本网站提供的信息具有一般性信息，不构成个人财务建议.在根据本网站上的任何信息采取行动之前，您应该考虑这些信息是否适合您的目标、财务状况和需求. 投资差价合约和保证金外汇合约具有重大风险，并不适合所有投资者.您的损失可能会超过您的初始存款.您并不拥有任何交易中或者未交割财产的任何权益.",
   "footer-copyright-paragraph3-part1-fsa": "我们建议您寻求独立建议，并确保在交易前完全理解风险. 在使用我们的服务之前，请务必阅读并参考我们的",
@@ -253,6 +253,7 @@
   "footer-copyright-paragraph-link-cysec": "风险披露.",
   "footer-funding-1": "* 如果在东欧时间上午11点之前提出申请.",
   "footer-funding-2": "*我们不会收取任何费用，但根据您选择的方式，可能会被您的银行端收取费用.",
+  "footer-company-name-text": "© 2024 OQtima Group | 版权所有。",
   "button-sign-in": "登录",
   "button-get-started": "开始",
   "button-trade-now": "开始交易",
@@ -976,9 +977,20 @@
   "withdrawal_disclaimer3_2-cysec": "如果请求提款时几乎没有或没有交易活动，我们保留向您收取3%的费用的权利。",
   "withdrawal_disclaimer4-cysec": "银行电汇取款可能需要3-5个工作日才能到账。",
   "withdrawal_disclaimer5-cysec": "我们的财务处理团队非常迅速!!!但有时会有超出我们控制范围的延迟。我们承诺会及时告知您的出入金状态。",
-  "withdrawal_disclaimer1-fsa": "我们的财务处理团队非常迅速!!!但有时会有超出我们控制范围的延迟。我们承诺会及时告知您的出入金状态。",
-  "withdrawal_disclaimer2-fsa": "我们全天候为您服务，但并非所有金融机构都全天候工作。我们的处理团队会确保在工作日内（东欧标准时间，周一至周五，上午9点至下午3点）处理您的出金申请。",
-  "withdrawal_disclaimer3-fsa": "我们不会从平台收入任何费用，但您的银行或资金通道可能会从其收取费用，这超出了我们的预知范围。",
+
+  "deposit_disclaimer1-cysec": "我们的财务处理团队非常迅速!!!但有时会有超出我们控制范围的延迟。我们承诺会及时告知您的出入金状态。",
+  "deposit_disclaimer2-cysec": "我们不会从平台收入任何费用，但您的银行或资金通道可能会从其收取费用，这超出了我们的预知范围。",
+
+  "deposit_disclaimer1-fsa": "我们的财务处理团队非常迅速!!!但有时会有超出我们控制范围的延迟。我们承诺会及时告知您的出入金状态。",
+  "deposit_disclaimer2-fsa": "我们全天候为您服务，但并非所有金融机构都全天候工作。我们的处理团队会确保在工作日内（东欧标准时间，周一至周五，上午9点至下午3点）处理您的出金申请。",
+  "deposit_disclaimer3-fsa": "我们不会从平台收入任何费用，但您的银行或资金通道可能会从其收取费用，这超出了我们的预知范围。",
+
+  "withdrawal_disclaimer1-fsa": "我们全天候在此为您服务，但并非所有金融机构都能够全天候工作。我们的处理团队将确保在工作日内处理您的提款请求，即周一至周五上午9点至下午3点（东欧标准时间）。",
+  "withdrawal_disclaimer2-fsa": "我们不会向您收取任何费用，但您的银行或资金来源可能会从他们那边收取费用，这是我们无法控制的。",
+  "withdrawal_disclaimer3_1-fsa": "如您每月申请超过5次提款，我们保留收取3%手续费的权利。",
+  "withdrawal_disclaimer3_2-fsa": "如果提款申请时几乎没有或没有交易活动，我们保留收取3%手续费的权利。",
+  "withdrawal_disclaimer4-fsa": "银行电汇提款可能需要3-5天时间才能收到。",
+
   "education_top-market-promo-note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
   "education_top-market-promo-note-accent": "",
   "education_top-market-promo-text": "OQTIMA培训课程",
@@ -1419,7 +1431,7 @@
   "trading-tools_top-market-promo-btn3": "开设账户",
   "trading-tools_top-market-promo-text3": "现在就体验OQtima.",
   "trading-tools_top-market-promo-text-accent3": "",
-  
+
   "trading-tools_trading-calendar_title": "交易日历",
   "trading-tools_trading-calendar_subtitle": "在OQtima，我们的主要目标是赋予客户在交易世界中取得成功的能力。",
   "trading-tools_trading-calendar_description": "OQtima的交易日历，由Trading Central支持，对于希望充满信心地航行金融市场的交易员和投资者来说，是一个无价之宝的资源。我们坚信为您提供成功所需的工具，而我们的交易日历就是这一承诺的明证。",
@@ -1649,7 +1661,7 @@
   "vps_advantages-adv4-title": "随时随地交易",
   "vps_advantages-adv4-text": "随时使用任何设备通过我们的VPS访问您的交易平台。无论您是在家中、办公室还是在外，您的交易平台始终触手可及。",
   "header-nav-tab-trading-vps-title": "私有VPS",
-	"header-nav-tab-trading-vps-desc": "获得OQtima高性能外汇VPS",
+  "header-nav-tab-trading-vps-desc": "获得OQtima高性能外汇VPS",
 
   "swap-free_top-market-title": "伊斯兰无掉期账户",
   "swap-free_top-market-title-accent": "1,3",
@@ -1691,7 +1703,7 @@
   "swap-free_advantages-adv4-p2": "了解更多信息。",
   "swap-free_advantages-adv4-accent": "",
   "header-nav-tab-trading-swap-free-title": "免掉期账户",
-	"header-nav-tab-trading-swap-free-desc": "与 OQtima 的顺畅交易体验",
+  "header-nav-tab-trading-swap-free-desc": "与 OQtima 的顺畅交易体验",
   "page-swap-free-title": "免掉期账户",
   "page-swap-free-description": "",
 

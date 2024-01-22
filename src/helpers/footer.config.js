@@ -28,6 +28,8 @@ const FOOTER_COPYRIGHT_FSA = {
   p5: "footer-copyright-paragraph5-fsa",
 };
 
+const FOOTER_COMPANY = { p1: "footer-company-name-text" };
+
 export const FOOTER_FOR_FUNDING = {
   p1: "footer-funding-1",
   p2: "footer-funding-2",
@@ -67,4 +69,8 @@ export const getFooterCopyright = () => {
       <p>{t(FOOTER_COPYRIGHT_FSA.p5)}</p>
     </>
   );
+};
+export const getFooterCompanyName = () => {
+  const { t } = useTranslationWithVariables();
+  return <p>{t(FOOTER_COMPANY.p1)}</p>;
 };

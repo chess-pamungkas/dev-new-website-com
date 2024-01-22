@@ -226,6 +226,7 @@
   "footer-copyright-paragraph-link-cysec": "Aviso de Risco.",
   "footer-funding-1": "* Se uma solicitação for feita antes das 11h, horário da Europa Oriental",
   "footer-funding-2": "* Não cobramos nenhuma taxa, mas você pode incorrer em taxas cobradas pelo seu banco, dependendo do método que você usar.",
+  "footer-company-name-text": "© 2024 OQtima Group | Todos os direitos reservados.",
   "button-sign-in": "Entrar",
   "button-get-started": "Começar",
   "button-trade-now": "Negociar agora",
@@ -920,15 +921,27 @@
   "withdrawal_data-method-pix-currencies-fsa": "BRL, USD",
   "withdrawal_data-method-e-wallet-fsa": "Carteiras Eletrônicas",
   "withdrawal_data-method-e-wallet-currencies-fsa": "Moedas Locais Aceitas",
+
   "withdrawal_disclaimer1-cysec": "Os dias são para fins indicativos e a OQTIMA não será responsabilizada por nenhum atraso no processamento que esteja fora de seu controle. O departamento financeiro da OQTIMA trabalha de segunda a sexta, das 9h às 15h (Horário Padrão da Europa Oriental). Qualquer solicitação após esse horário será processada no próximo dia útil.",
   "withdrawal_disclaimer2-cysec": "A OQTIMA não cobra nenhuma taxa para processar seus depósitos ou retiradas, no entanto, o método que você decidir usar pode cobrar uma taxa e isso está fora do controle da OQTIMA",
   "withdrawal_disclaimer3_1-cysec": "Nos reservamos o direito de cobrar uma taxa de 3% caso solicite mais de 2 saques por mês.",
   "withdrawal_disclaimer3_2-cysec": "Reservamo-nos o direito de cobrar uma taxa de 3% se for solicitado um levantamento com mínima ou nenhuma atividade de negociação.",
   "withdrawal_disclaimer4-cysec": "Os saques por transferência bancária podem levar de 3 a 5 dias para serem recebidos.",
   "withdrawal_disclaimer5-cysec": "Por favor, permita até 1 hora. A OQTIMA não será responsabilizada por nenhum atraso no processamento que esteja fora de seu controle.",
-  "withdrawal_disclaimer1-fsa": "Por favor, permita até 1 hora. A OQTIMA não será responsabilizada por nenhum atraso no processamento que esteja fora de seu controle.",
-  "withdrawal_disclaimer2-fsa": "Os dias são para fins indicativos e a OQTIMA não será responsabilizada por nenhum atraso no processamento que esteja fora de seu controle. O departamento financeiro da OQTIMA trabalha de segunda a sexta, das 9h às 15h (Horário Padrão da Europa Oriental). Qualquer solicitação após esse horário será processada no próximo dia útil.",
-  "withdrawal_disclaimer3-fsa": "A OQTIMA não cobra nenhuma taxa para processar seus depósitos ou retiradas, no entanto, o método que você decidir usar pode cobrar uma taxa e isso está fora do controle da OQTIMA",
+  
+  "deposit_disclaimer1-cysec": "Por favor, permita até 1 hora. A OQTIMA não será responsabilizada por nenhum atraso no processamento que esteja fora de seu controle.",
+  "deposit_disclaimer2-cysec": "A OQTIMA não cobra nenhuma taxa para processar seus depósitos ou retiradas, no entanto, o método que você decidir usar pode cobrar uma taxa e isso está fora do controle da OQTIMA",
+
+  "deposit_disclaimer1-fsa": "Por favor, permita até 1 hora. A OQTIMA não será responsabilizada por nenhum atraso no processamento que esteja fora de seu controle.",
+  "deposit_disclaimer2-fsa": "Os dias são para fins indicativos e a OQTIMA não será responsabilizada por nenhum atraso no processamento que esteja fora de seu controle. O departamento financeiro da OQTIMA trabalha de segunda a sexta, das 9h às 15h (Horário Padrão da Europa Oriental). Qualquer solicitação após esse horário será processada no próximo dia útil.",
+  "deposit_disclaimer3-fsa": "A OQTIMA não cobra nenhuma taxa para processar seus depósitos ou retiradas, no entanto, o método que você decidir usar pode cobrar uma taxa e isso está fora do controle da OQTIMA",
+  
+  "withdrawal_disclaimer1-fsa": "Os dias são para fins indicativos e a OQTIMA não será responsabilizada por nenhum atraso no processamento que esteja fora de seu controle. O departamento financeiro da OQTIMA trabalha de segunda a sexta, das 9h às 15h (Horário Padrão da Europa Oriental). Qualquer solicitação após esse horário será processada no próximo dia útil.",
+  "withdrawal_disclaimer2-fsa": "A OQTIMA não cobra nenhuma taxa para processar seus depósitos ou retiradas, no entanto, o método que você decidir usar pode cobrar uma taxa e isso está fora do controle da OQTIMA",
+  "withdrawal_disclaimer3_1-fsa": "Nos reservamos o direito de cobrar uma taxa de 3% caso solicite mais de 5 saques por mês.",
+  "withdrawal_disclaimer3_2-fsa": "Reservamo-nos o direito de cobrar uma taxa de 3% se for solicitado um levantamento com mínima ou nenhuma atividade de negociação.",
+  "withdrawal_disclaimer4-fsa": "Os saques por transferência bancária podem levar de 3 a 5 dias para serem recebidos.",
+
   "education_top-market-promo-note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
   "education_top-market-promo-note-accent": "1,5,9,17",
   "education_top-market-promo-text": "Educação OQTIMA",
@@ -1518,7 +1531,7 @@
   "vps_advantages-adv4-title": "Negocie de Qualquer Lugar",
   "vps_advantages-adv4-text": "Acesse a sua plataforma de negociação no nosso VPS de qualquer dispositivo, a qualquer hora. Quer esteja em casa, no escritório ou em movimento, a sua plataforma de negociação está sempre ao seu alcance.",
   "header-nav-tab-trading-vps-title": "VPS Privado",
-	"header-nav-tab-trading-vps-desc": "Obtenha um VPS Forex de alto desempenho com OQtima",
+  "header-nav-tab-trading-vps-desc": "Obtenha um VPS Forex de alto desempenho com OQtima",
 
   "swap-free_top-market-title": "Contas Islâmicas Swap-Free",
   "swap-free_top-market-title-accent": "1,3",
@@ -1560,7 +1573,7 @@
   "swap-free_advantages-adv4-p2": "para saber mais.",
   "swap-free_advantages-adv4-accent": "",
   "header-nav-tab-trading-swap-free-title": "Conta Sem Swap",
-	"header-nav-tab-trading-swap-free-desc": "Experiência de Negociação Contínua com OQtima",
+  "header-nav-tab-trading-swap-free-desc": "Experiência de Negociação Contínua com OQtima",
   "page-swap-free-title": "Conta Sem Swap",
   "page-swap-free-description": "",
 
