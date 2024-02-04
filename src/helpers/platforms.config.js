@@ -65,15 +65,15 @@ export const MT4_DOWNLOAD_LINKS = {
 export const MT5_DOWNLOAD_LINKS = {
   getAndroidLink: () =>
     isCySEC
-      ? "https://download.mql5.com/cdn/mobile/mt5/android?server=OqtimaEU-Live"
+      ? "https://download.mql5.com/cdn/mobile/mt5/android?server=OQtimaEU-Live"
       : null,
   getIOSLink: () =>
     isCySEC
-      ? "https://download.mql5.com/cdn/mobile/mt5/ios?server=OqtimaEU-Live"
+      ? "https://download.mql5.com/cdn/mobile/mt5/ios?server=OQtimaEU-Live"
       : null,
   getWindowsLink: () =>
     isCySEC
-      ? "https://download.mql5.com/cdn/web/nordskov.capital.ltd/mt5/oqtimaeu5setup.exe"
+      ? "https://download.mql5.com/cdn/web/oqtima.eu.ltd/mt5/oqtimaeu5setup.exe"
       : null,
   getWebTraderLink: () => (isCySEC ? MT5_WEB_TRADER_LINK : null),
   getMacLink: () =>
