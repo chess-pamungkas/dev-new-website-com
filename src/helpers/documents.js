@@ -42,6 +42,8 @@ export const privacyPolicy =
   "https://docs.oqtima.eu/legal/Privacy_Policy_OQtima_EU.pdf";
 export const termsAndConditions =
   "https://docs.oqtima.eu/legal/Terms_and_Conditions_OQtima_EU.pdf";
+export const bestOrderAndExecPolicy =
+  "https://docs.oqtima.eu/legal/Best_Order_and_Execution_Policy_OQtima_EU.pdf";
 
 export const MT4_DOC = summaryStatement;
 export const MT5_DOC = summaryStatement;
@@ -72,6 +74,10 @@ const LEGAL_DOCS = [
   {
     name: "document-order-execution-name",
     file: orderExecutionPolicy,
+  },
+  {
+    name: "document-best-order-execution-name",
+    file: bestOrderAndExecPolicy,
   },
   {
     name: "document-privacy-policy-name",
