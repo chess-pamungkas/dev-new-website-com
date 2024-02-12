@@ -16,7 +16,8 @@
     "scan-locales": "node src/scripts/scan-locales/index.js",
     "apply-translation": "node src/scripts/apply-translation/index.js",
     "check-missing": "node src/scripts/check-missing/index.js",
-    "reorder-locales": "node src/scripts/reorder-locales/index.js"
+    "reorder-locales": "node src/scripts/reorder-locales/index.js",
+    "generate-robots": "node src/scripts/generate-robots/index.js"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.13.4",
