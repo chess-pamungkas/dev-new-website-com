@@ -5,6 +5,7 @@ import bottomPromo from "../../../../assets/images/vps/bottom-promo.svg";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 import ButtonLink from "../../../shared/button-link";
+import { GetRegistrationLink } from "../../../../helpers/constants";
 
 const VPSBottomPromotion = ({ className }) => {
   const isRTL = useRtlDirection();
@@ -31,7 +32,10 @@ const VPSBottomPromotion = ({ className }) => {
               />
             }
           </p>
-          <ButtonLink className={"top-market__btn top-market__btn--white"}>
+          <ButtonLink
+            link={GetRegistrationLink()}
+            className={"top-market__btn top-market__btn--white"}
+          >
             {t("vps_bottom-promotion-btn")}
           </ButtonLink>
         </div>
