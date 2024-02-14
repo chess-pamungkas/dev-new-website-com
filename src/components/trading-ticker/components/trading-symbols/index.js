@@ -14,6 +14,7 @@ const TradingSymbols = ({
   const symbolsRef = useRef();
   const [scrollX, setScrollX] = useState(0);
   const [scrollEnd, setScrollEnd] = useState(false);
+  const [isManualScrolling, setIsManualScrolling] = useState(false);
   const { width } = useWindowSize();
   const defaultScrollOffset = width * 0.8;
   const isRTL = useRtlDirection();
@@ -53,6 +54,15 @@ const TradingSymbols = ({
     setScrollEnd(isRTL ? isEndOfScrollRTL() : isEndOfScroll());
   };
 
+  const startManualScroll = (event) => {
+    setTouchStartX(event.touches[0].clientX);
+    setIsManualScrolling(true);
+  };
+
+  const stopManualScroll = () => {
+    setIsManualScrolling(false);
+  };
+
   useEffect(() => {
     if (
       symbolsRef.current &&
@@ -64,6 +74,16 @@ const TradingSymbols = ({
     }
     return () => {};
   }, [symbolsRef?.current?.scrollWidth, symbolsRef?.current?.offsetWidth]);
+
+  useEffect(() => {
+    // Set animation currentTime based on scroll position
+    if (symbolsRef.current) {
+      const progress = (scrollX / symbolsRef.current.scrollWidth) * 100;
+      const currentTime = (progress * 180) / 100;
+      console.log(progress, animationDuration, currentTime, symbolsRef.current)
+      symbolsRef.current.style.animationDelay = `-${currentTime}s`;
+    }
+  }, [scrollX, animationDuration, isManualScrolling]);
 
   return (
     <div
@@ -81,9 +101,12 @@ const TradingSymbols = ({
       <div
         className={cn("trading-symbols", {
           "trading-symbols--infinite-auto-scroll": isInfiniteAutoScroll,
+          "trading-symbols--animation-paused": isManualScrolling,
         })}
         ref={symbolsRef}
         onScroll={scrollCheck}
+        onTouchStart={startManualScroll}
+        onTouchEnd={stopManualScroll}
         style={
           animationDuration ? { animationDuration: animationDuration } : {}
         }

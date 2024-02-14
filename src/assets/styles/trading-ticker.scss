@@ -135,10 +135,17 @@
     animation-timing-function: linear;
     animation-name: auto-scroll-animation;
     animation-duration: 180s;
+    scroll-snap-type: unset;
 
-    &:hover {
-      animation-play-state: paused;
-    }
+    // &:hover {
+    //   animation-play-state: paused;
+    //   overflow-x: scroll;
+    // }
+  }
+
+  &--animation-paused {
+    animation-play-state: paused;
+    overflow-x: scroll;
   }
 
   &__arrow-left {
