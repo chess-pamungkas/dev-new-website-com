@@ -55,7 +55,6 @@ const TradingSymbols = ({
   };
 
   const startManualScroll = (event) => {
-    setTouchStartX(event.touches[0].clientX);
     setIsManualScrolling(true);
   };
 
