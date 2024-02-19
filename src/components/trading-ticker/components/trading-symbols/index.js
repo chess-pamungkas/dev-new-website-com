@@ -8,110 +8,50 @@ import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 const TradingSymbols = ({
   className,
   symbols,
-  isInfiniteAutoScroll,
-  animationDuration,
 }) => {
   const symbolsRef = useRef();
-  const [scrollX, setScrollX] = useState(0);
-  const [scrollEnd, setScrollEnd] = useState(false);
-  const [isManualScrolling, setIsManualScrolling] = useState(false);
   const { width } = useWindowSize();
-  const defaultScrollOffset = width * 0.8;
   const isRTL = useRtlDirection();
 
-  const isEndOfScroll = () => {
-    if (
-      Math.floor(
-        symbolsRef.current.scrollWidth - symbolsRef.current.scrollLeft
-      ) <= symbolsRef.current.offsetWidth
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  const isEndOfScrollRTL = () => {
-    if (
-      Math.floor(
-        symbolsRef.current.scrollWidth + symbolsRef.current.scrollLeft
-      ) <= symbolsRef.current.offsetWidth
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  const scrollLeft = (scrollOffset) => {
-    symbolsRef.current.scrollLeft += scrollOffset;
-    setScrollX(scrollX + scrollOffset);
-    setScrollEnd(isRTL ? isEndOfScrollRTL() : isEndOfScroll());
-  };
-
-  const scrollCheck = () => {
-    setScrollX(symbolsRef.current.scrollLeft);
-    setScrollEnd(isRTL ? isEndOfScrollRTL() : isEndOfScroll());
-  };
-
-  const startManualScroll = (event) => {
-    setIsManualScrolling(true);
-  };
-
-  const stopManualScroll = () => {
-    setIsManualScrolling(false);
-  };
-
   useEffect(() => {
-    if (
-      symbolsRef.current &&
-      symbolsRef?.current?.scrollWidth === symbolsRef?.current?.offsetWidth
-    ) {
-      setScrollEnd(true);
-    } else {
-      setScrollEnd(false);
-    }
-    return () => {};
-  }, [symbolsRef?.current?.scrollWidth, symbolsRef?.current?.offsetWidth]);
+    const isMiddleOfScroll = (width, offset) => offset > (width / 2);
 
-  useEffect(() => {
-    // Set animation currentTime based on scroll position
-    if (symbolsRef.current) {
-      const progress = (scrollX / symbolsRef.current.scrollWidth) * 100;
-      const currentTime = (progress * 180) / 100;
-      console.log(progress, animationDuration, currentTime, symbolsRef.current)
-      symbolsRef.current.style.animationDelay = `-${currentTime}s`;
+    const performScroll = () => {
+      const symbolsContainer = document.getElementById('trading-symbols');
+      const first = document.querySelector('#trading-symbols .trading-symbol');
+      // console.log(first.offsetWidth, first)
+  
+      if(isMiddleOfScroll(symbolsContainer.scrollWidth, symbolsContainer.scrollLeft)){
+          console.log(first.getBoundingClientRect())
+          symbolsContainer.appendChild(first);
+          symbolsContainer.scrollTo(symbolsContainer.scrollLeft - first.offsetWidth, 0);
+        }
+        if (symbolsContainer.scrollLeft !== symbolsContainer.scrollWidth) {
+          symbolsContainer.scrollTo(symbolsContainer.scrollLeft + 1, 0);
+        }
     }
-  }, [scrollX, animationDuration, isManualScrolling]);
+
+    const intervalId = setInterval(performScroll, 20);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
     <div
-      className={cn(
-        "trading-symbols-wrapper",
-        className,
-        {
-          "trading-symbols-wrapper--infinite-auto-scroll": isInfiniteAutoScroll,
-        },
-        {
-          "trading-symbols-wrapper--rtl": isRTL,
-        }
-      )}
+      className={cn("trading-symbols-wrapper", className, {
+        "trading-symbols-wrapper--rtl": isRTL,
+      })}
     >
+      <div className="scroll-disabler"></div>
       <div
-        className={cn("trading-symbols", {
-          "trading-symbols--infinite-auto-scroll": isInfiniteAutoScroll,
-          "trading-symbols--animation-paused": isManualScrolling,
-        })}
+        id="trading-symbols"
+        className={"trading-symbols"}
         ref={symbolsRef}
-        onScroll={scrollCheck}
-        onTouchStart={startManualScroll}
-        onTouchEnd={stopManualScroll}
-        style={
-          animationDuration ? { animationDuration: animationDuration } : {}
-        }
       >
         {symbols &&
-          (isInfiniteAutoScroll ? symbols.concat(symbols) : symbols).map(
+          symbols.map(
             (symbol, key) => (
               <TradingSymbol
                 key={`TradingSymbol${symbol.symbol}-${key}`}
@@ -119,30 +59,6 @@ const TradingSymbols = ({
               />
             )
           )}
-        {((scrollX > 0 && !isRTL) || (!scrollEnd && isRTL)) && (
-          <img
-            src={scrollArrow}
-            alt=""
-            className={cn("trading-symbols__arrow-left", {
-              "trading-symbols__arrow-left--disabled": isInfiniteAutoScroll,
-            })}
-            onClick={() => {
-              scrollLeft(-defaultScrollOffset);
-            }}
-          />
-        )}
-        {(!scrollEnd & !isRTL || (scrollX < 0 && isRTL)) && (
-          <img
-            src={scrollArrow}
-            alt=""
-            className={cn("trading-symbols__arrow-right", {
-              "trading-symbols__arrow-right--disabled": isInfiniteAutoScroll,
-            })}
-            onClick={() => {
-              scrollLeft(defaultScrollOffset);
-            }}
-          />
-        )}
       </div>
     </div>
   );

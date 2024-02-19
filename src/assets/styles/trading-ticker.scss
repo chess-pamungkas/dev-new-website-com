@@ -113,15 +113,23 @@
   }
 }
 
+.scroll-disabler {
+  width: 100vw;
+  height: 34.4px;
+  position: absolute;
+  background-color: rgba(0,0,0 , 0.0001);
+}
+
 .trading-symbols {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: unset;
   margin-right: 14px;
   margin-left: 14px;
   padding-bottom: 6px;
+
+  width: 100vw;
+  overflow-x: scroll;
+  white-space: nowrap;
+  display: flex;
   -ms-overflow-style: none;
   scrollbar-width: none;
 
@@ -136,14 +144,12 @@
     animation-name: auto-scroll-animation;
     animation-duration: 180s;
     scroll-snap-type: unset;
+    scroll-behavior: unset;
 
-    // &:hover {
-    //   animation-play-state: paused;
-    //   overflow-x: scroll;
-    // }
   }
 
   &--animation-paused {
+    animation-name: unset;
     animation-play-state: paused;
     overflow-x: scroll;
   }
@@ -195,7 +201,7 @@
 }
 
 .trading-symbol {
-  scroll-snap-align: start;
+  // scroll-snap-align: start;
   display: flex;
   padding: 15px 20px 8px;
   border-radius: 5px;
