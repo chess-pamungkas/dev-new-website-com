@@ -6,7 +6,7 @@ export const COOKIES_POLICY_CONTENT = [
     title: "INTRODUCTION",
     subItems: [
       {
-        text: "CDE Global Markets Ltd (operating under the tradename “Oqtima” and being referred to as “we” or “us” or the “Company”) is authorised and regulated by the Seychelles Financial Services Authority (the “FSA”) with license number SD109, having its registered address at F20, 1st Floor, Eden Plaza, Eden Island, Seychelles.",
+        text: "Oqtima Int. Ltd (operating under the tradename “Oqtima” and being referred to as “we” or “us” or the “Company”) is authorised and regulated by the Seychelles Financial Services Authority (the “FSA”) with license number SD109, having its registered address at F20, 1st Floor, Eden Plaza, Eden Island, Seychelles.",
       },
     ],
   },

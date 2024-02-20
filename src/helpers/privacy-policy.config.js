@@ -266,7 +266,7 @@ const PRIVACY_POLICY_CONTENT_FSA = [
     title: "1. INTRODUCTION",
     subItems: [
       {
-        text: "1.1 The information in this document details how we, at CDE Global Markets Ltd (the “Company”, operating under the name “Oqtima”) process, handle and protect the personal data we collect from you.The payment processing services for services purchased on this website are provided by Ipso Facto Ltd, which is an affiliate entity of CDE Global Markets Limited, registered in Cyprus with registration number HE 445939. The registered office of Ipso Facto Ltd is at John Kennedy 8, Iris Building, 7th Floor, Flat/Office 740B, 3106, Limassol, Cyprus.",
+        text: "1.1 The information in this document details how we, at CDE Global Markets Ltd (the “Company”, operating under the name “Oqtima”) process, handle and protect the personal data we collect from you.The payment processing services for services purchased on this website are provided by Ipso Facto Ltd, which is an affiliate entity of OQTIMA INT. LTD, registered in Cyprus with registration number HE 445939. The registered office of Ipso Facto Ltd is at John Kennedy 8, Iris Building, 7th Floor, Flat/Office 740B, 3106, Limassol, Cyprus.",
       },
       {
         text: "1.2 Personal information is any information or opinion about you that is capable, or reasonably capable of identifying you, whether the information or opinion is true or not and is recorded in material form or not.",
