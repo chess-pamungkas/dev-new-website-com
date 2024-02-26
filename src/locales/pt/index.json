@@ -222,7 +222,7 @@
   "performance-advantage7-accent": "1",
   "footer-text-cysec": "Graças ao conforto criado pela estabilidade e rapidez do ambiente de negociação do ECN+, a OQtima é práticamente uma carta de amor para os traders. A OQtima transporta nos a um nível inovador e avançado em termos da experiência de negociação e do acesso ao mercado.",
   "footer-copyright-paragraph1-cysec": "OQTIMA EU LTD (ex Nordskov Capital Ltd), está registrada como uma Firma de Investimento de Chipre (CIF) e licenciada pela Cyprus Securities and Exchange Commission (CySEC) sob o número de licença 406/21 de acordo com a Diretiva dos Mercados de Instrumentos Financeiros (MiFID II).",
-  "footer-copyright-paragraph2-cysec": "Aviso de Risco: CFDs são instrumentos complexos e apresentam um alto risco de perda de dinheiro rapidamente devido à alavancagem. A grande maioria das contas de investidores de varejo perde dinheiro ao negociar CFDs. Você deve considerar se entende como os CFDs funcionam e se pode arcar com o alto risco de perder seu dinheiro. Por favor, leve em consideração nosso",
+  "footer-copyright-paragraph2-cysec": "Aviso de risco: CFDs são instrumentos complexos e apresentam um alto risco de perder dinheiro rapidamente devido à alavancagem. {{cysec-percentage}}% das contas de investidores de varejo perdem dinheiro ao negociar CFDs. Você deve considerar se entende como os CFDs funcionam e se pode se dar ao luxo de assumir o alto risco de perder seu dinheiro. Por favor, considere a nossa",
   "footer-copyright-paragraph-link-cysec": "Aviso de Risco.",
   "footer-funding-1": "* Se uma solicitação for feita antes das 11h, horário da Europa Oriental",
   "footer-funding-2": "* Não cobramos nenhuma taxa, mas você pode incorrer em taxas cobradas pelo seu banco, dependendo do método que você usar.",
@@ -291,7 +291,7 @@
   "page-trading-tools-description": "",
   "page-vps-title": "VPS Privado",
   "page-vps-description": "",
-  "notification-stripe-cysec": "Aviso de risco: CFDs são instrumentos complexos e apresentam um alto risco de perder dinheiro rapidamente devido à alavancagem. 88% das contas de investidores de varejo perdem dinheiro ao negociar CFDs. Você deve considerar se entende como os CFDs funcionam e se pode se dar ao luxo de assumir o alto risco de perder seu dinheiro. Por favor, considere a nossa",
+  "notification-stripe-cysec": "Aviso de risco: CFDs são instrumentos complexos e apresentam um alto risco de perder dinheiro rapidamente devido à alavancagem. {{cysec-percentage}}% das contas de investidores de varejo perdem dinheiro ao negociar CFDs. Você deve considerar se entende como os CFDs funcionam e se pode se dar ao luxo de assumir o alto risco de perder seu dinheiro. Por favor, considere a nossa",
   "notification-stripe-cysec-link": "Divulgação de Risco.",
   "notification-stripe-redirect-text": "Com base em sua localização geográfica, você pode querer considerar outra de nossas empresas licenciadas que pode ser mais adequada para você.",
   "notification-stripe-close-btn": "Fechar",
@@ -929,14 +929,14 @@
   "withdrawal_disclaimer3_2-cysec": "Reservamo-nos o direito de cobrar uma taxa de 3% se for solicitado um levantamento com mínima ou nenhuma atividade de negociação.",
   "withdrawal_disclaimer4-cysec": "Os saques por transferência bancária podem levar de 3 a 5 dias para serem recebidos.",
   "withdrawal_disclaimer5-cysec": "Por favor, permita até 1 hora. A OQTIMA não será responsabilizada por nenhum atraso no processamento que esteja fora de seu controle.",
-  
+
   "deposit_disclaimer1-cysec": "Por favor, permita até 1 hora. A OQTIMA não será responsabilizada por nenhum atraso no processamento que esteja fora de seu controle.",
   "deposit_disclaimer2-cysec": "A OQTIMA não cobra nenhuma taxa para processar seus depósitos ou retiradas, no entanto, o método que você decidir usar pode cobrar uma taxa e isso está fora do controle da OQTIMA",
 
   "deposit_disclaimer1-fsa": "Por favor, permita até 1 hora. A OQTIMA não será responsabilizada por nenhum atraso no processamento que esteja fora de seu controle.",
   "deposit_disclaimer2-fsa": "Os dias são para fins indicativos e a OQTIMA não será responsabilizada por nenhum atraso no processamento que esteja fora de seu controle. O departamento financeiro da OQTIMA trabalha de segunda a sexta, das 9h às 15h (Horário Padrão da Europa Oriental). Qualquer solicitação após esse horário será processada no próximo dia útil.",
   "deposit_disclaimer3-fsa": "A OQTIMA não cobra nenhuma taxa para processar seus depósitos ou retiradas, no entanto, o método que você decidir usar pode cobrar uma taxa e isso está fora do controle da OQTIMA",
-  
+
   "withdrawal_disclaimer1-fsa": "Os dias são para fins indicativos e a OQTIMA não será responsabilizada por nenhum atraso no processamento que esteja fora de seu controle. O departamento financeiro da OQTIMA trabalha de segunda a sexta, das 9h às 15h (Horário Padrão da Europa Oriental). Qualquer solicitação após esse horário será processada no próximo dia útil.",
   "withdrawal_disclaimer2-fsa": "A OQTIMA não cobra nenhuma taxa para processar seus depósitos ou retiradas, no entanto, o método que você decidir usar pode cobrar uma taxa e isso está fora do controle da OQTIMA",
   "withdrawal_disclaimer3_1-fsa": "Nos reservamos o direito de cobrar uma taxa de 3% caso solicite mais de 5 saques por mês.",
