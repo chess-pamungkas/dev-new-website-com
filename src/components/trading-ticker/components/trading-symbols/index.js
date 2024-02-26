@@ -2,16 +2,10 @@ import React, { useRef, useState, useEffect } from "react";
 import TradingSymbol from "../trading-symbol";
 import cn from "classnames";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
-import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
-import {
-  SYMBOL_CARD_BIG_WIDTH,
-  SYMBOL_CARD_SMALL_WIDTH,
-} from "../../../../helpers/constants";
 
 const TradingSymbols = ({ className, symbols }) => {
   const symbolsRef = useRef();
   const isRTL = useRtlDirection();
-  const { isMobile, width } = useWindowSize();
   const [isTouched, setIsTouched] = useState(false);
   const [isInfiniteAutoScroll, setIsInfiniteAutoScroll] = useState(true);
 
@@ -78,20 +72,6 @@ const TradingSymbols = ({ className, symbols }) => {
       };
     }
   }, [isTouched, isRTL, isInfiniteAutoScroll]);
-
-  // useEffect(() => {
-  //   const symbolHeight = isMobile ? SYMBOL_CARD_SMALL_WIDTH: SYMBOL_CARD_BIG_WIDTH;
-  //   const symbolsContainer = document.getElementById("trading-symbols");
-  //   console.log(scrollLeft)
-
-  //   if (symbols && (symbols.length * symbolHeight) < (width * 2)) {
-  //     console.log(symbols && (symbols.length * symbolHeight) >= (width * 2))
-  //     setIsInfiniteAutoScroll(false);
-  //   } else {
-  //     setIsInfiniteAutoScroll(true);
-  //   }
-
-  // }, [symbols, isMobile, width]);
 
   return (
     <div

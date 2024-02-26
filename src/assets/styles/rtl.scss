@@ -195,20 +195,6 @@
   }
 }
 
-.trading-symbols-wrapper--rtl {
-  .trading-symbols--infinite-auto-scroll {
-    overflow: unset;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    animation-name: auto-scroll-animation-rtl;
-    animation-duration: 180s;
-
-    &:hover {
-      animation-play-state: paused;
-    }
-  }
-}
-
 .trade-with-promotion--rtl {
   .trade-with-promotion__block {
     &:last-child {

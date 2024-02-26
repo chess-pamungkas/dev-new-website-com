@@ -11,7 +11,6 @@ const TradingTicker = ({
   title,
   pageSpecificSection,
   isInfiniteAutoScroll,
-  animationDuration,
 }) => {
   const tradingSection = getTradingSections();
   const {
