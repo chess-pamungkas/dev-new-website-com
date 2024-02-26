@@ -51,13 +51,18 @@ const NavbarItem = ({ className, title, subItems = [] }) => {
           className={cn("navbar-item__dropdown")}
           style={{ top: `${dropdownHeightOffset}px` }}
         >
-          {subItems.map((subItem, i) => (
-            <NavbarSubItem
-              key={`header-menu-${stringTransformToKebabCase(subItem.title)}`}
-              subItem={subItem}
-              onClick={hideDropdown}
-            />
-          ))}
+          {subItems.map(
+            (subItem, i) =>
+              !subItem.footerOnly && (
+                <NavbarSubItem
+                  key={`header-menu-${stringTransformToKebabCase(
+                    subItem.title
+                  )}`}
+                  subItem={subItem}
+                  onClick={hideDropdown}
+                />
+              )
+          )}
         </ul>
       )}
     </li>

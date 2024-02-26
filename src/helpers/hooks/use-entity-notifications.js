@@ -16,13 +16,7 @@ export const useEntityNotifications = (handlePopupOpen) => {
   const [isBannedPopup, setIsBannedPopup] = useState(false);
 
   useEffect(() => {
-    if (
-      clientConfig &&
-      Object.keys(clientConfig).length &&
-      !clientConfig.banned &&
-      !clientConfig.recommendedRedirect &&
-      isCySEC
-    ) {
+    if (isCySEC) {
       setIsRiskWarningNotification(true);
     }
 
