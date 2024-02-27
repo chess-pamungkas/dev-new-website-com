@@ -268,7 +268,7 @@
   "footer-copyright-paragraph5-fsa": "Content, products, and services of this website are not intended nor directed to people under 18 years old.",
 
   "footer-copyright-paragraph1-cysec": "OQTIMA EU LTD (ex Nordskov Capital Ltd), is registered as a Cyprus Investment Firm (CIF) and licensed by the Cyprus Securities and Exchange Commission (CySEC) under licence number 406/21 in accordance with the Markets in Financial Instruments Directive (MiFID II).",
-  "footer-copyright-paragraph2-cysec": "Risk Warning: CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. The vast majority of retail investor accounts lose money when trading CFDs. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. Please consider our",
+  "footer-copyright-paragraph2-cysec": "Risk Warning: CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. {{cysec-percentage}}% of retail investor accounts lose money when trading CFDs. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. Please consider our",
   "footer-copyright-paragraph-link-cysec": "Risk Disclosure.",
 
   "footer-funding-1": "* If a request is made before 11am Eastern European Time",
@@ -368,7 +368,7 @@
   "page-vps-title": "Private VPS",
   "page-vps-description": "",
 
-  "notification-stripe-cysec": "Risk Warning: CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. 88% of retail investor accounts lose money when trading CFDs. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. Please consider our",
+  "notification-stripe-cysec": "Risk Warning: CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. {{cysec-percentage}}% of retail investor accounts lose money when trading CFDs. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. Please consider our",
   "notification-stripe-cysec-link": "Risk Disclosure.",
   "notification-stripe-redirect-text": "Based on your geolocation, you may want to consider another of our licensed companies that may be better suited to you.",
   "notification-stripe-close-btn": "Close",
