@@ -2,12 +2,22 @@ import React, { useRef, useState, useEffect } from "react";
 import TradingSymbol from "../trading-symbol";
 import cn from "classnames";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
+import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 
 const TradingSymbols = ({ className, symbols }) => {
   const symbolsRef = useRef();
   const isRTL = useRtlDirection();
+  const { isMobile } = useWindowSize();
+  const margin = isMobile ? 10 : 0;
   const [isTouched, setIsTouched] = useState(false);
   const [isInfiniteAutoScroll, setIsInfiniteAutoScroll] = useState(true);
+
+  const prepareSymbols = (symbols) => {
+    // To ensure the best working scrolling, initial symbols count should be > 10
+    return symbols.length > 0 && symbols.length < 10
+      ? prepareSymbols(symbols.concat(symbols))
+      : symbols;
+  };
 
   // check is scroll passed center of scroll width
   const isMiddleOfScroll = (width, offset) => Math.abs(offset) > width / 2;
@@ -16,62 +26,61 @@ const TradingSymbols = ({ className, symbols }) => {
     Math.abs(offset) < width / 2;
 
   const performScroll = () => {
-    const symbolsContainer = document.getElementById("trading-symbols");
-    const scrollWidth = symbolsContainer.scrollWidth;
-    const scrollLeft = symbolsContainer.scrollLeft;
+    const cont = document.getElementById("trading-symbols");
 
-    if (isMiddleOfScroll(scrollWidth, scrollLeft)) {
+    if (isMiddleOfScroll(cont.scrollWidth, cont.scrollLeft)) {
       // move first child to the end when center of scroll width passed
       const first = document.querySelector("#trading-symbols .trading-symbol");
-      symbolsContainer.appendChild(first);
-      symbolsContainer.scrollTo(scrollLeft - first.offsetWidth, 0);
+      cont.appendChild(first);
+      cont.scrollTo(cont.scrollLeft - first.offsetWidth - margin, 0);
     }
-    if (isMiddleOfScrollReversed(scrollWidth, scrollLeft) && isTouched) {
+    if (
+      isMiddleOfScrollReversed(cont.scrollWidth, cont.scrollLeft) &&
+      isTouched
+    ) {
       // move last child to the start when center of scroll width passed in reversed direction while manual scroll is active
-      const lastchild = symbolsContainer.lastChild;
-      symbolsContainer.prepend(lastchild);
-      symbolsContainer.scrollTo(scrollLeft + lastchild.offsetWidth, 0);
+      const lastchild = cont.lastChild;
+      cont.prepend(lastchild);
+      cont.scrollTo(cont.scrollLeft + lastchild.offsetWidth + margin, 0);
     }
     // perform auto scroll when not touched
-    if (scrollLeft !== scrollWidth && !isTouched) {
-      symbolsContainer.scrollTo(scrollLeft + 1, 0);
+    if (cont.scrollLeft !== cont.scrollWidth && !isTouched) {
+      cont.scrollTo(cont.scrollLeft + 1, 0);
     }
   };
 
   const performScrollRTL = () => {
-    const symbolsContainer = document.getElementById("trading-symbols");
-    const scrollWidth = symbolsContainer.scrollWidth;
-    const scrollLeft = symbolsContainer.scrollLeft;
+    // for RTL it is almost the same as normal, the only thing that is important to know here is that ScrollLeft has a negative value and decreases
+    const cont = document.getElementById("trading-symbols");
 
-    if (isMiddleOfScroll(scrollWidth, scrollLeft)) {
+    if (isMiddleOfScroll(cont.scrollWidth, cont.scrollLeft)) {
       const first = document.querySelector("#trading-symbols .trading-symbol");
-      symbolsContainer.appendChild(first);
-      symbolsContainer.scrollTo(scrollLeft - -first.offsetWidth, 0);
+      cont.appendChild(first);
+      cont.scrollTo(cont.scrollLeft - -first.offsetWidth - -margin, 0);
     }
-    if (isMiddleOfScrollReversed(scrollWidth, scrollLeft) && isTouched) {
-      const lastchild = symbolsContainer.lastChild;
-      symbolsContainer.prepend(lastchild);
-      symbolsContainer.scrollTo(scrollLeft + -lastchild.offsetWidth, 0);
+    if (
+      isMiddleOfScrollReversed(cont.scrollWidth, cont.scrollLeft) &&
+      isTouched
+    ) {
+      const lastchild = cont.lastChild;
+      cont.prepend(lastchild);
+      cont.scrollTo(cont.scrollLeft + -lastchild.offsetWidth + -margin, 0);
     }
-    if (scrollLeft !== scrollWidth && !isTouched) {
-      symbolsContainer.scrollTo(scrollLeft - 1, 0);
+    if (cont.scrollLeft !== cont.scrollWidth && !isTouched) {
+      cont.scrollTo(cont.scrollLeft - 1, 0);
     }
   };
 
   useEffect(() => {
-    if (isInfiniteAutoScroll) {
-      const intervalId = setInterval(
-        isRTL ? performScrollRTL : performScroll,
-        20
-      );
+    const intervalId = setInterval(
+      isRTL ? performScrollRTL : performScroll,
+      20
+    );
 
-      return () => {
-        clearInterval(intervalId);
-        // const symbolsContainer = document.getElementById("trading-symbols");
-        // scrollLeft = 0;
-      };
-    }
-  }, [isTouched, isRTL, isInfiniteAutoScroll]);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [isTouched, isRTL]);
 
   return (
     <div
@@ -90,7 +99,7 @@ const TradingSymbols = ({ className, symbols }) => {
         onTouchEnd={() => setIsTouched(false)}
       >
         {symbols &&
-          symbols.map((symbol, key) => (
+          prepareSymbols(symbols).map((symbol, key) => (
             <TradingSymbol
               key={`TradingSymbol${symbol.symbol}-${key}`}
               {...symbol}
