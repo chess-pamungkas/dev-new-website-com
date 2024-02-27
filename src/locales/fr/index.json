@@ -251,7 +251,7 @@
   "footer-copyright-paragraph4-fsa": "Les produits et services offerts sur ce site Web ne s'adressent pas aux résidents des États-Unis, de l'Iran et de la Corée du Nord, et ne sont pas destinés à être distribués ou utilisés par toute personne dans un pays ou une juridiction où une telle distribution ou utilisation serait contraire à la loi ou à la réglementation locale.",
   "footer-copyright-paragraph5-fsa": "Le contenu, les produits et les services de ce site Web ne sont pas destinés ni dirigés aux personnes de moins de 18 ans.",
   "footer-copyright-paragraph1-cysec": "OQTIMA EU LTD (anciennement Nordskov Capital Ltd), est enregistrée en tant que Société d'Investissement Chypriote (CIF) et autorisée par la Cyprus Securities and Exchange Commission (CySEC) sous le numéro de licence 406/21 conformément à la Directive sur les Marchés d'Instruments Financiers (MiFID II).",
-  "footer-copyright-paragraph2-cysec": "Avertissement sur les risques : Les CFD sont des instruments complexes et présentent un risque élevé de perte d'argent rapide en raison de l'effet de levier. La plupart des comptes d'investisseurs privés subissent des pertes lorsqu'ils tradent des CFD. Assurez-vous de maîtriser le fonctionnement des CFD et déterminez si vous pouvez vous permettre de courir le risque de perdre votre capital. Veuillez lire notre publication des risques",
+  "footer-copyright-paragraph2-cysec": "Avertissement de risque : Les CFD sont des instruments complexes et comportent un risque élevé de perdre de l'argent rapidement en raison de l'effet de levier. {{cysec-percentage}}% des comptes d'investisseurs particuliers perdent de l'argent lors de la négociation de CFD. Vous devriez considérer si vous comprenez comment fonctionnent les CFD et si vous pouvez vous permettre de prendre le risque élevé de perdre votre argent. Veuillez prendre en compte notre",
   "footer-copyright-paragraph-link-cysec": "Divulgation des risques.",
   "footer-funding-1": "* Si une demande est faite avant 11 heures d’Europe l’Est",
   "footer-funding-2": "* Nous ne facturons pas de frais, mais la banque expéditrice et la banque correspondante peuvent les facturer selon leur propre structure de frais.",
@@ -322,7 +322,7 @@
   "page-trading-tools-description": "",
   "page-vps-title": "VPS Privé",
   "page-vps-description": "",
-  "notification-stripe-cysec": "Avertissement de risque : Les CFD sont des instruments complexes et comportent un risque élevé de perdre de l'argent rapidement en raison de l'effet de levier. 88 % des comptes d'investisseurs particuliers perdent de l'argent lors de la négociation de CFD. Vous devriez considérer si vous comprenez comment fonctionnent les CFD et si vous pouvez vous permettre de prendre le risque élevé de perdre votre argent. Veuillez prendre en compte notre",
+  "notification-stripe-cysec": "Avertissement de risque : Les CFD sont des instruments complexes et comportent un risque élevé de perdre de l'argent rapidement en raison de l'effet de levier. {{cysec-percentage}}% des comptes d'investisseurs particuliers perdent de l'argent lors de la négociation de CFD. Vous devriez considérer si vous comprenez comment fonctionnent les CFD et si vous pouvez vous permettre de prendre le risque élevé de perdre votre argent. Veuillez prendre en compte notre",
   "notification-stripe-cysec-link": "Divulgation des risques.",
   "notification-stripe-redirect-text": " En fonction de votre localisation, l'une de nos autres entreprises sous licence être mieux adaptée à votre situation.",
   "notification-stripe-close-btn": "Fermer",
@@ -1053,14 +1053,14 @@
   "withdrawal_disclaimer3_2-cysec": "Nous nous réservons le droit de vous facturer des frais de 3% si un retrait est demandé avec une activité de trading minimale ou inexistante.",
   "withdrawal_disclaimer4-cysec": "Les retraits par virement bancaire peuvent prendre de 3 à 5 jours pour être reçus.",
   "withdrawal_disclaimer5-cysec": "Le service de traitement des finances est rapide !!! mais parfois il peut y avoir des retards qui sont hors de notre contrôle. Nous promettons de vous tenir informé de l'état de votre dépôt.",
-  
+
   "deposit_disclaimer1-cysec": "Le service de traitement des finances est rapide !!! mais parfois il peut y avoir des retards qui sont hors de notre contrôle. Nous promettons de vous tenir informé de l'état de votre dépôt.",
   "deposit_disclaimer2-cysec": "Nous ne vous facturerons pas un centime de notre côté, mais votre banque ou méthode de financement peut facturer des frais de leur côté qui sont hors de notre contrôle.",
 
   "deposit_disclaimer1-fsa": "Le service de traitement des finances est rapide !!! mais parfois il peut y avoir des retards qui sont hors de notre contrôle. Nous promettons de vous tenir informé de l'état de votre dépôt.",
   "deposit_disclaimer2-fsa": "Nous sommes là pour vous à tout moment de la journée, mais toutes les institutions financières ne travaillent pas 24 heures sur 24. Notre équipe de traitement veillera à ce que vos retraits soient traités dans la journée de travail, du lundi au vendredi de 9h00 à 15h00 (heure normale d'Europe de l'Est).",
   "deposit_disclaimer3-fsa": "Nous ne vous facturerons pas un centime de notre côté, mais votre banque ou méthode de financement peut facturer des frais de leur côté qui sont hors de notre contrôle.",
-  
+
   "withdrawal_disclaimer1-fsa": "Nous sommes là pour vous à tout moment de la journée, mais toutes les institutions financières ne travaillent pas 24 heures sur 24. Notre équipe de traitement veillera à ce que vos retraits soient traités dans la journée de travail, du lundi au vendredi de 9h00 à 15h00 (heure normale d'Europe de l'Est).",
   "withdrawal_disclaimer2-fsa": "Nous ne vous facturerons pas un centime de notre côté, mais votre banque ou méthode de financement peut facturer des frais de leur côté qui sont hors de notre contrôle.",
   "withdrawal_disclaimer3_1-fsa": "Nous nous réservons le droit de vous facturer des frais de 3 % si vous demandez plus de 5 retraits par mois.",
