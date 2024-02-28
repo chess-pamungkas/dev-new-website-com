@@ -13,8 +13,8 @@ const TradingSymbols = ({ className, symbols }) => {
   const [isInfiniteAutoScroll, setIsInfiniteAutoScroll] = useState(true);
 
   const prepareSymbols = (symbols) => {
-    // To ensure the best working scrolling, initial symbols count should be > 10
-    return symbols.length > 0 && symbols.length < 10
+    // To ensure the best working scrolling, initial symbols count should be > 20
+    return symbols.length > 0 && symbols.length < 20
       ? prepareSymbols(symbols.concat(symbols))
       : symbols;
   };
