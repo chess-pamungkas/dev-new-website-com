@@ -11,7 +11,6 @@ const TradingTicker = ({
   title,
   pageSpecificSection,
   isInfiniteAutoScroll,
-  animationDuration,
 }) => {
   const tradingSection = getTradingSections();
   const {
@@ -39,7 +38,6 @@ const TradingTicker = ({
       <TradingSymbols
         symbols={filterSymbols(tradingSymbols, selectedSection.id)}
         isInfiniteAutoScroll={isInfiniteAutoScroll}
-        animationDuration={animationDuration}
       />
     </section>
   );

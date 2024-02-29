@@ -5,7 +5,7 @@ const path = require("path");
 disallowedLanguages = [
   "ar",
   "my",
-  "en",
+  "", // Should be used instead of English, cause it's default one without language code
   "id",
   "tw",
   "cn",

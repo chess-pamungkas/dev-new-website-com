@@ -222,7 +222,7 @@
   "performance-advantage7-accent": "1",
   "footer-text-cysec": "Dank seiner stabilen und schnellen ECN+-Handelsumgebung ist OQtima ein Liebesbrief an Trader. Erstellt von erfahrenen Branchenführern mit mehr als 30 Jahren Erfahrung in der Handelsbranche, repräsentiert OQtima das nächste Level in Bezug auf Handelserfahrung und Marktzugänglichkeit.",
   "footer-copyright-paragraph1-cysec": "OQTIMA EU LTD (ehemals Nordskov Capital Ltd), ist als Zypriotische Investitionsfirma (CIF) registriert und von der Cyprus Securities and Exchange Commission (CySEC) unter der Lizenznummer 406/21 gemäß der Richtlinie über Märkte für Finanzinstrumente (MiFID II) lizenziert.",
-  "footer-copyright-paragraph2-cysec": "Risikowarnung: CFDs sind komplexe Instrumente und gehen mit einem hohen Risiko des schnellen Geldverlustes aufgrund der Hebelwirkung einher. Die überwiegende Mehrheit der Konten von Privatanlegern verliert beim Handel mit CFDs Geld. Sie sollten überlegen, ob Sie verstehen, wie CFDs funktionieren, und ob Sie sich das hohe Risiko leisten können, Ihr Geld zu verlieren. Bitte beachten Sie unsere",
+  "footer-copyright-paragraph2-cysec": "Risikowarnung: CFDs sind komplexe Instrumente und gehen wegen der Hebelwirkung mit einem hohen Risiko einher, schnell Geld zu verlieren. {{cysec-percentage}}% der Kleinanlegerkonten verlieren Geld beim CFD-Handel. Sie sollten überlegen, ob Sie verstehen, wie CFDs funktionieren, und ob Sie es sich leisten können, das hohe Risiko einzugehen, Ihr Geld zu verlieren. Bitte berücksichtigen Sie unsere",
   "footer-copyright-paragraph-link-cysec": "Risikoaufklärung.",
   "footer-funding-1": "* Wenn eine Anfrage vor 11:00 Uhr Osteuropäischer Zeit gestellt wird",
   "footer-funding-2": "* Wir berechnen keine Gebühren, jedoch können je nach verwendeter Methode Gebühren von Ihrer Bank erhoben werden.",
@@ -291,7 +291,7 @@
   "page-trading-tools-description": "",
   "page-vps-title": "Privater VPS",
   "page-vps-description": "",
-  "notification-stripe-cysec": "Risikowarnung: CFDs sind komplexe Instrumente und gehen wegen der Hebelwirkung mit einem hohen Risiko einher, schnell Geld zu verlieren. 88% der Kleinanlegerkonten verlieren Geld beim CFD-Handel. Sie sollten überlegen, ob Sie verstehen, wie CFDs funktionieren, und ob Sie es sich leisten können, das hohe Risiko einzugehen, Ihr Geld zu verlieren. Bitte berücksichtigen Sie unsere",
+  "notification-stripe-cysec": "Risikowarnung: CFDs sind komplexe Instrumente und gehen wegen der Hebelwirkung mit einem hohen Risiko einher, schnell Geld zu verlieren. {{cysec-percentage}}% der Kleinanlegerkonten verlieren Geld beim CFD-Handel. Sie sollten überlegen, ob Sie verstehen, wie CFDs funktionieren, und ob Sie es sich leisten können, das hohe Risiko einzugehen, Ihr Geld zu verlieren. Bitte berücksichtigen Sie unsere",
   "notification-stripe-cysec-link": "Risikooffenlegung.",
   "notification-stripe-redirect-text": "Basierend auf Ihrem Standort sollten Sie möglicherweise eine unserer lizenzierten Unternehmen in Betracht ziehen, das besser zu Ihnen passt.",
   "notification-stripe-close-btn": "Schließen",
@@ -928,14 +928,14 @@
   "withdrawal_disclaimer3_2-cysec": "Wir behalten uns das Recht vor, Ihnen eine Gebühr von 3% zu berechnen, wenn eine Auszahlung bei minimaler oder keiner Handelsaktivität angefordert wird.",
   "withdrawal_disclaimer4-cysec": "Banküberweisungen können 3-5 Tage dauern, um eingehen zu können.",
   "withdrawal_disclaimer5-cysec": "Bitte erlauben Sie bis zu 1 Stunde. OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen.",
-  
+
   "deposit_disclaimer1-cysec": "Bitte erlauben Sie bis zu 1 Stunde. OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen.",
   "deposit_disclaimer2-cysec": "OQTIMA berechnet Ihnen keine Gebühren für die Bearbeitung Ihrer Einzahlungen oder Auszahlungen. Allerdings kann die von Ihnen gewählte Methode Gebühren erheben, die außerhalb von OQTIMA liegen.",
 
   "deposit_disclaimer1-fsa": "Bitte erlauben Sie bis zu 1 Stunde. OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen.",
   "deposit_disclaimer2-fsa": "Tage dienen nur zur Orientierung und OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen. Die Finanzabteilung von OQTIMA arbeitet von Montag bis Freitag von 9 bis 15 Uhr (Osteuropäische Standardzeit). Anfragen nach diesen Zeiten werden am nächsten Arbeitstag bearbeitet.",
   "deposit_disclaimer3-fsa": "OQTIMA berechnet Ihnen keine Gebühren für die Bearbeitung Ihrer Einzahlungen oder Auszahlungen. Allerdings kann die von Ihnen gewählte Methode Gebühren erheben, die außerhalb von OQTIMA liegen.",
-  
+
   "withdrawal_disclaimer1-fsa": "Tage dienen nur zur Orientierung und OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen. Die Finanzabteilung von OQTIMA arbeitet von Montag bis Freitag von 9 bis 15 Uhr (Osteuropäische Standardzeit). Anfragen nach diesen Zeiten werden am nächsten Arbeitstag bearbeitet.",
   "withdrawal_disclaimer2-fsa": "OQTIMA berechnet Ihnen keine Gebühren für die Bearbeitung Ihrer Einzahlungen oder Auszahlungen. Allerdings kann die von Ihnen gewählte Methode Gebühren erheben, die außerhalb von OQTIMA liegen.",
   "withdrawal_disclaimer3_1-fsa": "Wir behalten uns das Recht vor, Ihnen eine Gebühr von 3% zu berechnen, wenn Sie mehr als 5 Abhebungen pro Monat beantragen.",

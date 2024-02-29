@@ -36,6 +36,7 @@ export const getLocalizationVariables = () => {
   };
 
   const VARS = {
+    "cysec-percentage": "88",
     "shares-number": "880",
     "shares-number-fsa": "91",
     "assets-number": "1.000",
