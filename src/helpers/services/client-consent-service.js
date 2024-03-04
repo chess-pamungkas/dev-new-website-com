@@ -1,5 +1,6 @@
 import axios from "axios";
 import { currentEntity } from "../entity-resolver";
+import { sendLog } from "./log-service";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 
@@ -12,5 +13,5 @@ export const postClientConsent = (ipAddress, consentString) => {
   };
   axios
     .post(`${API_URL}client-consent`, data)
-    .catch((response) => console.log(response));
+    .catch((response) => sendLog(response));
 };

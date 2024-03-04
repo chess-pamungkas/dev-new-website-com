@@ -13,9 +13,11 @@ import Bookmark from "../../floating-button/BookmarkButton";
 import MainContainer from "../main-container";
 import Header from "../../header";
 import Footer from "../../footer";
+import { sendLog } from "../../../helpers/services/log-service";
 
 const Layout = ({ children }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  try {
+    const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     setIsLoaded(true);
   }, []);
@@ -49,6 +51,11 @@ const Layout = ({ children }) => {
       </CookieProvider>
     </ClientResolverProvider>
   );
+  } catch (error) {
+    sendLog({message: error.message, type: error.name});
+
+    throw error;
+  }
 };
 
 export default Layout;

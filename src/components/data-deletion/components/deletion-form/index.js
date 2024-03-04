@@ -10,6 +10,7 @@ import { DataDeletionSchema } from "../../../../validations/data-deletion";
 import Checkbox from "../../../shared/form/checkbox";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 import { DATA_DELETION_POLICY_BLOCK } from "../../../../helpers/data-deletion.config";
+import { sendLog } from "../../../../helpers/services/log-service";
 
 const DataDeletionForm = () => {
   const { t } = useTranslationWithVariables();
@@ -38,6 +39,7 @@ const DataDeletionForm = () => {
       })
       .catch((response) => {
         console.log(response);
+        sendLog(response);
         handleApiResponse(false);
       });
   };

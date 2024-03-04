@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import handleClient from "./handle-client";
 import { currentEntity } from "../../helpers/entity-resolver";
+import { sendLog } from "../../helpers/services/log-service";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 const ClientResolverContext = createContext({});
@@ -21,7 +22,7 @@ export const ClientResolverProvider = ({ children }) => {
         .then((clientConfig) =>
           handleClient(clientConfig, setIsPopupShown)
         )
-        .catch((response) => console.log(response));
+        .catch((response) => sendLog(response));
     }
   }, [currentEntity]);
 
