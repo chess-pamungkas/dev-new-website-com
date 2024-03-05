@@ -1,152 +1,238 @@
+import { useContext } from "react";
 import { isCySEC } from "./entity-resolver";
+import LanguageContext from "../context/language-context";
+
 // FSA docs
-const bestExecutionPolicyFSA =
-  "https://docs.oqtima.com/legal/Best_Execution_Policy.pdf";
-const complaintHandlingPolicyFSA =
-  "https://docs.oqtima.com/legal/Complaint_Handling_Policy.pdf";
-const riskDisclosureNoticeFSA =
-  "https://docs.oqtima.com/legal/Risk_Disclosure_Notice.pdf";
-const cookiePolicyFSA = "https://docs.oqtima.com/legal/Cookie_Policy.pdf";
-export const privacyPolicyFSA =
-  "https://docs.oqtima.com/legal/Privacy_Policy.pdf";
-export const clientAgreementFSA =
-  "https://docs.oqtima.com/legal/Client_Agreement.pdf";
+const FSA_DOCS_FOLDER = "https://docs.oqtima.com/legal";
+const EU_DOCS_FOLDER = "https://docs.oqtima.eu/legal";
+
+
+const bestExecutionPolicyFSA = {
+  filename: "Best_Execution_Policy.pdf",
+  languages: ["en"],
+};
+const complaintHandlingPolicyFSA = {
+  filename: "Complaint_Handling_Policy.pdf",
+  languages: ["en"],
+};
+const riskDisclosureNoticeFSA = {
+  filename: "Risk_Disclosure_Notice.pdf",
+  languages: ["en"],
+};
+const cookiePolicyFSA = {
+  filename: "Cookie_Policy.pdf",
+  languages: ["en"],
+};
+export const privacyPolicyFSA = {
+  filename: "Privacy_Policy.pdf",
+  languages: ["en"],
+};
+export const clientAgreementFSA = {
+  filename: "Client_Agreement.pdf",
+  languages: ["en"],
+};
+
+
 // EU docs
-const clientCategorisationNotice =
-  "https://docs.oqtima.eu/legal/Client_Categorisation_Notice_OQtima_EU.pdf";
-const complaintHandlingPolicy =
-  "https://docs.oqtima.eu/legal/Complaint_Handling_Policy_OQtima_EU.pdf";
-const conflictOfInterestPolicy =
-  "https://docs.oqtima.eu/legal/Conflict_of_Interest_Policy_OQtima_EU.pdf";
-const investorCompensationFund =
-  "https://docs.oqtima.eu/legal/Investor_Compensation_Fund_OQtima_EU.pdf";
-const orderExecutionPolicy =
-  "https://docs.oqtima.eu/legal/Order_Execution_Policy_OQtima_EU.pdf";
-const riskDisclosure =
-  "https://docs.oqtima.eu/legal/Risk_Disclosure_OQtima_EU.pdf";
-const keyInformationFX =
-  "https://docs.oqtima.eu/legal/Key_Information_Document_FX.pdf";
-const keyInformationIndices =
-  "https://docs.oqtima.eu/legal/Key_Information_Document_Indices.pdf";
-const keyInformationCommodities =
-  "https://docs.oqtima.eu/legal/Key_Information_commo.pdf";
-const keyInformationETF =
-  "https://docs.oqtima.eu/legal/Key_Information_Document_ETFs_Oqtima.pdf";
-const keyInformationStocks =
-  "https://docs.oqtima.eu/legal/Key_Information_Document_Stocks_Oqtima.pdf";
-const summaryStatement =
-  "https://docs.oqtima.eu/legal/Execution_Quality_Summary_Statement_2022_OQtima_EU.pdf";
-const disciplineReport =
-  "https://docs.oqtima.eu/legal/Disclosure_and_Market_Discipline_Report_Pillar_III_2022_OQtima_EU.pdf";
-export const privacyPolicy =
-  "https://docs.oqtima.eu/legal/Privacy_Policy_OQtima_EU.pdf";
-export const termsAndConditions =
-  "https://docs.oqtima.eu/legal/Terms_and_Conditions_OQtima_EU.pdf";
-export const bestOrderAndExecPolicy =
-  "https://docs.oqtima.eu/legal/Best_Order_and_Execution_Policy_OQtima_EU.pdf";
+const clientCategorisationNotice = {
+  filename: "Client_Categorisation_Notice_OQtima_EU.pdf",
+  languages: ["en"],
+};
+const complaintHandlingPolicy = {
+  filename: "Complaint_Handling_Policy_OQtima_EU.pdf",
+  languages: ["en"],
+};
+const conflictOfInterestPolicy = {
+  filename: "Conflict_of_Interest_Policy_OQtima_EU.pdf",
+  languages: ["en"],
+};
+const investorCompensationFund = {
+  filename: "Investor_Compensation_Fund_OQtima_EU.pdf",
+  languages: ["en"],
+};
+const orderExecutionPolicy = {
+  filename: "Order_Execution_Policy_OQtima_EU.pdf",
+  languages: ["en"],
+};
+const riskDisclosure = {
+  filename: "Risk_Disclosure_OQtima_EU.pdf",
+  languages: ["en"],
+};
+const keyInformationFX = {
+  filename: "Key_Information_Document_FX.pdf",
+  languages: ["de", "pt", "it"],
+};
+const keyInformationIndices = {
+  filename: "Key_Information_Document_Indices.pdf",
+  languages: ["de", "pt", "it"],
+};
+const keyInformationCommodities = {
+  filename: "Key_Information_commo.pdf",
+  languages: ["de", "pt", "it"],
+};
+const keyInformationETF = {
+  filename: "Key_Information_Document_ETFs_Oqtima.pdf",
+  languages: ["de", "pt", "it"],
+};
+const keyInformationStocks = {
+  filename: "Key_Information_Document_Stocks_Oqtima.pdf",
+  languages: ["de", "pt", "it"],
+};
+const summaryStatement = {
+  filename: "Execution_Quality_Summary_Statement_2022_OQtima_EU.pdf",
+  languages: ["en"],
+};
+const disciplineReport = {
+  filename:
+    "Disclosure_and_Market_Discipline_Report_Pillar_III_2022_OQtima_EU.pdf",
+  languages: ["en"],
+};
+export const privacyPolicy = {
+  filename: "Privacy_Policy_OQtima_EU.pdf",
+  languages: ["en"],
+};
+export const termsAndConditions = {
+  filename: "Terms_and_Conditions_OQtima_EU.pdf",
+  languages: ["en"],
+};
+export const bestOrderAndExecPolicy = {
+  filename: "Best_Order_and_Execution_Policy_OQtima_EU.pdf",
+  languages: ["en"],
+};
 
 export const MT4_DOC = summaryStatement;
 export const MT5_DOC = summaryStatement;
 export const CTRADER_DOC = summaryStatement;
 export const TRADING_VIEW_DOC = summaryStatement;
 
-const LEGAL_DOCS = [
-  {
-    name: "document-client-categorisation-notice-name",
-    file: clientCategorisationNotice,
-  },
-  {
-    name: "document-complaint-policy-name",
-    file: complaintHandlingPolicy,
-  },
-  {
-    name: "document-conflict-of-interest-name",
-    file: conflictOfInterestPolicy,
-  },
-  {
-    name: "document-terms-and-cond-name",
-    file: termsAndConditions,
-  },
-  {
-    name: "document-investor-compensation-fund-name",
-    file: investorCompensationFund,
-  },
-  {
-    name: "document-order-execution-name",
-    file: orderExecutionPolicy,
-  },
-  {
-    name: "document-best-order-execution-name",
-    file: bestOrderAndExecPolicy,
-  },
-  {
-    name: "document-privacy-policy-name",
-    file: privacyPolicy,
-  },
-  {
-    name: "document-risk-disclosure-name",
-    file: riskDisclosure,
-  },
-  {
-    name: "document-key-FX-name",
-    file: keyInformationFX,
-  },
-  {
-    name: "document-key-indices-name",
-    file: keyInformationIndices,
-  },
-  {
-    name: "document-key-commodities-name",
-    file: keyInformationCommodities,
-  },
-  {
-    name: "document-key-etf-name",
-    file: keyInformationETF,
-  },
-  {
-    name: "document-key-stocks-name",
-    file: keyInformationStocks,
-  },
-  {
-    name: "document-summary-statement-name",
-    file: summaryStatement,
-  },
-  {
-    name: "document-discipline-report-name",
-    file: disciplineReport,
-  },
-];
+const generateFileLinkWithLang = (fileObj, langObj) => {
+  const languagePart = fileObj.languages.includes(langObj.id)
+    ? langObj.URIPart
+    : "";
+  const docsFolder = isCySEC ? EU_DOCS_FOLDER : FSA_DOCS_FOLDER;
+  return `${docsFolder}${languagePart}/${fileObj.filename}`;
+};
 
-const LEGAL_DOCS_FSA = [
-  {
-    name: "document-best-execution-policy-fsa",
-    file: bestExecutionPolicyFSA,
-  },
-  {
-    name: "document-complaint-handling-policy-fsa",
-    file: complaintHandlingPolicyFSA,
-  },
-  {
-    name: "document-privacy-policy-fsa",
-    file: privacyPolicyFSA,
-  },
-  {
-    name: "document-risk-disclosure-notice-fsa",
-    file: riskDisclosureNoticeFSA,
-  },
-  {
-    name: "document-cookie-policy-fsa",
-    file: cookiePolicyFSA,
-  },
-  {
-    name: "document-client-agreement-fsa",
-    file: clientAgreementFSA,
-  },
-];
+const LEGAL_DOCS = () => {
+  const { selectedLanguage } = useContext(LanguageContext);
+
+  return [
+    {
+      name: "document-client-categorisation-notice-name",
+      file: generateFileLinkWithLang(
+        clientCategorisationNotice,
+        selectedLanguage
+      ),
+    },
+    {
+      name: "document-complaint-policy-name",
+      file: generateFileLinkWithLang(complaintHandlingPolicy, selectedLanguage),
+    },
+    {
+      name: "document-conflict-of-interest-name",
+      file: generateFileLinkWithLang(
+        conflictOfInterestPolicy,
+        selectedLanguage
+      ),
+    },
+    {
+      name: "document-terms-and-cond-name",
+      file: generateFileLinkWithLang(termsAndConditions, selectedLanguage),
+    },
+    {
+      name: "document-investor-compensation-fund-name",
+      file: generateFileLinkWithLang(
+        investorCompensationFund,
+        selectedLanguage
+      ),
+    },
+    {
+      name: "document-order-execution-name",
+      file: generateFileLinkWithLang(orderExecutionPolicy, selectedLanguage),
+    },
+    {
+      name: "document-best-order-execution-name",
+      file: generateFileLinkWithLang(bestOrderAndExecPolicy, selectedLanguage),
+    },
+    {
+      name: "document-privacy-policy-name",
+      file: generateFileLinkWithLang(privacyPolicy, selectedLanguage),
+    },
+    {
+      name: "document-risk-disclosure-name",
+      file: generateFileLinkWithLang(riskDisclosure, selectedLanguage),
+    },
+    {
+      name: "document-key-FX-name",
+      file: generateFileLinkWithLang(keyInformationFX, selectedLanguage),
+    },
+    {
+      name: "document-key-indices-name",
+      file: generateFileLinkWithLang(keyInformationIndices, selectedLanguage),
+    },
+    {
+      name: "document-key-commodities-name",
+      file: generateFileLinkWithLang(
+        keyInformationCommodities,
+        selectedLanguage
+      ),
+    },
+    {
+      name: "document-key-etf-name",
+      file: generateFileLinkWithLang(keyInformationETF, selectedLanguage),
+    },
+    {
+      name: "document-key-stocks-name",
+      file: generateFileLinkWithLang(keyInformationStocks, selectedLanguage),
+    },
+    {
+      name: "document-summary-statement-name",
+      file: generateFileLinkWithLang(summaryStatement, selectedLanguage),
+    },
+    {
+      name: "document-discipline-report-name",
+      file: generateFileLinkWithLang(disciplineReport, selectedLanguage),
+    },
+  ];
+};
+
+const LEGAL_DOCS_FSA = () => {
+  const { selectedLanguage } = useContext(LanguageContext);
+
+  return [
+    {
+      name: "document-best-execution-policy-fsa",
+      file: generateFileLinkWithLang(bestExecutionPolicyFSA, selectedLanguage),
+    },
+    {
+      name: "document-complaint-handling-policy-fsa",
+      file: generateFileLinkWithLang(
+        complaintHandlingPolicyFSA,
+        selectedLanguage
+      ),
+    },
+    {
+      name: "document-privacy-policy-fsa",
+      file: generateFileLinkWithLang(privacyPolicyFSA, selectedLanguage),
+    },
+    {
+      name: "document-risk-disclosure-notice-fsa",
+      file: generateFileLinkWithLang(riskDisclosureNoticeFSA, selectedLanguage),
+    },
+    {
+      name: "document-cookie-policy-fsa",
+      file: generateFileLinkWithLang(cookiePolicyFSA, selectedLanguage),
+    },
+    {
+      name: "document-client-agreement-fsa",
+      file: generateFileLinkWithLang(clientAgreementFSA, selectedLanguage),
+    },
+  ];
+};
 
 const RISK_DISCLOSURE_DOC_FSA = riskDisclosureNoticeFSA;
 export const RISK_DISCLOSURE_DOC = riskDisclosure;
 
-export const getLegalDocs = () => (isCySEC ? LEGAL_DOCS : LEGAL_DOCS_FSA);
+export const getLegalDocs = () => (isCySEC ? LEGAL_DOCS() : LEGAL_DOCS_FSA());
 export const getRiskDisclosureDoc = () =>
   isCySEC ? RISK_DISCLOSURE_DOC : RISK_DISCLOSURE_DOC_FSA;
