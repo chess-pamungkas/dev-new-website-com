@@ -42,7 +42,8 @@ export const getLocalizationVariables = () => {
     "assets-number": "1.000",
     "assets-number-fsa": "1.000",
     "index-promotion1-amount": "200",
-    "index-promotion1-amount-fsa": isIncreasedMinDeposit() ? "100" : "20",
+    // "index-promotion1-amount-fsa": isIncreasedMinDeposit() ? "100" : "20",
+    "index-promotion1-amount-fsa": "100",
     "index-promotion1-currencies": "4",
     "index-promotion1-currencies-fsa": "8",
     "execution-time": "30",
@@ -76,7 +77,8 @@ export const getLocalizationVariables = () => {
     "account-type1-spreads-from": "0.0",
     "account-type1-commissions": "3.50",
     "account-type1-min-deposit": "200",
-    "account-type1-min-deposit-fsa": isIncreasedMinDeposit() ? "100" : "20",
+    // "account-type1-min-deposit-fsa": isIncreasedMinDeposit() ? "100" : "20",
+    "account-type1-min-deposit-fsa": "100",
     "account-type1-max-leverage": "1:30",
     "account-type1-max-leverage-fsa": isJapaneseVariables()
       ? "1:500"
@@ -90,7 +92,8 @@ export const getLocalizationVariables = () => {
     "account-type2-spreads-from": "1.0",
     "account-type2-commissions": "3.50",
     "account-type2-min-deposit": "200",
-    "account-type2-min-deposit-fsa": isIncreasedMinDeposit() ? "100" : "20",
+    // "account-type2-min-deposit-fsa": isIncreasedMinDeposit() ? "100" : "20",
+    "account-type2-min-deposit-fsa": "100",
     "account-type2-max-leverage": "1:30",
     "account-type2-max-leverage-fsa": isJapaneseVariables()
       ? "1:500"
@@ -135,7 +138,8 @@ export const getLocalizationVariables = () => {
 
     "deposit-minutes": "10",
     "deposit-days": "3-5",
-    "min-deposit": isIncreasedMinDeposit() ? "$100" : "$20",
+    // "min-deposit": isIncreasedMinDeposit() ? "$100" : "$20",
+    "min-deposit": "$100",
   };
 
   return VARS;

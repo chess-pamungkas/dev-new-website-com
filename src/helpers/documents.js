@@ -60,23 +60,23 @@ const riskDisclosure = {
 };
 const keyInformationFX = {
   filename: "Key_Information_Document_FX.pdf",
-  languages: ["de", "pt", "it"],
+  languages: ["en", "de", "pt", "it"],
 };
 const keyInformationIndices = {
   filename: "Key_Information_Document_Indices.pdf",
-  languages: ["de", "pt", "it"],
+  languages: ["en", "de", "pt", "it"],
 };
 const keyInformationCommodities = {
   filename: "Key_Information_commo.pdf",
-  languages: ["de", "pt", "it"],
+  languages: ["en", "de", "pt", "it"],
 };
 const keyInformationETF = {
   filename: "Key_Information_Document_ETFs_Oqtima.pdf",
-  languages: ["de", "pt", "it"],
+  languages: ["en", "de", "pt", "it"],
 };
 const keyInformationStocks = {
   filename: "Key_Information_Document_Stocks_Oqtima.pdf",
-  languages: ["de", "pt", "it"],
+  languages: ["en", "de", "pt", "it"],
 };
 const summaryStatement = {
   filename: "Execution_Quality_Summary_Statement_2022_OQtima_EU.pdf",
