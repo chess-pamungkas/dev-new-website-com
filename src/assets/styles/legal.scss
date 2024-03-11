@@ -186,6 +186,8 @@
   }
 
   .top-market-promotion__img {
-    width: 100%;
+    @include desktop-xl {
+      width: 600px;
+    }
   }
 }
