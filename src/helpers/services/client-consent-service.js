@@ -13,5 +13,5 @@ export const postClientConsent = (ipAddress, consentString) => {
   };
   axios
     .post(`${API_URL}client-consent`, data)
-    .catch((response) => sendLog(response));
+    .catch((error) => sendLog({message: error.message, type: error.name}));
 };

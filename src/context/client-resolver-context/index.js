@@ -22,7 +22,7 @@ export const ClientResolverProvider = ({ children }) => {
         .then((clientConfig) =>
           handleClient(clientConfig, setIsPopupShown)
         )
-        .catch((response) => sendLog(response));
+        .catch((error) => sendLog({message: error.message, type: error.name}));
     }
   }, [currentEntity]);
 

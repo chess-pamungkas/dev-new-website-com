@@ -10,11 +10,11 @@ const getEnv = () => {
 };
 
 export const sendLog = (errorData) => {
-  const browser = isBrowser() ? (navigator.userAgentData || navigator.userAgent): undefined;
+  const userAgent = isBrowser() ? navigator.userAgent: undefined;
   const source = isBrowser() ? window.location.href: undefined;
   const data = {
     env: getEnv(),
-    content: [{ ...errorData, browser, source }],
+    content: [{ ...errorData, userAgent, source }],
   };
   axios
     .post(`${API_URL}log`, data)

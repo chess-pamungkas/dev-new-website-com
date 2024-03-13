@@ -23,9 +23,8 @@ export const TradingProvider = ({ children }) => {
             if (data) setTradingSymbols(data);
           });
         }
-      } catch (e) {
-        console.log(e);
-        sendLog(e);
+      } catch (error) {
+        sendLog({message: error.message, type: error.name});
       }
     };
 
