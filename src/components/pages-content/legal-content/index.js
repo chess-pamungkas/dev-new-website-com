@@ -3,7 +3,7 @@ import TopMarketPromotion from "../../top-market-promotion";
 import cn from "classnames";
 import image from "../../../assets/images/about-pages/legal-banner.svg";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
-import cysec from "../../../assets/images/about-pages/cysec.jpg";
+import cysec from "../../../assets/images/about-pages/cysec.png";
 import fsa from "../../../assets/images/about-pages/fsa.png";
 import Documents from "../../documents";
 import { getLegalDocs } from "../../../helpers/documents";
