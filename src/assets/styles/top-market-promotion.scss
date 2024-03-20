@@ -159,13 +159,13 @@
   }
 
   &__img {
-    margin-bottom: 56px;
+    margin-bottom: 30px;
     width: 305px;
     max-width: 37vw;
 
     @include tablet {
       width: 461px;
-      margin-bottom: 86px;
+      margin-bottom: 40px;
     }
 
     @include desktop-lg {
