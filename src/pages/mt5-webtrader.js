@@ -4,10 +4,8 @@ import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import WebTraderLink from "../components/mt5-webtrader";
 import CommonContext from "../context/common-context";
-import comingSoonImage from "../assets/images/system-info/coming-soon.svg";
-import SystemInfoComponent from "../components/shared/system-info";
-import { isCySEC } from "../helpers/entity-resolver";
 import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
+import { currentEntity } from "../helpers/entity-resolver";
 
 const MT5WebTraderPage = () => {
   const { setIsSearchBarAttached } = useContext(CommonContext);
@@ -21,21 +19,8 @@ const MT5WebTraderPage = () => {
 
   return (
     <>
-      <Seo
-        fsaTitle={t("system-page-coming-soon-title")}
-        cysecTitle={"MT5 Web Trader"}
-        fsaRobots={"noindex"}
-      />
-      {isCySEC ? (
-        <WebTraderLink />
-      ) : (
-        <SystemInfoComponent
-          image={comingSoonImage}
-          title={t("system-page-coming-soon-title")}
-          subTitle={t("system-page-coming-soon-subtitle")}
-          goBackBtnTitle={t("system-page-go-back-btn")}
-        />
-      )}
+      <Seo fsaTitle={t("MT5 Web Trader")} cysecTitle={"MT5 Web Trader"} />
+      <WebTraderLink entityType={currentEntity} />
     </>
   );
 };

@@ -7,9 +7,11 @@ import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import LanguageContext from "../../context/language-context";
 import { MT_LANGUAGES_MAP } from "../../helpers/lang-options.config";
 
-const WebTraderLink = () => {
+const WebTraderLink = ({ entityType }) => {
   const { isDesktop } = useWindowSize();
   const { selectedLanguage } = useContext(LanguageContext);
+
+  const domain = entityType === "CYSEC" ? ".eu" : ".com";
 
   return (
     <div
@@ -18,7 +20,7 @@ const WebTraderLink = () => {
       }}
     >
       <iframe
-        src={`https://webtrader.oqtima.eu/terminal?mode=connect&lang=${
+        src={`https://webtrader.oqtima${domain}/terminal?mode=connect&lang=${
           MT_LANGUAGES_MAP[selectedLanguage.id]
         }&theme=light`}
         width="100%"

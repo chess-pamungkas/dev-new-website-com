@@ -66,22 +66,19 @@ export const MT5_DOWNLOAD_LINKS = {
   getAndroidLink: () =>
     isCySEC
       ? "https://download.mql5.com/cdn/mobile/mt5/android?server=OQtimaEU-Live"
-      : null,
+      : "https://download.mql5.com/cdn/mobile/mt5/android?server=OQtima-Live",
   getIOSLink: () =>
     isCySEC
       ? "https://download.mql5.com/cdn/mobile/mt5/ios?server=OQtimaEU-Live"
-      : null,
+      : "https://download.mql5.com/cdn/mobile/mt5/ios?server=OQtima-Live",
   getWindowsLink: () =>
     isCySEC
       ? "https://download.mql5.com/cdn/web/oqtima.eu.ltd/mt5/oqtimaeu5setup.exe"
-      : null,
-  getWebTraderLink: () => (isCySEC ? MT5_WEB_TRADER_LINK : null),
+      : "https://download.mql5.com/cdn/web/22911/mt5/oqtima5setup.exe",
+  getWebTraderLink: () => MT5_WEB_TRADER_LINK,
   getMacLink: () =>
-    isCySEC
-      ? "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.pkg.zip"
-      : null,
-  getHuaweiLink: () =>
-    isCySEC ? "https://appgallery.huawei.com/#/app/C102015329" : null,
+    "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.pkg.zip",
+  getHuaweiLink: () => "https://appgallery.huawei.com/#/app/C102015329",
 };
 
 export const getMT4DownloadLink = () => {
