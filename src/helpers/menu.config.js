@@ -59,6 +59,8 @@ import {
   GetRegistrationLink,
   VPS_PAGE_LINK,
   SWAP_FREE_PAGE_LINK,
+  PRIVACY_POLICY_PAGE_LINK,
+  COOKIE_POLICY_PAGE_LINK,
 } from "./constants";
 import { isCySEC } from "./entity-resolver";
 import ClientResolverContext from "../context/client-resolver-context";
@@ -335,6 +337,16 @@ const FSA_COMPANY_TAB = {
       link: PARTNERS_PAGE_LINK,
       icon: CollaborationPartnershipIcon,
       description: "header-nav-tab-partners-collaboration-partnership-desc-fsa",
+    },
+    {
+      footerOnly: true,
+      title: "document-privacy-policy-name",
+      link: PRIVACY_POLICY_PAGE_LINK,
+    },
+    {
+      footerOnly: true,
+      title: "document-cookie-policy-fsa",
+      link: COOKIE_POLICY_PAGE_LINK,
     },
   ],
 };

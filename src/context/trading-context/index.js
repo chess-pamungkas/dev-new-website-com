@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { getTradingSections } from "../../helpers/config";
 import { io } from "socket.io-client";
+import { sendLog } from "../../helpers/services/log-service";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 const TradingContext = createContext({});
@@ -22,8 +23,8 @@ export const TradingProvider = ({ children }) => {
             if (data) setTradingSymbols(data);
           });
         }
-      } catch (e) {
-        console.log(e);
+      } catch (error) {
+        sendLog({message: error.message, type: error.name});
       }
     };
 

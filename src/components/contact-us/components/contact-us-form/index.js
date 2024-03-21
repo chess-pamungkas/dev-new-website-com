@@ -8,6 +8,7 @@ import { ContactUsSchema } from "../../../../validations/contact-us";
 import axios from "axios";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { currentEntity } from "../../../../helpers/entity-resolver";
+import { sendLog } from "../../../../helpers/services/log-service";
 
 const ContactUsForm = () => {
   const { t } = useTranslationWithVariables();
@@ -33,8 +34,8 @@ const ContactUsForm = () => {
       .then(() => {
         handleApiResponse(true);
       })
-      .catch((response) => {
-        console.log(response);
+      .catch((error) => {
+        sendLog({message: error.message, type: error.name});
         handleApiResponse(false);
       });
   };

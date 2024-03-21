@@ -6,7 +6,7 @@ const PRIVACY_POLICY_CONTENT = [
     title: "Introduction",
     subItems: [
       {
-        text: "This Privacy Policy sets out the way NORDSKOV CAPITAL LTD, trading as OQTIMA, (hereinafter “The Company) collects, uses and manages personal information from its visitors, potential and active clients and clients who have terminated their business relationship with the Company who are accessing or using the Company’s website(s) and mobile applications. The Company is committed to safeguard the information / Personal Data it collects, uses and/or holds in accordance with the provisions of the European General Data Protection Regulation EU 2016/679 (hereinafter ‘GDPR’) and any regulations of the Republic of Cyprus which implement or supplement the GDPR.",
+        text: "This Privacy Policy sets out the way OQTIMA EU LTD (ex Nordskov Capital Ltd), (hereinafter “The Company) collects, uses and manages personal information from its visitors, potential and active clients and clients who have terminated their business relationship with the Company who are accessing or using the Company’s website(s) and mobile applications. The Company is committed to safeguard the information / Personal Data it collects, uses and/or holds in accordance with the provisions of the European General Data Protection Regulation EU 2016/679 (hereinafter ‘GDPR’) and any regulations of the Republic of Cyprus which implement or supplement the GDPR.",
       },
     ],
   },
@@ -20,7 +20,7 @@ const PRIVACY_POLICY_CONTENT = [
         text: "The Personal Data collected by the Company might include, but not limited to:",
         subItems: [
           {
-            text: "• Personal information you provide to us on applications and other forms, such as yourname, surname, address, e-mail address, phone number, date of birth, gender,occupation and employment details;",
+            text: "• Personal information you provide to us on applications and other forms, such as your name, surname, address, e-mail address, phone number, date of birth, gender, occupation and employment details;",
           },
           {
             text: "• Financial information such as your income, assets and net worth;",
@@ -32,7 +32,7 @@ const PRIVACY_POLICY_CONTENT = [
             text: "• Bank account, e-wallets and credit card details, tax information;",
           },
           {
-            text: "• Documents that you provide to us to verify your identity, such as yourpassport/identity card, utility bills and/or bank statement or your companyincorporation details.",
+            text: "• Documents that you provide to us to verify your identity, such as your passport/identity card, utility bills and/or bank statement or your company incorporation details.",
           },
         ],
       },
@@ -69,16 +69,16 @@ const PRIVACY_POLICY_CONTENT = [
             text: "• to inform you of products and/or services that may be of interest to you;",
           },
           {
-            text: "• to keep you updated on the issues that are relevant to your business relationship withus;",
+            text: "• to keep you updated on the issues that are relevant to your business relationship with us;",
           },
           {
-            text: "• to analyse statistical data to enable us to provide you with better products and/orservices;",
+            text: "• to analyse statistical data to enable us to provide you with better products and/or services;",
           },
           {
             text: "• to enhance the security controls of the Company’s networks and systems;",
           },
           {
-            text: "• to identify, assess, mitigate, prevent and investigate fraudulent activity of any kindthat is forbidden by the relevant legislation;",
+            text: "• to identify, assess, mitigate, prevent and investigate fraudulent activity of any kind that is forbidden by the relevant legislation;",
           },
           {
             text: "• to defend possible legal claims;",
@@ -86,10 +86,10 @@ const PRIVACY_POLICY_CONTENT = [
         ],
       },
       {
-        text: "The Company needs to comply with the Anti-money Laundering regulations, therefore hard copies and/or in electronic format copies shall be retained as evidence. Also the measures that are taken by the Company in regards to your identity verification, source of income and wealth, monitoring of your transactions, telephone/text/e-mail communication, and transaction history must be kept to be able for the Company to demonstrate to the regulator that has acted in accordance with the legislation.",
+        text: "The Company needs to comply with the Anti-money Laundering regulations, therefore hard copies and/or in electronic format copies shall be retained as evidence. Also, the measures that are taken by the Company in regard to your identity verification, source of income and wealth, monitoring of your transactions, telephone/text/e-mail communication, and transaction history must be kept to be able for the Company to demonstrate to the regulator that has acted in accordance with the legislation.",
       },
       {
-        text: "The Company will ask for the Client’s consent in regards to the provision of marketing information in relation to the products and services offered. The Client consent is provided by signing the Client agreement between the contractual parties.",
+        text: "The Company will ask for the Client’s consent in regard to the provision of marketing information in relation to the products and services offered. The Client consent is provided by signing the Client agreement between the contractual parties.",
       },
       {
         text: "The Client may withdraw such consent at any given time by sending an email to compliance@oqtima.eu",
@@ -106,10 +106,10 @@ const PRIVACY_POLICY_CONTENT = [
         text: "Cookies are small text files, given ID tags that are stored on your computer’s browser directory or program data subfolders. Cookies are created when you use your browser to visit a website that uses cookies to keep track of your movements within the site, help you resume where you left off, remember your registered login, theme selection, preferences, and other customization functions. The website stores a corresponding file (with same ID tag) to the one they set in your browser and in this file they can track and keep information on your movements within the site and any information you may have voluntarily given while visiting the website, such as email address.",
       },
       {
-        text: "Cookies are often indispensable for websites that have huge databases, need logins, have customizable themes, other advanced features.",
+        text: "Cookies are often indispensable for websites that have huge databases, need logins, have customizable themes, and other advanced features.",
       },
       {
-        text: "Cookies usually don’t contain much information except for the URL of the website that created the cookie, the duration of the cookie’s abilities and effects, and a random number. Due to the little amount of information a cookie contains, it usually cannot be used to reveal your identity or personally identifying information.",
+        text: "Cookies usually do not contain much information except for the URL of the website that created the cookie, the duration of the cookie’s abilities and effects, and a random number. Due to the little amount of information a cookie contains, it usually cannot be used to reveal your identity or personally identifying information.",
       },
       {
         text: "There are two types of cookies: session cookies and persistent cookies. Session cookies are created temporarily in your browser’s subfolder while you are visiting a website. Once you leave the site, the session cookie is deleted. On the other hand, persistent cookie files remain in your browser’s subfolder and are activated again once you visit the website that created that particular cookie. A persistent cookie remains in the browser’s subfolder for the duration period set within the cookie’s file.",
@@ -118,7 +118,7 @@ const PRIVACY_POLICY_CONTENT = [
         text: "The Company’s website uses cookies to provide the functionality you need to browse our site correctly.",
       },
       {
-        text: "The Company’s website issues cookies upon landing on our website, unless the user has changed their cookie settings in their browser to refuse cookies. Please note that with cookies switched off, some areas of our website and services might not be made available to you.",
+        text: "The Company’s website issues cookies upon landing on our website unless the user has changed their cookie settings in their browser to refuse cookies. Please note that with cookies switched off, some areas of our website and services might not be made available to you.",
       },
       {
         text: "The Company does not use cookies to personally collect information about you – the cookies that we use only collect anonymous information to optimize our services and do not collect personal information.",
@@ -135,19 +135,19 @@ const PRIVACY_POLICY_CONTENT = [
         text: "Recipients of Personal Data may be for example:",
         subItems: [
           {
-            text: "• technological experts that appointed by the Company to support the smoothoperation of our systems;",
+            text: "• technological experts that appointed by the Company to support the smooth operation of our systems;",
           },
           {
             text: "• platform providers;",
           },
           {
-            text: "• payment service providers/credit institutions for facilitating the incoming andoutgoing payments of the Clients;",
+            text: "• payment service providers/credit institutions for facilitating the incoming and outgoing payments of the Clients;",
           },
           {
             text: "• governmental authorities and regulatory bodies;",
           },
           {
-            text: "• fraud prevention agencies, third party authentication service providers,verification/screening service providers;",
+            text: "• fraud prevention agencies, third party authentication service providers, verification/screening service providers;",
           },
           {
             text: "• data reporting service providers to meet our regulatory obligations;",
@@ -180,33 +180,33 @@ const PRIVACY_POLICY_CONTENT = [
         text: "The Client has the following rights in respect of his/her Personal Data in accordance with the GDPR:",
         subItems: [
           {
-            text: "• Right of Access: The Client has the right to be informed whether the Company isprocessing his/her Personal Data and if so, to provide the Client with a copy of thatData.",
+            text: "• Right of Access: The Client has the right to be informed whether the Company is processing his/her Personal Data and if so, to provide the Client with a copy of that Data.",
           },
           {
-            text: "• Right to rectification: The Client can request to rectify his/her Personal Data in orderto correct or complete the provided Personal Data.",
+            text: "• Right to rectification: The Client can request to rectify his/her Personal Data in order to correct or complete the provided Personal Data.",
           },
           {
-            text: "• Right to Erasure: The Client can request to delete/remove his/her Personal Data undercertain circumstances, for instance if his/her consent has been withdrawn.",
+            text: "• Right to Erasure: The Client can request to delete/remove his/her Personal Data under certain circumstances, for instance if his/her consent has been withdrawn.",
           },
           {
-            text: "• Right to Restrict Processing: The Client can request from the Company to restrict theprocessing of his/her Personal Data if it is not accurate, it has been used unlawfully orit is not relevant anymore but wish not to be deleted for any reason and waiting forthe Company’s confirmation to stop using his/her Personal Data.",
+            text: "• Right to Restrict Processing: The Client can request from the Company to restrict the processing of his/her Personal Data if it is not accurate, it has been used unlawfully or it is not relevant anymore but wish not to be deleted for any reason and waiting for the Company’s confirmation to stop using his/her Personal Data.",
           },
           {
-            text: "• Right to portability: The Client can request to obtain his/her Personal Data in areadable format.",
+            text: "• Right to portability: The Client can request to obtain his/her Personal Data in a readable format.",
           },
           {
-            text: "• Right to Stop Processing: The Client can request from the Company to stop processinghis/her Personal Data, and the Company will do so if a) the Company cannotdemonstrate compelling legitimate grounds for the processing or b) the Company isprocessing Client’s Personal Data for marketing purposes.",
+            text: "• Right to Stop Processing: The Client can request from the Company to stop processing his/her Personal Data, and the Company will do so if a) the Company cannot demonstrate compelling legitimate grounds for the processing or b) the Company is processing Client’s Personal Data for marketing purposes.",
           },
           {
-            text: "• Right to Withdraw Consent: Withdraw consent at any time where we are relying onconsent to process your Personal Data.",
+            text: "• Right to Withdraw Consent: Withdraw consent at any time where we are relying on consent to process your Personal Data",
           },
           {
-            text: "• Right to complain: If the Client has grounds to believe that the Company does notappropriate use his/her Personal Data, can submit a complaint to the Office of theCommissioner for Personal Data Protection.",
+            text: "• Right to complain: If the Client has grounds to believe that the Company does not appropriately use his/her Personal Data, can submit a complaint to the Office of the Commissioner for Personal Data Protection.",
           },
         ],
       },
       {
-        text: "The Client can exercise any of the above rights by contacting the Company through email at compliance@oqtima.eu or by post at postal address: Franklin Roosevelt 247, Block C, 1st Floor, Office 101, 3046, Zakaki, Limassol Cyprus.",
+        text: "The Client can exercise any of the above rights by contacting the Company through email at compliance@oqtima.eu or by post at postal address: Franklin Roosevelt 247, Block C, 1st Floor, Office 101, 3046, Zakaki, Limassol Cyprus",
       },
     ],
   },
@@ -220,13 +220,13 @@ const PRIVACY_POLICY_CONTENT = [
         text: "We restrict access to personal information to employees who need to know the specific information in order to operate, develop or improve our services. These individuals are bound by confidentiality and will be subject to penalties if they fail to meet these obligations.",
       },
       {
-        text: "Also the Personal Data can be shared only with the parties set out in the aforementioned Section of Disclosure of Personal Data.",
+        text: "Also, the Personal Data can be shared only with the parties set out in the aforementioned Section of Disclosure of Personal Data.",
       },
       {
-        text: "The Personal Data that the Client provides in connection with opening an account (appropriateness test) with the Company are highly protected. This information can be accessed by the Client using his/her selected password. This password must be careful kept by the Client and not be shared with any third party.",
+        text: "The Personal Data that the Client provides in connection with opening an account (appropriateness test) with the Company are highly protected. This information can be accessed by the Client using his/her selected password. This password must be carefully kept by the Client and not be shared with any third party.",
       },
       {
-        text: "In addition this information is safely stored in the Company’s servers that only authorized personnel have access to it through access rights. The Company encrypts all this information to prevent unauthorized parties from viewing or access such information.",
+        text: "In addition, this information is safely stored in the Company’s servers and only authorized personnel have access to it through access rights. The Company encrypts all this information to prevent unauthorized parties from viewing or access such information.",
       },
     ],
   },
@@ -242,13 +242,16 @@ const PRIVACY_POLICY_CONTENT = [
     title: "Legal Disclaimer",
     subItems: [
       {
-        text: "The Company reserves the right to disclose your personally identifiable information as required by rules and regulations and when the Company believes that disclosure is necessary to protect our rights and/or to comply with a judicial proceeding, court order, or legal process served. The Company will not be liable for misuse or loss of personal information resulting from cookies on the Company’s site(s) that the Company does not have access to or control over. The Company will not be liable for unlawful or unauthorized use of your personal information due to misuse or misplacement of your passwords, negligent or malicious.",
+        text: "The Company reserves the right to disclose your personally identifiable information as required by rules and regulations and when the Company believes that disclosure is necessary to protect our rights and/or to comply with a judicial proceeding, court order, or legal process served.",
       },
       {
-        text: "Further information on Company’s Privacy is available upon request from Company’s offices at: Tel. +357 25585379, or e-mail: compliance@oqtima.eu",
+        text: "The Company will not be liable for misuse or loss of personal information resulting from cookies on the Company’s site(s) that the Company does not have access to or control over. The Company will not be liable for unlawful or unauthorized use of your personal information due to misuse or misplacement of your passwords, negligent or malicious.",
       },
       {
-        text: "Address: Franklin Roosevelt 247, Block C, 1st Floor, Office 101, 3046, Zakaki, Limassol Cyprus.",
+        text: "Further information on Company’s Privacy is available upon request from Company’s offices, at: Tel. +357 25585379, or e-mail: compliance@oqtima.eu",
+      },
+      {
+        text: "Address: Franklin Roosevelt 247, Block C, 1st Floor, Office 101, 3046, Zakaki, Limassol Cyprus",
       },
       {
         text: "Website: www.oqtima.eu",
@@ -263,7 +266,7 @@ const PRIVACY_POLICY_CONTENT_FSA = [
     title: "1. INTRODUCTION",
     subItems: [
       {
-        text: "1.1 The information in this document details how we, at CDE Global Markets Ltd (the “Company”, operating under the name “OQtima”) process, handle and protect the personal data we collect from you.",
+        text: "1.1 The information in this document details how we, at Oqtima Int. Ltd (the “Company”, operating under the name “Oqtima”) process, handle and protect the personal data we collect from you.The payment processing services for services purchased on this website are provided by Ipso Facto Ltd, which is an affiliate entity of OQTIMA INT. LTD, registered in Cyprus with registration number HE 445939. The registered office of Ipso Facto Ltd is at John Kennedy 8, Iris Building, 7th Floor, Flat/Office 740B, 3106, Limassol, Cyprus.",
       },
       {
         text: "1.2 Personal information is any information or opinion about you that is capable, or reasonably capable of identifying you, whether the information or opinion is true or not and is recorded in material form or not.",
@@ -272,7 +275,7 @@ const PRIVACY_POLICY_CONTENT_FSA = [
         text: "1.3 Sensitive information includes such things as your racial or ethnic origin, political opinions or membership of political associations, religious or philosophical beliefs, membership of a professional or trade association or trade union, sexual orientation or criminal record, that is also personal information. Your health, genetic and biometric information and biometric templates are also sensitive information.",
       },
       {
-        text: "1.4 We will act to protect your personal and sensitive information in accordance with the Seychelles laws and regulations, General Data Protection Regulation (‘the GDPR’) in European Union and other applicable laws and regulations on data privacy . Those legislations share many common requirements. Where an obligation imposed by them are the same, but the terminology is different, we will comply with the terminology and wording used in the Seychelles Laws and regulations, and this will constitute our compliance with the equivalent obligations under the other legislations. If for example, the GDPR imposes an obligation on the Company that is not imposed by the Seychelles laws and regulations, or the GDPR obligation is more onerous than the equivalent obligation in the Seychelles laws and regulations, the Company will comply with the GDPR.",
+        text: "1.4 We will act to protect your personal and sensitive information in accordance with the Seychelles laws and regulations, General Data Protection Regulation (‘the GDPR’) in European Union and other applicable laws and regulations on data privacy. Those legislations share many common requirements. Where an obligation imposed by them are the same, but the terminology is different, we will comply with the terminology and wording used in the Seychelles Laws and regulations, and this will constitute our compliance with the equivalent obligations under the other legislations. If for example, the GDPR imposes an obligation on the Company that is not imposed by the Seychelles laws and regulations, or the GDPR obligation is more onerous than the equivalent obligation in the Seychelles laws and regulations, the Company will comply with the GDPR.",
       },
       {
         text: "1.5 We collect personal and/or sensitive information to provide you with the products and services you request as well as information on other products and services offered by or through us. The law requires us to collect personal and/or sensitive information.",
@@ -439,57 +442,57 @@ const PRIVACY_POLICY_CONTENT_FSA = [
     ],
   },
   {
-    title: "8. Incomplete or inaccurate information",
+    title: "7. Incomplete or inaccurate information",
     subItems: [
       {
-        text: "8.1 We may not be able to provide you with the products or services you are seeking if you provide incomplete or inaccurate information.",
+        text: "7.1 We may not be able to provide you with the products or services you are seeking if you provide incomplete or inaccurate information.",
       },
     ],
   },
   {
-    title: "9. Sensitive information",
+    title: "8. Sensitive information",
     subItems: [
       {
-        text: "9.1 In addition to the above conditions of collecting personal information, we will only collect sensitive information about you if we obtain prior consent to the collection of the information or if the collection is required or authorized by law, or it is necessary to take appropriate action in relation to suspected unlawful activity or serious misconduct.",
+        text: "8.1 In addition to the above conditions of collecting personal information, we will only collect sensitive information about you if we obtain prior consent to the collection of the information or if the collection is required or authorized by law, or it is necessary to take appropriate action in relation to suspected unlawful activity or serious misconduct.",
       },
     ],
   },
   {
-    title: "10. Dealing with unsolicited personal information",
+    title: "9. Dealing with unsolicited personal information",
     subItems: [
       {
-        text: "10.1 If we receive personal information that is not solicited by us, we will only retain it, if we determine that it is reasonably necessary for one or more of our functions or activities and that you have consented to the information being collected or given the absence of your consent that it was impracticable or unreasonable for us to obtain it under the circumstances.",
+        text: "9.1 If we receive personal information that is not solicited by us, we will only retain it, if we determine that it is reasonably necessary for one or more of our functions or activities and that you have consented to the information being collected or given the absence of your consent that it was impracticable or unreasonable for us to obtain it under the circumstances.",
       },
       {
-        text: "10.2 If these conditions are not met, we will destroy or de-identify the information.",
+        text: "9.2 If these conditions are not met, we will destroy or de-identify the information.",
       },
       {
-        text: "10.3 If such unsolicited information is sensitive information, we will obtain your consent to retain it regardless of what the circumstances are.",
+        text: "9.3 If such unsolicited information is sensitive information, we will obtain your consent to retain it regardless of what the circumstances are.",
       },
     ],
   },
   {
-    title: "11. Quality of personal information",
+    title: "10. Quality of personal information",
     subItems: [
       {
-        text: "11.1 We ensure that the personal information we collect and use or disclose is accurate, up to date, complete and relevant.",
+        text: "10.1 We ensure that the personal information we collect and use or disclose is accurate, up to date, complete and relevant.",
       },
       {
-        text: "11.2 Please contact us if any of the details you have provided to us change or if you believe that the information we have about you is not accurate or up to date.",
+        text: "10.2 Please contact us if any of the details you have provided to us change or if you believe that the information we have about you is not accurate or up to date.",
       },
     ],
   },
   {
-    title: "12. Security of personal information",
+    title: "11. Security of personal information",
     subItems: [
       {
-        text: "12.1 We are committed to ensure that we protect any personal information we hold from misuse, interference, loss, unauthorized access, modification, and disclosure. We will implement appropriate organizational and operational standards to ensure the continuous compliance with data protection. We can’t accept responsibility for any unauthorized access or loss of personal information that is beyond our control.",
+        text: "11.1 We are committed to ensure that we protect any personal information we hold from misuse, interference, loss, unauthorized access, modification, and disclosure. We will implement appropriate organizational and operational standards to ensure the continuous compliance with data protection. We can’t accept responsibility for any unauthorized access or loss of personal information that is beyond our control.",
       },
       {
-        text: "12.2 For this purpose we have a range of practices and policies in place to provide a robust security environment. We ensure the on-going adequacy of these measures by regularly reviewing them.",
+        text: "11.2 For this purpose we have a range of practices and policies in place to provide a robust security environment. We ensure the on-going adequacy of these measures by regularly reviewing them.",
       },
       {
-        text: "12.3 Our security measures include, but are not limited to:",
+        text: "11.3 Our security measures include, but are not limited to:",
         subItems: [
           {
             text: "(a) educating our staff as to their obligations with regard to your personal information;",
@@ -512,15 +515,15 @@ const PRIVACY_POLICY_CONTENT_FSA = [
         ],
       },
       {
-        text: "12.4 Where information we hold is identified as no longer needed for any purpose, we ensure it is effectively and securely destroyed, for example, by shredding or pulping in the case of paper records or by degaussing (demagnetism of the medium using alternating electric currents) and other means in the case of electronic records and equipment.",
+        text: "11.4 Where information we hold is identified as no longer needed for any purpose, we ensure it is effectively and securely destroyed, for example, by shredding or pulping in the case of paper records or by degaussing (demagnetism of the medium using alternating electric currents) and other means in the case of electronic records and equipment.",
       },
     ],
   },
   {
-    title: "13. Use or Disclosure",
+    title: "12. Use or Disclosure",
     subItems: [
       {
-        text: "13.1 If we hold personal information about you that was collected for a particular purpose (“the primary purpose”), we will not use or disclose the information for another purpose (“the secondary purpose”) unless:",
+        text: "12.1 If we hold personal information about you that was collected for a particular purpose (“the primary purpose”), we will not use or disclose the information for another purpose (“the secondary purpose”) unless:",
         subItems: [
           {
             text: "(a) We have obtained your consent to use or disclose the information; or",
@@ -543,18 +546,18 @@ const PRIVACY_POLICY_CONTENT_FSA = [
         ],
       },
       {
-        text: "13.2 Where we use or disclose personal information in accordance with section 13(1)(e) we will keep a copy of this disclosure (e.g.: the email or letter used to do so).",
+        text: "12.2 Where we use or disclose personal information in accordance with section 13(1)(e) we will keep a copy of this disclosure (e.g.: the email or letter used to do so).",
       },
       {
-        text: "13.3 We will only retain your personal data for as long as we reasonably require it for legal, compliance with regulations or business purposes, or as otherwise required.",
+        text: "12.3 We will only retain your personal data for as long as we reasonably require it for legal, compliance with regulations or business purposes, or as otherwise required.",
       },
     ],
   },
   {
-    title: "14. Who we may communicate with",
+    title: "13. Who we may communicate with",
     subItems: [
       {
-        text: "14.1 Depending on the product or service you have, the entities we exchange your information with include but are not limited to:",
+        text: "13.1 Depending on the product or service you have, the entities we exchange your information with include but are not limited to:",
         subItems: [
           {
             text: "(a) brokers and agents who refer business to us;",
@@ -598,54 +601,54 @@ const PRIVACY_POLICY_CONTENT_FSA = [
         ],
       },
       {
-        text: "14.2 Our use or disclosure of personal information may not be limited to the examples above.",
+        text: "13.2 Our use or disclosure of personal information may not be limited to the examples above.",
       },
     ],
   },
   {
-    title: "15. Outsourcing",
+    title: "14. Outsourcing",
     subItems: [
       {
-        text: "15.1 We disclose personal information when we outsource certain functions, including bulk mailing, data storage, card and cheque book production, market research, direct marketing, statement production, debt recovery and information technology support. We also seek expert help from time to time to help us improve our systems, products, and services.",
+        text: "14.1 We disclose personal information when we outsource certain functions, including bulk mailing, data storage, card and cheque book production, market research, direct marketing, statement production, debt recovery and information technology support. We also seek expert help from time to time to help us improve our systems, products, and services.",
       },
       {
-        text: "15.2 We use banking agents, for example, local businesses, to help provide you with face-to-face banking services. These agents collect personal information on our behalf.",
+        text: "14.2 We use banking agents, for example, local businesses, to help provide you with face-to-face banking services. These agents collect personal information on our behalf.",
       },
       {
-        text: "15.3 In all circumstances where personal information may become known to our contractors, agents and outsourced service providers, there are confidentiality arrangements in place. Contractors, agents and outsourced service providers are not allowed to use or disclose personal information for any purposes other than our own.",
+        text: "14.3 In all circumstances where personal information may become known to our contractors, agents and outsourced service providers, there are confidentiality arrangements in place. Contractors, agents and outsourced service providers are not allowed to use or disclose personal information for any purposes other than our own.",
       },
       {
-        text: "15.4 While we take our obligations to protect customer information very seriously, we make every effort to deal only with parties who share and demonstrate the same attitude.",
+        text: "14.4 While we take our obligations to protect customer information very seriously, we make every effort to deal only with parties who share and demonstrate the same attitude.",
       },
     ],
   },
   {
-    title: "16. Joint handler",
+    title: "15. Joint handler",
     subItems: [
       {
-        text: "16.1 Where two or more handlers jointly determine the purposes and means of processing, they shall be joint handlers. When we jointly handling your personal information with others, we will in transparent manner determine our respective responsibilities for compliance with the obligations under the laws by ways of arrangement between us unless the respective responsibilities are determined by the relevant laws.",
+        text: "15.1 Where two or more handlers jointly determine the purposes and means of processing, they shall be joint handlers. When we jointly handling your personal information with others, we will in transparent manner determine our respective responsibilities for compliance with the obligations under the laws by ways of arrangement between us unless the respective responsibilities are determined by the relevant laws.",
       },
     ],
   },
   {
-    title: "17. Disclosure required by law",
+    title: "16. Disclosure required by law",
     subItems: [
       {
-        text: "17.1 We may be required by law to disclose customer information e.g. under Court Orders or Statutory Notices pursuant to taxation or social security laws or under laws relating to sanctions, anti-money laundering,counter terrorism financing or other applicable laws and regulations.",
+        text: "16.1 We may be required by law to disclose customer information e.g. under Court Orders or Statutory Notices pursuant to taxation or social security laws or under laws relating to sanctions, anti-money laundering,counter terrorism financing or other applicable laws and regulations.",
       },
     ],
   },
   {
-    title: "18. Direct marketing",
+    title: "17. Direct marketing",
     subItems: [
       {
-        text: "18.1 We will only use or disclose the personal information we hold about you for the purpose of direct marketing if we have received consent from you and you have not requested not to receive such information and you would reasonably expect us to use or disclose information for the purpose of direct marketing.",
+        text: "17.1 We will only use or disclose the personal information we hold about you for the purpose of direct marketing if we have received consent from you and you have not requested not to receive such information and you would reasonably expect us to use or disclose information for the purpose of direct marketing.",
       },
       {
-        text: "18.2 Direct marketing means that we should use your personal information to provide you with information on our products and services that may interest you.",
+        text: "17.2 Direct marketing means that we should use your personal information to provide you with information on our products and services that may interest you.",
       },
       {
-        text: "18.3 If you wish to opt-out of receiving marketing information altogether, you can:",
+        text: "17.3 If you wish to opt-out of receiving marketing information altogether, you can:",
         subItems: [
           {
             text: "(a) write to us at marketing@oqtima.com",
@@ -655,10 +658,10 @@ const PRIVACY_POLICY_CONTENT_FSA = [
     ],
   },
   {
-    title: "19. Disclosing personal information to cross border recipients",
+    title: "18. Disclosing personal information to cross border recipients",
     subItems: [
       {
-        text: "19.1 We may need to process your personal data in jurisdictions other than the Seychelles. We will take all steps reasonably necessary to ensure that your personal data is kept protected in accordance with our legal obligations and standards. We will only disclose your personal information to a recipient who is not in the Seychelles and who is not an affiliate, agent, subsidiary or business associate of our entity after we ensure that:",
+        text: "18.1 We may need to process your personal data in jurisdictions other than the Seychelles. We will take all steps reasonably necessary to ensure that your personal data is kept protected in accordance with our legal obligations and standards. We will only disclose your personal information to a recipient who is not in the Seychelles and who is not an affiliate, agent, subsidiary or business associate of our entity after we ensure that:",
         subItems: [
           {
             text: "(a) the overseas recipient does not breach the Seychelles privacy laws and regulations or other applicable laws and regulations; or",
@@ -686,18 +689,18 @@ const PRIVACY_POLICY_CONTENT_FSA = [
     ],
   },
   {
-    title: "20. Adoption of government related identifiers",
+    title: "19. Adoption of government related identifiers",
     subItems: [
       {
-        text: "20.1 We will not adopt a government related identifier of an individual as our own identifier unless required or authorized to do so by or under a local law, regulation, or court/tribunal order.",
+        text: "19.1 We will not adopt a government related identifier of an individual as our own identifier unless required or authorized to do so by or under a local law, regulation, or court/tribunal order.",
       },
     ],
   },
   {
-    title: "21. Use or disclosure of government related identifiers",
+    title: "20. Use or disclosure of government related identifiers",
     subItems: [
       {
-        text: "21.1 Before using or disclosing a government related identifier of an individual, we will ensure that such use or disclosure is:",
+        text: "20.1 Before using or disclosing a government related identifier of an individual, we will ensure that such use or disclosure is:",
         subItems: [
           {
             text: "(a) reasonably necessary for us to verify your identity for the purposes of our activities or functions; or",
@@ -719,82 +722,82 @@ const PRIVACY_POLICY_CONTENT_FSA = [
     ],
   },
   {
-    title: "22. Access",
+    title: "21. Access",
     subItems: [
       {
-        text: "22.1 You can request us to provide you with access to the personal information we hold about you.",
+        text: "21.1 You can request us to provide you with access to the personal information we hold about you.",
       },
       {
-        text: "22.2 Requests for access to limited amounts of personal information, such as checking to see what address or telephone number we have recorded, can generally be handled over the telephone.",
+        text: "21.2 Requests for access to limited amounts of personal information, such as checking to see what address or telephone number we have recorded, can generally be handled over the telephone.",
       },
       {
-        text: "22.3 If you would like to request access to more substantial amounts of personal information such as details of what is recorded in your account file, we will require you to complete and sign a “Request for Access to Personal Information” form.",
+        text: "21.3 If you would like to request access to more substantial amounts of personal information such as details of what is recorded in your account file, we will require you to complete and sign a “Request for Access to Personal Information” form.",
       },
       {
-        text: "22.4 Following receipt of your request, we will provide you with an estimate of the access charge and confirm that you want to proceed.",
+        text: "21.4 Following receipt of your request, we will provide you with an estimate of the access charge and confirm that you want to proceed.",
       },
       {
-        text: "22.5 We will not charge you for making the request for access, however access charges may apply to cover our costs in locating, collating, and explaining the information you request.",
+        text: "21.5 We will not charge you for making the request for access, however access charges may apply to cover our costs in locating, collating, and explaining the information you request.",
       },
       {
-        text: "22.6 We will respond to your request as soon as possible and in the manner requested by you. We will endeavor to comply with your request within 14 days of its receipt but, if that deadline cannot be met owing to exceptional circumstances, your request will be dealt with within 30 days. It will help us provide access if you can tell us what you are looking for.",
+        text: "21.6 We will respond to your request as soon as possible and in the manner requested by you. We will endeavor to comply with your request within 14 days of its receipt but, if that deadline cannot be met owing to exceptional circumstances, your request will be dealt with within 30 days. It will help us provide access if you can tell us what you are looking for.",
       },
       {
-        text: "22.7 Your identity will be confirmed before access is provided.",
+        text: "21.7 Your identity will be confirmed before access is provided.",
       },
     ],
   },
   {
-    title: "23. Exceptions",
+    title: "22. Exceptions",
     subItems: [
       {
-        text: "23.1 In particular circumstances, we are permitted by law to deny your request for access or limit the access we provide. We will let you know why your request is denied or limited if this is the case. For example, we may give an explanation of a commercially sensitive decision rather than direct access to evaluative information connected with it.",
+        text: "22.1 In particular circumstances, we are permitted by law to deny your request for access or limit the access we provide. We will let you know why your request is denied or limited if this is the case. For example, we may give an explanation of a commercially sensitive decision rather than direct access to evaluative information connected with it.",
       },
     ],
   },
   {
-    title: "24. Refusal to give access and other means of access",
+    title: "23. Refusal to give access and other means of access",
     subItems: [
       {
-        text: "24.1 If we refuse to give access to your personal information or to give access in the manner requested by you, we will give you a written notice setting out the reasons for the refusal, the mechanisms available to complain and any other relevant matter.",
+        text: "23.1 If we refuse to give access to your personal information or to give access in the manner requested by you, we will give you a written notice setting out the reasons for the refusal, the mechanisms available to complain and any other relevant matter.",
       },
       {
-        text: "24.2 Additionally, we will endeavor to give access in a way that meets both yours and our needs.",
+        text: "23.2 Additionally, we will endeavor to give access in a way that meets both yours and our needs.",
       },
     ],
   },
   {
-    title: "25. Correction",
+    title: "24. Correction",
     subItems: [
       {
-        text: "25.1 We will correct all personal information that we believe to be inaccurate, out of date, incomplete, irrelevant or misleading given the purpose for which that information is held or if you request us to correct the information.",
+        text: "24.1 We will correct all personal information that we believe to be inaccurate, out of date, incomplete, irrelevant or misleading given the purpose for which that information is held or if you request us to correct the information.",
       },
       {
-        text: "25.2 If we correct your personal information that we previously disclosed to another entity you can request us to notify the other entity of the correction. Following such a request, we will give that notification unless it is impracticable or unlawful to do so.",
-      },
-    ],
-  },
-  {
-    title: "26. Refusal to correct information",
-    subItems: [
-      {
-        text: "26.1 If we refuse to correct the personal information as requested by you, we will give you a written notice setting out the reasons for the refusal, the mechanisms available to complain and any other relevant matter.",
+        text: "24.2 If we correct your personal information that we previously disclosed to another entity you can request us to notify the other entity of the correction. Following such a request, we will give that notification unless it is impracticable or unlawful to do so.",
       },
     ],
   },
   {
-    title: "27. Request to associate a statement",
+    title: "25. Refusal to correct information",
     subItems: [
       {
-        text: "27.1 If we refuse to correct the personal information as requested by you, you can request us to associate with the information a statement that the information is inaccurate, out of date, incomplete, irrelevant or misleading. We will then associate the statement in such a way that will make the statement apparent to users of the information.",
+        text: "25.1 If we refuse to correct the personal information as requested by you, we will give you a written notice setting out the reasons for the refusal, the mechanisms available to complain and any other relevant matter.",
       },
     ],
   },
   {
-    title: "28. Right to Erase",
+    title: "26. Request to associate a statement",
     subItems: [
       {
-        text: "28.1 You may request us to erase your personal information if you reside in the (European Economic Area (‘EEA’). We will erase, destroy, or delete your personal information without undue delay where one of the following grounds applies:",
+        text: "26.1 If we refuse to correct the personal information as requested by you, you can request us to associate with the information a statement that the information is inaccurate, out of date, incomplete, irrelevant or misleading. We will then associate the statement in such a way that will make the statement apparent to users of the information.",
+      },
+    ],
+  },
+  {
+    title: "27. Right to Erase",
+    subItems: [
+      {
+        text: "27.1 You may request us to erase your personal information if you reside in the (European Economic Area (‘EEA’). We will erase, destroy, or delete your personal information without undue delay where one of the following grounds applies:",
         subItems: [
           {
             text: "(a) the personal information is no longer necessary in relation to the purpose for which it was collected;",
@@ -808,13 +811,13 @@ const PRIVACY_POLICY_CONTENT_FSA = [
         ],
       },
       {
-        text: "28.2 Section 28.1 shall not apply to the extent that processing personal information is necessary:",
+        text: "27.2 Section 27.1 shall not apply to the extent that processing personal information is necessary:",
         subItems: [
           {
             text: "(a) for compliance with a legal obligation which requires processing of personal information; or",
           },
           {
-            text: "(b) for archiving purposes in the historical research or statistical purposes in so far as the right referred in 28.1 is likely to render impossible or seriously impair the achievement of the objectives of that processing; or",
+            text: "(b) for archiving purposes in the historical research or statistical purposes in so far as the right referred in 27.1 is likely to render impossible or seriously impair the achievement of the objectives of that processing; or",
           },
           {
             text: "(c) for the establishment, exercise, or defence of legal claims.",
@@ -824,49 +827,49 @@ const PRIVACY_POLICY_CONTENT_FSA = [
     ],
   },
   {
-    title: "29. You may have other rights",
+    title: "28. You may have other rights",
     subItems: [
       {
-        text: "29.1 If you reside in the EEA, you may request us to restrict data processing: You may ask us to limit the processing of your personal information where you believe that the personal information we hold about you is wrong (to give us enough time to verify if the information needs to be changed), or where processing data is unlawful and you request us to restrict the processing of personal information rather than it being erased.",
+        text: "28.1 If you reside in the EEA, you may request us to restrict data processing: You may ask us to limit the processing of your personal information where you believe that the personal information we hold about you is wrong (to give us enough time to verify if the information needs to be changed), or where processing data is unlawful and you request us to restrict the processing of personal information rather than it being erased.",
       },
       {
-        text: "29.2 You may also have the right to ask us to explain the rules of processing your personal information. We will handle your request without undue delay.",
+        text: "28.2 You may also have the right to ask us to explain the rules of processing your personal information. We will handle your request without undue delay.",
       },
       {
-        text: "29.3 When a natural person is deceased, their next of kin may, for the sake of their own lawful and legitimate interests, exercise the rights that could otherwise be exercised by the deceased, except when the deceased has otherwise settled their arrangement before their death.",
+        text: "28.3 When a natural person is deceased, their next of kin may, for the sake of their own lawful and legitimate interests, exercise the rights that could otherwise be exercised by the deceased, except when the deceased has otherwise settled their arrangement before their death.",
       },
     ],
   },
   {
-    title: "30. What is a cookie",
+    title: "29. What is a cookie",
     subItems: [
       {
-        text: "30.1 A cookie is a text file with small pieces of data that are used to identify your computer as you use a computer network. If your computer settings allow cookies, then the file is added, and the cookie helps analyze web traffic or lets the site owner know when you visit a particular site.",
+        text: "29.1 A cookie is a text file with small pieces of data that are used to identify your computer as you use a computer network. If your computer settings allow cookies, then the file is added, and the cookie helps analyze web traffic or lets the site owner know when you visit a particular site.",
       },
       {
-        text: "30.2 Please be aware that our website may contain links or references to third-party websites, and our Privacy Policy does not apply to those websites. We are not responsible for the content or information collection practices of those pages, and we take no responsibility for the privacy practices or security of other websites. We encourage you to view and understand their privacy practices before providing them with any information.",
+        text: "29.2 Please be aware that our website may contain links or references to third-party websites, and our Privacy Policy does not apply to those websites. We are not responsible for the content or information collection practices of those pages, and we take no responsibility for the privacy practices or security of other websites. We encourage you to view and understand their privacy practices before providing them with any information.",
       },
       {
-        text: "30.3 We may disclose the data we collect through cookies to our related companies.",
+        text: "29.3 We may disclose the data we collect through cookies to our related companies.",
       },
       {
-        text: "30.4 For detailed information, please refer to our Cookies Policy.",
+        text: "29.4 For detailed information, please refer to our Cookies Policy.",
       },
     ],
   },
   {
-    title: "31. Action taken on request",
+    title: "30. Action taken on request",
     subItems: [
       {
-        text: "31.1 We facilitate the exercise of your right of access. We ensure that we will provide information on action taken on a request from you without undue delay and in any event within one (1) month of receiving the request. The period may be extended by two (2) further months where necessary, taking into account of the complexity and number of requests together with the reasons for the delay.",
+        text: "30.1 We facilitate the exercise of your right of access. We ensure that we will provide information on action taken on a request from you without undue delay and in any event within one (1) month of receiving the request. The period may be extended by two (2) further months where necessary, taking into account of the complexity and number of requests together with the reasons for the delay.",
       },
     ],
   },
   {
-    title: "32. Personal information leakage, distortion, or loss",
+    title: "31. Personal information leakage, distortion, or loss",
     subItems: [
       {
-        text: "32.1 We shall take immediate remedial measures when your personal information has been or we have reasonable grounds to suspect that has been leaked, distorted, or lost. We will also report to the supervising authorities when:",
+        text: "31.1 We shall take immediate remedial measures when your personal information has been or we have reasonable grounds to suspect that has been leaked, distorted, or lost. We will also report to the supervising authorities when:",
         subItems: [
           {
             text: "(a) There is unauthorized access to or unauthorized disclosure of personal information, or a loss of personal information that we hold;",
@@ -882,10 +885,10 @@ const PRIVACY_POLICY_CONTENT_FSA = [
     ],
   },
   {
-    title: "33. Contact",
+    title: "32. Contact",
     subItems: [
       {
-        text: "33.1 If you have any questions or would like further information about our privacy and information handling practices, please contact us by:",
+        text: "32.1 If you have any questions or would like further information about our privacy and information handling practices, please contact us by:",
         subItems: [
           {
             text: "(a) Email: support@oqtima.com;",
@@ -898,13 +901,13 @@ const PRIVACY_POLICY_CONTENT_FSA = [
     ],
   },
   {
-    title: "34. Making a privacy complaint",
+    title: "33. Making a privacy complaint",
     subItems: [
       {
-        text: "34.1 We offer a free internal complaint resolution scheme to all of our customers. Should you have a privacy complaint, please contact us to discuss your concerns.",
+        text: "33.1 We offer a free internal complaint resolution scheme to all of our customers. Should you have a privacy complaint, please contact us to discuss your concerns.",
       },
       {
-        text: "34.3 To assist us in helping you, we ask you to follow a simple three-step process:",
+        text: "33.2 To assist us in helping you, we ask you to follow a simple three-step process:",
         subItems: [
           {
             text: "(a) Gather all supporting documents relating to the complaint.",
@@ -918,15 +921,15 @@ const PRIVACY_POLICY_CONTENT_FSA = [
         ],
       },
       {
-        text: "34.4 We may need to verify your identity. The Company will acknowledge your complaint within seven (7) days and we will respond promptly to it. After a thorough investigation, we will take a decision on the matter and inform you accordingly.",
+        text: "33.3 We may need to verify your identity. The Company will acknowledge your complaint within seven (7) days and we will respond promptly to it. After a thorough investigation, we will take a decision on the matter and inform you accordingly.",
       },
     ],
   },
   {
-    title: "35. How long we will keep your personal data",
+    title: "34. How long we will keep your personal data",
     subItems: [
       {
-        text: "35.1 We will only retain your personal information for as long as you have consented to it, or for as long as is necessary for us to provide you with our services or fulfil the purposes we collected it for, including for the purposes of satisfying any legal, accounting, reporting or regulatory requirements.",
+        text: "34.1 We will only retain your personal information for as long as you have consented to it, or for as long as is necessary for us to provide you with our services or fulfil the purposes we collected it for, including for the purposes of satisfying any legal, accounting, reporting or regulatory requirements.",
       },
     ],
   },

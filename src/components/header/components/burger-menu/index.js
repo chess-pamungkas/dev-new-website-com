@@ -138,8 +138,9 @@ const BurgerMenu = ({ className }) => {
                     {!!subItems.length && (
                       <ul className="burger-menu__links">
                         {subItems.map(
-                          ({ link, title, desktopOnly }) =>
-                            !desktopOnly && (
+                          ({ link, title, desktopOnly, footerOnly }) =>
+                            !desktopOnly &&
+                            !footerOnly && (
                               <li
                                 key={`burger-menu-${stringTransformToKebabCase(
                                   title
