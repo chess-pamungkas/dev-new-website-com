@@ -5,13 +5,11 @@ import {
 } from "../../helpers/constants";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import LanguageContext from "../../context/language-context";
-import { MT_LANGUAGES_MAP } from "../../helpers/lang-options.config";
+import { getWebTraderUrl } from "./webtrader-url";
 
-const WebTraderLink = ({ entityType }) => {
+const WebTraderLink = () => {
   const { isDesktop } = useWindowSize();
   const { selectedLanguage } = useContext(LanguageContext);
-
-  const domain = entityType === "CYSEC" ? ".eu" : ".com";
 
   return (
     <div
@@ -20,12 +18,14 @@ const WebTraderLink = ({ entityType }) => {
       }}
     >
       <iframe
-        src={`https://webtrader.oqtima${domain}/terminal?mode=connect&lang=${
-          MT_LANGUAGES_MAP[selectedLanguage.id]
-        }&theme=light`}
+        src={getWebTraderUrl(selectedLanguage)}
         width="100%"
         height="900px"
-      ></iframe>
+        title="WebTrader"
+        onError={(event) => {
+          console.error("Failed to load WebTrader iframe:", event.error);
+        }}
+      />
     </div>
   );
 };
