@@ -19,7 +19,7 @@ const WebTraderLink = () => {
       }}
     >
       <iframe
-        src={`https://webtrader.oqtima.com/terminal?mode=connect&lang=${
+        src={`https://webtrader.oqtima.eu/terminal?mode=connect&lang=${
           MT_LANGUAGES_MAP[selectedLanguage.id]
         }&theme=light`}
         width="100%"
