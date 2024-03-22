@@ -167,6 +167,12 @@ const FSA_PLATFORMS_TAB = {
       description: "header-nav-tab-platforms-mt4-desc",
     },
     {
+      title: "header-nav-tab-platforms-mt5-title",
+      link: MT5_PAGE_LINK,
+      icon: MT5Icon,
+      description: "header-nav-tab-platforms-mt5-desc",
+    },
+    {
       title: "header-nav-tab-platforms-ctrader-title",
       link: CTRADER_PAGE_LINK,
       icon: CTraderIcon,
