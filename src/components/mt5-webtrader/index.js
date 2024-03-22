@@ -21,11 +21,7 @@ const WebTraderLink = () => {
         src={getWebTraderUrl(selectedLanguage)}
         width="100%"
         height="900px"
-        title="WebTrader"
-        onError={(event) => {
-          console.error("Failed to load WebTrader iframe:", event.error);
-        }}
-      />
+      ></iframe>
     </div>
   );
 };
