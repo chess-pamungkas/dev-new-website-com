@@ -6,7 +6,6 @@ import {
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import LanguageContext from "../../context/language-context";
 import { getWebTraderUrl } from "./webtrader-url";
-import { MT_LANGUAGES_MAP } from "../../helpers/lang-options.config";
 
 const WebTraderLink = () => {
   const { isDesktop } = useWindowSize();
@@ -19,12 +18,10 @@ const WebTraderLink = () => {
       }}
     >
       <iframe
-        src={`https://webtrader.oqtima.eu/terminal?mode=connect&lang=${
-          MT_LANGUAGES_MAP[selectedLanguage.id]
-        }&theme=light`}
+        src={getWebTraderUrl(selectedLanguage)}
         width="100%"
         height="900px"
-      ></iframe>
+      />
     </div>
   );
 };
