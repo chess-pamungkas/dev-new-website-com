@@ -230,8 +230,8 @@ const LEGAL_DOCS_FSA = () => {
   ];
 };
 
-const RISK_DISCLOSURE_DOC_FSA = riskDisclosureNoticeFSA;
-export const RISK_DISCLOSURE_DOC = riskDisclosure;
+const RISK_DISCLOSURE_DOC_FSA = generateFileLinkWithLang(riskDisclosureNoticeFSA, "en");
+export const RISK_DISCLOSURE_DOC = generateFileLinkWithLang(riskDisclosure, "en");
 
 export const getLegalDocs = () => (isCySEC ? LEGAL_DOCS() : LEGAL_DOCS_FSA());
 export const getRiskDisclosureDoc = () =>
