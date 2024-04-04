@@ -70,7 +70,7 @@ export const getContactPhone = () =>
 export const getContactEmail = () =>
   isCySEC ? CONTACT_EMAIL : CONTACT_EMAIL_FSA;
 
-export const BLOG_URL = "https://news.oqtima.com";
+export const BLOG_URL = "https://oqtima.news/";
 
 export const GetRegistrationLink = () =>
   `https://portal.oqtima.${topLevelDomain}/register/${setLangParam()}${setIBparamsToLink()}`;
