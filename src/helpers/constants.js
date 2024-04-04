@@ -52,6 +52,8 @@ export const INITIAL_SEARCH_STATE = {
 
 export const FSA_POSTFIX = "-fsa";
 
+export const EU_HOSTNAME = "https://oqtima.eu/";
+
 export const DIR_LTR = "ltr";
 export const DIR_RTL = "rtl";
 
@@ -114,8 +116,8 @@ export const ETF_PAGE_LINK = "/etf";
 export const MT5_WEB_TRADER_LINK = "/mt5-webtrader";
 export const MT4_WEB_TRADER_LINK = "/mt4-webtrader";
 
-export const PRIVACY_POLICY_PAGE_LINK = "/legal/privacy"; 
-export const COOKIE_POLICY_PAGE_LINK = "/legal/cookie"; 
+export const PRIVACY_POLICY_PAGE_LINK = "/legal/privacy";
+export const COOKIE_POLICY_PAGE_LINK = "/legal/cookie";
 
 export const ANGLE_ICON_COLOR = {
   black: "#232323",
