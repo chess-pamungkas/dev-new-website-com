@@ -70,6 +70,8 @@ export const getContactPhone = () =>
 export const getContactEmail = () =>
   isCySEC ? CONTACT_EMAIL : CONTACT_EMAIL_FSA;
 
+export const BLOG_URL = "https://news.oqtima.com";
+
 export const GetRegistrationLink = () =>
   `https://portal.oqtima.${topLevelDomain}/register/${setLangParam()}${setIBparamsToLink()}`;
 
@@ -114,8 +116,8 @@ export const ETF_PAGE_LINK = "/etf";
 export const MT5_WEB_TRADER_LINK = "/mt5-webtrader";
 export const MT4_WEB_TRADER_LINK = "/mt4-webtrader";
 
-export const PRIVACY_POLICY_PAGE_LINK = "/legal/privacy"; 
-export const COOKIE_POLICY_PAGE_LINK = "/legal/cookie"; 
+export const PRIVACY_POLICY_PAGE_LINK = "/legal/privacy";
+export const COOKIE_POLICY_PAGE_LINK = "/legal/cookie";
 
 export const ANGLE_ICON_COLOR = {
   black: "#232323",

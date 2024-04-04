@@ -61,6 +61,7 @@ import {
   SWAP_FREE_PAGE_LINK,
   PRIVACY_POLICY_PAGE_LINK,
   COOKIE_POLICY_PAGE_LINK,
+  BLOG_URL,
 } from "./constants";
 import { isCySEC } from "./entity-resolver";
 import ClientResolverContext from "../context/client-resolver-context";
@@ -391,6 +392,14 @@ export const getCornerItems = () => {
           {
             link: GetRegistrationLink(),
             title: "button-get-started",
+          },
+        ]),
+    ...(isCySEC
+      ? []
+      : [
+          {
+            link: BLOG_URL,
+            title: "Newsroom", // no need to translate it for now
           },
         ]),
     {
