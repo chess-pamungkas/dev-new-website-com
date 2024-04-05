@@ -52,6 +52,8 @@ export const INITIAL_SEARCH_STATE = {
 
 export const FSA_POSTFIX = "-fsa";
 
+export const EU_HOSTNAME = "https://oqtima.eu/";
+
 export const DIR_LTR = "ltr";
 export const DIR_RTL = "rtl";
 
