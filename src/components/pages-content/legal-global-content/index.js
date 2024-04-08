@@ -22,7 +22,7 @@ const LegalContentGlobal = () => {
     <>
       <TopMarket
         className={cn("legal-page-promotion-global", {
-          "legal-page-promotion--rtl": isRTL,
+          "legal-page-promotion-global--rtl": isRTL,
         })}
         title={
           <HighlightedLocalizationText

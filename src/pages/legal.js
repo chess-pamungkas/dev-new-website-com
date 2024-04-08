@@ -5,7 +5,7 @@ import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import LegalContent from "../components/pages-content/legal-content";
 import { isCySEC } from "../helpers/entity-resolver";
-import LegalContentGlobal from "../components/pages-content/legal-new-content";
+import LegalContentGlobal from "../components/pages-content/legal-global-content";
 
 const LegalPage = () => {
   const { t } = useTranslationWithVariables();
