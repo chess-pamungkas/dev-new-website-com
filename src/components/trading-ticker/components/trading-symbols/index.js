@@ -10,7 +10,6 @@ const TradingSymbols = ({ className, symbols }) => {
   const { isMobile } = useWindowSize();
   const margin = isMobile ? 10 : 0;
   const [isTouched, setIsTouched] = useState(false);
-  const [isInfiniteAutoScroll, setIsInfiniteAutoScroll] = useState(true);
 
   const prepareSymbols = (symbols) => {
     // To ensure the best working scrolling, initial symbols count should be > 20
@@ -91,9 +90,7 @@ const TradingSymbols = ({ className, symbols }) => {
       <div className="scroll-disabler"></div>
       <div
         id="trading-symbols"
-        className={cn("trading-symbols", {
-          "trading-symbols--centered": !isInfiniteAutoScroll,
-        })}
+        className="trading-symbols"
         ref={symbolsRef}
         onTouchStart={() => setIsTouched(true)}
         onTouchEnd={() => setIsTouched(false)}

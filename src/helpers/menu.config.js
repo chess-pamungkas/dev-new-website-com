@@ -61,6 +61,7 @@ import {
   SWAP_FREE_PAGE_LINK,
   PRIVACY_POLICY_PAGE_LINK,
   COOKIE_POLICY_PAGE_LINK,
+  BLOG_URL,
 } from "./constants";
 import { isCySEC } from "./entity-resolver";
 import ClientResolverContext from "../context/client-resolver-context";
@@ -165,6 +166,12 @@ const FSA_PLATFORMS_TAB = {
       link: MT4_PAGE_LINK,
       icon: MT4Icon,
       description: "header-nav-tab-platforms-mt4-desc",
+    },
+    {
+      title: "header-nav-tab-platforms-mt5-title",
+      link: MT5_PAGE_LINK,
+      icon: MT5Icon,
+      description: "header-nav-tab-platforms-mt5-desc",
     },
     {
       title: "header-nav-tab-platforms-ctrader-title",
@@ -385,6 +392,14 @@ export const getCornerItems = () => {
           {
             link: GetRegistrationLink(),
             title: "button-get-started",
+          },
+        ]),
+    ...(isCySEC
+      ? []
+      : [
+          {
+            link: BLOG_URL,
+            title: "Newsroom", // no need to translate it for now
           },
         ]),
     {
