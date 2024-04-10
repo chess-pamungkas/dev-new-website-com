@@ -13,7 +13,6 @@ const LegalRegulatorItem = ({
   anchorLink,
 }) => {
   const { t } = useTranslationWithVariables();
-  console.log(anchorLink);
   return (
     <div className={cn("legal-regulator-item", className)}>
       <img src={icon} alt="" className="legal-regulator-item__icon" />
@@ -26,14 +25,6 @@ const LegalRegulatorItem = ({
         />
       </p>
       <p className="legal-regulator-item__text">{t(text)}</p>
-      {/* <a
-        className="legal-regulator-item__link"
-        href={"/"}
-        target="_blank"
-        rel="noreferrer"
-      >
-        {t("legal-regulator-read-more-fsa")}
-      </a> */}
       <AnchorLink href={anchorLink} className={"legal-regulator-item__link"}>
         {t("legal-regulator-read-more-fsa")}
       </AnchorLink>
