@@ -4,6 +4,8 @@ import { useTranslationWithVariables } from "../helpers/hooks/use-translation-wi
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import LegalContent from "../components/pages-content/legal-content";
+import { isCySEC } from "../helpers/entity-resolver";
+import LegalContentGlobal from "../components/pages-content/legal-global-content";
 
 const LegalPage = () => {
   const { t } = useTranslationWithVariables();
@@ -11,7 +13,7 @@ const LegalPage = () => {
   return (
     <>
       <Seo title={t("page-legal-title")} />
-      <LegalContent />
+      {isCySEC ? <LegalContent /> : <LegalContentGlobal />}
     </>
   );
 };

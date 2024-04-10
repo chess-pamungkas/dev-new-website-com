@@ -26,6 +26,7 @@ const TopMarketPromotion = ({
   videoSettings = {},
   lottieStyle = {},
   content,
+  id,
 }) => {
   const isRTL = useRtlDirection();
 
@@ -125,6 +126,7 @@ const TopMarketPromotion = ({
       className={cn("top-market-promotion", className, {
         "top-market-promotion--rtl": isRTL,
       })}
+      id={id}
     >
       <div className={cn("top-market-promotion__wrapper")}>
         <div className="top-market-promotion__block">

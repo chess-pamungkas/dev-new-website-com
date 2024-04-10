@@ -432,6 +432,18 @@
   }
 }
 
+.legal-page-promotion-global--rtl {
+  direction: rtl;
+
+  .top-market-promotion__text {
+    text-align: center;
+
+    @include desktop-xl {
+      text-align: right;
+    }
+  }
+}
+
 .legal-page-esma--rtl {
   direction: rtl;
 

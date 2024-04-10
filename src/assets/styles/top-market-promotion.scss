@@ -161,7 +161,7 @@
   &__img {
     margin-bottom: 30px;
     width: 305px;
-    max-width: 37vw;
+    max-width: 65vw;
 
     @include tablet {
       width: 461px;
@@ -171,6 +171,7 @@
     @include desktop-lg {
       width: 448px;
       margin-bottom: 0;
+      max-width: 37vw;
     }
 
     @include desktop-xl {
