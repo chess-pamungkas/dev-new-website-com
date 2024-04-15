@@ -13,9 +13,14 @@ import {
 import { transformParamToKey } from "../../helpers/services/marketing-service";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import LanguageContext from "../../context/language-context";
+import { isCySEC } from "../../helpers/entity-resolver";
+import scrollMouse from "../../assets/images/scroll-mouse.svg";
+import scrollFinger from "../../assets/images/scroll-finger.svg";
+import { useWindowSize } from "../../helpers/hooks/use-window-size";
 
 const MainPromotion = ({ className, isShowHero = true }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+  const { isTablet } = useWindowSize();
 
   const { t } = useTranslationWithVariables();
   const { selectedLanguage } = useContext(LanguageContext);
@@ -33,23 +38,47 @@ const MainPromotion = ({ className, isShowHero = true }) => {
     <section
       className={cn("main-promotion", className, {
         "main-promotion--rtl": isRTL,
+        "main-promotion--cysec": isCySEC,
       })}
     >
       {isShowHero && (
         <>
-          <div className="main-promotion__person">
-            <span className="main-promotion__name">{t(hero.name)}</span>
-            {selectedLanguage.id === "jp" &&
-              hero.surname && ( // Conditionally render surname for Japanese locale
-                <span className="main-promotion__name">{t(hero.surname)}</span>
-              )}
-            <span className="main-promotion__description">{t(hero.text)}</span>
-          </div>
-          <div className="main-promotion__photo">
+          {isCySEC ? (
+            <div className="main-promotion__scroll">
+              <span className="main-promotion__scroll-text">
+                {t("index_promotion1-btn-text")}
+              </span>
+              <img
+                src={isTablet ? scrollFinger : scrollMouse}
+                alt=""
+                className="main-promotion__scroll-img"
+              />
+            </div>
+          ) : (
+            <div className="main-promotion__person">
+              <span className="main-promotion__name">{t(hero.name)}</span>
+              {selectedLanguage.id === "jp" &&
+                hero.surname && ( // Conditionally render surname for Japanese locale
+                  <span className="main-promotion__name">
+                    {t(hero.surname)}
+                  </span>
+                )}
+              <span className="main-promotion__description">
+                {t(hero.text)}
+              </span>
+            </div>
+          )}
+          <div
+            className={cn("main-promotion__photo", {
+              "main-promotion__photo--cysec": isCySEC,
+            })}
+          >
             <img
               src={hero.image}
               alt={hero.name}
-              className="main-promotion__img"
+              className={cn("main-promotion__img", {
+                "main-promotion__img--cysec": isCySEC,
+              })}
             />
           </div>
         </>
@@ -57,9 +86,14 @@ const MainPromotion = ({ className, isShowHero = true }) => {
       <div
         className={cn("main-promotion__wrapper", {
           "main-promotion__wrapper--without-hero": !isShowHero,
+          "main-promotion__wrapper--cysec": isCySEC,
         })}
       >
-        <div className="main-promotion__block">
+        <div
+          className={cn("main-promotion__block", {
+            "main-promotion__block--cysec": isCySEC,
+          })}
+        >
           <h1 className="main-promotion__title-wrapper">
             <span className="main-promotion__title">
               {t("index_main-promotion-title")}
