@@ -1,4 +1,5 @@
-import heroImage from "../assets/images/person.png";
+import heroImageFSA from "../assets/images/person.png";
+import heroImageEU from "../assets/images/person-eu.svg";
 import dollarIcon from "../assets/images/icons/companies/marketing/dollar.svg";
 import euroIcon from "../assets/images/icons/companies/marketing/euro.svg";
 import rmbIcon from "../assets/images/icons/companies/marketing/rmb.svg";
@@ -11,6 +12,8 @@ import sp500Icon from "../assets/images/icons/companies/marketing/sp500.svg";
 import dowJonesIcon from "../assets/images/icons/companies/marketing/dowJones.svg";
 import nikkeiIcon from "../assets/images/icons/companies/marketing/nikkei.svg";
 import { isCySEC, sitePostfix } from "./entity-resolver";
+
+const heroImage = isCySEC ? heroImageEU: heroImageFSA;
 
 export const MARKETING_GET_PARAMS = {
   sect1: "_sect1",

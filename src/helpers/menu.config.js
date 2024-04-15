@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import {
   AboutIcon,
   AllMarketsOverviewIcon,
@@ -64,7 +63,6 @@ import {
   BLOG_URL,
 } from "./constants";
 import { isCySEC } from "./entity-resolver";
-import ClientResolverContext from "../context/client-resolver-context";
 
 const CYSEC_TOP_MARKETS_TAB = {
   title: "header-nav-tab-top-markets",
@@ -383,17 +381,8 @@ const CYSEC_MENU_ITEMS = [
 export const getMenuItems = () => (isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS);
 
 export const getCornerItems = () => {
-  const { clientConfig } = useContext(ClientResolverContext);
 
   return [
-    ...(clientConfig?.banned
-      ? []
-      : [
-          {
-            link: GetRegistrationLink(),
-            title: "button-get-started",
-          },
-        ]),
     ...(isCySEC
       ? []
       : [
