@@ -10,7 +10,7 @@ import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const MetaTrader = ({
-  className,
+  classname,
   title,
   text,
   icon,
@@ -71,7 +71,7 @@ const MetaTrader = ({
 
   return (
     <section
-      className={cn("meta-trader", className, {
+      className={cn("meta-trader", classname, {
         "meta-trader--gray-bg": isGrayBackground,
         "meta-trader--rtl": isRTL,
       })}
@@ -128,7 +128,7 @@ const MetaTrader = ({
 };
 
 MetaTrader.propTypes = {
-  className: PropTypes.string,
+  classname: PropTypes.string,
   title: PropTypes.string.isRequired,
   text: PropTypes.arrayOf(PropTypes.string).isRequired,
   icon: PropTypes.string.isRequired,

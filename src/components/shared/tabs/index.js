@@ -8,7 +8,7 @@ import Tab from "./components/tab";
 import TabPanel from "./components/tab-panel";
 
 const Tabs = ({
-  className,
+  classname,
   tabList = [],
   activeTabIndex = 0,
   isMobileDropdown = false,
@@ -22,7 +22,7 @@ const Tabs = ({
   };
 
   return (
-    <div className={cn("tabs", className)} data-tabs="true">
+    <div className={cn("tabs", classname)} data-tabs="true">
       <div className="tabs__tablist-wrapper">
         {isTablet && isMobileDropdown ? (
           <Dropdown
@@ -31,7 +31,7 @@ const Tabs = ({
               title: tabList[currentTabIndex].title,
               value: currentTabIndex,
             }}
-            items={tabList.map(({ title, onClick }, tabIndex) => {
+            items={tabList.map(({ id, title, onClick }, tabIndex) => {
               return {
                 title,
                 value: tabIndex,
@@ -96,7 +96,7 @@ const Tabs = ({
 };
 
 Tabs.propTypes = {
-  className: PropTypes.string,
+  classname: PropTypes.string,
   tabList: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
