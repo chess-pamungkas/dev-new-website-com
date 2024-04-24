@@ -40,8 +40,8 @@ const PlatformsPageContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarket>
-      {META_TRADERS.map((trader) => (
-        <MetaTrader {...trader} />
+      {META_TRADERS.map((trader, index) => (
+        <MetaTrader key={trader.id || trader.title || index} {...trader} />
       ))}
       {isXL && (
         <TopMarketPromotion

@@ -35,7 +35,7 @@ const ContactUsForm = () => {
         handleApiResponse(true);
       })
       .catch((error) => {
-        sendLog({message: error.message, type: error.name});
+        sendLog({ message: error.message, type: error.name });
         handleApiResponse(false);
       });
   };

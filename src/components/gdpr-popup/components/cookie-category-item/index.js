@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 
 export const CookieCategoryItem = ({
@@ -49,4 +50,13 @@ export const CookieCategoryItem = ({
       </label>
     </div>
   );
+};
+CookieCategoryItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  categoryKey: PropTypes.string.isRequired,
+  initialValue: PropTypes.bool.isRequired,
+  canBeChanged: PropTypes.bool.isRequired,
+  acceptedCookies: PropTypes.object.isRequired,
+  setAcceptedCookies: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };

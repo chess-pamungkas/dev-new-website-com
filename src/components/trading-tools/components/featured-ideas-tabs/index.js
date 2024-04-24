@@ -62,7 +62,7 @@ const FeaturedIdeasTabs = () => {
     },
   ];
 
-  return <Tabs tabList={tabs} classname="trading-tools-tabs" />;
+  return <Tabs tabList={tabs} className="trading-tools-tabs" />;
 };
 
 export default FeaturedIdeasTabs;

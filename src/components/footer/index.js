@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import CopyRightBlock from "./components/copy-right-block";
 import { LogoTextMain } from "../shared/icons";
@@ -33,4 +34,7 @@ const Footer = ({ className }) => {
   );
 };
 
+Footer.propTypes = {
+  className: PropTypes.string,
+};
 export default Footer;

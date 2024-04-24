@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../../../../helpers/hooks/use-rtl-direction";
 import { useTranslationWithVariables } from "../../../../../../helpers/hooks/use-translation-with-vars";
 
@@ -20,4 +21,9 @@ const FeatureItem = ({ img, title, description }) => {
   );
 };
 
+FeatureItem.propTypes = {
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
 export default FeatureItem;

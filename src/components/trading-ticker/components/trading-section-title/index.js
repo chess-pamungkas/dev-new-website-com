@@ -1,5 +1,6 @@
 import * as React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 
 const TradingSectionTitle = ({
@@ -29,4 +30,16 @@ const TradingSectionTitle = ({
   );
 };
 
+TradingSectionTitle.propTypes = {
+  section: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+  selectedSection: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+  setSelectedSection: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
 export default TradingSectionTitle;

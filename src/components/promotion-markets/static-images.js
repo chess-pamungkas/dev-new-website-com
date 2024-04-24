@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Lottie from "lottie-react";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 
@@ -27,4 +28,9 @@ export const StaticImages = ({ image, height, animation }) => {
   );
 };
 
+StaticImages.propTypes = {
+  image: PropTypes.string.isRequired,
+  height: PropTypes.number.isRequired,
+  animation: PropTypes.object.isRequired,
+};
 export default StaticImages;

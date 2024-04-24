@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import {
   getFooterCompanyName,
   getFooterCopyright,
@@ -20,4 +21,7 @@ const CopyRightBlock = ({ className }) => {
   );
 };
 
+CopyRightBlock.propTypes = {
+  className: PropTypes.string,
+};
 export default CopyRightBlock;

@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import ButtonLink from "../shared/button-link";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Lottie from "lottie-react";
@@ -154,4 +155,26 @@ const TopMarketPromotion = ({
   );
 };
 
+TopMarketPromotion.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+  note: PropTypes.string,
+  image: PropTypes.string,
+  btnClassName: PropTypes.string,
+  btnTitle: PropTypes.string,
+  btnOnClick: PropTypes.func,
+  link: PropTypes.string,
+  btnClassName2: PropTypes.string,
+  btnTitle2: PropTypes.string,
+  link2: PropTypes.string,
+  isDocumentLink: PropTypes.bool,
+  isAnchorLink: PropTypes.bool,
+  isButtonAndLink: PropTypes.bool,
+  isLottieImage: PropTypes.bool,
+  isVideo: PropTypes.bool,
+  videoSettings: PropTypes.object,
+  lottieStyle: PropTypes.object,
+  content: PropTypes.node,
+  id: PropTypes.string,
+};
 export default TopMarketPromotion;

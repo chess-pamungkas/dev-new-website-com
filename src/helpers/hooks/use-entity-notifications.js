@@ -47,7 +47,6 @@ export const useEntityNotifications = (handlePopupOpen) => {
           !clientConfig.forceRedirectPopup
       );
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientConfig]);
 
   return {

@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import ButtonLink from "../shared/button-link";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
@@ -46,6 +47,18 @@ const TextBanner = ({
       </div>
     </section>
   );
+};
+
+TextBanner.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  note: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  btnTitle1: PropTypes.string,
+  link1: PropTypes.string,
+  btnTitle2: PropTypes.string,
+  link2: PropTypes.string,
+  id: PropTypes.string,
 };
 
 export default TextBanner;

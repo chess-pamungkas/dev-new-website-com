@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { AngleDownIcon } from "../../../shared/icons";
 import { ANGLE_ICON_COLOR } from "../../../../helpers/constants";
 import { useModal } from "../../../../helpers/hooks/use-modal";
@@ -15,6 +16,11 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
   } = useContext(LanguageContext);
   const { isShow, handleOpen, handleClose } = useModal();
 
+  const closePopup = () => {
+    setIsLangPopupOpened?.(false);
+    handleClose();
+  };
+
   const onLangSelect = (selected) => {
     setSelectedLanguage(selected);
     closePopup();
@@ -28,11 +34,6 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
     return isShow ? ANGLE_ICON_COLOR.white : ANGLE_ICON_COLOR.red;
   };
 
-  const closePopup = () => {
-    setIsLangPopupOpened && setIsLangPopupOpened(false);
-    handleClose();
-  };
-
   return (
     <>
       <button
@@ -42,9 +43,9 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
           className
         )}
         type="button"
-        onClick={(e) => {
+        onClick={() => {
           handleOpen();
-          setIsLangPopupOpened && setIsLangPopupOpened(true);
+          setIsLangPopupOpened?.(true);
         }}
       >
         {Icon && <Icon className="lang-select__flag" />}
@@ -69,6 +70,12 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
       </Popup>
     </>
   );
+};
+
+LangSelect.propTypes = {
+  className: PropTypes.string,
+  isHeader: PropTypes.bool,
+  setIsLangPopupOpened: PropTypes.func.isRequired,
 };
 
 export default LangSelect;

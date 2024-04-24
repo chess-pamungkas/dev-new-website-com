@@ -1,15 +1,16 @@
 import React, { useRef, useState } from "react";
+import PropTypes from "prop-types";
 import { animated, useTransition, easings } from "react-spring";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import {
   DEFAULT_WRAPPER_WIDTH,
-  DELAY_BEFORE_NEXT_KEYWORD
+  DELAY_BEFORE_NEXT_KEYWORD,
 } from "../../../helpers/animation.config";
 
 const TypingAnimation = ({ keywords }) => {
   const { t } = useTranslationWithVariables();
 
-  const buildChars = str => {
+  const buildChars = (str) => {
     return [...t(str)].map((char, key) => ({ char, key }));
   };
 
@@ -75,7 +76,7 @@ const TypingAnimation = ({ keywords }) => {
         minWidth: wrapperRefWidth + "px",
         overflow: "hidden",
         whiteSpace: "nowrap",
-        textOverflow: "ellipsis"
+        textOverflow: "ellipsis",
       }}
       ref={wrapperRef}
     >
@@ -90,4 +91,7 @@ const TypingAnimation = ({ keywords }) => {
   );
 };
 
+TypingAnimation.propTypes = {
+  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 export default TypingAnimation;

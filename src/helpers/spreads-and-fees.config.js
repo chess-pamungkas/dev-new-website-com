@@ -1,4 +1,3 @@
-import React from "react";
 import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
 import { isCySEC } from "./entity-resolver";
 import { MobileCell } from "../components/shared/table/components/mobile-cell";

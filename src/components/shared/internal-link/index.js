@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby-plugin-react-i18next";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { modifyInternalLinkForLP } from "../../../helpers/services/modify-internal-links";
 
 const InternalLink = ({ children, className, to, onClick }) => {
@@ -21,4 +22,10 @@ const InternalLink = ({ children, className, to, onClick }) => {
   }
 };
 
+InternalLink.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  to: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+};
 export default InternalLink;

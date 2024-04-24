@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import ReactPlayer from "react-player/youtube";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { getYoutubeLink } from "../helpers";
@@ -47,4 +48,14 @@ const VideoBlock = ({ className, video }) => {
   );
 };
 
+VideoBlock.propTypes = {
+  className: PropTypes.string,
+  video: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    resourceId: PropTypes.shape({
+      videoId: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 export default VideoBlock;

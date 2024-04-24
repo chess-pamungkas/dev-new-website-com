@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 
@@ -62,4 +63,10 @@ const CompanyAdvantageBlock = ({ className, icon: Icon, title, textArray }) => {
   );
 };
 
+CompanyAdvantageBlock.propTypes = {
+  className: PropTypes.string,
+  icon: PropTypes.elementType.isRequired, // Icon is a React component type
+  title: PropTypes.string.isRequired,
+  textArray: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 export default CompanyAdvantageBlock;

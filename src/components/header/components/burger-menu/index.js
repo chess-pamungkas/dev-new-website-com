@@ -1,32 +1,31 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
-import { BURGER_MENU_LINES_COUNT } from "../../../../helpers/constants";
-import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
-import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import {
+  BURGER_MENU_LINES_COUNT,
   GetRegistrationLink,
   GetLoginLink,
 } from "../../../../helpers/constants";
+import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
+import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import ButtonLink from "../../../shared/button-link";
 import LangSelect from "../lang-select";
 import SearchBar from "../search-bar";
 import Accordion from "../../../shared/accordion";
 import { getMenuItems } from "../../../../helpers/menu.config";
 import InternalLink from "../../../shared/internal-link";
-import ClientResolverContext from "../../../../context/client-resolver-context";
 
 const BurgerMenu = ({ className }) => {
   const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
-  const { clientConfig } = useContext(ClientResolverContext);
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const menu = getMenuItems();
   const [selectedNavItem, setSelectedNavItem] = useState(menu[0].title);
   const [isLangPopupOpened, setIsLangPopupOpened] = useState(false);
 
-  const onTriggerChange = (e) => {
+  const onTriggerChange = () => {
     typeof window !== "undefined" && isNavbarOpen
       ? document.body.classList.remove("overflow-hidden")
       : document.body.classList.add("overflow-hidden");
@@ -170,4 +169,7 @@ const BurgerMenu = ({ className }) => {
   );
 };
 
+BurgerMenu.propTypes = {
+  className: PropTypes.string,
+};
 export default BurgerMenu;

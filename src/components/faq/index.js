@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import cn from "classnames";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import Accordion from "../shared/accordion";
@@ -34,7 +35,7 @@ const Faq = ({ className, title, faq, isFaqBtnHidden, subTitleTemplate }) => {
               >
                 {item.answer.map((content, i) => (
                   <span
-                    key={`faq-title-${i}`}
+                    key={`faq-answer-${i}`}
                     className={cn("faq__text", {
                       "faq__text--bold": item.bold?.includes(i),
                     })}
@@ -56,6 +57,20 @@ const Faq = ({ className, title, faq, isFaqBtnHidden, subTitleTemplate }) => {
       </div>
     </section>
   );
+};
+
+Faq.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string,
+  faq: PropTypes.arrayOf(
+    PropTypes.shape({
+      question: PropTypes.string.isRequired,
+      answer: PropTypes.arrayOf(PropTypes.string).isRequired,
+      bold: PropTypes.arrayOf(PropTypes.number), // Indexes of the answer that should be bold
+    })
+  ).isRequired,
+  isFaqBtnHidden: PropTypes.bool,
+  subTitleTemplate: PropTypes.node, // React node for any additional sub-title elements
 };
 
 export default Faq;

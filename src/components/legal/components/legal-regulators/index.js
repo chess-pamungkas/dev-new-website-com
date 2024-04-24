@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import LegalRegulatorItem from "../legal-regulator-item";
 
@@ -30,5 +31,16 @@ const LegalRegulators = ({ className, regulators }) => {
     </section>
   );
 };
-
+LegalRegulators.propTypes = {
+  className: PropTypes.string,
+  regulators: PropTypes.arrayOf(
+    PropTypes.shape({
+      icon: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      titleAccent: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      anchorLink: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 export default LegalRegulators;

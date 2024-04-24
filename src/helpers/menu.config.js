@@ -381,7 +381,6 @@ const CYSEC_MENU_ITEMS = [
 export const getMenuItems = () => (isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS);
 
 export const getCornerItems = () => {
-
   return [
     ...(isCySEC
       ? []

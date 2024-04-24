@@ -1,5 +1,6 @@
 import React from "react";
 import ReactSlider from "react-slider";
+import PropTypes from "prop-types";
 
 const Slider = ({
   className,
@@ -34,4 +35,17 @@ const Slider = ({
   );
 };
 
+Slider.propTypes = {
+  className: PropTypes.string,
+  thumbClassName: PropTypes.string,
+  trackClassName: PropTypes.string,
+  markClassName: PropTypes.string,
+  minValue: PropTypes.number.isRequired,
+  maxValue: PropTypes.number.isRequired,
+  marks: PropTypes.object,
+  currentValue: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
+  renderMark: PropTypes.func,
+  invert: PropTypes.bool,
+};
 export default Slider;

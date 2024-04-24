@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import ButtonLink from "../shared/button-link";
 import { GetRegistrationLink } from "../../helpers/constants";
@@ -132,4 +133,8 @@ const MainPromotion = ({ className, isShowHero = true }) => {
   );
 };
 
+MainPromotion.propTypes = {
+  className: PropTypes.string,
+  isShowHero: PropTypes.bool,
+};
 export default MainPromotion;

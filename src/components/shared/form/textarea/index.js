@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ErrorMessage from "../error-message";
 
 const Textarea = ({ title, name, value, isError, errorMessage, ...props }) => {
@@ -18,4 +19,11 @@ const Textarea = ({ title, name, value, isError, errorMessage, ...props }) => {
   );
 };
 
+Textarea.propTypes = {
+  title: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  isError: PropTypes.bool,
+  errorMessage: PropTypes.string,
+};
 export default Textarea;

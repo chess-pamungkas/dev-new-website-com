@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { stringTransformToKebabCase } from "../../../helpers/services/string-service";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import Dropdown from "../dropdown";
@@ -7,7 +8,7 @@ import Tab from "./components/tab";
 import TabPanel from "./components/tab-panel";
 
 const Tabs = ({
-  classname,
+  className,
   tabList = [],
   activeTabIndex = 0,
   isMobileDropdown = false,
@@ -21,7 +22,7 @@ const Tabs = ({
   };
 
   return (
-    <div className={cn("tabs", classname)} data-tabs="true">
+    <div className={cn("tabs", className)} data-tabs="true">
       <div className="tabs__tablist-wrapper">
         {isTablet && isMobileDropdown ? (
           <Dropdown
@@ -30,11 +31,11 @@ const Tabs = ({
               title: tabList[currentTabIndex].title,
               value: currentTabIndex,
             }}
-            items={tabList.map(({ id, title, onClick }, tabIndex) => {
+            items={tabList.map(({ title, onClick }, tabIndex) => {
               return {
-                title: title,
+                title,
                 value: tabIndex,
-                onClick: onClick,
+                onClick,
               };
             })}
             setSelectedItem={({ value }) => {
@@ -43,7 +44,6 @@ const Tabs = ({
             isDropdownShown
           />
         ) : (
-          // eslint-disable-next-line
           <ul role="tablist" className="tabs__tablist">
             {tabList.map(
               ({ title, isTitleWithIcon, icon, onClick }, tabIndex) => (
@@ -93,6 +93,27 @@ const Tabs = ({
       </div>
     </div>
   );
+};
+
+Tabs.propTypes = {
+  className: PropTypes.string,
+  tabList: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      isTitleWithIcon: PropTypes.bool,
+      icon: PropTypes.node,
+      onClick: PropTypes.func,
+      content: PropTypes.node.isRequired,
+    })
+  ),
+  activeTabIndex: PropTypes.number,
+  isMobileDropdown: PropTypes.bool,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      logo: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default Tabs;

@@ -1,6 +1,6 @@
 const { readdirSync, appendFile, lstatSync } = require("fs");
 const path = require("path");
-
+//TODO check the errors
 // Use this script if you want to exclude some languages from search engines indexing
 disallowedLanguages = [
   "ar",

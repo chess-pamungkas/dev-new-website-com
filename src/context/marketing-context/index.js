@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { createContext } from "react";
+import React, { useEffect, useState, createContext } from "react";
+import PropTypes from "prop-types";
 import { isBrowser } from "../../helpers/services/is-browser";
 import { getMarketingParamsFromUrl } from "../../helpers/services/marketing-service";
 import { getIBParamsAndSetToStorage } from "../../helpers/services/ib-service";
@@ -23,4 +23,8 @@ export const MarketingContextProvider = ({ children }) => {
       {children}
     </MarketingContext.Provider>
   );
+};
+
+MarketingContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

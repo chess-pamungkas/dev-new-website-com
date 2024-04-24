@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import VideosCarousel from "../videos-carousel";
 import { YOUTUBE_PLAYLIST_IDS } from "../../../../helpers/education.config";
 import {
@@ -25,7 +26,7 @@ const Playlist = ({ className }) => {
         })
       )
         .then((data) => {
-          let temp = {};
+          const temp = {};
           data.forEach(([playlistInfo, items]) => {
             temp[playlistInfo[0].snippet.title] = items;
           });
@@ -56,6 +57,10 @@ const Playlist = ({ className }) => {
         ))}
     </section>
   );
+};
+
+Playlist.propTypes = {
+  className: PropTypes.string,
 };
 
 export default Playlist;

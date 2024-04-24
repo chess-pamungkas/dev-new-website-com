@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { DIR_LTR, DIR_RTL } from "../../../helpers/constants";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
@@ -29,4 +30,7 @@ const EligibilityList = ({ className }) => {
   );
 };
 
+EligibilityList.propTypes = {
+  className: PropTypes.string,
+};
 export default EligibilityList;

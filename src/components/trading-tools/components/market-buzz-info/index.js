@@ -1,6 +1,7 @@
 import React from "react";
-import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import cn from "classnames";
+import PropTypes from "prop-types";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import image from "../../../../assets/images/trading-tools/market-buzz.png";
 import { MARKET_BUZZ_INFO } from "../../../../helpers/trading-tools.config";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
@@ -30,4 +31,7 @@ const MarketBuzzInfo = ({ className }) => {
   );
 };
 
+MarketBuzzInfo.propTypes = {
+  className: PropTypes.string,
+};
 export default MarketBuzzInfo;

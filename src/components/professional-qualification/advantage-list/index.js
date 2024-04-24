@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { DIR_LTR, DIR_RTL } from "../../../helpers/constants";
 import { Logo } from "../../shared/icons";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
@@ -23,8 +24,11 @@ const AdvantageList = ({ className, title, text }) => {
       <div className="pq-advantage-list__advantages">
         <p className="pq-advantage-list__text">{text}</p>
         <div className="pq-advantage-list__advantages-list">
-          {ADVANTAGES_LIST.map((item) => (
-            <div className="pq-advantage-list__item">
+          {ADVANTAGES_LIST.map((item, index) => (
+            <div
+              key={`advantage-item-${index}`}
+              className="pq-advantage-list__item"
+            >
               <img
                 className="pq-advantage-list__item-icon"
                 src={item.icon}
@@ -46,4 +50,9 @@ const AdvantageList = ({ className, title, text }) => {
   );
 };
 
+AdvantageList.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
 export default AdvantageList;

@@ -300,5 +300,6 @@ const CYSEC_ALL_MARKETS = [FOREX, INDICES, SHARES, METALS, ENERGIES, ETF];
 
 const FSA_ALL_MARKETS = [FOREX, INDICES, SHARES, METALS, ENERGIES, CRYPTO, ETF];
 
-export const getAllMarkets = () =>
-  isCySEC ? CYSEC_ALL_MARKETS : FSA_ALL_MARKETS;
+export const getAllMarkets = () => {
+  return isCySEC ? CYSEC_ALL_MARKETS : FSA_ALL_MARKETS;
+};

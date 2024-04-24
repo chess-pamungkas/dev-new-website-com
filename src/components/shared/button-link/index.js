@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import InternalLink from "../internal-link";
 
 const ButtonLink = ({ children, className, link }) => {
@@ -23,4 +24,9 @@ const ButtonLink = ({ children, className, link }) => {
   }
 };
 
+ButtonLink.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  link: PropTypes.string.isRequired,
+};
 export default ButtonLink;

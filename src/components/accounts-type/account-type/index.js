@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types"; // Import prop-types
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import ButtonLink from "../../shared/button-link";
 import { GetRegistrationLink } from "../../../helpers/constants";
@@ -32,6 +33,20 @@ const AccountType = ({
       </ButtonLink>
     </div>
   );
+};
+
+AccountType.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  btnTitle: PropTypes.string.isRequired,
+  gridArea: PropTypes.string,
+  advantages: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default AccountType;

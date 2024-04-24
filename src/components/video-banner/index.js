@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
@@ -22,6 +23,17 @@ const VideoBanner = ({ className, video, title, subtitle }) => {
       </div>
     </section>
   );
+};
+
+VideoBanner.propTypes = {
+  className: PropTypes.string,
+  video: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+};
+
+VideoBanner.defaultProps = {
+  className: "",
 };
 
 export default VideoBanner;

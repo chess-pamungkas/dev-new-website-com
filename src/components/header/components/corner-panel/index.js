@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import InternalLink from "../../../shared/internal-link";
 import LangSelect from "../lang-select";
@@ -23,4 +24,13 @@ const CornerPanel = ({ className, items }) => {
   );
 };
 
+CornerPanel.propTypes = {
+  className: PropTypes.string,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 export default CornerPanel;

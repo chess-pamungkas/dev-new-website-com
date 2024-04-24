@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import Lottie from "lottie-react";
 import { DIR_LTR, DIR_RTL, GetRegistrationLink } from "../../helpers/constants";
 import ButtonLink from "../shared/button-link";
@@ -134,6 +135,7 @@ const PromotionMarkets = ({
         document.querySelector("body").style.paddingRight = "0px";
       }
     }
+    //TODO refactor to remove this
     // eslint-disable-next-line
   }, [currentScroll]);
 
@@ -269,4 +271,11 @@ const PromotionMarkets = ({
   );
 };
 
+PromotionMarkets.propTypes = {
+  className: PropTypes.string,
+  animation: PropTypes.object,
+  animationStyle: PropTypes.object,
+  children: PropTypes.arrayOf(PropTypes.node),
+  btnTitle: PropTypes.string,
+};
 export default PromotionMarkets;

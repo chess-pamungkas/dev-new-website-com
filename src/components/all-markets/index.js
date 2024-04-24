@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import image from "../../assets/images/all-markets/markets-image.svg";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
@@ -31,6 +32,9 @@ const AllMarkets = ({ className }) => {
       </div>
     </section>
   );
+};
+AllMarkets.propTypes = {
+  className: PropTypes.string,
 };
 
 export default AllMarkets;

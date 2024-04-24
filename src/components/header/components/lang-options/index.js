@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import {
   LANG_SELECT_OPTIONS,
   SHOULD_BE_SMALLER_LANGUAGES,
@@ -26,9 +27,10 @@ const LangSelectItem = ({
         language={language.id}
         className="lang-options__select"
         // type="button"
-        onClick={(e) => {
+        onClick={() => {
           languageSelectHandler(language);
           document.documentElement.setAttribute("lang", language.id);
+          //TODO Refactor and Consider using Gatsby's built-in language switching methods here
         }}
       >
         {Icon && <Icon className="lang-options__flag" />}
@@ -45,6 +47,17 @@ const LangSelectItem = ({
       </Link>
     </li>
   );
+};
+LangSelectItem.propTypes = {
+  language: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    Icon: PropTypes.elementType,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  selectedLanguage: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+  languageSelectHandler: PropTypes.func.isRequired,
 };
 
 const LangOptions = ({
@@ -72,4 +85,11 @@ const LangOptions = ({
   );
 };
 
+LangOptions.propTypes = {
+  className: PropTypes.string,
+  selectedLanguage: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+  languageSelectHandler: PropTypes.func.isRequired,
+};
 export default LangOptions;

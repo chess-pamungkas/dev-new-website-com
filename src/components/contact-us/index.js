@@ -1,6 +1,7 @@
 import React from "react";
-import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import cn from "classnames";
+import PropTypes from "prop-types";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import {
   DIR_LTR,
   DIR_RTL,
@@ -76,4 +77,7 @@ const ContactUs = ({ className }) => {
   );
 };
 
+ContactUs.propTypes = {
+  className: PropTypes.string,
+};
 export default ContactUs;

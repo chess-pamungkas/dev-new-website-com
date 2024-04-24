@@ -2,6 +2,7 @@
 const exampleLocales = require("../../locales/es/index.json");
 const enLocales = require("../../locales/en/index.json");
 const translations = require("./fr.json");
+//TODO Check for the errors and let
 let fs = require("fs");
 
 let resultLocales = {};

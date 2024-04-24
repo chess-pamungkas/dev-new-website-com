@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import ButtonLink from "../shared/button-link";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
@@ -125,4 +126,29 @@ const TopMarket = ({
   );
 };
 
+TopMarket.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+  title: PropTypes.string,
+  isTitleUppercase: PropTypes.bool,
+  isChildrenHasSmallSize: PropTypes.bool,
+  image: PropTypes.string,
+  btn1Title: PropTypes.string,
+  link1: PropTypes.string,
+  btn2Title: PropTypes.string,
+  link2: PropTypes.string,
+  btn3Title: PropTypes.string,
+  link3: PropTypes.string,
+  btn4Title: PropTypes.string,
+  link4: PropTypes.string,
+  subImageTemplate: PropTypes.node,
+  isAnchorLink1: PropTypes.bool,
+  isAnchorLink2: PropTypes.bool,
+  isAnchorLink3: PropTypes.bool,
+  isAnchorLink4: PropTypes.bool,
+  btnClassName1: PropTypes.string,
+  btnClassName2: PropTypes.string,
+  btnClassName3: PropTypes.string,
+  btnClassName4: PropTypes.string,
+};
 export default TopMarket;

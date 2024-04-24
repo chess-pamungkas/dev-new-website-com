@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { LogoTextMain, LogoWhite } from "../shared/icons";
 import {
@@ -123,4 +124,7 @@ const Header = ({ className }) => {
   );
 };
 
+Header.propTypes = {
+  className: PropTypes.string,
+};
 export default Header;

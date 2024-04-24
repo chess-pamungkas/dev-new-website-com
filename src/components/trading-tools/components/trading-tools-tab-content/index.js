@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 
 const TradingToolsTabContent = ({
   className,
@@ -43,4 +44,12 @@ const TradingToolsTabContent = ({
   </div>
 );
 
+TradingToolsTabContent.propTypes = {
+  className: PropTypes.string,
+  img1: PropTypes.string.isRequired,
+  img2: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  darkBG: PropTypes.bool,
+};
 export default TradingToolsTabContent;

@@ -1,5 +1,6 @@
 import React, { useRef, useContext } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { animated } from "react-spring";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import airbnbIcon from "../../assets/images/icons/companies/airbnb.svg";
@@ -241,4 +242,11 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
   );
 };
 
+TradeWithPromotion.propTypes = {
+  className: PropTypes.string,
+  sectionRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]),
+};
 export default TradeWithPromotion;

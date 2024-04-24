@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import Document from "../shared/document";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
@@ -33,4 +34,15 @@ const Documents = ({ className, title, text, documents }) => {
   );
 };
 
+Documents.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  documents: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      file: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 export default Documents;
