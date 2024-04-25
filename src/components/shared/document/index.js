@@ -1,7 +1,6 @@
 import React from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
-
 import { DownloadIcon } from "../icons";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 
@@ -35,8 +34,9 @@ const Document = ({ className, document }) => {
 Document.propTypes = {
   className: PropTypes.string,
   document: PropTypes.shape({
-    name: PropTypes.string.isRequired,
     file: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
   }).isRequired,
 };
+
 export default Document;

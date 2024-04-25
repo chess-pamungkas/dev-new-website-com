@@ -34,6 +34,6 @@ BenefitBlock.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string.isRequired,
   text: PropTypes.arrayOf(PropTypes.string).isRequired,
-  icon: PropTypes.elementType.isRequired, // For React components passed as props, use elementType
+  icon: PropTypes.func.isRequired,
 };
 export default BenefitBlock;

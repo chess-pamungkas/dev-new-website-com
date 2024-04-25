@@ -45,6 +45,6 @@ const SwapFreeTopPromotion = ({ className }) => {
 };
 
 SwapFreeTopPromotion.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 export default SwapFreeTopPromotion;

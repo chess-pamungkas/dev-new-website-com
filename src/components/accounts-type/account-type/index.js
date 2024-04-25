@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import PropTypes from "prop-types"; // Import prop-types
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import ButtonLink from "../../shared/button-link";
 import { GetRegistrationLink } from "../../../helpers/constants";
@@ -43,10 +43,8 @@ AccountType.propTypes = {
   gridArea: PropTypes.string,
   advantages: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
+      title: PropTypes.string,
     })
   ).isRequired,
 };
-
 export default AccountType;

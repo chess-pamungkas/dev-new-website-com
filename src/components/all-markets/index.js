@@ -37,4 +37,7 @@ AllMarkets.propTypes = {
   className: PropTypes.string,
 };
 
+AllMarkets.propTypes = {
+  className: PropTypes.string,
+};
 export default AllMarkets;

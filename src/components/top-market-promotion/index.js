@@ -158,8 +158,8 @@ const TopMarketPromotion = ({
 TopMarketPromotion.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
-  note: PropTypes.string,
-  image: PropTypes.string,
+  note: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  image: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   btnClassName: PropTypes.string,
   btnTitle: PropTypes.string,
   btnOnClick: PropTypes.func,

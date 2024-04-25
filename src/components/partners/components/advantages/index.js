@@ -34,12 +34,12 @@ const PartnersAdvantages = ({ className, title, advantages }) => {
 
 PartnersAdvantages.propTypes = {
   className: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   advantages: PropTypes.arrayOf(
     PropTypes.shape({
-      icon: PropTypes.string,
+      icon: PropTypes.func,
       text: PropTypes.string.isRequired,
-      accent: PropTypes.bool,
+      accent: PropTypes.string,
     })
   ).isRequired,
 };

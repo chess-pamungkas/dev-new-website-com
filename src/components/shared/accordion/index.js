@@ -74,12 +74,12 @@ const Accordion = ({
 };
 
 Accordion.propTypes = {
-  children: PropTypes.node.isRequired,
   className: PropTypes.string,
   title: PropTypes.string.isRequired,
   isOpen: PropTypes.bool,
   onSelect: PropTypes.func,
-  icon: PropTypes.elementType,
-  iconForActive: PropTypes.elementType,
+  icon: PropTypes.func,
+  iconForActive: PropTypes.func,
+  children: PropTypes.node,
 };
 export default Accordion;

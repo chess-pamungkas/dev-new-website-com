@@ -50,12 +50,7 @@ const VideoBlock = ({ className, video }) => {
 
 VideoBlock.propTypes = {
   className: PropTypes.string,
-  video: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    resourceId: PropTypes.shape({
-      videoId: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
+  video: PropTypes.string.isRequired,
 };
+
 export default VideoBlock;

@@ -69,7 +69,7 @@ const MtPromotion = forwardRef(
 
 MtPromotion.propTypes = {
   className: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   advantages: PropTypes.array.isRequired,
   advantagesTitle: PropTypes.string.isRequired,
   downloadTitle: PropTypes.string.isRequired,

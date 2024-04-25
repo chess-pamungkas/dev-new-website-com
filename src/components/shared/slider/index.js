@@ -42,7 +42,7 @@ Slider.propTypes = {
   markClassName: PropTypes.string,
   minValue: PropTypes.number.isRequired,
   maxValue: PropTypes.number.isRequired,
-  marks: PropTypes.object,
+  marks: PropTypes.arrayOf(PropTypes.number),
   currentValue: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
   renderMark: PropTypes.func,

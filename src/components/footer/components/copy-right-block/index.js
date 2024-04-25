@@ -24,4 +24,5 @@ const CopyRightBlock = ({ className }) => {
 CopyRightBlock.propTypes = {
   className: PropTypes.string,
 };
+
 export default CopyRightBlock;

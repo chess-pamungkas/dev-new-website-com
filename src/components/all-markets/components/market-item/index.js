@@ -47,12 +47,7 @@ MarketItem.propTypes = {
   text: PropTypes.arrayOf(PropTypes.string).isRequired,
   isGrayBackground: PropTypes.bool,
   link: PropTypes.string.isRequired,
-  advantages: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      description: PropTypes.string,
-    })
-  ).isRequired,
+  advantages: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+
 export default MarketItem;

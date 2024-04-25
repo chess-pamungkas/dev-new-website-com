@@ -48,10 +48,11 @@ const LangSelectItem = ({
     </li>
   );
 };
+
 LangSelectItem.propTypes = {
   language: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    Icon: PropTypes.elementType,
+    icon: PropTypes.func,
     name: PropTypes.string.isRequired,
   }).isRequired,
   selectedLanguage: PropTypes.shape({
@@ -92,4 +93,5 @@ LangOptions.propTypes = {
   }).isRequired,
   languageSelectHandler: PropTypes.func.isRequired,
 };
+
 export default LangOptions;

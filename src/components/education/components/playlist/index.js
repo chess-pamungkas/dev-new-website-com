@@ -62,5 +62,4 @@ const Playlist = ({ className }) => {
 Playlist.propTypes = {
   className: PropTypes.string,
 };
-
 export default Playlist;

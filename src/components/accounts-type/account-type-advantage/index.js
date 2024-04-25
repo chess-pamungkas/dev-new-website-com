@@ -30,7 +30,7 @@ const AccountTypeAdvantage = ({
           {t(value)}
         </p>
       )}
-      {!skipHr && <hr className="account-type-advantage__hr" />}
+      {!skipHr && <hr className="account-type-advantage__separator" />}
     </div>
   );
 };
@@ -38,7 +38,7 @@ const AccountTypeAdvantage = ({
 AccountTypeAdvantage.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   isIcon: PropTypes.bool,
   icon: PropTypes.string,
   skipHr: PropTypes.bool,

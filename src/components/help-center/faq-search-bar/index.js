@@ -81,9 +81,9 @@ const FaqSearchBar = ({ className, setSearchResults, setNoSearchResult }) => {
 };
 
 FaqSearchBar.propTypes = {
+  className: PropTypes.string,
   setSearchResults: PropTypes.func.isRequired,
   setNoSearchResult: PropTypes.func.isRequired,
-  className: PropTypes.string,
 };
 
 export default FaqSearchBar;

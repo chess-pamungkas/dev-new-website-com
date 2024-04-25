@@ -61,16 +61,15 @@ const Faq = ({ className, title, faq, isFaqBtnHidden, subTitleTemplate }) => {
 
 Faq.propTypes = {
   className: PropTypes.string,
-  title: PropTypes.string,
+  title: PropTypes.object,
   faq: PropTypes.arrayOf(
     PropTypes.shape({
       question: PropTypes.string.isRequired,
       answer: PropTypes.arrayOf(PropTypes.string).isRequired,
-      bold: PropTypes.arrayOf(PropTypes.number), // Indexes of the answer that should be bold
+      bold: PropTypes.arrayOf(PropTypes.number),
     })
   ).isRequired,
   isFaqBtnHidden: PropTypes.bool,
-  subTitleTemplate: PropTypes.node, // React node for any additional sub-title elements
+  subTitleTemplate: PropTypes.node,
 };
-
 export default Faq;

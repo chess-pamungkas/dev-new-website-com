@@ -59,4 +59,6 @@ CookieCategoryItem.propTypes = {
   acceptedCookies: PropTypes.object.isRequired,
   setAcceptedCookies: PropTypes.func.isRequired,
   className: PropTypes.string,
+  checked: PropTypes.bool,
+  onClick: PropTypes.func,
 };

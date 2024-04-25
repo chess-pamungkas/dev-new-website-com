@@ -36,9 +36,9 @@ const LegalRegulatorItem = ({
 LegalRegulatorItem.propTypes = {
   className: PropTypes.string,
   icon: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  titleAccent: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  titleAccent: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   anchorLink: PropTypes.string.isRequired,
 };
 export default LegalRegulatorItem;

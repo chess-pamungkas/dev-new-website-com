@@ -46,4 +46,5 @@ const AccountsType = ({ className }) => {
 AccountsType.propTypes = {
   className: PropTypes.string,
 };
+
 export default AccountsType;

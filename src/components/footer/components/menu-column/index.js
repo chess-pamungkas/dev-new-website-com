@@ -35,4 +35,5 @@ MenuColumn.propTypes = {
     })
   ).isRequired,
 };
+
 export default MenuColumn;

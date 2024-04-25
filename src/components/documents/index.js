@@ -37,12 +37,8 @@ const Documents = ({ className, title, text, documents }) => {
 Documents.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  documents: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      file: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  text: PropTypes.object.isRequired,
+  documents: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+
 export default Documents;

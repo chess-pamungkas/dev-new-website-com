@@ -39,14 +39,8 @@ const Performance = ({ className, title, advantages }) => {
 
 Performance.propTypes = {
   className: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  advantages: PropTypes.arrayOf(
-    PropTypes.shape({
-      icon: PropTypes.elementType.isRequired,
-      text: PropTypes.string.isRequired,
-      subtext: PropTypes.string,
-      accent: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  title: PropTypes.node.isRequired,
+  advantages: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+
 export default Performance;

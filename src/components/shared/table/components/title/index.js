@@ -18,5 +18,5 @@ export const TableTip = ({ tip }) => (
 );
 
 TableTip.propTypes = {
-  tip: PropTypes.string.isRequired,
+  tip: PropTypes.object.isRequired,
 };

@@ -200,6 +200,6 @@ TableComponent.propTypes = {
   isWrapperPadding: PropTypes.bool,
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  tip: PropTypes.string,
+  tip: PropTypes.object,
 };
 export default TableComponent;

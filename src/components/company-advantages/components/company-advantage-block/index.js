@@ -65,7 +65,7 @@ const CompanyAdvantageBlock = ({ className, icon: Icon, title, textArray }) => {
 
 CompanyAdvantageBlock.propTypes = {
   className: PropTypes.string,
-  icon: PropTypes.elementType.isRequired, // Icon is a React component type
+  icon: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   textArray: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

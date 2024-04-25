@@ -75,7 +75,6 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
 LangSelect.propTypes = {
   className: PropTypes.string,
   isHeader: PropTypes.bool,
-  setIsLangPopupOpened: PropTypes.func.isRequired,
+  setIsLangPopupOpened: PropTypes.func,
 };
-
 export default LangSelect;

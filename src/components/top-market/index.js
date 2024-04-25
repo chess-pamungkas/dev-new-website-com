@@ -129,7 +129,7 @@ const TopMarket = ({
 TopMarket.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
-  title: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   isTitleUppercase: PropTypes.bool,
   isChildrenHasSmallSize: PropTypes.bool,
   image: PropTypes.string,

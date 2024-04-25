@@ -37,7 +37,8 @@ const ProsBlock = ({ className, title, titleAccent, text }) => {
 ProsBlock.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string.isRequired,
-  titleAccent: PropTypes.arrayOf(PropTypes.string),
+  titleAccent: PropTypes.arrayOf(PropTypes.string).isRequired,
   text: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
+
 export default ProsBlock;

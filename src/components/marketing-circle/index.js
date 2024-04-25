@@ -68,11 +68,11 @@ export const MarketingCircle = ({
 
 MarketingCircle.propTypes = {
   animation: PropTypes.object.isRequired,
-  upper: PropTypes.string.isRequired,
-  bottom: PropTypes.string.isRequired,
-  leftUpper: PropTypes.string.isRequired,
-  leftBottom: PropTypes.string.isRequired,
-  rightUpper: PropTypes.string.isRequired,
-  rightBottom: PropTypes.string.isRequired,
+  upper: PropTypes.element.isRequired,
+  leftUpper: PropTypes.element.isRequired,
+  rightUpper: PropTypes.element.isRequired,
+  bottom: PropTypes.element.isRequired,
+  leftBottom: PropTypes.element.isRequired,
+  rightBottom: PropTypes.element.isRequired,
 };
 export default MarketingCircle;

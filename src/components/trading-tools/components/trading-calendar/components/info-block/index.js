@@ -26,7 +26,7 @@ const CalendarInfoBlock = ({ img, title, description }) => {
 
 CalendarInfoBlock.propTypes = {
   img: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  title: PropTypes.object.isRequired,
+  description: PropTypes.object.isRequired,
 };
 export default CalendarInfoBlock;
