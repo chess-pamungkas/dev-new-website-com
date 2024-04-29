@@ -15,6 +15,14 @@ const Slider = ({
   renderMark,
   invert = false,
 }) => {
+  const handleRenderMark = (mark, index) => {
+    if (renderMark) {
+      return renderMark(mark, index);
+    } else {
+      return <div key={`mark-${mark}-${index}`}>{mark}</div>;
+    }
+  };
+
   return (
     <ReactSlider
       className={className}
@@ -26,10 +34,8 @@ const Slider = ({
       min={minValue}
       max={maxValue}
       marks={marks}
-      onChange={(value) => {
-        onChange(value);
-      }}
-      renderMark={renderMark}
+      onChange={(value) => onChange(value)}
+      renderMark={handleRenderMark}
       invert={invert}
     />
   );

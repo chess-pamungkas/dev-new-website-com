@@ -96,7 +96,7 @@ const AlphaGenerationTabs = () => {
     },
   ];
 
-  return <Tabs tabList={tabs} className="trading-tools-tabs" />;
+  return <Tabs tabList={tabs} classname="trading-tools-tabs" />;
 };
 
 export default AlphaGenerationTabs;

@@ -79,6 +79,6 @@ Dropdown.propTypes = {
     title: PropTypes.string.isRequired,
   }).isRequired,
   setSelectedItem: PropTypes.func.isRequired,
-  isDropdownShown: PropTypes.bool.isRequired,
+  isDropdownShown: PropTypes.bool,
 };
 export default Dropdown;

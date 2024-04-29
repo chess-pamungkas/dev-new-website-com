@@ -173,7 +173,7 @@ const FSA_MT5_ADVANTAGES = [
     text: "mt5_market-items-list_adv10-fsa",
   },
   {
-    key: "adv11",
+    key: "adv11-mt5",
     text: "mt5_market-items-list_adv11-fsa",
   },
   {
@@ -232,7 +232,7 @@ const CYSEC_MT5_ADVANTAGES = [
     text: "mt5_market-items-list_adv10-cysec",
   },
   {
-    key: "adv11",
+    key: "adv11-CySEC-mt5",
     text: "mt5_market-items-list_adv11-cysec",
   },
   {
@@ -342,7 +342,7 @@ const FSA_MT4_ADVANTAGES = [
     text: "mt4_market-items-list_adv10-fsa",
   },
   {
-    key: "adv11",
+    key: "adv11-fsa-mt5",
     text: "mt4_market-items-list_adv11-fsa",
   },
   {
