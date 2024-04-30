@@ -79,12 +79,12 @@ const keyInformationStocks = {
   languages: ["en", "de", "pt", "it"],
 };
 const summaryStatement = {
-  filename: "Execution_Quality_Summary_Statement_2022_OQtima_EU.pdf",
+  filename: "Execution_Quality_Summary_Statement_2023_OQtima_EU.pdf",
   languages: ["en"],
 };
 const disciplineReport = {
   filename:
-    "Disclosure_and_Market_Discipline_Report_Pillar_III_2022_OQtima_EU.pdf",
+    "Disclosure_and_Market_Discipline_Report_Pillar_III_2023_OQtima_EU.pdf",
   languages: ["en"],
 };
 export const privacyPolicy = {

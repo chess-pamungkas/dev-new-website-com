@@ -64,30 +64,31 @@ export const onRenderBody = ({
       name="description"
       content="Forex, cfd trading on stocks, indices, oil and gold with the most advanced trading platforms. Trade with OQtima™, a licensed forex broker."
     />,
-    <meta key="og-type" property="og:type" content="website" />,
-    <meta
-      key="og-title"
-      property="og:title"
-      content="Forex & CFD Trading on Stocks, Indices, Oil, Gold by OQtima™"
-    />,
-    <meta
-      key="og-desc"
-      property="og:description"
-      content="Forex, cfd trading on stocks, indices, oil and gold with the most advanced trading platforms. Trade with OQtima™, a licensed forex broker."
-    />,
-    <meta key="og-img" property="og:image" content="/preview.jpeg" />,
-    <meta key="tw-card" name="twitter:card" content="summary_large_image" />,
-    <meta
-      key="tw-title"
-      name="twitter:title"
-      content="Forex & CFD Trading on Stocks, Indices, Oil, Gold by OQtima™"
-    />,
-    <meta
-      key="tw-desc"
-      name="twitter:description"
-      content="Forex, cfd trading on stocks, indices, oil and gold with the most advanced trading platforms. Trade with OQtima™, a licensed forex broker."
-    />,
-    <meta key="tw-img" name="twitter:image" content="/preview.jpeg" />,
+    // TODO: Return it back when ready to deploy OW-282
+    // <meta key="og-type" property="og:type" content="website" />,
+    // <meta
+    //   key="og-title"
+    //   property="og:title"
+    //   content="Forex & CFD Trading on Stocks, Indices, Oil, Gold by OQtima™"
+    // />,
+    // <meta
+    //   key="og-desc"
+    //   property="og:description"
+    //   content="Forex, cfd trading on stocks, indices, oil and gold with the most advanced trading platforms. Trade with OQtima™, a licensed forex broker."
+    // />,
+    // <meta key="og-img" property="og:image" content="/preview.jpeg" />,
+    // <meta key="tw-card" name="twitter:card" content="summary_large_image" />,
+    // <meta
+    //   key="tw-title"
+    //   name="twitter:title"
+    //   content="Forex & CFD Trading on Stocks, Indices, Oil, Gold by OQtima™"
+    // />,
+    // <meta
+    //   key="tw-desc"
+    //   name="twitter:description"
+    //   content="Forex, cfd trading on stocks, indices, oil and gold with the most advanced trading platforms. Trade with OQtima™, a licensed forex broker."
+    // />,
+    // <meta key="tw-img" name="twitter:image" content="/preview.jpeg" />,
   ]);
 };
 
