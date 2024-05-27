@@ -3,7 +3,6 @@ import cn from "classnames";
 import CookieContext from "../../context/cookie-context";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { isBrowser } from "../../helpers/services/is-browser";
-import NotificationStripeContext from "../../context/notification-stripe-context";
 import CommonContext from "../../context/common-context";
 
 export const CookiesPopup = ({ className }) => {
@@ -14,7 +13,6 @@ export const CookiesPopup = ({ className }) => {
     isShowCookiePopup,
     handleCloseCookiePopup,
   } = useContext(CookieContext);
-  const { expand } = useContext(NotificationStripeContext);
   const { sectionOptions } = useContext(CommonContext);
   const isRiskWarningNotification = sectionOptions?.isRiskWarningNotification;
 
@@ -41,10 +39,7 @@ export const CookiesPopup = ({ className }) => {
       className={cn(
         "cookies-popup",
         { "cookies-popup--active": isShowCookiePopup && isReady },
-        { "cookies-popup--higher": isRiskWarningNotification && expand },
-        {
-          "cookies-popup--higher-if-collapsed": isRiskWarningNotification && !expand,
-        },
+        { "cookies-popup--higher-if-collapsed": isRiskWarningNotification },
         className
       )}
     >

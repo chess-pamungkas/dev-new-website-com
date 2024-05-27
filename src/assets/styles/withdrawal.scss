@@ -314,8 +314,11 @@
     line-height: 15px;
     text-align: justify;
 
+    &--cysec {
+      font-size: 15px;
+    }
+
     @include desktop-xl {
-      font-size: 10px;
       line-height: 20px;
     }
 
