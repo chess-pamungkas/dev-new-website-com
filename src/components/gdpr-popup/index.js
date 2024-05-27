@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import CookieContext from "../../context/cookie-context";
 import { CookieCategoryItem } from "./components/cookie-category-item";
 import {
@@ -21,11 +22,11 @@ export const GDPRPopup = ({ className }) => {
     handleOpenCookiePopup,
   } = useContext(CookieContext);
 
-  const onAcceptAll = (e) => {
+  const onAcceptAll = () => {
     acceptAllCookies();
     handleCloseGDPRPopup();
   };
-  const onAcceptSelected = (e) => {
+  const onAcceptSelected = () => {
     acceptCookies(acceptedCookies);
     handleCloseGDPRPopup();
   };
@@ -87,4 +88,8 @@ export const GDPRPopup = ({ className }) => {
       </div>
     </div>
   );
+};
+
+GDPRPopup.propTypes = {
+  className: PropTypes.string,
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import PrivacyPolicyItem from "./privacy-policy-item";
 import { getPrivacyPolicyContent } from "../../../helpers/privacy-policy.config";
 
@@ -10,12 +11,15 @@ const PrivacyPolicyContent = ({ className }) => {
     <section className={cn("privacy-policy", className)}>
       <div className="privacy-policy__wrapper">
         <h2 className="privacy-policy__title">{"Privacy Policy"}</h2>
-        {policyContent.map((item) => (
-          <PrivacyPolicyItem {...item} />
+        {policyContent.map((item, index) => (
+          <PrivacyPolicyItem key={item.id || index} {...item} />
         ))}
       </div>
     </section>
   );
 };
 
+PrivacyPolicyContent.propTypes = {
+  className: PropTypes.string,
+};
 export default PrivacyPolicyContent;

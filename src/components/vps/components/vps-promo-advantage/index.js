@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 
@@ -27,4 +28,9 @@ const VPSPromoAdvantage = ({ img, title, titleAccent }) => {
   );
 };
 
+VPSPromoAdvantage.propTypes = {
+  img: PropTypes.string.isRequired, // Image source URL
+  title: PropTypes.string.isRequired, // Main title text
+  titleAccent: PropTypes.string.isRequired, // Words to be highlighted in the title
+};
 export default VPSPromoAdvantage;

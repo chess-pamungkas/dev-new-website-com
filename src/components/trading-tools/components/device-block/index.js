@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import phoneIcon from "../../../../assets/images/icons/phone.svg";
 import tabletIcon from "../../../../assets/images/icons/tablet.svg";
 import laptopIcon from "../../../../assets/images/icons/laptop.svg";
@@ -81,6 +82,11 @@ const DeviceBlock = ({ className, isAnimationStarted }) => {
       />
     </div>
   );
+};
+
+DeviceBlock.propTypes = {
+  className: PropTypes.string,
+  isAnimationStarted: PropTypes.bool.isRequired,
 };
 
 export default DeviceBlock;

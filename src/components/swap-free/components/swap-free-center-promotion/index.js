@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 import { SWAP_FREE_PROMO_OPTIONS } from "../../../../helpers/swap-free.config";
@@ -41,6 +42,10 @@ const SwapFreeCenterPromotion = ({ className }) => {
       </div>
     </section>
   );
+};
+
+SwapFreeCenterPromotion.propTypes = {
+  className: PropTypes.string,
 };
 
 export default SwapFreeCenterPromotion;

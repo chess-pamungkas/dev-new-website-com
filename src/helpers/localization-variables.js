@@ -14,6 +14,7 @@ export const getLocalizationVariables = () => {
       clientConfig.countryCode === JP_CONTRY_CODE) ||
     selectedLanguage.id === JP_LANG_CODE;
 
+  //TODO Check if needed
   const isIncreasedMinDeposit = () => {
     const HIGHER_DEPOSIT_COUNTRIES = [
       "CA", // Canada

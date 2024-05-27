@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import ButtonLink from "../../../shared/button-link";
 import MarketItemAdvantageList from "../market-item-advantage-list";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
@@ -37,6 +38,16 @@ const MarketItem = ({
       </div>
     </div>
   );
+};
+
+MarketItem.propTypes = {
+  className: PropTypes.string,
+  icon: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isGrayBackground: PropTypes.bool,
+  link: PropTypes.string.isRequired,
+  advantages: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MarketItem;

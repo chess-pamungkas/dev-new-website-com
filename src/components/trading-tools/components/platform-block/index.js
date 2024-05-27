@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { animated } from "react-spring";
 
 const PlatformBlock = ({ className, icon, title, animationStyle }) => {
@@ -13,4 +14,10 @@ const PlatformBlock = ({ className, icon, title, animationStyle }) => {
   );
 };
 
+PlatformBlock.propTypes = {
+  className: PropTypes.string,
+  icon: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  animationStyle: PropTypes.object,
+};
 export default PlatformBlock;

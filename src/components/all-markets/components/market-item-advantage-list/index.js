@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import icon from "../../../../assets/images/all-markets/advantage-icon.svg";
 import iconSm from "../../../../assets/images/all-markets/advantage-icon-sm.svg";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
@@ -62,6 +63,15 @@ const MarketItemAdvantageList = ({
       </div>
     </div>
   );
+};
+
+MarketItemAdvantageList.propTypes = {
+  className: PropTypes.string,
+  advantages: PropTypes.arrayOf(PropTypes.object).isRequired,
+  title: PropTypes.string,
+  btnTitle: PropTypes.string,
+  link: PropTypes.string,
+  btnClassName: PropTypes.string,
 };
 
 export default MarketItemAdvantageList;

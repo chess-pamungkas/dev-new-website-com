@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import VideoBlock from "../video-block";
 import Slider from "react-slick";
@@ -76,4 +77,8 @@ const VideosCarousel = ({ className, videos }) => {
   );
 };
 
+VideosCarousel.propTypes = {
+  className: PropTypes.string,
+  videos: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 export default VideosCarousel;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Lottie from "lottie-react";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import ButtonLink from "../shared/button-link";
@@ -65,4 +66,13 @@ export const MarketingCircle = ({
   );
 };
 
+MarketingCircle.propTypes = {
+  animation: PropTypes.object.isRequired,
+  upper: PropTypes.element.isRequired,
+  leftUpper: PropTypes.element.isRequired,
+  rightUpper: PropTypes.element.isRequired,
+  bottom: PropTypes.element.isRequired,
+  leftBottom: PropTypes.element.isRequired,
+  rightBottom: PropTypes.element.isRequired,
+};
 export default MarketingCircle;

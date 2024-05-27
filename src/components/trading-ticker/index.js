@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import TradingSymbols from "./components/trading-symbols";
 import { getTradingSections } from "../../helpers/config";
 import TradingSections from "./components/trading-sections";
@@ -43,4 +44,13 @@ const TradingTicker = ({
   );
 };
 
+TradingTicker.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string,
+  pageSpecificSection: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }),
+  isInfiniteAutoScroll: PropTypes.bool,
+};
 export default TradingTicker;

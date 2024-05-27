@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import Slider from "../../../shared/slider";
-import { useState } from "react";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import {
   CLIENTS_MARKS,
@@ -81,6 +81,10 @@ const IncomeSlider = ({ className }) => {
       </div>
     </section>
   );
+};
+
+IncomeSlider.propTypes = {
+  className: PropTypes.string,
 };
 
 export default IncomeSlider;

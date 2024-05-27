@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { Logo } from "../shared/icons";
 import AdvantageBlock from "./components/advantage-block";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
@@ -34,6 +35,12 @@ const Performance = ({ className, title, advantages }) => {
       </div>
     </section>
   );
+};
+
+Performance.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.node.isRequired,
+  advantages: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Performance;

@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import cn from "classnames";
+import PropTypes from "prop-types";
 import { GetRegistrationLink } from "../../../../helpers/constants";
 import ButtonLink from "../../../shared/button-link";
-import cn from "classnames";
+
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 
 const NO_VALUE = "N/A";
@@ -54,4 +56,15 @@ const TableLiveColumn = ({ symbol, tradingSymbols }) => {
   );
 };
 
+TableLiveColumn.propTypes = {
+  symbol: PropTypes.string.isRequired,
+  tradingSymbols: PropTypes.arrayOf(
+    PropTypes.shape({
+      symbol: PropTypes.string.isRequired,
+      bid: PropTypes.number,
+      ask: PropTypes.number,
+      direction: PropTypes.string,
+    })
+  ).isRequired,
+};
 export default TableLiveColumn;

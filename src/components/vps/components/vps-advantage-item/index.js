@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 
 const VPSAdvantageItem = ({ className, icon, title, text }) => {
@@ -13,4 +14,14 @@ const VPSAdvantageItem = ({ className, icon, title, text }) => {
   );
 };
 
+VPSAdvantageItem.propTypes = {
+  className: PropTypes.string,
+  icon: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
+
+VPSAdvantageItem.defaultProps = {
+  className: "",
+};
 export default VPSAdvantageItem;

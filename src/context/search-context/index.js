@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import PropTypes from "prop-types";
 import { INITIAL_SEARCH_STATE } from "../../helpers/constants";
 
 const SearchContext = createContext();
@@ -10,7 +11,7 @@ export const SearchProvider = ({ children }) => {
     <SearchContext.Provider
       value={{
         searchState,
-        setSearchState
+        setSearchState,
       }}
     >
       {children}
@@ -18,4 +19,7 @@ export const SearchProvider = ({ children }) => {
   );
 };
 
+SearchProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default SearchContext;

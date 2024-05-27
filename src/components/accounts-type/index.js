@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import HighlightedLocalizationText from "../../components/shared/highlighted-localization-text";
 import { ACCOUNT_TYPES } from "../../helpers/accounts-type.config";
@@ -40,6 +41,10 @@ const AccountsType = ({ className }) => {
       ))}
     </section>
   );
+};
+
+AccountsType.propTypes = {
+  className: PropTypes.string,
 };
 
 export default AccountsType;

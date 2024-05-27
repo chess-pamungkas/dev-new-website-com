@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import AnchorLink from "react-anchor-link-smooth-scroll";
@@ -32,4 +33,12 @@ const LegalRegulatorItem = ({
   );
 };
 
+LegalRegulatorItem.propTypes = {
+  className: PropTypes.string,
+  icon: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  titleAccent: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  anchorLink: PropTypes.string.isRequired,
+};
 export default LegalRegulatorItem;

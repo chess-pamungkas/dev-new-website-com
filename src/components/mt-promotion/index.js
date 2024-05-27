@@ -1,11 +1,11 @@
 import React, { forwardRef } from "react";
+import PropTypes from "prop-types";
 import cn from "classnames";
 import MarketItemAdvantageList from "../all-markets/components/market-item-advantage-list";
 import Tabs from "../shared/tabs";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
-// eslint-disable-next-line react/display-name
 const MtPromotion = forwardRef(
   (
     {
@@ -66,5 +66,18 @@ const MtPromotion = forwardRef(
     );
   }
 );
+
+MtPromotion.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  advantages: PropTypes.array.isRequired,
+  advantagesTitle: PropTypes.string.isRequired,
+  downloadTitle: PropTypes.string.isRequired,
+  tabs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  image: PropTypes.string.isRequired,
+};
+
+// Set display name for the component
+MtPromotion.displayName = "MtPromotion";
 
 export default MtPromotion;

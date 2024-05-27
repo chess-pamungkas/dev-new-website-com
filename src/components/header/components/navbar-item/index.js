@@ -1,4 +1,5 @@
 import React, { useRef, useContext } from "react";
+import PropTypes from "prop-types";
 import cn from "classnames";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { AngleDownIcon } from "../../../shared/icons";
@@ -13,16 +14,14 @@ const NavbarItem = ({ className, title, subItems = [] }) => {
   const { dropdownHeightOffset, isScrolled } = useContext(CommonContext);
 
   const hideDropdown = () => {
-    if (dropdownRef?.current) {
-      dropdownRef.current.style.visibility = "hidden";
-      dropdownRef.current.style.opacity = "0";
+    if (dropdownRef.current) {
+      dropdownRef.current.classList.remove("visible");
     }
   };
 
   const showDropdown = () => {
-    if (dropdownRef?.current) {
-      dropdownRef.current.style.visibility = "visible";
-      dropdownRef.current.style.opacity = "1";
+    if (dropdownRef.current) {
+      dropdownRef.current.classList.add("visible");
     }
   };
 
@@ -52,7 +51,7 @@ const NavbarItem = ({ className, title, subItems = [] }) => {
           style={{ top: `${dropdownHeightOffset}px` }}
         >
           {subItems.map(
-            (subItem, i) =>
+            (subItem) =>
               !subItem.footerOnly && (
                 <NavbarSubItem
                   key={`header-menu-${stringTransformToKebabCase(
@@ -67,6 +66,16 @@ const NavbarItem = ({ className, title, subItems = [] }) => {
       )}
     </li>
   );
+};
+
+NavbarItem.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  subItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default NavbarItem;

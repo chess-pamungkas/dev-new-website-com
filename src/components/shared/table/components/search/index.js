@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useAsyncDebounce } from "react-table";
 import { useTranslationWithVariables } from "../../../../../helpers/hooks/use-translation-with-vars";
 import { SearchIcon } from "../../../icons";
@@ -31,4 +32,8 @@ const TableSearch = ({ globalFilter, setGlobalFilter }) => {
   );
 };
 
+TableSearch.propTypes = {
+  globalFilter: PropTypes.string,
+  setGlobalFilter: PropTypes.func.isRequired,
+};
 export default TableSearch;

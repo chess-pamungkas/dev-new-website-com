@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import PropTypes from "prop-types";
 
 const NotificationStripeContext = createContext();
 
@@ -17,4 +18,7 @@ export const NotificationStripeProvider = ({ children }) => {
   );
 };
 
+NotificationStripeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default NotificationStripeContext;

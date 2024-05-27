@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { Logo } from "../shared/icons";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
@@ -53,6 +54,17 @@ const SplitTextPromotion = ({
       </div>
     </section>
   );
+};
+
+SplitTextPromotion.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  table: PropTypes.node,
+  button: PropTypes.node,
+  buttonNote: PropTypes.string,
+  id: PropTypes.string,
 };
 
 export default SplitTextPromotion;

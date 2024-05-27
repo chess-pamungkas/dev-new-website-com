@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import cn from "classnames";
+import PropTypes from "prop-types";
 import TradingSectionTitle from "../trading-section-title";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import Dropdown from "../../../shared/dropdown";
-import cn from "classnames";
 
 const TradingSections = ({
   className,
@@ -52,6 +53,22 @@ const TradingSections = ({
       )}
     </div>
   );
+};
+
+TradingSections.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string,
+  selectedSection: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+  setSelectedSection: PropTypes.func.isRequired,
+  tradingSection: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default TradingSections;

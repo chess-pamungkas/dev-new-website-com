@@ -48,6 +48,7 @@ export const useSearchData = () => {
         return [];
 
       const results = currentLocaleIndexedData.reduce((acc, piece) => {
+        //TODO Refactor and test
         var [url, content] = piece.split("_");
         content = replaceLocaleVariables(content, localizationVariables);
         if (!url || !content) return acc;

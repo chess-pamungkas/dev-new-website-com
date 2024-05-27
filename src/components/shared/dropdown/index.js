@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 
 const Dropdown = ({
@@ -63,4 +64,21 @@ const Dropdown = ({
   );
 };
 
+Dropdown.propTypes = {
+  className: PropTypes.string,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      onClick: PropTypes.func,
+    })
+  ).isRequired,
+  selectedItem: PropTypes.shape({
+    id: PropTypes.string,
+    value: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+  setSelectedItem: PropTypes.func.isRequired,
+  isDropdownShown: PropTypes.bool,
+};
 export default Dropdown;

@@ -935,5 +935,6 @@ const PRIVACY_POLICY_CONTENT_FSA = [
   },
 ];
 
-export const getPrivacyPolicyContent = () =>
-  isCySEC ? PRIVACY_POLICY_CONTENT : PRIVACY_POLICY_CONTENT_FSA;
+export const getPrivacyPolicyContent = () => {
+  return isCySEC ? PRIVACY_POLICY_CONTENT : PRIVACY_POLICY_CONTENT_FSA;
+};

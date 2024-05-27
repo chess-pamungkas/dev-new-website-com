@@ -1,9 +1,10 @@
 import React from "react";
 import { animated } from "react-spring";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import ButtonLink from "../shared/button-link";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
-import {DIR_LTR, DIR_RTL} from "../../helpers/constants";
+import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
 const Promotion = ({
   className,
@@ -64,4 +65,16 @@ const Promotion = ({
   );
 };
 
+Promotion.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+  sectionRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  bgAnimationConfig: PropTypes.object,
+  textAnimationConfig: PropTypes.object,
+  image: PropTypes.string,
+  btnTitle: PropTypes.string,
+  link: PropTypes.string,
+  isReverseOrder: PropTypes.bool,
+  isRedPalette: PropTypes.bool,
+};
 export default Promotion;

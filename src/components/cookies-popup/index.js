@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import CookieContext from "../../context/cookie-context";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { isBrowser } from "../../helpers/services/is-browser";
@@ -26,7 +27,7 @@ export const CookiesPopup = ({ className }) => {
     }
   }, []);
 
-  const acceptAll = (e) => {
+  const acceptAll = () => {
     acceptAllCookies();
     handleCloseCookiePopup();
   };
@@ -43,7 +44,8 @@ export const CookiesPopup = ({ className }) => {
         { "cookies-popup--active": isShowCookiePopup && isReady },
         { "cookies-popup--higher": isRiskWarningNotification && expand },
         {
-          "cookies-popup--higher-if-collapsed": isRiskWarningNotification && !expand,
+          "cookies-popup--higher-if-collapsed":
+            isRiskWarningNotification && !expand,
         },
         className
       )}
@@ -70,4 +72,8 @@ export const CookiesPopup = ({ className }) => {
       </div>
     </div>
   );
+};
+
+CookiesPopup.propTypes = {
+  className: PropTypes.string,
 };

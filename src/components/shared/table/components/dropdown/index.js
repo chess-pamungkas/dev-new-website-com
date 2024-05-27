@@ -1,5 +1,6 @@
+import React from "react";
+import PropTypes from "prop-types";
 import Dropdown from "../../../dropdown";
-import React, { useState } from "react";
 import { TABLE_PAGE_SIZES } from "../../../../../helpers/constants";
 import { useTranslationWithVariables } from "../../../../../helpers/hooks/use-translation-with-vars";
 
@@ -28,6 +29,11 @@ const TableShowByDropdown = ({ state, setPageSize }) => {
       />
     </div>
   );
+};
+
+TableShowByDropdown.propTypes = {
+  state: PropTypes.object.isRequired,
+  setPageSize: PropTypes.func.isRequired,
 };
 
 export default TableShowByDropdown;

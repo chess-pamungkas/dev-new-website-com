@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import HowToStartItem from "../how-to-start-item";
 import { START_STEPS } from "../../../../helpers/partners.config";
@@ -28,7 +29,9 @@ const HowToStart = ({ className }) => {
       })}
       dir={isRTL ? DIR_RTL : DIR_LTR}
     >
-      <h2 className="partners-start__title">{t(`partners_start-title${sitePostfix}`)}</h2>
+      <h2 className="partners-start__title">
+        {t(`partners_start-title${sitePostfix}`)}
+      </h2>
       <div className="partners-start__items">
         {START_STEPS.length > 0 &&
           START_STEPS.map((block) => (
@@ -50,6 +53,10 @@ const HowToStart = ({ className }) => {
       <img src={arrow2} alt="" className="partners-start__arrow2" />
     </section>
   );
+};
+
+HowToStart.propTypes = {
+  className: PropTypes.string,
 };
 
 export default HowToStart;

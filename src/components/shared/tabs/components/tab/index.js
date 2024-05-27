@@ -1,11 +1,11 @@
-import React, { useEffect, memo } from "react";
+import React, { memo } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 
 const Tab = memo(({ children, isSelected, tabIndex, onTabClick }) => {
   return (
     <li
       className={cn("tabs__tab", { "tabs__tab--active": isSelected })}
-      // eslint-disable-next-line
       role="tab"
       id={`tab-${tabIndex}`}
       aria-selected={isSelected}
@@ -22,5 +22,14 @@ const Tab = memo(({ children, isSelected, tabIndex, onTabClick }) => {
     </li>
   );
 });
+
+Tab.propTypes = {
+  children: PropTypes.node.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  tabIndex: PropTypes.number.isRequired,
+  onTabClick: PropTypes.func.isRequired,
+};
+
+Tab.displayName = "Tab";
 
 export default Tab;

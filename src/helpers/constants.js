@@ -67,10 +67,13 @@ export const CONTACT_ADDRESS =
 
 export const HOME_PAGE_LINK = "/";
 
-export const getContactPhone = () =>
-  isCySEC ? CONTACT_PHONE : CONTACT_PHONE_FSA;
-export const getContactEmail = () =>
-  isCySEC ? CONTACT_EMAIL : CONTACT_EMAIL_FSA;
+export const getContactPhone = () => {
+  return isCySEC ? CONTACT_PHONE : CONTACT_PHONE_FSA;
+};
+
+export const getContactEmail = () => {
+  return isCySEC ? CONTACT_EMAIL : CONTACT_EMAIL_FSA;
+};
 
 export const BLOG_URL = "https://oqtima.news/";
 

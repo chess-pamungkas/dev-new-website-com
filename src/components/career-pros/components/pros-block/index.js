@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 import { Logo } from "../../../shared/icons";
@@ -31,6 +32,13 @@ const ProsBlock = ({ className, title, titleAccent, text }) => {
       </p>
     </div>
   );
+};
+
+ProsBlock.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  titleAccent: PropTypes.arrayOf(PropTypes.string).isRequired,
+  text: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default ProsBlock;

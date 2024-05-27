@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { AngleDownIcon } from "../icons";
 
@@ -56,7 +57,7 @@ const Accordion = ({
       <button
         type="button"
         className="accordion__title"
-        onClick={(e) => {
+        onClick={() => {
           handleClick(title);
         }}
       >
@@ -72,4 +73,13 @@ const Accordion = ({
   );
 };
 
+Accordion.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool,
+  onSelect: PropTypes.func,
+  icon: PropTypes.func,
+  iconForActive: PropTypes.func,
+  children: PropTypes.node,
+};
 export default Accordion;

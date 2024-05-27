@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { getTradingSections } from "../../helpers/config";
 import { io } from "socket.io-client";
 import { sendLog } from "../../helpers/services/log-service";
@@ -24,7 +25,7 @@ export const TradingProvider = ({ children }) => {
           });
         }
       } catch (error) {
-        sendLog({message: error.message, type: error.name});
+        sendLog({ message: error.message, type: error.name });
       }
     };
 
@@ -56,4 +57,7 @@ export const TradingProvider = ({ children }) => {
   );
 };
 
+TradingProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default TradingContext;

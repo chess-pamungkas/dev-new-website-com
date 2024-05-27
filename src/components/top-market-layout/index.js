@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import ButtonLink from "../shared/button-link";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
@@ -38,4 +39,12 @@ const TopMarketLayout = ({
   );
 };
 
+TopMarketLayout.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+  title: PropTypes.string,
+  btnTitle: PropTypes.string,
+  link: PropTypes.string,
+  headerTemplate: PropTypes.node,
+};
 export default TopMarketLayout;

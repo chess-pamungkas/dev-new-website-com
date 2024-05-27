@@ -1,4 +1,3 @@
-import React from "react";
 import { useWindowSize } from "./hooks/use-window-size";
 import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
 import { MobileCell } from "../components/shared/table/components/mobile-cell";

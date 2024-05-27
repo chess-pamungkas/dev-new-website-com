@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 
@@ -29,4 +30,10 @@ const BenefitBlock = ({ className, title, text, icon: Icon }) => {
   );
 };
 
+BenefitBlock.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.arrayOf(PropTypes.string).isRequired,
+  icon: PropTypes.func.isRequired,
+};
 export default BenefitBlock;

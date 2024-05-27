@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import cn from "classnames";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 
@@ -29,9 +30,20 @@ const AccountTypeAdvantage = ({
           {t(value)}
         </p>
       )}
-      {!skipHr && <hr className="account-type-advantage__hr" />}
+      {!skipHr && <hr className="account-type-advantage__separator" />}
     </div>
   );
+};
+
+AccountTypeAdvantage.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  isIcon: PropTypes.bool,
+  icon: PropTypes.string,
+  skipHr: PropTypes.bool,
+  smallValue: PropTypes.bool,
+  higherLine: PropTypes.bool,
 };
 
 export default AccountTypeAdvantage;

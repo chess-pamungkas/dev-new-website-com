@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import vpsImg from "../../../../assets/images/swap-free/swap-free.svg";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
@@ -32,8 +33,10 @@ const SwapFreeTopPromotion = ({ className }) => {
               accentClassName="highlighted-in-red"
             />
           </p>
-          {SWAP_FREE_PROMO_LIST.map((item) => (
-            <p className="swap-free-promotion__text">{t(item.text)}</p>
+          {SWAP_FREE_PROMO_LIST.map((item, index) => (
+            <p key={index} className="swap-free-promotion__text">
+              {t(item.text)}
+            </p>
           ))}
         </div>
       </div>
@@ -41,4 +44,7 @@ const SwapFreeTopPromotion = ({ className }) => {
   );
 };
 
+SwapFreeTopPromotion.propTypes = {
+  className: PropTypes.string,
+};
 export default SwapFreeTopPromotion;
