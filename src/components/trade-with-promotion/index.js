@@ -246,7 +246,13 @@ TradeWithPromotion.propTypes = {
   className: PropTypes.string,
   sectionRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+    PropTypes.shape({
+      current:
+        typeof Element === "undefined"
+          ? PropTypes.any
+          : PropTypes.instanceOf(Element),
+    }),
   ]),
 };
+
 export default TradeWithPromotion;
