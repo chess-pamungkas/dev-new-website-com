@@ -6,7 +6,6 @@ import LanguageContext from "../context/language-context";
 const FSA_DOCS_FOLDER = "https://docs.oqtima.com/legal";
 const EU_DOCS_FOLDER = "https://docs.oqtima.eu/legal";
 
-
 const bestExecutionPolicyFSA = {
   filename: "Best_Execution_Policy.pdf",
   languages: ["en"],
@@ -31,7 +30,6 @@ export const clientAgreementFSA = {
   filename: "Client_Agreement.pdf",
   languages: ["en"],
 };
-
 
 // EU docs
 const clientCategorisationNotice = {
@@ -230,9 +228,17 @@ const LEGAL_DOCS_FSA = () => {
   ];
 };
 
-const RISK_DISCLOSURE_DOC_FSA = generateFileLinkWithLang(riskDisclosureNoticeFSA, "en");
-export const RISK_DISCLOSURE_DOC = generateFileLinkWithLang(riskDisclosure, "en");
+const RISK_DISCLOSURE_DOC_FSA = generateFileLinkWithLang(
+  riskDisclosureNoticeFSA,
+  "en"
+);
+export const RISK_DISCLOSURE_DOC = generateFileLinkWithLang(
+  riskDisclosure,
+  "en"
+);
 
 export const getLegalDocs = () => (isCySEC ? LEGAL_DOCS() : LEGAL_DOCS_FSA());
 export const getRiskDisclosureDoc = () =>
   isCySEC ? RISK_DISCLOSURE_DOC : RISK_DISCLOSURE_DOC_FSA;
+
+export const termsAndConds = generateFileLinkWithLang(termsAndConditions, "en");

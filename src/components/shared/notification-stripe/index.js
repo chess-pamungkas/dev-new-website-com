@@ -10,18 +10,13 @@ import { isBrowser } from "../../../helpers/services/is-browser";
 import CommonContext from "../../../context/common-context";
 import { useEntityNotifications } from "../../../helpers/hooks/use-entity-notifications";
 import { redirectToOppositeEntity } from "../../../helpers/services/redirect-to-opposite-entity";
-import { isCySEC } from "../../../helpers/entity-resolver";
 
 export const RiskWarningNotification = () => {
   const { t } = useTranslationWithVariables();
 
   return (
     <div className="notification-stripe__cysec-wrapper">
-      <span
-        className={cn("notification-stripe__text", {
-          "notification-stripe__text--cysec": isCySEC,
-        })}
-      >
+      <span className={cn("notification-stripe__text")}>
         {t("notification-stripe-cysec")}&nbsp;
         <a
           className="notification-stripe__link"
