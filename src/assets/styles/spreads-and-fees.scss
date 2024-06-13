@@ -291,6 +291,42 @@
   }
 }
 
+.fees-note {
+  padding: 0px 30px;
+  display: flex;
+  flex-direction: column;
+
+  &__text {
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-bottom: 35px;
+    font-size: 11px;
+    line-height: 14px;
+
+    @include tablet {
+      font-size: 17px;
+      line-height: 21px;
+    }
+
+    @include desktop-lg {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  &__link {
+    color: map-get($colors, "red");
+    text-decoration: underline;
+    transition: all 0.3s;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+    }
+  }
+}
+
 .swap-rate {
   padding: 57px 15px 254px 15px;
   display: flex;
@@ -368,9 +404,6 @@
     @include tablet {
       font-size: 22px;
       line-height: 27px;
-    }
-
-    @include desktop-lg {
     }
 
     @include desktop-xl {

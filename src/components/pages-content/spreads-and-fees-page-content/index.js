@@ -29,6 +29,7 @@ import {
 import { isCySEC } from "../../../helpers/entity-resolver";
 import TradingContext from "../../../context/trading-context";
 import { GeneralTableColumns } from "../../../helpers/top-market-tables";
+import { termsAndConds } from "../../../helpers/documents";
 
 const SpreadsAndFeesPageContent = () => {
   const { t } = useTranslationWithVariables();
@@ -201,6 +202,31 @@ const SpreadsAndFeesPageContent = () => {
           columns={ColumnsSpreadTable2()}
           className={cn("spreads--common-table", "spreads--second-table")}
         />
+
+        {isCySEC && (
+          <div className="fees-note">
+            <span className="fees-note__text">
+              {t("spreads_fees-note1_1")}&nbsp;
+              <a
+                className="fees-note__link"
+                href={termsAndConds}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t("spreads_fees-note1_link")}
+              </a>
+              &nbsp;{t("spreads_fees-note1_2")}
+            </span>
+            <span className="fees-note__text">{t("spreads_fees-note2")}</span>
+            <ul className="fees-note__list">
+              <li className="fees-note__text">{t("spreads_fees-note3")}</li>
+              <li className="fees-note__text">{t("spreads_fees-note4")}</li>
+              <li className="fees-note__text">{t("spreads_fees-note5")}</li>
+              <li className="fees-note__text">{t("spreads_fees-note6")}</li>
+              <li className="fees-note__text">{t("spreads_fees-note7")}</li>
+            </ul>
+          </div>
+        )}
       </TopMarketLayout>
 
       <section className={cn("swap-rate", { "swap-rate--rtl": isRTL })}>
