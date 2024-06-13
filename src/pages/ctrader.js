@@ -11,20 +11,20 @@ const CTraderPage = () => {
   const { t } = useTranslationWithVariables();
   // Temporarily hidden https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-539
   return (
-    // <>
-    //   <Seo
-    //     title={t("page-ctrader-title")}
-    //     description={t("page-ctrader-description")}
-    //   />
-    //   <CtraderPageContent />
-    // </>
     <>
-    <Seo
-      title={t("system-page-404-title")}
-      robots={"noindex"}
-    />
-    <NotFoundContent />
-  </>
+      <Seo
+        title={t("page-ctrader-title")}
+        description={t("page-ctrader-description")}
+      />
+      <CtraderPageContent />
+    </>
+  //   <>
+  //   <Seo
+  //     title={t("system-page-404-title")}
+  //     robots={"noindex"}
+  //   />
+  //   <NotFoundContent />
+  // </>
   );
 };
 
