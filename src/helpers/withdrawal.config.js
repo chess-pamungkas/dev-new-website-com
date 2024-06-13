@@ -510,7 +510,26 @@ export const getColumnWithdrawal = () => {
 
 export const WithdrawalDisclaimer = () => {
   const { t } = useTranslationWithVariables();
-  return (
+
+  return isCySEC ? (
+    <>
+      <p className="notes-block__text notes-block__text--cysec">
+        1 {t(`withdrawal_disclaimer1${sitePostfix}`)}
+      </p>
+      <p className="notes-block__text notes-block__text--cysec">
+        2 {t(`withdrawal_disclaimer2${sitePostfix}`)}
+      </p>
+      <p className="notes-block__text notes-block__text--cysec">
+        3 {t(`withdrawal_disclaimer3_1${sitePostfix}`)}
+      </p>
+      <p className="notes-block__text notes-block__text--pl notes-block__text--cysec">
+        {t(`withdrawal_disclaimer3_2${sitePostfix}`)}
+      </p>
+      <p className="notes-block__text notes-block__text--cysec">
+        4 {t(`withdrawal_disclaimer4${sitePostfix}`)}
+      </p>
+    </>
+  ) : (
     <>
       <p className="notes-block__text">
         1 {t(`withdrawal_disclaimer1${sitePostfix}`)}
@@ -535,8 +554,12 @@ export const DepositDisclaimer = () => {
   const { t } = useTranslationWithVariables();
   return isCySEC ? (
     <>
-      <p className="notes-block__text">1 {t("deposit_disclaimer1-cysec")}</p>
-      <p className="notes-block__text">2 {t("deposit_disclaimer2-cysec")}</p>
+      <p className="notes-block__text notes-block__text--cysec">
+        1 {t("deposit_disclaimer1-cysec")}
+      </p>
+      <p className="notes-block__text notes-block__text--cysec">
+        2 {t("deposit_disclaimer2-cysec")}
+      </p>
     </>
   ) : (
     <>

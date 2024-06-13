@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const NotificationStripeContext = createContext();
 
+// TODO: Remove it, it's not used anymore
 export const NotificationStripeProvider = ({ children }) => {
   const [expand, setExpand] = useState(true);
 

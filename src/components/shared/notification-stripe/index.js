@@ -7,22 +7,17 @@ import { useTranslationWithVariables } from "../../../helpers/hooks/use-translat
 import { getRiskDisclosureDoc } from "../../../helpers/documents";
 import { setRedirectOrBannedPopupShown } from "../../../helpers/services/set-redirect-or-banned-popup-shown";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
-import expandIcon from "../../../assets/images/icons/accordion.svg";
-import collapseIcon from "../../../assets/images/icons/accordion-active.svg";
-import NotificationStripeContext from "../../../context/notification-stripe-context";
 import { isBrowser } from "../../../helpers/services/is-browser";
 import CommonContext from "../../../context/common-context";
 import { useEntityNotifications } from "../../../helpers/hooks/use-entity-notifications";
 import { redirectToOppositeEntity } from "../../../helpers/services/redirect-to-opposite-entity";
 
 export const RiskWarningNotification = () => {
-  const { expand, setExpand } = useContext(NotificationStripeContext);
-  const { isMobile } = useWindowSize();
   const { t } = useTranslationWithVariables();
 
   return (
     <div className="notification-stripe__cysec-wrapper">
-      <span className={cn("notification-stripe__text", { collapsed: !expand })}>
+      <span className={cn("notification-stripe__text")}>
         {t("notification-stripe-cysec")}&nbsp;
         <a
           className="notification-stripe__link"
@@ -33,15 +28,6 @@ export const RiskWarningNotification = () => {
           {t("notification-stripe-cysec-link")}
         </a>
       </span>
-      {isMobile && (
-        <span>
-          <img
-            width="25"
-            onClick={() => setExpand(!expand)}
-            src={expand ? collapseIcon : expandIcon}
-          />
-        </span>
-      )}
     </div>
   );
 };
@@ -96,7 +82,6 @@ const NotificationsContainer = ({ className, setSectionOptions }) => {
   const { riskWarningRef } = useContext(CommonContext);
   const [isHidden, setIsHidden] = useState(true);
   const { isMobile, isMD } = useWindowSize();
-  const { expand } = useContext(NotificationStripeContext);
 
   useEffect(() => {
     setSectionOptions({
@@ -155,7 +140,7 @@ const NotificationsContainer = ({ className, setSectionOptions }) => {
 
       switch (true) {
         case isMobile:
-          bottom = expand ? "155px" : "65px";
+          bottom = "135px";
           break;
         case isMD:
           bottom = "110px";
@@ -170,7 +155,7 @@ const NotificationsContainer = ({ className, setSectionOptions }) => {
         livechat.style.bottom = bottom;
       }
     }
-  }, [isRiskWarningNotification, isMobile, isMD, expand]);
+  }, [isRiskWarningNotification, isMobile, isMD]);
 
   return (
     <>

@@ -141,12 +141,13 @@ const CYSEC_PLATFORMS_TAB = {
       icon: MT5Icon,
       description: "header-nav-tab-platforms-mt5-desc",
     },
-    {
-      title: "header-nav-tab-platforms-ctrader-title",
-      link: CTRADER_PAGE_LINK,
-      icon: CTraderIcon,
-      description: "header-nav-tab-platforms-ctrader-desc",
-    },
+    // Temporarily hidden https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-539
+    // {
+    //   title: "header-nav-tab-platforms-ctrader-title",
+    //   link: CTRADER_PAGE_LINK,
+    //   icon: CTraderIcon,
+    //   description: "header-nav-tab-platforms-ctrader-desc",
+    // },
   ],
 };
 
@@ -171,12 +172,13 @@ const FSA_PLATFORMS_TAB = {
       icon: MT5Icon,
       description: "header-nav-tab-platforms-mt5-desc",
     },
-    {
-      title: "header-nav-tab-platforms-ctrader-title",
-      link: CTRADER_PAGE_LINK,
-      icon: CTraderIcon,
-      description: "header-nav-tab-platforms-ctrader-desc",
-    },
+    // Temporarily hidden https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-539
+    // {
+    //   title: "header-nav-tab-platforms-ctrader-title",
+    //   link: CTRADER_PAGE_LINK,
+    //   icon: CTraderIcon,
+    //   description: "header-nav-tab-platforms-ctrader-desc",
+    // },
   ],
 };
 

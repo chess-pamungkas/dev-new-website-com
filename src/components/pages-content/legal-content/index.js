@@ -57,7 +57,7 @@ const LegalContent = () => {
         title={t("legal_documents-title-cysec")}
         text={
           <>
-            <span className="bold">{t("legal_documents-text-bold-cysec")}</span>
+            <span className="subtitle">{t("legal_documents-text-bold-cysec")}</span>
             <span>{t("legal_documents-text-cysec")}</span>
           </>
         }
