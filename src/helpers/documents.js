@@ -82,7 +82,7 @@ const summaryStatement = {
 };
 const disciplineReport = {
   filename:
-    "Disclosure_and_Market_Discipline_Report_Pillar_III_2023_OQtima_EU.pdf",
+    "Disclosure_and_Market_Discipline_Report_Pillar_III_2024_OQtima_EU.pdf",
   languages: ["en"],
 };
 export const privacyPolicy = {
