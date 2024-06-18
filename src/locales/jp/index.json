@@ -1259,7 +1259,7 @@
   "accounts-type_account-type1-total-symbols-value-fsa": "{{ account-type1-total-symbols-fsa }}+",
   "accounts-type_account-type2-title": "アカウントタイプ",
   "accounts-type_account-type2-name": "OQtima ONE",
-  "accounts-type_account-type2-btn-title": "口座開設",
+  "accounts-type_account-type2-btn-title": "アカウントを開設",
   "accounts-type_account-type2-spreads-from-title": "スプレッド",
   "accounts-type_account-type2-spreads-from-value": "{{ account-type2-spreads-from }} ピップ",
   "accounts-type_account-type2-commissions-title": "手数料",
