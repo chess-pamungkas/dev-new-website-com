@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import {
   FAQ_ALL,
@@ -59,7 +60,13 @@ const HelpCenter = ({ className }) => {
       ))}
     </div>
   );
-
+  HelpCenterBlock.propTypes = {
+    title: PropTypes.node,
+    subtitle: PropTypes.string,
+    faq: PropTypes.array.isRequired,
+    titleClassName: PropTypes.string,
+    classNames: PropTypes.arrayOf(PropTypes.string),
+  };
   return (
     <section
       className={cn("help-center", className, {
@@ -121,4 +128,7 @@ const HelpCenter = ({ className }) => {
   );
 };
 
+HelpCenter.propTypes = {
+  className: PropTypes.string,
+};
 export default HelpCenter;

@@ -14,22 +14,27 @@ import { useWindowSize } from "./hooks/use-window-size";
 import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
 
 export const CTRADER_DOWNLOAD_LINKS = {
-  getAndroidLink: () =>
-    isCySEC
+  getAndroidLink: () => {
+    return isCySEC
       ? "https://play.google.com/store/apps/details?id=eu.oqtima.app"
-      : "https://play.google.com/store/apps/details?id=com.oqtima.app",
-  getIOSLink: () =>
-    isCySEC
+      : "https://play.google.com/store/apps/details?id=com.oqtima.app";
+  },
+  getIOSLink: () => {
+    return isCySEC
       ? null
-      : "https://apps.apple.com/cy/app/oqtima-ctrader/id1672522637",
-  getWindowsLink: () =>
-    isCySEC
+      : "https://apps.apple.com/cy/app/oqtima-ctrader/id1672522637";
+  },
+  getWindowsLink: () => {
+    return isCySEC
       ? "https://getctrader.com/oqtimaeu/ctrader-oqtimaeu-setup.exe"
-      : "https://getctrader.com/oqtima/ctrader-oqtima-setup.exe",
-  getWebTraderLink: () =>
-    isCySEC ? "https://app.oqtima.eu/" : "https://app.oqtima.com/",
-  getMacLink: () =>
-    "https://getctradermac.com/spotware/ctrader-spotware-setup.dmg", // generic link for both entities
+      : "https://getctrader.com/oqtima/ctrader-oqtima-setup.exe";
+  },
+  getWebTraderLink: () => {
+    return isCySEC ? "https://app.oqtima.eu/" : "https://app.oqtima.com/";
+  },
+  getMacLink: () => {
+    return "https://getctradermac.com/spotware/ctrader-spotware-setup.dmg"; // generic link for both entities
+  },
 };
 
 export const TRADING_VIEW_DOWNLOAD_LINKS = {
@@ -41,44 +46,59 @@ export const TRADING_VIEW_DOWNLOAD_LINKS = {
 };
 
 export const MT4_DOWNLOAD_LINKS = {
-  getAndroidLink: () =>
-    isCySEC
+  getAndroidLink: () => {
+    return isCySEC
       ? null
-      : "https://download.mql5.com/cdn/mobile/mt4/android?server=OqtimaGlobal-Demo,OqtimaGlobal-Server",
-  getIOSLink: () =>
-    isCySEC
+      : "https://download.mql5.com/cdn/mobile/mt4/android?server=OqtimaGlobal-Demo,OqtimaGlobal-Server";
+  },
+  getIOSLink: () => {
+    return isCySEC
       ? null
-      : "https://download.mql5.com/cdn/mobile/mt4/ios?server=OqtimaGlobal-Demo,OqtimaGlobal-Server",
-  getWindowsLink: () =>
-    isCySEC
+      : "https://download.mql5.com/cdn/mobile/mt4/ios?server=OqtimaGlobal-Demo,OqtimaGlobal-Server";
+  },
+  getWindowsLink: () => {
+    return isCySEC
       ? null
-      : "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
-  getWebTraderLink: () => (isCySEC ? null : MT4_WEB_TRADER_LINK),
-  getMacLink: () =>
-    isCySEC
+      : "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe";
+  },
+  getWebTraderLink: () => {
+    return isCySEC ? null : MT4_WEB_TRADER_LINK;
+  },
+  getMacLink: () => {
+    return isCySEC
       ? null
-      : "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.pkg.zip",
-  getHuaweiLink: () =>
-    isCySEC ? null : "https://appgallery.huawei.com/#/app/C102015319",
+      : "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.pkg.zip";
+  },
+  getHuaweiLink: () => {
+    return isCySEC ? null : "https://appgallery.huawei.com/#/app/C102015319";
+  },
 };
 
 export const MT5_DOWNLOAD_LINKS = {
-  getAndroidLink: () =>
-    isCySEC
+  getAndroidLink: () => {
+    return isCySEC
       ? "https://download.mql5.com/cdn/mobile/mt5/android?server=OQtimaEU-Live"
-      : "https://download.mql5.com/cdn/mobile/mt5/android?server=OQtima-Live",
-  getIOSLink: () =>
-    isCySEC
+      : "https://download.mql5.com/cdn/mobile/mt5/android?server=OQtima-Live";
+  },
+  getIOSLink: () => {
+    return isCySEC
       ? "https://download.mql5.com/cdn/mobile/mt5/ios?server=OQtimaEU-Live"
-      : "https://download.mql5.com/cdn/mobile/mt5/ios?server=OQtima-Live",
-  getWindowsLink: () =>
-    isCySEC
+      : "https://download.mql5.com/cdn/mobile/mt5/ios?server=OQtima-Live";
+  },
+  getWindowsLink: () => {
+    return isCySEC
       ? "https://download.mql5.com/cdn/web/oqtima.eu.ltd/mt5/oqtimaeu5setup.exe"
-      : "https://download.mql5.com/cdn/web/22911/mt5/oqtima5setup.exe",
-  getWebTraderLink: () => MT5_WEB_TRADER_LINK,
-  getMacLink: () =>
-    "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.pkg.zip",
-  getHuaweiLink: () => "https://appgallery.huawei.com/#/app/C102015329",
+      : "https://download.mql5.com/cdn/web/22911/mt5/oqtima5setup.exe";
+  },
+  getWebTraderLink: () => {
+    return MT5_WEB_TRADER_LINK;
+  },
+  getMacLink: () => {
+    return "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.pkg.zip";
+  },
+  getHuaweiLink: () => {
+    return "https://appgallery.huawei.com/#/app/C102015329";
+  },
 };
 
 export const getMT4DownloadLink = () => {
@@ -153,7 +173,7 @@ const FSA_MT5_ADVANTAGES = [
     text: "mt5_market-items-list_adv10-fsa",
   },
   {
-    key: "adv11",
+    key: "adv11-mt5",
     text: "mt5_market-items-list_adv11-fsa",
   },
   {
@@ -212,7 +232,7 @@ const CYSEC_MT5_ADVANTAGES = [
     text: "mt5_market-items-list_adv10-cysec",
   },
   {
-    key: "adv11",
+    key: "adv11-CySEC-mt5",
     text: "mt5_market-items-list_adv11-cysec",
   },
   {
@@ -322,7 +342,7 @@ const FSA_MT4_ADVANTAGES = [
     text: "mt4_market-items-list_adv10-fsa",
   },
   {
-    key: "adv11",
+    key: "adv11-fsa-mt5",
     text: "mt4_market-items-list_adv11-fsa",
   },
   {
@@ -335,10 +355,12 @@ const FSA_MT4_ADVANTAGES = [
   },
 ];
 
-export const getMT4Advantages = () =>
-  isCySEC ? CYSEC_MT4_ADVANTAGES : FSA_MT4_ADVANTAGES;
-export const getMT5Advantages = () =>
-  isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES;
+export const getMT4Advantages = () => {
+  return isCySEC ? CYSEC_MT4_ADVANTAGES : FSA_MT4_ADVANTAGES;
+};
+export const getMT5Advantages = () => {
+  return isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES;
+};
 
 const MetaTrader4info = () => {
   const META_TRADER_4 = {
@@ -746,9 +768,9 @@ export const mt5DownloadTabs = () => {
   ];
 };
 
-export const getTradersList = () =>
-  isCySEC ? [MetaTrader5info()] : [MetaTrader4info()];
-
+export const getTradersList = () => {
+  return isCySEC ? [MetaTrader5info()] : [MetaTrader4info()];
+};
 export const getAnimationStyle = () => {
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
 

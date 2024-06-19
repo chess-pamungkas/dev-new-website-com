@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import ButtonLink from "../shared/button-link";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { ADDITIONAL_PLATFORMS, MOBILE_PLATFORMS } from "../../helpers/config";
@@ -61,6 +62,13 @@ const MetaTrader = ({
     );
   };
 
+  TraderToolIcon.propTypes = {
+    item: PropTypes.shape({
+      icon: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired,
+  };
+
   return (
     <section
       className={cn("meta-trader", classname, {
@@ -119,4 +127,21 @@ const MetaTrader = ({
   );
 };
 
+MetaTrader.propTypes = {
+  classname: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.arrayOf(PropTypes.string).isRequired,
+  icon: PropTypes.string.isRequired,
+  learMoreLink: PropTypes.string.isRequired,
+  learMoreLinkTitle: PropTypes.string.isRequired,
+  downloadLinkTitle: PropTypes.string.isRequired,
+  advantages: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      description: PropTypes.string,
+    })
+  ).isRequired,
+  isGrayBackground: PropTypes.bool,
+  downloadLink: PropTypes.string.isRequired,
+};
 export default MetaTrader;

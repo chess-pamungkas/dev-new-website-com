@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import MenuColumn from "../menu-column";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
@@ -28,4 +29,7 @@ const Menu = ({ className }) => {
   );
 };
 
+Menu.propTypes = {
+  className: PropTypes.string,
+};
 export default Menu;

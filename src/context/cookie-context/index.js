@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Cookies from "universal-cookie";
+import PropTypes from "prop-types";
 import entities from "../../enums/entities";
 import { CONSENT_TYPES } from "../../helpers/consent-types.config";
 import {
@@ -7,12 +8,10 @@ import {
   COOKIE_CONSENT_KEY,
   IS_SHOW_COOKIE_POPUP_KEY,
   GLOBAL_COOKIE_PATH,
-  SEGMENTATION_COOKIE_KEY,
   DEFAULT_COOKIE_AGE,
 } from "../../helpers/gdpr-cookie.config";
 import { useModal } from "../../helpers/hooks/use-modal";
 import { postClientConsent } from "../../helpers/services/client-consent-service";
-import { isBrowser } from "../../helpers/services/is-browser";
 import ClientResolverContext from "../client-resolver-context";
 import { currentEntity } from "../../helpers/entity-resolver";
 
@@ -91,7 +90,6 @@ export const CookieProvider = ({ children }) => {
     ) {
       handleOpenCookiePopup();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientConfig, currentEntity]);
 
   return (
@@ -116,4 +114,7 @@ export const CookieProvider = ({ children }) => {
   );
 };
 
+CookieProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default CookieContext;

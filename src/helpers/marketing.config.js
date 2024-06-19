@@ -13,7 +13,7 @@ import dowJonesIcon from "../assets/images/icons/companies/marketing/dowJones.sv
 import nikkeiIcon from "../assets/images/icons/companies/marketing/nikkei.svg";
 import { isCySEC, sitePostfix } from "./entity-resolver";
 
-const heroImage = isCySEC ? heroImageEU: heroImageFSA;
+const heroImage = isCySEC ? heroImageEU : heroImageFSA;
 
 export const MARKETING_GET_PARAMS = {
   sect1: "_sect1",

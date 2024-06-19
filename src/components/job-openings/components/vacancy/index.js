@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import ButtonLink from "../../../shared/button-link";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
@@ -38,6 +39,14 @@ const Vacancy = ({ className, location, area, description, link }) => {
       </div>
     </div>
   );
+};
+
+Vacancy.propTypes = {
+  className: PropTypes.string,
+  location: PropTypes.string.isRequired,
+  area: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
 };
 
 export default Vacancy;

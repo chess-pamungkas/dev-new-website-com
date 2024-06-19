@@ -40,22 +40,42 @@
     grid-template-areas: ". upper ." "left-upper . right-upper" "left-bottom . right-bottom" ". bottom .";
     align-items: center;
     justify-items: center;
-    grid-gap: 92px 0px;
+    grid-gap: 85px 0px;
     top: 84px;
 
     @include tablet {
-      grid-gap: 94px 0px;
-      top: 109px;
+      grid-gap: 85px 0px;
+      top: 110px;
     }
 
     @include desktop-lg {
-      grid-gap: 75px 10px;
-      top: 163px;
+      grid-gap: 65px 10px;
+      top: 150px;
     }
 
     @include desktop-xl {
-      grid-gap: 120px 90px;
+      grid-gap: 100px 90px;
       top: 130px;
+    }
+
+    &--bigger-lang {
+      grid-gap: 75px 0px;
+      top: 84px;
+
+      @include tablet {
+        grid-gap: 65px 0px;
+        top: 110px;
+      }
+
+      @include desktop-lg {
+        grid-gap: 65px 10px;
+        top: 130px;
+      }
+
+      @include desktop-xl {
+        gap: 85px 10px;
+        top: 120px;
+      }
     }
   }
 
@@ -67,7 +87,7 @@
     font-size: 9px;
     line-height: 12px;
     max-width: 136px;
-    min-height: 37px;
+    min-height: 50px;
     padding: 7px;
     display: flex;
     justify-content: center;
@@ -79,7 +99,7 @@
       font-size: 17px;
       line-height: 21px;
       max-width: 255px;
-      min-height: 77px;
+      min-height: 85px;
       padding: 17px 20px;
     }
 
@@ -87,7 +107,7 @@
       font-size: 20px;
       line-height: 25px;
       max-width: unset;
-      min-height: 76px;
+      min-height: 90px;
       padding: 12px 30px;
       width: 330px;
     }
@@ -95,9 +115,25 @@
     @include desktop-xl {
       font-size: 32px;
       line-height: 40px;
-      min-height: 120px;
+      min-height: 140px;
       padding: 20px 30px;
       width: 550px;
+    }
+
+    &--bigger-lang {
+      min-height: 55px;
+  
+      @include tablet {
+        min-height: 100px;
+      }
+  
+      @include desktop-lg {
+        min-height: 100px;
+      }
+  
+      @include desktop-xl {
+        min-height: 150px;
+      }
     }
   }
 

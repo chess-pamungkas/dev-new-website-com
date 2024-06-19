@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import PropTypes from "prop-types";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { isBrowser } from "../../helpers/services/is-browser";
 import LanguageContext from "../language-context";
@@ -94,4 +95,7 @@ export const CommonProvider = ({ children }) => {
   );
 };
 
+CommonProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default CommonContext;

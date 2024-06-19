@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 
 const HowToStartItem = ({ className, icon, text, accent }) => {
@@ -18,4 +19,10 @@ const HowToStartItem = ({ className, icon, text, accent }) => {
   );
 };
 
+HowToStartItem.propTypes = {
+  className: PropTypes.string,
+  icon: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  accent: PropTypes.string.isRequired,
+};
 export default HowToStartItem;

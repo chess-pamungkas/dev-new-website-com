@@ -1,6 +1,7 @@
 import React from "react";
-import ErrorMessage from "../error-message";
 import cn from "classnames";
+import PropTypes from "prop-types";
+import ErrorMessage from "../error-message";
 
 const Input = ({
   type,
@@ -13,9 +14,11 @@ const Input = ({
   ...props
 }) => {
   return (
-    <div className={cn("input-wrapper", {
-      "input-wrapper--half-width": isHalfWidth
-    })}>
+    <div
+      className={cn("input-wrapper", {
+        "input-wrapper--half-width": isHalfWidth,
+      })}
+    >
       {title && <span className="input-title">{title}</span>}
       <input
         className="input"
@@ -29,4 +32,13 @@ const Input = ({
   );
 };
 
+Input.propTypes = {
+  type: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  isError: PropTypes.bool,
+  errorMessage: PropTypes.string,
+  isHalfWidth: PropTypes.bool,
+};
 export default Input;

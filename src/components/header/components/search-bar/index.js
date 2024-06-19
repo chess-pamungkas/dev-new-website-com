@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useRef, useState } from "react";
+import PropTypes from "prop-types";
 import cn from "classnames";
 import { navigate } from "gatsby";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
@@ -105,7 +106,7 @@ const SearchBar = ({
       <button
         className="search-bar__expand"
         type="button"
-        onClick={(e) => {
+        onClick={() => {
           onBarExpand();
         }}
       >
@@ -129,7 +130,7 @@ const SearchBar = ({
 
       {searchState.query && (
         <ul className="search-bar__results">
-          {!!searchState.results.length ? (
+          {searchState.results.length > 0 ? (
             <>
               {searchState.results
                 .slice(0, DROPDOWN_SEARCH_ITEMS_TO_SHOW)
@@ -191,6 +192,13 @@ const SearchBar = ({
       )}
     </form>
   );
+};
+
+SearchBar.propTypes = {
+  className: PropTypes.string,
+  isExpandable: PropTypes.bool,
+  isNavbarOpen: PropTypes.bool,
+  onSubmit: PropTypes.func,
 };
 
 export default SearchBar;

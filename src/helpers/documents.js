@@ -82,7 +82,7 @@ const summaryStatement = {
 };
 const disciplineReport = {
   filename:
-    "Disclosure_and_Market_Discipline_Report_Pillar_III_2023_OQtima_EU.pdf",
+    "Disclosure_and_Market_Discipline_Report_Pillar_III_2024_OQtima_EU.pdf",
   languages: ["en"],
 };
 export const privacyPolicy = {
@@ -238,7 +238,8 @@ export const RISK_DISCLOSURE_DOC = generateFileLinkWithLang(
 );
 
 export const getLegalDocs = () => (isCySEC ? LEGAL_DOCS() : LEGAL_DOCS_FSA());
-export const getRiskDisclosureDoc = () =>
-  isCySEC ? RISK_DISCLOSURE_DOC : RISK_DISCLOSURE_DOC_FSA;
+export const getRiskDisclosureDoc = () => {
+  return isCySEC ? RISK_DISCLOSURE_DOC : RISK_DISCLOSURE_DOC_FSA;
+};
 
 export const termsAndConds = generateFileLinkWithLang(termsAndConditions, "en");

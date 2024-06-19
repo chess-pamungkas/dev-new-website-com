@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import Popup from "../shared/popup";
 import cn from "classnames";
 import { postClientConsent } from "../../helpers/services/client-consent-service";
@@ -52,7 +53,7 @@ const RedirectOrBannedPopup = ({
       return [
         {
           text: t("popup-banned-close-btn"),
-          onClick: (e) => {
+          onClick: () => {
             setRedirectOrBannedPopupShown();
             handleClose(false);
             postClientConsent(
@@ -63,7 +64,7 @@ const RedirectOrBannedPopup = ({
         },
         {
           text: t("popup-banned-continue-btn"),
-          onClick: (e) => {
+          onClick: () => {
             setRedirectOrBannedPopupShown();
             handleClose(false);
             postClientConsent(
@@ -77,7 +78,7 @@ const RedirectOrBannedPopup = ({
       return [
         {
           text: t("popup-redirect-dont-confirm-btn"),
-          onClick: (e) => {
+          onClick: () => {
             postClientConsent(
               clientConfig.ipAddress,
               CONSENT_TYPES["redirectDoNotConfirm"]
@@ -87,7 +88,7 @@ const RedirectOrBannedPopup = ({
         },
         {
           text: t("popup-redirect-confirm-btn"),
-          onClick: (e) => {
+          onClick: () => {
             setRedirectOrBannedPopupShown();
             postClientConsent(
               clientConfig.ipAddress,
@@ -142,4 +143,10 @@ const RedirectOrBannedPopup = ({
   );
 };
 
+RedirectOrBannedPopup.propTypes = {
+  isPopupOpen: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  isBannedPopup: PropTypes.bool.isRequired,
+  setIsRecommendedRedirectNotification: PropTypes.func.isRequired,
+};
 export default RedirectOrBannedPopup;

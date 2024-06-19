@@ -1,11 +1,12 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../../helpers/constants";
 import InternalLink from "../internal-link";
 
 const SystemInfoComponent = ({
-  classname,
+  className,
   title,
   subTitle,
   image,
@@ -15,7 +16,7 @@ const SystemInfoComponent = ({
 
   return (
     <div
-      className={cn(classname, "system-info", {
+      className={cn(className, "system-info", {
         "system-info--rtl": isRTL,
       })}
       dir={isRTL ? DIR_RTL : DIR_LTR}
@@ -35,4 +36,11 @@ const SystemInfoComponent = ({
   );
 };
 
+SystemInfoComponent.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  goBackBtnTitle: PropTypes.string.isRequired,
+};
 export default SystemInfoComponent;

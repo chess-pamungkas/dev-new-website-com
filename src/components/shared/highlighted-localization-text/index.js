@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 
 const HighlightedLocalizationText = ({
@@ -42,4 +43,11 @@ const HighlightedLocalizationText = ({
   );
 };
 
+HighlightedLocalizationText.propTypes = {
+  localizationText: PropTypes.string,
+  wordsToHighlight: PropTypes.string,
+  primaryClassName: PropTypes.string,
+  accentClassName: PropTypes.string,
+  children: PropTypes.node,
+};
 export default HighlightedLocalizationText;

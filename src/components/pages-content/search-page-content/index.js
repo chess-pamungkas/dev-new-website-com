@@ -134,7 +134,7 @@ const SearchPageContent = () => {
           </div>
         ) : (
           <>
-            {!!searchState.results.length ? (
+            {searchState.results.length ? (
               <ul className="search-page__results-list" ref={searchResultsRef}>
                 {searchState.results
                   .slice(0, resultsBundleCount * SEARCH_RESULTS_BUNDLE_SIZE)

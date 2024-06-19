@@ -1,7 +1,8 @@
 import React from "react";
+import cn from "classnames";
+import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
-import cn from "classnames";
 import {
   DIR_LTR,
   DIR_RTL,
@@ -55,6 +56,10 @@ const MarketBuzz = ({ className }) => {
       </div>
     </section>
   );
+};
+
+MarketBuzz.propTypes = {
+  className: PropTypes.string,
 };
 
 export default MarketBuzz;

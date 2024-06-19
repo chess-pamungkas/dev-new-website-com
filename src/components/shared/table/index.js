@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import "regenerator-runtime";
 import {
   useFilters,
@@ -147,13 +148,18 @@ const TableComponent = ({
             ))}
           </thead>
           <tbody className="table__body" {...getTableBodyProps()}>
-            {(isPagination ? page : rows).map((row) => {
+            {(isPagination ? page : rows).map((row, index) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()} className="table__body-row">
+                <tr
+                  key={index}
+                  {...row.getRowProps()}
+                  className="table__body-row"
+                >
                   {row.cells.map((cell) => {
                     return (
                       <td
+                        key={cell.getCellProps().key}
                         className="table__body-column"
                         {...cell.getCellProps()}
                       >
@@ -182,4 +188,18 @@ const TableComponent = ({
   );
 };
 
+TableComponent.propTypes = {
+  className: PropTypes.string,
+  tableClassName: PropTypes.string,
+  data: PropTypes.array.isRequired,
+  columns: PropTypes.array.isRequired,
+  isPagination: PropTypes.bool,
+  isHideScroll: PropTypes.bool,
+  isSearch: PropTypes.bool,
+  isSorting: PropTypes.bool,
+  isWrapperPadding: PropTypes.bool,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  tip: PropTypes.object,
+};
 export default TableComponent;

@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import vpsImg from "../../../../assets/images/vps/vps.png";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
@@ -57,4 +58,7 @@ const VPSTopPromotion = ({ className }) => {
   );
 };
 
+VPSTopPromotion.propTypes = {
+  className: PropTypes.string, // Additional className for styling
+};
 export default VPSTopPromotion;

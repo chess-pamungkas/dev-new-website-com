@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import AdvantageBlock from "../../../performance/components/advantage-block";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import { DIR_LTR, DIR_RTL } from "../../../../helpers/constants";
@@ -29,6 +30,18 @@ const PartnersAdvantages = ({ className, title, advantages }) => {
       </div>
     </section>
   );
+};
+
+PartnersAdvantages.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  advantages: PropTypes.arrayOf(
+    PropTypes.shape({
+      icon: PropTypes.func,
+      text: PropTypes.string.isRequired,
+      accent: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 export default PartnersAdvantages;

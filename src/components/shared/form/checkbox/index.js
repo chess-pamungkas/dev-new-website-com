@@ -1,6 +1,7 @@
 import React from "react";
 import ErrorMessage from "../error-message";
 import cn from "classnames";
+import PropTypes from "prop-types";
 
 const Checkbox = ({
   title,
@@ -31,4 +32,13 @@ const Checkbox = ({
   );
 };
 
+Checkbox.propTypes = {
+  title: PropTypes.string,
+  note: PropTypes.string,
+  text: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  isError: PropTypes.bool,
+  errorMessage: PropTypes.string,
+};
 export default Checkbox;

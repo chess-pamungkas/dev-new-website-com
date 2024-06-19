@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
-import TradingSymbol from "../trading-symbol";
 import cn from "classnames";
+import PropTypes from "prop-types";
+import TradingSymbol from "../trading-symbol";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 
@@ -107,4 +108,16 @@ const TradingSymbols = ({ className, symbols }) => {
   );
 };
 
+TradingSymbols.propTypes = {
+  className: PropTypes.string,
+  symbols: PropTypes.arrayOf(
+    PropTypes.shape({
+      symbol: PropTypes.string.isRequired,
+      direction: PropTypes.oneOf(["up", "down"]).isRequired,
+      bid: PropTypes.string.isRequired,
+      ask: PropTypes.string.isRequired,
+      spread: PropTypes.string.isRequired,
+    })
+  ),
+};
 export default TradingSymbols;

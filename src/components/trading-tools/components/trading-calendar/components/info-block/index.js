@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../../../../helpers/hooks/use-rtl-direction";
 
 const CalendarInfoBlock = ({ img, title, description }) => {
@@ -23,4 +24,9 @@ const CalendarInfoBlock = ({ img, title, description }) => {
   );
 };
 
+CalendarInfoBlock.propTypes = {
+  img: PropTypes.string.isRequired,
+  title: PropTypes.object.isRequired,
+  description: PropTypes.object.isRequired,
+};
 export default CalendarInfoBlock;

@@ -1,5 +1,6 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import {
   FAQ_ALL,
@@ -31,7 +32,7 @@ const FaqSearchBar = ({ className, setSearchResults, setNoSearchResult }) => {
       const results = contentDeepCopy.filter((topic) => {
         // check if maps with faq content contain the search query
         let includeTopic = false;
-        let content = [];
+        const content = [];
         for (const item of topic.content.values()) {
           if (
             t(item.question).toLowerCase().includes(_value) ||
@@ -77,6 +78,12 @@ const FaqSearchBar = ({ className, setSearchResults, setNoSearchResult }) => {
       />
     </div>
   );
+};
+
+FaqSearchBar.propTypes = {
+  className: PropTypes.string,
+  setSearchResults: PropTypes.func.isRequired,
+  setNoSearchResult: PropTypes.func.isRequired,
 };
 
 export default FaqSearchBar;

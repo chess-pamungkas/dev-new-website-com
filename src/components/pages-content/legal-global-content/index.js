@@ -12,7 +12,6 @@ import LegalRegulators from "../../legal/components/legal-regulators";
 import { LEGAL_REGULATORS } from "../../../helpers/legal.config";
 import Documents from "../../documents";
 import { getLegalDocs } from "../../../helpers/documents";
-import { EU_HOSTNAME } from "../../../helpers/constants";
 
 const LegalContentGlobal = () => {
   const { t } = useTranslationWithVariables();

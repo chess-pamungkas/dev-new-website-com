@@ -495,14 +495,18 @@ export const DataWithdrawal = () => {
   return DATA_WITHDRAWAL;
 };
 
-export const getDataDeposit = () =>
-  isCySEC ? DataDeposit() : DataDepositFSA();
-export const getColumnDeposit = () =>
-  isCySEC ? ColumnDeposit() : ColumnDepositFSA();
-export const getDataWithdrawal = () =>
-  isCySEC ? DataWithdrawal() : DataWithdrawalFSA();
-export const getColumnWithdrawal = () =>
-  isCySEC ? ColumnWithdrawal() : ColumnWithdrawalFSA();
+export const getDataDeposit = () => {
+  return isCySEC ? DataDeposit() : DataDepositFSA();
+};
+export const getColumnDeposit = () => {
+  return isCySEC ? ColumnDeposit() : ColumnDepositFSA();
+};
+export const getDataWithdrawal = () => {
+  return isCySEC ? DataWithdrawal() : DataWithdrawalFSA();
+};
+export const getColumnWithdrawal = () => {
+  return isCySEC ? ColumnWithdrawal() : ColumnWithdrawalFSA();
+};
 
 export const WithdrawalDisclaimer = () => {
   const { t } = useTranslationWithVariables();

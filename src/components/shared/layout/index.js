@@ -18,41 +18,41 @@ import { sendLog } from "../../../helpers/services/log-service";
 const Layout = ({ children }) => {
   try {
     const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+    useEffect(() => {
+      setIsLoaded(true);
+    }, []);
 
-  return (
-    <ClientResolverProvider>
-      <CookieProvider>
-        <MarketingContextProvider>
-          <LanguageProvider>
-            <CommonProvider>
-              <SearchProvider>
-                <NotificationStripeProvider>
-                  <TradingProvider>
-                    {isLoaded && (
-                      <>
-                        <Header />
-                        <CookiesPopup />
-                        <section className="scroll-container">
-                          <MainContainer>{children}</MainContainer>
-                          <Footer />
-                        </section>
-                      </>
-                    )}
-                    <Bookmark />
-                  </TradingProvider>
-                </NotificationStripeProvider>
-              </SearchProvider>
-            </CommonProvider>
-          </LanguageProvider>
-        </MarketingContextProvider>
-      </CookieProvider>
-    </ClientResolverProvider>
-  );
+    return (
+      <ClientResolverProvider>
+        <CookieProvider>
+          <MarketingContextProvider>
+            <LanguageProvider>
+              <CommonProvider>
+                <SearchProvider>
+                  <NotificationStripeProvider>
+                    <TradingProvider>
+                      {isLoaded && (
+                        <>
+                          <Header />
+                          <CookiesPopup />
+                          <section className="scroll-container">
+                            <MainContainer>{children}</MainContainer>
+                            <Footer />
+                          </section>
+                        </>
+                      )}
+                      <Bookmark />
+                    </TradingProvider>
+                  </NotificationStripeProvider>
+                </SearchProvider>
+              </CommonProvider>
+            </LanguageProvider>
+          </MarketingContextProvider>
+        </CookieProvider>
+      </ClientResolverProvider>
+    );
   } catch (error) {
-    sendLog({message: error.message, type: error.name});
+    sendLog({ message: error.message, type: error.name });
 
     throw error;
   }

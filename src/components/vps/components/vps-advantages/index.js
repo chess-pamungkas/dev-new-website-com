@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import ButtonLink from "../../../shared/button-link";
@@ -49,4 +50,18 @@ const VPSAdvantages = ({ className, advantages }) => {
   );
 };
 
+VPSAdvantages.propTypes = {
+  className: PropTypes.string,
+  advantages: PropTypes.arrayOf(
+    PropTypes.shape({
+      img: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
+
+VPSAdvantages.defaultProps = {
+  className: "",
+};
 export default VPSAdvantages;

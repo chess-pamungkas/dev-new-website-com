@@ -1,5 +1,6 @@
 import * as React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import upArrow from "../../../../assets/images/trading-ticker/up-arrow.svg";
@@ -73,6 +74,15 @@ const TradingSymbol = ({ className, symbol, direction, bid, ask, spread }) => {
       </div>
     </div>
   );
+};
+
+TradingSymbol.propTypes = {
+  className: PropTypes.string,
+  symbol: PropTypes.string.isRequired,
+  direction: PropTypes.oneOf(["up", "down"]).isRequired,
+  bid: PropTypes.string.isRequired,
+  ask: PropTypes.string.isRequired,
+  spread: PropTypes.string.isRequired,
 };
 
 export default TradingSymbol;

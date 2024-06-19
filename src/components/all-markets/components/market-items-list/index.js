@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { getAllMarkets } from "../../../../helpers/all-markets.config";
 import MarketItem from "../market-item";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
@@ -23,4 +24,7 @@ const MarketItemsList = ({ className }) => {
   );
 };
 
+MarketItemsList.propTypes = {
+  className: PropTypes.string,
+};
 export default MarketItemsList;

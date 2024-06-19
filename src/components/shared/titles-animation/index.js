@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { animated, useSpring } from "react-spring";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import {
@@ -70,4 +71,13 @@ const TitlesAnimation = ({
   );
 };
 
+TitlesAnimation.propTypes = {
+  titles: PropTypes.arrayOf(PropTypes.string),
+  isAnimationFinished: PropTypes.bool.isRequired,
+  setIsAnimationFinished: PropTypes.func.isRequired,
+  children: PropTypes.node,
+  isChildrenAnimation: PropTypes.bool,
+  animationToStep1Config: PropTypes.object,
+  animationToStep2Config: PropTypes.object,
+};
 export default TitlesAnimation;

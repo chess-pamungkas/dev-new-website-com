@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import CompanyAdvantageBlock from "./components/company-advantage-block";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import { COMPANY_ADVANTAGES } from "../../helpers/config";
@@ -27,6 +28,10 @@ const CompanyAdvantages = ({ className }) => {
       </div>
     </section>
   );
+};
+
+CompanyAdvantages.propTypes = {
+  className: PropTypes.string,
 };
 
 export default CompanyAdvantages;

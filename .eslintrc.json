@@ -31,6 +31,7 @@
     "no-duplicate-imports": "error",
     "no-var": "error",
     "object-shorthand": "error",
-    "prefer-const": "error"
+    "prefer-const": "error",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
   }
 }

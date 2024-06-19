@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
@@ -76,6 +77,14 @@ const VPSCenterPromotion = ({ className }) => {
       </div>
     </section>
   );
+};
+
+VPSCenterPromotion.propTypes = {
+  className: PropTypes.string,
+};
+
+VPSCenterPromotion.defaultProps = {
+  className: "",
 };
 
 export default VPSCenterPromotion;

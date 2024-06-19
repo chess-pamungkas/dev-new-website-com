@@ -1,5 +1,6 @@
-import cn from "classnames";
 import React from "react";
+import cn from "classnames";
+import PropTypes from "prop-types";
 
 const TablePagination = ({
   previousPage,
@@ -37,6 +38,13 @@ const TablePagination = ({
       </button>
     </div>
   );
+};
+
+TablePagination.propTypes = {
+  previousPage: PropTypes.func.isRequired,
+  nextPage: PropTypes.func.isRequired,
+  canPreviousPage: PropTypes.bool.isRequired,
+  canNextPage: PropTypes.bool.isRequired,
 };
 
 export default TablePagination;

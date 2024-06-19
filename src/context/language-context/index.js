@@ -5,6 +5,7 @@ import React, {
   useState,
   useMemo,
 } from "react";
+import PropTypes from "prop-types";
 import CookieContext from "../cookie-context";
 import {
   LAST_LANGUAGE_KEY,
@@ -63,4 +64,7 @@ export const LanguageProvider = ({ children }) => {
   );
 };
 
+LanguageProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default LanguageContext;

@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useModal } from "../../../helpers/hooks/use-modal";
 import RedirectOrBannedPopup from "../../redirect-popup";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
@@ -32,7 +33,6 @@ export const RiskWarningNotification = () => {
 };
 
 const RecommendedRedirectNotification = ({
-  handleOpen,
   setIsHidden,
   setIsRecommendedRedirectNotification,
 }) => {
@@ -47,7 +47,7 @@ const RecommendedRedirectNotification = ({
         <button
           type="button"
           className="notification-stripe__button"
-          onClick={(e) => {
+          onClick={() => {
             redirectToOppositeEntity();
           }}
         >
@@ -56,7 +56,7 @@ const RecommendedRedirectNotification = ({
         <button
           type="button"
           className="notification-stripe__button"
-          onClick={(e) => {
+          onClick={() => {
             setRedirectOrBannedPopupShown();
             setIsRecommendedRedirectNotification(false);
             setIsHidden(true);
@@ -192,5 +192,12 @@ const NotificationsContainer = ({ className, setSectionOptions }) => {
     </>
   );
 };
-
+NotificationsContainer.propTypes = {
+  className: PropTypes.string,
+  setSectionOptions: PropTypes.func.isRequired,
+};
+RecommendedRedirectNotification.propTypes = {
+  setIsHidden: PropTypes.func.isRequired,
+  setIsRecommendedRedirectNotification: PropTypes.func.isRequired,
+};
 export default NotificationsContainer;

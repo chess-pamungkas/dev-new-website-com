@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { getPlatforms } from "../../helpers/config";
 import PlatformBlock from "./components/platform-block";
@@ -85,4 +86,11 @@ const TradingTools = ({ className }) => {
   );
 };
 
+TradingTools.propTypes = {
+  className: PropTypes.string,
+};
+
+TradingTools.defaultProps = {
+  className: "",
+};
 export default TradingTools;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/forex.svg";
 import { GetRegistrationLink } from "../../../helpers/constants";

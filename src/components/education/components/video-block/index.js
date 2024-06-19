@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import cn from "classnames";
+import PropTypes from "prop-types";
 import ReactPlayer from "react-player/youtube";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { getYoutubeLink } from "../helpers";
@@ -45,6 +46,11 @@ const VideoBlock = ({ className, video }) => {
       <p className="video-block__description">{video.description}</p>
     </div>
   );
+};
+
+VideoBlock.propTypes = {
+  className: PropTypes.string,
+  video: PropTypes.string.isRequired,
 };
 
 export default VideoBlock;

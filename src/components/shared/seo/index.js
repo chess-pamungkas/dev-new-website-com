@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
+import PropTypes from "prop-types";
 import { isCySEC } from "../../../helpers/entity-resolver";
 import LanguageContext from "../../../context/language-context";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
@@ -42,4 +43,14 @@ const Seo = ({
   );
 };
 
+Seo.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  fsaTitle: PropTypes.string,
+  cysecTitle: PropTypes.string,
+  fsaDescription: PropTypes.string,
+  cysecDescription: PropTypes.string,
+  fsaRobots: PropTypes.string,
+  cysecRobots: PropTypes.string,
+};
 export default Seo;
