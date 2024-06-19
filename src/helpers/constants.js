@@ -231,3 +231,6 @@ export const PAYMENT_SYSTEMS = {
 };
 
 export const YOUTUBE_VIDEO_SHARE_LINK = "https://youtu.be/";
+
+// used to apply specific styles for languages that have longer words and etc.
+export const BIGGER_LANGUAGES = ["my", "vn", "es", "id"];
