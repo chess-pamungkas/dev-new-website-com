@@ -1249,7 +1249,7 @@
   "accounts-type_account-type1-total-symbols-value-cysec": "{{ account-type1-total-symbols }}+",
   "accounts-type_account-type2-title": "tipo de conta",
   "accounts-type_account-type2-name": "OQtima ONE",
-  "accounts-type_account-type2-btn-title": "Abrir uma conta",
+  "accounts-type_account-type2-btn-title": "ABRA UMA CONTA",
   "accounts-type_account-type2-spreads-from-title": "Spreads a partir de",
   "accounts-type_account-type2-spreads-from-value": "{{ account-type2-spreads-from }} pips",
   "accounts-type_account-type2-commissions-title": "Comissões",
