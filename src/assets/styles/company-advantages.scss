@@ -204,6 +204,11 @@
     line-height: 45px;
     color: map-get($colors, "black");
 
+    &--cysec {
+      font-weight: map-get($font-weight, "regular");
+      font-family: $fontJP;
+    }
+
     &--back {
       color: map-get($colors, "white");
       margin: 0 0 15px;
@@ -222,6 +227,11 @@
     font-size: 18px;
     line-height: 22px;
     color: map-get($colors, "white");
+
+    &--cysec {
+      font-weight: map-get($font-weight, "regular");
+      font-family: $fontJP;
+    }
 
     &--mobile {
       color: map-get($colors, "black");
