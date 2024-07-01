@@ -50,7 +50,7 @@ export const getLocalizationVariables = () => {
     "execution-time": "30",
     "leverage-up-to": "1:30",
     "shares-leverage-up-to": "1:5",
-    "leverage-up-to-fsa": isJapaneseVariables() ? "1:500" : "1:1000",
+    "leverage-up-to-fsa": "1:1000",
     "tradeable-products": "1000",
     "tradeable-products-fsa": "1000",
     "execution-time-fsa": "30",
@@ -81,9 +81,7 @@ export const getLocalizationVariables = () => {
     // "account-type1-min-deposit-fsa": isIncreasedMinDeposit() ? "100" : "20",
     "account-type1-min-deposit-fsa": "100",
     "account-type1-max-leverage": "1:30",
-    "account-type1-max-leverage-fsa": isJapaneseVariables()
-      ? "1:500"
-      : "1:1000",
+    "account-type1-max-leverage-fsa": "1:1000",
     "account-type1-funding-fees": "0",
     "account-type1-withdrawals-fees": "0",
     "account-type1-markets": "6",
@@ -96,9 +94,7 @@ export const getLocalizationVariables = () => {
     // "account-type2-min-deposit-fsa": isIncreasedMinDeposit() ? "100" : "20",
     "account-type2-min-deposit-fsa": "100",
     "account-type2-max-leverage": "1:30",
-    "account-type2-max-leverage-fsa": isJapaneseVariables()
-      ? "1:500"
-      : "1:1000",
+    "account-type2-max-leverage-fsa": "1:1000",
     "account-type2-funding-fees": "0",
     "account-type2-withdrawals-fees": "0",
     "account-type2-markets": "6",
