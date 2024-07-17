@@ -21,7 +21,7 @@ import netellerLogo from "../assets/images/icons/payments/neteller.png";
 import revolutLogo from "../assets/images/icons/payments/revolut.png";
 import skrillLogo from "../assets/images/icons/payments/skrill.png";
 import wiseLogo from "../assets/images/icons/payments/wise.png";
-import { isCySEC, topLevelDomain } from "./entity-resolver";
+import { topLevelDomain } from "./entity-resolver";
 import { setIBparamsToLink } from "./services/ib-service";
 import { setLangParam } from "./services/language-service";
 
@@ -57,10 +57,8 @@ export const EU_HOSTNAME = "https://oqtima.eu/";
 export const DIR_LTR = "ltr";
 export const DIR_RTL = "rtl";
 
-const CONTACT_PHONE = "357 25010490";
 const CONTACT_PHONE_FSA = "44 330 828 5704";
 export const CONTACT_PHONE_FSA_2 = "248 4632034";
-const CONTACT_EMAIL = "support@oqtima.eu";
 const CONTACT_EMAIL_FSA = "support@oqtima.com";
 export const CONTACT_ADDRESS =
   "Franklin Roosevelt 247-block C, Office 101, Limassol 3046";
@@ -68,11 +66,11 @@ export const CONTACT_ADDRESS =
 export const HOME_PAGE_LINK = "/";
 
 export const getContactPhone = () => {
-  return isCySEC ? CONTACT_PHONE : CONTACT_PHONE_FSA;
+  return CONTACT_PHONE_FSA;
 };
 
 export const getContactEmail = () => {
-  return isCySEC ? CONTACT_EMAIL : CONTACT_EMAIL_FSA;
+  return CONTACT_EMAIL_FSA;
 };
 
 export const BLOG_URL = "https://oqtima.news/";

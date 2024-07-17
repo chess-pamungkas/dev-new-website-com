@@ -3,7 +3,6 @@ import cn from "classnames";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
-import { isCySEC } from "../../../../helpers/entity-resolver";
 
 const CompanyAdvantageBlock = ({ className, icon: Icon, title, textArray }) => {
   const { t } = useTranslationWithVariables();
@@ -20,10 +19,7 @@ const CompanyAdvantageBlock = ({ className, icon: Icon, title, textArray }) => {
             <p
               className={cn(
                 "company-advantage-block__title",
-                "company-advantage-block__title--mobile",
-                {
-                  "company-advantage-block__title--cysec": isCySEC,
-                }
+                "company-advantage-block__title--mobile"
               )}
             >
               {t(title)}
@@ -31,10 +27,7 @@ const CompanyAdvantageBlock = ({ className, icon: Icon, title, textArray }) => {
             <p
               className={cn(
                 "company-advantage-block__text",
-                "company-advantage-block__text--mobile",
-                {
-                  "company-advantage-block__text--cysec": isCySEC,
-                }
+                "company-advantage-block__text--mobile"
               )}
             >
               {textArray.map((text) => (
@@ -47,31 +40,18 @@ const CompanyAdvantageBlock = ({ className, icon: Icon, title, textArray }) => {
         <>
           <div className="company-advantage-block__front">
             <Icon className="company-advantage-block__icon" />
-            <p
-              className={cn("company-advantage-block__title", {
-                "company-advantage-block__title--cysec": isCySEC,
-              })}
-            >
-              {t(title)}
-            </p>
+            <p className={cn("company-advantage-block__title")}>{t(title)}</p>
           </div>
           <div className="company-advantage-block__back">
             <p
               className={cn(
                 "company-advantage-block__title",
-                "company-advantage-block__title--back",
-                {
-                  "company-advantage-block__title--cysec": isCySEC,
-                }
+                "company-advantage-block__title--back"
               )}
             >
               {t(title)}
             </p>
-            <p
-              className={cn("company-advantage-block__text", {
-                "company-advantage-block__text--cysec": isCySEC,
-              })}
-            >
+            <p className={cn("company-advantage-block__text")}>
               {textArray.map((text) => (
                 <span key={`company-advantage-${text}`}>{t(text)}</span>
               ))}

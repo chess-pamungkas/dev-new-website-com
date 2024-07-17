@@ -17,50 +17,49 @@ import {
   SafetyAdvantageIcon,
   TrustAdvantageIcon,
 } from "../components/shared/icons";
-import { isCySEC, sitePostfix } from "./entity-resolver";
 
 export const ADVANTAGES = [
   {
     icon: AdvantageIcon1,
     text: "index_performance-advantage1",
     accent: "performance-advantage1-accent",
-    subtext: "index_performance-advantage1-subtext", // added this for jp
+    subtext: "index_performance-advantage1-subtext",
   },
   {
     icon: AdvantageIcon2,
-    text: `index_performance-advantage2${sitePostfix}`,
-    accent: `performance-advantage2-accent${sitePostfix}`,
-    subtext: "index_performance-advantage2-subtext", // added this for jp
+    text: "index_performance-advantage2-fsa",
+    accent: "performance-advantage2-accent-fsa",
+    subtext: "index_performance-advantage2-subtext",
   },
   {
     icon: AdvantageIcon3,
-    text: `index_performance-advantage3${sitePostfix}`,
-    accent: `performance-advantage3-accent${sitePostfix}`,
-    subtext: "index_performance-advantage3-subtext", // added this for jp
+    text: "index_performance-advantage3-fsa",
+    accent: "performance-advantage3-accent-fsa",
+    subtext: "index_performance-advantage3-subtext",
   },
   {
     icon: AdvantageIcon4,
     text: "index_performance-advantage4",
     accent: "performance-advantage4-accent",
-    subtext: "index_performance-advantage4-subtext", // added this for jp
+    subtext: "index_performance-advantage4-subtext",
   },
   {
     icon: AdvantageIcon5,
-    text: `index_performance-advantage5${sitePostfix}`,
-    accent: `performance-advantage5-accent${sitePostfix}`,
-    subtext: "index_performance-advantage5-subtext", // added this for jp
+    text: "index_performance-advantage5-fsa",
+    accent: "performance-advantage5-accent-fsa",
+    subtext: "index_performance-advantage5-subtext",
   },
   {
     icon: AdvantageIcon6,
-    text: `index_performance-advantage6${sitePostfix}`,
-    accent: `performance-advantage6-accent${sitePostfix}`,
-    subtext: "index_performance-advantage6-subtext", // added this for jp
+    text: "index_performance-advantage6-fsa",
+    accent: "performance-advantage6-accent-fsa",
+    subtext: "index_performance-advantage6-subtext",
   },
   {
     icon: AdvantageIcon7,
     text: "index_performance-advantage7",
     accent: "performance-advantage7-accent",
-    subtext: "index_performance-advantage7-subtext", // added this for jp
+    subtext: "index_performance-advantage7-subtext",
   },
 ];
 
@@ -134,32 +133,14 @@ const FSA_PLATFORMS = {
     icon: metaTrader4Icon,
     title: "index_trading-tools-platforms-metatrader4",
   },
-  // Temporarily removed for the FSA
-  // metaTrader5: {
-  //   icon: metaTrader5Icon,
-  //   title: "index_trading-tools-platforms-metatrader5",
-  // },
-};
 
-const CYSEC_PLATFORMS = {
-  webTrader: {
-    icon: webTraderIcon,
-    title: "index_trading-tools-platforms-webtrader",
-  },
-  ios: MOBILE_PLATFORMS.ios,
-  android: MOBILE_PLATFORMS.android,
-  // Temporarily removed for the EU because of https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-166
-  // metaTrader4: {
-  //   icon: metaTrader4Icon,
-  //   title: "index_trading-tools-platforms-metatrader4",
-  // },
   metaTrader5: {
     icon: metaTrader5Icon,
     title: "index_trading-tools-platforms-metatrader5",
   },
 };
 
-export const getPlatforms = () => (isCySEC ? CYSEC_PLATFORMS : FSA_PLATFORMS);
+export const getPlatforms = () => FSA_PLATFORMS;
 
 export const ADDITIONAL_PLATFORMS = {
   windows: {
@@ -174,7 +155,7 @@ export const COMPANY_ADVANTAGES = [
     icon: SafetyAdvantageIcon,
     textArray: [
       "company_company-advantages-text1-1",
-      `company_company-advantages-text1-2${sitePostfix}`,
+      "company_company-advantages-text1-2-fsa",
       "company_company-advantages-text1-3",
       "company_company-advantages-text1-4",
     ],
@@ -220,7 +201,8 @@ export const ETF_TRADING_SECTION = {
   title: "index_trading-ticker-section-etf",
 };
 
-const CYSEC_TRADING_SECTIONS = [
+const FSA_TRADING_SECTIONS = [
+  CRYPTO_TRADING_SECTION,
   FOREX_TRADING_SECTION,
   SHARES_TRADING_SECTION,
   ENERGIES_TRADING_SECTION,
@@ -229,11 +211,4 @@ const CYSEC_TRADING_SECTIONS = [
   ETF_TRADING_SECTION,
 ];
 
-const FSA_TRADING_SECTIONS = [
-  CRYPTO_TRADING_SECTION,
-  ...CYSEC_TRADING_SECTIONS,
-];
-
-export const getTradingSections = () => {
-  return isCySEC ? CYSEC_TRADING_SECTIONS : FSA_TRADING_SECTIONS;
-};
+export const getTradingSections = () => FSA_TRADING_SECTIONS;

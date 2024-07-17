@@ -4,8 +4,6 @@ import { useTranslationWithVariables } from "../helpers/hooks/use-translation-wi
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import VPSContent from "../components/pages-content/vps-page-content";
-import NotFoundContent from "../components/pages-content/not-found-page-content";
-import { isCySEC } from "../helpers/entity-resolver";
 
 const VPSPage = () => {
   const { t } = useTranslationWithVariables();
@@ -14,11 +12,9 @@ const VPSPage = () => {
     <>
       <Seo
         fsaTitle={t("page-vps-title")}
-        cysecTitle={t("system-page-404-title")}
         fsaDescription={t("page-vps-description")}
-        cysecRobots={"noindex"}
       />
-      {isCySEC ? <NotFoundContent /> : <VPSContent />}
+      <VPSContent />
     </>
   );
 };

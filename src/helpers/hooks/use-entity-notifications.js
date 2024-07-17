@@ -2,7 +2,6 @@ import { useState, useContext, useEffect } from "react";
 import ClientResolverContext from "../../context/client-resolver-context";
 import { isBrowser } from "../services/is-browser";
 import { REDIRECT_OR_BANNED_POPUP_SHOWN_KEY } from "../gdpr-cookie.config";
-import { isCySEC } from "../entity-resolver";
 
 export const useEntityNotifications = (handlePopupOpen) => {
   const { clientConfig } = useContext(ClientResolverContext);
@@ -16,15 +15,13 @@ export const useEntityNotifications = (handlePopupOpen) => {
   const [isBannedPopup, setIsBannedPopup] = useState(false);
 
   useEffect(() => {
-    if (isCySEC) {
-      setIsRiskWarningNotification(true);
-    }
+    // Set risk warning notification to false as default (FSA context)
+    setIsRiskWarningNotification(false);
 
     if (
       clientConfig &&
       Object.keys(clientConfig).length &&
       clientConfig.recommendedRedirect &&
-      !isCySEC &&
       isBrowser() &&
       !window.sessionStorage.getItem(REDIRECT_OR_BANNED_POPUP_SHOWN_KEY)
     ) {

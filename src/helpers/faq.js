@@ -7,7 +7,6 @@ import cryptoIcon from "../assets/images/all-markets/crypto.svg";
 import accountIcon from "../assets/images/icons/account.svg";
 import fundingIcon from "../assets/images/icons/funding.svg";
 import tradingIcon from "../assets/images/icons/trading.svg";
-import { isCySEC } from "./entity-resolver";
 
 export const FAQ_FOREX = [
   {
@@ -153,10 +152,7 @@ export const FAQ_SHARES = [
       "shares_faq-content2-1",
       "shares_faq-content2-2",
       "shares_faq-content2-3",
-      // "shares_faq-content2-4",
-      // "shares_faq-content2-5",
     ],
-    // specify array of content indexes which should be bold, e.g. "shares_faq-content2-4" and "shares_faq-content2-5" will be bold
     bold: [3, 4],
   },
   {
@@ -397,7 +393,7 @@ export const FAQ_ALL = [
   },
 ];
 
-export const CYSEC_FAQ_MARKET = [
+export const FSA_FAQ_MARKET = [
   {
     title: "faq_forex-title",
     icon: forexIcon,
@@ -491,10 +487,6 @@ export const CYSEC_FAQ_MARKET = [
       },
     ],
   },
-];
-
-export const FSA_FAQ_MARKET = [
-  ...CYSEC_FAQ_MARKET,
   {
     title: "faq_cryptocurrencies-title-fsa",
     icon: cryptoIcon,
@@ -515,7 +507,7 @@ export const FSA_FAQ_MARKET = [
   },
 ];
 
-export const getFAQMarket = () => (isCySEC ? CYSEC_FAQ_MARKET : FSA_FAQ_MARKET);
+export const getFAQMarket = () => FSA_FAQ_MARKET;
 
 export const FAQ_BEGINNERS = [
   {

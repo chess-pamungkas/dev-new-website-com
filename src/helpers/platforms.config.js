@@ -9,32 +9,18 @@ import {
 } from "./constants";
 
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
-import { isCySEC } from "./entity-resolver";
 import { useWindowSize } from "./hooks/use-window-size";
 import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
 
 export const CTRADER_DOWNLOAD_LINKS = {
-  getAndroidLink: () => {
-    return isCySEC
-      ? "https://play.google.com/store/apps/details?id=eu.oqtima.app"
-      : "https://play.google.com/store/apps/details?id=com.oqtima.app";
-  },
-  getIOSLink: () => {
-    return isCySEC
-      ? null
-      : "https://apps.apple.com/cy/app/oqtima-ctrader/id1672522637";
-  },
-  getWindowsLink: () => {
-    return isCySEC
-      ? "https://getctrader.com/oqtimaeu/ctrader-oqtimaeu-setup.exe"
-      : "https://getctrader.com/oqtima/ctrader-oqtima-setup.exe";
-  },
-  getWebTraderLink: () => {
-    return isCySEC ? "https://app.oqtima.eu/" : "https://app.oqtima.com/";
-  },
-  getMacLink: () => {
-    return "https://getctradermac.com/spotware/ctrader-spotware-setup.dmg"; // generic link for both entities
-  },
+  getAndroidLink: () =>
+    "https://play.google.com/store/apps/details?id=com.oqtima.app",
+  getIOSLink: () => "https://apps.apple.com/cy/app/oqtima-ctrader/id1672522637",
+  getWindowsLink: () =>
+    "https://getctrader.com/oqtima/ctrader-oqtima-setup.exe",
+  getWebTraderLink: () => "https://app.oqtima.com/",
+  getMacLink: () =>
+    "https://getctradermac.com/spotware/ctrader-spotware-setup.dmg",
 };
 
 export const TRADING_VIEW_DOWNLOAD_LINKS = {
@@ -46,59 +32,29 @@ export const TRADING_VIEW_DOWNLOAD_LINKS = {
 };
 
 export const MT4_DOWNLOAD_LINKS = {
-  getAndroidLink: () => {
-    return isCySEC
-      ? null
-      : "https://download.mql5.com/cdn/mobile/mt4/android?server=OqtimaGlobal-Demo,OqtimaGlobal-Server";
-  },
-  getIOSLink: () => {
-    return isCySEC
-      ? null
-      : "https://download.mql5.com/cdn/mobile/mt4/ios?server=OqtimaGlobal-Demo,OqtimaGlobal-Server";
-  },
-  getWindowsLink: () => {
-    return isCySEC
-      ? null
-      : "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe";
-  },
-  getWebTraderLink: () => {
-    return isCySEC ? null : MT4_WEB_TRADER_LINK;
-  },
-  getMacLink: () => {
-    return isCySEC
-      ? null
-      : "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.pkg.zip";
-  },
-  getHuaweiLink: () => {
-    return isCySEC ? null : "https://appgallery.huawei.com/#/app/C102015319";
-  },
+  getAndroidLink: () =>
+    "https://download.mql5.com/cdn/mobile/mt4/android?server=OqtimaGlobal-Demo,OqtimaGlobal-Server",
+  getIOSLink: () =>
+    "https://download.mql5.com/cdn/mobile/mt4/ios?server=OqtimaGlobal-Demo,OqtimaGlobal-Server",
+  getWindowsLink: () =>
+    "https://download.mql5.com/cdn/web/oqtima.global.limited/mt4/oqtimaglobal4setup.exe",
+  getWebTraderLink: () => MT4_WEB_TRADER_LINK,
+  getMacLink: () =>
+    "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt4/MetaTrader4.pkg.zip",
+  getHuaweiLink: () => "https://appgallery.huawei.com/#/app/C102015319",
 };
 
 export const MT5_DOWNLOAD_LINKS = {
-  getAndroidLink: () => {
-    return isCySEC
-      ? "https://download.mql5.com/cdn/mobile/mt5/android?server=OQtimaEU-Live"
-      : "https://download.mql5.com/cdn/mobile/mt5/android?server=OQtima-Live";
-  },
-  getIOSLink: () => {
-    return isCySEC
-      ? "https://download.mql5.com/cdn/mobile/mt5/ios?server=OQtimaEU-Live"
-      : "https://download.mql5.com/cdn/mobile/mt5/ios?server=OQtima-Live";
-  },
-  getWindowsLink: () => {
-    return isCySEC
-      ? "https://download.mql5.com/cdn/web/oqtima.eu.ltd/mt5/oqtimaeu5setup.exe"
-      : "https://download.mql5.com/cdn/web/22911/mt5/oqtima5setup.exe";
-  },
-  getWebTraderLink: () => {
-    return MT5_WEB_TRADER_LINK;
-  },
-  getMacLink: () => {
-    return "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.pkg.zip";
-  },
-  getHuaweiLink: () => {
-    return "https://appgallery.huawei.com/#/app/C102015329";
-  },
+  getAndroidLink: () =>
+    "https://download.mql5.com/cdn/mobile/mt5/android?server=OQtima-Live",
+  getIOSLink: () =>
+    "https://download.mql5.com/cdn/mobile/mt5/ios?server=OQtima-Live",
+  getWindowsLink: () =>
+    "https://download.mql5.com/cdn/web/22911/mt5/oqtima5setup.exe",
+  getWebTraderLink: () => MT5_WEB_TRADER_LINK,
+  getMacLink: () =>
+    "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.pkg.zip",
+  getHuaweiLink: () => "https://appgallery.huawei.com/#/app/C102015329",
 };
 
 export const getMT4DownloadLink = () => {
@@ -132,235 +88,40 @@ export const getMT5DownloadLink = () => {
 };
 
 const FSA_MT5_ADVANTAGES = [
-  {
-    key: "adv1",
-    text: "mt5_market-items-list_adv1-fsa",
-  },
-  {
-    key: "adv2",
-    text: "mt5_market-items-list_adv2-fsa",
-  },
-  {
-    key: "adv3",
-    text: "mt5_market-items-list_adv3-fsa",
-  },
-  {
-    key: "adv4",
-    text: "mt5_market-items-list_adv4-fsa",
-  },
-  {
-    key: "adv5",
-    text: "mt5_market-items-list_adv5-fsa",
-  },
-  {
-    key: "adv6",
-    text: "mt5_market-items-list_adv6-fsa",
-  },
-  {
-    key: "adv7",
-    text: "mt5_market-items-list_adv7-fsa",
-  },
-  {
-    key: "adv8",
-    text: "mt5_market-items-list_adv8-fsa",
-  },
-  {
-    key: "adv9",
-    text: "mt5_market-items-list_adv9-fsa",
-  },
-  {
-    key: "adv10",
-    text: "mt5_market-items-list_adv10-fsa",
-  },
-  {
-    key: "adv11-mt5",
-    text: "mt5_market-items-list_adv11-fsa",
-  },
-  {
-    key: "adv12",
-    text: "mt5_market-items-list_adv12-fsa",
-  },
-  {
-    key: "adv13",
-    text: "mt5_market-items-list_adv13-fsa",
-  },
-  {
-    key: "adv14",
-    text: "mt5_market-items-list_adv14-fsa",
-  },
-];
-
-const CYSEC_MT5_ADVANTAGES = [
-  {
-    key: "adv1",
-    text: "mt5_market-items-list_adv1-cysec",
-  },
-  {
-    key: "adv2",
-    text: "mt5_market-items-list_adv2-cysec",
-  },
-  {
-    key: "adv3",
-    text: "mt5_market-items-list_adv3-cysec",
-  },
-  {
-    key: "adv4",
-    text: "mt5_market-items-list_adv4-cysec",
-  },
-  {
-    key: "adv5",
-    text: "mt5_market-items-list_adv5-cysec",
-  },
-  {
-    key: "adv6",
-    text: "mt5_market-items-list_adv6-cysec",
-  },
-  {
-    key: "adv7",
-    text: "mt5_market-items-list_adv7-cysec",
-  },
-  {
-    key: "adv8",
-    text: "mt5_market-items-list_adv8-cysec",
-  },
-  {
-    key: "adv9",
-    text: "mt5_market-items-list_adv9-cysec",
-  },
-  {
-    key: "adv10",
-    text: "mt5_market-items-list_adv10-cysec",
-  },
-  {
-    key: "adv11-CySEC-mt5",
-    text: "mt5_market-items-list_adv11-cysec",
-  },
-  {
-    key: "adv12",
-    text: "mt5_market-items-list_adv12-cysec",
-  },
-  {
-    key: "adv13",
-    text: "mt5_market-items-list_adv13-cysec",
-  },
-  {
-    key: "adv14",
-    text: "mt5_market-items-list_adv14-cysec",
-  },
-  {
-    key: "adv15",
-    text: "mt5_market-items-list_adv15-cysec",
-  },
-  {
-    key: "adv16",
-    text: "mt5_market-items-list_adv16-cysec",
-  },
-];
-
-const CYSEC_MT4_ADVANTAGES = [
-  {
-    key: "adv1",
-    text: "mt4_market-items-list_adv1-cysec",
-  },
-  {
-    key: "adv2",
-    text: "mt4_market-items-list_adv2-cysec",
-  },
-  {
-    key: "adv3",
-    text: "mt4_market-items-list_adv3-cysec",
-  },
-  {
-    key: "adv4",
-    text: "mt4_market-items-list_adv4-cysec",
-  },
-  {
-    key: "adv5",
-    text: "mt4_market-items-list_adv5-cysec",
-  },
-  {
-    key: "adv6",
-    text: "mt4_market-items-list_adv6-cysec",
-  },
-  {
-    key: "adv7",
-    text: "mt4_market-items-list_adv7-cysec",
-  },
-  {
-    key: "adv8",
-    text: "mt4_market-items-list_adv8-cysec",
-  },
-  {
-    key: "adv9",
-    text: "mt4_market-items-list_adv9-cysec",
-  },
-  {
-    key: "adv10",
-    text: "mt4_market-items-list_adv10-cysec",
-  },
+  { key: "adv1", text: "mt5_market-items-list_adv1-fsa" },
+  { key: "adv2", text: "mt5_market-items-list_adv2-fsa" },
+  { key: "adv3", text: "mt5_market-items-list_adv3-fsa" },
+  { key: "adv4", text: "mt5_market-items-list_adv4-fsa" },
+  { key: "adv5", text: "mt5_market-items-list_adv5-fsa" },
+  { key: "adv6", text: "mt5_market-items-list_adv6-fsa" },
+  { key: "adv7", text: "mt5_market-items-list_adv7-fsa" },
+  { key: "adv8", text: "mt5_market-items-list_adv8-fsa" },
+  { key: "adv9", text: "mt5_market-items-list_adv9-fsa" },
+  { key: "adv10", text: "mt5_market-items-list_adv10-fsa" },
+  { key: "adv11-mt5", text: "mt5_market-items-list_adv11-fsa" },
+  { key: "adv12", text: "mt5_market-items-list_adv12-fsa" },
+  { key: "adv13", text: "mt5_market-items-list_adv13-fsa" },
+  { key: "adv14", text: "mt5_market-items-list_adv14-fsa" },
 ];
 
 const FSA_MT4_ADVANTAGES = [
-  {
-    key: "adv1",
-    text: "mt4_market-items-list_adv1-fsa",
-  },
-  {
-    key: "adv2",
-    text: "mt4_market-items-list_adv2-fsa",
-  },
-  {
-    key: "adv3",
-    text: "mt4_market-items-list_adv3-fsa",
-  },
-  {
-    key: "adv4",
-    text: "mt4_market-items-list_adv4-fsa",
-  },
-  {
-    key: "adv5",
-    text: "mt4_market-items-list_adv5-fsa",
-  },
-  {
-    key: "adv6",
-    text: "mt4_market-items-list_adv6-fsa",
-  },
-  {
-    key: "adv7",
-    text: "mt4_market-items-list_adv7-fsa",
-  },
-  {
-    key: "adv8",
-    text: "mt4_market-items-list_adv8-fsa",
-  },
-  {
-    key: "adv9",
-    text: "mt4_market-items-list_adv9-fsa",
-  },
-  {
-    key: "adv10",
-    text: "mt4_market-items-list_adv10-fsa",
-  },
-  {
-    key: "adv11-fsa-mt5",
-    text: "mt4_market-items-list_adv11-fsa",
-  },
-  {
-    key: "adv12",
-    text: "mt4_market-items-list_adv12-fsa",
-  },
-  {
-    key: "adv11",
-    text: "mt4_market-items-list_adv13-fsa",
-  },
+  { key: "adv1", text: "mt4_market-items-list_adv1-fsa" },
+  { key: "adv2", text: "mt4_market-items-list_adv2-fsa" },
+  { key: "adv3", text: "mt4_market-items-list_adv3-fsa" },
+  { key: "adv4", text: "mt4_market-items-list_adv4-fsa" },
+  { key: "adv5", text: "mt4_market-items-list_adv5-fsa" },
+  { key: "adv6", text: "mt4_market-items-list_adv6-fsa" },
+  { key: "adv7", text: "mt4_market-items-list_adv7-fsa" },
+  { key: "adv8", text: "mt4_market-items-list_adv8-fsa" },
+  { key: "adv9", text: "mt4_market-items-list_adv9-fsa" },
+  { key: "adv10", text: "mt4_market-items-list_adv10-fsa" },
+  { key: "adv11-fsa-mt5", text: "mt4_market-items-list_adv11-fsa" },
+  { key: "adv12", text: "mt4_market-items-list_adv12-fsa" },
+  { key: "adv11", text: "mt4_market-items-list_adv13-fsa" },
 ];
 
-export const getMT4Advantages = () => {
-  return isCySEC ? CYSEC_MT4_ADVANTAGES : FSA_MT4_ADVANTAGES;
-};
-export const getMT5Advantages = () => {
-  return isCySEC ? CYSEC_MT5_ADVANTAGES : FSA_MT5_ADVANTAGES;
-};
+export const getMT4Advantages = () => FSA_MT4_ADVANTAGES;
+export const getMT5Advantages = () => FSA_MT5_ADVANTAGES;
 
 const MetaTrader4info = () => {
   const META_TRADER_4 = {
@@ -481,117 +242,36 @@ const MetaTrader5info = () => {
 };
 
 export const CTRADER_ADVANTAGES = [
-  {
-    key: "adv1",
-    text: "ctrader_market-items-list_adv1",
-  },
-  {
-    key: "adv2",
-    text: "ctrader_market-items-list_adv2",
-  },
-  {
-    key: "adv3",
-    text: "ctrader_market-items-list_adv3",
-  },
-  {
-    key: "adv4",
-    text: "ctrader_market-items-list_adv4",
-  },
-  {
-    key: "adv5",
-    text: "ctrader_market-items-list_adv5",
-  },
-  {
-    key: "adv6",
-    text: "ctrader_market-items-list_adv6",
-  },
-  {
-    key: "adv7",
-    text: "ctrader_market-items-list_adv7",
-  },
-  {
-    key: "adv8",
-    text: "ctrader_market-items-list_adv8",
-  },
-  {
-    key: "adv9",
-    text: "ctrader_market-items-list_adv9",
-  },
-  {
-    key: "adv10",
-    text: "ctrader_market-items-list_adv10",
-  },
-  {
-    key: "adv11",
-    text: "ctrader_market-items-list_adv11",
-  },
-  {
-    key: "adv12",
-    text: "ctrader_market-items-list_adv12",
-  },
-  {
-    key: "adv13",
-    text: "ctrader_market-items-list_adv13",
-  },
+  { key: "adv1", text: "ctrader_market-items-list_adv1" },
+  { key: "adv2", text: "ctrader_market-items-list_adv2" },
+  { key: "adv3", text: "ctrader_market-items-list_adv3" },
+  { key: "adv4", text: "ctrader_market-items-list_adv4" },
+  { key: "adv5", text: "ctrader_market-items-list_adv5" },
+  { key: "adv6", text: "ctrader_market-items-list_adv6" },
+  { key: "adv7", text: "ctrader_market-items-list_adv7" },
+  { key: "adv8", text: "ctrader_market-items-list_adv8" },
+  { key: "adv9", text: "ctrader_market-items-list_adv9" },
+  { key: "adv10", text: "ctrader_market-items-list_adv10" },
+  { key: "adv11", text: "ctrader_market-items-list_adv11" },
+  { key: "adv12", text: "ctrader_market-items-list_adv12" },
+  { key: "adv13", text: "ctrader_market-items-list_adv13" },
 ];
 
 export const TRADING_VIEW_ADVANTAGES = [
-  {
-    key: "adv1",
-    text: "trading-view_market-items-list_adv1",
-  },
-  {
-    key: "adv2",
-    text: "trading-view_market-items-list_adv2",
-  },
-  {
-    key: "adv3",
-    text: "trading-view_market-items-list_adv3",
-  },
-  {
-    key: "adv4",
-    text: "trading-view_market-items-list_adv4",
-  },
-  {
-    key: "adv5",
-    text: "trading-view_market-items-list_adv5",
-  },
-  {
-    key: "adv6",
-    text: "trading-view_market-items-list_adv6",
-  },
-  {
-    key: "adv7",
-    text: "trading-view_market-items-list_adv7",
-  },
-  {
-    key: "adv8",
-    text: "trading-view_market-items-list_adv8",
-  },
-  {
-    key: "adv9",
-    text: "trading-view_market-items-list_adv9",
-  },
-  {
-    key: "adv10",
-    text: "trading-view_market-items-list_adv10",
-  },
-  {
-    key: "adv11",
-    text: "trading-view_market-items-list_adv11",
-  },
-  {
-    key: "adv12",
-    text: "trading-view_market-items-list_adv12",
-  },
-  {
-    key: "adv13",
-    text: "trading-view_market-items-list_adv13",
-  },
-  {
-    key: "adv14",
-    text: "trading-view_market-items-list_adv14",
-  },
+  { key: "adv1", text: "trading-view_market-items-list_adv1" },
+  { key: "adv2", text: "trading-view_market-items-list_adv2" },
+  { key: "adv3", text: "trading-view_market-items-list_adv3" },
+  { key: "adv4", text: "trading-view_market-items-list_adv4" },
+  { key: "adv5", text: "trading-view_market-items-list_adv5" },
+  { key: "adv6", text: "trading-view_market-items-list_adv6" },
+  { key: "adv7", text: "trading-view_market-items-list_adv7" },
+  { key: "adv8", text: "trading-view_market-items-list_adv8" },
+  { key: "adv9", text: "trading-view_market-items-list_adv9" },
+  { key: "adv10", text: "trading-view_market-items-list_adv10" },
+  { key: "adv11", text: "trading-view_market-items-list_adv11" },
+  { key: "adv12", text: "trading-view_market-items-list_adv12" },
+  { key: "adv13", text: "trading-view_market-items-list_adv13" },
+  { key: "adv14", text: "trading-view_market-items-list_adv14" },
 ];
 
 export { MetaTrader4info, MetaTrader5info };
@@ -620,11 +300,9 @@ export const cTraderDownloadTabs = () => {
           <a href={CTRADER_DOWNLOAD_LINKS.getAndroidLink()}>
             {t("ctrader_mt-promotion-download-android")}
           </a>
-          {!isCySEC && (
-            <a href={CTRADER_DOWNLOAD_LINKS.getIOSLink()}>
-              {t("ctrader_mt-promotion-download-ios")}
-            </a>
-          )}
+          <a href={CTRADER_DOWNLOAD_LINKS.getIOSLink()}>
+            {t("ctrader_mt-promotion-download-ios")}
+          </a>
         </>
       ),
     },
@@ -671,11 +349,9 @@ export const mt4DownloadTabs = () => {
           <a href={MT4_DOWNLOAD_LINKS.getAndroidLink()}>
             {t("mt4_mt-promotion-download-android")}
           </a>
-
           <a href={MT4_DOWNLOAD_LINKS.getIOSLink()}>
             {t("mt4_mt-promotion-download-ios")}
           </a>
-
           <a href={MT4_DOWNLOAD_LINKS.getHuaweiLink()}>
             {t("mt4_mt-promotion-download-huawei")}
           </a>
@@ -725,11 +401,9 @@ export const mt5DownloadTabs = () => {
           <a href={MT5_DOWNLOAD_LINKS.getAndroidLink()}>
             {t("mt5_mt-promotion-download-android")}
           </a>
-
           <a href={MT5_DOWNLOAD_LINKS.getIOSLink()}>
             {t("mt5_mt-promotion-download-ios")}
           </a>
-
           <a href={MT5_DOWNLOAD_LINKS.getHuaweiLink()}>
             {t("mt5_mt-promotion-download-huawei")}
           </a>
@@ -768,9 +442,7 @@ export const mt5DownloadTabs = () => {
   ];
 };
 
-export const getTradersList = () => {
-  return isCySEC ? [MetaTrader5info()] : [MetaTrader4info()];
-};
+export const getTradersList = () => [MetaTrader4info(), MetaTrader5info()];
 export const getAnimationStyle = () => {
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
 
