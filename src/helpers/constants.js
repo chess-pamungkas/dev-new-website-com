@@ -58,7 +58,7 @@ export const DIR_LTR = "ltr";
 export const DIR_RTL = "rtl";
 
 const CONTACT_PHONE = "357 25010490";
-const CONTACT_PHONE_FSA = "44 2045867126";
+const CONTACT_PHONE_FSA = "44 330 828 5704";
 export const CONTACT_PHONE_FSA_2 = "248 4632034";
 const CONTACT_EMAIL = "support@oqtima.eu";
 const CONTACT_EMAIL_FSA = "support@oqtima.com";
