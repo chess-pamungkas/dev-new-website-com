@@ -28,7 +28,6 @@ import {
 import { useSpring } from "react-spring";
 import { usePromotionAnimation } from "../../../promotion/use-promotion-animation";
 import { scrollTo } from "../../../../helpers/scroll-to";
-import { sitePostfix } from "../../../../helpers/entity-resolver";
 import CommonContext from "../../../../context/common-context";
 
 const PromotionContent = () => {
@@ -255,8 +254,8 @@ const PromotionContent = () => {
         isRedPalette
       >
         <HighlightedLocalizationText
-          localizationText={t(`index_promotion1-text${sitePostfix}`)}
-          wordsToHighlight={t(`promotion1-text-accent${sitePostfix}`)}
+          localizationText={t(`index_promotion1-text-fsa`)}
+          wordsToHighlight={t(`promotion1-text-accent-fsa`)}
           primaryClassName="highlighted-in-white"
           accentClassName="highlighted-in-red"
         />
@@ -270,8 +269,8 @@ const PromotionContent = () => {
         isRedPalette
       >
         <HighlightedLocalizationText
-          localizationText={t(`index_promotion2-text${sitePostfix}`)}
-          wordsToHighlight={t(`promotion2-text-accent${sitePostfix}`)}
+          localizationText={t(`index_promotion2-text-fsa`)}
+          wordsToHighlight={t(`promotion2-text-accent-fsa`)}
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
@@ -284,8 +283,8 @@ const PromotionContent = () => {
         link={WITHDRAWAL_PAGE_LINK}
       >
         <HighlightedLocalizationText
-          localizationText={t(`index_promotion3-text${sitePostfix}`)}
-          wordsToHighlight={t(`promotion3-text-accent${sitePostfix}`)}
+          localizationText={t(`index_promotion3-text-fsa`)}
+          wordsToHighlight={t(`promotion3-text-accent-fsa`)}
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
