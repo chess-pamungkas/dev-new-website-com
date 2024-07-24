@@ -15,7 +15,5 @@ function DetectIsLandingPage() {
 
 export const isLandingPage = DetectIsLandingPage();
 
-export const sitePostfix = isFSA ? "-fsa" : "";
-
 export const topLevelDomain = "com";
 export const oppositeTopLevelDomain = "eu";
