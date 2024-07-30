@@ -4,8 +4,6 @@ import { useTranslationWithVariables } from "../helpers/hooks/use-translation-wi
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import PartnersPageContent from "../components/pages-content/partners-page-content";
-import NotFoundContent from "../components/pages-content/not-found-page-content";
-import { isCySEC } from "../helpers/entity-resolver";
 
 const PartnersPage = () => {
   const { t } = useTranslationWithVariables();
@@ -14,11 +12,9 @@ const PartnersPage = () => {
     <>
       <Seo
         fsaTitle={t("page-partners-title")}
-        cysecTitle={t("system-page-404-title")}
         fsaDescription={t("page-partners-description")}
-        cysecRobots={"noindex"}
       />
-      {isCySEC ? <NotFoundContent /> : <PartnersPageContent />}
+      <PartnersPageContent />
     </>
   );
 };

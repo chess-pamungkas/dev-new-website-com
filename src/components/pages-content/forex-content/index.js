@@ -22,7 +22,6 @@ import {
 } from "../../../helpers/top-market-tables";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import Tabs from "../../shared/tabs";
-import { sitePostfix } from "../../../helpers/entity-resolver";
 import TradingContext from "../../../context/trading-context";
 
 const ForexContent = () => {
@@ -121,8 +120,8 @@ const ForexContent = () => {
         link={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
-          localizationText={`forex_top-market-promotion-promo-text${sitePostfix}`}
-          wordsToHighlight={`forex-top-market-promotion-promo-text-accent${sitePostfix}`}
+          localizationText={`forex_top-market-promotion-promo-text-fsa`}
+          wordsToHighlight={`forex-top-market-promotion-promo-text-accent-fsa`}
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import LanguageContext from "../context/language-context";
 import ClientResolverContext from "../context/client-resolver-context";
 
@@ -17,7 +17,7 @@ export const getLocalizationVariables = () => {
   //TODO Check if needed
   const isIncreasedMinDeposit = () => {
     const HIGHER_DEPOSIT_COUNTRIES = [
-      "CA", // Canada
+      "CA", // Canadabn
       "GB", // UK
       JP_CONTRY_CODE, // Japan
       "AU", // Australia

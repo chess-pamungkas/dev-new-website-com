@@ -13,7 +13,6 @@ import {
 import { formatMoney } from "../../../../helpers/services/format-money";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../../../helpers/constants";
-import { sitePostfix } from "../../../../helpers/entity-resolver";
 
 const IncomeSlider = ({ className }) => {
   const { t } = useTranslationWithVariables();
@@ -47,15 +46,15 @@ const IncomeSlider = ({ className }) => {
       dir={isRTL ? DIR_RTL : DIR_LTR}
     >
       <p className="partners-income__title">
-        {t(`partners_income-slider-title${sitePostfix}`)}
+        {t(`partners_income-slider-title-fsa`)}
       </p>
       <p className="partners-income__description">
-        {t(`partners_income-slider-description${sitePostfix}`)}
+        {t(`partners_income-slider-description-fsa`)}
       </p>
       <div className="partners-income__total-clients">
         <p className="partners-income__total-num">{clientsCount}</p>
         <p className="partners-income__total-note">
-          {t(`partners_income-slider-clients-note${sitePostfix}`)}
+          {t(`partners_income-slider-clients-note-fsa`)}
         </p>
       </div>
       <Slider
@@ -76,7 +75,7 @@ const IncomeSlider = ({ className }) => {
           &#36; {formatMoney(totalIncome)}
         </p>
         <p className="partners-income__total-note">
-          {t(`partners_income-slider-income-note${sitePostfix}`)}
+          {t(`partners_income-slider-income-note-fsa`)}
         </p>
       </div>
     </section>

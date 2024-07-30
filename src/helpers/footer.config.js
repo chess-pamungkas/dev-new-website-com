@@ -1,20 +1,10 @@
 import React from "react";
 import { LEGAL_PAGE_LINK } from "./constants";
-import { RISK_DISCLOSURE_DOC } from "./documents";
-import { isCySEC } from "./entity-resolver";
 import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
 
-const FOOTER_TEXT = "footer-text-cysec";
 const FOOTER_TEXT_FSA = "footer-text-fsa";
 
-export const getFooterText = () => (isCySEC ? FOOTER_TEXT : FOOTER_TEXT_FSA);
-
-const FOOTER_COPYRIGHT = {
-  p1: "footer-copyright-paragraph1-cysec",
-  p2: "footer-copyright-paragraph2-cysec",
-  a1: "footer-copyright-paragraph-link-cysec",
-  link1: RISK_DISCLOSURE_DOC,
-};
+export const getFooterText = () => FOOTER_TEXT_FSA;
 
 const FOOTER_COPYRIGHT_FSA = {
   p1: "footer-copyright-paragraph1-fsa",
@@ -39,17 +29,7 @@ export const FOOTER_FOR_FUNDING = {
 export const getFooterCopyright = () => {
   const { t } = useTranslationWithVariables();
 
-  return isCySEC ? (
-    <>
-      <p>{t(FOOTER_COPYRIGHT.p1)}</p>
-      <p>
-        {t(FOOTER_COPYRIGHT.p2)}&nbsp;
-        <a href={FOOTER_COPYRIGHT.link1} target="_blank" rel="noreferrer">
-          {t(FOOTER_COPYRIGHT.a1)}
-        </a>
-      </p>
-    </>
-  ) : (
+  return (
     <>
       <p>{t(FOOTER_COPYRIGHT_FSA.p1)}</p>
       <p>{t(FOOTER_COPYRIGHT_FSA.p1_2)}</p>
@@ -72,6 +52,7 @@ export const getFooterCopyright = () => {
     </>
   );
 };
+
 export const getFooterCompanyName = () => {
   const { t } = useTranslationWithVariables();
   return <p>{t(FOOTER_COMPANY.p1)}</p>;

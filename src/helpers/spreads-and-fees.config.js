@@ -1,5 +1,4 @@
 import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
-import { isCySEC } from "./entity-resolver";
 import { MobileCell } from "../components/shared/table/components/mobile-cell";
 
 export const DATA_SPREADS_TABLE_FOREX = [
@@ -275,7 +274,7 @@ export const ColumnsSpreadTable2 = () => {
 
 export const DataSpreadTable2 = () => {
   const { t } = useTranslationWithVariables();
-  const DATA_SPREADS_TABLE_2_CYSEC = [
+  const DATA_SPREADS_TABLE_2_FSA = [
     {
       col1: "USD",
       col2: t("spreads_account-data-table2-col2-1"),
@@ -292,9 +291,6 @@ export const DataSpreadTable2 = () => {
       col1: "CHF",
       col2: t("spreads_account-data-table2-col2-4"),
     },
-  ];
-  const DATA_SPREADS_TABLE_2_FSA = [
-    ...DATA_SPREADS_TABLE_2_CYSEC,
     {
       col1: "SGD",
       col2: t("spreads_account-data-table2-col2-5"),
@@ -312,5 +308,5 @@ export const DataSpreadTable2 = () => {
       col2: t("spreads_account-data-table2-col2-8"),
     },
   ];
-  return isCySEC ? DATA_SPREADS_TABLE_2_CYSEC : DATA_SPREADS_TABLE_2_FSA;
+  return DATA_SPREADS_TABLE_2_FSA;
 };

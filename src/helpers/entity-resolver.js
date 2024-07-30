@@ -3,10 +3,7 @@ import { isBrowser } from "./services/is-browser";
 
 // FSA or CYSEC, change it right here for development if needed
 export const currentEntity = process.env.GATSBY_ENTITY;
-// export const currentEntity = "FSA";
-// export const currentEntity = "CYSEC";
 
-export const isCySEC = currentEntity === entities.CYSEC;
 export const isFSA = currentEntity === entities.FSA;
 
 function DetectIsLandingPage() {
@@ -17,9 +14,6 @@ function DetectIsLandingPage() {
 }
 
 export const isLandingPage = DetectIsLandingPage();
-// export const isLandingPage = true;
 
-export const sitePostfix = isCySEC ? "-cysec" : "-fsa";
-
-export const topLevelDomain = isCySEC ? "eu" : "com";
-export const oppositeTopLevelDomain = isCySEC ? "com" : "eu";
+export const topLevelDomain = "com";
+export const oppositeTopLevelDomain = "eu";

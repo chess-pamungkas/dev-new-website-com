@@ -4,8 +4,6 @@ import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import Mt4WebTraderLink from "../components/mt4-webtrader";
 import CommonContext from "../context/common-context";
-import NotFoundContent from "../components/pages-content/not-found-page-content";
-import { isCySEC } from "../helpers/entity-resolver";
 import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 
 const MT4WebTraderPage = () => {
@@ -22,10 +20,9 @@ const MT4WebTraderPage = () => {
     <>
       <Seo
         fsaTitle={"MT4 Web Trader"}
-        cysecTitle={t("system-page-404-title")}
-        cysecRobots={"noindex"}
+        fsaDescription={t("page-mt4-web-trader-description")}
       />
-      {isCySEC ? <NotFoundContent /> : <Mt4WebTraderLink />}
+      <Mt4WebTraderLink />
     </>
   );
 };
