@@ -4,8 +4,6 @@ import { useTranslationWithVariables } from "../helpers/hooks/use-translation-wi
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import CryptoContent from "../components/pages-content/crypto-content";
-import NotFoundContent from "../components/pages-content/not-found-page-content";
-import { isCySEC } from "../helpers/entity-resolver";
 
 const CryptoPage = () => {
   const { t } = useTranslationWithVariables();
@@ -14,11 +12,9 @@ const CryptoPage = () => {
     <>
       <Seo
         fsaTitle={t("page-crypto-title-fsa")}
-        cysecTitle={t("system-page-404-title")}
         fsaDescription={t("page-crypto-description-fsa")}
-        cysecRobots={"noindex"}
       />
-      {isCySEC ? <NotFoundContent /> : <CryptoContent />}
+      <CryptoContent />
     </>
   );
 };

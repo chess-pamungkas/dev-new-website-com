@@ -1,5 +1,4 @@
 import advantageIcon from "../assets/images/accounts-type/advantage-icon.svg";
-import { sitePostfix } from "./entity-resolver";
 
 export const ACCOUNT_TYPES = [
   {
@@ -19,11 +18,11 @@ export const ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type1-min-deposit-title",
-        value: `accounts-type_account-type1-min-deposit-value${sitePostfix}`,
+        value: "accounts-type_account-type1-min-deposit-value-fsa",
       },
       {
         title: "accounts-type_account-type1-max-leverage-title",
-        value: `accounts-type_account-type1-max-leverage-value${sitePostfix}`,
+        value: "accounts-type_account-type1-max-leverage-value-fsa",
       },
       {
         title: "accounts-type_account-type1-ending-allowed-title",
@@ -37,7 +36,7 @@ export const ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type1-currencies-title",
-        value: `accounts-type_account-type1-currencies-value${sitePostfix}`,
+        value: "accounts-type_account-type1-currencies-value-fsa",
         smallValue: true,
       },
       {
@@ -50,11 +49,11 @@ export const ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type1-markets-title",
-        value: `accounts-type_account-type1-markets-value${sitePostfix}`,
+        value: "accounts-type_account-type1-markets-value-fsa",
       },
       {
         title: "accounts-type_account-type1-total-symbols-title",
-        value: `accounts-type_account-type1-total-symbols-value${sitePostfix}`,
+        value: "accounts-type_account-type1-total-symbols-value-fsa",
         skipHr: true,
       },
     ],
@@ -76,11 +75,11 @@ export const ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type2-min-deposit-title",
-        value: `accounts-type_account-type2-min-deposit-value${sitePostfix}`,
+        value: "accounts-type_account-type2-min-deposit-value-fsa",
       },
       {
         title: "accounts-type_account-type2-max-leverage-title",
-        value: `accounts-type_account-type2-max-leverage-value${sitePostfix}`,
+        value: "accounts-type_account-type2-max-leverage-value-fsa",
       },
       {
         title: "accounts-type_account-type2-ending-allowed-title",
@@ -94,7 +93,7 @@ export const ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type2-currencies-title",
-        value: `accounts-type_account-type2-currencies-value${sitePostfix}`,
+        value: "accounts-type_account-type2-currencies-value-fsa",
         smallValue: true,
       },
       {
@@ -107,11 +106,11 @@ export const ACCOUNT_TYPES = [
       },
       {
         title: "accounts-type_account-type2-markets-title",
-        value: `accounts-type_account-type2-markets-value${sitePostfix}`,
+        value: "accounts-type_account-type2-markets-value-fsa",
       },
       {
         title: "accounts-type_account-type2-total-symbols-title",
-        value: `accounts-type_account-type2-total-symbols-value${sitePostfix}`,
+        value: "accounts-type_account-type2-total-symbols-value-fsa",
         skipHr: true,
       },
     ],

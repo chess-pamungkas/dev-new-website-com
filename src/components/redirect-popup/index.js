@@ -6,7 +6,6 @@ import { postClientConsent } from "../../helpers/services/client-consent-service
 import { CONSENT_TYPES } from "../../helpers/consent-types.config";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { setRedirectOrBannedPopupShown } from "../../helpers/services/set-redirect-or-banned-popup-shown";
-import { isCySEC } from "../../helpers/entity-resolver";
 import ClientResolverContext from "../../context/client-resolver-context";
 import { redirectToOppositeEntity } from "../../helpers/services/redirect-to-opposite-entity";
 
@@ -19,13 +18,13 @@ const RedirectOrBannedPopup = ({
   const { t } = useTranslationWithVariables();
   const { clientConfig } = useContext(ClientResolverContext);
 
-  const bannedPopupDescription = (country, entity) => (
+  const bannedPopupDescription = (country) => (
     <>
       <p className="popup__paragraph">
         {t("popup-banned-description-part1")}&nbsp;
         <span className="highlighted-in-red">{country}</span>
         {t("popup-banned-description-part2")}&nbsp;
-        <span className="highlighted-in-red">{entity}</span>&nbsp;
+        <span className="highlighted-in-red">{t("fsa-entity-name")}</span>&nbsp;
         {t("popup-banned-description-part3")}
       </p>
       <p className="popup__paragraph">{t("popup-banned-description-part4")}</p>
@@ -105,19 +104,17 @@ const RedirectOrBannedPopup = ({
   const buildButtons = (buttons) => {
     return (
       <div className="popup__buttons">
-        {buttons.map((button, i) => {
-          return (
-            <div className="popup__button-wrapper" key={`redirectButton${i}`}>
-              <button
-                type="button"
-                className="popup__button"
-                onClick={button.onClick}
-              >
-                {button.text}
-              </button>
-            </div>
-          );
-        })}
+        {buttons.map((button, i) => (
+          <div className="popup__button-wrapper" key={`redirectButton${i}`}>
+            <button
+              type="button"
+              className="popup__button"
+              onClick={button.onClick}
+            >
+              {button.text}
+            </button>
+          </div>
+        ))}
       </div>
     );
   };
@@ -131,11 +128,7 @@ const RedirectOrBannedPopup = ({
     >
       <div className="popup__title">{t("popup-title")}</div>
       <div className="popup__text">
-        {isBannedPopup &&
-          bannedPopupDescription(
-            clientConfig.countryName,
-            isCySEC ? t("cysec-entity-name") : t("fsa-entity-name")
-          )}
+        {isBannedPopup && bannedPopupDescription(clientConfig.countryName)}
         {!isBannedPopup && softRedirectionDescription(clientConfig.countryName)}
       </div>
       {buildButtons(getButtons())}
@@ -149,4 +142,5 @@ RedirectOrBannedPopup.propTypes = {
   isBannedPopup: PropTypes.bool.isRequired,
   setIsRecommendedRedirectNotification: PropTypes.func.isRequired,
 };
+
 export default RedirectOrBannedPopup;

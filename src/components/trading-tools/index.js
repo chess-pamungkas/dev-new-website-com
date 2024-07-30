@@ -11,7 +11,6 @@ import { useTrail } from "react-spring";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
-import { sitePostfix } from "../../helpers/entity-resolver";
 
 const TradingTools = ({ className }) => {
   const { t } = useTranslationWithVariables();
@@ -72,8 +71,8 @@ const TradingTools = ({ className }) => {
         />
         <h2 className="trading-tools__title" ref={containerRef}>
           <HighlightedLocalizationText
-            localizationText={`index_trading-tools-title${sitePostfix}`}
-            wordsToHighlight={`trading-tools-title-accent${sitePostfix}`}
+            localizationText={`index_trading-tools-title-fsa`}
+            wordsToHighlight={`trading-tools-title-accent-fsa`}
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"
           />

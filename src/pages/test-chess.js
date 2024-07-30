@@ -3,23 +3,23 @@ import { graphql } from "gatsby";
 import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
-import Mt4PageContent from "../components/pages-content/mt4-page-content";
+import TestChessContent from "../components/pages-content/test-chess-content";
 
-const MT4Page = () => {
+const TestChess = () => {
   const { t } = useTranslationWithVariables();
 
   return (
     <>
       <Seo
-        fsaTitle={t("page-mt4-title")}
-        fsaDescription={t("page-mt4-description")}
+        fsaTitle={t("test-chess-title")}
+        fsaDescription={t("test-chess-description")}
       />
-      <Mt4PageContent />
+      <TestChessContent />
     </>
   );
 };
 
-export default MT4Page;
+export default TestChess;
 
 export const query = graphql`
   query ($language: String!) {

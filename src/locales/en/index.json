@@ -35,8 +35,7 @@
   "header-nav-tab-trading-funding-withdrawals-accounts-desc": "OQtima offers you a flexible approach to trade",
   "header-nav-tab-trading-copy-trading-title": "Copy Trading",
   "header-nav-tab-trading-copy-trading-desc": "Access to thousands of strategies and copy the best traders.",
-  "header-nav-tab-trading-professional-qualification-title-cysec": "Professional Qualification",
-  "header-nav-tab-trading-professional-qualification-desc-cysec": "Check your eligibility for a Pro account",
+
   "header-nav-tab-trading-why-trade-with-title": "Why Trade With OQtima",
   "header-nav-tab-trading-why-trade-with-desc": "Find why OQtima is the cutting edge experience in trading",
   "header-nav-tab-trading-trading-tools-title": "Trading Tools",
@@ -67,8 +66,6 @@
   "header-nav-tab-partners-collaboration-partnership-desc-fsa": "Partner with a high converting and reputable broker",
   "header-nav-tab-partners-affiliate-partnership-title": "Affiliate Partnership",
   "header-nav-tab-partners-affiliate-partnership-desc": "CPA model for affiliation referral",
-
-  "header-nav-tab-corner-pro-title-cysec": "OQtima Pro",
 
   "cookie-title": "Privacy Preference Center",
   "cookie-description": " When you visit any website, it may store or retrieve information on your browser, mostly in the form of cookies. This information might be about you, your preferences, or your device and is mostly used to make the site work as you expect it to. The information does not usually directly identify you, but it can give you a more personalized web experience. Because we respect your right to privacy, you can choose not to allow some types of cookies. Click on the different category headings to find out more and change our default settings. However, blocking some types of cookies may impact your experience of the site and the services we are able to offer.",
@@ -109,7 +106,7 @@
   "index_main-promotion-animated-text-traders-ready-to-graduate-to-the-next-level": "Traders ready to graduate to the next level",
   "index_main-promotion-animated-text-you": "You",
   "index_main-promotion-hero-gianluigi-buffon-name": "Gianluigi Buffon",
-  "index_main-promotion-hero-gianluigi-buffon-text-cysec": "World Champion Legend - OQtima Brand Ambassador",
+
   "index_main-promotion-hero-gianluigi-buffon-text-fsa": "World Cup Champion Legend & Passionate Trader: Uses OQtima to trade",
   "index_main-promotion-hero-sea-name": "Sea",
   "index_main-promotion-hero-sea-text": "World Champion Legend - OQtima Brand Ambassador",
@@ -192,32 +189,23 @@
   "index_trade-with-promotion-promo-text-bold-fsa": "{{ assets-number-fsa }}",
   "index_trade-with-promotion-promo-text2-fsa": "assets to trade directly on mobile, desktop or tablet anywhere anytime",
 
-  "index_trade-with-promotion-promo-text1-cysec": "More than",
-  "index_trade-with-promotion-promo-text-bold-cysec": "{{ assets-number }}",
-  "index_trade-with-promotion-promo-text2-cysec": "assets to trade directly on mobile, desktop or tablet, anywhere, anytime",
-
   "index_promotion1-btn-text": "See more",
   "index_promotion1-text-fsa": "Start building your trading portfolio with as little as ${{ index-promotion1-amount-fsa }} USD or equivalent, with {{ index-promotion1-currencies-fsa }} base currencies available.",
   "promotion1-text-accent-fsa": "1,2,3,4,5,12,13,14,18",
-  "index_promotion1-text-cysec": "Start building your trading portfolio with ${{ index-promotion1-amount }} USD or equivalent, with {{ index-promotion1-currencies }} base currencies available.",
-  "promotion1-text-accent-cysec": "1,2,3,4,5,9,10,11,15",
+
   "index_promotion2-btn-text": "See more",
   "index_promotion2-text-fsa": "Trade EURUSD, XAUUSD and many other assets with one of the lowest average spreads in the industry, starting at {{ index-promo-spreads-fsa }} pips.",
   "promotion2-text-accent-fsa": "2,3,5,6,12,13,14,15,16,17,20,21",
-  "index_promotion2-text-cysec": "Trade EURUSD, XAUUSD and many other assets with one of the lowest average spreads in the industry, starting at {{ index-promo-spreads }} pips.",
-  "promotion2-text-accent-cysec": "2,3,5,6,12,13,14,15,16,17,20,21",
+
   "index_promotion3-text-fsa": "Your money, your way, enjoy instant withdrawals with multiple withdrawal methods and multiple trusted funding channels with no fees.",
   "promotion3-text-accent-fsa": "6,7,14,15,16,17,18,19",
-  "index_promotion3-text-cysec": "Your money, your way, enjoy fast withdrawals with multiple withdrawal methods and multiple trusted funding channels with no fees.",
-  "promotion3-text-accent-cysec": "6,7,14,15,16,17,18,19",
+
   "index_promotion4-btn-text": "Start the process",
   "index_promotion4-text": "Smooth account opening with our state-of-the-art verification process and first in class support. Start your next level trading journey with OQtima in minutes.",
   "promotion4-text-accent": "",
   "index_promotion4-text-children-text": "Experience a highly trained and incredibly friendly support that will be there for all your needs. ",
   "promotion4-text-children-text-accent": "3,4,5,6,7,8",
 
-  "index_trading-tools-title-cysec": "Take your trading on MT5 to the next level.",
-  "trading-tools-title-accent-cysec": "5,8,9",
   "index_trading-tools-title-fsa": "Take your trading on MT4 to the next level.",
   "trading-tools-title-accent-fsa": "5,7,10,11",
   "index_trading-tools-btn-text": "Create your account",
@@ -236,27 +224,23 @@
   "performance-advantage1-accent": "3",
   "index_performance-advantage2-fsa": "Average execution time <{{ execution-time-fsa }} ms.",
   "performance-advantage2-accent-fsa": "4,5",
-  "index_performance-advantage2-cysec": "Average execution time <{{ execution-time }} ms.",
-  "performance-advantage2-accent-cysec": "4,5",
+
   "index_performance-advantage3-fsa": "Segregated clients money account in Tier 1 Bank.",
-  "index_performance-advantage3-cysec": "Clients funds are segregated in reputable EU Banking institutions.",
+
   "performance-advantage3-accent-fsa": "6,7,8",
-  "performance-advantage3-accent-cysec": "7,8,9",
+
   "index_performance-advantage4": "Negative balance Protection.",
   "performance-advantage4-accent": "3",
   "index_performance-advantage5-fsa": "Leverage up to {{ leverage-up-to-fsa }}.",
   "performance-advantage5-accent-fsa": "4",
-  "index_performance-advantage5-cysec": "Leverage up to {{ leverage-up-to }}",
-  "performance-advantage5-accent-cysec": "4",
-  "index_performance-advantage6-cysec": "{{ tradeable-products }}+ tradeable products.",
-  "performance-advantage6-accent-cysec": "1",
+
   "index_performance-advantage6-fsa": "{{ tradeable-products-fsa }}+ tradeable products.",
   "performance-advantage6-accent-fsa": "1",
   "index_performance-advantage7": "100% focus on our trader's experience.",
   "performance-advantage7-accent": "1",
 
   "footer-text-fsa": "Thanks to its stable and fast ECN+ trading environment, OQtima is a love letter to traders.  Created by experienced industry leaders with more than 30 years of combined expertise in the trading industry, OQtima represents the next level in terms of trading experience and market accessibility.",
-  "footer-text-cysec": "Thanks to its stable and fast ECN+ trading environment, OQtima is a love letter to traders.  Created by experienced industry leaders with more than 30 years of combined experience in the trading industry, OQtima represents the next level in terms of trading experience and market accessibility.  ",
+
   "footer-copyright-paragraph1-fsa": "OQTIMA INT. LTD, duly authorized to operate under the “OQtima” brand, is a Securities Dealer registered in Seychelles with company registration number 8430031-1 and is regulated by the Financial Services Authority (FSA) with Licence Number SD109. The registered office of OQTIMA INT. LTD is at IMAD Complex, Third Floor, Office 12, Ile Du Port, Mahe, Seychelles. The Business Address of OQTIMA INT. LTD is at IMAD COMPLEX, Office 7, UNIT 204, 1st floor, Ile Du Port, Seychelles.",
   "footer-copyright-paragraph1_2-fsa": "The payment processing services for services purchased on this website are provided by Ipso Facto Ltd, which is an affiliate entity of OQTIMA INT. LTD, registered in Cyprus with registration number HE 445939. The registered office of Ipso Facto Ltd is at John Kennedy 8, Iris Building, 7th Floor, Flat/Office 740B, 3106, Limassol, Cyprus. The entities above are duly authorized to operate under the OQtima brand.",
   "footer-copyright-paragraph1_3-fsa": "Our group of companies through its subsidiaries is licensed by the Cyprus Securities & Exchange Commission “CySEC” (OQtima EU Ltd - License Number 406/21), which has been passported in the European Union through the MiFID Directive, and in the Republic of Seychelles by the Financial Services Authority of Seychelles “FSA” (OQtima INT.LTD - License Number SD109)",
@@ -266,10 +250,6 @@
   "footer-copyright-paragraph3-part2-fsa": "before using our services. The information and advertisements offered on this website are not intended for use by any person in any country or jurisdiction where such use is contrary to the local laws and regulations and should not be regarded as an offer or solicitation to any person in any jurisdiction in which such an offer or solicitation is not authorized or to any person to whom it would be unlawful to make such an offer or solicitation, nor regarded as recommendation to buy, sell or otherwise deal with any particular currency or precious metal trade.",
   "footer-copyright-paragraph4-fsa": "Products and services offered on this website are not directed at or intended for residents of the United States, Iran and North Korea, and are not intended for distribution to, or use by any person in any country or jurisdiction where such distribution or use would be contrary to local law or regulation.",
   "footer-copyright-paragraph5-fsa": "Content, products, and services of this website are not intended nor directed to people under 18 years old.",
-
-  "footer-copyright-paragraph1-cysec": "OQTIMA EU LTD (ex Nordskov Capital Ltd), is registered as a Cyprus Investment Firm (CIF) and licensed by the Cyprus Securities and Exchange Commission (CySEC) under licence number 406/21 in accordance with the Markets in Financial Instruments Directive (MiFID II).",
-  "footer-copyright-paragraph2-cysec": "Risk Warning: CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. {{cysec-percentage}}% of retail investor accounts lose money when trading CFDs. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. Please consider our",
-  "footer-copyright-paragraph-link-cysec": "Risk Disclosure.",
 
   "footer-funding-1": "* If a request is made before 11am Eastern European Time",
   "footer-funding-2": "* We won’t charge any fees, but you may incur  fees charged by your bank depending on the method you use.",
@@ -368,7 +348,6 @@
   "page-vps-title": "Private VPS",
   "page-vps-description": "",
 
-  "notification-stripe-cysec": "Risk Warning: CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. {{cysec-percentage}}% of retail investor accounts lose money when trading CFDs. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. Please consider our",
   "notification-stripe-cysec-link": "Risk Disclosure.",
   "notification-stripe-redirect-text": "Based on your geolocation, you may want to consider another of our licensed companies that may be better suited to you.",
   "notification-stripe-close-btn": "Close",
@@ -411,18 +390,6 @@
   "legal-regulator2-text-fsa": "duly authorized to operate under the “OQtima” brand, is a Securities Dealer registered in Seychelles with company registration number 8430031-1 and is regulated by the Financial Services Authority (FSA) with Licence Number SD109.",
   "legal-regulator-read-more-fsa": "Read More",
 
-  "legal_top-market-promo-btn-cysec": "Check our legal documents",
-  "legal_top-market-promo-text-cysec": "OQtima is authorised and Regulated by the Cyprus Securities and Exchange Commission. As regulatory body of an EU member state, CySEC's financial regulations and operations comply with the strict European MiFID financial harmonization law.",
-  "legal_top-market-promo-text-accent-cysec": "",
-
-  "legal_top-market-promo-btn2-cysec": "Check our legal documents",
-  "legal_top-market-promo-text2-cysec": "CySEC is an established regulatory authority governing financial services firms in Cyprus. Being a part of the European Union, CySEC is also a member of the European Securities and Markets Authority (ESMA).",
-  "legal_top-market-promo-text-accent2-cysec": "",
-  "legal_top-market-promo-note-cysec": "As a CySEC licensed firm, OQtima complies with all domestic and European laws and regulations applicable to investment firms.",
-
-  "legal_documents-title-cysec": "Legal Documents",
-  "legal_documents-text-bold-cysec": "European Markets in Financial Instruments (MiFID - MiFIR)",
-  "legal_documents-text-cysec": "Effective from January 3, 2018 MiFID II, the updated version of the Markets in Financial Instruments Directive and MiFIR, will ensure fairer, safer and more transparent market trading conditions. Cyprus, as a member of the European Union, has transposed MiFID II into its domestic legislation, the Investment Services and Activities and Regulated Markets Law of 2017 (Law 87(I)/2017).",
   "legal_documents-btn": "View PDF",
 
   "legal_documents-title-fsa": "Legal Documents",
@@ -440,7 +407,7 @@
   "company_split-text-promotion-subtitle": "OQtima provides customized trading experiences for traders at all levels, using our 30+ years of industry expertise. We understand that different traders have different needs, and we invested in the right team to create the best trading environment for each individual.",
   "company_company-advantages-title1": "Safety",
   "company_company-advantages-text1-1": "OQtima understands the importance of being fully compliant with all relevant laws and regulations to protect clients. At OQtima we have strict controls in our compliance environment and periodical internal audits to improve our performance.",
-  "company_company-advantages-text1-2-cysec": "As a CySEC regulated entity, OQtima is required to meet strict financial standards, including capital adequacy and audit requirements.",
+
   "company_company-advantages-text1-2-fsa": "As a regulated entity, OQtima is required to meet strict financial standards, including capital adequacy and audit requirements.",
   "company_company-advantages-text1-3": "OQtima holds Clients Money in Segregated trust accounts with top tier banks. All Client money is held separately to OQtima company funds. Client money is not used for any purpose other than to facilitate clients trading activity.",
   "company_company-advantages-text1-4": "OQtima maintains appropriate controls and monitors the transfer of confidential and sensitive client information within and outside the Company on a need-to-know basis. OQtima does not deliberately disclose client information unless this is upon request of the client, or as required to do so by law.",
@@ -459,7 +426,7 @@
   "contact-us_page-text": "Need to get in touch with us? Either fill out the form with your inquiry or find the department email you'd like to contact below.",
   "contact-us_email": "Email",
   "contact-us_phone": "Phone",
-  "contact-us_address-cysec": "Address",
+
   "contact-us_form_name": "Full name",
   "contact-us_form_error_message_required": "This field is required.",
   "contact-us_form_error_message_invalid": "There's something wrong. The form is invalid.",
@@ -480,8 +447,7 @@
   "forex_top-market-layout-btn": "Try OQtima",
   "forex_top-market-promo-text": "Take advantage of one of the most liquid and volatile financial markets in the world with a global broker",
   "forex-top-market-promo-text-accent": "2,8,10,18,19",
-  "forex_top-market-promotion-promo-text-cysec": "Take advantage of global macroeconomics changes with {{ forex-currency-pairs }} currency pairs at your disposal, deep liquidity and fast execution 24/5",
-  "forex-top-market-promotion-promo-text-accent-cysec": "8,9,10,18",
+
   "forex_top-market-promotion-promo-text-fsa": "Take advantage of global macroeconomics changes with {{ forex-currency-pairs }} currency pairs at your disposal, deep liquidity and leverage up to {{ leverage-up-to-fsa }}",
   "forex-top-market-promotion-promo-text-accent-fsa": "8,9,10,20",
   "forex_faq-title1": "When is the forex market open?",
@@ -681,17 +647,14 @@
   "indices_marketing-circle-right-bottom": "Trade short or long in a click. ",
   "indices_marketing-circle-right-bottom-accent": "1",
 
-  "shares_top-market-title-cysec": "Use the power of CFD to trade more than {{ shares-number }}+ shares",
   "shares_top-market-title-fsa": "Use the power of CFD to trade with the hottest share now",
   "shares_top-market-btn1": "Try our demo account",
   "shares_top-market-btn2": "TRADE SHARES CFDs NOW",
-  "shares_top-market-promo-text-cysec": "Tesla, Netflix, Apple, Meta and all the most renowned shares along with many hidden gems for the more demanding traders, that’s the OQtima range. Trade long or short with leverage up to {{ shares-leverage-up-to }}",
-  "shares_top-market-promo-text-accent-cysec": "6,7,8,9,10,23,24,33",
+
   "shares_top-market-promo-text-fsa": "Tesla, Netflix, Apple, Meta and all the most renowned shares along with many hidden gems for the more demanding traders, that’s the OQtima range. Trade long or short with leverage up to {{ leverage-up-to-fsa }}",
   "shares_top-market-promo-text-accent-fsa": "6,7,8,9,10,23,24,33",
   "shares_trading-ticker-title": "POPULAR SHARES TO TRADE",
-  "shares_top-market-promotion-promo-text-cysec": "With OQtima you can trade the hottest shares, long or short, with MT5, getting access to advanced charting options, helpful tools, and markets insights.",
-  "shares_top-market-promotion-promo-text-accent-cysec": "2,7,8,13,15",
+
   "shares_top-market-promotion-promo-text-fsa": "With OQtima you can trade the hottest shares, long or short, with MT4, getting access to advanced charting options, helpful tools, and markets insights.",
   "shares_top-market-promotion-promo-text-accent-fsa": "2,7,8,13",
   "shares_top-market-promo-btn": "START TRADING SHARES CFD",
@@ -716,7 +679,7 @@
 
   "shares_top-market-layout-title": "Spreads on Shares",
   "shares_top-market-layout-btn": "Try OQtima",
-  "shares_marketing-circle-upper-cysec": "{{ shares-number }}+ Shares to trade with the power of CFDs",
+
   "shares_marketing-circle-upper-fsa": "{{ shares-number-fsa }} Shares to trade with the power of CFDs",
   "shares_marketing-circle-upper-accent": "1,9",
   "shares_marketing-circle-left-upper": "Ultra-Fast and stable execution",
@@ -737,7 +700,7 @@
   "all-markets_market-items-list-forex-text": "Take advantage of global macroeconomics changes with {{ forex-currency-pairs }} currency pairs at your disposal with the most liquid markets in the world open 24/5.",
   "all-markets_market-items-list-forex-adv1": "{{ forex-currency-pairs }} currency pairs",
   "all-markets_market-items-list-forex-adv2-fsa": "MT4",
-  "all-markets_market-items-list-forex-adv2-cysec": "MT5",
+
   "all-markets_market-items-list-forex-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-forex-adv4": "Spreads from 0.0",
   "all-markets_market-items-list-forex-adv5": "Deep Liquidity",
@@ -749,7 +712,7 @@
   "all-markets_market-items-list-indices-text3": "Trade CFDs on indices and speculate on the performance of the various stock markets around the world now.",
   "all-markets_market-items-list-indices-adv1": "{{ indices-number }} indices",
   "all-markets_market-items-list-indices-adv2-fsa": "MT4",
-  "all-markets_market-items-list-indices-adv2-cysec": "MT5",
+
   "all-markets_market-items-list-indices-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-indices-adv4": "Spreads from 0.0",
   "all-markets_market-items-list-indices-adv5": "Deep Liquidity",
@@ -757,11 +720,11 @@
   "all-markets_market-items-list-indices-adv7": "No commission account available",
   "all-markets_market-items-list-shares-title": "Shares",
   "all-markets_market-items-list-shares-text-fsa": "With OQtima you can trade all the most sought after and hottest shares, long or short, with MT4, getting access to advanced charting options, helpful tools, and markets insights. Pick the share you believe will boom or you think is overpriced and go long or short with the power of CFD trading.",
-  "all-markets_market-items-list-shares-text-cysec": "With OQtima you can trade {{ shares-number }} of the hottest shares, long or short, with MT5, getting access to advanced charting options, helpful tools, and markets insights. Pick the share you believe will boom or you think is overpriced and go long or short with the power of CFD trading.",
+
   "all-markets_market-items-list-shares-adv1-fsa": "{{ shares-number-fsa }} Shares",
-  "all-markets_market-items-list-shares-adv1-cysec": "{{shares-number}} Shares",
+
   "all-markets_market-items-list-shares-adv2-fsa": "MT4",
-  "all-markets_market-items-list-shares-adv2-cysec": "MT5",
+
   "all-markets_market-items-list-shares-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-shares-adv4": "Spreads from 0.0",
   "all-markets_market-items-list-shares-adv5": "Deep Liquidity",
@@ -772,7 +735,7 @@
   "all-markets_market-items-list-commodities-text2": "Trade Gold, Silver and other metals against the most important currencies or decide if their price will soar or drop with a click.",
   "all-markets_market-items-list-commodities-adv1": "{{ metals-number }} Metals",
   "all-markets_market-items-list-commodities-adv2-fsa": "MT4",
-  "all-markets_market-items-list-commodities-adv2-cysec": "MT5",
+
   "all-markets_market-items-list-commodities-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-commodities-adv4": "Spreads from 0.0",
   "all-markets_market-items-list-commodities-adv5": "Deep Liquidity",
@@ -782,7 +745,7 @@
   "all-markets_market-items-list-energies-text": "With OQtima you can trade the most renowned source of energies on the planet without owning the assets itself, thanks to the power of CFD trading. Trade WTI Crude, Brent Crude, Natural Gas and Oil Futures with a click.",
   "all-markets_market-items-list-energies-adv1": "{{ energies-number }} Energies",
   "all-markets_market-items-list-energies-adv2-fsa": "MT4",
-  "all-markets_market-items-list-energies-adv2-cysec": "MT5",
+
   "all-markets_market-items-list-energies-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-energies-adv4": "Spreads from 0.0",
   "all-markets_market-items-list-energies-adv5": "Deep Liquidity",
@@ -801,7 +764,7 @@
   "all-markets_market-items-list-etf-text": "Invest in the world's most popular Exchange-Traded Funds (ETFs) without the need to own the underlying assets. With the power of CFDs trading, you can access the range of OQtima ETFs with just a few clicks. Pick among of 100 of the most widely traded ETF now.",
   "all-markets_market-items-list-etf-adv1": "{{ etf-number }}+ ETF",
   "all-markets_market-items-list-etf-adv2-fsa": "MT4",
-  "all-markets_market-items-list-etf-adv2-cysec": "MT5",
+
   "all-markets_market-items-list-etf-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-etf-adv4": "Super competitive Spread",
   "all-markets_market-items-list-etf-adv5": "Deep Liquidity",
@@ -945,16 +908,6 @@
   "mt4_top-market-promo-btn3": "Open an account",
   "mt4_market-items-list_title": "OQtima’s MT4 – Join the next level",
   "mt4_download-title": "Download MT4",
-  "mt4_market-items-list_adv1-cysec": "ECN pricing environment",
-  "mt4_market-items-list_adv2-cysec": "Institutional Grade Market liquidity",
-  "mt4_market-items-list_adv3-cysec": "Low latency",
-  "mt4_market-items-list_adv4-cysec": "No dealing desk or requotes",
-  "mt4_market-items-list_adv5-cysec": "All strategies allowed",
-  "mt4_market-items-list_adv6-cysec": "Flexible lot size",
-  "mt4_market-items-list_adv7-cysec": "Fast order execution",
-  "mt4_market-items-list_adv8-cysec": "Easy immediate funding and immediate withdrawal options",
-  "mt4_market-items-list_adv9-cysec": "Pre built OQtima indicators",
-  "mt4_market-items-list_adv10-cysec": "MSQL 4 for EA",
 
   "mt4_market-items-list_adv1-fsa": "ECN pricing environment",
   "mt4_market-items-list_adv2-fsa": "Institutional Grade Market liquidity",
@@ -1004,24 +957,6 @@
   "mt5_market-items-list_adv13-fsa": "Pre built OQtima indicators",
   "mt5_market-items-list_adv14-fsa": "MSQL 5 for EA",
 
-  "mt5_market-items-list_adv1-cysec": "ECN pricing environment",
-  "mt5_market-items-list_adv2-cysec": "Institutional Grade Market liquidity",
-  "mt5_market-items-list_adv3-cysec": "Low latency",
-  "mt5_market-items-list_adv4-cysec": "No dealing desk or requotes",
-  "mt5_market-items-list_adv5-cysec": "Custom push notification and 1 click trading",
-  "mt5_market-items-list_adv6-cysec": "Fully customisable charts",
-  "mt5_market-items-list_adv7-cysec": "Important and current news feed",
-  "mt5_market-items-list_adv8-cysec": "Market execution with no requotes",
-  "mt5_market-items-list_adv9-cysec": "{{ mt5-pre-build-indicators }} pre-build indicators",
-  "mt5_market-items-list_adv10-cysec": "Additional OQtima Indicators",
-  "mt5_market-items-list_adv11-cysec": "{{ mt5-timeframes }} different chart time frames",
-  "mt5_market-items-list_adv12-cysec": "Detachable charts",
-  "mt5_market-items-list_adv13-cysec": "Additional pending order types",
-  "mt5_market-items-list_adv14-cysec": "Depth of Market",
-  "mt5_market-items-list_adv15-cysec": "Integrated economic calendar",
-  "mt5_market-items-list_adv16-cysec": "Download on Windows, Mac, Mobile and Tablet",
-  "mt5_market-items-list_adv17-cysec": "Expert Advisors with backtesting capability",
-
   "mt5_top-market-promo-text2": "What makes OQtima MT5 one of the most superior choices in the market for every level of trader?",
   "mt5_top-market-promo-text-accent2": "3,4,16,17,18",
   "mt5_top-market-promo-text3": "Experience OQtima now.",
@@ -1038,50 +973,17 @@
   "mt5_top-market-layout-title": "Check the table below to compare the features between OQtima MetaTrader 4 and MetaTrader 5.",
   "mt5_top-market-layout-title-accent": "6,10,11,12,14,15",
 
-  "professional-qualification_top-market-text-cysec": "Professional Qualification",
-  "professional-qualification_top-market-text-accent-cysec": "1,2",
-  "professional-qualification_top-market-note-cysec": "OQtima Pro – Where professionals shine.",
-  "professional-qualification_top-market-note-accent-cysec": "1,2,6",
-  "professional-qualification_top-market-btn-cysec": "Check eligibility",
-
-  "professional-qualification_split-text-promotion-text1-cysec": "Negative balance protection won't apply to you.",
-  "professional-qualification_split-text-promotion-text1-accent-cysec": "4,5",
-  "professional-qualification_split-text-promotion-text2-cysec": "We'll use a more sophisticated language when communicating with you.",
-  "professional-qualification_split-text-promotion-text2-accent-cysec": "5,6",
-  "professional-qualification_split-text-promotion-text3-cysec": "We may assume you have the relevant level of experience when deciding whether our products are appropriate for you.",
-  "professional-qualification_split-text-promotion-text3-accent-cysec": "7,8,9,10",
-  "professional-qualification_split-text-promotion-text4-cysec": "Leverage restrictions won’t apply to you.",
-  "professional-qualification_split-text-promotion-text4-accent-cysec": "3,4",
-  "professional-qualification_performance-title-cysec": "As a potential OQtima Pro client please note:",
-  "professional-qualification_performance-title-accent-cysec": "4,5",
-  "professional-qualification_performance-text-cysec": "Before you check your eligibility you need to be aware of the following:",
-  "professional-qualification_text-banner-title-cysec": "Eligibility criteria",
-  "professional-qualification_text-banner-note-cysec": "To be eligible for a OQtima Pro account, you need to meet the professional client eligibility criteria. If you answer yes to two of these three questions, you could be eligible.",
-  "professional-qualification_text-banner-text1-cysec": "Have you placed {{ prof-qual-trades-number }} relevant trades of a significant size per quarter in the last year?",
-  "professional-qualification_text-banner-text1-accent-cysec": "4,5,6",
-  "professional-qualification_text-banner-text2-cysec": "Does your financial instrument portfolio exceed €{{ prof-qual-max-sum }}?",
-  "professional-qualification_text-banner-text2-accent-cysec": "7",
-  "professional-qualification_text-banner-text3-cysec": "Do you, or have you, worked in the financial sector for at least one year?",
-  "professional-qualification_text-banner-text3-accent-cysec": "9,10",
-  "professional-qualification_text-banner-btn-cysec": "Check your eligibility",
-  "professional-qualification_text-banner-btn-note-cysec": "Apply or reclassify your account in minutes!",
-  "professional-qualification_text-banner-btn-note-accent-cysec": "1,3",
-  "professional-qualification_top-market-promo-btn3-cysec": "Open an account",
-  "professional-qualification_top-market-promo-text3-cysec": "Experience OQtima now.",
-  "professional-qualification_top-market-promo-text-accent3-cysec": "2",
-
   "withdrawal_top-market-promo-text": "Easy ways to deposit, easy ways to withdraw!",
   "withdrawal_top-market-promo-text-accent": "4,8",
   "withdrawal_top-market-promo-note-fsa": "Your money is safely stored in segregated client accounts in top tier 1 banks in Australia and UK.",
   "withdrawal_top-market-promo-note-accent-fsa": "11,12,13,14,16,18",
-  "withdrawal_top-market-promo-note-cysec": "Your money is safely stored in dedicated and segregated client accounts. You can have access to your money instantly* and withdraw in many ways.",
-  "withdrawal_top-market-promo-note-accent-cysec": "4,7,9",
+
   "withdrawal_top-market-promo-text2-1": "Instant deposit",
   "withdrawal_top-market-promo-text-accent2-1": "2",
-  "withdrawal_top-market-promo-text2-2-cysec": "Same day withdrawals",
+
   "withdrawal_top-market-promo-text2-2-fsa": "Same day withdrawals*",
   "withdrawal_top-market-promo-text-accent2-2": "2,3",
-  "withdrawal_top-market-promo-text2-3-cysec": "No fees",
+
   "withdrawal_top-market-promo-text2-3-fsa": "No fees*",
   "withdrawal_top-market-promo-text-accent2-3": "2",
   "withdrawal_top-market-promo-btn3": "Open an account",
@@ -1104,7 +1006,7 @@
   "withdrawal_data_col1": "Instant",
   "withdrawal_data_col2": "1-3 Days",
   "withdrawal_data_col3": "None",
-  "withdrawal_data_col4-cysec": "Same day",
+
   "withdrawal_data_col4-fsa": "1-3 Days",
 
   "withdrawal_data_col-instant-fsa": "Instant",
@@ -1141,15 +1043,6 @@
   "withdrawal_data-method-pix-currencies-fsa": "BRL, USD",
   "withdrawal_data-method-e-wallet-fsa": "E-Wallets",
   "withdrawal_data-method-e-wallet-currencies-fsa": "Local Currencies Accepted",
-
-  "withdrawal_disclaimer1-cysec": "We are here for you any time of the day but not all financial institutions work around the clock. Our processing team will make sure your withdrawals are processed within the working day, Monday to Friday 9am - 3pm (Eastern European Standard Time).",
-  "withdrawal_disclaimer2-cysec": "We won't charge you a cent from our side but your bank or funding method may charge a fee from their side which is beyond our control.",
-  "withdrawal_disclaimer3_1-cysec": "We reserve the right to charge you a fee of 3% in case you request more than 2 withdrawals on a monthly basis",
-  "withdrawal_disclaimer3_2-cysec": "We reserve the right to charge you a fee of 3% if a withdrawal is requested with minimal or no trading activity",
-  "withdrawal_disclaimer4-cysec": "Bank wire withdrawals may take 3-5 days to be received",
-
-  "deposit_disclaimer1-cysec": "The finance processing team are fast!!! but sometimes there are delays that are outside of our control. We promise to keep you informed on the status of your deposit/withdrawal.",
-  "deposit_disclaimer2-cysec": "We won't charge you a cent from our side but your bank or funding method may charge a fee from their side which is beyond our control.",
 
   "deposit_disclaimer1-fsa": "The finance processing team are fast!!! but sometimes there are delays that are outside of our control. We promise to keep you informed on the status of your deposit/withdrawal.",
   "deposit_disclaimer2-fsa": "We are here for you any time of the day but not all financial institutions work around the clock. Our processing team will make sure your withdrawals are processed within the working day, Monday to Friday 9am - 3pm (Eastern European Standard Time).",
@@ -1472,26 +1365,25 @@
   "accounts-type_account-type1-commissions-title": "Commissions",
   "accounts-type_account-type1-commissions-value": "$ {{ account-type1-commissions }} Per side traded",
   "accounts-type_account-type1-min-deposit-title": "Min. deposit",
-  "accounts-type_account-type1-min-deposit-value-cysec": "${{ account-type1-min-deposit }}",
+
   "accounts-type_account-type1-min-deposit-value-fsa": "${{ account-type1-min-deposit-fsa }}",
   "accounts-type_account-type1-max-leverage-title": "Max. leverage",
-  "accounts-type_account-type1-max-leverage-value-cysec": "{{ account-type1-max-leverage }}",
+
   "accounts-type_account-type1-max-leverage-value-fsa": "{{ account-type1-max-leverage-fsa }}",
   "accounts-type_account-type1-ending-allowed-title": "Hedging Allowed",
   "accounts-type_account-type1-scalpers-welcome-title": "EA and Scalpers welcome",
   "accounts-type_account-type1-currencies-title": "Base Currencies",
   "accounts-type_account-type1-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, CHF, SGD, ZAR",
-  "accounts-type_account-type1-currencies-value-cysec": "USD, EUR, GBP, CHF",
+
   "accounts-type_account-type1-funding-fees-title": "Funding Fees",
   "accounts-type_account-type1-funding-fees-value": "${{ account-type1-funding-fees }}",
   "accounts-type_account-type1-withdrawals-fees-title": "Withdrawal Fees",
   "accounts-type_account-type1-withdrawals-fees-value": "${{ account-type1-withdrawals-fees }}",
   "accounts-type_account-type1-markets-title": "Markets",
   "accounts-type_account-type1-markets-value-fsa": "{{ account-type1-markets-fsa }}",
-  "accounts-type_account-type1-markets-value-cysec": "{{ account-type1-markets }}",
+
   "accounts-type_account-type1-total-symbols-title": "Total Symbols",
   "accounts-type_account-type1-total-symbols-value-fsa": "{{ account-type1-total-symbols-fsa }}+",
-  "accounts-type_account-type1-total-symbols-value-cysec": "{{ account-type1-total-symbols }}+",
 
   "accounts-type_account-type2-title": "account type",
   "accounts-type_account-type2-name": "OQtima ONE",
@@ -1501,27 +1393,26 @@
   "accounts-type_account-type2-commissions-title": "Commissions",
   "accounts-type_account-type2-commissions-value": "Free of commissions",
   "accounts-type_account-type2-min-deposit-title": "Min. deposit",
-  "accounts-type_account-type2-min-deposit-value-cysec": "${{ account-type2-min-deposit }}",
+
   "accounts-type_account-type2-min-deposit-value-fsa": "${{ account-type2-min-deposit-fsa }}",
   "accounts-type_account-type2-max-leverage-title": "Max. leverage",
-  "accounts-type_account-type2-max-leverage-value-cysec": "{{ account-type2-max-leverage }}",
+
   "accounts-type_account-type2-max-leverage-value-fsa": "{{ account-type2-max-leverage-fsa }}",
 
   "accounts-type_account-type2-ending-allowed-title": "Hedging Allowed",
   "accounts-type_account-type2-scalpers-welcome-title": "EA and Scalpers welcome",
   "accounts-type_account-type2-currencies-title": "Base Currencies",
   "accounts-type_account-type2-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, CHF, SGD, ZAR",
-  "accounts-type_account-type2-currencies-value-cysec": "USD, EUR, GBP, CHF",
+
   "accounts-type_account-type2-funding-fees-title": "Funding Fees",
   "accounts-type_account-type2-funding-fees-value": "${{ account-type2-funding-fees }}",
   "accounts-type_account-type2-withdrawals-fees-title": "Withdrawal Fees",
   "accounts-type_account-type2-withdrawals-fees-value": "${{ account-type2-withdrawals-fees }}",
   "accounts-type_account-type2-markets-title": "Markets",
   "accounts-type_account-type2-markets-value-fsa": "{{ account-type2-markets-fsa }}",
-  "accounts-type_account-type2-markets-value-cysec": "{{ account-type2-markets }}",
+
   "accounts-type_account-type2-total-symbols-title": "Total Symbols",
   "accounts-type_account-type2-total-symbols-value-fsa": "{{ account-type2-total-symbols-fsa }}+",
-  "accounts-type_account-type2-total-symbols-value-cysec": "{{ account-type2-total-symbols }}+",
 
   "copy-trading_top-market-promo-btn": "Open an Account Now",
   "copy-trading_top-market-promo-text": "Copy Trading",
@@ -1864,5 +1755,8 @@
   "data-deletion-form_form-privacy-privacy-text": "Privacy Policy",
   "data-deletion-form_form-privacy-terms-text": "Terms of Service",
   "page-data-deletion-title": "OQtima Data Deletion Request",
-  "page-data-deletion-description": ""
+  "page-data-deletion-description": "",
+
+  "test-chess-title": "Test Chess | OQtima",
+  "test-chess-description": "Test Chess, Discover OQtima, the leading trading platform designed to help you navigate the complex financial world with ease. Benefit from advanced technology, secure transactions, and versatile trading tools. Get started today and enhance your trading experience with OQtima."
 }
