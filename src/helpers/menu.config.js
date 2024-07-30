@@ -33,7 +33,6 @@ import {
 import {
   ACCOUNTS_TYPE_PAGE_LINK,
   ALL_MARKETS_PAGE_LINK,
-  COMING_SOON_PAGE_LINK,
   METALS_PAGE_LINK,
   COMPANY_PAGE_LINK,
   CONTACT_US_PAGE_LINK,
@@ -45,28 +44,29 @@ import {
   LEGAL_PAGE_LINK,
   MT4_PAGE_LINK,
   MT5_PAGE_LINK,
-  CTRADER_PAGE_LINK,
   PARTNERS_PAGE_LINK,
-  PLATFORMS_LINK,
   PROFESSIONAL_QUALIFICATION_PAGE_LINK,
   SHARES_PAGE_LINK,
   SPREADS_AND_FEES_PAGE_LINK,
   WITHDRAWAL_PAGE_LINK,
-  TRADING_VIEW_PAGE_LINK,
   TRADING_TOOLS_PAGE_LINK,
   ETF_PAGE_LINK,
-  GetRegistrationLink,
   VPS_PAGE_LINK,
   SWAP_FREE_PAGE_LINK,
   PRIVACY_POLICY_PAGE_LINK,
   COOKIE_POLICY_PAGE_LINK,
   BLOG_URL,
 } from "./constants";
-import { isCySEC } from "./entity-resolver";
 
-const CYSEC_TOP_MARKETS_TAB = {
+const FSA_TOP_MARKETS_TAB = {
   title: "header-nav-tab-top-markets",
   subItems: [
+    {
+      title: "header-nav-tab-top-markets-crypto-title-fsa",
+      link: CRYPTO_PAGE_LINK,
+      icon: CryptoIcon,
+      description: "header-nav-tab-top-markets-crypto-desc-fsa",
+    },
     {
       title: "header-nav-tab-top-markets-indices-title",
       link: INDICES_PAGE_LINK,
@@ -112,54 +112,9 @@ const CYSEC_TOP_MARKETS_TAB = {
   ],
 };
 
-const FSA_TOP_MARKETS_TAB = {
-  title: "header-nav-tab-top-markets",
-  subItems: [
-    {
-      title: "header-nav-tab-top-markets-crypto-title-fsa",
-      link: CRYPTO_PAGE_LINK,
-      icon: CryptoIcon,
-      description: "header-nav-tab-top-markets-crypto-desc-fsa",
-    },
-    ...CYSEC_TOP_MARKETS_TAB.subItems,
-  ],
-};
-
-const CYSEC_PLATFORMS_TAB = {
-  title: "header-nav-tab-platforms-title",
-  subItems: [
-    // {
-    //   title: "header-nav-tab-platforms-general-title",
-    //   link: PLATFORMS_LINK,
-    //   icon: PlatformsIcon,
-    //   description: "header-nav-tab-platforms-general-desc",
-    // },
-
-    {
-      title: "header-nav-tab-platforms-mt5-title",
-      link: MT5_PAGE_LINK,
-      icon: MT5Icon,
-      description: "header-nav-tab-platforms-mt5-desc",
-    },
-    // Temporarily hidden https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-539
-    // {
-    //   title: "header-nav-tab-platforms-ctrader-title",
-    //   link: CTRADER_PAGE_LINK,
-    //   icon: CTraderIcon,
-    //   description: "header-nav-tab-platforms-ctrader-desc",
-    // },
-  ],
-};
-
 const FSA_PLATFORMS_TAB = {
   title: "header-nav-tab-platforms-title",
   subItems: [
-    // {
-    //   title: "header-nav-tab-platforms-general-title",
-    //   link: PLATFORMS_LINK,
-    //   icon: PlatformsIcon,
-    //   description: "header-nav-tab-platforms-general-desc",
-    // },
     {
       title: "header-nav-tab-platforms-mt4-title",
       link: MT4_PAGE_LINK,
@@ -172,13 +127,6 @@ const FSA_PLATFORMS_TAB = {
       icon: MT5Icon,
       description: "header-nav-tab-platforms-mt5-desc",
     },
-    // Temporarily hidden https://oqtima-website.atlassian.net/jira/software/projects/OW/boards/1?selectedIssue=OW-539
-    // {
-    //   title: "header-nav-tab-platforms-ctrader-title",
-    //   link: CTRADER_PAGE_LINK,
-    //   icon: CTraderIcon,
-    //   description: "header-nav-tab-platforms-ctrader-desc",
-    // },
   ],
 };
 
@@ -221,84 +169,10 @@ const FSA_TRADING_TAB = {
       icon: SwapFreeIcon,
       description: "header-nav-tab-trading-swap-free-desc",
     },
-    // Probably we will need these items later
-    // {
-    //   title: "header-nav-tab-trading-copy-trading-title",
-    //   link: "",
-    //   icon: CopyTradingIcon,
-    //   description: "header-nav-tab-trading-copy-trading-desc",
-    // },
-    // {
-    //   title: "header-nav-tab-trading-why-trade-with-title",
-    //   link: "",
-    //   icon: Logo,
-    //   description: "header-nav-tab-trading-why-trade-with-desc",
-    // },
-    // {
-    //   title: "header-nav-tab-trading-trading-tools-tradeview-title",
-    //   link: TRADING_VIEW_PAGE_LINK,
-    //   icon: Logo,
-    //   description: "header-nav-tab-trading-trading-tools-tradeview-desc",
-    // },
-    // {
-    //   title: "header-nav-tab-trading-trading-tools-economic-calendar-title",
-    //   link: "",
-    //   icon: Logo,
-    //   description: "header-nav-tab-trading-trading-tools-economic-calendar-desc",
-    // },
-    // {
-    //   title: "header-nav-tab-trading-trading-tools-market-sentiment-tools-title",
-    //   link: "",
-    //   icon: Logo,
-    //   description: "header-nav-tab-trading-trading-tools-market-sentiment-tools-desc",
-    // },
-    // {
-    //   title: "header-nav-tab-trading-education-how-to-videos-title",
-    //   link: "",
-    //   icon: Logo,
-    //   description: "header-nav-tab-trading-education-how-to-videos-desc",
-    // },
   ],
 };
 
-const CYSEC_TRADING_TAB = {
-  title: "header-nav-tab-trading",
-  subItems: [
-    {
-      title: "header-nav-tab-trading-funding-withdrawals-accounts-title",
-      link: ACCOUNTS_TYPE_PAGE_LINK,
-      icon: AccountsIcon,
-      description: "header-nav-tab-trading-funding-withdrawals-accounts-desc",
-    },
-    {
-      title: "header-nav-tab-trading-funding-withdrawals-title",
-      link: WITHDRAWAL_PAGE_LINK,
-      icon: FundingWithdrawalsIcon,
-      description: "header-nav-tab-trading-funding-withdrawals-desc",
-    },
-    {
-      title: "header-nav-tab-trading-funding-withdrawals-spreads-title",
-      link: SPREADS_AND_FEES_PAGE_LINK,
-      icon: SpreadAndFeesIcon,
-      description: "header-nav-tab-trading-funding-withdrawals-spreads-desc",
-    },
-    {
-      title: "header-nav-tab-trading-trading-tools-title",
-      link: TRADING_TOOLS_PAGE_LINK,
-      icon: TradingToolsIcon,
-      description: "header-nav-tab-trading-trading-tools-desc",
-    },
-    {
-      title: "header-nav-tab-trading-professional-qualification-title-cysec",
-      link: PROFESSIONAL_QUALIFICATION_PAGE_LINK,
-      icon: ProfessionalQualificationIcon,
-      description:
-        "header-nav-tab-trading-professional-qualification-desc-cysec",
-    },
-  ],
-};
-
-const CYSEC_COMPANY_TAB = {
+const FSA_COMPANY_TAB = {
   title: "header-nav-tab-company",
   subItems: [
     {
@@ -325,13 +199,6 @@ const CYSEC_COMPANY_TAB = {
       icon: HelpCenterIcon,
       description: "header-nav-tab-company-help-center-desc",
     },
-  ],
-};
-
-const FSA_COMPANY_TAB = {
-  title: "header-nav-tab-company",
-  subItems: [
-    ...CYSEC_COMPANY_TAB.subItems,
     {
       desktopOnly: true,
       title: "header-nav-tab-partners-collaboration-partnership-title-fsa",
@@ -373,34 +240,19 @@ const FSA_MENU_ITEMS = [
   FSA_PARTNERS_TAB,
 ];
 
-const CYSEC_MENU_ITEMS = [
-  CYSEC_TOP_MARKETS_TAB,
-  CYSEC_TRADING_TAB,
-  CYSEC_PLATFORMS_TAB,
-  CYSEC_COMPANY_TAB,
+export const getMenuItems = () => FSA_MENU_ITEMS;
+
+export const getCornerItems = () => [
+  {
+    link: BLOG_URL,
+    title: "Newsroom", // no need to translate it for now
+  },
+  {
+    link: PARTNERS_PAGE_LINK,
+    title: "header-nav-tab-partners-fsa",
+  },
+  {
+    link: CONTACT_US_PAGE_LINK,
+    title: "header-nav-tab-company-contact-title",
+  },
 ];
-
-export const getMenuItems = () => (isCySEC ? CYSEC_MENU_ITEMS : FSA_MENU_ITEMS);
-
-export const getCornerItems = () => {
-  return [
-    ...(isCySEC
-      ? []
-      : [
-          {
-            link: BLOG_URL,
-            title: "Newsroom", // no need to translate it for now
-          },
-        ]),
-    {
-      link: isCySEC ? PROFESSIONAL_QUALIFICATION_PAGE_LINK : PARTNERS_PAGE_LINK,
-      title: isCySEC
-        ? "header-nav-tab-corner-pro-title-cysec"
-        : "header-nav-tab-partners-fsa",
-    },
-    {
-      link: CONTACT_US_PAGE_LINK,
-      title: "header-nav-tab-company-contact-title",
-    },
-  ];
-};

@@ -1,5 +1,4 @@
 import { navigate } from "gatsby";
-import { isFSA } from "../entity-resolver";
 import { isBrowser } from "./is-browser";
 
 const IB_PARAMS = {
@@ -32,7 +31,7 @@ export const getIBParamsAndSetToStorage = () => {
 };
 
 export const setIBparamsToLink = () => {
-  if (isBrowser() && isFSA) {
+  if (isBrowser()) {
     const pid = localStorage.getItem(IB_PARAMS.pid);
     const lid = localStorage.getItem(IB_PARAMS.lid);
 

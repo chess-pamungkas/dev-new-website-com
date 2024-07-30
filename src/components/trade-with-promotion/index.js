@@ -34,7 +34,6 @@ import { INTERSECTION_OBSERVER_CONFIG } from "../../helpers/animation.config";
 import { useSectionAnimation } from "./use-section-animation";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
-import { sitePostfix } from "../../helpers/entity-resolver";
 
 const TradeWithPromotion = ({ className, sectionRef }) => {
   const typingContainerRef = useRef();
@@ -214,16 +213,14 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
           <div className="trade-with-promotion__block">
             <p className="trade-with-promotion__promo-text">
               <span>
-                {t(`index_trade-with-promotion-promo-text1${sitePostfix}`)}
+                {t(`index_trade-with-promotion-promo-text1-fsa`)}
                 &nbsp;
               </span>
               <span className="bold">
-                {t(`index_trade-with-promotion-promo-text-bold${sitePostfix}`)}
+                {t(`index_trade-with-promotion-promo-text-bold-fsa`)}
                 &nbsp;
               </span>
-              <span>
-                {t(`index_trade-with-promotion-promo-text2${sitePostfix}`)}
-              </span>
+              <span>{t(`index_trade-with-promotion-promo-text2-fsa`)}</span>
             </p>
           </div>
           <div className="trade-with-promotion__block">

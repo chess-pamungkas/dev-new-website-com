@@ -21,7 +21,6 @@ import {
   PAYMENT_SYSTEMS_FSA,
 } from "../../../helpers/constants";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
-import { sitePostfix, isCySEC } from "../../../helpers/entity-resolver";
 
 const FundingPageContent = () => {
   const { t } = useTranslationWithVariables();
@@ -54,6 +53,7 @@ const FundingPageContent = () => {
       ),
     },
   ];
+
   return (
     <>
       <TopMarketPromotion
@@ -64,12 +64,8 @@ const FundingPageContent = () => {
         image={promotion}
         note={
           <HighlightedLocalizationText
-            localizationText={t(
-              `withdrawal_top-market-promo-note${sitePostfix}`
-            )}
-            wordsToHighlight={t(
-              `withdrawal_top-market-promo-note-accent${sitePostfix}`
-            )}
+            localizationText={t("withdrawal_top-market-promo-note-fsa")}
+            wordsToHighlight={t("withdrawal_top-market-promo-note-accent-fsa")}
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-white"
           />
@@ -97,7 +93,7 @@ const FundingPageContent = () => {
         </span>
         <span className="display-block">
           <HighlightedLocalizationText
-            localizationText={`withdrawal_top-market-promo-text2-2${sitePostfix}`}
+            localizationText="withdrawal_top-market-promo-text2-2-fsa"
             wordsToHighlight="withdrawal_top-market-promo-text-accent2-2"
             primaryClassName="highlighted-in-white"
             accentClassName="highlighted-in-red"
@@ -105,7 +101,7 @@ const FundingPageContent = () => {
         </span>
         <span className="display-block">
           <HighlightedLocalizationText
-            localizationText={`withdrawal_top-market-promo-text2-3${sitePostfix}`}
+            localizationText="withdrawal_top-market-promo-text2-3-fsa"
             wordsToHighlight="withdrawal_top-market-promo-text-accent2-3"
             primaryClassName="highlighted-in-white"
             accentClassName="highlighted-in-red"
@@ -113,7 +109,7 @@ const FundingPageContent = () => {
         </span>
       </TopMarketPromotion>
       <TopMarketLayout className="top-market-layout--withdrawal">
-        <Tabs tabList={tabs} images={!isCySEC ? PAYMENT_SYSTEMS_FSA : []} />
+        <Tabs tabList={tabs} images={PAYMENT_SYSTEMS_FSA} />
       </TopMarketLayout>
       <section className={cn("notes-block")}>
         {isDepositTab ? DepositDisclaimer() : WithdrawalDisclaimer()}

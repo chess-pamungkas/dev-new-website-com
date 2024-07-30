@@ -3,8 +3,6 @@ import { graphql } from "gatsby";
 import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
-import NotFoundContent from "../components/pages-content/not-found-page-content";
-import { isCySEC } from "../helpers/entity-resolver";
 import SwapFreeContent from "../components/pages-content/swap-free-page-content";
 
 const SwapFreePage = () => {
@@ -14,11 +12,9 @@ const SwapFreePage = () => {
     <>
       <Seo
         fsaTitle={t("page-swap-free-title")}
-        cysecTitle={t("system-page-404-title")}
         fsaDescription={t("page-swap-free-description")}
-        cysecRobots={"noindex"}
       />
-      {isCySEC ? <NotFoundContent /> : <SwapFreeContent />}
+      <SwapFreeContent />
     </>
   );
 };

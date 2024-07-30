@@ -26,10 +26,8 @@ import {
   METALS_TRADING_SECTION,
   CRYPTO_TRADING_SECTION,
 } from "../../../helpers/config";
-import { isCySEC } from "../../../helpers/entity-resolver";
 import TradingContext from "../../../context/trading-context";
 import { GeneralTableColumns } from "../../../helpers/top-market-tables";
-import { termsAndConds } from "../../../helpers/documents";
 
 const SpreadsAndFeesPageContent = () => {
   const { t } = useTranslationWithVariables();
@@ -41,29 +39,28 @@ const SpreadsAndFeesPageContent = () => {
   updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_FOREX, tradingSymbols);
   updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_COMMODITIES, tradingSymbols);
   updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_CRYPTO, tradingSymbols);
+
   const tabs = [
     {
       id: 1,
       title: t("spreads_tabs_title1"),
       onClick: () => setSelectedSection(FOREX_TRADING_SECTION),
       content: (
-        <>
-          <TableComponent
-            isWrapperPadding
-            data={DATA_SPREADS_TABLE_FOREX}
-            columns={GeneralTableColumns()}
-            tableClassName={isRTL ? "spreads-table--rtl" : ""}
-            tip={
-              <span>
-                <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
-                &nbsp;
-                <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
-                &nbsp;
-              </span>
-            }
-            isSearch
-          />
-        </>
+        <TableComponent
+          isWrapperPadding
+          data={DATA_SPREADS_TABLE_FOREX}
+          columns={GeneralTableColumns()}
+          tableClassName={isRTL ? "spreads-table--rtl" : ""}
+          tip={
+            <span>
+              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+              &nbsp;
+              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+              &nbsp;
+            </span>
+          }
+          isSearch
+        />
       ),
     },
     {
@@ -71,23 +68,21 @@ const SpreadsAndFeesPageContent = () => {
       title: t("spreads_tabs_title2"),
       onClick: () => setSelectedSection(INDICES_TRADING_SECTION),
       content: (
-        <>
-          <TableComponent
-            isWrapperPadding
-            data={DATA_SPREADS_TABLE_INDICES}
-            columns={GeneralTableColumns()}
-            tableClassName={isRTL ? "spreads-table--rtl" : ""}
-            tip={
-              <span>
-                <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
-                &nbsp;
-                <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
-                &nbsp;
-              </span>
-            }
-            isSearch
-          />
-        </>
+        <TableComponent
+          isWrapperPadding
+          data={DATA_SPREADS_TABLE_INDICES}
+          columns={GeneralTableColumns()}
+          tableClassName={isRTL ? "spreads-table--rtl" : ""}
+          tip={
+            <span>
+              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+              &nbsp;
+              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+              &nbsp;
+            </span>
+          }
+          isSearch
+        />
       ),
     },
     {
@@ -95,58 +90,46 @@ const SpreadsAndFeesPageContent = () => {
       title: t("spreads_tabs_title3"),
       onClick: () => setSelectedSection(METALS_TRADING_SECTION),
       content: (
-        <>
-          <TableComponent
-            isWrapperPadding
-            data={DATA_SPREADS_TABLE_COMMODITIES}
-            columns={GeneralTableColumns()}
-            tableClassName={isRTL ? "spreads-table--rtl" : ""}
-            tip={
-              <span>
-                <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
-                &nbsp;
-                <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
-                &nbsp;
-              </span>
-            }
-            isSearch
-          />
-        </>
+        <TableComponent
+          isWrapperPadding
+          data={DATA_SPREADS_TABLE_COMMODITIES}
+          columns={GeneralTableColumns()}
+          tableClassName={isRTL ? "spreads-table--rtl" : ""}
+          tip={
+            <span>
+              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+              &nbsp;
+              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+              &nbsp;
+            </span>
+          }
+          isSearch
+        />
+      ),
+    },
+    {
+      id: 4,
+      title: t("spreads_tabs_title4-fsa"),
+      onClick: () => setSelectedSection(CRYPTO_TRADING_SECTION),
+      content: (
+        <TableComponent
+          isWrapperPadding
+          data={DATA_SPREADS_TABLE_CRYPTO}
+          columns={GeneralTableColumns()}
+          tableClassName={isRTL ? "spreads-table--rtl" : ""}
+          tip={
+            <span>
+              <span className="bold">*MIN</span>&nbsp;-&nbsp;{t("table-tip1")}
+              &nbsp;
+              <span className="bold">AVG</span>&nbsp;-&nbsp;{t("table-tip2")}
+              &nbsp;
+            </span>
+          }
+          isSearch
+        />
       ),
     },
   ];
-
-  const tabs2 = isCySEC
-    ? tabs
-    : [
-        ...tabs,
-        {
-          id: 4,
-          title: t("spreads_tabs_title4-fsa"),
-          onClick: () => setSelectedSection(CRYPTO_TRADING_SECTION),
-          content: (
-            <>
-              <TableComponent
-                isWrapperPadding
-                data={DATA_SPREADS_TABLE_CRYPTO}
-                columns={GeneralTableColumns()}
-                tableClassName={isRTL ? "spreads-table--rtl" : ""}
-                tip={
-                  <span>
-                    <span className="bold">*MIN</span>&nbsp;-&nbsp;
-                    {t("table-tip1")}
-                    &nbsp;
-                    <span className="bold">AVG</span>&nbsp;-&nbsp;
-                    {t("table-tip2")}
-                    &nbsp;
-                  </span>
-                }
-                isSearch
-              />
-            </>
-          ),
-        },
-      ];
 
   useEffect(() => {
     setSelectedSection(FOREX_TRADING_SECTION);
@@ -181,7 +164,7 @@ const SpreadsAndFeesPageContent = () => {
         className="top-market-layout--spreads"
         title={t("spreads_first-table-title")}
       >
-        <Tabs tabList={tabs2} isMobileDropdown />
+        <Tabs tabList={tabs} isMobileDropdown />
       </TopMarketLayout>
 
       <TopMarketLayout
@@ -202,31 +185,6 @@ const SpreadsAndFeesPageContent = () => {
           columns={ColumnsSpreadTable2()}
           className={cn("spreads--common-table", "spreads--second-table")}
         />
-
-        {isCySEC && (
-          <div className="fees-note">
-            <span className="fees-note__text">
-              {t("spreads_fees-note1_1")}&nbsp;
-              <a
-                className="fees-note__link"
-                href={termsAndConds}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t("spreads_fees-note1_link")}
-              </a>
-              &nbsp;{t("spreads_fees-note1_2")}
-            </span>
-            <span className="fees-note__text">{t("spreads_fees-note2")}</span>
-            <ul className="fees-note__list">
-              <li className="fees-note__text">{t("spreads_fees-note3")}</li>
-              <li className="fees-note__text">{t("spreads_fees-note4")}</li>
-              <li className="fees-note__text">{t("spreads_fees-note5")}</li>
-              <li className="fees-note__text">{t("spreads_fees-note6")}</li>
-              <li className="fees-note__text">{t("spreads_fees-note7")}</li>
-            </ul>
-          </div>
-        )}
       </TopMarketLayout>
 
       <section className={cn("swap-rate", { "swap-rate--rtl": isRTL })}>
@@ -242,10 +200,6 @@ const SpreadsAndFeesPageContent = () => {
             <span className="swap-rate__subtitle-text swap-rate__subtitle-text--bold">
               {t("spreads_faq-subtitle3")}
             </span>
-            {/* removed based on this ticket https://oqtima-website.atlassian.net/browse/OW-239 */}
-            {/* <span className="swap-rate__subtitle-text swap-rate__subtitle-text--bold">
-              {t("spreads_faq-subtitle4")}
-            </span> */}
           </div>
         </div>
       </section>

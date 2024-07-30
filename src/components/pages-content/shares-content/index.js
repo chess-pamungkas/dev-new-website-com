@@ -12,7 +12,6 @@ import Faq from "../../faq";
 import { FAQ_SHARES } from "../../../helpers/faq";
 import animation from "../../../assets/images/bg/promotions/shares/shares.json";
 import MarketingCircle from "../../marketing-circle";
-import { sitePostfix } from "../../../helpers/entity-resolver";
 
 const SharesContent = () => {
   const { t } = useTranslationWithVariables();
@@ -22,7 +21,7 @@ const SharesContent = () => {
       <TopMarket
         title={
           <HighlightedLocalizationText
-            localizationText={t(`shares_top-market-title${sitePostfix}`)}
+            localizationText={t(`shares_top-market-title-fsa`)}
             wordsToHighlight="shares_top-market-title-accent"
             primaryClassName="highlighted-in-white"
             accentClassName="highlighted-in-black"
@@ -36,8 +35,8 @@ const SharesContent = () => {
         link2={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
-          localizationText={`shares_top-market-promo-text${sitePostfix}`}
-          wordsToHighlight={`shares_top-market-promo-text-accent${sitePostfix}`}
+          localizationText={`shares_top-market-promo-text-fsa`}
+          wordsToHighlight={`shares_top-market-promo-text-accent-fsa`}
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
@@ -53,8 +52,8 @@ const SharesContent = () => {
         link={GetRegistrationLink()}
       >
         <HighlightedLocalizationText
-          localizationText={`shares_top-market-promotion-promo-text${sitePostfix}`}
-          wordsToHighlight={`shares_top-market-promotion-promo-text-accent${sitePostfix}`}
+          localizationText={`shares_top-market-promotion-promo-text-fsa`}
+          wordsToHighlight={`shares_top-market-promotion-promo-text-accent-fsa`}
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-red"
         />
@@ -63,7 +62,7 @@ const SharesContent = () => {
         animation={animation}
         upper={
           <HighlightedLocalizationText
-            localizationText={`shares_marketing-circle-upper${sitePostfix}`}
+            localizationText={`shares_marketing-circle-upper-fsa`}
             wordsToHighlight="shares_marketing-circle-upper-accent"
             primaryClassName="highlighted-in-black"
             accentClassName="highlighted-in-red"

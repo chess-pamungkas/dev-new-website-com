@@ -14,7 +14,6 @@ import CommoditiesIcon from "../assets/images/all-markets/commodities.svg";
 import EnergiesIcon from "../assets/images/all-markets/energies.svg";
 import CryptoIcon from "../assets/images/all-markets/crypto.svg";
 import EtfIcon from "../assets/images/all-markets/etf.svg";
-import { sitePostfix, isCySEC } from "./entity-resolver";
 
 const FOREX = {
   key: "forex",
@@ -30,7 +29,7 @@ const FOREX = {
     },
     {
       key: "adv2",
-      text: `all-markets_market-items-list-forex-adv2${sitePostfix}`,
+      text: "all-markets_market-items-list-forex-adv2-fsa",
     },
     {
       key: "adv3",
@@ -73,7 +72,7 @@ const INDICES = {
     },
     {
       key: "adv2",
-      text: `all-markets_market-items-list-indices-adv2${sitePostfix}`,
+      text: "all-markets_market-items-list-indices-adv2-fsa",
     },
     {
       key: "adv3",
@@ -102,17 +101,17 @@ const SHARES = {
   key: "shares",
   icon: sharesIcon,
   title: "all-markets_market-items-list-shares-title",
-  text: [`all-markets_market-items-list-shares-text${sitePostfix}`],
+  text: ["all-markets_market-items-list-shares-text-fsa"],
   isGrayBackground: false,
   link: SHARES_PAGE_LINK,
   advantages: [
     {
       key: "adv1",
-      text: `all-markets_market-items-list-shares-adv1${sitePostfix}`,
+      text: "all-markets_market-items-list-shares-adv1-fsa",
     },
     {
       key: "adv2",
-      text: `all-markets_market-items-list-shares-adv2${sitePostfix}`,
+      text: "all-markets_market-items-list-shares-adv2-fsa",
     },
     {
       key: "adv3",
@@ -154,7 +153,7 @@ const METALS = {
     },
     {
       key: "adv2",
-      text: `all-markets_market-items-list-commodities-adv2${sitePostfix}`,
+      text: "all-markets_market-items-list-commodities-adv2-fsa",
     },
     {
       key: "adv3",
@@ -193,7 +192,7 @@ const ENERGIES = {
     },
     {
       key: "adv2",
-      text: `all-markets_market-items-list-energies-adv2${sitePostfix}`,
+      text: "all-markets_market-items-list-energies-adv2-fsa",
     },
     {
       key: "adv3",
@@ -262,7 +261,7 @@ const ETF = {
   icon: EtfIcon,
   title: "all-markets_market-items-list-etf-title",
   text: ["all-markets_market-items-list-etf-text"],
-  isGrayBackground: isCySEC,
+  isGrayBackground: false,
   link: ETF_PAGE_LINK,
   advantages: [
     {
@@ -271,7 +270,7 @@ const ETF = {
     },
     {
       key: "adv2",
-      text: `all-markets_market-items-list-etf-adv2${sitePostfix}`,
+      text: "all-markets_market-items-list-etf-adv2-fsa",
     },
     {
       key: "adv3",
@@ -296,10 +295,8 @@ const ETF = {
   ],
 };
 
-const CYSEC_ALL_MARKETS = [FOREX, INDICES, SHARES, METALS, ENERGIES, ETF];
-
-const FSA_ALL_MARKETS = [FOREX, INDICES, SHARES, METALS, ENERGIES, CRYPTO, ETF];
+const ALL_MARKETS = [FOREX, INDICES, SHARES, METALS, ENERGIES, CRYPTO, ETF];
 
 export const getAllMarkets = () => {
-  return isCySEC ? CYSEC_ALL_MARKETS : FSA_ALL_MARKETS;
+  return ALL_MARKETS;
 };

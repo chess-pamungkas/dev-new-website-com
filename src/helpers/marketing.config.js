@@ -1,5 +1,4 @@
 import heroImageFSA from "../assets/images/person.png";
-import heroImageEU from "../assets/images/person-eu.svg";
 import dollarIcon from "../assets/images/icons/companies/marketing/dollar.svg";
 import euroIcon from "../assets/images/icons/companies/marketing/euro.svg";
 import rmbIcon from "../assets/images/icons/companies/marketing/rmb.svg";
@@ -11,9 +10,8 @@ import coffeeIcon from "../assets/images/icons/companies/marketing/coffee.svg";
 import sp500Icon from "../assets/images/icons/companies/marketing/sp500.svg";
 import dowJonesIcon from "../assets/images/icons/companies/marketing/dowJones.svg";
 import nikkeiIcon from "../assets/images/icons/companies/marketing/nikkei.svg";
-import { isCySEC, sitePostfix } from "./entity-resolver";
 
-const heroImage = isCySEC ? heroImageEU : heroImageFSA;
+const heroImage = heroImageFSA;
 
 export const MARKETING_GET_PARAMS = {
   sect1: "_sect1",
@@ -35,12 +33,12 @@ const SECT2_LOGOS = {
   nikkei: nikkeiIcon,
 };
 
-// TODO change heros
+// TODO change heroes
 export const CONTENT_HEROES = {
   default: {
     image: heroImage,
     name: "index_main-promotion-hero-gianluigi-buffon-name",
-    text: `index_main-promotion-hero-gianluigi-buffon-text${sitePostfix}`,
+    text: `index_main-promotion-hero-gianluigi-buffon-text-fsa`,
     surname: "index_main-promotion-hero-gianluigi-buffon-surname", // Add surname field
   },
   sea: {
@@ -70,13 +68,6 @@ export const CONTENT_HEROES = {
   },
 };
 
-const CYSEC_DEFAULT_TEXT_SEQUENCE = [
-  "index_main-promotion-animated-text-forex-traders",
-  "index_main-promotion-animated-text-day-traders",
-  "index_main-promotion-animated-text-stock-traders",
-  "index_main-promotion-animated-text-you",
-];
-
 const FSA_DEFAULT_TEXT_SEQUENCE = [
   "index_main-promotion-animated-text-forex-traders",
   "index_main-promotion-animated-text-day-traders",
@@ -92,8 +83,9 @@ export const getDefaultTextSequence = (currentLanguage) => {
   if (currentLanguage === "jp") {
     return JP_DEFAULT_TEXT_NO_SEQUENCE;
   }
-  return isCySEC ? CYSEC_DEFAULT_TEXT_SEQUENCE : FSA_DEFAULT_TEXT_SEQUENCE;
+  return FSA_DEFAULT_TEXT_SEQUENCE;
 };
+
 export const SECT1_TEXT_SEQUENCES = {
   forex: [
     "index_main-promotion-animated-text-forex-traders",
@@ -142,7 +134,6 @@ export const SECT1_TEXT_SEQUENCES = {
 export const SECT2_GROUP1_COUNT_OF_WORDS_DEFAULT = 5;
 
 export const SECT2_GROUP1_DEFAULT = [
-  // "index_trade-with-promotion-bitcoin",
   "index_trade-with-promotion-gold",
   "index_trade-with-promotion-EUR/USD",
   "index_trade-with-promotion-crude-oil-wti",

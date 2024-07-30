@@ -4,8 +4,6 @@ import { useTranslationWithVariables } from "../helpers/hooks/use-translation-wi
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
 import ProfessionalQualificationPageContent from "../components/pages-content/professional-qualification-page-content";
-import { isCySEC } from "../helpers/entity-resolver";
-import NotFoundContent from "../components/pages-content/not-found-page-content";
 
 const ProfessionalQualificationPage = () => {
   const { t } = useTranslationWithVariables();
@@ -13,12 +11,10 @@ const ProfessionalQualificationPage = () => {
   return (
     <>
       <Seo
-        fsaTitle={t("system-page-404-title")}
-        cysecTitle={t("page-professional-qualification-title")}
-        cysecDescription={t("page-professional-qualification-description")}
-        fsaRobots={"noindex"}
+        fsaTitle={t("page-professional-qualification-title")}
+        fsaDescription={t("page-professional-qualification-description")}
       />
-      {isCySEC ? <ProfessionalQualificationPageContent /> : <NotFoundContent />}
+      <ProfessionalQualificationPageContent />
     </>
   );
 };
