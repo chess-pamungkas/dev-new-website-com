@@ -71,7 +71,7 @@ const LANG_CONFIG = [
     URIPart: "/id",
   },
   // Japanese
- {
+  {
     id: "jp",
     icon: "JpFlagIcon",
     name: "日本語",
