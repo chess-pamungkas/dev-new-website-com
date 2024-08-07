@@ -180,7 +180,7 @@
   "index_trade-with-promotion-promo-text-bold-fsa": "{{ assets-number-fsa }}",
   "index_trade-with-promotion-promo-text2-fsa": "以上の金融資産の中からお取引できます。",
   "index_promotion1-btn-text": "詳細を見る",
-  "index_promotion1-text-fsa": "{{ index-promotion1-amount-fsa }}最小 ドルもしくはそれ以上の金額をご入金頂く事で、{{ index-promotion1-currencies-fsa }} 種類の異なる通貨にてお客様のトレードポートフォリオを構築する事が出来ます。",
+  "index_promotion1-text-fsa": "{{ index-promotion1-amount-fsa }}ドルからの入金で、{{ index-promotion1-currencies-fsa }} 種類の基本通貨の中から選んでトレードを開始できます。",
   "promotion1-text-accent-fsa": "",
   "index_promotion2-btn-text": "詳細をみる",
   "index_promotion2-text-fsa": "EURUSDやXAUUSDを始めとする多彩な通貨ペアを、業界最低水準の平均スプレッド（0.0ピップスから）でお取引いただけます。",
