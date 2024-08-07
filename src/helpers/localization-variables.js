@@ -42,6 +42,7 @@ export const getLocalizationVariables = () => {
     "shares-number-fsa": "91",
     "assets-number": "1.000",
     "assets-number-fsa": "1.000",
+    "assets-number-fsa-jp": "1,000",
     "index-promotion1-amount": "200",
     // "index-promotion1-amount-fsa": isIncreasedMinDeposit() ? "100" : "20",
     "index-promotion1-amount-fsa": "100",
