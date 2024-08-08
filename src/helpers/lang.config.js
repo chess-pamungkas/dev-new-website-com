@@ -74,7 +74,7 @@ const LANG_CONFIG = [
   {
     id: "jp",
     icon: "JpFlagIcon",
-    name: "日本",
+    name: "日本語",
     URIPart: "/jp",
   },
   // Malay (Malaysia)

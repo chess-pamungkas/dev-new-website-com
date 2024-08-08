@@ -28,10 +28,6 @@ export const clientAgreementFSA = {
   filename: "Client_Agreement.pdf",
   languages: ["en"],
 };
-export const termsAndConditionsFSA = {
-  filename: "Terms_and_Conditions.pdf",
-  languages: ["en"],
-};
 
 const generateFileLinkWithLang = (fileObj, langObj) => {
   const languagePart = fileObj.languages.includes(langObj.id)
@@ -71,10 +67,6 @@ const LEGAL_DOCS_FSA = () => {
       name: "document-client-agreement-fsa",
       file: generateFileLinkWithLang(clientAgreementFSA, selectedLanguage),
     },
-    {
-      name: "document-terms-and-cond-name",
-      file: generateFileLinkWithLang(termsAndConditionsFSA, selectedLanguage),
-    },
   ];
 };
 
@@ -88,8 +80,3 @@ export const TRADING_VIEW_DOC = RISK_DISCLOSURE_DOC_FSA;
 
 export const getLegalDocs = LEGAL_DOCS_FSA;
 export const getRiskDisclosureDoc = () => RISK_DISCLOSURE_DOC_FSA;
-
-export const termsAndConds = generateFileLinkWithLang(termsAndConditionsFSA, {
-  id: "en",
-  URIPart: "/en",
-});
