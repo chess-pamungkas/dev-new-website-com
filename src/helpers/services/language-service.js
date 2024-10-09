@@ -1,6 +1,9 @@
 import { navigate } from "gatsby";
 import { LAST_LANGUAGE_KEY } from "../gdpr-cookie.config";
-import { LANG_SELECT_OPTIONS } from "../lang-options.config";
+import {
+  LANG_SELECT_OPTIONS,
+  PORTAL_LANGUAGES_MAP,
+} from "../lang-options.config";
 import { isBrowser } from "./is-browser";
 import Cookies from "universal-cookie";
 import { useContext } from "react";
@@ -53,6 +56,11 @@ export const detectInitialLanguage = (recommendedLanguage) => {
 
 export const setLangParam = () => {
   const { selectedLanguage } = useContext(LanguageContext);
+  const languageCode = PORTAL_LANGUAGES_MAP[selectedLanguage.id];
 
-  return `?lang=${selectedLanguage.id}`;
+  // Old version: Used 'lang' as the query parameter name
+  // return `?lang=${selectedLanguage.id}`;
+
+  // New version: Uses 'language' as the query parameter name
+  return `?language=${languageCode}`;
 };

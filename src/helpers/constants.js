@@ -76,16 +76,16 @@ export const getContactEmail = () => {
 export const BLOG_URL = "https://oqtima.news/";
 
 export const GetRegistrationLink = () =>
-  `https://portal.oqtima.${topLevelDomain}/register/${setLangParam()}${setIBparamsToLink()}`;
+  `https://portal.oqtima.${topLevelDomain}/register${setLangParam()}${setIBparamsToLink()}`;
 
 export const GetLoginLink = () =>
-  `https://portal.oqtima.${topLevelDomain}/login/${setLangParam()}`;
+  `https://portal.oqtima.${topLevelDomain}/login${setLangParam()}`;
 
 export const GetDepositLink = () =>
-  `https://portal.oqtima.${topLevelDomain}/funds/deposit/${setLangParam()}`;
+  `https://portal.oqtima.${topLevelDomain}/funds/deposit${setLangParam()}`;
 
 export const GetWithdrawalLink = () =>
-  `https://portal.oqtima.${topLevelDomain}/funds/withdraw/${setLangParam()}`;
+  `https://portal.oqtima.${topLevelDomain}/funds/withdraw${setLangParam()}`;
 
 export const COMING_SOON_PAGE_LINK = "/coming-soon";
 export const COMPANY_PAGE_LINK = "/company";
