@@ -59,3 +59,22 @@ export const MT_LANGUAGES_MAP = {
   my: "ms",
   ar: "ar",
 };
+
+// PORTAL OQTIMA supported languages: https://portal.oqtima
+export const PORTAL_LANGUAGES_MAP = {
+  en: "en",
+  fr: "fr",
+  br: "pt",
+  vn: "vi",
+  th: "th",
+  es: "es",
+  it: "it",
+  cn: "zh-Hans",
+  tw: "zh-Hant",
+  id: "id",
+  jp: "ja",
+  pt: "pt",
+  de: "de",
+  my: "ms",
+  ar: "ar",
+};
