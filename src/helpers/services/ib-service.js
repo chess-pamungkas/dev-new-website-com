@@ -1,9 +1,9 @@
 import { navigate } from "gatsby";
 import { isBrowser } from "./is-browser";
 
-const IB_PARAMS = {
-  lid: "lid",
-  pid: "pid",
+export const IB_PARAMS = {
+  r_code: "r_code", // New parameter
+  node: "node", // New parameter
 };
 
 const getParamsFromUrl = () => {
@@ -12,30 +12,45 @@ const getParamsFromUrl = () => {
 
 export const getIBParamsAndSetToStorage = () => {
   if (isBrowser()) {
-    const lid = getParamsFromUrl().get(IB_PARAMS.lid);
-    const pid = getParamsFromUrl().get(IB_PARAMS.pid);
-    if (pid && lid) {
-      localStorage.setItem(
-        IB_PARAMS.lid,
-        getParamsFromUrl().get(IB_PARAMS.lid)
-      );
-      localStorage.setItem(
-        IB_PARAMS.pid,
-        getParamsFromUrl().get(IB_PARAMS.pid)
-      );
+    const params = getParamsFromUrl();
+    const r_code = params.get(IB_PARAMS.r_code);
+    const node = params.get(IB_PARAMS.node);
+    const search = window.location.search; // Get the full query string
 
-      const { pathname } = window.location;
-      navigate(pathname);
+    // Check if the URL param starts with "?r_code="
+    if (search.startsWith(`?${IB_PARAMS.r_code}=`)) {
+      localStorage.setItem(IB_PARAMS.r_code, r_code);
+      // Clear node if r_code is set
+      localStorage.removeItem(IB_PARAMS.node);
     }
+    // Check if the URL param starts with "?node="
+    else if (search.startsWith(`?${IB_PARAMS.node}=`)) {
+      localStorage.setItem(IB_PARAMS.node, node);
+      // Clear r_code if node is set
+      localStorage.removeItem(IB_PARAMS.r_code);
+    }
+    // If the URL does not start with either, do not set localStorage
+    else {
+      localStorage.removeItem(IB_PARAMS.r_code);
+      localStorage.removeItem(IB_PARAMS.node);
+    }
+
+    const { pathname } = window.location;
+    navigate(pathname);
   }
 };
 
 export const setIBparamsToLink = () => {
   if (isBrowser()) {
-    const pid = localStorage.getItem(IB_PARAMS.pid);
-    const lid = localStorage.getItem(IB_PARAMS.lid);
+    const r_code = localStorage.getItem(IB_PARAMS.r_code);
+    const node = localStorage.getItem(IB_PARAMS.node);
 
-    if (pid && lid) return `&${IB_PARAMS.lid}=${lid}&${IB_PARAMS.pid}=${pid}`;
+    /// Check conditions and construct the query string accordingly
+    if (r_code) {
+      return `?${IB_PARAMS.r_code}=${r_code}`; // Only r_code
+    } else if (node) {
+      return `?${IB_PARAMS.node}=${node}`; // Only node
+    }
   }
 
   return "";
