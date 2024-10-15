@@ -87,9 +87,6 @@ export const GetRegistrationLink = () => {
     if (ibParams.startsWith(`?${IB_PARAMS.r_code}=`)) {
       // If the link is for r_code, do not include the language parameter
       registrationLink += ibParams; // Only append r_code
-    } else {
-      // If the link is for node and language, include the language parameter
-      registrationLink += `${ibParams}${langParam}`;
     }
   } else if (langParam) {
     // If no IB params but langParam exists, append it
