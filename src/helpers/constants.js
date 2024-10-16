@@ -22,7 +22,7 @@ import revolutLogo from "../assets/images/icons/payments/revolut.png";
 import skrillLogo from "../assets/images/icons/payments/skrill.png";
 import wiseLogo from "../assets/images/icons/payments/wise.png";
 import { topLevelDomain } from "./entity-resolver";
-import { setIBparamsToLink } from "./services/ib-service";
+import { setIBparamsToLink, IB_PARAMS } from "./services/ib-service";
 import { setLangParam } from "./services/language-service";
 
 export const WINDOW_SIZE_SM = 375;
@@ -75,8 +75,26 @@ export const getContactEmail = () => {
 
 export const BLOG_URL = "https://oqtima.news/";
 
-export const GetRegistrationLink = () =>
-  `https://portal.oqtima.${topLevelDomain}/register${setLangParam()}${setIBparamsToLink()}`;
+export const GetRegistrationLink = () => {
+  const langParam = setLangParam();
+  const ibParams = setIBparamsToLink();
+
+  // Construct the base URL
+  let registrationLink = `https://portal.oqtima.${topLevelDomain}/register`;
+
+  // Append IB parameters based on their format
+  if (ibParams) {
+    if (ibParams.startsWith(`?${IB_PARAMS.r_code}=`)) {
+      // If the link is for r_code, do not include the language parameter
+      registrationLink += ibParams; // Only append r_code
+    }
+  } else if (langParam) {
+    // If no IB params but langParam exists, append it
+    registrationLink += langParam;
+  }
+
+  return registrationLink;
+};
 
 export const GetLoginLink = () =>
   `https://portal.oqtima.${topLevelDomain}/login${setLangParam()}`;

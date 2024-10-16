@@ -1,9 +1,8 @@
 import { navigate } from "gatsby";
 import { isBrowser } from "./is-browser";
 
-const IB_PARAMS = {
-  lid: "lid",
-  pid: "pid",
+export const IB_PARAMS = {
+  r_code: "r_code", // New parameter
 };
 
 const getParamsFromUrl = () => {
@@ -12,30 +11,25 @@ const getParamsFromUrl = () => {
 
 export const getIBParamsAndSetToStorage = () => {
   if (isBrowser()) {
-    const lid = getParamsFromUrl().get(IB_PARAMS.lid);
-    const pid = getParamsFromUrl().get(IB_PARAMS.pid);
-    if (pid && lid) {
-      localStorage.setItem(
-        IB_PARAMS.lid,
-        getParamsFromUrl().get(IB_PARAMS.lid)
-      );
-      localStorage.setItem(
-        IB_PARAMS.pid,
-        getParamsFromUrl().get(IB_PARAMS.pid)
-      );
+    const r_code = getParamsFromUrl().get(IB_PARAMS.r_code);
 
-      const { pathname } = window.location;
-      navigate(pathname);
+    if (r_code) {
+      localStorage.setItem(IB_PARAMS.r_code, r_code);
     }
+
+    const { pathname } = window.location;
+    navigate(pathname);
   }
 };
 
 export const setIBparamsToLink = () => {
   if (isBrowser()) {
-    const pid = localStorage.getItem(IB_PARAMS.pid);
-    const lid = localStorage.getItem(IB_PARAMS.lid);
+    const r_code = localStorage.getItem(IB_PARAMS.r_code);
 
-    if (pid && lid) return `&${IB_PARAMS.lid}=${lid}&${IB_PARAMS.pid}=${pid}`;
+    // Check conditions and construct the query string accordingly
+    if (r_code) {
+      return `?${IB_PARAMS.r_code}=${r_code}`; // Only r_code
+    }
   }
 
   return "";
