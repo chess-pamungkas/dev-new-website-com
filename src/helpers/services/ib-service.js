@@ -26,7 +26,7 @@ export const setIBparamsToLink = () => {
   if (isBrowser()) {
     const r_code = localStorage.getItem(IB_PARAMS.r_code);
 
-    /// Check conditions and construct the query string accordingly
+    // Check conditions and construct the query string accordingly
     if (r_code) {
       return `?${IB_PARAMS.r_code}=${r_code}`; // Only r_code
     }
