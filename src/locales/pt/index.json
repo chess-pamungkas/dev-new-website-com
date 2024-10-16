@@ -1489,27 +1489,5 @@
   "header-nav-tab-trading-swap-free-title": "Conta Sem Swap",
   "header-nav-tab-trading-swap-free-desc": "Experiência de Negociação Contínua com OQtima",
   "page-swap-free-title": "Conta Sem Swap",
-  "page-swap-free-description": "",
-
-  "data-deletion_top-title": "Pedido de Eliminação de Dados OQtima",
-  "data-deletion_top-title-accent": "1",
-  "data-deletion-form_intro-title": "Introdução",
-  "data-deletion-form_intro-description": "Bem-vindo à página de pedido de eliminação de dados da OQtima. Compreendemos a importância da sua privacidade e estamos empenhados em garantir a segurança dos seus dados pessoais. Se deseja eliminar a sua conta ou dados específicos associados a ela, por favor siga os passos abaixo.",
-  "data-deletion-form_intro-description-accent": "4",
-  "data-deletion-form_form-title": "Identificação do Utilizador",
-  "data-deletion-form_form-description": "Para iniciar o processo de eliminação, por favor forneça as informações da sua conta:",
-  "data-deletion-form_form-email-field": "Email utilizado na sua conta cTrader",
-  "data-deletion-form_form-account-field": "Número da conta cTrader",
-  "data-deletion-form_form-complete-field-title": "Eliminação Completa da Conta",
-  "data-deletion-form_form-complete-field-note": "Isto irá remover permanentemente toda a sua conta e todos os dados associados da plataforma OQtima Ctrader.",
-  "data-deletion-form_form-complete-field-text": "Eliminação Completa da Conta: Isto irá remover permanentemente toda a sua conta e todos os dados associados da plataforma OQtima Ctrader.",
-  "data-deletion-form_form-complete-field-text-accent": "1,2,3",
-  "data-deletion-form_form-privacy-p1": "Política de Privacidade e Termos de Serviço:",
-  "data-deletion-form_form-privacy-p2": "Recomendamos a revisão do nosso",
-  "data-deletion-form_form-privacy-p3": "e",
-  "data-deletion-form_form-privacy-p4": "para informações detalhadas sobre as nossas práticas de tratamento de dados.",
-  "data-deletion-form_form-privacy-privacy-text": "Política de Privacidade",
-  "data-deletion-form_form-privacy-terms-text": "Termos de Serviço",
-  "page-data-deletion-title": "Pedido de Eliminação de Dados OQtima",
-  "page-data-deletion-description": ""
+  "page-swap-free-description": ""
 }

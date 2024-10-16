@@ -1592,27 +1592,5 @@
   "header-nav-tab-trading-swap-free-title": "スワップフリーアカウント",
   "header-nav-tab-trading-swap-free-desc": "シームレスな取引体験をオクティマで",
   "page-swap-free-title": "スワップフリーアカウント",
-  "page-swap-free-description": "",
-
-  "data-deletion_top-title": "OQtima データ削除リクエスト",
-  "data-deletion_top-title-accent": "1",
-  "data-deletion-form_intro-title": "はじめに",
-  "data-deletion-form_intro-description": "OQtima データ削除リクエストページへようこそ。お客様のプライバシーの重要性を理解し、個人データの安全性を確保することに尽力しています。アカウントまたはそれに関連する特定のデータを削除したい場合は、以下の手順に従ってください。",
-  "data-deletion-form_intro-description-accent": "4",
-  "data-deletion-form_form-title": "ユーザー識別",
-  "data-deletion-form_form-description": "削除プロセスを開始するために、アカウント情報を提供してください：",
-  "data-deletion-form_form-email-field": "cTrader アカウント用のメールアドレス",
-  "data-deletion-form_form-account-field": "cTrader アカウント番号",
-  "data-deletion-form_form-complete-field-title": "アカウント完全削除",
-  "data-deletion-form_form-complete-field-note": "これにより、お客様のアカウントとそれに関連するすべてのデータが OQtima Ctrader プラットフォームから完全に削除されます。",
-  "data-deletion-form_form-complete-field-text": "アカウント完全削除：これにより、お客様のアカウントとそれに関連するすべてのデータが OQtima Ctrader プラットフォームから完全に削除されます。",
-  "data-deletion-form_form-complete-field-text-accent": "1,2,3",
-  "data-deletion-form_form-privacy-p1": "プライバシーポリシーと利用規約：",
-  "data-deletion-form_form-privacy-p2": "当社の",
-  "data-deletion-form_form-privacy-p3": "および",
-  "data-deletion-form_form-privacy-p4": "を確認することをお勧めします。これには、当社のデータ取り扱いの詳細な情報が含まれています。",
-  "data-deletion-form_form-privacy-privacy-text": "プライバシーポリシー",
-  "data-deletion-form_form-privacy-terms-text": "利用規約",
-  "page-data-deletion-title": "OQtima データ削除リクエスト",
-  "page-data-deletion-description": ""
+  "page-swap-free-description": ""
 }

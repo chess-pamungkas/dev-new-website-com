@@ -1598,27 +1598,5 @@
   "header-nav-tab-trading-swap-free-title": "Akun Bebas Swap",
   "header-nav-tab-trading-swap-free-desc": "Pengalaman Trading Lancar dengan OQtim",
   "page-swap-free-title": "Akun Bebas Swap",
-  "page-swap-free-description": "",
-
-  "data-deletion_top-title": "Permintaan Penghapusan Data OQtima",
-  "data-deletion_top-title-accent": "1",
-  "data-deletion-form_intro-title": "Pendahuluan",
-  "data-deletion-form_intro-description": "Selamat datang di halaman permintaan penghapusan data OQtima. Kami memahami pentingnya privasi Anda dan berkomitmen untuk memastikan keamanan data pribadi Anda. Jika Anda ingin menghapus akun Anda atau data tertentu yang terkait dengannya, silakan ikuti langkah-langkah di bawah ini.",
-  "data-deletion-form_intro-description-accent": "4",
-  "data-deletion-form_form-title": "Identifikasi Pengguna",
-  "data-deletion-form_form-description": "Untuk memulai proses penghapusan, silakan berikan informasi akun Anda:",
-  "data-deletion-form_form-email-field": "Email yang digunakan untuk akun cTrader Anda",
-  "data-deletion-form_form-account-field": "Nomor Akun cTrader",
-  "data-deletion-form_form-complete-field-title": "Penghapusan Akun Secara Lengkap",
-  "data-deletion-form_form-complete-field-note": "Ini akan secara permanen menghapus seluruh akun Anda dan semua data yang terkait dari platform OQtima Ctrader.",
-  "data-deletion-form_form-complete-field-text": "Penghapusan Akun Secara Lengkap: Ini akan secara permanen menghapus seluruh akun Anda dan semua data yang terkait dari platform OQtima Ctrader.",
-  "data-deletion-form_form-complete-field-text-accent": "1,2,3",
-  "data-deletion-form_form-privacy-p1": "Kebijakan Privasi dan Syarat Layanan:",
-  "data-deletion-form_form-privacy-p2": "Kami menyarankan untuk meninjau",
-  "data-deletion-form_form-privacy-p3": "dan",
-  "data-deletion-form_form-privacy-p4": "untuk informasi terperinci tentang praktik pengelolaan data kami.",
-  "data-deletion-form_form-privacy-privacy-text": "Kebijakan Privasi",
-  "data-deletion-form_form-privacy-terms-text": "Syarat Layanan",
-  "page-data-deletion-title": "Permintaan Penghapusan Data OQtima",
-  "page-data-deletion-description": ""
+  "page-swap-free-description": ""
 }
