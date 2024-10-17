@@ -1631,27 +1631,5 @@
   "header-nav-tab-trading-swap-free-title": "บัญชีไม่มีสวอป",
   "header-nav-tab-trading-swap-free-desc": "ประสบการณ์การเทรดอย่างต่อเนื่องกับ OQtima",
   "page-swap-free-title": "บัญชีไม่มีสวอป",
-  "page-swap-free-description": "",
-
-  "data-deletion_top-title": "คำขอลบข้อมูล OQtima",
-  "data-deletion_top-title-accent": "1",
-  "data-deletion-form_intro-title": "บทนำ",
-  "data-deletion-form_intro-description": "ยินดีต้อนรับสู่หน้าคำขอลบข้อมูล OQtima พวกเราเข้าใจความสำคัญของความเป็นส่วนตัวของท่านและมุ่งมั่นที่จะรักษาความปลอดภัยของข้อมูลส่วนบุคคลของท่าน หากท่านประสงค์ที่จะลบบัญชีของท่านหรือข้อมูลที่เกี่ยวข้องกับบัญชีนั้น โปรดทำตามขั้นตอนด้านล่างนี้",
-  "data-deletion-form_intro-description-accent": "4",
-  "data-deletion-form_form-title": "การระบุตัวตนของผู้ใช้",
-  "data-deletion-form_form-description": "เพื่อเริ่มกระบวนการลบข้อมูล โปรดให้ข้อมูลบัญชีของท่าน:",
-  "data-deletion-form_form-email-field": "อีเมลที่ใช้สำหรับบัญชี cTrader ของท่าน",
-  "data-deletion-form_form-account-field": "หมายเลขบัญชี cTrader",
-  "data-deletion-form_form-complete-field-title": "การลบบัญชีอย่างสมบูรณ์",
-  "data-deletion-form_form-complete-field-note": "สิ่งนี้จะลบบัญชีของท่านและข้อมูลทั้งหมดที่เกี่ยวข้องออกจากแพลตฟอร์ม OQtima Ctrader อย่างถาวร",
-  "data-deletion-form_form-complete-field-text": "การลบบัญชีอย่างสมบูรณ์: สิ่งนี้จะลบบัญชีของท่านและข้อมูลทั้งหมดที่เกี่ยวข้องออกจากแพลตฟอร์ม OQtima Ctrader อย่างถาวร",
-  "data-deletion-form_form-complete-field-text-accent": "1,2,3",
-  "data-deletion-form_form-privacy-p1": "นโยบายความเป็นส่วนตัวและข้อกำหนดในการให้บริการ:",
-  "data-deletion-form_form-privacy-p2": "เราแนะนำให้ท่านทบทวน",
-  "data-deletion-form_form-privacy-p3": "และ",
-  "data-deletion-form_form-privacy-p4": "เพื่อข้อมูลเพิ่มเติมเกี่ยวกับการจัดการข้อมูลของเรา",
-  "data-deletion-form_form-privacy-privacy-text": "นโยบายความเป็นส่วนตัว",
-  "data-deletion-form_form-privacy-terms-text": "ข้อกำหนดในการให้บริการ",
-  "page-data-deletion-title": "คำขอลบข้อมูล OQtima",
-  "page-data-deletion-description": ""
+  "page-swap-free-description": ""
 }
