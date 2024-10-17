@@ -1606,27 +1606,5 @@
   "header-nav-tab-trading-swap-free-title": "免掉期帳戶",
   "header-nav-tab-trading-swap-free-desc": "與 OQtima 的順暢交易體驗",
   "page-swap-free-title": "免掉期帳戶",
-  "page-swap-free-description": "",
-
-  "data-deletion_top-title": "OQtima 資料刪除請求",
-  "data-deletion_top-title-accent": "1",
-  "data-deletion-form_intro-title": "介紹",
-  "data-deletion-form_intro-description": "歡迎來到 OQtima 資料刪除請求頁面。我們了解您隱私的重要性，並致力於確保您個人資料的安全。如果您希望刪除您的帳戶或與之相關的特定資料，請按照以下步驟操作。",
-  "data-deletion-form_intro-description-accent": "4",
-  "data-deletion-form_form-title": "用戶識別",
-  "data-deletion-form_form-description": "要開始刪除過程，請提供您的帳戶信息：",
-  "data-deletion-form_form-email-field": "用於您的 cTrader 帳戶的電子郵件",
-  "data-deletion-form_form-account-field": "cTrader 帳戶號碼",
-  "data-deletion-form_form-complete-field-title": "完成帳戶刪除",
-  "data-deletion-form_form-complete-field-note": "這將永久地從 OQtima Ctrader 平台中移除您的整個帳戶及所有相關資料。",
-  "data-deletion-form_form-complete-field-text": "完成帳戶刪除：這將永久地從 OQtima Ctrader 平台中移除您的整個帳戶及所有相關資料。",
-  "data-deletion-form_form-complete-field-text-accent": "1,2,3",
-  "data-deletion-form_form-privacy-p1": "隱私政策與服務條款：",
-  "data-deletion-form_form-privacy-p2": "我們建議您閱讀我們的",
-  "data-deletion-form_form-privacy-p3": "和",
-  "data-deletion-form_form-privacy-p4": "以獲得有關我們資料處理實踐的詳細信息。",
-  "data-deletion-form_form-privacy-privacy-text": "隱私政策",
-  "data-deletion-form_form-privacy-terms-text": "服務條款",
-  "page-data-deletion-title": "OQtima 資料刪除請求",
-  "page-data-deletion-description": ""
+  "page-swap-free-description": ""
 }
