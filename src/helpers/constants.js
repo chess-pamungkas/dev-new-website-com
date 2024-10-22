@@ -23,6 +23,10 @@ import skrillLogo from "../assets/images/icons/payments/skrill.png";
 import wiseLogo from "../assets/images/icons/payments/wise.png";
 import { topLevelDomain } from "./entity-resolver";
 import { setIBparamsToLink, IB_PARAMS } from "./services/ib-service";
+import {
+  setCampaignParamsToLink,
+  CAMPAIGN_PARAMS,
+} from "./services/marketing-service";
 import { setLangParam } from "./services/language-service";
 
 export const WINDOW_SIZE_SM = 375;
@@ -78,6 +82,7 @@ export const BLOG_URL = "https://oqtima.news/";
 export const GetRegistrationLink = () => {
   const langParam = setLangParam();
   const ibParams = setIBparamsToLink();
+  const campaignParams = setCampaignParamsToLink();
 
   // Construct the base URL
   let registrationLink = `https://portal.oqtima.${topLevelDomain}/register`;
@@ -87,6 +92,11 @@ export const GetRegistrationLink = () => {
     if (ibParams.startsWith(`?${IB_PARAMS.r_code}=`)) {
       // If the link is for r_code, do not include the language parameter
       registrationLink += ibParams; // Only append r_code
+    }
+  } else if (campaignParams) {
+    if (campaignParams.startsWith(`?${CAMPAIGN_PARAMS.campaign_code}=`)) {
+      // If the link is for campaign_code, do not include the language parameter
+      registrationLink += campaignParams; // Only append campaign_code
     }
   } else if (langParam) {
     // If no IB params but langParam exists, append it
