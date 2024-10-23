@@ -1,7 +1,10 @@
 import React, { useEffect, useState, createContext } from "react";
 import PropTypes from "prop-types";
 import { isBrowser } from "../../helpers/services/is-browser";
-import { getMarketingParamsFromUrl } from "../../helpers/services/marketing-service";
+import {
+  getMarketingParamsFromUrl,
+  getCampaignParamsAndSetToStorage,
+} from "../../helpers/services/marketing-service";
 import { getIBParamsAndSetToStorage } from "../../helpers/services/ib-service";
 
 export const MarketingContext = createContext({});
@@ -15,6 +18,9 @@ export const MarketingContextProvider = ({ children }) => {
 
       // handle IB registration params
       getIBParamsAndSetToStorage();
+
+      // handle Campaign params
+      getCampaignParamsAndSetToStorage();
     }
   }, []);
 
