@@ -881,7 +881,7 @@
   "withdrawal_data-method-card-fsa": "บัตรเครดิตและบัตรเดบิต",
   "withdrawal_data-method-card-currencies-fsa": "USD & EUR",
   "withdrawal_data-method-crypto-fsa": "การเงินคริปโต",
-  "withdrawal_data-method-crypto-currencies-fsa": "AVAX, BNB, BTC, BCH, ADA, DASH, DOGE, ETH, LTC, MATIC, XRP, SHB, SOL, USDC, ESDT (ERC20/TRON)",
+  "withdrawal_data-method-crypto-currencies-fsa": "USDT",
   "withdrawal_data-method-int-bank-fsa": "การโอนเงินระหว่างประเทศ",
   "withdrawal_data-method-int-bank-currencies-fsa": "USD, EUR, GBP, JPY, CAD, CHF, AUD, AED, HKD, PHP, NZD, ZAR",
   "withdrawal_data-method-uk-bank-fsa": "การโอนเงินผ่านธนาคารในสหราชอาณาจักร",
