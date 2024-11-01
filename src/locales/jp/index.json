@@ -939,7 +939,7 @@
   "withdrawal_data-method-card-fsa": "クレジットカード・デビットカード",
   "withdrawal_data-method-card-currencies-fsa": "USD & EUR",
   "withdrawal_data-method-crypto-fsa": "暗号資産",
-  "withdrawal_data-method-crypto-currencies-fsa": "AVAX, BNB, BTC, BCH, ADA, DASH, DOGE, ETH, LTC, MATIC, XRP, SHB, SOL, USDC, ESDT (ERC20/TRON)",
+  "withdrawal_data-method-crypto-currencies-fsa": "USDT",
   "withdrawal_data-method-int-bank-fsa": "国際銀行送金",
   "withdrawal_data-method-int-bank-currencies-fsa": "USD, EUR, GBP, JPY, CAD, CHF, AUD, AED, HKD, PHP, NZD, ZAR",
   "withdrawal_data-method-uk-bank-fsa": "英国銀行送金",

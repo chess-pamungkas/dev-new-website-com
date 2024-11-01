@@ -949,7 +949,7 @@
   "withdrawal_data-method-card-fsa": "信用卡與借記卡",
   "withdrawal_data-method-card-currencies-fsa": "美元和歐元",
   "withdrawal_data-method-crypto-fsa": "加密貨幣資金",
-  "withdrawal_data-method-crypto-currencies-fsa": "AVAX, BNB, BTC, BCH, ADA, DASH, DOGE, ETH, LTC, MATIC, XRP, SHB, SOL, USDC, ESDT (ERC20/TRON)",
+  "withdrawal_data-method-crypto-currencies-fsa": "USDT",
   "withdrawal_data-method-int-bank-fsa": "國際銀行匯款",
   "withdrawal_data-method-int-bank-currencies-fsa": "美元, 歐元, 英鎊, 日元, 加拿大元, 瑞士法郎, 澳大利亞元, 阿拉伯聯合酋長國迪拉姆, 香港元, 菲律賓比索, 新西蘭元, 南非蘭特",
   "withdrawal_data-method-uk-bank-fsa": "英國銀行匯款",

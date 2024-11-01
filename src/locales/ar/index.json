@@ -930,7 +930,7 @@
   "withdrawal_data-method-card-fsa": "بطاقات الائتمان والخصم",
   "withdrawal_data-method-card-currencies-fsa": "الدولار الأمريكي واليورو",
   "withdrawal_data-method-crypto-fsa": "تمويل العملات الرقمية",
-  "withdrawal_data-method-crypto-currencies-fsa": "AVAX, BNB, BTC, BCH, ADA, DASH, DOGE, ETH, LTC, MATIC, XRP, SHB, SOL, USDC, ESDT (ERC20/TRON)",
+  "withdrawal_data-method-crypto-currencies-fsa": "USDT",
   "withdrawal_data-method-int-bank-fsa": "تحويل بنكي دولي",
   "withdrawal_data-method-int-bank-currencies-fsa": "الدولار الأمريكي، اليورو، الجنيه الإسترليني، الين الياباني، الدولار الكندي، الفرنك السويسري، الدولار الأسترالي، الدرهم الإماراتي، الدولار الهونغ كونغي، البيزو الفلبيني، الدولار النيوزيلندي، الراند الجنوب أفريقي",
   "withdrawal_data-method-uk-bank-fsa": "تحويل بنكي في المملكة المتحدة",
