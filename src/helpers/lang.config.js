@@ -58,10 +58,10 @@ const LANG_CONFIG = [
   },
   // Taiwan
   {
-    id: "tw",
+    id: "zh",
     icon: "CnFlagIcon",
     name: "繁體中文",
-    URIPart: "/tw",
+    URIPart: "/zh",
   },
   // Indonesian
   {
