@@ -7,7 +7,7 @@ disallowedLanguages = [
   "my",
   "", // Should be used instead of English, cause it's default one without language code
   "id",
-  "tw",
+  "zh",
   "cn",
   "it",
   "es",
