@@ -21,7 +21,7 @@ export const useSearchData = () => {
             es
             it
             cn
-            tw
+            zh
             fr
             pt
             vn
