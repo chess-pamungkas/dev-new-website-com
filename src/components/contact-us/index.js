@@ -54,6 +54,14 @@ const ContactUs = ({ className }) => {
               {`+${CONTACT_PHONE_FSA_2}`}
             </a>
           </div>
+          <div className="contact-us__contact-block">
+            <p className="contact-us__contact-block-title">
+              {t("contact-us_address")}
+            </p>
+            <p className="contact-us__contact-block-text">
+              {t("contact-us_address_result")}
+            </p>
+          </div>
         </div>
         <div className="contact-us__block">
           <ContactUsForm />
