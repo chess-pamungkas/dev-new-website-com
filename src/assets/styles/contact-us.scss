@@ -241,8 +241,8 @@
   }
 
   &__contact-block-text {
-    color: map-get($colors, "red");
-    font-weight: map-get($font-weight, "black");
+    color: map-get($colors, "black");
+    font-weight: map-get($font-weight, "regular");
     font-size: 14px;
     line-height: 18px;
     padding-left: 10px;
@@ -250,6 +250,11 @@
     @include tablet {
       font-size: 22px;
       line-height: 27px;
+      max-width: 100%;
+    }
+
+    @include desktop-xl {
+      max-width: 475px;
     }
   }
 }

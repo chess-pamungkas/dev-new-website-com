@@ -323,6 +323,8 @@
   "contact-us_page-text": "Möchten Sie mit uns in Kontakt treten? Füllen Sie entweder das Formular mit Ihrer Anfrage aus oder finden Sie unten die E-Mail-Adresse der Abteilung, mit der Sie Kontakt aufnehmen möchten.",
   "contact-us_email": "E-Mail",
   "contact-us_phone": "Telefon",
+  "contact-us_address": "Adresse",
+  "contact-us_address_result": "IMAD COMPLEX, Büro 7, EINHEIT 204, 1. Stock, Ile Du Port, Seychellen",
 
   "contact-us_form_name": "Vollständiger Name",
   "contact-us_form_error_message_required": "Dieses Feld ist erforderlich.",
