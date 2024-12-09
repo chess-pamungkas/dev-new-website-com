@@ -387,6 +387,8 @@
   "contact-us_page-text": "需要與我們聯繫嗎？請填寫表格或在下面找到您想要聯繫的部門電子郵件。",
   "contact-us_email": "電子郵件",
   "contact-us_phone": "電話",
+  "contact-us_address": "地址",
+  "contact-us_address_result": "Ile Du Port的IMAD COMPLEX，一樓，UNIT 204，辦公室7",
 
   "contact-us_form_name": "全名",
   "contact-us_form_error_message_required": "此項為必填項。",
