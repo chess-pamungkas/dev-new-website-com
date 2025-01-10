@@ -119,7 +119,7 @@
     @include mobile {
       width: 100%; // Full width for mobile
       border-radius: 0 0 0.625rem 0.625rem; // Rounded corners on bottom
-      padding: 5.9375rem 1.25rem 1.875rem 1.25rem; // Padding in rem for mobile
+      padding: 6.25rem 1.25rem 1.875rem 1.25rem; // Padding in rem for mobile
     }
 
     @include tablet {
