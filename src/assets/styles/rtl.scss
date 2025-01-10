@@ -984,7 +984,11 @@
 
   &__sidebar--rtl {
     position: relative;
-    border-radius: 0 10px 10px 0; // Rounded corners on top
+    border-radius: 0 0.625rem 0.625rem 0;
+
+    @include mobile {
+      border-radius: 0.625rem 0.625rem 0 0; // Rounded corners on top
+    }
 
     &__title--rtl {
       max-width: 100%;
@@ -1004,7 +1008,11 @@
   }
 
   &__content--rtl {
-    border-radius: 10px 0 0 10px !important; // Rounded corners on bottom
+    border-radius: 0.625rem 0 0 0.625rem; // Rounded corners on bottom
+
+    @include mobile {
+      border-radius: 0 0 0.625rem 0.625rem; // Rounded corners on bottom
+    }
   }
 
   &__name-field--rtl,
