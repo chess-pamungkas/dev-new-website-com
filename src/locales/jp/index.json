@@ -228,7 +228,7 @@
   "index_performance-advantage7-subtext": "",
 
   "footer-text-fsa": "安定して迅速なECN+取引環境のおかげで、オクティマはトレーダーへのラブレターです。30年以上の取引業界での経験を持つ業界リーダーによって設立されたオクティマは、取引体験と市場へのアクセスにおいて次のレベルを提供します。",
-  "footer-copyright-paragraph1-fsa": "OQTIMA INT. LTDは、「OQtima」ブランドのもとで運営するために十分に権限を持つ証券ディーラーであり、セイシェルに登録されている会社であり、企業登録番号は8430031-1で、金融サービス機構（FSA）によってライセンス番号SD109で規制されています。 OQTIMA INT. LTDの登録事務所は、IMAD Complex、MaheのIle Du Portに位置する3階のOffice 12にあります。 OQTIMA INT. LTDの事業所の住所は、SeychellesのIle Du Portにある1階のUNIT 204、Office 7、IMAD COMPLEXです。",
+  "footer-copyright-paragraph1-fsa": "OQTIMA INT. LTDは、「OQtima」ブランドのもとで運営するために十分に権限を持つ証券ディーラーであり、セイシェルに登録されている会社であり、企業登録番号は8430031-1で、金融サービス機構（FSA）によってライセンス番号SD109で規制されています。 OQTIMA INT. LTDの登録事務所は、IMAD Complex、MaheのIle Du Portに位置する3階のOffice 12にあります。 OQTIMA INT. LTDの事業所の住所は、IMAD COMPLEX、Office 7、UNIT 204、1階、Ile Du Port、セイシェル。",
   "footer-copyright-paragraph1_2-fsa": "このウェブサイトで購入されたサービスの支払い処理サービスは、OQTIMA INT. LTDの関連会社であり、登録番号HE 445939でキプロスに登録されているIpso Facto Ltdによって提供されています。 Ipso Facto Ltdの登録オフィスは、キプロス、Limassol、3106、John Kennedy 8、Iris Building、7階、Flat/Office 740Bにあります。 上記のエンティティは、OQtimaブランドの下で運営するための適切な許可を受けています。",
   "footer-copyright-paragraph1_3-fsa": "当社のグループは、子会社を通じてキプロス証券取引委員会 “CySEC”（OQtima EU Ltd - ライセンス番号406/21）にライセンスを取得しています。これは、MiFID指令によって欧州連合でパスポート取得され、セーシェル共和国ではセーシェル金融庁 “FSA”（OQtima INT.LTD - ライセンス番号SD109）によって認可されています。",
   "footer-copyright-paragraph2-fsa": "リスク警告：本ウェブサイトで提供される情報は、一般的な内容であり、個人・法人を問わず財務アドバイスをするものではありません。ウェブサイト記載の情報に基づいて決断・行動する前に、お客様の投資目標や財務状況、ニーズに応じて情報の適切さを考慮する必要があります。",
@@ -382,6 +382,9 @@
   "contact-us_page-text": "オクティマへのお問合せは、問い合わせフォームにお問い合わせ内容を記入頂くか以下のサポートメール宛にご連絡下さい。",
   "contact-us_email": "メール",
   "contact-us_phone": "電話番号",
+  "contact-us_address": "住所",
+  "contact-us_address_result": "IMAD COMPLEX、Office 7、UNIT 204、1階、Ile Du Port、セイシェル",
+
   "contact-us_form_name": "お客様のお名前(フルネーム)",
   "contact-us_form_error_message_required": "このフィールドは必須項目です。",
   "contact-us_form_error_message_invalid": "問題があります。フォームが無効です。",

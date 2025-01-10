@@ -371,6 +371,9 @@
   "contact-us_page-text": "تحتاج إلى التواصل معنا؟ املأ النموذج بسؤالك أو ابحث عن بريد القسم الذي ترغب في الاتصال به أدناه.",
   "contact-us_email": "البريد الإلكتروني",
   "contact-us_phone": "الهاتف",
+  "contact-us_address": "عنوان",
+  "contact-us_address_result": "IMAD COMPLEX، المكتب 7، الوحدة 204، الطابق 1، جزيرة دو بورت، سيشل",
+
   "contact-us_form_name": "الاسم الكامل",
   "contact-us_form_error_message_required": "هذا الحقل مطلوب.",
   "contact-us_form_error_message_invalid": "هناك خطأ ما. النموذج غير صالح.",

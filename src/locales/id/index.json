@@ -14,7 +14,6 @@
   "header-nav-tab-top-markets-allmarkets-desc": "Ikhtisar pasar yang dapat Anda perdagangkan dengan OQtima",
   "header-nav-tab-top-markets-crypto-title-fsa": "Kripto",
   "header-nav-tab-top-markets-crypto-desc-fsa": "Perdagangkan pasangan kripto dengan mata uang terpenting di dunia",
-  "header-nav-tab-trading": "Perdagangan",
 
   "header-nav-tab-platforms-title": "Platform",
   "header-nav-tab-platforms-desc": "",
@@ -24,6 +23,8 @@
   "header-nav-tab-platforms-mt5-desc": "Masa depan platform Metaquote. Temukan fitur-fitur baru yang ditingkatkan di MT5",
   "header-nav-tab-platforms-ctrader-title": "cTrader",
   "header-nav-tab-platforms-ctrader-desc": "Fitur perdagangan lanjutan, perdagangan forex tanpa hambatan dengan cTrader.",
+
+  "header-nav-tab-trading": "Perdagangan",
   "header-nav-tab-trading-funding-withdrawals-title": "Pendanaan & Penarikan",
   "header-nav-tab-trading-funding-withdrawals-desc": "Aman, cepat, dan mudah",
   "header-nav-tab-trading-funding-withdrawals-spreads-title": "Spread dan Biaya",
@@ -379,6 +380,8 @@
   "contact-us_page-text": "Perlu menghubungi kami? Isi formulir dengan pertanyaan Anda atau temukan email departemen yang ingin Anda hubungi di bawah ini.",
   "contact-us_email": "Email",
   "contact-us_phone": "Telepon",
+  "contact-us_address": "Alamat",
+  "contact-us_address_result": "IMAD COMPLEX, Kantor 7, UNIT 204, Lantai 1, Ile Du Port, Seychelles",
 
   "contact-us_form_name": "Nama lengkap",
   "contact-us_form_error_message_required": "Kolom ini harus diisi.",

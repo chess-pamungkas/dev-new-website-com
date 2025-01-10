@@ -381,6 +381,9 @@
   "contact-us_page-text": "需要联系我们吗？填写您的查询表格或在下面找到您想要联系部门的电子邮件.",
   "contact-us_email": "电子邮件",
   "contact-us_phone": "联系电话",
+  "contact-us_address": "地址",
+  "contact-us_address_result": "Ile Du Port的IMAD COMPLEX，一楼，UNIT 204，办公室7",
+
   "contact-us_form_name": "姓名",
   "contact-us_form_error_message_required": "这是必填项.",
   "contact-us_form_error_message_invalid": "出了点问题，此表格无效.",

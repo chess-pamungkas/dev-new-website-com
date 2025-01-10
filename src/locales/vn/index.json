@@ -357,6 +357,9 @@
   "contact-us_email": "Email",
   "contact-us_phone": "Điện thoại",
   "contact-us_form_name": "Họ và tên",
+  "contact-us_address": "Địa chỉ",
+  "contact-us_address_result": "IMAD COMPLEX, Phòng 7, ĐƠN VỊ 204, Tầng 1, Ile Du Port, Seychelles",
+
   "contact-us_form_error_message_required": "Phần bắt buộc.",
   "contact-us_form_error_message_invalid": "Có gì đó không đúng. Biểu mẫu không hợp lệ.",
   "contact-us_form_email": "Email",

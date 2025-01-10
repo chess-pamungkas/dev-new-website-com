@@ -372,6 +372,9 @@
   "contact-us_page-text": "Perlu berhubung dengan kami? Isi borang dengan pertanyaan anda atau cari e-mel jabatan yang ingin anda hubungi di bawah.",
   "contact-us_email": "E-mel",
   "contact-us_phone": "Telefon",
+  "contact-us_address": "Alamat",
+  "contact-us_address_result": "IMAD COMPLEX, Pejabat 7, UNIT 204, Tingkat 1, Ile Du Port, Seychelles",
+
   "contact-us_form_name": "Nama penuh",
   "contact-us_form_error_message_required": "Bidang ini diperlukan.",
   "contact-us_form_error_message_invalid": "Ada sesuatu yang salah. Borang tidak sah.",
