@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
