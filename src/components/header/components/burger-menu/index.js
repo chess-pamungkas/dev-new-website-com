@@ -176,16 +176,15 @@ const BurgerMenu = ({ className }) => {
             </ul>
           </li>
         </ul>
-
-        {/* Render the popup */}
-        {isPopupOpen && (
-          <ShowRegistrationPopup
-            isOpen={isPopupOpen}
-            onClose={handleClosePopup}
-            langParam={langParam} // Pass langParam if needed
-          />
-        )}
       </div>
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </div>
   );
 };
