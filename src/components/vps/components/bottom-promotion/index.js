@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import bottomPromo from "../../../../assets/images/vps/bottom-promo.svg";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
-import ButtonLink from "../../../shared/button-link";
-import { GetRegistrationLink } from "../../../../helpers/constants";
+import ButtonPopup from "../../../shared/button-popup";
+import { ShowRegistrationPopup } from "../../../../helpers/constants";
+import { setLangParam } from "../../../../helpers/services/language-service";
 
 const VPSBottomPromotion = ({ className }) => {
   const isRTL = useRtlDirection();
   const { t } = useTranslationWithVariables();
+  const langParam = setLangParam();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   return (
     <section
@@ -33,14 +44,23 @@ const VPSBottomPromotion = ({ className }) => {
               />
             }
           </p>
-          <ButtonLink
-            link={GetRegistrationLink()}
+          <ButtonPopup
+            onClick={handleShowRegistrationPopup}
             className={"top-market__btn top-market__btn--white"}
           >
             {t("vps_bottom-promotion-btn")}
-          </ButtonLink>
+          </ButtonPopup>
         </div>
       </div>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </section>
   );
 };

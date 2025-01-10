@@ -975,3 +975,84 @@
     }
   }
 }
+
+.popup-registration {
+  &__container--rtl {
+    text-align: right !important;
+    float: right;
+  }
+
+  &__sidebar--rtl {
+    position: relative;
+    border-radius: 0 10px 10px 0; // Rounded corners on top
+
+    &__title--rtl {
+      max-width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    &__close--rtl {
+      position: absolute; // Position absolutely within the sidebar
+      top: 20px; // Adjust top position
+      right: 15px; // Adjust right position
+      cursor: pointer; // Pointer cursor on hover
+      width: 20px; // Set width
+      height: 20px; // Set height
+      z-index: 10000; // Ensure it appears above other elements
+    }
+  }
+
+  &__content--rtl {
+    border-radius: 10px 0 0 10px !important; // Rounded corners on bottom
+  }
+
+  &__name-field--rtl,
+  &__contact-field--rtl {
+    flex: 1;
+    margin-right: 0;
+    margin-left: 10px;
+  }
+
+  &__input-title--rtl {
+    float: right;
+  }
+
+  // Style for all inputs in RTL mode
+  &__form-group input {
+    &[dir="rtl"],
+    .popup-registration__container--rtl & {
+      text-align: right;
+      direction: rtl;
+      padding-right: 15px;
+
+      &::placeholder {
+        text-align: right;
+      }
+    }
+  }
+
+  // Additional specific styles for tel input if needed
+  &__input--rtl[type="tel"] {
+    text-align: right;
+    direction: rtl;
+    padding-right: 15px;
+
+    &::placeholder {
+      text-align: right;
+    }
+  }
+}
+
+h1.popup-registration-register--rtl {
+  text-align: right;
+  margin-top: 0;
+  margin-bottom: 2.1875rem; // Space below header in rem
+  color: #1a1a1a; // Darker text color
+  font-size: 1.5rem; // Font size
+
+  @include mobile {
+    font-size: 1.125rem; // Font size
+    margin-bottom: 1.5rem; // Space below header in rem
+  }
+}

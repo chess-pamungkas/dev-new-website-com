@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import TopMarketPromotion from "../../top-market-promotion";
 import cn from "classnames";
@@ -13,11 +13,22 @@ import {
 } from "../../../helpers/copy-trading.config";
 import { FAQ_COPY_TRADING } from "../../../helpers/faq";
 import Faq from "../../faq";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const CopyTradingPageContent = () => {
   const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   return (
     <>
@@ -29,7 +40,7 @@ const CopyTradingPageContent = () => {
         image={promotion}
         btnClassName="button-link--ghost"
         btnTitle={t("copy-trading_top-market-promo-btn")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
         note={
           <>
             <span className="display-block">
@@ -126,14 +137,14 @@ const CopyTradingPageContent = () => {
               advantages={ADVANTAGES_FOR_INVESTORS}
               className="copy-trading-market-item-advantages"
               btnTitle={t("copy-trading_advantages1_btn")}
-              link={GetRegistrationLink()}
+              btnOnClick={handleShowRegistrationPopup}
             />
             <MarketItemAdvantageList
               title={t("copy-trading_advantages2_title")}
               advantages={ADVANTAGES_FOR_PROVIDERS}
               className="copy-trading-market-item-advantages"
               btnTitle={t("copy-trading_advantages2_btn")}
-              link={GetRegistrationLink()}
+              btnOnClick={handleShowRegistrationPopup}
             />
           </div>
         }
@@ -146,6 +157,15 @@ const CopyTradingPageContent = () => {
         />
       </TopMarketPromotion>
       <Faq faq={FAQ_COPY_TRADING} className="copy-trading-faq" />
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

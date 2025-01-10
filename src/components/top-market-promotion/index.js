@@ -2,6 +2,7 @@ import React from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import ButtonLink from "../shared/button-link";
+import ButtonPopup from "../shared/button-popup";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Lottie from "lottie-react";
 import ReactPlayer from "react-player";
@@ -33,7 +34,7 @@ const TopMarketPromotion = ({
 
   const getButton = () => {
     switch (true) {
-      case isDocumentLink:
+      case isDocumentLink && link:
         return (
           <a
             className={cn(
@@ -41,7 +42,6 @@ const TopMarketPromotion = ({
               "top-market-promotion__btn",
               btnClassName
             )}
-            onClick={link ? () => {} : btnOnClick}
             href={link}
             target="_blank"
             rel="noreferrer"
@@ -49,7 +49,7 @@ const TopMarketPromotion = ({
             {btnTitle}
           </a>
         );
-      case isAnchorLink:
+      case isAnchorLink && link:
         return (
           <AnchorLink
             href={link}
@@ -89,18 +89,48 @@ const TopMarketPromotion = ({
           </div>
         );
 
-      default:
+      case Boolean(btnOnClick):
         return (
-          <ButtonLink
-            link={link}
+          <ButtonPopup
+            onClick={btnOnClick}
             className={cn(
+              "button-link",
               "button-link--red",
               "top-market-promotion__btn",
               btnClassName
             )}
           >
             {btnTitle}
-          </ButtonLink>
+          </ButtonPopup>
+        );
+
+      default:
+        if (link) {
+          return (
+            <ButtonLink
+              link={link}
+              className={cn(
+                "button-link--red",
+                "top-market-promotion__btn",
+                btnClassName
+              )}
+            >
+              {btnTitle}
+            </ButtonLink>
+          );
+        }
+        return (
+          <ButtonPopup
+            onClick={() => {}}
+            className={cn(
+              "button-link",
+              "button-link--red",
+              "top-market-promotion__btn",
+              btnClassName
+            )}
+          >
+            {btnTitle}
+          </ButtonPopup>
         );
     }
   };

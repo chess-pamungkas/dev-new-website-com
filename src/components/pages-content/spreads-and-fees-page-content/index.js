@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import cn from "classnames";
 import TopMarket from "../../top-market";
@@ -17,7 +17,7 @@ import {
 } from "../../../helpers/spreads-and-fees.config";
 import TopMarketPromotion from "../../top-market-promotion";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import {
@@ -28,12 +28,24 @@ import {
 } from "../../../helpers/config";
 import TradingContext from "../../../context/trading-context";
 import { GeneralTableColumns } from "../../../helpers/top-market-tables";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const SpreadsAndFeesPageContent = () => {
   const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
   const { tradingSymbols, setSelectedSection, setNeedToLoadSymbols } =
     useContext(TradingContext);
+
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_INDICES, tradingSymbols);
   updateTableDataWithLiveColumn(DATA_SPREADS_TABLE_FOREX, tradingSymbols);
@@ -211,7 +223,7 @@ const SpreadsAndFeesPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("spreads_top-market-promo-btn3")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText="spreads_top-market-promo-text3"
@@ -220,6 +232,15 @@ const SpreadsAndFeesPageContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarketPromotion>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

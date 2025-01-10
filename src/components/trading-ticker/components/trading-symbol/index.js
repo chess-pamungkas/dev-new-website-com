@@ -5,12 +5,23 @@ import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import upArrow from "../../../../assets/images/trading-ticker/up-arrow.svg";
 import downArrow from "../../../../assets/images/trading-ticker/down-arrow.svg";
-import ButtonLink from "../../../shared/button-link";
-import { GetRegistrationLink } from "../../../../helpers/constants";
+import ButtonPopup from "../../../shared/button-popup";
+import { ShowRegistrationPopup } from "../../../../helpers/constants";
+import { setLangParam } from "../../../../helpers/services/language-service";
 
 const TradingSymbol = ({ className, symbol, direction, bid, ask, spread }) => {
   const isRTL = useRtlDirection();
   const { t } = useTranslationWithVariables();
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   return (
     <div
@@ -59,19 +70,28 @@ const TradingSymbol = ({ className, symbol, direction, bid, ask, spread }) => {
         </div>
       </div>
       <div className="trading-symbol__actions">
-        <ButtonLink
-          link={GetRegistrationLink()}
+        <ButtonPopup
           className="trading-symbol__buy button-link--without-bg-trading"
+          onClick={handleShowRegistrationPopup}
         >
           {t("index_trading-ticker-buy")}
-        </ButtonLink>
-        <ButtonLink
-          link={GetRegistrationLink()}
+        </ButtonPopup>
+        <ButtonPopup
           className="trading-symbol__sell button-link--without-bg-trading"
+          onClick={handleShowRegistrationPopup}
         >
           {t("index_trading-ticker-sell")}
-        </ButtonLink>
+        </ButtonPopup>
       </div>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </div>
   );
 };

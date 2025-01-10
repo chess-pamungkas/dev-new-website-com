@@ -1,19 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import {
   DIR_LTR,
   DIR_RTL,
-  GetRegistrationLink,
+  ShowRegistrationPopup,
 } from "../../../../helpers/constants";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import FeaturedIdeasTabs from "../featured-ideas-tabs";
-import ButtonLink from "../../../shared/button-link";
+import ButtonPopup from "../../../shared/button-popup";
+import { setLangParam } from "../../../../helpers/services/language-service";
 
 const FeaturedIdeas = ({ className }) => {
   const isRTL = useRtlDirection();
   const { t } = useTranslationWithVariables();
+  const langParam = setLangParam();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   return (
     <section
@@ -36,13 +47,23 @@ const FeaturedIdeas = ({ className }) => {
           </p>
         </div>
         <FeaturedIdeasTabs />
-        <ButtonLink
-          link={GetRegistrationLink()}
+
+        <ButtonPopup
+          onClick={handleShowRegistrationPopup}
           className="button-link button-link--red trading-tools-btn"
         >
           {t("trading-tools_top-market-promo-btn3")}
-        </ButtonLink>
+        </ButtonPopup>
       </div>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </section>
   );
 };

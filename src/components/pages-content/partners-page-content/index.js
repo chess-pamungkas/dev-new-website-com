@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import TopMarketPromotion from "../../top-market-promotion";
 import promotion from "../../../assets/images/partners/promotion.svg";
 import cn from "classnames";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import IncomeSlider from "../../partners/components/income-slider";
 import PartnersAdvantages from "../../partners/components/advantages";
@@ -11,10 +11,21 @@ import HowToStart from "../../partners/components/how-to-start";
 import icon from "../../../assets/images/icon--white.svg";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const PartnersPageContent = () => {
   const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   return (
     <>
@@ -25,7 +36,7 @@ const PartnersPageContent = () => {
         image={promotion}
         btnClassName={cn("button-link--ghost")}
         btnTitle={t(`partners_top-market-promo-btn-fsa`)}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText={`partners_top-market-promo-text-fsa`}
@@ -60,6 +71,15 @@ const PartnersPageContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarketPromotion>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

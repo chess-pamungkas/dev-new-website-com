@@ -5,7 +5,7 @@ import icon from "../../../../assets/images/all-markets/advantage-icon.svg";
 import iconSm from "../../../../assets/images/all-markets/advantage-icon-sm.svg";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
-import ButtonLink from "../../../shared/button-link";
+import ButtonPopup from "../../../shared/button-popup";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 
 const MarketItemAdvantageList = ({
@@ -15,6 +15,7 @@ const MarketItemAdvantageList = ({
   btnTitle,
   link,
   btnClassName,
+  btnOnClick,
 }) => {
   const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
@@ -48,8 +49,8 @@ const MarketItemAdvantageList = ({
         </div>
         {btnTitle && btnTitle !== "" && (
           <div className="market-item-btn-wrapper">
-            <ButtonLink
-              link={link}
+            <ButtonPopup
+              onClick={btnOnClick}
               className={cn(
                 "button-link--red",
                 "market-item-btn",
@@ -57,7 +58,7 @@ const MarketItemAdvantageList = ({
               )}
             >
               {btnTitle}
-            </ButtonLink>
+            </ButtonPopup>
           </div>
         )}
       </div>
@@ -72,6 +73,7 @@ MarketItemAdvantageList.propTypes = {
   btnTitle: PropTypes.string,
   link: PropTypes.string,
   btnClassName: PropTypes.string,
+  btnOnClick: PropTypes.func,
 };
 
 export default MarketItemAdvantageList;

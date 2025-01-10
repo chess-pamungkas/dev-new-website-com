@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
-import ButtonLink from "../../../shared/button-link";
-import { GetRegistrationLink } from "../../../../helpers/constants";
+import ButtonPopup from "../../../shared/button-popup";
+import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import VPSAdvantageItem from "../vps-advantage-item";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
+import { setLangParam } from "../../../../helpers/services/language-service";
 
 const VPSAdvantages = ({ className, advantages }) => {
   const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
+  const langParam = setLangParam();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   return (
     <section
@@ -40,12 +51,21 @@ const VPSAdvantages = ({ className, advantages }) => {
             />
           ))}
       </div>
-      <ButtonLink
-        link={GetRegistrationLink()}
+      <ButtonPopup
         className={cn("vps-advantages__btn")}
+        onClick={handleShowRegistrationPopup}
       >
         {t("vps_advantages-btn")}
-      </ButtonLink>
+      </ButtonPopup>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </section>
   );
 };

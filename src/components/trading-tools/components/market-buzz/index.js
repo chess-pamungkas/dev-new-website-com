@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
@@ -6,17 +6,28 @@ import { useTranslationWithVariables } from "../../../../helpers/hooks/use-trans
 import {
   DIR_LTR,
   DIR_RTL,
-  GetRegistrationLink,
+  ShowRegistrationPopup,
 } from "../../../../helpers/constants";
 import MarketBuzzInfo from "../market-buzz-info";
 import { MARKET_BUZZ_BLOCKS } from "../../../../helpers/trading-tools.config";
 import MarketBuzzBlock from "../market-buzz-block";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
-import ButtonLink from "../../../shared/button-link";
+import ButtonPopup from "../../../shared/button-popup";
+import { setLangParam } from "../../../../helpers/services/language-service";
 
 const MarketBuzz = ({ className }) => {
   const isRTL = useRtlDirection();
   const { t } = useTranslationWithVariables();
+  const langParam = setLangParam();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   return (
     <section
@@ -47,13 +58,23 @@ const MarketBuzz = ({ className }) => {
             img={item.image}
           />
         ))}
-        <ButtonLink
-          link={GetRegistrationLink()}
+
+        <ButtonPopup
+          onClick={handleShowRegistrationPopup}
           className="button-link button-link--red trading-tools-btn"
         >
           {t("trading-tools_top-market-promo-btn3")}
-        </ButtonLink>
+        </ButtonPopup>
       </div>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </section>
   );
 };

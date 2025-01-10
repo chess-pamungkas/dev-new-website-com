@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/commodities.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
 import commodities from "../../../assets/images/top-markets/images/commodities.svg";
-
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { METALS_TRADING_SECTION } from "../../../helpers/config";
 import animation from "../../../assets/images/bg/promotions/metals/metals.json";
@@ -21,10 +20,21 @@ import {
 } from "../../../helpers/top-market-tables";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import TradingContext from "../../../context/trading-context";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const MetalsContent = () => {
   const { t } = useTranslationWithVariables();
   const { tradingSymbols } = useContext(TradingContext);
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   updateTableDataWithLiveColumn(DATA_METALS, tradingSymbols);
 
@@ -34,9 +44,9 @@ const MetalsContent = () => {
         title={t("metals_top-market-title")}
         image={image}
         btn1Title={t("metals_top-market-btn1")}
-        link1={GetRegistrationLink()}
+        btnOnClick1={handleShowRegistrationPopup}
         btn2Title={t("metals_top-market-btn2")}
-        link2={GetRegistrationLink()}
+        btnOnClick2={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText="metals_top-market-promo-text"
@@ -53,7 +63,7 @@ const MetalsContent = () => {
         className="commodities-promotion"
         image={commodities}
         btnTitle={t("metals_top-market-promo-btn")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
         note={t("metals_top-market-promotion-promo-note")}
       >
         <HighlightedLocalizationText
@@ -65,6 +75,7 @@ const MetalsContent = () => {
       </TopMarketPromotion>
       <MarketingCircle
         animation={animation}
+        btnOnClick={handleShowRegistrationPopup}
         upper={
           <HighlightedLocalizationText
             localizationText="metals_marketing-circle-upper"
@@ -117,7 +128,7 @@ const MetalsContent = () => {
       <TopMarketLayout
         title={t("metals_top-market-layout-title")}
         btnTitle={t("metals_top-market-layout-btn")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <TableComponent
           data={DATA_METALS}
@@ -135,6 +146,15 @@ const MetalsContent = () => {
         />
       </TopMarketLayout>
       <Faq faq={FAQ_METALS} />
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

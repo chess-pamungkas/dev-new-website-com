@@ -17,15 +17,26 @@ import TopMarketLayout from "../../top-market-layout";
 import Tabs from "../../shared/tabs";
 import icon from "../../../assets/images/icon--white.svg";
 import {
-  GetRegistrationLink,
+  ShowRegistrationPopup,
   PAYMENT_SYSTEMS_FSA,
 } from "../../../helpers/constants";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const FundingPageContent = () => {
   const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
   const [isDepositTab, setIsDepositTab] = useState(true);
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   const tabs = [
     {
@@ -121,7 +132,7 @@ const FundingPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("withdrawal_top-market-promo-btn3")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText="withdrawal_top-market-promo-text3"
@@ -130,6 +141,15 @@ const FundingPageContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarketPromotion>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };
