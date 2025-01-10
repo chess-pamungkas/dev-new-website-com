@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/etf.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
 import etf from "../../../assets/images/top-markets/images/etf.svg";
-
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { ETF_TRADING_SECTION } from "../../../helpers/config";
 import animation from "../../../assets/images/bg/promotions/etf/etf.json";
 import MarketingCircle from "../../marketing-circle";
 import Faq from "../../faq";
 import { FAQ_ETF } from "../../../helpers/faq";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const ETFContent = () => {
   const { t } = useTranslationWithVariables();
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   return (
     <>
@@ -25,9 +35,9 @@ const ETFContent = () => {
         btn1Title={t("etf_top-market-btn1")}
         btnClassName1={"button-link--lowercase"}
         btnClassName2={"button-link--lowercase"}
-        link1={GetRegistrationLink()}
+        btnOnClick1={handleShowRegistrationPopup}
         btn2Title={t("etf_top-market-btn2")}
-        link2={GetRegistrationLink()}
+        btnOnClick2={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText="etf_top-market-promo-text"
@@ -45,7 +55,7 @@ const ETFContent = () => {
         image={etf}
         btnTitle={t("etf_top-market-promo-btn")}
         btnClassName={"button-link--lowercase"}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
         note={
           <HighlightedLocalizationText
             localizationText="etf_top-market-promotion-promo-note"
@@ -64,6 +74,7 @@ const ETFContent = () => {
       </TopMarketPromotion>
       <MarketingCircle
         animation={animation}
+        btnOnClick={handleShowRegistrationPopup}
         upper={
           <HighlightedLocalizationText
             localizationText="etf_marketing-circle-upper"
@@ -114,6 +125,15 @@ const ETFContent = () => {
         }
       />
       <Faq faq={FAQ_ETF} />
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

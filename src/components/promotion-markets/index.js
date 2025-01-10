@@ -2,8 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import Lottie from "lottie-react";
-import { DIR_LTR, DIR_RTL, GetRegistrationLink } from "../../helpers/constants";
-import ButtonLink from "../shared/button-link";
+import {
+  DIR_LTR,
+  DIR_RTL,
+  ShowRegistrationPopup,
+} from "../../helpers/constants";
+import ButtonPopup from "../shared/button-popup";
 import {
   OPACITY_0,
   OPACITY_1,
@@ -14,6 +18,7 @@ import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-ob
 import { scrollTo } from "../../helpers/scroll-to";
 import { isBrowser } from "../../helpers/services/is-browser";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { setLangParam } from "../../helpers/services/language-service";
 
 const PromotionMarkets = ({
   className,
@@ -26,6 +31,16 @@ const PromotionMarkets = ({
   let lastTouchPointY = 0;
   const promoRef = useRef();
   const scrollCount = children.length;
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   const autoScrollPromoRef = useIntersectionObserver(promoRef, {
     threshold: 0.2,
@@ -260,13 +275,22 @@ const PromotionMarkets = ({
           </animated.div>
         </h2>
 
-        <ButtonLink
-          link={GetRegistrationLink()}
+        <ButtonPopup
           className="promotion-markets__btn button-link button-link--red"
+          onClick={handleShowRegistrationPopup}
         >
           {btnTitle}
-        </ButtonLink>
+        </ButtonPopup>
       </div>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </section>
   );
 };

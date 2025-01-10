@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
-import ButtonLink from "../../shared/button-link";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
+import ButtonPopup from "../../shared/button-popup";
 import AccountTypeAdvantage from "../account-type-advantage";
 import { stringTransformToKebabCase } from "../../../helpers/services/string-service";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const AccountType = ({
   className,
@@ -16,6 +17,16 @@ const AccountType = ({
   advantages,
 }) => {
   const { t } = useTranslationWithVariables();
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   return (
     <div className={cn("account-type", className, gridArea)}>
@@ -28,9 +39,21 @@ const AccountType = ({
           {...block}
         />
       ))}
-      <ButtonLink link={GetRegistrationLink()} className="account-type__btn">
+      <ButtonPopup
+        onClick={handleShowRegistrationPopup}
+        className="account-type__btn"
+      >
         {t(btnTitle)}
-      </ButtonLink>
+      </ButtonPopup>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </div>
   );
 };

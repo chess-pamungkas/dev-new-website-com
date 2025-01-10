@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/energies.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
 import energies from "../../../assets/images/top-markets/images/energies.svg";
-
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { ENERGIES_TRADING_SECTION } from "../../../helpers/config";
 import animation from "../../../assets/images/bg/promotions/indices/indices.json";
@@ -21,10 +20,21 @@ import {
 } from "../../../helpers/top-market-tables";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import TradingContext from "../../../context/trading-context";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const EnergiesContent = () => {
   const { t } = useTranslationWithVariables();
   const { tradingSymbols } = useContext(TradingContext);
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   updateTableDataWithLiveColumn(DATA_ENERGIES, tradingSymbols);
 
@@ -34,9 +44,9 @@ const EnergiesContent = () => {
         title={t("energies_top-market-title")}
         image={image}
         btn1Title={t("energies_top-market-btn1")}
-        link1={GetRegistrationLink()}
+        btnOnClick1={handleShowRegistrationPopup}
         btn2Title={t("energies_top-market-btn2")}
-        link2={GetRegistrationLink()}
+        btnOnClick2={handleShowRegistrationPopup}
         isChildrenHasSmallSize
       >
         <HighlightedLocalizationText
@@ -54,7 +64,7 @@ const EnergiesContent = () => {
         className="energies-promotion"
         image={energies}
         btnTitle={t("energies_top-market-promo-btn")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText="energies_top-market-promotion-promo-text"
@@ -65,6 +75,7 @@ const EnergiesContent = () => {
       </TopMarketPromotion>
       <MarketingCircle
         animation={animation}
+        btnOnClick={handleShowRegistrationPopup}
         upper={
           <HighlightedLocalizationText
             localizationText="energies_marketing-circle-upper"
@@ -117,7 +128,7 @@ const EnergiesContent = () => {
       <TopMarketLayout
         title={t("energies_top-market-layout-title")}
         btnTitle={t("energies_top-market-layout-btn")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <TableComponent
           data={DATA_ENERGIES}
@@ -135,6 +146,15 @@ const EnergiesContent = () => {
         />
       </TopMarketLayout>
       <Faq faq={FAQ_ENERGIES} />
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

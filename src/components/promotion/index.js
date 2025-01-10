@@ -3,6 +3,7 @@ import { animated } from "react-spring";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import ButtonLink from "../shared/button-link";
+import ButtonPopup from "../shared/button-popup";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 
@@ -15,10 +16,43 @@ const Promotion = ({
   image,
   btnTitle,
   link,
+  btnOnClick,
   isReverseOrder = false,
   isRedPalette = false,
 }) => {
   const isRTL = useRtlDirection();
+
+  const getButton = () => {
+    if (btnOnClick) {
+      return (
+        <ButtonPopup
+          onClick={btnOnClick}
+          className={cn("promotion__btn", {
+            "promotion__btn--red": isRedPalette,
+            "promotion__btn--black": !isRedPalette,
+          })}
+        >
+          {btnTitle}
+        </ButtonPopup>
+      );
+    }
+
+    if (link) {
+      return (
+        <ButtonLink
+          link={link}
+          className={cn("promotion__btn", {
+            "promotion__btn--red": isRedPalette,
+            "promotion__btn--black": !isRedPalette,
+          })}
+        >
+          {btnTitle}
+        </ButtonLink>
+      );
+    }
+
+    return null;
+  };
 
   return (
     <section
@@ -39,15 +73,7 @@ const Promotion = ({
               {children}
             </animated.p>
           </div>
-          <ButtonLink
-            link={link}
-            className={cn("promotion__btn", {
-              "promotion__btn--red": isRedPalette,
-              "promotion__btn--black": !isRedPalette,
-            })}
-          >
-            {btnTitle}
-          </ButtonLink>
+          {btnTitle && getButton()}
         </div>
         <div className={cn("promotion__block", "promotion__block--flexed")}>
           <img src={image} alt="" className="promotion__img" />
@@ -74,6 +100,7 @@ Promotion.propTypes = {
   image: PropTypes.string,
   btnTitle: PropTypes.string,
   link: PropTypes.string,
+  btnOnClick: PropTypes.func,
   isReverseOrder: PropTypes.bool,
   isRedPalette: PropTypes.bool,
 };

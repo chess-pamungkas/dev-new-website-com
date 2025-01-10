@@ -2,8 +2,7 @@ import React, { useState, useContext } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
-import ButtonLink from "../shared/button-link";
-import { GetRegistrationLink } from "../../helpers/constants";
+import { ShowRegistrationPopup } from "../../helpers/constants";
 import TitlesAnimation from "../shared/titles-animation";
 import { MarketingContext } from "../../context/marketing-context";
 import {
@@ -14,6 +13,7 @@ import {
 import { transformParamToKey } from "../../helpers/services/marketing-service";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import LanguageContext from "../../context/language-context";
+import ButtonPopup from "../shared/button-popup";
 
 const MainPromotion = ({ className, isShowHero = true }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
@@ -23,6 +23,15 @@ const MainPromotion = ({ className, isShowHero = true }) => {
   const { content, sect1 } = useContext(MarketingContext);
   const isRTL = useRtlDirection();
   const DEFAULT_TEXT_SEQUENCE = getDefaultTextSequence(selectedLanguage.id); // Pass the current language here
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   const hero =
     CONTENT_HEROES[transformParamToKey(content)] || CONTENT_HEROES.default;
@@ -77,8 +86,8 @@ const MainPromotion = ({ className, isShowHero = true }) => {
               )}
             </span>
           </h1>
-          <ButtonLink
-            link={GetRegistrationLink()}
+          <ButtonPopup
+            onClick={handleShowRegistrationPopup}
             className={cn({
               "button-link--snake-animation": isAnimationFinished,
             })}
@@ -92,9 +101,18 @@ const MainPromotion = ({ className, isShowHero = true }) => {
               </>
             )}
             {t("button-trade-now")}
-          </ButtonLink>
+          </ButtonPopup>
         </div>
       </div>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={selectedLanguage.id} // Pass langParam if needed
+        />
+      )}
     </section>
   );
 };

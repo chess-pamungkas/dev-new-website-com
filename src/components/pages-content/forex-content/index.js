@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/forex.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
 import forex from "../../../assets/images/top-markets/images/forex.svg";
-
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { FOREX_TRADING_SECTION } from "../../../helpers/config";
 import animation from "../../../assets/images/bg/promotions/forex/forex.json";
@@ -23,10 +22,21 @@ import {
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import Tabs from "../../shared/tabs";
 import TradingContext from "../../../context/trading-context";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const ForexContent = () => {
   const { t } = useTranslationWithVariables();
   const { tradingSymbols } = useContext(TradingContext);
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   updateTableDataWithLiveColumn(DATA_FOREX_MINOR, tradingSymbols);
   updateTableDataWithLiveColumn(DATA_FOREX_MAJOR, tradingSymbols);
@@ -98,9 +108,9 @@ const ForexContent = () => {
         title={t("forex_top-market-title")}
         image={image}
         btn1Title={t("forex_top-market-btn1")}
-        link1={GetRegistrationLink()}
+        btnOnClick1={handleShowRegistrationPopup}
         btn2Title={t("forex_top-market-btn2")}
-        link2={GetRegistrationLink()}
+        btnOnClick2={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText="forex_top-market-promo-text"
@@ -117,7 +127,7 @@ const ForexContent = () => {
         className="forex-promotion"
         image={forex}
         btnTitle={t("forex_top-market-promo-btn")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText={`forex_top-market-promotion-promo-text-fsa`}
@@ -128,6 +138,7 @@ const ForexContent = () => {
       </TopMarketPromotion>
       <MarketingCircle
         animation={animation}
+        btnOnClick={handleShowRegistrationPopup}
         upper={
           <HighlightedLocalizationText
             localizationText="forex_marketing-circle-upper"
@@ -180,11 +191,20 @@ const ForexContent = () => {
       <TopMarketLayout
         title={t("forex_top-market-layout-title")}
         btnTitle={t("forex_top-market-layout-btn")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <Tabs tabList={tabs} />
       </TopMarketLayout>
       <Faq faq={FAQ_FOREX} />
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

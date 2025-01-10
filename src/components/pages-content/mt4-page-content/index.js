@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT4.json";
@@ -12,19 +12,29 @@ import {
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/MT4andMT5.png";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const Mt4PageContent = () => {
   const { t } = useTranslationWithVariables();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
   const mt4Advantages = getMT4Advantages();
-
   const downloadRef = useRef(null);
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   const scrollToTarget = () => {
     downloadRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -102,7 +112,7 @@ const Mt4PageContent = () => {
           image={icon}
           btnClassName="button-link--red"
           btnTitle={t("mt4_top-market-promo-btn3")}
-          link={GetRegistrationLink()}
+          btnOnClick={handleShowRegistrationPopup}
         >
           <HighlightedLocalizationText
             localizationText="mt4_top-market-promo-text3"
@@ -111,6 +121,15 @@ const Mt4PageContent = () => {
             accentClassName="highlighted-in-white"
           />
         </TopMarketPromotion>
+      )}
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
       )}
     </>
   );

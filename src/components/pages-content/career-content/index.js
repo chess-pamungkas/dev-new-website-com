@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TopMarketPromotion from "../../top-market-promotion";
 import cn from "classnames";
 import image from "../../../assets/images/about-pages/career.svg";
@@ -8,13 +8,24 @@ import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { LogoTextMain } from "../../shared/icons";
 import CareerPros from "../../career-pros";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import CareerBenefits from "../../career-benefits";
 import JobOpenings from "../../job-openings";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const CareerContent = () => {
   const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   return (
     <>
@@ -50,7 +61,7 @@ const CareerContent = () => {
         image={icon}
         btnClassName="button-link--ghost"
         btnTitle={t("career_top-market-bot-promo-btn")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText="career_top-market-bot-promo-text"
@@ -59,6 +70,15 @@ const CareerContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarketPromotion>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

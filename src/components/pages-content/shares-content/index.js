@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/shares.svg";
 import shares from "../../../assets/images/top-markets/images/shares.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
@@ -12,9 +12,20 @@ import Faq from "../../faq";
 import { FAQ_SHARES } from "../../../helpers/faq";
 import animation from "../../../assets/images/bg/promotions/shares/shares.json";
 import MarketingCircle from "../../marketing-circle";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const SharesContent = () => {
   const { t } = useTranslationWithVariables();
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   return (
     <>
@@ -30,9 +41,9 @@ const SharesContent = () => {
         image={image}
         isChildrenHasSmallSize
         btn1Title={t("shares_top-market-btn1")}
-        link1={GetRegistrationLink()}
+        btnOnClick1={handleShowRegistrationPopup}
         btn2Title={t("shares_top-market-btn2")}
-        link2={GetRegistrationLink()}
+        btnOnClick2={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText={`shares_top-market-promo-text-fsa`}
@@ -49,7 +60,7 @@ const SharesContent = () => {
         className="shares-promotion"
         image={shares}
         btnTitle={t("shares_top-market-promo-btn")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText={`shares_top-market-promotion-promo-text-fsa`}
@@ -60,6 +71,7 @@ const SharesContent = () => {
       </TopMarketPromotion>
       <MarketingCircle
         animation={animation}
+        btnOnClick={handleShowRegistrationPopup}
         upper={
           <HighlightedLocalizationText
             localizationText={`shares_marketing-circle-upper-fsa`}
@@ -132,6 +144,15 @@ const SharesContent = () => {
       </TopMarketLayout> */}
 
       <Faq faq={FAQ_SHARES} />
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

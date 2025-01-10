@@ -1,15 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import TopMarket from "../../top-market";
 import image from "../../../assets/images/top-markets/cripto.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/bg/promotions/crypto/crypto.json";
 import TopMarketLayout from "../../top-market-layout";
 import crypto from "../../../assets/images/top-markets/images/crypto.svg";
-
 import {
   DATA_CRYPTO,
   GeneralTableColumns,
@@ -21,10 +20,21 @@ import { CRYPTO_TRADING_SECTION } from "../../../helpers/config";
 import MarketingCircle from "../../marketing-circle";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import TradingContext from "../../../context/trading-context";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const CryptoContent = () => {
   const { t } = useTranslationWithVariables();
   const { tradingSymbols } = useContext(TradingContext);
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   updateTableDataWithLiveColumn(DATA_CRYPTO, tradingSymbols);
 
@@ -34,10 +44,10 @@ const CryptoContent = () => {
         title={t(`crypto_top-market-title-fsa`)}
         image={image}
         btn1Title={t(`crypto_top-market-btn1-fsa`)}
-        link1={GetRegistrationLink()}
+        btnOnClick1={handleShowRegistrationPopup}
         btn2Title={t(`crypto_top-market-btn2-fsa`)}
         btnClassName2={"button-link--lowercase"}
-        link2={GetRegistrationLink()}
+        btnOnClick2={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText={`crypto_top-market-promo-text-fsa`}
@@ -55,7 +65,7 @@ const CryptoContent = () => {
         image={crypto}
         btnTitle={t(`crypto_top-market-promo-btn-fsa`)}
         btnClassName={"button-link--lowercase"}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText={`crypto_top-market-promotion-promo-text-fsa`}
@@ -66,6 +76,7 @@ const CryptoContent = () => {
       </TopMarketPromotion>
       <MarketingCircle
         animation={animation}
+        btnOnClick={handleShowRegistrationPopup}
         upper={
           <HighlightedLocalizationText
             localizationText={`crypto_marketing-circle-upper-fsa`}
@@ -118,7 +129,7 @@ const CryptoContent = () => {
       <TopMarketLayout
         title={t(`crypto_top-market-layout-title-fsa`)}
         btnTitle={t(`crypto_top-market-layout-btn-fsa`)}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <TableComponent
           data={DATA_CRYPTO}
@@ -138,6 +149,15 @@ const CryptoContent = () => {
         />
       </TopMarketLayout>
       <Faq faq={FAQ_CRYPTO} />
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

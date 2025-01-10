@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import TopMarket from "../../top-market";
 import promotion from "../../../assets/images/professional-qualification/promotion.svg";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import SplitTextPromotion from "../../split-text-promotion";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import TopMarketPromotion from "../../top-market-promotion";
 import cn from "classnames";
 import icon from "../../../assets/images/icon--white.svg";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import AdvantageList from "../../professional-qualification/advantage-list";
-import ButtonLink from "../../shared/button-link";
+import ButtonPopup from "../../shared/button-popup";
 import EligibilityList from "../../professional-qualification/eligibility-list";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const ProfessionalQualificationPageContent = () => {
   const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   return (
     <>
@@ -58,12 +69,12 @@ const ProfessionalQualificationPageContent = () => {
         subtitle={t(`professional-qualification_text-banner-note-fsa`)}
         className="split-text-promotion--professional-qualification"
         button={
-          <ButtonLink
-            link={GetRegistrationLink()}
+          <ButtonPopup
+            onClick={handleShowRegistrationPopup}
             className="button-link--red split-text-promotion__btn"
           >
             {t(`professional-qualification_text-banner-btn-fsa`)}
-          </ButtonLink>
+          </ButtonPopup>
         }
         buttonNote={
           <HighlightedLocalizationText
@@ -83,7 +94,7 @@ const ProfessionalQualificationPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t(`professional-qualification_top-market-promo-btn3-fsa`)}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText={`professional-qualification_top-market-promo-text3-fsa`}
@@ -92,6 +103,15 @@ const ProfessionalQualificationPageContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarketPromotion>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

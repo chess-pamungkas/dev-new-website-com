@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import TopMarketPromotion from "../../top-market-promotion";
 import promotion from "../../../assets/images/accounts-type/promotion.svg";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import AccountsType from "../../accounts-type";
 import middlePromotion from "../../../assets/images/accounts-type/middle-promotion.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import icon from "../../../assets/images/icon--white.svg";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import cn from "classnames";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const AccountsTypePageContent = () => {
   const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   return (
     <>
@@ -35,7 +46,7 @@ const AccountsTypePageContent = () => {
         image={middlePromotion}
         btnClassName="button-link--ghost"
         btnTitle={t("accounts-type_top-market-mid-promo-btn")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       />
       <TopMarketPromotion
         className={cn("bottom-promotion", {
@@ -44,7 +55,7 @@ const AccountsTypePageContent = () => {
         image={icon}
         btnClassName="button-link--ghost"
         btnTitle={t("accounts-type_top-market-bot-promo-btn")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText="accounts-type_top-market-bot-promo-text"
@@ -53,6 +64,15 @@ const AccountsTypePageContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarketPromotion>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

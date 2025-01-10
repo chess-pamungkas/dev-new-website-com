@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
@@ -7,13 +7,14 @@ import {
   DIR_LTR,
   DIR_RTL,
   HOME_PAGE_LINK,
-  GetRegistrationLink,
   GetLoginLink,
+  ShowRegistrationPopup,
 } from "../../helpers/constants";
 import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import NavbarItem from "./components/navbar-item";
 import BurgerMenu from "./components/burger-menu";
 import ButtonLink from "../shared/button-link";
+import ButtonPopup from "../shared/button-popup";
 import SearchBar from "./components/search-bar";
 import { getCornerItems, getMenuItems } from "../../helpers/menu.config";
 import NotificationsContainer from "../shared/notification-stripe";
@@ -23,6 +24,7 @@ import CommonContext from "../../context/common-context";
 import InternalLink from "../shared/internal-link";
 import CornerPanel from "./components/corner-panel";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
+import { setLangParam } from "../../helpers/services/language-service";
 
 const Header = ({ className }) => {
   const { t } = useTranslationWithVariables();
@@ -36,6 +38,16 @@ const Header = ({ className }) => {
     isSearchBarAttached,
     isScrolled,
   } = useContext(CommonContext);
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   return (
     <div className={cn("header-wrapper", className)} ref={headerRef}>
@@ -98,14 +110,14 @@ const Header = ({ className }) => {
               >
                 {t("button-sign-in")}
               </ButtonLink>
-              <ButtonLink
-                link={GetRegistrationLink()}
+              <ButtonPopup
                 className={cn("button-link--header header__start", {
                   "header__start--red": isScrolled,
                 })}
+                onClick={handleShowRegistrationPopup}
               >
                 {t("button-get-started")}
-              </ButtonLink>
+              </ButtonPopup>
             </div>
           </div>
         </div>
@@ -120,6 +132,15 @@ const Header = ({ className }) => {
           </div>
         )}
       </header>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </div>
   );
 };
