@@ -114,7 +114,7 @@ function Bookmark() {
         )}
       </div>
 
-      {/* Render popup terpisah dari bookmark button */}
+      {/* Render the popup */}
       {isPopupOpen && (
         <ShowRegistrationPopup
           isOpen={isPopupOpen}
