@@ -92,35 +92,37 @@ function Bookmark() {
   }`;
 
   return (
-    <div
-      ref={bookmarkRef}
-      className={`bookmark ${bookmarkClass}`}
-      onClick={handleBookmarkClick}
-    >
-      {isExpanded ? (
-        <ButtonPopup
-          onClick={handleShowRegistrationPopup}
-          className={`bookmark-button-link ${buttonClass}`}
-        >
-          {t("button-sign-up")}
-        </ButtonPopup>
-      ) : (
-        <img
-          src={ChevronIcon}
-          alt="Chevron"
-          className={`text ${isBlinking ? "blinking" : ""}`}
-        />
-      )}
+    <>
+      <div
+        ref={bookmarkRef}
+        className={`bookmark ${bookmarkClass}`}
+        onClick={handleBookmarkClick}
+      >
+        {isExpanded ? (
+          <ButtonPopup
+            onClick={handleShowRegistrationPopup}
+            className={`bookmark-button-link ${buttonClass}`}
+          >
+            {t("button-sign-up")}
+          </ButtonPopup>
+        ) : (
+          <img
+            src={ChevronIcon}
+            alt="Chevron"
+            className={`text ${isBlinking ? "blinking" : ""}`}
+          />
+        )}
+      </div>
 
       {/* Render the popup */}
       {isPopupOpen && (
         <ShowRegistrationPopup
           isOpen={isPopupOpen}
           onClose={handleClosePopup}
-          langParam={langParam} // Pass langParam if needed
+          langParam={langParam}
         />
       )}
-    </div>
+    </>
   );
 }
 

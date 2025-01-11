@@ -22,6 +22,7 @@ const CodeDropdown = ({
   codeOptionsRef,
   setIsCodeOpen,
 }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
   const filteredCodes = useMemo(() => {
     if (!searchCode) return countries;
     const searchTerm = searchCode.toLowerCase().trim();
@@ -37,11 +38,27 @@ const CodeDropdown = ({
   }, [searchCode]);
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" && filteredCodes.length > 0) {
-      e.preventDefault();
-      handleCodeSelect(filteredCodes[0].code);
-      setSearchCode("");
-      setIsCodeOpen(false);
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        setActiveIndex((prev) =>
+          prev < filteredCodes.length - 1 ? prev + 1 : prev
+        );
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        setActiveIndex((prev) => (prev > 0 ? prev - 1 : prev));
+        break;
+      case "Enter":
+        e.preventDefault();
+        if (filteredCodes.length > 0) {
+          handleCodeSelect(filteredCodes[activeIndex].code);
+          setSearchCode("");
+          setIsCodeOpen(false);
+        }
+        break;
+      default:
+        break;
     }
   };
 
@@ -64,7 +81,9 @@ const CodeDropdown = ({
               selectedCountryCode === country.code
                 ? "custom-dropdown__option--selected"
                 : ""
-            } ${index === 0 ? "custom-dropdown__option--active" : ""}`}
+            } ${
+              index === activeIndex ? "custom-dropdown__option--active" : ""
+            }`}
             onClick={() => {
               handleCodeSelect(country.code);
               setSearchCode("");
@@ -90,12 +109,30 @@ const CountryDropdown = ({
   setFieldValue,
   setIsCountryOpen,
 }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" && filteredCountries.length > 0) {
-      e.preventDefault();
-      handleCountrySelect(filteredCountries[0].name);
-      setSearchCountry("");
-      setIsCountryOpen(false);
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        setActiveIndex((prev) =>
+          prev < filteredCountries.length - 1 ? prev + 1 : prev
+        );
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        setActiveIndex((prev) => (prev > 0 ? prev - 1 : prev));
+        break;
+      case "Enter":
+        e.preventDefault();
+        if (filteredCountries.length > 0) {
+          handleCountrySelect(filteredCountries[activeIndex].name);
+          setSearchCountry("");
+          setIsCountryOpen(false);
+        }
+        break;
+      default:
+        break;
     }
   };
 
@@ -118,7 +155,9 @@ const CountryDropdown = ({
               selectedCountry === country.name
                 ? "custom-dropdown__option--selected"
                 : ""
-            } ${index === 0 ? "custom-dropdown__option--active" : ""}`}
+            } ${
+              index === activeIndex ? "custom-dropdown__option--active" : ""
+            }`}
             onClick={() => {
               handleCountrySelect(country.name);
               setSearchCountry("");
@@ -173,8 +212,6 @@ const PopupRegistrationForm = ({ params }) => {
           cookie_policy.find((c) => c.language === languageCode)?.oss_url ||
           cookie_policy.find((c) => c.language === "en")?.oss_url;
 
-        console.log("privacyLink", privacyLink);
-        console.log("cookieLink", cookieLink);
         setPolicyLinks({
           privacyPolicy: privacyLink,
           cookiePolicy: cookieLink,
@@ -218,8 +255,6 @@ const PopupRegistrationForm = ({ params }) => {
         ...(referralTypeValue ? { referral_type, referral_value } : {}),
       });
 
-      console.log("API Response:", response.data);
-
       if (response.data.code && response.data.code !== 200) {
         handleApiResponse(false, response.data.message);
       } else {
@@ -232,8 +267,6 @@ const PopupRegistrationForm = ({ params }) => {
       }
     } catch (error) {
       const errorMessage = error.response?.data?.message || "An error occurred";
-      console.log("Error Response:", error.response);
-      console.log("Error Message:", errorMessage);
       sendLog({ message: error.message, type: error.name });
       handleApiResponse(false, errorMessage);
     }
