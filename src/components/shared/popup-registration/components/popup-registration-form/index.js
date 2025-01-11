@@ -179,7 +179,6 @@ const PopupRegistrationForm = ({ params }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isSentSuccessful, setIsSentSuccessful] = useState(null);
   const API_URL = process.env.GATSBY_OQTIMA_API_URL;
-  console.log("API_URL", API_URL);
 
   const { executeRecaptcha } = useGoogleReCaptcha();
   const { clientConfig } = useContext(ClientResolverContext);
@@ -213,8 +212,6 @@ const PopupRegistrationForm = ({ params }) => {
           cookie_policy.find((c) => c.language === languageCode)?.oss_url ||
           cookie_policy.find((c) => c.language === "en")?.oss_url;
 
-        console.log("privacyLink", privacyLink);
-        console.log("cookieLink", cookieLink);
         setPolicyLinks({
           privacyPolicy: privacyLink,
           cookiePolicy: cookieLink,
@@ -258,8 +255,6 @@ const PopupRegistrationForm = ({ params }) => {
         ...(referralTypeValue ? { referral_type, referral_value } : {}),
       });
 
-      console.log("API Response:", response.data);
-
       if (response.data.code && response.data.code !== 200) {
         handleApiResponse(false, response.data.message);
       } else {
@@ -272,8 +267,6 @@ const PopupRegistrationForm = ({ params }) => {
       }
     } catch (error) {
       const errorMessage = error.response?.data?.message || "An error occurred";
-      console.log("Error Response:", error.response);
-      console.log("Error Message:", errorMessage);
       sendLog({ message: error.message, type: error.name });
       handleApiResponse(false, errorMessage);
     }
