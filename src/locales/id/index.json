@@ -1634,5 +1634,14 @@
   "popup-registration-consent": "Saya setuju untuk mengizinkan perusahaan memproses data pribadi saya untuk memenuhi kewajiban regulasinya, dan saya telah membaca serta memahami <1>Kebijakan Privasi</1> dan <3>Kebijakan Cookie</3> dari Perusahaan.",
   "popup-registration-continue": "Lanjutkan",
   "popup-registration-recaptchaTerms": "Situs ini dilindungi oleh reCAPTCHA dan <1>Kebijakan Privasi</1> serta <3>Syarat dan Ketentuan</3> Google berlaku.",
-  "popup-registration-riskWarning": "Peringatan Risiko: Perdagangan instrumen FX dan CFD memiliki risiko yang tinggi dan dapat mengakibatkan kehilangan seluruh modal yang Anda investasikan."
+  "popup-registration-riskWarning": "Peringatan Risiko: Perdagangan instrumen FX dan CFD memiliki risiko yang tinggi dan dapat mengakibatkan kehilangan seluruh modal yang Anda investasikan.",
+  "popup-registration-firstName-required": "Nama Depan wajib diisi",
+  "popup-registration-lastName-required": "Nama Belakang wajib diisi",
+  "popup-registration-countryOfResidence-required": "Negara Tempat Tinggal wajib diisi",
+  "popup-registration-countryCode-required": "Kode wajib diisi",
+  "popup-registration-phoneNumber-required": "Nomor Telepon wajib diisi",
+  "popup-registration-email-required": " Email wajib diisi",
+  "popup-registration-name-invalid": "Harap masukkan nama depan dan belakang menggunakan huruf Latin saja (A-Z)",
+  "popup-registration-email-invalid": "Harus berupa email yang valid",
+  "popup-registration-phoneNumber-invalid": "Harap masukkan angka saja"
 }

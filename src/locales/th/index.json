@@ -1670,5 +1670,14 @@
   "popup-registration-consent": "ฉันยินยอมให้บริษัทดำเนินการประมวลผลข้อมูลส่วนบุคคลของฉันเพื่อให้เป็นไปตามข้อกำหนดทางกฎหมายของบริษัท และฉันได้อ่านและเข้าใจ <1>นโยบายความเป็นส่วนตัว</1> และ <3>นโยบายคุกกี้</3> ของบริษัทแล้ว",
   "popup-registration-continue": "ดำเนินการต่อ",
   "popup-registration-recaptchaTerms": "เว็บไซต์นี้ได้รับการป้องกันโดย reCAPTCHA และ <1>นโยบายความเป็นส่วนตัว</1> และ <3>ข้อกำหนดในการให้บริการ</3> ของ Google",
-  "popup-registration-riskWarning": "คำเตือนความเสี่ยง: การซื้อขายตราสาร FX และ CFD มีความเสี่ยงสูงและอาจทำให้สูญเสียเงินทุนทั้งหมดที่คุณลงทุน"
+  "popup-registration-riskWarning": "คำเตือนความเสี่ยง: การซื้อขายตราสาร FX และ CFD มีความเสี่ยงสูงและอาจทำให้สูญเสียเงินทุนทั้งหมดที่คุณลงทุน",
+  "popup-registration-firstName-required": "จำเป็นต้องระบุชื่อ",
+  "popup-registration-lastName-required": "จำเป็นต้องระบุนามสกุล",
+  "popup-registration-countryOfResidence-required": "จำเป็นต้องระบุประเทศที่พำนักอาศัย",
+  "popup-registration-countryCode-required": "จำเป็นต้องระบุรหัส",
+  "popup-registration-phoneNumber-required": "จำเป็นต้องระบุหมายเลขโทรศัพท์",
+  "popup-registration-email-required": "จำเป็นต้องระบุอีเมล",
+  "popup-registration-name-invalid": "กรุณาป้อนชื่อและนามสกุลโดยใช้ตัวอักษรละตินเท่านั้น (A-Z)",
+  "popup-registration-email-invalid": "ต้องเป็นอีเมลที่ถูกต้อง",
+  "popup-registration-phoneNumber-invalid": "กรุณาป้อนเฉพาะตัวเลขเท่านั้น"
 }
