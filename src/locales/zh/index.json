@@ -1641,5 +1641,14 @@
   "popup-registration-consent": "我同意允許公司處理我的個人資料，以履行其法規義務，並且我已閱讀並理解公司的《<1>隱私政策</1>》和《<3>Cookie 政策</3>》。",
   "popup-registration-continue": "繼續",
   "popup-registration-recaptchaTerms": "此網站受到reCAPTCHA和Google的<1>隱私政策</1>和<3>服務條款</3>的保護。",
-  "popup-registration-riskWarning": "風險警告： 外匯工具和差價合約交易具有高風險，可能導致您投資資金的全部損失。"
+  "popup-registration-riskWarning": "風險警告： 外匯工具和差價合約交易具有高風險，可能導致您投資資金的全部損失。",
+  "popup-registration-firstName-required": "必須填寫名字",
+  "popup-registration-lastName-required": "必須填寫姓氏",
+  "popup-registration-countryOfResidence-required": "必須填寫居住國家",
+  "popup-registration-countryCode-required": "必須填寫代碼",
+  "popup-registration-phoneNumber-required": "必須填寫電話號碼",
+  "popup-registration-email-required": "必須填寫電子郵件",
+  "popup-registration-name-invalid": "請僅使用拉丁字母（A-Z）輸入名字和姓氏",
+  "popup-registration-email-invalid": "必須為有效的電子郵件地址",
+  "popup-registration-phoneNumber-invalid": "請僅輸入數字"
 }

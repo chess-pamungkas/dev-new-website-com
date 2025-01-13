@@ -1677,5 +1677,14 @@
   "popup-registration-consent": "Acepto permitir que la empresa procese mis datos personales para cumplir con sus obligaciones regulatorias. He leído y entendido la <1>Política de Privacidad</1> y la <3>Política de Cookies</3> de la Empresa.",
   "popup-registration-continue": "Continuar",
   "popup-registration-recaptchaTerms": "Este sitio está protegido por reCAPTCHA y se aplican la <1>Política de Privacidad</1> y los <3>Términos de Servicio</3> de Google.",
-  "popup-registration-riskWarning": "Advertencia de Riesgo: Operar con instrumentos FX y CFDs conlleva un alto nivel de riesgo y puede resultar en la pérdida de todo su capital invertido."
+  "popup-registration-riskWarning": "Advertencia de Riesgo: Operar con instrumentos FX y CFDs conlleva un alto nivel de riesgo y puede resultar en la pérdida de todo su capital invertido.",
+  "popup-registration-firstName-required": "Se requiere el nombre",
+  "popup-registration-lastName-required": "Se requiere el apellido",
+  "popup-registration-countryOfResidence-required": "Se requiere el país de residencia",
+  "popup-registration-countryCode-required": "Se requiere el código",
+  "popup-registration-phoneNumber-required": "Se requiere el número de teléfono",
+  "popup-registration-email-required": "Se requiere el correo electrónico",
+  "popup-registration-name-invalid": "Por favor, ingrese el nombre y el apellido utilizando solo caracteres latinos (A-Z)",
+  "popup-registration-email-invalid": "Debe ser un correo electrónico válido",
+  "popup-registration-phoneNumber-invalid": "Por favor, ingrese solo números"
 }

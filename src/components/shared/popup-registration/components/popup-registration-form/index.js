@@ -21,6 +21,8 @@ const CodeDropdown = ({
   t,
   codeOptionsRef,
   setIsCodeOpen,
+  errors,
+  touched,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const filteredCodes = useMemo(() => {
@@ -66,7 +68,10 @@ const CodeDropdown = ({
     <div className="custom-dropdown__content">
       <input
         type="text"
-        className="custom-dropdown__search"
+        className={cn("custom-dropdown__search", {
+          "custom-dropdown__search--error":
+            errors.country_code && touched.country_code,
+        })}
         placeholder={t("popup-registration-search")}
         value={searchCode}
         onChange={(e) => setSearchCode(e.target.value)}
@@ -94,6 +99,11 @@ const CodeDropdown = ({
           </div>
         ))}
       </div>
+      {errors.country_code && touched.country_code && (
+        <div className="popup-registration__error">
+          {t(errors.country_code)}
+        </div>
+      )}
     </div>
   );
 };
@@ -108,6 +118,8 @@ const CountryDropdown = ({
   filteredCountries,
   setFieldValue,
   setIsCountryOpen,
+  errors,
+  touched,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -140,7 +152,9 @@ const CountryDropdown = ({
     <div className="custom-dropdown__content">
       <input
         type="text"
-        className="custom-dropdown__search"
+        className={cn("custom-dropdown__search", {
+          "custom-dropdown__search--error": errors.country && touched.country,
+        })}
         placeholder={t("popup-registration-search")}
         value={searchCountry}
         onChange={(e) => setSearchCountry(e.target.value)}
@@ -168,6 +182,9 @@ const CountryDropdown = ({
           </div>
         ))}
       </div>
+      {errors.country && touched.country && (
+        <div className="popup-registration__error">{t(errors.country)}</div>
+      )}
     </div>
   );
 };
@@ -179,7 +196,7 @@ const PopupRegistrationForm = ({ params }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isSentSuccessful, setIsSentSuccessful] = useState(null);
   const API_URL = process.env.GATSBY_OQTIMA_API_URL;
-
+  console.log("API_URL", API_URL);
   const { executeRecaptcha } = useGoogleReCaptcha();
   const { clientConfig } = useContext(ClientResolverContext);
   const { selectedLanguage } = useContext(LanguageContext);
@@ -336,9 +353,17 @@ const PopupRegistrationForm = ({ params }) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.first_name}
-                  className="popup-registration__input"
+                  className={cn("popup-registration__input", {
+                    "popup-registration__input--error":
+                      errors.first_name && touched.first_name,
+                  })}
                   required
                 />
+                {errors.first_name && touched.first_name && (
+                  <div className="popup-registration__error">
+                    {t(errors.first_name)}
+                  </div>
+                )}
               </div>
               <div className="popup-registration__field">
                 <label className="popup-registration__label">
@@ -351,9 +376,17 @@ const PopupRegistrationForm = ({ params }) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.last_name}
-                  className="popup-registration__input"
+                  className={cn("popup-registration__input", {
+                    "popup-registration__input--error":
+                      errors.last_name && touched.last_name,
+                  })}
                   required
                 />
+                {errors.last_name && touched.last_name && (
+                  <div className="popup-registration__error">
+                    {t(errors.last_name)}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -370,9 +403,17 @@ const PopupRegistrationForm = ({ params }) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                  className="popup-registration__input"
+                  className={cn("popup-registration__input", {
+                    "popup-registration__input--error":
+                      errors.email && touched.email,
+                  })}
                   required
                 />
+                {errors.email && touched.email && (
+                  <div className="popup-registration__error">
+                    {t(errors.email)}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -417,9 +458,16 @@ const PopupRegistrationForm = ({ params }) => {
                         filteredCountries={filteredCountries}
                         setFieldValue={setFieldValue}
                         setIsCountryOpen={setIsCountryOpen}
+                        errors={errors}
+                        touched={touched}
                       />
                     )}
                   </div>
+                  {errors.country && touched.country && (
+                    <div className="popup-registration__error">
+                      {t(errors.country)}
+                    </div>
+                  )}
                 </div>
 
                 {/* Mobile wrapper for Code and Phone */}
@@ -460,9 +508,16 @@ const PopupRegistrationForm = ({ params }) => {
                           t={t}
                           codeOptionsRef={codeOptionsRef}
                           setIsCodeOpen={setIsCodeOpen}
+                          errors={errors}
+                          touched={touched}
                         />
                       )}
                     </div>
+                    {errors.country_code && touched.country_code && (
+                      <div className="popup-registration__error">
+                        {t(errors.country_code)}
+                      </div>
+                    )}
                   </div>
 
                   {/* Phone Field */}
@@ -477,9 +532,17 @@ const PopupRegistrationForm = ({ params }) => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.mobile}
-                      className="popup-registration__input"
+                      className={cn("popup-registration__input", {
+                        "popup-registration__input--error":
+                          errors.mobile && touched.mobile,
+                      })}
                       required
                     />
+                    {errors.mobile && touched.mobile && (
+                      <div className="popup-registration__error">
+                        {t(errors.mobile)}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

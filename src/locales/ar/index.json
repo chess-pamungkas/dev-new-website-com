@@ -1616,5 +1616,14 @@
   "popup-registration-consent": "أوافق على السماح للشركة بمعالجة بياناتي الشخصية لتلبية التزاماتها التنظيمية، وقد قرأت وفهمت <1>سياسة الخصوصية</1> و<3>سياسة ملفات تعريف الارتباط</3> الخاصة بالشركة",
   "popup-registration-continue": "استمر",
   "popup-registration-recaptchaTerms": "هذا الموقع محمي بواسطة reCAPTCHA وتطبق سياسة <1>الخصوصية</1> و<3>شروط الخدمة</3> من Google",
-  "popup-registration-riskWarning": "تحذير المخاطر: تداول أدوات الفوركس والعقود مقابل الفروقات ينطوي على مستوى عالٍ من المخاطر وقد يؤدي إلى خسارة كامل رأس المال المستثمر."
+  "popup-registration-riskWarning": "تحذير المخاطر: تداول أدوات الفوركس والعقود مقابل الفروقات ينطوي على مستوى عالٍ من المخاطر وقد يؤدي إلى خسارة كامل رأس المال المستثمر.",
+  "popup-registration-firstName-required": "الاسم الأول مطلوب",
+  "popup-registration-lastName-required": "اسم العائلة مطلوب",
+  "popup-registration-countryOfResidence-required": "بلد الإقامة مطلوب",
+  "popup-registration-countryCode-required": "الكود مطلوب",
+  "popup-registration-phoneNumber-required": "رقم الهاتف مطلوب",
+  "popup-registration-email-required": "البريد الإلكتروني مطلوب",
+  "popup-registration-name-invalid": "يرجى إدخال الاسم الأول واسم العائلة باستخدام الأحرف اللاتينية فقط (A-Z)",
+  "popup-registration-email-invalid": "يجب أن يكون بريدًا إلكترونيًا صالحًا",
+  "popup-registration-phoneNumber-invalid": "يرجى إدخال الأرقام فقط"
 }
