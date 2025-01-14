@@ -488,6 +488,7 @@
       padding: 0.5rem 0.75rem;
       cursor: pointer;
       font-size: 0.813rem;
+      color: #1a1a1a;
 
       &:hover {
         background-color: #ff4400;
@@ -516,6 +517,7 @@
     &__option {
       padding: 0.5rem 0.75rem;
       cursor: pointer;
+      // color: #1a1a1a;
 
       &--selected {
         background-color: #ff4400;
@@ -882,6 +884,7 @@
     padding: 0.5rem 0.75rem;
     cursor: pointer;
     font-size: 0.813rem;
+    // color: #1a1a1a;
 
     &:hover {
       background-color: #ff4400;
