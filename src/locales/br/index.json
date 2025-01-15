@@ -1676,5 +1676,14 @@
   "popup-registration-email-required": "E-mail é obrigatório",
   "popup-registration-name-invalid": "Por favor, insira os nomes e sobrenomes usando apenas caracteres latinos (A-Z)",
   "popup-registration-email-invalid": "Deve ser um e-mail válido",
-  "popup-registration-phoneNumber-invalid": "Por favor, insira apenas números"
+  "popup-registration-phoneNumber-numbers-only": "Por favor, insira apenas números",
+  "popup-registration-phoneNumber-invalid": "Por favor, insira um número de telefone válido",
+  "popup-registration-error-invalid-data": "Os dados fornecidos são inválidos.",
+  "popup-registration-error-signature-verification": "A verificação da assinatura falhou.",
+  "popup-registration-error-email-format": "O formato do e-mail está incorreto.",
+  "popup-registration-error-email-taken": "O e-mail já foi utilizado.",
+  "popup-registration-error-blacklisted": "O usuário está na lista negra.",
+  "popup-registration-error-referral-code": "Erro no código de indicação.",
+  "popup-registration-error-registration-failed": "O registro do usuário falhou.",
+  "popup-registration-error-password-format": "O formato da senha está incorreto, inclua números e letras."
 }

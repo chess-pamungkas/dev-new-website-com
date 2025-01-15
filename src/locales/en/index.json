@@ -1776,5 +1776,14 @@
   "popup-registration-email-required": "Email is required",
   "popup-registration-name-invalid": "Please enter first and last names using Latin characters only (A-Z)",
   "popup-registration-email-invalid": "Must be a valid email",
-  "popup-registration-phoneNumber-invalid": "Please enter numbers only"
+  "popup-registration-phoneNumber-numbers-only": "Please enter numbers only",
+  "popup-registration-phoneNumber-invalid": "Please enter a valid phone number",
+  "popup-registration-error-invalid-data": "The given data was invalid.",
+  "popup-registration-error-signature-verification": "Signature verification failed.",
+  "popup-registration-error-email-format": "The email format is incorrect.",
+  "popup-registration-error-email-taken": "The email has already been taken.",
+  "popup-registration-error-blacklisted": "The user in black list.",
+  "popup-registration-error-referral-code": "Referral code error.",
+  "popup-registration-error-registration-failed": "User registration failed.",
+  "popup-registration-error-password-format": "The password format is incorrect, include both Numbers and letters."
 }

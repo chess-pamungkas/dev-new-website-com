@@ -1637,5 +1637,14 @@
   "popup-registration-email-required": "メールアドレスは必須です",
   "popup-registration-name-invalid": "名と姓をラテン文字（A-Z）のみで入力してください",
   "popup-registration-email-invalid": "有効なメールアドレスである必要があります",
-  "popup-registration-phoneNumber-invalid": "数字のみを入力してください"
+  "popup-registration-phoneNumber-numbers-only": "数字のみを入力してください",
+  "popup-registration-phoneNumber-invalid": "有効な電話番号を入力してください",
+  "popup-registration-error-invalid-data": "提供されたデータが無効です。",
+  "popup-registration-error-signature-verification": "署名の検証に失敗しました。",
+  "popup-registration-error-email-format": "メールアドレスの形式が正しくありません。",
+  "popup-registration-error-email-taken": "メールアドレスは既に使用されています。",
+  "popup-registration-error-blacklisted": "ユーザーはブラックリストに登録されています。",
+  "popup-registration-error-referral-code": "紹介コードエラーです。",
+  "popup-registration-error-registration-failed": "ユーザー登録に失敗しました。",
+  "popup-registration-error-password-format": "パスワードの形式が正しくありません。数字と文字の両方を含めてください。"
 }

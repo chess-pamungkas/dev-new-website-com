@@ -13,6 +13,20 @@ import { PORTAL_LANGUAGES_MAP } from "../../../../../helpers/lang-options.config
 import LanguageContext from "../../../../../context/language-context";
 import arrowDownIcon from "../../../../../assets/images/icons/arrow-down.png";
 
+const ERROR_MESSAGE_MAP = {
+  "The given data was invalid.": "popup-registration-error-invalid-data",
+  "Signature verification failed.":
+    "popup-registration-error-signature-verification",
+  "The email format is incorrect.": "popup-registration-error-email-format",
+  "The email has already been taken.": "popup-registration-error-email-taken",
+  "The user in black list.": "popup-registration-error-blacklisted",
+  "Referral code error.":
+    "popup-registratioThe email format is incorrect.n-error-referral-code",
+  "User registration failed.": "popup-registration-error-registration-failed",
+  "The password format is incorrect， include both Numbers and letters.":
+    "popup-registration-error-password-format",
+};
+
 const CodeDropdown = ({
   searchCode,
   setSearchCode,
@@ -252,7 +266,12 @@ const PopupRegistrationForm = ({ params }) => {
 
   const handleApiResponse = (isSuccessful, message = "") => {
     setIsSentSuccessful(isSuccessful);
-    setErrorMessage(message);
+    const translationKey = ERROR_MESSAGE_MAP[message];
+    if (translationKey) {
+      setErrorMessage(t(translationKey));
+    } else {
+      setErrorMessage(message);
+    }
   };
 
   const handleRegistrationtForm = async (values) => {

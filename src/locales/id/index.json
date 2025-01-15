@@ -1643,5 +1643,14 @@
   "popup-registration-email-required": " Email wajib diisi",
   "popup-registration-name-invalid": "Harap masukkan nama depan dan belakang menggunakan huruf Latin saja (A-Z)",
   "popup-registration-email-invalid": "Harus berupa email yang valid",
-  "popup-registration-phoneNumber-invalid": "Harap masukkan angka saja"
+  "popup-registration-phoneNumber-numbers-only": "Harap masukkan angka saja",
+  "popup-registration-phoneNumber-invalid": "Harap masukkan nomor telepon yang valid",
+  "popup-registration-error-invalid-data": "Data yang diberikan tidak valid.",
+  "popup-registration-error-signature-verification": "Verifikasi tanda tangan gagal.",
+  "popup-registration-error-email-format": "Format email tidak benar.",
+  "popup-registration-error-email-taken": "Email sudah digunakan.",
+  "popup-registration-error-blacklisted": "Pengguna masuk dalam daftar hitam.",
+  "popup-registration-error-referral-code": "Kesalahan kode referal.",
+  "popup-registration-error-registration-failed": "Pendaftaran pengguna gagal.",
+  "popup-registration-error-password-format": "Format kata sandi tidak benar, harus mencakup angka dan huruf."
 }

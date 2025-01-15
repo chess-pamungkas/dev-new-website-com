@@ -1687,5 +1687,14 @@
   "popup-registration-email-required": "邮箱是必填项",
   "popup-registration-name-invalid": "请仅使用拉丁字母（A-Z）输入名字和姓氏",
   "popup-registration-email-invalid": "必须是有效的邮箱",
-  "popup-registration-phoneNumber-invalid": "请仅输入数字"
+  "popup-registration-phoneNumber-numbers-only": "请仅输入数字",
+  "popup-registration-phoneNumber-invalid": "请输入有效的电话号码",
+  "popup-registration-error-invalid-data": "提供的数据无效。",
+  "popup-registration-error-signature-verification": "签名验证失败。",
+  "popup-registration-error-email-format": "邮箱格式不正确。",
+  "popup-registration-error-email-taken": "邮箱已被占用。",
+  "popup-registration-error-blacklisted": "用户在黑名单中。",
+  "popup-registration-error-referral-code": "推荐码错误。",
+  "popup-registration-error-registration-failed": "用户注册失败。",
+  "popup-registration-error-password-format": "密码格式不正确，请包含数字和字母。"
 }
