@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import TopMarket from "../../top-market";
 import indicesSvg from "../../../assets/images/top-markets/indices.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TradingTicker from "../../trading-ticker";
 import TopMarketPromotion from "../../top-market-promotion";
 import indices from "../../../assets/images/top-markets/images/indices.svg";
-
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { INDICES_TRADING_SECTION } from "../../../helpers/config";
 import animation from "../../../assets/images/bg/promotions/indices/indices.json";
@@ -21,10 +20,21 @@ import {
 } from "../../../helpers/top-market-tables";
 import { updateTableDataWithLiveColumn } from "../../../helpers/services/update-table-data-with-live-column";
 import TradingContext from "../../../context/trading-context";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const IndicesContent = () => {
   const { t } = useTranslationWithVariables();
   const { tradingSymbols } = useContext(TradingContext);
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   updateTableDataWithLiveColumn(DATA_INDICES, tradingSymbols);
 
@@ -42,9 +52,9 @@ const IndicesContent = () => {
         isChildrenHasSmallSize
         image={indicesSvg}
         btn1Title={t("indices_top-market-btn1")}
-        link1={GetRegistrationLink()}
+        btnOnClick1={handleShowRegistrationPopup}
         btn2Title={t("indices_top-market-btn2")}
-        link2={GetRegistrationLink()}
+        btnOnClick2={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText="indices_top-market-promo-text"
@@ -61,7 +71,7 @@ const IndicesContent = () => {
         className="indices-promotion"
         image={indices}
         btnTitle={t("indices_top-market-promo-btn")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
         note={t("indices_top-market-promotion-promo-note")}
       >
         <HighlightedLocalizationText
@@ -73,6 +83,7 @@ const IndicesContent = () => {
       </TopMarketPromotion>
       <MarketingCircle
         animation={animation}
+        btnOnClick={handleShowRegistrationPopup}
         upper={
           <HighlightedLocalizationText
             localizationText="indices_marketing-circle-upper"
@@ -125,7 +136,7 @@ const IndicesContent = () => {
       <TopMarketLayout
         title={t("indices_top-market-layout-title")}
         btnTitle={t("indices_top-market-layout-btn")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <TableComponent
           data={DATA_INDICES}
@@ -143,6 +154,15 @@ const IndicesContent = () => {
         />
       </TopMarketLayout>
       <Faq faq={FAQ_INDICES} />
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

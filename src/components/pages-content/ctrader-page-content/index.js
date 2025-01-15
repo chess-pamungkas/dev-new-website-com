@@ -12,17 +12,29 @@ import {
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/cTrader.png";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import cn from "classnames";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const CtraderPageContent = () => {
   const { t } = useTranslationWithVariables();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
   const downloadRef = useRef(null);
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
+
   const scrollToTarget = () => {
     downloadRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -97,7 +109,7 @@ const CtraderPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("ctrader_top-market-promo-btn3")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText="ctrader_top-market-promo-text3"
@@ -106,6 +118,15 @@ const CtraderPageContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarketPromotion>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

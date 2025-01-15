@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
 import animation from "../../../assets/images/animations/aggregator_MT5.json";
@@ -12,11 +12,12 @@ import {
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt4/MT4andMT5.png";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { isIOS, isAndroid, isWindows, isMacOs } from "react-device-detect";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const Mt5PageContent = () => {
   const { t } = useTranslationWithVariables();
@@ -24,6 +25,16 @@ const Mt5PageContent = () => {
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const mt5Advantages = getMT5Advantages();
   const downloadRef = useRef(null);
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   //No need at MT5 as theres no null value at download section.  Enable when MT5 is at .COM and empty values
   // const scrollToTarget = () => {
@@ -100,7 +111,7 @@ const Mt5PageContent = () => {
           image={icon}
           btnClassName="button-link--red"
           btnTitle={t("mt5_top-market-promo-btn3")}
-          link={GetRegistrationLink()}
+          btnOnClick={handleShowRegistrationPopup}
         >
           <HighlightedLocalizationText
             localizationText="mt5_top-market-promo-text3"
@@ -109,6 +120,15 @@ const Mt5PageContent = () => {
             accentClassName="highlighted-in-white"
           />
         </TopMarketPromotion>
+      )}
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
       )}
     </>
   );

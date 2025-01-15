@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
@@ -6,7 +6,7 @@ import { useTranslationWithVariables } from "../../../../helpers/hooks/use-trans
 import {
   DIR_LTR,
   DIR_RTL,
-  GetRegistrationLink,
+  ShowRegistrationPopup,
 } from "../../../../helpers/constants";
 import CalendarInfoBlock from "./components/info-block";
 import img from "../../../../assets/images/trading-tools/calendar.png";
@@ -14,11 +14,22 @@ import HighlightedLocalizationText from "../../../shared/highlighted-localizatio
 import FeatureItem from "./components/feature-item";
 import { TRADING_CALENDAR_FEATURES } from "../../../../helpers/trading-tools.config";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
-import ButtonLink from "../../../shared/button-link";
+import ButtonPopup from "../../../shared/button-popup";
+import { setLangParam } from "../../../../helpers/services/language-service";
 
 const TradingCalendar = ({ className }) => {
   const isRTL = useRtlDirection();
   const { t } = useTranslationWithVariables();
+  const langParam = setLangParam();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   return (
     <section
@@ -71,13 +82,22 @@ const TradingCalendar = ({ className }) => {
           ))}
         </div>
 
-        <ButtonLink
-          link={GetRegistrationLink()}
+        <ButtonPopup
+          onClick={handleShowRegistrationPopup}
           className="button-link button-link--red trading-tools-btn"
         >
           {t("trading-tools_top-market-promo-btn3")}
-        </ButtonLink>
+        </ButtonPopup>
       </div>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </section>
   );
 };

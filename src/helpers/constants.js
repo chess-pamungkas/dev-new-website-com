@@ -1,3 +1,4 @@
+import React from "react";
 import visaLogo from "../assets/images/icons/payments/visa.png";
 import masterCardLogo from "../assets/images/icons/payments/masterCard.png";
 import danaLogo from "../assets/images/icons/payments/dana.png";
@@ -28,6 +29,7 @@ import {
   CAMPAIGN_PARAMS,
 } from "./services/marketing-service";
 import { setLangParam } from "./services/language-service";
+import RegistrationPopup from "../components/registration-popup";
 
 export const WINDOW_SIZE_SM = 375;
 export const WINDOW_SIZE_MD = 768;
@@ -78,6 +80,40 @@ export const getContactEmail = () => {
 };
 
 export const BLOG_URL = "https://oqtima.news/";
+
+export const ShowRegistrationPopup = ({ isOpen, onClose, langParam }) => {
+  const ibParams = setIBparamsToLink();
+  const campaignParams = setCampaignParamsToLink();
+
+  // Prepare an object to store the parameters that will be sent
+  const params = {};
+
+  // Specify the parameters to be included
+  if (ibParams && ibParams.startsWith(`?${IB_PARAMS.r_code}=`)) {
+    params.referral_type = 12;
+    params.referral_value = ibParams.split("=")[1]; // Extract only the value of r_code
+  } else if (
+    campaignParams &&
+    campaignParams.startsWith(`?${CAMPAIGN_PARAMS.campaign_code}=`)
+  ) {
+    params.referral_type = 14;
+    params.referral_value = campaignParams.split("=")[1]; // Extract only the value of campaign_code
+  } else if (langParam) {
+    params.langParam = langParam; // Include langParam if it exists.
+  }
+
+  // Convert params object to a string
+  const paramsString = JSON.stringify(params);
+
+  // Display the registration popup
+  return (
+    <RegistrationPopup
+      isOpen={isOpen}
+      onClose={onClose}
+      params={paramsString} // Pass the stringified params
+    />
+  );
+};
 
 export const GetRegistrationLink = () => {
   const langParam = setLangParam();

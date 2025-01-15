@@ -3,8 +3,8 @@ import cn from "classnames";
 import PropTypes from "prop-types";
 import Lottie from "lottie-react";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
-import ButtonLink from "../shared/button-link";
-import { BIGGER_LANGUAGES, GetRegistrationLink } from "../../helpers/constants";
+import ButtonPopup from "../shared/button-popup";
+import { BIGGER_LANGUAGES } from "../../helpers/constants";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import LanguageContext from "../../context/language-context";
 
@@ -16,6 +16,7 @@ export const MarketingCircle = ({
   leftBottom,
   rightUpper,
   rightBottom,
+  btnOnClick,
 }) => {
   const { isMobile, isMD, isLG } = useWindowSize();
   const { t } = useTranslationWithVariables();
@@ -47,12 +48,12 @@ export const MarketingCircle = ({
         animationData={animation}
         style={{ height: animationHeight }}
       />
-      <ButtonLink
-        link={GetRegistrationLink()}
+      <ButtonPopup
+        onClick={btnOnClick}
         className="button-link button-link--red marketing-circle__btn"
       >
         {t("button-start-now")}
-      </ButtonLink>
+      </ButtonPopup>
       <div
         className={cn("marketing-circle__wrapper", {
           "marketing-circle__wrapper--bigger-lang": BIGGER_LANGUAGES.includes(
@@ -91,5 +92,7 @@ MarketingCircle.propTypes = {
   bottom: PropTypes.element.isRequired,
   leftBottom: PropTypes.element.isRequired,
   rightBottom: PropTypes.element.isRequired,
+  btnOnClick: PropTypes.func.isRequired,
 };
+
 export default MarketingCircle;

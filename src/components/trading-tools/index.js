@@ -4,13 +4,18 @@ import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import { getPlatforms } from "../../helpers/config";
 import PlatformBlock from "./components/platform-block";
-import ButtonLink from "../shared/button-link";
+import ButtonPopup from "../shared/button-popup";
 import DeviceBlock from "./components/device-block";
-import { DIR_LTR, DIR_RTL, GetRegistrationLink } from "../../helpers/constants";
+import {
+  DIR_LTR,
+  DIR_RTL,
+  ShowRegistrationPopup,
+} from "../../helpers/constants";
 import { useTrail } from "react-spring";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { setLangParam } from "../../helpers/services/language-service";
 
 const TradingTools = ({ className }) => {
   const { t } = useTranslationWithVariables();
@@ -22,6 +27,8 @@ const TradingTools = ({ className }) => {
   const platforms = getPlatforms();
 
   const [isAnimationStarted, setIsAnimationStarted] = useState(false);
+  const langParam = setLangParam();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const platformIconTrail = useTrail(Object.values(platforms).length, {
     from: {
@@ -44,6 +51,14 @@ const TradingTools = ({ className }) => {
       setIsAnimationStarted(true);
     }
   }, [intersectionRef]);
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   return (
     <section
@@ -77,10 +92,22 @@ const TradingTools = ({ className }) => {
             accentClassName="highlighted-in-red"
           />
         </h2>
-        <ButtonLink link={GetRegistrationLink()} className="trading-tools__btn">
+        <ButtonPopup
+          onClick={handleShowRegistrationPopup}
+          className="trading-tools__btn"
+        >
           {t("index_trading-tools-btn-text")}
-        </ButtonLink>
+        </ButtonPopup>
       </div>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </section>
   );
 };

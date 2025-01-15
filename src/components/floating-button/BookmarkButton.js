@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../../assets/styles/Bookmark.scss";
-import ButtonLink from "../shared/button-link";
-import { GetRegistrationLink } from "../../helpers/constants";
+import ButtonPopup from "../shared/button-popup";
+import { ShowRegistrationPopup } from "../../helpers/constants";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
 import ChevronIcon from "../../assets/images/icons/chevron.svg";
+import { setLangParam } from "../../helpers/services/language-service";
 
 function Bookmark() {
   const [isExpanded, setExpanded] = useState(false);
@@ -16,6 +17,17 @@ function Bookmark() {
   const bookmarkRef = useRef(null);
   const buttonRef = useRef(null);
   const { t } = useTranslationWithVariables();
+
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   const initiateClosingSequence = () => {
     setShaking(true);
@@ -80,27 +92,37 @@ function Bookmark() {
   }`;
 
   return (
-    <div
-      ref={bookmarkRef}
-      className={`bookmark ${bookmarkClass}`}
-      onClick={handleBookmarkClick}
-    >
-      {isExpanded ? (
-        <ButtonLink
-          ref={buttonRef}
-          link={GetRegistrationLink()}
-          className={`bookmark-button-link ${buttonClass}`}
-        >
-          {t("button-sign-up")}
-        </ButtonLink>
-      ) : (
-        <img
-          src={ChevronIcon}
-          alt="Chevron"
-          className={`text ${isBlinking ? "blinking" : ""}`}
+    <>
+      <div
+        ref={bookmarkRef}
+        className={`bookmark ${bookmarkClass}`}
+        onClick={handleBookmarkClick}
+      >
+        {isExpanded ? (
+          <ButtonPopup
+            onClick={handleShowRegistrationPopup}
+            className={`bookmark-button-link ${buttonClass}`}
+          >
+            {t("button-sign-up")}
+          </ButtonPopup>
+        ) : (
+          <img
+            src={ChevronIcon}
+            alt="Chevron"
+            className={`text ${isBlinking ? "blinking" : ""}`}
+          />
+        )}
+      </div>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam}
         />
       )}
-    </div>
+    </>
   );
 }
 

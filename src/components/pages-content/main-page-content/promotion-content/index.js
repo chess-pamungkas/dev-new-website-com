@@ -5,7 +5,7 @@ import cn from "classnames";
 import promo1 from "../../../../assets/images/promotions/promo1.svg";
 import {
   ALL_MARKETS_PAGE_LINK,
-  GetRegistrationLink,
+  ShowRegistrationPopup,
   HEADER_SMALL_HEIGHT,
   WITHDRAWAL_PAGE_LINK,
 } from "../../../../helpers/constants";
@@ -29,12 +29,23 @@ import { useSpring } from "react-spring";
 import { usePromotionAnimation } from "../../../promotion/use-promotion-animation";
 import { scrollTo } from "../../../../helpers/scroll-to";
 import CommonContext from "../../../../context/common-context";
+import { setLangParam } from "../../../../helpers/services/language-service";
 
 const PromotionContent = () => {
   const XL_HEIGHT = 1080;
   const { t } = useTranslationWithVariables();
   const { isMobile, isDesktop, height } = useWindowSize();
   const { headerRef, riskWarningRef } = useContext(CommonContext);
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   const bgOffsetY =
     isDesktop && riskWarningRef?.current?.clientHeight
@@ -296,7 +307,7 @@ const PromotionContent = () => {
         sectionRef={promo4Ref}
         image={promo4}
         btnTitle={t("index_promotion4-btn-text")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
         isRedPalette
         isReverseOrder
       >
@@ -316,6 +327,15 @@ const PromotionContent = () => {
           </span>
         </HighlightedLocalizationText>
       </Promotion>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };

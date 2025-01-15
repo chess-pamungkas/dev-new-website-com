@@ -1,0 +1,1033 @@
+@import "vars";
+@import "mixins";
+
+.popup-registration {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &--active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  &__container {
+    display: flex; // Use flex to align sidebar and content
+    width: 100%; // Set a width for the container
+    height: auto; // Set a fixed height for the container
+    border-radius: 0.3125rem; // Rounded corners using rem
+    text-align: left !important;
+
+    @include mobile {
+      width: 100%; // Full width for mobile
+      height: 100%; // Full height for mobile
+      padding: 0.625rem; // Padding in rem
+      flex-direction: column; // Stack sidebar and content on mobile
+      overflow-y: auto;
+    }
+
+    @include tablet {
+      padding: 0.625rem; // Padding in rem for tablet
+    }
+
+    @include desktop-lg {
+      max-width: 71.25rem; // Max width for larger screens
+    }
+
+    @include desktop-xl {
+      max-width: 75rem; // Max width for extra large screens
+      max-height: 45rem; // Max height
+    }
+  }
+
+  &__sidebar {
+    background-color: #ff4400; // Sidebar background color
+    background-image: url("../images/bg/register-img.png"); // Path to your image
+    background-size: 85% auto; // Set width to 50% of the sidebar, height auto to maintain aspect ratio
+    background-repeat: no-repeat; // Prevent the image from repeating
+    background-position: center calc(55%); // Center the image
+    width: 40%; // Adjust width as needed
+    border-radius: 0.625rem 0 0 0.625rem;
+    align-items: center; // Center items horizontally
+    color: #fff; // Adjust text color for visibility
+
+    @include mobile {
+      position: relative;
+      background-size: 75% auto; // Set width to 50% of the sidebar, height auto to maintain aspect ratio
+      background-position: center calc(70%); // Center the image
+      width: 100%; // Full width for mobile
+      padding: 2.25rem 1.25rem; // Padding in rem for mobile
+      border-radius: 0.625rem 0.625rem 0 0; // Rounded corners on top
+      max-height: 21.875rem; // Max height for mobile
+    }
+
+    @include tablet {
+      padding: 1.25rem; // Padding in rem for tablet
+    }
+
+    @include desktop-lg {
+      padding: 3.125rem; // Padding in rem for desktop-lg
+    }
+
+    @include desktop-xl {
+      padding: 4.813rem 3.375rem 0 3.375rem; // Padding in rem for desktop-xl
+    }
+
+    &__title {
+      font-family: $font-sidebar;
+      font-size: 1.5rem; // Ensure consistent font size
+      font-weight: map-get($font-weight, "black"); // Bold font weight
+      color: #1a1a1a; // Dark color
+      margin-bottom: 3.125rem; // Margin in rem
+      line-height: 1.2; // Set line height for better readability
+
+      @include mobile {
+        font-size: 1.125rem; // Ensure consistent font size
+      }
+
+      @include tablet {
+        margin-bottom: 1.25rem; // Ensure consistent font size
+      }
+    }
+  }
+
+  &__content {
+    position: relative; // Set position to relative
+    width: 60%;
+    background-color: white;
+    border-radius: 0 0.625rem 0.625rem 0; // Rounded corners on bottom
+
+    @include mobile {
+      width: 100%; // Full width for mobile
+      border-radius: 0 0 0.625rem 0.625rem; // Rounded corners on bottom
+      padding: 6.25rem 1.25rem 1.875rem 1.25rem; // Padding in rem for mobile
+    }
+
+    @include tablet {
+      padding: 1.25rem; // Padding in rem for tablet
+    }
+
+    @include desktop-lg {
+      padding: 3.125rem; // Padding in rem for desktop-lg
+    }
+
+    @include desktop-xl {
+      padding: 4.375rem 3.938rem; // Padding in rem for desktop-xl
+    }
+
+    h1.popup-registration-register {
+      margin-top: 0;
+      margin-bottom: 2.1875rem; // Space below header in rem
+      color: #1a1a1a; // Darker text color
+      font-size: 1.5rem; // Font size
+      font-weight: map-get($font-weight, "bold");
+
+      @include mobile {
+        font-size: 1.125rem; // Font size
+        margin-bottom: 1.5rem; // Space below header in rem
+      }
+    }
+  }
+
+  #captcha-placeholder {
+    position: relative; /* Ensure it doesn't affect layout */
+    z-index: 1; /* Adjust z-index if necessary */
+    display: none;
+  }
+
+  .sidebar-area {
+    position: relative;
+    height: 50vh;
+
+    .benefits-container {
+      position: absolute; // Use absolute positioning
+      top: 20%; // Adjust as needed for vertical positioning
+      left: 50%; // Center horizontally
+      transform: translateX(
+        -50%
+      ); // Adjust position to truly center horizontally
+      z-index: 10; // Ensure it appears above the image
+      background-color: rgb(
+        26 26 26 / 1
+      ); // Optional: background for visibility
+      opacity: 0.95;
+      padding: 1.25rem; // Add padding for aesthetics
+      border-radius: 0.625rem; // Optional: rounded corners
+      width: 100%; // Adjust width as needed
+      max-width: 25rem; // Optional: max width
+      font-size: 0.75rem; // Font size
+      font-weight: map-get($font-weight, "regular");
+      line-height: 1.5; // Line height for better readability
+
+      @include mobile {
+        width: 100%; // Full width for mobile
+        top: 13%; // Adjust as needed for vertical positioning
+        border-radius: 0.625rem; // Rounded corners for mobile
+        font-size: 0.625rem; // Font size
+      }
+
+      @include tablet {
+        top: 18%; // Adjust as needed for vertical positioning
+      }
+    }
+  }
+
+  .normal-text {
+    width: 0.9375rem;
+  }
+
+  .highlighted {
+    color: #ffffff; // Light color for highlighted text
+    display: inline-block;
+  }
+
+  .sidebar-image-container {
+    position: relative; // Ensure this is set for absolute positioning
+    display: flex; // Use Flexbox
+    justify-content: center; // Center horizontally
+    align-items: flex-start; // Align items to the top (normal alignment)
+    height: 100%; // Ensure it takes full height of the parent
+
+    .sidebar-image {
+      width: 100%; // Full width for the image
+      display: block; // Ensure the image is treated as a block element
+    }
+  }
+
+  .benefits-item {
+    display: flex; // Align bullet and text
+    align-items: center; // Center items vertically
+    gap: 0.5rem; // Space between bullet and text
+    margin-bottom: 0.5rem; // Space between items
+  }
+
+  .benefits-item:last-child {
+    margin-bottom: 0; // Remove margin from the last item
+  }
+
+  &__form {
+    width: 100%;
+    max-width: 37.5rem;
+    margin: 0 auto;
+  }
+
+  &__row {
+    margin-bottom: 0.9375rem; // Consistent spacing between rows
+  }
+
+  &__field {
+    flex: 1;
+    margin: 0;
+
+    @include mobile {
+      width: 100%;
+      margin-bottom: 0.625rem;
+
+      &:last-child {
+        margin-bottom: 0.9375rem;
+      }
+    }
+  }
+
+  &__label {
+    display: block;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+    font-weight: map-get($font-weight, "black"); // Bold font weight
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0.625rem 0.75rem;
+    border: none;
+    border-bottom: 1px solid #ff4400;
+    font-size: 0.8125rem;
+
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid #ff4400;
+    }
+
+    &--error {
+      border-bottom-color: #ff0000;
+
+      &:focus {
+        border-bottom-color: #ff0000;
+      }
+    }
+  }
+
+  .name-fields,
+  .contact-fields {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.9375rem;
+
+    @include mobile {
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+
+  &__name-field,
+  &__contact-field {
+    flex: 1;
+    margin-right: 0.625rem;
+
+    @include mobile {
+      width: 100%; // Full width for mobile
+      margin-bottom: 0.75rem; // Space between fields
+    }
+  }
+
+  &__name-field:last-child,
+  &__contact-field:last-child {
+    margin-right: 0;
+  }
+
+  &__input-title {
+    margin-bottom: 0.3125rem;
+    font-weight: map-get($font-weight, "black");
+    color: #1a1a1a;
+
+    @include mobile {
+      font-size: 0.75rem;
+    }
+
+    @include tablet {
+      font-size: 0.75rem;
+    }
+
+    @include desktop-lg {
+      font-size: 0.813rem;
+    }
+  }
+
+  .popup-registration__newsletter,
+  .popup-registration__consent-text {
+    display: flex; // Use flex to align items
+    align-items: flex-start; // Flex start items vertically
+    margin-top: 0.625rem; // Space above consent section
+    margin-bottom: 0; // Space below consent section
+    font-size: 0.75rem;
+    color: #1a1a1a;
+    input[type="checkbox"] {
+      appearance: none; // Remove default checkbox styling
+      width: 0.8125rem; // Set width for checkbox
+      min-width: 0.8125rem;
+      height: 0.8125rem; // Set height for checkbox
+      // margin-top: 0.25rem;
+      margin-right: 0.625rem;
+      border: 1px solid #ff4400; // Border color
+      border-radius: 3px; // Rounded corners
+      cursor: pointer; // Pointer cursor on hover
+      position: relative; // Position for the checkmark
+
+      &:checked {
+        background-color: #ff4400; // Background color when checked
+      }
+
+      &:checked::after {
+        content: ""; // Create a checkmark
+        position: absolute;
+        left: 0.25rem; // Position checkmark
+        top: 0; // Position checkmark
+        width: 0.25rem; // Width of checkmark
+        height: 0.625rem; // Height of checkmark
+        border: solid white; // Checkmark color
+        border-width: 0 0.125rem 0.125rem 0; // Checkmark shape
+        transform: rotate(45deg); // Rotate to form a checkmark
+      }
+    }
+
+    .link {
+      font-weight: 700;
+      color: #ff4400; // Link color
+      text-decoration: underline; // Underline for links
+      margin: 0 0.125rem; // Add margin for spacing around links
+    }
+
+    @include mobile {
+      font-size: 0.688rem;
+    }
+  }
+
+  .continue-button {
+    margin: 1.25rem 0 0.625rem 0;
+    padding: 0.75rem; // Increased padding for button
+    background-color: #ff4400; // Button color
+    color: white;
+    font-size: 0.75rem;
+    font-weight: map-get($font-weight, "black");
+    border: 1px solid #ff4400;
+    border-radius: 31px; // Rounded corners
+    cursor: pointer;
+    width: 100%; // Full width for button
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: white;
+      color: #ff4400;
+    }
+  }
+
+  // Close button styles
+  &__close {
+    position: absolute; // Position absolutely within the content
+    top: 1.25rem; // Adjust top position
+    right: 0.9375rem; // Adjust right position
+    cursor: pointer; // Pointer cursor on hover
+    width: 1.25rem; // Set width
+    height: 1.25rem; // Set height
+  }
+
+  @include mobile {
+    &__contact-field {
+      select {
+        width: 100%; // Full width for select
+        padding: 0.75rem; // Adjust padding for select
+        font-size: 0.75rem; // Font size for select
+        border: 1px solid #ccc; // Light border for select
+        background-color: white; // White background for select
+        height: 2.625rem; // Set tinggi yang sama
+        box-sizing: border-box;
+        line-height: 1rem; // Untuk konsistensi dengan dropdown
+
+        &:focus {
+          border-color: #ff4400; // Change border color on focus
+          outline: none; // Remove outline
+        }
+      }
+    }
+  }
+
+  &__input-wrapper {
+    input,
+    .custom-dropdown__selected {
+      &::placeholder {
+        color: #757575;
+        opacity: 1;
+        // padding-left: 0.75rem;
+      }
+    }
+  }
+
+  .custom-dropdown {
+    position: relative;
+    width: 100%;
+    height: 2.625rem;
+
+    &__selected {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 0.813rem;
+      font-weight: 500;
+      border: none;
+      border-bottom: 1px solid #ff4400;
+      background-color: white;
+      cursor: pointer;
+      height: 2.625rem;
+      line-height: 1rem;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #1a1a1a; // Default color for selected value
+
+      // For empty state (placeholder)
+      &[data-value=""] {
+        background-color: white !important;
+        color: #757575;
+        font-weight: 500;
+      }
+
+      // For filled state
+      &:not([data-value=""]) {
+        background-color: white !important;
+        color: #1a1a1a; // Color when value is selected
+        font-weight: 500;
+      }
+
+      &:hover {
+        background-color: white !important;
+      }
+
+      // Add this new style for when dropdown is open
+      &--open {
+        outline: none;
+        border-bottom: 2px solid #ff4400;
+      }
+    }
+
+    &__placeholder {
+      color: #757575; // Color only for placeholder text
+      // padding-left: 0.75rem;
+    }
+
+    &__option {
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      font-size: 0.813rem;
+      color: #1a1a1a;
+
+      &:hover {
+        background-color: #ff4400;
+        color: white;
+      }
+
+      &--selected {
+        background-color: #ff4400;
+        color: white;
+        position: relative;
+      }
+
+      &--active {
+        background-color: #ff4400;
+        color: white;
+      }
+    }
+
+    &__options {
+      max-height: 15.625rem;
+      overflow-y: auto;
+      // padding: 0.5rem 0.75rem;
+      scroll-behavior: auto; // Ensure immediate scrolling
+    }
+
+    &__option {
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      // color: #1a1a1a;
+
+      &--selected {
+        background-color: #ff4400;
+        color: white;
+      }
+
+      &:hover:not(&--selected) {
+        background-color: #ffd6c6;
+        color: #ff4400;
+      }
+    }
+
+    &__arrow {
+      width: 0.625rem;
+      height: 0.375rem;
+      transition: transform 0.2s ease;
+
+      &--open {
+        transform: rotate(180deg);
+      }
+    }
+
+    &__search {
+      width: 100%;
+      padding: 0.5rem;
+      border: none;
+      border-bottom: 1px solid #ff4400;
+      font-size: 0.813rem;
+
+      &:focus {
+        outline: none;
+        border-bottom: 2px solid #ff4400;
+      }
+
+      &--error {
+        border-bottom-color: #ff0000;
+
+        &:focus {
+          border-bottom-color: #ff0000;
+        }
+      }
+    }
+
+    &__content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 18.75rem;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 0.25rem;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+
+      .popup-registration__error {
+        position: absolute;
+        bottom: -1.25rem;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 0.25rem 0;
+      }
+    }
+  }
+
+  // Label styling
+  &__label {
+    display: block;
+    font-size: 0.8125rem;
+    margin-bottom: 0.5rem;
+    font-weight: map-get($font-weight, "black"); // Bold font weight
+  }
+
+  // Three fields container - FIXED for desktop alignment
+  .three-fields-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; // Three equal columns
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    .popup-registration__field {
+      width: 100%;
+      margin: 0;
+    }
+
+    // Desktop styles
+    @media (min-width: 768px) {
+      .country-field {
+        grid-column: 1;
+      }
+
+      .mobile-code-phone {
+        grid-column: 2 / span 2; // Span across columns 2 and 3
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      .code-field {
+        width: 100%;
+      }
+
+      .phone-field {
+        width: 100%;
+      }
+    }
+
+    // Mobile styles (unchanged)
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      .mobile-code-phone {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+    }
+  }
+
+  // Input and dropdown styling
+  .popup-registration__input,
+  .custom-dropdown__selected {
+    height: 2.625rem;
+    font-size: 0.8125rem;
+    border: none;
+    border-bottom: 1px solid #ff4400;
+    background-color: transparent;
+    padding: 0.5rem 0.75rem;
+
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid #ff4400;
+    }
+  }
+
+  // Ensure dropdowns don't force minimum width
+  .custom-dropdown {
+    width: 100%;
+    min-width: 0;
+
+    &__selected {
+      width: 100%;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__content {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+
+  // Remove any floating or positioning that might affect layout
+  .popup-registration__field {
+    float: none;
+    position: static;
+  }
+
+  // Ensure dropdowns and inputs have consistent widths
+  .popup-registration__input,
+  .custom-dropdown,
+  .custom-dropdown__selected {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  // Fix dropdown alignment
+  .custom-dropdown {
+    &__selected {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    &__content {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.recaptcha-terms-text {
+  .link {
+    font-weight: 700;
+    color: #ff4400; // Link color
+    text-decoration: underline; // Underline for links
+    margin: 0 0.125rem; // Add margin for spacing around links
+  }
+}
+
+.popup-registration__form input::placeholder,
+.popup-registration__form select::placeholder {
+  color: #757575; // Light gray color for placeholders
+  opacity: 1; // Ensure full opacity for better visibility
+  // padding-left: 0.75rem;
+}
+
+.text-light {
+  color: #f0f0f0; // Replace with your desired light color
+}
+
+.recaptcha-terms-container {
+  width: 100%; // Full width
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.recaptcha-terms-content {
+  color: #a0aec0; // Light gray color
+  font-size: 0.75rem; // Small text size
+}
+
+.recaptcha-terms-text {
+  padding: 0;
+}
+
+.recaptcha-terms-text {
+  line-height: 1.5; // Line height for better readability
+}
+
+.popup-registration-error-message {
+  font-size: 0.875rem;
+  margin: 0.3125rem 0;
+
+  @include mobile {
+    font-size: 0.688rem;
+  }
+}
+
+.risk-warning-container {
+  width: 100%; // Full width
+  padding: 0; // Remove padding for larger screens
+}
+
+.risk-warning-content {
+  color: #9b9b9b; // Light gray color
+  font-size: 0.6875rem; // Small text size
+}
+
+.risk-warning-text {
+  line-height: 1.5; // Line height for better readability
+}
+
+/* CSS for mobile */
+.full-width {
+  width: 100%; /* Ensure Country of Residence takes full width */
+}
+
+.half-width {
+  width: 48%; /* Set width for Code and Phone Number */
+  display: inline-block; /* Display in one line */
+  box-sizing: border-box; /* Ensure padding and margin don't affect width */
+}
+
+.popup-registration__sidebar__close-mobile {
+  @include mobile {
+    position: absolute; // Position absolutely within the sidebar
+    top: 0.9375rem; // Adjust top position
+    right: 0.9375rem; // Adjust right position
+    cursor: pointer; // Pointer cursor on hover
+    width: 0.9375rem; // Set width
+    height: 0.9375rem; // Set height
+    // z-index: 10000; // Ensure it appears above other elements
+  }
+}
+
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+  height: 2.625rem;
+
+  &__search {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1px solid #ff4400;
+    font-size: 0.813rem;
+
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid #ff4400;
+    }
+  }
+
+  &__selected {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.813rem;
+    font-weight: 500;
+    border: none;
+    border-bottom: 1px solid #ff4400;
+    background-color: white;
+    cursor: pointer;
+    height: 2.625rem;
+    line-height: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    color: #1a1a1a; // Default color for selected value
+
+    // For empty state (placeholder)
+    &[data-value=""] {
+      background-color: white !important;
+      color: #757575;
+      font-weight: 500;
+      // padding-left: 0.75rem;
+    }
+
+    // For filled state
+    &:not([data-value=""]) {
+      background-color: white !important;
+      color: #1a1a1a; // Color when value is selected
+      font-weight: 500;
+    }
+
+    &:hover {
+      background-color: white !important;
+    }
+
+    // Add this new style for when dropdown is open
+    &--open {
+      outline: none;
+      border-bottom: 2px solid #ff4400;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 18.75rem;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  &__search {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.813rem;
+
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid #ff4400;
+    }
+  }
+
+  &__options {
+    max-height: 15.625rem;
+    overflow-y: auto;
+    // padding: 0.5rem 0.75rem;
+  }
+
+  &__option {
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    font-size: 0.813rem;
+    // color: #1a1a1a;
+
+    &:hover {
+      background-color: #ff4400;
+      color: white;
+    }
+
+    &--selected {
+      background-color: #ff4400;
+      color: white;
+      position: relative;
+    }
+
+    &--active {
+      background-color: #ff4400;
+      color: white;
+    }
+  }
+
+  &__arrow {
+    width: 0.625rem;
+    height: 0.375rem;
+    transition: transform 0.2s ease;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+// Add scrollbar styling
+.custom-dropdown__options {
+  &::-webkit-scrollbar {
+    width: 0.375rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+// Separate selectors for input and dropdown
+.popup-registration__input {
+  width: 100%;
+}
+
+.popup-registration .custom-dropdown {
+  width: 100%;
+}
+
+// Name fields (First Name & Last Name)
+.name-fields {
+  display: grid; // Use CSS Grid instead of flex
+  grid-template-columns: repeat(2, 1fr); // Two equal columns
+  gap: 1.25rem; // Consistent gap
+  margin-bottom: 0.9375rem;
+
+  .popup-registration__field {
+    width: 100%;
+    // margin: 0;
+  }
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+}
+
+// Field spacing consistency
+.popup-registration__field {
+  // margin-bottom: 0.9375rem; // Increased spacing between fields
+
+  @include mobile {
+    margin-bottom: 0.9375rem; // Consistent spacing on mobile
+  }
+}
+
+// Input styling
+.popup-registration__input,
+.custom-dropdown__selected {
+  width: 100%;
+  height: 2.625rem;
+  font-size: 0.8125rem;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #ff4400;
+  background-color: transparent;
+  padding: 0.5rem 0.75rem;
+  margin: 0; // Remove any default margins
+
+  &::placeholder {
+    color: #757575;
+    opacity: 1;
+    // padding-left: 0.75rem;
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid #ff4400;
+  }
+}
+
+// Label styling
+.popup-registration__label {
+  display: block;
+  font-size: 0.8125rem;
+  margin-bottom: 0;
+  color: #1a1a1a;
+  font-weight: map-get($font-weight, "black"); // Bold font weight
+  margin-top: 1.25rem; // Add consistent top margin
+
+  &:first-child {
+    margin-top: 0; // Remove top margin for first label
+  }
+}
+
+// Consistent spacing for mobile
+@include mobile {
+  .popup-registration__form {
+    > * {
+      margin-bottom: 0.9375rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.popup-registration {
+  &__error {
+    color: #ff0000;
+    font-size: 0.8125rem;
+    margin-top: 0.25rem;
+    min-height: 1rem;
+  }
+}

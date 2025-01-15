@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import {
   BURGER_MENU_LINES_COUNT,
-  GetRegistrationLink,
   GetLoginLink,
+  ShowRegistrationPopup,
 } from "../../../../helpers/constants";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
@@ -15,6 +15,8 @@ import SearchBar from "../search-bar";
 import Accordion from "../../../shared/accordion";
 import { getMenuItems } from "../../../../helpers/menu.config";
 import InternalLink from "../../../shared/internal-link";
+import { setLangParam } from "../../../../helpers/services/language-service";
+import ButtonPopup from "../../../shared/button-popup";
 
 const BurgerMenu = ({ className }) => {
   const { t } = useTranslationWithVariables();
@@ -24,6 +26,16 @@ const BurgerMenu = ({ className }) => {
   const menu = getMenuItems();
   const [selectedNavItem, setSelectedNavItem] = useState(menu[0].title);
   const [isLangPopupOpened, setIsLangPopupOpened] = useState(false);
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   const onTriggerChange = () => {
     typeof window !== "undefined" && isNavbarOpen
@@ -87,12 +99,12 @@ const BurgerMenu = ({ className }) => {
             <div className="burger-menu__btns">
               {!isMobile && (
                 <>
-                  <ButtonLink
-                    link={GetRegistrationLink()}
-                    className={cn("button-link--header burger-menu__start")}
+                  <ButtonPopup
+                    className="button-link--header burger-menu__start"
+                    onClick={handleShowRegistrationPopup}
                   >
                     {t("button-get-started")}
-                  </ButtonLink>
+                  </ButtonPopup>
                   <LangSelect className="burger-menu__lang-select-tablet" />
                 </>
               )}
@@ -114,12 +126,12 @@ const BurgerMenu = ({ className }) => {
             </ButtonLink>
 
             {isMobile && (
-              <ButtonLink
-                link={GetRegistrationLink()}
+              <ButtonPopup
                 className="button-link--blank burger-menu__start--tablet"
+                onClick={handleShowRegistrationPopup}
               >
                 {t("button-get-started")}
-              </ButtonLink>
+              </ButtonPopup>
             )}
           </li>
 
@@ -165,6 +177,14 @@ const BurgerMenu = ({ className }) => {
           </li>
         </ul>
       </div>
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </div>
   );
 };

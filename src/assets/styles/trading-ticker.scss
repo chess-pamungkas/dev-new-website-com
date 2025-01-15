@@ -117,7 +117,7 @@
   width: 100vw;
   height: 34.4px;
   position: absolute;
-  background-color: rgba(0,0,0 , 0.0001);
+  background-color: rgba(0, 0, 0, 0.0001);
 }
 
 .trading-symbols {
@@ -128,7 +128,7 @@
 
   width: 100vw;
   overflow-x: scroll;
-  white-space: nowrap;
+  // white-space: nowrap;
   display: flex;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -136,7 +136,6 @@
   &::-webkit-scrollbar {
     display: none;
   }
-
 
   &__arrow-left {
     position: absolute;

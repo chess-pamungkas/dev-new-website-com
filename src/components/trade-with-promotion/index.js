@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from "react";
+import React, { useRef, useContext, useState } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { animated } from "react-spring";
@@ -16,8 +16,7 @@ import redDot from "../../assets/images/icons/companies/red_dot.svg";
 import rippleIcon from "../../assets/images/icons/companies/ripple.svg";
 import teslaIcon from "../../assets/images/icons/companies/tesla.svg";
 import womanIcon from "../../assets/images/icons/companies/woman.svg";
-import ButtonLink from "../shared/button-link";
-import { DIR_LTR, DIR_RTL, GetRegistrationLink } from "../../helpers/constants";
+import ButtonPopup from "../shared/button-popup";
 import TypingAnimation from "../shared/typing-animation";
 import { MarketingContext } from "../../context/marketing-context";
 import {
@@ -34,6 +33,12 @@ import { INTERSECTION_OBSERVER_CONFIG } from "../../helpers/animation.config";
 import { useSectionAnimation } from "./use-section-animation";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import {
+  DIR_LTR,
+  DIR_RTL,
+  ShowRegistrationPopup,
+} from "../../helpers/constants";
+import { setLangParam } from "../../helpers/services/language-service";
 
 const TradeWithPromotion = ({ className, sectionRef }) => {
   const typingContainerRef = useRef();
@@ -69,6 +74,16 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
     : getSect2TextSequence(SECT2_GROUP1_DEFAULT, SECT2_GROUP2_DEFAULT);
 
   const icons = content ? content.symbols : [];
+  const langParam = setLangParam();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   return (
     <section
@@ -225,16 +240,25 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
           </div>
           <div className="trade-with-promotion__block">
             <div className="trade-with-promotion__btn-wrapper">
-              <ButtonLink
-                link={GetRegistrationLink()}
+              <ButtonPopup
+                onClick={handleShowRegistrationPopup}
                 className="trade-with-promotion__btn"
               >
                 {t("button-start-now")}
-              </ButtonLink>
+              </ButtonPopup>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </section>
   );
 };

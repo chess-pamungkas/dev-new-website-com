@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import TopMarket from "../../top-market";
@@ -7,15 +7,26 @@ import HighlightedLocalizationText from "../../shared/highlighted-localization-t
 import promotion from "../../../assets/images/trading-tools/promotion.svg";
 import AlphaGeneration from "../../trading-tools/components/alpha-generation";
 import icon from "../../../assets/images/icon--white.svg";
-import { GetRegistrationLink } from "../../../helpers/constants";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
 import TopMarketPromotion from "../../top-market-promotion";
 import FeaturedIdeas from "../../trading-tools/components/featured-ideas";
 import MarketBuzz from "../../trading-tools/components/market-buzz";
 import TradingCalendar from "../../trading-tools/components/trading-calendar";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const TradingToolsPageContent = () => {
   const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
+  const langParam = setLangParam(); // Get the language parameter
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true); // Open the popup
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Close the popup
+  };
 
   return (
     <>
@@ -63,7 +74,7 @@ const TradingToolsPageContent = () => {
         image={icon}
         btnClassName="button-link--red"
         btnTitle={t("trading-tools_top-market-promo-btn3")}
-        link={GetRegistrationLink()}
+        btnOnClick={handleShowRegistrationPopup}
       >
         <HighlightedLocalizationText
           localizationText="trading-tools_top-market-promo-text3"
@@ -72,6 +83,15 @@ const TradingToolsPageContent = () => {
           accentClassName="highlighted-in-white"
         />
       </TopMarketPromotion>
+
+      {/* Render the popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={langParam} // Pass langParam if needed
+        />
+      )}
     </>
   );
 };
