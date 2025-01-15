@@ -1674,5 +1674,14 @@
   "popup-registration-email-required": "Email là bắt buộc",
   "popup-registration-name-invalid": "Vui lòng nhập họ và tên bằng ký tự Latin (A-Z)",
   "popup-registration-email-invalid": "Phải là một email hợp lệ",
-  "popup-registration-phoneNumber-invalid": "Vui lòng chỉ nhập số"
+  "popup-registration-phoneNumber-numbers-only": "Vui lòng chỉ nhập số",
+  "popup-registration-phoneNumber-invalid": "Vui lòng nhập số điện thoại hợp lệ",
+  "popup-registration-error-invalid-data": "Dữ liệu được cung cấp không hợp lệ.",
+  "popup-registration-error-signature-verification": "Xác minh chữ ký không thành công.",
+  "popup-registration-error-email-format": "Định dạng email không đúng.",
+  "popup-registration-error-email-taken": "Email đã được sử dụng.",
+  "popup-registration-error-blacklisted": "Người dùng nằm trong danh sách đen.",
+  "popup-registration-error-referral-code": "Lỗi mã giới thiệu.",
+  "popup-registration-error-registration-failed": "Đăng ký người dùng không thành công.",
+  "popup-registration-error-password-format": "Định dạng mật khẩu không đúng, phải bao gồm cả số và chữ cái."
 }

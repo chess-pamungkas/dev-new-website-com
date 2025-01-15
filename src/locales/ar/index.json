@@ -1625,5 +1625,14 @@
   "popup-registration-email-required": "البريد الإلكتروني مطلوب",
   "popup-registration-name-invalid": "يرجى إدخال الاسم الأول واسم العائلة باستخدام الأحرف اللاتينية فقط (A-Z)",
   "popup-registration-email-invalid": "يجب أن يكون بريدًا إلكترونيًا صالحًا",
-  "popup-registration-phoneNumber-invalid": "يرجى إدخال الأرقام فقط"
+  "popup-registration-phoneNumber-numbers-only": "يرجى إدخال الأرقام فقط",
+  "popup-registration-phoneNumber-invalid": "يرجى إدخال رقم هاتف صالح",
+  "popup-registration-error-invalid-data": "البيانات المقدمة غير صالحة",
+  "popup-registration-error-signature-verification": "فشل التحقق من التوقيع",
+  "popup-registration-error-email-format": "تنسيق البريد الإلكتروني غير صحيح",
+  "popup-registration-error-email-taken": "البريد الإلكتروني مستخدم بالفعل",
+  "popup-registration-error-blacklisted": "المستخدم في القائمة السوداء",
+  "popup-registration-error-referral-code": "خطأ في رمز الإحالة",
+  "popup-registration-error-registration-failed": "فشل تسجيل المستخدم",
+  "popup-registration-error-password-format": "تنسيق كلمة المرور غير صحيح، يجب أن تتضمن أرقامًا وحروفًا"
 }

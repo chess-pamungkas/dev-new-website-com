@@ -1687,5 +1687,14 @@
   "popup-registration-email-required": " L'e-mail est requis",
   "popup-registration-name-invalid": "Veuillez entrer les prénoms et noms de famille en utilisant uniquement des caractères latins (A-Z)",
   "popup-registration-email-invalid": "Doit être une adresse e-mail valide",
-  "popup-registration-phoneNumber-invalid": "Veuillez entrer uniquement des chiffres"
+  "popup-registration-phoneNumber-numbers-only": "Veuillez entrer uniquement des chiffres",
+  "popup-registration-phoneNumber-invalid": "Veuillez entrer un numéro de téléphone valide",
+  "popup-registration-error-invalid-data": "Les données fournies étaient invalides.",
+  "popup-registration-error-signature-verification": "La vérification de la signature a échoué.",
+  "popup-registration-error-email-format": "Le format de l'email est incorrect.",
+  "popup-registration-error-email-taken": "L'email est déjà utilisé.",
+  "popup-registration-error-blacklisted": "L'utilisateur est sur la liste noire.",
+  "popup-registration-error-referral-code": "Erreur du code de parrainage.",
+  "popup-registration-error-registration-failed": "L'enregistrement de l'utilisateur a échoué.",
+  "popup-registration-error-password-format": "Le format du mot de passe est incorrect, incluez à la fois des chiffres et des lettres."
 }
