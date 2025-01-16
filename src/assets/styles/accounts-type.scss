@@ -203,10 +203,10 @@
   }
 
   .top-market-promotion__btn {
-    width: 152px;
+    // width: 152px;
     font-weight: map-get($font-weight, "black");
-    font-size: 8ch;
-    line-height: 25px;
+    // font-size: 12px;
+    // line-height: 33px;
     color: map-get($colors, "red");
     background: map-get($colors, "black-secondary");
     border: 2px solid map-get($colors, "red");
@@ -217,17 +217,17 @@
       background: map-get($colors, "red");
     }
 
-    @include desktop-lg {
-      width: 203px;
-      font-size: 12px;
-      line-height: 33px;
-    }
+    // @include desktop-lg {
+    //   width: 203px;
+    //   font-size: 12px;
+    //   line-height: 33px;
+    // }
 
-    @include desktop-xl {
-      width: 380px;
-      font-size: 24px;
-      line-height: 62px;
-    }
+    // @include desktop-xl {
+    //   width: 380px;
+    //   font-size: 24px;
+    //   line-height: 62px;
+    // }
   }
 }
 
