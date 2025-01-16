@@ -1650,5 +1650,14 @@
   "popup-registration-email-required": "必須填寫電子郵件",
   "popup-registration-name-invalid": "請僅使用拉丁字母（A-Z）輸入名字和姓氏",
   "popup-registration-email-invalid": "必須為有效的電子郵件地址",
-  "popup-registration-phoneNumber-invalid": "請僅輸入數字"
+  "popup-registration-phoneNumber-numbers-only": "請僅輸入數字",
+  "popup-registration-phoneNumber-invalid": "請輸入有效的電話號碼",
+  "popup-registration-error-invalid-data": "提供的資料無效。",
+  "popup-registration-error-signature-verification": "簽名驗證失敗。",
+  "popup-registration-error-email-format": "電子郵件格式不正確。",
+  "popup-registration-error-email-taken": "電子郵件已被使用。",
+  "popup-registration-error-blacklisted": "使用者在黑名單中。",
+  "popup-registration-error-referral-code": "推薦碼錯誤。",
+  "popup-registration-error-registration-failed": "使用者註冊失敗。",
+  "popup-registration-error-password-format": "密碼格式不正確，請包含數字和字母。"
 }

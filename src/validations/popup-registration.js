@@ -16,7 +16,8 @@ export const PopupRegistrationSchema = object().shape({
   country: string().required("popup-registration-countryOfResidence-required"),
   country_code: string().required("popup-registration-countryCode-required"),
   mobile: string()
-    .matches(/^\d+$/, "popup-registration-phoneNumber-invalid")
+    .matches(/^\d+$/, "popup-registration-phoneNumber-numbers-only")
+    .min(7, "popup-registration-phoneNumber-invalid")
     .required("popup-registration-phoneNumber-required"),
   agreement: boolean()
     .oneOf([true], "You must accept the Privacy and Cookie Policy")

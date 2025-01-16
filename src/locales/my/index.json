@@ -1630,5 +1630,14 @@
   "popup-registration-email-required": "E-mel diperlukan",
   "popup-registration-name-invalid": "Sila masukkan nama pertama dan nama akhir menggunakan aksara Latin sahaja (A-Z)",
   "popup-registration-email-invalid": "Mesti merupakan e-mel yang sah",
-  "popup-registration-phoneNumber-invalid": "Sila masukkan nombor sahaja"
+  "popup-registration-phoneNumber-numbers-only": "Sila masukkan nombor sahaja",
+  "popup-registration-phoneNumber-invalid": "Sila masukkan nombor telefon yang sah",
+  "popup-registration-error-invalid-data": "Data yang diberikan tidak sah.",
+  "popup-registration-error-signature-verification": "Pengesahan tandatangan gagal.",
+  "popup-registration-error-email-format": "Format emel tidak betul.",
+  "popup-registration-error-email-taken": "Emel telah digunakan.",
+  "popup-registration-error-blacklisted": "Pengguna dalam senarai hitam.",
+  "popup-registration-error-referral-code": "Ralat kod rujukan.",
+  "popup-registration-error-registration-failed": "Pendaftaran pengguna gagal.",
+  "popup-registration-error-password-format": "Format kata laluan tidak betul, sertakan Nombor dan huruf."
 }
