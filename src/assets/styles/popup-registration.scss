@@ -189,6 +189,11 @@
         top: 20%; // Adjust as needed for vertical positioning
         font-size: 0.625rem; // Font size
       }
+
+      @include desktop-lg {
+        top: 20%; // Adjust as needed for vertical positioning
+        font-size: 0.75rem; // Font size
+      }
     }
   }
 
@@ -606,7 +611,7 @@
     }
 
     // Desktop styles
-    @media (min-width: 768px) {
+    @include desktop-lg {
       .country-field {
         grid-column: 1;
       }
@@ -624,6 +629,18 @@
 
       .phone-field {
         width: 100%;
+      }
+    }
+
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      .mobile-code-phone {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
       }
     }
 
