@@ -987,13 +987,14 @@
     border-radius: 0 0.625rem 0.625rem 0;
 
     @include mobile {
-      border-radius: 0.625rem 0.625rem 0 0; // Rounded corners on top
+      border-radius: 0.625rem 0.625rem 0 0;
     }
 
     &__title--rtl {
+      position: relative;
       max-width: 100%;
-      text-align: center;
       margin-bottom: 10px;
+      right: 11%;
     }
 
     &__close--rtl {
@@ -1008,10 +1009,10 @@
   }
 
   &__content--rtl {
-    border-radius: 0.625rem 0 0 0.625rem; // Rounded corners on bottom
+    border-radius: 0.625rem 0 0 0.625rem;
 
     @include mobile {
-      border-radius: 0 0 0.625rem 0.625rem; // Rounded corners on bottom
+      border-radius: 0 0 0.625rem 0.625rem;
     }
   }
 
@@ -1026,7 +1027,6 @@
     float: right;
   }
 
-  // Style for all inputs in RTL mode
   &__form-group input {
     &[dir="rtl"],
     .popup-registration__container--rtl & {
@@ -1040,7 +1040,6 @@
     }
   }
 
-  // Additional specific styles for tel input if needed
   &__input--rtl[type="tel"] {
     text-align: right;
     direction: rtl;
@@ -1055,12 +1054,12 @@
 h1.popup-registration-register--rtl {
   text-align: right;
   margin-top: 0;
-  margin-bottom: 2.1875rem; // Space below header in rem
-  color: #1a1a1a; // Darker text color
-  font-size: 1.5rem; // Font size
+  margin-bottom: 2.1875rem;
+  color: #1a1a1a;
+  font-size: 1.5rem;
 
   @include mobile {
-    font-size: 1.125rem; // Font size
-    margin-bottom: 1.5rem; // Space below header in rem
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
   }
 }
