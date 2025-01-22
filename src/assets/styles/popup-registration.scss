@@ -60,53 +60,85 @@
   }
 
   &__sidebar {
-    background-color: #ff4400; // Sidebar background color
-    background-image: url("../images/bg/register-img.png"); // Path to your image
-    background-size: 85% auto; // Set width to 50% of the sidebar, height auto to maintain aspect ratio
-    background-repeat: no-repeat; // Prevent the image from repeating
-    background-position: center calc(55%); // Center the image
-    width: 40%; // Adjust width as needed
+    background-color: #ff4400;
+    background-image: url("../images/bg/register-img.png");
+    background-size: 85% auto;
+    background-repeat: no-repeat;
+    background-position: center calc(55%);
+    width: 40%;
     border-radius: 0.625rem 0 0 0.625rem;
-    align-items: center; // Center items horizontally
-    color: #fff; // Adjust text color for visibility
-
-    @include mobile {
-      position: relative;
-      background-size: 75% auto; // Set width to 50% of the sidebar, height auto to maintain aspect ratio
-      background-position: center calc(70%); // Center the image
-      width: 100%; // Full width for mobile
-      padding: 2.25rem 1.25rem; // Padding in rem for mobile
-      border-radius: 0.625rem 0.625rem 0 0; // Rounded corners on top
-      max-height: 21.875rem; // Max height for mobile
-    }
-
-    @include tablet {
-      padding: 1.25rem; // Padding in rem for tablet
-    }
-
-    @include desktop-lg {
-      padding: 3.125rem; // Padding in rem for desktop-lg
-    }
-
-    @include desktop-xl {
-      padding: 4.813rem 3.375rem 0 3.375rem; // Padding in rem for desktop-xl
-    }
+    align-items: center;
+    color: #1a1a1a;
+    position: relative; // Add this to contain absolute positioned elements
 
     &__title {
       font-family: $font-sidebar;
-      font-size: 1.5rem; // Ensure consistent font size
-      font-weight: map-get($font-weight, "black"); // Bold font weight
-      color: #1a1a1a; // Dark color
-      margin-bottom: 3.125rem; // Margin in rem
-      line-height: 1.2; // Set line height for better readability
+      font-size: 1.5rem;
+      font-weight: map-get($font-weight, "black");
+      color: #1a1a1a;
+      margin-bottom: 3.125rem;
+      line-height: 1.2;
+      white-space: pre-line;
+      padding: 3.125rem; // Add consistent padding
+
+      .normal-text {
+        display: inline;
+        font-weight: map-get($font-weight, "regular");
+      }
+
+      .highlighted {
+        display: inline;
+        font-weight: map-get($font-weight, "black");
+
+        .white-text {
+          color: #ffffff;
+        }
+
+        .journey {
+          display: inline;
+          color: #1a1a1a;
+        }
+      }
 
       @include mobile {
-        font-size: 1.125rem; // Ensure consistent font size
+        font-size: 1.125rem;
+        padding: 2.25rem 1.25rem;
       }
 
       @include tablet {
-        margin-bottom: 1.25rem; // Ensure consistent font size
+        margin-bottom: 1.25rem;
+        padding: 1.25rem;
       }
+
+      @include desktop-lg {
+        padding: 3.125rem;
+      }
+
+      @include desktop-xl {
+        padding: 4.813rem 3.375rem 0 3.375rem;
+      }
+    }
+
+    @include mobile {
+      position: relative;
+      background-size: 70% auto;
+      background-position: center calc(70%);
+      width: 100%;
+      padding: 0;
+      border-radius: 0.625rem 0.625rem 0 0;
+      max-height: 21.875rem;
+    }
+
+    @include tablet {
+      padding: 0;
+    }
+
+    @include desktop-lg {
+      padding: 0;
+    }
+
+    @include desktop-xl {
+      padding: 0;
     }
   }
 
@@ -145,6 +177,17 @@
         font-size: 1.125rem; // Font size
         margin-bottom: 1.5rem; // Space below header in rem
       }
+
+      // For mobile landscape
+      @media screen and (max-width: $max-lg) and (orientation: landscape) {
+        font-size: 1.125rem;
+        text-align: left;
+        width: 100%;
+        max-width: 37.5rem;
+        margin: 0 auto 1.5rem;
+        padding: 0 1.25rem;
+        box-sizing: border-box;
+      }
     }
   }
 
@@ -160,7 +203,6 @@
 
     .benefits-container {
       position: absolute; // Use absolute positioning
-      top: 20%; // Adjust as needed for vertical positioning
       left: 50%; // Center horizontally
       transform: translateX(
         -50%
@@ -173,25 +215,27 @@
       padding: 1.25rem; // Add padding for aesthetics
       border-radius: 0.625rem; // Optional: rounded corners
       width: 100%; // Adjust width as needed
-      max-width: 25rem; // Optional: max width
+      max-width: 22.875rem; // Optional: max width
       font-size: 0.75rem; // Font size
       font-weight: map-get($font-weight, "regular");
+      color: #ffffff;
       line-height: 1.5; // Line height for better readability
 
       @include mobile {
-        width: 100%; // Full width for mobile
-        top: 13%; // Adjust as needed for vertical positioning
+        width: 90%; // Full width for mobile
+        top: 25%; // Adjust as needed for vertical positioning
         border-radius: 0.625rem; // Rounded corners for mobile
         font-size: 0.625rem; // Font size
       }
 
       @include tablet {
-        top: 20%; // Adjust as needed for vertical positioning
+        width: 90%;
+        top: 25%; // Adjust as needed for vertical positioning
         font-size: 0.625rem; // Font size
       }
 
       @include desktop-lg {
-        top: 20%; // Adjust as needed for vertical positioning
+        top: 40%; // Adjust as needed for vertical positioning
         font-size: 0.75rem; // Font size
       }
     }
@@ -223,7 +267,7 @@
     display: flex; // Align bullet and text
     align-items: center; // Center items vertically
     gap: 0.5rem; // Space between bullet and text
-    margin-bottom: 0.5rem; // Space between items
+    margin-bottom: 0.375rem; // Space between items
   }
 
   .benefits-item:last-child {
@@ -374,7 +418,7 @@
     }
 
     @include mobile {
-      font-size: 0.688rem;
+      font-size: 0.6875rem;
     }
   }
 
@@ -504,7 +548,6 @@
       &--selected {
         background-color: #ff4400;
         color: white;
-        position: relative;
       }
 
       &--active {
@@ -632,20 +675,8 @@
       }
     }
 
-    @include tablet {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-
-      .mobile-code-phone {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-      }
-    }
-
-    // Mobile styles (unchanged)
-    @include mobile {
+    // Mobile and Tablet styles
+    @media screen and (max-width: $max-lg) {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
@@ -719,6 +750,228 @@
       box-sizing: border-box;
     }
   }
+
+  // Add media query for landscape orientation
+  @media screen and (max-width: $max-lg) and (orientation: landscape) {
+    .popup-registration {
+      &__container {
+        flex-direction: column; // Stack elements vertically
+        height: auto;
+        max-height: 100vh;
+        overflow-y: auto;
+        padding: 0.625rem;
+        margin: 0.625rem;
+      }
+
+      &__sidebar {
+        position: relative;
+        width: 100%;
+        background-size: 30% auto;
+        padding: 1.25rem;
+        border-radius: 0.625rem 0.625rem 0 0;
+        max-height: 18.75rem;
+
+        .benefits-container {
+          position: absolute;
+          top: 5.625rem; // Added specific top position to avoid overlapping with h1
+          left: 50%;
+          transform: translateX(-50%);
+          width: 90%;
+          max-width: 37.5rem;
+          height: 12.5rem;
+          background: rgba(26, 26, 26, 0.95);
+          backdrop-filter: blur(5px);
+          padding: 1rem;
+          border-radius: 0.625rem;
+          box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.25);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          z-index: 100;
+
+          // Grid layout for benefits items
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.25rem;
+
+          .benefits-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.25rem;
+            padding: 0;
+            margin-bottom: 0;
+
+            .normal-text {
+              width: 0.75rem;
+              min-width: 0.75rem;
+              margin-top: 0.125rem;
+            }
+
+            .highlighted {
+              color: #ffffff;
+              font-size: 0.6875rem;
+              line-height: 1.3;
+              letter-spacing: 0.01em;
+            }
+          }
+        }
+
+        // Add close button to sidebar
+        .popup-registration__sidebar__close-mobile {
+          display: block; // Only show for mobile
+          position: absolute;
+          top: 0.9375rem;
+          right: 0.9375rem;
+          cursor: pointer;
+          width: 0.9375rem;
+          height: 0.9375rem;
+          z-index: 10000;
+        }
+      }
+
+      &__content {
+        width: 100%; // Full width
+        border-radius: 0 0 0.625rem 0.625rem;
+        padding: 8.75rem 1.25rem 1.875rem 1.25rem;
+
+        // Hide the original close button in content area
+        .popup-registration__close {
+          display: none;
+        }
+
+        // Adjust form container to have proper spacing
+        .popup-registration__form {
+          width: 100%;
+          max-width: 37.5rem;
+          margin: 0 auto;
+          padding: 0 1.25rem;
+        }
+
+        // Style risk warning container
+        .risk-warning-container {
+          width: 100%;
+          max-width: 37.5rem; // Match form width
+          margin: 1.25rem auto 0;
+          padding: 0 1.25rem;
+          text-align: center;
+
+          .risk-warning-content {
+            padding: 0.75rem;
+
+            .risk-warning-text {
+              color: #9b9b9b;
+              font-size: 0.6875rem;
+              line-height: 1.4;
+              margin: 0;
+            }
+          }
+        }
+      }
+
+      // Adjust form layout for landscape
+      &__form {
+        .name-fields {
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+        }
+
+        .three-fields-container {
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+
+          .mobile-code-phone {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+          }
+        }
+      }
+
+      // Adjust input and label sizes
+      &__label {
+        font-size: 0.75rem;
+      }
+
+      &__input,
+      .custom-dropdown__selected {
+        font-size: 0.75rem;
+      }
+
+      // Adjust spacing
+      &__row {
+        margin-bottom: 0.9375rem;
+      }
+
+      &__field {
+        margin-bottom: 0.9375rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // Specific adjustments for smaller landscape devices
+  @media screen and (max-width: 767px) and (orientation: landscape) {
+    .popup-registration__sidebar {
+      .benefits-container {
+        height: 12.5rem;
+        padding: 0.75rem;
+        top: 5.625rem; // Consistent top position
+
+        .benefits-item {
+          gap: 0.25rem;
+          padding: 0;
+          margin-bottom: 0;
+
+          .highlighted {
+            font-size: 0.625rem;
+          }
+        }
+      }
+    }
+  }
+
+  // iPad Mini and similar tablets in landscape mode
+  @media only screen and (min-width: 1024px) and (max-width: 1024px) and (orientation: landscape) {
+    .sidebar-area {
+      .benefits-container {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 25rem;
+        font-size: 0.6875rem; // Slightly smaller font (11px)
+        line-height: 1.2; // Tighter line height
+        background-color: rgba(26, 26, 26, 0.95);
+        border-radius: 0.625rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        // Compact benefits items
+        .benefits-item {
+          gap: 0.375rem; // Reduced gap
+          margin-bottom: 0.25rem; // Reduced margin
+          padding: 0.3125rem 0; // Minimal padding
+          display: flex;
+          align-items: center;
+
+          // Slightly smaller icons
+          .normal-text {
+            width: 0.75rem;
+            min-width: 0.75rem;
+          }
+        }
+
+        // Hover effect on items
+        .benefits-item:hover {
+          background-color: rgba(255, 255, 255, 0.05);
+          border-radius: 0.25rem;
+          transition: all 0.2s ease;
+        }
+      }
+    }
+  }
 }
 
 .recaptcha-terms-text {
@@ -765,7 +1018,7 @@
   margin: 0.3125rem 0;
 
   @include mobile {
-    font-size: 0.688rem;
+    font-size: 0.6875rem;
   }
 }
 
@@ -795,14 +1048,17 @@
 }
 
 .popup-registration__sidebar__close-mobile {
+  display: none; // Hide by default for desktop
+
   @include mobile {
-    position: absolute; // Position absolutely within the sidebar
-    top: 0.9375rem; // Adjust top position
-    right: 0.9375rem; // Adjust right position
-    cursor: pointer; // Pointer cursor on hover
-    width: 0.9375rem; // Set width
-    height: 0.9375rem; // Set height
-    // z-index: 10000; // Ensure it appears above other elements
+    display: block; // Only show for mobile
+    position: absolute;
+    top: 0.9375rem;
+    right: 0.9375rem;
+    cursor: pointer;
+    width: 0.9375rem;
+    height: 0.9375rem;
+    z-index: 10000;
   }
 }
 
@@ -912,7 +1168,6 @@
     &--selected {
       background-color: #ff4400;
       color: white;
-      position: relative;
     }
 
     &--active {

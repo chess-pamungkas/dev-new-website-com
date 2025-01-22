@@ -54,13 +54,17 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
   const isRTL = useRtlDirection();
   const { isMobile } = useWindowSize();
 
-  // console.log("PopupRegistration:", { isOpen, className });
-
   if (!isOpen) return null;
 
   const benefits = benefitsConfig.filter(({ entities }) =>
     entities.includes(currentEntity)
   );
+
+  const handleClose = () => {
+    if (typeof onClose === "function") {
+      onClose();
+    }
+  };
 
   return (
     <div
@@ -80,27 +84,21 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
               "popup-registration__sidebar--rtl": isRTL,
             })}
           >
-            {isRTL ? (
+            {(isRTL ||
+              isMobile ||
+              window.matchMedia("(orientation: landscape)").matches) && (
               <img
                 src={closemage}
                 alt="Close"
                 className={cn(
-                  "popup-registration__sidebar--rtl__close--rtl",
+                  isRTL
+                    ? "popup-registration__sidebar--rtl__close--rtl"
+                    : "popup-registration__sidebar__close-mobile",
                   className
                 )}
-                onClick={onClose}
+                onClick={handleClose}
               />
-            ) : isMobile ? (
-              <img
-                src={closemage}
-                alt="Close"
-                className={cn(
-                  "popup-registration__sidebar__close-mobile",
-                  className
-                )}
-                onClick={onClose}
-              />
-            ) : null}
+            )}
             <div className="sidebar-area">
               <div
                 className={cn("popup-registration__sidebar__title", className, {
@@ -109,10 +107,10 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
               >
                 <Trans i18nKey="popup-registration-title" ns="index">
                   <span className="normal-text">Embark on the</span>
-                  <div className="highlighted">
-                    OQTIMA Trading
-                    <span>Journey</span>
-                  </div>
+                  <span className="highlighted">
+                    <span className="white-text">OQTIMA Trading</span>
+                    <span className="journey">Journey</span>
+                  </span>
                 </Trans>
               </div>
               <div className="benefits-container">
@@ -130,6 +128,14 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
               "popup-registration__content--rtl": isRTL,
             })}
           >
+            {!isRTL && !isMobile && (
+              <img
+                src={closemage}
+                alt="Close"
+                className="popup-registration__close"
+                onClick={handleClose}
+              />
+            )}
             <h1
               className={cn("popup-registration-register", className, {
                 "popup-registration-register--rtl": isRTL,
@@ -138,14 +144,6 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
               {t("popup-registration-register")}
             </h1>
             <PopupRegistrationForm params={params} />
-            {!isRTL && !isMobile && (
-              <img
-                src={closemage}
-                alt="Close"
-                className={cn("popup-registration__close", className)}
-                onClick={onClose}
-              />
-            )}
             <div className="risk-warning-container">
               <div className="risk-warning-content">
                 <p className="risk-warning-text">
