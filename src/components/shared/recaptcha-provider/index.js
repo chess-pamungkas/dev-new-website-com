@@ -10,21 +10,32 @@ const ReCaptchaProvider = ({ children, showBadge = false }) => {
     script.defer = true;
     script.id = "google-recaptcha-v3";
 
-    script.onload = () => {
-      console.log("reCAPTCHA script loaded successfully");
-    };
+    // script.onload = () => {
+    //   console.log("reCAPTCHA script loaded successfully");
+    // };
 
-    script.onerror = (error) => {
-      console.error("Error loading reCAPTCHA script:", error);
-    };
+    // script.onerror = (error) => {
+    //   console.error("Error loading reCAPTCHA script:", error);
+    // };
 
     document.body.appendChild(script);
 
-    // Add style to hide/show badge based on showBadge prop
+    // Update style to position badge at bottom left
     const style = document.createElement("style");
     style.innerHTML = `
       .grecaptcha-badge { 
         visibility: ${showBadge ? "visible" : "hidden"} !important;
+        left: 0 !important;
+        right: auto !important;
+        bottom: 0 !important;
+        position: fixed !important;
+        z-index: 999999 !important;
+        width: 70px !important;
+        transition: width 0.3s ease !important;
+        overflow: hidden !important;
+      }
+      .grecaptcha-badge:hover {
+        width: 256px !important;
       }
     `;
     document.head.appendChild(style);

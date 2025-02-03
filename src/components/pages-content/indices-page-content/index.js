@@ -84,6 +84,7 @@ const IndicesContent = () => {
       <MarketingCircle
         animation={animation}
         btnOnClick={handleShowRegistrationPopup}
+        isIndices={true}
         upper={
           <HighlightedLocalizationText
             localizationText="indices_marketing-circle-upper"

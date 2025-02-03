@@ -76,6 +76,7 @@ const EnergiesContent = () => {
       <MarketingCircle
         animation={animation}
         btnOnClick={handleShowRegistrationPopup}
+        isEnergies={true}
         upper={
           <HighlightedLocalizationText
             localizationText="energies_marketing-circle-upper"
