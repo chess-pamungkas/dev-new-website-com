@@ -38,7 +38,16 @@ const CodeDropdown = ({
   errors,
   touched,
 }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const initialActiveIndex = useMemo(() => {
+    if (!selectedCountryCode) return 0;
+    return (
+      countries.findIndex((country) => country.code === selectedCountryCode) ||
+      0
+    );
+  }, [selectedCountryCode]);
+
+  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+
   const filteredCodes = useMemo(() => {
     if (!searchCode) return countries;
     const searchTerm = searchCode.toLowerCase().trim();
@@ -52,6 +61,17 @@ const CodeDropdown = ({
       country.name.toLowerCase().startsWith(searchTerm)
     );
   }, [searchCode]);
+
+  useEffect(() => {
+    if (codeOptionsRef.current && selectedCountryCode) {
+      const selectedElement = codeOptionsRef.current.querySelector(
+        ".custom-dropdown__option--selected"
+      );
+      if (selectedElement) {
+        selectedElement.scrollIntoView({ block: "center", behavior: "auto" });
+      }
+    }
+  }, [selectedCountryCode]);
 
   const handleKeyDown = (e) => {
     switch (e.key) {
@@ -135,7 +155,25 @@ const CountryDropdown = ({
   errors,
   touched,
 }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const initialActiveIndex = useMemo(() => {
+    if (!selectedCountry) return 0;
+    return (
+      countries.findIndex((country) => country.name === selectedCountry) || 0
+    );
+  }, [selectedCountry]);
+
+  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+
+  useEffect(() => {
+    if (countryOptionsRef.current && selectedCountry) {
+      const selectedElement = countryOptionsRef.current.querySelector(
+        ".custom-dropdown__option--selected"
+      );
+      if (selectedElement) {
+        selectedElement.scrollIntoView({ block: "center", behavior: "auto" });
+      }
+    }
+  }, [selectedCountry]);
 
   const handleKeyDown = (e) => {
     switch (e.key) {
@@ -210,7 +248,6 @@ const PopupRegistrationForm = ({ params }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isSentSuccessful, setIsSentSuccessful] = useState(null);
   const API_URL = process.env.GATSBY_OQTIMA_API_URL;
-  console.log("API_URL", API_URL);
   const { executeRecaptcha } = useGoogleReCaptcha();
   const { clientConfig } = useContext(ClientResolverContext);
   const { selectedLanguage } = useContext(LanguageContext);
@@ -228,6 +265,20 @@ const PopupRegistrationForm = ({ params }) => {
     privacyPolicy: "",
     cookiePolicy: "",
   });
+
+  useEffect(() => {
+    if (clientConfig?.countryName) {
+      const matchingCountry = countries.find(
+        (country) =>
+          country.name.toLowerCase() === clientConfig.countryName.toLowerCase()
+      );
+
+      if (matchingCountry) {
+        setSelectedCountry(matchingCountry.name);
+        setSelectedCountryCode(matchingCountry.code);
+      }
+    }
+  }, [clientConfig]);
 
   useEffect(() => {
     const fetchPolicyLinks = async () => {
@@ -248,7 +299,7 @@ const PopupRegistrationForm = ({ params }) => {
           cookiePolicy: cookieLink,
         });
       } catch (error) {
-        console.error("Error fetching policy links:", error);
+        // console.error("Error fetching policy links:", error);
         sendLog({ message: error.message, type: error.name });
       }
     };
@@ -314,7 +365,7 @@ const PopupRegistrationForm = ({ params }) => {
         first_name: "",
         last_name: "",
         email: "",
-        country: "",
+        country: clientConfig?.countryName || "",
         country_code: "",
         mobile: "",
         is_subscribe: 1,
