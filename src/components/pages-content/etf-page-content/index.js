@@ -75,6 +75,7 @@ const ETFContent = () => {
       <MarketingCircle
         animation={animation}
         btnOnClick={handleShowRegistrationPopup}
+        isEtf={true}
         upper={
           <HighlightedLocalizationText
             localizationText="etf_marketing-circle-upper"

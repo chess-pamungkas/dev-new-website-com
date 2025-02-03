@@ -139,6 +139,7 @@ const ForexContent = () => {
       <MarketingCircle
         animation={animation}
         btnOnClick={handleShowRegistrationPopup}
+        isForex={true}
         upper={
           <HighlightedLocalizationText
             localizationText="forex_marketing-circle-upper"

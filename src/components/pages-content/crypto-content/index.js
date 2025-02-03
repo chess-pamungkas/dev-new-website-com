@@ -77,6 +77,7 @@ const CryptoContent = () => {
       <MarketingCircle
         animation={animation}
         btnOnClick={handleShowRegistrationPopup}
+        isCrypto={true}
         upper={
           <HighlightedLocalizationText
             localizationText={`crypto_marketing-circle-upper-fsa`}
