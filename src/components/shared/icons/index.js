@@ -1,5 +1,20 @@
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
+import "../../../assets/styles/flag-icons.scss";
+import enFlag from "../../../assets/images/icons/languages/en.svg";
+import deFlag from "../../../assets/images/icons/languages/de.svg";
+import frFlag from "../../../assets/images/icons/languages/fr.svg";
+import ptFlag from "../../../assets/images/icons/languages/pt.svg";
+import esFlag from "../../../assets/images/icons/languages/es.svg";
+import itFlag from "../../../assets/images/icons/languages/it.svg";
+import cnFlag from "../../../assets/images/icons/languages/cn.svg";
+import vnFlag from "../../../assets/images/icons/languages/vn.svg";
+import thFlag from "../../../assets/images/icons/languages/th.svg";
+import idFlag from "../../../assets/images/icons/languages/id.svg";
+import jpFlag from "../../../assets/images/icons/languages/jp.svg";
+import brFlag from "../../../assets/images/icons/languages/br.svg";
+import myFlag from "../../../assets/images/icons/languages/my.svg";
+import arFlag from "../../../assets/images/icons/languages/ar.svg";
 
 export const LogoTextMain = ({ className }) => (
   <svg
@@ -747,129 +762,87 @@ export const AdvantageIcon7 = ({ className }) => (
 const FLAG_WIDTH = 25;
 
 export const EnFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/en.svg"
-    alt="en"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={enFlag} alt="en" />
+  </span>
 );
 
 export const DeFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/de.svg"
-    alt="de"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={deFlag} alt="de" />
+  </span>
 );
 
 export const FrFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/fr.svg"
-    alt="fr"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={frFlag} alt="fr" />
+  </span>
 );
 
 export const PtFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/pt.svg"
-    alt="pt"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={ptFlag} alt="pt" />
+  </span>
 );
 
 export const EsFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/es.svg"
-    alt="es"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={esFlag} alt="es" />
+  </span>
 );
 
 export const ItFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/it.svg"
-    alt="it"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={itFlag} alt="it" />
+  </span>
 );
 
 export const CnFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/cn.svg"
-    alt="cn"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={cnFlag} alt="cn" />
+  </span>
 );
 
 export const VnFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/vn.svg"
-    alt="vn"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={vnFlag} alt="vn" />
+  </span>
 );
 
 export const ThFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/th.svg"
-    alt="th"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={thFlag} alt="th" />
+  </span>
 );
 
 export const IdFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/id.svg"
-    alt="id"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={idFlag} alt="id" />
+  </span>
 );
 
 export const JpFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/jp.svg"
-    alt="jp"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={jpFlag} alt="jp" />
+  </span>
 );
 
 export const BrFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/br.svg"
-    alt="pt"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={brFlag} alt="br" />
+  </span>
 );
 
 export const MyFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/my.svg"
-    alt="my"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={myFlag} alt="my" />
+  </span>
 );
 
 export const ArFlagIcon = ({ className }) => (
-  <StaticImage
-    className={className}
-    src="../../../assets/images/icons/languages/ar.svg"
-    alt="ar"
-    width={FLAG_WIDTH}
-  />
+  <span className={`flag-icon ${className || ""}`}>
+    <img src={arFlag} alt="ar" />
+  </span>
 );
 
 export const SearchIcon = ({ className }) => (
