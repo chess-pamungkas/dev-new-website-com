@@ -63,6 +63,10 @@ const CodeDropdown = ({
   }, [searchCode]);
 
   useEffect(() => {
+    setActiveIndex(0);
+  }, [searchCode]);
+
+  useEffect(() => {
     if (codeOptionsRef.current && selectedCountryCode) {
       const selectedElement = codeOptionsRef.current.querySelector(
         ".custom-dropdown__option--selected"
@@ -163,6 +167,10 @@ const CountryDropdown = ({
   }, [selectedCountry]);
 
   const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [searchCountry]);
 
   useEffect(() => {
     if (countryOptionsRef.current && selectedCountry) {
