@@ -267,20 +267,6 @@ const PopupRegistrationForm = ({ params }) => {
   });
 
   useEffect(() => {
-    if (clientConfig?.countryName) {
-      const matchingCountry = countries.find(
-        (country) =>
-          country.name.toLowerCase() === clientConfig.countryName.toLowerCase()
-      );
-
-      if (matchingCountry) {
-        setSelectedCountry(matchingCountry.name);
-        setSelectedCountryCode(matchingCountry.code);
-      }
-    }
-  }, [clientConfig]);
-
-  useEffect(() => {
     const fetchPolicyLinks = async () => {
       try {
         const response = await axios.get(`${API_URL}crm-register/policy-links`);
@@ -366,14 +352,21 @@ const PopupRegistrationForm = ({ params }) => {
         last_name: "",
         email: "",
         country: clientConfig?.countryName || "",
-        country_code: "",
+        country_code: clientConfig?.countryCode
+          ? countries.find(
+              (country) =>
+                country.name.toLowerCase() ===
+                clientConfig.countryName.toLowerCase()
+            )?.code || ""
+          : "",
         mobile: "",
         is_subscribe: 1,
         agreement: 0,
       }}
       validationSchema={PopupRegistrationSchema}
       onSubmit={handleRegistrationtForm}
-      enableReinitialize
+      validateOnMount={true}
+      enableReinitialize={true}
     >
       {({
         values,
@@ -384,14 +377,31 @@ const PopupRegistrationForm = ({ params }) => {
         handleSubmit,
         setFieldValue,
       }) => {
+        // Move the initialization effect here where setFieldValue is available
+        useEffect(() => {
+          if (clientConfig?.countryName) {
+            const matchingCountry = countries.find(
+              (country) =>
+                country.name.toLowerCase() ===
+                clientConfig.countryName.toLowerCase()
+            );
+            if (matchingCountry) {
+              setSelectedCountry(matchingCountry.name);
+              setSelectedCountryCode(matchingCountry.code);
+              setFieldValue("country", matchingCountry.name, true);
+              setFieldValue("country_code", matchingCountry.code, true);
+            }
+          }
+        }, [clientConfig, setFieldValue]);
+
         const handleCountrySelect = (countryName) => {
           setSelectedCountry(countryName);
           const matchingCountry = countries.find((c) => c.name === countryName);
           if (matchingCountry?.code) {
             setSelectedCountryCode(matchingCountry.code);
-            setFieldValue("country_code", matchingCountry.code);
+            setFieldValue("country_code", matchingCountry.code, true);
           }
-          setFieldValue("country", countryName);
+          setFieldValue("country", countryName, true);
           setIsCountryOpen(false);
           setSearchCountry("");
         };
@@ -401,9 +411,9 @@ const PopupRegistrationForm = ({ params }) => {
           const matchingCountry = countries.find((c) => c.code === code);
           if (matchingCountry?.name) {
             setSelectedCountry(matchingCountry.name);
-            setFieldValue("country", matchingCountry.name);
+            setFieldValue("country", matchingCountry.name, true);
           }
-          setFieldValue("country_code", code);
+          setFieldValue("country_code", code, true);
           setIsCodeOpen(false);
           setSearchCode("");
         };
