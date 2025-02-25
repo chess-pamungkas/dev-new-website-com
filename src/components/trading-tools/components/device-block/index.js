@@ -6,8 +6,9 @@ import tabletIcon from "../../../../assets/images/icons/tablet.svg";
 import laptopIcon from "../../../../assets/images/icons/laptop.svg";
 import devicesIcon from "../../../../assets/images/icons/devices-sm.svg";
 
-const DeviceBlock = ({ className, isAnimationStarted }) => {
+const DeviceBlock = ({ className, isAnimationStarted, isRTL }) => {
   const calculateLeftPosition = (ref) => {
+    if (isRTL) return null;
     const clientRect = ref.current?.getBoundingClientRect();
     return -(clientRect?.left + clientRect?.width) + "px";
   };
@@ -16,29 +17,41 @@ const DeviceBlock = ({ className, isAnimationStarted }) => {
   const tabletIconRef = useRef();
   const laptopIconRef = useRef();
 
-  const [phoneLeftPosition, setPhoneLeftPosition] = useState("inherit");
-  const [tabletLeftPosition, setTabletLeftPosition] = useState("inherit");
-  const [laptopLeftPosition, setLaptopLeftPosition] = useState("inherit");
+  const [phoneLeftPosition, setPhoneLeftPosition] = useState(
+    isRTL ? null : "inherit"
+  );
+  const [tabletLeftPosition, setTabletLeftPosition] = useState(
+    isRTL ? null : "inherit"
+  );
+  const [laptopLeftPosition, setLaptopLeftPosition] = useState(
+    isRTL ? null : "inherit"
+  );
 
   useEffect(() => {
-    setPhoneLeftPosition(calculateLeftPosition(phoneIconRef));
-  }, [phoneIconRef]);
+    if (!isRTL) {
+      setPhoneLeftPosition(calculateLeftPosition(phoneIconRef));
+    }
+  }, [phoneIconRef, isRTL]);
 
   useEffect(() => {
-    setTabletLeftPosition(calculateLeftPosition(tabletIconRef));
-  }, [tabletIconRef]);
+    if (!isRTL) {
+      setTabletLeftPosition(calculateLeftPosition(tabletIconRef));
+    }
+  }, [tabletIconRef, isRTL]);
 
   useEffect(() => {
-    setLaptopLeftPosition(calculateLeftPosition(laptopIconRef));
-  }, [laptopIconRef]);
+    if (!isRTL) {
+      setLaptopLeftPosition(calculateLeftPosition(laptopIconRef));
+    }
+  }, [laptopIconRef, isRTL]);
 
   useEffect(() => {
-    if (isAnimationStarted) {
+    if (isAnimationStarted || isRTL) {
       setLaptopLeftPosition(null);
       setTabletLeftPosition(null);
       setPhoneLeftPosition(null);
     }
-  }, [isAnimationStarted]);
+  }, [isAnimationStarted, isRTL]);
 
   return (
     <div className={cn("device-block", className)}>
@@ -87,6 +100,11 @@ const DeviceBlock = ({ className, isAnimationStarted }) => {
 DeviceBlock.propTypes = {
   className: PropTypes.string,
   isAnimationStarted: PropTypes.bool.isRequired,
+  isRTL: PropTypes.bool,
+};
+
+DeviceBlock.defaultProps = {
+  isRTL: false,
 };
 
 export default DeviceBlock;

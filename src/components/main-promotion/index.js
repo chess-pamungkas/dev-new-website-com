@@ -13,10 +13,15 @@ import {
 import { transformParamToKey } from "../../helpers/services/marketing-service";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import LanguageContext from "../../context/language-context";
+import { isCySEC } from "../../helpers/entity-resolver";
+import scrollMouse from "../../assets/images/scroll-mouse.svg";
+import scrollFinger from "../../assets/images/scroll-finger.svg";
+import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import ButtonPopup from "../shared/button-popup";
 
 const MainPromotion = ({ className, isShowHero = true }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+  const { isTablet } = useWindowSize();
 
   const { t } = useTranslationWithVariables();
   const { selectedLanguage } = useContext(LanguageContext);
@@ -40,80 +45,114 @@ const MainPromotion = ({ className, isShowHero = true }) => {
     SECT1_TEXT_SEQUENCES[transformParamToKey(sect1)] || DEFAULT_TEXT_SEQUENCE;
 
   return (
-    <section
-      className={cn("main-promotion", className, {
-        "main-promotion--rtl": isRTL,
-      })}
-    >
-      {isShowHero && (
-        <>
-          <div className="main-promotion__person">
-            <span className="main-promotion__name">{t(hero.name)}</span>
-            {selectedLanguage.id === "jp" &&
-              hero.surname && ( // Conditionally render surname for Japanese locale
-                <span className="main-promotion__name">{t(hero.surname)}</span>
-              )}
-            <span className="main-promotion__description">{t(hero.text)}</span>
-          </div>
-          <div className="main-promotion__photo">
-            <img
-              src={hero.image}
-              alt={hero.name}
-              className="main-promotion__img"
-            />
-          </div>
-        </>
-      )}
+    <>
       <div
-        className={cn("main-promotion__wrapper", {
-          "main-promotion__wrapper--without-hero": !isShowHero,
+        className={cn("main-promotion-bg", {
+          "main-promotion-bg--cysec": isCySEC,
+        })}
+      />
+      <section
+        className={cn("main-promotion", className, {
+          "main-promotion--rtl": isRTL,
+          "main-promotion--cysec": isCySEC,
         })}
       >
-        <div className="main-promotion__block">
-          <h1 className="main-promotion__title-wrapper">
-            <span className="main-promotion__title">
-              {t("index_main-promotion-title")}
-            </span>
-            <span className="main-promotion__title main-promotion__title--big">
-              {selectedLanguage.id !== "jp" ? (
-                <TitlesAnimation
-                  titles={titles}
-                  isAnimationFinished={isAnimationFinished}
-                  setIsAnimationFinished={setIsAnimationFinished}
+        {isShowHero && (
+          <>
+            {isCySEC ? (
+              <div className="main-promotion__scroll">
+                <span className="main-promotion__scroll-text">
+                  {t("index_promotion1-btn-text")}
+                </span>
+                <img
+                  src={isTablet ? scrollFinger : scrollMouse}
+                  alt=""
+                  className="main-promotion__scroll-img"
                 />
-              ) : (
-                <span>{t(titles[0])}</span>
-              )}
-            </span>
-          </h1>
-          <ButtonPopup
-            onClick={handleShowRegistrationPopup}
-            className={cn({
-              "button-link--snake-animation": isAnimationFinished,
+              </div>
+            ) : (
+              <div className="main-promotion__person">
+                <span className="main-promotion__name">{t(hero.name)}</span>
+                {selectedLanguage.id === "jp" && hero.surname && (
+                  <span className="main-promotion__name">
+                    {t(hero.surname)}
+                  </span>
+                )}
+                <span className="main-promotion__description">
+                  {t(hero.text)}
+                </span>
+              </div>
+            )}
+            <div
+              className={cn("main-promotion__photo", {
+                "main-promotion__photo--cysec": isCySEC,
+              })}
+            >
+              <img
+                src={hero.image}
+                alt={hero.name}
+                className={cn("main-promotion__img", {
+                  "main-promotion__img--cysec": isCySEC,
+                })}
+              />
+            </div>
+          </>
+        )}
+        <div
+          className={cn("main-promotion__wrapper", {
+            "main-promotion__wrapper--without-hero": !isShowHero,
+            "main-promotion__wrapper--cysec": isCySEC,
+          })}
+        >
+          <div
+            className={cn("main-promotion__block", {
+              "main-promotion__block--cysec": isCySEC,
             })}
           >
-            {isAnimationFinished && (
-              <>
-                <span className="button-link--snake-animation-line-top" />
-                <span className="button-link--snake-animation-line-left" />
-                <span className="button-link--snake-animation-line-right" />
-                <span className="button-link--snake-animation-line-bottom" />
-              </>
-            )}
-            {t("button-trade-now")}
-          </ButtonPopup>
+            <h1 className="main-promotion__title-wrapper">
+              <span className="main-promotion__title">
+                {t("index_main-promotion-title")}
+              </span>
+              <span className="main-promotion__title main-promotion__title--big">
+                {selectedLanguage.id !== "jp" ? (
+                  <TitlesAnimation
+                    titles={titles}
+                    isAnimationFinished={isAnimationFinished}
+                    setIsAnimationFinished={setIsAnimationFinished}
+                  />
+                ) : (
+                  <span>{t(titles[0])}</span>
+                )}
+              </span>
+            </h1>
+            <ButtonPopup
+              onClick={handleShowRegistrationPopup}
+              className={cn({
+                "button-link--snake-animation": isAnimationFinished,
+              })}
+            >
+              {isAnimationFinished && (
+                <>
+                  <span className="button-link--snake-animation-line-top" />
+                  <span className="button-link--snake-animation-line-left" />
+                  <span className="button-link--snake-animation-line-right" />
+                  <span className="button-link--snake-animation-line-bottom" />
+                </>
+              )}
+              {t("button-trade-now")}
+            </ButtonPopup>
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Render the popup */}
       {isPopupOpen && (
         <ShowRegistrationPopup
           isOpen={isPopupOpen}
           onClose={handleClosePopup}
-          langParam={selectedLanguage.id} // Pass langParam if needed
+          langParam={selectedLanguage.id}
         />
       )}
-    </section>
+    </>
   );
 };
 

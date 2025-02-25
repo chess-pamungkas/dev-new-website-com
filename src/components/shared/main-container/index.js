@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import cn from "classnames";
 import CommonContext from "../../../context/common-context";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 
 const MainContainer = ({ children }) => {
   const { heightOffset } = useContext(CommonContext);
-  const { isDesktop } = useWindowSize();
+  const { isDesktop, isTablet, isMobile } = useWindowSize();
 
   return (
     <main id="main-container">
@@ -15,7 +16,7 @@ const MainContainer = ({ children }) => {
         }}
         className="header-offset-placeholder"
       />
-      {children}
+      <div className="container">{children}</div>
     </main>
   );
 };

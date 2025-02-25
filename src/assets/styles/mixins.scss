@@ -31,21 +31,48 @@
   }
 }
 
+@mixin desktop-2k {
+  @media screen and (min-width: $xxl) {
+    @content;
+  }
+}
+
+@mixin desktop-5k {
+  @media screen and (min-width: $xxxl) {
+    @content;
+  }
+}
+
 @mixin content-alignment($margin: 0 auto) {
   margin: $margin;
   padding-left: $padding-sm;
   padding-right: $padding-sm;
+  max-width: 100%;
+
   @include tablet {
     padding-left: $padding-md;
     padding-right: $padding-md;
   }
+
   @include desktop-lg {
     padding-left: $padding-lg;
     padding-right: $padding-lg;
+    // max-width: none;
   }
+
   @include desktop-xl {
     padding-left: $padding-xl;
     padding-right: $padding-xl;
+  }
+
+  @include desktop-2k {
+    padding-left: $padding-xl * 1.5;
+    padding-right: $padding-xl * 1.5;
+  }
+
+  @include desktop-5k {
+    padding-left: $padding-xl * 2;
+    padding-right: $padding-xl * 2;
   }
 }
 

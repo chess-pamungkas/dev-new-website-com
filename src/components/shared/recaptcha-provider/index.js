@@ -33,9 +33,20 @@ const ReCaptchaProvider = ({ children, showBadge = false }) => {
         width: 70px !important;
         transition: width 0.3s ease !important;
         overflow: hidden !important;
+        transform: none !important;
+        direction: ltr !important;
       }
       .grecaptcha-badge:hover {
         width: 256px !important;
+      }
+      .grecaptcha-badge .grecaptcha-logo {
+        transform: none !important;
+      }
+      [dir="rtl"] .grecaptcha-badge {
+        transform: none !important;
+      }
+      [dir="rtl"] .grecaptcha-badge .grecaptcha-logo {
+        transform: none !important;
       }
     `;
     document.head.appendChild(style);

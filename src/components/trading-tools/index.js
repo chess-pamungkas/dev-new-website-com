@@ -15,7 +15,9 @@ import { useTrail } from "react-spring";
 import { useIntersectionObserver } from "../../helpers/hooks/use-intersection-observer";
 import HighlightedLocalizationText from "../shared/highlighted-localization-text";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { sitePostfix } from "../../helpers/entity-resolver";
 import { setLangParam } from "../../helpers/services/language-service";
+import { useWindowSize } from "../../helpers/hooks/use-window-size";
 
 const TradingTools = ({ className }) => {
   const { t } = useTranslationWithVariables();
@@ -25,6 +27,7 @@ const TradingTools = ({ className }) => {
     freezeOnceVisible: true,
   });
   const platforms = getPlatforms();
+  const { isTablet, isMobile } = useWindowSize();
 
   const [isAnimationStarted, setIsAnimationStarted] = useState(false);
   const langParam = setLangParam();
@@ -40,10 +43,10 @@ const TradingTools = ({ className }) => {
       },
     },
     to: {
-      bottom: isAnimationStarted ? "0" : "-40px",
-      opacity: isAnimationStarted ? 1 : 0,
+      bottom: isRTL || isAnimationStarted ? "0" : "-40px",
+      opacity: isRTL || isAnimationStarted ? 1 : 0,
     },
-    delay: 1500,
+    delay: isRTL ? 0 : 1500,
   });
 
   useEffect(() => {
@@ -67,47 +70,50 @@ const TradingTools = ({ className }) => {
       })}
       dir={isRTL ? DIR_RTL : DIR_LTR}
     >
-      <div className="trading-tools__wrapper">
-        <div className="trading-tools__icon-wrapper">
-          {platformIconTrail.map((styles, i) => {
-            return (
-              <PlatformBlock
-                key={`platform-${Object.values(platforms)[i].title}`}
-                icon={Object.values(platforms)[i].icon}
-                title={t(Object.values(platforms)[i].title)}
-                animationStyle={styles}
-              />
-            );
-          })}
-        </div>
-        <DeviceBlock
-          className="trading-tools__img-wrapper device-block--animated"
-          isAnimationStarted={isAnimationStarted}
-        />
-        <h2 className="trading-tools__title" ref={containerRef}>
-          <HighlightedLocalizationText
-            localizationText={`index_trading-tools-title-fsa`}
-            wordsToHighlight={`trading-tools-title-accent-fsa`}
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-red"
+      <div className="container">
+        <div className="trading-tools__wrapper">
+          <div className="trading-tools__icon-wrapper">
+            {platformIconTrail.map((styles, i) => {
+              return (
+                <PlatformBlock
+                  key={`platform-${Object.values(platforms)[i].title}`}
+                  icon={Object.values(platforms)[i].icon}
+                  title={t(Object.values(platforms)[i].title)}
+                  animationStyle={styles}
+                />
+              );
+            })}
+          </div>
+          <DeviceBlock
+            className="trading-tools__img-wrapper device-block--animated"
+            isAnimationStarted={isRTL || isAnimationStarted}
+            isRTL={isRTL}
           />
-        </h2>
-        <ButtonPopup
-          onClick={handleShowRegistrationPopup}
-          className="trading-tools__btn"
-        >
-          {t("index_trading-tools-btn-text")}
-        </ButtonPopup>
-      </div>
+          <h2 className="trading-tools__title" ref={containerRef}>
+            <HighlightedLocalizationText
+              localizationText={`index_trading-tools-title${sitePostfix}`}
+              wordsToHighlight={`trading-tools-title-accent${sitePostfix}`}
+              primaryClassName="highlighted-in-black"
+              accentClassName="highlighted-in-red"
+            />
+          </h2>
+          <ButtonPopup
+            onClick={handleShowRegistrationPopup}
+            className="trading-tools__btn"
+          >
+            {t("index_trading-tools-btn-text")}
+          </ButtonPopup>
+        </div>
 
-      {/* Render the popup */}
-      {isPopupOpen && (
-        <ShowRegistrationPopup
-          isOpen={isPopupOpen}
-          onClose={handleClosePopup}
-          langParam={langParam} // Pass langParam if needed
-        />
-      )}
+        {/* Render the popup */}
+        {isPopupOpen && (
+          <ShowRegistrationPopup
+            isOpen={isPopupOpen}
+            onClose={handleClosePopup}
+            langParam={langParam} // Pass langParam if needed
+          />
+        )}
+      </div>
     </section>
   );
 };

@@ -4,22 +4,28 @@ import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import InternalLink from "../../../shared/internal-link";
 import LangSelect from "../lang-select";
+import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 
 const CornerPanel = ({ className, items }) => {
   const { t } = useTranslationWithVariables();
+  const { isDesktop, isTablet, isMobile } = useWindowSize();
 
   return (
     <div className={cn("corner-panel", className)}>
-      {items.map((item, key) => (
-        <div key={`corner-item-${key}`} className="corner-panel__item">
-          <InternalLink className="corner-panel__link" to={item.link}>
-            {t(item.title)}
-          </InternalLink>
-          <div className="corner-panel__separator">{"|"}</div>
-        </div>
-      ))}
+      <div className="container">
+        <div className="corner-panel__content">
+          {items.map((item, key) => (
+            <div key={`corner-item-${key}`} className="corner-panel__item">
+              <InternalLink className="corner-panel__link" to={item.link}>
+                {t(item.title)}
+              </InternalLink>
+              <div className="corner-panel__separator">{"|"}</div>
+            </div>
+          ))}
 
-      <LangSelect className="lang-select--header" isHeader={true} />
+          <LangSelect className="lang-select--header" isHeader={true} />
+        </div>
+      </div>
     </div>
   );
 };

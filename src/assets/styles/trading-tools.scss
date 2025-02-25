@@ -10,16 +10,22 @@
 .trading-tools {
   scroll-snap-align: start;
   position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
   background: url("../../assets/images/bg/trading-tools/trading-tools-sm.svg")
     no-repeat bottom;
   background-color: #fff;
   background-size: cover;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 200px;
   padding-bottom: 200px;
-  @include content-alignment(0);
+  z-index: 5;
 
   &:after {
     content: "";
@@ -99,7 +105,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: row-reverse;
     flex-wrap: wrap-reverse;
 
@@ -291,6 +297,11 @@
       @include tablet {
         display: none;
       }
+    }
+
+    -no-animation {
+      transition: none !important;
+      animation: none !important;
     }
   }
 }

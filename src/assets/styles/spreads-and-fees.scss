@@ -328,19 +328,26 @@
 }
 
 .swap-rate {
+  scroll-snap-align: start;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
   padding: 57px 15px 254px 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: map-get($colors, "white");
-  @include content-alignment(0);
+  // @include content-alignment(0);
 
   @include tablet {
     padding: 75px 35px 200px 35px;
   }
 
   @include desktop-lg {
-    padding: 87px 35px 221px 35px;
+    // padding: 87px 35px 221px 35px;
     background: url("../../assets/images/spreads-and-fees/faq/bg/lg.svg")
       no-repeat top;
   }
@@ -352,16 +359,28 @@
   }
 
   &__wrapper {
-    @include tablet {
-      max-width: 479px;
-    }
+    position: relative;
+    width: 100%;
+    // max-width: 1680px;
+    margin: 0 auto;
+    padding: 0;
+    z-index: 1;
+    align-items: center;
 
     @include desktop-lg {
-      max-width: 100%;
+      max-width: 1200px;
     }
 
     @include desktop-xl {
-      max-width: 1103px;
+      max-width: 1680px;
+    }
+
+    @include desktop-2k {
+      max-width: 2400px;
+    }
+
+    @include desktop-5k {
+      max-width: 3840px;
     }
   }
 

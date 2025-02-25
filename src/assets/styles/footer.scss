@@ -3,10 +3,12 @@
 
 .footer {
   scroll-snap-align: start;
+  position: relative;
   background-color: map-get($colors, "black");
-  @include content-alignment(0);
+  // @include content-alignment(0);
   padding-top: 68px;
   padding-bottom: 40px;
+  z-index: 5;
 
   &__wrapper {
     @include desktop-xl {
@@ -40,12 +42,22 @@
 }
 
 .copy-right-block {
-  border-top: 1px solid map-get($colors, "red");
-  padding: 30px 0 0;
-  border-bottom: 1px solid map-get($colors, "bg-grey");
+  background-color: map-get($colors, "black");
 
-  @include desktop-xl {
-    padding: 40px 0 40px;
+  .container {
+    border-top: 1px solid map-get($colors, "red");
+    border-bottom: 1px solid map-get($colors, "bg-grey");
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    @include mobile {
+      padding-bottom: 0;
+    }
+
+    @include desktop-xl {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
   }
 
   &__text {
@@ -72,9 +84,16 @@
     }
   }
 }
+
 .copy-right-block-company {
-  @include desktop-xl {
-    padding: 10px 0 0;
+  background-color: map-get($colors, "black");
+
+  .container {
+    padding-top: 10px;
+
+    @include mobile {
+      padding-top: 0;
+    }
   }
 
   &__text {
@@ -107,7 +126,7 @@
   }
 
   @include desktop-xl {
-    gap: 30px 100px;
+    gap: 30px 85px;
   }
 
   &__column-title {

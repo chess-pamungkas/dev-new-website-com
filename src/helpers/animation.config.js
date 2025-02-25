@@ -96,7 +96,7 @@ export const INTERSECTION_OBSERVER_CONFIG = {
 
 export const TWP_ICONS_INITIAL_SHIFT = {
   logo1: -430,
-  logo2: -250,
+  logo2: -180,
   logo3: -270,
   netflix: -100,
   tesla: -200,
