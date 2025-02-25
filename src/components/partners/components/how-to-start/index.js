@@ -14,6 +14,7 @@ import {
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { getArrows } from "./get-arrows";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
+import { sitePostfix } from "../../../../helpers/entity-resolver";
 import { setLangParam } from "../../../../helpers/services/language-service";
 
 const HowToStart = ({ className }) => {
@@ -21,15 +22,15 @@ const HowToStart = ({ className }) => {
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const isRTL = useRtlDirection();
   const { arrow1, arrow2 } = getArrows(isMobile, isTablet, isLG, isXL);
-  const langParam = setLangParam(); // Get the language parameter
-  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+  const langParam = setLangParam();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleShowRegistrationPopup = () => {
-    setIsPopupOpen(true); // Open the popup
+    setIsPopupOpen(true);
   };
 
   const handleClosePopup = () => {
-    setIsPopupOpen(false); // Close the popup
+    setIsPopupOpen(false);
   };
 
   return (
@@ -39,33 +40,36 @@ const HowToStart = ({ className }) => {
       })}
       dir={isRTL ? DIR_RTL : DIR_LTR}
     >
-      <h2 className="partners-start__title">{t(`partners_start-title-fsa`)}</h2>
-      <div className="partners-start__items">
-        {START_STEPS.length > 0 &&
-          START_STEPS.map((block) => (
-            <HowToStartItem
-              key={`start-item-${stringTransformToKebabCase(block.text)}`}
-              icon={block.icon}
-              text={block.text}
-              accent={block.accent}
-            />
-          ))}
+      <div className="partners-start__wrapper">
+        <h2 className="partners-start__title">
+          {t(`partners_start-title${sitePostfix}`)}
+        </h2>
+        <div className="partners-start__items">
+          {START_STEPS.length > 0 &&
+            START_STEPS.map((block) => (
+              <HowToStartItem
+                key={`start-item-${stringTransformToKebabCase(block.text)}`}
+                icon={block.icon}
+                text={block.text}
+                accent={block.accent}
+              />
+            ))}
+        </div>
+        <ButtonPopup
+          className={cn("partners-start__btn")}
+          onClick={handleShowRegistrationPopup}
+        >
+          {t(`partners_start-btn${sitePostfix}`)}
+        </ButtonPopup>
+        <img src={arrow1} alt="" className="partners-start__arrow1" />
+        <img src={arrow2} alt="" className="partners-start__arrow2" />
       </div>
-      <ButtonPopup
-        className={cn("partners-start__btn")}
-        onClick={handleShowRegistrationPopup}
-      >
-        {t("button-get-started")}
-      </ButtonPopup>
-      <img src={arrow1} alt="" className="partners-start__arrow1" />
-      <img src={arrow2} alt="" className="partners-start__arrow2" />
 
-      {/* Render the popup */}
       {isPopupOpen && (
         <ShowRegistrationPopup
           isOpen={isPopupOpen}
           onClose={handleClosePopup}
-          langParam={langParam} // Pass langParam if needed
+          langParam={langParam}
         />
       )}
     </section>

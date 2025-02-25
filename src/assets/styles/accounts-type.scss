@@ -19,7 +19,7 @@
 
   @include desktop-xl {
     padding-top: 150px;
-    padding-bottom: 297px;
+    padding-bottom: 150px;
   }
 
   .top-market-promotion__description {
@@ -58,10 +58,39 @@
   }
 
   .top-market-promotion__wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
     flex-direction: column-reverse;
+    align-items: center;
+    height: 100%;
 
     @include desktop-xl {
-      flex-direction: row;
+      max-width: 1680px;
+      flex-direction: unset;
+
+      &--reverse {
+        flex-direction: row-reverse;
+      }
+    }
+
+    @include desktop-2k {
+      max-width: 2400px;
+      flex-direction: unset;
+
+      &--reverse {
+        flex-direction: row-reverse;
+      }
+    }
+
+    @include desktop-5k {
+      max-width: 3840px;
+      flex-direction: unset;
+
+      &--reverse {
+        flex-direction: row-reverse;
+      }
     }
   }
 
@@ -70,6 +99,15 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    @include desktop-xl {
+      width: 100%;
+    }
+
+    @include desktop-2k {
+      width: 100%;
+      align-items: baseline;
+    }
   }
 }
 
@@ -233,7 +271,7 @@
 
 .accounts-type {
   background: url("../../assets/images/accounts-type/accounts-type-bg-xl.svg");
-  padding: 24px 11px 0 11px;
+  padding: 24px 0 0 0;
   display: grid;
   grid-template-areas: "desc" "acc1" "acc2";
   justify-items: center;
@@ -241,11 +279,12 @@
 
   @include tablet {
     grid-template-areas: "desc desc" "acc1 acc2";
-    padding: 15px 20px 61px 20px;
+    padding: 15px 0 61px 0;
+    display: grid;
   }
 
   @include desktop-lg {
-    padding: 38px 98px 116px 98px;
+    padding: 38px 0 116px 0;
   }
 
   @include desktop-xl {
@@ -253,7 +292,7 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    padding: 85px 124px 85px 84px;
+    padding: 85px 0 85px 0;
   }
 
   &__title {

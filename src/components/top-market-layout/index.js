@@ -5,6 +5,7 @@ import ButtonLink from "../shared/button-link";
 import ButtonPopup from "../shared/button-popup";
 import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { useWindowSize } from "../../helpers/hooks/use-window-size";
 
 const TopMarketLayout = ({
   className,
@@ -16,6 +17,7 @@ const TopMarketLayout = ({
   btnOnClick,
 }) => {
   const isRTL = useRtlDirection();
+  const { isTablet, isMobile } = useWindowSize();
 
   const getButton = () => {
     if (btnOnClick) {

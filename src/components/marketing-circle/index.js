@@ -24,7 +24,7 @@ export const MarketingCircle = ({
   isForex,
   isEnergies,
 }) => {
-  const { isMobile, isMD, isLG } = useWindowSize();
+  const { isMobile, isTablet, isMD, isLG } = useWindowSize();
   const { t } = useTranslationWithVariables();
   const { selectedLanguage } = useContext(LanguageContext);
   const isRTL = useRtlDirection();
@@ -49,52 +49,54 @@ export const MarketingCircle = ({
 
   return (
     <div className="marketing-circle">
-      <Lottie
-        className="promotion-markets__svg"
-        animationData={animation}
-        style={{ height: animationHeight }}
-      />
-      <div
-        className={cn("marketing-circle__wrapper", {
-          "marketing-circle__wrapper--bigger-lang": BIGGER_LANGUAGES.includes(
-            selectedLanguage.id
-          ),
-          "marketing-circle__wrapper--crypto": isCrypto,
-          "marketing-circle__wrapper--etf": isEtf,
-          "marketing-circle__wrapper--indices": isIndices,
-          "marketing-circle__wrapper--forex": isForex,
-          "marketing-circle__wrapper--energies": isEnergies,
-        })}
-      >
-        <div className={itemClass}>
-          <p className="marketing-circle__item-text">{upper}</p>
-        </div>
-        <div className="marketing-circle__row">
+      <div className="container">
+        <Lottie
+          className="promotion-markets__svg"
+          animationData={animation}
+          style={{ height: animationHeight }}
+        />
+        <div
+          className={cn("marketing-circle__wrapper", {
+            "marketing-circle__wrapper--bigger-lang": BIGGER_LANGUAGES.includes(
+              selectedLanguage.id
+            ),
+            "marketing-circle__wrapper--crypto": isCrypto,
+            "marketing-circle__wrapper--etf": isEtf,
+            "marketing-circle__wrapper--indices": isIndices,
+            "marketing-circle__wrapper--forex": isForex,
+            "marketing-circle__wrapper--energies": isEnergies,
+          })}
+        >
           <div className={itemClass}>
-            <p className="marketing-circle__item-text">{leftUpper}</p>
+            <p className="marketing-circle__item-text">{upper}</p>
+          </div>
+          <div className="marketing-circle__row">
+            <div className={itemClass}>
+              <p className="marketing-circle__item-text">{leftUpper}</p>
+            </div>
+            <div className={itemClass}>
+              <p className="marketing-circle__item-text">{rightUpper}</p>
+            </div>
+          </div>
+          <div className="marketing-circle__row">
+            <div className={itemClass}>
+              <p className="marketing-circle__item-text">{leftBottom}</p>
+            </div>
+            <div className={itemClass}>
+              <p className="marketing-circle__item-text">{rightBottom}</p>
+            </div>
           </div>
           <div className={itemClass}>
-            <p className="marketing-circle__item-text">{rightUpper}</p>
+            <p className="marketing-circle__item-text">{bottom}</p>
           </div>
         </div>
-        <div className="marketing-circle__row">
-          <div className={itemClass}>
-            <p className="marketing-circle__item-text">{leftBottom}</p>
-          </div>
-          <div className={itemClass}>
-            <p className="marketing-circle__item-text">{rightBottom}</p>
-          </div>
-        </div>
-        <div className={itemClass}>
-          <p className="marketing-circle__item-text">{bottom}</p>
-        </div>
+        <ButtonPopup
+          onClick={btnOnClick}
+          className="button-link button-link--red marketing-circle__btn"
+        >
+          {t("button-start-now")}
+        </ButtonPopup>
       </div>
-      <ButtonPopup
-        onClick={btnOnClick}
-        className="button-link button-link--red marketing-circle__btn"
-      >
-        {t("button-start-now")}
-      </ButtonPopup>
     </div>
   );
 };

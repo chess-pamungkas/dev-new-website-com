@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from "react";
+import React, { useRef, useContext, useState } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
@@ -7,27 +7,28 @@ import { ANGLE_ICON_COLOR } from "../../../../helpers/constants";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import NavbarSubItem from "../navbar-sub-item";
 import CommonContext from "../../../../context/common-context";
+import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 
 const NavbarItem = ({ className, title, subItems = [] }) => {
   const { t } = useTranslationWithVariables();
   const dropdownRef = useRef();
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const { dropdownHeightOffset, isScrolled } = useContext(CommonContext);
-
-  const hideDropdown = () => {
-    if (dropdownRef.current) {
-      dropdownRef.current.classList.remove("visible");
-    }
-  };
+  const { isTablet, isMobile } = useWindowSize();
 
   const showDropdown = () => {
-    if (dropdownRef.current) {
-      dropdownRef.current.classList.add("visible");
-    }
+    setIsDropdownVisible(true);
+  };
+
+  const hideDropdown = () => {
+    setIsDropdownVisible(false);
   };
 
   return (
     <li
-      className={cn("navbar-item", className)}
+      className={cn("navbar-item", className, {
+        "navbar-item--active": isDropdownVisible,
+      })}
       onMouseEnter={showDropdown}
       onMouseLeave={hideDropdown}
     >
@@ -45,24 +46,30 @@ const NavbarItem = ({ className, title, subItems = [] }) => {
       />
 
       {!!subItems.length && (
-        <ul
+        <div
           ref={dropdownRef}
-          className={cn("navbar-item__dropdown")}
+          className={cn("navbar-item__dropdown", {
+            "navbar-item__dropdown--visible": isDropdownVisible,
+          })}
           style={{ top: `${dropdownHeightOffset}px` }}
         >
-          {subItems.map(
-            (subItem) =>
-              !subItem.footerOnly && (
-                <NavbarSubItem
-                  key={`header-menu-${stringTransformToKebabCase(
-                    subItem.title
-                  )}`}
-                  subItem={subItem}
-                  onClick={hideDropdown}
-                />
-              )
-          )}
-        </ul>
+          <div className="container">
+            <ul className="navbar-item__dropdown-content">
+              {subItems.map(
+                (subItem) =>
+                  !subItem.footerOnly && (
+                    <NavbarSubItem
+                      key={`header-menu-${stringTransformToKebabCase(
+                        subItem.title
+                      )}`}
+                      subItem={subItem}
+                      onClick={hideDropdown}
+                    />
+                  )
+              )}
+            </ul>
+          </div>
+        </div>
       )}
     </li>
   );

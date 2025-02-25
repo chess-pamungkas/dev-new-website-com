@@ -5,16 +5,24 @@ import {
   getFooterCompanyName,
   getFooterCopyright,
 } from "../../../../helpers/footer.config";
+import "../../../../assets/styles/container.scss";
+import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 
 const CopyRightBlock = ({ className }) => {
+  const { isTablet, isMobile } = useWindowSize();
+
   return (
     <>
       <section className={cn("copy-right-block", className)}>
-        <div className="copy-right-block__text">{getFooterCopyright()}</div>
+        <div className="container">
+          <div className="copy-right-block__text">{getFooterCopyright()}</div>
+        </div>
       </section>
       <section className={cn("copy-right-block-company", className)}>
-        <div className="copy-right-block-company__text">
-          {getFooterCompanyName()}
+        <div className="container">
+          <div className="copy-right-block-company__text">
+            {getFooterCompanyName()}
+          </div>
         </div>
       </section>
     </>

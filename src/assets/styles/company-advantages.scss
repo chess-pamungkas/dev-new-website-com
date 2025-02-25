@@ -9,6 +9,11 @@
 
 .company-advantages {
   position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
   background-size: cover;
   background: url("../../assets/images/bg/company/company-advantages.svg")
     no-repeat top right;
@@ -18,17 +23,47 @@
   justify-content: center;
   padding-top: 140px;
   padding-bottom: 140px;
-  @include content-alignment(0);
+  overflow: hidden;
+  // @include content-alignment(0);
+
+  @include mobile {
+    padding-left: $padding-sm;
+    padding-right: $padding-sm;
+  }
 
   &:before {
     content: "";
     position: absolute;
     top: 0;
-    left: 0;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    height: 100%;
     background: url("../../assets/images/bg/company/company-advantages-top-sm.svg")
       no-repeat;
-    width: 124px;
-    height: 161px;
+    background-size: 124px 161px;
+    z-index: 2;
+    pointer-events: none;
+
+    @include tablet {
+      background: url("../../assets/images/bg/company/company-advantages-top-md.svg")
+        no-repeat;
+      background-size: 252px 291px;
+    }
+
+    @include desktop-lg {
+      background: url("../../assets/images/bg/company/company-advantages-top-lg.svg")
+        no-repeat;
+      background-size: 261px 299px;
+    }
+
+    @include desktop-xl {
+      background: url("../../assets/images/bg/company/company-advantages-top-xl.svg")
+        no-repeat;
+      background-size: 408px 490px;
+    }
   }
 
   &:after {
@@ -40,49 +75,22 @@
       no-repeat;
     width: 174px;
     height: 227px;
-  }
 
-  @include tablet {
-    &:before {
-      background: url("../../assets/images/bg/company/company-advantages-top-md.svg")
-        no-repeat;
-      width: 252px;
-      height: 291px;
-    }
-
-    &:after {
+    @include tablet {
       background: url("../../assets/images/bg/company/company-advantages-bottom-md.svg")
         no-repeat;
       width: 252px;
       height: 291px;
     }
-  }
 
-  @include desktop-lg {
-    &:before {
-      background: url("../../assets/images/bg/company/company-advantages-top-lg.svg")
-        no-repeat;
-      width: 261px;
-      height: 299px;
-    }
-
-    &:after {
+    @include desktop-lg {
       background: url("../../assets/images/bg/company/company-advantages-bottom-lg.svg")
         no-repeat;
       width: 261px;
       height: 299px;
     }
-  }
 
-  @include desktop-xl {
-    &:before {
-      background: url("../../assets/images/bg/company/company-advantages-top-xl.svg")
-        no-repeat;
-      width: 408px;
-      height: 490px;
-    }
-
-    &:after {
+    @include desktop-xl {
       background: url("../../assets/images/bg/company/company-advantages-bottom-xl.svg")
         no-repeat;
       width: 377px;
@@ -91,6 +99,10 @@
   }
 
   &__wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1680px;
+    margin: 0 auto;
     display: grid;
     grid-auto-flow: row dense;
     grid-template-columns: 1fr;
@@ -100,6 +112,7 @@
     justify-items: center;
     align-items: center;
     width: 100%;
+    height: 100%;
 
     @include tablet {
       grid-template-columns: 1fr 1fr;
@@ -204,11 +217,6 @@
     line-height: 45px;
     color: map-get($colors, "black");
 
-    &--cysec {
-      font-weight: map-get($font-weight, "regular");
-      font-family: $fontJP;
-    }
-
     &--back {
       color: map-get($colors, "white");
       margin: 0 0 15px;
@@ -227,11 +235,6 @@
     font-size: 18px;
     line-height: 22px;
     color: map-get($colors, "white");
-
-    &--cysec {
-      font-weight: map-get($font-weight, "regular");
-      font-family: $fontJP;
-    }
 
     &--mobile {
       color: map-get($colors, "black");
