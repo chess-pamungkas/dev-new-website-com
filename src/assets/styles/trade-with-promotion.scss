@@ -1,15 +1,32 @@
 @import "vars";
 @import "mixins";
 
+.trade-with-promotion-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  height: 100%;
+  background: url("../../assets/images/bg/trade-with.svg") no-repeat center;
+  background-size: cover;
+  // z-index: -1;
+}
+
 .trade-with-promotion {
   scroll-snap-align: start;
   position: relative;
-  overflow: hidden;
-  background: url("../../assets/images/bg/trade-with.svg") no-repeat center;
-  background-size: cover;
+  width: 100%;
   padding-top: 230px;
   padding-bottom: 240px;
-  @include content-alignment(0);
+  z-index: 5;
+
+  @include mobile {
+    padding-left: $padding-sm;
+    padding-right: $padding-sm;
+  }
 
   @include tablet {
     padding-top: 300px;
@@ -66,13 +83,13 @@
       max-width: 100%;
       min-width: 517px;
       padding: 14px 76px;
-      background-position: 38px 50%;
+      background-position: 27px 50%;
     }
 
     @include desktop-xl {
       background-size: 63px;
       min-width: 725px;
-      padding: 27px 115px 27px 115px;
+      padding: 27px 25px;
       margin: 25px 0;
     }
   }
@@ -85,14 +102,17 @@
     font-size: 24px;
     line-height: 37px;
     overflow: hidden;
+    padding-left: 15px;
 
     @include tablet {
       font-size: 30px;
+      padding-left: 20px;
     }
 
     @include desktop-xl {
       font-size: 55px;
       line-height: 75px;
+      padding-left: 70px;
     }
   }
 
@@ -211,6 +231,7 @@
 
   &__icon {
     position: absolute;
+    z-index: 1;
 
     &--woman {
       width: 109px;
@@ -234,7 +255,7 @@
 
       @include desktop-xl {
         top: 297px;
-        right: 27px;
+        right: 0;
         width: 335px;
         height: 402px;
       }
@@ -249,14 +270,14 @@
       @include tablet {
         bottom: unset;
         top: 29px;
-        left: 138px;
+        left: 0;
         width: 176px;
         height: 209px;
       }
 
       @include desktop-lg {
         top: 30px;
-        left: 198px;
+        left: 0;
         width: 176px;
         height: 209px;
       }
@@ -265,7 +286,7 @@
         width: 315px;
         height: 376px;
         top: 207px;
-        left: 93px;
+        left: 0;
       }
     }
 
@@ -277,21 +298,21 @@
 
       @include tablet {
         top: 37px;
-        left: 59px;
+        left: 0;
         width: 22px;
         height: 40px;
       }
 
       @include desktop-lg {
         top: 17px;
-        left: 144px;
+        left: 44px;
         width: 22px;
         height: 40px;
       }
 
       @include desktop-xl {
         top: 98px;
-        left: 290px;
+        left: 190px;
         width: 32px;
         height: 58px;
       }
@@ -301,6 +322,7 @@
       top: 156px;
       left: 57px;
       width: 35px;
+      z-index: 1f;
 
       @include tablet {
         top: 219px;
@@ -493,23 +515,31 @@
       @include tablet {
         top: unset;
         bottom: 299px;
-        left: 113px;
+        left: 53px;
         width: 43px;
         height: 28px;
       }
 
       @include desktop-lg {
         bottom: 115px;
-        left: 103px;
+        left: 43px;
         width: 43px;
         height: 28px;
       }
 
       @include desktop-xl {
-        left: 146px;
+        left: 86px;
         bottom: 213px;
         width: 62px;
         height: 41px;
+      }
+
+      @include desktop-xl {
+        right: 200px;
+      }
+
+      @include desktop-xl {
+        right: 200px;
       }
     }
 
@@ -544,7 +574,7 @@
     &--bitcoin {
       width: 41px;
       height: 46px;
-      right: 17px;
+      right: 15px;
       bottom: 104px;
 
       @include tablet {
@@ -562,10 +592,18 @@
       }
 
       @include desktop-xl {
-        right: 209px;
+        right: 90px;
         bottom: 214px;
         width: 73px;
         height: 82px;
+      }
+
+      @include desktop-xl {
+        right: 200px;
+      }
+
+      @include desktop-xl {
+        right: 200px;
       }
     }
   }

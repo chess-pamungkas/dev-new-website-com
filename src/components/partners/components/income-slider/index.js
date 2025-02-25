@@ -13,6 +13,7 @@ import {
 import { formatMoney } from "../../../../helpers/services/format-money";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../../../helpers/constants";
+import { sitePostfix } from "../../../../helpers/entity-resolver";
 
 const IncomeSlider = ({ className }) => {
   const { t } = useTranslationWithVariables();
@@ -45,38 +46,40 @@ const IncomeSlider = ({ className }) => {
       })}
       dir={isRTL ? DIR_RTL : DIR_LTR}
     >
-      <p className="partners-income__title">
-        {t(`partners_income-slider-title-fsa`)}
-      </p>
-      <p className="partners-income__description">
-        {t(`partners_income-slider-description-fsa`)}
-      </p>
-      <div className="partners-income__total-clients">
-        <p className="partners-income__total-num">{clientsCount}</p>
-        <p className="partners-income__total-note">
-          {t(`partners_income-slider-clients-note-fsa`)}
+      <div className="partners-income__wrapper">
+        <p className="partners-income__title">
+          {t(`partners_income-slider-title${sitePostfix}`)}
         </p>
-      </div>
-      <Slider
-        marks={CLIENTS_MARKS}
-        minValue={MIN_CLIENTS}
-        maxValue={MAX_CLIENTS}
-        currentValue={clientsCount}
-        onChange={onSliderChange}
-        className={"partners-income__slider"}
-        trackClassName={"partners-income__slider-track"}
-        thumbClassName={"partners-income__slider-thumb"}
-        markClassName={"partners-income__slider-mark"}
-        renderMark={renderMark}
-        invert={isRTL}
-      />
-      <div className="partners-income__total-income">
-        <p className="partners-income__total-num">
-          &#36; {formatMoney(totalIncome)}
+        <p className="partners-income__description">
+          {t(`partners_income-slider-description${sitePostfix}`)}
         </p>
-        <p className="partners-income__total-note">
-          {t(`partners_income-slider-income-note-fsa`)}
-        </p>
+        <div className="partners-income__total-clients">
+          <p className="partners-income__total-num">{clientsCount}</p>
+          <p className="partners-income__total-note">
+            {t(`partners_income-slider-clients-note${sitePostfix}`)}
+          </p>
+        </div>
+        <Slider
+          marks={CLIENTS_MARKS}
+          minValue={MIN_CLIENTS}
+          maxValue={MAX_CLIENTS}
+          currentValue={clientsCount}
+          onChange={onSliderChange}
+          className={"partners-income__slider"}
+          trackClassName={"partners-income__slider-track"}
+          thumbClassName={"partners-income__slider-thumb"}
+          markClassName={"partners-income__slider-mark"}
+          renderMark={renderMark}
+          invert={isRTL}
+        />
+        <div className="partners-income__total-income">
+          <p className="partners-income__total-num">
+            &#36; {formatMoney(totalIncome)}
+          </p>
+          <p className="partners-income__total-note">
+            {t(`partners_income-slider-income-note${sitePostfix}`)}
+          </p>
+        </div>
       </div>
     </section>
   );

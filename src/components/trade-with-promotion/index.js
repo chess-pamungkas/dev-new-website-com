@@ -38,6 +38,7 @@ import {
   DIR_RTL,
   ShowRegistrationPopup,
 } from "../../helpers/constants";
+import { sitePostfix } from "../../helpers/entity-resolver";
 import { setLangParam } from "../../helpers/services/language-service";
 
 const TradeWithPromotion = ({ className, sectionRef }) => {
@@ -93,6 +94,7 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
       dir={isRTL ? DIR_RTL : DIR_LTR}
       ref={sectionRef}
     >
+      <div className="trade-with-promotion-bg" />
       <animated.img
         style={sectionAnimation1}
         src={icons.length > 0 && icons[0] ? icons[0] : logoIcon}
@@ -228,14 +230,16 @@ const TradeWithPromotion = ({ className, sectionRef }) => {
           <div className="trade-with-promotion__block">
             <p className="trade-with-promotion__promo-text">
               <span>
-                {t(`index_trade-with-promotion-promo-text1-fsa`)}
+                {t(`index_trade-with-promotion-promo-text1${sitePostfix}`)}
                 &nbsp;
               </span>
               <span className="bold">
-                {t(`index_trade-with-promotion-promo-text-bold-fsa`)}
+                {t(`index_trade-with-promotion-promo-text-bold${sitePostfix}`)}
                 &nbsp;
               </span>
-              <span>{t(`index_trade-with-promotion-promo-text2-fsa`)}</span>
+              <span>
+                {t(`index_trade-with-promotion-promo-text2${sitePostfix}`)}
+              </span>
             </p>
           </div>
           <div className="trade-with-promotion__block">

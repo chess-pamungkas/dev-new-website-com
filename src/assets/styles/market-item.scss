@@ -2,52 +2,79 @@
 @import "mixins";
 
 .market-item {
-  padding: 86px 20px 80px;
+  padding: 86px 0 80px;
   display: flex;
   position: relative;
   flex-direction: column;
 
+  @include mobile {
+    padding-left: $padding-sm;
+    padding-right: $padding-sm;
+  }
+
   @include tablet {
-    padding: 120px 30px;
+    padding: 120px 0;
   }
 
   @include desktop-lg {
     flex-direction: row;
     justify-content: space-between;
-    padding: 124px 40px;
+    padding: 124px 0;
   }
 
   @include desktop-xl {
-    padding: 210px 74px 216px 80px;
+    padding: 210px 0 216px 0;
   }
 
   &:before {
     content: "";
     position: absolute;
-    right: 0;
-    background: url("../../assets/images/all-markets/top-bg-sm.svg") no-repeat;
-    width: 95px;
-    height: 114px;
     top: 0;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    height: 100%;
+    background: url("../../assets/images/all-markets/top-bg-sm.svg") no-repeat
+      right top;
+    background-size: 95px 114px;
+    z-index: 1;
+    pointer-events: none;
 
     @include tablet {
-      background: url("../../assets/images/all-markets/top-bg-md.svg") no-repeat;
-      width: 219px;
-      height: 263px;
+      background: url("../../assets/images/all-markets/top-bg-md.svg") no-repeat
+        right top;
+      background-size: 219px 263px;
     }
 
     @include desktop-xl {
-      background: url("../../assets/images/all-markets/top-bg-lg.svg") no-repeat;
-      width: 332px;
-      height: 398px;
+      background: url("../../assets/images/all-markets/top-bg-lg.svg") no-repeat
+        right top;
+      background-size: 332px 398px;
     }
   }
 
   &--gray {
-    background-color: #f9f9f9;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      width: 100vw;
+      height: 100%;
+      background-color: #f9f9f9;
+      z-index: -999999999;
+    }
   }
 
   &__advantages {
+    position: relative;
     z-index: 2;
     display: flex;
     justify-content: center;

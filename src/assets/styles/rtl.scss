@@ -15,7 +15,54 @@
 
 .header--rtl {
   .header__left {
-    padding-right: 26px;
+    padding-right: 0;
+    padding-left: unset;
+    order: 3;
+  }
+
+  .header__main-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: stretch;
+    justify-content: space-between;
+
+    // @include tablet {
+    //   padding: 10px 20px;
+    // }
+
+    // @include desktop-lg {
+    //   padding: 12px 30px;
+    // }
+  }
+
+  .header__center {
+    order: 2;
+    flex: 1;
+
+    @include tablet {
+      justify-content: center;
+      padding: 0 20px;
+    }
+  }
+
+  .header__right {
+    order: 1;
+
+    @include tablet {
+      justify-content: flex-start;
+      padding-left: 0;
+    }
+  }
+
+  .header__navigation {
+    @include tablet {
+      justify-content: center;
+      padding: 0;
+    }
+  }
+
+  @include mobile {
+    padding-right: unset;
     padding-left: unset;
   }
 
@@ -23,6 +70,10 @@
     margin-right: 26px;
     margin-left: unset;
     padding: 0 33px;
+
+    @include tablet {
+      margin-right: 20px;
+    }
 
     @include desktop-xl {
       margin-right: 50px;
@@ -40,7 +91,7 @@
 
   .header__search {
     right: unset;
-    left: 54px;
+    left: unset;
   }
 
   .search-bar {
@@ -105,11 +156,16 @@
 .main-promotion--rtl {
   .main-promotion__photo {
     right: unset;
-    left: -33px;
+    left: 0;
+
+    // @include mobile {
+    //   right: unset;
+    //   left: 0;
+    // }
 
     @include tablet {
       right: unset;
-      left: -90px;
+      left: 0;
     }
 
     @include desktop-lg {
@@ -228,6 +284,18 @@
   .trading-tools__icon-wrapper {
     direction: ltr;
   }
+}
+
+.device-block--rtl {
+  direction: rtl;
+  text-align: center;
+}
+
+.device-block__img--rtl {
+  position: relative !important;
+  left: 0 !important;
+  transform: none !important;
+  transition: none !important;
 }
 
 .top-market--rtl {
@@ -366,10 +434,50 @@
 .market-items-list--rtl {
   .market-item {
     &:before {
-      -webkit-transform: scaleX(-1);
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      width: 100vw;
+      height: 100%;
+      background: url("../../assets/images/all-markets/top-bg-sm.svg") no-repeat
+        right top;
+      background-size: 95px 114px;
+      z-index: 1;
+      pointer-events: none;
       transform: scaleX(-1);
-      right: unset;
-      left: 0;
+
+      @include tablet {
+        background: url("../../assets/images/all-markets/top-bg-md.svg")
+          no-repeat right top;
+        background-size: 219px 263px;
+      }
+
+      @include desktop-xl {
+        background: url("../../assets/images/all-markets/top-bg-lg.svg")
+          no-repeat right top;
+        background-size: 332px 398px;
+      }
+    }
+
+    &--gray {
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        width: 100vw;
+        height: 100%;
+        background-color: #f9f9f9;
+        z-index: -999999999;
+        transform: scaleX(-1);
+      }
     }
   }
 
@@ -395,6 +503,13 @@
       transform: scaleX(-1);
       left: unset;
       right: 0;
+    }
+  }
+
+  .split-text-promotion__block--right {
+    @include desktop-2k {
+      padding-right: 100px;
+      padding-left: 400px;
     }
   }
 }
@@ -587,6 +702,97 @@
 }
 
 .contact-us--rtl {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  transform: translateX(-50%);
+
+  @include mobile {
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    transform: none;
+
+    &:before {
+      display: none;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+
+  @include tablet {
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    transform: none;
+
+    &:before {
+      display: none;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+
+  @include desktop-lg {
+    transform: none;
+    left: auto;
+    right: auto;
+  }
+
+  @include desktop-xl {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background-size: cover;
+  }
+
+  @include desktop-2k {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background-size: cover;
+  }
+
+  @include desktop-5k {
+    transform: translateX(-50%);
+    left: 75%;
+    right: auto;
+    width: 100%;
+    max-width: 5120px;
+    margin: 0 auto;
+
+    &:before {
+      display: none;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+
+  &__wrapper {
+    @include desktop-xl {
+      margin-right: auto;
+      margin-left: 0;
+      padding-right: 40px;
+    }
+  }
+
   .contact-us__title {
     @include desktop-xl {
       text-align: right;
@@ -998,13 +1204,13 @@
     }
 
     &__close--rtl {
-      position: absolute; // Position absolutely within the sidebar
-      top: 20px; // Adjust top position
-      right: 15px; // Adjust right position
-      cursor: pointer; // Pointer cursor on hover
-      width: 20px; // Set width
-      height: 20px; // Set height
-      z-index: 10000; // Ensure it appears above other elements
+      position: absolute;
+      top: 20px;
+      right: 15px;
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      z-index: 10000;
     }
   }
 
@@ -1061,5 +1267,32 @@ h1.popup-registration-register--rtl {
   @include mobile {
     font-size: 1.125rem;
     margin-bottom: 1.5rem;
+  }
+}
+
+.swap-free-advantages--rtl {
+  &:before {
+    @include desktop-lg {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: unset;
+      left: 0;
+      margin-left: 0;
+      margin-right: 0;
+      width: 100vw;
+      height: 100%;
+      background: url("../../assets/images/swap-free/trg-bg-top-lg.svg")
+        no-repeat;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @include desktop-xl {
+      background: url("../../assets/images/swap-free/trg-bg-top-xl.svg")
+        no-repeat;
+      width: 261px;
+      height: 299px;
+    }
   }
 }

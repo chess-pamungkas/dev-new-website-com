@@ -7,6 +7,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import Lottie from "lottie-react";
 import ReactPlayer from "react-player";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { useWindowSize } from "../../helpers/hooks/use-window-size";
 
 const TopMarketPromotion = ({
   className,
@@ -31,6 +32,7 @@ const TopMarketPromotion = ({
   id,
 }) => {
   const isRTL = useRtlDirection();
+  const { isTablet, isMobile } = useWindowSize();
 
   const getButton = () => {
     switch (true) {
@@ -159,27 +161,29 @@ const TopMarketPromotion = ({
       })}
       id={id}
     >
-      <div className={cn("top-market-promotion__wrapper")}>
-        <div className="top-market-promotion__block">
-          <div className="top-market-promotion__description">
-            <p className="top-market-promotion__text">{children}</p>
-            {note && <p className="top-market-promotion__note">{note}</p>}
+      <div className="container">
+        <div className={cn("top-market-promotion__wrapper")}>
+          <div className="top-market-promotion__block">
+            <div className="top-market-promotion__description">
+              <p className="top-market-promotion__text">{children}</p>
+              {note && <p className="top-market-promotion__note">{note}</p>}
+            </div>
+            {btnTitle && getButton()}
+            {content && (
+              <div className="top-market-promotion__content">{content}</div>
+            )}
           </div>
-          {btnTitle && getButton()}
-          {content && (
-            <div className="top-market-promotion__content">{content}</div>
+          {image && (
+            <div
+              className={cn(
+                "top-market-promotion__block",
+                "top-market-promotion__block--flexed"
+              )}
+            >
+              {getImage()}
+            </div>
           )}
         </div>
-        {image && (
-          <div
-            className={cn(
-              "top-market-promotion__block",
-              "top-market-promotion__block--flexed"
-            )}
-          >
-            {getImage()}
-          </div>
-        )}
       </div>
     </section>
   );

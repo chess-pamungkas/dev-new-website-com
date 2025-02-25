@@ -8,7 +8,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1000;
+  z-index: 9999;
   background-color: rgba(0, 0, 0, 0.5);
 
   &--active {
@@ -20,7 +20,7 @@
   &__wrapper {
     width: 100%;
     height: 100%;
-    z-index: 9999;
+    z-index: 10000;
     position: fixed;
     top: 0;
     left: 0;
@@ -31,31 +31,43 @@
   }
 
   &__container {
-    display: flex; // Use flex to align sidebar and content
-    width: 100%; // Set a width for the container
-    height: auto; // Set a fixed height for the container
-    border-radius: 0.3125rem; // Rounded corners using rem
+    position: relative;
+    z-index: 10001;
+    display: flex;
+    width: 100%;
+    height: auto;
+    border-radius: 0.3125rem;
     text-align: left !important;
 
     @include mobile {
-      width: 100%; // Full width for mobile
-      height: 100%; // Full height for mobile
-      padding: 0.625rem; // Padding in rem
-      flex-direction: column; // Stack sidebar and content on mobile
+      width: 100%;
+      height: 100%;
+      padding: 0.625rem;
+      flex-direction: column;
       overflow-y: auto;
     }
 
     @include tablet {
-      padding: 0.625rem; // Padding in rem for tablet
+      padding: 0.625rem;
     }
 
     @include desktop-lg {
-      max-width: 71.25rem; // Max width for larger screens
+      max-width: 71.25rem;
     }
 
     @include desktop-xl {
-      max-width: 75rem; // Max width for extra large screens
-      max-height: 45rem; // Max height
+      max-width: 75rem;
+      max-height: 45rem;
+    }
+
+    @include desktop-2k {
+      max-width: 90rem;
+      max-height: 54rem;
+    }
+
+    @include desktop-5k {
+      max-width: 120rem;
+      max-height: 72rem;
     }
   }
 
@@ -69,7 +81,7 @@
     border-radius: 0.625rem 0 0 0.625rem;
     align-items: center;
     color: #1a1a1a;
-    position: relative; // Add this to contain absolute positioned elements
+    position: relative;
 
     &__title {
       font-family: $font-sidebar;
@@ -79,7 +91,7 @@
       margin-bottom: 3.125rem;
       line-height: 1.2;
       white-space: pre-line;
-      padding: 3.125rem; // Add consistent padding
+      padding: 3.125rem;
 
       .normal-text {
         display: inline;
@@ -117,6 +129,16 @@
       @include desktop-xl {
         padding: 4.813rem 3.375rem 0 3.375rem;
       }
+
+      @include desktop-2k {
+        padding: 5.813rem 4.375rem 0 4.375rem;
+        font-size: 1.875rem;
+      }
+
+      @include desktop-5k {
+        padding: 6.813rem 5.375rem 0 5.375rem;
+        font-size: 2.25rem;
+      }
     }
 
     @include mobile {
@@ -140,45 +162,62 @@
     @include desktop-xl {
       padding: 0;
     }
+
+    @include desktop-2k {
+      padding: 0;
+      background-size: 80% auto;
+    }
+
+    @include desktop-5k {
+      padding: 0;
+      background-size: 75% auto;
+    }
   }
 
   &__content {
-    position: relative; // Set position to relative
+    position: relative;
     width: 60%;
     background-color: white;
-    border-radius: 0 0.625rem 0.625rem 0; // Rounded corners on bottom
+    border-radius: 0 0.625rem 0.625rem 0;
 
     @include mobile {
-      width: 100%; // Full width for mobile
-      border-radius: 0 0 0.625rem 0.625rem; // Rounded corners on bottom
-      padding: 8.75rem 1.25rem 1.875rem 1.25rem; // Padding in rem for mobile
+      width: 100%;
+      border-radius: 0 0 0.625rem 0.625rem;
+      padding: 8.75rem 1.25rem 1.875rem 1.25rem;
     }
 
     @include tablet {
-      padding: 1.25rem; // Padding in rem for tablet
+      padding: 1.25rem;
     }
 
     @include desktop-lg {
-      padding: 3.125rem; // Padding in rem for desktop-lg
+      padding: 3.125rem;
     }
 
     @include desktop-xl {
-      padding: 4.375rem 3.938rem; // Padding in rem for desktop-xl
+      padding: 4.375rem 3.938rem;
+    }
+
+    @include desktop-2k {
+      padding: 5.375rem 4.938rem;
+    }
+
+    @include desktop-5k {
+      padding: 6.375rem 5.938rem;
     }
 
     h1.popup-registration-register {
       margin-top: 0;
-      margin-bottom: 2.1875rem; // Space below header in rem
-      color: #1a1a1a; // Darker text color
-      font-size: 1.5rem; // Font size
+      margin-bottom: 2.1875rem;
+      color: #1a1a1a;
+      font-size: 1.5rem;
       font-weight: map-get($font-weight, "bold");
 
       @include mobile {
-        font-size: 1.125rem; // Font size
-        margin-bottom: 1.5rem; // Space below header in rem
+        font-size: 1.125rem;
+        margin-bottom: 1.5rem;
       }
 
-      // For mobile landscape
       @media screen and (max-width: $max-lg) and (orientation: landscape) {
         font-size: 1.125rem;
         text-align: left;
@@ -192,8 +231,8 @@
   }
 
   #captcha-placeholder {
-    position: relative; /* Ensure it doesn't affect layout */
-    z-index: 1; /* Adjust z-index if necessary */
+    position: relative;
+    z-index: 1;
     display: none;
   }
 
@@ -202,41 +241,49 @@
     height: 50vh;
 
     .benefits-container {
-      position: absolute; // Use absolute positioning
-      left: 50%; // Center horizontally
-      transform: translateX(
-        -50%
-      ); // Adjust position to truly center horizontally
-      z-index: 10; // Ensure it appears above the image
-      background-color: rgb(
-        26 26 26 / 1
-      ); // Optional: background for visibility
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      background-color: rgb(26 26 26 / 1);
       opacity: 0.95;
-      padding: 1.25rem; // Add padding for aesthetics
-      border-radius: 0.625rem; // Optional: rounded corners
-      width: 100%; // Adjust width as needed
-      max-width: 22.875rem; // Optional: max width
-      font-size: 0.75rem; // Font size
+      padding: 1.25rem;
+      border-radius: 0.625rem;
+      width: 100%;
+      max-width: 22.875rem;
+      font-size: 0.75rem;
       font-weight: map-get($font-weight, "regular");
       color: #ffffff;
-      line-height: 1.5; // Line height for better readability
+      line-height: 1.5;
 
       @include mobile {
-        width: 90%; // Full width for mobile
-        top: 25%; // Adjust as needed for vertical positioning
-        border-radius: 0.625rem; // Rounded corners for mobile
-        font-size: 0.625rem; // Font size
+        width: 90%;
+        top: 25%;
+        border-radius: 0.625rem;
+        font-size: 0.625rem;
       }
 
       @include tablet {
         width: 90%;
-        top: 25%; // Adjust as needed for vertical positioning
-        font-size: 0.625rem; // Font size
+        top: 25%;
+        font-size: 0.625rem;
       }
 
       @include desktop-lg {
-        top: 40%; // Adjust as needed for vertical positioning
-        font-size: 0.75rem; // Font size
+        top: 40%;
+        font-size: 0.75rem;
+      }
+
+      @include desktop-2k {
+        top: 45%;
+        font-size: 0.875rem;
+        max-width: 28.875rem;
+      }
+
+      @include desktop-5k {
+        top: 50%;
+        font-size: 1rem;
+        max-width: 34.875rem;
       }
     }
   }
@@ -246,32 +293,32 @@
   }
 
   .highlighted {
-    color: #ffffff; // Light color for highlighted text
+    color: #ffffff;
     display: inline-block;
   }
 
   .sidebar-image-container {
-    position: relative; // Ensure this is set for absolute positioning
-    display: flex; // Use Flexbox
-    justify-content: center; // Center horizontally
-    align-items: flex-start; // Align items to the top (normal alignment)
-    height: 100%; // Ensure it takes full height of the parent
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
 
     .sidebar-image {
-      width: 100%; // Full width for the image
-      display: block; // Ensure the image is treated as a block element
+      width: 100%;
+      display: block;
     }
   }
 
   .benefits-item {
-    display: flex; // Align bullet and text
-    align-items: center; // Center items vertically
-    gap: 0.5rem; // Space between bullet and text
-    margin-bottom: 0.375rem; // Space between items
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.375rem;
   }
 
   .benefits-item:last-child {
-    margin-bottom: 0; // Remove margin from the last item
+    margin-bottom: 0;
   }
 
   &__form {
@@ -281,7 +328,7 @@
   }
 
   &__row {
-    margin-bottom: 0.9375rem; // Consistent spacing between rows
+    margin-bottom: 0.9375rem;
   }
 
   &__field {
@@ -303,7 +350,7 @@
     font-size: 0.75rem;
     margin-bottom: 0.5rem;
     color: #1a1a1a;
-    font-weight: map-get($font-weight, "black"); // Bold font weight
+    font-weight: map-get($font-weight, "black");
   }
 
   &__input {
@@ -345,8 +392,8 @@
     margin-right: 0.625rem;
 
     @include mobile {
-      width: 100%; // Full width for mobile
-      margin-bottom: 0.75rem; // Space between fields
+      width: 100%;
+      margin-bottom: 0.75rem;
     }
   }
 
@@ -375,46 +422,45 @@
 
   .popup-registration__newsletter,
   .popup-registration__consent-text {
-    display: flex; // Use flex to align items
-    align-items: flex-start; // Flex start items vertically
-    margin-top: 0.625rem; // Space above consent section
-    margin-bottom: 0; // Space below consent section
+    display: flex;
+    align-items: flex-start;
+    margin-top: 0.625rem;
+    margin-bottom: 0;
     font-size: 0.75rem;
     color: #1a1a1a;
     input[type="checkbox"] {
-      appearance: none; // Remove default checkbox styling
-      width: 0.8125rem; // Set width for checkbox
+      appearance: none;
+      width: 0.8125rem;
       min-width: 0.8125rem;
-      height: 0.8125rem; // Set height for checkbox
-      // margin-top: 0.25rem;
+      height: 0.8125rem;
       margin-right: 0.625rem;
-      border: 1px solid #ff4400; // Border color
-      border-radius: 3px; // Rounded corners
-      cursor: pointer; // Pointer cursor on hover
-      position: relative; // Position for the checkmark
+      border: 1px solid #ff4400;
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
 
       &:checked {
-        background-color: #ff4400; // Background color when checked
+        background-color: #ff4400;
       }
 
       &:checked::after {
-        content: ""; // Create a checkmark
+        content: "";
         position: absolute;
-        left: 0.25rem; // Position checkmark
-        top: 0; // Position checkmark
-        width: 0.25rem; // Width of checkmark
-        height: 0.625rem; // Height of checkmark
-        border: solid white; // Checkmark color
-        border-width: 0 0.125rem 0.125rem 0; // Checkmark shape
-        transform: rotate(45deg); // Rotate to form a checkmark
+        left: 0.25rem;
+        top: 0;
+        width: 0.25rem;
+        height: 0.625rem;
+        border: solid white;
+        border-width: 0 0.125rem 0.125rem 0;
+        transform: rotate(45deg);
       }
     }
 
     .link {
       font-weight: 700;
-      color: #ff4400; // Link color
-      text-decoration: underline; // Underline for links
-      margin: 0 0.125rem; // Add margin for spacing around links
+      color: #ff4400;
+      text-decoration: underline;
+      margin: 0 0.125rem;
     }
 
     @include mobile {
@@ -424,15 +470,15 @@
 
   .continue-button {
     margin: 1.25rem 0 0.625rem 0;
-    padding: 0.75rem; // Increased padding for button
-    background-color: #ff4400; // Button color
+    padding: 0.75rem;
+    background-color: #ff4400;
     color: white;
     font-size: 0.75rem;
     font-weight: map-get($font-weight, "black");
     border: 1px solid #ff4400;
-    border-radius: 31px; // Rounded corners
+    border-radius: 31px;
     cursor: pointer;
-    width: 100%; // Full width for button
+    width: 100%;
     text-transform: uppercase;
 
     &:hover {
@@ -441,31 +487,31 @@
     }
   }
 
-  // Close button styles
   &__close {
-    position: absolute; // Position absolutely within the content
-    top: 1.25rem; // Adjust top position
-    right: 0.9375rem; // Adjust right position
-    cursor: pointer; // Pointer cursor on hover
-    width: 1.25rem; // Set width
-    height: 1.25rem; // Set height
+    position: absolute;
+    top: 1.25rem;
+    right: 0.9375rem;
+    cursor: pointer;
+    width: 1.25rem;
+    height: 1.25rem;
+    z-index: 10002;
   }
 
   @include mobile {
     &__contact-field {
       select {
-        width: 100%; // Full width for select
-        padding: 0.75rem; // Adjust padding for select
-        font-size: 0.75rem; // Font size for select
-        border: 1px solid #ccc; // Light border for select
-        background-color: white; // White background for select
-        height: 2.625rem; // Set tinggi yang sama
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 0.75rem;
+        border: 1px solid #ccc;
+        background-color: white;
+        height: 2.625rem;
         box-sizing: border-box;
-        line-height: 1rem; // Untuk konsistensi dengan dropdown
+        line-height: 1rem;
 
         &:focus {
-          border-color: #ff4400; // Change border color on focus
-          outline: none; // Remove outline
+          border-color: #ff4400;
+          outline: none;
         }
       }
     }
@@ -477,7 +523,6 @@
       &::placeholder {
         color: #757575;
         opacity: 1;
-        // padding-left: 0.75rem;
       }
     }
   }
@@ -502,19 +547,17 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: #1a1a1a; // Default color for selected value
+      color: #1a1a1a;
 
-      // For empty state (placeholder)
       &[data-value=""] {
         background-color: white !important;
         color: #757575;
         font-weight: 500;
       }
 
-      // For filled state
       &:not([data-value=""]) {
         background-color: white !important;
-        color: #1a1a1a; // Color when value is selected
+        color: #1a1a1a;
         font-weight: 500;
       }
 
@@ -522,7 +565,6 @@
         background-color: white !important;
       }
 
-      // Add this new style for when dropdown is open
       &--open {
         outline: none;
         border-bottom: 2px solid #ff4400;
@@ -530,8 +572,7 @@
     }
 
     &__placeholder {
-      color: #757575; // Color only for placeholder text
-      // padding-left: 0.75rem;
+      color: #757575;
     }
 
     &__option {
@@ -559,14 +600,12 @@
     &__options {
       max-height: 15.625rem;
       overflow-y: auto;
-      // padding: 0.5rem 0.75rem;
-      scroll-behavior: auto; // Ensure immediate scrolling
+      scroll-behavior: auto;
     }
 
     &__option {
       padding: 0.5rem 0.75rem;
       cursor: pointer;
-      // color: #1a1a1a;
 
       &--selected {
         background-color: #ff4400;
@@ -620,7 +659,7 @@
       border: 1px solid #ddd;
       border-radius: 0.25rem;
       box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-      z-index: 1000;
+      z-index: 10003;
 
       .popup-registration__error {
         position: absolute;
@@ -633,18 +672,16 @@
     }
   }
 
-  // Label styling
   &__label {
     display: block;
     font-size: 0.8125rem;
     margin-bottom: 0.5rem;
-    font-weight: map-get($font-weight, "black"); // Bold font weight
+    font-weight: map-get($font-weight, "black");
   }
 
-  // Three fields container - FIXED for desktop alignment
   .three-fields-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; // Three equal columns
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
 
@@ -653,14 +690,13 @@
       margin: 0;
     }
 
-    // Desktop styles
     @include desktop-lg {
       .country-field {
         grid-column: 1;
       }
 
       .mobile-code-phone {
-        grid-column: 2 / span 2; // Span across columns 2 and 3
+        grid-column: 2 / span 2;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
@@ -675,7 +711,6 @@
       }
     }
 
-    // Mobile and Tablet styles
     @media screen and (max-width: $max-lg) {
       display: flex;
       flex-direction: column;
@@ -689,7 +724,6 @@
     }
   }
 
-  // Input and dropdown styling
   .popup-registration__input,
   .custom-dropdown__selected {
     height: 2.625rem;
@@ -705,7 +739,6 @@
     }
   }
 
-  // Ensure dropdowns don't force minimum width
   .custom-dropdown {
     width: 100%;
     min-width: 0;
@@ -724,13 +757,11 @@
     }
   }
 
-  // Remove any floating or positioning that might affect layout
   .popup-registration__field {
     float: none;
     position: static;
   }
 
-  // Ensure dropdowns and inputs have consistent widths
   .popup-registration__input,
   .custom-dropdown,
   .custom-dropdown__selected {
@@ -738,7 +769,6 @@
     box-sizing: border-box;
   }
 
-  // Fix dropdown alignment
   .custom-dropdown {
     &__selected {
       width: 100%;
@@ -751,11 +781,10 @@
     }
   }
 
-  // Add media query for landscape orientation
   @media screen and (max-width: $max-lg) and (orientation: landscape) {
     .popup-registration {
       &__container {
-        flex-direction: column; // Stack elements vertically
+        flex-direction: column;
         height: auto;
         max-height: 100vh;
         overflow-y: auto;
@@ -773,7 +802,7 @@
 
         .benefits-container {
           position: absolute;
-          top: 5.625rem; // Added specific top position to avoid overlapping with h1
+          top: 5.625rem;
           left: 50%;
           transform: translateX(-50%);
           width: 90%;
@@ -787,7 +816,6 @@
           border: 1px solid rgba(255, 255, 255, 0.1);
           z-index: 100;
 
-          // Grid layout for benefits items
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 0.25rem;
@@ -814,9 +842,8 @@
           }
         }
 
-        // Add close button to sidebar
         .popup-registration__sidebar__close-mobile {
-          display: block; // Only show for mobile
+          display: block;
           position: absolute;
           top: 0.9375rem;
           right: 0.9375rem;
@@ -828,16 +855,14 @@
       }
 
       &__content {
-        width: 100%; // Full width
+        width: 100%;
         border-radius: 0 0 0.625rem 0.625rem;
         padding: 8.75rem 1.25rem 1.875rem 1.25rem;
 
-        // Hide the original close button in content area
         .popup-registration__close {
           display: none;
         }
 
-        // Adjust form container to have proper spacing
         .popup-registration__form {
           width: 100%;
           max-width: 37.5rem;
@@ -845,10 +870,9 @@
           padding: 0 1.25rem;
         }
 
-        // Style risk warning container
         .risk-warning-container {
           width: 100%;
-          max-width: 37.5rem; // Match form width
+          max-width: 37.5rem;
           margin: 1.25rem auto 0;
           padding: 0 1.25rem;
           text-align: center;
@@ -866,7 +890,6 @@
         }
       }
 
-      // Adjust form layout for landscape
       &__form {
         .name-fields {
           display: flex;
@@ -887,7 +910,6 @@
         }
       }
 
-      // Adjust input and label sizes
       &__label {
         font-size: 0.75rem;
       }
@@ -897,7 +919,6 @@
         font-size: 0.75rem;
       }
 
-      // Adjust spacing
       &__row {
         margin-bottom: 0.9375rem;
       }
@@ -908,13 +929,12 @@
     }
   }
 
-  // Specific adjustments for smaller landscape devices
   @media screen and (max-width: 767px) and (orientation: landscape) {
     .popup-registration__sidebar {
       .benefits-container {
         height: 12.5rem;
         padding: 0.75rem;
-        top: 5.625rem; // Consistent top position
+        top: 5.625rem;
 
         .benefits-item {
           gap: 0.25rem;
@@ -929,7 +949,6 @@
     }
   }
 
-  // iPad Mini and similar tablets in landscape mode
   @media only screen and (min-width: 1024px) and (max-width: 1024px) and (orientation: landscape) {
     .sidebar-area {
       .benefits-container {
@@ -938,28 +957,25 @@
         left: 50%;
         transform: translate(-50%, -50%);
         max-width: 25rem;
-        font-size: 0.6875rem; // Slightly smaller font (11px)
-        line-height: 1.2; // Tighter line height
+        font-size: 0.6875rem;
+        line-height: 1.2;
         background-color: rgba(26, 26, 26, 0.95);
         border-radius: 0.625rem;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-        // Compact benefits items
         .benefits-item {
-          gap: 0.375rem; // Reduced gap
-          margin-bottom: 0.25rem; // Reduced margin
-          padding: 0.3125rem 0; // Minimal padding
+          gap: 0.375rem;
+          margin-bottom: 0.25rem;
+          padding: 0.3125rem 0;
           display: flex;
           align-items: center;
 
-          // Slightly smaller icons
           .normal-text {
             width: 0.75rem;
             min-width: 0.75rem;
           }
         }
 
-        // Hover effect on items
         .benefits-item:hover {
           background-color: rgba(255, 255, 255, 0.05);
           border-radius: 0.25rem;
@@ -973,32 +989,31 @@
 .recaptcha-terms-text {
   .link {
     font-weight: 700;
-    color: #ff4400; // Link color
-    text-decoration: underline; // Underline for links
-    margin: 0 0.125rem; // Add margin for spacing around links
+    color: #ff4400;
+    text-decoration: underline;
+    margin: 0 0.125rem;
   }
 }
 
 .popup-registration__form input::placeholder,
 .popup-registration__form select::placeholder {
-  color: #757575; // Light gray color for placeholders
-  opacity: 1; // Ensure full opacity for better visibility
-  // padding-left: 0.75rem;
+  color: #757575;
+  opacity: 1;
 }
 
 .text-light {
-  color: #f0f0f0; // Replace with your desired light color
+  color: #f0f0f0;
 }
 
 .recaptcha-terms-container {
-  width: 100%; // Full width
+  width: 100%;
   margin-top: 0.75rem;
   text-align: center;
 }
 
 .recaptcha-terms-content {
-  color: #a0aec0; // Light gray color
-  font-size: 0.75rem; // Small text size
+  color: #a0aec0;
+  font-size: 0.75rem;
 }
 
 .recaptcha-terms-text {
@@ -1006,7 +1021,7 @@
 }
 
 .recaptcha-terms-text {
-  line-height: 1.5; // Line height for better readability
+  line-height: 1.5;
 }
 
 .popup-registration-error-message {
@@ -1019,35 +1034,34 @@
 }
 
 .risk-warning-container {
-  width: 100%; // Full width
-  padding: 0; // Remove padding for larger screens
+  width: 100%;
+  padding: 0;
 }
 
 .risk-warning-content {
-  color: #9b9b9b; // Light gray color
-  font-size: 0.6875rem; // Small text size
+  color: #9b9b9b;
+  font-size: 0.6875rem;
 }
 
 .risk-warning-text {
-  line-height: 1.5; // Line height for better readability
+  line-height: 1.5;
 }
 
-/* CSS for mobile */
 .full-width {
-  width: 100%; /* Ensure Country of Residence takes full width */
+  width: 100%;
 }
 
 .half-width {
-  width: 48%; /* Set width for Code and Phone Number */
-  display: inline-block; /* Display in one line */
-  box-sizing: border-box; /* Ensure padding and margin don't affect width */
+  width: 48%;
+  display: inline-block;
+  box-sizing: border-box;
 }
 
 .popup-registration__sidebar__close-mobile {
-  display: none; // Hide by default for desktop
+  display: none;
 
   @include mobile {
-    display: block; // Only show for mobile
+    display: block;
     position: absolute;
     top: 0.9375rem;
     right: 0.9375rem;
@@ -1090,20 +1104,17 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    color: #1a1a1a; // Default color for selected value
+    color: #1a1a1a;
 
-    // For empty state (placeholder)
     &[data-value=""] {
       background-color: white !important;
       color: #757575;
       font-weight: 500;
-      // padding-left: 0.75rem;
     }
 
-    // For filled state
     &:not([data-value=""]) {
       background-color: white !important;
-      color: #1a1a1a; // Color when value is selected
+      color: #1a1a1a;
       font-weight: 500;
     }
 
@@ -1111,7 +1122,6 @@
       background-color: white !important;
     }
 
-    // Add this new style for when dropdown is open
     &--open {
       outline: none;
       border-bottom: 2px solid #ff4400;
@@ -1128,7 +1138,7 @@
     border: 1px solid #ddd;
     border-radius: 0.25rem;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 10003;
   }
 
   &__search {
@@ -1147,14 +1157,12 @@
   &__options {
     max-height: 15.625rem;
     overflow-y: auto;
-    // padding: 0.5rem 0.75rem;
   }
 
   &__option {
     padding: 0.5rem 0.75rem;
     cursor: pointer;
     font-size: 0.813rem;
-    // color: #1a1a1a;
 
     &:hover {
       background-color: #ff4400;
@@ -1183,7 +1191,6 @@
   }
 }
 
-// Add scrollbar styling
 .custom-dropdown__options {
   &::-webkit-scrollbar {
     width: 0.375rem;
@@ -1203,7 +1210,6 @@
   }
 }
 
-// Separate selectors for input and dropdown
 .popup-registration__input {
   width: 100%;
 }
@@ -1212,16 +1218,14 @@
   width: 100%;
 }
 
-// Name fields (First Name & Last Name)
 .name-fields {
-  display: grid; // Use CSS Grid instead of flex
-  grid-template-columns: repeat(2, 1fr); // Two equal columns
-  gap: 1.25rem; // Consistent gap
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
   margin-bottom: 0.9375rem;
 
   .popup-registration__field {
     width: 100%;
-    // margin: 0;
   }
 
   @include mobile {
@@ -1231,16 +1235,12 @@
   }
 }
 
-// Field spacing consistency
 .popup-registration__field {
-  // margin-bottom: 0.9375rem; // Increased spacing between fields
-
   @include mobile {
-    margin-bottom: 0.9375rem; // Consistent spacing on mobile
+    margin-bottom: 0.9375rem;
   }
 }
 
-// Input styling
 .popup-registration__input,
 .custom-dropdown__selected {
   width: 100%;
@@ -1251,12 +1251,11 @@
   border-bottom: 1px solid #ff4400;
   background-color: transparent;
   padding: 0.5rem 0.75rem;
-  margin: 0; // Remove any default margins
+  margin: 0;
 
   &::placeholder {
     color: #757575;
     opacity: 1;
-    // padding-left: 0.75rem;
   }
 
   &:focus {
@@ -1265,21 +1264,19 @@
   }
 }
 
-// Label styling
 .popup-registration__label {
   display: block;
   font-size: 0.8125rem;
   margin-bottom: 0;
   color: #1a1a1a;
-  font-weight: map-get($font-weight, "black"); // Bold font weight
-  margin-top: 1.25rem; // Add consistent top margin
+  font-weight: map-get($font-weight, "black");
+  margin-top: 1.25rem;
 
   &:first-child {
-    margin-top: 0; // Remove top margin for first label
+    margin-top: 0;
   }
 }
 
-// Consistent spacing for mobile
 @include mobile {
   .popup-registration__form {
     > * {

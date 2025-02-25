@@ -5,9 +5,11 @@ import AdvantageBlock from "../../../performance/components/advantage-block";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import { DIR_LTR, DIR_RTL } from "../../../../helpers/constants";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
+import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 
 const PartnersAdvantages = ({ className, title, advantages }) => {
   const isRTL = useRtlDirection();
+  const { isTablet, isMobile } = useWindowSize();
 
   return (
     <section
@@ -16,17 +18,21 @@ const PartnersAdvantages = ({ className, title, advantages }) => {
       })}
       dir={isRTL ? DIR_RTL : DIR_LTR}
     >
-      <h2 className="partners-advantages__title">{title}</h2>
-      <div className="partners-advantages__advantages">
-        {advantages.length > 0 &&
-          advantages.map((block) => (
-            <AdvantageBlock
-              key={`advantage-${stringTransformToKebabCase(block.text)}`}
-              icon={block.icon}
-              text={block.text}
-              accent={block.accent}
-            />
-          ))}
+      <div className="container">
+        <div className="partners-advantages__wrapper">
+          <h2 className="partners-advantages__title">{title}</h2>
+          <div className="partners-advantages__advantages">
+            {advantages.length > 0 &&
+              advantages.map((block) => (
+                <AdvantageBlock
+                  key={`advantage-${stringTransformToKebabCase(block.text)}`}
+                  icon={block.icon}
+                  text={block.text}
+                  accent={block.accent}
+                />
+              ))}
+          </div>
+        </div>
       </div>
     </section>
   );

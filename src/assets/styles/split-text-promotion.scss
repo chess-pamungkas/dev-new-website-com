@@ -2,7 +2,15 @@
 @import "mixins";
 
 .split-text-promotion {
+  scroll-snap-align: start;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
   color: map-get($colors, "black");
+  overflow: hidden;
 
   &__wrapper {
     @include desktop-lg {
@@ -45,6 +53,7 @@
         height: 142px;
         background: url("../../assets/images/bg/company/ornament-sm.svg")
           no-repeat;
+        z-index: 1;
 
         @include tablet {
           width: 252px;
@@ -67,6 +76,15 @@
             no-repeat;
         }
       }
+
+      // .split-text-promotion__content {
+      //   position: relative;
+      //   z-index: 2;
+      //   width: 100%;
+      //   max-width: 1680px;
+      //   margin: 0 auto;
+      //   padding: 0 15px;
+      // }
     }
 
     &--right {
@@ -76,6 +94,13 @@
       flex-direction: column;
       padding-top: 32px;
       padding-bottom: 40px;
+      padding-left: 100px;
+      padding-right: 100px;
+
+      @include mobile {
+        padding-left: $padding-sm;
+        padding-right: $padding-sm;
+      }
 
       @include tablet {
         background: url("../../assets/images/bg/company/split-text-promotion-md.svg")
@@ -89,6 +114,7 @@
           no-repeat bottom right;
         padding-top: 68px;
         padding-bottom: 60px;
+        padding-right: 125px;
       }
 
       @include desktop-xl {
@@ -96,6 +122,17 @@
           no-repeat bottom right;
         padding-top: 126px;
         padding-bottom: 128px;
+      }
+
+      @include desktop-2k {
+        padding-right: 400px;
+      }
+
+      .split-text-promotion__content {
+        width: 100%;
+        max-width: 1680px;
+        margin: 0 auto;
+        padding: 0;
       }
     }
   }

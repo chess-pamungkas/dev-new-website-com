@@ -4,12 +4,22 @@
 .top-market-promotion {
   scroll-snap-align: start;
   position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  background-size: cover;
   display: flex;
   align-items: center;
   padding-top: 126px;
   padding-bottom: 55px;
   background: map-get($colors, "white");
-  @include content-alignment(0);
+
+  @include mobile {
+    padding-left: $padding-sm;
+    padding-right: $padding-sm;
+  }
 
   @include tablet {
     padding-top: 75px;
@@ -33,6 +43,8 @@
   }
 
   &__wrapper {
+    position: relative;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     flex-direction: column-reverse;
@@ -40,7 +52,35 @@
     height: 100%;
 
     @include desktop-lg {
+      max-width: 1200px;
       flex-direction: row;
+    }
+
+    @include desktop-xl {
+      max-width: 1680px;
+      flex-direction: unset;
+
+      &--reverse {
+        flex-direction: row-reverse;
+      }
+    }
+
+    @include desktop-2k {
+      max-width: 2400px;
+      flex-direction: unset;
+
+      &--reverse {
+        flex-direction: row-reverse;
+      }
+    }
+
+    @include desktop-5k {
+      max-width: 3840px;
+      flex-direction: unset;
+
+      &--reverse {
+        flex-direction: row-reverse;
+      }
     }
   }
 

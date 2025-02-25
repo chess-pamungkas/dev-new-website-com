@@ -12,7 +12,7 @@ const TradingSections = ({
   setSelectedSection,
   tradingSection,
 }) => {
-  const { isMobile } = useWindowSize();
+  const { isTablet, isMobile } = useWindowSize();
 
   return (
     <div className={cn("trading-sections-wrapper", className)}>

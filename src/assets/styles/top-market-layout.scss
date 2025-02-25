@@ -4,6 +4,11 @@
 .top-market-layout {
   scroll-snap-align: start;
   position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -12,7 +17,12 @@
   padding-top: 40px;
   padding-bottom: 33px;
   background: map-get($colors, "white");
-  @include content-alignment(0);
+  overflow: hidden;
+
+  @include mobile {
+    padding-left: $padding-sm;
+    padding-right: $padding-sm;
+  }
 
   @include tablet {
     padding-top: 108px;
@@ -39,12 +49,27 @@
     display: flex;
     flex-direction: column;
     max-width: 100%;
+    z-index: 1;
+
+    // @include tablet {
+    //   max-width: 720px;
+    // }
+
+    // @include desktop-lg {
+    //   max-width: 1200px;
+    // }
+
+    // @include desktop-xl {
+    //   max-width: 1680px;
+    // }
   }
 
   &__content {
     box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
     border: 1px solid map-get($colors, "red");
     border-radius: 9px;
+    position: relative;
+    z-index: 1;
   }
 
   &__title {
@@ -54,6 +79,8 @@
     font-weight: map-get($font-weight, "black");
     color: map-get($colors, "red");
     text-align: center;
+    position: relative;
+    z-index: 1;
 
     @include tablet {
       margin: 0 0 30px;
@@ -76,6 +103,8 @@
 
   &__btn {
     margin: 30px auto 0;
+    position: relative;
+    z-index: 1;
 
     @include tablet {
       margin: 40px auto 0;
@@ -110,9 +139,9 @@
       no-repeat bottom;
   }
 
-  .top-market-layout__wrapper {
-    width: 1102px;
-  }
+  // .top-market-layout__wrapper {
+  //   width: 1102px;
+  // }
 
   .top-market-layout__title {
     margin: 0 0 40px;
