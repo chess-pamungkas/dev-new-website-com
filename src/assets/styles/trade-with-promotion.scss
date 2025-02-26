@@ -22,6 +22,7 @@
   padding-top: 230px;
   padding-bottom: 240px;
   z-index: 5;
+  overflow: hidden;
 
   @include mobile {
     padding-left: $padding-sm;

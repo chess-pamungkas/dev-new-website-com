@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { Trans, useTranslation } from "react-i18next";
@@ -66,7 +67,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
     }
   };
 
-  return (
+  const popupContent = (
     <div
       className={cn("popup-registration", {
         "popup-registration--rtl": isRTL,
@@ -156,6 +157,8 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
       </div>
     </div>
   );
+
+  return ReactDOM.createPortal(popupContent, document.body);
 };
 
 const Bullet = () => {
