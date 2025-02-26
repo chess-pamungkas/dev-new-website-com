@@ -30,13 +30,25 @@ export const LanguageProvider = ({ children }) => {
   const [selectedLanguage, setSelectedLanguage] = useState(initialLang);
 
   useEffect(() => {
-    // update actual language if initital was changed (e.g. if clientConfig was updated)
     setSelectedLanguage(initialLang);
   }, [initialLang]);
 
   useEffect(() => {
-    // update the actual path with the selected language (e.g. from /forex to /fr/forex)
+    // Update language
     changeI18nLanguage(selectedLanguage);
+
+    // Handle RTL
+    const rtlLanguages = ["ar"];
+    const isRTL = rtlLanguages.includes(selectedLanguage.id);
+
+    // Set RTL direction
+    document.documentElement.dir = isRTL ? "rtl" : "ltr";
+
+    if (isRTL) {
+      document.documentElement.classList.add("rtl");
+    } else {
+      document.documentElement.classList.remove("rtl");
+    }
   }, [selectedLanguage]);
 
   useEffect(() => {
@@ -44,7 +56,6 @@ export const LanguageProvider = ({ children }) => {
   }, [setCookie, selectedLanguage]);
 
   useEffect(() => {
-    // used to set specific font for JP language. Need to modify if we will have a few more specific fonts
     if (selectedLanguage.id === "jp") {
       document.body.classList.add("jp-font");
     } else {

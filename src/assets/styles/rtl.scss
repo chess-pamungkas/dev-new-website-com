@@ -136,7 +136,7 @@
   }
 
   .burger-menu__navbar {
-    right: 10%;
+    right: 0;
     left: 0;
   }
 }
@@ -275,8 +275,7 @@
 }
 
 .promotion4.promotion--rtl {
-  background: url("../../assets/images/promotions/promo4-rtl.svg") no-repeat
-    left;
+  background: url("../../assets/images/promotions/promo4-rtl.svg") no-repeat 0;
   background-size: cover;
 }
 
@@ -1185,22 +1184,76 @@
 .popup-registration {
   &__container--rtl {
     text-align: right !important;
-    float: right;
+    z-index: 1000001;
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    @include mobile {
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      max-height: 100vh;
+      padding: 0.625rem;
+      overflow-y: auto;
+    }
+
+    @include tablet {
+      padding: 0.625rem;
+    }
+
+    @include desktop-lg {
+      max-width: 71.25rem;
+    }
+
+    @include desktop-xl {
+      max-width: 75rem;
+      max-height: 45rem;
+    }
+  }
+
+  &__content--rtl {
+    border-radius: 0.625rem 0 0 0.625rem;
+    width: 60%;
+    background-color: white;
+
+    @include mobile {
+      width: 100%;
+      border-radius: 0 0 0.625rem 0.625rem;
+    }
   }
 
   &__sidebar--rtl {
     position: relative;
+    z-index: 1000002;
+    background-color: #ff4400;
+    width: 40%;
+    background-image: url("../images/bg/register-img.png");
+    background-size: 85% auto;
+    background-repeat: no-repeat;
+    background-position: center calc(55%);
     border-radius: 0 0.625rem 0.625rem 0;
 
     @include mobile {
+      width: 100%;
+      background-size: 70% auto;
+      background-position: center calc(70%);
+      max-height: none;
+      height: 21.875rem;
       border-radius: 0.625rem 0.625rem 0 0;
     }
 
     &__title--rtl {
       position: relative;
       max-width: 100%;
-      margin-bottom: 10px;
-      right: 11%;
+      margin-top: 20px;
+      // margin-bottom: 10px;
+      right: 0;
     }
 
     &__close--rtl {
@@ -1214,12 +1267,20 @@
     }
   }
 
-  &__content--rtl {
-    border-radius: 0.625rem 0 0 0.625rem;
-
-    @include mobile {
-      border-radius: 0 0 0.625rem 0.625rem;
-    }
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+    z-index: 1000000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0.625rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   &__name-field--rtl,
@@ -1258,7 +1319,7 @@
 }
 
 h1.popup-registration-register--rtl {
-  text-align: right;
+  text-align: right !important;
   margin-top: 0;
   margin-bottom: 2.1875rem;
   color: #1a1a1a;
@@ -1296,3 +1357,215 @@ h1.popup-registration-register--rtl {
     }
   }
 }
+
+// RTL Layout Fixes
+html[dir="rtl"] {
+  // Fix text alignment
+  text-align: right;
+
+  // Fix flexbox direction
+  .flex-row {
+    flex-direction: row-reverse;
+  }
+
+  // Fix margins and paddings
+  .ml-auto {
+    margin-left: unset !important;
+    margin-right: auto !important;
+  }
+
+  .mr-auto {
+    margin-right: unset !important;
+    margin-left: auto !important;
+  }
+
+  // Fix iOS-specific issues
+  @supports (-webkit-touch-callout: none) {
+    // Fix iOS text rendering
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+
+    // Fix iOS flexbox issues
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    // Fix iOS scroll behavior
+    -webkit-overflow-scrolling: touch;
+
+    // Fix iOS text alignment in inputs and selects
+    input,
+    textarea,
+    select {
+      text-align: right;
+      direction: rtl;
+    }
+
+    // Fix iOS button alignment
+    button {
+      direction: rtl;
+    }
+
+    // Fix iOS table alignment
+    table {
+      direction: rtl;
+    }
+  }
+
+  // Fix menu and dropdown direction
+  .menu,
+  .dropdown {
+    transform-origin: top right;
+  }
+
+  // Fix icons and arrows
+  .icon-arrow-right,
+  .icon-arrow-left {
+    transform: scaleX(-1);
+  }
+
+  // Fix header layout
+  .header {
+    &__main-wrapper {
+      flex-direction: row-reverse;
+    }
+
+    &__navigation {
+      direction: rtl;
+    }
+  }
+}
+
+// RTL Layout Fixes
+html[dir="rtl"] {
+  // Fix text alignment
+  text-align: right;
+
+  // Fix flexbox direction
+  .flex-row {
+    flex-direction: row-reverse;
+  }
+
+  // Fix margins and paddings
+  .ml-auto {
+    margin-left: unset !important;
+    margin-right: auto !important;
+  }
+
+  .mr-auto {
+    margin-right: unset !important;
+    margin-left: auto !important;
+  }
+
+  // Fix iOS-specific issues
+  @supports (-webkit-touch-callout: none) {
+    // Fix iOS text rendering
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+
+    // Fix iOS flexbox issues
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    // Fix iOS scroll behavior
+    -webkit-overflow-scrolling: touch;
+
+    // Fix iOS text alignment in inputs and selects
+    input,
+    textarea,
+    select {
+      text-align: right;
+      direction: rtl;
+    }
+
+    // Fix iOS button alignment
+    button {
+      direction: rtl;
+    }
+
+    // Fix iOS table alignment
+    table {
+      direction: rtl;
+    }
+
+    .popup-registration {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 999999 !important;
+      background-color: rgba(0, 0, 0, 0.5);
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &__wrapper {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000000 !important;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 0.625rem;
+        box-sizing: border-box;
+
+        @include mobile {
+          padding: 0.625rem;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+    }
+
+    // Ensure header stays below popup
+    .header-wrapper {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 99999 !important;
+      width: 100%;
+    }
+
+    // Fix scrolling issues
+    body.popup-open {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Fix header layout
+  .header {
+    &__main-wrapper {
+      flex-direction: row-reverse;
+    }
+
+    &__navigation {
+      direction: rtl;
+    }
+  }
+}
+
+// body.popup-open {
+//   overflow: hidden;
+//   position: fixed;
+//   width: 100%;
+//   height: 100%;
+// }
