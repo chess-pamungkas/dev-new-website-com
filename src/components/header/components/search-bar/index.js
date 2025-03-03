@@ -32,6 +32,7 @@ const SearchBar = ({
   const isRTL = useRtlDirection();
 
   const [isActive, setIsActive] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   const searchInput = useRef();
   const searchBarRef = useRef();
@@ -51,46 +52,102 @@ const SearchBar = ({
     if (!isExpandable && !isNavbarOpen) return;
 
     setSearchState(INITIAL_SEARCH_STATE);
+    setInputValue("");
     if (!isExpandable) return;
 
     setIsActive(false);
   });
 
   const handleSearch = (e) => {
-    const query = e.target.value;
-    if (query.length >= SEARCH_MIN_QUERY_LENGTH) {
-      const results = getSearchResults(query);
-      setSearchState({
-        query,
-        results,
-        noResultsFound: !results.length,
-      });
-    } else {
-      setSearchState({
-        query,
-        results: [],
-        noResultsFound: false,
-      });
-    }
+    const query = e.target.value || "";
+    console.log("handleSearch called with query:", query);
+
+    setInputValue(query);
+
+    setSearchState({
+      query,
+      results:
+        query.length >= SEARCH_MIN_QUERY_LENGTH ? getSearchResults(query) : [],
+      noResultsFound:
+        query.length >= SEARCH_MIN_QUERY_LENGTH &&
+        !getSearchResults(query).length,
+    });
   };
 
   const handleMoreResultsClick = (e) => {
+    console.log("handleMoreResultsClick called");
     if (!isNavbarOpen) return;
 
     onSubmit(e);
   };
 
   const handleSubmit = (e) => {
+    console.log("handleSubmit called", {
+      inputValue,
+      stateQuery: searchState.query,
+      isNavbarOpen,
+      isExpandable,
+    });
     e.preventDefault();
-    if (onSubmit) onSubmit(e);
+    e.stopPropagation();
 
-    navigate(
-      `${
+    if (onSubmit) {
+      console.log("Calling onSubmit from handleSubmit");
+      onSubmit(e);
+    }
+
+    if (inputValue) {
+      const url = `${
         selectedLanguage.URIPart
-      }${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(
-        searchState.query
-      )}`
-    );
+      }${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURIComponent(
+        inputValue
+      )}`;
+      console.log("Navigating to:", url);
+      navigate(url);
+
+      // Clear input and search state after navigation
+      setInputValue("");
+      setSearchState(INITIAL_SEARCH_STATE);
+    }
+  };
+
+  const handleGoClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    console.log("handleGoClick called", {
+      inputValue,
+      stateQuery: searchState.query,
+      isNavbarOpen,
+      isExpandable,
+      eventType: e.type,
+    });
+
+    if (inputValue) {
+      if (onSubmit) {
+        console.log("Calling onSubmit from handleGoClick");
+        onSubmit(e);
+      }
+
+      const url = `${
+        selectedLanguage.URIPart
+      }${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURIComponent(
+        inputValue
+      )}`;
+      console.log("Attempting to navigate to:", url);
+      try {
+        navigate(url);
+        console.log("Navigation completed");
+
+        // Clear input and search state after navigation
+        setInputValue("");
+        setSearchState(INITIAL_SEARCH_STATE);
+      } catch (error) {
+        console.error("Navigation failed:", error);
+      }
+    } else {
+      console.log("No query to search");
+    }
   };
 
   return (
@@ -102,11 +159,13 @@ const SearchBar = ({
       )}
       ref={searchBarRef}
       onSubmit={handleSubmit}
+      onClick={(e) => console.log("Form clicked:", e.target.className)}
     >
       <button
         className="search-bar__expand"
         type="button"
         onClick={() => {
+          console.log("Expand button clicked");
           onBarExpand();
         }}
       >
@@ -121,9 +180,14 @@ const SearchBar = ({
           placeholder={t("search-placeholder")}
           ref={searchInput}
           onChange={handleSearch}
-          value={searchState.query}
+          value={inputValue}
+          autoComplete="off"
         />
-        <button className="search-bar__submit" type="submit">
+        <button
+          className="search-bar__submit"
+          type="button"
+          onClick={handleGoClick}
+        >
           {t("search-submit-btn")}
         </button>
       </div>
