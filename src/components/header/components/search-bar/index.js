@@ -60,8 +60,6 @@ const SearchBar = ({
 
   const handleSearch = (e) => {
     const query = e.target.value || "";
-    console.log("handleSearch called with query:", query);
-
     setInputValue(query);
 
     setSearchState({
@@ -75,24 +73,15 @@ const SearchBar = ({
   };
 
   const handleMoreResultsClick = (e) => {
-    console.log("handleMoreResultsClick called");
     if (!isNavbarOpen) return;
-
     onSubmit(e);
   };
 
   const handleSubmit = (e) => {
-    console.log("handleSubmit called", {
-      inputValue,
-      stateQuery: searchState.query,
-      isNavbarOpen,
-      isExpandable,
-    });
     e.preventDefault();
     e.stopPropagation();
 
     if (onSubmit) {
-      console.log("Calling onSubmit from handleSubmit");
       onSubmit(e);
     }
 
@@ -102,7 +91,6 @@ const SearchBar = ({
       }${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURIComponent(
         inputValue
       )}`;
-      console.log("Navigating to:", url);
       navigate(url);
 
       // Clear input and search state after navigation
@@ -115,17 +103,8 @@ const SearchBar = ({
     e.preventDefault();
     e.stopPropagation();
 
-    console.log("handleGoClick called", {
-      inputValue,
-      stateQuery: searchState.query,
-      isNavbarOpen,
-      isExpandable,
-      eventType: e.type,
-    });
-
     if (inputValue) {
       if (onSubmit) {
-        console.log("Calling onSubmit from handleGoClick");
         onSubmit(e);
       }
 
@@ -134,19 +113,15 @@ const SearchBar = ({
       }${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURIComponent(
         inputValue
       )}`;
-      console.log("Attempting to navigate to:", url);
+
       try {
         navigate(url);
-        console.log("Navigation completed");
-
         // Clear input and search state after navigation
         setInputValue("");
         setSearchState(INITIAL_SEARCH_STATE);
       } catch (error) {
         console.error("Navigation failed:", error);
       }
-    } else {
-      console.log("No query to search");
     }
   };
 
@@ -159,15 +134,11 @@ const SearchBar = ({
       )}
       ref={searchBarRef}
       onSubmit={handleSubmit}
-      onClick={(e) => console.log("Form clicked:", e.target.className)}
     >
       <button
         className="search-bar__expand"
         type="button"
-        onClick={() => {
-          console.log("Expand button clicked");
-          onBarExpand();
-        }}
+        onClick={onBarExpand}
       >
         <SearchIcon />
       </button>
