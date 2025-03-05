@@ -1,4 +1,10 @@
-import React, { useCallback, useContext, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useRef,
+  useState,
+  useEffect,
+} from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { navigate } from "gatsby";
@@ -32,7 +38,7 @@ const SearchBar = ({
   const isRTL = useRtlDirection();
 
   const [isActive, setIsActive] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(""); // Local state for input value
 
   const searchInput = useRef();
   const searchBarRef = useRef();
@@ -48,82 +54,192 @@ const SearchBar = ({
       : SEARCH_MIN_QUERY_LENGTH;
   }, [isRTL]);
 
-  useOnClickOutside(searchBarRef, () => {
-    if (!isExpandable && !isNavbarOpen) return;
-
-    setSearchState(INITIAL_SEARCH_STATE);
-    setInputValue("");
-    if (!isExpandable) return;
-
-    setIsActive(false);
-  });
-
   const handleSearch = (e) => {
-    const query = e.target.value || "";
+    const query = e.target.value;
+    console.log("handleSearch called with query:", query);
+
+    // Update local input value
     setInputValue(query);
 
-    setSearchState({
-      query,
-      results:
-        query.length >= SEARCH_MIN_QUERY_LENGTH ? getSearchResults(query) : [],
-      noResultsFound:
-        query.length >= SEARCH_MIN_QUERY_LENGTH &&
-        !getSearchResults(query).length,
-    });
+    // Ensure search bar stays active while typing
+    if (isExpandable) {
+      setIsActive(true);
+    }
+
+    if (query.length >= SEARCH_MIN_QUERY_LENGTH) {
+      const results = getSearchResults(query);
+      console.log("Search results:", results);
+      setSearchState({
+        query,
+        results,
+        noResultsFound: !results.length,
+      });
+    } else {
+      setSearchState({
+        query,
+        results: [],
+        noResultsFound: false,
+      });
+    }
+  };
+
+  const handleResultClick = (e, url) => {
+    e.preventDefault();
+    console.log("Result clicked, navigating to:", url);
+
+    // Prepend the current language prefix to the URL
+    const languagePrefix = selectedLanguage.URIPart;
+    const fullUrl = `${languagePrefix}${url}`;
+
+    console.log("Navigating to URL with language prefix:", fullUrl);
+
+    if (onSubmit) onSubmit(e);
+    navigate(fullUrl);
+    setInputValue(""); // Clear input value
+    setSearchState(INITIAL_SEARCH_STATE); // Clear search state
+    setIsActive(false);
   };
 
   const handleMoreResultsClick = (e) => {
     if (!isNavbarOpen) return;
+
     onSubmit(e);
+
+    // Clear input value and search state after clicking "More Results"
+    setTimeout(() => {
+      setInputValue(""); // Clear input value
+      setSearchState(INITIAL_SEARCH_STATE); // Clear search state
+    }, 300); // Small delay to ensure navigation happens first
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    e.stopPropagation();
+    e.stopPropagation(); // Prevent event bubbling
 
-    if (onSubmit) {
-      onSubmit(e);
-    }
+    console.log(
+      "Form submit triggered by:",
+      e.nativeEvent.submitter ? "button click" : "enter key"
+    );
 
-    if (inputValue) {
-      const url = `${
-        selectedLanguage.URIPart
-      }${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURIComponent(
-        inputValue
-      )}`;
-      navigate(url);
+    const form = e.currentTarget;
+    let currentQuery = inputValue; // Use local state instead of DOM access
 
-      // Clear input and search state after navigation
-      setInputValue("");
-      setSearchState(INITIAL_SEARCH_STATE);
-    }
-  };
-
-  const handleGoClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (inputValue) {
-      if (onSubmit) {
-        onSubmit(e);
-      }
-
-      const url = `${
-        selectedLanguage.URIPart
-      }${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURIComponent(
-        inputValue
-      )}`;
-
-      try {
-        navigate(url);
-        // Clear input and search state after navigation
-        setInputValue("");
-        setSearchState(INITIAL_SEARCH_STATE);
-      } catch (error) {
-        console.error("Navigation failed:", error);
+    // Update search state if needed
+    if (currentQuery !== searchState.query) {
+      console.log("Updating search state with latest query:", currentQuery);
+      if (currentQuery.length >= SEARCH_MIN_QUERY_LENGTH) {
+        const results = getSearchResults(currentQuery);
+        await new Promise((resolve) => {
+          setSearchState({
+            query: currentQuery,
+            results,
+            noResultsFound: !results.length,
+          });
+          resolve();
+        });
+      } else {
+        await new Promise((resolve) => {
+          setSearchState({
+            query: currentQuery,
+            results: [],
+            noResultsFound: false,
+          });
+          resolve();
+        });
       }
     }
+
+    console.log("Current search state after update:", searchState);
+
+    if (!currentQuery) {
+      console.log("No query to submit");
+      return;
+    }
+
+    // Mark form as submitting to prevent state reset
+    form.dataset.submitting = "true";
+
+    if (onSubmit) onSubmit(e);
+
+    console.log("Navigating with query:", currentQuery);
+
+    // Store the current query for navigation
+    const queryForNavigation = currentQuery;
+
+    // Don't clear the search state before navigation
+    // This ensures the search page has the correct query when it loads
+
+    // Navigate to search page with the query
+    navigate(
+      `${
+        selectedLanguage.URIPart
+      }${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(
+        queryForNavigation
+      )}`
+    );
+
+    // Clear input and reset state after navigation has been triggered
+    // Use a longer delay to ensure the search page has time to initialize
+    setTimeout(() => {
+      setInputValue(""); // Clear local input value
+
+      // Clear the search results by resetting the search state
+      setSearchState({
+        query: "", // Clear the query
+        results: [], // Clear the results
+        noResultsFound: false,
+      });
+
+      if (isExpandable) {
+        setIsActive(false);
+      }
+
+      // Clear submitting flag
+      form.dataset.submitting = "false";
+    }, 300); // Longer delay to ensure navigation happens first
   };
+
+  useOnClickOutside(searchBarRef, (event) => {
+    // Ignore if form is being submitted
+    if (searchBarRef.current?.dataset.submitting === "true") {
+      console.log("Ignoring outside click - form is being submitted");
+      return;
+    }
+
+    console.log("Outside click detected on:", event.target);
+
+    // Don't reset if clicking any part of the search bar components
+    if (
+      event.target.closest(".search-bar__submit") ||
+      event.target.closest(".search-bar__input") ||
+      event.target.closest(".search-bar__expand") ||
+      event.target.closest(".burger-menu") // Ignore burger menu clicks
+    ) {
+      console.log("Ignoring outside click - search bar component or menu");
+      return;
+    }
+
+    if (event.target.closest(".search-bar__results")) {
+      console.log("Ignoring outside click - search results");
+      return;
+    }
+
+    // Only reset if clicking completely outside the search area
+    if (!isExpandable && !isNavbarOpen) return;
+
+    // Don't reset if the input is focused
+    if (document.activeElement === searchInput.current) {
+      console.log("Ignoring outside click - input is focused");
+      return;
+    }
+
+    console.log("Resetting search state and input value from outside click");
+    setInputValue(""); // Clear input value
+    setSearchState(INITIAL_SEARCH_STATE); // Clear search state
+    if (!isExpandable) return;
+
+    setIsActive(false);
+  });
 
   return (
     <form
@@ -138,7 +254,9 @@ const SearchBar = ({
       <button
         className="search-bar__expand"
         type="button"
-        onClick={onBarExpand}
+        onClick={() => {
+          onBarExpand();
+        }}
       >
         <SearchIcon />
       </button>
@@ -152,18 +270,14 @@ const SearchBar = ({
           ref={searchInput}
           onChange={handleSearch}
           value={inputValue}
-          autoComplete="off"
         />
-        <button
-          className="search-bar__submit"
-          type="button"
-          onClick={handleGoClick}
-        >
+        <button className="search-bar__submit" type="submit">
           {t("search-submit-btn")}
         </button>
       </div>
 
-      {searchState.query && (
+      {/* Only show search results when both searchState.query and inputValue are not empty */}
+      {searchState.query && inputValue && (
         <ul className="search-bar__results">
           {searchState.results.length > 0 ? (
             <>
@@ -175,8 +289,9 @@ const SearchBar = ({
                     key={`search-bar-${i}`}
                   >
                     <InternalLink
-                      to={`${page.url}`}
+                      to={page.url}
                       className="search-bar__results-link"
+                      onClick={(e) => handleResultClick(e, page.url)}
                     >
                       <SearchIcon className="search-bar__results-icon" />
                       <span className="search-bar__results-title">
@@ -189,7 +304,9 @@ const SearchBar = ({
               {searchState.results.length > DROPDOWN_SEARCH_ITEMS_TO_SHOW && (
                 <li className="search-bar__results-item">
                   <InternalLink
-                    to={`${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(
+                    to={`${
+                      selectedLanguage.URIPart
+                    }${SEARCH_PAGE_LINK}/?${SEARCH_PARAM_NAME}=${encodeURI(
                       searchState.query
                     )}`}
                     className="search-bar__results-link"
