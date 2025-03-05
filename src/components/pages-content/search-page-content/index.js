@@ -69,7 +69,6 @@ const SearchPageContent = () => {
     }
 
     const query = decodeURI(searchParamValue);
-    console.log("Initializing search from URL with query:", query);
 
     // Always set the input value to the query from URL
     setInputValue(query);
@@ -104,7 +103,6 @@ const SearchPageContent = () => {
 
   const handleSearch = (e) => {
     const query = e.target.value || "";
-    console.log("handleSearch called with query:", query);
 
     // Always update the input value first
     setInputValue(query);
@@ -143,7 +141,6 @@ const SearchPageContent = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted with input value:", inputValue);
 
     // Process the search with the current input value
     if (inputValue.length >= SEARCH_MIN_QUERY_LENGTH) {
@@ -194,7 +191,6 @@ const SearchPageContent = () => {
 
   const handleResultClick = (e, url) => {
     e.preventDefault();
-    console.log("Result clicked, navigating to:", url);
 
     // Clear local state before navigation
     setInputValue("");

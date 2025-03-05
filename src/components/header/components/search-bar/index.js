@@ -56,7 +56,6 @@ const SearchBar = ({
 
   const handleSearch = (e) => {
     const query = e.target.value;
-    console.log("handleSearch called with query:", query);
 
     // Update local input value
     setInputValue(query);
@@ -68,7 +67,6 @@ const SearchBar = ({
 
     if (query.length >= SEARCH_MIN_QUERY_LENGTH) {
       const results = getSearchResults(query);
-      console.log("Search results:", results);
       setSearchState({
         query,
         results,
@@ -85,13 +83,10 @@ const SearchBar = ({
 
   const handleResultClick = (e, url) => {
     e.preventDefault();
-    console.log("Result clicked, navigating to:", url);
 
     // Prepend the current language prefix to the URL
     const languagePrefix = selectedLanguage.URIPart;
     const fullUrl = `${languagePrefix}${url}`;
-
-    console.log("Navigating to URL with language prefix:", fullUrl);
 
     if (onSubmit) onSubmit(e);
     navigate(fullUrl);
@@ -116,17 +111,11 @@ const SearchBar = ({
     e.preventDefault();
     e.stopPropagation(); // Prevent event bubbling
 
-    console.log(
-      "Form submit triggered by:",
-      e.nativeEvent.submitter ? "button click" : "enter key"
-    );
-
     const form = e.currentTarget;
     let currentQuery = inputValue; // Use local state instead of DOM access
 
     // Update search state if needed
     if (currentQuery !== searchState.query) {
-      console.log("Updating search state with latest query:", currentQuery);
       if (currentQuery.length >= SEARCH_MIN_QUERY_LENGTH) {
         const results = getSearchResults(currentQuery);
         await new Promise((resolve) => {
@@ -149,10 +138,7 @@ const SearchBar = ({
       }
     }
 
-    console.log("Current search state after update:", searchState);
-
     if (!currentQuery) {
-      console.log("No query to submit");
       return;
     }
 
@@ -161,13 +147,8 @@ const SearchBar = ({
 
     if (onSubmit) onSubmit(e);
 
-    console.log("Navigating with query:", currentQuery);
-
     // Store the current query for navigation
     const queryForNavigation = currentQuery;
-
-    // Don't clear the search state before navigation
-    // This ensures the search page has the correct query when it loads
 
     // Navigate to search page with the query
     navigate(
@@ -202,11 +183,8 @@ const SearchBar = ({
   useOnClickOutside(searchBarRef, (event) => {
     // Ignore if form is being submitted
     if (searchBarRef.current?.dataset.submitting === "true") {
-      console.log("Ignoring outside click - form is being submitted");
       return;
     }
-
-    console.log("Outside click detected on:", event.target);
 
     // Don't reset if clicking any part of the search bar components
     if (
@@ -215,12 +193,10 @@ const SearchBar = ({
       event.target.closest(".search-bar__expand") ||
       event.target.closest(".burger-menu") // Ignore burger menu clicks
     ) {
-      console.log("Ignoring outside click - search bar component or menu");
       return;
     }
 
     if (event.target.closest(".search-bar__results")) {
-      console.log("Ignoring outside click - search results");
       return;
     }
 
@@ -229,11 +205,9 @@ const SearchBar = ({
 
     // Don't reset if the input is focused
     if (document.activeElement === searchInput.current) {
-      console.log("Ignoring outside click - input is focused");
       return;
     }
 
-    console.log("Resetting search state and input value from outside click");
     setInputValue(""); // Clear input value
     setSearchState(INITIAL_SEARCH_STATE); // Clear search state
     if (!isExpandable) return;
