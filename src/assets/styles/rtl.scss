@@ -1237,6 +1237,10 @@
       width: 100%;
       border-radius: 0 0 0.625rem 0.625rem;
     }
+
+    @include tablet {
+      padding: 2.5rem;
+    }
   }
 
   &__sidebar--rtl {
@@ -1262,18 +1266,30 @@
     &__title--rtl {
       position: relative;
       max-width: 100%;
-      margin-top: 20px;
-      // margin-bottom: 10px;
       right: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      @include mobile {
+        padding-top: 2.375rem;
+      }
+
+      @include desktop-lg {
+        padding-top: 3rem;
+      }
+
+      @include desktop-xl {
+        padding-top: 4.875rem;
+      }
     }
 
     &__close--rtl {
       position: absolute;
-      top: 20px;
-      right: 15px;
+      top: 0.9375rem;
+      right: 0.9375rem;
       cursor: pointer;
-      width: 20px;
-      height: 20px;
+      width: 0.9375rem;
+      height: 0.9375rem;
       z-index: 10000;
     }
   }
