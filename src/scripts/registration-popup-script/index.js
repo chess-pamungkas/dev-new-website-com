@@ -34,12 +34,8 @@
   // Map frontend hostname to backend API server URL
   const mapBackendApiUrl = () => {
     const hostname = window.location.hostname;
-    console.log("hostname", hostname);
     const protocol = window.location.protocol;
-    console.log("protocol", protocol);
     const port = window.location.port;
-    console.log("port", port);
-
     // For file:// protocol or local development
     if (protocol === "file:") {
       return "http://localhost:3000/";
