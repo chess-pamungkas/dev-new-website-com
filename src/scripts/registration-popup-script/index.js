@@ -1494,32 +1494,53 @@
     // Check if RTL language
     const isRTL = normalizedLanguage === "ar";
 
-    // MODIFIED: Always use hardcoded URL from one of the allowed domains
-    // This ensures the iframe works regardless of where the script is hosted
+    // MODIFIED: Get the baseUrl from the script source
     let baseUrl;
 
-    // Check if we're in localhost environment
-    if (
-      window.location.hostname === "localhost" ||
-      window.location.hostname === "127.0.0.1"
-    ) {
-      baseUrl = "http://localhost:8000";
-    } else {
-      // For any other domain including Replit, use development environment
-      baseUrl = "https://dev.oqt-ima.com";
+    // First try to get the server URL from the current script
+    try {
+      const scripts = document.getElementsByTagName("script");
+      const registrationScript = Array.from(scripts).find((script) =>
+        script.src.includes("registration-popup-script.js")
+      );
+
+      if (registrationScript && registrationScript.src) {
+        // Extract the origin from the script src
+        const scriptUrl = new URL(registrationScript.src);
+        baseUrl = scriptUrl.origin;
+        console.log("[OQtima] Using script server for iframe:", baseUrl);
+      } else {
+        // Fallback based on hostname
+        if (
+          window.location.hostname === "localhost" ||
+          window.location.hostname === "127.0.0.1"
+        ) {
+          baseUrl = "http://localhost:8000";
+        } else {
+          baseUrl = "https://dev.oqt-ima.com";
+        }
+      }
+    } catch (e) {
+      console.warn("[OQtima] Error determining base URL from script:", e);
+      // Fallback based on hostname
+      if (
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
+      ) {
+        baseUrl = "http://localhost:8000";
+      } else {
+        baseUrl = "https://dev.oqt-ima.com";
+      }
     }
 
-    // Original code commented out
-    /*
-    // Get base URL and ensure it doesn't end with a slash
-    let baseUrl = getApiUrlFromHostname();
-    baseUrl = baseUrl ? baseUrl.replace(/\/+$/, "") : "";
+    // Make sure baseUrl doesn't end with a slash
+    baseUrl = baseUrl.replace(/\/+$/, "");
 
-    if (!baseUrl) {
-      console.error("Failed to get base URL");
-      return "";
-    }
-    */
+    // Preserve the original URL path structure as requested
+    let urlPath =
+      normalizedLanguage !== "en"
+        ? `/${normalizedLanguage}/popup-registration`
+        : "/popup-registration";
 
     // Base parameters for all versions
     const params = new URLSearchParams({
@@ -1585,12 +1606,6 @@
     }
 
     // Construct the URL path
-    let urlPath =
-      normalizedLanguage !== "en"
-        ? `/${normalizedLanguage}/popup-registration`
-        : "/popup-registration";
-
-    // Combine all parts
     let finalUrl = `${baseUrl}${urlPath}?${params.toString()}#registration-form`;
 
     return finalUrl;
