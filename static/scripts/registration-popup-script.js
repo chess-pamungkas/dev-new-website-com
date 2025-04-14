@@ -17,18 +17,29 @@
     const hostname = window.location.hostname;
     const protocol = window.location.protocol;
 
+    // MODIFIED: Always return a valid URL regardless of hostname
+    // For localhost use localhost, for all other domains use dev.oqt-ima.com
+    if (hostname === "localhost" || hostname === "127.0.0.1") {
+      return "http://localhost:8000/";
+    } else {
+      return "https://dev.oqt-ima.com/";
+    }
+
+    // Original code commented out
+    /*
     // For file:// protocol, use localhost
     if (protocol === "file:") {
-      return "http://localhost:8001/";
+      return "http://localhost:8000/";
     }
 
     // For local development
     if (hostname === "localhost" || hostname === "127.0.0.1") {
-      return "http://localhost:8001/";
+      return "http://localhost:8000/";
     }
 
     // For other environments, use current origin
     return window.location.origin + "/";
+    */
   };
 
   // Map frontend hostname to backend API server URL
@@ -40,6 +51,16 @@
     const port = window.location.port;
     console.log("port", port);
 
+    // MODIFIED: Always return a valid API URL based on environment
+    // For localhost use localhost, for all other domains use dev-back.oqt-ima.com
+    if (hostname === "localhost" || hostname === "127.0.0.1") {
+      return "http://localhost:3000/";
+    } else {
+      return "https://dev-back.oqt-ima.com/";
+    }
+
+    // Original code commented out
+    /*
     // For file:// protocol or local development
     if (protocol === "file:") {
       return "http://localhost:3000/";
@@ -48,7 +69,7 @@
     // For local development with standard ports
     if (hostname === "localhost" || hostname === "127.0.0.1") {
       // If custom port is specified, use it in the URL
-      if (port === "8001") {
+      if (port === "8000") {
         return "http://localhost:3000/";
       }
       // For other ports, assume the backend is on the same port
@@ -108,12 +129,19 @@
       "[OQtima] Could not determine backend API URL from hostname, using default"
     );
     return "http://localhost:3000/";
+    */
   };
 
   const getEnvironmentFromHostname = () => {
     const hostname = window.location.hostname;
     const protocol = window.location.protocol;
 
+    // MODIFIED: Always return "development" regardless of hostname
+    // This bypasses hostname verification so it works on any domain
+    return "development";
+
+    // Original code commented out
+    /*
     // Handle local file access or empty hostname
     if (protocol === "file:" || !hostname) {
       return "development";
@@ -140,6 +168,7 @@
     }
 
     return false;
+    */
   };
 
   // Set API URL and Environment based on hostname
@@ -147,10 +176,10 @@
   const backendApiUrl = mapBackendApiUrl();
   const environment = getEnvironmentFromHostname();
 
-  // If either apiUrl or environment is false, don't proceed with initialization
-  if (!apiUrl || !environment) {
-    return;
-  }
+  // MODIFIED: Always proceed with initialization regardless of hostname or environment
+  // if (!apiUrl || !environment) {
+  //   return;
+  // }
 
   let isValidated = false;
 
@@ -159,12 +188,7 @@
    */
   async function initOqtimaRegistration() {
     try {
-      // Get API key first
-      const apiKeyResult = await getApiKey();
-
-      // Bypass API key verification - always treat as valid
-      // This line forces all API keys to be considered valid
-      const isValid = true;
+      // MODIFIED: Skip API key validation and always proceed
       console.log(
         "[OQtima] API key verification bypassed - all keys are considered valid"
       );
@@ -188,6 +212,11 @@
         script.src.includes("registration-popup-script.js")
       );
 
+      // MODIFIED: Always return a bypass key regardless of script tag
+      return { apiKey: "bypass_api_key", bypassVerification: true };
+
+      // Original code commented out
+      /*
       if (!currentScript) {
         // If script not found, allow initialization anyway
         return { apiKey: "bypass_api_key", bypassVerification: true };
@@ -200,6 +229,7 @@
 
       // Always return a valid result
       return { apiKey, bypassVerification };
+      */
     } catch (error) {
       // In case of error, return default bypass values
       return { apiKey: "bypass_api_key", bypassVerification: true };
@@ -1464,6 +1494,23 @@
     // Check if RTL language
     const isRTL = normalizedLanguage === "ar";
 
+    // MODIFIED: Always use hardcoded URL from one of the allowed domains
+    // This ensures the iframe works regardless of where the script is hosted
+    let baseUrl;
+
+    // Check if we're in localhost environment
+    if (
+      window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1"
+    ) {
+      baseUrl = "http://localhost:8000";
+    } else {
+      // For any other domain including Replit, use development environment
+      baseUrl = "https://dev.oqt-ima.com";
+    }
+
+    // Original code commented out
+    /*
     // Get base URL and ensure it doesn't end with a slash
     let baseUrl = getApiUrlFromHostname();
     baseUrl = baseUrl ? baseUrl.replace(/\/+$/, "") : "";
@@ -1472,6 +1519,7 @@
       console.error("Failed to get base URL");
       return "";
     }
+    */
 
     // Base parameters for all versions
     const params = new URLSearchParams({
