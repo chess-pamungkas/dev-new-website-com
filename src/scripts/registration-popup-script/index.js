@@ -143,15 +143,16 @@
     const protocol = window.location.protocol;
     const port = window.location.port;
 
-    // For file:// protocol or local development
+    // For file:// protocol, use localhost with explicit protocol
     if (protocol === "file:") {
       return "http://localhost:3000/";
     }
 
     // For local development with standard ports
     if (hostname === "localhost" || hostname === "127.0.0.1") {
-      // If custom port is specified, use it in the URL
-      if (port === "8000") {
+      // MODIFIED: Ensure proper handling of localhost with port 80 (standard HTTP port)
+      // which is typically hidden in the URL but still needs the backend on port 3000
+      if (port === "8000" || port === "80" || port === "") {
         return "http://localhost:3000/";
       }
       // For other ports, assume the backend is on the same port
@@ -285,17 +286,55 @@
    */
   async function initOqtimaRegistration() {
     try {
-      // MODIFIED: Skip API key validation and always proceed
-      console.log(
-        "[OQtima] API key verification bypassed - all keys are considered valid"
-      );
+      // Get the API key from the script tag
+      const { apiKey, bypassVerification } = await getApiKey();
 
-      // Initialize registration components
-      initRegistrationComponents();
+      // If explicitly bypassing verification by configuration (data-bypass-verification="true"),
+      // proceed directly - this is only for testing purposes
+      if (bypassVerification) {
+        console.log("[OQtima] API key verification bypassed by configuration");
+        initRegistrationComponents();
+        return;
+      }
+
+      // Otherwise verify API key with backend
+      if (!apiKey) {
+        showAuthError(
+          "API key is missing. Add data-api-key attribute to the script tag."
+        );
+        return;
+      }
+
+      console.log("[OQtima] Verifying API key");
+
+      try {
+        // Make API call to verify the key
+        const isValid = await verifyApiKey(apiKey);
+
+        if (isValid) {
+          console.log("[OQtima] API key verified successfully");
+          isValidated = true;
+          initRegistrationComponents();
+        } else {
+          // Removed special case for development environments
+
+          showAuthError(
+            "Invalid API key. Registration button will not be displayed."
+          );
+        }
+      } catch (verifyError) {
+        // Additional error handling for verification failures
+        console.error("[OQtima] Verification process error:", verifyError);
+
+        // Removed auto-bypass for development environments
+
+        showAuthError(
+          `Error during API key verification: ${verifyError.message}`
+        );
+      }
     } catch (error) {
-      // Instead of showing error, still initialize the components
-      console.warn("[OQtima] Error occurred but bypassing:", error.message);
-      initRegistrationComponents();
+      console.error("[OQtima] Initialization error:", error.message);
+      showAuthError("Registration initialization error: " + error.message);
     }
   }
 
@@ -305,43 +344,135 @@
   async function getApiKey() {
     try {
       const scripts = document.getElementsByTagName("script");
-      const currentScript = Array.from(scripts).find((script) =>
-        script.src.includes("registration-popup-script.js")
-      );
+      // Find script tag that includes our script (regular or minified version)
+      const scriptPatterns = [
+        "registration-popup-script.js",
+        "registration-popup-script.min.js",
+      ];
 
-      // MODIFIED: Always return a bypass key regardless of script tag
-      return { apiKey: "bypass_api_key", bypassVerification: true };
+      const currentScript = Array.from(scripts).find((script) => {
+        const src = script.src || "";
+        return scriptPatterns.some((pattern) => src.includes(pattern));
+      });
 
-      // Original code commented out
-      /*
       if (!currentScript) {
-        // If script not found, allow initialization anyway
-        return { apiKey: "bypass_api_key", bypassVerification: true };
+        console.warn("[OQtima] Script tag not found");
+        return { apiKey: null, bypassVerification: false };
       }
 
-      // Get API key from attribute or use default bypass key
-      const apiKey =
-        currentScript.getAttribute("data-api-key") || "bypass_api_key";
-      const bypassVerification = true; // Always bypass verification
+      // Get API key from attribute
+      const apiKey = currentScript.getAttribute("data-api-key");
 
-      // Always return a valid result
+      // Check if verification should be bypassed (for development/testing)
+      const bypassVerification =
+        currentScript.getAttribute("data-bypass-verification") === "true";
+
       return { apiKey, bypassVerification };
-      */
     } catch (error) {
-      // In case of error, return default bypass values
-      return { apiKey: "bypass_api_key", bypassVerification: true };
+      console.error("[OQtima] Error retrieving API key:", error);
+      return { apiKey: null, bypassVerification: false };
     }
   }
 
   /**
-   * Show authentication error message - disabled in bypass mode
+   * Verify API key with backend API server
+   */
+  async function verifyApiKey(apiKey) {
+    try {
+      // Determine backend API URL for verification endpoint
+      const verifyEndpoint = `${backendApiUrl}verify-api-key`;
+
+      console.log(
+        `[OQtima] Verifying API key with endpoint: ${verifyEndpoint}`
+      );
+
+      // MODIFIED: Add better error handling and timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10-second timeout
+
+      // Make POST request to verification endpoint with improved options
+      const response = await fetch(verifyEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "X-Requested-With": "XMLHttpRequest", // Help identify AJAX requests
+          Origin: window.location.origin, // Explicitly set origin header
+        },
+        body: JSON.stringify({ apiKey }),
+        credentials: "same-origin",
+        mode: "cors", // Explicitly request CORS mode
+        signal: controller.signal,
+        cache: "no-cache",
+      }).finally(() => clearTimeout(timeoutId));
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(
+          `[OQtima] API key verification failed: ${response.status} ${errorText}`
+        );
+        return false;
+      }
+
+      const data = await response.json();
+      return data.isValid === true;
+    } catch (error) {
+      // MODIFIED: Special handling for "Failed to fetch" errors which often
+      // indicate network issues, CORS problems, or server unavailability
+      if (
+        error.name === "TypeError" &&
+        error.message.includes("Failed to fetch")
+      ) {
+        console.error(
+          "[OQtima] Network error verifying API key. This may indicate:",
+          "\n1. The backend server is not running or unreachable",
+          "\n2. CORS policy blocking the request",
+          "\n3. Network connectivity issues"
+        );
+
+        // REMOVED auto-bypass for development environments
+        // Always return false to require proper verification
+      }
+
+      console.error("[OQtima] Error verifying API key:", error);
+      return false;
+    }
+  }
+
+  /**
+   * Show authentication error message
    */
   function showAuthError(message) {
-    // Do nothing - bypass is active
-    console.warn("[OQtima] Auth error suppressed in bypass mode:", message);
+    console.warn("[OQtima] Authentication error:", message);
 
-    // Instead of showing error, initialize the components
-    initRegistrationComponents();
+    // Find all registration button containers
+    const containers = document.querySelectorAll("[data-oqtima-register]");
+
+    // Replace each container with an error message for developers
+    containers.forEach((container) => {
+      // Only show errors in console in production, but show in container during development
+      if (environment === "development") {
+        container.innerHTML = `
+          <div style="
+            padding: 10px; 
+            border: 1px solid #ff4400; 
+            border-radius: 4px; 
+            color: #ff4400; 
+            font-family: monospace; 
+            font-size: 12px;
+            background-color: rgba(255, 68, 0, 0.1);
+            text-align: left;
+          ">
+            <strong>OQtima Registration Button Error:</strong><br>
+            ${message}<br>
+            <small>(This error is only visible in development mode)</small>
+          </div>
+        `;
+      } else {
+        // In production, just hide the containers
+        container.style.display = "none";
+      }
+    });
   }
 
   /**
