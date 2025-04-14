@@ -501,26 +501,6 @@ const PopupRegistrationForm = ({ params }) => {
 
               if (!policyWindow) {
                 console.warn("Policy link popup was blocked by browser");
-                // Show user-friendly message about popup blocking
-                const message = document.createElement("div");
-                message.className = "popup-message";
-                message.textContent = `Popup blocked: Please allow popups to view the ${policyType} policy`;
-                message.style.position = "fixed";
-                message.style.bottom = "20px";
-                message.style.left = "50%";
-                message.style.transform = "translateX(-50%)";
-                message.style.backgroundColor = "#ffeb3b";
-                message.style.color = "#333";
-                message.style.padding = "10px 20px";
-                message.style.borderRadius = "4px";
-                message.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
-                message.style.zIndex = "9999";
-
-                document.body.appendChild(message);
-
-                setTimeout(() => {
-                  document.body.removeChild(message);
-                }, 5000);
               }
             } catch (fallbackErr) {
               console.error(
@@ -555,26 +535,6 @@ const PopupRegistrationForm = ({ params }) => {
 
         if (!policyWindow) {
           console.warn("Policy link popup was blocked by browser");
-          // Show user-friendly message about popup blocking
-          const message = document.createElement("div");
-          message.className = "popup-message";
-          message.textContent = `Popup blocked: Please allow popups to view the ${policyType} policy`;
-          message.style.position = "fixed";
-          message.style.bottom = "20px";
-          message.style.left = "50%";
-          message.style.transform = "translateX(-50%)";
-          message.style.backgroundColor = "#ffeb3b";
-          message.style.color = "#333";
-          message.style.padding = "10px 20px";
-          message.style.borderRadius = "4px";
-          message.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
-          message.style.zIndex = "9999";
-
-          document.body.appendChild(message);
-
-          setTimeout(() => {
-            document.body.removeChild(message);
-          }, 5000);
         }
       } catch (err) {
         console.error("Error opening policy link directly:", err);
