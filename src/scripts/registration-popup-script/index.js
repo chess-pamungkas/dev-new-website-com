@@ -1760,6 +1760,7 @@
               // Remove the unused variable
               const isPolicyLink = event.data.isPolicyLink === true;
               const timestamp = event.data.timestamp || Date.now();
+              const policyType = event.data.policyType || "policy";
               // Get the source of the message (the iframe)
               const sourceIframe = Array.from(
                 document.querySelectorAll("iframe")
@@ -1778,75 +1779,167 @@
                   console.log("[OQtima] Opening policy link in new tab:", url);
                   let linkOpened = false;
 
-                  // Open policy links in new tab as requested
+                  // ENHANCED: Create a visual feedback popup for policy links
+                  const createLinkFeedback = () => {
+                    // Create a small popup for user to manually open the link
+                    const feedbackPopup = document.createElement("div");
+                    feedbackPopup.id = "oqtima-policy-popup";
+                    feedbackPopup.innerHTML = `
+                      <div style="position: fixed; top: 20px; right: 20px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.2); 
+                                  border-radius: 5px; padding: 15px; z-index: 2147483647; max-width: 320px; font-family: -apple-system, 
+                                  BlinkMacSystemFont, sans-serif; font-size: 14px; line-height: 1.4; text-align: left;">
+                        <div style="margin-bottom: 10px; color: #333; font-weight: bold;">
+                          Policy Link Blocked
+                        </div>
+                        <div style="margin-bottom: 15px; color: #555;">
+                          Your browser blocked the automatic opening of the ${policyType} policy. Click the button below to view it.
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                          <a id="oqtima-manual-open" href="${url}" target="_blank" rel="noopener noreferrer"
+                             style="background: #ff4400; color: white; text-decoration: none; padding: 8px 15px; 
+                                    border-radius: 4px; font-weight: 500; display: inline-block; cursor: pointer;">
+                            Open ${
+                              policyType.charAt(0).toUpperCase() +
+                              policyType.slice(1)
+                            } Policy
+                          </a>
+                          <button id="oqtima-close-feedback" type="button"
+                                  style="background: #eee; border: none; padding: 8px 15px; margin-left: 8px;
+                                         border-radius: 4px; cursor: pointer; color: #333;">
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    `;
+                    document.body.appendChild(feedbackPopup);
+
+                    // Set up event listeners
+                    document
+                      .getElementById("oqtima-manual-open")
+                      .addEventListener("click", function (e) {
+                        linkOpened = true;
+                        if (event.source && event.source.postMessage) {
+                          event.source.postMessage(
+                            {
+                              type: "OQTIMA_LINK_OPENED",
+                              url: url,
+                              success: true,
+                              timestamp: timestamp,
+                              method: "manual",
+                            },
+                            "*"
+                          );
+                        }
+                        // Remove the popup after a short delay
+                        setTimeout(() => {
+                          if (feedbackPopup.parentNode) {
+                            feedbackPopup.parentNode.removeChild(feedbackPopup);
+                          }
+                        }, 500);
+                      });
+
+                    document
+                      .getElementById("oqtima-close-feedback")
+                      .addEventListener("click", function () {
+                        if (feedbackPopup.parentNode) {
+                          feedbackPopup.parentNode.removeChild(feedbackPopup);
+                        }
+                      });
+
+                    // Auto-remove after 15 seconds
+                    setTimeout(() => {
+                      if (feedbackPopup.parentNode) {
+                        feedbackPopup.parentNode.removeChild(feedbackPopup);
+                      }
+                    }, 15000);
+
+                    return feedbackPopup;
+                  };
+
+                  // Try multiple approaches sequentially
+
+                  // APPROACH 1: Standard window.open
                   const newWindow = window.open(url, "_blank");
                   if (newWindow) {
-                    newWindow.focus();
-                    linkOpened = true;
-
-                    // Send confirmation message back to the iframe
                     try {
-                      if (event.source && event.source.postMessage) {
-                        event.source.postMessage(
-                          {
-                            type: "OQTIMA_LINK_OPENED",
-                            url: url,
-                            success: true,
-                            timestamp: timestamp,
-                          },
-                          "*"
-                        );
-                        console.log(
-                          "[OQtima] Sent link opened confirmation to iframe"
-                        );
-                      }
-                    } catch (msgError) {
+                      newWindow.focus();
+                      linkOpened = true;
+                    } catch (focusErr) {
                       console.warn(
-                        "[OQtima] Error sending confirmation:",
-                        msgError
+                        "[OQtima] Error focusing policy window:",
+                        focusErr
                       );
                     }
-                  } else {
+                  }
+
+                  // APPROACH 2: If window.open fails, try DOM-based approach
+                  if (!linkOpened) {
                     console.warn(
-                      "[OQtima] Browser blocked popup, using fallback method"
+                      "[OQtima] Standard window.open blocked, trying DOM method"
                     );
 
-                    // Fallback method if popup is blocked
+                    // Create an invisible anchor element and click it
                     const fallbackLink = document.createElement("a");
                     fallbackLink.href = url;
                     fallbackLink.target = "_blank";
                     fallbackLink.rel = "noopener noreferrer";
-                    fallbackLink.style.display = "none";
+                    fallbackLink.style.cssText =
+                      "position: absolute; top: -9999px; left: -9999px; width: 1px; height: 1px;";
                     document.body.appendChild(fallbackLink);
-                    fallbackLink.click();
+
+                    // Synthetic click event is more likely to work across browsers
+                    const clickEvent = new MouseEvent("click", {
+                      view: window,
+                      bubbles: true,
+                      cancelable: true,
+                      buttons: 1,
+                    });
+
+                    fallbackLink.dispatchEvent(clickEvent);
                     linkOpened = true;
 
-                    // Send confirmation message back to the iframe
-                    try {
-                      if (event.source && event.source.postMessage) {
-                        event.source.postMessage(
-                          {
-                            type: "OQTIMA_LINK_OPENED",
-                            url: url,
-                            success: true,
-                            timestamp: timestamp,
-                          },
-                          "*"
-                        );
-                        console.log(
-                          "[OQtima] Sent link opened confirmation to iframe (fallback)"
-                        );
+                    // Clean up
+                    setTimeout(() => {
+                      if (document.body.contains(fallbackLink)) {
+                        document.body.removeChild(fallbackLink);
                       }
-                    } catch (msgError) {
-                      console.warn(
-                        "[OQtima] Error sending confirmation:",
-                        msgError
+                    }, 100);
+                  }
+
+                  // APPROACH 3: If both methods fail, show a manual link popup
+                  if (!linkOpened || !newWindow) {
+                    console.warn(
+                      "[OQtima] All automatic methods blocked, showing manual link popup"
+                    );
+                    createLinkFeedback();
+                  }
+
+                  // Always send confirmation back to iframe
+                  try {
+                    if (event.source && event.source.postMessage) {
+                      event.source.postMessage(
+                        {
+                          type: "OQTIMA_LINK_OPENED",
+                          url: url,
+                          success: linkOpened,
+                          timestamp: timestamp,
+                          method: linkOpened
+                            ? newWindow
+                              ? "window.open"
+                              : "dom"
+                            : "manual",
+                        },
+                        "*"
+                      );
+                      console.log(
+                        "[OQtima] Sent link opened confirmation to iframe"
                       );
                     }
-
-                    setTimeout(() => {
-                      document.body.removeChild(fallbackLink);
-                    }, 100);
+                  } catch (msgError) {
+                    console.warn(
+                      "[OQtima] Error sending confirmation:",
+                      msgError
+                    );
                   }
 
                   // Prevent event from propagating if we handled it
@@ -2050,8 +2143,67 @@
             (function() {
               // Function to handle links
               function handleLinks() {
+                // Create a loading indicator for link clicks
+                function createLinkLoadingIndicator(link) {
+                  const originalText = link.innerHTML;
+                  const originalColor = getComputedStyle(link).color;
+                  
+                  // Add loading state
+                  link.style.position = 'relative';
+                  link.innerHTML = originalText + '<span class="link-loading-dot">...</span>';
+                  link.style.pointerEvents = 'none';
+                  link.style.opacity = '0.7';
+                  
+                  // Create inline style for animation
+                  const style = document.createElement('style');
+                  style.innerHTML = \`
+                    @keyframes linkLoadingPulse {
+                      0% { opacity: 0.2; }
+                      50% { opacity: 1; }
+                      100% { opacity: 0.2; }
+                    }
+                    .link-loading-dot {
+                      animation: linkLoadingPulse 1.5s infinite;
+                      margin-left: 2px;
+                    }
+                  \`;
+                  document.head.appendChild(style);
+                  
+                  // Return cleanup function
+                  return function cleanupLinkLoading() {
+                    link.innerHTML = originalText;
+                    link.style.pointerEvents = '';
+                    link.style.opacity = '';
+                    if (style.parentNode) style.parentNode.removeChild(style);
+                  };
+                }
+                
+                // More comprehensive policy link detection
+                function isPolicyLink(href, element) {
+                  // Check URL pattern
+                  const urlPattern = /(privacy|cookie|terms|policy|legal|disclaimer|gdpr)/i;
+                  if (urlPattern.test(href)) return true;
+                  
+                  // Check element attributes
+                  if (element.getAttribute('data-policy-type')) return true;
+                  if (element.classList.contains('link') && 
+                      element.closest('.popup-registration__consent')) return true;
+                  
+                  // Check element text content
+                  const textContent = element.textContent.toLowerCase();
+                  return /privacy|cookie|policy|terms|gdpr/.test(textContent);
+                }
+                
+                // Track link opening status
+                let isAwaitingLinkResponse = false;
+                let currentLinkCleanup = null;
+                let linkResponseTimeout = null;
+                
                 // Create a more robust link handling mechanism
                 document.addEventListener('click', function(e) {
+                  // Don't process a new link if we're still waiting for a response
+                  if (isAwaitingLinkResponse) return;
+                  
                   // Find if the clicked element is a link or inside a link
                   let target = e.target;
                   let link = null;
@@ -2069,9 +2221,8 @@
                   if (link && link.href) {
                     // Detect policy links - broader pattern matching
                     const href = link.href;
-                    const isPolicy = /(privacy|cookie|terms|policy|legal|disclaimer|gdpr)/i.test(href);
                     
-                    if (isPolicy) {
+                    if (isPolicyLink(href, link)) {
                       // Prevent default behavior
                       e.preventDefault();
                       e.stopPropagation();
@@ -2080,12 +2231,18 @@
                       const now = Date.now();
                       const lastClick = parseInt(link.getAttribute('data-last-click') || '0');
                       
-                      if (now - lastClick < 1000) {
+                      if (now - lastClick < 1000 || isAwaitingLinkResponse) {
                         return false;
                       }
                       
-                      // Mark as clicked
+                      // Mark as clicked and set loading state
                       link.setAttribute('data-last-click', now);
+                      isAwaitingLinkResponse = true;
+                      currentLinkCleanup = createLinkLoadingIndicator(link);
+                      
+                      // Determine policy type for better user feedback
+                      const policyType = href.toLowerCase().includes('privacy') ? 'privacy' : 
+                                        href.toLowerCase().includes('cookie') ? 'cookie' : 'policy';
                       
                       // Try multiple methods to open the link
                       
@@ -2094,48 +2251,108 @@
                         window.parent.postMessage({
                           type: 'OQTIMA_OPEN_LINK',
                           url: href,
+                          isPolicyLink: true,
+                          policyType: policyType,
                           timestamp: now
                         }, '*');
+                        
+                        // Set a response timeout
+                        linkResponseTimeout = setTimeout(function() {
+                          // If no response from parent after 1.5 seconds, clean up and show fallback
+                          if (isAwaitingLinkResponse) {
+                            isAwaitingLinkResponse = false;
+                            if (currentLinkCleanup) {
+                              currentLinkCleanup();
+                              currentLinkCleanup = null;
+                            }
+                            
+                            // Show a prompt to user that they can click again
+                            link.innerHTML += ' <span style="color: #ff4400; font-size: 0.9em;">(try again)</span>';
+                            
+                            setTimeout(() => {
+                              // Remove the "try again" text after 5 seconds
+                              link.innerHTML = link.innerHTML.replace(' <span style="color: #ff4400; font-size: 0.9em;">(try again)</span>', '');
+                            }, 5000);
+                          }
+                        }, 1500);
+                        
                       } catch (err) {
-                        // Error sending message to parent
-                      }
-                      
-                      // Method 2: Direct open in new tab (fallback)
-                      setTimeout(function() {
+                        // Error sending message to parent - clean up immediately
+                        isAwaitingLinkResponse = false;
+                        if (currentLinkCleanup) {
+                          currentLinkCleanup();
+                          currentLinkCleanup = null;
+                        }
+                        clearTimeout(linkResponseTimeout);
+                        
+                        // Method 2: Direct open in new tab as fallback
                         try {
                           window.open(href, '_blank');
-                        } catch (err) {
-                          // Error opening link with fallback
+                        } catch (err2) {
+                          // Both methods failed, just restore the link
+                          link.innerHTML += ' <span style="color: #ff4400; font-size: 0.9em;">(click again)</span>';
+                          
+                          setTimeout(() => {
+                            // Remove the "click again" text after 5 seconds
+                            link.innerHTML = link.innerHTML.replace(' <span style="color: #ff4400; font-size: 0.9em;">(click again)</span>', '');
+                          }, 5000);
                         }
-                      }, 100);
-                      
-                      // Method 3: Update parent window location directly (last resort)
-                      setTimeout(function() {
-                        try {
-                          if (window.parent && window.parent !== window) {
-                            const policyWindow = window.parent.open(href, '_blank');
-                            if (policyWindow) policyWindow.focus();
-                          }
-                        } catch (err) {
-                          // Error with last resort method
-                        }
-                      }, 200);
+                      }
                       
                       return false;
+                    }
+                  }
+                }, true);
+                
+                // Listen for messages from parent about link opening
+                window.addEventListener('message', function(event) {
+                  if (event.data && event.data.type === 'OQTIMA_LINK_OPENED') {
+                    // Clear the timeout 
+                    clearTimeout(linkResponseTimeout);
+                    
+                    // Reset the awaiting state
+                    isAwaitingLinkResponse = false;
+                    
+                    // Clear any loading indicators
+                    if (currentLinkCleanup) {
+                      currentLinkCleanup();
+                      currentLinkCleanup = null;
                     }
                   }
                 });
                 
                 // Add styling to make policy links more visible and clickable
                 const style = document.createElement('style');
-                style.innerHTML = '.popup-registration__consent .link { color: #ff4400; text-decoration: underline; cursor: pointer; margin: 0 4px; } .popup-registration__consent .link:hover { color: #cc3600; }';
+                style.innerHTML = \`
+                  .popup-registration__consent .link { 
+                    color: #ff4400 !important; 
+                    text-decoration: underline !important; 
+                    cursor: pointer !important; 
+                    margin: 0 4px !important;
+                    user-select: none !important;
+                    position: relative !important;
+                    display: inline-block !important;
+                    transition: all 0.2s !important;
+                  } 
+                  .popup-registration__consent .link:hover { 
+                    color: #cc3600 !important; 
+                    text-decoration: underline !important;
+                  }
+                  .popup-registration__consent .link:active { 
+                    transform: scale(0.98) !important;
+                  }
+                \`;
                 document.head.appendChild(style);
               }
+              
+              // Initialize the link handler
+              handleLinks();
             })();
           `;
         document.head.appendChild(script);
       } catch (error) {
         // Error injecting script
+        console.warn("Failed to inject link handler script:", error);
       }
     } catch (error) {
       // Error handling script injection
