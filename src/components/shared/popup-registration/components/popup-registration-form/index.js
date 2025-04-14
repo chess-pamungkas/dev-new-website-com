@@ -461,8 +461,13 @@ const PopupRegistrationForm = ({ params }) => {
     // Set flag to prevent repeated clicks
     target.setAttribute("data-processing", "true");
 
+    // Generate a unique ID for this request
+    const requestId = Date.now();
+
     // Track which window was opened
     let policyWindow = null;
+    // Flag to track if the link was handled by parent
+    let handledByParent = false;
 
     // Reset flag after 3 seconds
     setTimeout(() => {
@@ -479,6 +484,21 @@ const PopupRegistrationForm = ({ params }) => {
     if (window.parent !== window) {
       // If inside an iframe, first try sending a message to parent window
       try {
+        // Set up a listener to know if the parent handled the link - BEFORE sending the message
+        const messageListener = (event) => {
+          if (
+            event.data &&
+            event.data.type === "OQTIMA_LINK_OPENED" &&
+            event.data.url === url
+          ) {
+            console.log("Link was handled by parent window");
+            handledByParent = true;
+            window.removeEventListener("message", messageListener);
+          }
+        };
+
+        window.addEventListener("message", messageListener);
+
         // Send a clear message to the parent window to handle opening the policy link
         window.parent.postMessage(
           {
@@ -487,16 +507,19 @@ const PopupRegistrationForm = ({ params }) => {
             isPolicyLink: true,
             policyType: policyType,
             openInNewTab: true, // Explicitly state this should open in a new tab
-            timestamp: Date.now(),
+            timestamp: requestId,
           },
           "*"
         );
 
         // Fallback: try to open directly after a short delay if parent doesn't handle it
         setTimeout(() => {
-          if (!policyWindow) {
+          window.removeEventListener("message", messageListener);
+
+          // Only open in a new tab if the parent didn't handle it
+          if (!handledByParent && !policyWindow) {
             try {
-              console.log("Opening policy link in new tab:", url);
+              console.log("Parent didn't handle link, opening directly:", url);
               policyWindow = window.open(url, "_blank", "noopener,noreferrer");
 
               if (!policyWindow) {
@@ -509,7 +532,7 @@ const PopupRegistrationForm = ({ params }) => {
               );
             }
           }
-        }, 300);
+        }, 400); // Increase timeout to ensure parent has time to handle the request
       } catch (err) {
         console.error("Error sending policy link message to parent:", err);
 
