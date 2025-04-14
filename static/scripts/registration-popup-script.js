@@ -618,6 +618,36 @@
     // Extract parameters
     const { lang = "en", referralType, referralValue } = params;
 
+    // ADDED: Try to get IP and country info from the parent window
+    let ipAddress = null;
+    let countryName = null;
+    let countryCode = null;
+
+    // Try to extract IP address from meta tags if available
+    try {
+      const ipMeta = document.querySelector('meta[name="client-ip"]');
+      if (ipMeta) {
+        ipAddress = ipMeta.getAttribute("content");
+      }
+
+      const countryMeta = document.querySelector('meta[name="client-country"]');
+      if (countryMeta) {
+        countryName = countryMeta.getAttribute("content");
+      }
+
+      const countryCodeMeta = document.querySelector(
+        'meta[name="client-country-code"]'
+      );
+      if (countryCodeMeta) {
+        countryCode = countryCodeMeta.getAttribute("content");
+      }
+    } catch (e) {
+      console.warn(
+        "[OQtima] Error extracting client information from meta tags:",
+        e
+      );
+    }
+
     // Check if RTL language
     const isRTL = lang === "ar";
 
@@ -633,7 +663,10 @@
         originalHtmlStyle,
         originalBodyOverflow,
         originalHtmlOverflow,
-        originalScrollPos
+        originalScrollPos,
+        ipAddress,
+        countryName,
+        countryCode
       );
       return;
     }
@@ -650,7 +683,10 @@
         originalHtmlStyle,
         originalBodyOverflow,
         originalHtmlOverflow,
-        originalScrollPos
+        originalScrollPos,
+        ipAddress,
+        countryName,
+        countryCode
       );
     } else {
       createStandardPopup(
@@ -663,7 +699,10 @@
         originalHtmlStyle,
         originalBodyOverflow,
         originalHtmlOverflow,
-        originalScrollPos
+        originalScrollPos,
+        ipAddress,
+        countryName,
+        countryCode
       );
     }
   }
@@ -681,7 +720,10 @@
     originalHtmlStyle,
     originalBodyOverflow,
     originalHtmlOverflow,
-    originalScrollPos
+    originalScrollPos,
+    ipAddress,
+    countryName,
+    countryCode
   ) {
     // Detect mobile
     const isMobile = window.innerWidth <= 768;
@@ -926,6 +968,10 @@
             referral_type: referralType,
             referral_value: referralValue,
             language: language,
+            // ADDED: Include IP and country information if available
+            ip_address: ipAddress,
+            country_name: countryName,
+            country_code: countryCode,
           },
           timestamp: Date.now(),
         };
@@ -1040,7 +1086,10 @@
     originalHtmlStyle,
     originalBodyOverflow,
     originalHtmlOverflow,
-    originalScrollPos
+    originalScrollPos,
+    ipAddress,
+    countryName,
+    countryCode
   ) {
     // Create modal container with RTL support
     const modalContainer = document.createElement("div");
@@ -1404,6 +1453,8 @@
     window.__OQTIMA_MESSAGE_HANDLER = function (event) {
       try {
         if (event.data && typeof event.data === "object") {
+          // MODIFIED: Improved message handling for redirects and policy links
+
           // Handle close popup messages
           if (
             event.data.type === "OQTIMA_CLOSE_POPUP" ||
@@ -1413,59 +1464,145 @@
             window.__OQTIMA_CLOSE_POPUP();
           }
 
-          // Handle registration success
+          // Handle registration success with improved redirection
           if (
             event.data.type === "OQTIMA_REGISTRATION_SUCCESS" ||
+            event.data.type === "REGISTRATION_SUCCESS" ||
             event.data.type === "registrationSuccess"
           ) {
-            if (event.data.redirectUrl) {
-              window.location.href = event.data.redirectUrl;
+            // Extract redirect URL with fallbacks for different message formats
+            const redirectUrl = event.data.redirectUrl || event.data.url || "";
+
+            if (redirectUrl) {
+              console.log(
+                "[OQtima] Registration successful. Redirecting to:",
+                redirectUrl
+              );
+
+              // Set a short timeout to allow any cleanup to happen first
+              setTimeout(function () {
+                try {
+                  // Navigate the main window to the redirect URL
+                  window.location.href = redirectUrl;
+                } catch (err) {
+                  console.error("[OQtima] Redirect error:", err);
+
+                  // Try an alternative approach if direct navigation fails
+                  try {
+                    window.top.location.href = redirectUrl;
+                  } catch (err2) {
+                    console.error(
+                      "[OQtima] Alternative redirect failed:",
+                      err2
+                    );
+                  }
+                }
+              }, 100);
             } else {
+              // If no redirect URL, just close the popup
               setTimeout(window.__OQTIMA_CLOSE_POPUP, 1000);
             }
           }
 
-          // Handle link clicks inside iframe
+          // Handle redirect message format
+          if (event.data.type === "REDIRECT_TO_URL") {
+            const redirectUrl = event.data.url || event.data.redirectUrl || "";
+
+            if (redirectUrl) {
+              console.log(
+                "[OQtima] Redirect request received. Redirecting to:",
+                redirectUrl
+              );
+
+              // Close popup and redirect
+              if (window.__OQTIMA_CLOSE_POPUP) {
+                window.__OQTIMA_CLOSE_POPUP();
+              }
+
+              setTimeout(function () {
+                window.location.href = redirectUrl;
+              }, 100);
+            }
+          }
+
+          // Handle link clicks inside iframe (specifically for policy links)
           if (event.data.type === "OQTIMA_OPEN_LINK") {
             try {
               const url = event.data.url || "";
+              const openInNewTab = event.data.openInNewTab === true;
+              const isPolicyLink = event.data.isPolicyLink === true;
 
-              // Always allow policy and legal links regardless of domain
-              const isPolicyLink =
-                /privacy|cookie|policy|terms|legal|disclaimer|gdpr|oqtima\.com/i.test(
-                  url
-                );
+              if (url) {
+                // Determine if this is a policy link that should be allowed
+                // Always allow policy and legal links regardless of domain
+                const isPolicyOrLegalLink =
+                  isPolicyLink ||
+                  /privacy|cookie|policy|terms|legal|disclaimer|gdpr|oqtima\.com/i.test(
+                    url
+                  );
 
-              if (isPolicyLink) {
-                // Prevent multiple tabs by focusing on new tab
-                const newWindow = window.open(url, "_blank");
-                if (newWindow) {
-                  newWindow.focus();
+                if (isPolicyOrLegalLink) {
+                  console.log("[OQtima] Opening policy link in new tab:", url);
+
+                  // Open policy links in new tab as requested
+                  const newWindow = window.open(url, "_blank");
+                  if (newWindow) {
+                    newWindow.focus();
+                  } else {
+                    console.warn(
+                      "[OQtima] Browser blocked popup, using fallback method"
+                    );
+
+                    // Fallback method if popup is blocked
+                    const fallbackLink = document.createElement("a");
+                    fallbackLink.href = url;
+                    fallbackLink.target = "_blank";
+                    fallbackLink.rel = "noopener noreferrer";
+                    fallbackLink.style.display = "none";
+                    document.body.appendChild(fallbackLink);
+                    fallbackLink.click();
+                    setTimeout(() => {
+                      document.body.removeChild(fallbackLink);
+                    }, 100);
+                  }
                 } else {
-                  console.warn("Browser blocked popup, using fallback method");
-
-                  // Fallback method if popup is blocked
-                  const fallbackLink = document.createElement("a");
-                  fallbackLink.href = url;
-                  fallbackLink.target = "_blank";
-                  fallbackLink.rel = "noopener noreferrer";
-                  fallbackLink.style.display = "none";
-                  document.body.appendChild(fallbackLink);
-                  fallbackLink.click();
-                  setTimeout(() => {
-                    document.body.removeChild(fallbackLink);
-                  }, 100);
+                  console.warn(
+                    "[OQtima] Non-policy link request was ignored for security reasons:",
+                    url
+                  );
                 }
-              } else {
-                console.warn("Blocked potentially unsafe link:", url);
               }
             } catch (e) {
-              // Error opening link
+              console.error("[OQtima] Error handling link open request:", e);
+            }
+          }
+        }
+
+        // Handle string-based redirect message (fallback format)
+        if (typeof event.data === "string") {
+          // Handle redirect string format
+          if (event.data.startsWith("redirect:")) {
+            const redirectUrl = event.data.substring(9);
+            if (redirectUrl) {
+              console.log(
+                "[OQtima] String redirect request received. Redirecting to:",
+                redirectUrl
+              );
+
+              // Close popup if possible
+              if (window.__OQTIMA_CLOSE_POPUP) {
+                window.__OQTIMA_CLOSE_POPUP();
+              }
+
+              // Redirect the parent window
+              setTimeout(function () {
+                window.location.href = redirectUrl;
+              }, 100);
             }
           }
         }
       } catch (error) {
-        // Error handling message
+        console.error("[OQtima] Error in message handler:", error);
       }
     };
 
@@ -1729,7 +1866,10 @@
     originalHtmlStyle,
     originalBodyOverflow,
     originalHtmlOverflow,
-    originalScrollPos
+    originalScrollPos,
+    ipAddress,
+    countryName,
+    countryCode
   ) {
     // PENDEKATAN PALING RADIKAL UNTUK MOBILE SCROLLING
 

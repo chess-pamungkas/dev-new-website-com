@@ -285,6 +285,11 @@ const PopupRegistrationForm = ({ params }) => {
     safeParams.referral_value || null
   );
 
+  // ADDED: Store country and IP information with defaults
+  const [clientIpAddress, setClientIpAddress] = useState(null);
+  const [clientCountryName, setClientCountryName] = useState(null);
+  const [clientCountryCode, setClientCountryCode] = useState(null);
+
   // Update state values when params change
   useEffect(() => {
     if (safeParams.referral_type) {
@@ -303,8 +308,25 @@ const PopupRegistrationForm = ({ params }) => {
         const msgReferralType = data.referral_type || null;
         const msgReferralValue = data.referral_value || null;
 
+        // ADDED: Extract client information from message
+        const msgIpAddress = data.ip_address || null;
+        const msgCountryName = data.country_name || null;
+        const msgCountryCode = data.country_code || null;
+
         if (msgReferralType) setReferralType(msgReferralType);
         if (msgReferralValue) setReferralValue(msgReferralValue);
+
+        // ADDED: Set client information if available
+        if (msgIpAddress) setClientIpAddress(msgIpAddress);
+        if (msgCountryName) setClientCountryName(msgCountryName);
+        if (msgCountryCode) setClientCountryCode(msgCountryCode);
+
+        // ADDED: Log received data for debugging
+        console.log("Received client data:", {
+          ip: msgIpAddress,
+          country: msgCountryName,
+          code: msgCountryCode,
+        });
       }
     };
 
@@ -344,6 +366,47 @@ const PopupRegistrationForm = ({ params }) => {
       clearTimeout(timeout);
     };
   }, []);
+
+  // ADDED: Effect to set client information when it's updated
+  useEffect(() => {
+    // If we received client info from parent window and it's different from context
+    if (
+      clientIpAddress &&
+      (!clientConfig.ipAddress || clientConfig.ipAddress !== clientIpAddress)
+    ) {
+      console.log(
+        "Overriding client IP with data from parent:",
+        clientIpAddress
+      );
+      // Update the clientConfig object
+      clientConfig.ipAddress = clientIpAddress;
+    }
+
+    // Apply country information if we have it
+    if (
+      clientCountryName &&
+      (!clientConfig.countryName ||
+        clientConfig.countryName !== clientCountryName)
+    ) {
+      console.log(
+        "Overriding country with data from parent:",
+        clientCountryName
+      );
+      clientConfig.countryName = clientCountryName;
+    }
+
+    if (
+      clientCountryCode &&
+      (!clientConfig.countryCode ||
+        clientConfig.countryCode !== clientCountryCode)
+    ) {
+      console.log(
+        "Overriding country code with data from parent:",
+        clientCountryCode
+      );
+      clientConfig.countryCode = clientCountryCode;
+    }
+  }, [clientIpAddress, clientCountryName, clientCountryCode, clientConfig]);
 
   // Use the language parameter also to detect RTL
   const forcedRTL =
@@ -399,10 +462,12 @@ const PopupRegistrationForm = ({ params }) => {
       target.removeAttribute("data-processing");
     }, 3000);
 
+    // MODIFIED: Improved policy link handling
     // Handle differently based on context
     if (window.parent !== window) {
       // If inside an iframe, first try sending a message to parent window
       try {
+        // Send a clear message to the parent window to handle opening the policy link
         window.parent.postMessage(
           {
             type: "OQTIMA_OPEN_LINK",
@@ -411,50 +476,50 @@ const PopupRegistrationForm = ({ params }) => {
             policyType: url.toLowerCase().includes("privacy")
               ? "privacy"
               : "cookie",
+            openInNewTab: true, // Explicitly state this should open in a new tab
             timestamp: Date.now(),
           },
           "*"
         );
 
-        // As a fallback, try to open directly after a short delay
-        // This only happens if the parent handler doesn't handle it
+        // Fallback: try to open directly after a short delay if parent doesn't handle it
         setTimeout(() => {
-          // Check if a window was already opened by the parent
           if (!policyWindow) {
             try {
+              console.log("Opening policy link in new tab:", url);
               policyWindow = window.open(url, "_blank", "noopener,noreferrer");
 
-              // If window was blocked, show a hint to the user
               if (!policyWindow) {
-                console.warn(
-                  "Popup was blocked by browser - consider enabling popups for this site"
-                );
+                console.warn("Policy link popup was blocked by browser");
               }
-            } catch (err) {
-              console.error("Error opening policy link directly:", err);
+            } catch (fallbackErr) {
+              console.error(
+                "Error in fallback policy link opening:",
+                fallbackErr
+              );
             }
           }
-        }, 500);
+        }, 300);
       } catch (err) {
-        console.error("Error sending message to parent for policy link:", err);
+        console.error("Error sending policy link message to parent:", err);
 
-        // Fallback to direct opening if message sending fails
+        // Last resort: direct opening if message sending fails
         try {
           policyWindow = window.open(url, "_blank", "noopener,noreferrer");
-        } catch (innerErr) {
-          console.error("Error in fallback policy link opening:", innerErr);
+        } catch (fallbackErr) {
+          console.error(
+            "Final attempt to open policy link failed:",
+            fallbackErr
+          );
         }
       }
     } else {
-      // If not in an iframe, open the link directly
+      // If not in an iframe, open the link directly in a new tab
       try {
         policyWindow = window.open(url, "_blank", "noopener,noreferrer");
 
-        // If window was blocked, show a hint to the user
         if (!policyWindow) {
-          console.warn(
-            "Popup was blocked by browser - consider enabling popups for this site"
-          );
+          console.warn("Policy link popup was blocked by browser");
         }
       } catch (err) {
         console.error("Error opening policy link directly:", err);
@@ -514,13 +579,14 @@ const PopupRegistrationForm = ({ params }) => {
     const token = await executeRecaptcha("popup_registration");
 
     try {
-      // Prepare submission data with referral parameters
+      // Prepare submission data with referral parameters and ensure IP address is included
       const submissionData = {
         ...values,
         token,
         language: portalLanguageCode,
         redirect: "register",
-        register_ip: clientConfig.ipAddress,
+        // MODIFIED: Use the client IP address from parent if available or fallback to context
+        register_ip: clientIpAddress || clientConfig.ipAddress || "",
         agreement: true,
         privacy: policyLinks.privacyPolicy,
         cookie: policyLinks.cookiePolicy,
@@ -534,6 +600,14 @@ const PopupRegistrationForm = ({ params }) => {
       if (referral_value) {
         submissionData.referral_value = referral_value;
       }
+
+      console.log("Submitting registration with data:", {
+        ip: submissionData.register_ip,
+        country: values.country,
+        code: values.country_code,
+        referral_type,
+        referral_value,
+      });
 
       const response = await axios.post(
         `${API_URL}crm-register`,
@@ -549,78 +623,122 @@ const PopupRegistrationForm = ({ params }) => {
         if (redirectAddress) {
           // Check if we're in an iframe
           if (window.parent !== window) {
-            // ENHANCED: Send multiple message formats to ensure compatibility
-
-            // 1. Standard object format with REDIRECT_TO_URL type
-            window.parent.postMessage(
-              {
-                type: "REDIRECT_TO_URL",
-                url: redirectAddress,
-                success: true,
-                timestamp: Date.now(),
-              },
-              "*"
+            // MODIFIED: Improved redirection handling for iframe context
+            console.log(
+              "Registration successful, redirecting to:",
+              redirectAddress
             );
 
-            // 2. Alternative object format with redirectUrl property
-            window.parent.postMessage(
-              {
-                type: "REDIRECT_TO_URL",
-                redirectUrl: redirectAddress,
-                success: true,
-                timestamp: Date.now(),
-              },
-              "*"
-            );
-
-            // 3. Registration success format
-            window.parent.postMessage(
-              {
-                type: "REGISTRATION_SUCCESS",
-                url: redirectAddress,
-                redirectUrl: redirectAddress,
-                success: true,
-                timestamp: Date.now(),
-              },
-              "*"
-            );
-
-            // 4. Simple string format (for the global handler)
-            window.parent.postMessage(`redirect:${redirectAddress}`, "*");
-
-            // 5. Direct URL string (for simple string extraction)
-            setTimeout(() => {
-              window.parent.postMessage(redirectAddress, "*");
-            }, 100);
-
-            // ENHANCED: Try direct redirection approach for some browsers
             try {
-              // Some browsers allow this in certain contexts
-              if (window.top) {
-                setTimeout(() => {
+              // STEP 1: Send multiple message formats to ensure compatibility
+
+              // Send detailed registration success message
+              window.parent.postMessage(
+                {
+                  type: "OQTIMA_REGISTRATION_SUCCESS",
+                  redirectUrl: redirectAddress,
+                  success: true,
+                  timestamp: Date.now(),
+                },
+                "*"
+              );
+
+              // STEP 2: Alternative message formats for different parent handlers
+              // Standard redirect message
+              window.parent.postMessage(
+                {
+                  type: "REDIRECT_TO_URL",
+                  url: redirectAddress,
+                  success: true,
+                  timestamp: Date.now(),
+                },
+                "*"
+              );
+
+              // Legacy format support
+              window.parent.postMessage(
+                {
+                  type: "REGISTRATION_SUCCESS",
+                  url: redirectAddress,
+                  redirectUrl: redirectAddress,
+                  success: true,
+                  timestamp: Date.now(),
+                },
+                "*"
+              );
+
+              // Simple format for basic handlers
+              window.parent.postMessage(`redirect:${redirectAddress}`, "*");
+
+              // STEP 3: Direct approach - try to set parent location directly
+              // This is the most reliable but might be blocked in some browsers
+              setTimeout(() => {
+                try {
+                  console.log("Attempting direct redirect to parent window");
+                  window.parent.location.href = redirectAddress;
+                } catch (directErr) {
+                  console.warn(
+                    "Direct parent redirect blocked:",
+                    directErr.message
+                  );
+
+                  // STEP 4: As last resort, if direct redirection fails, try to open in a new tab
                   try {
-                    window.top.location.href = redirectAddress;
-                  } catch (err) {
-                    console.log("Could not directly set top location", err);
+                    console.log("Attempting fallback to new tab");
+                    const newWindow = window.open(redirectAddress, "_blank");
+
+                    if (newWindow) {
+                      newWindow.focus();
+                      // Close the current popup if new window was opened successfully
+                      window.parent.postMessage(
+                        {
+                          type: "OQTIMA_CLOSE_POPUP",
+                          reason: "redirect-success",
+                        },
+                        "*"
+                      );
+                    } else {
+                      console.error("Popup blocked - unable to redirect");
+                      // Display a user-friendly message about the redirect
+                      setErrorMessage(
+                        "Registration successful! The redirection was blocked by your browser. Please check for popup blockers."
+                      );
+                    }
+                  } catch (fallbackErr) {
+                    console.error(
+                      "All redirect methods failed:",
+                      fallbackErr.message
+                    );
                   }
-                }, 300);
+                }
+              }, 500);
+
+              // STEP 5: Store redirect in localStorage for potential use by parent
+              try {
+                localStorage.setItem(
+                  "OQTIMA_PENDING_REDIRECT",
+                  redirectAddress
+                );
+                localStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
+                localStorage.setItem(
+                  "OQTIMA_REGISTRATION_TIMESTAMP",
+                  Date.now().toString()
+                );
+              } catch (storageErr) {
+                console.warn(
+                  "Could not save to localStorage:",
+                  storageErr.message
+                );
               }
             } catch (err) {
-              console.log("Could not access top window", err);
-            }
+              console.error("Error during redirect process:", err.message);
 
-            // ENHANCED: As a final fallback, try to save to localStorage for use on page reload
-            try {
-              localStorage.setItem("OQTIMA_PENDING_REDIRECT", redirectAddress);
-
-              // Set a flag to indicate successful registration
-              localStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
-              localStorage.setItem(
-                "OQTIMA_REGISTRATION_TIMESTAMP",
-                Date.now().toString()
-              );
-            } catch (err) {
-              console.log("Could not save to localStorage", err);
+              // If all else fails, try one more redirect approach
+              try {
+                window.top.location.href = redirectAddress;
+              } catch (topErr) {
+                console.error("Final redirect attempt failed:", topErr.message);
+              }
             }
           } else {
             // If not in iframe, redirect normally
@@ -642,14 +760,17 @@ const PopupRegistrationForm = ({ params }) => {
         first_name: "",
         last_name: "",
         email: "",
-        country: clientConfig?.countryName || "",
-        country_code: clientConfig?.countryCode
-          ? countries.find(
-              (country) =>
-                country.name.toLowerCase() ===
-                clientConfig.countryName.toLowerCase()
-            )?.code || ""
-          : "",
+        // MODIFIED: Prioritize country data from parent window over context
+        country: clientCountryName || clientConfig?.countryName || "",
+        country_code:
+          clientCountryCode ||
+          (clientConfig?.countryName
+            ? countries.find(
+                (country) =>
+                  country.name.toLowerCase() ===
+                  clientConfig.countryName.toLowerCase()
+              )?.code || ""
+            : ""),
         mobile: "",
         is_subscribe: 1,
         agreement: 0,
