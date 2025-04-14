@@ -13,13 +13,17 @@ const fs = require("fs-extra");
 const path = require("path");
 const { minify } = require("terser");
 
-const scriptsDir = path.join(process.cwd(), "src", "scripts");
-const staticScriptsDir = path.join(process.cwd(), "static", "scripts");
-const sourceScriptPath = path.join(
+// Fixed paths
+const root = process.cwd(); // Get the current working directory
+const scriptsDir = path.join(root, "src", "scripts");
+const registrationScriptDir = path.join(
   scriptsDir,
-  "registration-popup-script",
-  "index.js"
+  "registration-popup-script"
 );
+const registrationScriptFile = path.join(registrationScriptDir, "index.js");
+
+const staticDir = path.join(root, "static");
+const staticScriptsDir = path.join(staticDir, "scripts");
 const regularOutputPath = path.join(
   staticScriptsDir,
   "registration-popup-script.js"
@@ -29,17 +33,29 @@ const minifiedOutputPath = path.join(
   "registration-popup-script.min.js"
 );
 
-// Ensure the scripts directory exists in static
+// Output paths for debugging
+console.log("Current working directory:", root);
+console.log("Registration script source:", registrationScriptFile);
+console.log("Regular output path:", regularOutputPath);
+console.log("Minified output path:", minifiedOutputPath);
+
+// Ensure directories exist
+fs.ensureDirSync(staticDir);
 fs.ensureDirSync(staticScriptsDir);
 
 async function processScripts() {
   try {
+    // Check if source file exists
+    if (!fs.existsSync(registrationScriptFile)) {
+      throw new Error(`Source file not found: ${registrationScriptFile}`);
+    }
+
     // Copy the unminified registration script
-    fs.copySync(sourceScriptPath, regularOutputPath);
+    fs.copySync(registrationScriptFile, regularOutputPath);
     console.log("✓ Registration script copied to static folder");
 
     // Read the source file for minification
-    const sourceCode = fs.readFileSync(sourceScriptPath, "utf8");
+    const sourceCode = fs.readFileSync(registrationScriptFile, "utf8");
 
     // Minify the code
     console.log("Minifying registration script...");
