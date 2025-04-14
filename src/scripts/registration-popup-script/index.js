@@ -14,19 +14,28 @@
 
   // API URL and Environment mapping based on hostname
   const getApiUrlFromHostname = () => {
+    // Try to find the script element that loaded this script
+    try {
+      const scripts = document.getElementsByTagName("script");
+      const registrationScript = Array.from(scripts).find((script) =>
+        script.src.includes("registration-popup-script.js")
+      );
+
+      if (registrationScript && registrationScript.src) {
+        // Extract the origin and path from the script src
+        const scriptUrl = new URL(registrationScript.src);
+        const baseUrl = `${scriptUrl.origin}/`;
+        console.log("[OQtima] Using script source for API URL:", baseUrl);
+        return baseUrl;
+      }
+    } catch (e) {
+      console.warn("[OQtima] Error determining API URL from script:", e);
+    }
+
+    // Fallback logic if script element cannot be found or URL parsing fails
     const hostname = window.location.hostname;
     const protocol = window.location.protocol;
 
-    // MODIFIED: Always return a valid URL regardless of hostname
-    // For localhost use localhost, for all other domains use dev.oqt-ima.com
-    if (hostname === "localhost" || hostname === "127.0.0.1") {
-      return "http://localhost:8000/";
-    } else {
-      return "https://dev.oqt-ima.com/";
-    }
-
-    // Original code commented out
-    /*
     // For file:// protocol, use localhost
     if (protocol === "file:") {
       return "http://localhost:8000/";
@@ -37,30 +46,103 @@
       return "http://localhost:8000/";
     }
 
-    // For other environments, use current origin
-    return window.location.origin + "/";
-    */
+    // For development environment
+    if (hostname === "dev.oqt-ima.com") {
+      return "https://dev.oqt-ima.com/";
+    }
+
+    // For staging environment
+    if (hostname === "test.oqt-ima.com") {
+      return "https://test.oqt-ima.com/";
+    }
+
+    // For production environment
+    if (
+      hostname === "oqtima.com" ||
+      hostname === "lp.oqtima.com" ||
+      hostname === "www.oqtima.com"
+    ) {
+      return "https://oqtima.com/";
+    }
+
+    // For any other domain, use the current origin as the API URL
+    return `${window.location.origin}/`;
   };
 
   // Map frontend hostname to backend API server URL
   const mapBackendApiUrl = () => {
-    const hostname = window.location.hostname;
-    console.log("hostname", hostname);
-    const protocol = window.location.protocol;
-    console.log("protocol", protocol);
-    const port = window.location.port;
-    console.log("port", port);
+    // Try to determine backend API URL from script source
+    try {
+      const scripts = document.getElementsByTagName("script");
+      const scriptPatterns = [
+        "registration-popup-script.js",
+        "registration-popup-script.min.js",
+      ];
 
-    // MODIFIED: Always return a valid API URL based on environment
-    // For localhost use localhost, for all other domains use dev-back.oqt-ima.com
-    if (hostname === "localhost" || hostname === "127.0.0.1") {
-      return "http://localhost:3000/";
-    } else {
-      return "https://dev-back.oqt-ima.com/";
+      const registrationScript = Array.from(scripts).find((script) => {
+        const src = script.src || "";
+        return scriptPatterns.some((pattern) => src.includes(pattern));
+      });
+
+      if (registrationScript && registrationScript.src) {
+        // Extract the origin from the script src
+        const scriptUrl = new URL(registrationScript.src);
+        const scriptOrigin = scriptUrl.origin;
+
+        // If script is served from the frontend, map to corresponding backend
+        if (
+          scriptOrigin.includes("localhost") ||
+          scriptOrigin.includes("127.0.0.1")
+        ) {
+          return "http://localhost:3000/";
+        }
+
+        if (scriptOrigin.includes("dev.oqt-ima.com")) {
+          return "https://dev-back.oqt-ima.com/";
+        }
+
+        if (scriptOrigin.includes("test.oqt-ima.com")) {
+          return "https://back.oqt-ima.com/";
+        }
+
+        if (scriptOrigin.includes("oqtima.com")) {
+          return "https://back.oqtima.com/";
+        }
+
+        // For custom domains, try to derive a backend URL
+        try {
+          const scriptUrlObj = new URL(scriptOrigin);
+          if (scriptUrlObj.hostname.includes(".")) {
+            const parts = scriptUrlObj.hostname.split(".");
+            // If already has subdomain, replace it with 'back'
+            if (parts.length > 2) {
+              parts[0] = "back";
+              return `${scriptUrlObj.protocol}//${parts.join(".")}/`;
+            }
+            // Otherwise add 'back' subdomain
+            else {
+              return `${scriptUrlObj.protocol}//back.${scriptUrlObj.hostname}/`;
+            }
+          }
+        } catch (e) {
+          console.warn(
+            "[OQtima] Error constructing backend URL from script origin:",
+            e
+          );
+        }
+      }
+    } catch (e) {
+      console.warn(
+        "[OQtima] Error determining backend API URL from script:",
+        e
+      );
     }
 
-    // Original code commented out
-    /*
+    // Fallback logic based on hostname if script detection fails
+    const hostname = window.location.hostname;
+    const protocol = window.location.protocol;
+    const port = window.location.port;
+
     // For file:// protocol or local development
     if (protocol === "file:") {
       return "http://localhost:3000/";
@@ -93,55 +175,63 @@
       hostname === "lp.oqtima.com" ||
       hostname === "www.oqtima.com"
     ) {
-      return "https://back.oqtima.com/";
+      return "https://back.oqt-ima.com/";
     }
 
-    // Alternative approach: try to derive from current origin
-    // This is useful in development scenarios with custom domains
-    try {
-      const currentOrigin = window.location.origin;
-      if (currentOrigin.includes("localhost")) {
-        return "http://localhost:3000/";
-      }
-
-      // For any unknown production domain, make a best guess based on hostname
-      // Add 'back.' subdomain or replace current subdomain with 'back.'
-      const originUrl = new URL(currentOrigin);
-      if (originUrl.hostname.includes(".")) {
-        const parts = originUrl.hostname.split(".");
-        // If already has subdomain, replace it
-        if (parts.length > 2) {
-          parts[0] = "back";
-          return `${originUrl.protocol}//${parts.join(".")}/`;
-        }
-        // Otherwise add 'back' subdomain
-        else {
-          return `${originUrl.protocol}//back.${originUrl.hostname}/`;
-        }
-      }
-    } catch (e) {
-      // Ignore errors with URL construction
-      console.warn("[OQtima] Error constructing backend URL from origin:", e);
-    }
-
-    // Default fallback - use localhost for development
+    // Default fallback for unknown domains
     console.warn(
-      "[OQtima] Could not determine backend API URL from hostname, using default"
+      "[OQtima] Could not determine backend API URL from hostname or script, using default"
     );
-    return "http://localhost:3000/";
-    */
+    return "https://dev-back.oqt-ima.com/";
   };
 
   const getEnvironmentFromHostname = () => {
+    // Try to determine environment from script source
+    try {
+      const scripts = document.getElementsByTagName("script");
+      const scriptPatterns = [
+        "registration-popup-script.js",
+        "registration-popup-script.min.js",
+      ];
+
+      const registrationScript = Array.from(scripts).find((script) => {
+        const src = script.src || "";
+        return scriptPatterns.some((pattern) => src.includes(pattern));
+      });
+
+      if (registrationScript && registrationScript.src) {
+        // Extract the origin from the script src
+        const scriptUrl = new URL(registrationScript.src);
+        const scriptOrigin = scriptUrl.origin;
+
+        // Determine environment based on script source domain
+        if (
+          scriptOrigin.includes("localhost") ||
+          scriptOrigin.includes("127.0.0.1")
+        ) {
+          return "development";
+        }
+
+        if (scriptOrigin.includes("dev.oqt-ima.com")) {
+          return "development";
+        }
+
+        if (scriptOrigin.includes("test.oqt-ima.com")) {
+          return "staging";
+        }
+
+        if (scriptOrigin.includes("oqtima.com")) {
+          return "production";
+        }
+      }
+    } catch (e) {
+      console.warn("[OQtima] Error determining environment from script:", e);
+    }
+
+    // Fallback logic based on hostname if script detection fails
     const hostname = window.location.hostname;
     const protocol = window.location.protocol;
 
-    // MODIFIED: Always return "development" regardless of hostname
-    // This bypasses hostname verification so it works on any domain
-    return "development";
-
-    // Original code commented out
-    /*
     // Handle local file access or empty hostname
     if (protocol === "file:" || !hostname) {
       return "development";
@@ -163,12 +253,19 @@
     }
 
     // For production environment
-    if (hostname === "oqtima.com" || hostname === "lp.oqtima.com") {
+    if (
+      hostname === "oqtima.com" ||
+      hostname === "lp.oqtima.com" ||
+      hostname === "www.oqtima.com"
+    ) {
       return "production";
     }
 
-    return false;
-    */
+    // For unknown domains, default to development
+    console.warn(
+      "[OQtima] Could not determine environment, defaulting to development"
+    );
+    return "development";
   };
 
   // Set API URL and Environment based on hostname
@@ -1529,8 +1626,13 @@
           if (event.data.type === "OQTIMA_OPEN_LINK") {
             try {
               const url = event.data.url || "";
-              const openInNewTab = event.data.openInNewTab === true;
+              // Remove the unused variable
               const isPolicyLink = event.data.isPolicyLink === true;
+              const timestamp = event.data.timestamp || Date.now();
+              // Get the source of the message (the iframe)
+              const sourceIframe = Array.from(
+                document.querySelectorAll("iframe")
+              ).find((iframe) => iframe.contentWindow === event.source);
 
               if (url) {
                 // Determine if this is a policy link that should be allowed
@@ -1543,11 +1645,36 @@
 
                 if (isPolicyOrLegalLink) {
                   console.log("[OQtima] Opening policy link in new tab:", url);
+                  let linkOpened = false;
 
                   // Open policy links in new tab as requested
                   const newWindow = window.open(url, "_blank");
                   if (newWindow) {
                     newWindow.focus();
+                    linkOpened = true;
+
+                    // Send confirmation message back to the iframe
+                    try {
+                      if (event.source && event.source.postMessage) {
+                        event.source.postMessage(
+                          {
+                            type: "OQTIMA_LINK_OPENED",
+                            url: url,
+                            success: true,
+                            timestamp: timestamp,
+                          },
+                          "*"
+                        );
+                        console.log(
+                          "[OQtima] Sent link opened confirmation to iframe"
+                        );
+                      }
+                    } catch (msgError) {
+                      console.warn(
+                        "[OQtima] Error sending confirmation:",
+                        msgError
+                      );
+                    }
                   } else {
                     console.warn(
                       "[OQtima] Browser blocked popup, using fallback method"
@@ -1561,9 +1688,44 @@
                     fallbackLink.style.display = "none";
                     document.body.appendChild(fallbackLink);
                     fallbackLink.click();
+                    linkOpened = true;
+
+                    // Send confirmation message back to the iframe
+                    try {
+                      if (event.source && event.source.postMessage) {
+                        event.source.postMessage(
+                          {
+                            type: "OQTIMA_LINK_OPENED",
+                            url: url,
+                            success: true,
+                            timestamp: timestamp,
+                          },
+                          "*"
+                        );
+                        console.log(
+                          "[OQtima] Sent link opened confirmation to iframe (fallback)"
+                        );
+                      }
+                    } catch (msgError) {
+                      console.warn(
+                        "[OQtima] Error sending confirmation:",
+                        msgError
+                      );
+                    }
+
                     setTimeout(() => {
                       document.body.removeChild(fallbackLink);
                     }, 100);
+                  }
+
+                  // Prevent event from propagating if we handled it
+                  if (linkOpened) {
+                    if (event.stopPropagation) {
+                      event.stopPropagation();
+                    }
+                    if (event.preventDefault) {
+                      event.preventDefault();
+                    }
                   }
                 } else {
                   console.warn(
@@ -1631,15 +1793,22 @@
     // Check if RTL language
     const isRTL = normalizedLanguage === "ar";
 
-    // MODIFIED: Get the baseUrl from the script source
+    // Get the baseUrl from the script source
     let baseUrl;
 
     // First try to get the server URL from the current script
     try {
       const scripts = document.getElementsByTagName("script");
-      const registrationScript = Array.from(scripts).find((script) =>
-        script.src.includes("registration-popup-script.js")
-      );
+      // Look for both minified and non-minified versions of the script
+      const scriptPatterns = [
+        "registration-popup-script.js",
+        "registration-popup-script.min.js",
+      ];
+
+      const registrationScript = Array.from(scripts).find((script) => {
+        const src = script.src || "";
+        return scriptPatterns.some((pattern) => src.includes(pattern));
+      });
 
       if (registrationScript && registrationScript.src) {
         // Extract the origin from the script src
@@ -1647,27 +1816,14 @@
         baseUrl = scriptUrl.origin;
         console.log("[OQtima] Using script server for iframe:", baseUrl);
       } else {
-        // Fallback based on hostname
-        if (
-          window.location.hostname === "localhost" ||
-          window.location.hostname === "127.0.0.1"
-        ) {
-          baseUrl = "http://localhost:8000";
-        } else {
-          baseUrl = "https://dev.oqt-ima.com";
-        }
+        // If script not found, use the value from getApiUrlFromHostname()
+        baseUrl = apiUrl.replace(/\/+$/, ""); // Remove trailing slash
+        console.log("[OQtima] Using API URL for iframe:", baseUrl);
       }
     } catch (e) {
       console.warn("[OQtima] Error determining base URL from script:", e);
-      // Fallback based on hostname
-      if (
-        window.location.hostname === "localhost" ||
-        window.location.hostname === "127.0.0.1"
-      ) {
-        baseUrl = "http://localhost:8000";
-      } else {
-        baseUrl = "https://dev.oqt-ima.com";
-      }
+      // Fallback to apiUrl which already has the same detection logic
+      baseUrl = apiUrl.replace(/\/+$/, ""); // Remove trailing slash
     }
 
     // Make sure baseUrl doesn't end with a slash
