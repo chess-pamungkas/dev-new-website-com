@@ -437,11 +437,18 @@ const PopupRegistrationForm = ({ params }) => {
   const [policyLinks, setPolicyLinks] = useState({
     privacyPolicy: "",
     cookiePolicy: "",
+    loading: true,
+    error: false,
   });
 
-  // Function to handle policy link clicks
+  // Enhanced policy link click handler with improved tracking and error handling
   const handlePolicyLinkClick = (e, url) => {
     e.preventDefault();
+
+    if (!url) {
+      console.warn("Attempted to open policy link but URL is empty");
+      return;
+    }
 
     // Anti multi-click implementation with improved tracking
     const target = e.currentTarget;
@@ -462,7 +469,12 @@ const PopupRegistrationForm = ({ params }) => {
       target.removeAttribute("data-processing");
     }, 3000);
 
-    // MODIFIED: Improved policy link handling
+    // Determine the policy type for tracking and messaging
+    const policyType = url.toLowerCase().includes("privacy")
+      ? "privacy"
+      : "cookie";
+    console.log(`Opening ${policyType} policy link: ${url}`);
+
     // Handle differently based on context
     if (window.parent !== window) {
       // If inside an iframe, first try sending a message to parent window
@@ -473,9 +485,7 @@ const PopupRegistrationForm = ({ params }) => {
             type: "OQTIMA_OPEN_LINK",
             url: url,
             isPolicyLink: true,
-            policyType: url.toLowerCase().includes("privacy")
-              ? "privacy"
-              : "cookie",
+            policyType: policyType,
             openInNewTab: true, // Explicitly state this should open in a new tab
             timestamp: Date.now(),
           },
@@ -511,6 +521,11 @@ const PopupRegistrationForm = ({ params }) => {
             "Final attempt to open policy link failed:",
             fallbackErr
           );
+          sendLog({
+            message: `Failed to open policy link: ${fallbackErr.message}`,
+            type: fallbackErr.name,
+            url: url,
+          });
         }
       }
     } else {
@@ -523,6 +538,11 @@ const PopupRegistrationForm = ({ params }) => {
         }
       } catch (err) {
         console.error("Error opening policy link directly:", err);
+        sendLog({
+          message: `Failed to open policy link: ${err.message}`,
+          type: err.name,
+          url: url,
+        });
       }
     }
   };
@@ -530,25 +550,59 @@ const PopupRegistrationForm = ({ params }) => {
   useEffect(() => {
     const fetchPolicyLinks = async () => {
       try {
+        setPolicyLinks((prev) => ({ ...prev, loading: true, error: false }));
+
         const response = await axios.get(`${API_URL}crm-register/policy-links`);
         const { privacy_policy, cookie_policy } = response.data;
 
-        const privacyLink =
-          privacy_policy.find((p) => p.language === portalLanguageCode)
-            ?.oss_url ||
-          privacy_policy.find((p) => p.language === "en")?.oss_url;
+        // First try to find policy in user's language
+        let privacyLink = privacy_policy.find(
+          (p) => p.language === portalLanguageCode
+        )?.oss_url;
 
-        const cookieLink =
-          cookie_policy.find((c) => c.language === portalLanguageCode)
-            ?.oss_url ||
-          cookie_policy.find((c) => c.language === "en")?.oss_url;
+        let cookieLink = cookie_policy.find(
+          (c) => c.language === portalLanguageCode
+        )?.oss_url;
+
+        // If not found, fallback to English
+        if (!privacyLink) {
+          privacyLink = privacy_policy.find(
+            (p) => p.language === "en"
+          )?.oss_url;
+          console.log(
+            `Privacy policy not found in ${portalLanguageCode}, using English version`
+          );
+        }
+
+        if (!cookieLink) {
+          cookieLink = cookie_policy.find((c) => c.language === "en")?.oss_url;
+          console.log(
+            `Cookie policy not found in ${portalLanguageCode}, using English version`
+          );
+        }
 
         setPolicyLinks({
-          privacyPolicy: privacyLink,
-          cookiePolicy: cookieLink,
+          privacyPolicy: privacyLink || "",
+          cookiePolicy: cookieLink || "",
+          loading: false,
+          error: false,
         });
+
+        // Log for debugging
+        console.log(`Policy links loaded. Language: ${portalLanguageCode}`);
+        console.log(`Privacy policy: ${privacyLink}`);
+        console.log(`Cookie policy: ${cookieLink}`);
       } catch (error) {
-        sendLog({ message: error.message, type: error.name });
+        console.error("Error fetching policy links:", error);
+        setPolicyLinks((prev) => ({
+          ...prev,
+          loading: false,
+          error: true,
+        }));
+        sendLog({
+          message: `Failed to fetch policy links: ${error.message}`,
+          type: error.name,
+        });
       }
     };
 
@@ -591,6 +645,18 @@ const PopupRegistrationForm = ({ params }) => {
         privacy: policyLinks.privacyPolicy,
         cookie: policyLinks.cookiePolicy,
       };
+
+      // Validate if policy links are available
+      if (!policyLinks.privacyPolicy || !policyLinks.cookiePolicy) {
+        console.warn("Missing policy links during form submission");
+        // Still include them in submission but log the issue
+        sendLog({
+          message: "Registration submitted with missing policy links",
+          type: "PolicyWarning",
+          privacy: policyLinks.privacyPolicy,
+          cookie: policyLinks.cookiePolicy,
+        });
+      }
 
       // Only add referral parameters if we have them
       if (referral_type) {
@@ -1085,35 +1151,45 @@ const PopupRegistrationForm = ({ params }) => {
                   }
                 />
                 <span>
-                  <Trans i18nKey="popup-registration-consent" ns="index">
-                    I agree to allow the company to process my personal data to
-                    meet its regulatory obligations and I have read and
-                    understood the
-                    <a
-                      href={policyLinks.privacyPolicy}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link"
-                      onClick={(e) =>
-                        handlePolicyLinkClick(e, policyLinks.privacyPolicy)
-                      }
-                    >
-                      Privacy Policy
-                    </a>
-                    and
-                    <a
-                      href={policyLinks.cookiePolicy}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link"
-                      onClick={(e) =>
-                        handlePolicyLinkClick(e, policyLinks.cookiePolicy)
-                      }
-                    >
-                      Cookie Policy
-                    </a>
-                    of the Company.
-                  </Trans>
+                  {policyLinks.loading ? (
+                    // Show loading state for policy links
+                    <span>{t("popup-registration-loading-policies")}</span>
+                  ) : policyLinks.error ? (
+                    // Show error state if policy links failed to load
+                    <span>{t("popup-registration-policies-error")}</span>
+                  ) : (
+                    <Trans i18nKey="popup-registration-consent" ns="index">
+                      I agree to allow the company to process my personal data
+                      to meet its regulatory obligations and I have read and
+                      understood the
+                      <a
+                        href={policyLinks.privacyPolicy}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link"
+                        onClick={(e) =>
+                          handlePolicyLinkClick(e, policyLinks.privacyPolicy)
+                        }
+                        data-policy-type="privacy"
+                      >
+                        Privacy Policy
+                      </a>
+                      and
+                      <a
+                        href={policyLinks.cookiePolicy}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link"
+                        onClick={(e) =>
+                          handlePolicyLinkClick(e, policyLinks.cookiePolicy)
+                        }
+                        data-policy-type="cookie"
+                      >
+                        Cookie Policy
+                      </a>
+                      of the Company.
+                    </Trans>
+                  )}
                 </span>
               </span>
               {errors.agreement && touched.agreement && (
