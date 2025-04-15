@@ -321,11 +321,17 @@ const PopupRegistrationForm = ({ params }) => {
         if (msgCountryName) setClientCountryName(msgCountryName);
         if (msgCountryCode) setClientCountryCode(msgCountryCode);
 
+        // Language handling moved to initial language determination effect
+        // We no longer change language after initial mount
+
         // ADDED: Log received data for debugging
         console.log("Received client data:", {
           ip: msgIpAddress,
           country: msgCountryName,
           code: msgCountryCode,
+          // Log but don't change language after initial setup
+          language: data.language || data.lang,
+          initialLanguage: initialLanguageRef.current,
         });
       }
     };
@@ -350,6 +356,8 @@ const PopupRegistrationForm = ({ params }) => {
 
         if (urlReferralType) setReferralType(urlReferralType);
         if (urlReferralValue) setReferralValue(urlReferralValue);
+
+        // Language handling is now done in initialLanguageRef setup
       } catch (err) {
         console.error("Error extracting URL parameters:", err);
       }
@@ -408,25 +416,51 @@ const PopupRegistrationForm = ({ params }) => {
     }
   }, [clientIpAddress, clientCountryName, clientCountryCode, clientConfig]);
 
-  // Use the language parameter also to detect RTL
-  const forcedRTL =
-    safeParams.langParam && RTL_LANGUAGES.includes(safeParams.langParam);
-  const isRTLMode = isRTL || forcedRTL;
-
-  // Prioritize langParam from URL parameters over context language
-  // This ensures the language specified in the URL is used
-  const paramLangCode = safeParams.langParam;
-  const contextLangCode = selectedLanguage?.id || "en";
-
-  // Use the language from params if available, otherwise use context language
-  // This fixes the issue where language from URL is ignored
-  const languageCode = paramLangCode || contextLangCode;
-
-  // Map to portal language format (needed for API calls)
-  const portalLanguageCode = PORTAL_LANGUAGES_MAP[languageCode] || "en";
-
-  // Get translation function outside the effect to avoid the error
+  // Use the i18n translation function
   const { i18n } = useTranslation();
+
+  // Stabilize language determination with useRef to prevent changes after initial mount
+  const initialLanguageRef = useRef(null);
+
+  // Determine the language only once at component mount
+  useEffect(() => {
+    if (initialLanguageRef.current === null) {
+      // Prioritize the following order:
+      // 1. URL parameter language (safeParams.langParam)
+      // 2. Language from parent message (stored in state)
+      // 3. Context language (selectedLanguage?.id)
+      // 4. Default to "en"
+      const languageFromParams = safeParams.langParam;
+      const contextLanguage = selectedLanguage?.id || "en";
+
+      // Set the initial language using our priority order
+      const initialLanguage = languageFromParams || contextLanguage;
+
+      // Map to portal language format
+      const mappedLanguage = PORTAL_LANGUAGES_MAP[initialLanguage] || "en";
+
+      // Store the determined language in our ref to prevent future changes
+      initialLanguageRef.current = mappedLanguage;
+
+      console.log("Initial language set:", {
+        fromParams: languageFromParams,
+        fromContext: contextLanguage,
+        mappedTo: mappedLanguage,
+      });
+    }
+  }, [safeParams, selectedLanguage]);
+
+  // Use the stable language ref for all language-dependent operations
+  const portalLanguageCode =
+    initialLanguageRef.current ||
+    PORTAL_LANGUAGES_MAP[safeParams.langParam || selectedLanguage?.id] ||
+    "en";
+
+  // Use the stable language for RTL detection too
+  const forcedRTL =
+    initialLanguageRef.current &&
+    RTL_LANGUAGES.includes(initialLanguageRef.current);
+  const isRTLMode = isRTL || forcedRTL;
 
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedCountryCode, setSelectedCountryCode] = useState("");
@@ -440,6 +474,11 @@ const PopupRegistrationForm = ({ params }) => {
     loading: true,
     error: false,
   });
+
+  // Add state to track if we've already fetched policy links
+  const [hasFetchedPolicyLinks, setHasFetchedPolicyLinks] = useState(false);
+  // Add state to track the language we used for fetching
+  const [fetchedLanguage, setFetchedLanguage] = useState("");
 
   // Enhanced policy link click handler with improved tracking and error handling
   const handlePolicyLinkClick = (e, url) => {
@@ -572,8 +611,38 @@ const PopupRegistrationForm = ({ params }) => {
 
   useEffect(() => {
     const fetchPolicyLinks = async () => {
+      // Wait until language is determined
+      if (initialLanguageRef.current === null) {
+        console.log(
+          "Waiting for language to be determined before fetching policy links"
+        );
+        return;
+      }
+
+      // Skip fetching if we already have policy links and the language hasn't changed significantly
+      // This prevents unnecessary multiple fetches if the component re-renders with similar language
+      if (
+        hasFetchedPolicyLinks &&
+        fetchedLanguage &&
+        (fetchedLanguage === portalLanguageCode ||
+          (fetchedLanguage === "en" &&
+            !["pt", "es", "ar"].includes(portalLanguageCode)))
+      ) {
+        console.log(
+          `Using cached policy links. Previous: ${fetchedLanguage}, Current: ${portalLanguageCode}`
+        );
+        return;
+      }
+
       try {
         setPolicyLinks((prev) => ({ ...prev, loading: true, error: false }));
+
+        // Add a version indicator for debugging
+        const version = "v1.2";
+
+        console.log(
+          `[${version}] Fetching policy links for language: ${portalLanguageCode}`
+        );
 
         const response = await axios.get(`${API_URL}crm-register/policy-links`);
         const { privacy_policy, cookie_policy } = response.data;
@@ -611,6 +680,10 @@ const PopupRegistrationForm = ({ params }) => {
           error: false,
         });
 
+        // Mark that we've fetched the links and store the language used
+        setHasFetchedPolicyLinks(true);
+        setFetchedLanguage(portalLanguageCode);
+
         // Log for debugging
         console.log(`Policy links loaded. Language: ${portalLanguageCode}`);
         console.log(`Privacy policy: ${privacyLink}`);
@@ -630,7 +703,7 @@ const PopupRegistrationForm = ({ params }) => {
     };
 
     fetchPolicyLinks();
-  }, [portalLanguageCode]);
+  }, [portalLanguageCode, initialLanguageRef.current]);
 
   const filteredCountries = useMemo(() => {
     if (!searchCountry) return countries;
