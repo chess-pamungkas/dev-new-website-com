@@ -104,6 +104,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
   // Update parsed params when the input params change
   useEffect(() => {
     try {
+      console.log("params", params);
       if (typeof params === "string") {
         const newParams = JSON.parse(params);
         setParsedParams((prevParams) => ({
