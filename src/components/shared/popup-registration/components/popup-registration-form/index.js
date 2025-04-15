@@ -654,6 +654,7 @@ const PopupRegistrationForm = ({ params }) => {
 
   const handleRegistrationtForm = async (values) => {
     const token = await executeRecaptcha("popup_registration");
+    console.log("portalLanguageCode", portalLanguageCode);
 
     try {
       // Prepare submission data with referral parameters and ensure IP address is included
@@ -692,6 +693,7 @@ const PopupRegistrationForm = ({ params }) => {
 
       console.log("Submitting registration with data:", {
         ip: submissionData.register_ip,
+        language: portalLanguageCode,
         country: values.country,
         code: values.country_code,
         referral_type,
@@ -709,131 +711,132 @@ const PopupRegistrationForm = ({ params }) => {
         handleApiResponse(true);
 
         const redirectAddress = response.data.redirect_address;
-        if (redirectAddress) {
-          // Check if we're in an iframe
-          if (window.parent !== window) {
-            // MODIFIED: Improved redirection handling for iframe context
-            console.log(
-              "Registration successful, redirecting to:",
-              redirectAddress
-            );
+        console.log("redirectAddress", redirectAddress);
+        // if (redirectAddress) {
+        //   // Check if we're in an iframe
+        //   if (window.parent !== window) {
+        //     // MODIFIED: Improved redirection handling for iframe context
+        //     console.log(
+        //       "Registration successful, redirecting to:",
+        //       redirectAddress
+        //     );
 
-            try {
-              // STEP 1: Send multiple message formats to ensure compatibility
+        //     try {
+        //       // STEP 1: Send multiple message formats to ensure compatibility
 
-              // Send detailed registration success message
-              window.parent.postMessage(
-                {
-                  type: "OQTIMA_REGISTRATION_SUCCESS",
-                  redirectUrl: redirectAddress,
-                  success: true,
-                  timestamp: Date.now(),
-                },
-                "*"
-              );
+        //       // Send detailed registration success message
+        //       window.parent.postMessage(
+        //         {
+        //           type: "OQTIMA_REGISTRATION_SUCCESS",
+        //           redirectUrl: redirectAddress,
+        //           success: true,
+        //           timestamp: Date.now(),
+        //         },
+        //         "*"
+        //       );
 
-              // STEP 2: Alternative message formats for different parent handlers
-              // Standard redirect message
-              window.parent.postMessage(
-                {
-                  type: "REDIRECT_TO_URL",
-                  url: redirectAddress,
-                  success: true,
-                  timestamp: Date.now(),
-                },
-                "*"
-              );
+        //       // STEP 2: Alternative message formats for different parent handlers
+        //       // Standard redirect message
+        //       window.parent.postMessage(
+        //         {
+        //           type: "REDIRECT_TO_URL",
+        //           url: redirectAddress,
+        //           success: true,
+        //           timestamp: Date.now(),
+        //         },
+        //         "*"
+        //       );
 
-              // Legacy format support
-              window.parent.postMessage(
-                {
-                  type: "REGISTRATION_SUCCESS",
-                  url: redirectAddress,
-                  redirectUrl: redirectAddress,
-                  success: true,
-                  timestamp: Date.now(),
-                },
-                "*"
-              );
+        //       // Legacy format support
+        //       window.parent.postMessage(
+        //         {
+        //           type: "REGISTRATION_SUCCESS",
+        //           url: redirectAddress,
+        //           redirectUrl: redirectAddress,
+        //           success: true,
+        //           timestamp: Date.now(),
+        //         },
+        //         "*"
+        //       );
 
-              // Simple format for basic handlers
-              window.parent.postMessage(`redirect:${redirectAddress}`, "*");
+        //       // Simple format for basic handlers
+        //       window.parent.postMessage(`redirect:${redirectAddress}`, "*");
 
-              // STEP 3: Direct approach - try to set parent location directly
-              // This is the most reliable but might be blocked in some browsers
-              setTimeout(() => {
-                try {
-                  console.log("Attempting direct redirect to parent window");
-                  window.parent.location.href = redirectAddress;
-                } catch (directErr) {
-                  console.warn(
-                    "Direct parent redirect blocked:",
-                    directErr.message
-                  );
+        //       // STEP 3: Direct approach - try to set parent location directly
+        //       // This is the most reliable but might be blocked in some browsers
+        //       setTimeout(() => {
+        //         try {
+        //           console.log("Attempting direct redirect to parent window");
+        //           window.parent.location.href = redirectAddress;
+        //         } catch (directErr) {
+        //           console.warn(
+        //             "Direct parent redirect blocked:",
+        //             directErr.message
+        //           );
 
-                  // STEP 4: As last resort, if direct redirection fails, try to open in a new tab
-                  try {
-                    console.log("Attempting fallback to new tab");
-                    const newWindow = window.open(redirectAddress, "_blank");
+        //           // STEP 4: As last resort, if direct redirection fails, try to open in a new tab
+        //           try {
+        //             console.log("Attempting fallback to new tab");
+        //             const newWindow = window.open(redirectAddress, "_blank");
 
-                    if (newWindow) {
-                      newWindow.focus();
-                      // Close the current popup if new window was opened successfully
-                      window.parent.postMessage(
-                        {
-                          type: "OQTIMA_CLOSE_POPUP",
-                          reason: "redirect-success",
-                        },
-                        "*"
-                      );
-                    } else {
-                      console.error("Popup blocked - unable to redirect");
-                      // Display a user-friendly message about the redirect
-                      setErrorMessage(
-                        "Registration successful! The redirection was blocked by your browser. Please check for popup blockers."
-                      );
-                    }
-                  } catch (fallbackErr) {
-                    console.error(
-                      "All redirect methods failed:",
-                      fallbackErr.message
-                    );
-                  }
-                }
-              }, 500);
+        //             if (newWindow) {
+        //               newWindow.focus();
+        //               // Close the current popup if new window was opened successfully
+        //               window.parent.postMessage(
+        //                 {
+        //                   type: "OQTIMA_CLOSE_POPUP",
+        //                   reason: "redirect-success",
+        //                 },
+        //                 "*"
+        //               );
+        //             } else {
+        //               console.error("Popup blocked - unable to redirect");
+        //               // Display a user-friendly message about the redirect
+        //               setErrorMessage(
+        //                 "Registration successful! The redirection was blocked by your browser. Please check for popup blockers."
+        //               );
+        //             }
+        //           } catch (fallbackErr) {
+        //             console.error(
+        //               "All redirect methods failed:",
+        //               fallbackErr.message
+        //             );
+        //           }
+        //         }
+        //       }, 500);
 
-              // STEP 5: Store redirect in localStorage for potential use by parent
-              try {
-                localStorage.setItem(
-                  "OQTIMA_PENDING_REDIRECT",
-                  redirectAddress
-                );
-                localStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
-                localStorage.setItem(
-                  "OQTIMA_REGISTRATION_TIMESTAMP",
-                  Date.now().toString()
-                );
-              } catch (storageErr) {
-                console.warn(
-                  "Could not save to localStorage:",
-                  storageErr.message
-                );
-              }
-            } catch (err) {
-              console.error("Error during redirect process:", err.message);
+        //       // STEP 5: Store redirect in localStorage for potential use by parent
+        //       try {
+        //         localStorage.setItem(
+        //           "OQTIMA_PENDING_REDIRECT",
+        //           redirectAddress
+        //         );
+        //         localStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
+        //         localStorage.setItem(
+        //           "OQTIMA_REGISTRATION_TIMESTAMP",
+        //           Date.now().toString()
+        //         );
+        //       } catch (storageErr) {
+        //         console.warn(
+        //           "Could not save to localStorage:",
+        //           storageErr.message
+        //         );
+        //       }
+        //     } catch (err) {
+        //       console.error("Error during redirect process:", err.message);
 
-              // If all else fails, try one more redirect approach
-              try {
-                window.top.location.href = redirectAddress;
-              } catch (topErr) {
-                console.error("Final redirect attempt failed:", topErr.message);
-              }
-            }
-          } else {
-            // If not in iframe, redirect normally
-            window.location.href = redirectAddress;
-          }
-        }
+        //       // If all else fails, try one more redirect approach
+        //       try {
+        //         window.top.location.href = redirectAddress;
+        //       } catch (topErr) {
+        //         console.error("Final redirect attempt failed:", topErr.message);
+        //       }
+        //     }
+        //   } else {
+        //     // If not in iframe, redirect normally
+        //     window.location.href = redirectAddress;
+        //   }
+        // }
       }
     } catch (error) {
       const errorMessage = error.response?.data?.message || "An error occurred";
