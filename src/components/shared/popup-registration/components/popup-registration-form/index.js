@@ -546,87 +546,88 @@ const PopupRegistrationForm = ({ params }) => {
         handleApiResponse(true);
 
         const redirectAddress = response.data.redirect_address;
-        if (redirectAddress) {
-          // Check if we're in an iframe
-          if (window.parent !== window) {
-            // ENHANCED: Send multiple message formats to ensure compatibility
+        console.log("redirectAddress", redirectAddress);
+        // if (redirectAddress) {
+        //   // Check if we're in an iframe
+        //   if (window.parent !== window) {
+        //     // ENHANCED: Send multiple message formats to ensure compatibility
 
-            // 1. Standard object format with REDIRECT_TO_URL type
-            window.parent.postMessage(
-              {
-                type: "REDIRECT_TO_URL",
-                url: redirectAddress,
-                success: true,
-                timestamp: Date.now(),
-              },
-              "*"
-            );
+        //     // 1. Standard object format with REDIRECT_TO_URL type
+        //     window.parent.postMessage(
+        //       {
+        //         type: "REDIRECT_TO_URL",
+        //         url: redirectAddress,
+        //         success: true,
+        //         timestamp: Date.now(),
+        //       },
+        //       "*"
+        //     );
 
-            // 2. Alternative object format with redirectUrl property
-            window.parent.postMessage(
-              {
-                type: "REDIRECT_TO_URL",
-                redirectUrl: redirectAddress,
-                success: true,
-                timestamp: Date.now(),
-              },
-              "*"
-            );
+        //     // 2. Alternative object format with redirectUrl property
+        //     window.parent.postMessage(
+        //       {
+        //         type: "REDIRECT_TO_URL",
+        //         redirectUrl: redirectAddress,
+        //         success: true,
+        //         timestamp: Date.now(),
+        //       },
+        //       "*"
+        //     );
 
-            // 3. Registration success format
-            window.parent.postMessage(
-              {
-                type: "REGISTRATION_SUCCESS",
-                url: redirectAddress,
-                redirectUrl: redirectAddress,
-                success: true,
-                timestamp: Date.now(),
-              },
-              "*"
-            );
+        //     // 3. Registration success format
+        //     window.parent.postMessage(
+        //       {
+        //         type: "REGISTRATION_SUCCESS",
+        //         url: redirectAddress,
+        //         redirectUrl: redirectAddress,
+        //         success: true,
+        //         timestamp: Date.now(),
+        //       },
+        //       "*"
+        //     );
 
-            // 4. Simple string format (for the global handler)
-            window.parent.postMessage(`redirect:${redirectAddress}`, "*");
+        //     // 4. Simple string format (for the global handler)
+        //     window.parent.postMessage(`redirect:${redirectAddress}`, "*");
 
-            // 5. Direct URL string (for simple string extraction)
-            setTimeout(() => {
-              window.parent.postMessage(redirectAddress, "*");
-            }, 100);
+        //     // 5. Direct URL string (for simple string extraction)
+        //     setTimeout(() => {
+        //       window.parent.postMessage(redirectAddress, "*");
+        //     }, 100);
 
-            // ENHANCED: Try direct redirection approach for some browsers
-            try {
-              // Some browsers allow this in certain contexts
-              if (window.top) {
-                setTimeout(() => {
-                  try {
-                    window.top.location.href = redirectAddress;
-                  } catch (err) {
-                    console.log("Could not directly set top location", err);
-                  }
-                }, 300);
-              }
-            } catch (err) {
-              console.log("Could not access top window", err);
-            }
+        //     // ENHANCED: Try direct redirection approach for some browsers
+        //     try {
+        //       // Some browsers allow this in certain contexts
+        //       if (window.top) {
+        //         setTimeout(() => {
+        //           try {
+        //             window.top.location.href = redirectAddress;
+        //           } catch (err) {
+        //             console.log("Could not directly set top location", err);
+        //           }
+        //         }, 300);
+        //       }
+        //     } catch (err) {
+        //       console.log("Could not access top window", err);
+        //     }
 
-            // ENHANCED: As a final fallback, try to save to localStorage for use on page reload
-            try {
-              localStorage.setItem("OQTIMA_PENDING_REDIRECT", redirectAddress);
+        //     // ENHANCED: As a final fallback, try to save to localStorage for use on page reload
+        //     try {
+        //       localStorage.setItem("OQTIMA_PENDING_REDIRECT", redirectAddress);
 
-              // Set a flag to indicate successful registration
-              localStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
-              localStorage.setItem(
-                "OQTIMA_REGISTRATION_TIMESTAMP",
-                Date.now().toString()
-              );
-            } catch (err) {
-              console.log("Could not save to localStorage", err);
-            }
-          } else {
-            // If not in iframe, redirect normally
-            window.location.href = redirectAddress;
-          }
-        }
+        //       // Set a flag to indicate successful registration
+        //       localStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
+        //       localStorage.setItem(
+        //         "OQTIMA_REGISTRATION_TIMESTAMP",
+        //         Date.now().toString()
+        //       );
+        //     } catch (err) {
+        //       console.log("Could not save to localStorage", err);
+        //     }
+        //   } else {
+        //     // If not in iframe, redirect normally
+        //     window.location.href = redirectAddress;
+        //   }
+        // }
       }
     } catch (error) {
       const errorMessage = error.response?.data?.message || "An error occurred";
