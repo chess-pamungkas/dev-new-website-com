@@ -265,16 +265,16 @@ const PopupRegistrationForm = ({ params }) => {
   const { selectedLanguage } = useContext(LanguageContext);
   const languageCode = PORTAL_LANGUAGES_MAP[selectedLanguage?.id];
 
-  // State untuk menyimpan language code yang dikirim dari landing page
+  // State to store language code sent from landing page
   const [externalLangCode, setExternalLangCode] = useState(null);
 
-  // Function untuk mendapatkan kode bahasa final yang akan digunakan
+  // Function to get the final language code to be used
   const getEffectiveLanguageCode = () => {
-    // Prioritaskan language code dari parameter external jika ada
+    // Prioritize language code from external parameter if available
     if (externalLangCode) {
       return externalLangCode;
     }
-    // Fallback ke language code dari aplikasi Gatsby
+    // Fallback to language code from Gatsby application
     return languageCode || "en";
   };
 
@@ -352,9 +352,9 @@ const PopupRegistrationForm = ({ params }) => {
     if (safeParams.referral_value) {
       setReferralValue(safeParams.referral_value);
     }
-    // Proses langParam jika ada
+    // Process langParam if available
     if (safeParams.langParam) {
-      // Map ke portal language format menggunakan PORTAL_LANGUAGES_MAP
+      // Map to portal language format using PORTAL_LANGUAGES_MAP
       const mappedLanguage =
         PORTAL_LANGUAGES_MAP[safeParams.langParam] || safeParams.langParam;
       setExternalLangCode(mappedLanguage);
@@ -388,7 +388,7 @@ const PopupRegistrationForm = ({ params }) => {
         if (msgCountryName) setClientCountryName(msgCountryName);
         if (msgCountryCode) setClientCountryCode(msgCountryCode);
 
-        // Set language code if received fromparent window
+        // Set language code if received from parent window
         if (msgLanguage) {
           const mappedLanguage =
             PORTAL_LANGUAGES_MAP[msgLanguage] || msgLanguage;
@@ -441,7 +441,7 @@ const PopupRegistrationForm = ({ params }) => {
 
         if (langParam) {
           console.log("Extracted language from URL:", langParam);
-          // Set language code dari URL parameters
+          // Set language code from URL parameters
           const mappedLanguage = PORTAL_LANGUAGES_MAP[langParam] || langParam;
           setExternalLangCode(mappedLanguage);
           console.log("Setting external language from URL:", {
@@ -457,7 +457,7 @@ const PopupRegistrationForm = ({ params }) => {
     // Extract parameters from URL immediately
     extractUrlParams();
 
-    // Try to get data-lang from script element if available
+    // Also try to get data-lang from script element if available
     try {
       if (typeof window !== "undefined") {
         const scriptElement = document.querySelector("script[data-lang]");
@@ -685,7 +685,7 @@ const PopupRegistrationForm = ({ params }) => {
 
   useEffect(() => {
     const fetchPolicyLinks = async () => {
-      // Gunakan effective language code untuk fetch policy links
+      // Use effective language code for fetching policy links
       const currentLanguageCode = getEffectiveLanguageCode();
 
       // Skip fetching if we already have policy links and the language hasn't changed significantly
@@ -797,7 +797,7 @@ const PopupRegistrationForm = ({ params }) => {
 
   const handleRegistrationtForm = async (values) => {
     const token = await executeRecaptcha("popup_registration");
-    // Gunakan effective language code untuk pendaftaran
+    // Use effective language code for registration
     const currentLanguageCode = getEffectiveLanguageCode();
     console.log(
       "Effective language code for registration:",
