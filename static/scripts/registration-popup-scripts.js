@@ -18,7 +18,7 @@
     try {
       const scripts = document.getElementsByTagName("script");
       const registrationScript = Array.from(scripts).find((script) =>
-        script.src.includes("registration-popup-script.js")
+        script.src.includes("registration-popup-scripts.js")
       );
 
       if (registrationScript && registrationScript.src) {
@@ -75,8 +75,8 @@
     try {
       const scripts = document.getElementsByTagName("script");
       const scriptPatterns = [
-        "registration-popup-script.js",
-        "registration-popup-script.min.js",
+        "registration-popup-scripts.js",
+        "registration-popup-scripts.min.js",
       ];
 
       const registrationScript = Array.from(scripts).find((script) => {
@@ -191,8 +191,8 @@
     try {
       const scripts = document.getElementsByTagName("script");
       const scriptPatterns = [
-        "registration-popup-script.js",
-        "registration-popup-script.min.js",
+        "registration-popup-scripts.js",
+        "registration-popup-scripts.min.js",
       ];
 
       const registrationScript = Array.from(scripts).find((script) => {
@@ -338,8 +338,8 @@
       const scripts = document.getElementsByTagName("script");
       // Find script tag that includes our script (regular or minified version)
       const scriptPatterns = [
-        "registration-popup-script.js",
-        "registration-popup-script.min.js",
+        "registration-popup-scripts.js",
+        "registration-popup-scripts.min.js",
       ];
 
       const currentScript = Array.from(scripts).find((script) => {
@@ -2109,8 +2109,8 @@
       const scripts = document.getElementsByTagName("script");
       // Look for both minified and non-minified versions of the script
       const scriptPatterns = [
-        "registration-popup-script.js",
-        "registration-popup-script.min.js",
+        "registration-popup-scripts.js",
+        "registration-popup-scripts.min.js",
       ];
 
       const registrationScript = Array.from(scripts).find((script) => {
