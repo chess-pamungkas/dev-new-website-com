@@ -315,6 +315,21 @@ const PopupRegistrationForm = ({ params }) => {
           console.log("Using data-lang from URL query params:", urlDataLang);
         }
 
+        // NEW: If URL parameters are empty, try to extract language from the iframe's src attribute
+        // This is needed because some environments (like dev.oqt-ima.com) may not properly pass URL parameters
+        if (!parsedParams.langParam && window.location.pathname) {
+          // Check if we're in a language-specific path like /br/popup-registration
+          const pathParts = window.location.pathname.split("/").filter(Boolean);
+          if (pathParts.length > 0) {
+            const possibleLang = pathParts[0];
+            // Check if the first part of the path is a language code (typically 2-5 chars)
+            if (possibleLang && possibleLang.length <= 5) {
+              parsedParams.langParam = possibleLang;
+              console.log("Extracted language from URL path:", possibleLang);
+            }
+          }
+        }
+
         // Log all URL params for debugging
         console.log("All URL parameters:");
         urlParams.forEach((value, key) => {
@@ -357,6 +372,16 @@ const PopupRegistrationForm = ({ params }) => {
       selectedLanguage?.id ||
       "en";
 
+    // Extra logging to trace language detection
+    console.log("Initial language detection:", {
+      fromSafeParams: safeParams.langParam,
+      fromMessage: languageFromMessage,
+      fromUrl: languageFromUrl,
+      fromContext: selectedLanguage?.id,
+      initialValue: initialLanguage,
+      urlPath: typeof window !== "undefined" ? window.location.pathname : "N/A",
+    });
+
     // Normalize Brazilian Portuguese variations
     const brVariations = ["br", "pt-br", "pt_br", "pt-BR", "pt_BR"];
     if (brVariations.includes(initialLanguage.toLowerCase())) {
@@ -384,11 +409,21 @@ const PopupRegistrationForm = ({ params }) => {
 
   // Update state values when params change
   useEffect(() => {
+    console.log("safeParams changed in useEffect:", safeParams);
+
     if (safeParams.referral_type) {
       setReferralType(safeParams.referral_type);
+      console.log(
+        "Setting referral_type from safeParams:",
+        safeParams.referral_type
+      );
     }
     if (safeParams.referral_value) {
       setReferralValue(safeParams.referral_value);
+      console.log(
+        "Setting referral_value from safeParams:",
+        safeParams.referral_value
+      );
     }
 
     // Update language from safeParams if available
@@ -397,6 +432,10 @@ const PopupRegistrationForm = ({ params }) => {
       // Prioritas tertinggi adalah langParam dari safeParams
       setLanguageFromUrl(null); // Reset language from URL
       setLanguageFromMessage(null); // Reset language from message
+
+      // We'll set languageFromUrl based on safeParams.langParam
+      // This ensures our language priority logic works correctly
+      setLanguageFromUrl(safeParams.langParam);
     }
   }, [safeParams]);
 
@@ -474,18 +513,40 @@ const PopupRegistrationForm = ({ params }) => {
           urlParams.get("i18nextLng") ||
           urlParams.get("langParam");
 
+        // IMPROVED: First check for language in URL parameters
+        let detectedLanguage = null;
+
         if (langParam) {
-          console.log("Extracted language from URL:", langParam);
-          // Store language from URL to override context language
-          setLanguageFromUrl(langParam);
+          console.log("Extracted language from URL query:", langParam);
+          detectedLanguage = langParam;
         }
 
-        // Check data-lang parameter specifically
+        // Check data-lang parameter specifically (highest priority for Brazilian Portuguese)
         const dataLang = urlParams.get("data-lang");
         if (dataLang) {
           console.log("Found data-lang in URL:", dataLang);
-          // This is specifically for data-lang which might be different format
-          setLanguageFromUrl(dataLang);
+          detectedLanguage = dataLang;
+        }
+
+        // NEW: If URL parameters don't contain language, try to extract from pathname
+        if (!detectedLanguage && window.location.pathname) {
+          const pathParts = window.location.pathname.split("/").filter(Boolean);
+          if (pathParts.length > 0) {
+            const possibleLang = pathParts[0];
+            // Check if first path segment looks like a language code
+            if (possibleLang && possibleLang.length <= 5) {
+              console.log("Extracted language from URL path:", possibleLang);
+              detectedLanguage = possibleLang;
+            }
+          }
+        }
+
+        // Set the language if detected from any source
+        if (detectedLanguage) {
+          setLanguageFromUrl(detectedLanguage);
+          console.log("Setting languageFromUrl to:", detectedLanguage);
+        } else {
+          console.log("No language detected from URL or path");
         }
       } catch (err) {
         console.error("Error extracting URL parameters:", err);
@@ -691,6 +752,18 @@ const PopupRegistrationForm = ({ params }) => {
               ` Original language code was: ${effectiveLanguage}`
           );
         }
+
+        // Debug info about where the language code came from
+        console.log("Language code source tracing:", {
+          safeParams: safeParams.langParam,
+          languageFromMessage,
+          languageFromUrl,
+          selectedLanguage: selectedLanguage?.id,
+          effectiveLanguage,
+          portalLanguageCode,
+          urlPath:
+            typeof window !== "undefined" ? window.location.pathname : "N/A",
+        });
 
         const response = await axios.get(`${API_URL}crm-register/policy-links`);
         const { privacy_policy, cookie_policy } = response.data;
@@ -927,6 +1000,34 @@ const PopupRegistrationForm = ({ params }) => {
       handleApiResponse(false, errorMessage, errorCode);
     }
   };
+
+  // Special hook to extract language from URL path on component mount
+  // This is needed for environments like dev.oqt-ima.com where URL parameters might not be properly passed
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.pathname) {
+      // Check if we're in a path like /br/popup-registration
+      const pathParts = window.location.pathname.split("/").filter(Boolean);
+      console.log("URL path parts:", pathParts);
+
+      if (pathParts.length > 0) {
+        const possibleLang = pathParts[0];
+        // Check if it looks like a language code (typically 2-5 characters)
+        if (possibleLang && possibleLang.length <= 5) {
+          console.log("Found language in URL path:", possibleLang);
+
+          // Only set if we haven't detected language from other sources
+          if (
+            !languageFromUrl &&
+            !languageFromMessage &&
+            !safeParams.langParam
+          ) {
+            console.log("Setting languageFromUrl from URL path:", possibleLang);
+            setLanguageFromUrl(possibleLang);
+          }
+        }
+      }
+    }
+  }, []);
 
   return (
     <Formik
