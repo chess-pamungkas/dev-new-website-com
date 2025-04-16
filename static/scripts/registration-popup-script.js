@@ -798,6 +798,14 @@
     const referralType = container.getAttribute("data-referral-type");
     const referralValue = container.getAttribute("data-referral-value");
 
+    // Log attributes for debugging
+    console.log("[OQtima] Creating registration button with attributes:", {
+      text,
+      lang,
+      referralType,
+      referralValue,
+    });
+
     // Create button element
     const button = document.createElement("button");
     button.type = "button";
@@ -823,6 +831,10 @@
     // Add click handler
     button.addEventListener("click", function (event) {
       event.preventDefault();
+      console.log(
+        "[OQtima] Button clicked, opening popup with language:",
+        lang
+      );
       openRegistrationPopup({ lang, referralType, referralValue });
     });
 
@@ -834,6 +846,9 @@
    * Ensures consistent styling and behavior for both RTL and non-RTL languages
    */
   function openRegistrationPopup(params) {
+    // Log parameters for debugging
+    console.log("[OQtima] Opening registration popup with params:", params);
+
     // Save original body and html states
     const originalBodyClasses = document.body.className;
     const originalHtmlClasses = document.documentElement.className;
@@ -845,6 +860,8 @@
 
     // Extract parameters
     const { lang = "en", referralType, referralValue } = params;
+
+    console.log("[OQtima] Using language for popup:", lang);
 
     // ADDED: Try to get IP and country info from the parent window
     let ipAddress = null;
@@ -1196,6 +1213,8 @@
             referral_type: referralType,
             referral_value: referralValue,
             language: language,
+            lang: language, // Add lang as alternative format
+            data_lang: language, // Add data_lang as an explicit form
             // ADDED: Include IP and country information if available
             ip_address: ipAddress,
             country_name: countryName,
@@ -1203,6 +1222,8 @@
           },
           timestamp: Date.now(),
         };
+
+        console.log("[OQtima] Sending message to iframe:", messageData);
 
         // First attempt to send message
         iframe.contentWindow.postMessage(messageData, "*");
@@ -1228,6 +1249,7 @@
         setTimeout(() => {
           try {
             iframe.contentWindow.postMessage(messageData, "*");
+            console.log("[OQtima] Final retry sending message to iframe");
           } catch (err) {
             console.error("Error in final retry:", err);
           }
@@ -1497,6 +1519,59 @@
         spinnerStyles.parentNode.removeChild(spinnerStyles);
       }
       iframe.style.opacity = "1";
+
+      // Send message to iframe with parameters
+      try {
+        // Create a complete message with all necessary data
+        const messageData = {
+          type: "REGISTRATION_PARAMS",
+          data: {
+            referral_type: referralType,
+            referral_value: referralValue,
+            language: language,
+            lang: language, // Add lang as alternative format
+            data_lang: language, // Add data_lang as an explicit form
+            // Include IP and country information if available
+            ip_address: ipAddress,
+            country_name: countryName,
+            country_code: countryCode,
+          },
+          timestamp: Date.now(),
+        };
+
+        console.log("[OQtima] Sending message to RTL iframe:", messageData);
+
+        // First attempt to send message
+        iframe.contentWindow.postMessage(messageData, "*");
+
+        // Schedule multiple retries with increasing delays to ensure message is received
+        setTimeout(() => {
+          try {
+            iframe.contentWindow.postMessage(messageData, "*");
+          } catch (err) {
+            console.error("Error in RTL retry 1:", err);
+          }
+        }, 100);
+
+        setTimeout(() => {
+          try {
+            iframe.contentWindow.postMessage(messageData, "*");
+          } catch (err) {
+            console.error("Error in RTL retry 2:", err);
+          }
+        }, 500);
+
+        setTimeout(() => {
+          try {
+            iframe.contentWindow.postMessage(messageData, "*");
+            console.log("[OQtima] Final retry sending message to RTL iframe");
+          } catch (err) {
+            console.error("Error in RTL final retry:", err);
+          }
+        }, 1500);
+      } catch (err) {
+        console.error("Error sending message to RTL iframe:", err);
+      }
 
       try {
         const iframeDoc =
@@ -2008,11 +2083,32 @@
    * Constructs the iframe URL with proper parameters
    */
   function constructIframeUrl(language, referralType, referralValue, isMobile) {
-    // Force clean language code
-    const normalizedLanguage = (language || "en")
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z]/g, "");
+    // Log input parameters for debugging
+    console.log("[OQtima] constructIframeUrl called with:", {
+      language,
+      referralType,
+      referralValue,
+      isMobile,
+    });
+
+    // Force clean language code - but preserve BR language code
+    let normalizedLanguage = (language || "en").toLowerCase().trim();
+
+    // If language is BR variant, preserve it instead of removing non-alphabetic characters
+    const isBrVariant = /^(br|pt[-_]?br)$/i.test(normalizedLanguage);
+
+    if (isBrVariant) {
+      console.log(
+        "[OQtima] Detected Brazilian Portuguese variant:",
+        normalizedLanguage
+      );
+      normalizedLanguage = "br"; // Normalize to simple 'br'
+    } else {
+      // For other languages, clean invalid characters
+      normalizedLanguage = normalizedLanguage.replace(/[^a-z]/g, "");
+    }
+
+    console.log("[OQtima] Normalized language:", normalizedLanguage);
 
     // Check if RTL language
     const isRTL = normalizedLanguage === "ar";
@@ -2059,6 +2155,8 @@
         ? `/${normalizedLanguage}/popup-registration`
         : "/popup-registration";
 
+    console.log("[OQtima] Using URL path:", urlPath);
+
     // Base parameters for all versions
     const params = new URLSearchParams({
       popup: "true",
@@ -2079,6 +2177,11 @@
     });
 
     // CRITICAL: Add language parameters with high priority
+    // Ensure we're sending the original language code as data-lang
+    // This ensures 'br' is preserved and not converted to 'pt'
+    params.append("data-lang", normalizedLanguage);
+
+    // Add the other standard language parameters
     params.append("oqtima_lang_locked", normalizedLanguage); // Lock language
     params.append("oqtima_lang", normalizedLanguage);
     params.append("language", normalizedLanguage);

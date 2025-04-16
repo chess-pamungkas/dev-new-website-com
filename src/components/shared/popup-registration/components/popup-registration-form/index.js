@@ -267,10 +267,63 @@ const PopupRegistrationForm = ({ params }) => {
   // Parse params safely
   const safeParams = useMemo(() => {
     try {
+      console.log("Raw params received:", params);
+
+      let parsedParams = {};
+
+      // Try to parse JSON if params is a string
       if (typeof params === "string") {
-        return JSON.parse(params);
+        try {
+          parsedParams = JSON.parse(params);
+          console.log("Parsed params from JSON string:", parsedParams);
+        } catch (jsonErr) {
+          console.warn("Could not parse params as JSON:", jsonErr);
+          // If JSON parsing fails, assume it might be a simple string like a language code
+          if (params && params.length <= 5) {
+            // Most language codes are 2-5 chars
+            parsedParams = { langParam: params };
+            console.log("Treating string as language code:", parsedParams);
+          }
+        }
+      } else {
+        parsedParams = params || {};
+        console.log("Using params as object:", parsedParams);
       }
-      return params || {};
+
+      // Explicitly check for URL parameters that might contain language info
+      if (typeof window !== "undefined") {
+        const urlParams = new URLSearchParams(window.location.search);
+        console.log("URL search params:", window.location.search);
+
+        // Check for language parameters with various names
+        const urlLangParam =
+          urlParams.get("language") ||
+          urlParams.get("lang") ||
+          urlParams.get("locale") ||
+          urlParams.get("i18nextLng");
+
+        // Only override if URL contains language param and it's not already set
+        if (urlLangParam && !parsedParams.langParam) {
+          parsedParams.langParam = urlLangParam;
+          console.log("Using language from URL query params:", urlLangParam);
+        }
+
+        // Handle data-lang parameter which may be set as br (for brazilian portuguese)
+        const urlDataLang = urlParams.get("data-lang");
+        if (urlDataLang && !parsedParams.langParam) {
+          parsedParams.langParam = urlDataLang;
+          console.log("Using data-lang from URL query params:", urlDataLang);
+        }
+
+        // Log all URL params for debugging
+        console.log("All URL parameters:");
+        urlParams.forEach((value, key) => {
+          console.log(`${key}: ${value}`);
+        });
+      }
+
+      console.log("Final safeParams:", parsedParams);
+      return parsedParams;
     } catch (e) {
       console.error("Error parsing params:", e);
       return {};
@@ -285,6 +338,39 @@ const PopupRegistrationForm = ({ params }) => {
     safeParams.referral_value || null
   );
 
+  // ADDED: Store country and IP information with defaults
+  const [clientIpAddress, setClientIpAddress] = useState(null);
+  const [clientCountryName, setClientCountryName] = useState(null);
+  const [clientCountryCode, setClientCountryCode] = useState(null);
+
+  // ADDED: State untuk menampung language dari berbagai sumber
+  const [languageFromUrl, setLanguageFromUrl] = useState(null);
+  const [languageFromMessage, setLanguageFromMessage] = useState(null);
+
+  // ADDED: Debug logger untuk nilai language yang sedang digunakan
+  useEffect(() => {
+    const sourceLanguage =
+      safeParams.langParam ||
+      languageFromMessage ||
+      languageFromUrl ||
+      selectedLanguage?.id ||
+      "en";
+    console.log("Language source priority:", {
+      langParamFromSafeParams: safeParams.langParam,
+      languageFromMessage,
+      languageFromUrl,
+      contextLanguage: selectedLanguage?.id,
+      finalChoice: sourceLanguage,
+    });
+
+    // Log nilai akhir yang digunakan
+    const finalLanguageCode =
+      PORTAL_LANGUAGES_MAP[sourceLanguage] || sourceLanguage || "en";
+    console.log(
+      `Final language code being used: ${finalLanguageCode} (from source: ${sourceLanguage})`
+    );
+  }, [safeParams, languageFromMessage, languageFromUrl, selectedLanguage]);
+
   // Update state values when params change
   useEffect(() => {
     if (safeParams.referral_type) {
@@ -293,6 +379,14 @@ const PopupRegistrationForm = ({ params }) => {
     if (safeParams.referral_value) {
       setReferralValue(safeParams.referral_value);
     }
+
+    // Update language from safeParams if available
+    if (safeParams.langParam) {
+      console.log("Setting language from safeParams:", safeParams.langParam);
+      // Prioritas tertinggi adalah langParam dari safeParams
+      setLanguageFromUrl(null); // Reset language from URL
+      setLanguageFromMessage(null); // Reset language from message
+    }
   }, [safeParams]);
 
   // Listen for messages from parent window with higher priority
@@ -300,11 +394,42 @@ const PopupRegistrationForm = ({ params }) => {
     const handleMessage = (event) => {
       if (event.data && event.data.type === "REGISTRATION_PARAMS") {
         const data = event.data.data || {};
+        console.log("Received message from parent:", data);
+
         const msgReferralType = data.referral_type || null;
         const msgReferralValue = data.referral_value || null;
+        const msgLanguage = data.language || data.lang || null;
+
+        // ADDED: Extract client information from message
+        const msgIpAddress = data.ip_address || null;
+        const msgCountryName = data.country_name || null;
+        const msgCountryCode = data.country_code || null;
 
         if (msgReferralType) setReferralType(msgReferralType);
         if (msgReferralValue) setReferralValue(msgReferralValue);
+
+        // ADDED: Set client information if available
+        if (msgIpAddress) setClientIpAddress(msgIpAddress);
+        if (msgCountryName) setClientCountryName(msgCountryName);
+        if (msgCountryCode) setClientCountryCode(msgCountryCode);
+
+        // Set langParam from message if available
+        if (msgLanguage) {
+          // We'll update this directly in safeParams via effect
+          console.log("Received language from parent window:", msgLanguage);
+          // Store language from message to override context language
+          setLanguageFromMessage(msgLanguage);
+        }
+
+        // ADDED: Log received data for debugging
+        console.log("Client data from message:", {
+          ip: msgIpAddress,
+          country: msgCountryName,
+          code: msgCountryCode,
+          language: msgLanguage,
+          referral_type: msgReferralType,
+          referral_value: msgReferralValue,
+        });
       }
     };
 
@@ -314,8 +439,9 @@ const PopupRegistrationForm = ({ params }) => {
     const extractUrlParams = () => {
       try {
         const urlParams = new URLSearchParams(window.location.search);
+        console.log("URL search params:", window.location.search);
 
-        // Check all possible parameter formats
+        // Check all possible parameter formats for referral
         const urlReferralType =
           urlParams.get("referral_type") ||
           urlParams.get("referralType") ||
@@ -328,6 +454,28 @@ const PopupRegistrationForm = ({ params }) => {
 
         if (urlReferralType) setReferralType(urlReferralType);
         if (urlReferralValue) setReferralValue(urlReferralValue);
+
+        // Extract language parameters for debugging
+        const langParam =
+          urlParams.get("language") ||
+          urlParams.get("lang") ||
+          urlParams.get("locale") ||
+          urlParams.get("i18nextLng") ||
+          urlParams.get("langParam");
+
+        if (langParam) {
+          console.log("Extracted language from URL:", langParam);
+          // Store language from URL to override context language
+          setLanguageFromUrl(langParam);
+        }
+
+        // Check data-lang parameter specifically
+        const dataLang = urlParams.get("data-lang");
+        if (dataLang) {
+          console.log("Found data-lang in URL:", dataLang);
+          // This is specifically for data-lang which might be different format
+          setLanguageFromUrl(dataLang);
+        }
       } catch (err) {
         console.error("Error extracting URL parameters:", err);
       }
@@ -346,21 +494,31 @@ const PopupRegistrationForm = ({ params }) => {
   }, []);
 
   // Use the language parameter also to detect RTL
-  const forcedRTL =
-    safeParams.langParam && RTL_LANGUAGES.includes(safeParams.langParam);
+  // UPDATED: Implementasi prioritas language yang jelas
+  // Prioritas: 1. langParam dari safeParams, 2. message, 3. URL param, 4. context, 5. fallback "en"
+  const effectiveLanguage =
+    safeParams.langParam ||
+    languageFromMessage ||
+    languageFromUrl ||
+    selectedLanguage?.id ||
+    "en";
+
+  // Log effective language untuk debugging
+  console.log(
+    `Using effective language: ${effectiveLanguage} (before RTL check)`
+  );
+
+  // Check untuk RTL language
+  const forcedRTL = RTL_LANGUAGES.includes(effectiveLanguage);
   const isRTLMode = isRTL || forcedRTL;
 
-  // Prioritize langParam from URL parameters over context language
-  // This ensures the language specified in the URL is used
-  const paramLangCode = safeParams.langParam;
-  const contextLangCode = selectedLanguage?.id || "en";
+  // Map ke language code portal untuk API
+  const portalLanguageCode =
+    PORTAL_LANGUAGES_MAP[effectiveLanguage] || effectiveLanguage || "en";
 
-  // Use the language from params if available, otherwise use context language
-  // This fixes the issue where language from URL is ignored
-  const languageCode = paramLangCode || contextLangCode;
-
-  // Map to portal language format (needed for API calls)
-  const portalLanguageCode = PORTAL_LANGUAGES_MAP[languageCode] || "en";
+  // Log hasil akhir untuk debugging
+  console.log(`Final portalLanguageCode: ${portalLanguageCode}`);
+  console.log(`RTL mode: ${isRTLMode ? "yes" : "no"}`);
 
   // Get translation function outside the effect to avoid the error
   const { i18n } = useTranslation();
@@ -465,30 +623,73 @@ const PopupRegistrationForm = ({ params }) => {
   useEffect(() => {
     const fetchPolicyLinks = async () => {
       try {
+        console.log(
+          `Attempting to fetch policy links for language: ${portalLanguageCode}`
+        );
+
         const response = await axios.get(`${API_URL}crm-register/policy-links`);
         const { privacy_policy, cookie_policy } = response.data;
 
-        const privacyLink =
-          privacy_policy.find((p) => p.language === portalLanguageCode)
-            ?.oss_url ||
-          privacy_policy.find((p) => p.language === "en")?.oss_url;
+        console.log("Available policy languages:", {
+          privacy: privacy_policy.map((p) => p.language),
+          cookie: cookie_policy.map((c) => c.language),
+        });
 
-        const cookieLink =
-          cookie_policy.find((c) => c.language === portalLanguageCode)
-            ?.oss_url ||
-          cookie_policy.find((c) => c.language === "en")?.oss_url;
+        // First try to find policy in user's language
+        let privacyLink = privacy_policy.find(
+          (p) => p.language === portalLanguageCode
+        )?.oss_url;
+
+        let cookieLink = cookie_policy.find(
+          (c) => c.language === portalLanguageCode
+        )?.oss_url;
+
+        // Log language match result
+        console.log(
+          `Privacy policy direct match for ${portalLanguageCode}: ${
+            privacyLink ? "found" : "not found"
+          }`
+        );
+        console.log(
+          `Cookie policy direct match for ${portalLanguageCode}: ${
+            cookieLink ? "found" : "not found"
+          }`
+        );
+
+        // If not found, fallback to English
+        if (!privacyLink) {
+          privacyLink = privacy_policy.find(
+            (p) => p.language === "en"
+          )?.oss_url;
+          console.log(
+            `Privacy policy not found in ${portalLanguageCode}, using English version: ${privacyLink}`
+          );
+        }
+
+        if (!cookieLink) {
+          cookieLink = cookie_policy.find((c) => c.language === "en")?.oss_url;
+          console.log(
+            `Cookie policy not found in ${portalLanguageCode}, using English version: ${cookieLink}`
+          );
+        }
 
         setPolicyLinks({
-          privacyPolicy: privacyLink,
-          cookiePolicy: cookieLink,
+          privacyPolicy: privacyLink || "",
+          cookiePolicy: cookieLink || "",
+        });
+
+        console.log("Final policy links set:", {
+          privacyPolicy: privacyLink || "",
+          cookiePolicy: cookieLink || "",
         });
       } catch (error) {
+        console.error("Error fetching policy links:", error);
         sendLog({ message: error.message, type: error.name });
       }
     };
 
     fetchPolicyLinks();
-  }, [portalLanguageCode]);
+  }, [portalLanguageCode, API_URL]);
 
   const filteredCountries = useMemo(() => {
     if (!searchCountry) return countries;
@@ -512,6 +713,9 @@ const PopupRegistrationForm = ({ params }) => {
 
   const handleRegistrationtForm = async (values) => {
     const token = await executeRecaptcha("popup_registration");
+    console.log(
+      `Submitting form with language: ${portalLanguageCode} (derived from: ${effectiveLanguage})`
+    );
 
     try {
       // Prepare submission data with referral parameters
@@ -520,11 +724,23 @@ const PopupRegistrationForm = ({ params }) => {
         token,
         language: portalLanguageCode,
         redirect: "register",
-        register_ip: clientConfig.ipAddress,
+        register_ip: clientIpAddress || clientConfig.ipAddress || "",
         agreement: true,
         privacy: policyLinks.privacyPolicy,
         cookie: policyLinks.cookiePolicy,
       };
+
+      // Validate if policy links are available
+      if (!policyLinks.privacyPolicy || !policyLinks.cookiePolicy) {
+        console.warn("Missing policy links during form submission");
+        // Still include them in submission but log the issue
+        sendLog({
+          message: "Registration submitted with missing policy links",
+          type: "PolicyWarning",
+          privacy: policyLinks.privacyPolicy,
+          cookie: policyLinks.cookiePolicy,
+        });
+      }
 
       // Only add referral parameters if we have them
       if (referral_type) {
@@ -534,6 +750,16 @@ const PopupRegistrationForm = ({ params }) => {
       if (referral_value) {
         submissionData.referral_value = referral_value;
       }
+
+      console.log("Submitting registration with data:", {
+        ip: submissionData.register_ip,
+        language: portalLanguageCode,
+        originalLanguage: effectiveLanguage,
+        country: values.country,
+        code: values.country_code,
+        referral_type,
+        referral_value,
+      });
 
       const response = await axios.post(
         `${API_URL}crm-register`,
