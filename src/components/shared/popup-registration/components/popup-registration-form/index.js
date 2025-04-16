@@ -349,25 +349,36 @@ const PopupRegistrationForm = ({ params }) => {
 
   // ADDED: Debug logger untuk nilai language yang sedang digunakan
   useEffect(() => {
-    const sourceLanguage =
+    // Start with the source language following our priority order
+    let initialLanguage =
       safeParams.langParam ||
       languageFromMessage ||
       languageFromUrl ||
       selectedLanguage?.id ||
       "en";
+
+    // Normalize Brazilian Portuguese variations
+    const brVariations = ["br", "pt-br", "pt_br", "pt-BR", "pt_BR"];
+    if (brVariations.includes(initialLanguage.toLowerCase())) {
+      console.log(
+        `Normalizing Brazilian Portuguese code from ${initialLanguage} to pt`
+      );
+      initialLanguage = "pt";
+    }
+
     console.log("Language source priority:", {
       langParamFromSafeParams: safeParams.langParam,
       languageFromMessage,
       languageFromUrl,
       contextLanguage: selectedLanguage?.id,
-      finalChoice: sourceLanguage,
+      finalChoice: initialLanguage,
     });
 
     // Log nilai akhir yang digunakan
     const finalLanguageCode =
-      PORTAL_LANGUAGES_MAP[sourceLanguage] || sourceLanguage || "en";
+      PORTAL_LANGUAGES_MAP[initialLanguage] || initialLanguage || "en";
     console.log(
-      `Final language code being used: ${finalLanguageCode} (from source: ${sourceLanguage})`
+      `Final language code being used: ${finalLanguageCode} (from source: ${initialLanguage})`
     );
   }, [safeParams, languageFromMessage, languageFromUrl, selectedLanguage]);
 
@@ -501,12 +512,21 @@ const PopupRegistrationForm = ({ params }) => {
   // Use the language parameter also to detect RTL
   // UPDATED: Implementasi prioritas language yang jelas
   // Prioritas: 1. langParam dari safeParams, 2. message, 3. URL param, 4. context, 5. fallback "en"
-  const effectiveLanguage =
+  let effectiveLanguage =
     safeParams.langParam ||
     languageFromMessage ||
     languageFromUrl ||
     selectedLanguage?.id ||
     "en";
+
+  // Normalize Brazilian Portuguese variations
+  const brVariations = ["br", "pt-br", "pt_br", "pt-BR", "pt_BR"];
+  if (brVariations.includes(effectiveLanguage.toLowerCase())) {
+    console.log(
+      `Normalizing Brazilian Portuguese code from ${effectiveLanguage} to pt`
+    );
+    effectiveLanguage = "pt";
+  }
 
   // Log effective language untuk debugging
   console.log(
@@ -518,8 +538,19 @@ const PopupRegistrationForm = ({ params }) => {
   const isRTLMode = isRTL || forcedRTL;
 
   // Map ke language code portal untuk API
-  const portalLanguageCode =
-    PORTAL_LANGUAGES_MAP[effectiveLanguage] || effectiveLanguage || "en";
+  // Special handling for Brazilian Portuguese - ensure it maps to "pt" for API calls
+  let portalLanguageCode;
+  if (effectiveLanguage === "br" || effectiveLanguage === "pt") {
+    // All Brazilian Portuguese variations should map to "pt" for API calls
+    portalLanguageCode = "pt";
+    console.log(
+      `Mapping Brazilian Portuguese code ${effectiveLanguage} to "pt" for API calls`
+    );
+  } else {
+    // For other languages, use the standard mapping
+    portalLanguageCode =
+      PORTAL_LANGUAGES_MAP[effectiveLanguage] || effectiveLanguage || "en";
+  }
 
   // Log hasil akhir untuk debugging
   console.log(`Final portalLanguageCode: ${portalLanguageCode}`);
@@ -652,6 +683,14 @@ const PopupRegistrationForm = ({ params }) => {
         console.log(
           `Attempting to fetch policy links for language: ${portalLanguageCode}`
         );
+
+        // Special log for Brazilian Portuguese
+        if (portalLanguageCode === "pt") {
+          console.log(
+            `Note: Using Portuguese ("pt") for policy links - this handles Brazilian Portuguese.` +
+              ` Original language code was: ${effectiveLanguage}`
+          );
+        }
 
         const response = await axios.get(`${API_URL}crm-register/policy-links`);
         const { privacy_policy, cookie_policy } = response.data;
