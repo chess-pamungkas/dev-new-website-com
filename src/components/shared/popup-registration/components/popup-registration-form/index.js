@@ -290,6 +290,43 @@ const PopupRegistrationForm = ({ params }) => {
         console.log("Using params as object:", parsedParams);
       }
 
+      // IMPORTANT FIX: Sanitize the langParam if it contains a query string format
+      if (parsedParams.langParam) {
+        // Check if langParam mistakenly contains "?language=" or similar prefixes
+        const langValue = parsedParams.langParam;
+
+        if (langValue.includes("?")) {
+          console.log(
+            "Detected malformed langParam with query string:",
+            langValue
+          );
+
+          // Try to extract the actual language value from the query string
+          try {
+            // Handle cases like "?language=en" or "?lang=en"
+            const queryMatch = langValue.match(
+              /[?&](language|lang|locale)=([^&]+)/i
+            );
+            if (queryMatch && queryMatch[2]) {
+              console.log(
+                `Fixing malformed langParam: ${langValue} → ${queryMatch[2]}`
+              );
+              parsedParams.langParam = queryMatch[2];
+            } else {
+              // If we can't extract the language, default to "en"
+              console.log(
+                `Could not extract language from malformed langParam: ${langValue}, defaulting to "en"`
+              );
+              parsedParams.langParam = "en";
+            }
+          } catch (err) {
+            console.warn("Error sanitizing langParam:", err);
+            // Default to "en" if we can't parse the language
+            parsedParams.langParam = "en";
+          }
+        }
+      }
+
       // Explicitly check for URL parameters that might contain language info
       if (typeof window !== "undefined") {
         const urlParams = new URLSearchParams(window.location.search);
@@ -593,6 +630,39 @@ const PopupRegistrationForm = ({ params }) => {
     selectedLanguage?.id ||
     "en";
 
+  // SANITIZE: Function to clean up language codes that might be malformed
+  const sanitizeLanguageCode = (code) => {
+    // If code contains "?", it's likely malformed
+    if (code && code.includes("?")) {
+      // Try to extract the language part
+      const match = code.match(/[?&](language|lang|locale)=([^&]+)/i);
+      if (match && match[2]) {
+        console.log(
+          `Sanitizing malformed language code: ${code} → ${match[2]}`
+        );
+        return match[2];
+      }
+      // Default to English if we can't extract
+      console.log(
+        `Could not sanitize malformed language code: ${code}, defaulting to "en"`
+      );
+      return "en";
+    }
+
+    // If code is longer than 5 chars and not a common format like "zh-CN"
+    if (code && code.length > 5 && !code.match(/^[a-z]{2}-[A-Z]{2}$/)) {
+      console.log(
+        `Suspicious language code detected: ${code}, defaulting to "en"`
+      );
+      return "en";
+    }
+
+    return code;
+  };
+
+  // Clean up the language code before using it
+  effectiveLanguage = sanitizeLanguageCode(effectiveLanguage);
+
   // Log language resolution to debug why the language is changing
   console.log("Language resolution path:", {
     step1_safeParams: safeParams.langParam,
@@ -662,6 +732,17 @@ const PopupRegistrationForm = ({ params }) => {
     console.log(
       `Using standard language mapping: ${effectiveLanguage} → ${portalLanguageCode}`
     );
+  }
+
+  // FINAL VALIDATION: Make sure portalLanguageCode doesn't contain invalid characters
+  if (
+    portalLanguageCode &&
+    (portalLanguageCode.includes("?") || portalLanguageCode.length > 5)
+  ) {
+    console.log(
+      `Invalid portalLanguageCode detected: "${portalLanguageCode}", fixing to "en"`
+    );
+    portalLanguageCode = "en";
   }
 
   // Double-check if we're in a Brazilian Portuguese URL path but didn't catch it earlier
@@ -932,6 +1013,18 @@ const PopupRegistrationForm = ({ params }) => {
 
     // Create a local copy of portalLanguageCode that we can modify
     let submissionLanguage = portalLanguageCode;
+
+    // CRITICAL FIX: Additional safety check to ensure language is valid
+    // If language still contains "?" or is longer than 5 chars, it's probably invalid
+    if (
+      submissionLanguage &&
+      (submissionLanguage.includes("?") || submissionLanguage.length > 5)
+    ) {
+      console.log(
+        `CRITICAL: Invalid language detected before submission: "${submissionLanguage}", defaulting to "en"`
+      );
+      submissionLanguage = "en";
+    }
 
     // Check if we're in a Brazilian Portuguese URL path
     const urlPath =
