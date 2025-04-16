@@ -287,17 +287,9 @@
   async function initOqtimaRegistration() {
     try {
       // Get the API key from the script tag
-      const { apiKey, bypassVerification } = await getApiKey();
+      const { apiKey } = await getApiKey();
 
-      // If explicitly bypassing verification by configuration (data-bypass-verification="true"),
-      // proceed directly - this is only for testing purposes
-      if (bypassVerification) {
-        console.log("[OQtima] API key verification bypassed by configuration");
-        initRegistrationComponents();
-        return;
-      }
-
-      // Otherwise verify API key with backend
+      // API key is always required - no bypass possible
       if (!apiKey) {
         showAuthError(
           "API key is missing. Add data-api-key attribute to the script tag."
@@ -357,20 +349,16 @@
 
       if (!currentScript) {
         console.warn("[OQtima] Script tag not found");
-        return { apiKey: null, bypassVerification: false };
+        return { apiKey: null };
       }
 
       // Get API key from attribute
       const apiKey = currentScript.getAttribute("data-api-key");
 
-      // Check if verification should be bypassed (for development/testing)
-      const bypassVerification =
-        currentScript.getAttribute("data-bypass-verification") === "true";
-
-      return { apiKey, bypassVerification };
+      return { apiKey };
     } catch (error) {
       console.error("[OQtima] Error retrieving API key:", error);
-      return { apiKey: null, bypassVerification: false };
+      return { apiKey: null };
     }
   }
 

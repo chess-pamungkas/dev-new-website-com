@@ -493,6 +493,11 @@ const PopupRegistrationForm = ({ params }) => {
     };
   }, []);
 
+  console.log("safeParams", safeParams);
+  console.log("languageFromMessage", languageFromMessage);
+  console.log("languageFromUrl", languageFromUrl);
+  console.log("selectedLanguage", selectedLanguage);
+
   // Use the language parameter also to detect RTL
   // UPDATED: Implementasi prioritas language yang jelas
   // Prioritas: 1. langParam dari safeParams, 2. message, 3. URL param, 4. context, 5. fallback "en"
