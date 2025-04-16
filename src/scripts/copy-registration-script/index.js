@@ -26,11 +26,11 @@ const staticDir = path.join(root, "static");
 const staticScriptsDir = path.join(staticDir, "scripts");
 const regularOutputPath = path.join(
   staticScriptsDir,
-  "registration-popup-script.js"
+  "registration-popup-scripts.js"
 );
 const minifiedOutputPath = path.join(
   staticScriptsDir,
-  "registration-popup-script.min.js"
+  "registration-popup-scripts.min.js"
 );
 
 // Output paths for debugging
@@ -94,8 +94,8 @@ async function processScripts() {
     console.log(` - Reduction: ${reduction}%`);
 
     console.log("\nScripts are now available at:");
-    console.log(` - Regular:  /scripts/registration-popup-script.js`);
-    console.log(` - Minified: /scripts/registration-popup-script.min.js`);
+    console.log(` - Regular:  /scripts/registration-popup-scripts.js`);
+    console.log(` - Minified: /scripts/registration-popup-scripts.min.js`);
 
     // Log environment variable usage information
     console.log("\nEnvironment variables used by the script:");
