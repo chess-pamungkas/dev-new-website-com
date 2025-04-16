@@ -382,6 +382,19 @@ const PopupRegistrationForm = ({ params }) => {
       urlPath: typeof window !== "undefined" ? window.location.pathname : "N/A",
     });
 
+    // Check if we're in a path like /br/ and if so, ensure we're using 'br'
+    if (typeof window !== "undefined" && window.location.pathname) {
+      const pathParts = window.location.pathname.split("/").filter(Boolean);
+      if (pathParts.length > 0 && pathParts[0] === "br") {
+        if (initialLanguage !== "br") {
+          console.log(
+            `Detected URL path /br/ but using language ${initialLanguage}, forcing to 'br'`
+          );
+          initialLanguage = "br";
+        }
+      }
+    }
+
     // Normalize Brazilian Portuguese variations
     const brVariations = ["br", "pt-br", "pt_br", "pt-BR", "pt_BR"];
     if (brVariations.includes(initialLanguage.toLowerCase())) {
@@ -580,6 +593,30 @@ const PopupRegistrationForm = ({ params }) => {
     selectedLanguage?.id ||
     "en";
 
+  // Log language resolution to debug why the language is changing
+  console.log("Language resolution path:", {
+    step1_safeParams: safeParams.langParam,
+    step2_languageFromMessage: languageFromMessage,
+    step3_languageFromUrl: languageFromUrl,
+    step4_contextLanguage: selectedLanguage?.id,
+    finalChoice: effectiveLanguage,
+    urlPath: typeof window !== "undefined" ? window.location.pathname : "N/A",
+  });
+
+  // Force the path language when present in URL
+  if (typeof window !== "undefined" && window.location.pathname) {
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    if (pathParts.length > 0) {
+      const pathLang = pathParts[0];
+      if (pathLang && pathLang.length <= 5) {
+        console.log(
+          `Forcing language from URL path: ${pathLang} (overriding ${effectiveLanguage})`
+        );
+        effectiveLanguage = pathLang;
+      }
+    }
+  }
+
   // Normalize Brazilian Portuguese variations
   const brVariations = ["br", "pt-br", "pt_br", "pt-BR", "pt_BR"];
   if (brVariations.includes(effectiveLanguage.toLowerCase())) {
@@ -601,16 +638,41 @@ const PopupRegistrationForm = ({ params }) => {
   // Map ke language code portal untuk API
   // Special handling for Brazilian Portuguese - ensure it maps to "pt" for API calls
   let portalLanguageCode;
-  if (effectiveLanguage === "br" || effectiveLanguage === "pt") {
+
+  // First normalize effectiveLanguage to lowercase for case-insensitive comparison
+  const effectiveLangLower = effectiveLanguage.toLowerCase();
+
+  // Check if it's a Brazilian Portuguese variant
+  if (
+    effectiveLangLower === "br" ||
+    effectiveLangLower === "pt" ||
+    effectiveLangLower === "pt-br" ||
+    effectiveLangLower === "pt_br"
+  ) {
     // All Brazilian Portuguese variations should map to "pt" for API calls
     portalLanguageCode = "pt";
     console.log(
-      `Mapping Brazilian Portuguese code ${effectiveLanguage} to "pt" for API calls`
+      `Mapping Brazilian Portuguese code ${effectiveLanguage} to "pt" for API calls (Special handling)`
     );
   } else {
     // For other languages, use the standard mapping
     portalLanguageCode =
       PORTAL_LANGUAGES_MAP[effectiveLanguage] || effectiveLanguage || "en";
+
+    console.log(
+      `Using standard language mapping: ${effectiveLanguage} → ${portalLanguageCode}`
+    );
+  }
+
+  // Double-check if we're in a Brazilian Portuguese URL path but didn't catch it earlier
+  if (typeof window !== "undefined" && window.location.pathname) {
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    if (pathParts.length > 0 && pathParts[0].toLowerCase() === "br") {
+      console.log(
+        "Force override: Detected Brazilian Portuguese in URL path /br/"
+      );
+      portalLanguageCode = "pt";
+    }
   }
 
   // Log hasil akhir untuk debugging
@@ -741,15 +803,31 @@ const PopupRegistrationForm = ({ params }) => {
   useEffect(() => {
     const fetchPolicyLinks = async () => {
       try {
+        // Create a local copy of portalLanguageCode that we can modify within this function scope
+        let apiLanguageCode = portalLanguageCode;
+
         console.log(
-          `Attempting to fetch policy links for language: ${portalLanguageCode}`
+          `Attempting to fetch policy links for language: ${apiLanguageCode}`
         );
 
+        // Force check one more time for Brazilian Portuguese
+        // This ensures that even if we somehow missed it earlier, we'll catch it here
+        const urlPath =
+          typeof window !== "undefined" ? window.location.pathname : "";
+        if (urlPath.includes("/br/")) {
+          if (apiLanguageCode !== "pt") {
+            console.log(
+              `CRITICAL FIX: URL path contains /br/ but apiLanguageCode is ${apiLanguageCode}, forcing to 'pt'`
+            );
+            apiLanguageCode = "pt";
+          }
+        }
+
         // Special log for Brazilian Portuguese
-        if (portalLanguageCode === "pt") {
+        if (apiLanguageCode === "pt") {
           console.log(
             `Note: Using Portuguese ("pt") for policy links - this handles Brazilian Portuguese.` +
-              ` Original language code was: ${effectiveLanguage}`
+              ` Original language code was: ${effectiveLanguage}, path: ${urlPath}`
           );
         }
 
@@ -761,8 +839,8 @@ const PopupRegistrationForm = ({ params }) => {
           selectedLanguage: selectedLanguage?.id,
           effectiveLanguage,
           portalLanguageCode,
-          urlPath:
-            typeof window !== "undefined" ? window.location.pathname : "N/A",
+          apiLanguageCode,
+          urlPath,
         });
 
         const response = await axios.get(`${API_URL}crm-register/policy-links`);
@@ -775,21 +853,21 @@ const PopupRegistrationForm = ({ params }) => {
 
         // First try to find policy in user's language
         let privacyLink = privacy_policy.find(
-          (p) => p.language === portalLanguageCode
+          (p) => p.language === apiLanguageCode
         )?.oss_url;
 
         let cookieLink = cookie_policy.find(
-          (c) => c.language === portalLanguageCode
+          (c) => c.language === apiLanguageCode
         )?.oss_url;
 
         // Log language match result
         console.log(
-          `Privacy policy direct match for ${portalLanguageCode}: ${
+          `Privacy policy direct match for ${apiLanguageCode}: ${
             privacyLink ? "found" : "not found"
           }`
         );
         console.log(
-          `Cookie policy direct match for ${portalLanguageCode}: ${
+          `Cookie policy direct match for ${apiLanguageCode}: ${
             cookieLink ? "found" : "not found"
           }`
         );
@@ -800,14 +878,14 @@ const PopupRegistrationForm = ({ params }) => {
             (p) => p.language === "en"
           )?.oss_url;
           console.log(
-            `Privacy policy not found in ${portalLanguageCode}, using English version: ${privacyLink}`
+            `Privacy policy not found in ${apiLanguageCode}, using English version: ${privacyLink}`
           );
         }
 
         if (!cookieLink) {
           cookieLink = cookie_policy.find((c) => c.language === "en")?.oss_url;
           console.log(
-            `Cookie policy not found in ${portalLanguageCode}, using English version: ${cookieLink}`
+            `Cookie policy not found in ${apiLanguageCode}, using English version: ${cookieLink}`
           );
         }
 
@@ -851,8 +929,22 @@ const PopupRegistrationForm = ({ params }) => {
 
   const handleRegistrationtForm = async (values) => {
     const token = await executeRecaptcha("popup_registration");
+
+    // Create a local copy of portalLanguageCode that we can modify
+    let submissionLanguage = portalLanguageCode;
+
+    // Check if we're in a Brazilian Portuguese URL path
+    const urlPath =
+      typeof window !== "undefined" ? window.location.pathname : "";
+    if (urlPath.includes("/br/") && submissionLanguage !== "pt") {
+      console.log(
+        `Form submission: URL path contains /br/ but language is ${submissionLanguage}, forcing to 'pt'`
+      );
+      submissionLanguage = "pt";
+    }
+
     console.log(
-      `Submitting form with language: ${portalLanguageCode} (derived from: ${effectiveLanguage})`
+      `Submitting form with language: ${submissionLanguage} (derived from: ${effectiveLanguage})`
     );
 
     try {
@@ -860,7 +952,7 @@ const PopupRegistrationForm = ({ params }) => {
       const submissionData = {
         ...values,
         token,
-        language: portalLanguageCode,
+        language: submissionLanguage,
         redirect: "register",
         register_ip: clientIpAddress || clientConfig.ipAddress || "",
         agreement: true,
@@ -891,7 +983,7 @@ const PopupRegistrationForm = ({ params }) => {
 
       console.log("Submitting registration with data:", {
         ip: submissionData.register_ip,
-        language: portalLanguageCode,
+        language: submissionLanguage,
         originalLanguage: effectiveLanguage,
         country: values.country,
         code: values.country_code,
@@ -1015,15 +1107,20 @@ const PopupRegistrationForm = ({ params }) => {
         if (possibleLang && possibleLang.length <= 5) {
           console.log("Found language in URL path:", possibleLang);
 
-          // Only set if we haven't detected language from other sources
-          if (
-            !languageFromUrl &&
-            !languageFromMessage &&
-            !safeParams.langParam
-          ) {
-            console.log("Setting languageFromUrl from URL path:", possibleLang);
-            setLanguageFromUrl(possibleLang);
-          }
+          // CHANGE: Always set language from URL path regardless of other sources
+          // This ensures the URL path language takes precedence over context language
+          console.log(
+            "Force setting languageFromUrl from URL path:",
+            possibleLang
+          );
+          setLanguageFromUrl(possibleLang);
+
+          // Add debugging to show the override
+          console.log("Language override from URL path:", {
+            pathLang: possibleLang,
+            contextLang: selectedLanguage?.id,
+            override: true,
+          });
         }
       }
     }
