@@ -556,6 +556,7 @@ const PopupRegistrationForm = ({ params }) => {
 
     // Track which window was opened
     let policyWindow = null;
+    let linkHandledByParent = false;
 
     // Reset flag after 3 seconds
     setTimeout(() => {
@@ -566,6 +567,22 @@ const PopupRegistrationForm = ({ params }) => {
     if (window.parent !== window) {
       // If inside an iframe, first try sending a message to parent window
       try {
+        // Setup a listener to detect if the parent successfully handled the link
+        const messageListener = (event) => {
+          if (
+            event.data &&
+            event.data.type === "OQTIMA_LINK_OPENED" &&
+            event.data.url === url
+          ) {
+            linkHandledByParent = true;
+            window.removeEventListener("message", messageListener);
+          }
+        };
+
+        // Add the listener before sending the message
+        window.addEventListener("message", messageListener);
+
+        // Send message to parent
         window.parent.postMessage(
           {
             type: "OQTIMA_OPEN_LINK",
@@ -582,8 +599,12 @@ const PopupRegistrationForm = ({ params }) => {
         // As a fallback, try to open directly after a short delay
         // This only happens if the parent handler doesn't handle it
         setTimeout(() => {
-          // Check if a window was already opened by the parent
-          if (!policyWindow) {
+          // Remove the listener since we're handling it ourselves now
+          window.removeEventListener("message", messageListener);
+
+          // Only open if parent didn't already handle it
+          if (!linkHandledByParent && !policyWindow) {
+            console.log("Parent did not handle link opening, using fallback");
             try {
               policyWindow = window.open(url, "_blank", "noopener,noreferrer");
 
@@ -597,7 +618,7 @@ const PopupRegistrationForm = ({ params }) => {
               console.error("Error opening policy link directly:", err);
             }
           }
-        }, 500);
+        }, 800); // Increased timeout to give parent more time to respond
       } catch (err) {
         console.error("Error sending message to parent for policy link:", err);
 
