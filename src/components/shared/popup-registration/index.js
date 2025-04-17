@@ -104,7 +104,6 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
   // Update parsed params when the input params change
   useEffect(() => {
     try {
-      console.log("params", params);
       if (typeof params === "string") {
         const newParams = JSON.parse(params);
         setParsedParams((prevParams) => ({
@@ -162,13 +161,6 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
       const rtlStyle = document.getElementById("popup-registration-rtl-styles");
       if (rtlStyle) rtlStyle.remove();
     }
-
-    // Force UI update by triggering a reflow
-    const reflow = document.body.offsetHeight;
-
-    console.log(
-      `Language changed to ${forcedLanguage}, RTL mode: ${isRTLMode}`
-    );
   }, [forcedLanguage, isRTLMode, isExternalLoad, params]);
 
   // Add loading state management

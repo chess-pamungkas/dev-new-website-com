@@ -630,13 +630,6 @@ const PopupRegistrationForm = ({ params }) => {
     // Call immediately
     updateRtlState();
 
-    // Log RTL state change for debugging
-    console.log(
-      `RTL mode ${
-        isRTLMode ? "enabled" : "disabled"
-      } for language: ${effectiveLanguage}`
-    );
-
     // Cleanup function
     return () => {
       // Reset RTL state if component unmounts
@@ -886,9 +879,6 @@ const PopupRegistrationForm = ({ params }) => {
       // If no code or no mapping for the code, use the message
       setErrorMessage(actualMessage);
     }
-
-    // Log final error message being set
-    console.log("Final error message:", errorMessage);
   };
 
   const handleRegistrationtForm = async (values) => {
@@ -950,7 +940,7 @@ const PopupRegistrationForm = ({ params }) => {
         `${API_URL}crm-register`,
         submissionData
       );
-      console.log("response", response.data);
+
       if (response.data.code && response.data.code !== 200) {
         handleApiResponse(false, response.data.message, response.data.code);
       } else {
