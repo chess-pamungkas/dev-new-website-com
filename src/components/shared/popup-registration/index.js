@@ -358,129 +358,90 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
     };
   }, [isExternalLoad]);
 
-  // RTL setup effect
+  // Add this new effect to handle RTL persistence
   useEffect(() => {
-    if (typeof window === "undefined" || !isExternalLoad) return;
+    // Store original RTL state
+    const originalDir = document.documentElement.getAttribute("dir");
+    const originalBodyDir = document.body.getAttribute("dir");
+    const originalRtlClass =
+      document.documentElement.classList.contains("rtl-active");
+    const originalBodyRtlClass = document.body.classList.contains("rtl-active");
 
-    // Update RTL global flags
-    window.__FORCE_RTL__ = isRTLMode;
-    window.__ORIGINAL_RTL__ = isRTLMode;
-
-    const setupRTL = async () => {
-      // Clean up previous RTL settings first
-      document.documentElement.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
-      document.body.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
-
-      if (isRTLMode) {
-        // Add RTL classes
-        document.documentElement.classList.add("rtl-active");
-        document.body.classList.add("rtl-active");
-
-        // Add RTL styles
-        if (!document.getElementById("popup-registration-rtl-styles")) {
-          const rtlStyle = document.createElement("style");
-          rtlStyle.id = "popup-registration-rtl-styles";
-          rtlStyle.innerHTML = `
-            .popup-registration--rtl {
-              direction: rtl !important;
-              text-align: right !important;
-            }
-
-            /* Base RTL Container */
-            .popup-registration--rtl .popup-registration__container {
-              flex-direction: row-reverse !important;
-            }
-
-            /* RTL form elements */
-            .popup-registration--rtl input,
-            .popup-registration--rtl select,
-            .popup-registration--rtl textarea {
-              direction: rtl !important;
-              text-align: right !important;
-              padding-right: 15px !important;
-            }
-
-            /* RTL form labels */
-            .popup-registration--rtl .popup-registration__label {
-              text-align: right !important;
-              margin-right: 0 !important;
-              margin-left: auto !important;
-            }
-
-            /* RTL dropdowns */
-            .popup-registration--rtl .custom-dropdown__selected {
-              text-align: right !important;
-              padding-right: 15px !important;
-            }
-
-            .popup-registration--rtl .custom-dropdown__arrow {
-              right: auto !important;
-              left: 15px !important;
-            }
-
-            /* RTL checkboxes */
-            .popup-registration--rtl .popup-registration__newsletter input[type="checkbox"],
-            .popup-registration--rtl .popup-registration__consent input[type="checkbox"] {
-              margin-right: 0 !important;
-              margin-left: 10px !important;
-            }
-
-            /* RTL error messages */
-            .popup-registration--rtl .popup-registration__error {
-              text-align: right !important;
-              margin-right: 0 !important;
-            }
-
-            /* RTL mobile adjustments */
-            @media screen and (max-width: 767px) {
-              .popup-registration--rtl .popup-registration__container {
-                flex-direction: column !important;
-              }
-
-              .popup-registration--rtl .popup-registration__sidebar,
-              .popup-registration--rtl .popup-registration__content {
-                width: 100% !important;
-                border-radius: 10px !important;
-              }
-            }
-          `;
-          document.head.appendChild(rtlStyle);
-        }
-      } else {
-        // Remove RTL classes
-        document.documentElement.classList.remove("rtl-active");
-        document.body.classList.remove("rtl-active");
-
-        // Remove RTL styles
-        const rtlStyle = document.getElementById(
-          "popup-registration-rtl-styles"
-        );
-        if (rtlStyle) rtlStyle.remove();
-      }
-
-      // Mark styles as loaded after a short delay to ensure smooth transition
-      requestAnimationFrame(() => {
-        styleLoadedRef.current = true;
-        setIsStylesLoaded(true);
-      });
+    // Function to check if we should maintain RTL
+    const shouldMaintainRtl = () => {
+      const urlPath =
+        typeof window !== "undefined" ? window.location.pathname : "";
+      const isArabicPath = urlPath.includes("/ar/");
+      const isArabicLang =
+        forcedLanguage === "ar" || parsedParams?.langParam === "ar";
+      return isArabicPath || isArabicLang;
     };
 
-    setupRTL();
+    // Function to apply RTL state
+    const applyRtlState = () => {
+      document.documentElement.setAttribute("dir", "rtl");
+      document.body.setAttribute("dir", "rtl");
+      document.documentElement.classList.add("rtl-active");
+      document.body.classList.add("rtl-active");
 
+      // Add RTL styles
+      if (!document.getElementById("popup-registration-rtl-styles")) {
+        const rtlStyle = document.createElement("style");
+        rtlStyle.id = "popup-registration-rtl-styles";
+        rtlStyle.innerHTML = `
+          html[dir="rtl"], body[dir="rtl"], .rtl-active {
+            direction: rtl !important;
+            text-align: right !important;
+          }
+          
+          [dir="rtl"] {
+            direction: rtl !important;
+          }
+          
+          html[dir="rtl"] body,
+          html[dir="rtl"] #root,
+          html[dir="rtl"] main,
+          html[dir="rtl"] .gatsby-focus-wrapper {
+            direction: rtl !important;
+            text-align: right !important;
+          }
+
+          /* Force RTL for all RTL contexts */
+          html[dir="rtl"] * {
+            direction: rtl;
+          }
+        `;
+        document.head.appendChild(rtlStyle);
+      }
+
+      // Set global flags
+      if (window) {
+        window.__FORCE_RTL__ = true;
+        window.__ORIGINAL_RTL__ = true;
+      }
+    };
+
+    // Initial RTL setup if needed
+    if (shouldMaintainRtl()) {
+      applyRtlState();
+    }
+
+    // Cleanup function that preserves RTL if needed
     return () => {
-      if (isRTLMode) {
-        document.documentElement.removeAttribute("dir");
-        document.body.removeAttribute("dir");
-        document.documentElement.classList.remove("rtl-active");
-        document.body.classList.remove("rtl-active");
-
-        const rtlStyle = document.getElementById(
-          "popup-registration-rtl-styles"
-        );
-        if (rtlStyle) rtlStyle.remove();
+      if (shouldMaintainRtl()) {
+        // Re-apply RTL state after a short delay to ensure it persists
+        setTimeout(applyRtlState, 0);
+        setTimeout(applyRtlState, 100);
+      } else {
+        // Only restore original state if we're not in an Arabic context
+        document.documentElement.setAttribute("dir", originalDir || "ltr");
+        document.body.setAttribute("dir", originalBodyDir || "ltr");
+        if (!originalRtlClass)
+          document.documentElement.classList.remove("rtl-active");
+        if (!originalBodyRtlClass) document.body.classList.remove("rtl-active");
       }
     };
-  }, [isRTLMode, isExternalLoad]);
+  }, [forcedLanguage, parsedParams]);
 
   if (!isOpen) return null;
 
@@ -489,7 +450,66 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
   );
 
   const handleClose = () => {
-    // Try to send message to parent window that close button was pressed
+    const urlPath =
+      typeof window !== "undefined" ? window.location.pathname : "";
+    const isArabicPath = urlPath.includes("/ar/");
+    const isArabicLang =
+      forcedLanguage === "ar" || parsedParams?.langParam === "ar";
+    const shouldKeepRTL = isArabicPath || isArabicLang;
+
+    if (shouldKeepRTL) {
+      // Apply RTL state immediately
+      document.documentElement.setAttribute("dir", "rtl");
+      document.body.setAttribute("dir", "rtl");
+      document.documentElement.classList.add("rtl-active");
+      document.body.classList.add("rtl-active");
+
+      // Ensure RTL styles persist
+      if (!document.getElementById("popup-registration-rtl-styles")) {
+        const rtlStyle = document.createElement("style");
+        rtlStyle.id = "popup-registration-rtl-styles";
+        rtlStyle.innerHTML = `
+          html[dir="rtl"], body[dir="rtl"], .rtl-active {
+            direction: rtl !important;
+            text-align: right !important;
+          }
+          
+          [dir="rtl"] {
+            direction: rtl !important;
+          }
+          
+          html[dir="rtl"] body,
+          html[dir="rtl"] #root,
+          html[dir="rtl"] main,
+          html[dir="rtl"] .gatsby-focus-wrapper {
+            direction: rtl !important;
+            text-align: right !important;
+          }
+
+          /* Force RTL for all RTL contexts */
+          html[dir="rtl"] * {
+            direction: rtl;
+          }
+        `;
+        document.head.appendChild(rtlStyle);
+      }
+
+      // Set global flags
+      if (window) {
+        window.__FORCE_RTL__ = true;
+        window.__ORIGINAL_RTL__ = true;
+      }
+
+      // Re-apply RTL state after a short delay
+      setTimeout(() => {
+        document.documentElement.setAttribute("dir", "rtl");
+        document.body.setAttribute("dir", "rtl");
+        document.documentElement.classList.add("rtl-active");
+        document.body.classList.add("rtl-active");
+      }, 100);
+    }
+
+    // Try to send message to parent window
     try {
       if (window.parent && window.parent !== window) {
         window.parent.postMessage("close_popup", "*");
@@ -498,6 +518,8 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
             type: "OQTIMA_CLOSE_POPUP",
             source: "close_button",
             timestamp: Date.now(),
+            maintainRTL: shouldKeepRTL,
+            language: forcedLanguage || parsedParams?.langParam,
           },
           "*"
         );
