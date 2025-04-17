@@ -18,7 +18,7 @@ const isLoadedFromExternalScript = () => {
   try {
     // Check if we're in an iframe
     const isInIframe = window !== window.top;
-    // Check if the script is loaded
+    // Check if the script is loaded (check both old and new naming conventions)
     const hasPopupScript = !!document.querySelector(
       'script[src*="registration-popup-script"]'
     );
@@ -137,6 +137,39 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
   const forcedLanguage = parsedParams?.langParam;
   const forcedRTL = forcedLanguage && RTL_LANGUAGES.includes(forcedLanguage);
   const isRTLMode = forcedRTL || isRTL;
+
+  // Add effect to update RTL mode when forcedLanguage changes
+  useEffect(() => {
+    if (typeof window === "undefined" || !isExternalLoad) return;
+
+    // Update global flags when language changes
+    window.__ORIGINAL_LANGUAGE__ = forcedLanguage || params?.langParam || "en";
+    window.__FORCE_RTL__ = isRTLMode;
+    window.__ORIGINAL_RTL__ = isRTLMode;
+
+    // Update document classes and attributes immediately
+    document.documentElement.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
+    document.body.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
+
+    if (isRTLMode) {
+      document.documentElement.classList.add("rtl-active");
+      document.body.classList.add("rtl-active");
+    } else {
+      document.documentElement.classList.remove("rtl-active");
+      document.body.classList.remove("rtl-active");
+
+      // Remove RTL styles if switching to LTR
+      const rtlStyle = document.getElementById("popup-registration-rtl-styles");
+      if (rtlStyle) rtlStyle.remove();
+    }
+
+    // Force UI update by triggering a reflow
+    const reflow = document.body.offsetHeight;
+
+    console.log(
+      `Language changed to ${forcedLanguage}, RTL mode: ${isRTLMode}`
+    );
+  }, [forcedLanguage, isRTLMode, isExternalLoad, params]);
 
   // Add loading state management
   const [isStylesLoaded, setIsStylesLoaded] = React.useState(false);
@@ -327,19 +360,19 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
 
   // RTL setup effect
   useEffect(() => {
-    if (
-      typeof window === "undefined" ||
-      !initialRenderRef.current ||
-      !isExternalLoad
-    )
-      return;
-    initialRenderRef.current = false;
+    if (typeof window === "undefined" || !isExternalLoad) return;
+
+    // Update RTL global flags
+    window.__FORCE_RTL__ = isRTLMode;
+    window.__ORIGINAL_RTL__ = isRTLMode;
 
     const setupRTL = async () => {
+      // Clean up previous RTL settings first
+      document.documentElement.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
+      document.body.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
+
       if (isRTLMode) {
-        // Set RTL attributes immediately
-        document.documentElement.setAttribute("dir", "rtl");
-        document.body.setAttribute("dir", "rtl");
+        // Add RTL classes
         document.documentElement.classList.add("rtl-active");
         document.body.classList.add("rtl-active");
 
@@ -413,6 +446,16 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
           `;
           document.head.appendChild(rtlStyle);
         }
+      } else {
+        // Remove RTL classes
+        document.documentElement.classList.remove("rtl-active");
+        document.body.classList.remove("rtl-active");
+
+        // Remove RTL styles
+        const rtlStyle = document.getElementById(
+          "popup-registration-rtl-styles"
+        );
+        if (rtlStyle) rtlStyle.remove();
       }
 
       // Mark styles as loaded after a short delay to ensure smooth transition
@@ -472,6 +515,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
     <>
       {isLoading && isExternalLoad && <LoadingSpinner />}
       <div
+        key={`popup-${isRTLMode ? "rtl" : "ltr"}`}
         className={cn("popup-registration", {
           "popup-registration--rtl": isRTLMode,
           "styles-loaded": isStylesLoaded,
