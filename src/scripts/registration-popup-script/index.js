@@ -1086,7 +1086,7 @@
           height: 100% !important;
           display: flex !important;
           flex-direction: column !important;
-          background: rgba(0, 0, 0, 0.5) !important;
+          background: rgba(0, 0, 0, 0.7) !important;
         }
 
         .popup-registration__wrapper {
@@ -1123,7 +1123,7 @@
       height: 100% !important;
       z-index: 2147483646 !important;
       display: flex !important;
-      background-color: rgba(0, 0, 0, 0.5) !important;
+      background-color: rgba(0, 0, 0, 0.7) !important;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
     `;
@@ -1568,7 +1568,7 @@
           height: 100% !important;
           border: none !important;
           background-color: #ffffff !important;
-          box-shadow: 0 0 40px rgba(0, 0, 0, 0.5) !important;
+          box-shadow: 0 0 40px rgba(0, 0, 0, 0.7) !important;
           transition: all 0.3s ease-in-out !important;
           display: block !important;
       opacity: 0 !important;
@@ -1837,66 +1837,77 @@
     // Set up message handler for iframe communication
     window.__OQTIMA_MESSAGE_HANDLER = function (event) {
       try {
-        if (event.data && typeof event.data === "object") {
-          // MODIFIED: Improved message handling for redirects and policy links
+        // Ignore messages from other origins for security
+        if (
+          event.origin &&
+          !event.origin.includes("oqtima.com") &&
+          !event.origin.includes("localhost") &&
+          !event.origin.includes("127.0.0.1")
+        ) {
+          return;
+        }
 
-          // Handle close popup messages
-          if (
-            event.data.type === "OQTIMA_CLOSE_POPUP" ||
-            event.data.type === "closeRegistrationPopup" ||
-            event.data.source === "close_button"
-          ) {
-            window.__OQTIMA_CLOSE_POPUP();
-          }
+        // Handle complex message objects
+        if (
+          event.data &&
+          typeof event.data === "object" &&
+          !Array.isArray(event.data)
+        ) {
+          // Handle registration success message
+          if (event.data.type === "OQTIMA_REGISTRATION_SUCCESS") {
+            console.log("[OQtima] Registration success message received");
 
-          // Handle registration success with improved redirection
-          if (
-            event.data.type === "OQTIMA_REGISTRATION_SUCCESS" ||
-            event.data.type === "REGISTRATION_SUCCESS" ||
-            event.data.type === "registrationSuccess"
-          ) {
-            // Extract redirect URL with fallbacks for different message formats
-            const redirectUrl = event.data.redirectUrl || event.data.url || "";
-
-            if (redirectUrl) {
+            // Handle optional redirect
+            if (event.data.redirectUrl) {
+              window.__OQTIMA_REGISTRATION_REDIRECT_URL =
+                event.data.redirectUrl;
               console.log(
-                "[OQtima] Registration successful. Redirecting to:",
-                redirectUrl
+                "[OQtima] Will redirect to:",
+                event.data.redirectUrl,
+                "with timeout:",
+                event.data.redirectTimeout || 0
               );
 
-              // Set a short timeout to allow any cleanup to happen first
-              setTimeout(function () {
-                try {
-                  // Navigate the main window to the redirect URL
-                  window.location.href = redirectUrl;
-                } catch (err) {
-                  console.error("[OQtima] Redirect error:", err);
+              // Close popup and redirect
+              if (window.__OQTIMA_CLOSE_POPUP) {
+                window.__OQTIMA_CLOSE_POPUP();
+              }
 
-                  // Try an alternative approach if direct navigation fails
-                  try {
-                    window.top.location.href = redirectUrl;
-                  } catch (err2) {
-                    console.error(
-                      "[OQtima] Alternative redirect failed:",
-                      err2
-                    );
-                  }
+              setTimeout(function () {
+                if (
+                  event.data.redirectUrl &&
+                  typeof event.data.redirectUrl === "string"
+                ) {
+                  window.location.href = event.data.redirectUrl;
                 }
-              }, 100);
-            } else {
-              // If no redirect URL, just close the popup
-              setTimeout(window.__OQTIMA_CLOSE_POPUP, 1000);
+              }, event.data.redirectTimeout || 100);
             }
           }
 
-          // Handle redirect message format
-          if (event.data.type === "REDIRECT_TO_URL") {
-            const redirectUrl = event.data.url || event.data.redirectUrl || "";
+          // Handle close popup message
+          if (event.data.type === "OQTIMA_CLOSE_POPUP") {
+            console.log(
+              "[OQtima] Close popup request from iframe, source:",
+              event.data.source
+            );
 
-            if (redirectUrl) {
+            // Close popup
+            if (window.__OQTIMA_CLOSE_POPUP) {
+              window.__OQTIMA_CLOSE_POPUP();
+            }
+          }
+
+          // Handle redirect message with timeout
+          if (event.data.type === "OQTIMA_REDIRECT") {
+            const redirectUrl = event.data.url;
+            const timeout = event.data.timeout || 0;
+
+            if (redirectUrl && typeof redirectUrl === "string") {
               console.log(
-                "[OQtima] Redirect request received. Redirecting to:",
-                redirectUrl
+                "[OQtima] Redirect request received. URL:",
+                redirectUrl,
+                "Timeout:",
+                timeout
               );
 
               // Close popup and redirect
@@ -1906,7 +1917,7 @@
 
               setTimeout(function () {
                 window.location.href = redirectUrl;
-              }, 100);
+              }, timeout);
             }
           }
 
@@ -1945,106 +1956,8 @@
               if (isPolicyOrLegalLink) {
                 console.log("[OQtima] Opening policy link in new tab:", url);
                 let linkOpened = false;
-                let manualPopupShown = false;
 
-                // Try multiple approaches in parallel for better success rate
-
-                // APPROACH 1: Create a real link element and trigger a user-initiated click
-                const createAndClickLink = () => {
-                  // Create a visible button that's more likely to not be blocked
-                  const linkButton = document.createElement("a");
-                  linkButton.href = url;
-                  linkButton.target = "_blank";
-                  linkButton.rel = "noopener noreferrer";
-                  linkButton.setAttribute("data-purpose", "policy-link");
-                  linkButton.setAttribute("role", "button");
-
-                  // Style it as a temporary floating button in bottom right
-                  linkButton.style.cssText = `
-                    position: fixed;
-                    bottom: 20px;
-                    right: 20px;
-                    background: #ff4400;
-                    color: white;
-                    padding: 10px 15px;
-                    border-radius: 4px;
-                    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-                    font-size: 14px;
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-                    text-decoration: none;
-                    z-index: 2147483647;
-                    cursor: pointer;
-                    transition: all 0.2s ease;
-                  `;
-
-                  // Label shows which policy is being opened
-                  linkButton.innerText = `Open ${
-                    policyType.charAt(0).toUpperCase() + policyType.slice(1)
-                  } Policy`;
-
-                  // Add hover effect
-                  linkButton.onmouseover = () => {
-                    linkButton.style.backgroundColor = "#e53e00";
-                  };
-                  linkButton.onmouseout = () => {
-                    linkButton.style.backgroundColor = "#ff4400";
-                  };
-
-                  // On click, mark as successful and clean up
-                  linkButton.onclick = (e) => {
-                    linkOpened = true;
-
-                    // Notify the iframe that the link was successfully opened
-                    if (event.source && event.source.postMessage) {
-                      event.source.postMessage(
-                        {
-                          type: "OQTIMA_LINK_OPENED",
-                          url: url,
-                          success: true,
-                          timestamp: timestamp,
-                          method: "user-click",
-                        },
-                        "*"
-                      );
-                    }
-
-                    // Remove after a small delay
-                    setTimeout(() => {
-                      if (document.body.contains(linkButton)) {
-                        linkButton.style.opacity = "0";
-                        setTimeout(() => {
-                          if (document.body.contains(linkButton)) {
-                            document.body.removeChild(linkButton);
-                          }
-                        }, 300);
-                      }
-                    }, 500);
-
-                    // Don't auto-remove if clicked
-                    if (linkButton._removeTimeout) {
-                      clearTimeout(linkButton._removeTimeout);
-                    }
-                  };
-
-                  // Append to body
-                  document.body.appendChild(linkButton);
-
-                  // Auto-remove after 12 seconds if not clicked
-                  linkButton._removeTimeout = setTimeout(() => {
-                    if (document.body.contains(linkButton)) {
-                      linkButton.style.opacity = "0";
-                      setTimeout(() => {
-                        if (document.body.contains(linkButton)) {
-                          document.body.removeChild(linkButton);
-                        }
-                      }, 300);
-                    }
-                  }, 12000);
-
-                  return linkButton;
-                };
-
-                // APPROACH 2: Try window.open with fallback
+                // Try window.open directly - don't create a button if it fails
                 const tryWindowOpen = () => {
                   try {
                     // Standard window.open approach
@@ -2097,35 +2010,25 @@
                     );
                   }
                 }
-                // If window.open fails, show the click button
+                // If window.open fails, tell the iframe to handle it with its overlay
                 else {
                   console.log(
-                    "[OQtima] window.open failed, showing click button instead"
+                    "[OQtima] window.open failed, telling iframe to use fallback"
                   );
-                  createAndClickLink();
-                  manualPopupShown = true;
-                }
 
-                // Send confirmation that we at least attempted to handle it
-                // This prevents the iframe from trying its own fallback mechanisms
-                if (event.source && event.source.postMessage) {
-                  event.source.postMessage(
-                    {
-                      type: "OQTIMA_LINK_OPENED",
-                      url: url,
-                      success: linkOpened || manualPopupShown,
-                      timestamp: timestamp,
-                      method: linkOpened
-                        ? "window.open"
-                        : manualPopupShown
-                        ? "manual-button"
-                        : "failed",
-                    },
-                    "*"
-                  );
-                  console.log(
-                    "[OQtima] Sent link handling confirmation to iframe"
-                  );
+                  // Send message to iframe to use its internal overlay
+                  if (event.source && event.source.postMessage) {
+                    event.source.postMessage(
+                      {
+                        type: "OQTIMA_LINK_OPENED",
+                        url: url,
+                        success: false,
+                        timestamp: timestamp,
+                        method: "failed",
+                      },
+                      "*"
+                    );
+                  }
                 }
               } else {
                 console.warn(
