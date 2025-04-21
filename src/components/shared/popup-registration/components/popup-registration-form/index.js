@@ -252,6 +252,16 @@ const CountryDropdown = ({
   );
 };
 
+// Wrapper component to force remount when RTL changes
+const RTLAwareForm = ({ children, isRTLMode, language }) => {
+  // Use a key to force remount of child components when RTL changes
+  return (
+    <div key={`${isRTLMode ? "rtl" : "ltr"}-${language}-wrapper`}>
+      {children}
+    </div>
+  );
+};
+
 const PopupRegistrationForm = ({ params }) => {
   const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
@@ -263,6 +273,171 @@ const PopupRegistrationForm = ({ params }) => {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const { clientConfig } = useContext(ClientResolverContext);
   const { selectedLanguage } = useContext(LanguageContext);
+
+  // Add effect to prevent incorrect language and RTL settings
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      console.log("PopupRegistrationForm: Checking language settings");
+
+      // Detect if we have explicit language in params
+      let specificLanguage = null;
+      let dataLang = null;
+
+      try {
+        // Try to get language from params
+        if (typeof params === "string") {
+          const parsedParams = JSON.parse(params);
+          if (parsedParams.langParam) {
+            specificLanguage = parsedParams.langParam;
+          }
+          if (parsedParams.dataLang) {
+            dataLang = parsedParams.dataLang;
+          }
+        } else if (params) {
+          if (params.langParam) {
+            specificLanguage = params.langParam;
+          }
+          if (params.dataLang) {
+            dataLang = params.dataLang;
+          }
+        }
+
+        // Check URL search params
+        if (!specificLanguage) {
+          const urlParams = new URLSearchParams(window.location.search);
+          specificLanguage = urlParams.get("language") || urlParams.get("lang");
+
+          if (!dataLang) {
+            dataLang = urlParams.get("data-lang");
+          }
+        }
+
+        console.log(
+          "Detected languages - specificLanguage:",
+          specificLanguage,
+          "dataLang:",
+          dataLang
+        );
+
+        // Store in sessionStorage for this tab only
+        if (specificLanguage) {
+          try {
+            sessionStorage.setItem("oqtima_tab_language", specificLanguage);
+          } catch (e) {
+            /* ignore */
+          }
+        }
+
+        // CRITICAL FIX: Handle conflict between data-lang="ar" and language="en"
+        // If we have a language param of "en" but data-lang of "ar", explicitly force "en"
+        if (
+          specificLanguage &&
+          specificLanguage.toLowerCase() === "en" &&
+          dataLang &&
+          dataLang.toLowerCase() === "ar"
+        ) {
+          console.log(
+            "CRITICAL FIX: Detected conflict between language='en' and data-lang='ar'"
+          );
+          console.log("Forcing English language and LTR mode");
+
+          // Fix document attributes
+          document.documentElement.setAttribute("dir", "ltr");
+          document.body.setAttribute("dir", "ltr");
+          document.documentElement.setAttribute("lang", "en");
+
+          // Remove RTL classes
+          document.documentElement.classList.remove(
+            "rtl-active",
+            "rtl",
+            "is-rtl"
+          );
+          document.body.classList.remove("rtl-active", "rtl", "is-rtl");
+
+          // Fix global flags
+          window.__FORCE_RTL__ = false;
+          window.__ORIGINAL_RTL__ = false;
+          window.gatsby_i18next_language = "en";
+
+          // Save correct language to sessionStorage (tab specific)
+          try {
+            sessionStorage.setItem("oqtima_tab_language", "en");
+            // Only set localStorage if it already has a value
+            if (localStorage.getItem("i18nextLng")) {
+              localStorage.setItem("i18nextLng", "en");
+            }
+          } catch (e) {
+            /* ignore */
+          }
+
+          // Add special override to prevent automatic RTL detection
+          window.__OQTIMA_DISABLE_AUTO_RTL__ = true;
+
+          // Force visual refresh
+          document.body.style.display = "none";
+          setTimeout(() => {
+            document.body.style.display = "";
+          }, 10);
+        }
+        // If we have a specific language and it's not Arabic, ensure we're not in RTL mode
+        else if (specificLanguage && specificLanguage.toLowerCase() !== "ar") {
+          console.log(`Form detected non-Arabic language: ${specificLanguage}`);
+
+          // Fix incorrect RTL settings
+          if (
+            document.documentElement.dir === "rtl" ||
+            document.documentElement.getAttribute("lang") === "ar" ||
+            document.documentElement.classList.contains("rtl-active")
+          ) {
+            console.log("CORRECTING INCORRECT RTL SETTINGS");
+
+            // Fix document attributes
+            document.documentElement.setAttribute("dir", "ltr");
+            document.body.setAttribute("dir", "ltr");
+            document.documentElement.setAttribute("lang", specificLanguage);
+
+            // Remove RTL classes
+            document.documentElement.classList.remove(
+              "rtl-active",
+              "rtl",
+              "is-rtl"
+            );
+            document.body.classList.remove("rtl-active", "rtl", "is-rtl");
+
+            // Fix global flags
+            if (window.__FORCE_RTL__) window.__FORCE_RTL__ = false;
+            if (window.__ORIGINAL_RTL__) window.__ORIGINAL_RTL__ = false;
+            if (window.gatsby_i18next_language === "ar") {
+              try {
+                window.gatsby_i18next_language = specificLanguage;
+              } catch (e) {
+                /* ignore */
+              }
+            }
+
+            // Save correct language to sessionStorage (per tab)
+            try {
+              sessionStorage.setItem("oqtima_tab_language", specificLanguage);
+              // Only set localStorage if it already has a value
+              if (localStorage.getItem("i18nextLng")) {
+                localStorage.setItem("i18nextLng", specificLanguage);
+              }
+            } catch (e) {
+              /* ignore */
+            }
+
+            // Force visual refresh
+            document.body.style.display = "none";
+            setTimeout(() => {
+              document.body.style.display = "";
+            }, 10);
+          }
+        }
+      } catch (e) {
+        console.error("Error checking language settings:", e);
+      }
+    }
+  }, [params]);
 
   // Parse params safely
   const safeParams = useMemo(() => {
@@ -470,8 +645,73 @@ const PopupRegistrationForm = ({ params }) => {
           urlParams.get("referralValue") ||
           urlParams.get("referral-value");
 
+        // Set referral parameters if found in URL
         if (urlReferralType) setReferralType(urlReferralType);
         if (urlReferralValue) setReferralValue(urlReferralValue);
+
+        // ENHANCED: If not found in URL, try sessionStorage (for popup mode)
+        if (
+          !urlReferralType &&
+          !referral_type &&
+          typeof window !== "undefined"
+        ) {
+          const storedReferralType = sessionStorage.getItem(
+            "oqtima_referral_type"
+          );
+          if (storedReferralType) {
+            console.log(
+              "Found referral_type in sessionStorage:",
+              storedReferralType
+            );
+            setReferralType(storedReferralType);
+          }
+        }
+
+        if (
+          !urlReferralValue &&
+          !referral_value &&
+          typeof window !== "undefined"
+        ) {
+          const storedReferralValue = sessionStorage.getItem(
+            "oqtima_referral_value"
+          );
+          if (storedReferralValue) {
+            console.log(
+              "Found referral_value in sessionStorage:",
+              storedReferralValue
+            );
+            setReferralValue(storedReferralValue);
+          }
+        }
+
+        // ENHANCED: Check global window variables as a fallback
+        if (
+          !urlReferralType &&
+          !referral_type &&
+          typeof window !== "undefined"
+        ) {
+          if (window.__OQTIMA_REFERRAL_TYPE__) {
+            console.log(
+              "Found referral_type in window globals:",
+              window.__OQTIMA_REFERRAL_TYPE__
+            );
+            setReferralType(window.__OQTIMA_REFERRAL_TYPE__);
+          }
+        }
+
+        if (
+          !urlReferralValue &&
+          !referral_value &&
+          typeof window !== "undefined"
+        ) {
+          if (window.__OQTIMA_REFERRAL_VALUE__) {
+            console.log(
+              "Found referral_value in window globals:",
+              window.__OQTIMA_REFERRAL_VALUE__
+            );
+            setReferralValue(window.__OQTIMA_REFERRAL_VALUE__);
+          }
+        }
 
         // Extract language parameters for debugging
         const langParam =
@@ -511,7 +751,7 @@ const PopupRegistrationForm = ({ params }) => {
           setLanguageFromUrl(detectedLanguage);
         }
       } catch (err) {
-        // Error handling
+        console.error("Error extracting parameters:", err);
       }
     };
 
@@ -586,59 +826,129 @@ const PopupRegistrationForm = ({ params }) => {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    // Check if we're in popup mode
+    const isInPopupMode =
+      sessionStorage.getItem("oqtima_popup_mode") === "true";
+    const parentDir = sessionStorage.getItem("oqtima_parent_dir") || "ltr";
+
+    // If we're in popup mode, we should respect the parent document's direction
+    // and only apply RTL styles to the popup itself
+    const shouldModifyGlobalRTL = !isInPopupMode;
+
+    console.log(
+      `[RTL Update] In popup mode: ${isInPopupMode}, Parent dir: ${parentDir}, Should modify global: ${shouldModifyGlobalRTL}`
+    );
+
     // Helper function to update RTL state immediately
     const updateRtlState = () => {
-      // Update global flags for RTL
-      window.__FORCE_RTL__ = isRTLMode;
+      console.log(
+        `[RTL Update] Setting RTL mode to: ${isRTLMode} for language: ${effectiveLanguage} (popup mode: ${isInPopupMode})`
+      );
 
-      // Update document direction attribute
-      document.documentElement.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
-      document.body.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
+      // Update global flags for RTL only if we're not in popup mode
+      if (shouldModifyGlobalRTL) {
+        window.__FORCE_RTL__ = isRTLMode;
+        window.__ORIGINAL_RTL__ = isRTLMode;
 
-      // Update RTL classes
-      if (isRTLMode) {
-        document.documentElement.classList.add("rtl-active");
-        document.body.classList.add("rtl-active");
+        // Update document direction attribute
+        document.documentElement.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
+        document.body.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
+
+        // Update RTL classes - be thorough in class management
+        if (isRTLMode) {
+          document.documentElement.classList.add("rtl-active");
+          document.body.classList.add("rtl-active");
+
+          // Add additional RTL classes that might be used by the system
+          document.documentElement.classList.add("rtl");
+          document.body.classList.add("rtl");
+
+          // Set data attributes for RTL
+          document.documentElement.setAttribute("data-rtl", "true");
+          document.body.setAttribute("data-rtl", "true");
+        } else {
+          // Remove ALL possible RTL classes
+          const rtlClasses = ["rtl-active", "rtl", "is-rtl"];
+          rtlClasses.forEach((cls) => {
+            document.documentElement.classList.remove(cls);
+            document.body.classList.remove(cls);
+          });
+
+          // Remove data attributes related to RTL
+          document.documentElement.removeAttribute("data-rtl");
+          document.body.removeAttribute("data-rtl");
+        }
       } else {
-        document.documentElement.classList.remove("rtl-active");
-        document.body.classList.remove("rtl-active");
-      }
-
-      // Force recalculation of styles by triggering a reflow
-      const reflow = document.body.offsetHeight;
-
-      // Additional cleanup for RTL styles
-      if (!isRTLMode) {
-        const rtlStyle = document.getElementById(
-          "popup-registration-rtl-styles"
+        // In popup mode, we DON'T modify the parent document's direction
+        console.log(
+          `[RTL Update] Respecting parent direction: ${parentDir} (popup mode)`
         );
-        if (rtlStyle) rtlStyle.remove();
+
+        // We still set window flags for the iframe context
+        window.__FORCE_RTL__ = isRTLMode;
+        window.__ORIGINAL_RTL__ = isRTLMode;
       }
 
       // Apply form-specific RTL direction
       const formElement = document.querySelector(".popup-registration__form");
       if (formElement) {
         formElement.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
+        formElement.style.direction = isRTLMode ? "rtl" : "ltr";
+        formElement.style.textAlign = isRTLMode ? "right" : "left";
+
         if (isRTLMode) {
           formElement.classList.add("popup-registration__form--rtl");
         } else {
           formElement.classList.remove("popup-registration__form--rtl");
         }
       }
+
+      // Apply RTL to all form controls for more consistent layout
+      const formControls = document.querySelectorAll(
+        ".popup-registration__form input, .popup-registration__form select, .popup-registration__form textarea"
+      );
+      formControls.forEach((control) => {
+        control.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
+        control.style.textAlign = isRTLMode ? "right" : "left";
+        control.style.direction = isRTLMode ? "rtl" : "ltr";
+      });
+
+      // Force UI update by triggering a reflow - only of the form container
+      const formContainer = document.querySelector(
+        ".popup-registration__form-container"
+      );
+      if (formContainer) {
+        const reflow = formContainer.offsetHeight;
+      }
+
+      // Force repaint of elements by temporarily modifying display
+      const formContainers = document.querySelectorAll(
+        ".popup-registration__form, .popup-registration__container"
+      );
+      formContainers.forEach((container) => {
+        if (container) {
+          const originalDisplay = container.style.display;
+          container.style.display = "none";
+          // Force reflow
+          const reflow = container.offsetHeight;
+          container.style.display = originalDisplay;
+        }
+      });
     };
 
     // Call immediately
     updateRtlState();
 
+    // Log RTL state change for debugging
+    console.log(
+      `[RTL Debug] RTL mode ${
+        isRTLMode ? "enabled" : "disabled"
+      } for language: ${effectiveLanguage} (popup mode: ${isInPopupMode})`
+    );
+
     // Cleanup function
     return () => {
-      // Reset RTL state if component unmounts
-      if (isRTLMode) {
-        document.documentElement.setAttribute("dir", "ltr");
-        document.body.setAttribute("dir", "ltr");
-        document.documentElement.classList.remove("rtl-active");
-        document.body.classList.remove("rtl-active");
-      }
+      // No need to revert direction attributes if in popup mode
     };
   }, [isRTLMode, effectiveLanguage]);
 
@@ -879,6 +1189,9 @@ const PopupRegistrationForm = ({ params }) => {
       // If no code or no mapping for the code, use the message
       setErrorMessage(actualMessage);
     }
+
+    // Log final error message being set
+    console.log("Final error message:", errorMessage);
   };
 
   const handleRegistrationtForm = async (values) => {
@@ -916,6 +1229,8 @@ const PopupRegistrationForm = ({ params }) => {
         cookie: policyLinks.cookiePolicy,
       };
 
+      console.log("submissionData", submissionData);
+
       // Validate if policy links are available
       if (!policyLinks.privacyPolicy || !policyLinks.cookiePolicy) {
         // Still include them in submission but log the issue
@@ -940,7 +1255,7 @@ const PopupRegistrationForm = ({ params }) => {
         `${API_URL}crm-register`,
         submissionData
       );
-
+      console.log("response", response.data);
       if (response.data.code && response.data.code !== 200) {
         handleApiResponse(false, response.data.message, response.data.code);
       } else {
@@ -1010,18 +1325,21 @@ const PopupRegistrationForm = ({ params }) => {
               // Could not access top window
             }
 
-            // ENHANCED: As a final fallback, try to save to localStorage for use on page reload
+            // ENHANCED: As a final fallback, try to save to sessionStorage for use on page reload
             try {
-              localStorage.setItem("OQTIMA_PENDING_REDIRECT", redirectAddress);
+              sessionStorage.setItem(
+                "OQTIMA_PENDING_REDIRECT",
+                redirectAddress
+              );
 
               // Set a flag to indicate successful registration
-              localStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
-              localStorage.setItem(
+              sessionStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
+              sessionStorage.setItem(
                 "OQTIMA_REGISTRATION_TIMESTAMP",
                 Date.now().toString()
               );
             } catch (err) {
-              // Could not save to localStorage
+              // Could not save to sessionStorage
             }
           } else {
             // If not in iframe, redirect normally
@@ -1057,427 +1375,450 @@ const PopupRegistrationForm = ({ params }) => {
   }, []);
 
   return (
-    <Formik
-      initialValues={{
-        first_name: "",
-        last_name: "",
-        email: "",
-        country: clientConfig?.countryName || "",
-        country_code: clientConfig?.countryCode
-          ? countries.find(
-              (country) =>
-                country.name.toLowerCase() ===
-                clientConfig.countryName.toLowerCase()
-            )?.code || ""
-          : "",
-        mobile: "",
-        is_subscribe: 1,
-        agreement: 0,
-      }}
-      validationSchema={PopupRegistrationSchema}
-      onSubmit={handleRegistrationtForm}
-      validateOnMount={true}
-      enableReinitialize={true}
-    >
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        setFieldValue,
-        setTouched,
-      }) => {
-        // Move the initialization effect here where setFieldValue is available
-        useEffect(() => {
-          if (clientConfig?.countryName) {
-            const matchingCountry = countries.find(
-              (country) =>
-                country.name.toLowerCase() ===
-                clientConfig.countryName.toLowerCase()
-            );
-            if (matchingCountry) {
-              setSelectedCountry(matchingCountry.name);
-              setSelectedCountryCode(matchingCountry.code);
-              setFieldValue("country", matchingCountry.name, true);
-              setFieldValue("country_code", matchingCountry.code, true);
-            }
-          }
-        }, [clientConfig, setFieldValue]);
+    <RTLAwareForm isRTLMode={isRTLMode} language={effectiveLanguage}>
+      <div className="popup-registration__form-container">
+        <Formik
+          key={`${isRTLMode ? "rtl" : "ltr"}-${effectiveLanguage}-form`}
+          initialValues={{
+            first_name: "",
+            last_name: "",
+            email: "",
+            country: clientConfig?.countryName || "",
+            country_code: clientConfig?.countryCode
+              ? countries.find(
+                  (country) =>
+                    country.name.toLowerCase() ===
+                    clientConfig.countryName.toLowerCase()
+                )?.code || ""
+              : "",
+            mobile: "",
+            is_subscribe: 1,
+            agreement: 0,
+          }}
+          validationSchema={PopupRegistrationSchema}
+          onSubmit={handleRegistrationtForm}
+          validateOnMount={true}
+          enableReinitialize={true}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            setFieldValue,
+            setTouched,
+            isSubmitting,
+          }) => {
+            // Move the initialization effect here where setFieldValue is available
+            useEffect(() => {
+              if (clientConfig?.countryName) {
+                const matchingCountry = countries.find(
+                  (country) =>
+                    country.name.toLowerCase() ===
+                    clientConfig.countryName.toLowerCase()
+                );
+                if (matchingCountry) {
+                  setSelectedCountry(matchingCountry.name);
+                  setSelectedCountryCode(matchingCountry.code);
+                  setFieldValue("country", matchingCountry.name, true);
+                  setFieldValue("country_code", matchingCountry.code, true);
+                }
+              }
+            }, [clientConfig, setFieldValue]);
 
-        const handleCountrySelect = (countryName) => {
-          setSelectedCountry(countryName);
-          const matchingCountry = countries.find((c) => c.name === countryName);
-          if (matchingCountry?.code) {
-            setSelectedCountryCode(matchingCountry.code);
-            setFieldValue("country_code", matchingCountry.code, true);
-          }
-          setFieldValue("country", countryName, true);
-          setIsCountryOpen(false);
-          setSearchCountry("");
-        };
+            const handleCountrySelect = (countryName) => {
+              setSelectedCountry(countryName);
+              const matchingCountry = countries.find(
+                (c) => c.name === countryName
+              );
+              if (matchingCountry?.code) {
+                setSelectedCountryCode(matchingCountry.code);
+                setFieldValue("country_code", matchingCountry.code, true);
+              }
+              setFieldValue("country", countryName, true);
+              setIsCountryOpen(false);
+              setSearchCountry("");
+            };
 
-        const handleCodeSelect = (code) => {
-          setSelectedCountryCode(code);
-          const matchingCountry = countries.find((c) => c.code === code);
-          if (matchingCountry?.name) {
-            setSelectedCountry(matchingCountry.name);
-            setFieldValue("country", matchingCountry.name, true);
-          }
-          setFieldValue("country_code", code, true);
-          setIsCodeOpen(false);
-          setSearchCode("");
-        };
+            const handleCodeSelect = (code) => {
+              setSelectedCountryCode(code);
+              const matchingCountry = countries.find((c) => c.code === code);
+              if (matchingCountry?.name) {
+                setSelectedCountry(matchingCountry.name);
+                setFieldValue("country", matchingCountry.name, true);
+              }
+              setFieldValue("country_code", code, true);
+              setIsCodeOpen(false);
+              setSearchCode("");
+            };
 
-        return (
-          <form
-            onSubmit={handleSubmit}
-            className={cn("popup-registration__form", {
-              "popup-registration__form--rtl": isRTLMode,
-            })}
-            dir={isRTLMode ? "rtl" : "ltr"}
-            noValidate
-          >
-            {/* Name Fields */}
-            <div className="name-fields" style={{ marginBottom: "20px" }}>
-              <div className="popup-registration__field">
-                <label className="popup-registration__label">
-                  {t("popup-registration-firstName")} *
-                </label>
-                <input
-                  type="text"
-                  name="first_name"
-                  placeholder={t("popup-registration-firstName") + " *"}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.first_name}
-                  className={cn("popup-registration__input", {
-                    "popup-registration__input--error":
-                      errors.first_name && touched.first_name,
-                  })}
-                  noValidate
-                />
-                {errors.first_name && touched.first_name && (
-                  <div className="popup-registration__error">
-                    {t(errors.first_name)}
-                  </div>
-                )}
-              </div>
-              <div className="popup-registration__field">
-                <label className="popup-registration__label">
-                  {t("popup-registration-lastName")} *
-                </label>
-                <input
-                  type="text"
-                  name="last_name"
-                  placeholder={t("popup-registration-lastName") + " *"}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.last_name}
-                  className={cn("popup-registration__input", {
-                    "popup-registration__input--error":
-                      errors.last_name && touched.last_name,
-                  })}
-                  noValidate
-                />
-                {errors.last_name && touched.last_name && (
-                  <div className="popup-registration__error">
-                    {t(errors.last_name)}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Email Field */}
-            <div
-              className="popup-registration__row"
-              style={{ marginBottom: "20px" }}
-            >
-              <div className="popup-registration__field">
-                <label className="popup-registration__label">
-                  {t("popup-registration-email")} *
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder={t("popup-registration-email") + " *"}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                  className={cn("popup-registration__input", {
-                    "popup-registration__input--error":
-                      errors.email && touched.email,
-                  })}
-                  noValidate
-                />
-                {errors.email && touched.email && (
-                  <div className="popup-registration__error">
-                    {t(errors.email)}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Country, Code, Phone Fields */}
-            <div
-              className="popup-registration__row"
-              style={{ marginBottom: "20px" }}
-            >
-              <div className="three-fields-container">
-                {/* Country Field */}
-                <div className="popup-registration__field country-field">
-                  <label className="popup-registration__label">
-                    {t("popup-registration-countryOfResidence")} *
-                  </label>
-                  <div className="custom-dropdown">
-                    <div
-                      className={`custom-dropdown__selected ${
-                        selectedCountry
-                          ? "custom-dropdown__selected--has-value"
-                          : ""
-                      } ${
-                        isCountryOpen ? "custom-dropdown__selected--open" : ""
-                      }`}
-                      onClick={() => setIsCountryOpen(!isCountryOpen)}
-                    >
-                      {selectedCountry || (
-                        <span className="custom-dropdown__placeholder">
-                          {t("popup-registration-countryOfResidence") + " *"}
-                        </span>
-                      )}
-                      <img
-                        src={arrowDownIcon}
-                        alt="dropdown"
-                        className="custom-dropdown__arrow"
-                      />
-                    </div>
-                    {isCountryOpen && (
-                      <CountryDropdown
-                        searchCountry={searchCountry}
-                        setSearchCountry={setSearchCountry}
-                        selectedCountry={selectedCountry}
-                        handleCountrySelect={handleCountrySelect}
-                        t={t}
-                        countryOptionsRef={countryOptionsRef}
-                        filteredCountries={filteredCountries}
-                        setFieldValue={setFieldValue}
-                        setIsCountryOpen={setIsCountryOpen}
-                        errors={errors}
-                        touched={touched}
-                      />
-                    )}
-                  </div>
-                  {errors.country && touched.country && (
-                    <div className="popup-registration__error">
-                      {t(errors.country)}
-                    </div>
-                  )}
-                </div>
-
-                {/* Mobile wrapper for Code and Phone */}
-                <div className="mobile-code-phone">
-                  {/* Code Field */}
-                  <div className="popup-registration__field code-field">
+            return (
+              <form
+                onSubmit={handleSubmit}
+                className={cn("popup-registration__form", {
+                  "popup-registration__form--rtl": isRTLMode,
+                  "popup-registration__form--submitting": isSubmitting,
+                  "popup-registration__form--success":
+                    isSentSuccessful === true,
+                  "popup-registration__form--error": isSentSuccessful === false,
+                })}
+                dir={isRTLMode ? "rtl" : "ltr"}
+                style={{
+                  textAlign: isRTLMode ? "right" : "left",
+                  direction: isRTLMode ? "rtl" : "ltr",
+                }}
+                noValidate
+              >
+                {/* Name Fields */}
+                <div className="name-fields" style={{ marginBottom: "20px" }}>
+                  <div className="popup-registration__field">
                     <label className="popup-registration__label">
-                      {t("popup-registration-countryCode")} *
-                    </label>
-                    <div className="custom-dropdown">
-                      <div
-                        className={`custom-dropdown__selected ${
-                          selectedCountryCode
-                            ? "custom-dropdown__selected--has-value"
-                            : ""
-                        } ${
-                          isCodeOpen ? "custom-dropdown__selected--open" : ""
-                        }`}
-                        onClick={() => setIsCodeOpen(!isCodeOpen)}
-                      >
-                        {selectedCountryCode || (
-                          <span className="custom-dropdown__placeholder">
-                            {t("popup-registration-countryCode") + " *"}
-                          </span>
-                        )}
-                        <img
-                          src={arrowDownIcon}
-                          alt="dropdown"
-                          className="custom-dropdown__arrow"
-                        />
-                      </div>
-                      {isCodeOpen && (
-                        <CodeDropdown
-                          searchCode={searchCode}
-                          setSearchCode={setSearchCode}
-                          selectedCountryCode={selectedCountryCode}
-                          handleCodeSelect={handleCodeSelect}
-                          t={t}
-                          codeOptionsRef={codeOptionsRef}
-                          setIsCodeOpen={setIsCodeOpen}
-                          errors={errors}
-                          touched={touched}
-                        />
-                      )}
-                    </div>
-                    {errors.country_code && touched.country_code && (
-                      <div className="popup-registration__error">
-                        {t(errors.country_code)}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Phone Field */}
-                  <div className="popup-registration__field phone-field">
-                    <label className="popup-registration__label">
-                      {t("popup-registration-phoneNumber")} *
+                      {t("popup-registration-firstName")} *
                     </label>
                     <input
-                      type="tel"
-                      name="mobile"
-                      placeholder={t("popup-registration-phoneNumber") + " *"}
+                      type="text"
+                      name="first_name"
+                      placeholder={t("popup-registration-firstName") + " *"}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.mobile}
+                      value={values.first_name}
                       className={cn("popup-registration__input", {
                         "popup-registration__input--error":
-                          errors.mobile && touched.mobile,
+                          errors.first_name && touched.first_name,
                       })}
                       noValidate
                     />
-                    {errors.mobile && touched.mobile && (
+                    {errors.first_name && touched.first_name && (
                       <div className="popup-registration__error">
-                        {t(errors.mobile)}
+                        {t(errors.first_name)}
+                      </div>
+                    )}
+                  </div>
+                  <div className="popup-registration__field">
+                    <label className="popup-registration__label">
+                      {t("popup-registration-lastName")} *
+                    </label>
+                    <input
+                      type="text"
+                      name="last_name"
+                      placeholder={t("popup-registration-lastName") + " *"}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.last_name}
+                      className={cn("popup-registration__input", {
+                        "popup-registration__input--error":
+                          errors.last_name && touched.last_name,
+                      })}
+                      noValidate
+                    />
+                    {errors.last_name && touched.last_name && (
+                      <div className="popup-registration__error">
+                        {t(errors.last_name)}
                       </div>
                     )}
                   </div>
                 </div>
-              </div>
-            </div>
 
-            {/* Newsletter Subscription */}
-            <div
-              className="popup-registration__newsletter"
-              style={{ marginBottom: "20px" }}
-            >
-              <input
-                type="checkbox"
-                name="is_subscribe"
-                checked={values.is_subscribe}
-                onChange={(e) =>
-                  setFieldValue("is_subscribe", e.target.checked ? 1 : 0)
-                }
-              />
-              {t("popup-registration-acceptMarketing")}
-            </div>
-
-            {/* Consent */}
-            <div
-              className="popup-registration__consent"
-              style={{ marginBottom: "20px" }}
-            >
-              <span className="popup-registration__consent-text">
-                <input
-                  type="checkbox"
-                  name="agreement"
-                  checked={values.agreement}
-                  onChange={(e) =>
-                    setFieldValue("agreement", e.target.checked ? 1 : 0)
-                  }
-                />
-                <span>
-                  <Trans i18nKey="popup-registration-consent" ns="index">
-                    I agree to allow the company to process my personal data to
-                    meet its regulatory obligations and I have read and
-                    understood the
-                    <a
-                      href={policyLinks.privacyPolicy}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link"
-                      onClick={(e) =>
-                        handlePolicyLinkClick(e, policyLinks.privacyPolicy)
-                      }
-                    >
-                      Privacy Policy
-                    </a>
-                    and
-                    <a
-                      href={policyLinks.cookiePolicy}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link"
-                      onClick={(e) =>
-                        handlePolicyLinkClick(e, policyLinks.cookiePolicy)
-                      }
-                    >
-                      Cookie Policy
-                    </a>
-                    of the Company.
-                  </Trans>
-                </span>
-              </span>
-              {errors.agreement && touched.agreement && (
+                {/* Email Field */}
                 <div
-                  className={cn(
-                    "popup-registration__error",
-                    "popup-registration__error--agreement"
-                  )}
+                  className="popup-registration__row"
+                  style={{ marginBottom: "20px" }}
                 >
-                  {t("popup-registration-agreement-required")}
+                  <div className="popup-registration__field">
+                    <label className="popup-registration__label">
+                      {t("popup-registration-email")} *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder={t("popup-registration-email") + " *"}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.email}
+                      className={cn("popup-registration__input", {
+                        "popup-registration__input--error":
+                          errors.email && touched.email,
+                      })}
+                      noValidate
+                    />
+                    {errors.email && touched.email && (
+                      <div className="popup-registration__error">
+                        {t(errors.email)}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              )}
-            </div>
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className={cn("continue-button", {
-                "button-link--disabled": false,
-              })}
-              style={{ marginTop: "auto", marginBottom: "20px" }}
-              onClick={async (e) => {
-                e.preventDefault();
-                // Touch all fields to show validation errors
-                await setTouched(
-                  {
-                    first_name: true,
-                    last_name: true,
-                    email: true,
-                    country: true,
-                    country_code: true,
-                    mobile: true,
-                    agreement: true,
-                    is_subscribe: true,
-                  },
-                  true
-                );
+                {/* Country, Code, Phone Fields */}
+                <div
+                  className="popup-registration__row"
+                  style={{ marginBottom: "20px" }}
+                >
+                  <div className="three-fields-container">
+                    {/* Country Field */}
+                    <div className="popup-registration__field country-field">
+                      <label className="popup-registration__label">
+                        {t("popup-registration-countryOfResidence")} *
+                      </label>
+                      <div className="custom-dropdown">
+                        <div
+                          className={`custom-dropdown__selected ${
+                            selectedCountry
+                              ? "custom-dropdown__selected--has-value"
+                              : ""
+                          } ${
+                            isCountryOpen
+                              ? "custom-dropdown__selected--open"
+                              : ""
+                          }`}
+                          onClick={() => setIsCountryOpen(!isCountryOpen)}
+                        >
+                          {selectedCountry || (
+                            <span className="custom-dropdown__placeholder">
+                              {t("popup-registration-countryOfResidence") +
+                                " *"}
+                            </span>
+                          )}
+                          <img
+                            src={arrowDownIcon}
+                            alt="dropdown"
+                            className="custom-dropdown__arrow"
+                          />
+                        </div>
+                        {isCountryOpen && (
+                          <CountryDropdown
+                            searchCountry={searchCountry}
+                            setSearchCountry={setSearchCountry}
+                            selectedCountry={selectedCountry}
+                            handleCountrySelect={handleCountrySelect}
+                            t={t}
+                            countryOptionsRef={countryOptionsRef}
+                            filteredCountries={filteredCountries}
+                            setFieldValue={setFieldValue}
+                            setIsCountryOpen={setIsCountryOpen}
+                            errors={errors}
+                            touched={touched}
+                          />
+                        )}
+                      </div>
+                      {errors.country && touched.country && (
+                        <div className="popup-registration__error">
+                          {t(errors.country)}
+                        </div>
+                      )}
+                    </div>
 
-                // Validate all fields
-                Object.keys(values).forEach((field) => {
-                  setFieldValue(field, values[field], true);
-                });
+                    {/* Mobile wrapper for Code and Phone */}
+                    <div className="mobile-code-phone">
+                      {/* Code Field */}
+                      <div className="popup-registration__field code-field">
+                        <label className="popup-registration__label">
+                          {t("popup-registration-countryCode")} *
+                        </label>
+                        <div className="custom-dropdown">
+                          <div
+                            className={`custom-dropdown__selected ${
+                              selectedCountryCode
+                                ? "custom-dropdown__selected--has-value"
+                                : ""
+                            } ${
+                              isCodeOpen
+                                ? "custom-dropdown__selected--open"
+                                : ""
+                            }`}
+                            onClick={() => setIsCodeOpen(!isCodeOpen)}
+                          >
+                            {selectedCountryCode || (
+                              <span className="custom-dropdown__placeholder">
+                                {t("popup-registration-countryCode") + " *"}
+                              </span>
+                            )}
+                            <img
+                              src={arrowDownIcon}
+                              alt="dropdown"
+                              className="custom-dropdown__arrow"
+                            />
+                          </div>
+                          {isCodeOpen && (
+                            <CodeDropdown
+                              searchCode={searchCode}
+                              setSearchCode={setSearchCode}
+                              selectedCountryCode={selectedCountryCode}
+                              handleCodeSelect={handleCodeSelect}
+                              t={t}
+                              codeOptionsRef={codeOptionsRef}
+                              setIsCodeOpen={setIsCodeOpen}
+                              errors={errors}
+                              touched={touched}
+                            />
+                          )}
+                        </div>
+                        {errors.country_code && touched.country_code && (
+                          <div className="popup-registration__error">
+                            {t(errors.country_code)}
+                          </div>
+                        )}
+                      </div>
 
-                // If form is valid, submit it
-                if (Object.keys(errors).length === 0) {
-                  handleSubmit();
-                }
-              }}
-            >
-              {t("popup-registration-continue")}
-            </button>
+                      {/* Phone Field */}
+                      <div className="popup-registration__field phone-field">
+                        <label className="popup-registration__label">
+                          {t("popup-registration-phoneNumber")} *
+                        </label>
+                        <input
+                          type="tel"
+                          name="mobile"
+                          placeholder={
+                            t("popup-registration-phoneNumber") + " *"
+                          }
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.mobile}
+                          className={cn("popup-registration__input", {
+                            "popup-registration__input--error":
+                              errors.mobile && touched.mobile,
+                          })}
+                          noValidate
+                        />
+                        {errors.mobile && touched.mobile && (
+                          <div className="popup-registration__error">
+                            {t(errors.mobile)}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-            {/* Error Message */}
-            {errorMessage && (
-              <p
-                className="popup-registration-error-message"
-                style={{ color: "red", marginBottom: "20px" }}
-              >
-                {errorMessage}
-              </p>
-            )}
-          </form>
-        );
-      }}
-    </Formik>
+                {/* Newsletter Subscription */}
+                <div
+                  className="popup-registration__newsletter"
+                  style={{ marginBottom: "20px" }}
+                >
+                  <input
+                    type="checkbox"
+                    name="is_subscribe"
+                    checked={values.is_subscribe}
+                    onChange={(e) =>
+                      setFieldValue("is_subscribe", e.target.checked ? 1 : 0)
+                    }
+                  />
+                  {t("popup-registration-acceptMarketing")}
+                </div>
+
+                {/* Consent */}
+                <div
+                  className="popup-registration__consent"
+                  style={{ marginBottom: "20px" }}
+                >
+                  <span className="popup-registration__consent-text">
+                    <input
+                      type="checkbox"
+                      name="agreement"
+                      checked={values.agreement}
+                      onChange={(e) =>
+                        setFieldValue("agreement", e.target.checked ? 1 : 0)
+                      }
+                    />
+                    <span>
+                      <Trans i18nKey="popup-registration-consent" ns="index">
+                        I agree to allow the company to process my personal data
+                        to meet its regulatory obligations and I have read and
+                        understood the
+                        <a
+                          href={policyLinks.privacyPolicy}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link"
+                          onClick={(e) =>
+                            handlePolicyLinkClick(e, policyLinks.privacyPolicy)
+                          }
+                        >
+                          Privacy Policy
+                        </a>
+                        and
+                        <a
+                          href={policyLinks.cookiePolicy}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link"
+                          onClick={(e) =>
+                            handlePolicyLinkClick(e, policyLinks.cookiePolicy)
+                          }
+                        >
+                          Cookie Policy
+                        </a>
+                        of the Company.
+                      </Trans>
+                    </span>
+                  </span>
+                  {errors.agreement && touched.agreement && (
+                    <div
+                      className={cn(
+                        "popup-registration__error",
+                        "popup-registration__error--agreement"
+                      )}
+                    >
+                      {t("popup-registration-agreement-required")}
+                    </div>
+                  )}
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  className={cn("continue-button", {
+                    "button-link--disabled": isSubmitting,
+                  })}
+                  style={{ marginTop: "auto", marginBottom: "20px" }}
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    // Touch all fields to show validation errors
+                    await setTouched(
+                      {
+                        first_name: true,
+                        last_name: true,
+                        email: true,
+                        country: true,
+                        country_code: true,
+                        mobile: true,
+                        agreement: true,
+                        is_subscribe: true,
+                      },
+                      true
+                    );
+
+                    // Validate all fields
+                    Object.keys(values).forEach((field) => {
+                      setFieldValue(field, values[field], true);
+                    });
+
+                    // If form is valid, submit it
+                    if (Object.keys(errors).length === 0) {
+                      handleSubmit();
+                    }
+                  }}
+                >
+                  {t("popup-registration-continue")}
+                </button>
+
+                {/* Error Message */}
+                {errorMessage && (
+                  <p
+                    className="popup-registration-error-message"
+                    style={{ color: "red", marginBottom: "20px" }}
+                  >
+                    {errorMessage}
+                  </p>
+                )}
+              </form>
+            );
+          }}
+        </Formik>
+      </div>
+    </RTLAwareForm>
   );
 };
 
