@@ -459,6 +459,55 @@ const PopupRegistrationForm = ({ params }) => {
         parsedParams = params || {};
       }
 
+      // IMPORTANT - DEBUG: Log raw params to help debugging
+      console.log(
+        "[DEBUG] Raw params passed to PopupRegistrationForm:",
+        params
+      );
+      console.log("[DEBUG] Initial parsed params:", parsedParams);
+
+      // DIRECT REFERRAL MAPPING: Map common referral parameter variations to expected names
+      // We need to check all possible formats that might be passed from landing pages
+      const referralTypeVariations = [
+        "referral_type",
+        "referralType",
+        "referral-type",
+        "data-referral-type",
+        "data-referralType",
+      ];
+
+      const referralValueVariations = [
+        "referral_value",
+        "referralValue",
+        "referral-value",
+        "data-referral-value",
+        "data-referralValue",
+      ];
+
+      // Check all potential referral_type parameter names
+      for (const key of referralTypeVariations) {
+        if (parsedParams[key] !== undefined && !parsedParams.referral_type) {
+          parsedParams.referral_type = parsedParams[key];
+          console.log(
+            `Mapped referral_type from ${key}:`,
+            parsedParams.referral_type
+          );
+          break;
+        }
+      }
+
+      // Check all potential referral_value parameter names
+      for (const key of referralValueVariations) {
+        if (parsedParams[key] !== undefined && !parsedParams.referral_value) {
+          parsedParams.referral_value = parsedParams[key];
+          console.log(
+            `Mapped referral_value from ${key}:`,
+            parsedParams.referral_value
+          );
+          break;
+        }
+      }
+
       // IMPORTANT FIX: Sanitize the langParam if it contains a query string format
       if (parsedParams.langParam) {
         // Check if langParam mistakenly contains "?language=" or similar prefixes
@@ -1260,6 +1309,16 @@ const PopupRegistrationForm = ({ params }) => {
   };
 
   const handleRegistrationtForm = async (values) => {
+    // DEBUGGING: Log the current state of all relevant parameters
+    console.log("📋 FORM SUBMISSION PARAMETERS:", {
+      referral_type_state: referral_type,
+      referral_value_state: referral_value,
+      referral_type_from_safeParams: safeParams.referral_type,
+      referral_value_from_safeParams: safeParams.referral_value,
+      values: values,
+      rawParams: params,
+    });
+
     const token = await executeRecaptcha("popup_registration");
 
     // Create a local copy of portalLanguageCode that we can modify
