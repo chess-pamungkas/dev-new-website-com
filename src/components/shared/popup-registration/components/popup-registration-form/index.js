@@ -443,20 +443,111 @@ const PopupRegistrationForm = ({ params }) => {
   const safeParams = useMemo(() => {
     try {
       let parsedParams = {};
+      console.log("Raw params:", params);
 
       // Try to parse JSON if params is a string
       if (typeof params === "string") {
         try {
+          // Try standard JSON parsing first
           parsedParams = JSON.parse(params);
+          console.log("Successfully parsed params as JSON:", parsedParams);
         } catch (jsonErr) {
-          // If JSON parsing fails, assume it might be a simple string like a language code
-          if (params && params.length <= 5) {
+          console.warn("JSON parsing failed:", jsonErr.message);
+
+          // Check if the string might contain referral parameters in a non-standard format
+          if (
+            params.includes("referral_type") ||
+            params.includes("referral_value")
+          ) {
+            console.log(
+              "Found referral params in string, attempting alternate parsing"
+            );
+
+            // Try to extract referral parameters using regex
+            const referralTypeMatch = params.match(
+              /referral_type["|']?\s*:\s*(?:"|')?([^"',}]*)(?:"|')?/i
+            );
+            const referralValueMatch = params.match(
+              /referral_value["|']?\s*:\s*(?:"|')?([^"',}]*)(?:"|')?/i
+            );
+
+            if (referralTypeMatch && referralTypeMatch[1]) {
+              parsedParams.referral_type = referralTypeMatch[1].trim();
+              console.log(
+                "Extracted referral_type:",
+                parsedParams.referral_type
+              );
+            }
+
+            if (referralValueMatch && referralValueMatch[1]) {
+              parsedParams.referral_value = referralValueMatch[1].trim();
+              console.log(
+                "Extracted referral_value:",
+                parsedParams.referral_value
+              );
+            }
+          }
+
+          // If the string is simple (like a language code), parse it as a language
+          else if (params && params.length <= 5) {
             // Most language codes are 2-5 chars
             parsedParams = { langParam: params };
           }
         }
-      } else {
-        parsedParams = params || {};
+      } else if (params && typeof params === "object") {
+        // Handle case where params is already an object
+        parsedParams = { ...params };
+        console.log("Params is already an object:", parsedParams);
+      }
+
+      // Ensure referral parameters exist and are properly formatted
+      if (parsedParams.referral_type) {
+        // Make sure it's not a string "null" or "undefined"
+        if (
+          parsedParams.referral_type === "null" ||
+          parsedParams.referral_type === "undefined"
+        ) {
+          parsedParams.referral_type = null;
+        }
+        // Convert string numbers to actual numbers
+        else if (!isNaN(parsedParams.referral_type)) {
+          parsedParams.referral_type = Number(parsedParams.referral_type);
+        }
+      }
+
+      if (parsedParams.referral_value) {
+        // Make sure it's not a string "null" or "undefined"
+        if (
+          parsedParams.referral_value === "null" ||
+          parsedParams.referral_value === "undefined"
+        ) {
+          parsedParams.referral_value = null;
+        }
+      }
+
+      // Store referral parameters in sessionStorage for persistence
+      if (typeof window !== "undefined") {
+        if (parsedParams.referral_type) {
+          try {
+            sessionStorage.setItem(
+              "oqtima_referral_type",
+              parsedParams.referral_type
+            );
+          } catch (e) {
+            /* ignore storage errors */
+          }
+        }
+
+        if (parsedParams.referral_value) {
+          try {
+            sessionStorage.setItem(
+              "oqtima_referral_value",
+              parsedParams.referral_value
+            );
+          } catch (e) {
+            /* ignore storage errors */
+          }
+        }
       }
 
       // IMPORTANT FIX: Sanitize the langParam if it contains a query string format
@@ -506,6 +597,35 @@ const PopupRegistrationForm = ({ params }) => {
           parsedParams.langParam = urlDataLang;
         }
 
+        // Check for referral parameters in URL - these take precedence
+        const urlReferralType =
+          urlParams.get("referral_type") ||
+          urlParams.get("referralType") ||
+          urlParams.get("referral-type");
+
+        const urlReferralValue =
+          urlParams.get("referral_value") ||
+          urlParams.get("referralValue") ||
+          urlParams.get("referral-value");
+
+        if (urlReferralType) {
+          parsedParams.referral_type = !isNaN(urlReferralType)
+            ? Number(urlReferralType)
+            : urlReferralType;
+          console.log(
+            "Using referral_type from URL params:",
+            parsedParams.referral_type
+          );
+        }
+
+        if (urlReferralValue) {
+          parsedParams.referral_value = urlReferralValue;
+          console.log(
+            "Using referral_value from URL params:",
+            parsedParams.referral_value
+          );
+        }
+
         // NEW: If URL parameters are empty, try to extract language from the iframe's src attribute
         // This is needed because some environments (like dev.oqt-ima.com) may not properly pass URL parameters
         if (!parsedParams.langParam && window.location.pathname) {
@@ -521,8 +641,11 @@ const PopupRegistrationForm = ({ params }) => {
         }
       }
 
+      // Log the final parsed parameters
+      console.log("Final parsed parameters:", parsedParams);
       return parsedParams;
     } catch (e) {
+      console.error("Error parsing parameters:", e);
       return {};
     }
   }, [params]);
@@ -577,16 +700,58 @@ const PopupRegistrationForm = ({ params }) => {
 
   // Update state values when params change
   useEffect(() => {
-    if (safeParams.referral_type) {
-      setReferralType(safeParams.referral_type);
+    console.log("safeParams updated:", safeParams);
+
+    // Handle referral_type - could be number or string
+    if (
+      safeParams.referral_type !== undefined &&
+      safeParams.referral_type !== null
+    ) {
+      // Convert string to number if it's numeric
+      const typeValue = !isNaN(safeParams.referral_type)
+        ? Number(safeParams.referral_type)
+        : safeParams.referral_type;
+
+      console.log("Setting referral_type state to:", typeValue);
+      setReferralType(typeValue);
+
+      // Also store in session storage for persistence
+      try {
+        sessionStorage.setItem("oqtima_referral_type", typeValue);
+        // Also set as a global variable as a fallback
+        window.__OQTIMA_REFERRAL_TYPE__ = typeValue;
+      } catch (e) {
+        /* ignore storage errors */
+      }
     }
-    if (safeParams.referral_value) {
+
+    // Handle referral_value
+    if (
+      safeParams.referral_value !== undefined &&
+      safeParams.referral_value !== null
+    ) {
+      console.log(
+        "Setting referral_value state to:",
+        safeParams.referral_value
+      );
       setReferralValue(safeParams.referral_value);
+
+      // Also store in session storage for persistence
+      try {
+        sessionStorage.setItem(
+          "oqtima_referral_value",
+          safeParams.referral_value
+        );
+        // Also set as a global variable as a fallback
+        window.__OQTIMA_REFERRAL_VALUE__ = safeParams.referral_value;
+      } catch (e) {
+        /* ignore storage errors */
+      }
     }
 
     // Update language from safeParams if available
     if (safeParams.langParam) {
-      // Prioritas tertinggi adalah langParam dari safeParams
+      // Highest priority is langParam from safeParams
       setLanguageFromUrl(null); // Reset language from URL
       setLanguageFromMessage(null); // Reset language from message
 
@@ -594,6 +759,11 @@ const PopupRegistrationForm = ({ params }) => {
       // This ensures our language priority logic works correctly
       setLanguageFromUrl(safeParams.langParam);
     }
+
+    // Debug log for referral parameters
+    console.log("Current referral state values:");
+    console.log("- referral_type:", referral_type);
+    console.log("- referral_value:", referral_value);
   }, [safeParams]);
 
   // Listen for messages from parent window with higher priority
@@ -1019,10 +1189,6 @@ const PopupRegistrationForm = ({ params }) => {
     // Set flag to prevent repeated clicks
     target.setAttribute("data-processing", "true");
 
-    // Add visual feedback to the link to indicate it's being processed
-    const originalText = target.innerHTML;
-    target.innerHTML = `${originalText} <span style="display: inline-block; margin-left: 5px;">↗</span>`;
-
     // Get policy type from URL
     const policyType = url.toLowerCase().includes("privacy")
       ? "Privacy"
@@ -1039,31 +1205,22 @@ const PopupRegistrationForm = ({ params }) => {
 
       // Check if the window opened successfully
       if (policyWindow && !policyWindow.closed) {
-        // Success! Show checkmark
-        target.innerHTML = `${originalText} <span style="display: inline-block; margin-left: 5px; color: green;">✓</span>`;
+        // Success
+        console.log(`Successfully opened policy link: ${url}`);
         setTimeout(() => {
-          target.innerHTML = originalText;
           target.removeAttribute("data-processing");
-        }, 1500);
+        }, 1000);
       } else {
-        // Window.open was blocked, show the link was blocked with different styling
-        console.warn("window.open was blocked");
-        target.style.textDecoration = "underline";
-        target.style.fontWeight = "bold";
-        target.style.color = "#ff4400";
-        target.innerHTML = `${originalText} <span style="color: #ff4400;">(try again)</span>`;
-
-        // Reset the original link after a while
-        setTimeout(() => {
-          target.innerHTML = originalText;
-          target.style.textDecoration = "";
-          target.style.fontWeight = "";
-          target.style.color = "";
-          target.removeAttribute("data-processing");
-        }, 5000);
+        // Window.open was blocked
+        console.warn(`window.open was blocked for ${url}`);
 
         // Log the blocked attempt
         console.log(`Policy link was blocked by the browser: ${url}`);
+
+        // Reset processing state after delay
+        setTimeout(() => {
+          target.removeAttribute("data-processing");
+        }, 1000);
 
         // Track analytics if available
         try {
@@ -1081,8 +1238,7 @@ const PopupRegistrationForm = ({ params }) => {
     } catch (err) {
       console.error("Error opening policy window:", err);
 
-      // Reset the link on error
-      target.innerHTML = originalText;
+      // Reset the processing state
       target.removeAttribute("data-processing");
     }
   };
@@ -1200,6 +1356,31 @@ const PopupRegistrationForm = ({ params }) => {
     }
 
     try {
+      // Double-check referral parameters from all possible sources
+      const finalReferralType =
+        referral_type ||
+        safeParams.referral_type ||
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("oqtima_referral_type")
+          : null) ||
+        (typeof window !== "undefined" && window.__OQTIMA_REFERRAL_TYPE__
+          ? window.__OQTIMA_REFERRAL_TYPE__
+          : null);
+
+      const finalReferralValue =
+        referral_value ||
+        safeParams.referral_value ||
+        (typeof window !== "undefined"
+          ? sessionStorage.getItem("oqtima_referral_value")
+          : null) ||
+        (typeof window !== "undefined" && window.__OQTIMA_REFERRAL_VALUE__
+          ? window.__OQTIMA_REFERRAL_VALUE__
+          : null);
+
+      // Log the final values
+      console.log("Final referral_type:", finalReferralType);
+      console.log("Final referral_value:", finalReferralValue);
+
       // Prepare submission data with referral parameters
       const submissionData = {
         ...values,
@@ -1212,30 +1393,21 @@ const PopupRegistrationForm = ({ params }) => {
         cookie: policyLinks.cookiePolicy,
       };
 
-      console.log("submissionData", submissionData);
-
-      // Validate if policy links are available
-      if (!policyLinks.privacyPolicy || !policyLinks.cookiePolicy) {
-        // Still include them in submission but log the issue
-        sendLog({
-          message: "Registration submitted with missing policy links",
-          type: "PolicyWarning",
-          privacy: policyLinks.privacyPolicy,
-          cookie: policyLinks.cookiePolicy,
-        });
+      // Always include referral parameters if we have them
+      if (finalReferralType) {
+        submissionData.referral_type = finalReferralType;
       }
 
-      console.log("referral_type", referral_type);
-      // Only add referral parameters if we have them
-      if (referral_type) {
-        submissionData.referral_type = referral_type;
+      if (finalReferralValue) {
+        submissionData.referral_value = finalReferralValue;
       }
 
-      console.log("referral_value", referral_value);
-      if (referral_value) {
-        submissionData.referral_value = referral_value;
-      }
-      console.log("submissionData", submissionData);
+      // Debug info
+      console.log("Final submission data:", {
+        ...submissionData,
+        token: submissionData.token ? "REDACTED" : null,
+      });
+
       const response = await axios.post(
         `${API_URL}crm-register`,
         submissionData
@@ -1246,91 +1418,91 @@ const PopupRegistrationForm = ({ params }) => {
       } else {
         handleApiResponse(true);
 
-        const redirectAddress = response.data.redirect_address;
-        if (redirectAddress) {
-          // Check if we're in an iframe
-          if (window.parent !== window) {
-            // ENHANCED: Send multiple message formats to ensure compatibility
+        // const redirectAddress = response.data.redirect_address;
+        // if (redirectAddress) {
+        //   // Check if we're in an iframe
+        //   if (window.parent !== window) {
+        //     // ENHANCED: Send multiple message formats to ensure compatibility
 
-            // 1. Standard object format with REDIRECT_TO_URL type
-            window.parent.postMessage(
-              {
-                type: "REDIRECT_TO_URL",
-                url: redirectAddress,
-                success: true,
-                timestamp: Date.now(),
-              },
-              "*"
-            );
+        //     // 1. Standard object format with REDIRECT_TO_URL type
+        //     window.parent.postMessage(
+        //       {
+        //         type: "REDIRECT_TO_URL",
+        //         url: redirectAddress,
+        //         success: true,
+        //         timestamp: Date.now(),
+        //       },
+        //       "*"
+        //     );
 
-            // 2. Alternative object format with redirectUrl property
-            window.parent.postMessage(
-              {
-                type: "REDIRECT_TO_URL",
-                redirectUrl: redirectAddress,
-                success: true,
-                timestamp: Date.now(),
-              },
-              "*"
-            );
+        //     // 2. Alternative object format with redirectUrl property
+        //     window.parent.postMessage(
+        //       {
+        //         type: "REDIRECT_TO_URL",
+        //         redirectUrl: redirectAddress,
+        //         success: true,
+        //         timestamp: Date.now(),
+        //       },
+        //       "*"
+        //     );
 
-            // 3. Registration success format
-            window.parent.postMessage(
-              {
-                type: "REGISTRATION_SUCCESS",
-                url: redirectAddress,
-                redirectUrl: redirectAddress,
-                success: true,
-                timestamp: Date.now(),
-              },
-              "*"
-            );
+        //     // 3. Registration success format
+        //     window.parent.postMessage(
+        //       {
+        //         type: "REGISTRATION_SUCCESS",
+        //         url: redirectAddress,
+        //         redirectUrl: redirectAddress,
+        //         success: true,
+        //         timestamp: Date.now(),
+        //       },
+        //       "*"
+        //     );
 
-            // 4. Simple string format (for the global handler)
-            window.parent.postMessage(`redirect:${redirectAddress}`, "*");
+        //     // 4. Simple string format (for the global handler)
+        //     window.parent.postMessage(`redirect:${redirectAddress}`, "*");
 
-            // 5. Direct URL string (for simple string extraction)
-            setTimeout(() => {
-              window.parent.postMessage(redirectAddress, "*");
-            }, 100);
+        //     // 5. Direct URL string (for simple string extraction)
+        //     setTimeout(() => {
+        //       window.parent.postMessage(redirectAddress, "*");
+        //     }, 100);
 
-            // ENHANCED: Try direct redirection approach for some browsers
-            try {
-              // Some browsers allow this in certain contexts
-              if (window.top) {
-                setTimeout(() => {
-                  try {
-                    window.top.location.href = redirectAddress;
-                  } catch (err) {
-                    // Could not set top location
-                  }
-                }, 300);
-              }
-            } catch (err) {
-              // Could not access top window
-            }
+        //     // ENHANCED: Try direct redirection approach for some browsers
+        //     try {
+        //       // Some browsers allow this in certain contexts
+        //       if (window.top) {
+        //         setTimeout(() => {
+        //           try {
+        //             window.top.location.href = redirectAddress;
+        //           } catch (err) {
+        //             // Could not set top location
+        //           }
+        //         }, 300);
+        //       }
+        //     } catch (err) {
+        //       // Could not access top window
+        //     }
 
-            // ENHANCED: As a final fallback, try to save to sessionStorage for use on page reload
-            try {
-              sessionStorage.setItem(
-                "OQTIMA_PENDING_REDIRECT",
-                redirectAddress
-              );
+        //     // ENHANCED: As a final fallback, try to save to sessionStorage for use on page reload
+        //     try {
+        //       sessionStorage.setItem(
+        //         "OQTIMA_PENDING_REDIRECT",
+        //         redirectAddress
+        //       );
 
-              // Set a flag to indicate successful registration
-              sessionStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
-              sessionStorage.setItem(
-                "OQTIMA_REGISTRATION_TIMESTAMP",
-                Date.now().toString()
-              );
-            } catch (err) {
-              // Could not save to sessionStorage
-            }
-          } else {
-            // If not in iframe, redirect normally
-            window.location.href = redirectAddress;
-          }
-        }
+        //       // Set a flag to indicate successful registration
+        //       sessionStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
+        //       sessionStorage.setItem(
+        //         "OQTIMA_REGISTRATION_TIMESTAMP",
+        //         Date.now().toString()
+        //       );
+        //     } catch (err) {
+        //       // Could not save to sessionStorage
+        //     }
+        //   } else {
+        //     // If not in iframe, redirect normally
+        //     window.location.href = redirectAddress;
+        //   }
+        // }
       }
     } catch (error) {
       const errorMessage = error.response?.data?.message || "An error occurred";
