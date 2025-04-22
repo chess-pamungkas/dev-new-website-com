@@ -13,6 +13,52 @@ import PopupRegistrationForm from "./components/popup-registration-form";
 
 const RTL_LANGUAGES = ["ar"];
 
+// Early initialization script to ensure RTL settings are applied correctly
+// This runs as soon as the file is loaded, before React components mount
+if (typeof window !== "undefined") {
+  try {
+    // Check if we're in a path that indicates Arabic language
+    const path = window.location.pathname;
+    const isArabicPath =
+      path.includes("/ar/") || path === "/ar" || path.startsWith("/ar?");
+
+    // Check if we have explicit language parameters
+    const searchParams = new URLSearchParams(window.location.search);
+    const explicitLang =
+      searchParams.get("lang") ||
+      searchParams.get("language") ||
+      searchParams.get("locale");
+
+    // If we're in an Arabic path or have Arabic as explicit language
+    if (isArabicPath || explicitLang === "ar") {
+      console.log(
+        "[RTL Init] Detected Arabic language from URL, applying RTL settings"
+      );
+
+      // Set HTML attributes immediately
+      document.documentElement.setAttribute("dir", "rtl");
+      document.documentElement.setAttribute("lang", "ar");
+      document.documentElement.classList.add("rtl-active", "rtl");
+      document.documentElement.setAttribute("data-rtl", "true");
+
+      // Set body attributes
+      document.body.setAttribute("dir", "rtl");
+      document.body.classList.add("rtl-active", "rtl");
+      document.body.setAttribute("data-rtl", "true");
+
+      // Set global flags
+      window.__FORCE_RTL__ = true;
+      window.__ORIGINAL_RTL__ = true;
+      window.__ORIGINAL_LANGUAGE__ = "ar";
+    }
+
+    // Store initialization status
+    window.__OQTIMA_RTL_INITIALIZED__ = true;
+  } catch (e) {
+    console.error("[RTL Init] Error in early RTL initialization:", e);
+  }
+}
+
 // Helper function to detect if loaded from landing page/popup script
 const isLoadedFromExternalScript = () => {
   try {
@@ -446,7 +492,11 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
 
     if (isRTLMode) {
       document.documentElement.classList.add("rtl-active");
+      document.documentElement.classList.add("rtl");
+      document.documentElement.setAttribute("data-rtl", "true");
       document.body.classList.add("rtl-active");
+      document.body.classList.add("rtl");
+      document.body.setAttribute("data-rtl", "true");
     } else {
       // Remove all possible RTL classes
       document.documentElement.classList.remove("rtl-active", "rtl", "is-rtl");
@@ -458,6 +508,43 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
 
     // Force UI update by triggering a reflow
     const reflow = document.body.offsetHeight;
+
+    // Use MutationObserver to ensure RTL settings persist
+    if (isRTLMode) {
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (
+            mutation.attributeName === "dir" ||
+            mutation.attributeName === "lang" ||
+            mutation.attributeName === "class"
+          ) {
+            // Reapply RTL settings if they were changed
+            if (
+              document.documentElement.getAttribute("dir") !== "rtl" ||
+              document.documentElement.getAttribute("lang") !== "ar" ||
+              !document.documentElement.classList.contains("rtl-active")
+            ) {
+              console.log(
+                "Reapplying RTL settings after external modification"
+              );
+              document.documentElement.setAttribute("dir", "rtl");
+              document.documentElement.setAttribute("lang", "ar");
+              document.documentElement.classList.add("rtl-active", "rtl");
+              document.documentElement.setAttribute("data-rtl", "true");
+            }
+          }
+        });
+      });
+
+      // Start observing the document element
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["dir", "lang", "class"],
+      });
+
+      // Clean up observer on unmount or when RTL changes
+      return () => observer.disconnect();
+    }
 
     console.log(
       `Language state updated - Language: ${
