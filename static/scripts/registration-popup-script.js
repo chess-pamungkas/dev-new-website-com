@@ -2622,7 +2622,7 @@
                             document.body.appendChild(fallback);
                             
                             // Remove after 15 seconds
-                            setTimeout(function() {
+                      setTimeout(function() {
                               if (fallback.parentNode) {
                                 fallback.parentNode.removeChild(fallback);
                               }

@@ -134,6 +134,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
   const [isContentReady, setIsContentReady] = useState(false);
   const [isExternalLoad] = useState(isLoadedFromExternalScript());
 
+  console.log("params Oke", params);
   // Parse params safely and store in state to survive rerenders
   const [parsedParams, setParsedParams] = useState(() => {
     try {
