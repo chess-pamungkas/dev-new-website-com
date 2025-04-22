@@ -297,8 +297,6 @@
         return;
       }
 
-      console.log("[OQtima] Verifying API key");
-
       try {
         // Make API call to verify the key
         const isValid = await verifyApiKey(apiKey);
