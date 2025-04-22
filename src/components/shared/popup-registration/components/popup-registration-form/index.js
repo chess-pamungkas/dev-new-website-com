@@ -277,12 +277,9 @@ const PopupRegistrationForm = ({ params }) => {
   // Add effect to prevent incorrect language and RTL settings
   useEffect(() => {
     if (typeof window !== "undefined") {
-      console.log("PopupRegistrationForm: Checking language settings");
-
       // Detect if we have explicit language in params
       let specificLanguage = null;
       let dataLang = null;
-
       try {
         // Try to get language from params
         if (typeof params === "string") {
