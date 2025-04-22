@@ -509,6 +509,20 @@ const PopupRegistrationPage = ({ location, data }) => {
       const searchParamsString = location.search || "";
       const searchParams = new URLSearchParams(searchParamsString);
 
+      // Check for RTL parameter as fallback mechanism
+      const rtlParam = searchParams.get("rtl");
+      if (rtlParam === "true") {
+        console.log(
+          "[OQtima] RTL parameter detected in URL, applying RTL mode"
+        );
+        // Apply RTL to document
+        document.documentElement.setAttribute("dir", "rtl");
+        document.documentElement.classList.add("rtl-active");
+        document.body.setAttribute("dir", "rtl");
+        document.body.classList.add("rtl-active");
+        setIsRTL(true);
+      }
+
       // Try to get language from URL hash (highest priority)
       const hashLang = getLanguageFromHash();
 
@@ -798,6 +812,74 @@ const PopupRegistrationPage = ({ location, data }) => {
               });
           } else {
             // Language changes are locked
+          }
+        }
+
+        // Handle RTL setup message - new handler for cross-origin safe RTL setup
+        else if (event.data && event.data.type === "OQTIMA_RTL_SETUP") {
+          console.log("[OQtima] Received RTL setup message:", event.data);
+
+          // Apply RTL styling
+          const isRTL = event.data.isRTL === true;
+          const language = event.data.language || "ar";
+
+          if (isRTL) {
+            // Apply RTL direction
+            document.documentElement.setAttribute("dir", "rtl");
+            document.documentElement.classList.add("rtl-active");
+            document.body.setAttribute("dir", "rtl");
+            document.body.classList.add("rtl-active");
+
+            // Set language attribute
+            document.documentElement.setAttribute("lang", language);
+
+            // Apply custom styles if provided
+            if (event.data.styles) {
+              // Create style element for custom styles
+              const rtlStyleEl = document.createElement("style");
+              rtlStyleEl.id = "oqtima-rtl-dynamic-styles";
+              rtlStyleEl.textContent = event.data.styles;
+              document.head.appendChild(rtlStyleEl);
+            }
+
+            // Apply RTL to registration container
+            const registrationContainer = document.querySelector(
+              ".popup-registration"
+            );
+            if (registrationContainer) {
+              registrationContainer.classList.add("rtl-active");
+              registrationContainer.setAttribute("dir", "rtl");
+              registrationContainer.setAttribute("data-rtl", "true");
+            }
+
+            // Apply RTL to form elements
+            const formElements = document.querySelectorAll(
+              "input, select, textarea, button, label"
+            );
+            if (formElements.length > 0) {
+              formElements.forEach((el) => {
+                el.classList.add("rtl-element");
+                el.setAttribute("dir", "rtl");
+              });
+            }
+
+            // Force a reflow to ensure styles are applied
+            document.body.style.display = "none";
+            setTimeout(() => {
+              document.body.style.display = "";
+            }, 10);
+
+            // Notify parent window that RTL was set up successfully
+            if (window.parent && window.parent !== window) {
+              window.parent.postMessage(
+                {
+                  type: "OQTIMA_RTL_SETUP_COMPLETE",
+                  success: true,
+                  language: language,
+                },
+                "*"
+              );
+            }
           }
         }
       },

@@ -255,83 +255,11 @@ const CountryDropdown = ({
 
 // Wrapper component to force remount when RTL changes
 const RTLAwareForm = ({ children, isRTLMode, language }) => {
-  // Add RTL-specific styles when component mounts
-  useEffect(() => {
-    if (typeof document === "undefined") return;
-
-    // Create a style element for RTL-specific styles if it doesn't exist
-    if (!document.getElementById("rtl-aware-form-styles")) {
-      const styleEl = document.createElement("style");
-      styleEl.id = "rtl-aware-form-styles";
-      styleEl.innerHTML = `
-        /* RTL-specific styles for the RTLAwareForm component */
-        .rtl-aware-wrapper.rtl-mode {
-          direction: rtl !important;
-          text-align: right !important;
-        }
-
-        /* Form inputs in RTL mode */
-        .rtl-mode input,
-        .rtl-mode select,
-        .rtl-mode textarea {
-          direction: rtl !important;
-          text-align: right !important;
-        }
-
-        /* Form labels in RTL mode */
-        .rtl-mode label {
-          text-align: right !important;
-        }
-
-        /* Ensure RTL for error messages */
-        .rtl-mode .popup-registration__error {
-          text-align: right !important;
-        }
-      `;
-      document.head.appendChild(styleEl);
-    }
-
-    // Clean up on unmount
-    return () => {
-      const styleEl = document.getElementById("rtl-aware-form-styles");
-      if (styleEl && !isRTLMode) {
-        styleEl.remove();
-      }
-    };
-  }, [isRTLMode]);
-
   // Use a key to force remount of child components when RTL changes
   return (
-    <div
-      key={`${isRTLMode ? "rtl" : "ltr"}-${language}-wrapper`}
-      data-rtl={isRTLMode ? "true" : "false"}
-      dir={isRTLMode ? "rtl" : "ltr"}
-      className={`rtl-aware-wrapper ${isRTLMode ? "rtl-mode" : "ltr-mode"}`}
-      style={{
-        direction: isRTLMode ? "rtl" : "ltr",
-        textAlign: isRTLMode ? "right" : "left",
-      }}
-    >
+    <div key={`${isRTLMode ? "rtl" : "ltr"}-${language}-wrapper`}>
       {children}
     </div>
-  );
-};
-
-// Helper to determine if a language code represents an RTL language
-const isRTLLanguage = (languageCode) => {
-  if (!languageCode) return false;
-
-  // Normalize the language code to lowercase
-  const normalizedCode = languageCode.toLowerCase().trim();
-
-  // List of RTL languages
-  const rtlLanguages = ["ar", "he", "fa", "ur"];
-
-  // Check if the language code or its base (before dash) is an RTL language
-  return (
-    rtlLanguages.includes(normalizedCode) ||
-    (normalizedCode.indexOf("-") > 0 &&
-      rtlLanguages.includes(normalizedCode.split("-")[0]))
   );
 };
 
@@ -1154,8 +1082,8 @@ const PopupRegistrationForm = ({ params }) => {
     effectiveLanguage = "pt";
   }
 
-  // Check for RTL language - use our utility function
-  const forcedRTL = isRTLLanguage(effectiveLanguage);
+  // Check untuk RTL language
+  const forcedRTL = RTL_LANGUAGES.includes(effectiveLanguage);
   const isRTLMode = isRTL || forcedRTL;
 
   // First parse and extract the language parameters
@@ -1195,13 +1123,10 @@ const PopupRegistrationForm = ({ params }) => {
     if (specificLanguage) {
       console.log(`Using specific language: ${specificLanguage}`);
 
-      // ADDED: Check if the language is RTL
-      const isRtlLang = isRTLLanguage(specificLanguage);
-
-      // Clean RTL attributes for non-RTL languages
-      if (!isRtlLang) {
+      // ADDED: Clean RTL attributes for non-Arabic languages
+      if (specificLanguage.toLowerCase() !== "ar") {
         console.log(
-          `Non-RTL language detected (${specificLanguage}), cleaning RTL attributes`
+          `Non-Arabic language detected (${specificLanguage}), cleaning RTL attributes`
         );
         cleanRTLAttributes();
       }
@@ -1210,6 +1135,9 @@ const PopupRegistrationForm = ({ params }) => {
       if (setCurrentLanguage && typeof setCurrentLanguage === "function") {
         try {
           // Create proper language object expected by the context
+          const isRtlLang = RTL_LANGUAGES.includes(
+            specificLanguage.toLowerCase()
+          );
           const langObject = {
             id: specificLanguage,
             title: specificLanguage.toUpperCase(),
@@ -1237,17 +1165,8 @@ const PopupRegistrationForm = ({ params }) => {
       } catch (e) {
         console.warn("Error checking i18next language:", e);
       }
-
-      // Store RTL status in session storage
-      if (typeof sessionStorage !== "undefined") {
-        try {
-          sessionStorage.setItem("oqtima_tab_rtl", isRtlLang.toString());
-        } catch (e) {
-          // Ignore storage errors
-        }
-      }
     }
-  }, [params, setCurrentLanguage]);
+  }, [params]);
 
   // NEW: Add specific effect to monitor language changes and handle RTL cleanup
   useEffect(() => {
@@ -1257,11 +1176,10 @@ const PopupRegistrationForm = ({ params }) => {
     const handleLanguageRTLCheck = () => {
       const currentLang = document.documentElement.getAttribute("lang");
 
-      if (currentLang && !isRTLLanguage(currentLang)) {
+      if (currentLang && currentLang.toLowerCase() !== "ar") {
         console.log(
-          `Form detected non-RTL language: ${currentLang}, cleaning RTL attributes`
+          `Form detected non-Arabic language: ${currentLang}, cleaning RTL attributes`
         );
-        // Only clean if we're not in an RTL language
         cleanRTLAttributes();
       }
     };
@@ -1278,13 +1196,13 @@ const PopupRegistrationForm = ({ params }) => {
       });
     });
 
-    // Start observing document language changes
+    // Start observing
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["lang"],
     });
 
-    // Cleanup observer on unmount
+    // Cleanup on unmount
     return () => observer.disconnect();
   }, []);
 
@@ -1893,9 +1811,7 @@ const PopupRegistrationForm = ({ params }) => {
     <RTLAwareForm isRTLMode={isRTLMode} language={effectiveLanguage}>
       <div className="popup-registration__form-container">
         <Formik
-          key={`form-${
-            isRTLMode ? "rtl" : "ltr"
-          }-${effectiveLanguage}-${Date.now()}`}
+          key={`${isRTLMode ? "rtl" : "ltr"}-${effectiveLanguage}-form`}
           initialValues={{
             first_name: "",
             last_name: "",
@@ -1982,7 +1898,6 @@ const PopupRegistrationForm = ({ params }) => {
                   "popup-registration__form--error": isSentSuccessful === false,
                 })}
                 dir={isRTLMode ? "rtl" : "ltr"}
-                data-rtl={isRTLMode ? "true" : "false"}
                 style={{
                   textAlign: isRTLMode ? "right" : "left",
                   direction: isRTLMode ? "rtl" : "ltr",
