@@ -13,51 +13,97 @@ import PopupRegistrationForm from "./components/popup-registration-form";
 
 const RTL_LANGUAGES = ["ar"];
 
-// Early initialization script to ensure RTL settings are applied correctly
-// This runs as soon as the file is loaded, before React components mount
-if (typeof window !== "undefined") {
-  try {
-    // Check if we're in a path that indicates Arabic language
-    const path = window.location.pathname;
-    const isArabicPath =
-      path.includes("/ar/") || path === "/ar" || path.startsWith("/ar?");
+// New function to thoroughly clean RTL attributes
+export const cleanRTLAttributes = () => {
+  if (typeof window === "undefined") return;
 
-    // Check if we have explicit language parameters
-    const searchParams = new URLSearchParams(window.location.search);
-    const explicitLang =
-      searchParams.get("lang") ||
-      searchParams.get("language") ||
-      searchParams.get("locale");
+  console.log("Cleaning all RTL attributes and classes");
 
-    // If we're in an Arabic path or have Arabic as explicit language
-    if (isArabicPath || explicitLang === "ar") {
-      console.log(
-        "[RTL Init] Detected Arabic language from URL, applying RTL settings"
-      );
+  // Remove RTL classes from document element
+  document.documentElement.classList.remove("rtl-active", "rtl", "is-rtl");
+  document.documentElement.setAttribute("dir", "ltr");
+  document.documentElement.removeAttribute("data-rtl");
 
-      // Set HTML attributes immediately
-      document.documentElement.setAttribute("dir", "rtl");
-      document.documentElement.setAttribute("lang", "ar");
-      document.documentElement.classList.add("rtl-active", "rtl");
-      document.documentElement.setAttribute("data-rtl", "true");
+  // Remove RTL classes from body
+  document.body.classList.remove("rtl-active", "rtl", "is-rtl");
+  document.body.setAttribute("dir", "ltr");
+  document.body.removeAttribute("data-rtl");
 
-      // Set body attributes
-      document.body.setAttribute("dir", "rtl");
-      document.body.classList.add("rtl-active", "rtl");
-      document.body.setAttribute("data-rtl", "true");
+  // Remove RTL styles
+  const rtlStyleElement = document.getElementById(
+    "popup-registration-rtl-styles"
+  );
+  if (rtlStyleElement) rtlStyleElement.remove();
 
-      // Set global flags
-      window.__FORCE_RTL__ = true;
-      window.__ORIGINAL_RTL__ = true;
-      window.__ORIGINAL_LANGUAGE__ = "ar";
+  const rtlStylesheet = document.getElementById("rtl-stylesheet");
+  if (rtlStylesheet) rtlStylesheet.remove();
+
+  const rtlInlineStyles = document.getElementById("rtl-inline-styles");
+  if (rtlInlineStyles) rtlInlineStyles.remove();
+
+  // Reset global RTL flags
+  if (window.__FORCE_RTL__) window.__FORCE_RTL__ = false;
+  if (window.__ORIGINAL_RTL__) window.__ORIGINAL_RTL__ = false;
+
+  // Remove RTL from registration containers
+  const registrationContainers = document.querySelectorAll(
+    ".popup-registration"
+  );
+  if (registrationContainers.length > 0) {
+    registrationContainers.forEach((container) => {
+      container.classList.remove("rtl-active", "popup-registration--rtl");
+      container.setAttribute("dir", "ltr");
+      container.removeAttribute("data-rtl");
+    });
+  }
+
+  // Reset form elements
+  const rtlElements = document.querySelectorAll(".rtl-element");
+  if (rtlElements.length > 0) {
+    rtlElements.forEach((el) => {
+      el.classList.remove("rtl-element");
+      el.removeAttribute("dir");
+    });
+  }
+
+  // Force UI update by triggering a reflow
+  const reflow = document.body.offsetHeight;
+
+  console.log("RTL cleanup completed");
+};
+
+// Function to completely reset RTL state by forcing a page reload if needed
+export const forceCompleteRTLReset = (forceReload = false) => {
+  // Try the normal cleanup first
+  cleanRTLAttributes();
+
+  // Store the current language to maintain it across reload
+  const currentLang = document.documentElement.getAttribute("lang") || "en";
+
+  // Save current scroll position
+  const scrollPos = window.scrollY || document.documentElement.scrollTop;
+
+  if (forceReload) {
+    console.log("Forcing complete RTL reset with page reload");
+
+    // Save important state in sessionStorage (it persists across reloads)
+    try {
+      sessionStorage.setItem("oqtima_reset_language", currentLang);
+      sessionStorage.setItem("oqtima_reset_scroll", scrollPos.toString());
+      sessionStorage.setItem("oqtima_reset_time", Date.now().toString());
+
+      // Set a flag to indicate we've forced a reload
+      sessionStorage.setItem("oqtima_rtl_reset", "true");
+    } catch (e) {
+      console.error("Failed to save state before reload:", e);
     }
 
-    // Store initialization status
-    window.__OQTIMA_RTL_INITIALIZED__ = true;
-  } catch (e) {
-    console.error("[RTL Init] Error in early RTL initialization:", e);
+    // Append a timestamp to force a clean reload
+    const separator = window.location.search ? "&" : "?";
+    window.location.href =
+      window.location.href + separator + "_rtl_reset=" + Date.now();
   }
-}
+};
 
 // Helper function to detect if loaded from landing page/popup script
 const isLoadedFromExternalScript = () => {
@@ -179,6 +225,56 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isContentReady, setIsContentReady] = useState(false);
   const [isExternalLoad] = useState(isLoadedFromExternalScript());
+
+  // FIRST EFFECT: Handle reset state after a forced reload
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Check if we've just reloaded because of RTL issues
+    const hasReset = sessionStorage.getItem("oqtima_rtl_reset") === "true";
+    if (hasReset) {
+      console.log("Detected page was reloaded to fix RTL issues");
+
+      try {
+        // Get the saved language
+        const savedLang = sessionStorage.getItem("oqtima_reset_language");
+        if (savedLang) {
+          console.log(`Applying saved language after reload: ${savedLang}`);
+          document.documentElement.setAttribute("lang", savedLang);
+
+          // If it's not Arabic, make sure we clean RTL
+          if (savedLang.toLowerCase() !== "ar") {
+            cleanRTLAttributes();
+          }
+        }
+
+        // Restore scroll position if needed
+        const savedScroll = sessionStorage.getItem("oqtima_reset_scroll");
+        if (savedScroll) {
+          window.scrollTo(0, parseInt(savedScroll, 10));
+        }
+
+        // Clear the reset flags
+        sessionStorage.removeItem("oqtima_rtl_reset");
+        sessionStorage.removeItem("oqtima_reset_language");
+        sessionStorage.removeItem("oqtima_reset_scroll");
+        sessionStorage.removeItem("oqtima_reset_time");
+      } catch (e) {
+        console.error("Error handling post-reload state:", e);
+      }
+    }
+
+    // Check URL for the reset parameter and remove it to clean the URL
+    if (window.location.search.includes("_rtl_reset=")) {
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("_rtl_reset");
+        window.history.replaceState({}, document.title, url.toString());
+      } catch (e) {
+        console.warn("Failed to clean URL after reset:", e);
+      }
+    }
+  }, []);
 
   console.log("params Oke", params);
   // Parse params safely and store in state to survive rerenders
@@ -458,6 +554,11 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
         `Overriding RTL detection because HTML lang="${htmlLang}" is not an RTL language`
       );
       forcedRTL = false;
+
+      // IMPORTANT: Call the cleanup function explicitly for non-Arabic languages
+      if (htmlLang && htmlLang.toLowerCase() !== "ar") {
+        cleanRTLAttributes();
+      }
     }
   }
 
@@ -482,13 +583,20 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
     window.__FORCE_RTL__ = isRTLMode;
     window.__ORIGINAL_RTL__ = isRTLMode;
 
+    // IMPROVED LANGUAGE HANDLING: Check the language and set it correctly first
+    const effectiveLanguage =
+      forcedLanguage || params?.langParam || (isRTLMode ? "ar" : "en");
+    document.documentElement.setAttribute("lang", effectiveLanguage);
+
+    // If language is not Arabic, ensure RTL attributes are removed
+    if (effectiveLanguage.toLowerCase() !== "ar") {
+      cleanRTLAttributes();
+      return; // Exit early - no need to apply RTL styles for non-Arabic languages
+    }
+
     // Update document classes and attributes immediately
     document.documentElement.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
     document.body.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
-    document.documentElement.setAttribute(
-      "lang",
-      forcedLanguage || params?.langParam || (isRTLMode ? "ar" : "en")
-    );
 
     if (isRTLMode) {
       document.documentElement.classList.add("rtl-active");
@@ -518,19 +626,25 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
             mutation.attributeName === "lang" ||
             mutation.attributeName === "class"
           ) {
-            // Reapply RTL settings if they were changed
-            if (
-              document.documentElement.getAttribute("dir") !== "rtl" ||
-              document.documentElement.getAttribute("lang") !== "ar" ||
-              !document.documentElement.classList.contains("rtl-active")
-            ) {
-              console.log(
-                "Reapplying RTL settings after external modification"
-              );
-              document.documentElement.setAttribute("dir", "rtl");
-              document.documentElement.setAttribute("lang", "ar");
-              document.documentElement.classList.add("rtl-active", "rtl");
-              document.documentElement.setAttribute("data-rtl", "true");
+            // Only reapply RTL settings if language is still Arabic
+            const currentLang = document.documentElement.getAttribute("lang");
+            if (currentLang && currentLang.toLowerCase() === "ar") {
+              // Reapply RTL settings if they were changed
+              if (
+                document.documentElement.getAttribute("dir") !== "rtl" ||
+                !document.documentElement.classList.contains("rtl-active")
+              ) {
+                console.log(
+                  "Reapplying RTL settings after external modification"
+                );
+                document.documentElement.setAttribute("dir", "rtl");
+                document.documentElement.classList.add("rtl-active", "rtl");
+                document.documentElement.setAttribute("data-rtl", "true");
+              }
+            } else if (currentLang && currentLang.toLowerCase() !== "ar") {
+              // Language is not Arabic - ensure RTL is cleaned up
+              cleanRTLAttributes();
+              observer.disconnect(); // No need to keep observing
             }
           }
         });
@@ -945,6 +1059,96 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
     };
   }, []);
 
+  // NEW EFFECT: Monitor document language and clean RTL attributes if not Arabic
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Function to check and fix RTL attributes when language changes
+    const checkAndFixRTLAttributes = () => {
+      const currentLang = document.documentElement.getAttribute("lang");
+      console.log(`Language change detected: ${currentLang}`);
+
+      if (currentLang && currentLang.toLowerCase() !== "ar") {
+        // If language is not Arabic, ensure we clean up all RTL attributes
+        console.log(
+          `Non-Arabic language '${currentLang}' detected, cleaning RTL attributes`
+        );
+        cleanRTLAttributes();
+      }
+    };
+
+    // Initial check
+    checkAndFixRTLAttributes();
+
+    // Set up MutationObserver to monitor language attribute changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "lang") {
+          checkAndFixRTLAttributes();
+        }
+      });
+    });
+
+    // Start observing the document element for language changes
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["lang"],
+    });
+
+    // Clean up observer on unmount
+    return () => observer.disconnect();
+  }, []);
+
+  // NEW: Add debug hook to monitor RTL attributes and force cleanup if needed
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Define what we consider a "stuck" RTL state
+    const isRTLStuck = () => {
+      const htmlLang = document.documentElement.getAttribute("lang") || "";
+      const htmlDir = document.documentElement.getAttribute("dir") || "";
+      const htmlHasRTLClass =
+        document.documentElement.classList.contains("rtl-active") ||
+        document.documentElement.classList.contains("rtl");
+
+      // If language is not Arabic but we have RTL classes or dir="rtl", something is stuck
+      return (
+        htmlLang.toLowerCase() !== "ar" &&
+        (htmlDir === "rtl" || htmlHasRTLClass)
+      );
+    };
+
+    // Set a timeout to check if RTL cleanup worked
+    const checkTimeout = setTimeout(() => {
+      if (isRTLStuck()) {
+        console.warn(
+          "RTL state appears to be stuck after language change to non-Arabic"
+        );
+        console.warn("Attempting force cleanup...");
+
+        // Try stronger cleanup
+        cleanRTLAttributes();
+
+        // Check again after a short delay
+        setTimeout(() => {
+          if (isRTLStuck()) {
+            console.error(
+              "RTL state is still stuck after first cleanup attempt"
+            );
+            console.error("Using last resort - forcing complete reset...");
+
+            // Last resort - reload the page
+            forceCompleteRTLReset(true);
+          } else {
+            console.log("Force cleanup successfully fixed RTL state");
+          }
+        }, 500);
+      }
+    }, 1000);
+
+    return () => clearTimeout(checkTimeout);
+  }, []);
+
   if (!isOpen) return null;
 
   const benefits = benefitsConfig.filter(({ entities }) =>
@@ -978,7 +1182,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
     <>
       {isLoading && isExternalLoad && <LoadingSpinner />}
       <div
-        key={isRTLMode ? "rtl-popup" : "ltr-popup"}
+        key={isRTLMode ? "rtl" : "ltr"}
         className={cn("popup-registration", {
           "popup-registration--rtl": isRTLMode,
           "styles-loaded": isStylesLoaded,
