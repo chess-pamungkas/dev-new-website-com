@@ -1586,91 +1586,91 @@ const PopupRegistrationForm = ({ params }) => {
       } else {
         handleApiResponse(true);
 
-        // const redirectAddress = response.data.redirect_address;
-        // if (redirectAddress) {
-        //   // Check if we're in an iframe
-        //   if (window.parent !== window) {
-        //     // ENHANCED: Send multiple message formats to ensure compatibility
+        const redirectAddress = response.data.redirect_address;
+        if (redirectAddress) {
+          // Check if we're in an iframe
+          if (window.parent !== window) {
+            // ENHANCED: Send multiple message formats to ensure compatibility
 
-        //     // 1. Standard object format with REDIRECT_TO_URL type
-        //     window.parent.postMessage(
-        //       {
-        //         type: "REDIRECT_TO_URL",
-        //         url: redirectAddress,
-        //         success: true,
-        //         timestamp: Date.now(),
-        //       },
-        //       "*"
-        //     );
+            // 1. Standard object format with REDIRECT_TO_URL type
+            window.parent.postMessage(
+              {
+                type: "REDIRECT_TO_URL",
+                url: redirectAddress,
+                success: true,
+                timestamp: Date.now(),
+              },
+              "*"
+            );
 
-        //     // 2. Alternative object format with redirectUrl property
-        //     window.parent.postMessage(
-        //       {
-        //         type: "REDIRECT_TO_URL",
-        //         redirectUrl: redirectAddress,
-        //         success: true,
-        //         timestamp: Date.now(),
-        //       },
-        //       "*"
-        //     );
+            // 2. Alternative object format with redirectUrl property
+            window.parent.postMessage(
+              {
+                type: "REDIRECT_TO_URL",
+                redirectUrl: redirectAddress,
+                success: true,
+                timestamp: Date.now(),
+              },
+              "*"
+            );
 
-        //     // 3. Registration success format
-        //     window.parent.postMessage(
-        //       {
-        //         type: "REGISTRATION_SUCCESS",
-        //         url: redirectAddress,
-        //         redirectUrl: redirectAddress,
-        //         success: true,
-        //         timestamp: Date.now(),
-        //       },
-        //       "*"
-        //     );
+            // 3. Registration success format
+            window.parent.postMessage(
+              {
+                type: "REGISTRATION_SUCCESS",
+                url: redirectAddress,
+                redirectUrl: redirectAddress,
+                success: true,
+                timestamp: Date.now(),
+              },
+              "*"
+            );
 
-        //     // 4. Simple string format (for the global handler)
-        //     window.parent.postMessage(`redirect:${redirectAddress}`, "*");
+            // 4. Simple string format (for the global handler)
+            window.parent.postMessage(`redirect:${redirectAddress}`, "*");
 
-        //     // 5. Direct URL string (for simple string extraction)
-        //     setTimeout(() => {
-        //       window.parent.postMessage(redirectAddress, "*");
-        //     }, 100);
+            // 5. Direct URL string (for simple string extraction)
+            setTimeout(() => {
+              window.parent.postMessage(redirectAddress, "*");
+            }, 100);
 
-        //     // ENHANCED: Try direct redirection approach for some browsers
-        //     try {
-        //       // Some browsers allow this in certain contexts
-        //       if (window.top) {
-        //         setTimeout(() => {
-        //           try {
-        //             window.top.location.href = redirectAddress;
-        //           } catch (err) {
-        //             // Could not set top location
-        //           }
-        //         }, 300);
-        //       }
-        //     } catch (err) {
-        //       // Could not access top window
-        //     }
+            // ENHANCED: Try direct redirection approach for some browsers
+            try {
+              // Some browsers allow this in certain contexts
+              if (window.top) {
+                setTimeout(() => {
+                  try {
+                    window.top.location.href = redirectAddress;
+                  } catch (err) {
+                    // Could not set top location
+                  }
+                }, 300);
+              }
+            } catch (err) {
+              // Could not access top window
+            }
 
-        //     // ENHANCED: As a final fallback, try to save to sessionStorage for use on page reload
-        //     try {
-        //       sessionStorage.setItem(
-        //         "OQTIMA_PENDING_REDIRECT",
-        //         redirectAddress
-        //       );
+            // ENHANCED: As a final fallback, try to save to sessionStorage for use on page reload
+            try {
+              sessionStorage.setItem(
+                "OQTIMA_PENDING_REDIRECT",
+                redirectAddress
+              );
 
-        //       // Set a flag to indicate successful registration
-        //       sessionStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
-        //       sessionStorage.setItem(
-        //         "OQTIMA_REGISTRATION_TIMESTAMP",
-        //         Date.now().toString()
-        //       );
-        //     } catch (err) {
-        //       // Could not save to sessionStorage
-        //     }
-        //   } else {
-        //     // If not in iframe, redirect normally
-        //     window.location.href = redirectAddress;
-        //   }
-        // }
+              // Set a flag to indicate successful registration
+              sessionStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
+              sessionStorage.setItem(
+                "OQTIMA_REGISTRATION_TIMESTAMP",
+                Date.now().toString()
+              );
+            } catch (err) {
+              // Could not save to sessionStorage
+            }
+          } else {
+            // If not in iframe, redirect normally
+            window.location.href = redirectAddress;
+          }
+        }
       }
     } catch (error) {
       const errorMessage = error.response?.data?.message || "An error occurred";

@@ -838,7 +838,7 @@
     // Log parameters for debugging
     console.log(
       "[OQtima] Opening registration popup with parameters:",
-      options
+      JSON.stringify(options)
     );
 
     // ENHANCED: Create standardized params object with all possible variations of parameters
@@ -852,6 +852,10 @@
       params.langParam ||
       "en";
     console.log("[OQtima] Language set to:", params.language);
+
+    // Store the original data-lang parameter separately as it has special handling for RTL
+    const dataLang = params["data-lang"];
+    console.log("[OQtima] Data-lang parameter:", dataLang);
 
     // IMPROVED: Check if URL path contains language indicator
     try {
@@ -873,9 +877,25 @@
       console.warn("[OQtima] Error checking URL path for language:", e);
     }
 
-    // FIXED: Ensure RTL is only enabled for Arabic language
-    params.isRTL = params.language === "ar";
-    console.log("[OQtima] RTL mode:", params.isRTL ? "enabled" : "disabled");
+    // CRITICAL FIX: Ensure RTL is correctly enabled for Arabic language
+    // Either when language is set to 'ar' OR when data-lang is 'ar'
+    params.isRTL = params.language === "ar" || dataLang === "ar";
+    console.log(
+      "[OQtima] RTL mode:",
+      params.isRTL ? "enabled" : "disabled",
+      params.isRTL
+        ? `(Triggered by ${
+            params.language === "ar"
+              ? "language parameter"
+              : "data-lang parameter"
+          })`
+        : ""
+    );
+
+    // Store RTL state in global variable for other components to access
+    if (typeof window !== "undefined") {
+      window.__OQTIMA_IS_RTL_MODE__ = params.isRTL;
+    }
 
     // ENHANCED: Normalize referral parameters to ensure consistency
     // First, standardize all parameter naming conventions to ensure we capture all possible formats
@@ -1020,6 +1040,14 @@
     const originalHtmlOverflow = document.documentElement.style.overflow;
     const originalScrollPos = window.scrollY;
 
+    // Prevent background scrolling for non-embedded popups
+    if (typeof window !== "undefined" && !params.embedded) {
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%";
+      document.body.style.top = `-${originalScrollPos}px`;
+    }
+
     // Store all parameters in sessionStorage for the iframe
     if (typeof window !== "undefined") {
       try {
@@ -1036,6 +1064,14 @@
         sessionStorage.setItem("oqtima_popup_mode", "true");
         sessionStorage.setItem("oqtima_parent_dir", originalDocDir);
         sessionStorage.setItem("oqtima_parent_lang", originalDocLang);
+
+        // CRITICAL: Store data-lang specifically to ensure RTL detection works properly
+        if (dataLang) {
+          sessionStorage.setItem("oqtima_data_lang", dataLang);
+        }
+        if (params.isRTL) {
+          sessionStorage.setItem("oqtima_force_rtl", "true");
+        }
 
         // ENHANCED: Ensure referral parameters are stored in sessionStorage
         if (params.referral_type != null) {
@@ -1055,6 +1091,11 @@
             params.referral_value
           );
         }
+
+        // Store whether this is Brazilian Portuguese
+        if (isBrazilianPortuguese) {
+          sessionStorage.setItem("oqtima_is_brazilian_portuguese", "true");
+        }
       } catch (e) {
         console.warn("[OQtima] Could not set sessionStorage:", e);
       }
@@ -1062,11 +1103,12 @@
       // Set flags that will be read by the iframe, but don't modify document
       window.__OQTIMA_COMPONENT_LANGUAGE = params.language;
       window.__OQTIMA_LOCKED_LANG = params.language;
-      window.__FORCE_RTL__ = params.isRTL;
+      window.__OQTIMA_FORCE_RTL__ = params.isRTL;
       window.__ORIGINAL_RTL__ = params.isRTL;
       window.__OQTIMA_TAB_SESSION__ = tabSessionId;
       window.__OQTIMA_POPUP_MODE__ = true;
       window.__OQTIMA_PARENT_DIR__ = originalDocDir;
+      window.__OQTIMA_DATA_LANG__ = dataLang;
 
       // ENHANCED: Set global referral variables
       if (params.referral_type != null) {
@@ -1086,67 +1128,93 @@
     const referralType = params.referral_type || null;
     const referralValue = params.referral_value || null;
 
-    // For debug and logging purposes
-    if (referralType !== null && referralValue) {
-      console.log("[OQtima] Using referral parameters in popup creation:", {
-        referralType,
-        referralValue,
-      });
-    }
+    // Determine if mobile based on screen width
+    const isMobile =
+      typeof window !== "undefined" &&
+      (window.innerWidth <= 768 ||
+        params.forceMobile === true ||
+        params.isMobile === true ||
+        params.mobile === true);
 
-    // Use special mobile handling for small screens
-    if (window.innerWidth <= 767) {
-      createMobilePopup(
-        params.language,
-        referralType,
-        referralValue,
-        originalBodyClasses,
-        originalHtmlClasses,
-        originalBodyStyle,
-        originalHtmlStyle,
-        originalBodyOverflow,
-        originalHtmlOverflow,
-        originalScrollPos,
-        ipAddress,
-        countryName,
-        countryCode
-      );
-      return;
-    }
+    // Log popup creation parameters
+    console.log("[OQtima] Creating popup with:", {
+      language: params.language,
+      dataLang: dataLang,
+      referralType,
+      referralValue,
+      isMobile,
+      isRTL: params.isRTL,
+    });
 
-    // Create popup based on RTL status for desktop
-    if (params.isRTL) {
-      createRtlFullscreenPopup(
-        params.language,
-        referralType,
-        referralValue,
-        originalBodyClasses,
-        originalHtmlClasses,
-        originalBodyStyle,
-        originalHtmlStyle,
-        originalBodyOverflow,
-        originalHtmlOverflow,
-        originalScrollPos,
-        ipAddress,
-        countryName,
-        countryCode
-      );
-    } else {
-      createStandardPopup(
-        params.language,
-        referralType,
-        referralValue,
-        originalBodyClasses,
-        originalHtmlClasses,
-        originalBodyStyle,
-        originalHtmlStyle,
-        originalBodyOverflow,
-        originalHtmlOverflow,
-        originalScrollPos,
-        ipAddress,
-        countryName,
-        countryCode
-      );
+    // If mobile device, create mobile popup, otherwise create standard popup
+    try {
+      if (isMobile) {
+        createMobilePopup(
+          params.language,
+          referralType,
+          referralValue,
+          originalBodyClasses,
+          originalHtmlClasses,
+          originalBodyStyle,
+          originalHtmlStyle,
+          originalBodyOverflow,
+          originalHtmlOverflow,
+          originalScrollPos,
+          ipAddress,
+          countryName,
+          countryCode
+        );
+      } else if (params.isRTL) {
+        createRtlFullscreenPopup(
+          params.language,
+          referralType,
+          referralValue,
+          originalBodyClasses,
+          originalHtmlClasses,
+          originalBodyStyle,
+          originalHtmlStyle,
+          originalBodyOverflow,
+          originalHtmlOverflow,
+          originalScrollPos,
+          ipAddress,
+          countryName,
+          countryCode
+        );
+      } else {
+        createStandardPopup(
+          params.language,
+          referralType,
+          referralValue,
+          originalBodyClasses,
+          originalHtmlClasses,
+          originalBodyStyle,
+          originalHtmlStyle,
+          originalBodyOverflow,
+          originalHtmlOverflow,
+          originalScrollPos,
+          ipAddress,
+          countryName,
+          countryCode
+        );
+      }
+    } catch (err) {
+      console.error("[OQtima] Error creating popup:", err);
+      // Restore original body state in case of error
+      document.body.className = originalBodyClasses;
+      document.documentElement.className = originalHtmlClasses;
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
+      if (originalBodyStyle) {
+        document.body.setAttribute("style", originalBodyStyle);
+      } else {
+        document.body.removeAttribute("style");
+      }
+      if (originalHtmlStyle) {
+        document.documentElement.setAttribute("style", originalHtmlStyle);
+      } else {
+        document.documentElement.removeAttribute("style");
+      }
+      window.scrollTo(0, originalScrollPos);
     }
   }
 
