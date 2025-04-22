@@ -13,6 +13,7 @@ import ClientResolverContext from "../../../../../context/client-resolver-contex
 import { PORTAL_LANGUAGES_MAP } from "../../../../../helpers/lang-options.config";
 import LanguageContext from "../../../../../context/language-context";
 import arrowDownIcon from "../../../../../assets/images/icons/arrow-down.png";
+import { cleanRTLAttributes } from "../../index";
 
 const RTL_LANGUAGES = ["ar"];
 
@@ -272,14 +273,17 @@ const PopupRegistrationForm = ({ params }) => {
   const API_URL = process.env.GATSBY_OQTIMA_API_URL;
   const { executeRecaptcha } = useGoogleReCaptcha();
   const { clientConfig } = useContext(ClientResolverContext);
-  const { selectedLanguage } = useContext(LanguageContext);
+  const { selectedLanguage, setCurrentLanguage } = useContext(LanguageContext);
 
   // Add effect to prevent incorrect language and RTL settings
   useEffect(() => {
     if (typeof window !== "undefined") {
+      console.log("PopupRegistrationForm: Checking language settings");
+
       // Detect if we have explicit language in params
       let specificLanguage = null;
       let dataLang = null;
+
       try {
         // Try to get language from params
         if (typeof params === "string") {
@@ -1082,204 +1086,125 @@ const PopupRegistrationForm = ({ params }) => {
   const forcedRTL = RTL_LANGUAGES.includes(effectiveLanguage);
   const isRTLMode = isRTL || forcedRTL;
 
-  // Add effect to properly handle RTL language changes
+  // First parse and extract the language parameters
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // Check if we're in popup mode
-    const isInPopupMode =
-      sessionStorage.getItem("oqtima_popup_mode") === "true";
-    const parentDir = sessionStorage.getItem("oqtima_parent_dir") || "ltr";
+    // First parse and extract the language parameters
+    // Check for language explicitly set in params (FIRST PRIORITY)
+    let langParam, dataLang, urlLanguage, browserLanguage, nativeLanguage;
 
-    // If we're in popup mode, we should respect the parent document's direction
-    // and only apply RTL styles to the popup itself
-    const shouldModifyGlobalRTL = !isInPopupMode;
+    try {
+      if (params) {
+        const parsedParams =
+          typeof params === "string" ? JSON.parse(params) : params;
+        langParam = parsedParams.langParam;
+        dataLang = parsedParams.dataLang;
+        urlLanguage = parsedParams.language;
+        browserLanguage = parsedParams.browserLanguage;
+        nativeLanguage = parsedParams.nativeLanguage;
+      }
+    } catch (e) {
+      console.warn("Error parsing params:", e);
+    }
 
-    console.log(
-      `[RTL Update] In popup mode: ${isInPopupMode}, Parent dir: ${parentDir}, Should modify global: ${shouldModifyGlobalRTL}`
-    );
+    // Log initial params for debugging
+    console.log("Registration form detected language parameters:", {
+      langParam,
+      dataLang,
+      urlLanguage,
+      browserLanguage,
+      nativeLanguage,
+    });
 
-    // Helper function to update RTL state immediately
-    const updateRtlState = () => {
-      console.log(
-        `[RTL Update] Setting RTL mode to: ${isRTLMode} for language: ${effectiveLanguage} (popup mode: ${isInPopupMode})`
-      );
+    // Create final specific language variable with proper prioritization
+    const specificLanguage = langParam || urlLanguage || dataLang;
 
-      // Update global flags for RTL only if we're not in popup mode
-      if (shouldModifyGlobalRTL) {
-        window.__FORCE_RTL__ = isRTLMode;
-        window.__ORIGINAL_RTL__ = isRTLMode;
+    if (specificLanguage) {
+      console.log(`Using specific language: ${specificLanguage}`);
 
-        // Update document direction attribute
-        document.documentElement.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
-        document.body.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
-
-        // Update RTL classes - be thorough in class management
-        if (isRTLMode) {
-          document.documentElement.classList.add("rtl-active");
-          document.documentElement.classList.add("rtl");
-          document.documentElement.setAttribute("data-rtl", "true");
-          document.body.classList.add("rtl-active");
-          document.body.classList.add("rtl");
-          document.body.setAttribute("data-rtl", "true");
-        } else {
-          // Remove ALL possible RTL classes
-          const rtlClasses = ["rtl-active", "rtl", "is-rtl"];
-          rtlClasses.forEach((cls) => {
-            document.documentElement.classList.remove(cls);
-            document.body.classList.remove(cls);
-          });
-
-          // Remove data attributes related to RTL
-          document.documentElement.removeAttribute("data-rtl");
-          document.body.removeAttribute("data-rtl");
-        }
-      } else {
-        // In popup mode, we DON'T modify the parent document's direction
+      // ADDED: Clean RTL attributes for non-Arabic languages
+      if (specificLanguage.toLowerCase() !== "ar") {
         console.log(
-          `[RTL Update] Respecting parent direction: ${parentDir} (popup mode)`
+          `Non-Arabic language detected (${specificLanguage}), cleaning RTL attributes`
         );
-
-        // We still set window flags for the iframe context
-        window.__FORCE_RTL__ = isRTLMode;
-        window.__ORIGINAL_RTL__ = isRTLMode;
+        cleanRTLAttributes();
       }
 
-      // Apply form-specific RTL direction
-      const formElement = document.querySelector(".popup-registration__form");
-      if (formElement) {
-        formElement.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
-        formElement.style.direction = isRTLMode ? "rtl" : "ltr";
-        formElement.style.textAlign = isRTLMode ? "right" : "left";
-
-        if (isRTLMode) {
-          formElement.classList.add("popup-registration__form--rtl");
-        } else {
-          formElement.classList.remove("popup-registration__form--rtl");
-        }
-      }
-
-      // Apply RTL to all form controls for more consistent layout
-      const formControls = document.querySelectorAll(
-        ".popup-registration__form input, .popup-registration__form select, .popup-registration__form textarea"
-      );
-      formControls.forEach((control) => {
-        control.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
-        control.style.textAlign = isRTLMode ? "right" : "left";
-        control.style.direction = isRTLMode ? "rtl" : "ltr";
-      });
-
-      // Force UI update by triggering a reflow - only of the form container
-      const formContainer = document.querySelector(
-        ".popup-registration__form-container"
-      );
-      if (formContainer) {
-        const reflow = formContainer.offsetHeight;
-      }
-
-      // Force repaint of elements by temporarily modifying display
-      const formContainers = document.querySelectorAll(
-        ".popup-registration__form, .popup-registration__container"
-      );
-      formContainers.forEach((container) => {
-        if (container) {
-          const originalDisplay = container.style.display;
-          container.style.display = "none";
-          // Force reflow
-          const reflow = container.offsetHeight;
-          container.style.display = originalDisplay;
-        }
-      });
-
-      // Additionally, check if we're in an iframe and use postMessage to notify parent of RTL state
-      if (window.parent && window.parent !== window) {
+      // For RTL languages, update the language context
+      if (setCurrentLanguage && typeof setCurrentLanguage === "function") {
         try {
-          window.parent.postMessage(
-            {
-              type: "OQTIMA_RTL_CHANGE",
-              isRTL: isRTLMode,
-              language: effectiveLanguage,
-              timestamp: Date.now(),
-            },
-            "*"
+          // Create proper language object expected by the context
+          const isRtlLang = RTL_LANGUAGES.includes(
+            specificLanguage.toLowerCase()
           );
+          const langObject = {
+            id: specificLanguage,
+            title: specificLanguage.toUpperCase(),
+            URIPart: `/${specificLanguage}/`,
+            isRTL: isRtlLang,
+          };
+          setCurrentLanguage(langObject);
         } catch (e) {
-          console.error("Failed to notify parent window of RTL change:", e);
+          console.warn("Error updating language context:", e);
         }
       }
 
-      // Use MutationObserver to ensure RTL settings persist
-      if (isRTLMode) {
-        // Add a specific data attribute to the document to indicate RTL is managed by this component
-        document.documentElement.setAttribute(
-          "data-rtl-managed-by",
-          "popup-registration-form"
+      // Make i18next aware of our language
+      try {
+        // Never call i18n.changeLanguage directly here - it could cause infinite loops
+        // The LanguageContext will handle it
+        if (
+          window.i18next &&
+          window.i18next.language !== specificLanguage.toLowerCase()
+        ) {
+          console.log(
+            `Form detected language mismatch: i18next=${window.i18next.language}, form=${specificLanguage}`
+          );
+        }
+      } catch (e) {
+        console.warn("Error checking i18next language:", e);
+      }
+    }
+  }, [params]);
+
+  // NEW: Add specific effect to monitor language changes and handle RTL cleanup
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Function to check and fix RTL attributes based on the current language
+    const handleLanguageRTLCheck = () => {
+      const currentLang = document.documentElement.getAttribute("lang");
+
+      if (currentLang && currentLang.toLowerCase() !== "ar") {
+        console.log(
+          `Form detected non-Arabic language: ${currentLang}, cleaning RTL attributes`
         );
-
-        // Setup a mutation observer to reapply RTL if something else changes it
-        const observer = new MutationObserver((mutations) => {
-          mutations.forEach((mutation) => {
-            if (
-              mutation.attributeName === "dir" ||
-              mutation.attributeName === "lang" ||
-              mutation.attributeName === "class"
-            ) {
-              // Only intervene if we're supposed to be in RTL mode but the attributes were changed
-              if (
-                isRTLMode &&
-                (document.documentElement.getAttribute("dir") !== "rtl" ||
-                  document.documentElement.getAttribute("lang") !== "ar" ||
-                  !document.documentElement.classList.contains("rtl-active"))
-              ) {
-                console.log(
-                  "[RTL Guardian] Reapplying RTL settings after external modification"
-                );
-                document.documentElement.setAttribute("dir", "rtl");
-                document.documentElement.setAttribute("lang", "ar");
-                document.documentElement.classList.add("rtl-active", "rtl");
-                document.documentElement.setAttribute("data-rtl", "true");
-              }
-            }
-          });
-        });
-
-        // Start observing the document
-        observer.observe(document.documentElement, {
-          attributes: true,
-          attributeFilter: ["dir", "lang", "class"],
-        });
-
-        // Store the observer in a ref to clean it up later
-        const currentObserver = observer;
-
-        // Return cleanup function
-        return () => {
-          currentObserver.disconnect();
-          if (
-            document.documentElement.getAttribute("data-rtl-managed-by") ===
-            "popup-registration-form"
-          ) {
-            document.documentElement.removeAttribute("data-rtl-managed-by");
-          }
-        };
+        cleanRTLAttributes();
       }
     };
 
-    // Call immediately
-    updateRtlState();
+    // Run check immediately
+    handleLanguageRTLCheck();
 
-    // Log RTL state change for debugging
-    console.log(
-      `[RTL Debug] RTL mode ${
-        isRTLMode ? "enabled" : "disabled"
-      } for language: ${effectiveLanguage} (popup mode: ${isInPopupMode})`
-    );
+    // Set up observer to monitor language attribute changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "lang") {
+          handleLanguageRTLCheck();
+        }
+      });
+    });
 
-    // Cleanup function
-    return () => {
-      // No need to revert direction attributes if in popup mode
-    };
-  }, [isRTLMode, effectiveLanguage]);
+    // Start observing
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["lang"],
+    });
+
+    // Cleanup on unmount
+    return () => observer.disconnect();
+  }, []);
 
   // Map ke language code portal untuk API
   // Special handling for Brazilian Portuguese - ensure it maps to "pt" for API calls

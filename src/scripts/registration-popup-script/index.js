@@ -297,6 +297,8 @@
         return;
       }
 
+      console.log("[OQtima] Verifying API key");
+
       try {
         // Make API call to verify the key
         const isValid = await verifyApiKey(apiKey);
@@ -875,25 +877,9 @@
       console.warn("[OQtima] Error checking URL path for language:", e);
     }
 
-    // CRITICAL FIX: Ensure RTL is correctly enabled for Arabic language
-    // Either when language is set to 'ar' OR when data-lang is 'ar'
-    params.isRTL = params.language === "ar" || dataLang === "ar";
-    console.log(
-      "[OQtima] RTL mode:",
-      params.isRTL ? "enabled" : "disabled",
-      params.isRTL
-        ? `(Triggered by ${
-            params.language === "ar"
-              ? "language parameter"
-              : "data-lang parameter"
-          })`
-        : ""
-    );
-
-    // Store RTL state in global variable for other components to access
-    if (typeof window !== "undefined") {
-      window.__OQTIMA_IS_RTL_MODE__ = params.isRTL;
-    }
+    // FIXED: Ensure RTL is only enabled for Arabic language
+    params.isRTL = params.language === "ar";
+    console.log("[OQtima] RTL mode:", params.isRTL ? "enabled" : "disabled");
 
     // ENHANCED: Normalize referral parameters to ensure consistency
     // First, standardize all parameter naming conventions to ensure we capture all possible formats
