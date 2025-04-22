@@ -854,16 +854,32 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
     };
   }, [isExternalLoad]);
 
-  // RTL setup effect
+  // Add RTL setup effect
   useEffect(() => {
-    if (typeof window === "undefined" || !isExternalLoad) return;
+    if (typeof window === "undefined") return;
 
-    // Update RTL global flags
+    console.log(`RTL setup effect running. isRTLMode: ${isRTLMode}`);
+
+    // Update RTL global flags for consistency
     window.__FORCE_RTL__ = isRTLMode;
     window.__ORIGINAL_RTL__ = isRTLMode;
 
+    // Make sure we have a consistent state in sessionStorage
+    try {
+      sessionStorage.setItem("oqtima_tab_rtl", isRTLMode ? "true" : "false");
+    } catch (e) {
+      // Ignore storage errors
+    }
+
     const setupRTL = async () => {
-      // Clean up previous RTL settings first
+      console.log(`Setting up RTL mode: ${isRTLMode}`);
+
+      // Clean up previous RTL settings first to avoid style conflicts
+      if (!isRTLMode) {
+        cleanRTLAttributes();
+      }
+
+      // Set direction attributes on document elements
       document.documentElement.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
       document.body.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
 
@@ -983,8 +999,12 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
         }
       } else {
         // Remove RTL classes
-        document.documentElement.classList.remove("rtl-active");
-        document.body.classList.remove("rtl-active");
+        document.documentElement.classList.remove(
+          "rtl-active",
+          "rtl",
+          "is-rtl"
+        );
+        document.body.classList.remove("rtl-active", "rtl", "is-rtl");
 
         // Remove RTL styles
         const rtlStyle = document.getElementById(
@@ -993,8 +1013,11 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
         if (rtlStyle) rtlStyle.remove();
       }
 
-      // Mark styles as loaded after a short delay to ensure smooth transition
+      // Force a reflow to ensure styles are applied
+      document.body.style.display = "none";
       requestAnimationFrame(() => {
+        document.body.style.display = "";
+        // Mark styles as loaded after styles have been applied
         styleLoadedRef.current = true;
         setIsStylesLoaded(true);
       });
@@ -1002,12 +1025,19 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
 
     setupRTL();
 
+    // Clean up function to properly remove RTL attributes when unmounting
     return () => {
       if (isRTLMode) {
+        // Only clean up if we're in RTL mode to avoid unnecessary DOM operations
+        console.log("Cleaning up RTL settings on effect cleanup");
         document.documentElement.removeAttribute("dir");
         document.body.removeAttribute("dir");
-        document.documentElement.classList.remove("rtl-active");
-        document.body.classList.remove("rtl-active");
+        document.documentElement.classList.remove(
+          "rtl-active",
+          "rtl",
+          "is-rtl"
+        );
+        document.body.classList.remove("rtl-active", "rtl", "is-rtl");
 
         const rtlStyle = document.getElementById(
           "popup-registration-rtl-styles"
@@ -1015,7 +1045,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
         if (rtlStyle) rtlStyle.remove();
       }
     };
-  }, [isRTLMode, isExternalLoad]);
+  }, [isRTLMode, isExternalLoad]); // Re-run when RTL mode or load type changes
 
   // Add message listener for RTL changes from iframe
   useEffect(() => {
@@ -1219,6 +1249,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
             "popup-registration__wrapper--rtl": isRTLMode,
           })}
           dir={isRTLMode ? "rtl" : "ltr"}
+          data-rtl={isRTLMode ? "true" : "false"}
         >
           <div
             key={isRTLMode ? "rtl-container" : "ltr-container"}
@@ -1229,8 +1260,8 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
             style={
               isRTLMode
                 ? {
-                    flexDirection: "row-reverse !important",
-                    display: "flex !important",
+                    flexDirection: "row-reverse",
+                    display: "flex",
                   }
                 : {}
             }
@@ -1241,7 +1272,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
                 "popup-registration__sidebar--rtl": isRTLMode,
               })}
               data-rtl={isRTLMode ? "true" : "false"}
-              style={isRTLMode ? { order: "2 !important" } : {}}
+              style={isRTLMode ? { order: "2" } : {}}
             >
               {(isRTLMode ||
                 isMobile ||
@@ -1279,7 +1310,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
                 "popup-registration__content--rtl": isRTLMode,
               })}
               data-rtl={isRTLMode ? "true" : "false"}
-              style={isRTLMode ? { order: "1 !important" } : {}}
+              style={isRTLMode ? { order: "1" } : {}}
             >
               {!isRTLMode && !isMobile && (
                 <img
