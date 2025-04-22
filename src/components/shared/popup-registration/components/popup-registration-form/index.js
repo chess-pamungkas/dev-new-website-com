@@ -1117,14 +1117,10 @@ const PopupRegistrationForm = ({ params }) => {
         // Update RTL classes - be thorough in class management
         if (isRTLMode) {
           document.documentElement.classList.add("rtl-active");
-          document.body.classList.add("rtl-active");
-
-          // Add additional RTL classes that might be used by the system
           document.documentElement.classList.add("rtl");
-          document.body.classList.add("rtl");
-
-          // Set data attributes for RTL
           document.documentElement.setAttribute("data-rtl", "true");
+          document.body.classList.add("rtl-active");
+          document.body.classList.add("rtl");
           document.body.setAttribute("data-rtl", "true");
         } else {
           // Remove ALL possible RTL classes
@@ -1194,6 +1190,79 @@ const PopupRegistrationForm = ({ params }) => {
           container.style.display = originalDisplay;
         }
       });
+
+      // Additionally, check if we're in an iframe and use postMessage to notify parent of RTL state
+      if (window.parent && window.parent !== window) {
+        try {
+          window.parent.postMessage(
+            {
+              type: "OQTIMA_RTL_CHANGE",
+              isRTL: isRTLMode,
+              language: effectiveLanguage,
+              timestamp: Date.now(),
+            },
+            "*"
+          );
+        } catch (e) {
+          console.error("Failed to notify parent window of RTL change:", e);
+        }
+      }
+
+      // Use MutationObserver to ensure RTL settings persist
+      if (isRTLMode) {
+        // Add a specific data attribute to the document to indicate RTL is managed by this component
+        document.documentElement.setAttribute(
+          "data-rtl-managed-by",
+          "popup-registration-form"
+        );
+
+        // Setup a mutation observer to reapply RTL if something else changes it
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (
+              mutation.attributeName === "dir" ||
+              mutation.attributeName === "lang" ||
+              mutation.attributeName === "class"
+            ) {
+              // Only intervene if we're supposed to be in RTL mode but the attributes were changed
+              if (
+                isRTLMode &&
+                (document.documentElement.getAttribute("dir") !== "rtl" ||
+                  document.documentElement.getAttribute("lang") !== "ar" ||
+                  !document.documentElement.classList.contains("rtl-active"))
+              ) {
+                console.log(
+                  "[RTL Guardian] Reapplying RTL settings after external modification"
+                );
+                document.documentElement.setAttribute("dir", "rtl");
+                document.documentElement.setAttribute("lang", "ar");
+                document.documentElement.classList.add("rtl-active", "rtl");
+                document.documentElement.setAttribute("data-rtl", "true");
+              }
+            }
+          });
+        });
+
+        // Start observing the document
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["dir", "lang", "class"],
+        });
+
+        // Store the observer in a ref to clean it up later
+        const currentObserver = observer;
+
+        // Return cleanup function
+        return () => {
+          currentObserver.disconnect();
+          if (
+            document.documentElement.getAttribute("data-rtl-managed-by") ===
+            "popup-registration-form"
+          ) {
+            document.documentElement.removeAttribute("data-rtl-managed-by");
+          }
+        };
+      }
     };
 
     // Call immediately
