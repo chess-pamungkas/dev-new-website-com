@@ -1016,6 +1016,91 @@
   }
 
   /**
+   * Handle secure cross-origin communication with iframe using postMessage
+   */
+  function setupIframeMessaging(iframe, language, referralType, referralValue) {
+    try {
+      // Wait for iframe to load before attempting to communicate
+      iframe.addEventListener("load", function () {
+        console.log("[OQtima] Iframe loaded, setting up messaging");
+
+        // Send initialization message to iframe with all necessary parameters
+        const message = {
+          type: "REGISTRATION_PARAMS",
+          data: {
+            referral_type: referralType,
+            referral_value: referralValue,
+            language: language,
+            lang: language,
+            data_lang: language,
+            // Add additional parameters as needed
+            ip_address: null,
+            country_name: null,
+            country_code: null,
+          },
+          timestamp: Date.now(),
+        };
+
+        // Use postMessage for safe cross-origin communication
+        console.log("[OQtima] Sending message to iframe:", message);
+        iframe.contentWindow.postMessage(message, "*");
+
+        // For RTL setup, send a specific RTL message
+        if (language === "ar") {
+          const rtlMessage = {
+            type: "SETUP_RTL",
+            data: {
+              isRTL: true,
+              language: "ar",
+              dir: "rtl",
+            },
+            timestamp: Date.now(),
+          };
+
+          console.log(
+            "[OQtima] Sending RTL setup message to iframe:",
+            rtlMessage
+          );
+          iframe.contentWindow.postMessage(rtlMessage, "*");
+        }
+      });
+
+      // Listen for messages from the iframe
+      window.addEventListener("message", function (event) {
+        // Check if the message is from our iframe for security
+        if (event.source === iframe.contentWindow) {
+          const message = event.data;
+
+          // Process different message types
+          if (typeof message === "object" && message !== null) {
+            console.log("[OQtima] Received message from iframe:", message);
+
+            // Handle close message
+            if (
+              message === "close_popup" ||
+              message.type === "OQTIMA_CLOSE_POPUP"
+            ) {
+              console.log("[OQtima] Close message received from iframe");
+              const modalContainer = iframe.closest(".oqtima-popup-container");
+              if (modalContainer) {
+                modalContainer.remove();
+              }
+            }
+
+            // Handle RTL status messages
+            if (message.type === "OQTIMA_RTL_STATUS") {
+              console.log("[OQtima] RTL status message from iframe:", message);
+              // Update RTL status if needed
+            }
+          }
+        }
+      });
+    } catch (error) {
+      console.error("[OQtima] Error setting up iframe messaging:", error);
+    }
+  }
+
+  /**
    * Creates a standard popup for non-RTL languages
    */
   function createStandardPopup(
@@ -1175,8 +1260,8 @@
     wrapper.style.cssText = wrapperStyles;
 
     // Create iframe
-    const iframe = document.createElement("iframe");
-    iframe.className = "popup-registration__iframe";
+    const standardPopupIframe = document.createElement("iframe");
+    standardPopupIframe.className = "popup-registration__iframe";
 
     // Base styles for iframe
     let iframeStyles = `
@@ -1199,10 +1284,10 @@
       `;
     }
 
-    iframe.style.cssText = iframeStyles;
+    standardPopupIframe.style.cssText = iframeStyles;
 
     // Enable scrolling for iOS
-    iframe.setAttribute("scrolling", "yes");
+    standardPopupIframe.setAttribute("scrolling", "yes");
 
     // Setup load timeout
     let isLoaded = false;
@@ -1225,13 +1310,14 @@
         // Show modal and content
         modalContainer.style.opacity = "1";
         wrapper.style.transform = "scale(1)";
-        iframe.style.opacity = "1";
+        standardPopupIframe.style.opacity = "1";
 
         // Fix iframe scrolling after content is loaded
         if (isMobile) {
           try {
             const iframeDoc =
-              iframe.contentDocument || iframe.contentWindow.document;
+              standardPopupIframe.contentDocument ||
+              standardPopupIframe.contentWindow.document;
             if (iframeDoc && iframeDoc.body) {
               // Add viewport meta for proper mobile scaling
               if (!iframeDoc.querySelector('meta[name="viewport"]')) {
@@ -1267,7 +1353,7 @@
     }
 
     // Setup iframe load event
-    iframe.addEventListener("load", function () {
+    standardPopupIframe.addEventListener("load", function () {
       // Ensure spinner is hidden after iframe loads
       if (spinnerEl) {
         spinnerEl.style.display = "none";
@@ -1310,12 +1396,12 @@
         );
 
         // First attempt to send message
-        iframe.contentWindow.postMessage(messageData, "*");
+        standardPopupIframe.contentWindow.postMessage(messageData, "*");
 
         // Schedule multiple retries with increasing delays to ensure message is received
         setTimeout(() => {
           try {
-            iframe.contentWindow.postMessage(messageData, "*");
+            standardPopupIframe.contentWindow.postMessage(messageData, "*");
           } catch (err) {
             console.error("Error in retry 1:", err);
           }
@@ -1323,7 +1409,7 @@
 
         setTimeout(() => {
           try {
-            iframe.contentWindow.postMessage(messageData, "*");
+            standardPopupIframe.contentWindow.postMessage(messageData, "*");
           } catch (err) {
             console.error("Error in retry 2:", err);
           }
@@ -1331,7 +1417,7 @@
 
         setTimeout(() => {
           try {
-            iframe.contentWindow.postMessage(messageData, "*");
+            standardPopupIframe.contentWindow.postMessage(messageData, "*");
             console.log("[OQtima] Final retry sending message to iframe");
           } catch (err) {
             console.error("Error in final retry:", err);
@@ -1342,7 +1428,7 @@
       }
 
       // Added event listener for link click handling
-      iframe.addEventListener("load", injectLinkHandlerScript);
+      standardPopupIframe.addEventListener("load", injectLinkHandlerScript);
 
       // Show content after a short delay to ensure smooth transition
       setTimeout(showContent, 500);
@@ -1355,7 +1441,7 @@
       referralValue,
       isMobile
     );
-    iframe.src = url;
+    standardPopupIframe.src = url;
 
     // REDUNDANCY: Add referral parameters again to ensure they're in the URL
     // This is a defensive measure in case they weren't properly added in constructIframeUrl
@@ -1386,7 +1472,7 @@
       newUrl = `${baseUrl}?${existingParams.toString()}`;
 
       // Set the iframe source to the updated URL
-      iframe.src = newUrl;
+      standardPopupIframe.src = newUrl;
 
       // Debug log the updated URL (truncated if too long)
       const logUrl =
@@ -1398,7 +1484,7 @@
     }
 
     // Assemble the popup
-    wrapper.appendChild(iframe);
+    wrapper.appendChild(standardPopupIframe);
     modalContainer.appendChild(wrapper);
     document.body.appendChild(modalContainer);
 
@@ -1417,7 +1503,7 @@
     // Return cleanup function
     return setupCloseFunction(
       modalContainer,
-      iframe,
+      standardPopupIframe,
       spinnerStyle,
       originalBodyClasses,
       originalHtmlClasses,
@@ -1427,10 +1513,18 @@
       originalHtmlOverflow,
       originalScrollPos
     );
+
+    // Setup secure cross-origin messaging with the iframe
+    setupIframeMessaging(
+      standardPopupIframe,
+      language,
+      referralType,
+      referralValue
+    );
   }
 
   /**
-   * Creates a fullscreen popup specifically for RTL languages (Arabic)
+   * Creates RTL-compatible popup for Arabic language
    */
   function createRtlFullscreenPopup(
     language,
@@ -1582,12 +1676,13 @@
     `;
     document.head.appendChild(spinnerStyles);
 
-    // Create iframe with RTL support
-    const iframe = document.createElement("iframe");
-    iframe.id = "oqtima-registration-iframe";
-    iframe.setAttribute("dir", "rtl");
-    iframe.setAttribute("lang", language);
-    iframe.style.cssText = `
+    // Create an iframe for the registration form
+    const rtlIframe = document.createElement("iframe");
+    rtlIframe.className = "oqtima-popup-iframe";
+    rtlIframe.id = "oqtima-registration-iframe";
+    rtlIframe.setAttribute("dir", "rtl");
+    rtlIframe.setAttribute("lang", language);
+    rtlIframe.style.cssText = `
           width: 100% !important;
           height: 100% !important;
           border: none !important;
@@ -1613,10 +1708,10 @@
       referralValue,
       false
     );
-    iframe.src = url;
+    rtlIframe.src = url;
 
     // Add load event listener
-    iframe.addEventListener("load", function () {
+    rtlIframe.addEventListener("load", function () {
       // Ensure spinner is removed and iframe is shown
       if (spinner && spinner.parentNode) {
         spinner.parentNode.removeChild(spinner);
@@ -1624,7 +1719,7 @@
       if (spinnerStyles && spinnerStyles.parentNode) {
         spinnerStyles.parentNode.removeChild(spinnerStyles);
       }
-      iframe.style.opacity = "1";
+      rtlIframe.style.opacity = "1";
 
       // Send message to iframe with parameters
       try {
@@ -1651,12 +1746,12 @@
         );
 
         // First attempt to send message
-        iframe.contentWindow.postMessage(messageData, "*");
+        rtlIframe.contentWindow.postMessage(messageData, "*");
 
         // Schedule multiple retries with increasing delays to ensure message is received
         setTimeout(() => {
           try {
-            iframe.contentWindow.postMessage(messageData, "*");
+            rtlIframe.contentWindow.postMessage(messageData, "*");
           } catch (err) {
             console.error("Error in RTL retry 1:", err);
           }
@@ -1664,7 +1759,7 @@
 
         setTimeout(() => {
           try {
-            iframe.contentWindow.postMessage(messageData, "*");
+            rtlIframe.contentWindow.postMessage(messageData, "*");
           } catch (err) {
             console.error("Error in RTL retry 2:", err);
           }
@@ -1672,7 +1767,7 @@
 
         setTimeout(() => {
           try {
-            iframe.contentWindow.postMessage(messageData, "*");
+            rtlIframe.contentWindow.postMessage(messageData, "*");
             console.log("[OQtima] Final retry sending message to RTL iframe");
           } catch (err) {
             console.error("Error in RTL final retry:", err);
@@ -1684,7 +1779,7 @@
 
       try {
         const iframeDoc =
-          iframe.contentDocument || iframe.contentWindow.document;
+          rtlIframe.contentDocument || rtlIframe.contentWindow.document;
         if (iframeDoc && iframeDoc.body) {
           // Add RTL meta and viewport
           const meta = document.createElement("meta");
@@ -1723,7 +1818,7 @@
       // send a message to the iframe that it should set itself up for RTL
       try {
         // Send RTL setup message to iframe
-        iframe.contentWindow.postMessage(
+        rtlIframe.contentWindow.postMessage(
           {
             type: "OQTIMA_RTL_SETUP",
             isRTL: true,
@@ -1751,10 +1846,10 @@
         // As a fallback, we can add a special URL parameter to signal RTL mode
         // This works even with cross-origin restrictions
         try {
-          const currentSrc = new URL(iframe.src);
+          const currentSrc = new URL(rtlIframe.src);
           if (!currentSrc.searchParams.has("rtl")) {
             currentSrc.searchParams.set("rtl", "true");
-            iframe.src = currentSrc.toString();
+            rtlIframe.src = currentSrc.toString();
             console.log(
               "[OQtima] Applied RTL parameter to iframe URL as fallback"
             );
@@ -1767,7 +1862,7 @@
 
     // Assemble the popup
     iframeContainer.appendChild(spinner);
-    iframeContainer.appendChild(iframe);
+    iframeContainer.appendChild(rtlIframe);
     container.appendChild(iframeContainer);
     wrapper.appendChild(container);
     modalContainer.appendChild(wrapper);
@@ -1776,7 +1871,7 @@
     // Setup close function
     setupCloseFunction(
       modalContainer,
-      iframe,
+      rtlIframe,
       spinnerStyles,
       rtlStyles,
       originalBodyClasses,
@@ -1787,6 +1882,15 @@
       originalHtmlOverflow,
       originalScrollPos
     );
+
+    // Set RTL-specific attributes directly on the existing iframe
+    rtlIframe.setAttribute("dir", "rtl");
+    rtlIframe.setAttribute("lang", language);
+
+    // No need to append to modalContent as the iframe is already appended to iframeContainer
+
+    // Setup secure cross-origin messaging with the iframe
+    setupIframeMessaging(rtlIframe, language, referralType, referralValue);
 
     return modalContainer;
   }
@@ -2689,16 +2793,16 @@
     const url = constructIframeUrl(language, referralType, referralValue, true);
 
     // 4. IFRAME SEDERHANA TANPA STYLE/CONTAINER LAIN
-    const iframe = document.createElement("iframe");
-    iframe.id = "oqtima-iframe";
-    iframe.setAttribute("scrolling", "yes"); // Force scrolling enabled
-    iframe.setAttribute("allow", "fullscreen");
-    iframe.setAttribute("allowfullscreen", "true");
-    iframe.setAttribute("importance", "high");
-    iframe.setAttribute("frameborder", "0");
+    const mobileIframe = document.createElement("iframe");
+    mobileIframe.id = "oqtima-iframe";
+    mobileIframe.setAttribute("scrolling", "yes"); // Force scrolling enabled
+    mobileIframe.setAttribute("allow", "fullscreen");
+    mobileIframe.setAttribute("allowfullscreen", "true");
+    mobileIframe.setAttribute("importance", "high");
+    mobileIframe.setAttribute("frameborder", "0");
 
     // Daftar styles penting tanpa container tambahan
-    iframe.style.cssText = `
+    mobileIframe.style.cssText = `
       position: absolute !important;
       top: 0 !important;
       left: 0 !important;
@@ -2721,18 +2825,18 @@
     `;
 
     // Menetapkan src iframe
-    iframe.src = url;
-    fullscreenContainer.appendChild(iframe);
+    mobileIframe.src = url;
+    fullscreenContainer.appendChild(mobileIframe);
 
     // Set up message sent to iframe after it loads
-    iframe.addEventListener("load", function () {
+    mobileIframe.addEventListener("load", function () {
       // Hide the spinner once iframe is loaded
       if (spinner && spinner.parentNode) {
         spinner.parentNode.removeChild(spinner);
       }
 
       // Make iframe visible
-      iframe.style.opacity = "1";
+      mobileIframe.style.opacity = "1";
 
       // IMPORTANT: Send referral parameters to the iframe
       try {
@@ -2771,12 +2875,12 @@
         );
 
         // First attempt to send message
-        iframe.contentWindow.postMessage(messageData, "*");
+        mobileIframe.contentWindow.postMessage(messageData, "*");
 
         // Schedule multiple retries with increasing delays to ensure message is received
         setTimeout(() => {
           try {
-            iframe.contentWindow.postMessage(messageData, "*");
+            mobileIframe.contentWindow.postMessage(messageData, "*");
           } catch (err) {
             console.error("Error in mobile retry 1:", err);
           }
@@ -2784,7 +2888,7 @@
 
         setTimeout(() => {
           try {
-            iframe.contentWindow.postMessage(messageData, "*");
+            mobileIframe.contentWindow.postMessage(messageData, "*");
           } catch (err) {
             console.error("Error in mobile retry 2:", err);
           }
@@ -2792,7 +2896,7 @@
 
         setTimeout(() => {
           try {
-            iframe.contentWindow.postMessage(messageData, "*");
+            mobileIframe.contentWindow.postMessage(messageData, "*");
             console.log(
               "[OQtima] Final retry sending message to mobile iframe"
             );
@@ -3037,14 +3141,14 @@
     };
 
     // Handle iframe load event
-    iframe.addEventListener("load", function () {
+    mobileIframe.addEventListener("load", function () {
       // Remove spinner
       if (spinner && spinner.parentNode) {
         spinner.parentNode.removeChild(spinner);
       }
 
       // Show iframe with fade-in
-      iframe.style.opacity = "1";
+      mobileIframe.style.opacity = "1";
 
       // Add scroll indicator
       addScrollIndicator();
@@ -3052,14 +3156,14 @@
       try {
         // Access iframe content if possible
         const iframeDoc =
-          iframe.contentDocument || iframe.contentWindow.document;
-        const iframeWin = iframe.contentWindow;
+          mobileIframe.contentDocument || mobileIframe.contentWindow.document;
+        const iframeWin = mobileIframe.contentWindow;
 
         // Fix scrolling issues
         fixIframeScrolling(iframeDoc, iframeWin);
 
         // Menyimpan interval ID untuk dibersihkan nanti
-        iframe.setAttribute("data-scroll-interval", scrollFixInterval);
+        mobileIframe.setAttribute("data-scroll-interval", scrollFixInterval);
       } catch (e) {
         // Silent cross-origin error
         if (debug)
@@ -3161,6 +3265,44 @@
         }
       }, 100);
     }
+
+    // Create an iframe for the registration form
+    const mobilePopupIframe = document.createElement("iframe");
+    mobilePopupIframe.className =
+      "oqtima-popup-iframe oqtima-popup-iframe--mobile";
+    mobilePopupIframe.id = "oqtima-registration-iframe-mobile";
+    mobilePopupIframe.src = constructIframeUrl(
+      language,
+      referralType,
+      referralValue,
+      true
+    );
+    mobilePopupIframe.style.cssText = `
+      width: 100%;
+      height: 100%;
+      border: none;
+      overflow: hidden;
+    `;
+
+    // Set RTL attributes if needed
+    if (language === "ar") {
+      mobilePopupIframe.setAttribute("dir", "rtl");
+      mobilePopupIframe.setAttribute("lang", language);
+      mobilePopupIframe.classList.add("oqtima-popup-iframe--rtl");
+    } else {
+      mobilePopupIframe.setAttribute("dir", "ltr");
+      mobilePopupIframe.setAttribute("lang", language);
+    }
+
+    fullscreenContainer.appendChild(mobilePopupIframe);
+
+    // Setup secure cross-origin messaging with the iframe
+    setupIframeMessaging(
+      mobilePopupIframe,
+      language,
+      referralType,
+      referralValue
+    );
 
     return fullscreenContainer;
   }
