@@ -129,60 +129,42 @@ const isLoadedFromExternalScript = () => {
 // Initialize tab-specific language on page load
 if (typeof window !== "undefined") {
   try {
-    // Get language from URL parameters or data attributes first
-    const urlParams = new URLSearchParams(window.location.search);
-    const dataLang = document
-      .querySelector("[data-lang]")
-      ?.getAttribute("data-lang");
-    const paramLang = urlParams.get("lang") || urlParams.get("langParam");
+    // On page load, check if we have a saved language for this tab
+    const tabLanguage = sessionStorage.getItem("oqtima_tab_language");
+    const tabRtl = sessionStorage.getItem("oqtima_tab_rtl") === "true";
 
-    // Priority order: URL param > data attribute > sessionStorage
-    const preferredLanguage =
-      paramLang || dataLang || sessionStorage.getItem("oqtima_tab_language");
-
-    // If we have a preferred language, use it
-    if (preferredLanguage) {
-      const isRtlLanguage = RTL_LANGUAGES.includes(preferredLanguage);
-
-      // Store in sessionStorage for this tab
-      sessionStorage.setItem("oqtima_tab_language", preferredLanguage);
-      sessionStorage.setItem(
-        "oqtima_tab_rtl",
-        isRtlLanguage ? "true" : "false"
-      );
-
+    if (tabLanguage) {
+      // This overrides any localStorage setting to ensure consistent language in this tab
       console.log(
-        `Setting tab-specific language: ${preferredLanguage}, RTL: ${isRtlLanguage}`
+        `Tab-specific language found: ${tabLanguage}, RTL: ${tabRtl}`
       );
 
       // Set HTML attributes on initial page load
-      document.documentElement.setAttribute("lang", preferredLanguage);
-      document.documentElement.setAttribute(
-        "dir",
-        isRtlLanguage ? "rtl" : "ltr"
-      );
+      document.documentElement.setAttribute("lang", tabLanguage);
+      document.documentElement.setAttribute("dir", tabRtl ? "rtl" : "ltr");
 
-      // Update classes for RTL
-      if (isRtlLanguage) {
+      // Update classes
+      if (tabRtl) {
         document.documentElement.classList.add("rtl-active");
         document.body.classList.add("rtl-active");
       } else {
-        // Clean RTL attributes if switching from RTL to non-RTL
-        const tabRtl = sessionStorage.getItem("oqtima_tab_rtl") === "true";
-        if (tabRtl && !isRtlLanguage) {
-          cleanRTLAttributes();
-        }
+        document.documentElement.classList.remove(
+          "rtl-active",
+          "rtl",
+          "is-rtl"
+        );
+        document.body.classList.remove("rtl-active", "rtl", "is-rtl");
       }
 
       // Set global vars
-      window.__OQTIMA_COMPONENT_LANGUAGE = preferredLanguage;
-      window.__OQTIMA_LOCKED_LANG = preferredLanguage;
-      window.__FORCE_RTL__ = isRtlLanguage;
-      window.__ORIGINAL_RTL__ = isRtlLanguage;
+      window.__OQTIMA_COMPONENT_LANGUAGE = tabLanguage;
+      window.__OQTIMA_LOCKED_LANG = tabLanguage;
+      window.__FORCE_RTL__ = tabRtl;
+      window.__ORIGINAL_RTL__ = tabRtl;
 
       // Override i18next language if needed
-      if (localStorage.getItem("i18nextLng") !== preferredLanguage) {
-        localStorage.setItem("i18nextLng", preferredLanguage);
+      if (localStorage.getItem("i18nextLng") !== tabLanguage) {
+        localStorage.setItem("i18nextLng", tabLanguage);
       }
     }
   } catch (e) {
@@ -872,32 +854,16 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
     };
   }, [isExternalLoad]);
 
-  // Add RTL setup effect
+  // RTL setup effect
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || !isExternalLoad) return;
 
-    console.log(`RTL setup effect running. isRTLMode: ${isRTLMode}`);
-
-    // Update RTL global flags for consistency
+    // Update RTL global flags
     window.__FORCE_RTL__ = isRTLMode;
     window.__ORIGINAL_RTL__ = isRTLMode;
 
-    // Make sure we have a consistent state in sessionStorage
-    try {
-      sessionStorage.setItem("oqtima_tab_rtl", isRTLMode ? "true" : "false");
-    } catch (e) {
-      // Ignore storage errors
-    }
-
     const setupRTL = async () => {
-      console.log(`Setting up RTL mode: ${isRTLMode}`);
-
-      // Clean up previous RTL settings first to avoid style conflicts
-      if (!isRTLMode) {
-        cleanRTLAttributes();
-      }
-
-      // Set direction attributes on document elements
+      // Clean up previous RTL settings first
       document.documentElement.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
       document.body.setAttribute("dir", isRTLMode ? "rtl" : "ltr");
 
@@ -1017,12 +983,8 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
         }
       } else {
         // Remove RTL classes
-        document.documentElement.classList.remove(
-          "rtl-active",
-          "rtl",
-          "is-rtl"
-        );
-        document.body.classList.remove("rtl-active", "rtl", "is-rtl");
+        document.documentElement.classList.remove("rtl-active");
+        document.body.classList.remove("rtl-active");
 
         // Remove RTL styles
         const rtlStyle = document.getElementById(
@@ -1031,11 +993,8 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
         if (rtlStyle) rtlStyle.remove();
       }
 
-      // Force a reflow to ensure styles are applied
-      document.body.style.display = "none";
+      // Mark styles as loaded after a short delay to ensure smooth transition
       requestAnimationFrame(() => {
-        document.body.style.display = "";
-        // Mark styles as loaded after styles have been applied
         styleLoadedRef.current = true;
         setIsStylesLoaded(true);
       });
@@ -1043,19 +1002,12 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
 
     setupRTL();
 
-    // Clean up function to properly remove RTL attributes when unmounting
     return () => {
       if (isRTLMode) {
-        // Only clean up if we're in RTL mode to avoid unnecessary DOM operations
-        console.log("Cleaning up RTL settings on effect cleanup");
         document.documentElement.removeAttribute("dir");
         document.body.removeAttribute("dir");
-        document.documentElement.classList.remove(
-          "rtl-active",
-          "rtl",
-          "is-rtl"
-        );
-        document.body.classList.remove("rtl-active", "rtl", "is-rtl");
+        document.documentElement.classList.remove("rtl-active");
+        document.body.classList.remove("rtl-active");
 
         const rtlStyle = document.getElementById(
           "popup-registration-rtl-styles"
@@ -1063,7 +1015,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
         if (rtlStyle) rtlStyle.remove();
       }
     };
-  }, [isRTLMode, isExternalLoad]); // Re-run when RTL mode or load type changes
+  }, [isRTLMode, isExternalLoad]);
 
   // Add message listener for RTL changes from iframe
   useEffect(() => {
@@ -1267,7 +1219,6 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
             "popup-registration__wrapper--rtl": isRTLMode,
           })}
           dir={isRTLMode ? "rtl" : "ltr"}
-          data-rtl={isRTLMode ? "true" : "false"}
         >
           <div
             key={isRTLMode ? "rtl-container" : "ltr-container"}
@@ -1278,8 +1229,8 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
             style={
               isRTLMode
                 ? {
-                    flexDirection: "row-reverse",
-                    display: "flex",
+                    flexDirection: "row-reverse !important",
+                    display: "flex !important",
                   }
                 : {}
             }
@@ -1290,7 +1241,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
                 "popup-registration__sidebar--rtl": isRTLMode,
               })}
               data-rtl={isRTLMode ? "true" : "false"}
-              style={isRTLMode ? { order: "2" } : {}}
+              style={isRTLMode ? { order: "2 !important" } : {}}
             >
               {(isRTLMode ||
                 isMobile ||
@@ -1328,7 +1279,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
                 "popup-registration__content--rtl": isRTLMode,
               })}
               data-rtl={isRTLMode ? "true" : "false"}
-              style={isRTLMode ? { order: "1" } : {}}
+              style={isRTLMode ? { order: "1 !important" } : {}}
             >
               {!isRTLMode && !isMobile && (
                 <img
