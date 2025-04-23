@@ -498,7 +498,7 @@ const PopupRegistrationForm = ({ params }) => {
           }
 
           // If the string is simple (like a language code), parse it as a language
-          else if (params && params.length <= 5) {
+          else if (params && params.length <= 7) {
             // Most language codes are 2-5 chars
             parsedParams = { langParam: params };
           }
@@ -643,7 +643,7 @@ const PopupRegistrationForm = ({ params }) => {
           if (pathParts.length > 0) {
             const possibleLang = pathParts[0];
             // Check if the first part of the path is a language code (typically 2-5 chars)
-            if (possibleLang && possibleLang.length <= 5) {
+            if (possibleLang && possibleLang.length <= 7) {
               parsedParams.langParam = possibleLang;
             }
           }
@@ -992,7 +992,7 @@ const PopupRegistrationForm = ({ params }) => {
           if (pathParts.length > 0) {
             const possibleLang = pathParts[0];
             // Check if first path segment looks like a language code
-            if (possibleLang && possibleLang.length <= 5) {
+            if (possibleLang && possibleLang.length <= 7) {
               detectedLanguage = possibleLang;
             }
           }
@@ -1060,7 +1060,7 @@ const PopupRegistrationForm = ({ params }) => {
         const pathParts = window.location.pathname.split("/").filter(Boolean);
         if (pathParts.length > 0) {
           const possibleLang = pathParts[0];
-          if (possibleLang && possibleLang.length <= 5) {
+          if (possibleLang && possibleLang.length <= 7) {
             console.log(
               "PopupRegistrationForm: Using language from URL path:",
               possibleLang
@@ -1338,9 +1338,7 @@ const PopupRegistrationForm = ({ params }) => {
     pt_br: "pt",
     // Chinese variations
     cn: "zh-Hans",
-    zh: "zh-Hans",
-    "zh-cn": "zh-Hans",
-    zh_cn: "zh-Hans",
+    zh: "zh-Hant",
   };
 
   // Check if we have a special mapping for this language
@@ -1838,7 +1836,7 @@ const PopupRegistrationForm = ({ params }) => {
       if (pathParts.length > 0) {
         const possibleLang = pathParts[0];
         // Check if it looks like a language code (typically 2-5 characters)
-        if (possibleLang && possibleLang.length <= 5) {
+        if (possibleLang && possibleLang.length <= 7) {
           // CHANGE: Always set language from URL path regardless of other sources
           // This ensures the URL path language takes precedence over context language
           setLanguageFromUrl(possibleLang);
