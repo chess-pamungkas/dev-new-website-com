@@ -1243,7 +1243,36 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
           window.__OQTIMA_REFERRAL_VALUE__ = referralValue;
         }
 
-        // Check for referral parameters in URL query params
+        // IMPORTANT NEW: Check for language in URL path
+        if (typeof window !== "undefined") {
+          const pathParts = window.location.pathname.split("/").filter(Boolean);
+
+          // If the path starts with a language code (like /id/ or /en/)
+          if (pathParts.length > 0 && pathParts[0].length <= 5) {
+            const pathLanguage = pathParts[0];
+            console.log("Detected language from URL path:", pathLanguage);
+
+            // Force this language throughout the app
+            // This is crucial to maintain language consistency
+            sessionStorage.setItem("oqtima_tab_language", pathLanguage);
+            window.__OQTIMA_COMPONENT_LANGUAGE = pathLanguage;
+            window.__OQTIMA_LOCKED_LANG = pathLanguage;
+            window.__FORCE_LANGUAGE__ = true;
+            document.documentElement.setAttribute("lang", pathLanguage);
+
+            // Update other language storage as well
+            try {
+              localStorage.setItem("i18nextLng", pathLanguage);
+              if (window.gatsby_i18next_language) {
+                window.gatsby_i18next_language = pathLanguage;
+              }
+            } catch (e) {}
+
+            console.log("Language from URL path enforced:", pathLanguage);
+          }
+        }
+
+        // Check for language parameters in URL query params
         if (typeof window !== "undefined") {
           const urlParams = new URLSearchParams(window.location.search);
 
@@ -1278,9 +1307,41 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
               break;
             }
           }
+
+          // CRITICAL: Check for language parameters and enforce them
+          const languageParams = [
+            "language",
+            "lang",
+            "locale",
+            "i18nextLng",
+            "data-lang",
+          ];
+          for (const param of languageParams) {
+            const value = urlParams.get(param);
+            if (value) {
+              console.log(`Found language parameter ${param} in URL:`, value);
+
+              // Enforce this language
+              sessionStorage.setItem("oqtima_tab_language", value);
+              window.__OQTIMA_COMPONENT_LANGUAGE = value;
+              window.__OQTIMA_LOCKED_LANG = value;
+              window.__FORCE_LANGUAGE__ = true;
+              document.documentElement.setAttribute("lang", value);
+
+              try {
+                localStorage.setItem("i18nextLng", value);
+                if (window.gatsby_i18next_language) {
+                  window.gatsby_i18next_language = value;
+                }
+              } catch (e) {}
+
+              console.log("Language from URL parameter enforced:", value);
+              break;
+            }
+          }
         }
       } catch (e) {
-        console.warn("Error checking referral cookies:", e);
+        console.warn("Error checking cookies and parameters:", e);
       }
     };
 
@@ -1311,6 +1372,61 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
       );
       window.__OQTIMA_REFERRAL_VALUE__ = parsedParams.referral_value;
     }
+
+    // CRITICAL ADDITION: Handle language from parsedParams
+    if (
+      parsedParams?.langParam ||
+      parsedParams?.language ||
+      parsedParams?.dataLang
+    ) {
+      const detectedLanguage =
+        parsedParams.langParam ||
+        parsedParams.language ||
+        parsedParams.dataLang;
+      console.log("Setting language from parsed params:", detectedLanguage);
+
+      // Store language in all possible locations to ensure it's not overridden
+      sessionStorage.setItem("oqtima_tab_language", detectedLanguage);
+      window.__OQTIMA_COMPONENT_LANGUAGE = detectedLanguage;
+      window.__OQTIMA_LOCKED_LANG = detectedLanguage;
+      window.__FORCE_LANGUAGE__ = true;
+      document.documentElement.setAttribute("lang", detectedLanguage);
+
+      try {
+        localStorage.setItem("i18nextLng", detectedLanguage);
+        if (window.gatsby_i18next_language) {
+          window.gatsby_i18next_language = detectedLanguage;
+        }
+      } catch (e) {}
+
+      console.log("Language from params enforced:", detectedLanguage);
+    }
+
+    // Add a MutationObserver to prevent language changes
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.attributeName === "lang") {
+          const currentLang = document.documentElement.getAttribute("lang");
+          const storedLang = sessionStorage.getItem("oqtima_tab_language");
+
+          if (storedLang && currentLang !== storedLang) {
+            console.log(
+              `Language changed from ${storedLang} to ${currentLang}, reverting back`
+            );
+            document.documentElement.setAttribute("lang", storedLang);
+          }
+        }
+      }
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["lang"],
+    });
+
+    return () => {
+      observer.disconnect();
+    };
   }, [parsedParams]);
 
   if (!isOpen) return null;

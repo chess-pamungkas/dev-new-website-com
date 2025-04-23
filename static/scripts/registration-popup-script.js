@@ -2101,19 +2101,26 @@
             "[OQtima] Received request for referral parameters from iframe"
           );
 
-          // Collect referral parameters from all possible sources
-          const referralData = {
+          // Collect referral and language parameters from all possible sources
+          const frameData = {
             referral_type: null,
             referral_value: null,
+            language: null,
+            data_lang: null,
           };
 
           // 1. Check global variables
           if (window.__OQTIMA_REFERRAL_TYPE__ !== undefined) {
-            referralData.referral_type = window.__OQTIMA_REFERRAL_TYPE__;
+            frameData.referral_type = window.__OQTIMA_REFERRAL_TYPE__;
           }
 
           if (window.__OQTIMA_REFERRAL_VALUE__ !== undefined) {
-            referralData.referral_value = window.__OQTIMA_REFERRAL_VALUE__;
+            frameData.referral_value = window.__OQTIMA_REFERRAL_VALUE__;
+          }
+
+          // Also collect language data
+          if (window.__OQTIMA_COMPONENT_LANGUAGE) {
+            frameData.language = window.__OQTIMA_COMPONENT_LANGUAGE;
           }
 
           // 2. Check session storage
@@ -2122,13 +2129,18 @@
             const storageValue = sessionStorage.getItem(
               "oqtima_referral_value"
             );
+            const storageLang = sessionStorage.getItem("oqtima_tab_language");
 
-            if (storageType && referralData.referral_type === null) {
-              referralData.referral_type = storageType;
+            if (storageType && frameData.referral_type === null) {
+              frameData.referral_type = storageType;
             }
 
-            if (storageValue && referralData.referral_value === null) {
-              referralData.referral_value = storageValue;
+            if (storageValue && frameData.referral_value === null) {
+              frameData.referral_value = storageValue;
+            }
+
+            if (storageLang && frameData.language === null) {
+              frameData.language = storageLang;
             }
           } catch (e) {
             console.warn("[OQtima] Error accessing sessionStorage:", e);
@@ -2136,6 +2148,8 @@
 
           // 3. Check URL parameters
           const urlParams = new URLSearchParams(window.location.search);
+
+          // Referral parameters
           const urlType =
             urlParams.get("referral_type") ||
             urlParams.get("referralType") ||
@@ -2145,12 +2159,28 @@
             urlParams.get("referralValue") ||
             urlParams.get("referral-value");
 
-          if (urlType && referralData.referral_type === null) {
-            referralData.referral_type = urlType;
+          // Language parameters
+          const urlLang =
+            urlParams.get("language") ||
+            urlParams.get("lang") ||
+            urlParams.get("locale") ||
+            urlParams.get("i18nextLng");
+          const urlDataLang = urlParams.get("data-lang");
+
+          if (urlType && frameData.referral_type === null) {
+            frameData.referral_type = urlType;
           }
 
-          if (urlValue && referralData.referral_value === null) {
-            referralData.referral_value = urlValue;
+          if (urlValue && frameData.referral_value === null) {
+            frameData.referral_value = urlValue;
+          }
+
+          if (urlLang && frameData.language === null) {
+            frameData.language = urlLang;
+          }
+
+          if (urlDataLang && frameData.data_lang === null) {
+            frameData.data_lang = urlDataLang;
           }
 
           // 4. Check the trigger element data attributes
@@ -2163,55 +2193,81 @@
               window.__OQTIMA_TRIGGER_ELEMENT__.getAttribute(
                 "data-referral-value"
               );
+            const langAttr =
+              window.__OQTIMA_TRIGGER_ELEMENT__.getAttribute("data-lang");
 
-            if (referralTypeAttr && referralData.referral_type === null) {
-              referralData.referral_type = referralTypeAttr;
+            if (referralTypeAttr && frameData.referral_type === null) {
+              frameData.referral_type = referralTypeAttr;
             }
 
-            if (referralValueAttr && referralData.referral_value === null) {
-              referralData.referral_value = referralValueAttr;
+            if (referralValueAttr && frameData.referral_value === null) {
+              frameData.referral_value = referralValueAttr;
+            }
+
+            if (langAttr && frameData.language === null) {
+              frameData.language = langAttr;
+              // Also set as data_lang to ensure it's passed correctly
+              if (frameData.data_lang === null) {
+                frameData.data_lang = langAttr;
+              }
             }
           }
 
-          // Send the collected data back to the iframe
-          if (
-            referralData.referral_type !== null ||
-            referralData.referral_value !== null
-          ) {
-            console.log(
-              "[OQtima] Sending referral parameters to iframe:",
-              referralData
-            );
-
-            try {
-              // Using postMessage to send the data
-              event.source.postMessage(
-                {
-                  type: "REGISTRATION_PARAMS",
-                  data: referralData,
-                  timestamp: Date.now(),
-                },
-                "*"
+          // 5. Check URL path for language codes
+          if (frameData.language === null) {
+            const pathParts = window.location.pathname
+              .split("/")
+              .filter(Boolean);
+            if (pathParts.length > 0 && pathParts[0].length <= 5) {
+              // Likely a language code like "id", "en", etc.
+              const pathLanguage = pathParts[0];
+              console.log(
+                "[OQtima] Detected language from URL path:",
+                pathLanguage
               );
+              frameData.language = pathLanguage;
 
-              // Also try to call the direct handler if it exists
-              if (
-                event.source.window &&
-                typeof event.source.window.__TEMP_RECEIVE_REFERRAL_DATA ===
-                  "function"
-              ) {
-                event.source.window.__TEMP_RECEIVE_REFERRAL_DATA(referralData);
+              // Also set as data_lang if empty
+              if (frameData.data_lang === null) {
+                frameData.data_lang = pathLanguage;
               }
-            } catch (e) {
-              console.error(
-                "[OQtima] Error sending referral data to iframe:",
-                e
-              );
             }
-          } else {
-            console.log(
-              "[OQtima] No referral parameters found to send to iframe"
+          }
+
+          // 6. For debugging, set a fallback language
+          if (frameData.language === null) {
+            frameData.language = "id"; // Default to "id" based on your use case
+            console.log("[OQtima] Using fallback language: id");
+          }
+
+          // Send the collected data back to the iframe
+          console.log("[OQtima] Sending parameters to iframe:", frameData);
+
+          try {
+            // Using postMessage to send the data
+            event.source.postMessage(
+              {
+                type: "REGISTRATION_PARAMS",
+                data: frameData,
+                timestamp: Date.now(),
+              },
+              "*"
             );
+
+            // Also try to call the direct handler if it exists
+            if (
+              event.source.window &&
+              typeof event.source.window.__TEMP_RECEIVE_REFERRAL_DATA ===
+                "function"
+            ) {
+              try {
+                event.source.window.__TEMP_RECEIVE_REFERRAL_DATA(frameData);
+              } catch (e) {
+                console.warn("[OQtima] Error calling direct handler:", e);
+              }
+            }
+          } catch (e) {
+            console.error("[OQtima] Error sending data to iframe:", e);
           }
 
           return; // Skip the rest of the handler
@@ -2601,22 +2657,47 @@
 
     console.log("[OQtima] Using URL path:", urlPath);
 
+    // CRITICAL FIX: Add specific checks to prevent language overrides in iframe
+    let iframeLang = normalizedLanguage;
+
+    // Store the language in sessionStorage for persistence
+    if (typeof window !== "undefined") {
+      try {
+        sessionStorage.setItem("oqtima_tab_language", iframeLang);
+        window.__OQTIMA_COMPONENT_LANGUAGE = iframeLang;
+        window.__OQTIMA_LOCKED_LANG = iframeLang;
+
+        console.log(
+          "[OQtima] Language persisted to sessionStorage:",
+          iframeLang
+        );
+      } catch (e) {
+        console.warn("[OQtima] Could not store language in sessionStorage:", e);
+      }
+    }
+
     // Base parameters for all versions
     const params = new URLSearchParams({
+      // UI display parameters
       popup: "true",
       clean: "true",
       hideHeader: "true",
       hideFooter: "true",
+      hideNav: "true",
+      hideExtras: "true",
+
+      // Layout configuration
       embedded: "true",
       standalone: "true",
       formOnly: "true",
       minimal: "true",
-      hideNav: "true",
-      hideExtras: "true",
       cleanLayout: "true",
       allowScroll: "true",
+
+      // Functional parameters
       linkHelper: "true",
-      // Add timestamp to prevent caching
+
+      // Cache busting
       _t: Date.now(),
     });
 
