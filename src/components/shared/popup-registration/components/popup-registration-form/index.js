@@ -790,6 +790,14 @@ const PopupRegistrationForm = ({ params }) => {
         const msgCountryName = data.country_name || null;
         const msgCountryCode = data.country_code || null;
 
+        // Log received parameters
+        console.log("Received parameters from parent window:", {
+          referral_type: msgReferralType,
+          referral_value: msgReferralValue,
+          language: msgLanguage,
+        });
+
+        // Set state values
         if (msgReferralType) setReferralType(msgReferralType);
         if (msgReferralValue) setReferralValue(msgReferralValue);
 
@@ -797,6 +805,33 @@ const PopupRegistrationForm = ({ params }) => {
         if (msgIpAddress) setClientIpAddress(msgIpAddress);
         if (msgCountryName) setClientCountryName(msgCountryName);
         if (msgCountryCode) setClientCountryCode(msgCountryCode);
+
+        // IMPORTANT: ENHANCED STORAGE - Store values in both sessionStorage and localStorage for redundancy
+        try {
+          if (msgReferralType) {
+            sessionStorage.setItem("oqtima_referral_type", msgReferralType);
+            localStorage.setItem("oqtima_referral_type", msgReferralType);
+            console.log(
+              "Successfully stored referral_type in storage:",
+              msgReferralType
+            );
+          }
+
+          if (msgReferralValue) {
+            sessionStorage.setItem("oqtima_referral_value", msgReferralValue);
+            localStorage.setItem("oqtima_referral_value", msgReferralValue);
+            console.log(
+              "Successfully stored referral_value in storage:",
+              msgReferralValue
+            );
+          }
+
+          // Set global variables as additional backup
+          window.__OQTIMA_REFERRAL_TYPE__ = msgReferralType;
+          window.__OQTIMA_REFERRAL_VALUE__ = msgReferralValue;
+        } catch (e) {
+          console.error("Error storing referral parameters:", e);
+        }
 
         // Set langParam from message if available
         if (msgLanguage) {
@@ -847,14 +882,15 @@ const PopupRegistrationForm = ({ params }) => {
           );
           setReferralType(numericType);
 
-          // Also persistently store in sessionStorage
+          // ENHANCED: Store in BOTH sessionStorage and localStorage for redundancy
           try {
             sessionStorage.setItem("oqtima_referral_type", numericType);
+            localStorage.setItem("oqtima_referral_type", numericType);
             window.__OQTIMA_REFERRAL_TYPE__ = numericType;
-            console.log("Stored referral_type in sessionStorage:", numericType);
+            console.log("Stored referral_type in storage:", numericType);
           } catch (storageErr) {
             console.error(
-              "Failed to store referral_type in sessionStorage:",
+              "Failed to store referral_type in storage:",
               storageErr
             );
           }
@@ -867,32 +903,82 @@ const PopupRegistrationForm = ({ params }) => {
           );
           setReferralValue(urlReferralValue);
 
-          // Also persistently store in sessionStorage
+          // ENHANCED: Store in BOTH sessionStorage and localStorage for redundancy
           try {
             sessionStorage.setItem("oqtima_referral_value", urlReferralValue);
+            localStorage.setItem("oqtima_referral_value", urlReferralValue);
             window.__OQTIMA_REFERRAL_VALUE__ = urlReferralValue;
-            console.log(
-              "Stored referral_value in sessionStorage:",
-              urlReferralValue
-            );
+            console.log("Stored referral_value in storage:", urlReferralValue);
           } catch (storageErr) {
             console.error(
-              "Failed to store referral_value in sessionStorage:",
+              "Failed to store referral_value in storage:",
               storageErr
             );
           }
         }
 
-        // If not found in URL, try sessionStorage (for popup mode)
-        if (!urlReferralType && typeof window !== "undefined") {
-          const storedReferralType = sessionStorage.getItem(
-            "oqtima_referral_type"
-          );
-          if (storedReferralType) {
+        // ENHANCED: Check for safeParams referral values if URL params not found
+        if (!urlReferralType && safeParams && safeParams.referral_type) {
+          const safeParamsType = !isNaN(safeParams.referral_type)
+            ? Number(safeParams.referral_type)
+            : safeParams.referral_type;
+
+          console.log("Found referral_type in safeParams:", safeParamsType);
+          setReferralType(safeParamsType);
+
+          // Store in storage for persistence
+          try {
+            sessionStorage.setItem("oqtima_referral_type", safeParamsType);
+            localStorage.setItem("oqtima_referral_type", safeParamsType);
+            window.__OQTIMA_REFERRAL_TYPE__ = safeParamsType;
             console.log(
-              "Found referral_type in sessionStorage:",
-              storedReferralType
+              "Stored safeParams referral_type in storage:",
+              safeParamsType
             );
+          } catch (e) {
+            console.error("Failed to store safeParams referral_type:", e);
+          }
+        }
+
+        if (!urlReferralValue && safeParams && safeParams.referral_value) {
+          console.log(
+            "Found referral_value in safeParams:",
+            safeParams.referral_value
+          );
+          setReferralValue(safeParams.referral_value);
+
+          // Store in storage for persistence
+          try {
+            sessionStorage.setItem(
+              "oqtima_referral_value",
+              safeParams.referral_value
+            );
+            localStorage.setItem(
+              "oqtima_referral_value",
+              safeParams.referral_value
+            );
+            window.__OQTIMA_REFERRAL_VALUE__ = safeParams.referral_value;
+            console.log(
+              "Stored safeParams referral_value in storage:",
+              safeParams.referral_value
+            );
+          } catch (e) {
+            console.error("Failed to store safeParams referral_value:", e);
+          }
+        }
+
+        // If not found in URL or safeParams, try sessionStorage (for popup mode)
+        if (
+          !urlReferralType &&
+          !(safeParams && safeParams.referral_type) &&
+          typeof window !== "undefined"
+        ) {
+          const storedReferralType =
+            sessionStorage.getItem("oqtima_referral_type") ||
+            localStorage.getItem("oqtima_referral_type");
+
+          if (storedReferralType) {
+            console.log("Found referral_type in storage:", storedReferralType);
 
             // Convert to number if it's numeric
             const numericType = !isNaN(storedReferralType)
@@ -902,13 +988,18 @@ const PopupRegistrationForm = ({ params }) => {
           }
         }
 
-        if (!urlReferralValue && typeof window !== "undefined") {
-          const storedReferralValue = sessionStorage.getItem(
-            "oqtima_referral_value"
-          );
+        if (
+          !urlReferralValue &&
+          !(safeParams && safeParams.referral_value) &&
+          typeof window !== "undefined"
+        ) {
+          const storedReferralValue =
+            sessionStorage.getItem("oqtima_referral_value") ||
+            localStorage.getItem("oqtima_referral_value");
+
           if (storedReferralValue) {
             console.log(
-              "Found referral_value in sessionStorage:",
+              "Found referral_value in storage:",
               storedReferralValue
             );
             setReferralValue(storedReferralValue);
@@ -918,6 +1009,7 @@ const PopupRegistrationForm = ({ params }) => {
         // Check global window variables as a fallback
         if (
           !urlReferralType &&
+          !(safeParams && safeParams.referral_type) &&
           !referral_type &&
           typeof window !== "undefined"
         ) {
@@ -937,6 +1029,7 @@ const PopupRegistrationForm = ({ params }) => {
             // Also update sessionStorage for consistency
             try {
               sessionStorage.setItem("oqtima_referral_type", numericType);
+              localStorage.setItem("oqtima_referral_type", numericType);
             } catch (e) {
               /* ignore storage errors */
             }
@@ -945,6 +1038,7 @@ const PopupRegistrationForm = ({ params }) => {
 
         if (
           !urlReferralValue &&
+          !(safeParams && safeParams.referral_value) &&
           !referral_value &&
           typeof window !== "undefined"
         ) {
@@ -958,6 +1052,10 @@ const PopupRegistrationForm = ({ params }) => {
             // Also update sessionStorage for consistency
             try {
               sessionStorage.setItem(
+                "oqtima_referral_value",
+                window.__OQTIMA_REFERRAL_VALUE__
+              );
+              localStorage.setItem(
                 "oqtima_referral_value",
                 window.__OQTIMA_REFERRAL_VALUE__
               );
@@ -1019,8 +1117,17 @@ const PopupRegistrationForm = ({ params }) => {
             "- oqtima_referral_value:",
             sessionStorage.getItem("oqtima_referral_value")
           );
+          console.log("LocalStorage state for referral parameters:");
+          console.log(
+            "- oqtima_referral_type:",
+            localStorage.getItem("oqtima_referral_type")
+          );
+          console.log(
+            "- oqtima_referral_value:",
+            localStorage.getItem("oqtima_referral_value")
+          );
         } catch (e) {
-          console.error("Error reading sessionStorage:", e);
+          console.error("Error reading storage:", e);
         }
       } catch (err) {
         console.error("Error extracting parameters:", err);
@@ -1037,6 +1144,135 @@ const PopupRegistrationForm = ({ params }) => {
       window.removeEventListener("message", handleMessage);
       clearTimeout(timeout);
     };
+  }, []);
+
+  // ENHANCED: Additional component mount effect to ensure referral parameters are loaded
+  useEffect(() => {
+    // This effect runs once on component mount to ensure referral parameters are loaded from all possible sources
+    console.log("Running additional referral parameter initialization");
+
+    try {
+      // Check if already set in state
+      if (!referral_type || !referral_value) {
+        console.log(
+          "Referral parameters not fully set in state, checking all sources"
+        );
+
+        // Check sources in priority order: URL params -> safeParams -> sessionStorage -> localStorage -> global vars
+
+        // 1. First check URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlReferralType =
+          urlParams.get("referral_type") || urlParams.get("referralType");
+        const urlReferralValue =
+          urlParams.get("referral_value") || urlParams.get("referralValue");
+
+        // 2. Check safeParams
+        const safeParamsType = safeParams?.referral_type;
+        const safeParamsValue = safeParams?.referral_value;
+
+        // 3. Check sessionStorage
+        const sessionType = sessionStorage.getItem("oqtima_referral_type");
+        const sessionValue = sessionStorage.getItem("oqtima_referral_value");
+
+        // 4. Check localStorage
+        const localType = localStorage.getItem("oqtima_referral_type");
+        const localValue = localStorage.getItem("oqtima_referral_value");
+
+        // 5. Check global variables
+        const globalType = window.__OQTIMA_REFERRAL_TYPE__;
+        const globalValue = window.__OQTIMA_REFERRAL_VALUE__;
+
+        // Set referral_type using priority order
+        const finalType =
+          urlReferralType ||
+          safeParamsType ||
+          sessionType ||
+          localType ||
+          globalType;
+        if (finalType && !referral_type) {
+          console.log(
+            "Setting referral_type from combined sources:",
+            finalType
+          );
+
+          // Parse as number if numeric
+          const numericType = !isNaN(finalType) ? Number(finalType) : finalType;
+          setReferralType(numericType);
+
+          // Ensure it's stored in both sessionStorage and localStorage
+          try {
+            sessionStorage.setItem("oqtima_referral_type", String(numericType));
+            localStorage.setItem("oqtima_referral_type", String(numericType));
+            window.__OQTIMA_REFERRAL_TYPE__ = numericType;
+            console.log(
+              "Stored final referral_type in all storage mechanisms:",
+              numericType
+            );
+          } catch (e) {
+            console.error("Error storing final referral_type:", e);
+          }
+        }
+
+        // Set referral_value using priority order
+        const finalValue =
+          urlReferralValue ||
+          safeParamsValue ||
+          sessionValue ||
+          localValue ||
+          globalValue;
+        if (finalValue && !referral_value) {
+          console.log(
+            "Setting referral_value from combined sources:",
+            finalValue
+          );
+          setReferralValue(finalValue);
+
+          // Ensure it's stored in both sessionStorage and localStorage
+          try {
+            sessionStorage.setItem("oqtima_referral_value", finalValue);
+            localStorage.setItem("oqtima_referral_value", finalValue);
+            window.__OQTIMA_REFERRAL_VALUE__ = finalValue;
+            console.log(
+              "Stored final referral_value in all storage mechanisms:",
+              finalValue
+            );
+          } catch (e) {
+            console.error("Error storing final referral_value:", e);
+          }
+        }
+      } else {
+        console.log("Referral parameters already set in state:", {
+          referral_type,
+          referral_value,
+        });
+
+        // Ensure the state values are reflected in storage
+        try {
+          if (referral_type) {
+            sessionStorage.setItem(
+              "oqtima_referral_type",
+              String(referral_type)
+            );
+            localStorage.setItem("oqtima_referral_type", String(referral_type));
+            window.__OQTIMA_REFERRAL_TYPE__ = referral_type;
+          }
+
+          if (referral_value) {
+            sessionStorage.setItem("oqtima_referral_value", referral_value);
+            localStorage.setItem("oqtima_referral_value", referral_value);
+            window.__OQTIMA_REFERRAL_VALUE__ = referral_value;
+          }
+        } catch (e) {
+          console.error(
+            "Error synchronizing referral parameters to storage:",
+            e
+          );
+        }
+      }
+    } catch (e) {
+      console.error("Error in referral parameter initialization effect:", e);
+    }
   }, []);
 
   // Function to get the best language to use
@@ -1587,9 +1823,10 @@ const PopupRegistrationForm = ({ params }) => {
     }
 
     try {
-      // Create a debugging object with all possible sources of referral parameters
+      // CRITICAL FIX: Ensure referral parameters are included by checking all possible sources
+      // Create a comprehensive collection of all possible sources of referral parameters
       const referralSources = {
-        // Component state
+        // Component state (highest priority)
         state: {
           referral_type: referral_type,
           referral_value: referral_value,
@@ -1599,39 +1836,23 @@ const PopupRegistrationForm = ({ params }) => {
           referral_type: safeParams.referral_type,
           referral_value: safeParams.referral_value,
         },
-        // Session storage
-        sessionStorage: {
-          referral_type:
-            typeof window !== "undefined"
-              ? sessionStorage.getItem("oqtima_referral_type")
-              : null,
-          referral_value:
-            typeof window !== "undefined"
-              ? sessionStorage.getItem("oqtima_referral_value")
-              : null,
-        },
-        // Global variables
-        global: {
-          referral_type:
-            typeof window !== "undefined" &&
-            window.__OQTIMA_REFERRAL_TYPE__ !== undefined
-              ? window.__OQTIMA_REFERRAL_TYPE__
-              : null,
-          referral_value:
-            typeof window !== "undefined" &&
-            window.__OQTIMA_REFERRAL_VALUE__ !== undefined
-              ? window.__OQTIMA_REFERRAL_VALUE__
-              : null,
-        },
-        // Direct URL parameters
+        // URL parameters direct check
         url: {},
+        // Session storage
+        sessionStorage: {},
+        // Local storage
+        localStorage: {},
+        // Global variables
+        global: {},
+        // Data attributes from closest container
+        dataAttributes: {},
       };
 
-      // Check URL parameters directly one more time to ensure we don't miss anything
+      // Fill the sources with actual values
+
+      // 1. Check URL parameters
       if (typeof window !== "undefined") {
         const urlParams = new URLSearchParams(window.location.search);
-
-        // Check for multiple parameter name formats
         const urlReferralType =
           urlParams.get("referral_type") ||
           urlParams.get("referralType") ||
@@ -1648,24 +1869,70 @@ const PopupRegistrationForm = ({ params }) => {
         };
       }
 
+      // 2. Check session storage
+      try {
+        referralSources.sessionStorage = {
+          referral_type: sessionStorage.getItem("oqtima_referral_type"),
+          referral_value: sessionStorage.getItem("oqtima_referral_value"),
+        };
+      } catch (e) {
+        console.error("Error reading session storage:", e);
+      }
+
+      // 3. Check local storage
+      try {
+        referralSources.localStorage = {
+          referral_type: localStorage.getItem("oqtima_referral_type"),
+          referral_value: localStorage.getItem("oqtima_referral_value"),
+        };
+      } catch (e) {
+        console.error("Error reading local storage:", e);
+      }
+
+      // 4. Check global variables
+      if (typeof window !== "undefined") {
+        referralSources.global = {
+          referral_type: window.__OQTIMA_REFERRAL_TYPE__,
+          referral_value: window.__OQTIMA_REFERRAL_VALUE__,
+        };
+      }
+
+      // 5. Check data attributes on container element (as a last resort)
+      try {
+        if (typeof document !== "undefined") {
+          const container = document.querySelector("[data-oqtima-register]");
+          if (container) {
+            referralSources.dataAttributes = {
+              referral_type: container.getAttribute("data-referral-type"),
+              referral_value: container.getAttribute("data-referral-value"),
+            };
+          }
+        }
+      } catch (e) {
+        console.error("Error reading data attributes:", e);
+      }
+
       // Log all sources for debugging
       console.log("All referral parameter sources:", referralSources);
 
-      // Get final referral parameters with priority order:
-      // 1. URL params, 2. State variables, 3. Safe params, 4. Session storage, 5. Global variables
+      // Get final referral parameters with priority order
       const finalReferralType =
-        referralSources.url.referral_type ||
         referralSources.state.referral_type ||
+        referralSources.url.referral_type ||
         referralSources.safeParams.referral_type ||
         referralSources.sessionStorage.referral_type ||
-        referralSources.global.referral_type;
+        referralSources.localStorage.referral_type ||
+        referralSources.global.referral_type ||
+        referralSources.dataAttributes.referral_type;
 
       const finalReferralValue =
-        referralSources.url.referral_value ||
         referralSources.state.referral_value ||
+        referralSources.url.referral_value ||
         referralSources.safeParams.referral_value ||
         referralSources.sessionStorage.referral_value ||
-        referralSources.global.referral_value;
+        referralSources.localStorage.referral_value ||
+        referralSources.global.referral_value ||
+        referralSources.dataAttributes.referral_value;
 
       // Convert referral_type to number if it's a numeric string
       const normalizedReferralType =
@@ -1692,6 +1959,33 @@ const PopupRegistrationForm = ({ params }) => {
         ")"
       );
 
+      // IMPORTANT: If we have referral parameters, store them one more time to ensure they are available
+      // for future form submissions or page refreshes
+      try {
+        if (
+          normalizedReferralType !== null &&
+          normalizedReferralType !== undefined
+        ) {
+          sessionStorage.setItem(
+            "oqtima_referral_type",
+            String(normalizedReferralType)
+          );
+          localStorage.setItem(
+            "oqtima_referral_type",
+            String(normalizedReferralType)
+          );
+          window.__OQTIMA_REFERRAL_TYPE__ = normalizedReferralType;
+        }
+
+        if (finalReferralValue) {
+          sessionStorage.setItem("oqtima_referral_value", finalReferralValue);
+          localStorage.setItem("oqtima_referral_value", finalReferralValue);
+          window.__OQTIMA_REFERRAL_VALUE__ = finalReferralValue;
+        }
+      } catch (e) {
+        console.error("Error storing final referral parameters:", e);
+      }
+
       // Prepare submission data with referral parameters
       const submissionData = {
         ...values,
@@ -1704,7 +1998,7 @@ const PopupRegistrationForm = ({ params }) => {
         cookie: policyLinks.cookiePolicy,
       };
 
-      // Always include referral parameters if we have them
+      // CRITICAL FIX: Always include referral parameters if we have them
       if (
         normalizedReferralType !== null &&
         normalizedReferralType !== undefined
@@ -1726,97 +2020,97 @@ const PopupRegistrationForm = ({ params }) => {
         `${API_URL}crm-register`,
         submissionData
       );
-      console.log("response", response.data);
+      console.log("API response:", response.data);
       if (response.data.code && response.data.code !== 200) {
         handleApiResponse(false, response.data.message, response.data.code);
       } else {
         handleApiResponse(true);
 
-        const redirectAddress = response.data.redirect_address;
-        if (redirectAddress) {
-          // Check if we're in an iframe
-          if (window.parent !== window) {
-            // ENHANCED: Send multiple message formats to ensure compatibility
+        // const redirectAddress = response.data.redirect_address;
+        // if (redirectAddress) {
+        //   // Check if we're in an iframe
+        //   if (window.parent !== window) {
+        //     // ENHANCED: Send multiple message formats to ensure compatibility
 
-            // 1. Standard object format with REDIRECT_TO_URL type
-            window.parent.postMessage(
-              {
-                type: "REDIRECT_TO_URL",
-                url: redirectAddress,
-                success: true,
-                timestamp: Date.now(),
-              },
-              "*"
-            );
+        //     // 1. Standard object format with REDIRECT_TO_URL type
+        //     window.parent.postMessage(
+        //       {
+        //         type: "REDIRECT_TO_URL",
+        //         url: redirectAddress,
+        //         success: true,
+        //         timestamp: Date.now(),
+        //       },
+        //       "*"
+        //     );
 
-            // 2. Alternative object format with redirectUrl property
-            window.parent.postMessage(
-              {
-                type: "REDIRECT_TO_URL",
-                redirectUrl: redirectAddress,
-                success: true,
-                timestamp: Date.now(),
-              },
-              "*"
-            );
+        //     // 2. Alternative object format with redirectUrl property
+        //     window.parent.postMessage(
+        //       {
+        //         type: "REDIRECT_TO_URL",
+        //         redirectUrl: redirectAddress,
+        //         success: true,
+        //         timestamp: Date.now(),
+        //       },
+        //       "*"
+        //     );
 
-            // 3. Registration success format
-            window.parent.postMessage(
-              {
-                type: "REGISTRATION_SUCCESS",
-                url: redirectAddress,
-                redirectUrl: redirectAddress,
-                success: true,
-                timestamp: Date.now(),
-              },
-              "*"
-            );
+        //     // 3. Registration success format
+        //     window.parent.postMessage(
+        //       {
+        //         type: "REGISTRATION_SUCCESS",
+        //         url: redirectAddress,
+        //         redirectUrl: redirectAddress,
+        //         success: true,
+        //         timestamp: Date.now(),
+        //       },
+        //       "*"
+        //     );
 
-            // 4. Simple string format (for the global handler)
-            window.parent.postMessage(`redirect:${redirectAddress}`, "*");
+        //     // 4. Simple string format (for the global handler)
+        //     window.parent.postMessage(`redirect:${redirectAddress}`, "*");
 
-            // 5. Direct URL string (for simple string extraction)
-            setTimeout(() => {
-              window.parent.postMessage(redirectAddress, "*");
-            }, 100);
+        //     // 5. Direct URL string (for simple string extraction)
+        //     setTimeout(() => {
+        //       window.parent.postMessage(redirectAddress, "*");
+        //     }, 100);
 
-            // ENHANCED: Try direct redirection approach for some browsers
-            try {
-              // Some browsers allow this in certain contexts
-              if (window.top) {
-                setTimeout(() => {
-                  try {
-                    window.top.location.href = redirectAddress;
-                  } catch (err) {
-                    // Could not set top location
-                  }
-                }, 300);
-              }
-            } catch (err) {
-              // Could not access top window
-            }
+        //     // ENHANCED: Try direct redirection approach for some browsers
+        //     try {
+        //       // Some browsers allow this in certain contexts
+        //       if (window.top) {
+        //         setTimeout(() => {
+        //           try {
+        //             window.top.location.href = redirectAddress;
+        //           } catch (err) {
+        //             // Could not set top location
+        //           }
+        //         }, 300);
+        //       }
+        //     } catch (err) {
+        //       // Could not access top window
+        //     }
 
-            // ENHANCED: As a final fallback, try to save to sessionStorage for use on page reload
-            try {
-              sessionStorage.setItem(
-                "OQTIMA_PENDING_REDIRECT",
-                redirectAddress
-              );
+        //     // ENHANCED: As a final fallback, try to save to sessionStorage for use on page reload
+        //     try {
+        //       sessionStorage.setItem(
+        //         "OQTIMA_PENDING_REDIRECT",
+        //         redirectAddress
+        //       );
 
-              // Set a flag to indicate successful registration
-              sessionStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
-              sessionStorage.setItem(
-                "OQTIMA_REGISTRATION_TIMESTAMP",
-                Date.now().toString()
-              );
-            } catch (err) {
-              // Could not save to sessionStorage
-            }
-          } else {
-            // If not in iframe, redirect normally
-            window.location.href = redirectAddress;
-          }
-        }
+        //       // Set a flag to indicate successful registration
+        //       sessionStorage.setItem("OQTIMA_REGISTRATION_SUCCESS", "true");
+        //       sessionStorage.setItem(
+        //         "OQTIMA_REGISTRATION_TIMESTAMP",
+        //         Date.now().toString()
+        //       );
+        //     } catch (err) {
+        //       // Could not save to sessionStorage
+        //     }
+        //   } else {
+        //     // If not in iframe, redirect normally
+        //     window.location.href = redirectAddress;
+        //   }
+        // }
       }
     } catch (error) {
       const errorMessage = error.response?.data?.message || "An error occurred";
