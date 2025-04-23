@@ -1050,6 +1050,69 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
           setIsContentReady(true);
         }, 50);
       }
+      // Handle registration parameters message
+      else if (event.data && event.data.type === "REGISTRATION_PARAMS") {
+        console.log(
+          "Received registration parameters from parent:",
+          event.data
+        );
+
+        try {
+          const { data } = event.data;
+
+          // Store referral parameters in session storage
+          if (data.referral_type !== undefined && data.referral_type !== null) {
+            sessionStorage.setItem("oqtima_referral_type", data.referral_type);
+            window.__OQTIMA_REFERRAL_TYPE__ = data.referral_type;
+            console.log(
+              "Stored referral_type in sessionStorage:",
+              data.referral_type
+            );
+          }
+
+          if (
+            data.referral_value !== undefined &&
+            data.referral_value !== null
+          ) {
+            sessionStorage.setItem(
+              "oqtima_referral_value",
+              data.referral_value
+            );
+            window.__OQTIMA_REFERRAL_VALUE__ = data.referral_value;
+            console.log(
+              "Stored referral_value in sessionStorage:",
+              data.referral_value
+            );
+          }
+
+          // Handle direct session storage instructions
+          if (data.storeInSessionStorage && Array.isArray(data.storageKeys)) {
+            data.storageKeys.forEach((item) => {
+              if (item.key && item.value !== undefined) {
+                sessionStorage.setItem(item.key, item.value);
+                console.log(
+                  `Stored ${item.key} in sessionStorage:`,
+                  item.value
+                );
+              }
+            });
+          }
+
+          // Send confirmation back to parent
+          if (window.parent && window.parent !== window) {
+            window.parent.postMessage(
+              {
+                type: "REGISTRATION_PARAMS_RECEIVED",
+                success: true,
+                timestamp: Date.now(),
+              },
+              "*"
+            );
+          }
+        } catch (e) {
+          console.error("Error processing registration parameters:", e);
+        }
+      }
     };
 
     window.addEventListener("message", handleIframeMessages);
@@ -1148,6 +1211,107 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
 
     return () => clearTimeout(checkTimeout);
   }, []);
+
+  // NEW: Check for cookies containing referral parameters on page load
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Function to get cookie value by name
+    const getCookie = (name) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(";").shift();
+      return null;
+    };
+
+    // Check for referral parameters in cookies
+    const checkReferralCookies = () => {
+      try {
+        // Check for referral type in cookies
+        const referralType = getCookie("oqtima_referral_type");
+        if (referralType) {
+          console.log("Found referral_type in cookie:", referralType);
+          sessionStorage.setItem("oqtima_referral_type", referralType);
+          window.__OQTIMA_REFERRAL_TYPE__ = referralType;
+        }
+
+        // Check for referral value in cookies
+        const referralValue = getCookie("oqtima_referral_value");
+        if (referralValue) {
+          console.log("Found referral_value in cookie:", referralValue);
+          sessionStorage.setItem("oqtima_referral_value", referralValue);
+          window.__OQTIMA_REFERRAL_VALUE__ = referralValue;
+        }
+
+        // Check for referral parameters in URL query params
+        if (typeof window !== "undefined") {
+          const urlParams = new URLSearchParams(window.location.search);
+
+          // Check for referral type in URL params with multiple possible names
+          const referralTypeParams = [
+            "referral_type",
+            "referralType",
+            "referral-type",
+          ];
+          for (const param of referralTypeParams) {
+            const value = urlParams.get(param);
+            if (value) {
+              console.log(`Found ${param} in URL:`, value);
+              sessionStorage.setItem("oqtima_referral_type", value);
+              window.__OQTIMA_REFERRAL_TYPE__ = value;
+              break;
+            }
+          }
+
+          // Check for referral value in URL params with multiple possible names
+          const referralValueParams = [
+            "referral_value",
+            "referralValue",
+            "referral-value",
+          ];
+          for (const param of referralValueParams) {
+            const value = urlParams.get(param);
+            if (value) {
+              console.log(`Found ${param} in URL:`, value);
+              sessionStorage.setItem("oqtima_referral_value", value);
+              window.__OQTIMA_REFERRAL_VALUE__ = value;
+              break;
+            }
+          }
+        }
+      } catch (e) {
+        console.warn("Error checking referral cookies:", e);
+      }
+    };
+
+    // Run the check on initial load
+    checkReferralCookies();
+
+    // Also set up a check for parameters in parent message data
+    if (parsedParams?.referral_type) {
+      console.log(
+        "Setting referral_type from parsed params:",
+        parsedParams.referral_type
+      );
+      sessionStorage.setItem(
+        "oqtima_referral_type",
+        parsedParams.referral_type
+      );
+      window.__OQTIMA_REFERRAL_TYPE__ = parsedParams.referral_type;
+    }
+
+    if (parsedParams?.referral_value) {
+      console.log(
+        "Setting referral_value from parsed params:",
+        parsedParams.referral_value
+      );
+      sessionStorage.setItem(
+        "oqtima_referral_value",
+        parsedParams.referral_value
+      );
+      window.__OQTIMA_REFERRAL_VALUE__ = parsedParams.referral_value;
+    }
+  }, [parsedParams]);
 
   if (!isOpen) return null;
 
