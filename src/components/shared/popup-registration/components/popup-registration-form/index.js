@@ -1039,55 +1039,90 @@ const PopupRegistrationForm = ({ params }) => {
     };
   }, []);
 
-  // Use the language parameter also to detect RTL
-  // UPDATED: Implementasi prioritas language yang jelas
-  // Prioritas: 1. langParam dari safeParams, 2. message, 3. URL param, 4. context, 5. fallback "en"
-  let effectiveLanguage =
-    safeParams.langParam ||
-    languageFromMessage ||
-    languageFromUrl ||
-    selectedLanguage?.id ||
-    "en";
-
-  // SANITIZE: Function to clean up language codes that might be malformed
-  const sanitizeLanguageCode = (code) => {
-    // If code contains "?", it's likely malformed
-    if (code && code.includes("?")) {
-      // Try to extract the language part
-      const match = code.match(/[?&](language|lang|locale)=([^&]+)/i);
-      if (match && match[2]) {
-        return match[2];
+  // Function to get the best language to use
+  const getEffectiveLanguage = () => {
+    try {
+      // First, check for data-lang attribute
+      const dataLangElements = document.querySelectorAll("[data-lang]");
+      if (dataLangElements.length > 0) {
+        const dataLang = dataLangElements[0].getAttribute("data-lang");
+        if (dataLang) {
+          console.log(
+            "PopupRegistrationForm: Using data-lang attribute:",
+            dataLang
+          );
+          return dataLang.toLowerCase();
+        }
       }
-      // Default to English if we can't extract
+
+      // Next, use passed language from params
+      if (language) {
+        console.log(
+          "PopupRegistrationForm: Using passed language parameter:",
+          language
+        );
+        return language.toLowerCase();
+      }
+
+      // Then check URL parameters
+      if (typeof window !== "undefined") {
+        const urlParams = new URLSearchParams(window.location.search);
+        const langParam = urlParams.get("lang") || urlParams.get("langParam");
+        if (langParam) {
+          console.log(
+            "PopupRegistrationForm: Using URL language parameter:",
+            langParam
+          );
+          return langParam.toLowerCase();
+        }
+      }
+
+      // Finally, check sessionStorage
+      if (typeof window !== "undefined" && window.sessionStorage) {
+        const sessionLang = sessionStorage.getItem("oqtima_tab_language");
+        if (sessionLang) {
+          console.log(
+            "PopupRegistrationForm: Using sessionStorage language:",
+            sessionLang
+          );
+          return sessionLang.toLowerCase();
+        }
+      }
+
+      // Default to whatever was selected or English
+      return selectedLanguage || "en";
+    } catch (e) {
+      console.error("Error determining effective language:", e);
       return "en";
     }
-
-    // If code is longer than 5 chars and not a common format like "zh-CN"
-    if (code && code.length > 5 && !code.match(/^[a-z]{2}-[A-Z]{2}$/)) {
-      return "en";
-    }
-
-    return code;
   };
 
-  // Clean up the language code before using it
-  effectiveLanguage = sanitizeLanguageCode(effectiveLanguage);
+  // Find the active language
+  const effectiveLanguage = getEffectiveLanguage();
 
-  // Force the path language when present in URL
-  if (typeof window !== "undefined" && window.location.pathname) {
-    const pathParts = window.location.pathname.split("/").filter(Boolean);
-    if (pathParts.length > 0) {
-      const pathLang = pathParts[0];
-      if (pathLang && pathLang.length <= 5) {
-        effectiveLanguage = pathLang;
-      }
+  // Save it immediately to sessionStorage
+  if (
+    typeof window !== "undefined" &&
+    window.sessionStorage &&
+    effectiveLanguage
+  ) {
+    try {
+      sessionStorage.setItem("oqtima_tab_language", effectiveLanguage);
+      const isRTL = RTL_LANGUAGES.includes(effectiveLanguage);
+      sessionStorage.setItem("oqtima_tab_rtl", isRTL ? "true" : "false");
+      console.log(
+        `PopupRegistrationForm: Saved language to sessionStorage: ${effectiveLanguage}, RTL: ${isRTL}`
+      );
+
+      // Set language on document element
+      document.documentElement.setAttribute("lang", effectiveLanguage);
+      document.documentElement.setAttribute("dir", isRTL ? "rtl" : "ltr");
+    } catch (e) {
+      console.warn(
+        "PopupRegistrationForm: Could not save language to sessionStorage:",
+        e
+      );
     }
-  }
-
-  // Normalize Brazilian Portuguese variations
-  const brVariations = ["br", "pt-br", "pt_br", "pt-BR", "pt_BR"];
-  if (brVariations.includes(effectiveLanguage.toLowerCase())) {
-    effectiveLanguage = "pt";
   }
 
   // Check untuk RTL language
@@ -1182,14 +1217,62 @@ const PopupRegistrationForm = ({ params }) => {
 
     // Function to check and fix RTL attributes based on the current language
     const handleLanguageRTLCheck = () => {
-      const currentLang = document.documentElement.getAttribute("lang");
-      console.log(`Form detected language: ${currentLang}`);
+      try {
+        // Get the current language from document or effectiveLanguage or fallback to "en"
+        const currentLang = document.documentElement.getAttribute("lang");
+        const portalLanguageCode = currentLang || effectiveLanguage || "en";
+        console.log("portalLanguageCode", portalLanguageCode);
 
-      if (currentLang && currentLang.toLowerCase() !== "ar") {
-        console.log(
-          `Form detected non-Arabic language: ${currentLang}, cleaning RTL attributes`
-        );
-        cleanRTLAttributes();
+        // Check if it's in the RTL languages list
+        const isRTLLanguage = RTL_LANGUAGES.includes(portalLanguageCode);
+
+        // Always save the current language to persist across tab navigation
+        if (typeof window !== "undefined" && portalLanguageCode) {
+          // Store language in sessionStorage for this tab session
+          sessionStorage.setItem("oqtima_tab_language", portalLanguageCode);
+          sessionStorage.setItem(
+            "oqtima_tab_rtl",
+            isRTLLanguage ? "true" : "false"
+          );
+
+          // Don't let it default to 'en' if another language is specified
+          if (portalLanguageCode !== "en") {
+            // Ensure the language isn't overridden
+            window.__OQTIMA_LANG_MUST_USE = portalLanguageCode;
+            window.__OQTIMA_COMPONENT_LANGUAGE = portalLanguageCode;
+            window.__OQTIMA_LOCKED_LANG = portalLanguageCode;
+          }
+        }
+
+        // Only clean RTL attributes if switching from RTL to non-RTL
+        if (isRTLMode && !isRTLLanguage) {
+          console.log("Language change detected:", portalLanguageCode);
+          if (portalLanguageCode !== "ar") {
+            console.log(
+              `Non-Arabic language '${portalLanguageCode}' detected, cleaning RTL attributes`
+            );
+            cleanRTLAttributes();
+          }
+        }
+        // Apply RTL if needed but wasn't active before
+        else if (!isRTLMode && isRTLLanguage) {
+          console.log(`Setting up RTL for language: ${portalLanguageCode}`);
+
+          // Force RTL to be applied properly
+          document.documentElement.classList.add("rtl-active");
+          document.documentElement.setAttribute("dir", "rtl");
+          document.body.classList.add("rtl-active");
+          document.body.setAttribute("dir", "rtl");
+
+          // Update global RTL flags
+          window.__FORCE_RTL__ = true;
+          window.__ORIGINAL_RTL__ = true;
+        }
+
+        return isRTLLanguage;
+      } catch (e) {
+        console.error("Error in language/RTL check:", e);
+        return false;
       }
     };
 
@@ -1213,7 +1296,7 @@ const PopupRegistrationForm = ({ params }) => {
 
     // Cleanup on unmount
     return () => observer.disconnect();
-  }, []);
+  }, [effectiveLanguage, selectedLanguage, isRTLMode]);
 
   // Map ke language code portal untuk API
   // Special handling for Brazilian Portuguese - ensure it maps to "pt" for API calls
