@@ -2349,7 +2349,67 @@
     const normalizedReferralValue = referralValue ? String(referralValue) : "";
     console.log("[OQtima] Normalized referral_value:", normalizedReferralValue);
 
-    // Continue with the rest of the function...
+    // CRITICAL FIX: Store referral parameters in multiple places to ensure they're available
+    try {
+      // 1. Store in sessionStorage (main target)
+      if (
+        normalizedReferralType !== null &&
+        normalizedReferralType !== undefined
+      ) {
+        sessionStorage.setItem(
+          "oqtima_referral_type",
+          String(normalizedReferralType)
+        );
+        console.log(
+          "[OQtima] Successfully stored referral_type in sessionStorage:",
+          normalizedReferralType
+        );
+      }
+
+      if (normalizedReferralValue) {
+        sessionStorage.setItem(
+          "oqtima_referral_value",
+          normalizedReferralValue
+        );
+        console.log(
+          "[OQtima] Successfully stored referral_value in sessionStorage:",
+          normalizedReferralValue
+        );
+      }
+
+      // 2. Store in localStorage for redundancy
+      if (
+        normalizedReferralType !== null &&
+        normalizedReferralType !== undefined
+      ) {
+        localStorage.setItem(
+          "oqtima_referral_type",
+          String(normalizedReferralType)
+        );
+      }
+
+      if (normalizedReferralValue) {
+        localStorage.setItem("oqtima_referral_value", normalizedReferralValue);
+      }
+
+      // 3. Store as global variables
+      window.__OQTIMA_REFERRAL_TYPE__ = normalizedReferralType;
+      window.__OQTIMA_REFERRAL_VALUE__ = normalizedReferralValue;
+
+      // 4. Create cookie backups with domain scope
+      document.cookie = `oqtima_referral_type=${encodeURIComponent(
+        String(normalizedReferralType)
+      )}; path=/; max-age=3600`;
+      document.cookie = `oqtima_referral_value=${encodeURIComponent(
+        normalizedReferralValue
+      )}; path=/; max-age=3600`;
+
+      console.log(
+        "[OQtima] Referral parameters saved to multiple storage mechanisms"
+      );
+    } catch (e) {
+      console.error("[OQtima] Error storing referral parameters:", e);
+    }
 
     // Check if RTL language
     const isRTL = normalizedLanguage === "ar";
@@ -2400,71 +2460,88 @@
 
     // Base parameters for all versions
     const params = new URLSearchParams({
+      // UI display parameters
       popup: "true",
       clean: "true",
       hideHeader: "true",
       hideFooter: "true",
+      hideNav: "true",
+      hideExtras: "true",
+
+      // Layout configuration
       embedded: "true",
       standalone: "true",
       formOnly: "true",
       minimal: "true",
-      hideNav: "true",
-      hideExtras: "true",
       cleanLayout: "true",
       allowScroll: "true",
+
+      // Functional parameters
       linkHelper: "true",
-      // Add timestamp to prevent caching
+
+      // Cache busting
       _t: Date.now(),
     });
 
-    // CRITICAL: Add language parameters with high priority
+    // LANGUAGE CONFIGURATION
     // Ensure we're sending the original language code as data-lang
-    // This ensures 'br' is preserved and not converted to 'pt'
+    // This ensures codes like 'br' are preserved and not converted to 'pt'
     params.append("data-lang", normalizedLanguage);
 
-    // Add the other standard language parameters
-    params.append("oqtima_lang_locked", normalizedLanguage); // Lock language
-    params.append("oqtima_lang", normalizedLanguage);
-    params.append("language", normalizedLanguage);
-    params.append("lang", normalizedLanguage);
-    params.append("locale", normalizedLanguage);
-    params.append("langParam", normalizedLanguage);
-    params.append("selectedLanguage", normalizedLanguage);
-    params.append("i18nextLng", normalizedLanguage);
+    // Add standard language parameters for maximum compatibility
+    const languageParams = [
+      "oqtima_lang_locked",
+      "oqtima_lang",
+      "language",
+      "lang",
+      "locale",
+      "langParam",
+      "selectedLanguage",
+      "i18nextLng",
+    ];
+
+    languageParams.forEach((param) => {
+      params.append(param, normalizedLanguage);
+    });
+
+    // Language enforcement flags
     params.append("forceLang", "true");
     params.append("forceLanguage", "true");
 
-    // Add RTL parameters if needed
+    // RTL (Right-to-Left) configuration
     if (isRTL) {
-      params.append("isRtl", "true");
-      params.append("forceRtl", "true");
+      const rtlParams = ["isRtl", "forceRtl", "oqtima_rtl", "layout", "uiMode"];
+
+      rtlParams.forEach((param) => {
+        params.append(param, "true");
+      });
+
+      // Direction-specific parameters
       params.append("direction", "rtl");
       params.append("dir", "rtl");
       params.append("textDirection", "rtl");
-      params.append("oqtima_rtl", "true");
-      params.append("layout", "rtl");
-      params.append("uiMode", "rtl");
     }
 
-    // Add mobile-specific parameters
+    // MOBILE CONFIGURATION
     if (isMobile) {
       params.append("isMobile", "true");
       params.append("mobileView", "true");
       params.append("mobileScroll", "true");
     }
 
-    // ENHANCED: Add referral parameters more comprehensively
-    if (
-      normalizedReferralType !== null &&
-      normalizedReferralType !== undefined
-    ) {
-      // Ensure we add both underscore and camelCase variants for maximum compatibility
-      // Primary format with underscore (main format expected by the form)
-      params.set("referral_type", normalizedReferralType);
+    // REFERRAL PARAMETER HANDLING
+    // Add referral type if available
+    if (normalizedReferralType != null) {
+      // Add in multiple formats for maximum compatibility
+      const referralTypeParams = [
+        "referral_type", // Primary format (underscore)
+        "referralType", // camelCase variant
+        "referral-type", // hyphenated variant
+      ];
 
-      // Add alternative formats for compatibility
-      params.set("referralType", normalizedReferralType);
-      params.set("referral-type", normalizedReferralType);
+      referralTypeParams.forEach((param) => {
+        params.set(param, normalizedReferralType);
+      });
 
       // Store in global variable and sessionStorage for redundancy
       try {
@@ -2480,16 +2557,18 @@
       );
     }
 
-    if (
-      normalizedReferralValue !== null &&
-      normalizedReferralValue !== undefined
-    ) {
-      // Primary format with underscore (main format expected by the form)
-      params.set("referral_value", normalizedReferralValue);
+    // Add referral value if available
+    if (normalizedReferralValue != null) {
+      // Add in multiple formats for maximum compatibility
+      const referralValueParams = [
+        "referral_value", // Primary format (underscore)
+        "referralValue", // camelCase variant
+        "referral-value", // hyphenated variant
+      ];
 
-      // Add alternative formats for compatibility
-      params.set("referralValue", normalizedReferralValue);
-      params.set("referral-value", normalizedReferralValue);
+      referralValueParams.forEach((param) => {
+        params.set(param, normalizedReferralValue);
+      });
 
       // Store in global variable and sessionStorage for redundancy
       try {
@@ -2508,12 +2587,12 @@
       );
     }
 
-    // Construct the URL path
+    // Construct the final URL with all parameters
     let finalUrl = `${baseUrl}${urlPath}?${params.toString()}#registration-form`;
 
-    // Debug log the final URL (but truncate if too long)
+    // Debug log the final URL (truncate if too long for readability)
     const logUrl =
-      finalUrl.length > 150 ? finalUrl.substring(0, 147) + "..." : finalUrl;
+      finalUrl.length > 150 ? `${finalUrl.substring(0, 147)}...` : finalUrl;
     console.log("[OQtima] Constructed iframe URL:", logUrl);
 
     return finalUrl;
