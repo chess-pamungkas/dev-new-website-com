@@ -129,42 +129,60 @@ const isLoadedFromExternalScript = () => {
 // Initialize tab-specific language on page load
 if (typeof window !== "undefined") {
   try {
-    // On page load, check if we have a saved language for this tab
-    const tabLanguage = sessionStorage.getItem("oqtima_tab_language");
-    const tabRtl = sessionStorage.getItem("oqtima_tab_rtl") === "true";
+    // Get language from URL parameters or data attributes first
+    const urlParams = new URLSearchParams(window.location.search);
+    const dataLang = document
+      .querySelector("[data-lang]")
+      ?.getAttribute("data-lang");
+    const paramLang = urlParams.get("lang") || urlParams.get("langParam");
 
-    if (tabLanguage) {
-      // This overrides any localStorage setting to ensure consistent language in this tab
+    // Priority order: URL param > data attribute > sessionStorage
+    const preferredLanguage =
+      paramLang || dataLang || sessionStorage.getItem("oqtima_tab_language");
+
+    // If we have a preferred language, use it
+    if (preferredLanguage) {
+      const isRtlLanguage = RTL_LANGUAGES.includes(preferredLanguage);
+
+      // Store in sessionStorage for this tab
+      sessionStorage.setItem("oqtima_tab_language", preferredLanguage);
+      sessionStorage.setItem(
+        "oqtima_tab_rtl",
+        isRtlLanguage ? "true" : "false"
+      );
+
       console.log(
-        `Tab-specific language found: ${tabLanguage}, RTL: ${tabRtl}`
+        `Setting tab-specific language: ${preferredLanguage}, RTL: ${isRtlLanguage}`
       );
 
       // Set HTML attributes on initial page load
-      document.documentElement.setAttribute("lang", tabLanguage);
-      document.documentElement.setAttribute("dir", tabRtl ? "rtl" : "ltr");
+      document.documentElement.setAttribute("lang", preferredLanguage);
+      document.documentElement.setAttribute(
+        "dir",
+        isRtlLanguage ? "rtl" : "ltr"
+      );
 
-      // Update classes
-      if (tabRtl) {
+      // Update classes for RTL
+      if (isRtlLanguage) {
         document.documentElement.classList.add("rtl-active");
         document.body.classList.add("rtl-active");
       } else {
-        document.documentElement.classList.remove(
-          "rtl-active",
-          "rtl",
-          "is-rtl"
-        );
-        document.body.classList.remove("rtl-active", "rtl", "is-rtl");
+        // Clean RTL attributes if switching from RTL to non-RTL
+        const tabRtl = sessionStorage.getItem("oqtima_tab_rtl") === "true";
+        if (tabRtl && !isRtlLanguage) {
+          cleanRTLAttributes();
+        }
       }
 
       // Set global vars
-      window.__OQTIMA_COMPONENT_LANGUAGE = tabLanguage;
-      window.__OQTIMA_LOCKED_LANG = tabLanguage;
-      window.__FORCE_RTL__ = tabRtl;
-      window.__ORIGINAL_RTL__ = tabRtl;
+      window.__OQTIMA_COMPONENT_LANGUAGE = preferredLanguage;
+      window.__OQTIMA_LOCKED_LANG = preferredLanguage;
+      window.__FORCE_RTL__ = isRtlLanguage;
+      window.__ORIGINAL_RTL__ = isRtlLanguage;
 
       // Override i18next language if needed
-      if (localStorage.getItem("i18nextLng") !== tabLanguage) {
-        localStorage.setItem("i18nextLng", tabLanguage);
+      if (localStorage.getItem("i18nextLng") !== preferredLanguage) {
+        localStorage.setItem("i18nextLng", preferredLanguage);
       }
     }
   } catch (e) {
