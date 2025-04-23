@@ -1055,13 +1055,28 @@ const PopupRegistrationForm = ({ params }) => {
         }
       }
 
-      // Next, use passed language from params
-      if (language) {
+      // Next, check for language from URL path (highest priority after data-lang)
+      if (typeof window !== "undefined" && window.location.pathname) {
+        const pathParts = window.location.pathname.split("/").filter(Boolean);
+        if (pathParts.length > 0) {
+          const possibleLang = pathParts[0];
+          if (possibleLang && possibleLang.length <= 5) {
+            console.log(
+              "PopupRegistrationForm: Using language from URL path:",
+              possibleLang
+            );
+            return possibleLang.toLowerCase();
+          }
+        }
+      }
+
+      // Next, check for language from safeParams
+      if (safeParams && safeParams.langParam) {
         console.log(
-          "PopupRegistrationForm: Using passed language parameter:",
-          language
+          "PopupRegistrationForm: Using safeParams.langParam:",
+          safeParams.langParam
         );
-        return language.toLowerCase();
+        return safeParams.langParam.toLowerCase();
       }
 
       // Then check URL parameters
@@ -1077,6 +1092,15 @@ const PopupRegistrationForm = ({ params }) => {
         }
       }
 
+      // Next, check if language is set in window globals
+      if (typeof window !== "undefined" && window.__OQTIMA_LANG_MUST_USE) {
+        console.log(
+          "PopupRegistrationForm: Using window.__OQTIMA_LANG_MUST_USE:",
+          window.__OQTIMA_LANG_MUST_USE
+        );
+        return window.__OQTIMA_LANG_MUST_USE.toLowerCase();
+      }
+
       // Finally, check sessionStorage
       if (typeof window !== "undefined" && window.sessionStorage) {
         const sessionLang = sessionStorage.getItem("oqtima_tab_language");
@@ -1090,7 +1114,7 @@ const PopupRegistrationForm = ({ params }) => {
       }
 
       // Default to whatever was selected or English
-      return selectedLanguage || "en";
+      return (selectedLanguage && selectedLanguage.id) || "en";
     } catch (e) {
       console.error("Error determining effective language:", e);
       return "en";
@@ -1299,34 +1323,75 @@ const PopupRegistrationForm = ({ params }) => {
   }, [effectiveLanguage, selectedLanguage, isRTLMode]);
 
   // Map ke language code portal untuk API
-  // Special handling for Brazilian Portuguese - ensure it maps to "pt" for API calls
+  // Special handling for language code mapping
   let portalLanguageCode;
 
   // First normalize effectiveLanguage to lowercase for case-insensitive comparison
   const effectiveLangLower = effectiveLanguage.toLowerCase();
 
-  // Check if it's a Brazilian Portuguese variant
-  if (
-    effectiveLangLower === "br" ||
-    effectiveLangLower === "pt" ||
-    effectiveLangLower === "pt-br" ||
-    effectiveLangLower === "pt_br"
-  ) {
-    // All Brazilian Portuguese variations should map to "pt" for API calls
-    portalLanguageCode = "pt";
+  // Create a mapping object for special language code conversions
+  const languageMapping = {
+    // Brazilian Portuguese variations
+    br: "pt",
+    pt: "pt",
+    "pt-br": "pt",
+    pt_br: "pt",
+    // Chinese variations
+    cn: "zh-Hans",
+    zh: "zh-Hans",
+    "zh-cn": "zh-Hans",
+    zh_cn: "zh-Hans",
+  };
+
+  // Check if we have a special mapping for this language
+  if (languageMapping[effectiveLangLower]) {
+    portalLanguageCode = languageMapping[effectiveLangLower];
+    console.log(
+      `Mapping language code '${effectiveLangLower}' to '${portalLanguageCode}' for API calls`
+    );
   } else {
-    console.log("effectiveLanguage", effectiveLanguage);
-    // For other languages, use the standard mapping
-    portalLanguageCode = PORTAL_LANGUAGES_MAP[effectiveLanguage];
+    // For other languages, use the standard mapping or fallback to the original code
+    portalLanguageCode =
+      PORTAL_LANGUAGES_MAP[effectiveLanguage] || effectiveLanguage;
+    console.log(`Using standard/original language code: ${portalLanguageCode}`);
   }
 
-  console.log("portalLanguageCode", portalLanguageCode);
+  console.log("Final portalLanguageCode:", portalLanguageCode);
 
   // Double-check if we're in a Brazilian Portuguese URL path but didn't catch it earlier
   if (typeof window !== "undefined" && window.location.pathname) {
     const pathParts = window.location.pathname.split("/").filter(Boolean);
     if (pathParts.length > 0 && pathParts[0].toLowerCase() === "br") {
       portalLanguageCode = "pt";
+    }
+  }
+
+  // Double-check if we're in a language-specific URL path but didn't catch it earlier
+  if (typeof window !== "undefined" && window.location.pathname) {
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    if (pathParts.length > 0) {
+      const pathLang = pathParts[0].toLowerCase();
+
+      // Check specifically for Chinese path
+      if (pathLang === "cn" && portalLanguageCode !== "zh-Hans") {
+        console.log(
+          "Detected Chinese language path '/cn/', overriding to zh-Hans"
+        );
+        portalLanguageCode = "zh-Hans";
+      }
+
+      // Check for Brazilian Portuguese path
+      if (pathLang === "br" && portalLanguageCode !== "pt") {
+        console.log(
+          "Detected Brazilian Portuguese path '/br/', overriding to pt"
+        );
+        portalLanguageCode = "pt";
+      }
+
+      // Log the final path-checked language code
+      console.log(
+        `Path check complete, using language code: ${portalLanguageCode}`
+      );
     }
   }
 
