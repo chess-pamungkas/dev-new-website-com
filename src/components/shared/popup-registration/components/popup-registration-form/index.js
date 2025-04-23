@@ -670,34 +670,186 @@ const PopupRegistrationForm = ({ params }) => {
 
   // ADDED: Debug logger untuk nilai language yang sedang digunakan
   useEffect(() => {
-    // Start with the source language following our priority order
-    let initialLanguage =
-      safeParams.langParam ||
-      languageFromMessage ||
-      languageFromUrl ||
-      selectedLanguage?.id ||
-      "en";
+    if (typeof window === "undefined") return;
 
-    // Check if we're in a path like /br/ and if so, ensure we're using 'br'
-    if (typeof window !== "undefined" && window.location.pathname) {
-      const pathParts = window.location.pathname.split("/").filter(Boolean);
-      if (pathParts.length > 0 && pathParts[0] === "br") {
-        if (initialLanguage !== "br") {
-          initialLanguage = "br";
+    console.log("PopupRegistrationForm: Checking language settings");
+
+    // Function to extract and set language from URL path
+    const setLanguageFromUrlPath = () => {
+      try {
+        const pathParts = window.location.pathname.split("/").filter(Boolean);
+        if (pathParts.length > 0) {
+          const urlLanguage = pathParts[0];
+          if (urlLanguage && urlLanguage.length <= 5) {
+            // Most language codes are 2-5 chars
+            console.log("Detected language from URL path:", urlLanguage);
+
+            // Store in sessionStorage
+            sessionStorage.setItem("oqtima_tab_language", urlLanguage);
+
+            // Set global variables
+            window.__OQTIMA_TAB_LANGUAGE__ = urlLanguage;
+            window.__OQTIMA_LOCKED_LANG__ = urlLanguage;
+            window.__OQTIMA_COMPONENT_LANGUAGE__ = urlLanguage;
+            window.__FORCE_LANGUAGE__ = true;
+
+            // Set on document element
+            document.documentElement.setAttribute("lang", urlLanguage);
+
+            // Update localStorage
+            try {
+              localStorage.setItem("i18nextLng", urlLanguage);
+            } catch (e) {}
+
+            // Check if language is non-Arabic and clean RTL attributes if needed
+            if (urlLanguage.toLowerCase() !== "ar") {
+              console.log(
+                "Non-Arabic language detected, cleaning RTL attributes"
+              );
+
+              // Import and call the cleanRTLAttributes function
+              try {
+                if (window.cleanRTLAttributes) {
+                  window.cleanRTLAttributes();
+                } else if (typeof cleanRTLAttributes === "function") {
+                  cleanRTLAttributes();
+                } else {
+                  // Fallback inline implementation to clean RTL attributes
+                  document.documentElement.classList.remove(
+                    "rtl-active",
+                    "rtl",
+                    "is-rtl"
+                  );
+                  document.documentElement.setAttribute("dir", "ltr");
+                  document.documentElement.removeAttribute("data-rtl");
+
+                  document.body.classList.remove("rtl-active", "rtl", "is-rtl");
+                  document.body.setAttribute("dir", "ltr");
+                  document.body.removeAttribute("data-rtl");
+                  document.body.style.direction = "ltr";
+
+                  // Force UI update by triggering a reflow
+                  const reflow = document.body.offsetHeight;
+
+                  console.log("RTL attributes cleaned inline");
+                }
+              } catch (e) {
+                console.error("Error cleaning RTL attributes:", e);
+              }
+            }
+
+            console.log(
+              "Language from URL path successfully set to:",
+              urlLanguage
+            );
+            return urlLanguage;
+          }
         }
+        return null;
+      } catch (e) {
+        console.error("Error extracting language from URL path:", e);
+        return null;
       }
-    }
+    };
 
-    // Normalize Brazilian Portuguese variations
-    const brVariations = ["br", "pt-br", "pt_br", "pt-BR", "pt_BR"];
-    if (brVariations.includes(initialLanguage.toLowerCase())) {
-      initialLanguage = "pt";
-    }
+    // Determine language from various sources in priority order
+    const getLanguage = () => {
+      // 1. First check URL path (highest priority)
+      const urlPathLanguage = setLanguageFromUrlPath();
+      if (urlPathLanguage) return urlPathLanguage;
 
-    // Get final language code
-    const finalLanguageCode =
-      PORTAL_LANGUAGES_MAP[initialLanguage] || initialLanguage || "en";
-  }, [safeParams, languageFromMessage, languageFromUrl, selectedLanguage]);
+      // 2. Then check sessionStorage
+      const sessionLanguage = sessionStorage.getItem("oqtima_tab_language");
+      if (sessionLanguage) {
+        console.log("Using language from sessionStorage:", sessionLanguage);
+        return sessionLanguage;
+      }
+
+      // 3. Check global variables
+      if (window.__OQTIMA_TAB_LANGUAGE__) {
+        console.log(
+          "Using language from global variable:",
+          window.__OQTIMA_TAB_LANGUAGE__
+        );
+        return window.__OQTIMA_TAB_LANGUAGE__;
+      }
+
+      // 4. Check passed parameters
+      if (safeParams.langParam) {
+        console.log(
+          "Using language from component props:",
+          safeParams.langParam
+        );
+        return safeParams.langParam;
+      }
+
+      // 5. Fallback to default
+      console.log("No language detected, using default: en");
+      return "en";
+    };
+
+    // Get and set the language
+    const detectedLanguage = getLanguage();
+
+    // Explicitly set the language on document element and in storage
+    if (detectedLanguage) {
+      document.documentElement.setAttribute("lang", detectedLanguage);
+      sessionStorage.setItem("oqtima_tab_language", detectedLanguage);
+      window.__OQTIMA_TAB_LANGUAGE__ = detectedLanguage;
+
+      try {
+        localStorage.setItem("i18nextLng", detectedLanguage);
+      } catch (e) {}
+
+      // If language is not Arabic, ensure RTL attributes are removed
+      if (detectedLanguage.toLowerCase() !== "ar") {
+        console.log("Non-Arabic language detected, cleaning RTL attributes");
+
+        try {
+          // Try multiple ways to access the cleanRTLAttributes function
+          if (window.cleanRTLAttributes) {
+            window.cleanRTLAttributes();
+          } else if (typeof cleanRTLAttributes === "function") {
+            cleanRTLAttributes();
+          } else {
+            // Fallback inline implementation
+            document.documentElement.classList.remove(
+              "rtl-active",
+              "rtl",
+              "is-rtl"
+            );
+            document.documentElement.setAttribute("dir", "ltr");
+            document.documentElement.removeAttribute("data-rtl");
+
+            document.body.classList.remove("rtl-active", "rtl", "is-rtl");
+            document.body.setAttribute("dir", "ltr");
+            document.body.removeAttribute("data-rtl");
+            document.body.style.direction = "ltr";
+
+            // Remove RTL from HTML tag
+            const html = document.getElementsByTagName("html")[0];
+            if (html) {
+              html.classList.remove("rtl-active", "rtl", "is-rtl");
+              html.setAttribute("dir", "ltr");
+              html.removeAttribute("data-rtl");
+              html.style.direction = "ltr";
+            }
+          }
+        } catch (e) {
+          console.error("Error cleaning RTL attributes:", e);
+        }
+
+        // Also set RTL flag to false explicitly in sessionStorage
+        sessionStorage.setItem("oqtima_tab_rtl", "false");
+
+        // Update global RTL flags
+        window.__FORCE_RTL__ = false;
+        window.__ORIGINAL_RTL__ = false;
+      }
+
+      console.log("Language set throughout application:", detectedLanguage);
+    }
+  }, [safeParams]);
 
   // Update state values when params change
   useEffect(() => {

@@ -835,6 +835,15 @@
    * Ensures consistent styling and behavior for both RTL and non-RTL languages
    */
   function openRegistrationPopup(options = {}) {
+    // CRITICAL: Save the original RTL state at the very beginning
+    if (isPageInRTLMode()) {
+      console.log("[OQtima] Page is in RTL mode - saving original state");
+      saveOriginalRTLState();
+
+      // CRITICAL: Add protection for RTL attributes to prevent any modifications
+      protectRTLAttributes();
+    }
+
     // Log parameters for debugging
     console.log(
       "[OQtima] Opening registration popup with parameters:",
@@ -871,15 +880,54 @@
               "[OQtima] Overriding language with Brazilian Portuguese (br) from URL path"
             );
           }
+          // Special handling for Arabic in URL path
+          if (pathParts[0] === "ar") {
+            params.language = "ar";
+            console.log(
+              "[OQtima] Overriding language with Arabic (ar) from URL path"
+            );
+          }
         }
       }
     } catch (e) {
       console.warn("[OQtima] Error checking URL path for language:", e);
     }
 
-    // FIXED: Ensure RTL is only enabled for Arabic language
-    params.isRTL = params.language === "ar";
-    console.log("[OQtima] RTL mode:", params.isRTL ? "enabled" : "disabled");
+    // FIXED: Enhanced RTL detection - check for Arabic language variants more thoroughly
+    const normalizedLanguage = (params.language || "").toLowerCase().trim();
+    params.isRTL =
+      normalizedLanguage === "ar" ||
+      normalizedLanguage.startsWith("ar-") ||
+      normalizedLanguage === "arabic" ||
+      (dataLang && dataLang.toLowerCase() === "ar");
+
+    console.log(
+      "[OQtima] RTL mode:",
+      params.isRTL ? "ENABLED" : "disabled",
+      "for language:",
+      normalizedLanguage
+    );
+
+    // Store RTL setting in session storage but don't modify the document
+    if (typeof window !== "undefined") {
+      try {
+        // Store RTL setting only for the popup, not affecting parent document
+        sessionStorage.setItem(
+          "oqtima_popup_rtl",
+          params.isRTL ? "true" : "false"
+        );
+
+        // Use specific popup RTL flags to avoid affecting parent document
+        window.__OQTIMA_POPUP_RTL__ = params.isRTL;
+        window.__OQTIMA_POPUP_LANGUAGE__ = params.language;
+
+        // IMPORTANT: Don't modify these global flags as they may affect parent document
+        // window.__FORCE_RTL__ = params.isRTL;
+        // window.__ORIGINAL_RTL__ = params.isRTL;
+      } catch (e) {
+        console.warn("[OQtima] Error storing RTL state:", e);
+      }
+    }
 
     // ENHANCED: Normalize referral parameters to ensure consistency
     // First, standardize all parameter naming conventions to ensure we capture all possible formats
@@ -1466,6 +1514,17 @@
         const messageData = {
           type: "REGISTRATION_PARAMS",
           data: {
+            // Language parameters (high priority)
+            language: language,
+            "data-lang": language,
+            lang: language,
+            data_lang: language,
+            tab_language: language,
+            oqtima_tab_language: language,
+            i18nextLng: language,
+            forceLang: "true",
+            forceLanguage: "true",
+
             // Ensure referral_type is passed correctly
             referral_type: referralType,
             // Add all variant formats for maximum compatibility
@@ -1477,11 +1536,6 @@
             // Add all variant formats for maximum compatibility
             referralValue: referralValue,
             "referral-value": referralValue,
-
-            // Language parameters
-            language: language,
-            lang: language, // Add lang as alternative format
-            data_lang: language, // Add data_lang as an explicit form
 
             // Include IP and country information if available
             ip_address: ipAddress,
@@ -1498,6 +1552,9 @@
                 key: "oqtima_tab_rtl",
                 value: language === "ar" ? "true" : "false",
               },
+              { key: "lang", value: language },
+              { key: "language", value: language },
+              { key: "i18nextLng", value: language },
             ],
           },
           timestamp: Date.now(),
@@ -1546,18 +1603,39 @@
             if (iframeDoc) {
               const script = iframeDoc.createElement("script");
               script.textContent = `
-                // Set referral parameters directly in sessionStorage
+                // Set referral parameters and language directly in sessionStorage
                 try {
+                  // Set referral parameters
                   sessionStorage.setItem("oqtima_referral_type", "${referralType}");
                   sessionStorage.setItem("oqtima_referral_value", "${referralValue}");
-                  console.log("[OQtima] Successfully stored referral parameters in sessionStorage via injected script");
+                  
+                  // Set language parameters
+                  sessionStorage.setItem("oqtima_tab_language", "${language}");
+                  localStorage.setItem("i18nextLng", "${language}");
+                  
+                  // Set global variables
+                  window.__OQTIMA_REFERRAL_TYPE__ = "${referralType}";
+                  window.__OQTIMA_REFERRAL_VALUE__ = "${referralValue}";
+                  window.__OQTIMA_TAB_LANGUAGE__ = "${language}";
+                  window.__OQTIMA_LOCKED_LANG__ = "${language}";
+                  window.__OQTIMA_COMPONENT_LANGUAGE__ = "${language}";
+                  window.__FORCE_LANGUAGE__ = true;
+                  
+                  // Set language on document element
+                  document.documentElement.setAttribute("lang", "${language}");
+                  
+                  // Log success
+                  console.log("Successfully stored parameters in iframe via injected script");
+                  console.log("Language set to: ${language}");
+                  console.log("Referral type: ${referralType}");
+                  console.log("Referral value: ${referralValue}");
                 } catch (e) {
-                  console.error("[OQtima] Error storing referral parameters in sessionStorage:", e);
+                  console.error("Error storing parameters in iframe sessionStorage:", e);
                 }
               `;
               iframeDoc.head.appendChild(script);
             }
-          }, 1000);
+          }, 500);
         } catch (err) {
           console.warn(
             "[OQtima] Could not inject session storage script:",
@@ -1674,6 +1752,8 @@
     countryName,
     countryCode
   ) {
+    // CRITICAL: Don't save the RTL state again, it's already saved in openRegistrationPopup
+
     // Create modal container with RTL support
     const modalContainer = document.createElement("div");
     modalContainer.id = "oqtima-registration-modal";
@@ -1696,29 +1776,33 @@
         direction: rtl !important;
     `;
 
-    // Add RTL styles to head
+    // Add RTL styles to head but scope them to only affect the popup
     const rtlStyles = document.createElement("style");
     rtlStyles.id = "oqtima-rtl-styles";
     rtlStyles.textContent = `
-      .popup-registration--rtl {
+      /* Isolated RTL styles - only apply to popup elements */
+      #oqtima-registration-modal {
         direction: rtl !important;
       }
-      .popup-registration--rtl .popup-registration__container {
+      #oqtima-registration-modal.popup-registration--rtl {
+        direction: rtl !important;
+      }
+      #oqtima-registration-modal.popup-registration--rtl .popup-registration__container {
         flex-direction: row-reverse !important;
       }
-      .popup-registration--rtl .popup-registration__sidebar--rtl {
+      #oqtima-registration-modal.popup-registration--rtl .popup-registration__sidebar--rtl {
         order: 2 !important;
       }
-      .popup-registration--rtl .popup-registration__content--rtl {
+      #oqtima-registration-modal.popup-registration--rtl .popup-registration__content--rtl {
         order: 1 !important;
       }
-      .popup-registration--rtl * {
+      #oqtima-registration-modal.popup-registration--rtl * {
         direction: rtl !important;
         text-align: right !important;
       }
-      .popup-registration--rtl input,
-      .popup-registration--rtl select,
-      .popup-registration--rtl textarea {
+      #oqtima-registration-modal.popup-registration--rtl input,
+      #oqtima-registration-modal.popup-registration--rtl select,
+      #oqtima-registration-modal.popup-registration--rtl textarea {
         text-align: right !important;
         direction: rtl !important;
       }
@@ -1970,6 +2054,16 @@
       originalScrollPos
     );
 
+    // Set up RTL cleanup function to restore original document state
+    window.__OQTIMA_RTL_CLEANUP = function () {
+      console.log("[OQtima] RTL popup cleanup called");
+
+      // Only restore document state if we're in Arabic mode
+      if (isPageInRTLMode() && documentRTLState.originalHtmlDir === "rtl") {
+        restoreOriginalRTLState();
+      }
+    };
+
     return modalContainer;
   }
 
@@ -1988,15 +2082,49 @@
     originalHtmlOverflow,
     originalScrollPos
   ) {
+    // Store original document RTL state
+    const originalDocDir = document.documentElement.getAttribute("dir");
+    const originalDocLang = document.documentElement.getAttribute("lang");
+    const originalBodyDir = document.body.getAttribute("dir");
+    const originalHtmlRtlState = {
+      classList: [...document.documentElement.classList],
+      dataRtl: document.documentElement.getAttribute("data-rtl"),
+    };
+    const originalBodyRtlState = {
+      classList: [...document.body.classList],
+      dataRtl: document.body.getAttribute("data-rtl"),
+    };
+
+    console.log("[OQtima] Saving original document RTL state before popup:", {
+      originalDocDir,
+      originalDocLang,
+      originalBodyDir,
+      originalHtmlRtlState,
+      originalBodyRtlState,
+    });
+
     // Store close function globally so it can be called from anywhere
     window.__OQTIMA_CLOSE_POPUP = function () {
       try {
-        // Clear language lock from localStorage
+        // Clear popup-specific language and RTL flags
         try {
-          localStorage.removeItem("OQTIMA_LANG_LOCK");
-          sessionStorage.removeItem("OQTIMA_LANG_LOCK");
+          sessionStorage.removeItem("oqtima_popup_rtl");
+          sessionStorage.removeItem("oqtima_popup_iframe_rtl");
+          sessionStorage.removeItem("oqtima_popup_mode");
+
+          // Delete popup-specific global variables
+          delete window.__OQTIMA_POPUP_RTL__;
+          delete window.__OQTIMA_POPUP_LANGUAGE__;
+          delete window.__OQTIMA_POPUP_IFRAME_RTL__;
+          delete window.__OQTIMA_POPUP_MODE__;
         } catch (e) {
-          // Error clearing language storage
+          console.warn("[OQtima] Error cleaning up popup flags:", e);
+        }
+
+        // Remove RTL attribute protection if it was applied
+        if (window.__OQTIMA_UNPROTECT_RTL_ATTRIBUTES__) {
+          window.__OQTIMA_UNPROTECT_RTL_ATTRIBUTES__();
+          delete window.__OQTIMA_UNPROTECT_RTL_ATTRIBUTES__;
         }
 
         // Run RTL specific cleanup if needed
@@ -2013,6 +2141,12 @@
         // Remove styles
         if (styleEl) {
           document.head.removeChild(styleEl);
+        }
+
+        // Remove RTL-specific styles
+        const rtlStyleEl = document.getElementById("oqtima-rtl-styles");
+        if (rtlStyleEl) {
+          document.head.removeChild(rtlStyleEl);
         }
 
         // Remove message handler
@@ -2033,9 +2167,51 @@
         // Remove the close function reference
         delete window.__OQTIMA_CLOSE_POPUP;
 
-        // Restore original body style
-        document.body.className = originalBodyClasses;
-        document.documentElement.className = originalHtmlClasses;
+        // CRITICAL: Check if we need to restore the original RTL state
+        if (isPageInRTLMode() && documentRTLState.originalHtmlDir === "rtl") {
+          // Use the saved RTL state from documentRTLState
+          restoreOriginalRTLState();
+        } else {
+          // Use the state saved in this function
+          // IMPORTANT: Restore original document RTL state
+          if (originalDocDir) {
+            document.documentElement.setAttribute("dir", originalDocDir);
+          } else {
+            document.documentElement.removeAttribute("dir");
+          }
+
+          if (originalDocLang) {
+            document.documentElement.setAttribute("lang", originalDocLang);
+          }
+
+          if (originalBodyDir) {
+            document.body.setAttribute("dir", originalBodyDir);
+          } else {
+            document.body.removeAttribute("dir");
+          }
+
+          // Restore original HTML class list for RTL
+          document.documentElement.className = originalHtmlClasses;
+          if (originalHtmlRtlState.dataRtl) {
+            document.documentElement.setAttribute(
+              "data-rtl",
+              originalHtmlRtlState.dataRtl
+            );
+          } else {
+            document.documentElement.removeAttribute("data-rtl");
+          }
+
+          // Restore original body class list for RTL
+          document.body.className = originalBodyClasses;
+          if (originalBodyRtlState.dataRtl) {
+            document.body.setAttribute(
+              "data-rtl",
+              originalBodyRtlState.dataRtl
+            );
+          } else {
+            document.body.removeAttribute("data-rtl");
+          }
+        }
 
         // Remove mobile-specific classes
         document.body.classList.remove("oqtima-iframe-open");
@@ -2067,8 +2243,10 @@
         } else if (typeof originalScrollPos === "number") {
           window.scrollTo(0, originalScrollPos);
         }
+
+        console.log("[OQtima] Successfully restored original document state");
       } catch (error) {
-        // Error closing registration popup
+        console.error("[OQtima] Error closing registration popup:", error);
       }
     };
 
@@ -2101,26 +2279,24 @@
             "[OQtima] Received request for referral parameters from iframe"
           );
 
-          // Collect referral and language parameters from all possible sources
-          const frameData = {
+          // Collect referral parameters from all possible sources
+          const referralData = {
             referral_type: null,
             referral_value: null,
             language: null,
-            data_lang: null,
           };
 
           // 1. Check global variables
           if (window.__OQTIMA_REFERRAL_TYPE__ !== undefined) {
-            frameData.referral_type = window.__OQTIMA_REFERRAL_TYPE__;
+            referralData.referral_type = window.__OQTIMA_REFERRAL_TYPE__;
           }
 
           if (window.__OQTIMA_REFERRAL_VALUE__ !== undefined) {
-            frameData.referral_value = window.__OQTIMA_REFERRAL_VALUE__;
+            referralData.referral_value = window.__OQTIMA_REFERRAL_VALUE__;
           }
 
-          // Also collect language data
-          if (window.__OQTIMA_COMPONENT_LANGUAGE) {
-            frameData.language = window.__OQTIMA_COMPONENT_LANGUAGE;
+          if (window.__OQTIMA_TAB_LANGUAGE__ !== undefined) {
+            referralData.language = window.__OQTIMA_TAB_LANGUAGE__;
           }
 
           // 2. Check session storage
@@ -2129,18 +2305,20 @@
             const storageValue = sessionStorage.getItem(
               "oqtima_referral_value"
             );
-            const storageLang = sessionStorage.getItem("oqtima_tab_language");
+            const storageLanguage = sessionStorage.getItem(
+              "oqtima_tab_language"
+            );
 
-            if (storageType && frameData.referral_type === null) {
-              frameData.referral_type = storageType;
+            if (storageType && referralData.referral_type === null) {
+              referralData.referral_type = storageType;
             }
 
-            if (storageValue && frameData.referral_value === null) {
-              frameData.referral_value = storageValue;
+            if (storageValue && referralData.referral_value === null) {
+              referralData.referral_value = storageValue;
             }
 
-            if (storageLang && frameData.language === null) {
-              frameData.language = storageLang;
+            if (storageLanguage && referralData.language === null) {
+              referralData.language = storageLanguage;
             }
           } catch (e) {
             console.warn("[OQtima] Error accessing sessionStorage:", e);
@@ -2148,8 +2326,6 @@
 
           // 3. Check URL parameters
           const urlParams = new URLSearchParams(window.location.search);
-
-          // Referral parameters
           const urlType =
             urlParams.get("referral_type") ||
             urlParams.get("referralType") ||
@@ -2158,29 +2334,22 @@
             urlParams.get("referral_value") ||
             urlParams.get("referralValue") ||
             urlParams.get("referral-value");
-
-          // Language parameters
-          const urlLang =
+          const urlLanguage =
             urlParams.get("language") ||
             urlParams.get("lang") ||
             urlParams.get("locale") ||
-            urlParams.get("i18nextLng");
-          const urlDataLang = urlParams.get("data-lang");
+            urlParams.get("data-lang");
 
-          if (urlType && frameData.referral_type === null) {
-            frameData.referral_type = urlType;
+          if (urlType && referralData.referral_type === null) {
+            referralData.referral_type = urlType;
           }
 
-          if (urlValue && frameData.referral_value === null) {
-            frameData.referral_value = urlValue;
+          if (urlValue && referralData.referral_value === null) {
+            referralData.referral_value = urlValue;
           }
 
-          if (urlLang && frameData.language === null) {
-            frameData.language = urlLang;
-          }
-
-          if (urlDataLang && frameData.data_lang === null) {
-            frameData.data_lang = urlDataLang;
+          if (urlLanguage && referralData.language === null) {
+            referralData.language = urlLanguage;
           }
 
           // 4. Check the trigger element data attributes
@@ -2193,81 +2362,117 @@
               window.__OQTIMA_TRIGGER_ELEMENT__.getAttribute(
                 "data-referral-value"
               );
-            const langAttr =
+            const languageAttr =
               window.__OQTIMA_TRIGGER_ELEMENT__.getAttribute("data-lang");
 
-            if (referralTypeAttr && frameData.referral_type === null) {
-              frameData.referral_type = referralTypeAttr;
+            if (referralTypeAttr && referralData.referral_type === null) {
+              referralData.referral_type = referralTypeAttr;
             }
 
-            if (referralValueAttr && frameData.referral_value === null) {
-              frameData.referral_value = referralValueAttr;
+            if (referralValueAttr && referralData.referral_value === null) {
+              referralData.referral_value = referralValueAttr;
             }
 
-            if (langAttr && frameData.language === null) {
-              frameData.language = langAttr;
-              // Also set as data_lang to ensure it's passed correctly
-              if (frameData.data_lang === null) {
-                frameData.data_lang = langAttr;
-              }
+            if (languageAttr && referralData.language === null) {
+              referralData.language = languageAttr;
             }
-          }
-
-          // 5. Check URL path for language codes
-          if (frameData.language === null) {
-            const pathParts = window.location.pathname
-              .split("/")
-              .filter(Boolean);
-            if (pathParts.length > 0 && pathParts[0].length <= 5) {
-              // Likely a language code like "id", "en", etc.
-              const pathLanguage = pathParts[0];
-              console.log(
-                "[OQtima] Detected language from URL path:",
-                pathLanguage
-              );
-              frameData.language = pathLanguage;
-
-              // Also set as data_lang if empty
-              if (frameData.data_lang === null) {
-                frameData.data_lang = pathLanguage;
-              }
-            }
-          }
-
-          // 6. For debugging, set a fallback language
-          if (frameData.language === null) {
-            frameData.language = "id"; // Default to "id" based on your use case
-            console.log("[OQtima] Using fallback language: id");
           }
 
           // Send the collected data back to the iframe
-          console.log("[OQtima] Sending parameters to iframe:", frameData);
+          if (
+            referralData.referral_type !== null ||
+            referralData.referral_value !== null ||
+            referralData.language !== null
+          ) {
+            console.log("[OQtima] Sending parameters to iframe:", referralData);
 
-          try {
-            // Using postMessage to send the data
-            event.source.postMessage(
-              {
+            try {
+              // Create a complete message with all necessary data
+              const messageData = {
                 type: "REGISTRATION_PARAMS",
-                data: frameData,
-                timestamp: Date.now(),
-              },
-              "*"
-            );
+                data: {
+                  // Language parameters - high priority
+                  language: referralData.language,
+                  "data-lang": referralData.language,
+                  lang: referralData.language,
+                  data_lang: referralData.language,
+                  tab_language: referralData.language,
+                  oqtima_tab_language: referralData.language,
+                  i18nextLng: referralData.language,
 
-            // Also try to call the direct handler if it exists
-            if (
-              event.source.window &&
-              typeof event.source.window.__TEMP_RECEIVE_REFERRAL_DATA ===
-                "function"
-            ) {
-              try {
-                event.source.window.__TEMP_RECEIVE_REFERRAL_DATA(frameData);
-              } catch (e) {
-                console.warn("[OQtima] Error calling direct handler:", e);
+                  // Referral parameters
+                  referral_type: referralData.referral_type,
+                  referralType: referralData.referral_type,
+                  "referral-type": referralData.referral_type,
+                  referral_value: referralData.referral_value,
+                  referralValue: referralData.referral_value,
+                  "referral-value": referralData.referral_value,
+
+                  // Cross-domain storage instructions
+                  storeInSessionStorage: true,
+                  storageKeys: [
+                    {
+                      key: "oqtima_referral_type",
+                      value: referralData.referral_type,
+                    },
+                    {
+                      key: "oqtima_referral_value",
+                      value: referralData.referral_value,
+                    },
+                    {
+                      key: "oqtima_tab_language",
+                      value: referralData.language,
+                    },
+                    { key: "i18nextLng", value: referralData.language },
+                    { key: "lang", value: referralData.language },
+                    { key: "language", value: referralData.language },
+                  ],
+                },
+                timestamp: Date.now(),
+              };
+
+              // Using postMessage to send the data
+              event.source.postMessage(messageData, "*");
+
+              // Also try to call the direct handler if it exists
+              if (
+                event.source.window &&
+                typeof event.source.window.__TEMP_RECEIVE_REFERRAL_DATA ===
+                  "function"
+              ) {
+                event.source.window.__TEMP_RECEIVE_REFERRAL_DATA({
+                  referral_type: referralData.referral_type,
+                  referral_value: referralData.referral_value,
+                  language: referralData.language,
+                });
               }
+
+              // Also try to update the document language directly
+              try {
+                if (
+                  referralData.language &&
+                  event.source.window &&
+                  event.source.window.document
+                ) {
+                  event.source.window.document.documentElement.setAttribute(
+                    "lang",
+                    referralData.language
+                  );
+                }
+              } catch (e) {
+                console.warn(
+                  "[OQtima] Could not set iframe document language:",
+                  e
+                );
+              }
+            } catch (e) {
+              console.error(
+                "[OQtima] Error sending referral data to iframe:",
+                e
+              );
             }
-          } catch (e) {
-            console.error("[OQtima] Error sending data to iframe:", e);
+          } else {
+            console.log("[OQtima] No parameters found to send to iframe");
           }
 
           return; // Skip the rest of the handler
@@ -2610,8 +2815,40 @@
       );
     }
 
-    // Check if RTL language
-    const isRTL = normalizedLanguage === "ar";
+    // FIXED: Enhanced RTL detection - check for Arabic language variants more thoroughly
+    const isRTL =
+      normalizedLanguage === "ar" ||
+      normalizedLanguage.startsWith("ar-") ||
+      normalizedLanguage === "arabic";
+
+    // Log RTL detection decision
+    console.log(
+      "[OQtima] RTL mode for iframe:",
+      isRTL ? "ENABLED" : "disabled",
+      "for language:",
+      normalizedLanguage
+    );
+
+    // Store RTL flag in session storage for iframe consistency ONLY - don't affect parent document
+    if (typeof window !== "undefined") {
+      try {
+        // Use a separate key specifically for popup iframe
+        sessionStorage.setItem(
+          "oqtima_popup_iframe_rtl",
+          isRTL ? "true" : "false"
+        );
+
+        // Set popup-specific flags, not document-wide flags
+        window.__OQTIMA_POPUP_IFRAME_RTL__ = isRTL;
+
+        // IMPORTANT: Save the current RTL state of the parent document
+        if (isPageInRTLMode() && !documentRTLState.originalHtmlDir) {
+          saveOriginalRTLState();
+        }
+      } catch (e) {
+        console.warn("[OQtima] Could not store iframe RTL state:", e);
+      }
+    }
 
     // Get the baseUrl from the script source
     let baseUrl;
@@ -2701,22 +2938,72 @@
       _t: Date.now(),
     });
 
-    // CRITICAL: Add language parameters with high priority
+    // LANGUAGE CONFIGURATION
     // Ensure we're sending the original language code as data-lang
-    // This ensures 'br' is preserved and not converted to 'pt'
+    // This ensures codes like 'br' are preserved and not converted to 'pt'
     params.append("data-lang", normalizedLanguage);
 
-    // Add the other standard language parameters
-    params.append("oqtima_lang_locked", normalizedLanguage); // Lock language
-    params.append("oqtima_lang", normalizedLanguage);
-    params.append("language", normalizedLanguage);
-    params.append("lang", normalizedLanguage);
-    params.append("locale", normalizedLanguage);
-    params.append("langParam", normalizedLanguage);
-    params.append("selectedLanguage", normalizedLanguage);
-    params.append("i18nextLng", normalizedLanguage);
-    params.append("forceLang", "true");
-    params.append("forceLanguage", "true");
+    // Also add as a URL fragment to ensure it's preserved
+    params.append("lang_param", normalizedLanguage);
+
+    // Store language in session storage to persist across page loads
+    try {
+      sessionStorage.setItem("oqtima_tab_language", normalizedLanguage);
+      window.__OQTIMA_TAB_LANGUAGE__ = normalizedLanguage;
+      console.log(
+        "[OQtima] Language persisted to sessionStorage:",
+        normalizedLanguage
+      );
+
+      // Set language cookie with various domain options for cross-domain access
+      const setLanguageCookies = () => {
+        try {
+          // Get the target domain from the baseUrl
+          const urlObj = new URL(baseUrl);
+          const domain = urlObj.hostname;
+
+          // Set cookies for language (multiple variations for maximum compatibility)
+          document.cookie = `oqtima_tab_language=${normalizedLanguage}; path=/; max-age=3600; SameSite=None; Secure`;
+          document.cookie = `oqtima_tab_language=${normalizedLanguage}; path=/; domain=${domain}; max-age=3600; SameSite=None; Secure`;
+
+          // Try with subdomain compatibility
+          if (domain.indexOf(".") !== -1) {
+            const rootDomain = domain.substring(domain.indexOf("."));
+            document.cookie = `oqtima_tab_language=${normalizedLanguage}; path=/; domain=${rootDomain}; max-age=3600; SameSite=None; Secure`;
+          }
+
+          console.log(
+            `[OQtima] Set cross-domain cookies for language on domain: ${domain}`
+          );
+        } catch (e) {
+          console.warn(
+            "[OQtima] Could not set cross-domain cookies for language:",
+            e
+          );
+        }
+      };
+
+      // Execute cookie setter
+      setLanguageCookies();
+    } catch (e) {
+      console.warn("[OQtima] Could not store language in sessionStorage:", e);
+    }
+
+    // Add standard language parameters for maximum compatibility
+    const languageParams = [
+      "oqtima_lang_locked",
+      "oqtima_lang",
+      "language",
+      "lang",
+      "locale",
+      "langParam",
+      "selectedLanguage",
+      "i18nextLng",
+    ];
+
+    languageParams.forEach((param) => {
+      params.append(param, normalizedLanguage);
+    });
 
     // Add RTL parameters if needed
     if (isRTL) {
@@ -3780,4 +4067,235 @@
       }
     });
   }
+
+  // RTL Preservation functions
+
+  // Store the original document RTL state
+  const documentRTLState = {
+    originalHtmlDir: null,
+    originalHtmlLang: null,
+    originalHtmlClasses: null,
+    originalHtmlDataRtl: null,
+    originalBodyDir: null,
+    originalBodyClasses: null,
+    originalBodyDataRtl: null,
+    isRtlProtected: false,
+  };
+
+  // Function to save original RTL state
+  function saveOriginalRTLState() {
+    try {
+      if (typeof document === "undefined") return;
+
+      // Save HTML attributes
+      documentRTLState.originalHtmlDir =
+        document.documentElement.getAttribute("dir");
+      documentRTLState.originalHtmlLang =
+        document.documentElement.getAttribute("lang");
+      documentRTLState.originalHtmlClasses = document.documentElement.className;
+      documentRTLState.originalHtmlDataRtl =
+        document.documentElement.getAttribute("data-rtl");
+
+      // Save BODY attributes
+      documentRTLState.originalBodyDir = document.body.getAttribute("dir");
+      documentRTLState.originalBodyClasses = document.body.className;
+      documentRTLState.originalBodyDataRtl =
+        document.body.getAttribute("data-rtl");
+
+      console.log("[OQtima] Saved original document RTL state:", {
+        htmlDir: documentRTLState.originalHtmlDir,
+        htmlLang: documentRTLState.originalHtmlLang,
+        htmlClasses: documentRTLState.originalHtmlClasses,
+        bodyDir: documentRTLState.originalBodyDir,
+        bodyClasses: documentRTLState.originalBodyClasses,
+      });
+    } catch (e) {
+      console.error("[OQtima] Error saving RTL state:", e);
+    }
+  }
+
+  // Function to restore original RTL state
+  function restoreOriginalRTLState() {
+    try {
+      if (typeof document === "undefined") return;
+
+      console.log("[OQtima] Restoring original document RTL state");
+
+      // Restore HTML attributes
+      if (documentRTLState.originalHtmlDir) {
+        document.documentElement.setAttribute(
+          "dir",
+          documentRTLState.originalHtmlDir
+        );
+      }
+      if (documentRTLState.originalHtmlLang) {
+        document.documentElement.setAttribute(
+          "lang",
+          documentRTLState.originalHtmlLang
+        );
+      }
+      document.documentElement.className =
+        documentRTLState.originalHtmlClasses || "";
+      if (documentRTLState.originalHtmlDataRtl) {
+        document.documentElement.setAttribute(
+          "data-rtl",
+          documentRTLState.originalHtmlDataRtl
+        );
+      }
+
+      // Restore BODY attributes
+      if (documentRTLState.originalBodyDir) {
+        document.body.setAttribute("dir", documentRTLState.originalBodyDir);
+      }
+      document.body.className = documentRTLState.originalBodyClasses || "";
+      if (documentRTLState.originalBodyDataRtl) {
+        document.body.setAttribute(
+          "data-rtl",
+          documentRTLState.originalBodyDataRtl
+        );
+      }
+
+      console.log("[OQtima] Original RTL state restored");
+    } catch (e) {
+      console.error("[OQtima] Error restoring RTL state:", e);
+    }
+  }
+
+  // Function to check if page is in RTL mode
+  function isPageInRTLMode() {
+    if (typeof document === "undefined") return false;
+
+    const htmlDir = document.documentElement.getAttribute("dir");
+    const htmlClasses = document.documentElement.className || "";
+    const bodyDir = document.body.getAttribute("dir");
+    const bodyClasses = document.body.className || "";
+
+    return (
+      htmlDir === "rtl" ||
+      bodyDir === "rtl" ||
+      htmlClasses.includes("rtl") ||
+      bodyClasses.includes("rtl")
+    );
+  }
+
+  // Function to protect RTL attributes from modification
+  function protectRTLAttributes() {
+    if (typeof window === "undefined" || typeof document === "undefined")
+      return;
+
+    // Save current RTL state if not already saved
+    if (isPageInRTLMode() && !documentRTLState.originalHtmlDir) {
+      saveOriginalRTLState();
+    }
+
+    // Skip if not in RTL mode
+    if (!isPageInRTLMode()) return;
+
+    console.log("[OQtima] Adding RTL attribute protection");
+
+    // Keep a reference to the original methods
+    const originalHtmlSetAttribute = Element.prototype.setAttribute;
+    const originalHtmlRemoveAttribute = Element.prototype.removeAttribute;
+    const originalAddClass = DOMTokenList.prototype.add;
+    const originalRemoveClass = DOMTokenList.prototype.remove;
+
+    // Override setAttribute method
+    Element.prototype.setAttribute = function (name, value) {
+      // Only protect HTML and BODY elements
+      if (this === document.documentElement || this === document.body) {
+        // Protect RTL-related attributes
+        if (
+          name === "dir" &&
+          value !== "rtl" &&
+          documentRTLState.originalHtmlDir === "rtl"
+        ) {
+          console.log(
+            `[OQtima] Prevented changing ${this.tagName} dir to ${value}`
+          );
+          return originalHtmlSetAttribute.call(this, name, "rtl");
+        }
+
+        if (
+          name === "data-rtl" &&
+          value !== "true" &&
+          documentRTLState.originalHtmlDataRtl === "true"
+        ) {
+          console.log(
+            `[OQtima] Prevented changing ${this.tagName} data-rtl to ${value}`
+          );
+          return originalHtmlSetAttribute.call(this, name, "true");
+        }
+      }
+
+      // Call original method for all other cases
+      return originalHtmlSetAttribute.call(this, name, value);
+    };
+
+    // Override removeAttribute method
+    Element.prototype.removeAttribute = function (name) {
+      // Only protect HTML and BODY elements
+      if (
+        (this === document.documentElement || this === document.body) &&
+        (name === "dir" || name === "data-rtl") &&
+        documentRTLState.originalHtmlDir === "rtl"
+      ) {
+        console.log(
+          `[OQtima] Prevented removing ${this.tagName} ${name} attribute`
+        );
+        return;
+      }
+
+      // Call original method for all other cases
+      return originalHtmlRemoveAttribute.call(this, name);
+    };
+
+    // Override classList.remove method to protect RTL classes
+    DOMTokenList.prototype.remove = function (...tokens) {
+      // Only protect HTML and BODY classList
+      if (
+        this === document.documentElement.classList ||
+        this === document.body.classList
+      ) {
+        const rtlTokens = tokens.filter(
+          (t) => t === "rtl" || t === "rtl-active"
+        );
+        const nonRtlTokens = tokens.filter(
+          (t) => t !== "rtl" && t !== "rtl-active"
+        );
+
+        if (
+          rtlTokens.length > 0 &&
+          documentRTLState.originalHtmlDir === "rtl"
+        ) {
+          console.log(
+            `[OQtima] Prevented removing RTL classes from ${
+              this === document.documentElement.classList ? "HTML" : "BODY"
+            }`
+          );
+          // Only process non-RTL tokens
+          if (nonRtlTokens.length > 0) {
+            return originalRemoveClass.apply(this, nonRtlTokens);
+          }
+          return;
+        }
+      }
+
+      // Call original method for all other cases
+      return originalRemoveClass.apply(this, tokens);
+    };
+
+    // Setup cleanup function
+    window.__OQTIMA_UNPROTECT_RTL_ATTRIBUTES__ = function () {
+      // Restore original methods
+      Element.prototype.setAttribute = originalHtmlSetAttribute;
+      Element.prototype.removeAttribute = originalHtmlRemoveAttribute;
+      DOMTokenList.prototype.remove = originalRemoveClass;
+
+      console.log("[OQtima] Removed RTL attribute protection");
+    };
+
+    console.log("[OQtima] RTL attributes protected");
+  }
+
+  // Apply RTL protection in openRegistrationPopup function
 })();
