@@ -257,15 +257,7 @@ const CountryDropdown = ({
 const RTLAwareForm = ({ children, isRTLMode, language }) => {
   // Use a key to force remount of child components when RTL changes
   return (
-    <div
-      key={`${isRTLMode ? "rtl" : "ltr"}-${language || "default"}-wrapper`}
-      data-rtl={isRTLMode ? "true" : "false"}
-      dir={isRTLMode ? "rtl" : "ltr"}
-      style={{
-        direction: isRTLMode ? "rtl" : "ltr",
-        textAlign: isRTLMode ? "right" : "left",
-      }}
-    >
+    <div key={`${isRTLMode ? "rtl" : "ltr"}-${language}-wrapper`}>
       {children}
     </div>
   );
@@ -1183,7 +1175,6 @@ const PopupRegistrationForm = ({ params }) => {
     // Function to check and fix RTL attributes based on the current language
     const handleLanguageRTLCheck = () => {
       const currentLang = document.documentElement.getAttribute("lang");
-      console.log(`Form detected language: ${currentLang}`);
 
       if (currentLang && currentLang.toLowerCase() !== "ar") {
         console.log(
@@ -1907,7 +1898,6 @@ const PopupRegistrationForm = ({ params }) => {
                   "popup-registration__form--error": isSentSuccessful === false,
                 })}
                 dir={isRTLMode ? "rtl" : "ltr"}
-                data-rtl={isRTLMode ? "true" : "false"}
                 style={{
                   textAlign: isRTLMode ? "right" : "left",
                   direction: isRTLMode ? "rtl" : "ltr",
@@ -1983,11 +1973,7 @@ const PopupRegistrationForm = ({ params }) => {
                       className={cn("popup-registration__input", {
                         "popup-registration__input--error":
                           errors.email && touched.email,
-                        "popup-registration__input--rtl": isRTLMode,
-                        "rtl-element": isRTLMode,
                       })}
-                      dir={isRTLMode ? "rtl" : "ltr"}
-                      style={isRTLMode ? { textAlign: "right" } : {}}
                       noValidate
                     />
                     {errors.email && touched.email && (

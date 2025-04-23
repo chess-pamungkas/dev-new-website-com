@@ -1905,51 +1905,6 @@
       } catch (e) {
         console.error("Error setting up RTL iframe:", e);
       }
-
-      // Instead of trying to directly access iframe document (which fails with cross-origin),
-      // send a message to the iframe that it should set itself up for RTL
-      try {
-        // Send RTL setup message to iframe
-        iframe.contentWindow.postMessage(
-          {
-            type: "OQTIMA_RTL_SETUP",
-            isRTL: true,
-            language: language || "ar",
-            styles: `
-            html, body {
-              direction: rtl !important;
-              text-align: right !important;
-            }
-            * {
-              direction: inherit !important;
-            }
-            input, select, textarea {
-              text-align: right !important;
-            }
-          `,
-          },
-          "*"
-        );
-
-        console.log("[OQtima] Sent RTL setup message to iframe");
-      } catch (e) {
-        console.error("Error sending RTL setup message to iframe:", e);
-
-        // As a fallback, we can add a special URL parameter to signal RTL mode
-        // This works even with cross-origin restrictions
-        try {
-          const currentSrc = new URL(iframe.src);
-          if (!currentSrc.searchParams.has("rtl")) {
-            currentSrc.searchParams.set("rtl", "true");
-            iframe.src = currentSrc.toString();
-            console.log(
-              "[OQtima] Applied RTL parameter to iframe URL as fallback"
-            );
-          }
-        } catch (urlError) {
-          console.error("Error applying RTL parameter to URL:", urlError);
-        }
-      }
     });
 
     // Assemble the popup

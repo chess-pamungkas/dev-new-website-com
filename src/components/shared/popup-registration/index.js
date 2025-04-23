@@ -1063,6 +1063,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    // Function to check and fix RTL attributes when language changes
     const checkAndFixRTLAttributes = () => {
       const currentLang = document.documentElement.getAttribute("lang");
       console.log(`Language change detected: ${currentLang}`);
