@@ -1487,6 +1487,18 @@
             ip_address: ipAddress,
             country_name: countryName,
             country_code: countryCode,
+
+            // Cross-domain storage instructions
+            storeInSessionStorage: true,
+            storageKeys: [
+              { key: "oqtima_referral_type", value: referralType },
+              { key: "oqtima_referral_value", value: referralValue },
+              { key: "oqtima_tab_language", value: language },
+              {
+                key: "oqtima_tab_rtl",
+                value: language === "ar" ? "true" : "false",
+              },
+            ],
           },
           timestamp: Date.now(),
         };
@@ -1524,6 +1536,34 @@
             console.error("Error in final retry:", err);
           }
         }, 1500);
+
+        // Add direct iframe script injection for session storage access
+        try {
+          // Using setTimeout to ensure iframe is fully loaded
+          setTimeout(() => {
+            const iframeDoc =
+              iframe.contentDocument || iframe.contentWindow.document;
+            if (iframeDoc) {
+              const script = iframeDoc.createElement("script");
+              script.textContent = `
+                // Set referral parameters directly in sessionStorage
+                try {
+                  sessionStorage.setItem("oqtima_referral_type", "${referralType}");
+                  sessionStorage.setItem("oqtima_referral_value", "${referralValue}");
+                  console.log("[OQtima] Successfully stored referral parameters in sessionStorage via injected script");
+                } catch (e) {
+                  console.error("[OQtima] Error storing referral parameters in sessionStorage:", e);
+                }
+              `;
+              iframeDoc.head.appendChild(script);
+            }
+          }, 1000);
+        } catch (err) {
+          console.warn(
+            "[OQtima] Could not inject session storage script:",
+            err
+          );
+        }
       } catch (err) {
         console.error("Error sending message to iframe:", err);
       }
@@ -2491,22 +2531,59 @@
     }
 
     // ENHANCED: Add referral parameters more comprehensively
-    if (
-      normalizedReferralType !== null &&
-      normalizedReferralType !== undefined
-    ) {
-      // Ensure we add both underscore and camelCase variants for maximum compatibility
-      // Primary format with underscore (main format expected by the form)
-      params.set("referral_type", normalizedReferralType);
+    if (normalizedReferralType != null) {
+      // Add in multiple formats for maximum compatibility
+      const referralTypeParams = [
+        "referral_type", // Primary format (underscore)
+        "referralType", // camelCase variant
+        "referral-type", // hyphenated variant
+      ];
 
-      // Add alternative formats for compatibility
-      params.set("referralType", normalizedReferralType);
-      params.set("referral-type", normalizedReferralType);
+      referralTypeParams.forEach((param) => {
+        params.set(param, normalizedReferralType);
+      });
 
       // Store in global variable and sessionStorage for redundancy
       try {
         window.__OQTIMA_REFERRAL_TYPE__ = normalizedReferralType;
         sessionStorage.setItem("oqtima_referral_type", normalizedReferralType);
+
+        // Set cross-domain cookies with various domain options
+        const setCrossDomainCookies = () => {
+          // Extract domain info for cookie setting
+          let domain;
+          try {
+            // Get the target domain from the baseUrl
+            const urlObj = new URL(baseUrl);
+            domain = urlObj.hostname;
+
+            // Set the cookie with specific domain
+            document.cookie = `oqtima_referral_type=${normalizedReferralType}; path=/; max-age=3600; SameSite=None; Secure`;
+
+            // Try with domain-specific cookies (multiple variations for compatibility)
+            document.cookie = `oqtima_referral_type=${normalizedReferralType}; path=/; domain=${domain}; max-age=3600; SameSite=None; Secure`;
+
+            // Also try with a leading dot for subdomain compatibility
+            if (domain.indexOf(".") !== -1) {
+              const rootDomain = domain.substring(domain.indexOf("."));
+              document.cookie = `oqtima_referral_type=${normalizedReferralType}; path=/; domain=${rootDomain}; max-age=3600; SameSite=None; Secure`;
+            }
+
+            console.log(
+              `[OQtima] Set cross-domain cookies for referral_type on domain: ${domain}`
+            );
+          } catch (e) {
+            console.warn(
+              "[OQtima] Could not set cross-domain cookies for referral_type:",
+              e
+            );
+            // Fallback to simple cookie without domain
+            document.cookie = `oqtima_referral_type=${normalizedReferralType}; path=/; max-age=3600`;
+          }
+        };
+
+        // Execute the cookie setting function
+        setCrossDomainCookies();
       } catch (e) {
         console.warn("[OQtima] Could not store referral type:", e);
       }
@@ -2517,16 +2594,18 @@
       );
     }
 
-    if (
-      normalizedReferralValue !== null &&
-      normalizedReferralValue !== undefined
-    ) {
-      // Primary format with underscore (main format expected by the form)
-      params.set("referral_value", normalizedReferralValue);
+    // Add referral value if available
+    if (normalizedReferralValue != null) {
+      // Add in multiple formats for maximum compatibility
+      const referralValueParams = [
+        "referral_value", // Primary format (underscore)
+        "referralValue", // camelCase variant
+        "referral-value", // hyphenated variant
+      ];
 
-      // Add alternative formats for compatibility
-      params.set("referralValue", normalizedReferralValue);
-      params.set("referral-value", normalizedReferralValue);
+      referralValueParams.forEach((param) => {
+        params.set(param, normalizedReferralValue);
+      });
 
       // Store in global variable and sessionStorage for redundancy
       try {
@@ -2535,6 +2614,43 @@
           "oqtima_referral_value",
           normalizedReferralValue
         );
+
+        // Set cross-domain cookies with various domain options
+        const setCrossDomainCookies = () => {
+          // Extract domain info for cookie setting
+          let domain;
+          try {
+            // Get the target domain from the baseUrl
+            const urlObj = new URL(baseUrl);
+            domain = urlObj.hostname;
+
+            // Set the cookie with specific domain
+            document.cookie = `oqtima_referral_value=${normalizedReferralValue}; path=/; max-age=3600; SameSite=None; Secure`;
+
+            // Try with domain-specific cookies (multiple variations for compatibility)
+            document.cookie = `oqtima_referral_value=${normalizedReferralValue}; path=/; domain=${domain}; max-age=3600; SameSite=None; Secure`;
+
+            // Also try with a leading dot for subdomain compatibility
+            if (domain.indexOf(".") !== -1) {
+              const rootDomain = domain.substring(domain.indexOf("."));
+              document.cookie = `oqtima_referral_value=${normalizedReferralValue}; path=/; domain=${rootDomain}; max-age=3600; SameSite=None; Secure`;
+            }
+
+            console.log(
+              `[OQtima] Set cross-domain cookies for referral_value on domain: ${domain}`
+            );
+          } catch (e) {
+            console.warn(
+              "[OQtima] Could not set cross-domain cookies for referral_value:",
+              e
+            );
+            // Fallback to simple cookie without domain
+            document.cookie = `oqtima_referral_value=${normalizedReferralValue}; path=/; max-age=3600`;
+          }
+        };
+
+        // Execute the cookie setting function
+        setCrossDomainCookies();
       } catch (e) {
         console.warn("[OQtima] Could not store referral value:", e);
       }
