@@ -444,7 +444,7 @@
           <div style="
             padding: 10px; 
             border: 1px solid #ff4400; 
-            border-radius: 4px; 
+          border-radius: 4px;
             color: #ff4400; 
             font-family: monospace; 
             font-size: 12px;
@@ -453,7 +453,7 @@
           ">
             <strong>OQtima Registration Button Error:</strong><br>
             ${message}<br>
-            <small>(This error is only visible in development mode)</small>
+          <small>(This error is only visible in development mode)</small>
           </div>
         `;
       } else {
@@ -806,12 +806,12 @@
 
     // Force button visibility
     button.style.cssText = `
-      display: inline-block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      position: relative !important;
-      z-index: 99999 !important;
-    `;
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 99999 !important;
+      `;
 
     // Clear container and append button
     container.innerHTML = "";
@@ -2091,6 +2091,132 @@
     // Set up message handler for iframe communication
     window.__OQTIMA_MESSAGE_HANDLER = function (event) {
       try {
+        // Handle referral parameter requests from the iframe
+        if (
+          event.data &&
+          typeof event.data === "object" &&
+          event.data.type === "REQUEST_REFERRAL_PARAMS"
+        ) {
+          console.log(
+            "[OQtima] Received request for referral parameters from iframe"
+          );
+
+          // Collect referral parameters from all possible sources
+          const referralData = {
+            referral_type: null,
+            referral_value: null,
+          };
+
+          // 1. Check global variables
+          if (window.__OQTIMA_REFERRAL_TYPE__ !== undefined) {
+            referralData.referral_type = window.__OQTIMA_REFERRAL_TYPE__;
+          }
+
+          if (window.__OQTIMA_REFERRAL_VALUE__ !== undefined) {
+            referralData.referral_value = window.__OQTIMA_REFERRAL_VALUE__;
+          }
+
+          // 2. Check session storage
+          try {
+            const storageType = sessionStorage.getItem("oqtima_referral_type");
+            const storageValue = sessionStorage.getItem(
+              "oqtima_referral_value"
+            );
+
+            if (storageType && referralData.referral_type === null) {
+              referralData.referral_type = storageType;
+            }
+
+            if (storageValue && referralData.referral_value === null) {
+              referralData.referral_value = storageValue;
+            }
+          } catch (e) {
+            console.warn("[OQtima] Error accessing sessionStorage:", e);
+          }
+
+          // 3. Check URL parameters
+          const urlParams = new URLSearchParams(window.location.search);
+          const urlType =
+            urlParams.get("referral_type") ||
+            urlParams.get("referralType") ||
+            urlParams.get("referral-type");
+          const urlValue =
+            urlParams.get("referral_value") ||
+            urlParams.get("referralValue") ||
+            urlParams.get("referral-value");
+
+          if (urlType && referralData.referral_type === null) {
+            referralData.referral_type = urlType;
+          }
+
+          if (urlValue && referralData.referral_value === null) {
+            referralData.referral_value = urlValue;
+          }
+
+          // 4. Check the trigger element data attributes
+          if (window.__OQTIMA_TRIGGER_ELEMENT__) {
+            const referralTypeAttr =
+              window.__OQTIMA_TRIGGER_ELEMENT__.getAttribute(
+                "data-referral-type"
+              );
+            const referralValueAttr =
+              window.__OQTIMA_TRIGGER_ELEMENT__.getAttribute(
+                "data-referral-value"
+              );
+
+            if (referralTypeAttr && referralData.referral_type === null) {
+              referralData.referral_type = referralTypeAttr;
+            }
+
+            if (referralValueAttr && referralData.referral_value === null) {
+              referralData.referral_value = referralValueAttr;
+            }
+          }
+
+          // Send the collected data back to the iframe
+          if (
+            referralData.referral_type !== null ||
+            referralData.referral_value !== null
+          ) {
+            console.log(
+              "[OQtima] Sending referral parameters to iframe:",
+              referralData
+            );
+
+            try {
+              // Using postMessage to send the data
+              event.source.postMessage(
+                {
+                  type: "REGISTRATION_PARAMS",
+                  data: referralData,
+                  timestamp: Date.now(),
+                },
+                "*"
+              );
+
+              // Also try to call the direct handler if it exists
+              if (
+                event.source.window &&
+                typeof event.source.window.__TEMP_RECEIVE_REFERRAL_DATA ===
+                  "function"
+              ) {
+                event.source.window.__TEMP_RECEIVE_REFERRAL_DATA(referralData);
+              }
+            } catch (e) {
+              console.error(
+                "[OQtima] Error sending referral data to iframe:",
+                e
+              );
+            }
+          } else {
+            console.log(
+              "[OQtima] No referral parameters found to send to iframe"
+            );
+          }
+
+          return; // Skip the rest of the handler
+        }
+
         // Ignore messages from other origins for security
         if (
           event.origin &&
