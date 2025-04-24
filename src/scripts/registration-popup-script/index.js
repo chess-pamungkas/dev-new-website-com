@@ -3048,6 +3048,34 @@
     document.body.style.width = "100%";
     document.body.style.overflow = "hidden";
 
+    // CRITICAL: Store referral parameters in session storage AND cookies even before iframe loads
+    // This ensures they're available even if postMessage fails
+    try {
+      if (referralType !== null && referralType !== undefined) {
+        // Store in both session storage and as a cookie (with secure attributes)
+        console.log(
+          "[OQtima] Storing referral_type before iframe loads:",
+          referralType
+        );
+        sessionStorage.setItem("oqtima_referral_type", String(referralType));
+        window.__OQTIMA_REFERRAL_TYPE__ = referralType;
+        document.cookie = `oqtima_referral_type=${referralType}; path=/; max-age=86400; SameSite=None; Secure`;
+      }
+
+      if (referralValue !== null && referralValue !== undefined) {
+        // Store in both session storage and as a cookie (with secure attributes)
+        console.log(
+          "[OQtima] Storing referral_value before iframe loads:",
+          referralValue
+        );
+        sessionStorage.setItem("oqtima_referral_value", String(referralValue));
+        window.__OQTIMA_REFERRAL_VALUE__ = referralValue;
+        document.cookie = `oqtima_referral_value=${referralValue}; path=/; max-age=86400; SameSite=None; Secure`;
+      }
+    } catch (e) {
+      console.error("[OQtima] Error pre-storing referral parameters:", e);
+    }
+
     // Prepare iframe URL
     const url = constructIframeUrl(language, referralType, referralValue, true);
 
@@ -3087,8 +3115,16 @@
     iframe.src = url;
     fullscreenContainer.appendChild(iframe);
 
+    // IMPORTANT: Track iframe load state and message delivery
+    let iframeLoaded = false;
+    let messagesDelivered = false;
+    let messageRetryCount = 0;
+    const MAX_RETRIES = 5;
+
     // Set up message sent to iframe after it loads
     iframe.addEventListener("load", function () {
+      iframeLoaded = true;
+
       // Hide the spinner once iframe is loaded
       if (spinner && spinner.parentNode) {
         spinner.parentNode.removeChild(spinner);
@@ -3098,36 +3134,80 @@
       iframe.style.opacity = "1";
 
       // IMPORTANT: Send referral parameters to the iframe
+      sendReferralParamsToIframe();
+
+      // Add scroll indicator after iframe is loaded
+      addScrollIndicator();
+    });
+
+    // Function to send referral parameters to iframe with retry mechanism
+    function sendReferralParamsToIframe() {
       try {
-        // Create a complete message with all necessary data
+        // Check if iframe is loaded
+        if (!iframeLoaded || !iframe.contentWindow) {
+          if (messageRetryCount < MAX_RETRIES) {
+            console.log(
+              `[OQtima] Iframe not ready, retrying in ${
+                (messageRetryCount + 1) * 300
+              }ms (attempt ${messageRetryCount + 1}/${MAX_RETRIES})`
+            );
+            setTimeout(
+              sendReferralParamsToIframe,
+              (messageRetryCount + 1) * 300
+            );
+            messageRetryCount++;
+            return;
+          } else {
+            console.error(
+              "[OQtima] Max retries exceeded, failed to send params to iframe"
+            );
+            return;
+          }
+        }
+
+        // Create a complete message with all necessary data and properly formatted values
         const messageData = {
           type: "REGISTRATION_PARAMS",
           data: {
-            // Ensure referral_type is passed correctly
+            // Include referral parameters in ALL possible formats for maximum compatibility
             referral_type: referralType,
-            // Add all variant formats for maximum compatibility
             referralType: referralType,
             "referral-type": referralType,
+            oqtima_referral_type: referralType,
 
-            // Ensure referral_value is passed correctly
             referral_value: referralValue,
-            // Add all variant formats for maximum compatibility
             referralValue: referralValue,
             "referral-value": referralValue,
+            oqtima_referral_value: referralValue,
 
-            // Language parameters
+            // Include language parameters in all formats
             language: language,
-            lang: language, // Add lang as alternative format
-            data_lang: language, // Add data_lang as an explicit form
+            lang: language,
+            data_lang: language,
+            langParam: language,
+            oqtima_tab_language: language,
 
-            // Include IP and country information if available
+            // Include additional info
             ip_address: ipAddress,
             country_name: countryName,
             country_code: countryCode,
+
+            // Add explicit storage instruction
+            storeInSessionStorage: true,
+            storageKeys: [
+              { key: "oqtima_referral_type", value: referralType },
+              { key: "oqtima_referral_value", value: referralValue },
+              { key: "oqtima_tab_language", value: language },
+              {
+                key: "oqtima_tab_rtl",
+                value: language === "ar" ? "true" : "false",
+              },
+            ],
           },
           timestamp: Date.now(),
         };
 
+        // Log message being sent
         console.log(
           "[OQtima] Sending message to mobile iframe:",
           JSON.stringify(messageData, null, 2)
@@ -3137,39 +3217,104 @@
         iframe.contentWindow.postMessage(messageData, "*");
 
         // Schedule multiple retries with increasing delays to ensure message is received
-        setTimeout(() => {
-          try {
-            iframe.contentWindow.postMessage(messageData, "*");
-          } catch (err) {
-            console.error("Error in mobile retry 1:", err);
-          }
-        }, 100);
+        // These retries help overcome timing issues with iframe initialization
+        const retryIntervals = [100, 500, 1000, 2000, 3000];
+        retryIntervals.forEach((delay, index) => {
+          setTimeout(() => {
+            try {
+              if (!messagesDelivered && iframe.contentWindow) {
+                console.log(
+                  `[OQtima] Retry ${index + 1} sending message to iframe`
+                );
+                iframe.contentWindow.postMessage(messageData, "*");
+              }
+            } catch (err) {
+              console.error(`[OQtima] Error in retry ${index + 1}:`, err);
+            }
+          }, delay);
+        });
 
-        setTimeout(() => {
+        // Listen for confirmation from iframe
+        const messageListener = function (event) {
           try {
-            iframe.contentWindow.postMessage(messageData, "*");
-          } catch (err) {
-            console.error("Error in mobile retry 2:", err);
-          }
-        }, 500);
+            // Check if message confirms receipt
+            if (
+              event.data &&
+              event.data.type === "REGISTRATION_PARAMS_RECEIVED"
+            ) {
+              console.log(
+                "[OQtima] Iframe confirmed params received:",
+                event.data
+              );
+              messagesDelivered = true;
 
-        setTimeout(() => {
-          try {
-            iframe.contentWindow.postMessage(messageData, "*");
-            console.log(
-              "[OQtima] Final retry sending message to mobile iframe"
+              // Remove listener since we got confirmation
+              window.removeEventListener("message", messageListener);
+            }
+          } catch (err) {
+            console.error(
+              "[OQtima] Error processing message from iframe:",
+              err
             );
-          } catch (err) {
-            console.error("Error in mobile final retry:", err);
           }
-        }, 1500);
-      } catch (err) {
-        console.error("Error sending message to mobile iframe:", err);
-      }
+        };
 
-      // Add scroll indicator after iframe is loaded
-      addScrollIndicator();
-    });
+        // Add listener for confirmation
+        window.addEventListener("message", messageListener);
+
+        // Fallback if no confirmation received
+        setTimeout(() => {
+          if (!messagesDelivered) {
+            // Double-check session storage for our parameters
+            try {
+              const storedType = sessionStorage.getItem("oqtima_referral_type");
+              const storedValue = sessionStorage.getItem(
+                "oqtima_referral_value"
+              );
+
+              console.log("[OQtima] Checking session storage after timeouts:");
+              console.log("- oqtima_referral_type:", storedType);
+              console.log("- oqtima_referral_value:", storedValue);
+
+              // If values are still missing, try one last direct approach
+              if (
+                (!storedType && referralType) ||
+                (!storedValue && referralValue)
+              ) {
+                console.log(
+                  "[OQtima] Session storage missing values, applying directly"
+                );
+
+                // Set session storage directly as last resort
+                if (referralType)
+                  sessionStorage.setItem(
+                    "oqtima_referral_type",
+                    String(referralType)
+                  );
+                if (referralValue)
+                  sessionStorage.setItem(
+                    "oqtima_referral_value",
+                    String(referralValue)
+                  );
+
+                // Also update cookies with the values
+                if (referralType)
+                  document.cookie = `oqtima_referral_type=${referralType}; path=/; max-age=86400; SameSite=None; Secure`;
+                if (referralValue)
+                  document.cookie = `oqtima_referral_value=${referralValue}; path=/; max-age=86400; SameSite=None; Secure`;
+              }
+            } catch (e) {
+              console.error(
+                "[OQtima] Error in fallback session storage check:",
+                e
+              );
+            }
+          }
+        }, 5000);
+      } catch (err) {
+        console.error("[OQtima] Error sending message to mobile iframe:", err);
+      }
+    }
 
     // Basic styles untuk scrollbar
     const popupStyles = document.createElement("style");
