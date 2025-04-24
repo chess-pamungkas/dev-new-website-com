@@ -275,6 +275,164 @@ const PopupRegistrationForm = ({ params }) => {
   const { clientConfig } = useContext(ClientResolverContext);
   const { selectedLanguage, setCurrentLanguage } = useContext(LanguageContext);
 
+  // FAST PATH: On initial load, detect Arabic immediately
+  if (typeof window !== "undefined") {
+    try {
+      // Quick function to detect Arabic from URL, cookies, storage
+      const isArabicLanguage = () => {
+        // Check URL parameters first (highest priority)
+        const urlParams = new URLSearchParams(window.location.search);
+        for (const param of ["data-lang", "lang", "language", "langParam"]) {
+          if (urlParams.get(param) === "ar") return true;
+        }
+
+        // Check URL path
+        const pathParts = window.location.pathname.split("/").filter(Boolean);
+        if (pathParts.length > 0 && pathParts[0] === "ar") return true;
+
+        // Check cookies
+        if (document.cookie.includes("oqtima_tab_language=ar")) return true;
+
+        // Check session storage
+        try {
+          if (sessionStorage.getItem("oqtima_tab_language") === "ar")
+            return true;
+        } catch (e) {}
+
+        return false;
+      };
+
+      // If Arabic is detected, set RTL mode immediately
+      if (isArabicLanguage()) {
+        console.log("[FORM] Arabic detected, setting immediate RTL");
+
+        // Add RTL classes and attributes
+        document.documentElement.setAttribute("dir", "rtl");
+        document.documentElement.classList.add("rtl-active");
+        document.body.setAttribute("dir", "rtl");
+        document.body.classList.add("rtl-active");
+
+        // Add RTL styles immediately
+        const rtlStyle = document.createElement("style");
+        rtlStyle.id = "popup-registration-form-rtl-styles";
+        rtlStyle.innerHTML = `
+          /* Critical RTL Styles */
+          .popup-registration__container {
+            flex-direction: row-reverse !important;
+          }
+          
+          .popup-registration__sidebar {
+            order: 2 !important;
+          }
+          
+          .popup-registration__content {
+            order: 1 !important;
+            text-align: right !important;
+          }
+          
+          /* Form elements */
+          .popup-registration input,
+          .popup-registration select,
+          .popup-registration textarea,
+          .popup-registration__label {
+            text-align: right !important;
+            direction: rtl !important;
+          }
+        `;
+        document.head.appendChild(rtlStyle);
+
+        // Persist for consistency
+        try {
+          sessionStorage.setItem("oqtima_tab_language", "ar");
+          sessionStorage.setItem("oqtima_tab_rtl", "true");
+        } catch (e) {}
+      }
+    } catch (e) {
+      console.warn("[FORM] Error in fast RTL detection:", e);
+    }
+  }
+
+  // OPTIMIZED: Handle the language RTL check to ensure Arabic is always RTL
+  const handleLanguageRTLCheck = () => {
+    // Get the most important language indicators first
+    const htmlLang = document.documentElement.getAttribute("lang");
+    const sessionLang = sessionStorage.getItem("oqtima_tab_language");
+
+    // Fast path: if we already have certain Arabic indicators, return early
+    if (htmlLang === "ar" || sessionLang === "ar") {
+      console.log("[Form] Arabic language already set correctly");
+      return true;
+    }
+
+    // Check URL params (most reliable for cross-domain)
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang =
+      urlParams.get("data-lang") ||
+      urlParams.get("lang") ||
+      urlParams.get("language") ||
+      urlParams.get("langParam");
+
+    if (urlLang === "ar") {
+      console.log("[Form] Arabic language detected in URL params");
+      applyArabicRTL();
+      return true;
+    }
+
+    // Check path
+    const urlPathLang = window.location.pathname.split("/").filter(Boolean)[0];
+    if (urlPathLang === "ar") {
+      console.log("[Form] Arabic language detected in URL path");
+      applyArabicRTL();
+      return true;
+    }
+
+    // Check cookies (cross-domain compatibility)
+    const cookieLang = document.cookie
+      .match(/oqtima_tab_language=([^;]+)/)
+      ?.pop();
+    if (cookieLang === "ar") {
+      console.log("[Form] Arabic language detected in cookies");
+      applyArabicRTL();
+      return true;
+    }
+
+    // Not Arabic, clean RTL if needed
+    if (htmlLang && htmlLang.toLowerCase() !== "ar") {
+      if (typeof cleanRTLAttributes === "function") {
+        cleanRTLAttributes();
+      } else {
+        // Simple inline RTL cleanup
+        document.documentElement.setAttribute("dir", "ltr");
+        document.body.setAttribute("dir", "ltr");
+      }
+    }
+    return false;
+
+    // Helper function to apply Arabic RTL mode
+    function applyArabicRTL() {
+      // Set RTL mode
+      document.documentElement.setAttribute("dir", "rtl");
+      document.documentElement.classList.add("rtl-active");
+      document.documentElement.setAttribute("data-rtl", "true");
+      document.body.setAttribute("dir", "rtl");
+      document.body.classList.add("rtl-active");
+      document.body.setAttribute("data-rtl", "true");
+
+      // Set the language to Arabic
+      document.documentElement.setAttribute("lang", "ar");
+
+      // Update storage (just the essential ones)
+      sessionStorage.setItem("oqtima_tab_language", "ar");
+      sessionStorage.setItem("oqtima_tab_rtl", "true");
+
+      // Set cross-domain cookies
+      document.cookie =
+        "oqtima_tab_language=ar; path=/; max-age=86400; SameSite=None; Secure";
+      document.cookie =
+        "oqtima_tab_rtl=true; path=/; max-age=86400; SameSite=None; Secure";
+    }
+  };
+
   // Add effect to prevent incorrect language and RTL settings
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -1326,98 +1484,84 @@ const PopupRegistrationForm = ({ params }) => {
 
     // Function to check and fix RTL attributes based on the current language
     const handleLanguageRTLCheck = () => {
-      // Fast-path: check the most critical indicators first
+      // Get the most important language indicators first
       const htmlLang = document.documentElement.getAttribute("lang");
-      const htmlDir = document.documentElement.getAttribute("dir");
-
-      // If we already have Arabic language and RTL direction, nothing to do
-      if (htmlLang === "ar" && htmlDir === "rtl") {
-        return true;
-      }
-
-      // If we have Arabic but not RTL direction, fix it
-      if (htmlLang === "ar" && htmlDir !== "rtl") {
-        console.log("[Form] Arabic detected but RTL not set, fixing");
-        applyRTL();
-        return true;
-      }
-
-      // If we have non-Arabic language explicitly set, ensure LTR
-      if (htmlLang && htmlLang !== "ar") {
-        cleanRTLAttributes();
-        return false;
-      }
-
-      // If no language is set yet, check other sources
       const sessionLang = sessionStorage.getItem("oqtima_tab_language");
 
-      // If session storage indicates Arabic, apply RTL
-      if (sessionLang === "ar") {
-        console.log("[Form] Arabic detected in sessionStorage, applying RTL");
-        applyRTL();
+      // Fast path: if we already have certain Arabic indicators, return early
+      if (htmlLang === "ar" || sessionLang === "ar") {
+        console.log("[Form] Arabic language already set correctly");
         return true;
       }
 
-      // Check URL parameters and cookies only if needed
-      if (!htmlLang && !sessionLang) {
-        // Check URL path
-        const urlPath = window.location.pathname.split("/").filter(Boolean)[0];
-        if (urlPath === "ar") {
-          console.log("[Form] Arabic detected in URL path, applying RTL");
-          applyRTL();
-          return true;
-        }
+      // Check URL params (most reliable for cross-domain)
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlLang =
+        urlParams.get("data-lang") ||
+        urlParams.get("lang") ||
+        urlParams.get("language") ||
+        urlParams.get("langParam");
 
-        // Check cookies
-        const cookieLang = document.cookie
-          .match(/oqtima_tab_language=([^;]+)/)
-          ?.pop();
-        if (cookieLang === "ar") {
-          console.log("[Form] Arabic detected in cookies, applying RTL");
-          applyRTL();
-          return true;
-        }
-
-        // Check URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const paramLang =
-          urlParams.get("language") ||
-          urlParams.get("lang") ||
-          urlParams.get("data-lang");
-        if (paramLang === "ar") {
-          console.log("[Form] Arabic detected in URL parameters, applying RTL");
-          applyRTL();
-          return true;
-        }
+      if (urlLang === "ar") {
+        console.log("[Form] Arabic language detected in URL params");
+        applyArabicRTL();
+        return true;
       }
 
-      // No Arabic language found, ensure LTR
-      cleanRTLAttributes();
+      // Check path
+      const urlPathLang = window.location.pathname
+        .split("/")
+        .filter(Boolean)[0];
+      if (urlPathLang === "ar") {
+        console.log("[Form] Arabic language detected in URL path");
+        applyArabicRTL();
+        return true;
+      }
+
+      // Check cookies (cross-domain compatibility)
+      const cookieLang = document.cookie
+        .match(/oqtima_tab_language=([^;]+)/)
+        ?.pop();
+      if (cookieLang === "ar") {
+        console.log("[Form] Arabic language detected in cookies");
+        applyArabicRTL();
+        return true;
+      }
+
+      // Not Arabic, clean RTL if needed
+      if (htmlLang && htmlLang.toLowerCase() !== "ar") {
+        if (typeof cleanRTLAttributes === "function") {
+          cleanRTLAttributes();
+        } else {
+          // Simple inline RTL cleanup
+          document.documentElement.setAttribute("dir", "ltr");
+          document.body.setAttribute("dir", "ltr");
+        }
+      }
       return false;
 
-      // Helper function to apply RTL mode
-      function applyRTL() {
-        // Set RTL direction at document level
+      // Helper function to apply Arabic RTL mode
+      function applyArabicRTL() {
+        // Set RTL mode
         document.documentElement.setAttribute("dir", "rtl");
-        document.documentElement.setAttribute("lang", "ar");
         document.documentElement.classList.add("rtl-active");
         document.documentElement.setAttribute("data-rtl", "true");
-
-        // Set RTL direction at body level
         document.body.setAttribute("dir", "rtl");
         document.body.classList.add("rtl-active");
         document.body.setAttribute("data-rtl", "true");
 
-        // Store in session storage
+        // Set the language to Arabic
+        document.documentElement.setAttribute("lang", "ar");
+
+        // Update storage (just the essential ones)
         sessionStorage.setItem("oqtima_tab_language", "ar");
         sessionStorage.setItem("oqtima_tab_rtl", "true");
 
-        // Set global variables
-        if (window.__OQTIMA_COMPONENT_LANGUAGE)
-          window.__OQTIMA_COMPONENT_LANGUAGE = "ar";
-        if (window.__OQTIMA_LOCKED_LANG) window.__OQTIMA_LOCKED_LANG = "ar";
-        if (window.__FORCE_RTL__) window.__FORCE_RTL__ = true;
-        if (window.__ORIGINAL_RTL__) window.__ORIGINAL_RTL__ = true;
+        // Set cross-domain cookies
+        document.cookie =
+          "oqtima_tab_language=ar; path=/; max-age=86400; SameSite=None; Secure";
+        document.cookie =
+          "oqtima_tab_rtl=true; path=/; max-age=86400; SameSite=None; Secure";
       }
     };
 
