@@ -1326,13 +1326,56 @@ const PopupRegistrationForm = ({ params }) => {
 
     // Function to check and fix RTL attributes based on the current language
     const handleLanguageRTLCheck = () => {
-      const currentLang = document.documentElement.getAttribute("lang");
+      // Get the most important language indicators first
+      const htmlLang = document.documentElement.getAttribute("lang");
+      const sessionLang = sessionStorage.getItem("oqtima_tab_language");
 
-      if (currentLang && currentLang.toLowerCase() !== "ar") {
-        console.log(
-          `Form detected non-Arabic language: ${currentLang}, cleaning RTL attributes`
-        );
-        cleanRTLAttributes();
+      // Fast path: if we already have certain Arabic indicators, return early
+      if (htmlLang === "ar" || sessionLang === "ar") {
+        console.log("[Form] Arabic language already set correctly");
+        return true;
+      }
+
+      // Only if we need more checks, get the other values
+      const urlPathLang = window.location.pathname
+        .split("/")
+        .filter(Boolean)[0];
+      const cookieLang = document.cookie
+        .match(/oqtima_tab_language=([^;]+)/)
+        ?.pop();
+      const i18nextLng = localStorage.getItem("i18nextLng");
+
+      // Check for Arabic language
+      const isAnySourceArabic = [urlPathLang, cookieLang, i18nextLng].some(
+        (lang) => lang && lang.toLowerCase() === "ar"
+      );
+
+      // Only log if debugging needed
+      if (isAnySourceArabic) {
+        console.log("[Form] Arabic language detected, enforcing RTL mode");
+
+        // Set RTL mode
+        document.documentElement.setAttribute("dir", "rtl");
+        document.documentElement.classList.add("rtl-active");
+        document.documentElement.setAttribute("data-rtl", "true");
+        document.body.setAttribute("dir", "rtl");
+        document.body.classList.add("rtl-active");
+        document.body.setAttribute("data-rtl", "true");
+
+        // Set the language to Arabic
+        document.documentElement.setAttribute("lang", "ar");
+
+        // Update storage (just the essential ones)
+        sessionStorage.setItem("oqtima_tab_language", "ar");
+        sessionStorage.setItem("oqtima_tab_rtl", "true");
+
+        return true;
+      } else {
+        // Not Arabic, check if we should clean RTL attributes
+        if (htmlLang && htmlLang.toLowerCase() !== "ar") {
+          cleanRTLAttributes();
+        }
+        return false;
       }
     };
 

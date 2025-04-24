@@ -839,9 +839,6 @@
     if (isPageInRTLMode()) {
       console.log("[OQtima] Page is in RTL mode - saving original state");
       saveOriginalRTLState();
-
-      // CRITICAL: Add protection for RTL attributes to prevent any modifications
-      protectRTLAttributes();
     }
 
     // Log parameters for debugging
@@ -866,67 +863,35 @@
     const dataLang = params["data-lang"];
     console.log("[OQtima] Data-lang parameter:", dataLang);
 
-    // IMPROVED: Check if URL path contains language indicator
-    try {
-      if (typeof window !== "undefined" && window.location.pathname) {
-        const pathParts = window.location.pathname.split("/").filter(Boolean);
-        // If first path segment looks like a language code, use it as priority
-        if (pathParts.length > 0 && pathParts[0].length <= 7) {
-          console.log("[OQtima] Detected language in URL path:", pathParts[0]);
-          // Special handling for Brazilian Portuguese
-          if (pathParts[0] === "br") {
-            params.language = "br";
-            console.log(
-              "[OQtima] Overriding language with Brazilian Portuguese (br) from URL path"
-            );
-          }
-          // Special handling for Arabic in URL path
-          if (pathParts[0] === "ar") {
-            params.language = "ar";
-            console.log(
-              "[OQtima] Overriding language with Arabic (ar) from URL path"
-            );
-          }
-        }
-      }
-    } catch (e) {
-      console.warn("[OQtima] Error checking URL path for language:", e);
-    }
-
-    // FIXED: Enhanced RTL detection - check for Arabic language variants more thoroughly
-    const normalizedLanguage = (params.language || "").toLowerCase().trim();
-    params.isRTL =
-      normalizedLanguage === "ar" ||
-      normalizedLanguage.startsWith("ar-") ||
-      normalizedLanguage === "arabic" ||
+    // CRITICAL FIX: Check if this is Arabic language - consolidate all checks
+    const isArabic =
+      params.language === "ar" ||
+      params.language.startsWith("ar-") ||
+      params.language === "arabic" ||
       (dataLang && dataLang.toLowerCase() === "ar");
 
-    console.log(
-      "[OQtima] RTL mode:",
-      params.isRTL ? "ENABLED" : "disabled",
-      "for language:",
-      normalizedLanguage
-    );
+    // If Arabic, always force RTL mode
+    if (isArabic) {
+      params.language = "ar"; // Normalize to simple 'ar'
+      params.isRTL = true;
 
-    // Store RTL setting in session storage but don't modify the document
-    if (typeof window !== "undefined") {
-      try {
-        // Store RTL setting only for the popup, not affecting parent document
-        sessionStorage.setItem(
-          "oqtima_popup_rtl",
-          params.isRTL ? "true" : "false"
-        );
+      console.log("[OQtima] Arabic language detected, enforcing RTL mode");
+    }
 
-        // Use specific popup RTL flags to avoid affecting parent document
-        window.__OQTIMA_POPUP_RTL__ = params.isRTL;
-        window.__OQTIMA_POPUP_LANGUAGE__ = params.language;
+    // Store settings in sessionStorage and cookies for cross-domain persistence
+    try {
+      sessionStorage.setItem("oqtima_tab_language", params.language);
+      sessionStorage.setItem("oqtima_tab_rtl", params.isRTL ? "true" : "false");
 
-        // IMPORTANT: Don't modify these global flags as they may affect parent document
-        // window.__FORCE_RTL__ = params.isRTL;
-        // window.__ORIGINAL_RTL__ = params.isRTL;
-      } catch (e) {
-        console.warn("[OQtima] Error storing RTL state:", e);
-      }
+      // Set global variables for immediate use
+      window.__OQTIMA_POPUP_RTL__ = params.isRTL;
+      window.__OQTIMA_POPUP_LANGUAGE__ = params.language;
+
+      // Set cookies (only the most important ones)
+      const domain = window.location.hostname;
+      setCrossDomainCookies(params.language, params.isRTL, domain);
+    } catch (e) {
+      console.warn("[OQtima] Error storing language/RTL settings:", e);
     }
 
     // ENHANCED: Normalize referral parameters to ensure consistency
@@ -2181,7 +2146,10 @@
           }
 
           if (originalDocLang) {
-            document.documentElement.setAttribute("lang", originalDocLang);
+            document.documentElement.setAttribute(
+              "lang",
+              documentRTLState.originalHtmlLang
+            );
           }
 
           if (originalBodyDir) {
@@ -2771,21 +2739,38 @@
       isMobile,
     });
 
-    // Force clean language code - but preserve BR language code
+    // Force clean language code - but preserve special language codes
     let normalizedLanguage = (language || "en").toLowerCase().trim();
 
-    // If language is BR variant, preserve it instead of removing non-alphabetic characters
-    const isBrVariant = /^(br|pt[-_]?br)$/i.test(normalizedLanguage);
+    // Check for special language codes that should be preserved
+    const specialLanguageCodes = ["br", "jp", "pt-br", "zh-cn", "zh-tw", "ar"];
+    const isSpecialCode = specialLanguageCodes.some(
+      (code) =>
+        normalizedLanguage === code || normalizedLanguage.startsWith(code + "-")
+    );
 
-    if (isBrVariant) {
+    // CRITICAL: Arabic detection - this is our highest priority check
+    const isOriginalArabic =
+      normalizedLanguage === "ar" ||
+      normalizedLanguage.startsWith("ar-") ||
+      normalizedLanguage === "arabic";
+
+    if (isSpecialCode) {
       console.log(
-        "[OQtima] Detected Brazilian Portuguese variant:",
-        normalizedLanguage
+        `[OQtima] Detected special language code: ${normalizedLanguage}`
       );
-      normalizedLanguage = "br"; // Normalize to simple 'br'
+      // Keep special codes as-is (or normalize to standard form if needed)
+      if (normalizedLanguage.startsWith("jp-")) normalizedLanguage = "jp";
+      // Make sure ar is preserved in all cases
+      if (normalizedLanguage.startsWith("ar")) normalizedLanguage = "ar";
     } else {
       // For other languages, clean invalid characters
       normalizedLanguage = normalizedLanguage.replace(/[^a-z]/g, "");
+    }
+
+    // CRITICAL: Always ensure Arabic is preserved
+    if (isOriginalArabic && normalizedLanguage !== "ar") {
+      normalizedLanguage = "ar";
     }
 
     console.log("[OQtima] Normalized language:", normalizedLanguage);
@@ -2816,10 +2801,7 @@
     }
 
     // FIXED: Enhanced RTL detection - check for Arabic language variants more thoroughly
-    const isRTL =
-      normalizedLanguage === "ar" ||
-      normalizedLanguage.startsWith("ar-") ||
-      normalizedLanguage === "arabic";
+    const isRTL = normalizedLanguage === "ar";
 
     // Log RTL detection decision
     console.log(
@@ -2829,24 +2811,19 @@
       normalizedLanguage
     );
 
-    // Store RTL flag in session storage for iframe consistency ONLY - don't affect parent document
+    // Set RTL flags only once, avoid redundant operations
     if (typeof window !== "undefined") {
       try {
-        // Use a separate key specifically for popup iframe
-        sessionStorage.setItem(
-          "oqtima_popup_iframe_rtl",
-          isRTL ? "true" : "false"
-        );
+        // Use sessionStorage for local persistence
+        sessionStorage.setItem("oqtima_tab_language", normalizedLanguage);
+        sessionStorage.setItem("oqtima_tab_rtl", isRTL ? "true" : "false");
 
-        // Set popup-specific flags, not document-wide flags
-        window.__OQTIMA_POPUP_IFRAME_RTL__ = isRTL;
-
-        // IMPORTANT: Save the current RTL state of the parent document
-        if (isPageInRTLMode() && !documentRTLState.originalHtmlDir) {
-          saveOriginalRTLState();
-        }
+        // Global variables
+        window.__OQTIMA_COMPONENT_LANGUAGE = normalizedLanguage;
+        window.__OQTIMA_LOCKED_LANG = normalizedLanguage;
+        window.__OQTIMA_TAB_LANGUAGE__ = normalizedLanguage;
       } catch (e) {
-        console.warn("[OQtima] Could not store iframe RTL state:", e);
+        console.warn("[OQtima] Could not store RTL state:", e);
       }
     }
 
@@ -2894,23 +2871,16 @@
 
     console.log("[OQtima] Using URL path:", urlPath);
 
-    // CRITICAL FIX: Add specific checks to prevent language overrides in iframe
-    let iframeLang = normalizedLanguage;
+    // OPTIMIZED: Set cross-domain cookies only once with the target domain
+    try {
+      // Extract domain from baseUrl
+      const urlObj = new URL(baseUrl);
+      const domain = urlObj.hostname;
 
-    // Store the language in sessionStorage for persistence
-    if (typeof window !== "undefined") {
-      try {
-        sessionStorage.setItem("oqtima_tab_language", iframeLang);
-        window.__OQTIMA_COMPONENT_LANGUAGE = iframeLang;
-        window.__OQTIMA_LOCKED_LANG = iframeLang;
-
-        console.log(
-          "[OQtima] Language persisted to sessionStorage:",
-          iframeLang
-        );
-      } catch (e) {
-        console.warn("[OQtima] Could not store language in sessionStorage:", e);
-      }
+      // Set cross-domain cookies with essential parameters only
+      setCrossDomainCookies(normalizedLanguage, isRTL, domain);
+    } catch (e) {
+      console.warn("[OQtima] Could not set cross-domain cookies:", e);
     }
 
     // Base parameters for all versions
@@ -2940,54 +2910,12 @@
 
     // LANGUAGE CONFIGURATION
     // Ensure we're sending the original language code as data-lang
-    // This ensures codes like 'br' are preserved and not converted to 'pt'
     params.append("data-lang", normalizedLanguage);
-
-    // Also add as a URL fragment to ensure it's preserved
     params.append("lang_param", normalizedLanguage);
 
-    // Store language in session storage to persist across page loads
-    try {
-      sessionStorage.setItem("oqtima_tab_language", normalizedLanguage);
-      window.__OQTIMA_TAB_LANGUAGE__ = normalizedLanguage;
-      console.log(
-        "[OQtima] Language persisted to sessionStorage:",
-        normalizedLanguage
-      );
-
-      // Set language cookie with various domain options for cross-domain access
-      const setLanguageCookies = () => {
-        try {
-          // Get the target domain from the baseUrl
-          const urlObj = new URL(baseUrl);
-          const domain = urlObj.hostname;
-
-          // Set cookies for language (multiple variations for maximum compatibility)
-          document.cookie = `oqtima_tab_language=${normalizedLanguage}; path=/; max-age=3600; SameSite=None; Secure`;
-          document.cookie = `oqtima_tab_language=${normalizedLanguage}; path=/; domain=${domain}; max-age=3600; SameSite=None; Secure`;
-
-          // Try with subdomain compatibility
-          if (domain.indexOf(".") !== -1) {
-            const rootDomain = domain.substring(domain.indexOf("."));
-            document.cookie = `oqtima_tab_language=${normalizedLanguage}; path=/; domain=${rootDomain}; max-age=3600; SameSite=None; Secure`;
-          }
-
-          console.log(
-            `[OQtima] Set cross-domain cookies for language on domain: ${domain}`
-          );
-        } catch (e) {
-          console.warn(
-            "[OQtima] Could not set cross-domain cookies for language:",
-            e
-          );
-        }
-      };
-
-      // Execute cookie setter
-      setLanguageCookies();
-    } catch (e) {
-      console.warn("[OQtima] Could not store language in sessionStorage:", e);
-    }
+    // CRITICAL: Always include RTL parameter to ensure cross-domain consistency
+    params.append("isRtl", isRTL ? "true" : "false");
+    params.append("oqtima_rtl", isRTL ? "true" : "false");
 
     // Add standard language parameters for maximum compatibility
     const languageParams = [
@@ -3164,6 +3092,36 @@
     console.log("[OQtima] Constructed iframe URL:", logUrl);
 
     return finalUrl;
+  }
+
+  // Helper function to set cross-domain cookies efficiently
+  function setCrossDomainCookies(lang, rtlValue, targetDomain) {
+    // Standard cookie
+    document.cookie = `oqtima_tab_language=${lang}; path=/; max-age=86400; SameSite=None; Secure`;
+    document.cookie = `oqtima_tab_rtl=${
+      rtlValue ? "true" : "false"
+    }; path=/; max-age=86400; SameSite=None; Secure`;
+
+    // Domain-specific cookie
+    if (targetDomain) {
+      document.cookie = `oqtima_tab_language=${lang}; path=/; domain=${targetDomain}; max-age=86400; SameSite=None; Secure`;
+      document.cookie = `oqtima_tab_rtl=${
+        rtlValue ? "true" : "false"
+      }; path=/; domain=${targetDomain}; max-age=86400; SameSite=None; Secure`;
+
+      // Root domain for cross-subdomain support (only if needed)
+      if (targetDomain.indexOf(".") !== -1) {
+        const rootDomain = targetDomain.substring(targetDomain.indexOf("."));
+        document.cookie = `oqtima_tab_language=${lang}; path=/; domain=${rootDomain}; max-age=86400; SameSite=None; Secure`;
+        document.cookie = `oqtima_tab_rtl=${
+          rtlValue ? "true" : "false"
+        }; path=/; domain=${rootDomain}; max-age=86400; SameSite=None; Secure`;
+      }
+    }
+
+    console.log(
+      `[OQtima] Cross-domain cookies set for language: ${lang}, RTL: ${rtlValue}`
+    );
   }
 
   // Function to inject link handler script into iframe
