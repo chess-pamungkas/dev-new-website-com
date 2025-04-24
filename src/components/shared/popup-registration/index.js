@@ -177,130 +177,162 @@ const isLoadedFromExternalScript = () => {
 // Initialize tab-specific language on page load
 if (typeof window !== "undefined") {
   try {
-    // OPTIMIZED: Unified cookie and session storage check
-    // Define cookie getter function
-    const getCookie = (name) => {
-      const match = document.cookie.match(
-        new RegExp("(^| )" + name + "=([^;]+)")
-      );
-      return match ? match[2] : undefined;
-    };
+    // SIMPLIFIED: Single-pass language and RTL detection
+    let language = null;
+    let isRtl = false;
 
-    // Get language and RTL settings with priority order:
-    // 1. URL path (highest priority)
-    // 2. Cookie values (for cross-domain)
-    // 3. Session storage (for same-tab)
+    // Fast language detection with priority order:
+    // 1. URL path
+    // 2. Cookies (for cross-domain)
+    // 3. SessionStorage
+    // 4. URL parameters
 
-    // First check URL path for language
-    let effectiveLanguage = null;
-    let effectiveRtl = false;
+    // Check URL path first - highest priority
+    const pathSegments = window.location.pathname.split("/").filter(Boolean);
+    if (pathSegments.length > 0 && pathSegments[0].length <= 5) {
+      language = pathSegments[0];
+      console.log("Language from URL path:", language);
 
-    // Check URL path for language code
-    if (window.location.pathname) {
-      const pathParts = window.location.pathname.split("/").filter(Boolean);
-      if (pathParts.length > 0 && pathParts[0].length <= 5) {
-        effectiveLanguage = pathParts[0];
-        // For Arabic language from URL, force RTL
-        if (effectiveLanguage === "ar") {
-          effectiveRtl = true;
-        }
+      // For Arabic, always force RTL
+      if (language === "ar") {
+        isRtl = true;
+        console.log("RTL mode enabled for Arabic");
       }
     }
 
-    // If no language from URL path, check cookies
-    if (!effectiveLanguage) {
-      const cookieLanguage = getCookie("oqtima_tab_language");
-      const cookieRtl = getCookie("oqtima_tab_rtl");
-
-      if (cookieLanguage) {
-        effectiveLanguage = cookieLanguage;
-        // For Arabic, always force RTL
-        if (cookieLanguage === "ar") {
-          effectiveRtl = true;
-        } else {
-          effectiveRtl = cookieRtl === "true";
-        }
-      }
-    }
-
-    // If still no language, check session storage
-    if (!effectiveLanguage) {
-      const sessionLanguage = sessionStorage.getItem("oqtima_tab_language");
-      const sessionRtl = sessionStorage.getItem("oqtima_tab_rtl");
-
-      if (sessionLanguage) {
-        effectiveLanguage = sessionLanguage;
-        // For Arabic, always force RTL
-        if (sessionLanguage === "ar") {
-          effectiveRtl = true;
-        } else {
-          effectiveRtl = sessionRtl === "true";
-        }
-      }
-    }
-
-    // If we found a language, apply it
-    if (effectiveLanguage) {
-      console.log(`Using language: ${effectiveLanguage}, RTL: ${effectiveRtl}`);
-
-      // Set in session storage for consistency
-      sessionStorage.setItem("oqtima_tab_language", effectiveLanguage);
-      sessionStorage.setItem("oqtima_tab_rtl", effectiveRtl ? "true" : "false");
-
-      // Set global variables
-      window.__OQTIMA_COMPONENT_LANGUAGE = effectiveLanguage;
-      window.__OQTIMA_LOCKED_LANG = effectiveLanguage;
-      window.__FORCE_RTL__ = effectiveRtl;
-      window.__ORIGINAL_RTL__ = effectiveRtl;
-
-      // Set HTML attributes immediately
-      document.documentElement.setAttribute("lang", effectiveLanguage);
-      document.documentElement.setAttribute(
-        "dir",
-        effectiveRtl ? "rtl" : "ltr"
-      );
-
-      // Update classes
-      if (effectiveRtl) {
-        document.documentElement.classList.add("rtl-active");
-        document.body.classList.add("rtl-active");
-      } else {
-        document.documentElement.classList.remove(
-          "rtl-active",
-          "rtl",
-          "is-rtl"
+    // If no language from path, check cookies for cross-domain settings
+    if (!language) {
+      const getCookie = (name) => {
+        const match = document.cookie.match(
+          new RegExp("(^| )" + name + "=([^;]+)")
         );
-        document.body.classList.remove("rtl-active", "rtl", "is-rtl");
-      }
+        return match ? match[2] : null;
+      };
 
-      // If not Arabic, ensure no RTL attributes
-      if (effectiveLanguage !== "ar") {
-        cleanRTLAttributes();
+      const cookieLang = getCookie("oqtima_tab_language");
+      if (cookieLang) {
+        language = cookieLang;
+        console.log("Language from cookie:", language);
+
+        // For Arabic, always force RTL
+        if (language === "ar") {
+          isRtl = true;
+        } else {
+          // Check RTL cookie for non-Arabic languages
+          isRtl = getCookie("oqtima_tab_rtl") === "true";
+        }
       }
     }
+
+    // If still no language, check sessionStorage
+    if (!language) {
+      const sessionLang = sessionStorage.getItem("oqtima_tab_language");
+      if (sessionLang) {
+        language = sessionLang;
+        console.log("Language from sessionStorage:", language);
+
+        // For Arabic, always force RTL
+        if (language === "ar") {
+          isRtl = true;
+        } else {
+          // Check RTL setting in sessionStorage for non-Arabic languages
+          isRtl = sessionStorage.getItem("oqtima_tab_rtl") === "true";
+        }
+      }
+    }
+
+    // If still no language, check URL parameters
+    if (!language) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const paramLang =
+        urlParams.get("language") ||
+        urlParams.get("lang") ||
+        urlParams.get("data-lang");
+
+      if (paramLang) {
+        language = paramLang;
+        console.log("Language from URL parameter:", language);
+
+        // For Arabic, always force RTL
+        if (language === "ar") {
+          isRtl = true;
+        } else {
+          // Check RTL in URL for non-Arabic languages
+          isRtl =
+            urlParams.get("isRtl") === "true" || urlParams.get("dir") === "rtl";
+        }
+      }
+    }
+
+    // Default to English if no language found
+    if (!language) {
+      language = "en";
+      isRtl = false;
+      console.log("No language detected, defaulting to English");
+    }
+
+    // ===== CRITICAL: Apply the settings at once to prevent flickering =====
+
+    // Store in sessionStorage for future reference
+    sessionStorage.setItem("oqtima_tab_language", language);
+    sessionStorage.setItem("oqtima_tab_rtl", isRtl ? "true" : "false");
+
+    // Set global variables (used by various components)
+    window.__OQTIMA_COMPONENT_LANGUAGE = language;
+    window.__OQTIMA_LOCKED_LANG = language;
+    window.__FORCE_RTL__ = isRtl;
+    window.__ORIGINAL_RTL__ = isRtl;
+
+    // Set HTML attributes (single batch of DOM updates)
+    document.documentElement.setAttribute("lang", language);
+    document.documentElement.setAttribute("dir", isRtl ? "rtl" : "ltr");
+
+    // Update classes in one go
+    if (isRtl) {
+      document.documentElement.classList.add("rtl-active");
+      document.body.classList.add("rtl-active");
+      document.documentElement.setAttribute("data-rtl", "true");
+      document.body.setAttribute("data-rtl", "true");
+    } else {
+      // Ensure no RTL classes for non-RTL languages
+      document.documentElement.classList.remove("rtl-active", "rtl", "is-rtl");
+      document.body.classList.remove("rtl-active", "rtl", "is-rtl");
+      document.documentElement.removeAttribute("data-rtl");
+      document.body.removeAttribute("data-rtl");
+      document.documentElement.style.direction = "ltr";
+      document.body.style.direction = "ltr";
+    }
+
+    console.log(`Language set to ${language}, RTL mode: ${isRtl}`);
 
     // Make cleanRTLAttributes function globally available
     window.cleanRTLAttributes = cleanRTLAttributes;
 
-    // Use a single MutationObserver to watch for language changes
-    const languageObserver = new MutationObserver((mutations) => {
+    // Add a single observer for RTL consistency
+    const observer = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
         if (mutation.attributeName === "lang") {
           const currentLang = document.documentElement.getAttribute("lang");
+          // If language changed to non-Arabic, ensure we clean RTL attributes
           if (currentLang && currentLang.toLowerCase() !== "ar") {
             cleanRTLAttributes();
+          } else if (currentLang && currentLang.toLowerCase() === "ar") {
+            // If changed to Arabic, ensure RTL is active
+            document.documentElement.setAttribute("dir", "rtl");
+            document.documentElement.classList.add("rtl-active");
+            document.body.classList.add("rtl-active");
           }
         }
       }
     });
 
-    // Start observing language changes
-    languageObserver.observe(document.documentElement, {
+    // Start observing
+    observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["lang"],
+      attributeFilter: ["lang", "dir"],
     });
   } catch (e) {
-    console.warn("Could not initialize tab-specific language:", e);
+    console.warn("Could not initialize language settings:", e);
   }
 }
 
