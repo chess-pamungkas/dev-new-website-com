@@ -176,54 +176,6 @@ const isLoadedFromExternalScript = () => {
 
 // Initialize tab-specific language on page load
 if (typeof window !== "undefined") {
-  // CRITICAL: Check for Arabic language and set RTL immediately
-  try {
-    // Fast path: Check URL parameters, cookies, and session storage for Arabic language
-    const detectArabic = () => {
-      // 1. URL parameters (highest priority)
-      const urlParams = new URLSearchParams(window.location.search);
-      const urlLangParams = ["data-lang", "lang", "language", "langParam"];
-      for (const param of urlLangParams) {
-        const value = urlParams.get(param);
-        if (value === "ar") return true;
-      }
-
-      // 2. URL path
-      const pathParts = window.location.pathname.split("/").filter(Boolean);
-      if (pathParts.length > 0 && pathParts[0] === "ar") return true;
-
-      // 3. Cookies
-      const cookies = document.cookie.split(";");
-      for (const cookie of cookies) {
-        const [name, value] = cookie.trim().split("=");
-        if (name === "oqtima_tab_language" && value === "ar") return true;
-        if (name === "oqtima_tab_rtl" && value === "true") return true;
-      }
-
-      // 4. Session Storage
-      try {
-        if (sessionStorage.getItem("oqtima_tab_language") === "ar") return true;
-        if (sessionStorage.getItem("oqtima_tab_rtl") === "true") return true;
-      } catch (e) {}
-
-      return false;
-    };
-
-    // If Arabic is detected, set RTL immediately
-    if (detectArabic()) {
-      console.log(
-        "[FAST PATH] Arabic language detected, setting RTL immediately"
-      );
-      document.documentElement.setAttribute("dir", "rtl");
-      document.documentElement.setAttribute("lang", "ar");
-      document.documentElement.classList.add("rtl-active");
-      document.body.setAttribute("dir", "rtl");
-      document.body.classList.add("rtl-active");
-    }
-  } catch (e) {
-    console.warn("Error in fast RTL detection:", e);
-  }
-
   try {
     // OPTIMIZED: Unified cookie and session storage check
     // Define cookie getter function
@@ -1306,126 +1258,11 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
       else if (event.data && event.data.type === "REGISTRATION_PARAMS") {
         console.log(
           "Received registration parameters from parent:",
-          JSON.stringify(event.data, null, 2)
+          event.data
         );
 
         try {
           const { data } = event.data;
-
-          // IMPORTANT: Set a flag to prevent language fluctuation
-          // after we've processed parameters from parent
-          if (!window.__OQTIMA_PARAMS_PROCESSED__) {
-            window.__OQTIMA_PARAMS_PROCESSED__ = true;
-            console.log(
-              "Setting __OQTIMA_PARAMS_PROCESSED__ flag to prevent further language changes"
-            );
-          }
-
-          // CRITICAL: Process referral parameters with highest priority
-          if (data.referral_type !== undefined && data.referral_type !== null) {
-            sessionStorage.setItem(
-              "oqtima_referral_type",
-              String(data.referral_type)
-            );
-            window.__OQTIMA_REFERRAL_TYPE__ = data.referral_type;
-            console.log(
-              "Stored referral_type in sessionStorage:",
-              data.referral_type
-            );
-          } else if (
-            data.referralType !== undefined &&
-            data.referralType !== null
-          ) {
-            sessionStorage.setItem(
-              "oqtima_referral_type",
-              String(data.referralType)
-            );
-            window.__OQTIMA_REFERRAL_TYPE__ = data.referralType;
-            console.log(
-              "Stored referralType in sessionStorage:",
-              data.referralType
-            );
-          } else if (
-            data["referral-type"] !== undefined &&
-            data["referral-type"] !== null
-          ) {
-            sessionStorage.setItem(
-              "oqtima_referral_type",
-              String(data["referral-type"])
-            );
-            window.__OQTIMA_REFERRAL_TYPE__ = data["referral-type"];
-            console.log(
-              "Stored referral-type in sessionStorage:",
-              data["referral-type"]
-            );
-          } else if (
-            data.oqtima_referral_type !== undefined &&
-            data.oqtima_referral_type !== null
-          ) {
-            sessionStorage.setItem(
-              "oqtima_referral_type",
-              String(data.oqtima_referral_type)
-            );
-            window.__OQTIMA_REFERRAL_TYPE__ = data.oqtima_referral_type;
-            console.log(
-              "Stored oqtima_referral_type in sessionStorage:",
-              data.oqtima_referral_type
-            );
-          }
-
-          if (
-            data.referral_value !== undefined &&
-            data.referral_value !== null
-          ) {
-            sessionStorage.setItem(
-              "oqtima_referral_value",
-              String(data.referral_value)
-            );
-            window.__OQTIMA_REFERRAL_VALUE__ = data.referral_value;
-            console.log(
-              "Stored referral_value in sessionStorage:",
-              data.referral_value
-            );
-          } else if (
-            data.referralValue !== undefined &&
-            data.referralValue !== null
-          ) {
-            sessionStorage.setItem(
-              "oqtima_referral_value",
-              String(data.referralValue)
-            );
-            window.__OQTIMA_REFERRAL_VALUE__ = data.referralValue;
-            console.log(
-              "Stored referralValue in sessionStorage:",
-              data.referralValue
-            );
-          } else if (
-            data["referral-value"] !== undefined &&
-            data["referral-value"] !== null
-          ) {
-            sessionStorage.setItem(
-              "oqtima_referral_value",
-              String(data["referral-value"])
-            );
-            window.__OQTIMA_REFERRAL_VALUE__ = data["referral-value"];
-            console.log(
-              "Stored referral-value in sessionStorage:",
-              data["referral-value"]
-            );
-          } else if (
-            data.oqtima_referral_value !== undefined &&
-            data.oqtima_referral_value !== null
-          ) {
-            sessionStorage.setItem(
-              "oqtima_referral_value",
-              String(data.oqtima_referral_value)
-            );
-            window.__OQTIMA_REFERRAL_VALUE__ = data.oqtima_referral_value;
-            console.log(
-              "Stored oqtima_referral_value in sessionStorage:",
-              data.oqtima_referral_value
-            );
-          }
 
           // Handle language parameters - high priority
           let languageHandled = false;
@@ -1436,7 +1273,6 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
             "oqtima_tab_language",
             "tab_language",
             "lang",
-            "langParam",
           ];
 
           for (const key of languageKeys) {
@@ -1474,22 +1310,6 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
                   // Update global RTL flags
                   window.__FORCE_RTL__ = false;
                   window.__ORIGINAL_RTL__ = false;
-                } else {
-                  // For Arabic, ensure RTL attributes are set
-                  console.log(
-                    "Arabic language received, ensuring RTL attributes"
-                  );
-                  document.documentElement.setAttribute("dir", "rtl");
-                  document.documentElement.classList.add("rtl-active", "rtl");
-                  document.documentElement.setAttribute("data-rtl", "true");
-                  document.body.setAttribute("dir", "rtl");
-                  document.body.classList.add("rtl-active", "rtl");
-                  document.body.setAttribute("data-rtl", "true");
-
-                  // Set RTL flags
-                  sessionStorage.setItem("oqtima_tab_rtl", "true");
-                  window.__FORCE_RTL__ = true;
-                  window.__ORIGINAL_RTL__ = true;
                 }
 
                 // Log success
@@ -1538,40 +1358,43 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
             }
           }
 
+          // Store referral parameters in session storage
+          if (data.referral_type !== undefined && data.referral_type !== null) {
+            sessionStorage.setItem("oqtima_referral_type", data.referral_type);
+            window.__OQTIMA_REFERRAL_TYPE__ = data.referral_type;
+            console.log(
+              "Stored referral_type in sessionStorage:",
+              data.referral_type
+            );
+          }
+
+          if (
+            data.referral_value !== undefined &&
+            data.referral_value !== null
+          ) {
+            sessionStorage.setItem(
+              "oqtima_referral_value",
+              data.referral_value
+            );
+            window.__OQTIMA_REFERRAL_VALUE__ = data.referral_value;
+            console.log(
+              "Stored referral_value in sessionStorage:",
+              data.referral_value
+            );
+          }
+
           // Handle direct session storage instructions
           if (data.storeInSessionStorage && Array.isArray(data.storageKeys)) {
             data.storageKeys.forEach((item) => {
               if (item.key && item.value !== undefined) {
-                sessionStorage.setItem(item.key, String(item.value));
+                sessionStorage.setItem(item.key, item.value);
                 console.log(
                   `Stored ${item.key} in sessionStorage:`,
                   item.value
                 );
-
-                // Also make these values available in window object for debugging
-                window[`__OQTIMA_${item.key.toUpperCase()}__`] = item.value;
               }
             });
           }
-
-          // Check all session storage values for referral parameters
-          console.log("Current session storage values:");
-          console.log(
-            "- oqtima_referral_type:",
-            sessionStorage.getItem("oqtima_referral_type")
-          );
-          console.log(
-            "- oqtima_referral_value:",
-            sessionStorage.getItem("oqtima_referral_value")
-          );
-          console.log(
-            "- oqtima_tab_language:",
-            sessionStorage.getItem("oqtima_tab_language")
-          );
-          console.log(
-            "- oqtima_tab_rtl:",
-            sessionStorage.getItem("oqtima_tab_rtl")
-          );
 
           // Send confirmation back to parent
           if (window.parent && window.parent !== window) {
@@ -1580,10 +1403,6 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
                 type: "REGISTRATION_PARAMS_RECEIVED",
                 success: true,
                 timestamp: Date.now(),
-                language: sessionStorage.getItem("oqtima_tab_language"),
-                rtl: sessionStorage.getItem("oqtima_tab_rtl"),
-                referral_type: sessionStorage.getItem("oqtima_referral_type"),
-                referral_value: sessionStorage.getItem("oqtima_referral_value"),
               },
               "*"
             );
@@ -1607,13 +1426,6 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
 
     // Function to check and fix RTL attributes when language changes
     const checkAndFixRTLAttributes = () => {
-      // IMPORTANT: Skip this check if parameters have been processed from parent
-      // This helps prevent language/RTL fluctuations after initial setup
-      if (window.__OQTIMA_PARAMS_PROCESSED__) {
-        console.log("Skipping RTL check as params have been processed already");
-        return;
-      }
-
       const currentLang = document.documentElement.getAttribute("lang");
       console.log(`Language change detected: ${currentLang}`);
 
@@ -1623,20 +1435,6 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
           `Non-Arabic language '${currentLang}' detected, cleaning RTL attributes`
         );
         cleanRTLAttributes();
-      } else if (currentLang && currentLang.toLowerCase() === "ar") {
-        // For Arabic, ensure RTL is properly set
-        console.log("Arabic language detected, ensuring RTL attributes");
-        document.documentElement.setAttribute("dir", "rtl");
-        document.documentElement.classList.add("rtl-active", "rtl");
-        document.documentElement.setAttribute("data-rtl", "true");
-        document.body.setAttribute("dir", "rtl");
-        document.body.classList.add("rtl-active", "rtl");
-        document.body.setAttribute("data-rtl", "true");
-
-        // Set RTL flags
-        sessionStorage.setItem("oqtima_tab_rtl", "true");
-        window.__FORCE_RTL__ = true;
-        window.__ORIGINAL_RTL__ = true;
       }
     };
 
@@ -1645,11 +1443,6 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
 
     // Set up MutationObserver to monitor language attribute changes
     const observer = new MutationObserver((mutations) => {
-      // IMPORTANT: Skip mutations if parameters have been processed from parent
-      if (window.__OQTIMA_PARAMS_PROCESSED__) {
-        return;
-      }
-
       mutations.forEach((mutation) => {
         if (mutation.attributeName === "lang") {
           checkAndFixRTLAttributes();
@@ -1667,7 +1460,57 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
     return () => observer.disconnect();
   }, []);
 
-  // Check for cookies containing referral parameters on page load
+  // NEW: Add debug hook to monitor RTL attributes and force cleanup if needed
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Define what we consider a "stuck" RTL state
+    const isRTLStuck = () => {
+      const htmlLang = document.documentElement.getAttribute("lang") || "";
+      const htmlDir = document.documentElement.getAttribute("dir") || "";
+      const htmlHasRTLClass =
+        document.documentElement.classList.contains("rtl-active") ||
+        document.documentElement.classList.contains("rtl");
+
+      // If language is not Arabic but we have RTL classes or dir="rtl", something is stuck
+      return (
+        htmlLang.toLowerCase() !== "ar" &&
+        (htmlDir === "rtl" || htmlHasRTLClass)
+      );
+    };
+
+    // Set a timeout to check if RTL cleanup worked
+    const checkTimeout = setTimeout(() => {
+      if (isRTLStuck()) {
+        console.warn(
+          "RTL state appears to be stuck after language change to non-Arabic"
+        );
+        console.warn("Attempting force cleanup...");
+
+        // Try stronger cleanup
+        cleanRTLAttributes();
+
+        // Check again after a short delay
+        setTimeout(() => {
+          if (isRTLStuck()) {
+            console.error(
+              "RTL state is still stuck after first cleanup attempt"
+            );
+            console.error("Using last resort - forcing complete reset...");
+
+            // Last resort - reload the page
+            forceCompleteRTLReset(true);
+          } else {
+            console.log("Force cleanup successfully fixed RTL state");
+          }
+        }, 500);
+      }
+    }, 1000);
+
+    return () => clearTimeout(checkTimeout);
+  }, []);
+
+  // NEW: Check for cookies containing referral parameters on page load
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -1698,28 +1541,103 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
           window.__OQTIMA_REFERRAL_VALUE__ = referralValue;
         }
 
-        // Check for language in cookies
-        const cookieLanguage = getCookie("oqtima_tab_language");
-        if (cookieLanguage) {
-          console.log("Found language in cookie:", cookieLanguage);
-          sessionStorage.setItem("oqtima_tab_language", cookieLanguage);
-          window.__OQTIMA_TAB_LANGUAGE__ = cookieLanguage;
-          window.__OQTIMA_COMPONENT_LANGUAGE = cookieLanguage;
-          window.__OQTIMA_LOCKED_LANG = cookieLanguage;
+        // IMPORTANT NEW: Check for language in URL path
+        if (typeof window !== "undefined") {
+          const pathParts = window.location.pathname.split("/").filter(Boolean);
 
-          // For Arabic, ensure RTL settings
-          if (cookieLanguage.toLowerCase() === "ar") {
-            console.log("Arabic language found in cookie, setting RTL mode");
-            sessionStorage.setItem("oqtima_tab_rtl", "true");
-            window.__FORCE_RTL__ = true;
-            window.__ORIGINAL_RTL__ = true;
-            document.documentElement.setAttribute("dir", "rtl");
-            document.documentElement.setAttribute("lang", "ar");
+          // If the path starts with a language code (like /id/ or /en/)
+          if (pathParts.length > 0 && pathParts[0].length <= 7) {
+            const pathLanguage = pathParts[0];
+            console.log("Detected language from URL path:", pathLanguage);
+
+            // Force this language throughout the app
+            // This is crucial to maintain language consistency
+            sessionStorage.setItem("oqtima_tab_language", pathLanguage);
+            window.__OQTIMA_COMPONENT_LANGUAGE = pathLanguage;
+            window.__OQTIMA_LOCKED_LANG = pathLanguage;
+            window.__FORCE_LANGUAGE__ = true;
+            document.documentElement.setAttribute("lang", pathLanguage);
+
+            // Update other language storage as well
+            try {
+              localStorage.setItem("i18nextLng", pathLanguage);
+              if (window.gatsby_i18next_language) {
+                window.gatsby_i18next_language = pathLanguage;
+              }
+            } catch (e) {}
+
+            console.log("Language from URL path enforced:", pathLanguage);
           }
         }
 
-        // IMPORTANT: Check URL parameters and URL path
-        // ... existing code ...
+        // Check for language parameters in URL query params
+        if (typeof window !== "undefined") {
+          const urlParams = new URLSearchParams(window.location.search);
+
+          // Check for referral type in URL params with multiple possible names
+          const referralTypeParams = [
+            "referral_type",
+            "referralType",
+            "referral-type",
+          ];
+          for (const param of referralTypeParams) {
+            const value = urlParams.get(param);
+            if (value) {
+              console.log(`Found ${param} in URL:`, value);
+              sessionStorage.setItem("oqtima_referral_type", value);
+              window.__OQTIMA_REFERRAL_TYPE__ = value;
+              break;
+            }
+          }
+
+          // Check for referral value in URL params with multiple possible names
+          const referralValueParams = [
+            "referral_value",
+            "referralValue",
+            "referral-value",
+          ];
+          for (const param of referralValueParams) {
+            const value = urlParams.get(param);
+            if (value) {
+              console.log(`Found ${param} in URL:`, value);
+              sessionStorage.setItem("oqtima_referral_value", value);
+              window.__OQTIMA_REFERRAL_VALUE__ = value;
+              break;
+            }
+          }
+
+          // CRITICAL: Check for language parameters and enforce them
+          const languageParams = [
+            "language",
+            "lang",
+            "locale",
+            "i18nextLng",
+            "data-lang",
+          ];
+          for (const param of languageParams) {
+            const value = urlParams.get(param);
+            if (value) {
+              console.log(`Found language parameter ${param} in URL:`, value);
+
+              // Enforce this language
+              sessionStorage.setItem("oqtima_tab_language", value);
+              window.__OQTIMA_COMPONENT_LANGUAGE = value;
+              window.__OQTIMA_LOCKED_LANG = value;
+              window.__FORCE_LANGUAGE__ = true;
+              document.documentElement.setAttribute("lang", value);
+
+              try {
+                localStorage.setItem("i18nextLng", value);
+                if (window.gatsby_i18next_language) {
+                  window.gatsby_i18next_language = value;
+                }
+              } catch (e) {}
+
+              console.log("Language from URL parameter enforced:", value);
+              break;
+            }
+          }
+        }
       } catch (e) {
         console.warn("Error checking cookies and parameters:", e);
       }
@@ -1856,6 +1774,222 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
       console.warn("Error in initial Arabic language detection:", e);
     }
   }
+
+  // Add effect to extract URL parameters for language and RTL settings right at component mount
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Function to extract and apply URL parameters
+    const extractUrlParameters = () => {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Check for language params in URL with priority
+        const languageParams = ["language", "lang", "data-lang", "langParam"];
+        let detectedLanguage = null;
+
+        // First check language from URL params
+        for (const param of languageParams) {
+          const value = urlParams.get(param);
+          if (value) {
+            console.log(
+              `Detected language from URL parameter '${param}': ${value}`
+            );
+            detectedLanguage = value;
+            break;
+          }
+        }
+
+        // Check for RTL parameter in URL
+        const rtlValue = urlParams.get("isRtl") || urlParams.get("oqtima_rtl");
+        const isRtlMode = rtlValue === "true" || detectedLanguage === "ar";
+
+        // Apply detected language and RTL settings immediately
+        if (detectedLanguage) {
+          console.log(
+            `Setting language from URL: ${detectedLanguage}, RTL: ${isRtlMode}`
+          );
+
+          // Store in sessionStorage
+          sessionStorage.setItem("oqtima_tab_language", detectedLanguage);
+          sessionStorage.setItem(
+            "oqtima_tab_rtl",
+            isRtlMode ? "true" : "false"
+          );
+
+          // Apply to document
+          document.documentElement.setAttribute("lang", detectedLanguage);
+          document.documentElement.setAttribute(
+            "dir",
+            isRtlMode ? "rtl" : "ltr"
+          );
+
+          // Set global variables
+          window.__OQTIMA_COMPONENT_LANGUAGE = detectedLanguage;
+          window.__OQTIMA_LOCKED_LANG = detectedLanguage;
+          window.__FORCE_RTL__ = isRtlMode;
+          window.__ORIGINAL_RTL__ = isRtlMode;
+
+          // Apply RTL classes if needed
+          if (isRtlMode) {
+            document.documentElement.classList.add("rtl-active");
+            document.body.classList.add("rtl-active");
+          } else {
+            document.documentElement.classList.remove(
+              "rtl-active",
+              "rtl",
+              "is-rtl"
+            );
+            document.body.classList.remove("rtl-active", "rtl", "is-rtl");
+          }
+
+          // Return true to indicate parameters were found and applied
+          return true;
+        }
+
+        return false;
+      } catch (e) {
+        console.warn("Error extracting URL parameters:", e);
+        return false;
+      }
+    };
+
+    // Run as soon as component mounts
+    extractUrlParameters();
+  }, []);
+
+  // Add message handling for parent page communication
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Notify parent that iframe is loaded
+    if (window.parent && window.parent !== window) {
+      try {
+        window.parent.postMessage(
+          {
+            type: "IFRAME_LOADED",
+            timestamp: Date.now(),
+          },
+          "*"
+        );
+        console.log("[Form] Sent IFRAME_LOADED message to parent");
+      } catch (e) {
+        console.warn("[Form] Error sending message to parent:", e);
+      }
+    }
+
+    // Handler for messages from parent page
+    const handleParentMessage = (event) => {
+      // Only process messages with explicit types
+      if (!event.data || typeof event.data !== "object" || !event.data.type) {
+        return;
+      }
+
+      console.log("[Form] Received message from parent:", event.data.type);
+
+      // Handle language setting message
+      if (event.data.type === "SET_LANGUAGE") {
+        const { language, isRTL } = event.data;
+
+        console.log(
+          `[Form] Setting language from parent message: ${language}, RTL: ${isRTL}`
+        );
+
+        // Store in sessionStorage
+        sessionStorage.setItem("oqtima_tab_language", language);
+        sessionStorage.setItem("oqtima_tab_rtl", isRTL ? "true" : "false");
+
+        // Set document attributes
+        document.documentElement.setAttribute("lang", language);
+        document.documentElement.setAttribute("dir", isRTL ? "rtl" : "ltr");
+
+        // Set RTL classes
+        if (isRTL) {
+          document.documentElement.classList.add("rtl-active");
+          document.body.classList.add("rtl-active");
+        } else {
+          document.documentElement.classList.remove(
+            "rtl-active",
+            "rtl",
+            "is-rtl"
+          );
+          document.body.classList.remove("rtl-active", "rtl", "is-rtl");
+        }
+
+        // Set global variables
+        window.__OQTIMA_COMPONENT_LANGUAGE = language;
+        window.__OQTIMA_LOCKED_LANG = language;
+        window.__FORCE_RTL__ = isRTL;
+        window.__ORIGINAL_RTL__ = isRTL;
+
+        // Send confirmation back to parent
+        try {
+          window.parent.postMessage(
+            {
+              type: "LANGUAGE_SET_SUCCESS",
+              language,
+              isRTL,
+              timestamp: Date.now(),
+            },
+            "*"
+          );
+        } catch (e) {
+          console.warn("[Form] Error sending confirmation to parent:", e);
+        }
+      }
+
+      // Handle referral setting message
+      if (event.data.type === "SET_REFERRAL") {
+        const { referral_type, referral_value } = event.data;
+
+        console.log(
+          `[Form] Setting referral from parent message: type=${referral_type}, value=${referral_value}`
+        );
+
+        // Store in sessionStorage and global variables
+        if (referral_type !== undefined && referral_type !== null) {
+          sessionStorage.setItem("oqtima_referral_type", referral_type);
+          window.__OQTIMA_REFERRAL_TYPE__ = referral_type;
+        }
+
+        if (referral_value !== undefined && referral_value !== null) {
+          sessionStorage.setItem("oqtima_referral_value", referral_value);
+          window.__OQTIMA_REFERRAL_VALUE__ = referral_value;
+        }
+
+        // Send confirmation back to parent
+        try {
+          window.parent.postMessage(
+            {
+              type: "REFERRAL_SET_SUCCESS",
+              referral_type,
+              referral_value,
+              timestamp: Date.now(),
+            },
+            "*"
+          );
+        } catch (e) {
+          console.warn("[Form] Error sending confirmation to parent:", e);
+        }
+      }
+
+      // Handle close request
+      if (event.data.type === "CLOSE_POPUP") {
+        console.log("[Form] Received close request from parent");
+        if (typeof onClose === "function") {
+          onClose();
+        }
+      }
+    };
+
+    // Add message listener
+    window.addEventListener("message", handleParentMessage);
+
+    // Clean up on unmount
+    return () => {
+      window.removeEventListener("message", handleParentMessage);
+    };
+  }, [onClose]);
 
   if (!isOpen) return null;
 
