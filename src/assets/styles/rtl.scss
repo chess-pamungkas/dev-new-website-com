@@ -149,10 +149,6 @@
   }
 }
 
-.popup {
-  direction: ltr;
-}
-
 .main-promotion--rtl {
   .main-promotion__wrapper--rtl {
     align-items: center;
@@ -171,7 +167,7 @@
 
     @include tablet {
       right: unset;
-      left: 0;
+      left: -100px;
     }
 
     @include desktop-lg {
