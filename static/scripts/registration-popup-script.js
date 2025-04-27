@@ -1836,7 +1836,7 @@
       overflow: hidden !important;
       width: 100% !important;
       max-height: 100% !important;
-      height: 100% !important;
+      height: auto !important;
           direction: rtl !important;
         `;
 
