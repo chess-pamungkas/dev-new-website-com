@@ -1399,7 +1399,7 @@
       wrapperStyles += `
       width: 100% !important;
         max-width: 1170px !important;
-        height: 100vh !important;
+        height: 100% !important;
         max-height: 800px !important;
         border-radius: 8px !important;
         overflow: hidden !important;
