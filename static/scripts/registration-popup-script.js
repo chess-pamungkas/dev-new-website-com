@@ -1346,6 +1346,9 @@
     `;
     loadingOverlay.appendChild(spinner);
 
+    // Save spinner reference for later use
+    const spinnerEl = spinner;
+
     // Add spinner animation
     const spinnerStyle = document.createElement("style");
     spinnerStyle.textContent = `
@@ -1381,7 +1384,6 @@
 
         .popup-registration__iframe {
           flex: 1 !important;
-          width: 100% !important;
           height: 100% !important;
           border: none !important;
         }
@@ -1611,15 +1613,17 @@
           JSON.stringify(messageData, null, 2)
         );
 
-        // First attempt to send message
+        // First attempt to send message - use wildcard origin "*" for maximum compatibility
+        // This is safe because we're only posting data, not reading any data from cross-origin frames
         iframe.contentWindow.postMessage(messageData, "*");
 
         // Schedule multiple retries with increasing delays to ensure message is received
+        // but still using safe postMessage approach
         setTimeout(() => {
           try {
             iframe.contentWindow.postMessage(messageData, "*");
           } catch (err) {
-            console.error("Error in retry 1:", err);
+            console.error("[OQtima] Error in retry 1:", err);
           }
         }, 100);
 
@@ -1627,7 +1631,7 @@
           try {
             iframe.contentWindow.postMessage(messageData, "*");
           } catch (err) {
-            console.error("Error in retry 2:", err);
+            console.error("[OQtima] Error in retry 2:", err);
           }
         }, 500);
 
@@ -1636,56 +1640,87 @@
             iframe.contentWindow.postMessage(messageData, "*");
             console.log("[OQtima] Final retry sending message to iframe");
           } catch (err) {
-            console.error("Error in final retry:", err);
+            console.error("[OQtima] Error in final retry:", err);
           }
         }, 1500);
 
-        // Add direct iframe script injection for session storage access
+        // Safely add direct iframe data transfer for session storage access
+        // Only attempt this for same-origin iframes to avoid security errors
         try {
           // Using setTimeout to ensure iframe is fully loaded
           setTimeout(() => {
-            const iframeDoc =
-              iframe.contentDocument || iframe.contentWindow.document;
-            if (iframeDoc) {
-              const script = iframeDoc.createElement("script");
-              script.textContent = `
-                // Set referral parameters and language directly in sessionStorage
-                try {
-                  // Set referral parameters
-                  sessionStorage.setItem("oqtima_referral_type", "${referralType}");
-                  sessionStorage.setItem("oqtima_referral_value", "${referralValue}");
-                  
-                  // Set language parameters
-                  sessionStorage.setItem("oqtima_tab_language", "${language}");
-                  localStorage.setItem("i18nextLng", "${language}");
-                  
-                  // Set global variables
-                  window.__OQTIMA_REFERRAL_TYPE__ = "${referralType}";
-                  window.__OQTIMA_REFERRAL_VALUE__ = "${referralValue}";
-                  window.__OQTIMA_TAB_LANGUAGE__ = "${language}";
-                  window.__OQTIMA_LOCKED_LANG__ = "${language}";
-                  window.__OQTIMA_COMPONENT_LANGUAGE__ = "${language}";
-                  window.__FORCE_LANGUAGE__ = true;
-                  
-                  // Set language on document element
-                  document.documentElement.setAttribute("lang", "${language}");
-                  
-                  // Log success
-                  console.log("Successfully stored parameters in iframe via injected script");
-                  console.log("Language set to: ${language}");
-                  console.log("Referral type: ${referralType}");
-                  console.log("Referral value: ${referralValue}");
-                } catch (e) {
-                  console.error("Error storing parameters in iframe sessionStorage:", e);
+            // SAFETY CHECK: Only try to access iframe document directly if it's same-origin
+            // This prevents security errors when loading cross-origin content
+            try {
+              const iframeOrigin = new URL(iframe.src).origin;
+              const currentOrigin = window.location.origin;
+
+              const isSameOrigin = iframeOrigin === currentOrigin;
+
+              if (isSameOrigin) {
+                const iframeDoc =
+                  iframe.contentDocument || iframe.contentWindow.document;
+                if (iframeDoc) {
+                  const script = iframeDoc.createElement("script");
+                  script.textContent = `
+                    // Set up data receiver
+                    window.addEventListener("message", function(event) {
+                      if (event.data && event.data.type === "REGISTRATION_PARAMS") {
+                        console.log("[OQtima][Iframe] Received parameters from parent");
+                        
+                        // Store data safely without accessing parent
+                        const params = event.data.data;
+                        
+                        // Store data in sessionStorage
+                        if (params.storeInSessionStorage && params.storageKeys) {
+                          params.storageKeys.forEach(item => {
+                            if (item.key && item.value !== undefined) {
+                              try {
+                                sessionStorage.setItem(item.key, item.value);
+                              } catch (e) {
+                                console.warn("[OQtima][Iframe] Failed to set storage item:", item.key);
+                              }
+                            }
+                          });
+                        }
+                        
+                        // Set global variables for language and referral
+                        if (params.language) window.__OQTIMA_LANGUAGE__ = params.language;
+                        if (params.referral_type) window.__OQTIMA_REFERRAL_TYPE__ = params.referral_type;
+                        if (params.referral_value) window.__OQTIMA_REFERRAL_VALUE__ = params.referral_value;
+                        
+                        // Send confirmation back to parent
+                        window.parent.postMessage({
+                          type: "REGISTRATION_PARAMS_RECEIVED",
+                          timestamp: Date.now()
+                        }, "*");
+                      }
+                    });
+                    
+                    // Send ready message to parent
+                    window.parent.postMessage({
+                      type: "IFRAME_READY",
+                      timestamp: Date.now()
+                    }, "*");
+                  `;
+                  iframeDoc.head.appendChild(script);
                 }
-              `;
-              iframeDoc.head.appendChild(script);
+              } else {
+                console.log(
+                  "[OQtima] Iframe is cross-origin, using only postMessage communication"
+                );
+              }
+            } catch (originError) {
+              // If we can't check origins, iframe is most likely cross-origin
+              console.log(
+                "[OQtima] Iframe appears to be cross-origin, using only postMessage"
+              );
             }
-          }, 500);
-        } catch (err) {
+          }, 200);
+        } catch (scriptError) {
           console.warn(
-            "[OQtima] Could not inject session storage script:",
-            err
+            "[OQtima] Could not inject script to iframe:",
+            scriptError
           );
         }
       } catch (err) {
@@ -2498,40 +2533,15 @@
                 timestamp: Date.now(),
               };
 
-              // Using postMessage to send the data
+              // Using postMessage to send the data - this is the ONLY safe way to communicate across origins
               event.source.postMessage(messageData, "*");
 
-              // Also try to call the direct handler if it exists
-              if (
-                event.source.window &&
-                typeof event.source.window.__TEMP_RECEIVE_REFERRAL_DATA ===
-                  "function"
-              ) {
-                event.source.window.__TEMP_RECEIVE_REFERRAL_DATA({
-                  referral_type: referralData.referral_type,
-                  referral_value: referralData.referral_value,
-                  language: referralData.language,
-                });
-              }
+              console.log(
+                "[OQtima] Parameters sent to iframe via safe postMessage"
+              );
 
-              // Also try to update the document language directly
-              try {
-                if (
-                  referralData.language &&
-                  event.source.window &&
-                  event.source.window.document
-                ) {
-                  event.source.window.document.documentElement.setAttribute(
-                    "lang",
-                    referralData.language
-                  );
-                }
-              } catch (e) {
-                console.warn(
-                  "[OQtima] Could not set iframe document language:",
-                  e
-                );
-              }
+              // DO NOT attempt to access properties or methods of cross-origin windows directly
+              // as this will cause security errors. We use only postMessage for cross-origin communication.
             } catch (e) {
               console.error(
                 "[OQtima] Error sending referral data to iframe:",
