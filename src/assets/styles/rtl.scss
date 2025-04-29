@@ -150,12 +150,6 @@
 }
 
 .main-promotion--rtl {
-  .main-promotion__wrapper--rtl {
-    align-items: center;
-    justify-content: flex-end;
-    direction: rtl;
-  }
-
   .main-promotion__photo {
     right: unset;
     left: 0;
@@ -208,12 +202,6 @@
 
   .button-link {
     float: right;
-  }
-
-  .main-promotion__wrapper--rtl {
-    align-items: center;
-    justify-content: flex-end;
-    direction: rtl;
   }
 
   .main-promotion__wrapper--without-hero {
@@ -1250,7 +1238,7 @@
 
     @include desktop-lg {
       max-width: 73.25rem;
-      max-height: 47rem;
+      // max-height: 47rem;
     }
 
     @include desktop-xl {
