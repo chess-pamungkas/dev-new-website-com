@@ -621,12 +621,20 @@
           }
         );
 
+        // Create parameters object for opening popup
+        const popupParams = { lang };
+
+        // Only add referral parameters if they are actually set
+        if (referralType && referralType.trim() !== "") {
+          popupParams.referralType = referralType;
+        }
+
+        if (referralValue && referralValue.trim() !== "") {
+          popupParams.referralValue = referralValue;
+        }
+
         // Open registration popup with parameters
-        openRegistrationPopup({
-          lang,
-          referralType,
-          referralValue,
-        });
+        openRegistrationPopup(popupParams);
       });
 
       // Ensure element is visually indicated as clickable
@@ -978,8 +986,19 @@
     }
 
     // ENHANCED: Try to extract referral parameters from URL query string if not provided in params
+    // Only apply this for specific registration types (IB referrals or campaigns)
+    // For normal registrations, we don't want to accidentally pick up URL parameters
+    let isSpecificReferralType = false;
+    for (const key of possibleReferralTypes) {
+      if (params[key]) {
+        isSpecificReferralType = true;
+        break;
+      }
+    }
+
     try {
       if (
+        isSpecificReferralType &&
         (!params.referral_type || !params.referral_value) &&
         typeof window !== "undefined"
       ) {
@@ -1034,6 +1053,14 @@
           "[OQtima] referral_type is not a valid integer:",
           params.referral_type
         );
+
+        // For safety in normal registration scenarios, remove invalid referral_type
+        if (!isSpecificReferralType) {
+          console.log(
+            "[OQtima] Removing invalid referral_type for normal registration"
+          );
+          delete params.referral_type;
+        }
       }
     }
 
@@ -1156,8 +1183,28 @@
     const countryCode = params.country_code || null;
 
     // Get referral params - ensure these values are passed down
-    const referralType = params.referral_type || null;
-    const referralValue = params.referral_value || null;
+    // For normal registration, explicitly set to null
+    let referralType = null;
+    let referralValue = null;
+
+    // Only set referral parameters if they are actually present and valid for referral scenarios
+    if (
+      params.referral_type !== undefined &&
+      params.referral_type !== null &&
+      params.referral_type !== ""
+    ) {
+      referralType = params.referral_type;
+      console.log("[OQtima] Using referral_type:", referralType);
+    }
+
+    if (
+      params.referral_value !== undefined &&
+      params.referral_value !== null &&
+      params.referral_value !== ""
+    ) {
+      referralValue = params.referral_value;
+      console.log("[OQtima] Using referral_value:", referralValue);
+    }
 
     // Determine if mobile based on screen width
     const isMobile =
@@ -2791,6 +2838,23 @@
       isMobile,
     });
 
+    // Check if this is a normal registration (no referral) or specific referral registration
+    const isNormalRegistration =
+      referralType === null ||
+      referralType === undefined ||
+      referralType === "";
+
+    if (isNormalRegistration) {
+      console.log(
+        "[OQtima] Detected normal registration - no referral parameters will be used"
+      );
+    } else {
+      console.log(
+        "[OQtima] Detected referral registration with type:",
+        referralType
+      );
+    }
+
     // Force clean language code - but preserve BR language code
     let normalizedLanguage = (language || "en").toLowerCase().trim();
 
@@ -3045,7 +3109,11 @@
     }
 
     // ENHANCED: Add referral parameters more comprehensively
-    if (normalizedReferralType != null) {
+    if (
+      normalizedReferralType != null &&
+      normalizedReferralType !== "" &&
+      normalizedReferralType !== undefined
+    ) {
       // Add in multiple formats for maximum compatibility
       const referralTypeParams = [
         "referral_type", // Primary format (underscore)
@@ -3106,10 +3174,34 @@
         "[OQtima] Added referral_type to URL params:",
         normalizedReferralType
       );
+    } else {
+      // For normal registration, explicitly clear any existing referral_type values
+      try {
+        // Remove from sessionStorage
+        sessionStorage.removeItem("oqtima_referral_type");
+
+        // Clear any global variables
+        if (window.__OQTIMA_REFERRAL_TYPE__ !== undefined) {
+          delete window.__OQTIMA_REFERRAL_TYPE__;
+        }
+
+        // Clear any existing cookies
+        document.cookie = "oqtima_referral_type=; path=/; max-age=0";
+
+        console.log(
+          "[OQtima] Normal registration - cleared referral_type parameters"
+        );
+      } catch (e) {
+        console.warn("[OQtima] Could not clear referral type:", e);
+      }
     }
 
     // Add referral value if available
-    if (normalizedReferralValue != null) {
+    if (
+      normalizedReferralValue != null &&
+      normalizedReferralValue !== "" &&
+      normalizedReferralValue !== undefined
+    ) {
       // Add in multiple formats for maximum compatibility
       const referralValueParams = [
         "referral_value", // Primary format (underscore)
@@ -3173,6 +3265,26 @@
         "[OQtima] Added referral_value to URL params:",
         normalizedReferralValue
       );
+    } else {
+      // For normal registration, explicitly clear any existing referral_value values
+      try {
+        // Remove from sessionStorage
+        sessionStorage.removeItem("oqtima_referral_value");
+
+        // Clear any global variables
+        if (window.__OQTIMA_REFERRAL_VALUE__ !== undefined) {
+          delete window.__OQTIMA_REFERRAL_VALUE__;
+        }
+
+        // Clear any existing cookies
+        document.cookie = "oqtima_referral_value=; path=/; max-age=0";
+
+        console.log(
+          "[OQtima] Normal registration - cleared referral_value parameters"
+        );
+      } catch (e) {
+        console.warn("[OQtima] Could not clear referral value:", e);
+      }
     }
 
     // Construct the URL path
