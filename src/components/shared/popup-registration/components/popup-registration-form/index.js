@@ -331,109 +331,109 @@ const PopupRegistrationForm = ({ params }) => {
 
         // CRITICAL FIX: Handle conflict between data-lang="ar" and language="en"
         // If we have a language param of "en" but data-lang of "ar", explicitly force "en"
-        // if (
-        //   specificLanguage &&
-        //   specificLanguage.toLowerCase() === "en" &&
-        //   dataLang &&
-        //   dataLang.toLowerCase() === "ar"
-        // ) {
-        //   console.log(
-        //     "CRITICAL FIX: Detected conflict between language='en' and data-lang='ar'"
-        //   );
-        //   console.log("Forcing English language and LTR mode");
+        if (
+          specificLanguage &&
+          specificLanguage.toLowerCase() === "en" &&
+          dataLang &&
+          dataLang.toLowerCase() === "ar"
+        ) {
+          console.log(
+            "CRITICAL FIX: Detected conflict between language='en' and data-lang='ar'"
+          );
+          console.log("Forcing English language and LTR mode");
 
-        //   // Fix document attributes
-        //   // document.documentElement.setAttribute("dir", "ltr");
-        //   // document.body.setAttribute("dir", "ltr");
-        //   // document.documentElement.setAttribute("lang", "en");
+          // Fix document attributes
+          // document.documentElement.setAttribute("dir", "ltr");
+          // document.body.setAttribute("dir", "ltr");
+          // document.documentElement.setAttribute("lang", "en");
 
-        //   // // Remove RTL classes
-        //   // document.documentElement.classList.remove(
-        //   //   "rtl-active",
-        //   //   "rtl",
-        //   //   "is-rtl"
-        //   // );
-        //   // document.body.classList.remove("rtl-active", "rtl", "is-rtl");
+          // Remove RTL classes
+          // document.documentElement.classList.remove(
+          //   "rtl-active",
+          //   "rtl",
+          //   "is-rtl"
+          // );
+          // document.body.classList.remove("rtl-active", "rtl", "is-rtl");
 
-        //   // Fix global flags
-        //   window.__FORCE_RTL__ = false;
-        //   window.__ORIGINAL_RTL__ = false;
-        //   window.gatsby_i18next_language = "en";
+          // Fix global flags
+          window.__FORCE_RTL__ = false;
+          window.__ORIGINAL_RTL__ = false;
+          window.gatsby_i18next_language = "en";
 
-        //   // Save correct language to sessionStorage (tab specific)
-        //   try {
-        //     sessionStorage.setItem("oqtima_tab_language", "en");
-        //     // Only set localStorage if it already has a value
-        //     if (localStorage.getItem("i18nextLng")) {
-        //       localStorage.setItem("i18nextLng", "en");
-        //     }
-        //   } catch (e) {
-        //     /* ignore */
-        //   }
+          // Save correct language to sessionStorage (tab specific)
+          try {
+            sessionStorage.setItem("oqtima_tab_language", "en");
+            // Only set localStorage if it already has a value
+            if (localStorage.getItem("i18nextLng")) {
+              localStorage.setItem("i18nextLng", "en");
+            }
+          } catch (e) {
+            /* ignore */
+          }
 
-        //   // Add special override to prevent automatic RTL detection
-        //   window.__OQTIMA_DISABLE_AUTO_RTL__ = true;
+          // Add special override to prevent automatic RTL detection
+          window.__OQTIMA_DISABLE_AUTO_RTL__ = true;
 
-        //   // Force visual refresh
-        //   document.body.style.display = "none";
-        //   setTimeout(() => {
-        //     document.body.style.display = "";
-        //   }, 10);
-        // }
-        // // If we have a specific language and it's not Arabic, ensure we're not in RTL mode
-        // else if (specificLanguage && specificLanguage.toLowerCase() !== "ar") {
-        //   console.log(`Form detected non-Arabic language: ${specificLanguage}`);
+          // Force visual refresh
+          document.body.style.display = "none";
+          setTimeout(() => {
+            document.body.style.display = "";
+          }, 10);
+        }
+        // If we have a specific language and it's not Arabic, ensure we're not in RTL mode
+        else if (specificLanguage && specificLanguage.toLowerCase() !== "ar") {
+          console.log(`Form detected non-Arabic language: ${specificLanguage}`);
 
-        //   // Fix incorrect RTL settings
-        //   if (
-        //     document.documentElement.dir === "rtl" ||
-        //     document.documentElement.getAttribute("lang") === "ar" ||
-        //     document.documentElement.classList.contains("rtl-active")
-        //   ) {
-        //     console.log("CORRECTING INCORRECT RTL SETTINGS");
+          // Fix incorrect RTL settings
+          if (
+            document.documentElement.dir === "rtl" ||
+            document.documentElement.getAttribute("lang") === "ar" ||
+            document.documentElement.classList.contains("rtl-active")
+          ) {
+            console.log("CORRECTING INCORRECT RTL SETTINGS");
 
-        //     // Fix document attributes
-        //     document.documentElement.setAttribute("dir", "ltr");
-        //     document.body.setAttribute("dir", "ltr");
-        //     document.documentElement.setAttribute("lang", specificLanguage);
+            // Fix document attributes
+            // document.documentElement.setAttribute("dir", "ltr");
+            // document.body.setAttribute("dir", "ltr");
+            // document.documentElement.setAttribute("lang", specificLanguage);
 
-        //     // Remove RTL classes
-        //     document.documentElement.classList.remove(
-        //       "rtl-active",
-        //       "rtl",
-        //       "is-rtl"
-        //     );
-        //     document.body.classList.remove("rtl-active", "rtl", "is-rtl");
+            // Remove RTL classes
+            // document.documentElement.classList.remove(
+            //   "rtl-active",
+            //   "rtl",
+            //   "is-rtl"
+            // );
+            // document.body.classList.remove("rtl-active", "rtl", "is-rtl");
 
-        //     // Fix global flags
-        //     if (window.__FORCE_RTL__) window.__FORCE_RTL__ = false;
-        //     if (window.__ORIGINAL_RTL__) window.__ORIGINAL_RTL__ = false;
-        //     if (window.gatsby_i18next_language === "ar") {
-        //       try {
-        //         window.gatsby_i18next_language = specificLanguage;
-        //       } catch (e) {
-        //         /* ignore */
-        //       }
-        //     }
+            // Fix global flags
+            if (window.__FORCE_RTL__) window.__FORCE_RTL__ = false;
+            if (window.__ORIGINAL_RTL__) window.__ORIGINAL_RTL__ = false;
+            if (window.gatsby_i18next_language === "ar") {
+              try {
+                window.gatsby_i18next_language = specificLanguage;
+              } catch (e) {
+                /* ignore */
+              }
+            }
 
-        //     // Save correct language to sessionStorage (per tab)
-        //     try {
-        //       sessionStorage.setItem("oqtima_tab_language", specificLanguage);
-        //       // Only set localStorage if it already has a value
-        //       if (localStorage.getItem("i18nextLng")) {
-        //         localStorage.setItem("i18nextLng", specificLanguage);
-        //       }
-        //     } catch (e) {
-        //       /* ignore */
-        //     }
+            // Save correct language to sessionStorage (per tab)
+            try {
+              sessionStorage.setItem("oqtima_tab_language", specificLanguage);
+              // Only set localStorage if it already has a value
+              if (localStorage.getItem("i18nextLng")) {
+                localStorage.setItem("i18nextLng", specificLanguage);
+              }
+            } catch (e) {
+              /* ignore */
+            }
 
-        //     // Force visual refresh
-        //     document.body.style.display = "none";
-        //     setTimeout(() => {
-        //       document.body.style.display = "";
-        //     }, 10);
-        //   }
-        // }
+            // Force visual refresh
+            document.body.style.display = "none";
+            setTimeout(() => {
+              document.body.style.display = "";
+            }, 10);
+          }
+        }
       } catch (e) {
         console.error("Error checking language settings:", e);
       }
@@ -715,13 +715,13 @@ const PopupRegistrationForm = ({ params }) => {
                   cleanRTLAttributes();
                 } else {
                   // Fallback inline implementation to clean RTL attributes
-                  // document.documentElement.classList.remove(
-                  //   "rtl-active",
-                  //   "rtl",
-                  //   "is-rtl"
-                  // );
+                  document.documentElement.classList.remove(
+                    "rtl-active",
+                    "rtl",
+                    "is-rtl"
+                  );
                   // document.documentElement.setAttribute("dir", "ltr");
-                  // document.documentElement.removeAttribute("data-rtl");
+                  document.documentElement.removeAttribute("data-rtl");
 
                   // document.body.classList.remove("rtl-active", "rtl", "is-rtl");
                   // document.body.setAttribute("dir", "ltr");
@@ -813,24 +813,26 @@ const PopupRegistrationForm = ({ params }) => {
             cleanRTLAttributes();
           } else {
             // Fallback inline implementation
-            // document.documentElement.classList.remove(
-            //   "rtl-active",
-            //   "rtl",
-            //   "is-rtl"
-            // );
+            document.documentElement.classList.remove(
+              "rtl-active",
+              "rtl",
+              "is-rtl"
+            );
             // document.documentElement.setAttribute("dir", "ltr");
-            // document.documentElement.removeAttribute("data-rtl");
+            document.documentElement.removeAttribute("data-rtl");
+
             // document.body.classList.remove("rtl-active", "rtl", "is-rtl");
             // document.body.setAttribute("dir", "ltr");
             // document.body.removeAttribute("data-rtl");
             // document.body.style.direction = "ltr";
-            // // Remove RTL from HTML tag
+
+            // Remove RTL from HTML tag
             // const html = document.getElementsByTagName("html")[0];
             // if (html) {
             //   html.classList.remove("rtl-active", "rtl", "is-rtl");
             //   html.setAttribute("dir", "ltr");
             //   html.removeAttribute("data-rtl");
-            //   html.style.direction = "ltr";
+            //   // html.style.direction = "ltr";
             // }
           }
         } catch (e) {
@@ -1324,56 +1326,13 @@ const PopupRegistrationForm = ({ params }) => {
 
     // Function to check and fix RTL attributes based on the current language
     const handleLanguageRTLCheck = () => {
-      // Get the most important language indicators first
-      const htmlLang = document.documentElement.getAttribute("lang");
-      const sessionLang = sessionStorage.getItem("oqtima_tab_language");
+      const currentLang = document.documentElement.getAttribute("lang");
 
-      // Fast path: if we already have certain Arabic indicators, return early
-      if (htmlLang === "ar" || sessionLang === "ar") {
-        console.log("[Form] Arabic language already set correctly");
-        return true;
-      }
-
-      // Only if we need more checks, get the other values
-      const urlPathLang = window.location.pathname
-        .split("/")
-        .filter(Boolean)[0];
-      const cookieLang = document.cookie
-        .match(/oqtima_tab_language=([^;]+)/)
-        ?.pop();
-      const i18nextLng = localStorage.getItem("i18nextLng");
-
-      // Check for Arabic language
-      const isAnySourceArabic = [urlPathLang, cookieLang, i18nextLng].some(
-        (lang) => lang && lang.toLowerCase() === "ar"
-      );
-
-      // Only log if debugging needed
-      if (isAnySourceArabic) {
-        console.log("[Form] Arabic language detected, enforcing RTL mode");
-
-        // Set RTL mode
-        document.documentElement.setAttribute("dir", "rtl");
-        document.documentElement.classList.add("rtl-active");
-        document.documentElement.setAttribute("data-rtl", "true");
-        document.body.setAttribute("dir", "rtl");
-        document.body.classList.add("rtl-active");
-        document.body.setAttribute("data-rtl", "true");
-
-        // Set the language to Arabic
-        document.documentElement.setAttribute("lang", "ar");
-
-        // Update storage (just the essential ones)
-        sessionStorage.setItem("oqtima_tab_language", "ar");
-        sessionStorage.setItem("oqtima_tab_rtl", "true");
-
-        return true;
-      } else {
-        // Not Arabic, check if we should clean RTL attributes
-        if (htmlLang && htmlLang.toLowerCase() !== "ar") {
-          cleanRTLAttributes();
-        }
-        return false;
+      if (currentLang && currentLang.toLowerCase() !== "ar") {
+        console.log(
+          `Form detected non-Arabic language: ${currentLang}, cleaning RTL attributes`
+        );
+        cleanRTLAttributes();
       }
     };
 

@@ -1,16 +1,51 @@
 /**
- * Oqtima Registration Popup Script
- * This script provides a registration popup for Oqtima's landing pages.
- * It handles creating registration buttons, opening the popup using iframe, and ensuring
- * consistent display and styling for both RTL and non-RTL languages.
+ * OQtima Registration Popup Script
+ *
+ * This script provides a registration popup for OQtima's landing pages.
+ * It can be integrated into any website by adding the script and using
+ * trigger elements with the required attributes.
+ *
+ * USAGE:
+ * 1. Include the script in your HTML:
+ *    <script src="https://oqtima.com/scripts/registration-popup-script.min.js"
+ *            data-api-key="your_api_key_here"></script>
+ *
+ * 2. Add trigger elements (buttons, links, or any clickable elements) with these attributes:
+ *    <button data-oqtima-trigger data-lang="en" data-referral-type="14" data-referral-value="CAMPAIGN2023">
+ *      Register Now
+ *    </button>
+ *
+ *    <a href="#" data-oqtima-trigger data-lang="fr" data-referral-type="12" data-referral-value="IB12345">
+ *      S'inscrire maintenant
+ *    </a>
+ *
+ *    <img src="banner.jpg" data-oqtima-trigger data-lang="ar">
+ *
+ * REQUIRED ATTRIBUTES:
+ * - data-oqtima-trigger: Marks the element as a trigger for the registration popup
+ * - data-lang: Language code (en, fr, es, ar, etc.)
+ *
+ * OPTIONAL ATTRIBUTES:
+ * - data-referral-type: Numeric ID for referral type (e.g., 12 for IB, 14 for Campaign)
+ * - data-referral-value: Value for the referral (e.g., IB ID, Campaign ID)
+ *
+ * NOTE: The deprecated data-oqtima-register attribute for containers is no longer supported.
+ * Please use data-oqtima-trigger on clickable elements instead.
  */
 
 "use strict";
 
-// Wrap everything in an IIFE to avoid top-level return
+// Wrap everything in a single IIFE to share scope across all functions
 (function () {
+  // Create a namespace to expose functions globally
+  window.OqtimaRegistration = {};
+
   // Remove debug mode
   const debug = false;
+
+  // Base URL for backend API
+  let backendApiUrl = "";
+  const hostname = window.location.hostname;
 
   // API URL and Environment mapping based on hostname
   const getApiUrlFromHostname = () => {
@@ -271,21 +306,30 @@
 
   // Set API URL and Environment based on hostname
   const apiUrl = getApiUrlFromHostname();
-  const backendApiUrl = mapBackendApiUrl();
+  backendApiUrl = mapBackendApiUrl();
   const environment = getEnvironmentFromHostname();
 
-  // MODIFIED: Always proceed with initialization regardless of hostname or environment
-  // if (!apiUrl || !environment) {
-  //   return;
-  // }
-
+  // Track validation status
   let isValidated = false;
+
+  // Store document RTL state
+  const documentRTLState = {
+    originalHtmlDir: null,
+    originalBodyDir: null,
+    originalHtmlLang: null,
+    originalHtmlRtl: null,
+    originalBodyRtl: null,
+    originalHtmlClasses: null,
+    originalBodyClasses: null,
+  };
 
   /**
    * Initialize Oqtima Registration
    */
   async function initOqtimaRegistration() {
     try {
+      console.log("[OQtima] Starting initialization process...");
+
       // Get the API key from the script tag
       const { apiKey } = await getApiKey();
 
@@ -433,7 +477,7 @@
   function showAuthError(message) {
     console.warn("[OQtima] Authentication error:", message);
 
-    // Find all registration button containers
+    // Find all legacy registration button containers
     const containers = document.querySelectorAll("[data-oqtima-register]");
 
     // Replace each container with an error message for developers
@@ -451,7 +495,7 @@
             background-color: rgba(255, 68, 0, 0.1);
             text-align: left;
           ">
-            <strong>OQtima Registration Button Error:</strong><br>
+            <strong>OQtima Registration Error:</strong><br>
             ${message}<br>
           <small>(This error is only visible in development mode)</small>
           </div>
@@ -461,17 +505,140 @@
         container.style.display = "none";
       }
     });
+
+    // Also show warning on trigger elements in development mode
+    if (environment === "development") {
+      const triggerElements = document.querySelectorAll(
+        "[data-oqtima-trigger]"
+      );
+      triggerElements.forEach((element) => {
+        // Add visual indication that there's an error
+        element.style.border = "1px solid #ff4400";
+        element.title = `OQtima Registration Error: ${message}`;
+
+        // Disable the trigger by removing the event listener and adding one that shows an alert
+        const elementClone = element.cloneNode(true);
+        element.parentNode.replaceChild(elementClone, element);
+
+        elementClone.addEventListener("click", function (event) {
+          event.preventDefault();
+          alert(
+            `OQtima Registration Error: ${message}\n\nAPI key validation failed. Please check your implementation.`
+          );
+        });
+      });
+    }
   }
 
   /**
    * Initialize registration components
    */
   function initRegistrationComponents() {
-    const containers = document.querySelectorAll("[data-oqtima-register]");
-    if (containers.length === 0) return;
+    // Log deprecation warning for legacy containers
+    const legacyContainers = document.querySelectorAll(
+      "[data-oqtima-register]"
+    );
+    if (legacyContainers.length > 0) {
+      console.warn(
+        "[OQtima] Found legacy registration containers with data-oqtima-register attribute:",
+        legacyContainers.length,
+        "\nThis approach is deprecated. Please use data-oqtima-trigger attribute on buttons, links, or any clickable elements instead."
+      );
 
+      // Hide legacy containers as they are no longer supported
+      legacyContainers.forEach((container) => {
+        container.style.display = "none";
+      });
+    }
+
+    // Add basic styles for trigger elements
     addStyles();
-    containers.forEach((container) => createRegistrationButton(container));
+
+    // Set up trigger elements (buttons, links, images, etc.)
+    setupTriggerElements();
+  }
+
+  /**
+   * Find and setup elements with data-oqtima-trigger attribute
+   * This allows using existing buttons, links, or other elements to trigger the registration popup
+   */
+  function setupTriggerElements() {
+    // Find all elements with data-oqtima-trigger attribute
+    const triggerElements = document.querySelectorAll("[data-oqtima-trigger]");
+
+    if (triggerElements.length === 0) {
+      console.log(
+        "[OQtima] No trigger elements found. Add data-oqtima-trigger attribute to your buttons, links, or images to enable registration popup."
+      );
+      return;
+    }
+
+    console.log("[OQtima] Found trigger elements:", triggerElements.length);
+
+    // Add event listeners to each trigger element
+    triggerElements.forEach((element) => {
+      // Extract registration parameters from data attributes
+      const lang = element.getAttribute("data-lang") || "en";
+      const referralType = element.getAttribute("data-referral-type");
+      const referralValue = element.getAttribute("data-referral-value");
+
+      const elementType = element.tagName.toLowerCase();
+      console.log(
+        `[OQtima] Setting up ${elementType} trigger element with attributes:`,
+        {
+          lang,
+          referralType: referralType || "(not set)",
+          referralValue: referralValue || "(not set)",
+        }
+      );
+
+      // Check if lang attribute is set (it's required)
+      if (!element.hasAttribute("data-lang")) {
+        console.warn(
+          `[OQtima] Missing required data-lang attribute on trigger element:`,
+          element
+        );
+        if (environment === "development") {
+          // Add a subtle warning indicator in development mode
+          element.style.border = "1px dotted #ff4400";
+          element.title =
+            "Missing required data-lang attribute for Oqtima registration popup";
+        }
+      }
+
+      // Add click event listener
+      element.addEventListener("click", function (event) {
+        // Prevent default action for links and other elements
+        event.preventDefault();
+        event.stopPropagation();
+
+        console.log(
+          "[OQtima] Trigger element clicked, opening popup with parameters:",
+          {
+            lang,
+            referralType: referralType || "(not set)",
+            referralValue: referralValue || "(not set)",
+          }
+        );
+
+        // Open registration popup with parameters
+        openRegistrationPopup({
+          lang,
+          referralType,
+          referralValue,
+        });
+      });
+
+      // Ensure element is visually indicated as clickable
+      if (elementType !== "a" && elementType !== "button") {
+        element.style.cursor = "pointer";
+      }
+
+      // Add additional styling to make it clear this is an interactive element
+      if (environment === "development" && !element.title) {
+        element.title = "Click to open Oqtima registration popup";
+      }
+    });
   }
 
   /**
@@ -487,147 +654,41 @@
     styleElement.id = "oqtima-registration-styles";
 
     const css = `
-      /* Force container visibility */
-      [data-oqtima-register] {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        min-height: 40px !important;
-        position: relative !important;
-        z-index: 9999 !important;
-        text-align: left !important;
-      }
-
-      /* Base styles for .oqtima-registration-button */
-      .oqtima-registration-button {
-        display: inline-block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        padding: 14px 25px !important;
-        background-color: #ff4400 !important;
-        color: white !important;
-        border: none !important;
-        border-radius: 50px !important;
-        font-size: 20px !important;
-        font-weight: 600 !important;
+      /* Trigger elements with data-oqtima-trigger attribute */
+      [data-oqtima-trigger] {
         cursor: pointer !important;
+      }
+      
+      /* Button styling for trigger elements */
+      button[data-oqtima-trigger] {
         position: relative !important;
-        z-index: 99999 !important;
-        margin: 10px !important;
-        pointer-events: auto !important;
-        transition: all 0.3s ease-in-out !important;
-        text-align: center !important;
-        text-decoration: none !important;
-        box-shadow: 0 4px 6px rgba(255, 68, 0, 0.1) !important;
+        transition: all 0.3s ease !important;
       }
-
-      /* Mobile devices */
-      @media screen and (max-width: 767px) {
-        .oqtima-registration-button {
-          width: calc(100% - 20px) !important;
-          padding: 12px 20px !important;
-          font-size: 16px !important;
-          margin: 10px !important;
-          white-space: nowrap !important;
-          overflow-y: auto !important;
-          text-overflow: ellipsis !important;
-        }
-      }
-
-      /* Tablet devices */
-      @media screen and (min-width: 768px) {
-        .oqtima-registration-button {
-          padding: 14px 30px !important;
-          font-size: 18px !important;
-          min-width: 200px !important;
-        }
-      }
-
-      /* Desktop devices */
-      @media screen and (min-width: 1024px) {
-        .oqtima-registration-button {
-          padding: 16px 35px !important;
-          font-size: 20px !important;
-          min-width: 220px !important;
-        }
-      }
-
-      /* Large desktop devices */
-      @media screen and (min-width: 1920px) {
-        .oqtima-registration-button {
-          padding: 18px 40px !important;
-          font-size: 22px !important;
-          min-width: 250px !important;
-        }
-      }
-
-      /* Hover state */
-      .oqtima-registration-button:hover {
-        background-color: #cc3600 !important;
-        transform: translateY(-2px) !important;
-        box-shadow: 0 6px 12px rgba(255, 68, 0, 0.2) !important;
-      }
-
-      /* Active state */
-      .oqtima-registration-button:active {
-        transform: translateY(0) !important;
-        box-shadow: 0 2px 4px rgba(255, 68, 0, 0.1) !important;
-      }
-
-      /* Ensure no styles are hidden */
-      .oqtima-registration-button * {
-        visibility: visible !important;
-        opacity: 1 !important;
-      }
-
-      /* Mobile */
-      @media screen and (max-width: 767px) {
-        #oqtima-registration-modal {
-          position: fixed !important;
-          top: 0 !important;
-          left: 0 !important;
-          right: 0 !important;
-          bottom: 0 !important;
-          width: 100% !important;
-          height: 100% !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          z-index: 2147483647 !important;
-          background-color: #fff !important;
-          display: flex !important;
-          flex-direction: column !important;
-          overflow: hidden !important;
-        }
-        
-        .popup-registration__wrapper {
+      
+      /* Link styling for trigger elements */
+      a[data-oqtima-trigger] {
           position: relative !important;
-          width: 100% !important;
-          height: 100% !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          display: flex !important;
-          flex-direction: column !important;
-          overflow: hidden !important;
-        }
-        
+        display: inline-block !important;
+      }
+      
+      /* Enhance trigger elements on hover */
+      [data-oqtima-trigger]:hover {
+        opacity: 0.9 !important;
+      }
+      
+      /* Mobile styles for popup */
         .popup-registration__container {
+        flex: 1 1 auto !important;
           position: relative !important;
           width: 100% !important;
-          height: 100% !important;
-          margin: 0 !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
           padding: 0 !important;
+        background: #fff !important;
+        z-index: 1 !important;
           display: flex !important;
           flex-direction: column !important;
-          overflow-y: auto !important;
-        }
-
-        .popup-registration__sidebar {
-          flex: 0 0 auto !important;
-          position: relative !important;
-          width: 100% !important;
-          padding: 20px !important;
-          background: #2a3b90 !important;
-          z-index: 2 !important;
         }
 
         .popup-registration__content {
@@ -734,8 +795,6 @@
       /* Xtra Large desktop */
       @media screen and (min-width: 1920px) {
         .popup-registration__container {
-          width: 1280px !important;
-          max-width: 1280px !important;
           max-height: 80vh !important;
         }
 
@@ -769,65 +828,6 @@
 
     // Add the style element to the head
     document.head.appendChild(styleElement);
-
-    // Verify styles are applied
-    const testButton = document.querySelector(".oqtima-registration-button");
-    if (testButton) {
-      const computedStyle = window.getComputedStyle(testButton);
-    }
-  }
-
-  /**
-   * Create a registration button within the provided container
-   */
-  function createRegistrationButton(container) {
-    // Get button attributes
-    const text = container.getAttribute("data-text") || "GET STARTED";
-    const lang = container.getAttribute("data-lang") || "en";
-    const referralType = container.getAttribute("data-referral-type");
-    const referralValue = container.getAttribute("data-referral-value");
-
-    // Log attributes for debugging
-    console.log("[OQtima] Creating registration button with attributes:", {
-      text,
-      lang,
-      referralType,
-      referralValue,
-    });
-
-    // Create button element
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "oqtima-registration-button";
-    if (lang === "jp") {
-      button.classList.add("jp");
-    }
-    button.textContent = text;
-
-    // Force button visibility
-    button.style.cssText = `
-        display: inline-block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-        z-index: 99999 !important;
-      `;
-
-    // Clear container and append button
-    container.innerHTML = "";
-    container.appendChild(button);
-
-    // Add click handler
-    button.addEventListener("click", function (event) {
-      event.preventDefault();
-      console.log(
-        "[OQtima] Button clicked, opening popup with language:",
-        lang
-      );
-      openRegistrationPopup({ lang, referralType, referralValue });
-    });
-
-    return button;
   }
 
   /**
@@ -1052,11 +1052,10 @@
       Date.now().toString(36) + Math.random().toString(36).substr(2);
 
     // Store original document state
-    const originalDocDir =
-      document.documentElement.getAttribute("dir") || "ltr";
+    const originalDocDir = document.documentElement.getAttribute("dir");
     const originalDocLang =
       document.documentElement.getAttribute("lang") || "en";
-    const originalBodyDir = document.body.getAttribute("dir") || "ltr";
+    const originalBodyDir = document.body.getAttribute("dir");
 
     // IMPORTANT: Do NOT modify the document and body direction attributes
     // This prevents RTL styles from affecting the parent page
@@ -1400,7 +1399,7 @@
       wrapperStyles += `
       width: 100% !important;
         max-width: 1170px !important;
-        height: 90vh !important;
+        height: 100vh !important;
         max-height: 800px !important;
         border-radius: 8px !important;
         overflow: hidden !important;
@@ -1765,13 +1764,13 @@
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
-      width: 100% !important;
+       width: 100% !important;
       height: 100% !important;
       z-index: 2147483647 !important;
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
-        background-color: rgba(0, 0, 0, 0.8) !important;
+        background-color: rgba(0, 0, 0, 0.7) !important;
       overflow-y: auto !important;
         direction: rtl !important;
     `;
@@ -2181,7 +2180,10 @@
           }
 
           if (originalDocLang) {
-            document.documentElement.setAttribute("lang", originalDocLang);
+            document.documentElement.setAttribute(
+              "lang",
+              documentRTLState.originalHtmlLang
+            );
           }
 
           if (originalBodyDir) {
@@ -2221,6 +2223,21 @@
         document.documentElement.classList.remove("oqtima-mobile-popup-open");
         document.body.classList.remove("oqtima-mobile-popup-open");
 
+        // CRITICAL FIX: Explicitly reset all scroll-affecting properties
+        // We need to first remove the fixed position that prevents scrolling
+        document.body.style.position = "";
+        document.body.style.width = "";
+        document.body.style.top = "";
+        document.body.style.overflow = originalBodyOverflow || "";
+        document.documentElement.style.overflow = originalHtmlOverflow || "";
+
+        // IMPORTANT: Restore scroll position AFTER removing fixed positioning
+        if (originalScrollPos && typeof originalScrollPos === "object") {
+          window.scrollTo(originalScrollPos.x || 0, originalScrollPos.y || 0);
+        } else if (typeof originalScrollPos === "number") {
+          window.scrollTo(0, originalScrollPos);
+        }
+
         if (originalBodyStyle) {
           document.body.setAttribute("style", originalBodyStyle);
         } else {
@@ -2233,20 +2250,23 @@
           document.documentElement.removeAttribute("style");
         }
 
-        // Restore original overflow settings
-        document.body.style.overflow = originalBodyOverflow;
-        document.documentElement.style.overflow = originalHtmlOverflow;
-
-        // Restore scroll position
-        if (originalScrollPos && typeof originalScrollPos === "object") {
-          window.scrollTo(originalScrollPos.x || 0, originalScrollPos.y || 0);
-        } else if (typeof originalScrollPos === "number") {
-          window.scrollTo(0, originalScrollPos);
-        }
-
+        // Log cleanup success
         console.log("[OQtima] Successfully restored original document state");
       } catch (error) {
         console.error("[OQtima] Error closing registration popup:", error);
+
+        // Try the emergency scroll restoration as a fallback
+        try {
+          console.log("[OQtima] Attempting emergency scroll restoration");
+          if (typeof window.__OQTIMA_EMERGENCY_RESTORE_SCROLL === "function") {
+            window.__OQTIMA_EMERGENCY_RESTORE_SCROLL();
+          }
+        } catch (emergencyError) {
+          console.error(
+            "[OQtima] Emergency scroll restoration also failed:",
+            emergencyError
+          );
+        }
       }
     };
 
@@ -3658,7 +3678,7 @@
         style.textContent = `
           html, body {
             width: 100% !important;
-            height: 100% !important;
+            height: auto !important;
             min-height: 100% !important;
             margin: 0 !important;
             padding: 0 !important;
@@ -4070,18 +4090,6 @@
 
   // RTL Preservation functions
 
-  // Store the original document RTL state
-  const documentRTLState = {
-    originalHtmlDir: null,
-    originalHtmlLang: null,
-    originalHtmlClasses: null,
-    originalHtmlDataRtl: null,
-    originalBodyDir: null,
-    originalBodyClasses: null,
-    originalBodyDataRtl: null,
-    isRtlProtected: false,
-  };
-
   // Function to save original RTL state
   function saveOriginalRTLState() {
     try {
@@ -4093,14 +4101,13 @@
       documentRTLState.originalHtmlLang =
         document.documentElement.getAttribute("lang");
       documentRTLState.originalHtmlClasses = document.documentElement.className;
-      documentRTLState.originalHtmlDataRtl =
+      documentRTLState.originalHtmlRtl =
         document.documentElement.getAttribute("data-rtl");
 
       // Save BODY attributes
       documentRTLState.originalBodyDir = document.body.getAttribute("dir");
       documentRTLState.originalBodyClasses = document.body.className;
-      documentRTLState.originalBodyDataRtl =
-        document.body.getAttribute("data-rtl");
+      documentRTLState.originalBodyRtl = document.body.getAttribute("data-rtl");
 
       console.log("[OQtima] Saved original document RTL state:", {
         htmlDir: documentRTLState.originalHtmlDir,
@@ -4136,10 +4143,10 @@
       }
       document.documentElement.className =
         documentRTLState.originalHtmlClasses || "";
-      if (documentRTLState.originalHtmlDataRtl) {
+      if (documentRTLState.originalHtmlRtl) {
         document.documentElement.setAttribute(
           "data-rtl",
-          documentRTLState.originalHtmlDataRtl
+          documentRTLState.originalHtmlRtl
         );
       }
 
@@ -4148,10 +4155,10 @@
         document.body.setAttribute("dir", documentRTLState.originalBodyDir);
       }
       document.body.className = documentRTLState.originalBodyClasses || "";
-      if (documentRTLState.originalBodyDataRtl) {
+      if (documentRTLState.originalBodyRtl) {
         document.body.setAttribute(
           "data-rtl",
-          documentRTLState.originalBodyDataRtl
+          documentRTLState.originalBodyRtl
         );
       }
 
@@ -4218,7 +4225,7 @@
         if (
           name === "data-rtl" &&
           value !== "true" &&
-          documentRTLState.originalHtmlDataRtl === "true"
+          documentRTLState.originalHtmlRtl === "true"
         ) {
           console.log(
             `[OQtima] Prevented changing ${this.tagName} data-rtl to ${value}`
@@ -4298,4 +4305,93 @@
   }
 
   // Apply RTL protection in openRegistrationPopup function
+
+  // Create global emergency restore function that can be called from console
+  window.__OQTIMA_EMERGENCY_RESTORE_SCROLL = function () {
+    console.log("[OQtima] Emergency scroll restoration initiated");
+    try {
+      // Reset all scroll-affecting properties
+      document.body.style.position = "";
+      document.body.style.width = "";
+      document.body.style.top = "";
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+
+      // Remove any popup-related classes
+      document.body.classList.remove("oqtima-iframe-open");
+      document.body.classList.remove("oqtima-mobile-open");
+      document.body.classList.remove("popup-open");
+      document.documentElement.classList.remove("oqtima-mobile-open");
+      document.body.classList.remove("oqtima-mobile-modal-open");
+      document.documentElement.classList.remove("oqtima-mobile-popup-open");
+      document.body.classList.remove("oqtima-mobile-popup-open");
+
+      // Try to remove any modal containers that might be left
+      const modalContainer = document.querySelector(".popup-registration");
+      if (modalContainer && modalContainer.parentNode) {
+        modalContainer.parentNode.removeChild(modalContainer);
+      }
+
+      const loadingOverlay = document.querySelector(".oqtima-loading-overlay");
+      if (loadingOverlay && loadingOverlay.parentNode) {
+        loadingOverlay.parentNode.removeChild(loadingOverlay);
+      }
+
+      console.log("[OQtima] Emergency scroll restoration completed");
+    } catch (e) {
+      console.error("[OQtima] Error in emergency scroll restoration:", e);
+    }
+  };
+
+  // Function to initialize the registration script
+  function init() {
+    try {
+      // Check if already initialized to prevent double initialization
+      if (window.__OQTIMA_INITIALIZED__) {
+        console.log("[OQtima] Already initialized, skipping");
+        return;
+      }
+
+      console.log("[OQtima] Initializing registration script");
+
+      // Set initialization flag
+      window.__OQTIMA_INITIALIZED__ = true;
+
+      // Call the initialization function
+      initOqtimaRegistration().catch((err) => {
+        console.error("[OQtima] Error during initialization:", err);
+      });
+    } catch (error) {
+      console.error("[OQtima] Error in init function:", error);
+    }
+  }
+
+  // Expose the necessary functions to global scope through a namespace
+  window.OqtimaRegistration = {
+    init: init,
+    openRegistrationPopup: openRegistrationPopup,
+    initOqtimaRegistration: initOqtimaRegistration,
+  };
+
+  // Check if the DOM is already loaded
+  if (
+    document.readyState === "complete" ||
+    document.readyState === "interactive"
+  ) {
+    // DOM is already ready, initialize immediately
+    console.log("[OQtima] DOM already loaded, initializing immediately");
+    setTimeout(init, 0); // Use setTimeout to ensure execution after the current script
+  } else {
+    // DOM is not ready yet, wait for DOMContentLoaded event
+    console.log("[OQtima] DOM not yet loaded, waiting for DOMContentLoaded");
+    document.addEventListener("DOMContentLoaded", init);
+
+    // Also add a window.onload fallback for browsers that don't support DOMContentLoaded
+    window.addEventListener("load", function () {
+      if (!window.__OQTIMA_INITIALIZED__) {
+        console.log("[OQtima] Initializing via window.onload fallback");
+        init();
+      }
+    });
+  }
 })();
