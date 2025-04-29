@@ -1705,33 +1705,66 @@ const PopupRegistrationForm = ({ params }) => {
         // Update state only if we found values
         if (referralParams.type !== null) {
           setReferralType(referralParams.type);
-          // Also store in global variables for redundancy
-          if (typeof window !== "undefined") {
-            window.__OQTIMA_REFERRAL_TYPE__ = referralParams.type;
-            try {
-              sessionStorage.setItem(
-                "oqtima_referral_type",
-                referralParams.type
-              );
-              // Try to set a cookie as well (might help with cross-domain issues)
-              document.cookie = `oqtima_referral_type=${referralParams.type}; path=/; max-age=3600; SameSite=None; Secure`;
-            } catch (e) {}
-          }
-        }
 
-        if (referralParams.value !== null) {
-          setReferralValue(referralParams.value);
-          // Also store in global variables for redundancy
+          // Only store referral parameters for IB Referral Link (type 12) or Campaign Link (type 14)
+          if (referralParams.type === 12 || referralParams.type === 14) {
+            // Also store in global variables for redundancy
+            if (typeof window !== "undefined") {
+              window.__OQTIMA_REFERRAL_TYPE__ = referralParams.type;
+              try {
+                sessionStorage.setItem(
+                  "oqtima_referral_type",
+                  referralParams.type
+                );
+                // Try to set a cookie as well (might help with cross-domain issues)
+                document.cookie = `oqtima_referral_type=${referralParams.type}; path=/; max-age=3600; SameSite=None; Secure`;
+              } catch (e) {}
+            }
+
+            if (referralParams.value !== null) {
+              setReferralValue(referralParams.value);
+              // Also store in global variables for redundancy
+              if (typeof window !== "undefined") {
+                window.__OQTIMA_REFERRAL_VALUE__ = referralParams.value;
+                try {
+                  sessionStorage.setItem(
+                    "oqtima_referral_value",
+                    referralParams.value
+                  );
+                  // Try to set a cookie as well (might help with cross-domain issues)
+                  document.cookie = `oqtima_referral_value=${referralParams.value}; path=/; max-age=3600; SameSite=None; Secure`;
+                } catch (e) {}
+              }
+            }
+          } else {
+            // For normal registration, remove referral parameters from session storage
+            console.log(
+              "Normal registration - removing referral parameters from sessionStorage"
+            );
+            if (typeof window !== "undefined") {
+              sessionStorage.removeItem("oqtima_referral_type");
+              sessionStorage.removeItem("oqtima_referral_value");
+              // Also clear global variables
+              window.__OQTIMA_REFERRAL_TYPE__ = undefined;
+              window.__OQTIMA_REFERRAL_VALUE__ = undefined;
+              // Clear cookies too
+              document.cookie = "oqtima_referral_type=; path=/; max-age=0";
+              document.cookie = "oqtima_referral_value=; path=/; max-age=0";
+            }
+          }
+        } else {
+          // If no referral type is found, ensure we clean up any existing values
+          console.log(
+            "No referral type detected - removing any existing values"
+          );
           if (typeof window !== "undefined") {
-            window.__OQTIMA_REFERRAL_VALUE__ = referralParams.value;
-            try {
-              sessionStorage.setItem(
-                "oqtima_referral_value",
-                referralParams.value
-              );
-              // Try to set a cookie as well (might help with cross-domain issues)
-              document.cookie = `oqtima_referral_value=${referralParams.value}; path=/; max-age=3600; SameSite=None; Secure`;
-            } catch (e) {}
+            sessionStorage.removeItem("oqtima_referral_type");
+            sessionStorage.removeItem("oqtima_referral_value");
+            window.__OQTIMA_REFERRAL_TYPE__ = undefined;
+            window.__OQTIMA_REFERRAL_VALUE__ = undefined;
+            // Clear cookies too
+            document.cookie = "oqtima_referral_type=; path=/; max-age=0";
+            document.cookie = "oqtima_referral_value=; path=/; max-age=0";
           }
         }
 
@@ -1762,34 +1795,60 @@ const PopupRegistrationForm = ({ params }) => {
             // Store the referral parameters
             if (data.referral_type !== undefined) {
               setReferralType(data.referral_type);
-              try {
-                sessionStorage.setItem(
-                  "oqtima_referral_type",
+
+              // Only store referral parameters for IB Referral Link (type 12) or Campaign Link (type 14)
+              if (data.referral_type === 12 || data.referral_type === 14) {
+                try {
+                  sessionStorage.setItem(
+                    "oqtima_referral_type",
+                    data.referral_type
+                  );
+                  window.__OQTIMA_REFERRAL_TYPE__ = data.referral_type;
+                } catch (e) {}
+
+                console.log(
+                  "Received referral_type from parent message:",
                   data.referral_type
                 );
-                window.__OQTIMA_REFERRAL_TYPE__ = data.referral_type;
-              } catch (e) {}
 
-              console.log(
-                "Received referral_type from parent message:",
-                data.referral_type
-              );
-            }
+                if (data.referral_value !== undefined) {
+                  setReferralValue(data.referral_value);
+                  try {
+                    sessionStorage.setItem(
+                      "oqtima_referral_value",
+                      data.referral_value
+                    );
+                    window.__OQTIMA_REFERRAL_VALUE__ = data.referral_value;
+                  } catch (e) {}
 
-            if (data.referral_value !== undefined) {
-              setReferralValue(data.referral_value);
-              try {
-                sessionStorage.setItem(
-                  "oqtima_referral_value",
-                  data.referral_value
+                  console.log(
+                    "Received referral_value from parent message:",
+                    data.referral_value
+                  );
+                }
+              } else {
+                // For normal registration, remove referral parameters from session storage
+                console.log(
+                  "Normal registration from parent message - removing referral parameters from sessionStorage"
                 );
-                window.__OQTIMA_REFERRAL_VALUE__ = data.referral_value;
-              } catch (e) {}
-
+                try {
+                  sessionStorage.removeItem("oqtima_referral_type");
+                  sessionStorage.removeItem("oqtima_referral_value");
+                  window.__OQTIMA_REFERRAL_TYPE__ = undefined;
+                  window.__OQTIMA_REFERRAL_VALUE__ = undefined;
+                } catch (e) {}
+              }
+            } else {
+              // No referral type, clear any existing values
               console.log(
-                "Received referral_value from parent message:",
-                data.referral_value
+                "No referral type from parent message - clearing any existing values"
               );
+              try {
+                sessionStorage.removeItem("oqtima_referral_type");
+                sessionStorage.removeItem("oqtima_referral_value");
+                window.__OQTIMA_REFERRAL_TYPE__ = undefined;
+                window.__OQTIMA_REFERRAL_VALUE__ = undefined;
+              } catch (e) {}
             }
 
             // Send confirmation back to parent
