@@ -1,36 +1,37 @@
 /**
- * OQtima Registration Popup Script
+ * @fileoverview OQtima Registration Popup Script
  *
- * This script provides a registration popup for OQtima's landing pages.
- * It can be integrated into any website by adding the script and using
- * trigger elements with the required attributes.
+ * This script provides registration popup functionality for OQtima landing pages.
+ * It handles creating registration buttons, opening the popup using an iframe,
+ * and ensures consistent display and styling for both RTL and non-RTL languages.
  *
- * USAGE:
- * 1. Include the script in your HTML:
- *    <script src="https://oqtima.com/scripts/registration-popup-script.min.js"
- *            data-api-key="your_api_key_here"></script>
+ * Integration Options:
  *
- * 2. Add trigger elements (buttons, links, or any clickable elements) with these attributes:
+ * 1. Recommended Method: Add trigger attributes to your buttons or links
+ *    This method allows you to use your existing UI elements to trigger the registration popup.
+ *
+ *    Example with button:
  *    <button data-oqtima-trigger data-lang="en" data-referral-type="14" data-referral-value="CAMPAIGN2023">
- *      Register Now
+ *      Join Campaign
  *    </button>
  *
- *    <a href="#" data-oqtima-trigger data-lang="fr" data-referral-type="12" data-referral-value="IB12345">
- *      S'inscrire maintenant
+ *    Example with link:
+ *    <a href="#" data-oqtima-trigger data-lang="en" data-referral-type="12" data-referral-value="IB08801328I">
+ *      Register with IB
  *    </a>
  *
- *    <img src="banner.jpg" data-oqtima-trigger data-lang="ar">
+ *    Parameters:
+ *    - data-oqtima-trigger: Required to mark this element as a registration trigger
+ *    - data-lang: Language code (en, fr, br, vn, th, es, it, cn, zh, id, jp, my, ar) - Required
+ *    - data-referral-type: Numeric type of referral (optional)
+ *      12 = IB Referral Link
+ *      14 = Campaign Link
+ *    - data-referral-value: Value/ID for the referral (optional)
  *
- * REQUIRED ATTRIBUTES:
- * - data-oqtima-trigger: Marks the element as a trigger for the registration popup
- * - data-lang: Language code (en, fr, es, ar, etc.)
+ * 2. Legacy Method (Deprecated): Add a container for auto-generated button
+ *    <div data-oqtima-register data-text="OPEN FREE ACCOUNT" data-lang="en"></div>
  *
- * OPTIONAL ATTRIBUTES:
- * - data-referral-type: Numeric ID for referral type (e.g., 12 for IB, 14 for Campaign)
- * - data-referral-value: Value for the referral (e.g., IB ID, Campaign ID)
- *
- * NOTE: The deprecated data-oqtima-register attribute for containers is no longer supported.
- * Please use data-oqtima-trigger on clickable elements instead.
+ * @version 1.5.0
  */
 
 "use strict";
@@ -534,28 +535,35 @@
    * Initialize registration components
    */
   function initRegistrationComponents() {
-    // Log deprecation warning for legacy containers
-    const legacyContainers = document.querySelectorAll(
-      "[data-oqtima-register]"
-    );
-    if (legacyContainers.length > 0) {
-      console.warn(
-        "[OQtima] Found legacy registration containers with data-oqtima-register attribute:",
-        legacyContainers.length,
-        "\nThis approach is deprecated. Please use data-oqtima-trigger attribute on buttons, links, or any clickable elements instead."
-      );
-
-      // Hide legacy containers as they are no longer supported
-      legacyContainers.forEach((container) => {
-        container.style.display = "none";
-      });
-    }
-
-    // Add basic styles for trigger elements
+    // Add global styles
     addStyles();
 
-    // Set up trigger elements (buttons, links, images, etc.)
+    // IMPORTANT: First check for and set up trigger elements
+    // This is the recommended approach
     setupTriggerElements();
+
+    // LEGACY SUPPORT: Then check for registration containers
+    // This approach is deprecated
+    const registrationContainers = document.querySelectorAll(
+      "[data-oqtima-register]"
+    );
+    if (registrationContainers.length > 0) {
+      console.log(
+        "[OQtima] Found legacy registration containers:",
+        registrationContainers.length
+      );
+      console.warn(
+        "[OQtima] Using legacy registration container approach." +
+          "\nThis approach is deprecated. Please use data-oqtima-trigger attribute on buttons, links, or any clickable elements instead."
+      );
+
+      // Add loading state to all buttons
+      addLoadingStateToButtons(registrationContainers);
+    } else {
+      console.log(
+        "[OQtima] No legacy registration containers found. Using trigger elements only."
+      );
+    }
   }
 
   /**
@@ -579,8 +587,25 @@
     triggerElements.forEach((element) => {
       // Extract registration parameters from data attributes
       const lang = element.getAttribute("data-lang") || "en";
-      const referralType = element.getAttribute("data-referral-type");
+      let referralType = element.getAttribute("data-referral-type");
       const referralValue = element.getAttribute("data-referral-value");
+
+      // Convert referral_type to integer if it's numeric
+      if (referralType) {
+        const parsedType = parseInt(referralType, 10);
+        if (!isNaN(parsedType)) {
+          referralType = parsedType;
+          console.log(
+            "[OQtima] Parsed data-referral-type as integer:",
+            parsedType
+          );
+        } else {
+          console.warn(
+            "[OQtima] data-referral-type is not a valid integer:",
+            referralType
+          );
+        }
+      }
 
       const elementType = element.tagName.toLowerCase();
       console.log(
@@ -616,21 +641,71 @@
           "[OQtima] Trigger element clicked, opening popup with parameters:",
           {
             lang,
-            referralType: referralType || "(not set)",
-            referralValue: referralValue || "(not set)",
+            referral_type: referralType || "(not set)",
+            referral_value: referralValue || "(not set)",
           }
         );
 
-        // Create parameters object for opening popup
-        const popupParams = { lang };
+        // Store the popup mode flag and referral parameters in session storage
+        if (window.sessionStorage) {
+          try {
+            sessionStorage.setItem("oqtima_popup_mode", "true");
 
-        // Only add referral parameters if they are actually set
-        if (referralType && referralType.trim() !== "") {
-          popupParams.referralType = referralType;
+            // Store referral parameters in sessionStorage ONLY for IB Referral or Campaign Link
+            if (referralType === 12 || referralType === 14) {
+              // We have a valid referral type (IB or Campaign)
+              if (referralType) {
+                console.log(
+                  "[OQtima] Storing referral_type in sessionStorage:",
+                  referralType
+                );
+                sessionStorage.setItem("oqtima_referral_type", referralType);
+              }
+              if (referralValue) {
+                console.log(
+                  "[OQtima] Storing referral_value in sessionStorage:",
+                  referralValue
+                );
+                sessionStorage.setItem("oqtima_referral_value", referralValue);
+              }
+            } else {
+              // For normal registration, REMOVE any existing referral parameters
+              console.log(
+                "[OQtima] Normal registration - removing referral parameters from sessionStorage"
+              );
+              sessionStorage.removeItem("oqtima_referral_type");
+              sessionStorage.removeItem("oqtima_referral_value");
+            }
+          } catch (e) {
+            console.warn(
+              "[OQtima] Error storing parameters in sessionStorage:",
+              e
+            );
+          }
+        }
+
+        // Set global variables for referral parameters
+        window.__OQTIMA_REFERRAL_TYPE__ = referralType;
+        window.__OQTIMA_REFERRAL_VALUE__ = referralValue;
+
+        // Create parameters object for opening popup with standardized parameter names
+        const popupParams = {
+          lang,
+          preserveParentDirection: true, // Ensure parent page direction is preserved
+        };
+
+        // Only add referral parameters if they are actually set, using the standardized parameter names
+        // that match what the openRegistrationPopup function expects
+        if (
+          referralType !== undefined &&
+          referralType !== null &&
+          referralType !== ""
+        ) {
+          popupParams.referral_type = referralType;
         }
 
         if (referralValue && referralValue.trim() !== "") {
-          popupParams.referralValue = referralValue;
+          popupParams.referral_value = referralValue;
         }
 
         // Open registration popup with parameters
@@ -1132,22 +1207,37 @@
         }
 
         // ENHANCED: Ensure referral parameters are stored in sessionStorage
-        if (params.referral_type != null) {
+        // ONLY for IB Referral (type 12) and Campaign Links (type 14)
+        // Clear them for normal registration to avoid confusion
+        if (params.referral_type === 12 || params.referral_type === 14) {
+          // We have a valid referral type (IB or Campaign)
+          if (params.referral_type != null) {
+            console.log(
+              "[OQtima] Storing referral_type in sessionStorage:",
+              params.referral_type
+            );
+            sessionStorage.setItem(
+              "oqtima_referral_type",
+              params.referral_type
+            );
+          }
+          if (params.referral_value) {
+            console.log(
+              "[OQtima] Storing referral_value in sessionStorage:",
+              params.referral_value
+            );
+            sessionStorage.setItem(
+              "oqtima_referral_value",
+              params.referral_value
+            );
+          }
+        } else {
+          // For normal registration, REMOVE any existing referral parameters
           console.log(
-            "[OQtima] Storing referral_type in sessionStorage:",
-            params.referral_type
+            "[OQtima] Normal registration - removing referral parameters from sessionStorage"
           );
-          sessionStorage.setItem("oqtima_referral_type", params.referral_type);
-        }
-        if (params.referral_value) {
-          console.log(
-            "[OQtima] Storing referral_value in sessionStorage:",
-            params.referral_value
-          );
-          sessionStorage.setItem(
-            "oqtima_referral_value",
-            params.referral_value
-          );
+          sessionStorage.removeItem("oqtima_referral_type");
+          sessionStorage.removeItem("oqtima_referral_value");
         }
 
         // Store whether this is Brazilian Portuguese
@@ -4474,7 +4564,17 @@
         return;
       }
 
-      console.log("[OQtima] Initializing registration script");
+      console.log("[OQtima] Initializing registration script v1.5.0");
+
+      // Display information about the new approach
+      console.log(`
+[OQtima] INTEGRATION GUIDE:
+- Add the data-oqtima-trigger attribute to your buttons or links
+- Example: <button data-oqtima-trigger data-lang="en" data-referral-type="14" data-referral-value="CAMPAIGN2023">Join Campaign</button>
+- Example: <a href="#" data-oqtima-trigger data-lang="en" data-referral-type="12" data-referral-value="IB12345">Register via IB</a>
+- Required attributes: data-oqtima-trigger, data-lang
+- Optional attributes: data-referral-type, data-referral-value
+      `);
 
       // Set initialization flag
       window.__OQTIMA_INITIALIZED__ = true;
@@ -4493,6 +4593,84 @@
     init: init,
     openRegistrationPopup: openRegistrationPopup,
     initOqtimaRegistration: initOqtimaRegistration,
+
+    // Helper function to trigger registration from code
+    // Usage: OqtimaRegistration.trigger({ lang: 'en', referral_type: 12, referral_value: 'IB12345' });
+    trigger: function (params = {}) {
+      console.log(
+        "[OQtima] Programmatically triggering registration popup with params:",
+        params
+      );
+
+      // Handle the case where params use legacy parameter names (referralType/referralValue)
+      if (
+        params.referralType !== undefined &&
+        params.referral_type === undefined
+      ) {
+        params.referral_type = params.referralType;
+      }
+
+      if (
+        params.referralValue !== undefined &&
+        params.referral_value === undefined
+      ) {
+        params.referral_value = params.referralValue;
+      }
+
+      // Ensure we have a language
+      params.lang = params.lang || params.language || "en";
+
+      // Store parameters in session storage if available
+      if (window.sessionStorage) {
+        try {
+          sessionStorage.setItem("oqtima_popup_mode", "true");
+
+          // Store referral parameters ONLY for IB Referral or Campaign Link
+          if (params.referral_type === 12 || params.referral_type === 14) {
+            // We have a valid referral type (IB or Campaign)
+            if (params.referral_type) {
+              console.log(
+                "[OQtima] Storing referral_type in sessionStorage:",
+                params.referral_type
+              );
+              sessionStorage.setItem(
+                "oqtima_referral_type",
+                params.referral_type
+              );
+            }
+            if (params.referral_value) {
+              console.log(
+                "[OQtima] Storing referral_value in sessionStorage:",
+                params.referral_value
+              );
+              sessionStorage.setItem(
+                "oqtima_referral_value",
+                params.referral_value
+              );
+            }
+          } else {
+            // For normal registration, REMOVE any existing referral parameters
+            console.log(
+              "[OQtima] Normal registration - removing referral parameters from sessionStorage"
+            );
+            sessionStorage.removeItem("oqtima_referral_type");
+            sessionStorage.removeItem("oqtima_referral_value");
+          }
+        } catch (e) {
+          console.warn(
+            "[OQtima] Error storing parameters in sessionStorage:",
+            e
+          );
+        }
+      }
+
+      // Set global variables for referral parameters
+      window.__OQTIMA_REFERRAL_TYPE__ = params.referral_type;
+      window.__OQTIMA_REFERRAL_VALUE__ = params.referral_value;
+
+      // Open the registration popup
+      openRegistrationPopup(params);
+    },
   };
 
   // Check if the DOM is already loaded
