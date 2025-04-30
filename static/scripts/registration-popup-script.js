@@ -651,30 +651,46 @@
           try {
             sessionStorage.setItem("oqtima_popup_mode", "true");
 
-            // Store referral parameters in sessionStorage ONLY for IB Referral or Campaign Link
-            if (referralType === 12 || referralType === 14) {
-              // We have a valid referral type (IB or Campaign)
-              if (referralType) {
-                console.log(
-                  "[OQtima] Storing referral_type in sessionStorage:",
-                  referralType
-                );
-                sessionStorage.setItem("oqtima_referral_type", referralType);
+            // Only store referral parameters if they are valid and for specific referral types
+            // IB Referral Link (type 12) or Campaign Link (type 14)
+            const isValidReferralType =
+              referralType === 12 || referralType === 14;
+
+            // Clear existing referral parameters for normal registration
+            if (!isValidReferralType) {
+              // CRITICAL: Make sure to completely remove these keys, not set them to null
+              if (sessionStorage.getItem("oqtima_referral_type") !== null) {
+                sessionStorage.removeItem("oqtima_referral_type");
               }
-              if (referralValue) {
-                console.log(
-                  "[OQtima] Storing referral_value in sessionStorage:",
-                  referralValue
-                );
-                sessionStorage.setItem("oqtima_referral_value", referralValue);
+
+              if (sessionStorage.getItem("oqtima_referral_value") !== null) {
+                sessionStorage.removeItem("oqtima_referral_value");
               }
-            } else {
-              // For normal registration, REMOVE any existing referral parameters
+
               console.log(
-                "[OQtima] Normal registration - removing referral parameters from sessionStorage"
+                "[OQtima] Cleared referral parameters from sessionStorage for normal registration"
               );
-              sessionStorage.removeItem("oqtima_referral_type");
-              sessionStorage.removeItem("oqtima_referral_value");
+            }
+            // Only store for specific referral types
+            else if (referralType && isValidReferralType) {
+              sessionStorage.setItem("oqtima_referral_type", referralType);
+              if (referralValue) {
+                sessionStorage.setItem("oqtima_referral_value", referralValue);
+              } else {
+                // If referral_type is valid but referral_value is missing,
+                // ensure we remove any existing referral_value
+                if (sessionStorage.getItem("oqtima_referral_value") !== null) {
+                  sessionStorage.removeItem("oqtima_referral_value");
+                }
+              }
+
+              console.log(
+                "[OQtima] Stored referral parameters in sessionStorage:",
+                {
+                  referral_type: referralType,
+                  referral_value: referralValue || "(removed)",
+                }
+              );
             }
           } catch (e) {
             console.warn(
@@ -685,8 +701,28 @@
         }
 
         // Set global variables for referral parameters
+        // But only set referral_value for specific referral types
+        const isValidReferralType =
+          referralType === 12 || // IB Referral Link
+          referralType === 14; // Campaign Link
+
         window.__OQTIMA_REFERRAL_TYPE__ = referralType;
-        window.__OQTIMA_REFERRAL_VALUE__ = referralValue;
+
+        if (isValidReferralType && referralValue) {
+          window.__OQTIMA_REFERRAL_VALUE__ = referralValue;
+          console.log(
+            "[OQtima] Set global referral_value variable:",
+            referralValue
+          );
+        } else {
+          // For normal registration, ensure referral_value is clear
+          if (window.__OQTIMA_REFERRAL_VALUE__ !== undefined) {
+            delete window.__OQTIMA_REFERRAL_VALUE__;
+            console.log(
+              "[OQtima] Cleared global referral_value variable for normal registration"
+            );
+          }
+        }
 
         // Create parameters object for opening popup with standardized parameter names
         const popupParams = {
@@ -744,7 +780,7 @@
       
       /* Button styling for trigger elements */
       button[data-oqtima-trigger] {
-        position: relative !important;
+          position: relative !important;
         transition: all 0.3s ease !important;
       }
       
@@ -1206,21 +1242,34 @@
           sessionStorage.setItem("oqtima_force_rtl", "true");
         }
 
-        // ENHANCED: Ensure referral parameters are stored in sessionStorage
-        // ONLY for IB Referral (type 12) and Campaign Links (type 14)
-        // Clear them for normal registration to avoid confusion
-        if (params.referral_type === 12 || params.referral_type === 14) {
-          // We have a valid referral type (IB or Campaign)
-          if (params.referral_type != null) {
-            console.log(
-              "[OQtima] Storing referral_type in sessionStorage:",
-              params.referral_type
-            );
-            sessionStorage.setItem(
-              "oqtima_referral_type",
-              params.referral_type
-            );
+        // FIXED: Only store referral parameters when they're actually needed for specific referral types
+        // IB Referral Link (type 12) or Campaign Link (type 14)
+        const isValidReferralType =
+          params.referral_type === 12 || params.referral_type === 14;
+
+        // Clear existing referral parameters from sessionStorage for normal registration
+        if (!isValidReferralType) {
+          // CRITICAL: Make sure we completely remove these keys, not set them to null
+          if (sessionStorage.getItem("oqtima_referral_type") !== null) {
+            sessionStorage.removeItem("oqtima_referral_type");
           }
+
+          if (sessionStorage.getItem("oqtima_referral_value") !== null) {
+            sessionStorage.removeItem("oqtima_referral_value");
+          }
+
+          console.log(
+            "[OQtima] Cleared referral parameters from sessionStorage for normal registration"
+          );
+        }
+        // Only store referral parameters if they are valid and needed
+        else if (params.referral_type != null && isValidReferralType) {
+          console.log(
+            "[OQtima] Storing referral_type in sessionStorage:",
+            params.referral_type
+          );
+          sessionStorage.setItem("oqtima_referral_type", params.referral_type);
+
           if (params.referral_value) {
             console.log(
               "[OQtima] Storing referral_value in sessionStorage:",
@@ -1230,14 +1279,13 @@
               "oqtima_referral_value",
               params.referral_value
             );
+          } else {
+            // If referral_type is valid but referral_value is missing,
+            // ensure we remove any existing referral_value
+            if (sessionStorage.getItem("oqtima_referral_value") !== null) {
+              sessionStorage.removeItem("oqtima_referral_value");
+            }
           }
-        } else {
-          // For normal registration, REMOVE any existing referral parameters
-          console.log(
-            "[OQtima] Normal registration - removing referral parameters from sessionStorage"
-          );
-          sessionStorage.removeItem("oqtima_referral_type");
-          sessionStorage.removeItem("oqtima_referral_value");
         }
 
         // Store whether this is Brazilian Portuguese
@@ -1261,9 +1309,39 @@
       // ENHANCED: Set global referral variables
       if (params.referral_type != null) {
         window.__OQTIMA_REFERRAL_TYPE__ = params.referral_type;
-      }
-      if (params.referral_value) {
-        window.__OQTIMA_REFERRAL_VALUE__ = params.referral_value;
+
+        // Check if this is a specific referral type that should use referral_value
+        const isValidReferralType =
+          params.referral_type === 12 || // IB Referral Link
+          params.referral_type === 14; // Campaign Link
+
+        // Only set referral_value if we have a specific referral type
+        if (isValidReferralType && params.referral_value) {
+          window.__OQTIMA_REFERRAL_VALUE__ = params.referral_value;
+          console.log(
+            "[OQtima] Set global referral_value:",
+            params.referral_value
+          );
+        } else {
+          // Clear referral_value for normal registration
+          if (window.__OQTIMA_REFERRAL_VALUE__ !== undefined) {
+            delete window.__OQTIMA_REFERRAL_VALUE__;
+            console.log(
+              "[OQtima] Cleared global referral_value for normal registration"
+            );
+          }
+        }
+      } else {
+        // Clear both referral type and value if referral_type is not provided
+        if (window.__OQTIMA_REFERRAL_TYPE__ !== undefined) {
+          delete window.__OQTIMA_REFERRAL_TYPE__;
+        }
+        if (window.__OQTIMA_REFERRAL_VALUE__ !== undefined) {
+          delete window.__OQTIMA_REFERRAL_VALUE__;
+        }
+        console.log(
+          "[OQtima] Cleared all global referral variables (no referral_type)"
+        );
       }
     }
 
@@ -1285,15 +1363,33 @@
     ) {
       referralType = params.referral_type;
       console.log("[OQtima] Using referral_type:", referralType);
-    }
 
-    if (
-      params.referral_value !== undefined &&
-      params.referral_value !== null &&
-      params.referral_value !== ""
-    ) {
-      referralValue = params.referral_value;
-      console.log("[OQtima] Using referral_value:", referralValue);
+      // Check if this is a specific referral type that should use referral_value
+      const isValidReferralType =
+        referralType === 12 || // IB Referral Link
+        referralType === 14; // Campaign Link
+
+      // Only set referral_value if we have a valid referral type
+      if (
+        isValidReferralType &&
+        params.referral_value !== undefined &&
+        params.referral_value !== null &&
+        params.referral_value !== ""
+      ) {
+        referralValue = params.referral_value;
+        console.log("[OQtima] Using referral_value:", referralValue);
+      } else {
+        // For normal registration or missing referral_value, explicitly set to null
+        referralValue = null;
+        console.log(
+          "[OQtima] Not using referral_value for this registration type"
+        );
+      }
+    } else {
+      // For scenarios without referral_type, explicitly set both parameters to null
+      referralType = null;
+      referralValue = null;
+      console.log("[OQtima] No referral parameters used for this registration");
     }
 
     // Determine if mobile based on screen width
@@ -1792,7 +1888,7 @@
                       type: "IFRAME_READY",
                       timestamp: Date.now()
                     }, "*");
-                  `;
+              `;
                   iframeDoc.head.appendChild(script);
                 }
               } else {
@@ -1936,7 +2032,7 @@
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
-       width: 100% !important;
+      width: 100% !important;
       height: 100% !important;
       z-index: 2147483647 !important;
       display: flex !important;
@@ -3300,7 +3396,11 @@
     if (
       normalizedReferralValue != null &&
       normalizedReferralValue !== "" &&
-      normalizedReferralValue !== undefined
+      normalizedReferralValue !== undefined &&
+      // CRITICAL: Only add referral_value if we have a valid referral_type
+      normalizedReferralType != null &&
+      normalizedReferralType !== "" &&
+      normalizedReferralType !== undefined
     ) {
       // Add in multiple formats for maximum compatibility
       const referralValueParams = [
@@ -3366,9 +3466,9 @@
         normalizedReferralValue
       );
     } else {
-      // For normal registration, explicitly clear any existing referral_value values
+      // For normal registration or when no referral_type exists, explicitly clear any existing referral_value values
       try {
-        // Remove from sessionStorage
+        // CRITICAL: Remove from sessionStorage - don't set to null!
         sessionStorage.removeItem("oqtima_referral_value");
 
         // Clear any global variables
@@ -3379,8 +3479,25 @@
         // Clear any existing cookies
         document.cookie = "oqtima_referral_value=; path=/; max-age=0";
 
+        // Try to clear domain-specific cookies
+        try {
+          if (baseUrl) {
+            const urlObj = new URL(baseUrl);
+            const domain = urlObj.hostname;
+            document.cookie = `oqtima_referral_value=; path=/; domain=${domain}; max-age=0`;
+
+            // Try with subdomain compatibility
+            if (domain.indexOf(".") !== -1) {
+              const rootDomain = domain.substring(domain.indexOf("."));
+              document.cookie = `oqtima_referral_value=; path=/; domain=${rootDomain}; max-age=0`;
+            }
+          }
+        } catch (e) {
+          console.warn("[OQtima] Could not clear domain cookies:", e);
+        }
+
         console.log(
-          "[OQtima] Normal registration - cleared referral_value parameters"
+          "[OQtima] Normal registration or missing referral_type - cleared referral_value parameters"
         );
       } catch (e) {
         console.warn("[OQtima] Could not clear referral value:", e);
@@ -4266,12 +4383,51 @@
             try {
               sessionStorage.setItem("oqtima_popup_mode", "true");
 
-              // Store referral parameters in sessionStorage
-              if (referralType) {
-                sessionStorage.setItem("oqtima_referral_type", referralType);
+              // Only store referral parameters if they are valid and for specific referral types
+              // IB Referral Link (type 12) or Campaign Link (type 14)
+              const isValidReferralType =
+                referralType === 12 || referralType === 14;
+
+              // Clear existing referral parameters for normal registration
+              if (!isValidReferralType) {
+                // CRITICAL: Make sure to completely remove these keys, not set them to null
+                if (sessionStorage.getItem("oqtima_referral_type") !== null) {
+                  sessionStorage.removeItem("oqtima_referral_type");
+                }
+
+                if (sessionStorage.getItem("oqtima_referral_value") !== null) {
+                  sessionStorage.removeItem("oqtima_referral_value");
+                }
+
+                console.log(
+                  "[OQtima] Cleared referral parameters from sessionStorage for normal registration"
+                );
               }
-              if (referralValue) {
-                sessionStorage.setItem("oqtima_referral_value", referralValue);
+              // Only store for specific referral types
+              else if (referralType && isValidReferralType) {
+                sessionStorage.setItem("oqtima_referral_type", referralType);
+                if (referralValue) {
+                  sessionStorage.setItem(
+                    "oqtima_referral_value",
+                    referralValue
+                  );
+                } else {
+                  // If referral_type is valid but referral_value is missing,
+                  // ensure we remove any existing referral_value
+                  if (
+                    sessionStorage.getItem("oqtima_referral_value") !== null
+                  ) {
+                    sessionStorage.removeItem("oqtima_referral_value");
+                  }
+                }
+
+                console.log(
+                  "[OQtima] Stored referral parameters in sessionStorage:",
+                  {
+                    referral_type: referralType,
+                    referral_value: referralValue || "(removed)",
+                  }
+                );
               }
             } catch (e) {
               console.warn("Error storing parameters in sessionStorage:", e);
@@ -4625,36 +4781,18 @@
         try {
           sessionStorage.setItem("oqtima_popup_mode", "true");
 
-          // Store referral parameters ONLY for IB Referral or Campaign Link
-          if (params.referral_type === 12 || params.referral_type === 14) {
-            // We have a valid referral type (IB or Campaign)
-            if (params.referral_type) {
-              console.log(
-                "[OQtima] Storing referral_type in sessionStorage:",
-                params.referral_type
-              );
-              sessionStorage.setItem(
-                "oqtima_referral_type",
-                params.referral_type
-              );
-            }
-            if (params.referral_value) {
-              console.log(
-                "[OQtima] Storing referral_value in sessionStorage:",
-                params.referral_value
-              );
-              sessionStorage.setItem(
-                "oqtima_referral_value",
-                params.referral_value
-              );
-            }
-          } else {
-            // For normal registration, REMOVE any existing referral parameters
-            console.log(
-              "[OQtima] Normal registration - removing referral parameters from sessionStorage"
+          // Store referral parameters
+          if (params.referral_type) {
+            sessionStorage.setItem(
+              "oqtima_referral_type",
+              params.referral_type
             );
-            sessionStorage.removeItem("oqtima_referral_type");
-            sessionStorage.removeItem("oqtima_referral_value");
+          }
+          if (params.referral_value) {
+            sessionStorage.setItem(
+              "oqtima_referral_value",
+              params.referral_value
+            );
           }
         } catch (e) {
           console.warn(

@@ -1306,53 +1306,85 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
 
           // Store referral parameters in session storage
           if (data.referral_type !== undefined && data.referral_type !== null) {
-            // Only store referral parameters for IB Referral Link (type 12) or Campaign Link (type 14)
-            if (data.referral_type === 12 || data.referral_type === 14) {
-              sessionStorage.setItem(
-                "oqtima_referral_type",
-                data.referral_type
-              );
-              window.__OQTIMA_REFERRAL_TYPE__ = data.referral_type;
-              console.log(
-                "Stored referral_type in sessionStorage:",
-                data.referral_type
-              );
+            sessionStorage.setItem("oqtima_referral_type", data.referral_type);
+            window.__OQTIMA_REFERRAL_TYPE__ = data.referral_type;
+            console.log(
+              "Stored referral_type in sessionStorage:",
+              data.referral_type
+            );
 
-              if (
-                data.referral_value !== undefined &&
-                data.referral_value !== null
-              ) {
-                sessionStorage.setItem(
-                  "oqtima_referral_value",
-                  data.referral_value
-                );
-                window.__OQTIMA_REFERRAL_VALUE__ = data.referral_value;
-                console.log(
-                  "Stored referral_value in sessionStorage:",
-                  data.referral_value
-                );
-              }
-            } else {
-              // For normal registration, remove referral parameters from session storage
-              console.log(
-                "Normal registration - removing referral parameters from sessionStorage"
+            // Check if this is a specific referral type that should use referral_value
+            let parsedType = data.referral_type;
+            if (typeof parsedType === "string" && !isNaN(parsedType)) {
+              parsedType = Number(parsedType);
+            }
+
+            const isSpecificReferralType =
+              parsedType === 12 || // IB Referral Link
+              parsedType === 14; // Campaign Link
+
+            // Only store referral_value if we have a specific referral type
+            if (
+              isSpecificReferralType &&
+              data.referral_value !== undefined &&
+              data.referral_value !== null
+            ) {
+              sessionStorage.setItem(
+                "oqtima_referral_value",
+                data.referral_value
               );
-              sessionStorage.removeItem("oqtima_referral_type");
-              sessionStorage.removeItem("oqtima_referral_value");
-              // Also clear global variables
-              window.__OQTIMA_REFERRAL_TYPE__ = undefined;
-              window.__OQTIMA_REFERRAL_VALUE__ = undefined;
+              window.__OQTIMA_REFERRAL_VALUE__ = data.referral_value;
+              console.log(
+                "Stored referral_value in sessionStorage:",
+                data.referral_value
+              );
+            } else {
+              // For normal registration, clear any existing referral_value
+              // CRITICAL: Make sure we completely remove this key, not set it to null
+              if (sessionStorage.getItem("oqtima_referral_value") !== null) {
+                sessionStorage.removeItem("oqtima_referral_value");
+              }
+
+              if (window.__OQTIMA_REFERRAL_VALUE__ !== undefined) {
+                delete window.__OQTIMA_REFERRAL_VALUE__;
+              }
+              console.log(
+                "Normal registration - cleared referral_value from sessionStorage"
+              );
             }
           } else {
-            // If no referral type is specified, remove referral parameters from session storage
+            // If no referral_type, ensure we clear any existing referral values
+            // CRITICAL: Make sure we completely remove these keys, not set them to null
+            if (sessionStorage.getItem("oqtima_referral_type") !== null) {
+              sessionStorage.removeItem("oqtima_referral_type");
+            }
+
+            if (sessionStorage.getItem("oqtima_referral_value") !== null) {
+              sessionStorage.removeItem("oqtima_referral_value");
+            }
+
+            if (window.__OQTIMA_REFERRAL_TYPE__ !== undefined) {
+              delete window.__OQTIMA_REFERRAL_TYPE__;
+            }
+            if (window.__OQTIMA_REFERRAL_VALUE__ !== undefined) {
+              delete window.__OQTIMA_REFERRAL_VALUE__;
+            }
             console.log(
-              "No referral_type found - removing referral parameters from sessionStorage"
+              "No referral_type found - cleared all referral parameters"
             );
-            sessionStorage.removeItem("oqtima_referral_type");
-            sessionStorage.removeItem("oqtima_referral_value");
-            // Also clear global variables
-            window.__OQTIMA_REFERRAL_TYPE__ = undefined;
-            window.__OQTIMA_REFERRAL_VALUE__ = undefined;
+          }
+
+          // Handle direct session storage instructions
+          if (data.storeInSessionStorage && Array.isArray(data.storageKeys)) {
+            data.storageKeys.forEach((item) => {
+              if (item.key && item.value !== undefined) {
+                sessionStorage.setItem(item.key, item.value);
+                console.log(
+                  `Stored ${item.key} in sessionStorage:`,
+                  item.value
+                );
+              }
+            });
           }
 
           // Send confirmation back to parent
@@ -1486,42 +1518,116 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
       try {
         // Check for referral type in cookies
         const referralType = getCookie("oqtima_referral_type");
-        let shouldStoreReferralParams = false;
-
         if (referralType) {
           console.log("Found referral_type in cookie:", referralType);
+          sessionStorage.setItem("oqtima_referral_type", referralType);
+          window.__OQTIMA_REFERRAL_TYPE__ = referralType;
+        }
 
-          // Only store referral type/value if it's a valid referral (type 12 or 14)
-          const parsedType = parseInt(referralType, 10);
-          if (parsedType === 12 || parsedType === 14) {
-            // It's a valid IB Referral or Campaign Link
-            sessionStorage.setItem("oqtima_referral_type", referralType);
-            window.__OQTIMA_REFERRAL_TYPE__ = referralType;
-            shouldStoreReferralParams = true;
+        // Check for referral value in cookies
+        const referralValue = getCookie("oqtima_referral_value");
+        if (referralValue) {
+          console.log("Found referral_value in cookie:", referralValue);
+          sessionStorage.setItem("oqtima_referral_value", referralValue);
+          window.__OQTIMA_REFERRAL_VALUE__ = referralValue;
+        }
 
-            // Check for referral value in cookies
-            const referralValue = getCookie("oqtima_referral_value");
-            if (referralValue) {
-              console.log("Found referral_value in cookie:", referralValue);
-              sessionStorage.setItem("oqtima_referral_value", referralValue);
-              window.__OQTIMA_REFERRAL_VALUE__ = referralValue;
-            }
-          } else {
-            // Not a valid IB Referral or Campaign Link, remove any existing values
-            console.log(
-              "Found referral_type in cookie but it's not a valid IB or Campaign type (12 or 14)"
-            );
-            sessionStorage.removeItem("oqtima_referral_type");
-            sessionStorage.removeItem("oqtima_referral_value");
-            window.__OQTIMA_REFERRAL_TYPE__ = undefined;
-            window.__OQTIMA_REFERRAL_VALUE__ = undefined;
+        // IMPORTANT NEW: Check for language in URL path
+        if (typeof window !== "undefined") {
+          const pathParts = window.location.pathname.split("/").filter(Boolean);
+
+          // If the path starts with a language code (like /id/ or /en/)
+          if (pathParts.length > 0 && pathParts[0].length <= 7) {
+            const pathLanguage = pathParts[0];
+            console.log("Detected language from URL path:", pathLanguage);
+
+            // Force this language throughout the app
+            // This is crucial to maintain language consistency
+            sessionStorage.setItem("oqtima_tab_language", pathLanguage);
+            window.__OQTIMA_COMPONENT_LANGUAGE = pathLanguage;
+            window.__OQTIMA_LOCKED_LANG = pathLanguage;
+            window.__FORCE_LANGUAGE__ = true;
+            document.documentElement.setAttribute("lang", pathLanguage);
+
+            // Update other language storage as well
+            try {
+              localStorage.setItem("i18nextLng", pathLanguage);
+              if (window.gatsby_i18next_language) {
+                window.gatsby_i18next_language = pathLanguage;
+              }
+            } catch (e) {}
+
+            console.log("Language from URL path enforced:", pathLanguage);
           }
-        } else {
-          // No referral type found, clear session storage
-          sessionStorage.removeItem("oqtima_referral_type");
-          sessionStorage.removeItem("oqtima_referral_value");
-          window.__OQTIMA_REFERRAL_TYPE__ = undefined;
-          window.__OQTIMA_REFERRAL_VALUE__ = undefined;
+        }
+
+        // Check for language parameters in URL query params
+        if (typeof window !== "undefined") {
+          const urlParams = new URLSearchParams(window.location.search);
+
+          // Check for referral type in URL params with multiple possible names
+          const referralTypeParams = [
+            "referral_type",
+            "referralType",
+            "referral-type",
+          ];
+          for (const param of referralTypeParams) {
+            const value = urlParams.get(param);
+            if (value) {
+              console.log(`Found ${param} in URL:`, value);
+              sessionStorage.setItem("oqtima_referral_type", value);
+              window.__OQTIMA_REFERRAL_TYPE__ = value;
+              break;
+            }
+          }
+
+          // Check for referral value in URL params with multiple possible names
+          const referralValueParams = [
+            "referral_value",
+            "referralValue",
+            "referral-value",
+          ];
+          for (const param of referralValueParams) {
+            const value = urlParams.get(param);
+            if (value) {
+              console.log(`Found ${param} in URL:`, value);
+              sessionStorage.setItem("oqtima_referral_value", value);
+              window.__OQTIMA_REFERRAL_VALUE__ = value;
+              break;
+            }
+          }
+
+          // CRITICAL: Check for language parameters and enforce them
+          const languageParams = [
+            "language",
+            "lang",
+            "locale",
+            "i18nextLng",
+            "data-lang",
+          ];
+          for (const param of languageParams) {
+            const value = urlParams.get(param);
+            if (value) {
+              console.log(`Found language parameter ${param} in URL:`, value);
+
+              // Enforce this language
+              sessionStorage.setItem("oqtima_tab_language", value);
+              window.__OQTIMA_COMPONENT_LANGUAGE = value;
+              window.__OQTIMA_LOCKED_LANG = value;
+              window.__FORCE_LANGUAGE__ = true;
+              document.documentElement.setAttribute("lang", value);
+
+              try {
+                localStorage.setItem("i18nextLng", value);
+                if (window.gatsby_i18next_language) {
+                  window.gatsby_i18next_language = value;
+                }
+              } catch (e) {}
+
+              console.log("Language from URL parameter enforced:", value);
+              break;
+            }
+          }
         }
       } catch (e) {
         console.warn("Error checking cookies and parameters:", e);
