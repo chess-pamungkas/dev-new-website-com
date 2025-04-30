@@ -2786,6 +2786,53 @@
           return; // Skip the rest of the handler
         }
 
+        // Handle close popup message - ACCEPT FROM ANY ORIGIN FOR MAXIMUM COMPATIBILITY
+        if (
+          event.data &&
+          typeof event.data === "object" &&
+          event.data.type === "OQTIMA_CLOSE_POPUP"
+        ) {
+          console.log(
+            "[OQtima] Close popup request received from iframe, source:",
+            event.data.source || "unknown"
+          );
+
+          // Close popup immediately
+          if (window.__OQTIMA_CLOSE_POPUP) {
+            try {
+              window.__OQTIMA_CLOSE_POPUP();
+              console.log("[OQtima] Popup closed successfully");
+
+              // Notify the source that we've closed the popup
+              if (
+                event.source &&
+                typeof event.source.postMessage === "function"
+              ) {
+                try {
+                  event.source.postMessage(
+                    {
+                      type: "OQTIMA_POPUP_CLOSED",
+                      success: true,
+                      timestamp: Date.now(),
+                    },
+                    "*"
+                  );
+                } catch (err) {
+                  console.warn(
+                    "[OQtima] Error notifying source about popup close:",
+                    err
+                  );
+                }
+              }
+            } catch (err) {
+              console.error("[OQtima] Error closing popup:", err);
+            }
+            return; // Skip the rest after closing
+          } else {
+            console.warn("[OQtima] Close function not found");
+          }
+        }
+
         // Ignore messages from other origins for security
         if (
           event.origin &&
@@ -2830,19 +2877,6 @@
                   window.location.href = event.data.redirectUrl;
                 }
               }, event.data.redirectTimeout || 100);
-            }
-          }
-
-          // Handle close popup message
-          if (event.data.type === "OQTIMA_CLOSE_POPUP") {
-            console.log(
-              "[OQtima] Close popup request from iframe, source:",
-              event.data.source
-            );
-
-            // Close popup
-            if (window.__OQTIMA_CLOSE_POPUP) {
-              window.__OQTIMA_CLOSE_POPUP();
             }
           }
 

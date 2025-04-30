@@ -1776,7 +1776,12 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
     // Try to send message to parent window that close button was pressed
     try {
       if (window.parent && window.parent !== window) {
+        // Send the close message in multiple formats for maximum compatibility
+
+        // Legacy format
         window.parent.postMessage("close_popup", "*");
+
+        // Standard format with more details
         window.parent.postMessage(
           {
             type: "OQTIMA_CLOSE_POPUP",
@@ -1785,6 +1790,50 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
           },
           "*"
         );
+
+        // Try a direct approach in case the parent is expecting a specific format
+        try {
+          if (
+            window.parent.__OQTIMA_CLOSE_POPUP &&
+            typeof window.parent.__OQTIMA_CLOSE_POPUP === "function"
+          ) {
+            window.parent.__OQTIMA_CLOSE_POPUP();
+          }
+        } catch (directErr) {
+          console.warn(
+            "Could not call parent close function directly:",
+            directErr
+          );
+        }
+
+        // Send multiple times with delays to ensure delivery
+        setTimeout(() => {
+          try {
+            window.parent.postMessage(
+              {
+                type: "OQTIMA_CLOSE_POPUP",
+                source: "close_button_retry",
+                timestamp: Date.now(),
+              },
+              "*"
+            );
+          } catch (e) {}
+        }, 50);
+
+        setTimeout(() => {
+          try {
+            window.parent.postMessage(
+              {
+                type: "OQTIMA_CLOSE_POPUP",
+                source: "close_button_final_retry",
+                timestamp: Date.now(),
+              },
+              "*"
+            );
+          } catch (e) {}
+        }, 100);
+
+        console.log("Sent close messages to parent window");
       }
     } catch (err) {
       console.error("Error sending close message to parent:", err);

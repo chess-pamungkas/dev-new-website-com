@@ -800,6 +800,37 @@ const PopupRegistrationPage = ({ location, data }) => {
             // Language changes are locked
           }
         }
+
+        // Handle CLOSE_POPUP command from the registration component
+        if (
+          event.data &&
+          (event.data === "close_popup" ||
+            (typeof event.data === "object" &&
+              event.data.type === "OQTIMA_CLOSE_POPUP"))
+        ) {
+          console.log("Received close popup message", event.data);
+
+          // Call the close handler
+          if (typeof handleClose === "function") {
+            handleClose();
+          }
+
+          // If we're in an iframe, also notify the parent to close
+          if (window.parent !== window) {
+            try {
+              window.parent.postMessage(
+                {
+                  type: "OQTIMA_CLOSE_POPUP",
+                  source: "popup_registration_page",
+                  timestamp: Date.now(),
+                },
+                "*"
+              );
+            } catch (err) {
+              console.warn("Error forwarding close message to parent:", err);
+            }
+          }
+        }
       },
       false
     );
