@@ -554,7 +554,8 @@
       );
       console.warn(
         "[OQtima] Using legacy registration container approach." +
-          "\nThis approach is deprecated. Please use data-oqtima-trigger attribute on buttons, links, or any clickable elements instead."
+          "\nThis approach is deprecated. Please use data-oqtima-trigger attribute on buttons, links, or any clickable elements instead." +
+          "\nExample: <a href='#' data-oqtima-trigger data-lang='en' data-referral-type='14' data-referral-value='YOUR_CAMPAIGN_ID'>Register Now</a>"
       );
 
       // Add loading state to all buttons
@@ -628,6 +629,29 @@
           element.style.border = "1px dotted #ff4400";
           element.title =
             "Missing required data-lang attribute for Oqtima registration popup";
+        }
+      }
+
+      // Visually indicate the element is clickable if it doesn't already have obvious styles
+      if (elementType !== "button" && elementType !== "a") {
+        element.style.cursor = "pointer";
+
+        // Add a subtle hover effect if the element doesn't already have one
+        if (!element.classList.contains("oqtima-styled")) {
+          const originalBackgroundColor =
+            window.getComputedStyle(element).backgroundColor;
+
+          element.addEventListener("mouseenter", function () {
+            if (!element.classList.contains("oqtima-styled")) {
+              element.style.opacity = "0.9";
+            }
+          });
+
+          element.addEventListener("mouseleave", function () {
+            if (!element.classList.contains("oqtima-styled")) {
+              element.style.opacity = "1";
+            }
+          });
         }
       }
 
@@ -740,23 +764,17 @@
           popupParams.referral_type = referralType;
         }
 
-        if (referralValue && referralValue.trim() !== "") {
+        if (
+          referralValue !== undefined &&
+          referralValue !== null &&
+          referralValue !== ""
+        ) {
           popupParams.referral_value = referralValue;
         }
 
-        // Open registration popup with parameters
+        // Open the registration popup with the parameters
         openRegistrationPopup(popupParams);
       });
-
-      // Ensure element is visually indicated as clickable
-      if (elementType !== "a" && elementType !== "button") {
-        element.style.cursor = "pointer";
-      }
-
-      // Add additional styling to make it clear this is an interactive element
-      if (environment === "development" && !element.title) {
-        element.title = "Click to open Oqtima registration popup";
-      }
     });
   }
 
@@ -1647,6 +1665,19 @@
     const iframe = document.createElement("iframe");
     iframe.className = "popup-registration__iframe";
 
+    // CRITICAL: Add attributes for cross-domain support
+    iframe.setAttribute("allow", "clipboard-write");
+    iframe.setAttribute("allowfullscreen", "true");
+    iframe.setAttribute("allowtransparency", "true");
+    iframe.setAttribute("scrolling", "yes");
+    iframe.setAttribute("importance", "high");
+
+    // CRITICAL: Add title for accessibility and SEO
+    iframe.setAttribute("title", "Registration Form");
+
+    // CRITICAL: Ensure cross-domain cookie access
+    iframe.setAttribute("crossorigin", "anonymous");
+
     // Base styles for iframe
     let iframeStyles = `
       width: 100% !important;
@@ -2165,6 +2196,20 @@
     iframe.id = "oqtima-registration-iframe";
     iframe.setAttribute("dir", "rtl");
     iframe.setAttribute("lang", language);
+
+    // CRITICAL: Add attributes for cross-domain support
+    iframe.setAttribute("allow", "clipboard-write");
+    iframe.setAttribute("allowfullscreen", "true");
+    iframe.setAttribute("allowtransparency", "true");
+    iframe.setAttribute("scrolling", "yes");
+    iframe.setAttribute("importance", "high");
+
+    // CRITICAL: Add title for accessibility and SEO
+    iframe.setAttribute("title", "Registration Form RTL");
+
+    // CRITICAL: Ensure cross-domain cookie access
+    iframe.setAttribute("crossorigin", "anonymous");
+
     iframe.style.cssText = `
           width: 100% !important;
           height: 100% !important;
@@ -3211,6 +3256,17 @@
       cleanLayout: "true",
       allowScroll: "true",
 
+      // CRITICAL: Cross-domain enhancements
+      allowCrossDomain: "true",
+      crossSite: "true",
+      crossOrigin: "anonymous",
+
+      // CRITICAL: Language locking mechanism
+      oqtima_lang_locked: normalizedLanguage,
+      force_language: "true",
+      forceLanguage: "true",
+      __force_language: "true",
+
       // Functional parameters
       linkHelper: "true",
 
@@ -3792,10 +3848,17 @@
     const iframe = document.createElement("iframe");
     iframe.id = "oqtima-iframe";
     iframe.setAttribute("scrolling", "yes"); // Force scrolling enabled
-    iframe.setAttribute("allow", "fullscreen");
+    iframe.setAttribute("allow", "fullscreen clipboard-write");
     iframe.setAttribute("allowfullscreen", "true");
+    iframe.setAttribute("allowtransparency", "true");
     iframe.setAttribute("importance", "high");
     iframe.setAttribute("frameborder", "0");
+
+    // CRITICAL: Add title for accessibility and SEO
+    iframe.setAttribute("title", "Registration Form Mobile");
+
+    // CRITICAL: Ensure cross-domain cookie access
+    iframe.setAttribute("crossorigin", "anonymous");
 
     // Daftar styles penting tanpa container tambahan
     iframe.style.cssText = `

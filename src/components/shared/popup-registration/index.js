@@ -1750,7 +1750,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
         document.documentElement.setAttribute("data-rtl", "true");
 
         // Set RTL attributes on body element
-        document.body.setAttribute("dir", "rtl");
+        // document.body.setAttribute("dir", "rtl");
         // document.body.classList.add("rtl-active", "rtl");
         // document.body.setAttribute("data-rtl", "true");
 
