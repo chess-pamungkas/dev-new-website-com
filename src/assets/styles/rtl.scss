@@ -149,6 +149,10 @@
   }
 }
 
+.popup {
+  direction: ltr;
+}
+
 .main-promotion--rtl {
   .main-promotion__photo {
     right: unset;
