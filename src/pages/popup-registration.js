@@ -395,6 +395,39 @@ const PopupRegistrationPage = ({ location, data }) => {
                   registrationContainer.setAttribute("data-rtl", "true");
                 }
 
+                // Find the container and apply RTL styling
+                const container = document.querySelector(
+                  ".popup-registration__container"
+                );
+                if (container) {
+                  container.classList.add("popup-registration__container--rtl");
+                  container.style.flexDirection = "row-reverse";
+                  container.style.display = "flex";
+                  container.setAttribute("dir", "rtl");
+                }
+
+                // Style the sidebar for RTL
+                const sidebar = document.querySelector(
+                  ".popup-registration__sidebar"
+                );
+                if (sidebar) {
+                  sidebar.classList.add("popup-registration__sidebar--rtl");
+                  sidebar.style.order = "2";
+                  sidebar.style.borderRadius = "0 10px 10px 0";
+                  sidebar.setAttribute("dir", "rtl");
+                }
+
+                // Style the content for RTL
+                const content = document.querySelector(
+                  ".popup-registration__content"
+                );
+                if (content) {
+                  content.classList.add("popup-registration__content--rtl");
+                  content.style.order = "1";
+                  content.style.borderRadius = "10px 0 0 10px";
+                  content.setAttribute("dir", "rtl");
+                }
+
                 // Add RTL to form elements
                 const formElements = document.querySelectorAll(
                   "input, select, textarea, button, label"
@@ -405,6 +438,9 @@ const PopupRegistrationPage = ({ location, data }) => {
                     el.setAttribute("dir", "rtl");
                   });
                 }
+
+                // Set session storage flag
+                sessionStorage.setItem("oqtima_tab_rtl", "true");
 
                 // Inject RTL specific CSS
                 if (!document.getElementById("rtl-inline-styles")) {
@@ -424,6 +460,36 @@ const PopupRegistrationPage = ({ location, data }) => {
                     
                     .rtl-active .popup-registration__content {
                       direction: rtl !important;
+                    }
+                    
+                    .rtl-active .popup-registration__container {
+                      display: flex !important;
+                      flex-direction: row-reverse !important;
+                    }
+
+                    .rtl-active .popup-registration__sidebar {
+                      order: 2 !important;
+                      border-radius: 0 10px 10px 0 !important;
+                    }
+
+                    .rtl-active .popup-registration__content {
+                      order: 1 !important;
+                      border-radius: 10px 0 0 10px !important;
+                    }
+                    
+                    /* For mobile devices */
+                    @media (max-width: 767px) {
+                      .rtl-active .popup-registration__container {
+                        flex-direction: column !important;
+                      }
+                      
+                      .rtl-active .popup-registration__sidebar {
+                        border-radius: 10px 10px 0 0 !important;
+                      }
+                      
+                      .rtl-active .popup-registration__content {
+                        border-radius: 0 0 10px 10px !important;
+                      }
                     }
                     
                     /* Mirror spacing and positioning */
@@ -830,6 +896,64 @@ const PopupRegistrationPage = ({ location, data }) => {
               console.warn("Error forwarding close message to parent:", err);
             }
           }
+        }
+
+        // Handle Arabic language specifically for RTL
+        if (
+          event.data &&
+          event.data.type === "FORCE_LANGUAGE" &&
+          event.data.language &&
+          event.data.language.toLowerCase() === "ar"
+        ) {
+          console.log("Arabic language detected, applying RTL immediately");
+
+          // Set RTL flag explicitly
+          event.data.isRTL = true;
+
+          // Add RTL classes and attributes to HTML and body
+          document.documentElement.setAttribute("dir", "rtl");
+          document.documentElement.classList.add("rtl-active");
+          document.body.setAttribute("dir", "rtl");
+          document.body.classList.add("rtl-active");
+
+          // Set storage flags
+          sessionStorage.setItem("oqtima_tab_rtl", "true");
+          sessionStorage.setItem("oqtima_tab_language", "ar");
+
+          // Find the container and apply RTL styling if it exists
+          setTimeout(() => {
+            const container = document.querySelector(
+              ".popup-registration__container"
+            );
+            if (container) {
+              container.classList.add("popup-registration__container--rtl");
+              container.style.flexDirection = "row-reverse";
+              container.style.display = "flex";
+              container.setAttribute("dir", "rtl");
+            }
+
+            // Style the sidebar for RTL
+            const sidebar = document.querySelector(
+              ".popup-registration__sidebar"
+            );
+            if (sidebar) {
+              sidebar.classList.add("popup-registration__sidebar--rtl");
+              sidebar.style.order = "2";
+              sidebar.style.borderRadius = "0 10px 10px 0";
+              sidebar.setAttribute("dir", "rtl");
+            }
+
+            // Style the content for RTL
+            const content = document.querySelector(
+              ".popup-registration__content"
+            );
+            if (content) {
+              content.classList.add("popup-registration__content--rtl");
+              content.style.order = "1";
+              content.style.borderRadius = "10px 0 0 10px";
+              content.setAttribute("dir", "rtl");
+            }
+          }, 10);
         }
       },
       false

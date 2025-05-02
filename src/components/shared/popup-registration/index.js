@@ -1904,8 +1904,8 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
             style={
               isRTLMode
                 ? {
-                    flexDirection: "row-reverse !important",
-                    display: "flex !important",
+                    flexDirection: "row-reverse",
+                    display: "flex",
                     direction: "rtl",
                   }
                 : {}
@@ -1921,7 +1921,13 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
               data-rtl={isRTLMode ? "true" : "false"}
               dir={isRTLMode ? "rtl" : "ltr"}
               style={
-                isRTLMode ? { order: "2 !important", direction: "rtl" } : {}
+                isRTLMode
+                  ? {
+                      order: "2",
+                      direction: "rtl",
+                      borderRadius: "0 10px 10px 0",
+                    }
+                  : {}
               }
             >
               {(isRTLMode ||
@@ -1964,7 +1970,13 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
               data-rtl={isRTLMode ? "true" : "false"}
               dir={isRTLMode ? "rtl" : "ltr"}
               style={
-                isRTLMode ? { order: "1 !important", direction: "rtl" } : {}
+                isRTLMode
+                  ? {
+                      order: "1",
+                      direction: "rtl",
+                      borderRadius: "10px 0 0 10px",
+                    }
+                  : {}
               }
             >
               {!isRTLMode && !isMobile && (
