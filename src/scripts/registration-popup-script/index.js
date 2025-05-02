@@ -565,6 +565,11 @@
         "[OQtima] No legacy registration containers found. Using trigger elements only."
       );
     }
+
+    // NEW: Set up global click handler for maximum compatibility
+    // This will detect and handle clicks on registration-related buttons and links
+    // even without the data-oqtima-trigger attribute
+    setupGlobalClickHandler();
   }
 
   /**
@@ -776,6 +781,283 @@
         openRegistrationPopup(popupParams);
       });
     });
+  }
+
+  /**
+   * Setup global click handler to detect and handle clicks on any registration-related buttons or links
+   * This provides maximum compatibility with third-party sites like w3schools without requiring data attributes
+   */
+  function setupGlobalClickHandler() {
+    // Add a global click handler to the document
+    document.addEventListener("click", function (event) {
+      // Skip if the event has already been processed or if the clicked element already has a oqtima-trigger attribute
+      if (
+        event.oqtimaProcessed ||
+        (event.target.hasAttribute &&
+          event.target.hasAttribute("data-oqtima-trigger"))
+      ) {
+        return;
+      }
+
+      // Mark this event as processed to prevent duplicate handling
+      event.oqtimaProcessed = true;
+
+      // Find the clicked element or its parent link/button
+      let targetElement = event.target;
+
+      // If the clicked element isn't a link or button, check if it's inside one
+      if (targetElement.tagName !== "A" && targetElement.tagName !== "BUTTON") {
+        targetElement = event.target.closest("a, button");
+      }
+
+      // If no link or button was found, exit
+      if (!targetElement) return;
+
+      // Extract referral parameters from the href or data attributes
+      const extractReferralParams = (element) => {
+        // Default parameters
+        const params = {
+          lang: "en",
+          referral_type: null,
+          referral_value: null,
+        };
+
+        try {
+          // Check for data attributes first
+          if (element.hasAttribute("data-lang")) {
+            params.lang = element.getAttribute("data-lang");
+          } else if (element.hasAttribute("lang")) {
+            params.lang = element.getAttribute("lang");
+          }
+
+          if (element.hasAttribute("data-referral-type")) {
+            params.referral_type = element.getAttribute("data-referral-type");
+          }
+
+          if (element.hasAttribute("data-referral-value")) {
+            params.referral_value = element.getAttribute("data-referral-value");
+          }
+
+          // If the element is a link, try to extract parameters from href
+          if (element.tagName === "A" && element.href) {
+            const url = new URL(element.href, window.location.href);
+
+            // Check for registration-related URLs
+            if (
+              url.pathname.includes("register") ||
+              url.pathname.includes("signup") ||
+              url.pathname.includes("registration") ||
+              url.pathname.includes("account") ||
+              (url.search &&
+                (url.search.includes("register") ||
+                  url.search.includes("signup") ||
+                  url.search.includes("registration") ||
+                  url.search.includes("account")))
+            ) {
+              // Extract language from URL if available
+              const langMatch = url.pathname.match(
+                /\/(en|fr|br|vn|th|es|it|cn|zh|id|jp|my|ar)\//
+              );
+              if (langMatch && langMatch[1]) {
+                params.lang = langMatch[1];
+              }
+
+              // Extract parameters from URL query string
+              const searchParams = url.searchParams;
+
+              // Check for referral parameters in various formats
+              const referralTypeKeys = [
+                "referral_type",
+                "referralType",
+                "referral-type",
+                "refType",
+                "ref_type",
+              ];
+              for (const key of referralTypeKeys) {
+                if (searchParams.has(key)) {
+                  params.referral_type = searchParams.get(key);
+                  break;
+                }
+              }
+
+              const referralValueKeys = [
+                "referral_value",
+                "referralValue",
+                "referral-value",
+                "refValue",
+                "ref_value",
+              ];
+              for (const key of referralValueKeys) {
+                if (searchParams.has(key)) {
+                  params.referral_value = searchParams.get(key);
+                  break;
+                }
+              }
+
+              // Check for campaign-specific parameters
+              if (
+                searchParams.has("campaign") ||
+                searchParams.has("campaign_id")
+              ) {
+                params.referral_type = 14; // Campaign link
+                params.referral_value =
+                  searchParams.get("campaign") ||
+                  searchParams.get("campaign_id");
+              }
+
+              // Check for IB-specific parameters
+              if (searchParams.has("ib") || searchParams.has("ib_id")) {
+                params.referral_type = 12; // IB link
+                params.referral_value =
+                  searchParams.get("ib") || searchParams.get("ib_id");
+              }
+            }
+          }
+
+          // Check if it's a register button based on text content
+          if (targetElement.textContent) {
+            const buttonText = targetElement.textContent.toLowerCase().trim();
+            const registerKeywords = [
+              "register",
+              "registration",
+              "sign up",
+              "signup",
+              "create account",
+              "join",
+              "open account",
+              "free account",
+              "start trading",
+              "trade now",
+            ];
+
+            if (
+              registerKeywords.some((keyword) => buttonText.includes(keyword))
+            ) {
+              // This is likely a registration button
+              console.log(
+                "[OQtima] Detected likely registration button:",
+                buttonText
+              );
+              return params;
+            }
+          }
+
+          // Check button/link classes and IDs for registration indicators
+          const elementClasses = targetElement.className
+            ? targetElement.className.toLowerCase()
+            : "";
+          const elementId = targetElement.id
+            ? targetElement.id.toLowerCase()
+            : "";
+
+          const registerClassKeywords = [
+            "register",
+            "registration",
+            "signup",
+            "sign-up",
+            "account",
+            "create",
+            "join",
+            "cta",
+          ];
+
+          if (
+            registerClassKeywords.some((keyword) =>
+              elementClasses.includes(keyword)
+            ) ||
+            registerClassKeywords.some((keyword) => elementId.includes(keyword))
+          ) {
+            console.log(
+              "[OQtima] Detected registration element via class/id:",
+              {
+                class: elementClasses,
+                id: elementId,
+              }
+            );
+            return params;
+          }
+
+          // Return null if this doesn't appear to be a registration element
+          return null;
+        } catch (e) {
+          console.error("[OQtima] Error extracting referral parameters:", e);
+          return null;
+        }
+      };
+
+      // Try to extract parameters from the clicked element
+      const params = extractReferralParams(targetElement);
+
+      // If no parameters were found or this doesn't seem to be a registration element, exit
+      if (!params) return;
+
+      // If we got here, the clicked element appears to be registration-related
+      // We'll intercept the click to open our popup instead
+
+      // Prevent the default link action
+      event.preventDefault();
+      event.stopPropagation();
+
+      console.log("[OQtima] Detected registration link/button click:", {
+        element: targetElement,
+        params: params,
+      });
+
+      // Format parameters for opening the popup
+      const popupParams = {
+        lang: params.lang || "en",
+        preserveParentDirection: true,
+      };
+
+      // Add referral parameters if available
+      if (params.referral_type) {
+        const parsedType = parseInt(params.referral_type, 10);
+        popupParams.referral_type = !isNaN(parsedType)
+          ? parsedType
+          : params.referral_type;
+      }
+
+      if (params.referral_value) {
+        popupParams.referral_value = params.referral_value;
+      }
+
+      // Store parameters in session storage
+      if (window.sessionStorage) {
+        try {
+          sessionStorage.setItem("oqtima_popup_mode", "true");
+
+          if (params.referral_type) {
+            sessionStorage.setItem(
+              "oqtima_referral_type",
+              params.referral_type
+            );
+          }
+
+          if (params.referral_value) {
+            sessionStorage.setItem(
+              "oqtima_referral_value",
+              params.referral_value
+            );
+          }
+        } catch (e) {
+          console.warn(
+            "[OQtima] Error storing parameters in sessionStorage:",
+            e
+          );
+        }
+      }
+
+      // Set global variables
+      window.__OQTIMA_REFERRAL_TYPE__ = popupParams.referral_type;
+      window.__OQTIMA_REFERRAL_VALUE__ = popupParams.referral_value;
+
+      // Open the registration popup
+      openRegistrationPopup(popupParams);
+    });
+
+    console.log(
+      "[OQtima] Global click handler set up for registration links/buttons"
+    );
   }
 
   /**
