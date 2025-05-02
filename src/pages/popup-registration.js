@@ -313,241 +313,300 @@ const PopupRegistrationPage = ({ location, data }) => {
 
       // Listen for language force messages from parent
       const handleMessage = (event) => {
-        // Check origin (optional - for security)
-        if (event.data && event.data.type === "FORCE_LANGUAGE") {
-          const forcedLang = event.data.language;
-          const forceApply = event.data.forceApply || false;
-          const override = event.data.override || false;
-          const isRTL = event.data.isRTL || RTL_LANGUAGES.includes(forcedLang);
+        // Check if we have a valid message
+        if (event.data) {
+          // Handle FORCE_LANGUAGE command
+          if (event.data.type === "FORCE_LANGUAGE") {
+            const forcedLang = event.data.language;
+            const forceApply = event.data.forceApply || false;
+            const override = event.data.override || false;
 
-          // CRITICAL: Enable language change permission flag for FORCE_LANGUAGE messages
-          window.__OQTIMA_ALLOW_FORCE_LANG = true;
+            // Explicitly check if language is Arabic to ensure RTL is set properly
+            const isArabic = forcedLang === "ar";
+            const isRTL =
+              isArabic ||
+              event.data.isRTL ||
+              RTL_LANGUAGES.includes(forcedLang);
 
-          // CRITICAL: Check if there's a language that must be used from URL parameters
-          if (window.__OQTIMA_LANG_MUST_USE && !override && !forceApply) {
-            // If override or forceApply is not true, we need to check if the language matches
-            if (forcedLang === window.__OQTIMA_LANG_MUST_USE) {
-              // Continue because language matches the desired one
-            } else {
-              return; // Don't continue if it doesn't match
-            }
-          } else {
-            // Either no URL param constraint exists OR override/forceApply is true
-            window.__OQTIMA_LANG_MUST_USE = forcedLang;
-            window.__OQTIMA_LANG_SOURCE = "forced_message";
+            console.log(
+              "[Popup Registration] Received FORCE_LANGUAGE message:",
+              {
+                language: forcedLang,
+                isRTL: isRTL,
+                isArabic: isArabic,
+              }
+            );
 
-            // Store the language in localStorage to maintain consistency
-            try {
-              localStorage.setItem("__OQTIMA_ORIGINAL_LANGUAGE", forcedLang);
-              localStorage.setItem("__OQTIMA_SELECTED_LANGUAGE", forcedLang);
-              localStorage.setItem(
-                "__OQTIMA_REGISTRATION_LANGUAGE",
-                forcedLang
-              );
-              localStorage.setItem("i18nextLng", forcedLang);
-              localStorage.setItem("gatsby-i18next-language", forcedLang);
-              document.cookie = `i18next=${forcedLang};path=/`;
-              document.cookie = `last_language=${forcedLang};path=/`;
-            } catch (e) {
-              // Error setting storage
-            }
-          }
+            // CRITICAL: Enable language change permission flag for FORCE_LANGUAGE messages
+            window.__OQTIMA_ALLOW_FORCE_LANG = true;
 
-          if (forcedLang) {
-            // Apply language immediately
-            try {
-              // Use our dedicated helper function to ensure proper language application
-              manuallySetLanguage(forcedLang, i18n).then(() => {});
+            // Set flags for Arabic/RTL mode
+            if (isArabic) {
+              // Set global flags
+              window.__FORCE_RTL__ = true;
+              window.__ORIGINAL_RTL__ = true;
 
-              // Update DOM
-              document.documentElement.lang = forcedLang;
-              document
-                .querySelector('meta[http-equiv="content-language"]')
-                ?.setAttribute("content", forcedLang);
-
-              // Body classes for styling
-              document.body.classList.add(`lang-${forcedLang}`);
-
-              // Handle RTL styling
-              if (isRTL) {
-                // Add RTL classes and attributes to HTML and body
-                document.documentElement.setAttribute("dir", "rtl");
-                document.documentElement.classList.add("rtl-active");
-                document.body.setAttribute("dir", "rtl");
-                document.body.classList.add("rtl-active");
-
-                // Load RTL stylesheet if needed
-                if (!document.getElementById("rtl-stylesheet")) {
-                  const rtlStylesheet = document.createElement("link");
-                  rtlStylesheet.id = "rtl-stylesheet";
-                  rtlStylesheet.rel = "stylesheet";
-                  rtlStylesheet.href = "/styles/rtl.css";
-                  document.head.appendChild(rtlStylesheet);
-                }
-
-                // Add RTL classes to registration components
-                const registrationContainer = document.querySelector(
-                  ".popup-registration"
-                );
-                if (registrationContainer) {
-                  registrationContainer.classList.add("rtl-active");
-                  registrationContainer.setAttribute("dir", "rtl");
-                  registrationContainer.setAttribute("data-rtl", "true");
-                }
-
-                // Find the container and apply RTL styling
-                const container = document.querySelector(
-                  ".popup-registration__container"
-                );
-                if (container) {
-                  container.classList.add("popup-registration__container--rtl");
-                  container.style.flexDirection = "row-reverse";
-                  container.style.display = "flex";
-                  container.setAttribute("dir", "rtl");
-                }
-
-                // Style the sidebar for RTL
-                const sidebar = document.querySelector(
-                  ".popup-registration__sidebar"
-                );
-                if (sidebar) {
-                  sidebar.classList.add("popup-registration__sidebar--rtl");
-                  sidebar.style.order = "2";
-                  sidebar.style.borderRadius = "0 10px 10px 0";
-                  sidebar.setAttribute("dir", "rtl");
-                }
-
-                // Style the content for RTL
-                const content = document.querySelector(
-                  ".popup-registration__content"
-                );
-                if (content) {
-                  content.classList.add("popup-registration__content--rtl");
-                  content.style.order = "1";
-                  content.style.borderRadius = "10px 0 0 10px";
-                  content.setAttribute("dir", "rtl");
-                }
-
-                // Add RTL to form elements
-                const formElements = document.querySelectorAll(
-                  "input, select, textarea, button, label"
-                );
-                if (formElements.length > 0) {
-                  formElements.forEach((el) => {
-                    el.classList.add("rtl-element");
-                    el.setAttribute("dir", "rtl");
-                  });
-                }
-
-                // Set session storage flag
+              // Set session storage consistently
+              try {
                 sessionStorage.setItem("oqtima_tab_rtl", "true");
+                sessionStorage.setItem("oqtima_tab_language", "ar");
+                sessionStorage.setItem("isRTL", "true");
+                sessionStorage.setItem("i18nextLng", "ar");
+              } catch (e) {
+                console.warn(
+                  "[Popup Registration] Error setting RTL session storage:",
+                  e
+                );
+              }
+            }
 
-                // Inject RTL specific CSS
-                if (!document.getElementById("rtl-inline-styles")) {
-                  const rtlInlineStyles = document.createElement("style");
-                  rtlInlineStyles.id = "rtl-inline-styles";
-                  rtlInlineStyles.innerHTML = `
-                    .rtl-active input, 
-                    .rtl-active textarea, 
-                    .rtl-active select {
-                      direction: rtl !important;
-                      text-align: right !important;
-                    }
-                    
-                    .rtl-active .form-item {
-                      direction: rtl !important; 
-                    }
-                    
-                    .rtl-active .popup-registration__content {
-                      direction: rtl !important;
-                    }
-                    
-                    .rtl-active .popup-registration__container {
-                      display: flex !important;
-                      flex-direction: row-reverse !important;
-                    }
+            // CRITICAL: Check if there's a language that must be used from URL parameters
+            if (window.__OQTIMA_LANG_MUST_USE && !override && !forceApply) {
+              // If override or forceApply is not true, we need to check if the language matches
+              if (forcedLang === window.__OQTIMA_LANG_MUST_USE) {
+                // Continue because language matches the desired one
+              } else {
+                return; // Don't continue if it doesn't match
+              }
+            } else {
+              // Either no URL param constraint exists OR override/forceApply is true
+              window.__OQTIMA_LANG_MUST_USE = forcedLang;
+              window.__OQTIMA_LANG_SOURCE = "forced_message";
 
-                    .rtl-active .popup-registration__sidebar {
-                      order: 2 !important;
-                      border-radius: 0 10px 10px 0 !important;
-                    }
+              // Store the language in localStorage to maintain consistency
+              try {
+                localStorage.setItem("__OQTIMA_ORIGINAL_LANGUAGE", forcedLang);
+                localStorage.setItem("__OQTIMA_SELECTED_LANGUAGE", forcedLang);
+                localStorage.setItem(
+                  "__OQTIMA_REGISTRATION_LANGUAGE",
+                  forcedLang
+                );
+                localStorage.setItem("i18nextLng", forcedLang);
+                localStorage.setItem("gatsby-i18next-language", forcedLang);
+                document.cookie = `i18next=${forcedLang};path=/`;
+                document.cookie = `last_language=${forcedLang};path=/`;
+              } catch (e) {
+                // Error setting storage
+              }
+            }
 
-                    .rtl-active .popup-registration__content {
-                      order: 1 !important;
-                      border-radius: 10px 0 0 10px !important;
-                    }
-                    
-                    /* For mobile devices */
-                    @media (max-width: 767px) {
-                      .rtl-active .popup-registration__container {
-                        flex-direction: column !important;
+            if (forcedLang) {
+              // Apply language immediately
+              try {
+                // Use our dedicated helper function to ensure proper language application
+                manuallySetLanguage(forcedLang, i18n).then(() => {});
+
+                // Update DOM
+                document.documentElement.lang = forcedLang;
+                document
+                  .querySelector('meta[http-equiv="content-language"]')
+                  ?.setAttribute("content", forcedLang);
+
+                // Body classes for styling
+                document.body.classList.add(`lang-${forcedLang}`);
+
+                // Always set the session storage with current language
+                try {
+                  sessionStorage.setItem("oqtima_tab_language", forcedLang);
+                } catch (e) {
+                  console.warn(
+                    "[Popup Registration] Error setting language in session storage:",
+                    e
+                  );
+                }
+
+                // Handle RTL styling
+                if (isRTL) {
+                  // Set RTL flag in session storage
+                  try {
+                    sessionStorage.setItem("oqtima_tab_rtl", "true");
+                    sessionStorage.setItem("isRTL", "true");
+                  } catch (e) {
+                    console.warn(
+                      "[Popup Registration] Error setting RTL flag:",
+                      e
+                    );
+                  }
+
+                  // Add RTL classes and attributes to HTML and body
+                  document.documentElement.setAttribute("dir", "rtl");
+                  document.documentElement.classList.add("rtl-active");
+                  document.body.setAttribute("dir", "rtl");
+                  document.body.classList.add("rtl-active");
+
+                  // Load RTL stylesheet if needed
+                  if (!document.getElementById("rtl-stylesheet")) {
+                    const rtlStylesheet = document.createElement("link");
+                    rtlStylesheet.id = "rtl-stylesheet";
+                    rtlStylesheet.rel = "stylesheet";
+                    rtlStylesheet.href = "/styles/rtl.css";
+                    document.head.appendChild(rtlStylesheet);
+                  }
+
+                  // Add RTL classes to registration components
+                  const registrationContainer = document.querySelector(
+                    ".popup-registration"
+                  );
+                  if (registrationContainer) {
+                    registrationContainer.classList.add("rtl-active");
+                    registrationContainer.setAttribute("dir", "rtl");
+                    registrationContainer.setAttribute("data-rtl", "true");
+                  }
+
+                  // Find the container and apply RTL styling
+                  const container = document.querySelector(
+                    ".popup-registration__container"
+                  );
+                  if (container) {
+                    container.classList.add(
+                      "popup-registration__container--rtl"
+                    );
+                    container.style.flexDirection = "row-reverse";
+                    container.style.display = "flex";
+                    container.setAttribute("dir", "rtl");
+                  }
+
+                  // Style the sidebar for RTL
+                  const sidebar = document.querySelector(
+                    ".popup-registration__sidebar"
+                  );
+                  if (sidebar) {
+                    sidebar.classList.add("popup-registration__sidebar--rtl");
+                    sidebar.style.order = "2";
+                    sidebar.style.borderRadius = "0 10px 10px 0";
+                    sidebar.setAttribute("dir", "rtl");
+                  }
+
+                  // Style the content for RTL
+                  const content = document.querySelector(
+                    ".popup-registration__content"
+                  );
+                  if (content) {
+                    content.classList.add("popup-registration__content--rtl");
+                    content.style.order = "1";
+                    content.style.borderRadius = "10px 0 0 10px";
+                    content.setAttribute("dir", "rtl");
+                  }
+
+                  // Add RTL to form elements
+                  const formElements = document.querySelectorAll(
+                    "input, select, textarea, button, label"
+                  );
+                  if (formElements.length > 0) {
+                    formElements.forEach((el) => {
+                      el.classList.add("rtl-element");
+                      el.setAttribute("dir", "rtl");
+                    });
+                  }
+
+                  // Inject RTL specific CSS
+                  if (!document.getElementById("rtl-inline-styles")) {
+                    const rtlInlineStyles = document.createElement("style");
+                    rtlInlineStyles.id = "rtl-inline-styles";
+                    rtlInlineStyles.innerHTML = `
+                      .rtl-active input, 
+                      .rtl-active textarea, 
+                      .rtl-active select {
+                        direction: rtl !important;
+                        text-align: right !important;
                       }
                       
-                      .rtl-active .popup-registration__sidebar {
-                        border-radius: 10px 10px 0 0 !important;
+                      .rtl-active .form-item {
+                        direction: rtl !important; 
                       }
                       
                       .rtl-active .popup-registration__content {
-                        border-radius: 0 0 10px 10px !important;
+                        direction: rtl !important;
                       }
-                    }
-                    
-                    /* Mirror spacing and positioning */
-                    .rtl-active .form-item label {
-                      text-align: right !important;
-                    }
-                    
-                    .rtl-active .form-checkbox label {
-                      padding-right: 25px !important;
-                      padding-left: 0 !important;
-                    }
-                    
-                    .rtl-active .form-checkbox input[type="checkbox"] {
-                      right: 0 !important;
-                      left: auto !important;
-                    }
-                  `;
-                  document.head.appendChild(rtlInlineStyles);
-                }
-              } else {
-                // Remove RTL if it's not an RTL language
-                document.documentElement.removeAttribute("dir");
-                document.documentElement.classList.remove("rtl-active");
-                document.body.removeAttribute("dir");
-                document.body.classList.remove("rtl-active");
+                      
+                      .rtl-active .popup-registration__container {
+                        display: flex !important;
+                        flex-direction: row-reverse !important;
+                      }
 
-                // Remove RTL from registration container
-                const registrationContainer = document.querySelector(
-                  ".popup-registration"
+                      .rtl-active .popup-registration__sidebar {
+                        order: 2 !important;
+                        border-radius: 0 10px 10px 0 !important;
+                      }
+
+                      .rtl-active .popup-registration__content {
+                        order: 1 !important;
+                        border-radius: 10px 0 0 10px !important;
+                      }
+                      
+                      /* For mobile devices */
+                      @media (max-width: 767px) {
+                        .rtl-active .popup-registration__container {
+                          flex-direction: column !important;
+                        }
+                        
+                        .rtl-active .popup-registration__sidebar {
+                          border-radius: 10px 10px 0 0 !important;
+                        }
+                        
+                        .rtl-active .popup-registration__content {
+                          border-radius: 0 0 10px 10px !important;
+                        }
+                      }
+                      
+                      /* Mirror spacing and positioning */
+                      .rtl-active .form-item label {
+                        text-align: right !important;
+                      }
+                    `;
+                    document.head.appendChild(rtlInlineStyles);
+                  }
+                } else {
+                  // Set RTL flag to false in session storage for non-RTL languages
+                  try {
+                    sessionStorage.setItem("oqtima_tab_rtl", "false");
+                    sessionStorage.setItem("isRTL", "false");
+                  } catch (e) {
+                    console.warn(
+                      "[Popup Registration] Error setting RTL flag to false:",
+                      e
+                    );
+                  }
+                }
+              } catch (e) {
+                console.error(
+                  "[Popup Registration] Error applying language:",
+                  e
                 );
-                if (registrationContainer) {
-                  registrationContainer.classList.remove("rtl-active");
-                  registrationContainer.removeAttribute("dir");
-                  registrationContainer.removeAttribute("data-rtl");
-                }
-
-                // Remove RTL from form elements
-                const formElements = document.querySelectorAll(".rtl-element");
-                if (formElements.length > 0) {
-                  formElements.forEach((el) => {
-                    el.classList.remove("rtl-element");
-                    el.removeAttribute("dir");
-                  });
-                }
               }
-
-              // Update language context if available
-              if (languageContext && languageContext.setSelectedLanguage) {
-                languageContext.setSelectedLanguage({
-                  id: forcedLang,
-                  title: forcedLang.toUpperCase(),
-                  URIPart: `/${forcedLang}/`,
-                  isRTL: isRTL,
-                });
-              }
-            } catch (err) {
-              // Error forcing language
             }
+          }
+        }
+        // Handle CLOSE_POPUP command
+        else if (
+          event.data === "close_popup" ||
+          (typeof event.data === "object" &&
+            (event.data.type === "OQTIMA_CLOSE_POPUP" ||
+              event.data.type === "closeRegistrationPopup"))
+        ) {
+          console.log("[Popup Registration] Received close popup message");
+          if (typeof handleClose === "function") {
+            handleClose();
+          }
+
+          // Try to notify parent window to close this popup
+          try {
+            if (window.parent && window.parent !== window) {
+              // Send close message to parent
+              window.parent.postMessage(
+                {
+                  type: "OQTIMA_CLOSE_POPUP",
+                  source: "popup_registration",
+                  timestamp: Date.now(),
+                },
+                "*"
+              );
+            }
+          } catch (e) {
+            console.warn(
+              "[Popup Registration] Error notifying parent window:",
+              e
+            );
           }
         }
       };
@@ -779,184 +838,6 @@ const PopupRegistrationPage = ({ location, data }) => {
         <p>{error}</p>
         <button onClick={handleClose}>Close</button>
       </div>
-    );
-  }
-
-  // Listen for message events from parent iframe
-  if (typeof window !== "undefined") {
-    window.addEventListener(
-      "message",
-      (event) => {
-        // Handle FORCE_LANGUAGE command
-        if (
-          event.data &&
-          event.data.type === "FORCE_LANGUAGE" &&
-          event.data.language
-        ) {
-          const langToUse = event.data.language.toLowerCase();
-
-          // Check if we're allowed to force language changes
-          if (window.__OQTIMA_ALLOW_FORCE_LANG) {
-            // Mark that we're handling a forced language change
-            window.__OQTIMA_HANDLING_FORCE = true;
-
-            // Handle RTL languages
-            if (event.data.isRTL) {
-              // Apply RTL to document
-              document.documentElement.classList.add("rtl-active");
-              document.documentElement.setAttribute("dir", "rtl");
-              document.body.classList.add("rtl-active");
-              document.body.setAttribute("dir", "rtl");
-
-              // Add RTL class to main registration container
-              const registrationContainer = document.querySelector(
-                ".popup-registration"
-              );
-              if (registrationContainer) {
-                registrationContainer.classList.add("rtl-active");
-                registrationContainer.setAttribute("dir", "rtl");
-                registrationContainer.setAttribute("data-rtl", "true");
-              }
-
-              // Add RTL to form elements
-              const formElements = document.querySelectorAll(
-                "input, select, textarea, button"
-              );
-              if (formElements.length > 0) {
-                formElements.forEach((el) => {
-                  el.classList.add("rtl-element");
-                  el.setAttribute("dir", "rtl");
-                });
-              }
-            } else {
-              // Remove RTL if not an RTL language
-              document.documentElement.classList.remove("rtl-active");
-              document.documentElement.removeAttribute("dir");
-              document.body.classList.remove("rtl-active");
-              document.body.removeAttribute("dir");
-
-              const registrationContainer = document.querySelector(
-                ".popup-registration"
-              );
-              if (registrationContainer) {
-                registrationContainer.classList.remove("rtl-active");
-                registrationContainer.removeAttribute("dir");
-                registrationContainer.removeAttribute("data-rtl");
-              }
-
-              // Remove RTL from form elements
-              const formElements = document.querySelectorAll(".rtl-element");
-              if (formElements.length > 0) {
-                formElements.forEach((el) => {
-                  el.classList.remove("rtl-element");
-                  el.removeAttribute("dir");
-                });
-              }
-            }
-
-            // Attempt to change language
-            manuallySetLanguage(langToUse, i18n)
-              .then(() => {
-                window.__OQTIMA_HANDLING_FORCE = false;
-              })
-              .catch(() => {
-                window.__OQTIMA_HANDLING_FORCE = false;
-              });
-          } else {
-            // Language changes are locked
-          }
-        }
-
-        // Handle CLOSE_POPUP command from the registration component
-        if (
-          event.data &&
-          (event.data === "close_popup" ||
-            (typeof event.data === "object" &&
-              event.data.type === "OQTIMA_CLOSE_POPUP"))
-        ) {
-          console.log("Received close popup message", event.data);
-
-          // Call the close handler
-          if (typeof handleClose === "function") {
-            handleClose();
-          }
-
-          // If we're in an iframe, also notify the parent to close
-          if (window.parent !== window) {
-            try {
-              window.parent.postMessage(
-                {
-                  type: "OQTIMA_CLOSE_POPUP",
-                  source: "popup_registration_page",
-                  timestamp: Date.now(),
-                },
-                "*"
-              );
-            } catch (err) {
-              console.warn("Error forwarding close message to parent:", err);
-            }
-          }
-        }
-
-        // Handle Arabic language specifically for RTL
-        if (
-          event.data &&
-          event.data.type === "FORCE_LANGUAGE" &&
-          event.data.language &&
-          event.data.language.toLowerCase() === "ar"
-        ) {
-          console.log("Arabic language detected, applying RTL immediately");
-
-          // Set RTL flag explicitly
-          event.data.isRTL = true;
-
-          // Add RTL classes and attributes to HTML and body
-          document.documentElement.setAttribute("dir", "rtl");
-          document.documentElement.classList.add("rtl-active");
-          document.body.setAttribute("dir", "rtl");
-          document.body.classList.add("rtl-active");
-
-          // Set storage flags
-          sessionStorage.setItem("oqtima_tab_rtl", "true");
-          sessionStorage.setItem("oqtima_tab_language", "ar");
-
-          // Find the container and apply RTL styling if it exists
-          setTimeout(() => {
-            const container = document.querySelector(
-              ".popup-registration__container"
-            );
-            if (container) {
-              container.classList.add("popup-registration__container--rtl");
-              container.style.flexDirection = "row-reverse";
-              container.style.display = "flex";
-              container.setAttribute("dir", "rtl");
-            }
-
-            // Style the sidebar for RTL
-            const sidebar = document.querySelector(
-              ".popup-registration__sidebar"
-            );
-            if (sidebar) {
-              sidebar.classList.add("popup-registration__sidebar--rtl");
-              sidebar.style.order = "2";
-              sidebar.style.borderRadius = "0 10px 10px 0";
-              sidebar.setAttribute("dir", "rtl");
-            }
-
-            // Style the content for RTL
-            const content = document.querySelector(
-              ".popup-registration__content"
-            );
-            if (content) {
-              content.classList.add("popup-registration__content--rtl");
-              content.style.order = "1";
-              content.style.borderRadius = "10px 0 0 10px";
-              content.setAttribute("dir", "rtl");
-            }
-          }, 10);
-        }
-      },
-      false
     );
   }
 
