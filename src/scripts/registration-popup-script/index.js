@@ -572,220 +572,243 @@
    * This allows using existing buttons, links, or other elements to trigger the registration popup
    */
   function setupTriggerElements() {
-    try {
-      // Find all elements with the data-oqtima-trigger attribute (buttons, links, images, etc.)
-      const triggerElements = document.querySelectorAll(
-        "[data-oqtima-trigger]"
-      );
+    // Find all elements with data-oqtima-trigger attribute
+    const triggerElements = document.querySelectorAll("[data-oqtima-trigger]");
 
-      if (triggerElements.length === 0) {
-        console.warn(
-          "[OQtima] No trigger elements found. Add the data-oqtima-trigger attribute to buttons, links, or other elements to enable registration."
-        );
-        return;
+    if (triggerElements.length === 0) {
+      console.log(
+        "[OQtima] No trigger elements found. Add data-oqtima-trigger attribute to your buttons, links, or images to enable registration popup."
+      );
+      return;
+    }
+
+    console.log("[OQtima] Found trigger elements:", triggerElements.length);
+
+    // Add event listeners to each trigger element
+    triggerElements.forEach((element) => {
+      // Extract registration parameters from data attributes
+      const lang = element.getAttribute("data-lang") || "en";
+      let referralType = element.getAttribute("data-referral-type");
+      const referralValue = element.getAttribute("data-referral-value");
+
+      // Convert referral_type to integer if it's numeric
+      if (referralType) {
+        const parsedType = parseInt(referralType, 10);
+        if (!isNaN(parsedType)) {
+          referralType = parsedType;
+          console.log(
+            "[OQtima] Parsed data-referral-type as integer:",
+            parsedType
+          );
+        } else {
+          console.warn(
+            "[OQtima] data-referral-type is not a valid integer:",
+            referralType
+          );
+        }
       }
 
+      const elementType = element.tagName.toLowerCase();
       console.log(
-        `[OQtima] Found ${triggerElements.length} trigger elements. Setting up click handlers.`
+        `[OQtima] Setting up ${elementType} trigger element with attributes:`,
+        {
+          lang,
+          referralType: referralType || "(not set)",
+          referralValue: referralValue || "(not set)",
+        }
       );
 
-      // Set up event listeners for each trigger element
-      triggerElements.forEach((triggerElement, index) => {
-        // Mark the element with a data attribute for easier debugging
-        triggerElement.setAttribute(
-          "data-oqtima-trigger-id",
-          `trigger-${index}`
+      // Check if lang attribute is set (it's required)
+      if (!element.hasAttribute("data-lang")) {
+        console.warn(
+          `[OQtima] Missing required data-lang attribute on trigger element:`,
+          element
         );
-
-        // Get the language attribute - REQUIRED
-        const language = triggerElement.getAttribute("data-lang");
-        if (!language) {
-          console.warn(
-            `[OQtima] Trigger element #${index} is missing the required data-lang attribute:`,
-            triggerElement
-          );
-
-          // In development mode, add a visual indication
-          if (isDevelopmentMode()) {
-            triggerElement.style.position = "relative";
-            triggerElement.style.outline = "2px dashed red";
-
-            const warningText = document.createElement("div");
-            warningText.textContent = "Missing data-lang attribute";
-            warningText.style.position = "absolute";
-            warningText.style.top = "100%";
-            warningText.style.left = "0";
-            warningText.style.backgroundColor = "red";
-            warningText.style.color = "white";
-            warningText.style.padding = "2px 5px";
-            warningText.style.fontSize = "10px";
-            warningText.style.whiteSpace = "nowrap";
-            warningText.style.zIndex = "9999";
-            triggerElement.appendChild(warningText);
-          }
+        if (environment === "development") {
+          // Add a subtle warning indicator in development mode
+          element.style.border = "1px dotted #ff4400";
+          element.title =
+            "Missing required data-lang attribute for Oqtima registration popup";
         }
+      }
 
-        // Get referral parameters - OPTIONAL
-        const referralType = triggerElement.getAttribute("data-referral-type");
-        const referralValue = triggerElement.getAttribute(
-          "data-referral-value"
-        );
+      // Visually indicate the element is clickable if it doesn't already have obvious styles
+      if (elementType !== "button" && elementType !== "a") {
+        element.style.cursor = "pointer";
 
-        // Log the element configuration
+        // Add a subtle hover effect if the element doesn't already have one
+        if (!element.classList.contains("oqtima-styled")) {
+          const originalBackgroundColor =
+            window.getComputedStyle(element).backgroundColor;
+
+          element.addEventListener("mouseenter", function () {
+            if (!element.classList.contains("oqtima-styled")) {
+              element.style.opacity = "0.9";
+            }
+          });
+
+          element.addEventListener("mouseleave", function () {
+            if (!element.classList.contains("oqtima-styled")) {
+              element.style.opacity = "1";
+            }
+          });
+        }
+      }
+
+      // Add click event listener
+      element.addEventListener("click", function (event) {
+        // Prevent default action for links and other elements
+        event.preventDefault();
+        event.stopPropagation();
+
         console.log(
-          `[OQtima] Configured trigger element #${index}:`,
-          `\n - Element: ${triggerElement.tagName.toLowerCase()}${
-            triggerElement.id ? "#" + triggerElement.id : ""
-          }${
-            triggerElement.className
-              ? "." + triggerElement.className.replace(/\s+/g, ".")
-              : ""
-          }`,
-          `\n - Language: ${language || "not set (required)"}`,
-          `\n - Referral Type: ${referralType || "not set (optional)"}`,
-          `\n - Referral Value: ${referralValue || "not set (optional)"}`
+          "[OQtima] Trigger element clicked, opening popup with parameters:",
+          {
+            lang,
+            referral_type: referralType || "(not set)",
+            referral_value: referralValue || "(not set)",
+          }
         );
 
-        // Store referral params in session storage if available
-        if (referralType && referralValue && window.sessionStorage) {
+        // Save trigger element reference for later use
+        window.__OQTIMA_TRIGGER_ELEMENT__ = element;
+
+        // Store domain information for cross-domain communication
+        window.__OQTIMA_ORIGIN_DOMAIN__ = window.location.origin;
+        window.__OQTIMA_REFERRER__ = window.location.href;
+
+        // Store the popup mode flag and referral parameters in session storage
+        if (window.sessionStorage) {
           try {
-            // Only store if the referral type is a valid number
-            const numericReferralType = parseInt(referralType, 10);
-            if (!isNaN(numericReferralType)) {
-              sessionStorage.setItem(
-                "oqtima_referral_type",
-                numericReferralType
-              );
-              sessionStorage.setItem("oqtima_referral_value", referralValue);
+            sessionStorage.setItem("oqtima_popup_mode", "true");
+            sessionStorage.setItem(
+              "oqtima_origin_domain",
+              window.location.origin
+            );
+            sessionStorage.setItem("oqtima_referrer", window.location.href);
+
+            // Only store referral parameters if they are valid and for specific referral types
+            // IB Referral Link (type 12) or Campaign Link (type 14)
+            const isValidReferralType =
+              referralType === 12 || referralType === 14;
+
+            // Clear existing referral parameters for normal registration
+            if (!isValidReferralType) {
+              // CRITICAL: Make sure to completely remove these keys, not set them to null
+              if (sessionStorage.getItem("oqtima_referral_type") !== null) {
+                sessionStorage.removeItem("oqtima_referral_type");
+              }
+
+              if (sessionStorage.getItem("oqtima_referral_value") !== null) {
+                sessionStorage.removeItem("oqtima_referral_value");
+              }
 
               console.log(
-                `[OQtima] Stored referral parameters in session storage: type=${numericReferralType}, value=${referralValue}`
+                "[OQtima] Cleared referral parameters from sessionStorage for normal registration"
+              );
+            }
+            // Only store for specific referral types
+            else if (referralType && isValidReferralType) {
+              sessionStorage.setItem("oqtima_referral_type", referralType);
+              if (referralValue) {
+                sessionStorage.setItem("oqtima_referral_value", referralValue);
+              } else {
+                // If referral_type is valid but referral_value is missing,
+                // ensure we remove any existing referral_value
+                if (sessionStorage.getItem("oqtima_referral_value") !== null) {
+                  sessionStorage.removeItem("oqtima_referral_value");
+                }
+              }
+
+              console.log(
+                "[OQtima] Stored referral parameters in sessionStorage:",
+                {
+                  referral_type: referralType,
+                  referral_value: referralValue || "(removed)",
+                }
               );
             }
           } catch (e) {
-            console.warn("[OQtima] Error storing referral params:", e);
+            console.warn(
+              "[OQtima] Error storing parameters in sessionStorage:",
+              e
+            );
           }
         }
 
-        // Add click event listener
-        triggerElement.addEventListener("click", function (event) {
-          // Log the click event
+        // Try to store parameters in localStorage as a fallback for cross-domain
+        try {
+          localStorage.setItem("oqtima_popup_mode", "true");
+          localStorage.setItem("oqtima_origin_domain", window.location.origin);
+          localStorage.setItem("oqtima_referrer", window.location.href);
+
+          if (referralType) {
+            localStorage.setItem("oqtima_referral_type", referralType);
+          }
+          if (referralValue) {
+            localStorage.setItem("oqtima_referral_value", referralValue);
+          }
+          localStorage.setItem("oqtima_lang", lang);
+        } catch (e) {
+          console.warn("[OQtima] LocalStorage fallback failed:", e);
+        }
+
+        // Set global variables for referral parameters
+        // But only set referral_value for specific referral types
+        const isValidReferralType =
+          referralType === 12 || // IB Referral Link
+          referralType === 14; // Campaign Link
+
+        window.__OQTIMA_REFERRAL_TYPE__ = referralType;
+        window.__OQTIMA_LANG__ = lang;
+
+        if (isValidReferralType && referralValue) {
+          window.__OQTIMA_REFERRAL_VALUE__ = referralValue;
           console.log(
-            `[OQtima] Trigger element #${index} clicked:`,
-            `\n - Element: ${triggerElement.tagName.toLowerCase()}${
-              triggerElement.id ? "#" + triggerElement.id : ""
-            }`,
-            `\n - Language: ${language || "default"}`,
-            `\n - Referral Type: ${referralType || "none"}`,
-            `\n - Referral Value: ${referralValue || "none"}`
+            "[OQtima] Set global referral_value variable:",
+            referralValue
           );
-
-          // Prevent default action for links to avoid page navigation
-          if (triggerElement.tagName === "A") {
-            event.preventDefault();
+        } else {
+          // For normal registration, ensure referral_value is clear
+          if (window.__OQTIMA_REFERRAL_VALUE__ !== undefined) {
+            delete window.__OQTIMA_REFERRAL_VALUE__;
+            console.log(
+              "[OQtima] Cleared global referral_value variable for normal registration"
+            );
           }
-
-          // Add loading state if supported
-          if (
-            triggerElement.tagName === "BUTTON" ||
-            triggerElement.tagName === "A"
-          ) {
-            const originalContent = triggerElement.innerHTML;
-            const originalDisabled = triggerElement.disabled;
-
-            // Display loading state
-            try {
-              triggerElement.disabled = true;
-              triggerElement.style.opacity = "0.7";
-              triggerElement.style.cursor = "wait";
-
-              // Store original content for restoration
-              triggerElement.setAttribute(
-                "data-original-content",
-                originalContent
-              );
-
-              // Create loading spinner
-              if (!isRTLLanguage(language)) {
-                triggerElement.innerHTML = `<span style="display:inline-block;">${originalContent}</span>
-                  <span style="display:inline-block;margin-left:8px;width:12px;height:12px;border:2px solid rgba(255,255,255,0.3);border-radius:50%;border-top-color:#fff;animation:oqtima-spin 1s linear infinite;"></span>`;
-              } else {
-                triggerElement.innerHTML = `<span style="display:inline-block;margin-right:8px;width:12px;height:12px;border:2px solid rgba(255,255,255,0.3);border-radius:50%;border-top-color:#fff;animation:oqtima-spin 1s linear infinite;"></span>
-                  <span style="display:inline-block;">${originalContent}</span>`;
-              }
-
-              // Add the animation keyframes if they don't exist
-              if (!document.getElementById("oqtima-spinner-keyframes")) {
-                const keyframes = document.createElement("style");
-                keyframes.id = "oqtima-spinner-keyframes";
-                keyframes.innerHTML = `
-                  @keyframes oqtima-spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
-                  }
-                `;
-                document.head.appendChild(keyframes);
-              }
-
-              // Restore button state after 10 seconds (failsafe)
-              setTimeout(() => {
-                if (triggerElement.getAttribute("data-original-content")) {
-                  triggerElement.innerHTML = originalContent;
-                  triggerElement.disabled = originalDisabled;
-                  triggerElement.style.opacity = "";
-                  triggerElement.style.cursor = "";
-                  triggerElement.removeAttribute("data-original-content");
-                }
-              }, 10000);
-            } catch (loadingError) {
-              console.warn(
-                "[OQtima] Error setting loading state:",
-                loadingError
-              );
-            }
-          }
-
-          // Open the registration popup with the configured parameters
-          openRegistrationPopup({
-            lang: language,
-            referral_type: referralType
-              ? parseInt(referralType, 10)
-              : undefined,
-            referral_value: referralValue,
-          });
-        });
-
-        // Add visual indication that the element is clickable if it's not already styled as such
-        if (
-          !triggerElement.classList.contains("button") &&
-          !triggerElement.classList.contains("btn") &&
-          triggerElement.tagName !== "A" &&
-          triggerElement.tagName !== "BUTTON"
-        ) {
-          triggerElement.style.cursor = "pointer";
-
-          // Apply hover effect for non-button elements
-          triggerElement.addEventListener("mouseover", function () {
-            this.style.opacity = "0.8";
-            this.style.transition = "opacity 0.3s ease";
-          });
-
-          triggerElement.addEventListener("mouseout", function () {
-            this.style.opacity = "1";
-            this.style.transition = "opacity 0.3s ease";
-          });
         }
-      });
 
-      // Helper function to check if a language is RTL
-      function isRTLLanguage(langCode) {
-        // List of RTL languages
-        const rtlLanguages = ["ar", "he", "fa", "ur"];
-        return rtlLanguages.includes(langCode);
-      }
-    } catch (error) {
-      console.error("[OQtima] Error setting up trigger elements:", error);
-    }
+        // Create parameters object for opening popup with standardized parameter names
+        const popupParams = {
+          lang,
+          preserveParentDirection: true, // Ensure parent page direction is preserved
+          crossDomain: true, // Enable cross-domain support
+          originDomain: window.location.origin, // Send origin domain for security
+          referrer: window.location.href, // Send referrer for tracking
+        };
+
+        // Only add referral parameters if they are actually set, using the standardized parameter names
+        // that match what the openRegistrationPopup function expects
+        if (
+          referralType !== undefined &&
+          referralType !== null &&
+          referralType !== ""
+        ) {
+          popupParams.referral_type = referralType;
+        }
+
+        if (
+          referralValue !== undefined &&
+          referralValue !== null &&
+          referralValue !== ""
+        ) {
+          popupParams.referral_value = referralValue;
+        }
+
+        // Open the registration popup with the parameters
+        openRegistrationPopup(popupParams);
+      });
+    });
   }
 
   /**
@@ -801,70 +824,44 @@
     styleElement.id = "oqtima-registration-styles";
 
     const css = `
-      /* Base styles for all trigger elements */
+      /* Trigger elements with data-oqtima-trigger attribute */
       [data-oqtima-trigger] {
         cursor: pointer !important;
-        transition: all 0.3s ease !important;
-          position: relative !important;
       }
       
-      /* Button-specific styling for trigger elements */
+      /* Button styling for trigger elements */
       button[data-oqtima-trigger] {
           position: relative !important;
         transition: all 0.3s ease !important;
       }
       
-      /* Link-specific styling for trigger elements */
+      /* Link styling for trigger elements */
       a[data-oqtima-trigger] {
           position: relative !important;
         display: inline-block !important;
       }
       
-      /* Hover effects for trigger elements */
+      /* Enhance trigger elements on hover */
       [data-oqtima-trigger]:hover {
         opacity: 0.9 !important;
       }
       
-      /* Accessible focus styles for keyboard navigation */
-      [data-oqtima-trigger]:focus-visible {
-        outline: 2px solid #0066cc !important;
-        outline-offset: 2px !important;
-      }
-      
-      /* Loading spinner animation */
-      @keyframes oqtima-spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-      
-      /* CSS for loading spinner */
-      .oqtima-spinner {
-        display: inline-block !important;
-        width: 12px !important;
-        height: 12px !important;
-        border: 2px solid rgba(255,255,255,0.3) !important;
-        border-radius: 50% !important;
-        border-top-color: #fff !important;
-        animation: oqtima-spin 1s linear infinite !important;
-        margin-left: 8px !important;
-        vertical-align: middle !important;
-      }
-      
-      /* RTL spinner position */
-      [dir="rtl"] .oqtima-spinner {
-        margin-left: 0 !important;
-        margin-right: 8px !important;
-      }
-      
-      /* Disabled state styling */
-      [data-oqtima-trigger][disabled], 
-      [data-oqtima-trigger][aria-disabled="true"] {
-        opacity: 0.7 !important;
-        cursor: not-allowed !important;
-      }
-      
       /* Mobile styles for popup */
-      .popup-registration__container {
+        .popup-registration__container {
+        flex: 1 1 auto !important;
+          position: relative !important;
+          width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+          padding: 0 !important;
+        background: #fff !important;
+        z-index: 1 !important;
+          display: flex !important;
+          flex-direction: column !important;
+        }
+
+        .popup-registration__content {
           flex: 1 1 auto !important;
           position: relative !important;
           width: 100% !important;
@@ -878,70 +875,128 @@
           flex-direction: column !important;
         }
 
-      .popup-registration__content {
+        .popup-registration__iframe-container {
           flex: 1 1 auto !important;
           position: relative !important;
           width: 100% !important;
-        background-color: #fff !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        -webkit-overflow-scrolling: touch !important;
-      }
-      
-      /* Popup overlay styles */
-      .popup-registration {
-        position: fixed !important;
+          height: auto !important;
+          min-height: 0 !important;
+          overflow: hidden !important;
+        }
+
+        #oqtima-registration-iframe {
+          position: absolute !important;
           top: 0 !important;
           left: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
           width: 100% !important;
           height: 100% !important;
-        background-color: rgba(0, 0, 0, 0.5) !important;
-        z-index: 999999 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        overflow: hidden !important;
-      }
-      
-      /* Loading overlay */
-      .oqtima-loading-overlay {
+          border: none !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          overflow: auto !important;
+          -webkit-overflow-scrolling: touch !important;
+        }
+
+        /* Fix iOS scrolling */
+        .popup-registration__content {
+          -webkit-overflow-scrolling: touch !important;
+          overscroll-behavior-y: contain !important;
+          transform: translate3d(0,0,0) !important;
+          -webkit-transform: translate3d(0,0,0) !important;
+        }
+
+        /* Prevent body scroll */
+        body.popup-open {
           position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
           width: 100% !important;
           height: 100% !important;
-        background-color: rgba(0, 0, 0, 0.3) !important;
-        z-index: 999998 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+          overflow: hidden !important;
+          touch-action: none !important;
+        }
+
+        /* Fix dropdown positioning */
+        .custom-dropdown__content {
+          position: fixed !important;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%) !important;
+          width: 90% !important;
+          max-height: 80vh !important;
+          overflow-y: auto !important;
+          -webkit-overflow-scrolling: touch !important;
+          background: white !important;
+          border-radius: 8px !important;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+          z-index: 2147483648 !important;
+        }
+      }
+
+      /* Tablet */
+      @media screen and (min-width: 768px) {
+        .popup-registration__container {
+          width: 90% !important;
+          max-height: 85vh !important;
+        }
+
+        .popup-registration__iframe-container {
+          width: 100% !important;
+          height: 85vh !important;
+          max-height: 85vh !important;
+        }
       }
       
-      /* Center spinner */
-      .oqtima-loading-spinner {
-        width: 40px !important;
-        height: 40px !important;
-        border: 4px solid rgba(255,255,255,0.3) !important;
-        border-radius: 50% !important;
-        border-top-color: #fff !important;
-        animation: oqtima-spin 1s linear infinite !important;
+      /* Large desktop */
+      @media screen and (min-width: 1024px) {
+        .popup-registration__container {
+          width: 1080px !important;
+          max-width: 1080px !important;
+          max-height: 90vh !important;
+        }
+
+        .popup-registration__iframe-container {
+          height: 47rem !important;
+          max-width: 73.25rem !important;
+          max-height: 47rem !important;
+        }
       }
       
-      /* Error indicator for development mode */
-      .oqtima-dev-error {
-        position: absolute !important;
-        top: 100% !important;
-        left: 0 !important;
-        background-color: #ff4400 !important;
-        color: white !important;
-        padding: 2px 5px !important;
-        font-size: 10px !important;
-        white-space: nowrap !important;
-        z-index: 9999 !important;
+      /* Xtra Large desktop */
+      @media screen and (min-width: 1920px) {
+        .popup-registration__container {
+          max-height: 80vh !important;
+        }
+
+        .popup-registration__iframe-container {
+          height: 47rem !important;
+          max-width: 73rem !important;
+          max-height: 47rem !important;
+        }
+      }
+      
+      /* Mobile landscape */
+      @media screen and (max-width: 991px) and (orientation: landscape) {
+        .popup-registration__container {
+          width: 90% !important;
+          max-width: 90% !important;
+          max-height: 90vh !important;
+        }
+
+        .popup-registration__iframe-container {
+          width: 90% !important;
+          height: 90vh !important;
+          max-width: 90% !important;
+          max-height: 90vh !important;
+          min-height: auto !important;
+        }
       }
     `;
 
+    // Add the CSS to the style element
     styleElement.appendChild(document.createTextNode(css));
+
+    // Add the style element to the head
     document.head.appendChild(styleElement);
   }
 
@@ -968,13 +1023,35 @@
     // ENHANCED: Create standardized params object with all possible variations of parameters
     const params = { ...options };
 
+    // Store cross-domain information
+    if (params.crossDomain || params.originDomain || params.referrer) {
+      console.log("[OQtima] Cross-domain registration detected");
+      window.__OQTIMA_CROSS_DOMAIN__ = true;
+      window.__OQTIMA_ORIGIN_DOMAIN__ =
+        params.originDomain || window.location.origin;
+      window.__OQTIMA_REFERRER__ = params.referrer || document.referrer;
+
+      try {
+        sessionStorage.setItem("oqtima_cross_domain", "true");
+        sessionStorage.setItem(
+          "oqtima_origin_domain",
+          window.__OQTIMA_ORIGIN_DOMAIN__
+        );
+        sessionStorage.setItem("oqtima_referrer", window.__OQTIMA_REFERRER__);
+      } catch (e) {
+        console.warn(
+          "[OQtima] Error storing cross-domain information in sessionStorage:",
+          e
+        );
+      }
+    }
+
     // ENHANCED: Normalize language parameter - support multiple parameter names
     params.language =
       params.language ||
       params.lang ||
       params["data-lang"] ||
       params.langParam ||
-      window.__OQTIMA_LANG__ || // Added global variable check
       "en";
     console.log("[OQtima] Language set to:", params.language);
 
@@ -1093,29 +1170,6 @@
       }
     }
 
-    // Check global variables if referral parameters not found in options
-    if (
-      !params.referral_type &&
-      window.__OQTIMA_REFERRAL_TYPE__ !== undefined
-    ) {
-      params.referral_type = window.__OQTIMA_REFERRAL_TYPE__;
-      console.log(
-        "[OQtima] Using referral_type from global variable:",
-        params.referral_type
-      );
-    }
-
-    if (
-      !params.referral_value &&
-      window.__OQTIMA_REFERRAL_VALUE__ !== undefined
-    ) {
-      params.referral_value = window.__OQTIMA_REFERRAL_VALUE__;
-      console.log(
-        "[OQtima] Using referral_value from global variable:",
-        params.referral_value
-      );
-    }
-
     // ENHANCED: Try to extract referral parameters from URL query string if not provided in params
     // Only apply this for specific registration types (IB referrals or campaigns)
     // For normal registrations, we don't want to accidentally pick up URL parameters
@@ -1169,33 +1223,6 @@
         "[OQtima] Error extracting referral parameters from URL:",
         e
       );
-    }
-
-    // Check session storage as a last resort
-    try {
-      if (
-        !params.referral_type &&
-        sessionStorage.getItem("oqtima_referral_type")
-      ) {
-        params.referral_type = sessionStorage.getItem("oqtima_referral_type");
-        console.log(
-          "[OQtima] Found referral_type in sessionStorage:",
-          params.referral_type
-        );
-      }
-
-      if (
-        !params.referral_value &&
-        sessionStorage.getItem("oqtima_referral_value")
-      ) {
-        params.referral_value = sessionStorage.getItem("oqtima_referral_value");
-        console.log(
-          "[OQtima] Found referral_value in sessionStorage:",
-          params.referral_value
-        );
-      }
-    } catch (err) {
-      console.warn("[OQtima] Error accessing sessionStorage:", err);
     }
 
     // CRITICAL FIX: Ensure referral_type is parsed as an integer when it should be numeric
@@ -2161,9 +2188,6 @@
       flex-direction: row-reverse !important;
           border-radius: 10px !important;
       overflow: hidden !important;
-      width: 100% !important;
-      max-height: 100% !important;
-      height: auto !important;
           direction: rtl !important;
         `;
 
@@ -2631,6 +2655,129 @@
     // Set up message handler for iframe communication
     window.__OQTIMA_MESSAGE_HANDLER = function (event) {
       try {
+        // Handle cross-domain messages with specific types without origin check
+        const safeCrossDomainEvents = [
+          "OQTIMA_CLOSE_POPUP",
+          "OQTIMA_REGISTRATION_SUCCESS",
+          "OQTIMA_REDIRECT",
+          "REQUEST_REFERRAL_PARAMS",
+        ];
+
+        // For safe message types, allow from any origin
+        if (
+          event.data &&
+          typeof event.data === "object" &&
+          event.data.type &&
+          safeCrossDomainEvents.includes(event.data.type)
+        ) {
+          // Process these safe event types regardless of origin
+          console.log(
+            `[OQtima] Processing safe cross-domain message: ${
+              event.data.type
+            }, origin: ${event.origin || "unknown"}`
+          );
+
+          // Handle close popup messages
+          if (event.data.type === "OQTIMA_CLOSE_POPUP") {
+            console.log(
+              "[OQtima] Close popup request received from iframe, source:",
+              event.data.source || "unknown"
+            );
+
+            // Close popup immediately
+            if (window.__OQTIMA_CLOSE_POPUP) {
+              try {
+                window.__OQTIMA_CLOSE_POPUP();
+                console.log("[OQtima] Popup closed successfully");
+
+                // Notify the source that we've closed the popup
+                if (
+                  event.source &&
+                  typeof event.source.postMessage === "function"
+                ) {
+                  try {
+                    event.source.postMessage(
+                      {
+                        type: "OQTIMA_POPUP_CLOSED",
+                        success: true,
+                        timestamp: Date.now(),
+                      },
+                      "*"
+                    );
+                  } catch (err) {
+                    console.warn(
+                      "[OQtima] Error notifying source about popup close:",
+                      err
+                    );
+                  }
+                }
+              } catch (err) {
+                console.error("[OQtima] Error closing popup:", err);
+              }
+              return; // Skip the rest after closing
+            } else {
+              console.warn("[OQtima] Close function not found");
+            }
+          }
+
+          // Handle registration success message
+          if (event.data.type === "OQTIMA_REGISTRATION_SUCCESS") {
+            console.log("[OQtima] Registration success message received");
+
+            // Handle optional redirect
+            if (event.data.redirectUrl) {
+              window.__OQTIMA_REGISTRATION_REDIRECT_URL =
+                event.data.redirectUrl;
+              console.log(
+                "[OQtima] Will redirect to:",
+                event.data.redirectUrl,
+                "with timeout:",
+                event.data.redirectTimeout || 0
+              );
+
+              // Close popup and redirect
+              if (window.__OQTIMA_CLOSE_POPUP) {
+                window.__OQTIMA_CLOSE_POPUP();
+              }
+
+              setTimeout(function () {
+                if (
+                  event.data.redirectUrl &&
+                  typeof event.data.redirectUrl === "string"
+                ) {
+                  window.location.href = event.data.redirectUrl;
+                }
+              }, event.data.redirectTimeout || 100);
+            }
+            return; // Skip the rest of the handler
+          }
+
+          // Handle redirect message with timeout
+          if (event.data.type === "OQTIMA_REDIRECT") {
+            const redirectUrl = event.data.url;
+            const timeout = event.data.timeout || 0;
+
+            if (redirectUrl && typeof redirectUrl === "string") {
+              console.log(
+                "[OQtima] Redirect request received. URL:",
+                redirectUrl,
+                "Timeout:",
+                timeout
+              );
+
+              // Close popup and redirect
+              if (window.__OQTIMA_CLOSE_POPUP) {
+                window.__OQTIMA_CLOSE_POPUP();
+              }
+
+              setTimeout(function () {
+                window.location.href = redirectUrl;
+              }, timeout);
+            }
+            return; // Skip the rest of the handler
+          }
+        }
+
         // Handle referral parameter requests from the iframe
         if (
           event.data &&
@@ -2646,6 +2793,9 @@
             referral_type: null,
             referral_value: null,
             language: null,
+            origin_domain: null,
+            referrer: null,
+            cross_domain: null,
           };
 
           // 1. Check global variables
@@ -2661,6 +2811,22 @@
             referralData.language = window.__OQTIMA_TAB_LANGUAGE__;
           }
 
+          if (window.__OQTIMA_LANG__ !== undefined) {
+            referralData.language = window.__OQTIMA_LANG__;
+          }
+
+          if (window.__OQTIMA_ORIGIN_DOMAIN__ !== undefined) {
+            referralData.origin_domain = window.__OQTIMA_ORIGIN_DOMAIN__;
+          }
+
+          if (window.__OQTIMA_REFERRER__ !== undefined) {
+            referralData.referrer = window.__OQTIMA_REFERRER__;
+          }
+
+          if (window.__OQTIMA_CROSS_DOMAIN__ !== undefined) {
+            referralData.cross_domain = window.__OQTIMA_CROSS_DOMAIN__;
+          }
+
           // 2. Check session storage
           try {
             const storageType = sessionStorage.getItem("oqtima_referral_type");
@@ -2669,6 +2835,14 @@
             );
             const storageLanguage = sessionStorage.getItem(
               "oqtima_tab_language"
+            );
+            const storageLang = sessionStorage.getItem("oqtima_lang");
+            const storageOriginDomain = sessionStorage.getItem(
+              "oqtima_origin_domain"
+            );
+            const storageReferrer = sessionStorage.getItem("oqtima_referrer");
+            const storageCrossDomain = sessionStorage.getItem(
+              "oqtima_cross_domain"
             );
 
             if (storageType && referralData.referral_type === null) {
@@ -2679,14 +2853,62 @@
               referralData.referral_value = storageValue;
             }
 
-            if (storageLanguage && referralData.language === null) {
-              referralData.language = storageLanguage;
+            if (
+              (storageLanguage || storageLang) &&
+              referralData.language === null
+            ) {
+              referralData.language = storageLanguage || storageLang;
+            }
+
+            if (storageOriginDomain && referralData.origin_domain === null) {
+              referralData.origin_domain = storageOriginDomain;
+            }
+
+            if (storageReferrer && referralData.referrer === null) {
+              referralData.referrer = storageReferrer;
+            }
+
+            if (storageCrossDomain && referralData.cross_domain === null) {
+              referralData.cross_domain = storageCrossDomain;
             }
           } catch (e) {
             console.warn("[OQtima] Error accessing sessionStorage:", e);
           }
 
-          // 3. Check URL parameters
+          // 3. Check localStorage as a fallback
+          try {
+            if (referralData.referral_type === null) {
+              referralData.referral_type = localStorage.getItem(
+                "oqtima_referral_type"
+              );
+            }
+
+            if (referralData.referral_value === null) {
+              referralData.referral_value = localStorage.getItem(
+                "oqtima_referral_value"
+              );
+            }
+
+            if (referralData.language === null) {
+              referralData.language =
+                localStorage.getItem("oqtima_lang") ||
+                localStorage.getItem("oqtima_tab_language");
+            }
+
+            if (referralData.origin_domain === null) {
+              referralData.origin_domain = localStorage.getItem(
+                "oqtima_origin_domain"
+              );
+            }
+
+            if (referralData.referrer === null) {
+              referralData.referrer = localStorage.getItem("oqtima_referrer");
+            }
+          } catch (e) {
+            console.warn("[OQtima] Error accessing localStorage:", e);
+          }
+
+          // 4. Check URL parameters
           const urlParams = new URLSearchParams(window.location.search);
           const urlType =
             urlParams.get("referral_type") ||
@@ -2701,6 +2923,8 @@
             urlParams.get("lang") ||
             urlParams.get("locale") ||
             urlParams.get("data-lang");
+          const urlOriginDomain = urlParams.get("originDomain");
+          const urlReferrer = urlParams.get("referrer");
 
           if (urlType && referralData.referral_type === null) {
             referralData.referral_type = urlType;
@@ -2714,7 +2938,15 @@
             referralData.language = urlLanguage;
           }
 
-          // 4. Check the trigger element data attributes
+          if (urlOriginDomain && referralData.origin_domain === null) {
+            referralData.origin_domain = urlOriginDomain;
+          }
+
+          if (urlReferrer && referralData.referrer === null) {
+            referralData.referrer = urlReferrer;
+          }
+
+          // 5. Check the trigger element data attributes
           if (window.__OQTIMA_TRIGGER_ELEMENT__) {
             const referralTypeAttr =
               window.__OQTIMA_TRIGGER_ELEMENT__.getAttribute(
@@ -2744,7 +2976,9 @@
           if (
             referralData.referral_type !== null ||
             referralData.referral_value !== null ||
-            referralData.language !== null
+            referralData.language !== null ||
+            referralData.origin_domain !== null ||
+            referralData.referrer !== null
           ) {
             console.log("[OQtima] Sending parameters to iframe:", referralData);
 
@@ -2770,6 +3004,11 @@
                   referralValue: referralData.referral_value,
                   "referral-value": referralData.referral_value,
 
+                  // Cross-domain parameters
+                  originDomain: referralData.origin_domain,
+                  referrer: referralData.referrer,
+                  crossDomain: referralData.cross_domain || "true",
+
                   // Cross-domain storage instructions
                   storeInSessionStorage: true,
                   storageKeys: [
@@ -2784,6 +3023,14 @@
                     {
                       key: "oqtima_tab_language",
                       value: referralData.language,
+                    },
+                    {
+                      key: "oqtima_origin_domain",
+                      value: referralData.origin_domain,
+                    },
+                    {
+                      key: "oqtima_referrer",
+                      value: referralData.referrer,
                     },
                     { key: "i18nextLng", value: referralData.language },
                     { key: "lang", value: referralData.language },
@@ -2815,157 +3062,54 @@
           return; // Skip the rest of the handler
         }
 
-        // Handle close popup message - ACCEPT FROM ANY ORIGIN FOR MAXIMUM COMPATIBILITY
-        if (
-          event.data &&
-          typeof event.data === "object" &&
-          event.data.type === "OQTIMA_CLOSE_POPUP"
-        ) {
-          console.log(
-            "[OQtima] Close popup request received from iframe, source:",
-            event.data.source || "unknown"
-          );
-
-          // Close popup immediately
-          if (window.__OQTIMA_CLOSE_POPUP) {
-            try {
-              window.__OQTIMA_CLOSE_POPUP();
-              console.log("[OQtima] Popup closed successfully");
-
-              // Notify the source that we've closed the popup
-              if (
-                event.source &&
-                typeof event.source.postMessage === "function"
-              ) {
-                try {
-                  event.source.postMessage(
-                    {
-                      type: "OQTIMA_POPUP_CLOSED",
-                      success: true,
-                      timestamp: Date.now(),
-                    },
-                    "*"
-                  );
-                } catch (err) {
-                  console.warn(
-                    "[OQtima] Error notifying source about popup close:",
-                    err
-                  );
-                }
-              }
-            } catch (err) {
-              console.error("[OQtima] Error closing popup:", err);
-            }
-            return; // Skip the rest after closing
-          } else {
-            console.warn("[OQtima] Close function not found");
-          }
-        }
-
-        // Ignore messages from other origins for security
+        // Ignore messages from untrusted origins for security (except for the safe types already handled above)
         if (
           event.origin &&
           !event.origin.includes("oqtima.com") &&
           !event.origin.includes("localhost") &&
           !event.origin.includes("127.0.0.1")
         ) {
+          console.warn(
+            `[OQtima] Ignored message from untrusted origin: ${event.origin}`
+          );
           return;
         }
 
-        // Handle complex message objects
+        // Handle link clicks inside iframe (specifically for policy links)
         if (
           event.data &&
           typeof event.data === "object" &&
-          !Array.isArray(event.data)
+          event.data.type === "OQTIMA_OPEN_LINK"
         ) {
-          // Handle registration success message
-          if (event.data.type === "OQTIMA_REGISTRATION_SUCCESS") {
-            console.log("[OQtima] Registration success message received");
+          try {
+            const url = event.data.url || "";
+            const isPolicyLink = event.data.isPolicyLink === true;
+            const timestamp = event.data.timestamp || Date.now();
+            const policyType = event.data.policyType || "policy";
 
-            // Handle optional redirect
-            if (event.data.redirectUrl) {
-              window.__OQTIMA_REGISTRATION_REDIRECT_URL =
-                event.data.redirectUrl;
-              console.log(
-                "[OQtima] Will redirect to:",
-                event.data.redirectUrl,
-                "with timeout:",
-                event.data.redirectTimeout || 0
+            // Validate the URL before attempting to open it
+            if (!url || typeof url !== "string") {
+              console.error("[OQtima] Invalid URL in link open request:", url);
+              return;
+            }
+
+            console.log(`[OQtima] Processing link open request:`, {
+              url,
+              isPolicyLink,
+              policyType,
+              timestamp,
+            });
+
+            // Determine if this is a policy link that should be allowed
+            // Always allow policy and legal links regardless of domain
+            const isPolicyOrLegalLink =
+              isPolicyLink ||
+              /privacy|cookie|policy|terms|legal|disclaimer|gdpr|oqtima\.com/i.test(
+                url
               );
 
-              // Close popup and redirect
-              if (window.__OQTIMA_CLOSE_POPUP) {
-                window.__OQTIMA_CLOSE_POPUP();
-              }
-
-              setTimeout(function () {
-                if (
-                  event.data.redirectUrl &&
-                  typeof event.data.redirectUrl === "string"
-                ) {
-                  window.location.href = event.data.redirectUrl;
-                }
-              }, event.data.redirectTimeout || 100);
-            }
-          }
-
-          // Handle redirect message with timeout
-          if (event.data.type === "OQTIMA_REDIRECT") {
-            const redirectUrl = event.data.url;
-            const timeout = event.data.timeout || 0;
-
-            if (redirectUrl && typeof redirectUrl === "string") {
-              console.log(
-                "[OQtima] Redirect request received. URL:",
-                redirectUrl,
-                "Timeout:",
-                timeout
-              );
-
-              // Close popup and redirect
-              if (window.__OQTIMA_CLOSE_POPUP) {
-                window.__OQTIMA_CLOSE_POPUP();
-              }
-
-              setTimeout(function () {
-                window.location.href = redirectUrl;
-              }, timeout);
-            }
-          }
-
-          // Handle link clicks inside iframe (specifically for policy links)
-          if (event.data.type === "OQTIMA_OPEN_LINK") {
-            try {
-              const url = event.data.url || "";
-              const isPolicyLink = event.data.isPolicyLink === true;
-              const timestamp = event.data.timestamp || Date.now();
-              const policyType = event.data.policyType || "policy";
-
-              // Validate the URL before attempting to open it
-              if (!url || typeof url !== "string") {
-                console.error(
-                  "[OQtima] Invalid URL in link open request:",
-                  url
-                );
-                return;
-              }
-
-              console.log(`[OQtima] Processing link open request:`, {
-                url,
-                isPolicyLink,
-                policyType,
-                timestamp,
-              });
-
-              // Determine if this is a policy link that should be allowed
-              // Always allow policy and legal links regardless of domain
-              const isPolicyOrLegalLink =
-                isPolicyLink ||
-                /privacy|cookie|policy|terms|legal|disclaimer|gdpr|oqtima\.com/i.test(
-                  url
-                );
-
-              if (isPolicyOrLegalLink) {
+            if (isPolicyOrLegalLink) {
+              try {
                 console.log("[OQtima] Opening policy link in new tab:", url);
                 let linkOpened = false;
 
@@ -3042,51 +3186,33 @@
                     );
                   }
                 }
-              } else {
-                console.warn(
-                  "[OQtima] Non-policy link request was ignored for security reasons:",
-                  url
-                );
+              } catch (e) {
+                console.error("[OQtima] Error handling link open request:", e);
 
-                // Still send a response to the iframe so it doesn't hang
-                if (event.source && event.source.postMessage) {
-                  event.source.postMessage(
-                    {
-                      type: "OQTIMA_LINK_OPENED",
-                      url: url,
-                      success: false,
-                      timestamp: timestamp,
-                      method: "rejected",
-                      reason: "security",
-                    },
-                    "*"
+                // Try to notify the iframe even if we had an error
+                try {
+                  if (event.source && event.source.postMessage) {
+                    event.source.postMessage(
+                      {
+                        type: "OQTIMA_LINK_OPENED",
+                        success: false,
+                        error: e.message,
+                        timestamp: Date.now(),
+                        method: "error",
+                      },
+                      "*"
+                    );
+                  }
+                } catch (notifyError) {
+                  console.error(
+                    "[OQtima] Failed to notify iframe of error:",
+                    notifyError
                   );
                 }
-              }
-            } catch (e) {
-              console.error("[OQtima] Error handling link open request:", e);
-
-              // Try to notify the iframe even if we had an error
-              try {
-                if (event.source && event.source.postMessage) {
-                  event.source.postMessage(
-                    {
-                      type: "OQTIMA_LINK_OPENED",
-                      success: false,
-                      error: e.message,
-                      timestamp: Date.now(),
-                      method: "error",
-                    },
-                    "*"
-                  );
-                }
-              } catch (notifyError) {
-                console.error(
-                  "[OQtima] Failed to notify iframe of error:",
-                  notifyError
-                );
               }
             }
+          } catch (error) {
+            console.error("[OQtima] Error in OQTIMA_OPEN_LINK handler:", error);
           }
         }
 
@@ -3118,10 +3244,13 @@
       }
     };
 
-    // Add ESC key handler
+    // Set up ESC key handler
     window.__OQTIMA_ESC_HANDLER = function (e) {
       if (e.key === "Escape" || e.keyCode === 27) {
-        window.__OQTIMA_CLOSE_POPUP();
+        console.log("[OQtima] ESC key pressed, closing popup");
+        if (window.__OQTIMA_CLOSE_POPUP) {
+          window.__OQTIMA_CLOSE_POPUP();
+        }
       }
     };
 
@@ -3134,162 +3263,314 @@
    * Constructs the iframe URL with proper parameters
    */
   function constructIframeUrl(language, referralType, referralValue, isMobile) {
-    // Log the input parameters for debugging
-    console.log("[OQtima] Constructing iframe URL with parameters:", {
+    // Log input parameters for debugging
+    console.log("[OQtima] constructIframeUrl called with:", {
       language,
       referralType,
       referralValue,
       isMobile,
     });
 
-    // Normalize the language code
-    let normalizedLang = language || "en";
-    normalizedLang = normalizedLang.toLowerCase().trim();
+    // Check if this is a normal registration (no referral) or specific referral registration
+    const isNormalRegistration =
+      referralType === null ||
+      referralType === undefined ||
+      referralType === "";
 
-    // Special handling for Brazilian Portuguese
-    if (normalizedLang === "br") {
-      normalizedLang = "pt-br";
-      console.log("[OQtima] Mapped Brazilian Portuguese (br) to pt-br");
+    if (isNormalRegistration) {
+      console.log(
+        "[OQtima] Detected normal registration - no referral parameters will be used"
+      );
+    } else {
+      console.log(
+        "[OQtima] Detected referral registration with type:",
+        referralType
+      );
     }
 
-    // Determine if this is a referral registration (vs normal registration)
-    const isReferralRegistration =
-      referralType !== undefined && referralType !== null;
+    // Force clean language code - but preserve BR language code
+    let normalizedLanguage = (language || "en").toLowerCase().trim();
 
+    // If language is BR variant, preserve it instead of removing non-alphabetic characters
+    const isBrVariant = /^(br|pt[-_]?br)$/i.test(normalizedLanguage);
+
+    if (isBrVariant) {
+      console.log(
+        "[OQtima] Detected Brazilian Portuguese variant:",
+        normalizedLanguage
+      );
+      normalizedLanguage = "br"; // Normalize to simple 'br'
+    } else {
+      // For other languages, clean invalid characters
+      normalizedLanguage = normalizedLanguage.replace(/[^a-z]/g, "");
+    }
+
+    console.log("[OQtima] Normalized language:", normalizedLanguage);
+
+    // ENHANCED: Create normalized referral parameters with safe type conversions
+    let normalizedReferralType = referralType;
+    let normalizedReferralValue = referralValue;
+
+    // If referralType is a valid number, convert it to a number type
+    if (referralType !== null && referralType !== undefined) {
+      const parsedType = parseInt(referralType, 10);
+      if (!isNaN(parsedType)) {
+        normalizedReferralType = parsedType;
+        console.log(
+          "[OQtima] Normalized referral_type to number:",
+          normalizedReferralType
+        );
+      }
+    }
+
+    // Ensure referralValue is a string
+    if (referralValue !== null && referralValue !== undefined) {
+      normalizedReferralValue = String(referralValue);
+      console.log(
+        "[OQtima] Normalized referral_value to string:",
+        normalizedReferralValue
+      );
+    }
+
+    // FIXED: Enhanced RTL detection - check for Arabic language variants more thoroughly
+    const isRTL =
+      normalizedLanguage === "ar" ||
+      normalizedLanguage.startsWith("ar-") ||
+      normalizedLanguage === "arabic";
+
+    // Log RTL detection decision
     console.log(
-      "[OQtima] Registration type:",
-      isReferralRegistration
-        ? `Referral (type: ${referralType}, value: ${referralValue || "N/A"})`
-        : "Normal (non-referral)"
+      "[OQtima] RTL mode for iframe:",
+      isRTL ? "ENABLED" : "disabled",
+      "for language:",
+      normalizedLanguage
     );
 
-    // Store referral parameters in session storage for persistence across page loads
-    if (isReferralRegistration) {
+    // Store RTL flag in session storage for iframe consistency ONLY - don't affect parent document
+    if (typeof window !== "undefined") {
       try {
-        if (window.sessionStorage) {
-          sessionStorage.setItem("oqtima_referral_type", referralType);
-          if (referralValue) {
-            sessionStorage.setItem("oqtima_referral_value", referralValue);
-          }
+        // Use a separate key specifically for popup iframe
+        sessionStorage.setItem(
+          "oqtima_popup_iframe_rtl",
+          isRTL ? "true" : "false"
+        );
+
+        // Set popup-specific flags, not document-wide flags
+        window.__OQTIMA_POPUP_IFRAME_RTL__ = isRTL;
+
+        // IMPORTANT: Save the current RTL state of the parent document
+        if (isPageInRTLMode() && !documentRTLState.originalHtmlDir) {
+          saveOriginalRTLState();
         }
       } catch (e) {
-        console.warn("[OQtima] Error storing referral parameters:", e);
+        console.warn("[OQtima] Could not store iframe RTL state:", e);
       }
     }
 
-    // Detect RTL languages - Arabic has special handling
-    const isRTL = normalizedLang === "ar" || normalizedLang.startsWith("ar-");
-    if (isRTL) {
-      console.log("[OQtima] RTL language detected for iframe:", normalizedLang);
-      try {
-        if (window.sessionStorage) {
-          sessionStorage.setItem("oqtima_popup_iframe_rtl", "true");
-        }
-        window.__OQTIMA_POPUP_IFRAME_RTL__ = true;
-      } catch (e) {
-        console.warn("[OQtima] Error storing RTL parameter:", e);
-      }
-    }
+    // Get the baseUrl based on multiple fallback strategies
+    let baseUrl;
 
-    // Store the language in session storage
+    // Strategy 1: Try to determine from the registration script source
     try {
-      if (window.sessionStorage) {
-        sessionStorage.setItem("oqtima_tab_language", normalizedLang);
+      const scripts = document.getElementsByTagName("script");
+      // Look for both minified and non-minified versions of the script
+      const scriptPatterns = [
+        "registration-popup-script.js",
+        "registration-popup-script.min.js",
+      ];
+
+      const registrationScript = Array.from(scripts).find((script) => {
+        const src = script.src || "";
+        return scriptPatterns.some((pattern) => src.includes(pattern));
+      });
+
+      if (registrationScript && registrationScript.src) {
+        // Extract the origin from the script src
+        const scriptUrl = new URL(registrationScript.src);
+        baseUrl = scriptUrl.origin;
+        console.log(
+          "[OQtima] Using script server for iframe (Strategy 1):",
+          baseUrl
+        );
       }
     } catch (e) {
-      console.warn("[OQtima] Error storing language parameter:", e);
+      console.warn(
+        "[OQtima] Error determining base URL from script (Strategy 1):",
+        e
+      );
     }
 
-    // Determine the base URL for the iframe
-    // This is the URL to the popup-registration page
-    let baseUrl;
-    const currentUrl = window.location.href;
-
-    try {
-      // CRITICAL FIX: First try to get API key from script tag
-      const scriptTag =
-        document.currentScript ||
-        (() => {
-          const scripts = document.getElementsByTagName("script");
-          return scripts[scripts.length - 1];
-        })();
-
-      // If we have a data attribute on the script with the base URL, use that
-      if (scriptTag && scriptTag.getAttribute("data-popup-url")) {
-        const popupUrl = scriptTag.getAttribute("data-popup-url");
-        console.log(
-          "[OQtima] Found popup URL in script data attribute:",
-          popupUrl
+    // Strategy 2: Try to use the API URL if Strategy 1 failed
+    if (!baseUrl) {
+      try {
+        baseUrl = apiUrl.replace(/\/+$/, ""); // Remove trailing slash
+        console.log("[OQtima] Using API URL for iframe (Strategy 2):", baseUrl);
+      } catch (e) {
+        console.warn(
+          "[OQtima] Error determining API base URL (Strategy 2):",
+          e
         );
-        baseUrl = popupUrl;
       }
-      // Try to determine from the script source (main method)
-      else if (scriptTag && scriptTag.src) {
-        const scriptSrc = scriptTag.src;
-        console.log("[OQtima] Script source:", scriptSrc);
+    }
 
-        const scriptOrigin = new URL(scriptSrc).origin;
-        console.log("[OQtima] Script origin:", scriptOrigin);
+    // Strategy 3: Hardcoded fallback to production URL as last resort
+    if (!baseUrl) {
+      // Static production URL as last resort
+      const prodDomains = [
+        "https://www.oqtima.com",
+        "https://oqtima.com",
+        "https://crm.oqtima.com",
+      ];
 
-        if (
-          scriptOrigin.includes("oqtima.com") ||
-          scriptOrigin.includes("oqt-ima.com")
-        ) {
-          // For production scripts
-          baseUrl = `${scriptOrigin}/popup-registration`;
-          console.log("[OQtima] Using production popup URL:", baseUrl);
-        } else if (
-          scriptOrigin.includes("localhost") ||
-          scriptOrigin.includes("127.0.0.1")
-        ) {
-          // For local development
-          baseUrl = `${scriptOrigin}/popup-registration`;
-          console.log("[OQtima] Using local development popup URL:", baseUrl);
-        } else {
-          // For external integration on other domains
-          baseUrl = "https://oqtima.com/popup-registration";
-          console.log(
-            "[OQtima] Using default popup URL for external domain:",
-            baseUrl
-          );
-        }
-      } else {
-        // Fallback to default production URL
-        baseUrl = "https://oqtima.com/popup-registration";
-        console.log("[OQtima] Using default popup URL:", baseUrl);
-      }
-    } catch (error) {
-      console.error("[OQtima] Error determining base URL:", error);
-      // Failsafe fallback
-      baseUrl = "https://oqtima.com/popup-registration";
-      console.warn(
-        "[OQtima] Fallback to default popup URL after error:",
+      // Use the first domain in the list
+      baseUrl = prodDomains[0];
+      console.log(
+        "[OQtima] Using hardcoded production URL as fallback (Strategy 3):",
         baseUrl
       );
     }
 
-    // Construct the URL with query parameters
-    let url = `${baseUrl}?popup=true&lang=${encodeURIComponent(
-      normalizedLang
-    )}`;
+    // Make sure baseUrl doesn't end with a slash
+    baseUrl = (baseUrl || "").replace(/\/+$/, "");
 
-    // Add referral parameters if they exist
-    if (isReferralRegistration) {
-      url += `&referral_type=${encodeURIComponent(referralType)}`;
-      if (referralValue) {
-        url += `&referral_value=${encodeURIComponent(referralValue)}`;
+    // Final validation
+    if (!baseUrl) {
+      console.error(
+        "[OQtima] CRITICAL ERROR: Unable to determine base URL for iframe"
+      );
+      // Emergency fallback to production domain
+      baseUrl = "https://www.oqtima.com";
+    }
+
+    // Preserve the original URL path structure as requested
+    let urlPath =
+      normalizedLanguage !== "en"
+        ? `/${normalizedLanguage}/popup-registration`
+        : "/popup-registration";
+
+    console.log("[OQtima] Using URL path:", urlPath);
+
+    // CRITICAL FIX: Add specific checks to prevent language overrides in iframe
+    let iframeLang = normalizedLanguage;
+
+    // Store the language in sessionStorage for persistence
+    if (typeof window !== "undefined") {
+      try {
+        sessionStorage.setItem("oqtima_tab_language", iframeLang);
+        window.__OQTIMA_COMPONENT_LANGUAGE = iframeLang;
+        window.__OQTIMA_LOCKED_LANG = iframeLang;
+
+        console.log(
+          "[OQtima] Language persisted to sessionStorage:",
+          iframeLang
+        );
+      } catch (e) {
+        console.warn("[OQtima] Could not store language in sessionStorage:", e);
       }
     }
 
-    // Add mobile parameter if this is for a mobile popup
-    if (isMobile) {
-      url += "&mobile=true";
+    // Base parameters for all versions
+    const params = new URLSearchParams({
+      // UI display parameters
+      popup: "true",
+      clean: "true",
+      hideHeader: "true",
+      hideFooter: "true",
+      hideNav: "true",
+      hideExtras: "true",
+
+      // Layout configuration
+      embedded: "true",
+      standalone: "true",
+      formOnly: "true",
+      minimal: "true",
+      cleanLayout: "true",
+      allowScroll: "true",
+
+      // CRITICAL: Cross-domain enhancements
+      allowCrossDomain: "true",
+      crossSite: "true",
+      crossOrigin: "anonymous",
+
+      // Origin and referrer for security and tracking
+      originDomain: window.location.origin || document.referrer,
+      referrer: document.referrer || window.location.href,
+
+      // CRITICAL: Language locking mechanism
+      oqtima_lang_locked: normalizedLanguage,
+      lang_locked: normalizedLanguage,
+
+      // Force the language through the URL query parameter
+      lang: normalizedLanguage,
+      language: normalizedLanguage,
+      "data-lang": normalizedLanguage,
+      data_lang: normalizedLanguage,
+      i18nextLng: normalizedLanguage,
+
+      // Mobile detection and sizing
+      isMobile: isMobile ? "true" : "false",
+      viewport: isMobile ? "mobile" : "desktop",
+      device: isMobile ? "mobile" : "desktop",
+      responsive: "true",
+
+      // Timestamp to prevent caching
+      ts: Date.now(),
+    });
+
+    // Add RTL parameter if needed
+    if (isRTL) {
+      params.append("rtl", "true");
+      params.append("dir", "rtl");
+      params.append("isRTL", "true");
+      params.append("forceRTL", "true");
     }
 
-    // Log the final URL
-    console.log("[OQtima] Constructed iframe URL:", url);
+    // Only add referral parameters if they are actually set
+    if (
+      normalizedReferralType !== null &&
+      normalizedReferralType !== undefined
+    ) {
+      params.append("referral_type", normalizedReferralType);
+      params.append("referralType", normalizedReferralType);
+      params.append("referral-type", normalizedReferralType);
+    }
 
-    return url;
+    if (
+      normalizedReferralValue !== null &&
+      normalizedReferralValue !== undefined
+    ) {
+      params.append("referral_value", normalizedReferralValue);
+      params.append("referralValue", normalizedReferralValue);
+      params.append("referral-value", normalizedReferralValue);
+    }
+
+    // Add cross-domain specific parameters
+    params.append("allowCrossDomain", "true");
+    params.append("crossDomain", "true");
+    params.append("xDomain", "true");
+
+    // Add site language for localization consistency
+    try {
+      const htmlLang = document.documentElement.getAttribute("lang");
+      if (htmlLang) {
+        params.append("siteLang", htmlLang);
+      }
+    } catch (e) {}
+
+    // Set cross-domain cookies if possible
+    try {
+      setLanguageCookies();
+    } catch (e) {
+      console.warn("[OQtima] Error setting language cookies:", e);
+    }
+
+    // Construct the final URL
+    const finalUrl = `${baseUrl}${urlPath}?${params.toString()}`;
+
+    // Log the final URL for debugging
+    console.log("[OQtima] Constructed iframe URL:", finalUrl);
+
+    return finalUrl;
   }
 
   // Function to inject link handler script into iframe
@@ -4504,33 +4785,16 @@
         return;
       }
 
-      console.log("[OQtima] Initializing registration script v1.6.0");
+      console.log("[OQtima] Initializing registration script v1.5.0");
 
-      // Display information about the new approach with improved documentation
+      // Display information about the new approach
       console.log(`
 [OQtima] INTEGRATION GUIDE:
-- IMPORTANT: The button-creation functionality is deprecated. Use the new trigger-based approach instead.
-- Add the data-oqtima-trigger attribute to any HTML element (buttons, links, divs, etc.) to make it open the registration popup when clicked.
-
-EXAMPLE IMPLEMENTATIONS:
-1. Campaign Link:
-   <a href="#" data-oqtima-trigger data-lang="en" data-referral-type="14" data-referral-value="CAMPAIGN2023">Join Campaign</a>
-
-2. Regular Registration Button:
-   <button data-oqtima-trigger data-lang="en">Register Now</button>
-
-3. IB Referral Link:
-   <a href="#" data-oqtima-trigger data-lang="jp" data-referral-type="12" data-referral-value="IB12345">Register via IB</a>
-
-REQUIRED ATTRIBUTES:
-- data-oqtima-trigger: Marks the element as a registration trigger
-- data-lang: Language code for the registration form (e.g., "en", "ar", "jp", "cn", etc.)
-
-OPTIONAL ATTRIBUTES:
-- data-referral-type: Numeric value representing the referral type (12, 14, etc.)
-- data-referral-value: String value for the referral (campaign ID, IB ID, etc.)
-
-See our implementation guide for more examples and styling options.
+- Add the data-oqtima-trigger attribute to your buttons or links
+- Example: <button data-oqtima-trigger data-lang="en" data-referral-type="14" data-referral-value="CAMPAIGN2023">Join Campaign</button>
+- Example: <a href="#" data-oqtima-trigger data-lang="en" data-referral-type="12" data-referral-value="IB12345">Register via IB</a>
+- Required attributes: data-oqtima-trigger, data-lang
+- Optional attributes: data-referral-type, data-referral-value
       `);
 
       // Set initialization flag
@@ -4547,12 +4811,11 @@ See our implementation guide for more examples and styling options.
 
   // Expose the necessary functions to global scope through a namespace
   window.OqtimaRegistration = {
-    // Core functions
     init: init,
     openRegistrationPopup: openRegistrationPopup,
     initOqtimaRegistration: initOqtimaRegistration,
 
-    // Trigger registration programmatically
+    // Helper function to trigger registration from code
     // Usage: OqtimaRegistration.trigger({ lang: 'en', referral_type: 12, referral_value: 'IB12345' });
     trigger: function (params = {}) {
       console.log(
@@ -4611,153 +4874,6 @@ See our implementation guide for more examples and styling options.
       // Open the registration popup
       openRegistrationPopup(params);
     },
-
-    // Helper methods
-    version: "1.6.0",
-
-    // Get summary of all registered trigger elements
-    getTriggerElements: function () {
-      const triggers = document.querySelectorAll("[data-oqtima-trigger]");
-      const result = [];
-
-      triggers.forEach((el, index) => {
-        result.push({
-          id: index,
-          element: el.tagName.toLowerCase(),
-          elementId: el.id || null,
-          elementClass: el.className || null,
-          lang: el.getAttribute("data-lang") || null,
-          referralType: el.getAttribute("data-referral-type") || null,
-          referralValue: el.getAttribute("data-referral-value") || null,
-        });
-      });
-
-      return result;
-    },
-
-    // Add a trigger to an existing element
-    addTrigger: function (selector, options = {}) {
-      const element = document.querySelector(selector);
-
-      if (!element) {
-        console.error(`[OQtima] Element not found: ${selector}`);
-        return false;
-      }
-
-      // Apply attributes
-      element.setAttribute("data-oqtima-trigger", "");
-
-      if (options.lang) {
-        element.setAttribute("data-lang", options.lang);
-      }
-
-      if (options.referralType || options.referral_type) {
-        element.setAttribute(
-          "data-referral-type",
-          options.referralType || options.referral_type
-        );
-      }
-
-      if (options.referralValue || options.referral_value) {
-        element.setAttribute(
-          "data-referral-value",
-          options.referralValue || options.referral_value
-        );
-      }
-
-      // Re-initialize to set up new trigger
-      setupTriggerElements();
-
-      return true;
-    },
-
-    // Create a new trigger element and add it to the DOM
-    createTrigger: function (parentSelector, options = {}) {
-      const parent = document.querySelector(parentSelector);
-
-      if (!parent) {
-        console.error(`[OQtima] Parent element not found: ${parentSelector}`);
-        return null;
-      }
-
-      // Default options
-      const defaults = {
-        lang: "en",
-        type: "button", // button or link
-        text: "Register Now",
-        className: "oqtima-trigger-btn",
-        referralType: null,
-        referralValue: null,
-        position: "append", // append, prepend, or before, after
-      };
-
-      // Merge options
-      const settings = { ...defaults, ...options };
-
-      // Create element
-      let triggerElement;
-
-      if (settings.type === "link" || settings.type === "a") {
-        triggerElement = document.createElement("a");
-        triggerElement.href = "#";
-        triggerElement.style.textDecoration = "none";
-        triggerElement.style.color = "#ff4400";
-        triggerElement.style.fontWeight = "bold";
-      } else {
-        triggerElement = document.createElement("button");
-        triggerElement.type = "button";
-        triggerElement.style.background = "#ff4400";
-        triggerElement.style.color = "white";
-        triggerElement.style.border = "none";
-        triggerElement.style.borderRadius = "4px";
-        triggerElement.style.padding = "8px 16px";
-        triggerElement.style.cursor = "pointer";
-        triggerElement.style.fontWeight = "bold";
-      }
-
-      // Add attributes
-      triggerElement.setAttribute("data-oqtima-trigger", "");
-      triggerElement.setAttribute("data-lang", settings.lang);
-
-      if (settings.referralType) {
-        triggerElement.setAttribute(
-          "data-referral-type",
-          settings.referralType
-        );
-      }
-
-      if (settings.referralValue) {
-        triggerElement.setAttribute(
-          "data-referral-value",
-          settings.referralValue
-        );
-      }
-
-      // Set text
-      triggerElement.textContent = settings.text;
-
-      // Add class
-      if (settings.className) {
-        triggerElement.className = settings.className;
-      }
-
-      // Add to DOM
-      if (settings.position === "prepend") {
-        parent.prepend(triggerElement);
-      } else if (settings.position === "before") {
-        parent.parentNode.insertBefore(triggerElement, parent);
-      } else if (settings.position === "after") {
-        parent.parentNode.insertBefore(triggerElement, parent.nextSibling);
-      } else {
-        // Default is append
-        parent.appendChild(triggerElement);
-      }
-
-      // Re-initialize to set up new trigger
-      setupTriggerElements();
-
-      return triggerElement;
-    },
   };
 
   // Check if the DOM is already loaded
@@ -4780,5 +4896,104 @@ See our implementation guide for more examples and styling options.
         init();
       }
     });
+  }
+
+  /**
+   * Sets language cookies for cross-domain communication
+   * This helps ensure consistent language across domains
+   */
+  function setLanguageCookies() {
+    try {
+      // Get current language from various sources
+      const sessionLang = sessionStorage.getItem("oqtima_tab_language");
+      const localLang = localStorage.getItem("oqtima_lang");
+      const globalLang =
+        window.__OQTIMA_LANG__ || window.__OQTIMA_COMPONENT_LANGUAGE;
+      const htmlLang = document.documentElement.getAttribute("lang");
+
+      // Determine the language to use, with priority order
+      const langToUse =
+        sessionLang || globalLang || localLang || htmlLang || "en";
+
+      console.log(
+        "[OQtima] Setting cross-domain cookies for language:",
+        langToUse
+      );
+
+      // Get domain information
+      let domain = window.location.hostname;
+
+      // Set domain-agnostic cookie first (works within same domain)
+      document.cookie = `oqtima_tab_language=${langToUse}; path=/; max-age=3600; SameSite=None; Secure`;
+
+      // Set domain-specific cookie
+      if (domain) {
+        document.cookie = `oqtima_tab_language=${langToUse}; path=/; domain=${domain}; max-age=3600; SameSite=None; Secure`;
+
+        // Try to set cookie for root domain (for subdomain support)
+        if (domain.split(".").length > 1) {
+          const domainParts = domain.split(".");
+          // If we have something like sub.example.com, try setting cookie for .example.com
+          if (domainParts.length > 2) {
+            const rootDomain = `.${domainParts.slice(-2).join(".")}`;
+            document.cookie = `oqtima_tab_language=${langToUse}; path=/; domain=${rootDomain}; max-age=3600; SameSite=None; Secure`;
+          }
+        }
+      }
+
+      // Try to set cookies for referral parameters too if they exist
+      const referralType =
+        sessionStorage.getItem("oqtima_referral_type") ||
+        localStorage.getItem("oqtima_referral_type") ||
+        window.__OQTIMA_REFERRAL_TYPE__;
+
+      const referralValue =
+        sessionStorage.getItem("oqtima_referral_value") ||
+        localStorage.getItem("oqtima_referral_value") ||
+        window.__OQTIMA_REFERRAL_VALUE__;
+
+      if (referralType) {
+        document.cookie = `oqtima_referral_type=${referralType}; path=/; max-age=3600; SameSite=None; Secure`;
+        if (domain) {
+          document.cookie = `oqtima_referral_type=${referralType}; path=/; domain=${domain}; max-age=3600; SameSite=None; Secure`;
+        }
+      }
+
+      if (referralValue) {
+        document.cookie = `oqtima_referral_value=${referralValue}; path=/; max-age=3600; SameSite=None; Secure`;
+        if (domain) {
+          document.cookie = `oqtima_referral_value=${referralValue}; path=/; domain=${domain}; max-age=3600; SameSite=None; Secure`;
+        }
+      }
+
+      // Add third-party cookie support with postMessage for browsers that block third-party cookies
+      if (
+        typeof window !== "undefined" &&
+        window.parent &&
+        window.parent !== window
+      ) {
+        try {
+          window.parent.postMessage(
+            {
+              type: "OQTIMA_SET_COOKIES",
+              cookies: {
+                oqtima_tab_language: langToUse,
+                oqtima_referral_type: referralType,
+                oqtima_referral_value: referralValue,
+              },
+              timestamp: Date.now(),
+            },
+            "*"
+          );
+        } catch (err) {
+          console.warn("[OQtima] Error sending cookie data to parent:", err);
+        }
+      }
+
+      return true;
+    } catch (e) {
+      console.warn("[OQtima] Error setting language cookies:", e);
+      return false;
+    }
   }
 })();
