@@ -3395,6 +3395,85 @@
       isMobile,
     });
 
+    // CRITICAL: Extra check for Arabic language to ensure RTL mode
+    const isArabicLanguage =
+      language === "ar" || (language || "").toLowerCase() === "arabic";
+    if (isArabicLanguage) {
+      console.log("[OQtima] Arabic language detected, ensuring RTL mode");
+
+      // Set RTL flags globally
+      window.__FORCE_RTL__ = true;
+      window.__ORIGINAL_RTL__ = true;
+
+      // Make sure the sessionStorage has the correct RTL values for Arabic
+      try {
+        sessionStorage.setItem("oqtima_tab_rtl", "true");
+        sessionStorage.setItem("oqtima_tab_language", "ar");
+        sessionStorage.setItem("isRTL", "true");
+
+        // Set up protection to prevent changing RTL setting for Arabic
+        if (!window.__RTL_PROTECTION_ACTIVE) {
+          window.__RTL_PROTECTION_ACTIVE = true;
+
+          // Save original setItem to use in our override
+          const originalSetItem = Storage.prototype.setItem;
+
+          // Override sessionStorage.setItem to protect Arabic RTL settings
+          Storage.prototype.setItem = function (key, value) {
+            // Check if this is trying to change Arabic RTL settings
+            if (
+              (key === "oqtima_tab_language" &&
+                sessionStorage.getItem("oqtima_tab_language") === "ar" &&
+                value !== "ar") ||
+              (key === "oqtima_tab_rtl" &&
+                sessionStorage.getItem("oqtima_tab_language") === "ar" &&
+                value === "false")
+            ) {
+              console.warn(
+                `[OQtima] Prevented changing ${key} from Arabic RTL setting`
+              );
+
+              // If something is trying to change language from ar, log it
+              if (key === "oqtima_tab_language" && value !== "ar") {
+                console.warn(
+                  `[OQtima] Attempt to change language from ar to ${value} blocked`
+                );
+
+                // Force reset all Arabic settings to ensure consistency
+                setTimeout(() => {
+                  originalSetItem.call(
+                    sessionStorage,
+                    "oqtima_tab_rtl",
+                    "true"
+                  );
+                  originalSetItem.call(
+                    sessionStorage,
+                    "oqtima_tab_language",
+                    "ar"
+                  );
+                  originalSetItem.call(sessionStorage, "isRTL", "true");
+                  originalSetItem.call(sessionStorage, "i18nextLng", "ar");
+                  console.log(
+                    "[OQtima] Forcibly reset Arabic language settings"
+                  );
+                }, 0);
+              }
+
+              // Do not proceed with the change
+              return;
+            }
+
+            // Allow other changes to proceed
+            return originalSetItem.call(this, key, value);
+          };
+
+          console.log("[OQtima] Arabic RTL protection enabled");
+        }
+      } catch (e) {
+        console.warn("[OQtima] Failed to protect Arabic RTL settings:", e);
+      }
+    }
+
     // Check if this is a normal registration (no referral) or specific referral registration
     const isNormalRegistration =
       referralType === null ||
