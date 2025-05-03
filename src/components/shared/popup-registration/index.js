@@ -1773,72 +1773,88 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
   );
 
   const handleClose = () => {
-    // Try to send message to parent window that close button was pressed
+    if (typeof window === "undefined") return;
+
     try {
-      if (window.parent && window.parent !== window) {
-        // Send the close message in multiple formats for maximum compatibility
+      console.log("[PopupRegistration] Sending close message to parent window");
 
-        // Legacy format
-        window.parent.postMessage("close_popup", "*");
+      // Send multiple close message formats for maximum compatibility
+      // 1. Legacy format (simple string message)
+      window.parent.postMessage("close_popup", "*");
 
-        // Standard format with more details
-        window.parent.postMessage(
-          {
-            type: "OQTIMA_CLOSE_POPUP",
-            source: "close_button",
-            timestamp: Date.now(),
-          },
-          "*"
-        );
+      // 2. Standard format with more details
+      window.parent.postMessage(
+        {
+          type: "OQTIMA_CLOSE_POPUP",
+          source: "popup_registration_component",
+          timestamp: Date.now(),
+        },
+        "*"
+      );
 
-        // Try a direct approach in case the parent is expecting a specific format
+      // 3. Try to call a direct close function if it exists in parent
+      if (window.parent && window.parent.__OQTIMA_CLOSE_POPUP) {
         try {
-          if (
-            window.parent.__OQTIMA_CLOSE_POPUP &&
-            typeof window.parent.__OQTIMA_CLOSE_POPUP === "function"
-          ) {
-            window.parent.__OQTIMA_CLOSE_POPUP();
-          }
-        } catch (directErr) {
+          window.parent.__OQTIMA_CLOSE_POPUP();
+        } catch (e) {
           console.warn(
-            "Could not call parent close function directly:",
-            directErr
+            "[PopupRegistration] Error calling parent close function:",
+            e
           );
         }
-
-        // Send multiple times with delays to ensure delivery
-        setTimeout(() => {
-          try {
-            window.parent.postMessage(
-              {
-                type: "OQTIMA_CLOSE_POPUP",
-                source: "close_button_retry",
-                timestamp: Date.now(),
-              },
-              "*"
-            );
-          } catch (e) {}
-        }, 50);
-
-        setTimeout(() => {
-          try {
-            window.parent.postMessage(
-              {
-                type: "OQTIMA_CLOSE_POPUP",
-                source: "close_button_final_retry",
-                timestamp: Date.now(),
-              },
-              "*"
-            );
-          } catch (e) {}
-        }, 100);
-
-        console.log("Sent close messages to parent window");
       }
-    } catch (err) {
-      console.error("Error sending close message to parent:", err);
+
+      // 4. Set timeouts to send retry messages
+      setTimeout(() => {
+        try {
+          window.parent.postMessage("close_popup", "*");
+          window.parent.postMessage(
+            {
+              type: "OQTIMA_CLOSE_POPUP",
+              source: "popup_registration_retry_1",
+              timestamp: Date.now(),
+            },
+            "*"
+          );
+        } catch (e) {
+          console.warn(
+            "[PopupRegistration] Error in retry close message 1:",
+            e
+          );
+        }
+      }, 100);
+
+      setTimeout(() => {
+        try {
+          window.parent.postMessage("close_popup", "*");
+          window.parent.postMessage(
+            {
+              type: "OQTIMA_CLOSE_POPUP",
+              source: "popup_registration_retry_2",
+              timestamp: Date.now(),
+            },
+            "*"
+          );
+        } catch (e) {
+          console.warn(
+            "[PopupRegistration] Error in retry close message 2:",
+            e
+          );
+        }
+      }, 300);
+
+      // Log confirmation
+      console.log(
+        "[PopupRegistration] Multiple close requests sent to parent window"
+      );
+    } catch (error) {
+      console.error(
+        "[PopupRegistration] Error while sending close message:",
+        error
+      );
     }
 
+    // Call onClose callback if provided
     if (typeof onClose === "function") {
       onClose();
     }
