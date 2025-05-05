@@ -36,6 +36,9 @@
 
 "use strict";
 
+// Define RTL languages constants
+const RTL_LANGUAGES = ["ar"];
+
 // Wrap everything in a single IIFE to share scope across all functions
 (function () {
   // Create a namespace to expose functions globally
@@ -1695,7 +1698,7 @@
     // Determine if mobile based on screen width
     const isMobile =
       typeof window !== "undefined" &&
-      (window.innerWidth <= 768 ||
+      (window.innerWidth <= 767 ||
         params.forceMobile === true ||
         params.isMobile === true ||
         params.mobile === true);
@@ -1801,7 +1804,7 @@
     countryCode
   ) {
     // Detect mobile
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 767;
 
     // Add loading overlay first
     const loadingOverlay = document.createElement("div");
@@ -1844,7 +1847,7 @@
       }
 
       /* Mobile styles */
-      @media (max-width: 768px) {
+      @media (max-width: 767px) {
         .popup-registration {
           position: fixed !important;
           top: 0 !important;
@@ -1931,11 +1934,14 @@
         flex-direction: column !important;
       `;
     } else {
+      // Detect if it's a tablet (>= 768px and < 1024px)
+      const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+
       wrapperStyles += `
       width: 100% !important;
         max-width: 1170px !important;
         height: 100% !important;
-        max-height: 800px !important;
+        max-height: ${isTablet ? "900px" : "800px"} !important;
         border-radius: 8px !important;
         overflow: hidden !important;
       `;
@@ -2285,6 +2291,8 @@
     // Assemble the popup
     wrapper.appendChild(iframe);
     modalContainer.appendChild(wrapper);
+
+    // Add the container to the document body
     document.body.appendChild(modalContainer);
 
     // Lock body scroll
@@ -2389,6 +2397,9 @@
     `;
     document.head.appendChild(rtlStyles);
 
+    // Detect if it's a tablet (>= 768px and < 1024px)
+    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+
     // Create wrapper element
     const wrapper = document.createElement("div");
     wrapper.className =
@@ -2396,11 +2407,13 @@
     wrapper.setAttribute("dir", "rtl");
     wrapper.style.cssText = `
       width: 100% !important;
+      max-width: 1170px !important;
       height: 100% !important;
+      max-height: ${isTablet ? "900px" : "800px"} !important;
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
-      overflow-y: auto !important;
+      // overflow-y: auto !important;
       direction: rtl !important;
     `;
 
@@ -2416,7 +2429,7 @@
       overflow: hidden !important;
       width: 100% !important;
       max-height: 100% !important;
-      height: auto !important;
+      // height: 900px !important;
           direction: rtl !important;
         `;
 
@@ -2429,7 +2442,9 @@
       background-color: transparent !important;
       border-radius: 10px !important;
       overflow: hidden !important;
-      aspect-ratio: 16 / 9 !important;
+      flex: 1 !important;
+      min-height: 600px !important;
+      height: ${isTablet ? "900px" : "800px"} !important;
       z-index: 2147483647 !important;
       direction: rtl !important;
       order: 1 !important;
@@ -2631,6 +2646,8 @@
     container.appendChild(iframeContainer);
     wrapper.appendChild(container);
     modalContainer.appendChild(wrapper);
+
+    // Add the container to the document body
     document.body.appendChild(modalContainer);
 
     // Setup close function
@@ -4159,534 +4176,104 @@
     countryName,
     countryCode
   ) {
-    // PENDEKATAN PALING RADIKAL UNTUK MOBILE SCROLLING
+    console.log(`Creating mobile popup for language: ${language}`);
 
-    // 1. Cleanup semua containers dan styles yang ada sebelumnya
-    const elementsToRemove = document.querySelectorAll(
-      "#oqtima-mobile-container, #oqtima-mobile-styles, #oqtima-mobile-spinner-style, .oqtima-scroll-indicator, #oqtima-registration-modal, .popup-registration__wrapper, .popup-registration__container, .popup-registration__iframe-container"
-    );
-    elementsToRemove.forEach((el) => {
-      if (el && el.parentNode) {
-        el.parentNode.removeChild(el);
-      }
-    });
-
-    // 2. Reset viewport meta dengan nilai yang mendukung scrolling
-    let viewportMeta = document.querySelector('meta[name="viewport"]');
-    if (!viewportMeta) {
-      viewportMeta = document.createElement("meta");
-      viewportMeta.name = "viewport";
-      document.head.appendChild(viewportMeta);
+    // Check if the language is RTL
+    const isRTL = RTL_LANGUAGES.includes(language);
+    if (isRTL) {
+      console.log("Creating mobile popup with RTL support");
     }
-    viewportMeta.content =
-      "width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0, shrink-to-fit=no";
 
-    // 3. Struktur dom yang sangat sederhana - hanya div + iframe
-    const fullscreenContainer = document.createElement("div");
-    fullscreenContainer.id = "oqtima-fullscreen-popup";
-    fullscreenContainer.style.cssText = `
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      background-color: white !important;
-      z-index: 2147483647 !important; /* Maksimum z-index */
-      overflow: hidden !important;
-      display: block !important;
-      box-sizing: border-box !important;
-    `;
-    document.body.appendChild(fullscreenContainer);
+    // Get the container element (create if it doesn't exist)
+    const existingContainer = document.querySelector(
+      ".popup-registration__mobile-container"
+    );
 
-    // Spinner sederhana (akan dihapus setelah iframe dimuat)
-    const spinner = document.createElement("div");
-    spinner.id = "oqtima-spinner";
-    spinner.style.cssText = `
-      position: absolute !important;
-      top: 50% !important;
-      left: 50% !important;
-      transform: translate(-50%, -50%) !important;
-      width: 40px !important;
-      height: 40px !important;
-      border-radius: 50% !important;
-      border: 3px solid #ff4400 !important;
-      border-color: #ff4400 transparent #ff4400 transparent !important;
-      animation: oqtima-spinner 1.2s linear infinite !important;
-      z-index: 999999 !important;
-    `;
-    fullscreenContainer.appendChild(spinner);
+    // If a container already exists, remove it first
+    if (existingContainer) {
+      existingContainer.remove();
+    }
 
-    // Style untuk spinner
-    const spinnerStyle = document.createElement("style");
-    spinnerStyle.id = "oqtima-spinner-style";
-    spinnerStyle.innerHTML = `
-      @keyframes oqtima-spinner {
-        0% { transform: translate(-50%, -50%) rotate(0deg); }
-        100% { transform: translate(-50%, -50%) rotate(360deg); }
-      }
-    `;
-    document.head.appendChild(spinnerStyle);
+    // Create a fullscreen overlay that covers the entire viewport
+    const modalContainer = document.createElement("div");
+    modalContainer.className = "popup-registration__mobile-container";
+    modalContainer.style.position = "fixed";
+    modalContainer.style.top = "0";
+    modalContainer.style.left = "0";
+    modalContainer.style.width = "100%";
+    modalContainer.style.height = "100%";
+    modalContainer.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    modalContainer.style.zIndex = "999999";
+    modalContainer.style.display = "flex";
+    modalContainer.style.justifyContent = "center";
+    modalContainer.style.alignItems = "center";
 
-    // Disable body scrolling
-    document.body.classList.add("oqtima-popup-open");
-    document.documentElement.classList.add("oqtima-popup-open");
-    const bodyScrollY = window.scrollY;
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${bodyScrollY}px`;
-    document.body.style.width = "100%";
-    document.body.style.overflow = "hidden";
+    // Set RTL direction on the container if needed
+    if (isRTL) {
+      modalContainer.setAttribute("dir", "rtl");
+    }
 
-    // Prepare iframe URL
-    const url = constructIframeUrl(language, referralType, referralValue, true);
-
-    // 4. IFRAME SEDERHANA TANPA STYLE/CONTAINER LAIN
+    // Create an iframe to load the popup content
     const iframe = document.createElement("iframe");
-    iframe.id = "oqtima-iframe";
-    iframe.setAttribute("scrolling", "yes"); // Force scrolling enabled
-    iframe.setAttribute("allow", "fullscreen clipboard-write");
-    iframe.setAttribute("allowfullscreen", "true");
-    iframe.setAttribute("allowtransparency", "true");
-    iframe.setAttribute("importance", "high");
-    iframe.setAttribute("frameborder", "0");
+    iframe.className = "popup-registration__mobile-fullscreen";
+    iframe.style.position = "fixed";
+    iframe.style.bottom = "0";
+    iframe.style.left = "0";
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    iframe.style.border = "none";
+    iframe.style.backgroundColor = "#ffffff";
+    iframe.style.zIndex = "1000000";
+    iframe.style.overflow = "hidden";
+    iframe.style.transition = "all 0.3s ease-in-out";
 
-    // CRITICAL: Add title for accessibility and SEO
-    iframe.setAttribute("title", "Registration Form Mobile");
+    // Set RTL attributes for iframe
+    if (isRTL) {
+      iframe.setAttribute("dir", "rtl");
+    }
 
-    // CRITICAL: Ensure cross-domain cookie access
-    iframe.setAttribute("crossorigin", "anonymous");
+    // Set iframe URL with correct parameters
+    iframe.src = constructIframeUrl(
+      language,
+      referralType,
+      referralValue,
+      true
+    );
 
-    // Daftar styles penting tanpa container tambahan
-    iframe.style.cssText = `
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      border: none !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      display: block !important;
-      overflow: auto !important;
-      overflow-y: scroll !important;
-      overflow-x: hidden !important;
-      -webkit-overflow-scrolling: touch !important;
-      z-index: 9 !important;
-      background-color: white !important;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    `;
+    // Add the iframe to the container
+    modalContainer.appendChild(iframe);
 
-    // Menetapkan src iframe
-    iframe.src = url;
-    fullscreenContainer.appendChild(iframe);
+    // Add the container to the document body
+    document.body.appendChild(modalContainer);
 
-    // Set up message sent to iframe after it loads
-    iframe.addEventListener("load", function () {
-      // Hide the spinner once iframe is loaded
-      if (spinner && spinner.parentNode) {
-        spinner.parentNode.removeChild(spinner);
-      }
-
-      // Make iframe visible
-      iframe.style.opacity = "1";
-
-      // IMPORTANT: Send referral parameters to the iframe
-      try {
-        // Create a complete message with all necessary data
-        const messageData = {
-          type: "REGISTRATION_PARAMS",
-          data: {
-            // Ensure referral_type is passed correctly
-            referral_type: referralType,
-            // Add all variant formats for maximum compatibility
-            referralType: referralType,
-            "referral-type": referralType,
-
-            // Ensure referral_value is passed correctly
-            referral_value: referralValue,
-            // Add all variant formats for maximum compatibility
-            referralValue: referralValue,
-            "referral-value": referralValue,
-
-            // Language parameters
-            language: language,
-            lang: language, // Add lang as alternative format
-            data_lang: language, // Add data_lang as an explicit form
-
-            // Include IP and country information if available
-            ip_address: ipAddress,
-            country_name: countryName,
-            country_code: countryCode,
-          },
-          timestamp: Date.now(),
-        };
-
-        console.log(
-          "[OQtima] Sending message to mobile iframe:",
-          JSON.stringify(messageData, null, 2)
-        );
-
-        // First attempt to send message
-        iframe.contentWindow.postMessage(messageData, "*");
-
-        // Schedule multiple retries with increasing delays to ensure message is received
-        setTimeout(() => {
-          try {
-            iframe.contentWindow.postMessage(messageData, "*");
-          } catch (err) {
-            console.error("Error in mobile retry 1:", err);
-          }
-        }, 100);
-
-        setTimeout(() => {
-          try {
-            iframe.contentWindow.postMessage(messageData, "*");
-          } catch (err) {
-            console.error("Error in mobile retry 2:", err);
-          }
-        }, 500);
-
-        setTimeout(() => {
-          try {
-            iframe.contentWindow.postMessage(messageData, "*");
-            console.log(
-              "[OQtima] Final retry sending message to mobile iframe"
-            );
-          } catch (err) {
-            console.error("Error in mobile final retry:", err);
-          }
-        }, 1500);
-      } catch (err) {
-        console.error("Error sending message to mobile iframe:", err);
-      }
-
-      // Add scroll indicator after iframe is loaded
-      addScrollIndicator();
-    });
-
-    // Basic styles untuk scrollbar
-    const popupStyles = document.createElement("style");
-    popupStyles.id = "oqtima-popup-styles";
-    popupStyles.innerHTML = `
-      /* Fullscreen popup styles */
-      body.oqtima-popup-open,
-      html.oqtima-popup-open {
-        overflow: hidden !important;
-        height: 100% !important;
-        width: 100% !important;
-        position: fixed !important;
-        touch-action: none !important;
-      }
-      
-      /* Orange scrollbar styles */
-      #oqtima-iframe::-webkit-scrollbar {
-        width: 10px !important;
-        background-color: #f5f5f5 !important;
-      }
-      
-      #oqtima-iframe::-webkit-scrollbar-thumb {
-        background-color: #ff4400 !important;
-        border-radius: 5px !important;
-      }
-      
-      /* Scrollbar untuk Firefox */
-      #oqtima-iframe {
-        scrollbar-width: thin !important;
-        scrollbar-color: #ff4400 #f5f5f5 !important;
-      }
-      
-      /* Scroll indicator styles */
-      .oqtima-scroll-indicator {
-        position: fixed !important;
-        bottom: 20px !important;
-        right: 20px !important;
-        width: 40px !important;
-        height: 40px !important;
-        border-radius: 50% !important;
-        background-color: #ff4400 !important; 
-        color: white !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        animation: oqtima-pulse 2s infinite !important;
-        z-index: 2147483646 !important;
-        pointer-events: none !important;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
-      }
-      
-      @keyframes oqtima-pulse {
-        0% { transform: scale(1); opacity: 0.9; }
-        50% { transform: scale(1.1); opacity: 1; }
-        100% { transform: scale(1); opacity: 0.9; }
-      }
-    `;
-    document.head.appendChild(popupStyles);
-
-    // Menambahkan scroll indicator setelah iframe dimuat
-    let scrollIndicator = null;
-    const addScrollIndicator = () => {
-      scrollIndicator = document.createElement("div");
-      scrollIndicator.className = "oqtima-scroll-indicator";
-      scrollIndicator.innerHTML = `
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
-          <path d="M12 5v14M18 13l-6 6-6-6"/>
-        </svg>
-      `;
-      document.body.appendChild(scrollIndicator);
-
-      // Hapus indikator setelah 10 detik
-      setTimeout(() => {
-        if (scrollIndicator && scrollIndicator.parentNode) {
-          scrollIndicator.parentNode.removeChild(scrollIndicator);
-          scrollIndicator = null;
-        }
-      }, 10000);
-    };
-
-    // Fungsi untuk menyelesaikan masalah scrolling pada iframe
-    let fixScrollAttempts = 0;
-    let scrollFixInterval = null;
-
-    const fixIframeScrolling = (iframeDoc, iframeWin) => {
-      try {
-        if (!iframeDoc || !iframeWin) return;
-
-        // Tambahkan meta viewport ke iframe
-        const meta = document.createElement("meta");
-        meta.name = "viewport";
-        meta.content =
-          "width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0, shrink-to-fit=no";
-        iframeDoc.head.appendChild(meta);
-
-        // Tambahkan style untuk memastikan scrolling
-        const style = document.createElement("style");
-        style.textContent = `
-          html, body {
-            width: 100% !important;
-            height: auto !important;
-            min-height: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            overflow-y: auto !important;
-            overflow-x: hidden !important;
-            -webkit-overflow-scrolling: touch !important;
-            background-color: white !important;
-          }
-          
-          body * {
-            max-width: 100% !important;
-            box-sizing: border-box !important;
-          }
-          
-          /* Form styling */
-          form, .registration-form, #gatsby-focus-wrapper {
-            width: 100% !important;
-            min-height: 100% !important;
-            padding-bottom: 250px !important; /* Extra padding dibawah */
-            overflow: visible !important;
-          }
-          
-          /* Prevent iOS zoom on inputs */
-          input, select, textarea {
-            font-size: 16px !important;
-            max-width: 100% !important;
-          }
-          
-          /* Custom scrollbar */
-          ::-webkit-scrollbar {
-            width: 10px !important;
-            background: #f5f5f5 !important;
-          }
-          
-          ::-webkit-scrollbar-thumb {
-            background: #ff4400 !important;
-            border-radius: 5px !important;
-          }
-          
-          /* Ensure buttons are visible */
-          button, input[type="button"], input[type="submit"] {
-            display: block !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-            -webkit-appearance: none !important;
-          }
-          
-          /* Ensure privacy policy links are visible */
-          a, .link, [href] {
-            color: #ff4400 !important;
-            text-decoration: underline !important;
-            cursor: pointer !important;
-          }
-        `;
-        iframeDoc.head.appendChild(style);
-
-        // Fix elements dengan overflow: hidden yang mengganggu scrolling
-        const fixHiddenElements = () => {
-          fixScrollAttempts++;
-          let fixedCount = 0;
-
-          try {
-            // Fix semua elemen yang mungkin menghalangi scrolling
-            const allElements = iframeDoc.querySelectorAll("*");
-
-            allElements.forEach((el) => {
-              try {
-                const style = iframeWin.getComputedStyle(el);
-
-                // Fix overflow properties
-                if (
-                  style.overflow === "hidden" ||
-                  style.overflowY === "hidden"
-                ) {
-                  el.style.setProperty("overflow", "auto", "important");
-                  el.style.setProperty("overflow-y", "auto", "important");
-                  fixedCount++;
-                }
-
-                // Fix position fixed elements
-                if (style.position === "fixed") {
-                  // Allow fixed elements but ensure they don't block scrolling
-                  el.style.setProperty("z-index", "10", "important");
-                  fixedCount++;
-                }
-
-                // Fix maximum height restrictions
-                if (style.maxHeight !== "none" && style.maxHeight !== "auto") {
-                  el.style.setProperty("max-height", "none", "important");
-                  fixedCount++;
-                }
-              } catch (e) {
-                // Ignore errors for individual elements
-              }
-            });
-
-            // Force scroll satu pixel untuk mengaktifkan mode scroll
-            iframeDoc.documentElement.scrollTop = 1;
-            setTimeout(() => {
-              iframeDoc.documentElement.scrollTop = 0;
-            }, 10);
-
-            // Log debugging info jika diperlukan
-            if (debug) {
-              console.warn(
-                `[Try ${fixScrollAttempts}] Fixed ${fixedCount} elements that could block scrolling`
-              );
-            }
-
-            // Jika sudah mencoba 10x, berhenti mencoba
-            if (fixScrollAttempts >= 10) {
-              clearInterval(scrollFixInterval);
-            }
-          } catch (e) {
-            if (debug) console.error("Error fixing iframe elements", e);
-          }
-        };
-
-        // Jalankan fix pertama kali
-        fixHiddenElements();
-
-        // Set interval untuk terus memeriksa dan memperbaiki scrolling
-        scrollFixInterval = setInterval(fixHiddenElements, 1500);
-      } catch (e) {
-        if (debug) console.error("Error injecting scroll fix", e);
-      }
-    };
-
-    // Handle iframe load event
-    iframe.addEventListener("load", function () {
-      // Remove spinner
-      if (spinner && spinner.parentNode) {
-        spinner.parentNode.removeChild(spinner);
-      }
-
-      // Show iframe with fade-in
-      iframe.style.opacity = "1";
-
-      // Add scroll indicator
-      addScrollIndicator();
-
-      try {
-        // Access iframe content if possible
-        const iframeDoc =
-          iframe.contentDocument || iframe.contentWindow.document;
-        const iframeWin = iframe.contentWindow;
-
-        // Fix scrolling issues
-        fixIframeScrolling(iframeDoc, iframeWin);
-
-        // Menyimpan interval ID untuk dibersihkan nanti
-        iframe.setAttribute("data-scroll-interval", scrollFixInterval);
-      } catch (e) {
-        // Silent cross-origin error
-        if (debug)
-          console.warn(
-            "Cross-origin restrictions prevented iframe manipulation"
-          );
-
-        // Tetap menampilkan scroll indicator walaupun ada cross-origin restrictions
-        if (!scrollIndicator) {
-          addScrollIndicator();
-        }
-      }
-    });
-
-    // Setup escape key handler
-    const handleEscape = (e) => {
-      if (e.key === "Escape" || e.keyCode === 27) {
-        cleanupPopup();
-      }
-    };
-    document.addEventListener("keydown", handleEscape);
-
-    // Setup message handler untuk komunikasi dengan iframe
-    const handleMessage = (event) => {
-      if (event.data && typeof event.data === "object") {
-        // Handle close popup messages
-        if (
-          event.data.type === "OQTIMA_CLOSE_POPUP" ||
-          event.data.type === "closeRegistrationPopup" ||
-          event.data.source === "close_button"
-        ) {
-          cleanupPopup();
-        }
-      }
-    };
-    window.addEventListener("message", handleMessage);
-
-    // Fungsi untuk membersihkan popup
+    // Function to clean up popup and restore original document state
     function cleanupPopup() {
-      // Clear interval untuk scroll fixing
-      if (scrollFixInterval) {
-        clearInterval(scrollFixInterval);
-      }
+      console.log("[OQtima] Closing mobile popup and cleaning up");
 
       // Remove iframe and container
-      if (fullscreenContainer && fullscreenContainer.parentNode) {
-        fullscreenContainer.parentNode.removeChild(fullscreenContainer);
+      if (modalContainer && modalContainer.parentNode) {
+        modalContainer.parentNode.removeChild(modalContainer);
       }
 
-      // Remove styles
+      // Remove any styles we added
+      const popupStyles = document.getElementById(
+        "popup-registration-mobile-styles"
+      );
       if (popupStyles && popupStyles.parentNode) {
         popupStyles.parentNode.removeChild(popupStyles);
       }
 
-      if (spinnerStyle && spinnerStyle.parentNode) {
-        spinnerStyle.parentNode.removeChild(spinnerStyle);
+      // Remove message event listener
+      if (messageHandler) {
+        window.removeEventListener("message", messageHandler);
       }
 
-      // Remove scroll indicator if exists
-      if (scrollIndicator && scrollIndicator.parentNode) {
-        scrollIndicator.parentNode.removeChild(scrollIndicator);
+      // Remove keyboard event listener
+      if (keyDownHandler) {
+        document.removeEventListener("keydown", keyDownHandler);
       }
-
-      // Remove event listeners
-      document.removeEventListener("keydown", handleEscape);
-      window.removeEventListener("message", handleMessage);
 
       // Restore body scrolling
-      const scrollY = parseInt(document.body.style.top || "0");
       document.body.classList.remove("oqtima-popup-open");
       document.documentElement.classList.remove("oqtima-popup-open");
       document.body.style.position = "";
@@ -4694,33 +4281,132 @@
       document.body.style.width = "";
       document.body.style.overflow = originalBodyOverflow || "";
       document.documentElement.style.overflow = originalHtmlOverflow || "";
-      window.scrollTo(0, -scrollY);
 
-      // Restore original body state after a short delay
-      setTimeout(() => {
-        document.body.className = originalBodyClasses || "";
-        document.documentElement.className = originalHtmlClasses || "";
+      // Restore original classes
+      document.body.className = originalBodyClasses || "";
+      document.documentElement.className = originalHtmlClasses || "";
 
-        if (originalBodyStyle) {
-          document.body.style.cssText = originalBodyStyle;
-        } else {
-          document.body.removeAttribute("style");
-        }
+      // Restore original styles
+      if (originalBodyStyle) {
+        document.body.setAttribute("style", originalBodyStyle);
+      } else {
+        document.body.removeAttribute("style");
+      }
 
-        if (originalHtmlStyle) {
-          document.documentElement.style.cssText = originalHtmlStyle;
-        } else {
-          document.documentElement.removeAttribute("style");
-        }
+      if (originalHtmlStyle) {
+        document.documentElement.setAttribute("style", originalHtmlStyle);
+      } else {
+        document.documentElement.removeAttribute("style");
+      }
 
-        // Restore scroll position
-        if (originalScrollPos && typeof originalScrollPos === "object") {
-          window.scrollTo(originalScrollPos.x || 0, originalScrollPos.y || 0);
-        }
-      }, 100);
+      // Restore scroll position
+      if (originalScrollPos) {
+        window.scrollTo(0, originalScrollPos);
+      }
+
+      console.log("[OQtima] Mobile popup closed successfully");
     }
 
-    return fullscreenContainer;
+    // Apply inline styles for the popup
+    const styleEl = document.createElement("style");
+    styleEl.id = "popup-registration-mobile-styles";
+    styleEl.innerHTML = `
+      body {
+        overflow: hidden !important;
+      }
+      
+      /* RTL specific styles for mobile popup */
+      html[dir="rtl"] .popup-registration__mobile-fullscreen,
+      [dir="rtl"] .popup-registration__mobile-fullscreen {
+        direction: rtl !important;
+      }
+      
+      @media (max-width: 767px) {
+        /* Make sure mobile popup is full height on iOS Safari */
+        .popup-registration__mobile-fullscreen {
+          height: -webkit-fill-available !important;
+          min-height: 100vh !important;
+        }
+        
+        /* RTL support for mobile */
+        html[dir="rtl"] .popup-registration__mobile-fullscreen input,
+        html[dir="rtl"] .popup-registration__mobile-fullscreen select,
+        html[dir="rtl"] .popup-registration__mobile-fullscreen textarea,
+        [dir="rtl"] .popup-registration__mobile-fullscreen input,
+        [dir="rtl"] .popup-registration__mobile-fullscreen select,
+        [dir="rtl"] .popup-registration__mobile-fullscreen textarea {
+          text-align: right !important;
+          direction: rtl !important;
+        }
+        
+        html[dir="rtl"] .popup-registration__mobile-fullscreen .form-group,
+        html[dir="rtl"] .popup-registration__mobile-fullscreen .form-field,
+        [dir="rtl"] .popup-registration__mobile-fullscreen .form-group,
+        [dir="rtl"] .popup-registration__mobile-fullscreen .form-field {
+          text-align: right !important;
+          direction: rtl !important;
+        }
+      }
+    `;
+    document.head.appendChild(styleEl);
+
+    // Also set up keyboard event to close on Escape key
+    const keyDownHandler = function (e) {
+      if (e.key === "Escape" || e.keyCode === 27) {
+        cleanupPopup();
+        document.removeEventListener("keydown", keyDownHandler);
+      }
+    };
+    document.addEventListener("keydown", keyDownHandler);
+
+    // Listen for messages from the iframe (e.g., for close requests)
+    const messageHandler = function (event) {
+      try {
+        // Make sure we only process messages from our iframe or trusted sources
+        if (event.data && typeof event.data === "object") {
+          // Handle close popup message
+          if (event.data.type === "OQTIMA_CLOSE_POPUP") {
+            console.log("[OQtima] Received close request from iframe");
+            cleanupPopup();
+          }
+
+          // Handle registration success message
+          if (event.data.type === "OQTIMA_REGISTRATION_SUCCESS") {
+            console.log(
+              "[OQtima] Registration success received, closing popup"
+            );
+
+            // If there's a redirect URL, prepare to redirect after closing
+            if (event.data.redirectUrl) {
+              const redirectUrl = event.data.redirectUrl;
+              const redirectTimeout = event.data.redirectTimeout || 100;
+
+              console.log(
+                `[OQtima] Will redirect to ${redirectUrl} after popup closes`
+              );
+
+              // Close popup first
+              cleanupPopup();
+
+              // Then redirect
+              setTimeout(function () {
+                window.location.href = redirectUrl;
+              }, redirectTimeout);
+            } else {
+              // Just close the popup if no redirect
+              cleanupPopup();
+            }
+          }
+        }
+      } catch (err) {
+        console.error("[OQtima] Error processing message from iframe:", err);
+      }
+    };
+
+    // Add the message listener
+    window.addEventListener("message", messageHandler);
+
+    return modalContainer;
   }
 
   // Initialize when DOM is ready
@@ -5289,5 +4975,80 @@
         init();
       }
     });
+  }
+
+  // Inject RTL specific CSS
+  if (!document.getElementById("rtl-inline-styles")) {
+    const rtlInlineStyles = document.createElement("style");
+    rtlInlineStyles.id = "rtl-inline-styles";
+    rtlInlineStyles.innerHTML = `
+      .rtl-active input, 
+      .rtl-active textarea, 
+      .rtl-active select {
+        direction: rtl !important;
+        text-align: right !important;
+      }
+      
+      .rtl-active .form-item {
+        direction: rtl !important; 
+      }
+      
+      .rtl-active .popup-registration__content {
+        direction: rtl !important;
+      }
+      
+      /* Ensure buttons maintain center text alignment in RTL mode */
+      .rtl-active button,
+      .rtl-active .button,
+      .rtl-active input[type="submit"],
+      .rtl-active input[type="button"],
+      .rtl-active .submit-button,
+      .rtl-active .form-button {
+        text-align: center !important;
+      }
+      
+      /* Specifically target the submit buttons */
+      .rtl-active .popup-registration__button-submit,
+      .rtl-active form button[type="submit"],
+      .rtl-active button.submit-registration {
+        text-align: center !important;
+      }
+      
+      .rtl-active .popup-registration__container {
+        display: flex !important;
+        flex-direction: row-reverse !important;
+      }
+
+      .rtl-active .popup-registration__sidebar {
+        order: 2 !important;
+        border-radius: 0 10px 10px 0 !important;
+      }
+
+      .rtl-active .popup-registration__content {
+        order: 1 !important;
+        border-radius: 10px 0 0 10px !important;
+      }
+      
+      /* For mobile devices */
+      @media (max-width: 767px) {
+        .rtl-active .popup-registration__container {
+          flex-direction: column !important;
+        }
+        
+        .rtl-active .popup-registration__sidebar {
+          border-radius: 10px 10px 0 0 !important;
+        }
+        
+        .rtl-active .popup-registration__content {
+          border-radius: 0 0 10px 10px !important;
+        }
+      }
+      
+      /* Mirror spacing and positioning */
+      .rtl-active .form-item label {
+        text-align: right !important;
+      }
+    `;
+    document.head.appendChild(rtlInlineStyles);
   }
 })();
