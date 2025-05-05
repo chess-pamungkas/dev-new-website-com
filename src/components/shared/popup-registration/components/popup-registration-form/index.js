@@ -15,7 +15,37 @@ import LanguageContext from "../../../../../context/language-context";
 import arrowDownIcon from "../../../../../assets/images/icons/arrow-down.png";
 import { cleanRTLAttributes } from "../../index";
 
+// RTL languages - Arabic
 const RTL_LANGUAGES = ["ar"];
+
+// Helper function to check if a language is RTL
+const isRTLLanguage = (lang) => {
+  if (!lang) return false;
+
+  const normalizedLang = lang.toLowerCase().trim();
+
+  // Direct match with RTL_LANGUAGES array
+  if (RTL_LANGUAGES.includes(normalizedLang)) {
+    return true;
+  }
+
+  // Check for "ar" prefix (like ar-XX variants)
+  if (
+    normalizedLang.startsWith("ar") &&
+    (normalizedLang.length === 2 ||
+      normalizedLang[2] === "-" ||
+      normalizedLang[2] === "_")
+  ) {
+    return true;
+  }
+
+  // Full word match with "arabic"
+  if (normalizedLang === "arabic") {
+    return true;
+  }
+
+  return false;
+};
 
 const ERROR_CODE_MAP = {
   99: "popup-registration-error-unexpected",
@@ -1120,6 +1150,7 @@ const PopupRegistrationForm = ({ params }) => {
           const value = urlParams.get(param);
           if (value) {
             detectedLanguage = value;
+            console.log(`Detected language from URL param ${param}:`, value);
             break;
           }
         }
@@ -1128,6 +1159,7 @@ const PopupRegistrationForm = ({ params }) => {
         const dataLang = urlParams.get("data-lang");
         if (dataLang) {
           detectedLanguage = dataLang;
+          console.log("Detected language from data-lang param:", dataLang);
         }
 
         // NEW: If URL parameters don't contain language, try to extract from pathname
@@ -1138,13 +1170,46 @@ const PopupRegistrationForm = ({ params }) => {
             // Check if first path segment looks like a language code
             if (possibleLang && possibleLang.length <= 7) {
               detectedLanguage = possibleLang;
+              console.log("Detected language from URL path:", possibleLang);
             }
+          }
+        }
+
+        // Check if language is part of the URL fragment/hash
+        if (!detectedLanguage && window.location.hash) {
+          const hashMatch = window.location.hash.match(
+            /(#|&)(language|lang)=([^&]+)/i
+          );
+          if (hashMatch && hashMatch[3]) {
+            detectedLanguage = hashMatch[3];
+            console.log("Detected language from URL hash:", hashMatch[3]);
           }
         }
 
         // Set the language if detected from any source
         if (detectedLanguage) {
-          setLanguageFromUrl(detectedLanguage);
+          // Clean up the language code to ensure proper formatting
+          const cleanLang = sanitizeLanguageCode(detectedLanguage);
+          console.log("Setting language from URL:", cleanLang);
+
+          // Special handling for Arabic
+          if (isRTLLanguage(cleanLang)) {
+            console.log(
+              "Arabic language detected from URL parameter, enabling RTL"
+            );
+
+            // Set RTL flags in session storage and globals
+            try {
+              sessionStorage.setItem("oqtima_tab_rtl", "true");
+              sessionStorage.setItem("isRTL", "true");
+              window.__FORCE_RTL__ = true;
+              window.__ORIGINAL_RTL__ = true;
+            } catch (e) {
+              console.warn("Error storing RTL flags:", e);
+            }
+          }
+
+          setLanguageFromUrl(cleanLang);
         }
 
         // Log current referral parameter state
@@ -1195,19 +1260,69 @@ const PopupRegistrationForm = ({ params }) => {
 
   // SANITIZE: Function to clean up language codes that might be malformed
   const sanitizeLanguageCode = (code) => {
-    // If code contains "?", it's likely malformed
+    // If code contains "?", it's likely malformed or contains query parameters
     if (code && code.includes("?")) {
-      // Try to extract the language part
-      const match = code.match(/[?&](language|lang|locale)=([^&]+)/i);
-      if (match && match[2]) {
-        return match[2];
+      console.log("Sanitizing language code with query parameters:", code);
+
+      // Check if code itself is a query parameter (e.g., "?language=ar")
+      if (code.startsWith("?")) {
+        // Try to extract the language part
+        const match = code.match(/[?&](language|lang|locale)=([^&]+)/i);
+        if (match && match[2]) {
+          console.log("Extracted language from query parameter:", match[2]);
+          return match[2];
+        }
       }
+
+      // If the code has format like "ar?param=value"
+      const parts = code.split("?");
+      if (parts.length > 1 && parts[0].length <= 5) {
+        console.log("Extracted language from before query string:", parts[0]);
+        return parts[0];
+      }
+
+      // Try again with more permissive regex to find language value
+      const fullMatch = code.match(/(?:^|[?&])(language|lang|locale)=([^&]+)/i);
+      if (fullMatch && fullMatch[2]) {
+        console.log("Extracted language with permissive regex:", fullMatch[2]);
+        return fullMatch[2];
+      }
+
       // Default to English if we can't extract
+      console.log(
+        "Could not extract language from query string, defaulting to 'en'"
+      );
       return "en";
     }
 
     // If code is longer than 5 chars and not a common format like "zh-CN"
     if (code && code.length > 5 && !code.match(/^[a-z]{2}-[A-Z]{2}$/)) {
+      // Special handling for Arabic - don't convert "arabic" to "en"
+      if (code.toLowerCase() === "arabic") {
+        return "ar";
+      }
+
+      // Try to extract a valid language code if it starts with a 2-letter code
+      const potentialCode = code.substring(0, 2).toLowerCase();
+      if (
+        potentialCode === "ar" ||
+        potentialCode === "en" ||
+        potentialCode === "fr" ||
+        potentialCode === "es" ||
+        potentialCode === "pt" ||
+        potentialCode === "zh" ||
+        potentialCode === "br" ||
+        potentialCode === "th" ||
+        potentialCode === "vn" ||
+        potentialCode === "it" ||
+        potentialCode === "jp" ||
+        potentialCode === "id" ||
+        potentialCode === "my" ||
+        potentialCode === "cn"
+      ) {
+        return potentialCode;
+      }
+
       return "en";
     }
 
@@ -1235,7 +1350,7 @@ const PopupRegistrationForm = ({ params }) => {
   }
 
   // Check untuk RTL language
-  const forcedRTL = RTL_LANGUAGES.includes(effectiveLanguage);
+  const forcedRTL = isRTLLanguage(effectiveLanguage);
   const isRTLMode = isRTL || forcedRTL;
 
   // First parse and extract the language parameters
@@ -1276,24 +1391,33 @@ const PopupRegistrationForm = ({ params }) => {
       console.log(`Using specific language: ${specificLanguage}`);
 
       // ADDED: Clean RTL attributes for non-Arabic languages
-      if (specificLanguage.toLowerCase() !== "ar") {
+      // Sanitize the specific language code first
+      const sanitizedLang = sanitizeLanguageCode(specificLanguage);
+      console.log(`Sanitized language code: ${sanitizedLang}`);
+
+      // Check if the sanitized language is Arabic
+      const isArabic = isRTLLanguage(sanitizedLang);
+
+      if (!isArabic) {
         console.log(
-          `Non-Arabic language detected (${specificLanguage}), cleaning RTL attributes`
+          `Non-Arabic language detected (${sanitizedLang}), cleaning RTL attributes`
         );
         cleanRTLAttributes();
+      } else {
+        console.log(
+          `Arabic language detected (${sanitizedLang}), preserving RTL attributes`
+        );
       }
 
       // For RTL languages, update the language context
       if (setCurrentLanguage && typeof setCurrentLanguage === "function") {
         try {
           // Create proper language object expected by the context
-          const isRtlLang = RTL_LANGUAGES.includes(
-            specificLanguage.toLowerCase()
-          );
+          const isRtlLang = isRTLLanguage(sanitizedLang);
           const langObject = {
-            id: specificLanguage,
-            title: specificLanguage.toUpperCase(),
-            URIPart: `/${specificLanguage}/`,
+            id: sanitizedLang,
+            title: sanitizedLang.toUpperCase(),
+            URIPart: `/${sanitizedLang}/`,
             isRTL: isRtlLang,
           };
           setCurrentLanguage(langObject);
@@ -1320,42 +1444,107 @@ const PopupRegistrationForm = ({ params }) => {
     }
   }, [params]);
 
-  // NEW: Add specific effect to monitor language changes and handle RTL cleanup
+  // Simplified RTL handling
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // Function to check and fix RTL attributes based on the current language
-    const handleLanguageRTLCheck = () => {
-      const currentLang = document.documentElement.getAttribute("lang");
+    // Only run once to add minimal listener for language changes
+    const simpleLanguageHandler = () => {
+      const langAttr = document.documentElement.getAttribute("lang") || "";
+      const cleanLang = langAttr.replace(/[?&].*$/, "").toLowerCase();
 
-      if (currentLang && currentLang.toLowerCase() !== "ar") {
-        console.log(
-          `Form detected non-Arabic language: ${currentLang}, cleaning RTL attributes`
+      // Just update the form's RTL state based on language
+      if (isRTLLanguage(cleanLang)) {
+        console.log("Form detected Arabic language, ensuring form RTL mode");
+
+        // Add mobile-specific styling for RTL in the registration form
+        if (!document.getElementById("rtl-form-mobile-styles")) {
+          const mobileStyleEl = document.createElement("style");
+          mobileStyleEl.id = "rtl-form-mobile-styles";
+          mobileStyleEl.textContent = `
+            /* Mobile RTL Form Fixes */
+            @media (max-width: 767px) {
+              /* General layout direction */
+              [dir="rtl"] .registration-form,
+              [dir="rtl"] .popup-registration__content {
+                text-align: right !important;
+                direction: rtl !important;
+              }
+              
+              /* Input alignment */
+              [dir="rtl"] .registration-form input,
+              [dir="rtl"] .registration-form select,
+              [dir="rtl"] .registration-form textarea {
+                text-align: right !important;
+                direction: rtl !important;
+                padding-right: 12px !important;
+                padding-left: 8px !important;
+              }
+              
+              /* Label alignment */
+              [dir="rtl"] .registration-form label {
+                text-align: right !important;
+                float: right !important;
+              }
+              
+              /* Checkbox alignment */
+              [dir="rtl"] .registration-form input[type="checkbox"] {
+                right: 0 !important;
+                left: auto !important;
+                margin-right: 0 !important;
+                margin-left: 8px !important;
+              }
+              
+              /* Ensure checkbox labels are properly aligned */
+              [dir="rtl"] .registration-form .form-checkbox label {
+                padding-right: 25px !important;
+                padding-left: 0 !important;
+              }
+              
+              /* Button text alignment */
+              [dir="rtl"] .registration-form button {
+                text-align: center !important;
+              }
+            }
+          `;
+          document.head.appendChild(mobileStyleEl);
+        }
+
+        // Only set direction for the form elements we control
+        document
+          .querySelectorAll(
+            ".registration-form, .registration-form__field, .registration-form__button, .form-group, .form-field, input, select, textarea"
+          )
+          .forEach((el) => {
+            el.setAttribute("dir", "rtl");
+            el.classList.add("rtl-mode");
+          });
+      } else {
+        // Clean up RTL-specific styles if exists
+        const rtlFormMobileStyles = document.getElementById(
+          "rtl-form-mobile-styles"
         );
-        cleanRTLAttributes();
+        if (rtlFormMobileStyles) rtlFormMobileStyles.remove();
       }
     };
 
-    // Run check immediately
-    handleLanguageRTLCheck();
+    // Run once on initial render
+    simpleLanguageHandler();
 
-    // Set up observer to monitor language attribute changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === "lang") {
-          handleLanguageRTLCheck();
-        }
-      });
-    });
+    // Add minimal listener with debounce
+    let debounceTimer = null;
+    const handleLanguageChange = () => {
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(simpleLanguageHandler, 50);
+    };
 
-    // Start observing
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["lang"],
-    });
+    // Listen for custom events from parent components instead of using MutationObserver
+    window.addEventListener("language-changed", handleLanguageChange);
 
-    // Cleanup on unmount
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener("language-changed", handleLanguageChange);
+      if (debounceTimer) clearTimeout(debounceTimer);
+    };
   }, []);
 
   // Map ke language code portal untuk API
