@@ -4176,12 +4176,62 @@ const RTL_LANGUAGES = ["ar"];
     countryName,
     countryCode
   ) {
-    console.log(`Creating mobile popup for language: ${language}`);
+    console.log(`Creating mobile popup for language: ${language}`, {
+      referralType,
+      referralValue,
+      language,
+    });
 
     // Check if the language is RTL
     const isRTL = RTL_LANGUAGES.includes(language);
     if (isRTL) {
       console.log("Creating mobile popup with RTL support");
+    }
+
+    // First, ensure referral parameters are properly set in session storage
+    // This fixes the issue where mobile wasn't preserving these values
+    try {
+      // Store referral type if valid
+      if (referralType !== null && referralType !== undefined) {
+        window.__OQTIMA_REFERRAL_TYPE__ = referralType;
+        sessionStorage.setItem("oqtima_referral_type", referralType);
+        console.log("[Mobile] Set referral_type to:", referralType);
+      } else {
+        // Clear if not provided
+        delete window.__OQTIMA_REFERRAL_TYPE__;
+        sessionStorage.removeItem("oqtima_referral_type");
+      }
+
+      // Store referral value if valid
+      if (referralValue !== null && referralValue !== undefined) {
+        window.__OQTIMA_REFERRAL_VALUE__ = referralValue;
+        sessionStorage.setItem("oqtima_referral_value", referralValue);
+        console.log("[Mobile] Set referral_value to:", referralValue);
+      } else {
+        // Clear if not provided
+        delete window.__OQTIMA_REFERRAL_VALUE__;
+        sessionStorage.removeItem("oqtima_referral_value");
+      }
+
+      // Store language parameters consistently
+      window.__OQTIMA_COMPONENT_LANGUAGE = language;
+      window.__OQTIMA_LOCKED_LANG = language;
+      window.__OQTIMA_TAB_LANGUAGE__ = language;
+      sessionStorage.setItem("oqtima_tab_language", language);
+      sessionStorage.setItem("i18nextLng", language);
+      sessionStorage.setItem("lang", language);
+      sessionStorage.setItem("language", language);
+
+      // Set RTL flags if needed
+      if (isRTL) {
+        window.__FORCE_RTL__ = true;
+        window.__ORIGINAL_RTL__ = true;
+        sessionStorage.setItem("oqtima_tab_rtl", "true");
+        sessionStorage.setItem("isRTL", "true");
+        console.log("[Mobile] Set RTL flags for Arabic");
+      }
+    } catch (e) {
+      console.warn("[Mobile] Error setting storage parameters:", e);
     }
 
     // Get the container element (create if it doesn't exist)
@@ -4232,13 +4282,37 @@ const RTL_LANGUAGES = ["ar"];
       iframe.setAttribute("dir", "rtl");
     }
 
-    // Set iframe URL with correct parameters
-    iframe.src = constructIframeUrl(
-      language,
-      referralType,
-      referralValue,
-      true
-    );
+    // Construct the iframe URL with parameters directly injected
+    // Adding referral and language parameters directly to ensure they're passed
+    const url = constructIframeUrl(language, referralType, referralValue, true);
+
+    // Add additional parameters to ensure they're properly passed
+    const finalUrl = new URL(url);
+    const searchParams = new URLSearchParams(finalUrl.search);
+
+    // Ensure language parameters are included
+    searchParams.set("language", language);
+    searchParams.set("lang", language);
+    searchParams.set("data-lang", language);
+    searchParams.set("i18nextLng", language);
+    searchParams.set("force_language", "true");
+
+    // Ensure referral parameters are included if provided
+    if (referralType !== null && referralType !== undefined) {
+      searchParams.set("referral_type", referralType);
+      searchParams.set("referralType", referralType);
+      searchParams.set("referral-type", referralType);
+    }
+    if (referralValue !== null && referralValue !== undefined) {
+      searchParams.set("referral_value", referralValue);
+      searchParams.set("referralValue", referralValue);
+      searchParams.set("referral-value", referralValue);
+    }
+
+    // Set iframe URL with enhanced parameters
+    finalUrl.search = searchParams.toString();
+    iframe.src = finalUrl.toString();
+    console.log("[Mobile] Using iframe URL:", iframe.src);
 
     // Add the iframe to the container
     modalContainer.appendChild(iframe);
@@ -4359,11 +4433,88 @@ const RTL_LANGUAGES = ["ar"];
     };
     document.addEventListener("keydown", keyDownHandler);
 
+    // Enhanced message handler for mobile - sends parameters to iframe when it's ready
+    const sendParamsToIframe = () => {
+      try {
+        // Create a complete message with all necessary data
+        const messageData = {
+          type: "REGISTRATION_PARAMS",
+          data: {
+            // Language parameters with higher priority
+            language: language,
+            "data-lang": language,
+            lang: language,
+            data_lang: language,
+            tab_language: language,
+            i18nextLng: language,
+            forceLang: "true",
+            forceLanguage: "true",
+            oqtima_tab_language: language,
+
+            // Referral parameters with all variant formats
+            referral_type: referralType,
+            referralType: referralType,
+            "referral-type": referralType,
+
+            referral_value: referralValue,
+            referralValue: referralValue,
+            "referral-value": referralValue,
+
+            // RTL settings if needed
+            isRTL: isRTL,
+            isRtl: isRTL,
+            rtl: isRTL,
+
+            // Cross-domain storage instructions
+            storeInSessionStorage: true,
+            storageKeys: [
+              { key: "oqtima_referral_type", value: referralType },
+              { key: "oqtima_referral_value", value: referralValue },
+              { key: "oqtima_tab_language", value: language },
+              { key: "lang", value: language },
+              { key: "language", value: language },
+              { key: "i18nextLng", value: language },
+              { key: "oqtima_tab_rtl", value: isRTL ? "true" : "false" },
+              { key: "isRTL", value: isRTL ? "true" : "false" },
+            ],
+          },
+          timestamp: Date.now(),
+          source: "mobile_parent",
+        };
+
+        console.log("[Mobile] Sending parameters to iframe:", messageData);
+        iframe.contentWindow.postMessage(messageData, "*");
+
+        // Schedule multiple retries to ensure the message is received
+        setTimeout(() => {
+          iframe.contentWindow.postMessage(messageData, "*");
+        }, 500);
+
+        setTimeout(() => {
+          iframe.contentWindow.postMessage(messageData, "*");
+        }, 1500);
+      } catch (err) {
+        console.error("[Mobile] Error sending parameters to iframe:", err);
+      }
+    };
+
+    // Set up iframe load event to send parameters
+    iframe.addEventListener("load", function () {
+      console.log("[Mobile] Iframe loaded, sending parameters");
+      sendParamsToIframe();
+    });
+
     // Listen for messages from the iframe (e.g., for close requests)
     const messageHandler = function (event) {
       try {
         // Make sure we only process messages from our iframe or trusted sources
         if (event.data && typeof event.data === "object") {
+          // If iframe says it's ready, send params again
+          if (event.data.type === "IFRAME_READY") {
+            console.log("[Mobile] Iframe signaled ready, sending parameters");
+            sendParamsToIframe();
+          }
+
           // Handle close popup message
           if (event.data.type === "OQTIMA_CLOSE_POPUP") {
             console.log("[OQtima] Received close request from iframe");
