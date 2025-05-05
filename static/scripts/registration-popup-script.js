@@ -592,10 +592,38 @@ const RTL_LANGUAGES = ["ar"];
 
     console.log("[OQtima] Found trigger elements:", triggerElements.length);
 
+    // Detect page language
+    let detectedLanguage = "en";
+    try {
+      // Check from various sources in priority order
+      if (sessionStorage.getItem("oqtima_tab_language")) {
+        detectedLanguage = sessionStorage.getItem("oqtima_tab_language");
+      } else if (document.documentElement.lang) {
+        detectedLanguage = document.documentElement.lang.toLowerCase();
+      } else if (window.location.pathname) {
+        const pathParts = window.location.pathname.split("/").filter(Boolean);
+        if (
+          pathParts.length > 0 &&
+          /^[a-z]{2}(-[a-z]{2})?$/.test(pathParts[0])
+        ) {
+          detectedLanguage = pathParts[0].toLowerCase();
+        }
+      }
+    } catch (e) {
+      console.warn("[OQtima] Error detecting page language:", e);
+    }
+
     // Add event listeners to each trigger element
     triggerElements.forEach((element) => {
-      // Extract registration parameters from data attributes
-      const lang = element.getAttribute("data-lang") || "en";
+      // Extract registration parameters from data attributes, use detected language as fallback
+      const lang = element.getAttribute("data-lang") || detectedLanguage;
+
+      // Set the language attribute if not already set
+      if (!element.hasAttribute("data-lang")) {
+        element.setAttribute("data-lang", lang);
+        console.log(`[OQtima] Set data-lang="${lang}" on trigger element`);
+      }
+
       let referralType = element.getAttribute("data-referral-type");
       const referralValue = element.getAttribute("data-referral-value");
 
@@ -4266,20 +4294,100 @@ const RTL_LANGUAGES = ["ar"];
     countryName,
     countryCode
   ) {
-    console.log(`Creating mobile popup for language: ${language}`, {
+    // Enhanced language detection for mobile
+    // Start with the provided language parameter
+    let effectiveLanguage = language || "en";
+
+    // Advanced language detection - try multiple sources in priority order
+    try {
+      // 1. Check if we have a language parameter
+      if (!language || language === "en") {
+        console.log(
+          "[Mobile] No explicit language provided, detecting from environment"
+        );
+
+        // 2. Check session storage (highest priority)
+        if (sessionStorage.getItem("oqtima_tab_language")) {
+          effectiveLanguage = sessionStorage.getItem("oqtima_tab_language");
+          console.log(
+            "[Mobile] Using language from session storage:",
+            effectiveLanguage
+          );
+        }
+        // 3. Check document's HTML lang attribute
+        else if (document.documentElement.lang) {
+          effectiveLanguage = document.documentElement.lang.toLowerCase();
+          console.log(
+            "[Mobile] Using language from HTML lang attribute:",
+            effectiveLanguage
+          );
+        }
+        // 4. Check URL path for language code
+        else if (window.location.pathname) {
+          const pathParts = window.location.pathname.split("/").filter(Boolean);
+          if (
+            pathParts.length > 0 &&
+            /^[a-z]{2}(-[a-z]{2})?$/.test(pathParts[0])
+          ) {
+            effectiveLanguage = pathParts[0].toLowerCase();
+            console.log(
+              "[Mobile] Using language from URL path:",
+              effectiveLanguage
+            );
+          }
+        }
+        // 5. Check localStorage
+        else if (localStorage.getItem("i18nextLng")) {
+          effectiveLanguage = localStorage.getItem("i18nextLng");
+          console.log(
+            "[Mobile] Using language from localStorage:",
+            effectiveLanguage
+          );
+        }
+        // 6. Try browser language as last resort
+        else if (navigator.language) {
+          effectiveLanguage = navigator.language.split("-")[0].toLowerCase();
+          console.log(
+            "[Mobile] Using language from browser:",
+            effectiveLanguage
+          );
+        }
+      }
+
+      // Normalize language variants (especially for Brazilian Portuguese "br")
+      if (/^(pt[-_]?br|ptbr|br)$/i.test(effectiveLanguage)) {
+        effectiveLanguage = "br";
+        console.log(
+          "[Mobile] Normalized Brazilian Portuguese language variant to 'br'"
+        );
+      }
+
+      // Normalize Arabic variants
+      if (/^(ar[-_]?[a-z]*|arabic)$/i.test(effectiveLanguage)) {
+        effectiveLanguage = "ar";
+        console.log("[Mobile] Normalized Arabic language variant to 'ar'");
+      }
+    } catch (e) {
+      console.warn("[Mobile] Error during language detection:", e);
+      // Fallback to provided language or "en"
+      effectiveLanguage = language || "en";
+    }
+
+    console.log(`[Mobile] Creating popup for language: ${effectiveLanguage}`, {
+      original: language,
+      effective: effectiveLanguage,
       referralType,
       referralValue,
-      language,
     });
 
     // Check if the language is RTL
-    const isRTL = RTL_LANGUAGES.includes(language);
+    const isRTL = RTL_LANGUAGES.includes(effectiveLanguage);
     if (isRTL) {
-      console.log("Creating mobile popup with RTL support");
+      console.log("[Mobile] Creating mobile popup with RTL support");
     }
 
     // Enhanced language parameter handling for mobile
-    const normalizedLanguage = (language || "en").toLowerCase().trim();
+    const normalizedLanguage = effectiveLanguage.toLowerCase().trim();
 
     // Check specifically for BR language to ensure consistency
     const isBrVariant = /^(br|pt[-_]?br)$/i.test(normalizedLanguage);
@@ -4289,25 +4397,33 @@ const RTL_LANGUAGES = ["ar"];
       `[Mobile] Using normalized language: ${finalLanguage} (original: ${language})`
     );
 
-    // First, ensure language and referral parameters are properly set in all storage mechanisms
-    // This fixes the issue where mobile wasn't preserving these values
+    // Force language into every possible storage mechanism to ensure consistency
     try {
-      // Set language parameters in multiple storage mechanisms for maximum compatibility
-      // 1. Session Storage - for cross-page persistence in the same browser tab
+      // Store in all language-related variables
+      window.__OQTIMA_COMPONENT_LANGUAGE = finalLanguage;
+      window.__OQTIMA_LOCKED_LANG = finalLanguage;
+      window.__OQTIMA_TAB_LANGUAGE__ = finalLanguage;
+      window.__OQTIMA_LANG_MUST_USE = finalLanguage;
+      window.__FORCE_LANGUAGE = true;
+      window.__PROTECTED_LANGUAGE = finalLanguage;
+
+      // Update language in HTML and body
+      document.documentElement.setAttribute("lang", finalLanguage);
+      document.body.setAttribute("lang", finalLanguage);
+
+      // 1. Session Storage
       sessionStorage.setItem("oqtima_tab_language", finalLanguage);
       sessionStorage.setItem("i18nextLng", finalLanguage);
       sessionStorage.setItem("lang", finalLanguage);
       sessionStorage.setItem("language", finalLanguage);
       sessionStorage.setItem("gatsby-i18next-language", finalLanguage);
       sessionStorage.setItem("forceLanguage", "true");
-
-      // Set a secure timestamp to track when we last set the language
       sessionStorage.setItem(
         "oqtima_language_timestamp",
         Date.now().toString()
       );
 
-      // 2. Local Storage - for better persistence across sessions
+      // 2. Local Storage
       try {
         localStorage.setItem("i18nextLng", finalLanguage);
         localStorage.setItem("gatsby-i18next-language", finalLanguage);
@@ -4317,18 +4433,10 @@ const RTL_LANGUAGES = ["ar"];
         console.warn("[Mobile] Local storage error:", lsError);
       }
 
-      // 3. Cookies - for cross-domain sharing
+      // 3. Cookies
       document.cookie = `i18next=${finalLanguage};path=/;max-age=3600`;
       document.cookie = `oqtima_language=${finalLanguage};path=/;max-age=3600`;
       document.cookie = `last_language=${finalLanguage};path=/;max-age=3600`;
-
-      // 4. Global variables - for runtime access
-      window.__OQTIMA_COMPONENT_LANGUAGE = finalLanguage;
-      window.__OQTIMA_LOCKED_LANG = finalLanguage;
-      window.__OQTIMA_TAB_LANGUAGE__ = finalLanguage;
-      window.__OQTIMA_LANG_MUST_USE = finalLanguage;
-      window.__FORCE_LANGUAGE = true;
-      window.__PROTECTED_LANGUAGE = finalLanguage;
 
       console.log(
         "[Mobile] Enhanced language setup complete for:",
@@ -4922,11 +5030,56 @@ const RTL_LANGUAGES = ["ar"];
     // Create a default button text
     const defaultButtonText = "GET STARTED";
 
+    // Detect the most suitable language for the page
+    let detectedLanguage = "en";
+
+    // Try to detect language from various sources in priority order
+    try {
+      // 1. Check session storage first (highest priority)
+      if (sessionStorage.getItem("oqtima_tab_language")) {
+        detectedLanguage = sessionStorage.getItem("oqtima_tab_language");
+        console.log(
+          "[OQtima] Using language from session storage:",
+          detectedLanguage
+        );
+      }
+      // 2. Check HTML lang attribute
+      else if (document.documentElement.lang) {
+        detectedLanguage = document.documentElement.lang.toLowerCase();
+        console.log(
+          "[OQtima] Using language from HTML lang attribute:",
+          detectedLanguage
+        );
+      }
+      // 3. Check URL path for language code
+      else if (window.location.pathname) {
+        const pathParts = window.location.pathname.split("/").filter(Boolean);
+        if (
+          pathParts.length > 0 &&
+          /^[a-z]{2}(-[a-z]{2})?$/.test(pathParts[0])
+        ) {
+          detectedLanguage = pathParts[0].toLowerCase();
+          console.log(
+            "[OQtima] Using language from URL path:",
+            detectedLanguage
+          );
+        }
+      }
+      // 4. Try browser language as last resort
+      else if (navigator.language) {
+        detectedLanguage = navigator.language.split("-")[0].toLowerCase();
+        console.log("[OQtima] Using language from browser:", detectedLanguage);
+      }
+    } catch (e) {
+      console.warn("[OQtima] Error detecting language:", e);
+    }
+
     // Skip loading state and immediately create the buttons
     containers.forEach((container) => {
       // Get button attributes if available
       const text = container.getAttribute("data-text") || defaultButtonText;
-      const lang = container.getAttribute("data-lang") || "en";
+      // Use detected language as fallback if data-lang is not set
+      const lang = container.getAttribute("data-lang") || detectedLanguage;
 
       // FIXED: Parse referral_type as integer when reading from data attribute
       let referralType = container.getAttribute("data-referral-type");
@@ -4954,6 +5107,9 @@ const RTL_LANGUAGES = ["ar"];
       container.style.direction = "ltr";
       container.style.textAlign = "";
 
+      // Set language on the container
+      container.setAttribute("data-lang", lang);
+
       // Log the button creation with referral parameters
       console.log("[OQtima] Creating registration button with attributes:", {
         text,
@@ -4966,6 +5122,7 @@ const RTL_LANGUAGES = ["ar"];
       container.innerHTML = `
         <button 
           type="button" 
+          data-lang="${lang}"
           class="oqtima-registration-button" 
           style="
             display: inline-block !important;
@@ -4996,6 +5153,8 @@ const RTL_LANGUAGES = ["ar"];
       const button = container.querySelector(".oqtima-registration-button");
       if (button) {
         // Ensure button text alignment is always left-to-right
+        // Preserve the language attribute for the button
+        button.setAttribute("data-lang", lang);
         button.setAttribute("dir", "ltr");
 
         button.addEventListener("click", function (event) {
