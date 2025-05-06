@@ -4406,16 +4406,80 @@ const RTL_LANGUAGES = ["ar"];
     countryName,
     countryCode
   ) {
+    // MOBILE FIX: Creating a persistent language enforcement that survives navigation
+    // This is crucial for iOS/Android which may handle postMessage differently
+    try {
+      // First, detect language from URL path with highest priority
+      const urlPathLanguage = (() => {
+        try {
+          const pathParts = window.location.pathname.split("/").filter(Boolean);
+          if (pathParts.length > 0 && pathParts[0].length <= 5) {
+            const pathLang = pathParts[0].toLowerCase();
+            console.log(
+              "[Mobile Fix] Detected language from URL path:",
+              pathLang
+            );
+            return pathLang;
+          }
+          return null;
+        } catch (e) {
+          console.error("[Mobile Fix] Error detecting URL path language:", e);
+          return null;
+        }
+      })();
+
+      // Prioritize URL path language over all other sources
+      if (urlPathLanguage) {
+        // Save in all possible places to ensure it's available across contexts
+        window.__OQTIMA_URL_PATH_LANG = urlPathLanguage;
+        window.__OQTIMA_LANG_MUST_USE = urlPathLanguage;
+        window.__OQTIMA_LOCKED_LANG = urlPathLanguage;
+        window.__FINAL_DETERMINED_LANGUAGE = urlPathLanguage;
+        window.__FORCE_LANGUAGE__ = true;
+
+        // Save in DOM for cross-context availability
+        document.documentElement.dataset.urlPathLang = urlPathLanguage;
+        document.documentElement.dataset.enforcedLang = urlPathLanguage;
+        document.documentElement.dataset.mobileFinalLang = urlPathLanguage;
+
+        // Store in multiple storage locations
+        try {
+          sessionStorage.setItem("oqtima_url_path_lang", urlPathLanguage);
+          sessionStorage.setItem("oqtima_enforced_language", urlPathLanguage);
+          sessionStorage.setItem("oqtima_final_language", urlPathLanguage);
+          sessionStorage.setItem("oqtima_tab_language", urlPathLanguage);
+          sessionStorage.setItem("LANG_LOCKED", "true");
+
+          // Force the language to be used in all contexts
+          window.__OQTIMA_COMPONENT_LANGUAGE = urlPathLanguage;
+
+          console.log(
+            "[Mobile Fix] URL path language enforced throughout app:",
+            urlPathLanguage
+          );
+
+          // Force override the passed language
+          language = urlPathLanguage;
+        } catch (e) {
+          console.warn("[Mobile Fix] Storage error:", e);
+        }
+      }
+    } catch (e) {
+      console.error("[Mobile Fix] Error in language enforcement setup:", e);
+    }
+
     // Multiple checks for language enforcement
     // 1. Check for URL path language (highest priority)
     const urlPathLanguage =
       window.__OQTIMA_URL_PATH_LANG ||
-      sessionStorage.getItem("oqtima_url_path_lang") ||
-      document.documentElement.dataset.enforcedLang;
+      document.documentElement.dataset.urlPathLang ||
+      document.documentElement.dataset.enforcedLang ||
+      sessionStorage.getItem("oqtima_url_path_lang");
 
     // 2. Check for explicitly enforced language
     const enforcedLanguage =
       window.__OQTIMA_LANG_MUST_USE ||
+      window.__FINAL_DETERMINED_LANGUAGE ||
       sessionStorage.getItem("oqtima_enforced_language") ||
       sessionStorage.getItem("oqtima_final_language");
 
@@ -4426,8 +4490,12 @@ const RTL_LANGUAGES = ["ar"];
       window.__OQTIMA_LOCKED_LANG;
 
     // Determine the final language to use - in strict priority order
-    let finalDeterminedLanguage =
+    const finalDeterminedLanguage =
       urlPathLanguage || enforcedLanguage || language || "en";
+
+    // Store the finalDeterminedLanguage for global use
+    window.__FINAL_DETERMINED_LANGUAGE = finalDeterminedLanguage;
+    document.documentElement.dataset.mobileFinalLang = finalDeterminedLanguage;
 
     // Log all language-related variables for debugging
     console.log("[Mobile] Language determination process:", {
@@ -4446,6 +4514,66 @@ const RTL_LANGUAGES = ["ar"];
       language = finalDeterminedLanguage;
     }
 
+    // Final check: store the determined language for iframe use
+    const finalLanguage = language;
+
+    // MOBILE FIX: Force the language in iframe query string to ensure it's passed through URL parameters
+    const iframeUrlWithForcedLanguage = (() => {
+      try {
+        // Start with the standard URL construction
+        let baseUrl = constructIframeUrl(
+          finalLanguage,
+          referralType,
+          referralValue,
+          true
+        );
+
+        // Ensure the language parameter is correctly set in the URL
+        const url = new URL(baseUrl);
+        const params = new URLSearchParams(url.search);
+
+        // Add explicit language parameters that will be parsed by the iframe
+        params.set("language", finalLanguage);
+        params.set("lang", finalLanguage);
+        params.set("_lang", finalLanguage);
+        params.set("forceLang", "true");
+        params.set("mobileLang", finalLanguage);
+
+        // Add RTL flag if needed
+        const isRTL = finalLanguage === "ar";
+        if (isRTL) {
+          params.set("rtl", "true");
+          params.set("dir", "rtl");
+        }
+
+        // Add timestamp for cache busting
+        params.set("_t", Date.now());
+
+        // Set the modified search parameters
+        url.search = params.toString();
+
+        // Add language to hash for redundancy
+        url.hash = url.hash
+          ? `${url.hash}&lang=${finalLanguage}`
+          : `#lang=${finalLanguage}`;
+
+        console.log(
+          "[Mobile Fix] Created iframe URL with forced language parameters:",
+          url.toString()
+        );
+        return url.toString();
+      } catch (e) {
+        console.error("[Mobile Fix] Error creating iframe URL:", e);
+        // Fall back to standard URL construction
+        return constructIframeUrl(
+          finalLanguage,
+          referralType,
+          referralValue,
+          true
+        );
+      }
+    })();
+
     console.log(`[Mobile] Creating popup for language: ${language}`, {
       referralType,
       referralValue,
@@ -4462,7 +4590,12 @@ const RTL_LANGUAGES = ["ar"];
 
     // Check specifically for BR language to ensure consistency
     const isBrVariant = /^(br|pt[-_]?br)$/i.test(normalizedLanguage);
-    const finalLanguage = isBrVariant ? "br" : normalizedLanguage;
+    // Update existing finalLanguage variable rather than redeclaring it
+    if (isBrVariant && finalLanguage !== "br") {
+      console.log("[Mobile] Normalizing Brazilian Portuguese variant to 'br'");
+      // Update the finalLanguage variable
+      language = "br";
+    }
 
     // Set a super-priority flag to ensure the language is never changed
     window.__FINAL_DETERMINED_LANGUAGE = finalLanguage;
@@ -4874,11 +5007,26 @@ const RTL_LANGUAGES = ["ar"];
         const finalEnforcedLanguage =
           window.__FINAL_DETERMINED_LANGUAGE ||
           document.documentElement.dataset.mobileFinalLang ||
+          urlPathLanguage || // Explicitly add URL path language as highest priority
           window.__OQTIMA_LANG_MUST_USE ||
           window.__OQTIMA_URL_PATH_LANG ||
+          sessionStorage.getItem("oqtima_url_path_lang") ||
           sessionStorage.getItem("oqtima_enforced_language") ||
           sessionStorage.getItem("oqtima_final_language") ||
           finalLanguage;
+
+        // MOBILE FIX: Extra persistent storage for iOS/Android
+        try {
+          // Store language in cookie with long expiration for iOS/Android persistence
+          document.cookie = `oqtima_mobile_language=${finalEnforcedLanguage};path=/;max-age=3600`;
+          document.cookie = `oqtima_enforced_language=${finalEnforcedLanguage};path=/;max-age=3600`;
+
+          // Store in sessionStorage with specific mobile keys
+          sessionStorage.setItem("mobile_language", finalEnforcedLanguage);
+          sessionStorage.setItem("__mobile_lang", finalEnforcedLanguage);
+        } catch (e) {
+          console.warn("[Mobile Fix] Error setting persistent storage:", e);
+        }
 
         console.log(
           "[Mobile] Using enforced language for iframe:",
@@ -4894,13 +5042,11 @@ const RTL_LANGUAGES = ["ar"];
             LANGUAGE_LOCKED: "true",
             FINAL_LANGUAGE: finalEnforcedLanguage,
             CANNOT_OVERRIDE: "true",
+            MOBILE_SPECIFIC: "true", // Add mobile specific flag
 
             // Add URL path language if available (highest priority)
-            urlPathLanguage:
-              window.__OQTIMA_URL_PATH_LANG ||
-              sessionStorage.getItem("oqtima_url_path_lang") ||
-              null,
-            languagePriority: window.__OQTIMA_LANG_PRIORITY || "enforced",
+            urlPathLanguage: urlPathLanguage || null,
+            languagePriority: "url_path_first", // Changed to emphasize URL path priority
             forcedLanguage: finalEnforcedLanguage,
 
             // Language parameters with highest priority
@@ -4918,8 +5064,17 @@ const RTL_LANGUAGES = ["ar"];
             oqtima_final_language: finalEnforcedLanguage,
             oqtima_enforced_language: finalEnforcedLanguage,
 
+            // MOBILE FIX: Additional mobile-specific parameters
+            mobile_language: finalEnforcedLanguage,
+            __mobile_lang: finalEnforcedLanguage,
+
+            // Add device type information
+            device: "mobile", // Explicitly indicate this is mobile
+            deviceType: "mobile",
+            isMobileDevice: "true",
+
             // Additional URL language parameters
-            urlPathLang: window.__OQTIMA_URL_PATH_LANG || null,
+            urlPathLang: urlPathLanguage || null,
             originalLanguage: language,
 
             // Mobile-specific flags
@@ -4942,12 +5097,18 @@ const RTL_LANGUAGES = ["ar"];
             rtl: isRTL,
             dir: isRTL ? "rtl" : "ltr",
 
+            // Add timestamp for caching prevention
+            timestamp: Date.now(),
+            _t: Date.now(),
+
             // Cross-domain storage instructions
             storeInSessionStorage: true,
+            storeInLocalStorage: true, // Add local storage for better persistence
             storageKeys: [
               { key: "oqtima_referral_type", value: referralType },
               { key: "oqtima_referral_value", value: referralValue },
               { key: "oqtima_tab_language", value: finalEnforcedLanguage },
+              { key: "mobile_language", value: finalEnforcedLanguage },
               { key: "lang", value: finalEnforcedLanguage },
               { key: "language", value: finalEnforcedLanguage },
               { key: "i18nextLng", value: finalEnforcedLanguage },
@@ -4959,10 +5120,11 @@ const RTL_LANGUAGES = ["ar"];
               { key: "LANG_LOCKED", value: "true" },
               { key: "oqtima_final_language", value: finalEnforcedLanguage },
               { key: "oqtima_enforced_language", value: finalEnforcedLanguage },
+              {
+                key: "oqtima_url_path_lang",
+                value: urlPathLanguage || finalEnforcedLanguage,
+              },
             ],
-
-            // Add timestamp for cache busting
-            timestamp: Date.now(),
           },
           timestamp: Date.now(),
           source: "mobile_parent",
@@ -5143,7 +5305,9 @@ const RTL_LANGUAGES = ["ar"];
           const finalEnforcedLanguage =
             window.__FINAL_DETERMINED_LANGUAGE ||
             document.documentElement.dataset.mobileFinalLang ||
+            urlPathLanguage || // Added URL path language as highest priority
             window.__OQTIMA_URL_PATH_LANG ||
+            sessionStorage.getItem("oqtima_url_path_lang") ||
             sessionStorage.getItem("oqtima_enforced_language") ||
             finalLanguage;
 
