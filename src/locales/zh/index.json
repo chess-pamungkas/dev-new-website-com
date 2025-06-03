@@ -971,8 +971,8 @@
 
   "withdrawal_disclaimer1-fsa": "我們全天候在這裡為您服務，但並非所有金融機構都能夠全天候工作。我們的處理團隊將確保在工作日內處理您的提款要求，即週一至週五上午9點至下午3點（東歐標準時間）。",
   "withdrawal_disclaimer2-fsa": "我們不會向您收取任何費用，但您的銀行或資金來源可能會從他們那邊收取費用，這是我們無法控制的。",
-  "withdrawal_disclaimer3_1-fsa": "若您每月申請超過5次提款，我們保留收取3%手續費的權利。",
-  "withdrawal_disclaimer3_2-fsa": "如果提款申請時幾乎沒有或沒有交易活動，我們保留收取3%手續費的權利。",
+  "withdrawal_disclaimer3_1-fsa": "若您每月申請超過5次提款，我們保留收取6%手續費的權利。",
+  "withdrawal_disclaimer3_2-fsa": "如果提款申請時幾乎沒有或沒有交易活動，我們保留收取6%手續費的權利。",
   "withdrawal_disclaimer4-fsa": "銀行電匯提款可能需要3-5天時間才能收到。",
 
   "education_top-market-promo-note": "Lorem ipsum dolor sit amet,consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore。",
