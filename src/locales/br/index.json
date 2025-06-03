@@ -913,8 +913,8 @@
 
   "withdrawal_disclaimer1-fsa": "Estamos aqui por você a qualquer hora do dia, mas nem todas as instituições financeiras funcionam ininterruptamente. Nossa equipe de processamento garantirá que suas retiradas sejam processadas durante o dia útil, de segunda a sexta-feira, das 9h às 15h (Horário Padrão da Europa Oriental).",
   "withdrawal_disclaimer2-fsa": "Não cobraremos nenhum centavo do nosso lado, mas seu banco ou método de financiamento pode cobrar uma taxa do lado deles, o que está além do nosso controle.",
-  "withdrawal_disclaimer3_1-fsa": "Reservamo-nos o direito de cobrar uma taxa de 3% caso você solicite mais de 5 retiradas mensais.",
-  "withdrawal_disclaimer3_2-fsa": "Também reservamo-nos o direito de cobrar uma taxa de 3% se uma retirada for solicitada com atividade de negociação mínima ou nenhuma.",
+  "withdrawal_disclaimer3_1-fsa": "Reservamo-nos o direito de cobrar uma taxa de 6% caso você solicite mais de 5 retiradas mensais.",
+  "withdrawal_disclaimer3_2-fsa": "Também reservamo-nos o direito de cobrar uma taxa de 6% se uma retirada for solicitada com atividade de negociação mínima ou nenhuma.",
   "withdrawal_disclaimer4-fsa": "Retiradas via transferência bancária podem levar de 3 a 5 dias para serem recebidas.",
 
   "education_top-market-promo-note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",

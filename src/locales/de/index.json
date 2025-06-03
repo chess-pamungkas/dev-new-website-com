@@ -844,8 +844,8 @@
 
   "withdrawal_disclaimer1-fsa": "Tage dienen nur zur Orientierung und OQTIMA haftet nicht für Verzögerungen bei der Bearbeitung, wenn diese außerhalb der Kontrolle von OQTIMA liegen. Die Finanzabteilung von OQTIMA arbeitet von Montag bis Freitag von 9 bis 15 Uhr (Osteuropäische Standardzeit). Anfragen nach diesen Zeiten werden am nächsten Arbeitstag bearbeitet.",
   "withdrawal_disclaimer2-fsa": "OQTIMA berechnet Ihnen keine Gebühren für die Bearbeitung Ihrer Einzahlungen oder Auszahlungen. Allerdings kann die von Ihnen gewählte Methode Gebühren erheben, die außerhalb von OQTIMA liegen.",
-  "withdrawal_disclaimer3_1-fsa": "Wir behalten uns das Recht vor, Ihnen eine Gebühr von 3% zu berechnen, wenn Sie mehr als 5 Abhebungen pro Monat beantragen.",
-  "withdrawal_disclaimer3_2-fsa": "Wir behalten uns das Recht vor, Ihnen eine Gebühr von 3% zu berechnen, wenn eine Auszahlung bei minimaler oder keiner Handelsaktivität angefordert wird.",
+  "withdrawal_disclaimer3_1-fsa": "Wir behalten uns das Recht vor, Ihnen eine Gebühr von 6% zu berechnen, wenn Sie mehr als 5 Abhebungen pro Monat beantragen.",
+  "withdrawal_disclaimer3_2-fsa": "Wir behalten uns das Recht vor, Ihnen eine Gebühr von 6% zu berechnen, wenn eine Auszahlung bei minimaler oder keiner Handelsaktivität angefordert wird.",
   "withdrawal_disclaimer4-fsa": "Banküberweisungen können 3-5 Tage dauern, um eingehen zu können.",
 
   "education_top-market-promo-note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",

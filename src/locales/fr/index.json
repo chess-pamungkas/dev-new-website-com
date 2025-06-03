@@ -991,8 +991,8 @@
 
   "withdrawal_disclaimer1-fsa": "Nous sommes là pour vous à tout moment de la journée, mais toutes les institutions financières ne travaillent pas 24 heures sur 24. Notre équipe de traitement veillera à ce que vos retraits soient traités dans la journée de travail, du lundi au vendredi de 9h00 à 15h00 (heure normale d'Europe de l'Est).",
   "withdrawal_disclaimer2-fsa": "Nous ne vous facturerons pas un centime de notre côté, mais votre banque ou méthode de financement peut facturer des frais de leur côté qui sont hors de notre contrôle.",
-  "withdrawal_disclaimer3_1-fsa": "Nous nous réservons le droit de vous facturer des frais de 3 % si vous demandez plus de 5 retraits par mois.",
-  "withdrawal_disclaimer3_2-fsa": "Nous nous réservons le droit de vous facturer des frais de 3% si un retrait est demandé avec une activité de trading minimale ou inexistante.",
+  "withdrawal_disclaimer3_1-fsa": "Nous nous réservons le droit de vous facturer des frais de 6% si vous demandez plus de 5 retraits par mois.",
+  "withdrawal_disclaimer3_2-fsa": "Nous nous réservons le droit de vous facturer des frais de 6% si un retrait est demandé avec une activité de trading minimale ou inexistante.",
   "withdrawal_disclaimer4-fsa": "Les retraits par virement bancaire peuvent prendre de 3 à 5 jours pour être reçus.",
 
   "education_top-market-promo-note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
