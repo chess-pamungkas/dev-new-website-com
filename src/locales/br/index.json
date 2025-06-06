@@ -461,8 +461,8 @@
   "energies-top-market-promo-text-accent": "",
   "energies_trading-ticker-title": "ENERGIAS POPULARES PARA O COMÉRCIO",
   "energies_top-market-promo-btn": "NEGOCIE ENERGIAS AGORA",
-  "energies_top-market-promotion-promo-text": "Com a OQtima você pode negociar as fontes de energia mais renomadas do planeta sem mesmo possuí-las, graças ao poder de negociação dos CFDs. Negocie Petróleo Bruto WTI, Petróleo Brent, Gás Natural com um só clique.",
-  "energies-top-market-promotion-promo-text-accent": "3,26,27,28,29,30,31,32",
+  "energies_top-market-promotion-promo-text": "Com a OQtima você pode negociar as fontes de energia mais renomadas do planeta sem mesmo possuí-las, graças ao poder de negociação dos CFDs. Negocie Petróleo Bruto WTI e Petróleo Brent com um só clique.",
+  "energies-top-market-promotion-promo-text-accent": "3,26,27,28,30,31",
   "energies_top-market-layout-title": "Spreads de Energias",
   "energies_top-market-layout-btn": "Experimente OQtima",
   "energies_faq-title1": "Há alguma comissão na comercialização de Energias?",
@@ -566,8 +566,8 @@
   "shares_top-market-promo-text-accent-fsa": "8,9,10,18,19,20,26",
   "shares_trading-ticker-title": "AÇÕES POPULARES PARA NEGOCIAR",
 
-  "shares_top-market-promotion-promo-text-fsa": "Com a OQtima você pode negociar as ações mais quentes, longas ou curtas, com a MT4, obtendo acesso a gráficos avançados, ferramentas úteis e percepções de mercado",
-  "shares_top-market-promotion-promo-text-accent-fsa": "3,8,9,10,16,20,21",
+  "shares_top-market-promotion-promo-text-fsa": "Com a OQtima você pode negociar as ações mais quentes, longas ou curtas, com a MT4 e MT5, obtendo acesso a gráficos avançados, ferramentas úteis e percepções de mercado",
+  "shares_top-market-promotion-promo-text-accent-fsa": "3,8,9,10,16,18,22,23",
   "shares_top-market-promo-btn": "COMECE A NEGOCIAR CFD AÇÕES AGORA",
   "shares_faq-title1": "Posso vender assim como comprar ações?",
   "shares_faq-content1": "Todas as nossas ações são CFDs, o que significa que você pode comprar e vender sem ter que comprar a ação. Um CFD é quando você está especulando sobre o movimento do preço, portanto, você não está limitado a apenas comprar uma ação, você pode abrir uma operação de compra ou venda e seu lucro/perda será determinado pela diferença entre o preço de abertura e o preço de fechamento",
@@ -599,7 +599,7 @@
   "all-markets_market-items-list-forex-text": "Aproveite as mudanças macroeconômicas globais com {{ forex-currency-pairs }} pares de moedas à sua disposição, com os mercados mais líquidos do mundo abertos 24 horas por dia, 5 dias por semana",
   "all-markets_market-items-list-forex-adv1": "{{ forex-currency-pairs }} pares de moedas",
   "all-markets_market-items-list-forex-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-forex-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-forex-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-forex-adv4": "Spreads a partir de 0,0",
   "all-markets_market-items-list-forex-adv5": "Ampla Liquidez ",
@@ -903,7 +903,7 @@
   "withdrawal_data-method-sticpay-fsa": "STICPAY",
   "withdrawal_data-method-sticpay-currencies-fsa": "CAD, GBP, JPY, USD",
   "withdrawal_data-method-pix-fsa": "PIX",
-  "withdrawal_data-method-pix-currencies-fsa": "BRL, USD",
+  "withdrawal_data-method-pix-currencies-fsa": "USD",
   "withdrawal_data-method-e-wallet-fsa": "Carteiras Eletrônicas",
   "withdrawal_data-method-e-wallet-currencies-fsa": "Moedas Locais Aceitas",
 
@@ -1201,7 +1201,7 @@
   "accounts-type_account-type1-ending-allowed-title": " Cobertura permitida",
   "accounts-type_account-type1-scalpers-welcome-title": "Margem de Segurança Permitida",
   "accounts-type_account-type1-currencies-title": "Moedas de base",
-  "accounts-type_account-type1-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, CHF, SGD, ZAR",
+  "accounts-type_account-type1-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, SGD",
 
   "accounts-type_account-type1-funding-fees-title": "Taxa de depósito",
   "accounts-type_account-type1-funding-fees-value": "${{ account-type1-funding-fees }}",
@@ -1228,7 +1228,7 @@
   "accounts-type_account-type2-ending-allowed-title": " Cobertura permitida",
   "accounts-type_account-type2-scalpers-welcome-title": "Margem de Segurança Permitida",
   "accounts-type_account-type2-currencies-title": "Moedas de base",
-  "accounts-type_account-type2-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, CHF, SGD, ZAR",
+  "accounts-type_account-type2-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, SGD",
 
   "accounts-type_account-type2-funding-fees-title": "Taxa de depósito",
   "accounts-type_account-type2-funding-fees-value": "${{ account-type2-funding-fees }}",
