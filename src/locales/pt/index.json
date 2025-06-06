@@ -835,7 +835,7 @@
   "withdrawal_data-method-sticpay-fsa": "STICPAY",
   "withdrawal_data-method-sticpay-currencies-fsa": "CAD, GBP, JPY, USD",
   "withdrawal_data-method-pix-fsa": "PIX",
-  "withdrawal_data-method-pix-currencies-fsa": "BRL, USD",
+  "withdrawal_data-method-pix-currencies-fsa": "USD",
   "withdrawal_data-method-e-wallet-fsa": "Carteiras Eletrônicas",
   "withdrawal_data-method-e-wallet-currencies-fsa": "Moedas Locais Aceitas",
 
@@ -1143,7 +1143,7 @@
   "accounts-type_account-type1-ending-allowed-title": "Cobertura de Posições Permitida",
   "accounts-type_account-type1-scalpers-welcome-title": "EAs e Scalpers Bem-Vindos",
   "accounts-type_account-type1-currencies-title": "Moedas Base",
-  "accounts-type_account-type1-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, CHF, SGD, ZAR",
+  "accounts-type_account-type1-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, SGD",
 
   "accounts-type_account-type1-funding-fees-title": "Taxas de Financiamento",
   "accounts-type_account-type1-funding-fees-value": "${{ account-type1-funding-fees }}",
@@ -1168,7 +1168,7 @@
   "accounts-type_account-type2-ending-allowed-title": "Cobertura de Posições Permitida",
   "accounts-type_account-type2-scalpers-welcome-title": "EAs e Scalpers Bem-Vindos",
   "accounts-type_account-type2-currencies-title": "Moedas Base",
-  "accounts-type_account-type2-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, CHF, SGD, ZAR",
+  "accounts-type_account-type2-currencies-value-fsa": "USD, EUR, JPY, GBP, CAD, SGD",
 
   "accounts-type_account-type2-funding-fees-title": "Taxas de Financiamento",
   "accounts-type_account-type2-funding-fees-value": "${{ account-type2-funding-fees }}",

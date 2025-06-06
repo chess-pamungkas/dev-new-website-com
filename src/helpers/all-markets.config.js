@@ -32,6 +32,10 @@ const FOREX = {
       text: "all-markets_market-items-list-forex-adv2-fsa",
     },
     {
+      key: "adv2-1",
+      text: "all-markets_market-items-list-forex-adv2-1-fsa",
+    },
+    {
       key: "adv3",
       text: "all-markets_market-items-list-forex-adv3",
     },
