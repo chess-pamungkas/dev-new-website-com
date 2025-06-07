@@ -538,7 +538,7 @@
   "all-markets_market-items-list-indices-text3": "Giao dịch CFD trên các chỉ số và suy đoán về hiệu suất của các thị trường chứng khoán khác nhau trên thế giới ngay bây giờ.",
   "all-markets_market-items-list-indices-adv1": "{{ indices-number }} chỉ số",
   "all-markets_market-items-list-indices-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-indices-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-indices-adv3": "Ứng dụng dành cho thiết bị di động, Máy tính để bàn, Ứng dụng web",
   "all-markets_market-items-list-indices-adv4": "Chênh lệch từ 0.0",
   "all-markets_market-items-list-indices-adv5": "Thanh khoản sâu",
@@ -548,9 +548,8 @@
   "all-markets_market-items-list-shares-text-fsa": "Với OQtima, bạn có thể giao dịch tất cả các cổ phiếu được tìm kiếm nhiều nhất và nóng nhất, mua hay bán, với MT4, có quyền truy cập vào các tùy chọn biểu đồ nâng cao, các công cụ hữu ích và thông tin chi tiết về thị trường. Chọn cổ phiếu mà bạn tin rằng sẽ bùng nổ hoặc bạn cho là được định giá quá cao và mua hoặc bán với sức mạnh của giao dịch CFD.",
 
   "all-markets_market-items-list-shares-adv1-fsa": "{{ shares-number-fsa }} cổ phiếu",
-
   "all-markets_market-items-list-shares-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-shares-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-shares-adv3": "Ứng dụng dành cho thiết bị di động, Máy tính để bàn, Ứng dụng web",
   "all-markets_market-items-list-shares-adv4": "Chênh lệch từ 0.0",
   "all-markets_market-items-list-shares-adv5": "Thanh khoản sâu",
@@ -561,7 +560,7 @@
   "all-markets_market-items-list-commodities-text2": "Giao dịch Vàng, Bạc và các kim loại khác với các loại tiền tệ quan trọng nhất hoặc quyết định xem giá của chúng sẽ tăng hay giảm chỉ bằng một cú nhấp chuột.",
   "all-markets_market-items-list-commodities-adv1": "{{ metals-number }} loại kim loại",
   "all-markets_market-items-list-commodities-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-commodities-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-commodities-adv3": "Ứng dụng dành cho thiết bị di động, Máy tính để bàn, Ứng dụng web",
   "all-markets_market-items-list-commodities-adv4": "Chênh lệch từ 0.0",
   "all-markets_market-items-list-commodities-adv5": "Thanh khoản sâu",
@@ -571,7 +570,7 @@
   "all-markets_market-items-list-energies-text": "Với OQtima, bạn có thể giao dịch nguồn năng lượng nổi tiếng nhất trên hành tinh mà không cần sở hữu tài sản đó, nhờ sức mạnh của giao dịch CFD. Giao dịch Hợp đồng Tương lai Dầu thô WTI, Dầu thô Brent, Khí tự nhiên và Dầu với một cú nhấp chuột.",
   "all-markets_market-items-list-energies-adv1": "{{ energies-number }} loại năng lượng",
   "all-markets_market-items-list-energies-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-energies-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-energies-adv3": "Ứng dụng dành cho thiết bị di động, Máy tính để bàn, Ứng dụng web",
   "all-markets_market-items-list-energies-adv4": "Chênh lệch từ 0.0",
   "all-markets_market-items-list-energies-adv5": "Thanh khoản sâu",
@@ -581,6 +580,7 @@
   "all-markets_market-items-list-crypto-text-fsa": "Tiền điện tử là một lĩnh vực mới đầy cơ hội và hứng thú cho các nhà giao dịch từ khắp nơi trên thế giới, hãy tham gia đội quân giao dịch tiền điện tử của OQtima. Giao dịch 24/7 với thị trường biến động nhất hiện nay.",
   "all-markets_market-items-list-crypto-adv1-fsa": "Hơn {{ crypto-number }} loại tiền điện tử để giao dịch",
   "all-markets_market-items-list-crypto-adv2-fsa": "MT4",
+  "all-markets_market-items-list-crypto-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-crypto-adv3-fsa": "Ứng dụng dành cho thiết bị di động, Máy tính để bàn, Ứng dụng web",
   "all-markets_market-items-list-crypto-adv4-fsa": "Chênh lệch từ 0.0",
   "all-markets_market-items-list-crypto-adv5-fsa": "Thanh khoản sâu",
@@ -589,7 +589,7 @@
   "all-markets_market-items-list-etf-title": "ETF",
   "all-markets_market-items-list-etf-adv1": "{{ etf-number }}+ ETF",
   "all-markets_market-items-list-etf-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-etf-adv2-1-fsa": "MT5",
   "platforms_top-market-promo-text": "Mỗi nền tảng đã được tối ưu hóa với sự trợ giúp của các nhà phân tích và thương nhân của chúng tôi để mang lại Trải nghiệm OQtima.",
   "platforms_meta-trader-4-title": "MetaTrader 4",
   "platforms_meta-trader-4-text-1": "Nền tảng giao dịch nổi tiếng và được sử dụng nhiều nhất trên thế giới, MT4 cung cấp một cách chuyên sâu để tùy chỉnh cách bạn giao dịch.",
