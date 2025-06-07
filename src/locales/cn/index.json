@@ -600,7 +600,7 @@
   "all-markets_market-items-list-indices-text3": "",
   "all-markets_market-items-list-indices-adv1": "{{ indices-number }}种指数",
   "all-markets_market-items-list-indices-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-indices-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-indices-adv3": "手机App, 电脑版,网页交易",
   "all-markets_market-items-list-indices-adv4": "点差从0.0起",
   "all-markets_market-items-list-indices-adv5": "深层流动性",
@@ -612,7 +612,7 @@
   "all-markets_market-items-list-shares-adv1-fsa": "{{ shares-number-fsa }}种股票",
 
   "all-markets_market-items-list-shares-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-shares-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-shares-adv3": "手机App, 电脑版,网页交易",
   "all-markets_market-items-list-shares-adv4": "点差从0.0起",
   "all-markets_market-items-list-shares-adv5": "深层流动性",
@@ -623,7 +623,7 @@
   "all-markets_market-items-list-commodities-text2": "将黄金、白银和其他金属与世界上最重要的货币进行交易，只需轻轻一点，就能预测它们的价格是会飙升还是下跌.",
   "all-markets_market-items-list-commodities-adv1": "{{ metals-number }}种金属产品",
   "all-markets_market-items-list-commodities-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-commodities-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-commodities-adv3": "手机App, 电脑版,网页交易",
   "all-markets_market-items-list-commodities-adv4": "点差从0.0起",
   "all-markets_market-items-list-commodities-adv5": "深层流动性",
@@ -633,7 +633,7 @@
   "all-markets_market-items-list-energies-text": "通过OQtima，您可以在不拥有实际商品的情况下交易地球上最重要的各种能源，这就是差价合约交易的力量。只需轻轻一点，就能进行美原油、布伦特原油、天然气和石油期货的交易.",
   "all-markets_market-items-list-energies-adv1": "{{ energies-number }}种能源产品",
   "all-markets_market-items-list-energies-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-energies-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-energies-adv3": "手机App, 电脑版,网页交易",
   "all-markets_market-items-list-energies-adv4": "点差从0.0起",
   "all-markets_market-items-list-energies-adv5": "深层流动性",
@@ -643,6 +643,7 @@
   "all-markets_market-items-list-crypto-text-fsa": "加密货币是一个新的领域，为世界各地的交易者提供了更多的机会，加入OQtima的加密货币交易者大军。在目前最活跃的市场上进行24/7交易.",
   "all-markets_market-items-list-crypto-adv1-fsa": "{{ crypto-number }}+ 加密货币可供交易",
   "all-markets_market-items-list-crypto-adv2-fsa": "MT4",
+  "all-markets_market-items-list-crypto-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-crypto-adv3-fsa": "手机App, 电脑版,网页交易",
   "all-markets_market-items-list-crypto-adv4-fsa": "点差从0.0起",
   "all-markets_market-items-list-crypto-adv5-fsa": "深层流动性",
@@ -651,7 +652,7 @@
   "all-markets_market-items-list-etf-title": "ETF",
   "all-markets_market-items-list-etf-adv1": "{{ etf-number }}+ ETF",
   "all-markets_market-items-list-etf-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-etf-adv2-1-fsa": "MT5",
   "platforms_top-market-promo-text": "所有的交易平台都经过了我们专业分析师的优化，大大优化了OQtima用户的交易体验",
   "platforms_meta-trader-4-title": "MetaTrader 4",
   "platforms_meta-trader-4-text-1": "作为世界上最著名和最常用的交易平台，MT4提供了可自由定制方式来适应您的交易特色.",

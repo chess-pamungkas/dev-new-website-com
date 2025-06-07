@@ -667,7 +667,7 @@
   "all-markets_market-items-list-indices-text3": " Négociez dès maintenant des CFD sur indices et spéculez sur les performances des différents marchés boursiers du monde.",
   "all-markets_market-items-list-indices-adv1": "{{ indices-number }} indices",
   "all-markets_market-items-list-indices-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-indices-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-indices-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-indices-adv4": "Spreads a partir de 0.0",
   "all-markets_market-items-list-indices-adv5": "Liquidité profonde",
@@ -677,9 +677,8 @@
   "all-markets_market-items-list-shares-text-fsa": "Avec OQtima, vous pouvez trader toutes les actions les plus recherchées et les plus chaudes, à la hausse ou à la baisse, avec MT4, en accédant à des options de graphiques avancées, des outils utiles et des informations de marché. Choisissez l'action que vous pensez va exploser ou que vous estimez trop chère et achetez à la hausse ou à la baisse avec la puissance du trading de CFD.",
 
   "all-markets_market-items-list-shares-adv1-fsa": "{{ shares-number-fsa }} Actions",
-
   "all-markets_market-items-list-shares-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-shares-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-shares-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-shares-adv4": "Spreads a partir de 0.0",
   "all-markets_market-items-list-shares-adv5": "Liquidité profonde",
@@ -690,7 +689,7 @@
   "all-markets_market-items-list-commodities-text2": "Échangez de l'or, de l'argent et d'autres métaux contre les principales devises ou décidez si leur prix va grimper ou chuter en un clic.",
   "all-markets_market-items-list-commodities-adv1": "{{ metals-number }} Matière première",
   "all-markets_market-items-list-commodities-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-commodities-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-commodities-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-commodities-adv4": "Spreads a partir de 0.0",
   "all-markets_market-items-list-commodities-adv5": "Liquidité profonde",
@@ -700,7 +699,7 @@
   "all-markets_market-items-list-energies-text": "Avec OQtima, vous pouvez trader la source d'énergie la plus renommée de la planète sans posséder les actifs eux-mêmes, grâce au pouvoir du trading de CFDs. Échangez le pétrole brut WTI, le pétrole brut Brent, le gaz naturel et les contrats à terme sur le pétrole en un clic.",
   "all-markets_market-items-list-energies-adv1": "{{ energies-number }} Matière première",
   "all-markets_market-items-list-energies-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-energies-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-energies-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-energies-adv4": "Spreads a partir de 0.0",
   "all-markets_market-items-list-energies-adv5": "Liquidité profonde",
@@ -710,6 +709,7 @@
   "all-markets_market-items-list-crypto-text-fsa": "Les crypto-monnaies sont un nouveau royaume d’opportunités et d’excitation pour les traders du monde entier, rejoignez l’armée de crypto-traders d’OQtima. Négociez 24h/24 et 7j/7 avec le marché le plus volatile actuellement disponible.",
   "all-markets_market-items-list-crypto-adv1-fsa": "{{ crypto-number }}+ Crypto des croix à négocier",
   "all-markets_market-items-list-crypto-adv2-fsa": "MT4",
+  "all-markets_market-items-list-crypto-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-crypto-adv3-fsa": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-crypto-adv4-fsa": "Spreads a partir de 0.0",
   "all-markets_market-items-list-crypto-adv5-fsa": "Liquidité profonde",
@@ -719,7 +719,7 @@
   "all-markets_market-items-list-etf-text": "Investissez dans les Exchange-Traded Funds (ETF) les plus populaires au monde sans avoir besoin de posséder les actifs sous-jacents. Avec la puissance du trading de CFD, vous pouvez accéder à la gamme d'ETF d'OQtima en quelques clics. Choisissez parmi plus de 100 des ETF les plus largement échangés maintenant.",
   "all-markets_market-items-list-etf-adv1": "{{ etf-number }}+ ETF",
   "all-markets_market-items-list-etf-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-etf-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-etf-adv3": "Application mobile, Bureau, WebApp",
   "all-markets_market-items-list-etf-adv4": "Spread super compétitif",
   "all-markets_market-items-list-etf-adv5": "Liquidité profonde",

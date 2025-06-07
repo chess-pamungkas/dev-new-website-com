@@ -667,7 +667,7 @@
   "all-markets_market-items-list-indices-text3": "Fate trading con i CFD sugli indici e speculate sull'andamento dei vari mercati azionari di tutto il mondo.",
   "all-markets_market-items-list-indices-adv1": "{{ indices-number }} indici",
   "all-markets_market-items-list-indices-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-indices-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-indices-adv3": "App dal cellulare, Computer e Online",
   "all-markets_market-items-list-indices-adv4": "Spread da 0,0",
   "all-markets_market-items-list-indices-adv5": "Liquidità profonda",
@@ -679,7 +679,7 @@
   "all-markets_market-items-list-shares-adv1-fsa": "{{ shares-number-fsa }} Azioni",
 
   "all-markets_market-items-list-shares-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-shares-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-shares-adv3": "App dal cellulare, Computer e Online",
   "all-markets_market-items-list-shares-adv4": "Spread da 0,0",
   "all-markets_market-items-list-shares-adv5": "Liquidità profonda ",
@@ -690,7 +690,7 @@
   "all-markets_market-items-list-commodities-text2": "Opera con l'oro, l'argento e altri metalli contro le valute più importanti o decidi se il loro prezzo salirà o scenderà con un clic.",
   "all-markets_market-items-list-commodities-adv1": "{{ metals-number }} coppie di metalli",
   "all-markets_market-items-list-commodities-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-commodities-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-commodities-adv3": "App dal cellulare, Computer e Online",
   "all-markets_market-items-list-commodities-adv4": "Spreads da 0.0",
   "all-markets_market-items-list-commodities-adv5": "Liquidità profonda",
@@ -700,7 +700,7 @@
   "all-markets_market-items-list-energies-text": "Con OQtima puoi operare sulle fonti di energia più rinomate del pianeta senza possedere gli asset stessi, grazie alla potenza del trading di CFD. Negoziate i futures su greggio WTI, greggio Brent, gas naturale e petrolio con un semplice clic.",
   "all-markets_market-items-list-energies-adv1": "{{ energies-number }} differenti tipi di energie e futures",
   "all-markets_market-items-list-energies-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-energies-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-energies-adv3": "App dal cellulare, Computer e Online",
   "all-markets_market-items-list-energies-adv4": "Spread da 0,0",
   "all-markets_market-items-list-energies-adv5": "Liquidità profonda",
@@ -710,6 +710,7 @@
   "all-markets_market-items-list-crypto-text-fsa": "Le criptovalute sono un nuovo regno di opportunità ed eccitazione per i trader di tutto il mondo, unisciti all'esercito di trader di criptovalute di OQtima. Fai trading 24 ore su 24, 7 giorni su 7, con il mercato più volatile attualmente disponibile.",
   "all-markets_market-items-list-crypto-adv1-fsa": "{{ crypto-number }}+ criptovalute con cui fare trading",
   "all-markets_market-items-list-crypto-adv2-fsa": "MT4",
+  "all-markets_market-items-list-crypto-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-crypto-adv3-fsa": "App dal cellulare, Computer e Online",
   "all-markets_market-items-list-crypto-adv4-fsa": "Spread da 0,0",
   "all-markets_market-items-list-crypto-adv5-fsa": "Liquidità profonda",
@@ -719,7 +720,7 @@
   "all-markets_market-items-list-etf-text": "Investi nei fondi negoziati in borsa (ETF) più popolari al mondo senza la necessità di possedere gli asset sottostanti. Con la potenza del trading CFD, è possibile accedere alla gamma di ETF di OQtima con pochi clic. Scegli tra oltre 100 ETF più scambiati al mondo.",
   "all-markets_market-items-list-etf-adv1": "{{ etf-number }}+ ETF",
   "all-markets_market-items-list-etf-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-etf-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-etf-adv3": "App mobile, desktop, WebApp",
   "all-markets_market-items-list-etf-adv4": "Spread super competitivi",
   "all-markets_market-items-list-etf-adv5": "Liquidità profonda",

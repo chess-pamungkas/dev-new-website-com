@@ -611,7 +611,7 @@
   "all-markets_market-items-list-indices-text3": "Negocie CFDs sobre índices e especule sobre o desempenho dos diversos mercados de ações em todo o mundo agora",
   "all-markets_market-items-list-indices-adv1": "{{ indices-number }} índices",
   "all-markets_market-items-list-indices-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-indices-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-indices-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-indices-adv4": "Spreads a partir de 0,0",
   "all-markets_market-items-list-indices-adv5": "Liquidez Ampla",
@@ -622,7 +622,7 @@
   "all-markets_market-items-list-shares-adv1-fsa": "{{ shares-number-fsa }} Ações",
 
   "all-markets_market-items-list-shares-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-shares-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-shares-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-shares-adv4": "Spreads a partir de 0,0",
   "all-markets_market-items-list-shares-adv5": "Liquidez ampla",
@@ -633,7 +633,7 @@
   "all-markets_market-items-list-commodities-text2": "Negoceie ouro, prata e outros metais contra as moedas mais importantes ou decida se os preços subirão ou cairão com um clique.",
   "all-markets_market-items-list-commodities-adv1": "Mais de {{ metals-number }} commodities",
   "all-markets_market-items-list-commodities-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-commodities-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-commodities-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-commodities-adv4": "Spreads a partir de 0,0",
   "all-markets_market-items-list-commodities-adv5": "Liquidez ampla",
@@ -643,7 +643,7 @@
   "all-markets_market-items-list-energies-text": "Com a OQtima você pode negociar a mais renomada fonte de energia do planeta sem mesmo possuí-la, graças ao poder de negociação de CFDs. Negocie com um clique Petróleo Bruto WTI, Petróleo Bruto Brent, Gás Natural e Petróleo.",
   "all-markets_market-items-list-energies-adv1": "Mais de {{ energies-number }} commodities",
   "all-markets_market-items-list-energies-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-energies-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-energies-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-energies-adv4": "Spreads a partir de 0,0",
   "all-markets_market-items-list-energies-adv5": "Liquidez ampla",
@@ -653,6 +653,7 @@
   "all-markets_market-items-list-crypto-text-fsa": "As Criptomoedas são um novo reino de oportunidades e entusiasmo para comerciantes de todo o mundo, junte-se ao exército de OQtima de operadores de Criptomoedas. Negocie 24/7 com o mercado mais volátil atualmente disponível",
   "all-markets_market-items-list-crypto-adv1-fsa": "Mais de {{ crypto-number }} combinações de Criptomoedas para operar",
   "all-markets_market-items-list-crypto-adv2-fsa": "MT4",
+  "all-markets_market-items-list-crypto-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-crypto-adv3-fsa": "Mobile App, Desktop , WebApp",
   "all-markets_market-items-list-crypto-adv4-fsa": "Spreads a partir de 0,0",
   "all-markets_market-items-list-crypto-adv5-fsa": "Liquidez Ampla",
@@ -662,7 +663,7 @@
   "all-markets_market-items-list-etf-text": "Invista nos fundos de câmbio mais populares do mundo (ETFs) sem a necessidade de possuí-los. Com a potência de negociação de CFDs, você pode acessar a vasta gama de ETFs OQtima com apenas alguns cliques. Escolha entre os 100 ETFs mais negociados atualmente.",
   "all-markets_market-items-list-etf-adv1": "{{ etf-number }}+ ETF",
   "all-markets_market-items-list-etf-adv2-fsa": "MT4",
-
+  "all-markets_market-items-list-etf-adv2-1-fsa": "MT5",
   "all-markets_market-items-list-etf-adv3": "Mobile App, Desktop, WebApp",
   "all-markets_market-items-list-etf-adv4": "Spread super competitivo",
   "all-markets_market-items-list-etf-adv5": "Liquidez profunda",
