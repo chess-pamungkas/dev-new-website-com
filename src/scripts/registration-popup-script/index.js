@@ -4406,7 +4406,7 @@ const RTL_LANGUAGES = ["ar"];
     countryName,
     countryCode
   ) {
-    // SIMPLIFIED MOBILE FIX: Determine the final language immediately without complex detection
+    // CRITICAL FIX: Completely isolate popup language from parent window interference
     let finalLanguage = language;
 
     // Only check URL path language (highest priority) - simplified approach
@@ -4423,13 +4423,42 @@ const RTL_LANGUAGES = ["ar"];
       // Ignore URL parsing errors, use passed language
     }
 
-    // Store the final language for consistency
-    window.__FINAL_DETERMINED_LANGUAGE = finalLanguage;
+    // CRITICAL: Store parent window language state and prevent interference
+    const parentLanguageBackup = {
+      gatsbyLang:
+        typeof window !== "undefined" ? window.gatsby_i18next_language : null,
+      localStorage_i18nextLng: null,
+      localStorage_gatsbyLang: null,
+      sessionStorage_oqtimaTabLang: null,
+    };
 
-    // Set session storage immediately
+    // Backup and isolate parent window language settings
     try {
-      sessionStorage.setItem("oqtima_tab_language", finalLanguage);
-      sessionStorage.setItem("oqtima_final_language", finalLanguage);
+      if (typeof localStorage !== "undefined") {
+        parentLanguageBackup.localStorage_i18nextLng =
+          localStorage.getItem("i18nextLng");
+        parentLanguageBackup.localStorage_gatsbyLang = localStorage.getItem(
+          "gatsby-i18next-language"
+        );
+      }
+      if (typeof sessionStorage !== "undefined") {
+        parentLanguageBackup.sessionStorage_oqtimaTabLang =
+          sessionStorage.getItem("oqtima_tab_language");
+      }
+    } catch (e) {
+      // Ignore storage errors
+    }
+
+    // Create unique popup-specific storage keys to avoid conflicts
+    const POPUP_LANG_KEY = `oqtima_popup_lang_${Date.now()}`;
+    const POPUP_ISOLATED_FLAG = `oqtima_popup_isolated_${Date.now()}`;
+
+    // Store the final language with isolation
+    try {
+      sessionStorage.setItem(POPUP_LANG_KEY, finalLanguage);
+      sessionStorage.setItem(POPUP_ISOLATED_FLAG, "true");
+      window.__POPUP_FINAL_LANGUAGE = finalLanguage;
+      window.__POPUP_ISOLATED = true;
     } catch (e) {
       // Ignore storage errors
     }
@@ -4500,14 +4529,18 @@ const RTL_LANGUAGES = ["ar"];
       params.set("langParam", finalLanguage);
       params.set("data-lang", finalLanguage);
       params.set("i18nextLng", finalLanguage);
+      params.set("gatsby-i18next-language", finalLanguage);
       params.set("forceLang", "true");
       params.set("forceLanguage", "true");
       params.set("mobile", "true");
       params.set("isMobile", "true");
+      params.set("popup_isolated", "true");
+      params.set("prevent_lang_switch", "true");
 
       // Add cache busting to prevent cached English content
       params.set("_t", Date.now().toString());
       params.set("_mobile", "1");
+      params.set("_isolated", "1");
 
       // Set referral parameters if provided
       if (referralType !== null && referralType !== undefined) {
@@ -4523,7 +4556,7 @@ const RTL_LANGUAGES = ["ar"];
       url.search = params.toString();
 
       // Also add language to hash as fallback
-      url.hash = `lang=${finalLanguage}`;
+      url.hash = `lang=${finalLanguage}&isolated=true`;
 
       iframeUrl = url.toString();
       // console.log("[Mobile Fix] Enhanced iframe URL:", iframeUrl);
@@ -4575,9 +4608,95 @@ const RTL_LANGUAGES = ["ar"];
     `;
     document.head.appendChild(styleEl);
 
+    // CRITICAL: Install language protection to prevent parent window interference
+    let protectionInstalled = false;
+    const installLanguageProtection = () => {
+      if (protectionInstalled) return;
+      protectionInstalled = true;
+
+      // Override storage setters to protect popup language
+      const originalSetItem = Storage.prototype.setItem;
+      Storage.prototype.setItem = function (key, value) {
+        // Only allow popup-specific language changes when popup is open
+        if (
+          window.__POPUP_ISOLATED &&
+          (key === "i18nextLng" ||
+            key === "gatsby-i18next-language" ||
+            key === "oqtima_tab_language")
+        ) {
+          // If trying to set a different language than popup language, prevent it
+          if (value !== finalLanguage) {
+            console.warn(
+              `[Popup Protection] Prevented parent window from changing ${key} from ${finalLanguage} to ${value}`
+            );
+            return originalSetItem.call(this, key, finalLanguage);
+          }
+        }
+        return originalSetItem.call(this, key, value);
+      };
+
+      // Protect against direct window property changes
+      if (typeof window.gatsby_i18next_language !== "undefined") {
+        let protectedGatsbyLang = finalLanguage;
+        Object.defineProperty(window, "gatsby_i18next_language", {
+          get: function () {
+            return protectedGatsbyLang;
+          },
+          set: function (value) {
+            if (window.__POPUP_ISOLATED && value !== finalLanguage) {
+              console.warn(
+                `[Popup Protection] Prevented gatsby_i18next_language change from ${finalLanguage} to ${value}`
+              );
+              return;
+            }
+            protectedGatsbyLang = value;
+          },
+          configurable: true,
+        });
+      }
+    };
+
+    // Install protection immediately
+    installLanguageProtection();
+
     // Cleanup function
     function cleanupPopup() {
       try {
+        // Remove language protection
+        window.__POPUP_ISOLATED = false;
+        protectionInstalled = false;
+
+        // Restore original parent window language settings
+        try {
+          if (parentLanguageBackup.localStorage_i18nextLng !== null) {
+            localStorage.setItem(
+              "i18nextLng",
+              parentLanguageBackup.localStorage_i18nextLng
+            );
+          }
+          if (parentLanguageBackup.localStorage_gatsbyLang !== null) {
+            localStorage.setItem(
+              "gatsby-i18next-language",
+              parentLanguageBackup.localStorage_gatsbyLang
+            );
+          }
+          if (parentLanguageBackup.sessionStorage_oqtimaTabLang !== null) {
+            sessionStorage.setItem(
+              "oqtima_tab_language",
+              parentLanguageBackup.sessionStorage_oqtimaTabLang
+            );
+          }
+          if (parentLanguageBackup.gatsbyLang !== null) {
+            window.gatsby_i18next_language = parentLanguageBackup.gatsbyLang;
+          }
+        } catch (e) {
+          // Ignore restoration errors
+        }
+
+        // Clean up popup-specific storage
+        sessionStorage.removeItem(POPUP_LANG_KEY);
+        sessionStorage.removeItem(POPUP_ISOLATED_FLAG);
+
         if (modalContainer && modalContainer.parentNode) {
           modalContainer.parentNode.removeChild(modalContainer);
         }
@@ -4615,20 +4734,26 @@ const RTL_LANGUAGES = ["ar"];
     };
     document.addEventListener("keydown", keyDownHandler);
 
-    // SIMPLIFIED: Send parameters to iframe only once when it's loaded
+    // ENHANCED: Send parameters to iframe with strong language isolation
     const sendParamsToIframe = () => {
       try {
         const messageData = {
           type: "REGISTRATION_PARAMS",
           data: {
-            // Language parameters - use final determined language
+            // Language parameters - use final determined language with isolation flags
             language: finalLanguage,
             lang: finalLanguage,
             langParam: finalLanguage,
             "data-lang": finalLanguage,
             i18nextLng: finalLanguage,
+            "gatsby-i18next-language": finalLanguage,
             forceLang: "true",
             forceLanguage: "true",
+
+            // Isolation flags
+            popup_isolated: "true",
+            prevent_lang_switch: "true",
+            ignore_parent_lang: "true",
 
             // Device information
             isMobile: "true",
@@ -4641,16 +4766,20 @@ const RTL_LANGUAGES = ["ar"];
             referral_value: referralValue,
             referralValue: referralValue,
 
-            // Store in session storage
+            // Store in session storage with popup-specific keys
             storeInSessionStorage: true,
             storageKeys: [
-              { key: "oqtima_tab_language", value: finalLanguage },
+              { key: POPUP_LANG_KEY, value: finalLanguage },
+              { key: "popup_language", value: finalLanguage },
+              { key: "isolated_language", value: finalLanguage },
+              // Also store in standard keys but only for iframe use
               { key: "i18nextLng", value: finalLanguage },
-              { key: "language", value: finalLanguage },
-              { key: "lang", value: finalLanguage },
+              { key: "gatsby-i18next-language", value: finalLanguage },
             ],
           },
           timestamp: Date.now(),
+          isolated: true,
+          finalLanguage: finalLanguage,
         };
 
         // Send message to iframe
@@ -4686,6 +4815,18 @@ const RTL_LANGUAGES = ["ar"];
           if (event.data.type === "IFRAME_READY") {
             sendParamsToIframe();
           }
+
+          // CRITICAL: Prevent iframe from being influenced by parent language changes
+          if (
+            event.data.type === "LANGUAGE_CHANGED" &&
+            event.data.language !== finalLanguage
+          ) {
+            console.warn(
+              `[Popup Protection] Iframe tried to change language from ${finalLanguage} to ${event.data.language}, reverting`
+            );
+            // Send the correct language back
+            sendParamsToIframe();
+          }
         }
       } catch (e) {
         console.error("[Mobile] Error handling message:", e);
@@ -4701,6 +4842,44 @@ const RTL_LANGUAGES = ["ar"];
       window.removeEventListener("message", messageHandler);
       document.removeEventListener("keydown", keyDownHandler);
     }, 30 * 60 * 1000);
+
+    // CRITICAL: Override ALL parent window language references
+    try {
+      // Force override parent language settings
+      sessionStorage.setItem("oqtima_parent_lang", finalLanguage); // Override parent lang
+      sessionStorage.setItem("oqtima_parent_dir", isRTL ? "rtl" : "ltr");
+      sessionStorage.setItem("oqtima_popup_isolated", "true");
+
+      // Set all possible language storage keys to final language
+      const languageKeys = [
+        "i18nextLng",
+        "gatsby-i18next-language",
+        "oqtima_tab_language",
+        "oqtima_enforced_language",
+        "oqtima_final_language",
+        "oqtima_selected_language",
+        "lang",
+        "language",
+        "locale",
+      ];
+
+      languageKeys.forEach((key) => {
+        try {
+          sessionStorage.setItem(key, finalLanguage);
+          // Also try localStorage if available
+          localStorage.setItem(key, finalLanguage);
+        } catch (e) {
+          // Ignore storage errors
+        }
+      });
+
+      console.log(`[Mobile Popup] All language keys set to: ${finalLanguage}`);
+      console.log(
+        `[Mobile Popup] Parent language overridden from en to: ${finalLanguage}`
+      );
+    } catch (e) {
+      console.warn("[Mobile Popup] Error setting language overrides:", e);
+    }
   }
 
   // Initialize when DOM is ready
