@@ -1604,10 +1604,38 @@ const RTL_LANGUAGES = ["ar"];
 
     // Prevent background scrolling for non-embedded popups
     if (typeof window !== "undefined" && !params.embedded) {
-      document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
-      document.body.style.top = `-${originalScrollPos}px`;
+      // Check if this will be a mobile popup
+      const isMobileDetection =
+        window.innerWidth <= 767 ||
+        params.forceMobile === true ||
+        params.isMobile === true ||
+        params.mobile === true;
+
+      if (isMobileDetection) {
+        // MOBILE SPECIFIC: Use different approach to prevent background scrolling
+        // Store additional properties that might affect mobile scrolling
+        window.__OQTIMA_MOBILE_ORIGINAL_TOUCH_ACTION =
+          document.body.style.touchAction || "";
+        window.__OQTIMA_MOBILE_ORIGINAL_WEBKIT_OVERFLOW =
+          document.body.style.webkitOverflowScrolling || "";
+
+        // For mobile, use a gentler approach that won't break scroll restoration
+        document.body.style.overflow = "hidden";
+        document.body.style.touchAction = "none";
+        document.body.style.webkitOverflowScrolling = "auto";
+
+        // Store mobile-specific scroll position
+        window.__OQTIMA_MOBILE_SCROLL_X =
+          window.scrollX || window.pageXOffset || 0;
+        window.__OQTIMA_MOBILE_SCROLL_Y =
+          window.scrollY || window.pageYOffset || 0;
+      } else {
+        // DESKTOP: Use the existing fixed positioning approach
+        document.body.style.overflow = "hidden";
+        document.body.style.position = "fixed";
+        document.body.style.width = "100%";
+        document.body.style.top = `-${originalScrollPos}px`;
+      }
     }
 
     // Store all parameters in sessionStorage for the iframe
@@ -4619,24 +4647,154 @@ const RTL_LANGUAGES = ["ar"];
           styleEl.parentNode.removeChild(styleEl);
         }
 
+        // MOBILE SPECIFIC FIX: Enhanced restoration for mobile scroll behavior
         // Restore original styles
         document.body.className = originalBodyClasses || "";
         document.documentElement.className = originalHtmlClasses || "";
+
+        // Clear all potential CSS properties that might prevent scrolling on mobile
+        const bodyStyle = document.body.style;
+        const htmlStyle = document.documentElement.style;
+
+        // Reset body styles
         if (originalBodyStyle) {
           document.body.setAttribute("style", originalBodyStyle);
         } else {
           document.body.removeAttribute("style");
         }
+
+        // Reset html styles
         if (originalHtmlStyle) {
           document.documentElement.setAttribute("style", originalHtmlStyle);
         } else {
           document.documentElement.removeAttribute("style");
         }
-        document.body.style.overflow = originalBodyOverflow || "";
-        document.documentElement.style.overflow = originalHtmlOverflow || "";
-        window.scrollTo(0, originalScrollPos || 0);
+
+        // CRITICAL MOBILE FIX: Force restore scroll capability
+        bodyStyle.overflow = originalBodyOverflow || "";
+        htmlStyle.overflow = originalHtmlOverflow || "";
+
+        // Additional mobile-specific CSS resets
+        bodyStyle.position = "";
+        bodyStyle.height = "";
+        bodyStyle.maxHeight = "";
+        bodyStyle.touchAction = "";
+        bodyStyle.webkitOverflowScrolling = "";
+        bodyStyle.overflowScrolling = "";
+
+        htmlStyle.position = "";
+        htmlStyle.height = "";
+        htmlStyle.maxHeight = "";
+        htmlStyle.touchAction = "";
+        htmlStyle.webkitOverflowScrolling = "";
+        htmlStyle.overflowScrolling = "";
+
+        // Force enable scrolling on mobile
+        if (window.innerWidth <= 767) {
+          // Mobile specific fixes using stored values
+          bodyStyle.overflow = originalBodyOverflow || "auto";
+          htmlStyle.overflow = originalHtmlOverflow || "auto";
+          bodyStyle.touchAction =
+            window.__OQTIMA_MOBILE_ORIGINAL_TOUCH_ACTION || "auto";
+          bodyStyle.webkitOverflowScrolling =
+            window.__OQTIMA_MOBILE_ORIGINAL_WEBKIT_OVERFLOW || "touch";
+
+          // Remove any fixed positioning that might interfere
+          bodyStyle.position = originalBodyStyle?.includes("position")
+            ? originalBodyStyle.match(/position:\s*([^;]+)/)?.[1] || ""
+            : "";
+          htmlStyle.position = originalHtmlStyle?.includes("position")
+            ? originalHtmlStyle.match(/position:\s*([^;]+)/)?.[1] || ""
+            : "";
+
+          // Ensure body and html can scroll
+          bodyStyle.height = originalBodyStyle?.includes("height")
+            ? originalBodyStyle.match(/height:\s*([^;]+)/)?.[1] || ""
+            : "";
+          htmlStyle.height = originalHtmlStyle?.includes("height")
+            ? originalHtmlStyle.match(/height:\s*([^;]+)/)?.[1] || ""
+            : "";
+
+          // Remove the top positioning that was applied for fixed positioning
+          bodyStyle.top = "";
+          bodyStyle.width = originalBodyStyle?.includes("width")
+            ? originalBodyStyle.match(/width:\s*([^;]+)/)?.[1] || ""
+            : "";
+
+          // Clear mobile-specific stored variables
+          delete window.__OQTIMA_MOBILE_ORIGINAL_TOUCH_ACTION;
+          delete window.__OQTIMA_MOBILE_ORIGINAL_WEBKIT_OVERFLOW;
+        }
+
+        // Restore scroll position with a small delay for mobile
+        setTimeout(() => {
+          // Use mobile-specific scroll coordinates if available, otherwise fallback to originalScrollPos
+          const mobileScrollX = window.__OQTIMA_MOBILE_SCROLL_X || 0;
+          const mobileScrollY =
+            window.__OQTIMA_MOBILE_SCROLL_Y || originalScrollPos || 0;
+
+          window.scrollTo(mobileScrollX, mobileScrollY);
+
+          // Additional mobile scroll restoration attempts
+          if (window.innerWidth <= 767) {
+            // Try multiple scroll restoration methods for mobile
+            document.body.scrollTop = mobileScrollY;
+            document.documentElement.scrollTop = mobileScrollY;
+
+            // Force reflow to ensure styles are applied
+            document.body.offsetHeight;
+            document.documentElement.offsetHeight;
+
+            // Final scroll attempt
+            setTimeout(() => {
+              window.scrollTo(mobileScrollX, mobileScrollY);
+
+              // Clean up mobile scroll variables
+              delete window.__OQTIMA_MOBILE_SCROLL_X;
+              delete window.__OQTIMA_MOBILE_SCROLL_Y;
+            }, 50);
+          }
+        }, 10);
       } catch (e) {
         console.error("[Mobile] Error in cleanup:", e);
+
+        // Emergency mobile scroll fix in case of errors
+        if (window.innerWidth <= 767) {
+          try {
+            document.body.style.overflow = "auto";
+            document.documentElement.style.overflow = "auto";
+            document.body.style.touchAction =
+              window.__OQTIMA_MOBILE_ORIGINAL_TOUCH_ACTION || "auto";
+            document.body.style.webkitOverflowScrolling =
+              window.__OQTIMA_MOBILE_ORIGINAL_WEBKIT_OVERFLOW || "touch";
+            document.body.style.position = "";
+            document.documentElement.style.position = "";
+            document.body.style.height = "";
+            document.documentElement.style.height = "";
+            document.body.style.top = "";
+            document.body.style.width = "";
+
+            // Use stored mobile scroll coordinates for emergency restoration
+            const emergencyScrollX = window.__OQTIMA_MOBILE_SCROLL_X || 0;
+            const emergencyScrollY =
+              window.__OQTIMA_MOBILE_SCROLL_Y || originalScrollPos || 0;
+
+            setTimeout(() => {
+              window.scrollTo(emergencyScrollX, emergencyScrollY);
+
+              // Clean up mobile variables in emergency case too
+              delete window.__OQTIMA_MOBILE_SCROLL_X;
+              delete window.__OQTIMA_MOBILE_SCROLL_Y;
+              delete window.__OQTIMA_MOBILE_ORIGINAL_TOUCH_ACTION;
+              delete window.__OQTIMA_MOBILE_ORIGINAL_WEBKIT_OVERFLOW;
+            }, 100);
+          } catch (emergencyError) {
+            console.error(
+              "[Mobile] Emergency scroll fix failed:",
+              emergencyError
+            );
+          }
+        }
       }
     }
 
