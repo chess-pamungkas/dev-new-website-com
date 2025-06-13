@@ -1975,6 +1975,8 @@ const PopupRegistrationForm = ({ params }) => {
 
       if (typeof window !== "undefined") {
         const urlParams = new URLSearchParams(window.location.search);
+
+        // Check all possible parameter formats
         const urlReferralType =
           urlParams.get("referral_type") ||
           urlParams.get("referralType") ||
@@ -2020,16 +2022,24 @@ const PopupRegistrationForm = ({ params }) => {
 
       // 4. Check sessionStorage as a fallback
       if (finalReferralType === null && typeof window !== "undefined") {
-        const storageType = sessionStorage.getItem("oqtima_referral_type");
-        if (storageType) {
-          finalReferralType = storageType;
+        try {
+          const storageType = sessionStorage.getItem("oqtima_referral_type");
+          if (storageType) {
+            finalReferralType = storageType;
+          }
+        } catch (e) {
+          // Ignore sessionStorage errors
         }
       }
 
       if (finalReferralValue === null && typeof window !== "undefined") {
-        const storageValue = sessionStorage.getItem("oqtima_referral_value");
-        if (storageValue) {
-          finalReferralValue = storageValue;
+        try {
+          const storageValue = sessionStorage.getItem("oqtima_referral_value");
+          if (storageValue) {
+            finalReferralValue = storageValue;
+          }
+        } catch (e) {
+          // Ignore sessionStorage errors
         }
       }
 

@@ -3620,15 +3620,39 @@ const RTL_LANGUAGES = ["ar"];
 
       // CRITICAL: Ensure referral parameters are properly passed in mobile view
       if (normalizedReferralType != null && normalizedReferralType !== "") {
+        // Add all possible parameter formats for maximum compatibility
         params.append("referral_type", normalizedReferralType);
         params.append("referralType", normalizedReferralType);
         params.append("referral-type", normalizedReferralType);
+
+        // Store in sessionStorage for redundancy
+        try {
+          sessionStorage.setItem(
+            "oqtima_referral_type",
+            normalizedReferralType
+          );
+          window.__OQTIMA_REFERRAL_TYPE__ = normalizedReferralType;
+        } catch (e) {
+          console.warn("[Mobile] Error storing referral_type:", e);
+        }
       }
 
       if (normalizedReferralValue != null && normalizedReferralValue !== "") {
+        // Add all possible parameter formats for maximum compatibility
         params.append("referral_value", normalizedReferralValue);
         params.append("referralValue", normalizedReferralValue);
         params.append("referral-value", normalizedReferralValue);
+
+        // Store in sessionStorage for redundancy
+        try {
+          sessionStorage.setItem(
+            "oqtima_referral_value",
+            normalizedReferralValue
+          );
+          window.__OQTIMA_REFERRAL_VALUE__ = normalizedReferralValue;
+        } catch (e) {
+          console.warn("[Mobile] Error storing referral_value:", e);
+        }
       }
     }
 
@@ -4416,13 +4440,13 @@ const RTL_LANGUAGES = ["ar"];
             isMobile: true,
             mobileView: true,
             mobileScroll: true,
-            // CRITICAL: Ensure referral parameters are included
+            // CRITICAL: Ensure referral parameters are included in all formats
             referral_type: referralType,
             referralType: referralType,
-            referralType: referralType,
+            "referral-type": referralType,
             referral_value: referralValue,
             referralValue: referralValue,
-            referralValue: referralValue,
+            "referral-value": referralValue,
             // Add isolation flags
             isolated: true,
             popupMode: true,
@@ -4432,15 +4456,45 @@ const RTL_LANGUAGES = ["ar"];
           },
         };
 
-        // Send message to iframe
-        iframe.contentWindow.postMessage(messageData, "*");
+        // Store parameters in sessionStorage for redundancy
+        try {
+          if (referralType) {
+            sessionStorage.setItem("oqtima_referral_type", referralType);
+            window.__OQTIMA_REFERRAL_TYPE__ = referralType;
+          }
+          if (referralValue) {
+            sessionStorage.setItem("oqtima_referral_value", referralValue);
+            window.__OQTIMA_REFERRAL_VALUE__ = referralValue;
+          }
+        } catch (e) {
+          console.warn(
+            "[Mobile] Error storing parameters in sessionStorage:",
+            e
+          );
+        }
 
-        // Single retry after short delay
-        setTimeout(() => {
-          iframe.contentWindow.postMessage(messageData, "*");
-        }, 100);
+        // Send message to iframe with multiple retries for mobile reliability
+        const sendMessage = () => {
+          try {
+            iframe.contentWindow.postMessage(messageData, "*");
+          } catch (e) {
+            console.warn("[Mobile] Error sending message to iframe:", e);
+          }
+        };
+
+        // Send immediately
+        sendMessage();
+
+        // Retry after short delay
+        setTimeout(sendMessage, 100);
+
+        // Additional retry after longer delay for mobile devices
+        setTimeout(sendMessage, 500);
+
+        // Final retry after 1 second
+        setTimeout(sendMessage, 1000);
       } catch (err) {
-        console.error("[Mobile] Error sending parameters to iframe:", err);
+        console.error("[Mobile] Error in sendParamsToIframe:", err);
       }
     };
 
