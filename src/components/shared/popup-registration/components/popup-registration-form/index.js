@@ -2079,7 +2079,11 @@ const PopupRegistrationForm = ({ params }) => {
 
       // Only include referral parameters if they exist and this is a specific referral type
       if (finalReferralType !== null) {
-        registrationData.referral_type = finalReferralType;
+        // FIXED: Ensure referral_type is always a valid integerAdd commentMore actions
+        const referralTypeInt = parseInt(finalReferralType, 10);
+        if (!isNaN(referralTypeInt)) {
+          registrationData.referral_type = referralTypeInt;
+        }
       }
 
       // Only include referral_value if we have a specific referral type
