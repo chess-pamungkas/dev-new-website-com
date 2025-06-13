@@ -1,4 +1,4 @@
-﻿﻿﻿import React, { useState, useContext, useEffect, useRef, useMemo } from "react";
+﻿import React, { useState, useContext, useEffect, useRef, useMemo } from "react";
 import { Formik } from "formik";
 import cn from "classnames";
 import { PopupRegistrationSchema } from "../../../../../validations/popup-registration";
@@ -2050,6 +2050,29 @@ const PopupRegistrationForm = ({ params }) => {
         finalReferralValue = window.__OQTIMA_REFERRAL_VALUE__;
       }
 
+      // 6. Check parent window message data if available
+      if (finalReferralType === null && window.parent) {
+        try {
+          const parentData = window.parent.__OQTIMA_REFERRAL_TYPE__;
+          if (parentData !== undefined) {
+            finalReferralType = parentData;
+          }
+        } catch (e) {
+          // Ignore cross-origin errors
+        }
+      }
+
+      if (finalReferralValue === null && window.parent) {
+        try {
+          const parentData = window.parent.__OQTIMA_REFERRAL_VALUE__;
+          if (parentData !== undefined) {
+            finalReferralValue = parentData;
+          }
+        } catch (e) {
+          // Ignore cross-origin errors
+        }
+      }
+
       // 7. Normalize referral type to number if it's numeric
       if (finalReferralType !== null && !isNaN(finalReferralType)) {
         finalReferralType = Number(finalReferralType);
@@ -2079,7 +2102,7 @@ const PopupRegistrationForm = ({ params }) => {
 
       // Only include referral parameters if they exist and this is a specific referral type
       if (finalReferralType !== null) {
-        // FIXED: Ensure referral_type is always a valid integerAdd commentMore actions
+        // FIXED: Ensure referral_type is always a valid integer
         const referralTypeInt = parseInt(finalReferralType, 10);
         if (!isNaN(referralTypeInt)) {
           registrationData.referral_type = referralTypeInt;

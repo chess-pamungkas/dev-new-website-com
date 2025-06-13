@@ -3617,6 +3617,19 @@ const RTL_LANGUAGES = ["ar"];
       params.append("isMobile", "true");
       params.append("mobileView", "true");
       params.append("mobileScroll", "true");
+
+      // CRITICAL: Ensure referral parameters are properly passed in mobile view
+      if (normalizedReferralType != null && normalizedReferralType !== "") {
+        params.append("referral_type", normalizedReferralType);
+        params.append("referralType", normalizedReferralType);
+        params.append("referral-type", normalizedReferralType);
+      }
+
+      if (normalizedReferralValue != null && normalizedReferralValue !== "") {
+        params.append("referral_value", normalizedReferralValue);
+        params.append("referralValue", normalizedReferralValue);
+        params.append("referral-value", normalizedReferralValue);
+      }
     }
 
     // ENHANCED: Add referral parameters more comprehensively
@@ -3635,63 +3648,6 @@ const RTL_LANGUAGES = ["ar"];
       referralTypeParams.forEach((param) => {
         params.set(param, normalizedReferralType);
       });
-
-      // Store in global variable and sessionStorage for redundancy
-      try {
-        window.__OQTIMA_REFERRAL_TYPE__ = normalizedReferralType;
-        sessionStorage.setItem("oqtima_referral_type", normalizedReferralType);
-
-        // Set cross-domain cookies with various domain options
-        const setCrossDomainCookies = () => {
-          // Extract domain info for cookie setting
-          let domain;
-          try {
-            // Get the target domain from the baseUrl
-            const urlObj = new URL(baseUrl);
-            domain = urlObj.hostname;
-
-            // Set the cookie with specific domain
-            document.cookie = `oqtima_referral_type=${normalizedReferralType}; path=/; max-age=3600; SameSite=None; Secure`;
-
-            // Try with domain-specific cookies (multiple variations for compatibility)
-            document.cookie = `oqtima_referral_type=${normalizedReferralType}; path=/; domain=${domain}; max-age=3600; SameSite=None; Secure`;
-
-            // Also try with a leading dot for subdomain compatibility
-            if (domain.indexOf(".") !== -1) {
-              const rootDomain = domain.substring(domain.indexOf("."));
-              document.cookie = `oqtima_referral_type=${normalizedReferralType}; path=/; domain=${rootDomain}; max-age=3600; SameSite=None; Secure`;
-            }
-          } catch (e) {
-            console.warn(
-              "[OQtima] Could not set cross-domain cookies for referral_type:",
-              e
-            );
-            // Fallback to simple cookie without domain
-            document.cookie = `oqtima_referral_type=${normalizedReferralType}; path=/; max-age=3600`;
-          }
-        };
-
-        // Execute the cookie setting function
-        setCrossDomainCookies();
-      } catch (e) {
-        console.warn("[OQtima] Could not store referral type:", e);
-      }
-    } else {
-      // For normal registration, explicitly clear any existing referral_type values
-      try {
-        // Remove from sessionStorage
-        sessionStorage.removeItem("oqtima_referral_type");
-
-        // Clear any global variables
-        if (window.__OQTIMA_REFERRAL_TYPE__ !== undefined) {
-          delete window.__OQTIMA_REFERRAL_TYPE__;
-        }
-
-        // Clear any existing cookies
-        document.cookie = "oqtima_referral_type=; path=/; max-age=0";
-      } catch (e) {
-        console.warn("[OQtima] Could not clear referral type:", e);
-      }
     }
 
     // Add referral value if available
@@ -4451,66 +4407,30 @@ const RTL_LANGUAGES = ["ar"];
     // ENHANCED: Send parameters to iframe with strong language isolation
     const sendParamsToIframe = () => {
       try {
+        // Create message data with all necessary parameters
         const messageData = {
           type: "REGISTRATION_PARAMS",
           data: {
-            // Language parameters - use final determined language with isolation flags
             language: finalLanguage,
-            lang: finalLanguage,
-            langParam: finalLanguage,
-            "data-lang": finalLanguage,
-            i18nextLng: finalLanguage,
-            "gatsby-i18next-language": finalLanguage,
-            forceLang: "true",
-            forceLanguage: "true",
-
-            // Isolation flags
-            popup_isolated: "true",
-            prevent_lang_switch: "true",
-            ignore_parent_lang: "true",
-
-            // Device information
-            isMobile: "true",
-            mobile: "true",
-            device: "mobile",
-
-            // Store in session storage with popup-specific keys
-            storeInSessionStorage: true,
-            storageKeys: [
-              { key: POPUP_LANG_KEY, value: finalLanguage },
-              { key: "popup_language", value: finalLanguage },
-              { key: "isolated_language", value: finalLanguage },
-              // Also store in standard keys but only for iframe use
-              { key: "i18nextLng", value: finalLanguage },
-              { key: "gatsby-i18next-language", value: finalLanguage },
-            ],
+            isRTL: isRTL,
+            isMobile: true,
+            mobileView: true,
+            mobileScroll: true,
+            // CRITICAL: Ensure referral parameters are included
+            referral_type: referralType,
+            referralType: referralType,
+            referralType: referralType,
+            referral_value: referralValue,
+            referralValue: referralValue,
+            referralValue: referralValue,
+            // Add isolation flags
+            isolated: true,
+            popupMode: true,
+            parentLang: finalLanguage,
+            parentDir: isRTL ? "rtl" : "ltr",
+            timestamp: Date.now(),
           },
-          timestamp: Date.now(),
-          isolated: true,
-          finalLanguage: finalLanguage,
         };
-
-        // FIXED: Add referral parameters only if they are valid integers
-        if (
-          referralType !== null &&
-          referralType !== undefined &&
-          referralType !== "" &&
-          !isNaN(parseInt(referralType, 10))
-        ) {
-          const referralTypeInt = parseInt(referralType, 10);
-          messageData.data.referral_type = referralTypeInt;
-          messageData.data.referralType = referralTypeInt;
-        }
-        if (
-          referralValue !== null &&
-          referralValue !== undefined &&
-          referralValue !== "" &&
-          !isNaN(parseInt(referralValue, 10))
-        ) {
-          const referralValueInt = parseInt(referralValue, 10);
-          messageData.data.referral_value = referralValueInt;
-          messageData.data.referralValue = referralValueInt;
-        }
 
         // Send message to iframe
         iframe.contentWindow.postMessage(messageData, "*");
