@@ -8,6 +8,20 @@ const MainContainer = ({ children }) => {
   const { heightOffset } = useContext(CommonContext);
   const { isDesktop, isTablet, isMobile } = useWindowSize();
 
+  // Separate children that should be excluded from container
+  const containerChildren = [];
+  const excludedChildren = [];
+
+  React.Children.forEach(children, (child) => {
+    if (child && child.props && child.props.excludeFromContainer) {
+      // Remove the excludeFromContainer prop before rendering
+      const { excludeFromContainer, ...childProps } = child.props;
+      excludedChildren.push(React.cloneElement(child, childProps));
+    } else {
+      containerChildren.push(child);
+    }
+  });
+
   return (
     <main id="main-container">
       <div
@@ -16,7 +30,10 @@ const MainContainer = ({ children }) => {
         }}
         className="header-offset-placeholder"
       />
-      <div className="container">{children}</div>
+      {/* Render excluded components outside container */}
+      {excludedChildren}
+      {/* Render other components inside container */}
+      <div className="container">{containerChildren}</div>
     </main>
   );
 };

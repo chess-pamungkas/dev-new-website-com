@@ -7,6 +7,8 @@ import {
 } from "../../../../helpers/lang-options.config";
 import { Link, useI18next } from "gatsby-plugin-react-i18next";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
+import BadgeSecurityIcon from "../../../../assets/images/icons/badge-security.svg";
+import CloseIcon from "../../../../assets/images/icons/close-icon.svg";
 
 const LangSelectItem = ({
   language: { id, icon: Icon, name } = {},
@@ -26,11 +28,9 @@ const LangSelectItem = ({
         to={originalPath}
         language={language.id}
         className="lang-options__select"
-        // type="button"
         onClick={() => {
           languageSelectHandler(language);
           document.documentElement.setAttribute("lang", language.id);
-          //TODO Refactor and Consider using Gatsby's built-in language switching methods here
         }}
       >
         {Icon && <Icon className="lang-options__flag" />}
@@ -65,14 +65,36 @@ const LangOptions = ({
   className,
   selectedLanguage,
   languageSelectHandler,
+  onClose,
 }) => {
   const { t } = useTranslationWithVariables();
 
   return (
     <div className={cn("lang-options", className)}>
+      {/* Close Button */}
+      <button className="lang-options__close" onClick={onClose} type="button">
+        <img src={CloseIcon} alt="Close" className="lang-options__close-icon" />
+      </button>
+
+      {/* Badge Group */}
+      <div className="lang-options__badge-group">
+        <div className="lang-options__badge">
+          <img
+            src={BadgeSecurityIcon}
+            alt="Security"
+            className="lang-options__badge-icon"
+          />
+          <span className="lang-options__badge-text">
+            {t("lang-select-popup-badge-text")}
+          </span>
+        </div>
+      </div>
+
+      {/* Title */}
       <h2 className="lang-options__title">{t("lang-select-popup-title")}</h2>
 
-      <ul className="lang-options__list">
+      {/* Language Grid */}
+      <div className="lang-options__grid">
         {LANG_SELECT_OPTIONS.map((option) => (
           <LangSelectItem
             key={option.id}
@@ -81,7 +103,7 @@ const LangOptions = ({
             language={option}
           />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
@@ -92,6 +114,7 @@ LangOptions.propTypes = {
     id: PropTypes.string.isRequired,
   }).isRequired,
   languageSelectHandler: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
 };
 
 export default LangOptions;

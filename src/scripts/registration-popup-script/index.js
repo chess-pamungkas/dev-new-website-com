@@ -4652,7 +4652,7 @@ const RTL_LANGUAGES = ["ar"];
    */
   function addLoadingStateToButtons(containers) {
     // Create a default button text
-    const defaultButtonText = "GET STARTED";
+    const defaultButtonText = "Join Now";
 
     // Detect the most suitable language for the page
     let detectedLanguage = "en";

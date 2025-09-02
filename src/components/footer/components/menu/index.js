@@ -13,18 +13,21 @@ const Menu = ({ className }) => {
   return (
     <div className={cn("menu", className)}>
       {menu.length > 0 &&
-        menu.map(
-          (item) =>
+        menu.map((item) => {
+          const translatedTitle = t(item.title);
+          if (translatedTitle === "Partners") return null;
+          return (
             !item.mobileOnly && (
               <div
                 key={`footer-menu-${stringTransformToKebabCase(item.title)}`}
                 className="menu__wrapper"
               >
-                <h4 className="menu__column-title">{t(item.title)}</h4>
-                <MenuColumn items={item.subItems} />
+                <h4 className="menu__column-title">{translatedTitle}</h4>
+                <MenuColumn items={item.subItems || []} />
               </div>
             )
-        )}
+          );
+        })}
     </div>
   );
 };

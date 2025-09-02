@@ -4,6 +4,7 @@
   "popup-banned-description-part4": "如果您是其他国家的居民，对于给您带来的不便，我们深表歉意； 请点击继续访问该网站.",
 
   "legal_documents-btn": "查看PDF",
+  "legal_documents-badge": "法律文件",
 
   "indices_faq-content6-a": "- 市場風險：基礎指數的價值可能會快速波動，導致盈利或虧損。",
   "indices_faq-content6-b": "- 槓桿風險：CFD 經常以槓桿交易，這意味著交易者可以用較少的資本控制更大的頭寸。儘管這可以增加潛在利潤，但也可能導致虧損放大。",
@@ -244,7 +245,8 @@
 
   "footer-funding-1": "*如果在东欧时间早上11点之前提出请求",
   "footer-funding-2": "*我们不会收取任何费用,但您可能会根据您使用的方法而产生银行收取的费用。",
-  "footer-company-name-text": "© 2024 OQtima Group | 保留所有權利。",
+  "footer-company-name-text": "OQtima Group",
+  "footer-all-rights-reserved": "保留所有權利。",
   "button-sign-in": "登录",
   "button-get-started": "开始",
   "button-trade-now": "现在交易",

@@ -1,0 +1,134 @@
+@import "vars";
+@import "mixins";
+
+.trust-pilot {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 16px 0;
+  max-width: 300px; // Match Micro Star template width
+
+  @include mobile {
+    margin: 12px 0;
+    max-width: 280px;
+  }
+}
+
+.trustpilot-widget {
+  width: 100%;
+  height: 24px; // Match Micro Star template height
+  max-width: 300px; // Match Micro Star template width
+
+  iframe {
+    height: 24px !important; // Force height
+    min-height: 24px !important;
+    width: 100% !important;
+    border: none !important;
+    background: transparent !important;
+  }
+}
+
+/* NUCLEAR OPTION: Override EVERYTHING with maximum force */
+.trustpilot-widget iframe {
+  /* Force iframe dimensions */
+  height: 24px !important;
+  min-height: 24px !important;
+  max-height: 24px !important;
+}
+
+/* Force ALL text to white by default */
+.trustpilot-widget iframe *,
+.trustpilot-widget iframe *::before,
+.trustpilot-widget iframe *::after,
+.trustpilot-widget iframe html,
+.trustpilot-widget iframe html *,
+.trustpilot-widget iframe body,
+.trustpilot-widget iframe body *,
+.trustpilot-widget iframe .tp-widget-wrapper,
+.trustpilot-widget iframe .tp-widget-wrapper *,
+.trustpilot-widget iframe .tp-widget-wrapper div,
+.trustpilot-widget iframe .tp-widget-wrapper span,
+.trustpilot-widget iframe .tp-widget-wrapper a,
+.trustpilot-widget iframe .tp-widget-wrapper p,
+.trustpilot-widget iframe .tp-widget-wrapper label,
+.trustpilot-widget iframe .tp-widget-wrapper strong,
+.trustpilot-widget iframe .tp-widget-wrapper em,
+.trustpilot-widget iframe .tp-widget-wrapper b,
+.trustpilot-widget iframe .tp-widget-wrapper i,
+.trustpilot-widget iframe #trust-score,
+.trustpilot-widget iframe .tp-widget-trustscore,
+.trustpilot-widget iframe .tp-widget-trustscore.tp-link-underlined,
+.trustpilot-widget iframe a#profile-link,
+.trustpilot-widget iframe #profile-link,
+.trustpilot-widget iframe .tp-widget-logo,
+.trustpilot-widget iframe #tp-widget-logo {
+  color: #ffffff !important;
+  color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Override any inline styles */
+.trustpilot-widget iframe [style*="color"] {
+  color: #ffffff !important;
+}
+
+/* Override specific black colors with maximum force */
+.trustpilot-widget iframe [style*="color: rgb(25, 25, 25)"],
+.trustpilot-widget iframe [style*="color: #191919"],
+.trustpilot-widget iframe [style*="color: rgb(25, 25, 25) !important"],
+.trustpilot-widget iframe [style*="color: #191919 !important"],
+.trustpilot-widget iframe [style*="color: black"],
+.trustpilot-widget iframe [style*="color: Black"],
+.trustpilot-widget iframe [style*="color: BLACK"] {
+  color: #ffffff !important;
+  color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Override media queries */
+@media screen and (min-width: 200px) {
+  .trustpilot-widget iframe *,
+  .trustpilot-widget iframe *::before,
+  .trustpilot-widget iframe *::after,
+  .trustpilot-widget iframe .tp-widget-wrapper,
+  .trustpilot-widget iframe .tp-widget-wrapper *,
+  .trustpilot-widget iframe #trust-score,
+  .trustpilot-widget iframe .tp-widget-trustscore,
+  .trustpilot-widget iframe a#profile-link,
+  .trustpilot-widget iframe #profile-link {
+    color: #ffffff !important;
+    color: #ffffff !important;
+    color: #ffffff !important;
+  }
+}
+
+/* Override any inherited styles */
+.trustpilot-widget iframe body.light,
+.trustpilot-widget iframe body.light *,
+.trustpilot-widget iframe body.light .tp-widget-wrapper,
+.trustpilot-widget iframe body.light .tp-widget-wrapper * {
+  color: #ffffff !important;
+  color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Responsive adjustments */
+@include mobile {
+  .trust-pilot {
+    margin: 0 auto;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  .trustpilot-widget {
+    max-width: 280px;
+
+    iframe {
+      max-width: 280px !important;
+    }
+  }
+
+  .trustpilot-widget iframe .tp-widget-wrapper {
+    max-width: 280px !important;
+  }
+}

@@ -118,10 +118,10 @@ export const ColumnDepositFSA = () => {
       accessor: "col5",
       Header: t("deposit_column_title5-fsa"),
     },
-    {
-      accessor: "col6",
-      Header: "",
-    },
+    // {
+    //   accessor: "col6",
+    //   Header: "",
+    // },
   ];
   return COLUMNS_DEPOSIT;
 };
@@ -186,7 +186,7 @@ export const DataDepositFSA = () => {
           <span>{t(methodItem.depositCol5)}</span>
         </>
       ),
-      col6: DEPOSIT_COLUMNS_WITH_BTN(),
+      // col6: DEPOSIT_COLUMNS_WITH_BTN(),
     })),
   ];
   return DATA_DEPOSIT;
@@ -242,7 +242,7 @@ export const DataWithdrawalFSA = () => {
           <span>{t(methodItem.withdrawCol4)}</span>
         </>
       ),
-      col5: WITHDRAWAL_COLUMNS_WITH_BTN(),
+      // col5: WITHDRAWAL_COLUMNS_WITH_BTN(),
     })),
   ];
   return DATA_WITHDRAWAL;
@@ -272,10 +272,10 @@ export const ColumnDeposit = () => {
       accessor: "col5",
       Header: t("withdrawal_column_title5"),
     },
-    {
-      accessor: "col6",
-      Header: "",
-    },
+    // {
+    //   accessor: "col6",
+    //   Header: "",
+    // },
   ];
   return COLUMNS_DEPOSIT;
 };
@@ -318,7 +318,7 @@ export const DataDeposit = () => {
       col3: "$200",
       col4: t("withdrawal_data_col3"),
       col5: CYSEC_CURRENCIES,
-      col6: DEPOSIT_COLUMNS_WITH_BTN(),
+      // col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
     {
       col1: (
@@ -345,7 +345,7 @@ export const DataDeposit = () => {
       col3: "$200",
       col4: t("withdrawal_data_col3"),
       col5: CYSEC_CURRENCIES,
-      col6: DEPOSIT_COLUMNS_WITH_BTN(),
+      // col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
     {
       col1: (
@@ -368,7 +368,7 @@ export const DataDeposit = () => {
         </>
       ),
       col5: CYSEC_CURRENCIES,
-      col6: DEPOSIT_COLUMNS_WITH_BTN(),
+      // col6: DEPOSIT_COLUMNS_WITH_BTN(),
     },
   ];
   return DATA_DEPOSIT;
@@ -507,36 +507,212 @@ export const getColumnDeposit = () => {
 };
 
 export const getDataWithdrawal = () => {
-  return DataWithdrawalFSA();
+  return isCySEC ? DataWithdrawalFSA() : DataWithdrawal();
 };
 
 export const getColumnWithdrawal = () => {
-  return ColumnWithdrawalFSA();
+  return isCySEC ? ColumnWithdrawalFSA() : ColumnWithdrawal();
+};
+
+// New withdrawal data for Figma design
+export const getWithdrawalDataForFigma = () => {
+  const { t } = useTranslationWithVariables();
+  return [
+    {
+      col1: "Credit and Debit Cards",
+      col2: "Within One Business Day",
+      col3: "Zero",
+      col4: "USD & EUR",
+    },
+    {
+      col1: "Crypto funding",
+      col2: "Within One Business Day",
+      col3: "Zero",
+      col4: "AVAX, BNB, BTC, BCH, ADA, DASH, DOGE, ETH, LTC, MATIC, XRP, SHB, SOL, USDC, ESDT (ERC20/TRON)",
+    },
+    {
+      col1: "International Bankwire",
+      col2: "Within One Business Day",
+      col3: "Zero",
+      col4: "USD, EUR, GBP, JPY, CAD, CHF, AUD, AED, HKD, PHP, NZD, ZAR",
+    },
+    {
+      col1: "UK Bankwire",
+      col2: "Within One Business Day",
+      col3: "Zero",
+      col4: "GBP",
+    },
+    {
+      col1: "Local Banking",
+      col2: "Within One Business Day",
+      col3: "Zero",
+      col4: "JPY, THB, MYR, IDR, VND, SGD, PHP",
+    },
+    {
+      col1: "STICPAY",
+      col2: "Within One Business Day",
+      col3: "Zero",
+      col4: "CAD, GBP, JPY, USD",
+    },
+    {
+      col1: "PIX",
+      col2: "Within One Business Day",
+      col3: "Zero",
+      col4: "USD",
+    },
+    {
+      col1: "E-Wallets",
+      col2: "Within One Business Day",
+      col3: "Zero",
+      col4: "Local Currencies Accepted",
+    },
+  ];
+};
+
+// New deposit data for Figma design
+export const getDepositDataForFigma = () => {
+  const { t } = useTranslationWithVariables();
+  return [
+    {
+      col1: "Credit and Debit Cards",
+      col2: "Instant",
+      col3: "$100 Or Equivalent In Wallet Currency",
+      col4: "Zero",
+      col5: "USD & EUR",
+    },
+    {
+      col1: "Crypto funding",
+      col2: "Instant",
+      col3: "$100 Or Equivalent In Wallet Currency",
+      col4: "Zero",
+      col5: "AVAX, BNB, BTC, BCH, ADA, DASH, DOGE, ETH, LTC, MATIC, XRP, SHB, SOL, USDC, ESDT (ERC20/TRON)",
+    },
+    {
+      col1: "International Bankwire",
+      col2: "3-5 Business Days",
+      col3: "$100 Or Equivalent In Wallet Currency",
+      col4: "Zero",
+      col5: "USD, EUR, GBP, JPY, CAD, CHF, AUD, AED, HKD, PHP, NZD, ZAR",
+    },
+    {
+      col1: "UK Bankwire",
+      col2: "Instant, If Made Within UK Business Days/Hours",
+      col3: "$100 Or Equivalent In Wallet Currency",
+      col4: "Zero",
+      col5: "GBP",
+    },
+    {
+      col1: "Local Banking",
+      col2: "10 Minutes If Made Within The Bank's Business Days/Hours",
+      col3: "$100 Or Equivalent In Wallet Currency",
+      col4: "Zero",
+      col5: "JPY, THB, MYR, IDR, VND, SGD, PHP",
+    },
+    {
+      col1: "STICPAY",
+      col2: "Instant",
+      col3: "$100 Or Equivalent In Wallet Currency",
+      col4: "Zero",
+      col5: "CAD, GBP, JPY, USD",
+    },
+    {
+      col1: "PIX",
+      col2: "Instant",
+      col3: "$100 Or Equivalent In Wallet Currency",
+      col4: "Zero",
+      col5: "USD",
+    },
+    {
+      col1: "E-Wallets",
+      col2: "Instant",
+      col3: "$100 Or Equivalent In Wallet Currency",
+      col4: "Zero",
+      col5: "Local Currencies Accepted",
+    },
+  ];
+};
+
+export const getWithdrawalColumnsForFigma = () => {
+  const { t } = useTranslationWithVariables();
+  return [
+    {
+      accessor: "col1",
+      Header: "Method",
+    },
+    {
+      accessor: "col2",
+      Header: "Processing Time",
+    },
+    {
+      accessor: "col3",
+      Header: "Fees",
+    },
+    {
+      accessor: "col4",
+      Header: "Currencies Accepted",
+    },
+  ];
+};
+
+export const getDepositColumnsForFigma = () => {
+  const { t } = useTranslationWithVariables();
+  return [
+    {
+      accessor: "col1",
+      Header: "Method",
+    },
+    {
+      accessor: "col2",
+      Header: "Processing Time",
+    },
+    {
+      accessor: "col3",
+      Header: "Min Deposit",
+    },
+    {
+      accessor: "col4",
+      Header: "Fees",
+    },
+    {
+      accessor: "col5",
+      Header: "Currencies Accepted",
+    },
+  ];
 };
 
 export const WithdrawalDisclaimer = () => {
   const { t } = useTranslationWithVariables();
-
   return (
-    <>
-      <p className="notes-block__text">1 {t(`withdrawal_disclaimer1-fsa`)}</p>
-      <p className="notes-block__text">2 {t(`withdrawal_disclaimer2-fsa`)}</p>
-      <p className="notes-block__text">3 {t(`withdrawal_disclaimer3_1-fsa`)}</p>
-      <p className="notes-block__text notes-block__text--pl">
-        {t(`withdrawal_disclaimer3_2-fsa`)}
+    <div className="disclaimer">
+      <p>
+        <sup>1</sup> {t("withdrawal_disclaimer_text1")}
       </p>
-      <p className="notes-block__text">4 {t(`withdrawal_disclaimer4-fsa`)}</p>
-    </>
+      <p>
+        <sup>2</sup> {t("withdrawal_disclaimer_text2")}
+      </p>
+      <p>
+        <sup>3</sup> {t("withdrawal_disclaimer_text3")}
+      </p>
+      <p>
+        <sup>4</sup> {t("withdrawal_disclaimer_text4")}
+      </p>
+    </div>
   );
 };
 
 export const DepositDisclaimer = () => {
   const { t } = useTranslationWithVariables();
   return (
-    <>
-      <p className="notes-block__text">*{t("deposit_disclaimer1-fsa")}</p>
-      <p className="notes-block__text">*{t("deposit_disclaimer2-fsa")}</p>
-      <p className="notes-block__text">*{t("deposit_disclaimer3-fsa")}</p>
-    </>
+    <div className="disclaimer">
+      <p>
+        <sup>1</sup> {t("deposit_disclaimer_text1")}
+      </p>
+      <p>
+        <sup>2</sup> {t("deposit_disclaimer_text2")}
+      </p>
+      <p>
+        <sup>3</sup> {t("deposit_disclaimer_text3")}
+      </p>
+    </div>
   );
 };

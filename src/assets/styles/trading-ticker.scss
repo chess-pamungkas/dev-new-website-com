@@ -3,20 +3,42 @@
 @import "dropdown";
 
 .trading-ticker-wrapper {
-  scroll-snap-align: start;
-  margin: 0;
-  padding: 11px 0 0;
-  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  margin-top: 15px;
+  gap: 16px;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  overflow: hidden;
-  z-index: 99;
-  background-color: map-get($colors, "white");
-  position: relative;
+  width: 100%;
+  height: 108.34px;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  z-index: 2;
   isolation: isolate;
+
+  @include mobile {
+    margin-top: 120px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 50px;
+  }
+
+  @include tablet {
+    margin-top: 100px;
+    margin-bottom: 50px;
+  }
+
+  @include desktop-lg {
+    margin-top: 50px;
+    margin-bottom: 25px;
+  }
+
+  @include desktop-xl {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .trading-sections-wrapper {
@@ -102,17 +124,17 @@
 }
 
 .trading-symbols-wrapper {
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   justify-content: center;
   position: relative;
-  height: 177px;
-  z-index: 4;
-  background-color: map-get($colors, "white");
+  height: auto;
+  z-index: 2;
+  background: transparent;
   isolation: isolate;
 
   @include tablet {
-    height: 99px;
+    height: auto;
   }
 
   &--infinite-auto-scroll {
@@ -141,9 +163,9 @@
 
 .trading-symbols {
   scroll-snap-type: unset;
-  margin-right: 14px;
-  margin-left: 14px;
-  padding-bottom: 6px;
+  // margin-right: 14px;
+  // margin-left: 14px;
+  padding: 16px 0;
   width: 100vw;
   overflow-x: scroll;
   display: flex;
@@ -151,7 +173,12 @@
   scrollbar-width: none;
   position: relative;
   z-index: 5;
-  background-color: map-get($colors, "white");
+  background: transparent;
+
+  @include mobile {
+    margin-right: 0;
+    margin-left: 0;
+  }
 
   &::-webkit-scrollbar {
     display: none;
@@ -189,16 +216,6 @@
 
     @include tablet {
       top: 19px;
-    }
-  }
-
-  @include tablet {
-    &:first-child {
-      border-radius: 0 0 0 10px;
-    }
-
-    &:last-child {
-      border-radius: 0 0 10px 0;
     }
   }
 }

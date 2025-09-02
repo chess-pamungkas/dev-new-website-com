@@ -96,12 +96,6 @@ const FSA_MT5_ADVANTAGES = [
   { key: "adv6", text: "mt5_market-items-list_adv6-fsa" },
   { key: "adv7", text: "mt5_market-items-list_adv7-fsa" },
   { key: "adv8", text: "mt5_market-items-list_adv8-fsa" },
-  { key: "adv9", text: "mt5_market-items-list_adv9-fsa" },
-  { key: "adv10", text: "mt5_market-items-list_adv10-fsa" },
-  { key: "adv11-mt5", text: "mt5_market-items-list_adv11-fsa" },
-  { key: "adv12", text: "mt5_market-items-list_adv12-fsa" },
-  { key: "adv13", text: "mt5_market-items-list_adv13-fsa" },
-  { key: "adv14", text: "mt5_market-items-list_adv14-fsa" },
 ];
 
 const FSA_MT4_ADVANTAGES = [
@@ -113,11 +107,6 @@ const FSA_MT4_ADVANTAGES = [
   { key: "adv6", text: "mt4_market-items-list_adv6-fsa" },
   { key: "adv7", text: "mt4_market-items-list_adv7-fsa" },
   { key: "adv8", text: "mt4_market-items-list_adv8-fsa" },
-  { key: "adv9", text: "mt4_market-items-list_adv9-fsa" },
-  { key: "adv10", text: "mt4_market-items-list_adv10-fsa" },
-  { key: "adv11-fsa-mt5", text: "mt4_market-items-list_adv11-fsa" },
-  { key: "adv12", text: "mt4_market-items-list_adv12-fsa" },
-  { key: "adv11", text: "mt4_market-items-list_adv13-fsa" },
 ];
 
 export const getMT4Advantages = () => FSA_MT4_ADVANTAGES;
@@ -458,4 +447,49 @@ export const getAnimationStyle = () => {
     default:
       return { height: 358 };
   }
+};
+
+// Platform Selection Configuration
+export const PLATFORM_SELECTION_CONFIG = {
+  tabs: [
+    { id: "mobile", label: "MOBILE & TABLET" },
+    { id: "desktop", label: "DESKTOP" },
+    { id: "webtrader", label: "WEBTRADER" },
+  ],
+  mobilePlatforms: [
+    {
+      id: "android",
+      name: "MT4 for Android",
+      color: "#4CAF50",
+    },
+    {
+      id: "ios",
+      name: "MT4 for iOS",
+      color: "#000000",
+    },
+    {
+      id: "huawei",
+      name: "MT4 for Huawei",
+      color: "#000000",
+    },
+  ],
+  desktopPlatforms: [
+    {
+      id: "windows",
+      name: "MT4 for Windows",
+      color: "#0078D4",
+    },
+    {
+      id: "mac",
+      name: "MT4 for Mac",
+      color: "#000000",
+    },
+  ],
+  webtraderPlatforms: [
+    {
+      id: "browser",
+      name: "MT4 WebTrader",
+      color: "#FF4400",
+    },
+  ],
 };

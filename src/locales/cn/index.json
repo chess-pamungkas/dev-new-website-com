@@ -241,7 +241,8 @@
 
   "footer-funding-1": "* 如果在东欧时间上午11点之前提出申请.",
   "footer-funding-2": "*我们不会收取任何费用，但根据您选择的方式，可能会被您的银行端收取费用.",
-  "footer-company-name-text": "© 2024 OQtima Group | 版权所有。",
+  "footer-company-name-text": "OQtima Group",
+  "footer-all-rights-reserved": "版权所有。",
   "button-sign-in": "登录",
   "button-get-started": "开始",
   "button-trade-now": "开始交易",
@@ -1702,5 +1703,20 @@
   "popup-registration-error-registration-failed": "我们无法创建您的账户。请重试或联系客服。",
   "popup-registration-error-password-format": "您的密码必须包含字母和数字。请创建一个更强的密码。",
   "popup-registration-error-email-format": "请输入有效的电子邮件地址（例如：name@example.com）。",
-  "popup-registration-error-email-taken": "该电子邮件已被注册。请登录或使用不同的电子邮件地址。"
+  "popup-registration-error-email-taken": "该电子邮件已被注册。请登录或使用不同的电子邮件地址。",
+
+  "guide-badge-text": "指南",
+  "guide-step-1-title": "注册",
+  "guide-step-1-description": "选择您的账户：ECN+ 或 Zero - 您决定",
+  "guide-step-2-title": "验证",
+  "guide-step-2-description": "快速验证：95% 在几分钟内获得批准",
+  "guide-step-3-title": "开始交易",
+  "guide-step-3-description": "设置您的杠杆，选择您的资产并开始",
+  "metals-guide-title": "准备好交易加密货币了吗？",
+  "metals-guide-subtitle": "利用专业的深度流动性和杠杆，交易过去十年最热门的资产",
+
+  "crypto-guide-title": "准备好交易加密货币了吗？",
+  "crypto-guide-subtitle": "利用专业的深度流动性和杠杆，交易过去十年最热门的资产",
+  "button-start-trading": "开始交易",
+  "button-try-demo": "试用模拟账户"
 }

@@ -1,0 +1,5288 @@
+{
+  "id": "2098:10250",
+  "name": "Container",
+  "type": "FRAME",
+  "x": 100,
+  "y": 1765,
+  "width": 1241,
+  "height": 440,
+  "relativeTransform": [
+    [
+      1,
+      0,
+      100
+    ],
+    [
+      0,
+      1,
+      1765
+    ]
+  ],
+  "constraints": {
+    "horizontal": "MIN",
+    "vertical": "MIN"
+  },
+  "fills": [],
+  "strokes": [],
+  "strokeWeight": 1,
+  "cornerRadius": 0,
+  "effects": [],
+  "blendMode": "PASS_THROUGH",
+  "layoutAlign": "INHERIT",
+  "layoutGrow": 0,
+  "layoutMode": "HORIZONTAL",
+  "itemSpacing": 59,
+  "children": [
+    {
+      "id": "2098:10251",
+      "name": "Container",
+      "type": "FRAME",
+      "x": 0,
+      "y": 0,
+      "width": 567,
+      "height": 440,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [],
+      "strokeWeight": 1,
+      "cornerRadius": 0,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "layoutMode": "VERTICAL",
+      "itemSpacing": 16,
+      "children": [
+        {
+          "id": "2098:10252",
+          "name": "Container",
+          "type": "FRAME",
+          "x": 0,
+          "y": 0,
+          "width": 567,
+          "height": 136,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.15000000596046448,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 0.2666666805744171,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokeWeight": 1,
+          "cornerRadius": 20,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "STRETCH",
+          "layoutGrow": 0,
+          "layoutMode": "VERTICAL",
+          "itemSpacing": 12,
+          "children": [
+            {
+              "id": "2098:10253",
+              "name": "Review",
+              "type": "TEXT",
+              "x": 20,
+              "y": 20,
+              "width": 527,
+              "height": 56,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  20
+                ],
+                [
+                  0,
+                  1,
+                  20
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "2098:10254",
+              "name": "Container",
+              "type": "FRAME",
+              "x": 20,
+              "y": 88,
+              "width": 527,
+              "height": 28,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  20
+                ],
+                [
+                  0,
+                  1,
+                  88
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [],
+              "strokes": [],
+              "strokeWeight": 1,
+              "cornerRadius": 0,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": 80,
+              "children": [
+                {
+                  "id": "2098:10255",
+                  "name": "Badge group",
+                  "type": "FRAME",
+                  "x": 0,
+                  "y": 0,
+                  "width": 121,
+                  "height": 26,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      0
+                    ],
+                    [
+                      0,
+                      1,
+                      0
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      },
+                      "boundVariables": {}
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 0.15000000596046448,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 1,
+                        "g": 0.2666666805744171,
+                        "b": 0
+                      },
+                      "boundVariables": {}
+                    }
+                  ],
+                  "strokeWeight": 1,
+                  "cornerRadius": 16,
+                  "effects": [],
+                  "blendMode": "NORMAL",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "layoutMode": "HORIZONTAL",
+                  "itemSpacing": 20,
+                  "children": [
+                    {
+                      "id": "2098:10256",
+                      "name": "Badge",
+                      "type": "FRAME",
+                      "x": 4,
+                      "y": 4,
+                      "width": 100,
+                      "height": 24,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          4
+                        ],
+                        [
+                          0,
+                          1,
+                          4
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": false,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "cornerRadius": 0,
+                      "effects": [],
+                      "blendMode": "NORMAL",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "layoutMode": "HORIZONTAL",
+                      "itemSpacing": 0,
+                      "children": [
+                        {
+                          "id": "2098:10257",
+                          "name": "_Badge base",
+                          "type": "FRAME",
+                          "x": 0,
+                          "y": 0,
+                          "width": 100,
+                          "height": 24,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              0
+                            ],
+                            [
+                              0,
+                              1,
+                              0
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "MIN",
+                            "vertical": "MIN"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.15136337280273438,
+                                "g": 0.15136337280273438,
+                                "b": 0.15136337280273438
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 1,
+                          "cornerRadius": 16,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "layoutMode": "HORIZONTAL",
+                          "itemSpacing": 0,
+                          "children": [
+                            {
+                              "id": "2098:10258",
+                              "name": "Text",
+                              "type": "TEXT",
+                              "x": 10,
+                              "y": 2,
+                              "width": 80,
+                              "height": 20,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  10
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  2
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "MIN",
+                                "vertical": "MIN"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 1,
+                                    "b": 1
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 1,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "2098:10259",
+                      "name": "Content",
+                      "type": "FRAME",
+                      "x": 10,
+                      "y": 6,
+                      "width": 101,
+                      "height": 14,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          10
+                        ],
+                        [
+                          0,
+                          1,
+                          6
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "cornerRadius": 0,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "layoutMode": "HORIZONTAL",
+                      "itemSpacing": 8,
+                      "children": [
+                        {
+                          "id": "2098:10260",
+                          "name": "fi_94894",
+                          "type": "FRAME",
+                          "x": 0,
+                          "y": 0,
+                          "width": 14,
+                          "height": 14,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              0
+                            ],
+                            [
+                              0,
+                              1,
+                              0
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "MIN",
+                            "vertical": "MIN"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": false,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 1,
+                                "b": 1
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.04511995613574982,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "layoutMode": "NONE",
+                          "itemSpacing": 0,
+                          "children": [
+                            {
+                              "id": "2098:10261",
+                              "name": "Vector",
+                              "type": "VECTOR",
+                              "x": 0,
+                              "y": 0,
+                              "width": 14,
+                              "height": 14,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  0
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  0
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "SCALE",
+                                "vertical": "SCALE"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 0.2666666805744171,
+                                    "b": 0
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 0.04511995613574982,
+                              "cornerRadius": 0,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "id": "2098:10262",
+                          "name": "Message",
+                          "type": "TEXT",
+                          "x": 22,
+                          "y": 2,
+                          "width": 79,
+                          "height": 10,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              22
+                            ],
+                            [
+                              0,
+                              1,
+                              2
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "MIN",
+                            "vertical": "MIN"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 1,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "2098:10263",
+                  "name": "Container",
+                  "type": "FRAME",
+                  "x": 427.5262756347656,
+                  "y": 0,
+                  "width": 99.4737319946289,
+                  "height": 28,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      427.5262756347656
+                    ],
+                    [
+                      0,
+                      1,
+                      0
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "cornerRadius": 0,
+                  "effects": [],
+                  "blendMode": "PASS_THROUGH",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "layoutMode": "HORIZONTAL",
+                  "itemSpacing": 12,
+                  "children": [
+                    {
+                      "id": "2098:10264",
+                      "name": "Name",
+                      "type": "TEXT",
+                      "x": 0,
+                      "y": 0,
+                      "width": 60,
+                      "height": 28,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          1,
+                          0
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": true,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "children": []
+                    },
+                    {
+                      "id": "2152:4970",
+                      "name": "UAE",
+                      "type": "GROUP",
+                      "x": 72,
+                      "y": 5,
+                      "width": 27.47373390197754,
+                      "height": 18,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          72
+                        ],
+                        [
+                          0,
+                          1,
+                          5
+                        ]
+                      ],
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "children": [
+                        {
+                          "id": "2152:4971",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 80.52647590637207,
+                          "y": 5.000021934509277,
+                          "width": 18.947301864624023,
+                          "height": 5.99998140335083,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              80.52647590637207
+                            ],
+                            [
+                              0,
+                              1,
+                              5.000021934509277
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.45098039507865906,
+                                "g": 0.686274528503418,
+                                "b": 0
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.05365942418575287,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4972",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 80.52647590637207,
+                          "y": 16.999995231628418,
+                          "width": 18.94735336303711,
+                          "height": 5.9999823570251465,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              80.52647590637207
+                            ],
+                            [
+                              0,
+                              1,
+                              16.999995231628418
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.27450981736183167,
+                                "g": 0.27450981736183167,
+                                "b": 0.3333333432674408
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.05365942418575287,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4973",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 80.52647590637207,
+                          "y": 10.99989652633667,
+                          "width": 18.947141647338867,
+                          "height": 5.999659538269043,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              80.52647590637207
+                            ],
+                            [
+                              0,
+                              1,
+                              10.99989652633667
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.9607843160629272,
+                                "g": 0.9607843160629272,
+                                "b": 0.9607843160629272
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.05365942418575287,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4974",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 72,
+                          "y": 5,
+                          "width": 8.526320457458496,
+                          "height": 18,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              72
+                            ],
+                            [
+                              0,
+                              1,
+                              5
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 0.29411765933036804,
+                                "b": 0.3333333432674408
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.05365942418575287,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2098:10270",
+          "name": "Container",
+          "type": "FRAME",
+          "x": 0,
+          "y": 152,
+          "width": 567,
+          "height": 136,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              152
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.15000000596046448,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 0.2666666805744171,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokeWeight": 1,
+          "cornerRadius": 20,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "STRETCH",
+          "layoutGrow": 0,
+          "layoutMode": "VERTICAL",
+          "itemSpacing": 12,
+          "children": [
+            {
+              "id": "2098:10271",
+              "name": "Review",
+              "type": "TEXT",
+              "x": 20,
+              "y": 20,
+              "width": 527,
+              "height": 56,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  20
+                ],
+                [
+                  0,
+                  1,
+                  20
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "2098:10272",
+              "name": "Container",
+              "type": "FRAME",
+              "x": 20,
+              "y": 88,
+              "width": 527,
+              "height": 28,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  20
+                ],
+                [
+                  0,
+                  1,
+                  88
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [],
+              "strokes": [],
+              "strokeWeight": 1,
+              "cornerRadius": 0,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": 80,
+              "children": [
+                {
+                  "id": "2098:10273",
+                  "name": "Badge group",
+                  "type": "FRAME",
+                  "x": 0,
+                  "y": 0,
+                  "width": 121,
+                  "height": 26,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      0
+                    ],
+                    [
+                      0,
+                      1,
+                      0
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      },
+                      "boundVariables": {}
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 0.15000000596046448,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 1,
+                        "g": 0.2666666805744171,
+                        "b": 0
+                      },
+                      "boundVariables": {}
+                    }
+                  ],
+                  "strokeWeight": 1,
+                  "cornerRadius": 16,
+                  "effects": [],
+                  "blendMode": "NORMAL",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "layoutMode": "HORIZONTAL",
+                  "itemSpacing": 20,
+                  "children": [
+                    {
+                      "id": "2098:10274",
+                      "name": "Badge",
+                      "type": "FRAME",
+                      "x": 4,
+                      "y": 4,
+                      "width": 100,
+                      "height": 24,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          4
+                        ],
+                        [
+                          0,
+                          1,
+                          4
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": false,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "cornerRadius": 0,
+                      "effects": [],
+                      "blendMode": "NORMAL",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "layoutMode": "HORIZONTAL",
+                      "itemSpacing": 0,
+                      "children": [
+                        {
+                          "id": "2098:10275",
+                          "name": "_Badge base",
+                          "type": "FRAME",
+                          "x": 0,
+                          "y": 0,
+                          "width": 100,
+                          "height": 24,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              0
+                            ],
+                            [
+                              0,
+                              1,
+                              0
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "MIN",
+                            "vertical": "MIN"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.15136337280273438,
+                                "g": 0.15136337280273438,
+                                "b": 0.15136337280273438
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 1,
+                          "cornerRadius": 16,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "layoutMode": "HORIZONTAL",
+                          "itemSpacing": 0,
+                          "children": [
+                            {
+                              "id": "2098:10276",
+                              "name": "Text",
+                              "type": "TEXT",
+                              "x": 10,
+                              "y": 2,
+                              "width": 80,
+                              "height": 20,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  10
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  2
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "MIN",
+                                "vertical": "MIN"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 1,
+                                    "b": 1
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 1,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "2098:10277",
+                      "name": "Content",
+                      "type": "FRAME",
+                      "x": 10,
+                      "y": 6,
+                      "width": 101,
+                      "height": 14,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          10
+                        ],
+                        [
+                          0,
+                          1,
+                          6
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "cornerRadius": 0,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "layoutMode": "HORIZONTAL",
+                      "itemSpacing": 8,
+                      "children": [
+                        {
+                          "id": "2098:10278",
+                          "name": "fi_94894",
+                          "type": "FRAME",
+                          "x": 0,
+                          "y": 0,
+                          "width": 14,
+                          "height": 14,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              0
+                            ],
+                            [
+                              0,
+                              1,
+                              0
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "MIN",
+                            "vertical": "MIN"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": false,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 1,
+                                "b": 1
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.04511995613574982,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "layoutMode": "NONE",
+                          "itemSpacing": 0,
+                          "children": [
+                            {
+                              "id": "2098:10279",
+                              "name": "Vector",
+                              "type": "VECTOR",
+                              "x": 0,
+                              "y": 0,
+                              "width": 14,
+                              "height": 14,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  0
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  0
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "SCALE",
+                                "vertical": "SCALE"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 0.2666666805744171,
+                                    "b": 0
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 0.04511995613574982,
+                              "cornerRadius": 0,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "id": "2098:10280",
+                          "name": "Message",
+                          "type": "TEXT",
+                          "x": 22,
+                          "y": 2,
+                          "width": 79,
+                          "height": 10,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              22
+                            ],
+                            [
+                              0,
+                              1,
+                              2
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "MIN",
+                            "vertical": "MIN"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 1,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "2098:10281",
+                  "name": "Container",
+                  "type": "FRAME",
+                  "x": 431.52679443359375,
+                  "y": 0,
+                  "width": 95.47322082519531,
+                  "height": 28,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      431.52679443359375
+                    ],
+                    [
+                      0,
+                      1,
+                      0
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "cornerRadius": 0,
+                  "effects": [],
+                  "blendMode": "PASS_THROUGH",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "layoutMode": "HORIZONTAL",
+                  "itemSpacing": 12,
+                  "children": [
+                    {
+                      "id": "2098:10282",
+                      "name": "Name",
+                      "type": "TEXT",
+                      "x": 0,
+                      "y": 0,
+                      "width": 56,
+                      "height": 28,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          1,
+                          0
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": true,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "children": []
+                    },
+                    {
+                      "id": "2152:4976",
+                      "name": "MX",
+                      "type": "GROUP",
+                      "x": 68,
+                      "y": 5,
+                      "width": 27.473217010498047,
+                      "height": 18,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          68
+                        ],
+                        [
+                          0,
+                          1,
+                          5
+                        ]
+                      ],
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "children": [
+                        {
+                          "id": "2152:4977",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 68,
+                          "y": 5,
+                          "width": 9.157756805419922,
+                          "height": 17.99972915649414,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              68
+                            ],
+                            [
+                              0,
+                              1,
+                              5
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.45098039507865906,
+                                "g": 0.686274528503418,
+                                "b": 0
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4978",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 77.15773105621338,
+                          "y": 5.000227522439673,
+                          "width": 9.157917976379395,
+                          "height": 17.999784469604492,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              77.15773105621338
+                            ],
+                            [
+                              0,
+                              1,
+                              5.000227522439673
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.9607843160629272,
+                                "g": 0.9607843160629272,
+                                "b": 0.9607843160629272
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4979",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 86.31542587280273,
+                          "y": 5.000005722045898,
+                          "width": 9.157755851745605,
+                          "height": 17.999677658081055,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              86.31542587280273
+                            ],
+                            [
+                              0,
+                              1,
+                              5.000005722045898
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 0.29411765933036804,
+                                "b": 0.3333333432674408
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4980",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 81.73657894134521,
+                          "y": 14.423528671264648,
+                          "width": 0.8169529438018799,
+                          "height": 0.8170052766799927,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              81.73657894134521
+                            ],
+                            [
+                              0,
+                              1,
+                              14.423528671264648
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 0.8235294222831726,
+                                "b": 0.3137255012989044
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4981",
+                          "name": "Group",
+                          "type": "GROUP",
+                          "x": 79.48996257781982,
+                          "y": 14.21947193145752,
+                          "width": 4.493353843688965,
+                          "height": 2.042283058166504,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              79.48996257781982
+                            ],
+                            [
+                              0,
+                              1,
+                              14.21947193145752
+                            ]
+                          ],
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": [
+                            {
+                              "id": "2152:4982",
+                              "name": "Vector",
+                              "type": "VECTOR",
+                              "x": 81.53227305412292,
+                              "y": 15.036241471767426,
+                              "width": 0.4085034430027008,
+                              "height": 1.2254563570022583,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  81.53227305412292
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  15.036241471767426
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "SCALE",
+                                "vertical": "SCALE"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 0,
+                                    "g": 0.7647058963775635,
+                                    "b": 0.6274510025978088
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 0.0536586232483387,
+                              "cornerRadius": 0,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            },
+                            {
+                              "id": "2152:4983",
+                              "name": "Vector",
+                              "type": "VECTOR",
+                              "x": 79.48996257781982,
+                              "y": 14.21947193145752,
+                              "width": 4.493353843688965,
+                              "height": 1.2253303527832031,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  79.48996257781982
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  14.21947193145752
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "SCALE",
+                                "vertical": "SCALE"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 0,
+                                    "g": 0.7647058963775635,
+                                    "b": 0.6274510025978088
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 0.0536586232483387,
+                              "cornerRadius": 0,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "id": "2152:4984",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 80.26981258392334,
+                          "y": 15.478965759277344,
+                          "width": 2.93356990814209,
+                          "height": 0.7828791737556458,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              80.26981258392334
+                            ],
+                            [
+                              0,
+                              1,
+                              15.478965759277344
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0,
+                                "g": 0.6666666865348816,
+                                "b": 0.8627451062202454
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4985",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 80.88553047180176,
+                          "y": 13.504498481750488,
+                          "width": 1.1744266748428345,
+                          "height": 0.9276500344276428,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              80.88553047180176
+                            ],
+                            [
+                              0,
+                              1,
+                              13.504498481750488
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.45098039507865906,
+                                "g": 0.1764705926179886,
+                                "b": 0.21568627655506134
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4986",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 79.12665367126465,
+                          "y": 11.523155689239502,
+                          "width": 1.988032341003418,
+                          "height": 3.13334059715271,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              79.12665367126465
+                            ],
+                            [
+                              0,
+                              1,
+                              11.523155689239502
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.6666666865348816,
+                                "g": 0.8235294222831726,
+                                "b": 0.3921568691730499
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4987",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 81.73657894134521,
+                          "y": 11.142213344573975,
+                          "width": 2.4908549785614014,
+                          "height": 3.281475067138672,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              81.73657894134521
+                            ],
+                            [
+                              0,
+                              1,
+                              11.142213344573975
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.529411792755127,
+                                "g": 0.2549019753932953,
+                                "b": 0.3137255012989044
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4988",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 81.73657894134521,
+                          "y": 13.198081016540527,
+                          "width": 2.042407512664795,
+                          "height": 1.6339597702026367,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              81.73657894134521
+                            ],
+                            [
+                              0,
+                              1,
+                              13.198081016540527
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.45098039507865906,
+                                "g": 0.1764705926179886,
+                                "b": 0.21568627655506134
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4989",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 80.91968822479248,
+                          "y": 11.564188480377197,
+                          "width": 1.6339597702026367,
+                          "height": 3.2679712772369385,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              80.91968822479248
+                            ],
+                            [
+                              0,
+                              1,
+                              11.564188480377197
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.47058823704719543,
+                                "g": 0.23529411852359772,
+                                "b": 0.27450981736183167
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4990",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 80.5111312866211,
+                          "y": 11.564077854156494,
+                          "width": 0.7312527894973755,
+                          "height": 0.8170061707496643,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              80.5111312866211
+                            ],
+                            [
+                              0,
+                              1,
+                              11.564077854156494
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 0.8235294222831726,
+                                "b": 0.3137255012989044
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4991",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 78.2642936706543,
+                          "y": 13.606637954711914,
+                          "width": 6.944390773773193,
+                          "height": 3.4721429347991943,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              78.2642936706543
+                            ],
+                            [
+                              0,
+                              1,
+                              13.606637954711914
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.6666666865348816,
+                                "g": 0.8235294222831726,
+                                "b": 0.3921568691730499
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:4992",
+                          "name": "Group",
+                          "type": "GROUP",
+                          "x": 78.41800117492676,
+                          "y": 14.541525840759277,
+                          "width": 6.666654586791992,
+                          "height": 2.2730867862701416,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              78.41800117492676
+                            ],
+                            [
+                              0,
+                              1,
+                              14.541525840759277
+                            ]
+                          ],
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": [
+                            {
+                              "id": "2152:4993",
+                              "name": "Vector",
+                              "type": "VECTOR",
+                              "x": 78.41800117492676,
+                              "y": 14.541525840759277,
+                              "width": 0.5544000864028931,
+                              "height": 0.5544009804725647,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  78.41800117492676
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  14.541525840759277
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "SCALE",
+                                "vertical": "SCALE"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 0.8823529481887817,
+                                    "b": 0.3529411852359772
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 0.0536586232483387,
+                              "cornerRadius": 0,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            },
+                            {
+                              "id": "2152:4994",
+                              "name": "Vector",
+                              "type": "VECTOR",
+                              "x": 79.030646443367,
+                              "y": 15.520242393016815,
+                              "width": 0.5544009804725647,
+                              "height": 0.5544009804725647,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  79.030646443367
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  15.520242393016815
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "SCALE",
+                                "vertical": "SCALE"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 0.8823529481887817,
+                                    "b": 0.3529411852359772
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 0.0536586232483387,
+                              "cornerRadius": 0,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            },
+                            {
+                              "id": "2152:4995",
+                              "name": "Vector",
+                              "type": "VECTOR",
+                              "x": 80.02608668804169,
+                              "y": 16.26016855239868,
+                              "width": 0.5544009804725647,
+                              "height": 0.5544009804725647,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  80.02608668804169
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  16.26016855239868
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "SCALE",
+                                "vertical": "SCALE"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 0.8823529481887817,
+                                    "b": 0.3529411852359772
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 0.0536586232483387,
+                              "cornerRadius": 0,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            },
+                            {
+                              "id": "2152:4996",
+                              "name": "Vector",
+                              "type": "VECTOR",
+                              "x": 84.53018712997437,
+                              "y": 14.541548132949174,
+                              "width": 0.5544009804725647,
+                              "height": 0.5544009804725647,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  84.53018712997437
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  14.541548132949174
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "SCALE",
+                                "vertical": "SCALE"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 0.8823529481887817,
+                                    "b": 0.3529411852359772
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 0.0536586232483387,
+                              "cornerRadius": 0,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            },
+                            {
+                              "id": "2152:4997",
+                              "name": "Vector",
+                              "type": "VECTOR",
+                              "x": 83.91690921783447,
+                              "y": 15.520242393016815,
+                              "width": 0.5544009804725647,
+                              "height": 0.5544009804725647,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  83.91690921783447
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  15.520242393016815
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "SCALE",
+                                "vertical": "SCALE"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 0.8823529481887817,
+                                    "b": 0.3529411852359772
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 0.0536586232483387,
+                              "cornerRadius": 0,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            },
+                            {
+                              "id": "2152:4998",
+                              "name": "Vector",
+                              "type": "VECTOR",
+                              "x": 82.92146921157837,
+                              "y": 16.26016855239868,
+                              "width": 0.554399311542511,
+                              "height": 0.5544009804725647,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  82.92146921157837
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  16.26016855239868
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "SCALE",
+                                "vertical": "SCALE"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 0.8823529481887817,
+                                    "b": 0.3529411852359772
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 0.0536586232483387,
+                              "cornerRadius": 0,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "id": "2152:4999",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 81.1237440109253,
+                          "y": 15.648975372314453,
+                          "width": 1.2255096435546875,
+                          "height": 0.8170068860054016,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              81.1237440109253
+                            ],
+                            [
+                              0,
+                              1,
+                              15.648975372314453
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 0.7058823704719543,
+                                "b": 0.47058823704719543
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:5000",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 81.73657894134521,
+                          "y": 11.142213344573975,
+                          "width": 2.4908549785614014,
+                          "height": 3.2813689708709717,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              81.73657894134521
+                            ],
+                            [
+                              0,
+                              1,
+                              11.142213344573975
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.6078431606292725,
+                                "g": 0.29411765933036804,
+                                "b": 0.3529411852359772
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.0536586232483387,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2098:10288",
+          "name": "Container",
+          "type": "FRAME",
+          "x": 0,
+          "y": 304,
+          "width": 567,
+          "height": 136,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              304
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokes": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.15000000596046448,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 0.2666666805744171,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "strokeWeight": 1,
+          "cornerRadius": 20,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "STRETCH",
+          "layoutGrow": 0,
+          "layoutMode": "VERTICAL",
+          "itemSpacing": 12,
+          "children": [
+            {
+              "id": "2098:10289",
+              "name": "Review",
+              "type": "TEXT",
+              "x": 20,
+              "y": 20,
+              "width": 527,
+              "height": 56,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  20
+                ],
+                [
+                  0,
+                  1,
+                  20
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "2098:10290",
+              "name": "Container",
+              "type": "FRAME",
+              "x": 20,
+              "y": 88,
+              "width": 527,
+              "height": 28,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  20
+                ],
+                [
+                  0,
+                  1,
+                  88
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [],
+              "strokes": [],
+              "strokeWeight": 1,
+              "cornerRadius": 0,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": 80,
+              "children": [
+                {
+                  "id": "2098:10291",
+                  "name": "Badge group",
+                  "type": "FRAME",
+                  "x": 0,
+                  "y": 0,
+                  "width": 121,
+                  "height": 26,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      0
+                    ],
+                    [
+                      0,
+                      1,
+                      0
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      },
+                      "boundVariables": {}
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 0.15000000596046448,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 1,
+                        "g": 0.2666666805744171,
+                        "b": 0
+                      },
+                      "boundVariables": {}
+                    }
+                  ],
+                  "strokeWeight": 1,
+                  "cornerRadius": 16,
+                  "effects": [],
+                  "blendMode": "NORMAL",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "layoutMode": "HORIZONTAL",
+                  "itemSpacing": 20,
+                  "children": [
+                    {
+                      "id": "2098:10292",
+                      "name": "Badge",
+                      "type": "FRAME",
+                      "x": 4,
+                      "y": 4,
+                      "width": 100,
+                      "height": 24,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          4
+                        ],
+                        [
+                          0,
+                          1,
+                          4
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": false,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "cornerRadius": 0,
+                      "effects": [],
+                      "blendMode": "NORMAL",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "layoutMode": "HORIZONTAL",
+                      "itemSpacing": 0,
+                      "children": [
+                        {
+                          "id": "2098:10293",
+                          "name": "_Badge base",
+                          "type": "FRAME",
+                          "x": 0,
+                          "y": 0,
+                          "width": 100,
+                          "height": 24,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              0
+                            ],
+                            [
+                              0,
+                              1,
+                              0
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "MIN",
+                            "vertical": "MIN"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.15136337280273438,
+                                "g": 0.15136337280273438,
+                                "b": 0.15136337280273438
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 1,
+                          "cornerRadius": 16,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "layoutMode": "HORIZONTAL",
+                          "itemSpacing": 0,
+                          "children": [
+                            {
+                              "id": "2098:10294",
+                              "name": "Text",
+                              "type": "TEXT",
+                              "x": 10,
+                              "y": 2,
+                              "width": 80,
+                              "height": 20,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  10
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  2
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "MIN",
+                                "vertical": "MIN"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 1,
+                                    "b": 1
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 1,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "2098:10295",
+                      "name": "Content",
+                      "type": "FRAME",
+                      "x": 10,
+                      "y": 6,
+                      "width": 101,
+                      "height": 14,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          10
+                        ],
+                        [
+                          0,
+                          1,
+                          6
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "cornerRadius": 0,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "layoutMode": "HORIZONTAL",
+                      "itemSpacing": 8,
+                      "children": [
+                        {
+                          "id": "2098:10296",
+                          "name": "fi_94894",
+                          "type": "FRAME",
+                          "x": 0,
+                          "y": 0,
+                          "width": 14,
+                          "height": 14,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              0
+                            ],
+                            [
+                              0,
+                              1,
+                              0
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "MIN",
+                            "vertical": "MIN"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": false,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 1,
+                                "b": 1
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.04511995613574982,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "layoutMode": "NONE",
+                          "itemSpacing": 0,
+                          "children": [
+                            {
+                              "id": "2098:10297",
+                              "name": "Vector",
+                              "type": "VECTOR",
+                              "x": 0,
+                              "y": 0,
+                              "width": 14,
+                              "height": 14,
+                              "relativeTransform": [
+                                [
+                                  1,
+                                  0,
+                                  0
+                                ],
+                                [
+                                  0,
+                                  1,
+                                  0
+                                ]
+                              ],
+                              "constraints": {
+                                "horizontal": "SCALE",
+                                "vertical": "SCALE"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "visible": true,
+                                  "opacity": 1,
+                                  "blendMode": "NORMAL",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 0.2666666805744171,
+                                    "b": 0
+                                  },
+                                  "boundVariables": {}
+                                }
+                              ],
+                              "strokes": [],
+                              "strokeWeight": 0.04511995613574982,
+                              "cornerRadius": 0,
+                              "effects": [],
+                              "blendMode": "PASS_THROUGH",
+                              "layoutAlign": "INHERIT",
+                              "layoutGrow": 0,
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "id": "2098:10298",
+                          "name": "Message",
+                          "type": "TEXT",
+                          "x": 22,
+                          "y": 2,
+                          "width": 79,
+                          "height": 10,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              22
+                            ],
+                            [
+                              0,
+                              1,
+                              2
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "MIN",
+                            "vertical": "MIN"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0,
+                                "g": 0,
+                                "b": 0
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 1,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "2098:10299",
+                  "name": "Container",
+                  "type": "FRAME",
+                  "x": 435.52630615234375,
+                  "y": 0,
+                  "width": 91.47370910644531,
+                  "height": 28,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      435.52630615234375
+                    ],
+                    [
+                      0,
+                      1,
+                      0
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "cornerRadius": 0,
+                  "effects": [],
+                  "blendMode": "PASS_THROUGH",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "layoutMode": "HORIZONTAL",
+                  "itemSpacing": 12,
+                  "children": [
+                    {
+                      "id": "2098:10300",
+                      "name": "Name",
+                      "type": "TEXT",
+                      "x": 0,
+                      "y": 0,
+                      "width": 52,
+                      "height": 28,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          1,
+                          0
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": true,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "children": []
+                    },
+                    {
+                      "id": "2152:5002",
+                      "name": "Flag",
+                      "type": "GROUP",
+                      "x": 64,
+                      "y": 5,
+                      "width": 27.473709106445312,
+                      "height": 18,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          64
+                        ],
+                        [
+                          0,
+                          1,
+                          5
+                        ]
+                      ],
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "children": [
+                        {
+                          "id": "2152:5003",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 64.00003773538992,
+                          "y": 8.315827369689941,
+                          "width": 7.57893180847168,
+                          "height": 11.368424415588379,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              64.00003773538992
+                            ],
+                            [
+                              0,
+                              1,
+                              8.315827369689941
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.27450981736183167,
+                                "g": 0.27450981736183167,
+                                "b": 0.3333333432674408
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.05365957319736481,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:5004",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 67.78934288024902,
+                          "y": 5.00007438659668,
+                          "width": 23.6842098236084,
+                          "height": 6.631572246551514,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              67.78934288024902
+                            ],
+                            [
+                              0,
+                              1,
+                              5.00007438659668
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 0.29411765933036804,
+                                "b": 0.3333333432674408
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.05365957319736481,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:5005",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 67.78934288024902,
+                          "y": 16.368432998657227,
+                          "width": 23.6842098236084,
+                          "height": 6.631572246551514,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              67.78934288024902
+                            ],
+                            [
+                              0,
+                              1,
+                              16.368432998657227
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.2549019753932953,
+                                "g": 0.27843138575553894,
+                                "b": 0.6078431606292725
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.05365957319736481,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:5006",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 64,
+                          "y": 5,
+                          "width": 27.473703384399414,
+                          "height": 17.999996185302734,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              64
+                            ],
+                            [
+                              0,
+                              1,
+                              5
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.45098039507865906,
+                                "g": 0.686274528503418,
+                                "b": 0
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.05365957319736481,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:5007",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 67.05250883102417,
+                          "y": 5.00007438659668,
+                          "width": 24.421062469482422,
+                          "height": 7.105279445648193,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              67.05250883102417
+                            ],
+                            [
+                              0,
+                              1,
+                              5.00007438659668
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.9607843160629272,
+                                "g": 0.9607843160629272,
+                                "b": 0.9607843160629272
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.05365957319736481,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:5008",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 64.00003773538992,
+                          "y": 7.416632652282715,
+                          "width": 8.315838813781738,
+                          "height": 13.16688060760498,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              64.00003773538992
+                            ],
+                            [
+                              0,
+                              1,
+                              7.416632652282715
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 0.8823529481887817,
+                                "b": 0.3529411852359772
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.05365957319736481,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        },
+                        {
+                          "id": "2152:5009",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 67.0522871017456,
+                          "y": 15.894881248474121,
+                          "width": 24.42133140563965,
+                          "height": 7.105279445648193,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              67.0522871017456
+                            ],
+                            [
+                              0,
+                              1,
+                              15.894881248474121
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 0.9607843160629272,
+                                "g": 0.9607843160629272,
+                                "b": 0.9607843160629272
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.05365957319736481,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2098:10306",
+      "name": "Container",
+      "type": "FRAME",
+      "x": 626,
+      "y": 17.5,
+      "width": 615,
+      "height": 405,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          626
+        ],
+        [
+          0,
+          1,
+          17.5
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [],
+      "strokes": [],
+      "strokeWeight": 1,
+      "cornerRadius": 0,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "layoutMode": "VERTICAL",
+      "itemSpacing": 24,
+      "children": [
+        {
+          "id": "2098:10307",
+          "name": "Container",
+          "type": "FRAME",
+          "x": 0,
+          "y": 0,
+          "width": 615,
+          "height": 330,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [],
+          "strokes": [],
+          "strokeWeight": 1,
+          "cornerRadius": 0,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "STRETCH",
+          "layoutGrow": 0,
+          "layoutMode": "VERTICAL",
+          "itemSpacing": 18,
+          "children": [
+            {
+              "id": "2098:10308",
+              "name": "Badge group",
+              "type": "FRAME",
+              "x": 0,
+              "y": 0,
+              "width": 94,
+              "height": 26,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  },
+                  "boundVariables": {}
+                },
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 0.15000000596046448,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 1,
+                    "g": 0.2666666805744171,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 0.15000000596046448,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 1,
+                    "g": 0.2666666805744171,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokeWeight": 1,
+              "cornerRadius": 16,
+              "effects": [],
+              "blendMode": "NORMAL",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": 20,
+              "children": [
+                {
+                  "id": "2098:10309",
+                  "name": "Badge",
+                  "type": "FRAME",
+                  "x": 4,
+                  "y": 4,
+                  "width": 100,
+                  "height": 24,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      4
+                    ],
+                    [
+                      0,
+                      1,
+                      4
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": false,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      },
+                      "boundVariables": {}
+                    }
+                  ],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "cornerRadius": 0,
+                  "effects": [],
+                  "blendMode": "NORMAL",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "layoutMode": "HORIZONTAL",
+                  "itemSpacing": 0,
+                  "children": [
+                    {
+                      "id": "2098:10310",
+                      "name": "_Badge base",
+                      "type": "FRAME",
+                      "x": 0,
+                      "y": 0,
+                      "width": 100,
+                      "height": 24,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          1,
+                          0
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": true,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 0.15136337280273438,
+                            "g": 0.15136337280273438,
+                            "b": 0.15136337280273438
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "cornerRadius": 16,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "layoutMode": "HORIZONTAL",
+                      "itemSpacing": 0,
+                      "children": [
+                        {
+                          "id": "2098:10311",
+                          "name": "Text",
+                          "type": "TEXT",
+                          "x": 10,
+                          "y": 2,
+                          "width": 80,
+                          "height": 20,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              10
+                            ],
+                            [
+                              0,
+                              1,
+                              2
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "MIN",
+                            "vertical": "MIN"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 1,
+                                "b": 1
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 1,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "2098:10312",
+                  "name": "Content",
+                  "type": "FRAME",
+                  "x": 10,
+                  "y": 6,
+                  "width": 74,
+                  "height": 14,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      10
+                    ],
+                    [
+                      0,
+                      1,
+                      6
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "cornerRadius": 0,
+                  "effects": [],
+                  "blendMode": "PASS_THROUGH",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "layoutMode": "HORIZONTAL",
+                  "itemSpacing": 8,
+                  "children": [
+                    {
+                      "id": "2098:10313",
+                      "name": "fi_95454",
+                      "type": "FRAME",
+                      "x": 0,
+                      "y": 0,
+                      "width": 14,
+                      "height": 14,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          1,
+                          0
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": false,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 0.061002179980278015,
+                      "cornerRadius": 0,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "layoutMode": "NONE",
+                      "itemSpacing": 0,
+                      "children": [
+                        {
+                          "id": "2098:10314",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 0.7501100897789001,
+                          "y": 0.000029786220693495125,
+                          "width": 12.499780654907227,
+                          "height": 13.999907493591309,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              0.7501100897789001
+                            ],
+                            [
+                              0,
+                              1,
+                              0.000029786220693495125
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 0.2666666805744171,
+                                "b": 0
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.061002179980278015,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "2098:10315",
+                      "name": "Message",
+                      "type": "TEXT",
+                      "x": 22,
+                      "y": 2,
+                      "width": 52,
+                      "height": 10,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          22
+                        ],
+                        [
+                          0,
+                          1,
+                          2
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": true,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "2098:10316",
+              "name": "Title",
+              "type": "TEXT",
+              "x": 0,
+              "y": 44,
+              "width": 615,
+              "height": 120,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  44
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                },
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "visible": true,
+                  "opacity": 0.44999998807907104,
+                  "blendMode": "NORMAL",
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "position": 0,
+                      "boundVariables": {}
+                    },
+                    {
+                      "color": {
+                        "r": 1,
+                        "g": 0.2666666805744171,
+                        "b": 0,
+                        "a": 1
+                      },
+                      "position": 1,
+                      "boundVariables": {}
+                    }
+                  ],
+                  "gradientTransform": [
+                    [
+                      1.3136836290359497,
+                      0.286699503660202,
+                      -0.14588502049446106
+                    ],
+                    [
+                      -5.977907180786133,
+                      1.3136836290359497,
+                      1.9682683944702148
+                    ]
+                  ]
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 5.69661283493042,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "2098:10317",
+              "name": "Container",
+              "type": "FRAME",
+              "x": 0,
+              "y": 182,
+              "width": 615,
+              "height": 148,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  182
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [],
+              "strokes": [],
+              "strokeWeight": 1,
+              "cornerRadius": 0,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "STRETCH",
+              "layoutGrow": 0,
+              "layoutMode": "VERTICAL",
+              "itemSpacing": 12,
+              "children": [
+                {
+                  "id": "2098:10318",
+                  "name": "Container",
+                  "type": "FRAME",
+                  "x": 0,
+                  "y": 0,
+                  "width": 615,
+                  "height": 28,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      0
+                    ],
+                    [
+                      0,
+                      1,
+                      0
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "cornerRadius": 0,
+                  "effects": [],
+                  "blendMode": "PASS_THROUGH",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "layoutMode": "HORIZONTAL",
+                  "itemSpacing": 12,
+                  "children": [
+                    {
+                      "id": "2098:10319",
+                      "name": "fi_17767109",
+                      "type": "FRAME",
+                      "x": 0,
+                      "y": 6,
+                      "width": 16,
+                      "height": 16,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          1,
+                          6
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": false,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 0.1599999964237213,
+                      "cornerRadius": 0,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "layoutMode": "NONE",
+                      "itemSpacing": 0,
+                      "children": [
+                        {
+                          "id": "2098:10320",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 0.3999721109867096,
+                          "y": 0.3999721109867096,
+                          "width": 15.19999885559082,
+                          "height": 15.199999809265137,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              0.3999721109867096
+                            ],
+                            [
+                              0,
+                              1,
+                              0.3999721109867096
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 0.2666666805744171,
+                                "b": 0
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.1599999964237213,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "2098:10321",
+                      "name": "Detail",
+                      "type": "TEXT",
+                      "x": 28,
+                      "y": 0,
+                      "width": 625,
+                      "height": 28,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          28
+                        ],
+                        [
+                          0,
+                          1,
+                          0
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": true,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "2098:10322",
+                  "name": "Container",
+                  "type": "FRAME",
+                  "x": 0,
+                  "y": 40,
+                  "width": 615,
+                  "height": 28,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      0
+                    ],
+                    [
+                      0,
+                      1,
+                      40
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "cornerRadius": 0,
+                  "effects": [],
+                  "blendMode": "PASS_THROUGH",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "layoutMode": "HORIZONTAL",
+                  "itemSpacing": 12,
+                  "children": [
+                    {
+                      "id": "2098:10323",
+                      "name": "fi_17767109",
+                      "type": "FRAME",
+                      "x": 0,
+                      "y": 6,
+                      "width": 16,
+                      "height": 16,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          1,
+                          6
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": false,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 0.1599999964237213,
+                      "cornerRadius": 0,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "layoutMode": "NONE",
+                      "itemSpacing": 0,
+                      "children": [
+                        {
+                          "id": "2098:10324",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 0.3999721109867096,
+                          "y": 0.3999721109867096,
+                          "width": 15.19999885559082,
+                          "height": 15.199999809265137,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              0.3999721109867096
+                            ],
+                            [
+                              0,
+                              1,
+                              0.3999721109867096
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 0.2666666805744171,
+                                "b": 0
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.1599999964237213,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "2098:10325",
+                      "name": "Detail",
+                      "type": "TEXT",
+                      "x": 28,
+                      "y": 0,
+                      "width": 625,
+                      "height": 28,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          28
+                        ],
+                        [
+                          0,
+                          1,
+                          0
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": true,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "2098:10326",
+                  "name": "Container",
+                  "type": "FRAME",
+                  "x": 0,
+                  "y": 80,
+                  "width": 615,
+                  "height": 28,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      0
+                    ],
+                    [
+                      0,
+                      1,
+                      80
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "cornerRadius": 0,
+                  "effects": [],
+                  "blendMode": "PASS_THROUGH",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "layoutMode": "HORIZONTAL",
+                  "itemSpacing": 12,
+                  "children": [
+                    {
+                      "id": "2098:10327",
+                      "name": "fi_17767109",
+                      "type": "FRAME",
+                      "x": 0,
+                      "y": 6,
+                      "width": 16,
+                      "height": 16,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          1,
+                          6
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": false,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 0.1599999964237213,
+                      "cornerRadius": 0,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "layoutMode": "NONE",
+                      "itemSpacing": 0,
+                      "children": [
+                        {
+                          "id": "2098:10328",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 0.3999721109867096,
+                          "y": 0.3999721109867096,
+                          "width": 15.19999885559082,
+                          "height": 15.199999809265137,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              0.3999721109867096
+                            ],
+                            [
+                              0,
+                              1,
+                              0.3999721109867096
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 0.2666666805744171,
+                                "b": 0
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.1599999964237213,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "2098:10329",
+                      "name": "Detail",
+                      "type": "TEXT",
+                      "x": 28,
+                      "y": 0,
+                      "width": 625,
+                      "height": 28,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          28
+                        ],
+                        [
+                          0,
+                          1,
+                          0
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": true,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "2098:10330",
+                  "name": "Container",
+                  "type": "FRAME",
+                  "x": 0,
+                  "y": 120,
+                  "width": 615,
+                  "height": 28,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      0
+                    ],
+                    [
+                      0,
+                      1,
+                      120
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "cornerRadius": 0,
+                  "effects": [],
+                  "blendMode": "PASS_THROUGH",
+                  "layoutAlign": "STRETCH",
+                  "layoutGrow": 0,
+                  "layoutMode": "HORIZONTAL",
+                  "itemSpacing": 12,
+                  "children": [
+                    {
+                      "id": "2098:10331",
+                      "name": "fi_17767109",
+                      "type": "FRAME",
+                      "x": 0,
+                      "y": 6,
+                      "width": 16,
+                      "height": 16,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          1,
+                          6
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": false,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 0.1599999964237213,
+                      "cornerRadius": 0,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "layoutMode": "NONE",
+                      "itemSpacing": 0,
+                      "children": [
+                        {
+                          "id": "2098:10332",
+                          "name": "Vector",
+                          "type": "VECTOR",
+                          "x": 0.3999721109867096,
+                          "y": 0.3999721109867096,
+                          "width": 15.19999885559082,
+                          "height": 15.199999809265137,
+                          "relativeTransform": [
+                            [
+                              1,
+                              0,
+                              0.3999721109867096
+                            ],
+                            [
+                              0,
+                              1,
+                              0.3999721109867096
+                            ]
+                          ],
+                          "constraints": {
+                            "horizontal": "SCALE",
+                            "vertical": "SCALE"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "visible": true,
+                              "opacity": 1,
+                              "blendMode": "NORMAL",
+                              "color": {
+                                "r": 1,
+                                "g": 0.2666666805744171,
+                                "b": 0
+                              },
+                              "boundVariables": {}
+                            }
+                          ],
+                          "strokes": [],
+                          "strokeWeight": 0.1599999964237213,
+                          "cornerRadius": 0,
+                          "effects": [],
+                          "blendMode": "PASS_THROUGH",
+                          "layoutAlign": "INHERIT",
+                          "layoutGrow": 0,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "2098:10333",
+                      "name": "Detail",
+                      "type": "TEXT",
+                      "x": 28,
+                      "y": 0,
+                      "width": 625,
+                      "height": 28,
+                      "relativeTransform": [
+                        [
+                          1,
+                          0,
+                          28
+                        ],
+                        [
+                          0,
+                          1,
+                          0
+                        ]
+                      ],
+                      "constraints": {
+                        "horizontal": "MIN",
+                        "vertical": "MIN"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "visible": true,
+                          "opacity": 1,
+                          "blendMode": "NORMAL",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0
+                          },
+                          "boundVariables": {}
+                        }
+                      ],
+                      "strokes": [],
+                      "strokeWeight": 1,
+                      "effects": [],
+                      "blendMode": "PASS_THROUGH",
+                      "layoutAlign": "INHERIT",
+                      "layoutGrow": 0,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2098:10334",
+          "name": "Container",
+          "type": "FRAME",
+          "x": 0,
+          "y": 354,
+          "width": 429.33331298828125,
+          "height": 51,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              354
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [],
+          "strokes": [],
+          "strokeWeight": 1,
+          "cornerRadius": 0,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": 12,
+          "children": [
+            {
+              "id": "2098:10335",
+              "name": "Button Primary",
+              "type": "INSTANCE",
+              "x": 0,
+              "y": 0,
+              "width": 167,
+              "height": 51,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 1,
+                    "g": 0.2666666805744171,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "cornerRadius": 8,
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "visible": false,
+                  "radius": 19.299999237060547,
+                  "boundVariables": {},
+                  "color": {
+                    "r": 1,
+                    "g": 0.2666666805744171,
+                    "b": 0,
+                    "a": 0.5
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "spread": 0,
+                  "blendMode": "NORMAL",
+                  "showShadowBehindNode": false
+                }
+              ],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": 10,
+              "children": [
+                {
+                  "id": "I2098:10335;2018:11168",
+                  "name": "Start Trading",
+                  "type": "TEXT",
+                  "x": 24,
+                  "y": 14,
+                  "width": 119,
+                  "height": 23,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      24
+                    ],
+                    [
+                      0,
+                      1,
+                      14
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      },
+                      "boundVariables": {}
+                    }
+                  ],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "effects": [],
+                  "blendMode": "PASS_THROUGH",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "children": []
+                },
+                {
+                  "id": "I2098:10335;2018:11169",
+                  "name": "Icon",
+                  "type": "VECTOR",
+                  "x": 153,
+                  "y": 20.833332061767578,
+                  "width": 9.333333969116211,
+                  "height": 9.333333969116211,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      153
+                    ],
+                    [
+                      0,
+                      1,
+                      20.833332061767578
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 1,
+                        "g": 0.2666666805744171,
+                        "b": 0
+                      },
+                      "boundVariables": {}
+                    }
+                  ],
+                  "strokeWeight": 1.333299994468689,
+                  "cornerRadius": 0,
+                  "effects": [],
+                  "blendMode": "PASS_THROUGH",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "2098:10336",
+              "name": "Secondary",
+              "type": "INSTANCE",
+              "x": 179,
+              "y": 0,
+              "width": 250.3333282470703,
+              "height": 51,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  179
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": false,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [
+                {
+                  "type": "SOLID",
+                  "visible": false,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokeWeight": 1,
+              "cornerRadius": 8,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "layoutMode": "HORIZONTAL",
+              "itemSpacing": 10,
+              "children": [
+                {
+                  "id": "I2098:10336;2018:11205",
+                  "name": "Start Trading",
+                  "type": "TEXT",
+                  "x": 24,
+                  "y": 14,
+                  "width": 183,
+                  "height": 23,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      24
+                    ],
+                    [
+                      0,
+                      1,
+                      14
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0
+                      },
+                      "boundVariables": {}
+                    }
+                  ],
+                  "strokes": [],
+                  "strokeWeight": 1,
+                  "effects": [],
+                  "blendMode": "PASS_THROUGH",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "children": []
+                },
+                {
+                  "id": "I2098:10336;2018:11206",
+                  "name": "Icon",
+                  "type": "VECTOR",
+                  "x": 217,
+                  "y": 20.833332061767578,
+                  "width": 9.333333969116211,
+                  "height": 9.333333969116211,
+                  "relativeTransform": [
+                    [
+                      1,
+                      0,
+                      217
+                    ],
+                    [
+                      0,
+                      1,
+                      20.833332061767578
+                    ]
+                  ],
+                  "constraints": {
+                    "horizontal": "MIN",
+                    "vertical": "MIN"
+                  },
+                  "fills": [],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "visible": true,
+                      "opacity": 1,
+                      "blendMode": "NORMAL",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0
+                      },
+                      "boundVariables": {}
+                    }
+                  ],
+                  "strokeWeight": 1.333299994468689,
+                  "cornerRadius": 0,
+                  "effects": [],
+                  "blendMode": "PASS_THROUGH",
+                  "layoutAlign": "INHERIT",
+                  "layoutGrow": 0,
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

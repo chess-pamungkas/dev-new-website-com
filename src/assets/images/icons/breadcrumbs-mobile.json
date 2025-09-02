@@ -1,0 +1,175 @@
+{
+  "id": "2721:34184",
+  "name": "Frame 1000001863",
+  "type": "FRAME",
+  "x": 20,
+  "y": 1132,
+  "width": 233,
+  "height": 11,
+  "relativeTransform": [
+    [
+      1,
+      0,
+      20
+    ],
+    [
+      0,
+      1,
+      1132
+    ]
+  ],
+  "constraints": {
+    "horizontal": "MIN",
+    "vertical": "MIN"
+  },
+  "fills": [],
+  "strokes": [],
+  "strokeWeight": 1,
+  "cornerRadius": 0,
+  "effects": [],
+  "blendMode": "PASS_THROUGH",
+  "layoutAlign": "INHERIT",
+  "layoutGrow": 0,
+  "layoutMode": "HORIZONTAL",
+  "itemSpacing": 12,
+  "children": [
+    {
+      "id": "2721:34185",
+      "name": "Text",
+      "type": "TEXT",
+      "x": 0,
+      "y": 0,
+      "width": 44,
+      "height": 11,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 0.2666666805744171,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "2721:34186",
+      "name": "Text",
+      "type": "TEXT",
+      "x": 56,
+      "y": 0.5,
+      "width": 7,
+      "height": 10,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          56
+        ],
+        [
+          0,
+          1,
+          0.5
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    },
+    {
+      "id": "2721:34187",
+      "name": "Text",
+      "type": "TEXT",
+      "x": 75,
+      "y": 0,
+      "width": 158,
+      "height": 11,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          75
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 0.2666666805744171,
+            "b": 0
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "INHERIT",
+      "layoutGrow": 0,
+      "children": []
+    }
+  ]
+}

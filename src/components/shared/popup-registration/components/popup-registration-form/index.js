@@ -12,7 +12,8 @@ import countries from "../../../../shared/countries";
 import ClientResolverContext from "../../../../../context/client-resolver-context";
 import { PORTAL_LANGUAGES_MAP } from "../../../../../helpers/lang-options.config";
 import LanguageContext from "../../../../../context/language-context";
-import arrowDownIcon from "../../../../../assets/images/icons/arrow-down.png";
+import selectorIcon from "../../../../../assets/images/icons/popup-registration/selector.svg";
+import chevronDownIcon from "../../../../../assets/images/icons/popup-registration/chevron-down.svg";
 import { cleanRTLAttributes } from "../../index";
 
 // RTL languages - Arabic
@@ -2485,7 +2486,7 @@ const PopupRegistrationForm = ({ params }) => {
                 noValidate
               >
                 {/* Name Fields */}
-                <div className="name-fields" style={{ marginBottom: "20px" }}>
+                <div className="name-fields">
                   <div className="popup-registration__field">
                     <label className="popup-registration__label">
                       {t("popup-registration-firstName")} *
@@ -2535,10 +2536,7 @@ const PopupRegistrationForm = ({ params }) => {
                 </div>
 
                 {/* Email Field */}
-                <div
-                  className="popup-registration__row"
-                  style={{ marginBottom: "20px" }}
-                >
+                <div className="popup-registration__row">
                   <div className="popup-registration__field">
                     <label className="popup-registration__label">
                       {t("popup-registration-email")} *
@@ -2564,122 +2562,118 @@ const PopupRegistrationForm = ({ params }) => {
                   </div>
                 </div>
 
-                {/* Country, Code, Phone Fields */}
-                <div
-                  className="popup-registration__row"
-                  style={{ marginBottom: "20px" }}
-                >
-                  <div className="three-fields-container">
-                    {/* Country Field */}
-                    <div className="popup-registration__field country-field">
-                      <label className="popup-registration__label">
-                        {t("popup-registration-countryOfResidence")} *
-                      </label>
-                      <div className="custom-dropdown">
-                        <div
-                          className={`custom-dropdown__selected ${
-                            selectedCountry
-                              ? "custom-dropdown__selected--has-value"
-                              : ""
-                          } ${
-                            isCountryOpen
-                              ? "custom-dropdown__selected--open"
-                              : ""
-                          }`}
-                          onClick={() => setIsCountryOpen(!isCountryOpen)}
-                        >
-                          {selectedCountry || (
+                {/* Country and Phone Number Fields - Side by Side */}
+                <div className="popup-registration__row country-phone-row">
+                  {/* Country Field */}
+                  <div className="popup-registration__field country-field">
+                    <label className="popup-registration__label">
+                      {t("popup-registration-countryOfResidence")} *
+                    </label>
+                    <div className="custom-dropdown">
+                      <div
+                        className={`custom-dropdown__selected ${
+                          selectedCountry
+                            ? "custom-dropdown__selected--has-value"
+                            : ""
+                        } ${
+                          isCountryOpen ? "custom-dropdown__selected--open" : ""
+                        }`}
+                        onClick={() => setIsCountryOpen(!isCountryOpen)}
+                      >
+                        {selectedCountry || (
+                          <span className="custom-dropdown__placeholder">
+                            {t("popup-registration-countryOfResidence") + " *"}
+                          </span>
+                        )}
+                        <img
+                          src={selectorIcon}
+                          alt="dropdown"
+                          className="custom-dropdown__arrow"
+                        />
+                      </div>
+                      {isCountryOpen && (
+                        <CountryDropdown
+                          searchCountry={searchCountry}
+                          setSearchCountry={setSearchCountry}
+                          selectedCountry={selectedCountry}
+                          handleCountrySelect={handleCountrySelect}
+                          t={t}
+                          countryOptionsRef={countryOptionsRef}
+                          filteredCountries={filteredCountries}
+                          setFieldValue={setFieldValue}
+                          setIsCountryOpen={setIsCountryOpen}
+                          errors={errors}
+                          touched={touched}
+                        />
+                      )}
+                    </div>
+                    {errors.country && touched.country && (
+                      <div className="popup-registration__error">
+                        {t(errors.country)}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Phone Number Field */}
+                  <div className="popup-registration__field phone-field">
+                    <label className="popup-registration__label">
+                      {t("popup-registration-phoneNumber")} *
+                    </label>
+                    <div
+                      className={cn("phone-number-container", {
+                        "has-error":
+                          (errors.mobile && touched.mobile) ||
+                          (errors.country_code && touched.country_code),
+                      })}
+                    >
+                      {/* Country Code Dropdown Group */}
+                      <div
+                        className="phone-country-code-group"
+                        onClick={() => setIsCodeOpen(!isCodeOpen)}
+                      >
+                        <div className="phone-country-code">
+                          {selectedCountryCode ? (
+                            <span className="country-code-text">
+                              {selectedCountryCode}
+                            </span>
+                          ) : (
                             <span className="custom-dropdown__placeholder">
-                              {t("popup-registration-countryOfResidence") +
-                                " *"}
+                              {t("popup-registration-countryCode")} *
                             </span>
                           )}
+                        </div>
+
+                        {/* Chevron Down Icon */}
+                        <div className="phone-chevron-icon">
                           <img
-                            src={arrowDownIcon}
+                            src={chevronDownIcon}
                             alt="dropdown"
-                            className="custom-dropdown__arrow"
+                            className={cn("chevron-down-icon", {
+                              "chevron-down-icon--rotated": isCodeOpen,
+                            })}
                           />
                         </div>
-                        {isCountryOpen && (
-                          <CountryDropdown
-                            searchCountry={searchCountry}
-                            setSearchCountry={setSearchCountry}
-                            selectedCountry={selectedCountry}
-                            handleCountrySelect={handleCountrySelect}
+                      </div>
+
+                      {/* Code Dropdown Content */}
+                      {isCodeOpen && (
+                        <div className="phone-country-dropdown">
+                          <CodeDropdown
+                            searchCode={searchCode}
+                            setSearchCode={setSearchCode}
+                            selectedCountryCode={selectedCountryCode}
+                            handleCodeSelect={handleCodeSelect}
                             t={t}
-                            countryOptionsRef={countryOptionsRef}
-                            filteredCountries={filteredCountries}
-                            setFieldValue={setFieldValue}
-                            setIsCountryOpen={setIsCountryOpen}
+                            codeOptionsRef={codeOptionsRef}
+                            setIsCodeOpen={setIsCodeOpen}
                             errors={errors}
                             touched={touched}
                           />
-                        )}
-                      </div>
-                      {errors.country && touched.country && (
-                        <div className="popup-registration__error">
-                          {t(errors.country)}
                         </div>
                       )}
-                    </div>
 
-                    {/* Mobile wrapper for Code and Phone */}
-                    <div className="mobile-code-phone">
-                      {/* Code Field */}
-                      <div className="popup-registration__field code-field">
-                        <label className="popup-registration__label">
-                          {t("popup-registration-countryCode")} *
-                        </label>
-                        <div className="custom-dropdown">
-                          <div
-                            className={`custom-dropdown__selected ${
-                              selectedCountryCode
-                                ? "custom-dropdown__selected--has-value"
-                                : ""
-                            } ${
-                              isCodeOpen
-                                ? "custom-dropdown__selected--open"
-                                : ""
-                            }`}
-                            onClick={() => setIsCodeOpen(!isCodeOpen)}
-                          >
-                            {selectedCountryCode || (
-                              <span className="custom-dropdown__placeholder">
-                                {t("popup-registration-countryCode") + " *"}
-                              </span>
-                            )}
-                            <img
-                              src={arrowDownIcon}
-                              alt="dropdown"
-                              className="custom-dropdown__arrow"
-                            />
-                          </div>
-                          {isCodeOpen && (
-                            <CodeDropdown
-                              searchCode={searchCode}
-                              setSearchCode={setSearchCode}
-                              selectedCountryCode={selectedCountryCode}
-                              handleCodeSelect={handleCodeSelect}
-                              t={t}
-                              codeOptionsRef={codeOptionsRef}
-                              setIsCodeOpen={setIsCodeOpen}
-                              errors={errors}
-                              touched={touched}
-                            />
-                          )}
-                        </div>
-                        {errors.country_code && touched.country_code && (
-                          <div className="popup-registration__error">
-                            {t(errors.country_code)}
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Phone Field */}
-                      <div className="popup-registration__field phone-field">
-                        <label className="popup-registration__label">
-                          {t("popup-registration-phoneNumber")} *
-                        </label>
+                      {/* Phone Number Input */}
+                      <div className="phone-number-input">
                         <input
                           type="tel"
                           name="mobile"
@@ -2695,21 +2689,23 @@ const PopupRegistrationForm = ({ params }) => {
                           })}
                           noValidate
                         />
-                        {errors.mobile && touched.mobile && (
-                          <div className="popup-registration__error">
-                            {t(errors.mobile)}
-                          </div>
-                        )}
                       </div>
                     </div>
+                    {errors.country_code && touched.country_code && (
+                      <div className="popup-registration__error">
+                        {t(errors.country_code)}
+                      </div>
+                    )}
+                    {errors.mobile && touched.mobile && (
+                      <div className="popup-registration__error">
+                        {t(errors.mobile)}
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 {/* Newsletter Subscription */}
-                <div
-                  className="popup-registration__newsletter"
-                  style={{ marginBottom: "20px" }}
-                >
+                <div className="popup-registration__newsletter">
                   <input
                     type="checkbox"
                     name="is_subscribe"
@@ -2718,66 +2714,85 @@ const PopupRegistrationForm = ({ params }) => {
                       setFieldValue("is_subscribe", e.target.checked ? 1 : 0)
                     }
                   />
-                  {t("popup-registration-acceptMarketing")}
+                  <button
+                    type="button"
+                    className={cn("toggle-switch", "newsletter-toggle", {
+                      active: values.is_subscribe,
+                    })}
+                    onClick={() =>
+                      setFieldValue("is_subscribe", values.is_subscribe ? 0 : 1)
+                    }
+                    aria-label="Toggle newsletter subscription"
+                  />
+                  <span className="toggle-text">
+                    {t("popup-registration-acceptMarketing")}
+                  </span>
                 </div>
 
                 {/* Consent */}
-                <div
-                  className="popup-registration__consent"
-                  style={{ marginBottom: "20px" }}
-                >
-                  <span className="popup-registration__consent-text">
-                    <input
-                      type="checkbox"
-                      name="agreement"
-                      checked={values.agreement}
-                      onChange={(e) =>
-                        setFieldValue("agreement", e.target.checked ? 1 : 0)
-                      }
-                    />
-                    <span>
-                      <Trans i18nKey="popup-registration-consent" ns="index">
-                        I agree to allow the company to process my personal data
-                        to meet its regulatory obligations and I have read and
-                        understood the
-                        <a
-                          href={policyLinks.privacyPolicy}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="link"
-                          onClick={(e) =>
-                            handlePolicyLinkClick(e, policyLinks.privacyPolicy)
-                          }
-                        >
-                          Privacy Policy
-                        </a>
-                        and
-                        <a
-                          href={policyLinks.cookiePolicy}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="link"
-                          onClick={(e) =>
-                            handlePolicyLinkClick(e, policyLinks.cookiePolicy)
-                          }
-                        >
-                          Cookie Policy
-                        </a>
-                        of the Company.
-                      </Trans>
-                    </span>
+                <div className="popup-registration__consent">
+                  <input
+                    type="checkbox"
+                    name="agreement"
+                    checked={values.agreement}
+                    onChange={(e) =>
+                      setFieldValue("agreement", e.target.checked ? 1 : 0)
+                    }
+                  />
+                  <button
+                    type="button"
+                    className={cn("toggle-switch", "consent-toggle", {
+                      active: values.agreement,
+                    })}
+                    onClick={() =>
+                      setFieldValue("agreement", values.agreement ? 0 : 1)
+                    }
+                    aria-label="Toggle consent agreement"
+                  />
+                  <span className="toggle-text">
+                    <Trans i18nKey="popup-registration-consent" ns="index">
+                      I agree to allow the company to process my personal data
+                      to meet its regulatory obligations and I have read and
+                      understood the
+                      <a
+                        href={policyLinks.privacyPolicy}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link"
+                        onClick={(e) =>
+                          handlePolicyLinkClick(e, policyLinks.privacyPolicy)
+                        }
+                      >
+                        Privacy Policy
+                      </a>
+                      and
+                      <a
+                        href={policyLinks.cookiePolicy}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link"
+                        onClick={(e) =>
+                          handlePolicyLinkClick(e, policyLinks.cookiePolicy)
+                        }
+                      >
+                        Cookie Policy
+                      </a>
+                      of the Company.
+                    </Trans>
                   </span>
-                  {errors.agreement && touched.agreement && (
-                    <div
-                      className={cn(
-                        "popup-registration__error",
-                        "popup-registration__error--agreement"
-                      )}
-                    >
-                      {t("popup-registration-agreement-required")}
-                    </div>
-                  )}
                 </div>
+
+                {/* Agreement Error Message - Positioned between consent and continue button */}
+                {errors.agreement && touched.agreement && (
+                  <div
+                    className={cn(
+                      "popup-registration__error",
+                      "popup-registration__error--agreement"
+                    )}
+                  >
+                    {t("popup-registration-agreement-required")}
+                  </div>
+                )}
 
                 {/* Submit Button */}
                 <button
@@ -2785,7 +2800,6 @@ const PopupRegistrationForm = ({ params }) => {
                   className={cn("continue-button", {
                     "button-link--disabled": isSubmitting,
                   })}
-                  style={{ marginTop: "auto", marginBottom: "20px" }}
                   onClick={async (e) => {
                     e.preventDefault();
                     // Touch all fields to show validation errors
@@ -2814,7 +2828,26 @@ const PopupRegistrationForm = ({ params }) => {
                     }
                   }}
                 >
-                  {t("popup-registration-continue")}
+                  <span className="button-text">
+                    {t("popup-registration-continue")}
+                  </span>
+                  <span className="button-arrow">
+                    <svg
+                      width="11"
+                      height="11"
+                      viewBox="0 0 11 11"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+                        stroke="currentColor"
+                        strokeWidth="1.3333"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
                 </button>
 
                 {/* Error Message */}
@@ -2826,6 +2859,13 @@ const PopupRegistrationForm = ({ params }) => {
                     {errorMessage}
                   </p>
                 )}
+
+                {/* Risk Warning - Moved inside form for better spacing control */}
+                <div className="popup-registration__content__risk-warning">
+                  <p className="popup-registration__content__risk-warning-text">
+                    {t("popup-registration-riskWarning")}
+                  </p>
+                </div>
               </form>
             );
           }}

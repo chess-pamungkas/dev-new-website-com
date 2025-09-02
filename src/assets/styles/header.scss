@@ -42,6 +42,8 @@
 }
 
 .header {
+  min-height: 65px;
+  // padding: 35px 0;
   &-wrapper {
     position: fixed;
     z-index: 1000;
@@ -53,51 +55,153 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: all 0.3s ease;
-    background-color: transparent;
-    height: 65px;
-
-    // @include desktop-lg {
-    //   padding: 12px 0;
-    // }
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
   }
 
   &--small {
-    background: map-get($colors, "white") 0% 0% no-repeat padding-box;
-    height: $header-height-small;
+    background-color: rgba(247, 245, 243, 0.9); // #F7F5F3 at 90% opacity
+    height: 76px;
+    margin: 8px auto 0;
     transition: all 0.4s ease-in-out;
-    transform: translateY(-40px);
-    box-shadow: 0 6px 8px #00000029;
+    border: 1px solid rgba(19, 40, 75, 0.08); // #13284B at 8% opacity
+    border-radius: 20px;
+    backdrop-filter: blur(8.7px);
+    /* Figma: add subtle shadow for floating effect */
+    box-shadow: 0 8px 32px rgba(19, 40, 75, 0.08);
+    padding: 35px 32px;
+    box-sizing: border-box;
 
-    // @include desktop-xl {
-    //   height: 140px;
-    // }
+    @include mobile {
+      margin-top: 0 !important;
+      top: 0 !important;
+      height: 65px;
+      padding: 0;
+      border: none;
+      .header__main-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        margin: 0 auto;
+      }
+      .header__left,
+      .header__center,
+      .header__right {
+        min-width: auto;
+        flex-basis: auto;
+      }
+      .header__center {
+        justify-content: center;
+        padding: 0;
+      }
+      .header__right {
+        gap: 10px;
+      }
+    }
+    @include tablet {
+      margin-top: 0 !important;
+      top: 0 !important;
+      height: 76px;
+      padding: 0;
+      border: none;
+      .header__main-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        margin: 0 auto;
+      }
+      .header__left,
+      .header__center,
+      .header__right {
+        min-width: auto;
+        flex-basis: auto;
+      }
+      .header__center {
+        justify-content: center;
+        padding: 0;
+      }
+      .header__right {
+        gap: 10px;
+      }
+    }
+    @include desktop-lg {
+      max-width: 1050px;
+      margin-top: 8px !important;
+      top: 8px !important;
+    }
+    @include desktop-xl {
+      max-width: 1350px;
+      margin-top: 8px !important;
+      top: 8px !important;
+    }
+    @include desktop-2k {
+      max-width: 1550px;
+      margin-top: 8px !important;
+      top: 8px !important;
+    }
+    @include desktop-5k {
+      max-width: 2000px;
+      margin-top: 8px !important;
+      top: 8px !important;
+    }
   }
 
   &--big {
-    background: transparent linear-gradient(180deg, #ff4400 0%, #ff440000 100%)
-      0% 0% no-repeat padding-box;
-    height: $header-height;
+    background-color: map-get($colors, "white");
+    height: 76px;
     transition: all 0.4s ease-in-out;
-    box-shadow: unset;
+    box-shadow: none;
+    border: none;
+    padding: 35px 32px;
+    box-sizing: border-box;
+    width: 100%;
+
+    // Ensure header--big maintains 100% width even when dropdown is open
+    &.header--dropdown-open {
+      width: 100%;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 
   width: 100%;
 
   background: map-get($colors, "white") 0% 0% no-repeat padding-box;
   height: $header-height-small-mobile;
-  box-shadow: 0 6px 8px #00000029;
+  // box-shadow: 0 6px 8px #00000029;
+  border-radius: 0;
+  transition: border-radius 0.2s;
+
+  &--dropdown-open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    z-index: 1002;
+  }
 
   &__logo {
     height: 33px;
     width: auto;
     transition: all 0.3s ease;
+
+    @include mobile {
+      height: 26px;
+    }
   }
 
   &__center {
+    flex: 1 1 0;
     display: flex;
+    justify-content: center;
     align-items: center;
-    flex: 1;
+    min-width: 0;
 
     @include tablet {
       justify-content: center;
@@ -106,67 +210,82 @@
   }
 
   &__left {
+    flex: 0 1 auto;
+    min-width: 120px;
     display: flex;
     align-items: center;
-    padding: 10px 11px;
-
-    @include tablet {
-      min-width: 120px;
-      padding: 10px 0;
-    }
   }
 
   &__right {
+    flex: 0 1 auto;
+    min-width: 120px;
     display: flex;
     align-items: center;
-    min-width: 120px;
-
-    @include tablet {
-      justify-content: flex-end;
-    }
+    gap: 12px;
   }
 
   &__signin {
-    margin-left: 26px;
-    padding: 0 33px;
+    margin-left: 15px;
+    font-size: 16px;
+    font-weight: map-get($font-weight, "medium");
+    justify-content: center;
+    vertical-align: middle;
+    padding: 16px;
+    color: map-get($colors, "black");
+    background-color: rgba(255, 68, 0, 0.15);
+    border: 1px solid rgba(255, 68, 0, 0.15);
+    border-radius: 8px;
+    width: 94px;
+    height: 38px;
+    transition: all 0.2s ease;
 
     &--red {
       color: map-get($colors, "red");
+      background-color: rgba(255, 68, 0, 0.15);
+      border: 1px solid rgba(255, 68, 0, 0.15);
 
       &:hover,
       &:active,
       &:focus {
-        border: 2px solid map-get($colors, "red");
+        background-color: rgba(255, 68, 0, 0.25);
+        border: 1px solid rgba(255, 68, 0, 0.3);
       }
     }
 
     @include desktop-xl {
-      margin-left: 50px;
       padding: 0 38px;
     }
   }
 
   &__start {
     margin-left: 10px;
-    padding: 0 16px;
-    background-color: map-get($colors, "white");
-    color: map-get($colors, "red");
-    text-transform: uppercase;
-    border: 2px solid map-get($colors, "white");
+    font-size: 16px;
+    font-weight: map-get($font-weight, "medium");
+    justify-content: center;
+    vertical-align: middle;
+    padding: 16px;
+    background-color: map-get($colors, "red");
+    color: map-get($colors, "white");
+    border-radius: 8px;
+    width: 94px;
+    height: 38px;
+    transition: all 0.2s ease;
 
     &--red {
-      border: 2px solid map-get($colors, "red");
+      background-color: map-get($colors, "red");
+      color: map-get($colors, "white");
     }
 
-    @include desktop-xl {
-      padding: 0 36px;
-    }
+    // @include desktop-xl {
+    //   padding: 0 36px;
+    // }
 
     &:hover,
     &:active,
     &:focus {
       background: map-get($colors, "red");
       color: map-get($colors, "white");
+      // transform: translateY(-1px);
     }
   }
 
@@ -177,13 +296,36 @@
       display: flex;
       align-self: stretch;
     }
+
+    // Navigation text colors based on header state
+    .header--big & {
+      color: map-get($colors, "black");
+    }
+
+    .header--small & {
+      color: map-get($colors, "black");
+    }
   }
 
   &__controls {
     display: none;
 
+    @include mobile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 50px;
+    }
+    @include tablet {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 50px;
+    }
     @include desktop-lg {
       display: flex;
+      gap: 0;
+      margin-right: 0;
     }
   }
 
@@ -216,5 +358,131 @@
     @include desktop-lg {
       display: block;
     }
+  }
+}
+.header-dropdown-card-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+}
+
+.header-dropdown-card-wrapper > .header,
+.header-dropdown-card-wrapper > .header-dropdown-card {
+  pointer-events: auto;
+}
+
+.header--dropdown-open {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.header-dropdown-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  background: map-get($colors, "navbar-bg-grey");
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(19, 40, 75, 0.08);
+  border: 1px solid rgba(19, 40, 75, 0.08);
+  overflow: hidden;
+  transition: all 0.4s;
+  box-sizing: border-box;
+
+  // When opened from header--small, match its margin
+  &--from-small {
+    top: 8px; // Match header--small margin-top
+    width: 100%;
+
+    @include tablet {
+      max-width: 600px;
+    }
+
+    @include desktop-lg {
+      max-width: 1050px;
+    }
+
+    @include desktop-xl {
+      max-width: 1350px;
+    }
+
+    @include desktop-2k {
+      max-width: 1550px;
+    }
+
+    @include desktop-5k {
+      max-width: 2000px;
+    }
+  }
+
+  // When opened from header--big, stay at top: 0
+  &--from-big {
+    top: -1px;
+    margin-top: 0;
+    width: 100%;
+
+    @include tablet {
+      max-width: 600px;
+    }
+
+    @include desktop-lg {
+      max-width: 980px;
+    }
+
+    @include desktop-xl {
+      max-width: 1350px;
+    }
+
+    @include desktop-2k {
+      max-width: 1550px;
+    }
+
+    @include desktop-5k {
+      max-width: 2000px;
+    }
+  }
+}
+
+.header-content {
+  padding: 0 !important;
+  box-sizing: border-box;
+  background: map-get($colors, "navbar-bg-grey");
+  height: 76px;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-content {
+  background: map-get($colors, "navbar-bg-grey");
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+
+  @include tablet {
+    max-width: 600px;
+  }
+
+  @include desktop-lg {
+    max-width: 1000px;
+    padding: 35px 0;
+  }
+
+  @include desktop-xl {
+    max-width: 1680px;
+    padding: 35px 0;
+  }
+
+  @include desktop-2k {
+    max-width: 2200px;
+    padding: 35px 0;
+  }
+
+  @include desktop-5k {
+    max-width: 3500px;
+    padding: 35px 0;
   }
 }

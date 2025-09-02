@@ -113,11 +113,11 @@
 
   .dropdown-item__icon {
     margin-right: unset;
-    margin-left: 10px;
+    margin-left: 20px;
   }
 
   .burger-menu__trigger {
-    left: 26px;
+    left: 10px;
     right: unset;
   }
 
@@ -319,35 +319,6 @@
   transition: none !important;
 }
 
-.top-market--rtl {
-  background: url("../../assets/images/top-markets/bg-rtl.svg") no-repeat center;
-  background-size: cover;
-
-  .top-market__title {
-    @include desktop-xl {
-      text-align: right;
-    }
-  }
-
-  .top-market__text {
-    @include desktop-xl {
-      text-align: right;
-    }
-  }
-
-  .top-market__btn {
-    @include desktop-xl {
-      &:first-child {
-        margin: 0 0 0 10px;
-      }
-
-      &:last-child {
-        margin: 0 10px 0 0;
-      }
-    }
-  }
-}
-
 .top-market-promotion--rtl {
   .top-market-promotion__block {
     direction: rtl;
@@ -431,88 +402,6 @@
     &:nth-child(2) {
       border-left: none;
       border-right: 1px solid map-get($colors, "black");
-    }
-  }
-}
-
-.all-markets--rtl {
-  background: url("../../assets/images/all-markets/bg-rtl.svg") no-repeat center;
-  background-size: cover;
-
-  .all-markets__title {
-    @include desktop-xl {
-      text-align: right;
-    }
-  }
-
-  .all-markets__text {
-    @include desktop-xl {
-      text-align: right;
-    }
-  }
-}
-
-.market-items-list--rtl {
-  .market-item {
-    &:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      width: 100vw;
-      height: 100%;
-      background: url("../../assets/images/all-markets/top-bg-sm.svg") no-repeat
-        right top;
-      background-size: 95px 114px;
-      z-index: 1;
-      pointer-events: none;
-      transform: scaleX(-1);
-
-      @include tablet {
-        background: url("../../assets/images/all-markets/top-bg-md.svg")
-          no-repeat right top;
-        background-size: 219px 263px;
-      }
-
-      @include desktop-xl {
-        background: url("../../assets/images/all-markets/top-bg-lg.svg")
-          no-repeat right top;
-        background-size: 332px 398px;
-      }
-    }
-
-    &--gray {
-      &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        right: 50%;
-        margin-left: -50vw;
-        margin-right: -50vw;
-        width: 100vw;
-        height: 100%;
-        background-color: #f9f9f9;
-        z-index: -999999999;
-        transform: scaleX(-1);
-      }
-    }
-  }
-
-  .market-item-advantages__text {
-    padding-left: 0;
-    padding-right: 20px;
-  }
-
-  .market-item__description {
-    @include desktop-lg {
-      padding-left: 40px;
-    }
-    @include desktop-xl {
-      padding-left: 60px;
     }
   }
 }
@@ -876,12 +765,6 @@
   }
 }
 
-.accounts-type-page-promotion--rtl {
-  direction: rtl;
-  background: url("../../assets/images/top-markets/bg-rtl.svg") no-repeat center;
-  background-size: cover;
-}
-
 .accounts-type--rtl {
   .accounts-type__title {
     @include desktop-xl {
@@ -966,13 +849,6 @@
   @include desktop-xl {
     left: -81px;
   }
-}
-
-.partners-page-promotion--rtl {
-  direction: rtl;
-
-  background: url("../../assets/images/all-markets/bg-rtl.svg") no-repeat center;
-  background-size: cover;
 }
 
 .partners-income--rtl {
@@ -1411,33 +1287,6 @@ h1.popup-registration-register--rtl {
   @include mobile {
     font-size: 1.125rem;
     margin-bottom: 1.5rem;
-  }
-}
-
-.swap-free-advantages--rtl {
-  &:before {
-    @include desktop-lg {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: unset;
-      left: 0;
-      margin-left: 0;
-      margin-right: 0;
-      width: 100vw;
-      height: 100%;
-      background: url("../../assets/images/swap-free/trg-bg-top-lg.svg")
-        no-repeat;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    @include desktop-xl {
-      background: url("../../assets/images/swap-free/trg-bg-top-xl.svg")
-        no-repeat;
-      width: 261px;
-      height: 299px;
-    }
   }
 }
 

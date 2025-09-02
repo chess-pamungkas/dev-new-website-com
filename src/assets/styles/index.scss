@@ -4,6 +4,7 @@
 @import "typography";
 
 @import "button-link";
+@import "reusable-buttons";
 @import "main-promotion";
 @import "promotion";
 @import "trading-tools";
@@ -12,6 +13,12 @@
 @import "faq";
 @import "top-market";
 @import "top-market-layout";
+@import "metals-spreads";
+@import "forex-spreads";
+@import "indices-spreads";
+@import "faq-section";
+@import "crypto-spreads";
+@import "energies-spreads";
 @import "header";
 @import "footer";
 @import "navbar-item";
@@ -21,7 +28,9 @@
 @import "search-bar";
 @import "dropdown-item";
 @import "dropdown";
+@import "trading-symbols";
 @import "trading-ticker";
+@import "features";
 @import "tabs";
 @import "table";
 @import "popup";
@@ -68,7 +77,42 @@
 @import "loader";
 @import "vps";
 @import "swap-free";
+@import "swap-free-freedom";
 @import "popup-registration";
+@import "navbar-dropdown-highlight";
+@import "testimonials-content";
+@import "security-content";
+@import "testimonials-security-content";
+@import "account-comparison";
+@import "account-types-account-comparison";
+@import "cost-calculator";
+@import "technology-infrastructure";
+@import "market-sentiment";
+@import "trust";
+@import "features-content-section";
+@import "guide";
+@import "our-community";
+@import "breadcrumbs-tab";
+@import "market-item-list-content";
+@import "crypto";
+@import "indices";
+@import "forex";
+@import "forex-features-image";
+@import "forex-additional-images";
+@import "metals";
+@import "shares";
+@import "etf";
+@import "hero";
+@import "features-products";
+@import "funding-withdrawals";
+@import "fastin-fastout-section";
+@import "payment-systems-section";
+@import "mt-advantage-list";
+@import "company";
+@import "faq-hero";
+@import "faq-search-bar";
+@import "trust-pilot";
+@import "how-to-trade-swap-free";
 
 // rtl should import last
 @import "rtl";
@@ -79,11 +123,23 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #f7f5f3;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: $font;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   &.overflow-hidden {
     overflow: hidden;
@@ -93,16 +149,62 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 100%;
 
     & main {
       flex-grow: 1;
-      // overflow-x: hidden; checking if solved the problem
+      width: 100%;
     }
   }
 }
 
+body.homepage-bg-1 {
+  background: url("../images/bg/oqtima-bg-1.svg") no-repeat center top;
+  background-size: cover;
+  background-color: #f7f5f3;
+}
+
+body.homepage-bg-2 {
+  background: url("../images/bg/oqtima-bg-2.svg") no-repeat center top;
+  background-size: cover;
+  background-color: #f7f5f3;
+}
+
 .scroll-container {
-  max-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+  @include mobile {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  @include tablet {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  @include desktop-lg {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  @include desktop-xl {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  @include desktop-2k {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  @include desktop-5k {
+    max-width: 100%;
+    padding: 0;
+  }
 }
 
 .highlighted {

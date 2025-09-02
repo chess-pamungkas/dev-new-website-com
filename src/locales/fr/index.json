@@ -242,7 +242,8 @@
 
   "footer-funding-1": "* Si une demande est faite avant 11 heures d’Europe l’Est",
   "footer-funding-2": "* Nous ne facturons pas de frais, mais la banque expéditrice et la banque correspondante peuvent les facturer selon leur propre structure de frais.",
-  "footer-company-name-text": "© 2024 OQtima Group | Tous droits réservés.",
+  "footer-company-name-text": "OQtima Group",
+  "footer-all-rights-reserved": "Tous droits réservés.",
   "button-sign-in": "Se connecter",
   "button-get-started": "Commencer",
   "button-trade-now": "Commencez à négocier maintenant",
@@ -359,6 +360,9 @@
   "legal_top-market-promo-note4-fsa": "Conformément à la loi anti-blanchiment d'argent et à la loi financière antiterroriste de la FSA, OQtima Global a mis en place des politiques et des procédures pour assurer le respect de la loi. Ces politiques et procédures sont conçues pour empêcher les activités de blanchiment d'argent de se produire.",
 
   "legal_documents-btn": "Voir PDF",
+  "legal_documents-badge": "Document juridique",
+  "legal_documents-badge-text": "Juridique",
+  "legal_documents-badge-message": "Informations réglementaires importantes et documents de conformité",
   "legal_documents-title-fsa": "Documents légaux",
   "legal_documents-text-bold-fsa": "OQtima Global, opérant sous le nom d’OQtima, est enregistrée aux Seychelles sous le numéro de société 8430031-1. OQtima Global est réglementée par l’Autorité des services financiers des Seychelles avec le numéro de licence SD109.",
   "legal_documents-text-bold-accent-fsa": "1,2,14,21,22,23,24,25,29",
@@ -1701,5 +1705,20 @@
   "popup-registration-error-registration-failed": "Nous n'avons pas pu créer votre compte. Veuillez réessayer ou contacter le support client.",
   "popup-registration-error-password-format": "Votre mot de passe doit contenir des lettres et des chiffres. Veuillez créer un mot de passe plus sécurisé.",
   "popup-registration-error-email-format": "Veuillez entrer une adresse e-mail valide (exemple : name@example.com).",
-  "popup-registration-error-email-taken": "Cet e-mail est déjà enregistré. Veuillez vous connecter ou utiliser une autre adresse e-mail."
+  "popup-registration-error-email-taken": "Cet e-mail est déjà enregistré. Veuillez vous connecter ou utiliser une autre adresse e-mail.",
+
+  "guide-badge-text": "Guide",
+  "guide-step-1-title": "S'inscrire",
+  "guide-step-1-description": "Choisissez votre compte : ECN+ ou Zero - vous décidez",
+  "guide-step-2-title": "Vérification",
+  "guide-step-2-description": "Vérification rapide : 95% approuvé en minutes",
+  "guide-step-3-title": "Commencer à trader",
+  "guide-step-3-description": "Définissez votre effet de levier, sélectionnez vos actifs et commencez",
+  "metals-guide-title": "Prêt à trader du crypto ?",
+  "metals-guide-subtitle": "Profitez de la liquidité profonde professionnelle et de l'effet de levier sur l'actif le plus chaud de la dernière décennie.",
+
+  "crypto-guide-title": "Prêt à trader du crypto ?",
+  "crypto-guide-subtitle": "Profitez de la liquidité profonde professionnelle et de l'effet de levier sur l'actif le plus chaud de la dernière décennie.",
+  "button-start-trading": "Commencer à trader",
+  "button-try-demo": "Essayer un compte démo"
 }

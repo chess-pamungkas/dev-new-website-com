@@ -1,0 +1,154 @@
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import cn from "classnames";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
+import InternalLink from "../../../shared/internal-link";
+import subNavBadgeIcon from "../../../../assets/images/icons/sub-nav.svg";
+import { ShowRegistrationPopup } from "../../../../helpers/constants";
+import { setLangParam } from "../../../../helpers/services/language-service";
+
+const NavbarDropdownHighlight = ({
+  className,
+  icon: Icon,
+  title,
+  description,
+  link,
+  subtitle,
+  primaryButton,
+  secondaryButton,
+  onOpenRegistrationPopup,
+}) => {
+  const { t } = useTranslationWithVariables();
+  const langParam = setLangParam();
+  return (
+    <div className={cn("navbar-dropdown-highlight", className)}>
+      <div className="navbar-dropdown-highlight__inner">
+        <div className="navbar-dropdown-highlight__badge">
+          <span style={{ display: "inline-flex", alignItems: "center" }}>
+            <img
+              src={subNavBadgeIcon}
+              alt="Badge"
+              className="navbar-dropdown-highlight__badge-icon"
+            />
+          </span>
+          <span
+            className="navbar-dropdown-highlight__badge-text"
+            style={{ display: "inline-block", whiteSpace: "nowrap" }}
+          >
+            {t("Trade Now")}
+          </span>
+        </div>
+        <div className="navbar-dropdown-highlight__content-block">
+          <div className="navbar-dropdown-highlight__title">
+            {t("OQtima is built for Trading")}
+          </div>
+          <div className="navbar-dropdown-highlight__subtitle">
+            {t(
+              "More than 1.000 assets to trade directly on mobile, desktop or tablet anywhere anytime"
+            )}
+          </div>
+          <div className="navbar-dropdown-highlight__button-group">
+            {primaryButton && primaryButton.text && (
+              <button
+                type="button"
+                data-popup-trigger="true"
+                className="navbar-dropdown-highlight__button navbar-dropdown-highlight__button--primary"
+                onMouseDown={(e) => {
+                  if (e.button !== 0) return; // Only left click
+                  e.stopPropagation();
+                  e.preventDefault();
+                  window.__OQTIMA_REGISTRATION_POPUP_PENDING__ = true;
+                  setTimeout(() => {
+                    if (onOpenRegistrationPopup)
+                      onOpenRegistrationPopup(langParam);
+                    window.__OQTIMA_REGISTRATION_POPUP_PENDING__ = false;
+                  }, 10);
+                }}
+              >
+                <span className="navbar-dropdown-highlight__button-text">
+                  {t(primaryButton.text)}
+                </span>
+                <span className="navbar-dropdown-highlight__button-arrow">
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 11 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+                      stroke="white"
+                      strokeWidth="1.3333"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </button>
+            )}
+            {secondaryButton && secondaryButton.text && (
+              <button
+                type="button"
+                data-popup-trigger="true"
+                className="navbar-dropdown-highlight__button navbar-dropdown-highlight__button--secondary"
+                onMouseDown={(e) => {
+                  if (e.button !== 0) return; // Only left click
+                  e.stopPropagation();
+                  e.preventDefault();
+                  window.__OQTIMA_REGISTRATION_POPUP_PENDING__ = true;
+                  setTimeout(() => {
+                    if (onOpenRegistrationPopup)
+                      onOpenRegistrationPopup(langParam);
+                    window.__OQTIMA_REGISTRATION_POPUP_PENDING__ = false;
+                  }, 10);
+                }}
+              >
+                <span className="navbar-dropdown-highlight__button-text">
+                  {t(secondaryButton.text)}
+                </span>
+                <span className="navbar-dropdown-highlight__button-arrow">
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 11 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+                      stroke="currentColor"
+                      strokeWidth="1.3333"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+NavbarDropdownHighlight.propTypes = {
+  className: PropTypes.string,
+  icon: PropTypes.elementType,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  description: PropTypes.string,
+  link: PropTypes.string,
+  primaryButton: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+  }),
+  secondaryButton: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+  }),
+  onOpenRegistrationPopup: PropTypes.func,
+};
+
+export default NavbarDropdownHighlight;

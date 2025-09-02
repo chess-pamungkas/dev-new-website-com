@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import TopMarketPromotion from "../../top-market-promotion";
 import promotion from "../../../assets/images/partners/promotion.svg";
 import cn from "classnames";
@@ -12,9 +13,16 @@ import icon from "../../../assets/images/icon--white.svg";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { setLangParam } from "../../../helpers/services/language-service";
+import Hero from "../../shared/hero";
+import PartnersImageContent from "./partners-image-content";
+import ContainerWrapper from "../../shared/container-wrapper";
+import OurCommunityContent from "../../shared/our-community";
+import { useWindowSize } from "../../../helpers/hooks/use-window-size";
+import GuideContent from "../../shared/guide-content";
 
-const PartnersPageContent = () => {
+const PartnersPageContent = ({ className, isShowHero = true }) => {
   const { t } = useTranslationWithVariables();
+  const { isMobile } = useWindowSize();
   const isRTL = useRtlDirection();
   const langParam = setLangParam(); // Get the language parameter
   const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
@@ -29,48 +37,33 @@ const PartnersPageContent = () => {
 
   return (
     <>
-      <TopMarketPromotion
-        className={cn("partners-page-promotion", {
-          "partners-page-promotion--rtl": isRTL,
-        })}
-        image={promotion}
-        btnClassName={cn("button-link--ghost")}
-        btnTitle={t(`partners_top-market-promo-btn-fsa`)}
-        btnOnClick={handleShowRegistrationPopup}
-      >
-        <HighlightedLocalizationText
-          localizationText={`partners_top-market-promo-text-fsa`}
-          wordsToHighlight={`partners_top-market-promo-text-accent-fsa`}
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-white"
-        />
-      </TopMarketPromotion>
-      <IncomeSlider />
-      <PartnersAdvantages
-        title={
-          <HighlightedLocalizationText
-            localizationText={`partners_advantages-title-fsa`}
-            wordsToHighlight={`partners_advantages-title-accent-fsa`}
-            primaryClassName="highlighted-in-black"
-            accentClassName="highlighted-in-red"
-          />
-        }
-        advantages={PARTNERS_ADVANTAGES}
+      <Hero
+        className={className}
+        isShowHero={isShowHero}
+        heroType="partners"
+        showWarning={false}
+        showHandImage={false}
+        showHeroImage={false}
+        desktopBackground="url(../../assets/images/bg/hero/partners/partners-desktop.svg)"
+        mobileBackground="url(../../assets/images/bg/hero/partners/partners-mobile.svg)"
       />
-      <HowToStart />
-      <TopMarketPromotion
-        className={cn("partners-page-bottom-promotion", {
-          "partners-page-bottom-promotion--rtl": isRTL,
-        })}
-        image={icon}
-      >
-        <HighlightedLocalizationText
-          localizationText={`partners_top-market-bot-promo-text-fsa`}
-          wordsToHighlight={`partners_top-market-bot-promo-text-accent-fsa`}
-          primaryClassName="highlighted-in-black"
-          accentClassName="highlighted-in-white"
+      <IncomeSlider />
+      <ContainerWrapper>
+        <PartnersImageContent />
+        <GuideContent
+          titleKey="partners-guide-title"
+          subtitleKey="partners-guide-subtitle"
+          variant="partners"
         />
-      </TopMarketPromotion>
+      </ContainerWrapper>
+
+      {isMobile ? (
+        <OurCommunityContent />
+      ) : (
+        <ContainerWrapper>
+          <OurCommunityContent />
+        </ContainerWrapper>
+      )}
 
       {/* Render the popup */}
       {isPopupOpen && (
@@ -82,6 +75,11 @@ const PartnersPageContent = () => {
       )}
     </>
   );
+};
+
+PartnersPageContent.propTypes = {
+  className: PropTypes.string,
+  isShowHero: PropTypes.bool,
 };
 
 export default PartnersPageContent;

@@ -11,16 +11,21 @@ import { TradingProvider } from "../../../context/trading-context";
 import { CommonProvider } from "../../../context/common-context";
 import ReCaptchaProvider from "../recaptcha-provider";
 import Bookmark from "../../floating-button/BookmarkButton";
-import MainContainer from "../main-container";
 import Header from "../../header";
 import Footer from "../../footer";
 import { sendLog } from "../../../helpers/services/log-service";
 import { pushUTMParamsToDataLayer } from "../../../helpers/services/gtm-service";
 import { isBrowser } from "../../../helpers/services/is-browser";
+import { useLocation } from "@reach/router";
 
 const Layout = ({ children }) => {
   try {
     const [isLoaded, setIsLoaded] = useState(false);
+    const location = useLocation();
+    const isContactUsPage =
+      location?.pathname === "/contact-us" ||
+      location?.pathname === "/contact-us/";
+
     useEffect(() => {
       setIsLoaded(true);
 
@@ -39,18 +44,19 @@ const Layout = ({ children }) => {
                 <SearchProvider>
                   <NotificationStripeProvider>
                     <TradingProvider>
-                      <ReCaptchaProvider showBadge={false}>
+                      <ReCaptchaProvider showBadge={isContactUsPage}>
                         {isLoaded && (
                           <>
                             <Header />
                             <CookiesPopup />
                             <section className="scroll-container">
-                              <MainContainer>{children}</MainContainer>
+                              {/* Render children directly - MainPromotion will be outside MainContainer */}
+                              {children}
                               <Footer />
                             </section>
                           </>
                         )}
-                        <Bookmark />
+                        {/* <Bookmark /> */}
                       </ReCaptchaProvider>
                     </TradingProvider>
                   </NotificationStripeProvider>

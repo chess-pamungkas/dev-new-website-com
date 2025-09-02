@@ -1,0 +1,85 @@
+@import "vars";
+@import "mixins";
+
+.metals-additional-images {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  @include mobile {
+    padding: 0;
+    margin: 20px auto;
+  }
+
+  @include tablet {
+    padding: 0 40px;
+    margin: 30px auto;
+  }
+
+  @include desktop-lg {
+    padding: 0 60px;
+    margin: 40px auto;
+  }
+
+  @include desktop-xl {
+    padding: 0 80px;
+    margin: 50px auto;
+  }
+
+  @include desktop-2k {
+    padding: 0 100px;
+    margin: 60px auto;
+  }
+
+  @include desktop-5k {
+    padding: 0 120px;
+    margin: 70px auto;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include mobile {
+      gap: 20px;
+    }
+
+    @include tablet {
+      gap: 25px;
+    }
+
+    @include desktop-lg {
+      gap: 30px;
+    }
+
+    @include desktop-xl {
+      gap: 35px;
+    }
+
+    @include desktop-2k {
+      gap: 40px;
+    }
+
+    @include desktop-5k {
+      gap: 45px;
+    }
+  }
+
+  &__item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0 0 0;
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
-import { AngleDownIcon } from "../../../shared/icons";
+import { ChevronDownIcon, ChevronUpIcon } from "../../../shared/icons";
 import { ANGLE_ICON_COLOR } from "../../../../helpers/constants";
 import { useModal } from "../../../../helpers/hooks/use-modal";
 import LanguageContext from "../../../../context/language-context";
@@ -26,14 +26,6 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
     closePopup();
   };
 
-  const setIconColor = (isShow) => {
-    if (isHeader) {
-      return isShow ? ANGLE_ICON_COLOR.white : ANGLE_ICON_COLOR.white;
-    }
-
-    return isShow ? ANGLE_ICON_COLOR.white : ANGLE_ICON_COLOR.red;
-  };
-
   return (
     <>
       <button
@@ -47,6 +39,7 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
           handleOpen();
           setIsLangPopupOpened?.(true);
         }}
+        style={{ display: "flex", alignItems: "center" }}
       >
         {Icon && <Icon className="lang-select__flag" />}
 
@@ -54,18 +47,21 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
           <span className="lang-select__title">{selectedLanguage.id}</span>
         )}
 
-        <AngleDownIcon
-          className={cn("lang-select__icon", {
-            "lang-select__icon--up": isShow,
-          })}
-          color={setIconColor(isShow)}
-        />
+        <span className="lang-select__icon-wrapper">
+          <ChevronDownIcon
+            className={cn("lang-select__icon", "lang-select__icon--down", {
+              rotated: isShow,
+            })}
+            color="#000000"
+          />
+        </span>
       </button>
 
       <Popup isPopupOpen={isShow} handlePopupClose={closePopup}>
         <LangOptions
           selectedLanguage={selectedLanguage}
           languageSelectHandler={onLangSelect}
+          onClose={closePopup}
         />
       </Popup>
     </>

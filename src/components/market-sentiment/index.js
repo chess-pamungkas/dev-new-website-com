@@ -1,0 +1,612 @@
+import React, { useState, useContext, useEffect, useRef } from "react";
+import { useWindowSize } from "../../helpers/hooks/use-window-size";
+import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
+import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
+import { ShowRegistrationPopup } from "../../helpers/constants";
+import { ChevronDownIcon, ChevronUpIcon } from "../shared/icons";
+import LanguageContext from "../../context/language-context";
+import desktopBgSVG from "../../assets/images/bg/main-page/real-time-market-desktop.svg";
+import mobileBgSVG from "../../assets/images/bg/main-page/real-time-market-mobile.svg";
+import badgeIcon from "../../assets/images/icons/main-page/market-sentiment/badge-market-sentiment.svg";
+import arrowUp from "../../assets/images/icons/main-page/market-sentiment/arrow-up.svg";
+import arrowDown from "../../assets/images/icons/main-page/market-sentiment/arrow-down.svg";
+import { getIcon } from "../trading-ticker/components/trading-symbols/icon-loader";
+import symbolMapping from "../trading-ticker/components/trading-symbols/symbol-icon-mapping.json";
+import TradingContext from "../../context/trading-context";
+import { getTradingSections } from "../../helpers/config";
+import { filterSymbols } from "../../helpers/services/filter-symbols";
+import { io } from "socket.io-client";
+
+const MarketSentimentContent = () => {
+  const { isMobile } = useWindowSize();
+  const isRTL = useRtlDirection();
+  const { t } = useTranslationWithVariables();
+  const { selectedLanguage } = useContext(LanguageContext);
+  const [activeTab, setActiveTab] = useState("Forex");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [dynamicTradingData, setDynamicTradingData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [isTouched, setIsTouched] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const symbolsGridRef = useRef();
+
+  // Registration popup handlers
+  const handleShowRegistrationPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
+  const API_URL = process.env.GATSBY_OQTIMA_API_URL;
+  const tradingSections = getTradingSections();
+
+  // Map market sentiment categories to trading sections
+  const categoryToSectionMap = {
+    Forex: "forex",
+    Indices: "indices",
+    Commodities: "metals", // Use metals for commodities like Gold, Silver
+    Crypto: "crypto",
+  };
+
+  // Function to generate sentiment data based on trading data
+  const generateSentimentData = (symbol, price) => {
+    // Generate pseudo-random but consistent sentiment data based on symbol
+    const hash = symbol.split("").reduce((a, b) => {
+      a = (a << 5) - a + b.charCodeAt(0);
+      return a & a;
+    }, 0);
+
+    const percentage = Math.abs(hash % 60) + 30; // 30-90%
+    const sentiment = percentage > 60 ? "LONG" : "SHORT";
+    const color = sentiment === "LONG" ? "#00D084" : "#FF4444";
+
+    return {
+      percentage: `${percentage}%`,
+      sentiment,
+      status: "Contrarian",
+      recommendation: "Consider Long",
+      color,
+    };
+  };
+
+  // Function to get user-friendly display name
+  const getDisplayName = (symbol) => {
+    // Common symbol transformations for better UX
+    const displayNameMap = {
+      EURUSD: "EUR/USD",
+      GBPUSD: "GBP/USD",
+      USDJPY: "USD/JPY",
+      AUDUSD: "AUD/USD",
+      USDCAD: "USD/CAD",
+      USDCHF: "USD/CHF",
+      NZDUSD: "NZD/USD",
+      XAUUSD: "GOLD",
+      XAGUSD: "SILVER",
+      XAU: "GOLD",
+      XAG: "SILVER",
+      XTI: "OIL",
+      XBR: "BRENT",
+      BTCUSD: "BTC/USD",
+      ETHUSD: "ETH/USD",
+      ADAUSD: "ADA/USD",
+      LTCUSD: "LTC/USD",
+      US500: "S&P 500",
+      NAS100: "NASDAQ",
+      US30: "DOW JONES",
+      UK100: "FTSE 100",
+      GER40: "DAX",
+      FRA40: "CAC 40",
+    };
+
+    return displayNameMap[symbol] || symbol;
+  };
+
+  // Function to transform trading symbols to market sentiment format
+  const transformToMarketSentiment = (symbols, maxItems = 4) => {
+    return symbols.slice(0, maxItems).map((symbol) => {
+      const sentimentData = generateSentimentData(symbol.symbol, symbol.ask);
+      return {
+        symbol: symbol.symbol,
+        displayName: getDisplayName(symbol.symbol),
+        direction: symbol.direction, // Include direction from trading data
+        ...sentimentData,
+      };
+    });
+  };
+
+  // Fetch data for all categories
+  useEffect(() => {
+    if (!API_URL) return;
+
+    const socket = io(`${API_URL}ws-stocks/`);
+
+    const fetchDataForCategory = (category, sectionId) => {
+      socket.emit("stocks", sectionId);
+    };
+
+    // Set up event listener for replies
+    socket.on("reply", (data) => {
+      if (data && data.length > 0) {
+        // Determine which category this data belongs to by checking symbol patterns
+        const firstSymbol = data[0].symbol;
+        let category = "Forex"; // default
+
+        // Simple logic to categorize based on symbol patterns
+        if (
+          firstSymbol.includes("BTC") ||
+          firstSymbol.includes("ETH") ||
+          firstSymbol.includes("ADA") ||
+          firstSymbol.includes("LTC")
+        ) {
+          category = "Crypto";
+        } else if (
+          firstSymbol.includes("US") ||
+          firstSymbol.includes("NAS") ||
+          firstSymbol.includes("GER") ||
+          firstSymbol.includes("UK")
+        ) {
+          category = "Indices";
+        } else if (
+          firstSymbol.includes("XAU") ||
+          firstSymbol.includes("XAG") ||
+          firstSymbol.includes("XTI") ||
+          firstSymbol.includes("XBR")
+        ) {
+          category = "Commodities";
+        }
+
+        const sectionId = categoryToSectionMap[category];
+        const filteredSymbols = filterSymbols(data, sectionId);
+        const marketSentimentData = transformToMarketSentiment(filteredSymbols);
+
+        setDynamicTradingData((prev) => ({
+          ...prev,
+          [category]: marketSentimentData,
+        }));
+
+        // Set loading to false once we have data for any category
+        setIsLoading(false);
+      }
+    });
+
+    // Fetch data for each category
+    Object.entries(categoryToSectionMap).forEach(([category, sectionId]) => {
+      fetchDataForCategory(category, sectionId);
+    });
+
+    // Set up interval to refresh data
+    const intervalId = setInterval(() => {
+      Object.entries(categoryToSectionMap).forEach(([category, sectionId]) => {
+        fetchDataForCategory(category, sectionId);
+      });
+    }, 5000); // Refresh every 5 seconds
+
+    return () => {
+      clearInterval(intervalId);
+      socket.disconnect();
+    };
+  }, [API_URL]);
+
+  // Get icon(s) for a symbol - similar to trading ticker
+  const getSymbolIcons = (symbol) => {
+    const symbolUpper = symbol.toUpperCase();
+
+    // Check if it's a combined icon symbol
+    if (symbolMapping.combined_icons[symbolUpper]) {
+      const icons = symbolMapping.combined_icons[symbolUpper]
+        .map((iconName) => getIcon(iconName))
+        .filter(Boolean);
+
+      // If we have at least one icon, return it (fallback to partial icons)
+      if (icons.length > 0) {
+        return icons;
+      }
+    }
+
+    // Check if it's a single icon symbol
+    if (symbolMapping.single_icons[symbolUpper]) {
+      const icon = getIcon(symbolMapping.single_icons[symbolUpper]);
+      return icon ? [icon] : [];
+    }
+
+    // Fallback: try to get icon directly by symbol name
+    const directIcon = getIcon(symbolUpper);
+    return directIcon ? [directIcon] : [];
+  };
+
+  // Render icon(s) for a symbol
+  const renderSymbolIcons = (symbol) => {
+    const icons = getSymbolIcons(symbol);
+
+    if (icons.length === 0) {
+      return null;
+    }
+
+    if (icons.length === 1) {
+      return (
+        <img
+          src={icons[0]}
+          alt={symbol}
+          className="market-sentiment__symbol-flag"
+        />
+      );
+    }
+
+    // Render combined icons
+    return (
+      <div className="market-sentiment__symbol-flags-combined">
+        {icons.map((icon, index) => (
+          <img
+            key={index}
+            src={icon}
+            alt={`${symbol}_icon_${index}`}
+            className="market-sentiment__symbol-flag"
+          />
+        ))}
+      </div>
+    );
+  };
+
+  // Tab configuration
+  const tabs = [
+    { id: "Forex", label: "Forex" },
+    { id: "Indices", label: "Indices" },
+    { id: "Commodities", label: "Commodities" },
+    { id: "Crypto", label: "Crypto" },
+  ];
+
+  // Use dynamic trading data or fallback to empty arrays
+  const getCurrentTradingData = () => {
+    return dynamicTradingData[activeTab] || [];
+  };
+
+  // Infinite scroll logic (repeat symbols if needed) - same as TradingTicker
+  const prepareSymbols = (symbols) => {
+    if (!symbols || symbols.length === 0) return [];
+
+    // Duplicate symbols recursively if we have fewer than 12 items for smooth infinite scrolling
+    return symbols.length > 0 && symbols.length < 12
+      ? prepareSymbols(symbols.concat(symbols))
+      : symbols;
+  };
+
+  // Scroll logic similar to TradingTicker
+  const margin = isMobile ? 10 : 15; // Gap between cards
+
+  // check is scroll passed center of scroll width
+  const isMiddleOfScroll = (width, offset) => Math.abs(offset) > width / 2;
+
+  // check is scroll passed center of scroll width in reversed direction
+  const isMiddleOfScrollReversed = (width, offset) =>
+    Math.abs(offset) < width / 2;
+
+  const performScroll = () => {
+    const cont = symbolsGridRef.current;
+    if (!cont) return;
+
+    if (isMiddleOfScroll(cont.scrollWidth, cont.scrollLeft)) {
+      // move first child to the end when center of scroll width passed
+      const first = cont.querySelector(".market-sentiment__symbol-card");
+      if (first) {
+        cont.appendChild(first);
+        cont.scrollTo(cont.scrollLeft - first.offsetWidth - margin, 0);
+      }
+    }
+
+    if (
+      isMiddleOfScrollReversed(cont.scrollWidth, cont.scrollLeft) &&
+      isTouched
+    ) {
+      // move last child to the start when center of scroll width passed in reversed direction while manual scroll is active
+      const lastChild = cont.lastChild;
+      if (lastChild) {
+        cont.prepend(lastChild);
+        cont.scrollTo(cont.scrollLeft + lastChild.offsetWidth + margin, 0);
+      }
+    }
+
+    // perform auto scroll when not touched - always scroll if not at end
+    if (!isTouched) {
+      cont.scrollTo(cont.scrollLeft + 1, 0);
+    }
+  };
+
+  const performScrollRTL = () => {
+    const cont = symbolsGridRef.current;
+    if (!cont) return;
+
+    if (isMiddleOfScroll(cont.scrollWidth, cont.scrollLeft)) {
+      const first = cont.querySelector(".market-sentiment__symbol-card");
+      if (first) {
+        cont.appendChild(first);
+        cont.scrollTo(cont.scrollLeft - -first.offsetWidth - -margin, 0);
+      }
+    }
+
+    if (
+      isMiddleOfScrollReversed(cont.scrollWidth, cont.scrollLeft) &&
+      isTouched
+    ) {
+      const lastChild = cont.lastChild;
+      if (lastChild) {
+        cont.prepend(lastChild);
+        cont.scrollTo(cont.scrollLeft + -lastChild.offsetWidth + -margin, 0);
+      }
+    }
+
+    if (!isTouched) {
+      cont.scrollTo(cont.scrollLeft - 1, 0);
+    }
+  };
+
+  // Auto scroll effect - continuous infinite scrolling
+  useEffect(() => {
+    // Only start scrolling when we have data and not loading
+    if (isLoading || getCurrentTradingData().length === 0) return;
+
+    const intervalId = setInterval(
+      isRTL ? performScrollRTL : performScroll,
+      50 // Same interval as TradingTicker
+    );
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [isTouched, isRTL, activeTab, isLoading]);
+
+  const backgroundSrc = isMobile ? mobileBgSVG : desktopBgSVG;
+
+  return (
+    <div className="market-sentiment">
+      {/* Background */}
+      <div className="market-sentiment__background">
+        <img
+          src={backgroundSrc}
+          alt="Real-Time Market Intelligence Background"
+          className="market-sentiment__background-image"
+        />
+      </div>
+
+      <div className="market-sentiment__container">
+        {/* Header */}
+        <div className="market-sentiment__header">
+          <div className="market-sentiment__badge">
+            <img
+              src={badgeIcon}
+              alt="Market Sentiment"
+              className="market-sentiment__badge-icon"
+            />
+            <span className="market-sentiment__badge-text">
+              Market Sentiment
+            </span>
+          </div>
+
+          <h2 className="market-sentiment__title">
+            Real-Time Market Intelligence
+          </h2>
+
+          <p className="market-sentiment__description">
+            Get pro charts with TradingView, smart pattern scans via Trading
+            Central, and real-time market insights with Live Analysis.
+          </p>
+        </div>
+
+        {/* Desktop Tabs */}
+        <div className="market-sentiment__tabs">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              className={`market-sentiment__tab ${
+                activeTab === tab.id ? "market-sentiment__tab--active" : ""
+              }`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Mobile Dropdown */}
+        <div
+          className="market-sentiment__dropdown"
+          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        >
+          <span className="market-sentiment__dropdown-label">
+            {tabs.find((tab) => tab.id === activeTab)?.label}
+          </span>
+          <div
+            className={`market-sentiment__dropdown-icon ${
+              isDropdownOpen ? "market-sentiment__dropdown-icon--active" : ""
+            }`}
+          >
+            <ChevronDownIcon
+              className={`market-sentiment__chevron-icon ${
+                isDropdownOpen ? "rotated" : ""
+              }`}
+              color="#ffffff"
+            />
+          </div>
+
+          {/* Dropdown Options */}
+          <div
+            className={`market-sentiment__dropdown-options ${
+              isDropdownOpen ? "market-sentiment__dropdown-options--open" : ""
+            }`}
+          >
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                className={`market-sentiment__dropdown-option ${
+                  activeTab === tab.id
+                    ? "market-sentiment__dropdown-option--active"
+                    : ""
+                }`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveTab(tab.id);
+                  setIsDropdownOpen(false);
+                }}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Trading Symbols Grid */}
+        <div
+          className="market-sentiment__symbols-grid"
+          ref={symbolsGridRef}
+          onTouchStart={() => setIsTouched(true)}
+          onTouchEnd={() => setIsTouched(false)}
+        >
+          {isLoading
+            ? // Loading state
+              Array.from({ length: 4 }, (_, index) => (
+                <div
+                  key={index}
+                  className="market-sentiment__symbol-card market-sentiment__symbol-card--loading"
+                >
+                  <div className="market-sentiment__symbol-header">
+                    <div className="market-sentiment__symbol-flags">
+                      <div className="market-sentiment__symbol-flag market-sentiment__loading-placeholder"></div>
+                    </div>
+                    <div className="market-sentiment__symbol-name market-sentiment__loading-placeholder"></div>
+                  </div>
+                  <div className="market-sentiment__symbol-content">
+                    <div className="market-sentiment__symbol-percentage market-sentiment__loading-placeholder"></div>
+                    <div className="market-sentiment__symbol-direction">
+                      <span className="market-sentiment__loading-placeholder"></span>
+                    </div>
+                  </div>
+                  <div className="market-sentiment__symbol-status market-sentiment__loading-placeholder"></div>
+                  <div className="market-sentiment__symbol-recommendation market-sentiment__loading-placeholder"></div>
+                </div>
+              ))
+            : prepareSymbols(getCurrentTradingData()).map((item, index) => (
+                <div
+                  key={`market-sentiment-${item.symbol}-${index}`}
+                  className="market-sentiment__symbol-card"
+                >
+                  {/* Symbol Header */}
+                  <div className="market-sentiment__symbol-header">
+                    <div className="market-sentiment__symbol-flags">
+                      {renderSymbolIcons(item.symbol)}
+                    </div>
+                    <div className="market-sentiment__symbol-name">
+                      {item.displayName || item.symbol}
+                    </div>
+                  </div>
+
+                  {/* Symbol Content */}
+                  <div className="market-sentiment__symbol-content">
+                    <div className="market-sentiment__symbol-percentage">
+                      {item.percentage}
+                    </div>
+                    <div
+                      className={`market-sentiment__symbol-direction ${
+                        item.sentiment === "SHORT"
+                          ? "market-sentiment__symbol-direction--short"
+                          : "market-sentiment__symbol-direction--long"
+                      }`}
+                    >
+                      <span className="market-sentiment__symbol-direction-text">
+                        {item.sentiment}
+                      </span>
+                      <div
+                        className={`market-sentiment__symbol-direction-icon ${
+                          item.sentiment === "LONG"
+                            ? "market-sentiment__symbol-direction-icon--up"
+                            : "market-sentiment__symbol-direction-icon--down"
+                        }`}
+                      >
+                        <img
+                          src={item.sentiment === "LONG" ? arrowUp : arrowDown}
+                          alt={item.sentiment}
+                          className="market-sentiment__arrow-icon"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Symbol Bottom */}
+                  <div className="market-sentiment__symbol-bottom">
+                    <div className="market-sentiment__symbol-sentiment">
+                      <span className="market-sentiment__symbol-sentiment-text">
+                        {item.status}
+                      </span>
+                    </div>
+                    <div className="market-sentiment__symbol-recommendation">
+                      {item.recommendation}
+                    </div>
+                  </div>
+                </div>
+              ))}
+        </div>
+
+        {/* Action Buttons */}
+        <div className="market-sentiment__actions">
+          <button
+            className="market-sentiment__btn market-sentiment__btn--primary"
+            onClick={handleShowRegistrationPopup}
+          >
+            <span className="button-text">{t("button-start-trading")}</span>
+            <span className="button-arrow">
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 11 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+                  stroke="currentColor"
+                  strokeWidth="1.3333"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          </button>
+          <button
+            className="market-sentiment__btn market-sentiment__btn--secondary"
+            onClick={handleShowRegistrationPopup}
+          >
+            <span className="button-text">{t("button-try-demo")}</span>
+            <span className="button-arrow">
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 11 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+                  stroke="currentColor"
+                  strokeWidth="1.3333"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {/* Registration Popup */}
+      {isPopupOpen && (
+        <ShowRegistrationPopup
+          isOpen={isPopupOpen}
+          onClose={handleClosePopup}
+          langParam={selectedLanguage.id}
+        />
+      )}
+    </div>
+  );
+};
+
+export default MarketSentimentContent;

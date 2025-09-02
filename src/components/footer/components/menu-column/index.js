@@ -10,18 +10,19 @@ const MenuColumn = ({ className, items }) => {
 
   return (
     <ul className={cn("menu-column", className)}>
-      {items.map((item) => {
-        return (
-          <li
-            className="menu-column__item"
-            key={`footer-menu-${stringTransformToKebabCase(item.title)}`}
-          >
-            <InternalLink className={cn("menu-column__link")} to={item.link}>
-              {t(item.title)}
-            </InternalLink>
-          </li>
-        );
-      })}
+      {Array.isArray(items) &&
+        items.map((item) => {
+          return (
+            <li
+              className="menu-column__item"
+              key={`footer-menu-${stringTransformToKebabCase(item.title)}`}
+            >
+              <InternalLink className={cn("menu-column__link")} to={item.link}>
+                {t(item.title)}
+              </InternalLink>
+            </li>
+          );
+        })}
     </ul>
   );
 };

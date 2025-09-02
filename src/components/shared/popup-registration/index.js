@@ -9,6 +9,7 @@ import { currentEntity } from "../../../helpers/entity-resolver";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import bulletImage from "../../../assets/images/icons/bullet.png";
 import closemage from "../../../assets/images/icons/close-icon.svg";
+import badgeSecurityIcon from "../../../assets/images/icons/badge-security.svg";
 import PopupRegistrationForm from "./components/popup-registration-form";
 
 const RTL_LANGUAGES = ["ar"];
@@ -1581,44 +1582,26 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
             }
             data-rtl={isRTLMode.toString()}
           >
-            <div
-              className={cn("popup-registration__sidebar", {
-                "popup-registration__sidebar--rtl": isRTLMode,
-              })}
-              data-rtl={isRTLMode ? "true" : "false"}
-              style={isRTLMode ? { order: "2 !important" } : {}}
-            >
-              {(isRTLMode ||
-                isMobile ||
-                window.matchMedia("(orientation: landscape)").matches) && (
-                <img
-                  src={closemage}
-                  alt="Close"
-                  className={cn(
-                    isRTLMode
-                      ? "popup-registration__sidebar--rtl__close--rtl"
-                      : "popup-registration__sidebar__close-mobile",
-                    className
-                  )}
-                  onClick={handleClose}
-                />
-              )}
-              <div className="sidebar-area">
-                <div
-                  className={cn("popup-registration__sidebar__title", {
-                    "popup-registration__sidebar--rtl__title--rtl": isRTLMode,
-                  })}
-                >
-                  <Trans i18nKey="popup-registration-title" ns="index">
-                    <span className="normal-text">Embark on the</span>
-                    <span className="highlighted">
-                      <span className="white-text">OQTIMA Trading</span>
-                      <span className="journey">Journey</span>
-                    </span>
-                  </Trans>
-                </div>
+            {/* Sidebar - Hidden on mobile, only show on desktop/RTL */}
+            {(!isMobile || isRTLMode) && (
+              <div
+                className={cn("popup-registration__sidebar", {
+                  "popup-registration__sidebar--rtl": isRTLMode,
+                })}
+                data-rtl={isRTLMode ? "true" : "false"}
+                style={isRTLMode ? { order: "2 !important" } : {}}
+              >
+                {/* Close button for RTL only (mobile close button moved to content area) */}
+                {isRTLMode && (
+                  <img
+                    src={closemage}
+                    alt="Close"
+                    className="popup-registration__sidebar--rtl__close--rtl"
+                    onClick={handleClose}
+                  />
+                )}
               </div>
-            </div>
+            )}
             <div
               className={cn("popup-registration__content", {
                 "popup-registration__content--rtl": isRTLMode,
@@ -1626,28 +1609,34 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
               data-rtl={isRTLMode ? "true" : "false"}
               style={isRTLMode ? { order: "1 !important" } : {}}
             >
-              {!isRTLMode && !isMobile && (
+              {/* Close button for desktop and mobile */}
+              {(!isRTLMode && !isMobile) || (isMobile && !isRTLMode) ? (
                 <img
                   src={closemage}
                   alt="Close"
                   className="popup-registration__close"
                   onClick={handleClose}
                 />
-              )}
-              <h1
-                className={cn("popup-registration-register", {
-                  "popup-registration-register--rtl": isRTLMode,
-                })}
-              >
+              ) : null}
+
+              {/* Badge */}
+              <div className="popup-registration__content__badge">
+                <div className="popup-registration__content__badge-icon">
+                  <img src={badgeSecurityIcon} alt="Registration" />
+                </div>
+                <span className="popup-registration__content__badge-text">
+                  Registration
+                </span>
+              </div>
+
+              {/* Title */}
+              <h1 className="popup-registration__content__title">
                 {t("popup-registration-register")}
               </h1>
-              <PopupRegistrationForm params={JSON.stringify(parsedParams)} />
-              <div className="risk-warning-container">
-                <div className="risk-warning-content">
-                  <p className="risk-warning-text">
-                    {t("popup-registration-riskWarning")}
-                  </p>
-                </div>
+
+              {/* Form */}
+              <div className="popup-registration__content__form">
+                <PopupRegistrationForm params={JSON.stringify(parsedParams)} />
               </div>
             </div>
           </div>

@@ -1,0 +1,3242 @@
+{
+  "id": "3110:19804",
+  "name": "Frame 1000006953",
+  "type": "FRAME",
+  "x": 20,
+  "y": 2513,
+  "width": 353,
+  "height": 1979,
+  "relativeTransform": [
+    [
+      1,
+      0,
+      20
+    ],
+    [
+      0,
+      1,
+      2513
+    ]
+  ],
+  "constraints": {
+    "horizontal": "CENTER",
+    "vertical": "MIN"
+  },
+  "fills": [],
+  "strokes": [],
+  "strokeWeight": 1,
+  "cornerRadius": 0,
+  "effects": [],
+  "blendMode": "PASS_THROUGH",
+  "layoutAlign": "INHERIT",
+  "layoutGrow": 0,
+  "layoutMode": "VERTICAL",
+  "itemSpacing": 16,
+  "children": [
+    {
+      "id": "3110:19805",
+      "name": "Frame 1000006948",
+      "type": "FRAME",
+      "x": 0,
+      "y": 0,
+      "width": 353,
+      "height": 339,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "cornerRadius": 10,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "STRETCH",
+      "layoutGrow": 0,
+      "layoutMode": "NONE",
+      "itemSpacing": 0,
+      "children": [
+        {
+          "id": "3110:19806",
+          "name": "Frame 1000006866",
+          "type": "FRAME",
+          "x": 28,
+          "y": 30,
+          "width": 178,
+          "height": 81,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              30
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [],
+          "strokes": [],
+          "strokeWeight": 1,
+          "cornerRadius": 0,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "layoutMode": "VERTICAL",
+          "itemSpacing": 10,
+          "children": [
+            {
+              "id": "3110:19807",
+              "name": "Method",
+              "type": "TEXT",
+              "x": 0,
+              "y": 0,
+              "width": 44,
+              "height": 12,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0.5333333611488342,
+                    "g": 0.5333333611488342,
+                    "b": 0.5333333611488342
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19808",
+              "name": "Credit and Debit Cards",
+              "type": "TEXT",
+              "x": 0,
+              "y": 22,
+              "width": 178,
+              "height": 59,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  22
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                },
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "visible": true,
+                  "opacity": 0.44999998807907104,
+                  "blendMode": "NORMAL",
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "position": 0,
+                      "boundVariables": {}
+                    },
+                    {
+                      "color": {
+                        "r": 1,
+                        "g": 0.2666666805744171,
+                        "b": 0,
+                        "a": 1
+                      },
+                      "position": 1,
+                      "boundVariables": {}
+                    }
+                  ],
+                  "gradientTransform": [
+                    [
+                      1.3136836290359497,
+                      0.286699503660202,
+                      -0.14588502049446106
+                    ],
+                    [
+                      -5.977907180786133,
+                      1.3136836290359497,
+                      1.9682683944702148
+                    ]
+                  ]
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 5.69661283493042,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "3110:19809",
+          "name": "Group 1000001680",
+          "type": "GROUP",
+          "x": 28,
+          "y": 154,
+          "width": 297,
+          "height": 57,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              154
+            ]
+          ],
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": [
+            {
+              "id": "3110:19810",
+              "name": "Processing Time",
+              "type": "TEXT",
+              "x": 28,
+              "y": 154,
+              "width": 104,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  154
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19811",
+              "name": "Min Deposit",
+              "type": "TEXT",
+              "x": 188,
+              "y": 154,
+              "width": 77,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  154
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19812",
+              "name": "Instant",
+              "type": "TEXT",
+              "x": 28,
+              "y": 178,
+              "width": 50,
+              "height": 11,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  178
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19813",
+              "name": "$100 Or Equivalent In Wallet Currency",
+              "type": "TEXT",
+              "x": 188,
+              "y": 178,
+              "width": 137,
+              "height": 33,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  178
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "3110:19814",
+          "name": "Group 1000001679",
+          "type": "GROUP",
+          "x": 28,
+          "y": 264,
+          "width": 297,
+          "height": 35,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              264
+            ]
+          ],
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": [
+            {
+              "id": "3110:19815",
+              "name": "Fees",
+              "type": "TEXT",
+              "x": 28,
+              "y": 264,
+              "width": 28,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  264
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19816",
+              "name": "Currencies Accepted",
+              "type": "TEXT",
+              "x": 188,
+              "y": 264,
+              "width": 131,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  264
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19817",
+              "name": "Zero",
+              "type": "TEXT",
+              "x": 28,
+              "y": 288,
+              "width": 33,
+              "height": 11,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  288
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19818",
+              "name": "USD & EUR",
+              "type": "TEXT",
+              "x": 188,
+              "y": 288,
+              "width": 137,
+              "height": 11,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  288
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3110:19819",
+      "name": "Frame 1000006949",
+      "type": "FRAME",
+      "x": 0,
+      "y": 355,
+      "width": 353,
+      "height": 449,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          355
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "cornerRadius": 10,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "STRETCH",
+      "layoutGrow": 0,
+      "layoutMode": "NONE",
+      "itemSpacing": 0,
+      "children": [
+        {
+          "id": "3110:19820",
+          "name": "Frame 1000006866",
+          "type": "FRAME",
+          "x": 28,
+          "y": 30,
+          "width": 119,
+          "height": 81,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              30
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [],
+          "strokes": [],
+          "strokeWeight": 1,
+          "cornerRadius": 0,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "layoutMode": "VERTICAL",
+          "itemSpacing": 10,
+          "children": [
+            {
+              "id": "3110:19821",
+              "name": "Method",
+              "type": "TEXT",
+              "x": 0,
+              "y": 0,
+              "width": 44,
+              "height": 12,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0.5333333611488342,
+                    "g": 0.5333333611488342,
+                    "b": 0.5333333611488342
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19822",
+              "name": "Crypto funding",
+              "type": "TEXT",
+              "x": 0,
+              "y": 22,
+              "width": 119,
+              "height": 59,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  22
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                },
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "visible": true,
+                  "opacity": 0.44999998807907104,
+                  "blendMode": "NORMAL",
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "position": 0,
+                      "boundVariables": {}
+                    },
+                    {
+                      "color": {
+                        "r": 1,
+                        "g": 0.2666666805744171,
+                        "b": 0,
+                        "a": 1
+                      },
+                      "position": 1,
+                      "boundVariables": {}
+                    }
+                  ],
+                  "gradientTransform": [
+                    [
+                      1.3136836290359497,
+                      0.286699503660202,
+                      -0.14588502049446106
+                    ],
+                    [
+                      -5.977907180786133,
+                      1.3136836290359497,
+                      1.9682683944702148
+                    ]
+                  ]
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 5.69661283493042,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "3110:19823",
+          "name": "Group 1000001680",
+          "type": "GROUP",
+          "x": 28,
+          "y": 153,
+          "width": 297,
+          "height": 58,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              153
+            ]
+          ],
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": [
+            {
+              "id": "3110:19824",
+              "name": "Processing Time",
+              "type": "TEXT",
+              "x": 28,
+              "y": 153,
+              "width": 104,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  153
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19825",
+              "name": "Min Deposit",
+              "type": "TEXT",
+              "x": 188,
+              "y": 153,
+              "width": 77,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  153
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19826",
+              "name": "Instant",
+              "type": "TEXT",
+              "x": 28,
+              "y": 178,
+              "width": 50,
+              "height": 11,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  178
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19827",
+              "name": "$100 Or Equivalent In Wallet Currency",
+              "type": "TEXT",
+              "x": 188,
+              "y": 178,
+              "width": 137,
+              "height": 33,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  178
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "3110:19828",
+          "name": "Group 1000001679",
+          "type": "GROUP",
+          "x": 28,
+          "y": 263,
+          "width": 297,
+          "height": 146,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              263
+            ]
+          ],
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": [
+            {
+              "id": "3110:19829",
+              "name": "Fees",
+              "type": "TEXT",
+              "x": 28,
+              "y": 263,
+              "width": 28,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  263
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19830",
+              "name": "Currencies Accepted",
+              "type": "TEXT",
+              "x": 188,
+              "y": 263,
+              "width": 131,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  263
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19831",
+              "name": "Zero",
+              "type": "TEXT",
+              "x": 28,
+              "y": 288,
+              "width": 33,
+              "height": 11,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  288
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19832",
+              "name": "AVAX, BNB, BTC, BCH, ADA, DASH, DOGE, ETH, LTC, MATIC, XRP, SHB, SOL, USDC, ESDT (ERC20/TRON)",
+              "type": "TEXT",
+              "x": 188,
+              "y": 288,
+              "width": 137,
+              "height": 121,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  288
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3110:19833",
+      "name": "Frame 1000006950",
+      "type": "FRAME",
+      "x": 0,
+      "y": 820,
+      "width": 353,
+      "height": 405,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          820
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "cornerRadius": 10,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "STRETCH",
+      "layoutGrow": 0,
+      "layoutMode": "NONE",
+      "itemSpacing": 0,
+      "children": [
+        {
+          "id": "3110:19834",
+          "name": "Frame 1000006866",
+          "type": "FRAME",
+          "x": 28,
+          "y": 30,
+          "width": 194,
+          "height": 81,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              30
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [],
+          "strokes": [],
+          "strokeWeight": 1,
+          "cornerRadius": 0,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "layoutMode": "VERTICAL",
+          "itemSpacing": 10,
+          "children": [
+            {
+              "id": "3110:19835",
+              "name": "Method",
+              "type": "TEXT",
+              "x": 0,
+              "y": 0,
+              "width": 44,
+              "height": 12,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0.5333333611488342,
+                    "g": 0.5333333611488342,
+                    "b": 0.5333333611488342
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19836",
+              "name": "International Bankwire",
+              "type": "TEXT",
+              "x": 0,
+              "y": 22,
+              "width": 194,
+              "height": 59,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  22
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                },
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "visible": true,
+                  "opacity": 0.44999998807907104,
+                  "blendMode": "NORMAL",
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "position": 0,
+                      "boundVariables": {}
+                    },
+                    {
+                      "color": {
+                        "r": 1,
+                        "g": 0.2666666805744171,
+                        "b": 0,
+                        "a": 1
+                      },
+                      "position": 1,
+                      "boundVariables": {}
+                    }
+                  ],
+                  "gradientTransform": [
+                    [
+                      1.3136836290359497,
+                      0.286699503660202,
+                      -0.14588502049446106
+                    ],
+                    [
+                      -5.977907180786133,
+                      1.3136836290359497,
+                      1.9682683944702148
+                    ]
+                  ]
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 5.69661283493042,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "3110:19837",
+          "name": "Group 1000001680",
+          "type": "GROUP",
+          "x": 28,
+          "y": 153,
+          "width": 297,
+          "height": 58,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              153
+            ]
+          ],
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": [
+            {
+              "id": "3110:19838",
+              "name": "Processing Time",
+              "type": "TEXT",
+              "x": 28,
+              "y": 153,
+              "width": 104,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  153
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19839",
+              "name": "Min Deposit",
+              "type": "TEXT",
+              "x": 188,
+              "y": 153,
+              "width": 77,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  153
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19840",
+              "name": "3-5 Business Days",
+              "type": "TEXT",
+              "x": 28,
+              "y": 178,
+              "width": 129,
+              "height": 11,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  178
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19841",
+              "name": "$100 Or Equivalent In Wallet Currency",
+              "type": "TEXT",
+              "x": 188,
+              "y": 178,
+              "width": 137,
+              "height": 33,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  178
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "3110:19842",
+          "name": "Group 1000001679",
+          "type": "GROUP",
+          "x": 28,
+          "y": 263,
+          "width": 297,
+          "height": 102,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              263
+            ]
+          ],
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": [
+            {
+              "id": "3110:19843",
+              "name": "Fees",
+              "type": "TEXT",
+              "x": 28,
+              "y": 263,
+              "width": 28,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  263
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19844",
+              "name": "Currencies Accepted",
+              "type": "TEXT",
+              "x": 188,
+              "y": 263,
+              "width": 131,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  263
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19845",
+              "name": "Zero",
+              "type": "TEXT",
+              "x": 28,
+              "y": 288,
+              "width": 33,
+              "height": 11,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  288
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19846",
+              "name": "USD, EUR, GBP, JPY, CAD, CHF, AUD, AED, HKD, PHP, NZD, ZAR",
+              "type": "TEXT",
+              "x": 188,
+              "y": 288,
+              "width": 137,
+              "height": 77,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  288
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3110:19847",
+      "name": "Frame 1000006951",
+      "type": "FRAME",
+      "x": 0,
+      "y": 1241,
+      "width": 353,
+      "height": 339,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1241
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "cornerRadius": 10,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "STRETCH",
+      "layoutGrow": 0,
+      "layoutMode": "NONE",
+      "itemSpacing": 0,
+      "children": [
+        {
+          "id": "3110:19848",
+          "name": "Frame 1000006866",
+          "type": "FRAME",
+          "x": 28,
+          "y": 30,
+          "width": 135,
+          "height": 81,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              30
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [],
+          "strokes": [],
+          "strokeWeight": 1,
+          "cornerRadius": 0,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "layoutMode": "VERTICAL",
+          "itemSpacing": 10,
+          "children": [
+            {
+              "id": "3110:19849",
+              "name": "Method",
+              "type": "TEXT",
+              "x": 0,
+              "y": 0,
+              "width": 44,
+              "height": 12,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0.5333333611488342,
+                    "g": 0.5333333611488342,
+                    "b": 0.5333333611488342
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19850",
+              "name": "UK Bankwire",
+              "type": "TEXT",
+              "x": 0,
+              "y": 22,
+              "width": 135,
+              "height": 59,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  22
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                },
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "visible": true,
+                  "opacity": 0.44999998807907104,
+                  "blendMode": "NORMAL",
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "position": 0,
+                      "boundVariables": {}
+                    },
+                    {
+                      "color": {
+                        "r": 1,
+                        "g": 0.2666666805744171,
+                        "b": 0,
+                        "a": 1
+                      },
+                      "position": 1,
+                      "boundVariables": {}
+                    }
+                  ],
+                  "gradientTransform": [
+                    [
+                      1.3136836290359497,
+                      0.286699503660202,
+                      -0.14588502049446106
+                    ],
+                    [
+                      -5.977907180786133,
+                      1.3136836290359497,
+                      1.9682683944702148
+                    ]
+                  ]
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 5.69661283493042,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "3110:19851",
+          "name": "Group 1000001680",
+          "type": "GROUP",
+          "x": 28,
+          "y": 153,
+          "width": 297,
+          "height": 80,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              153
+            ]
+          ],
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": [
+            {
+              "id": "3110:19852",
+              "name": "Processing Time",
+              "type": "TEXT",
+              "x": 28,
+              "y": 153,
+              "width": 104,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  153
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19853",
+              "name": "Min Deposit",
+              "type": "TEXT",
+              "x": 188,
+              "y": 153,
+              "width": 77,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  153
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19854",
+              "name": "Instant, If Made Within UK Business Days/Hours",
+              "type": "TEXT",
+              "x": 28,
+              "y": 178,
+              "width": 135,
+              "height": 55,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  178
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19855",
+              "name": "$100 Or Equivalent In Wallet Currency",
+              "type": "TEXT",
+              "x": 188,
+              "y": 178,
+              "width": 137,
+              "height": 33,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  178
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "3110:19856",
+          "name": "Group 1000001679",
+          "type": "GROUP",
+          "x": 28,
+          "y": 263,
+          "width": 297,
+          "height": 36,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              263
+            ]
+          ],
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": [
+            {
+              "id": "3110:19857",
+              "name": "Fees",
+              "type": "TEXT",
+              "x": 28,
+              "y": 263,
+              "width": 28,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  263
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19858",
+              "name": "Currencies Accepted",
+              "type": "TEXT",
+              "x": 188,
+              "y": 263,
+              "width": 131,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  263
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19859",
+              "name": "Zero",
+              "type": "TEXT",
+              "x": 28,
+              "y": 288,
+              "width": 33,
+              "height": 11,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  288
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19860",
+              "name": "GBP",
+              "type": "TEXT",
+              "x": 188,
+              "y": 288,
+              "width": 137,
+              "height": 11,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  288
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3110:19861",
+      "name": "Frame 1000006952",
+      "type": "FRAME",
+      "x": 0,
+      "y": 1596,
+      "width": 353,
+      "height": 383,
+      "relativeTransform": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1596
+        ]
+      ],
+      "constraints": {
+        "horizontal": "MIN",
+        "vertical": "MIN"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          },
+          "boundVariables": {}
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "cornerRadius": 10,
+      "effects": [],
+      "blendMode": "PASS_THROUGH",
+      "layoutAlign": "STRETCH",
+      "layoutGrow": 0,
+      "layoutMode": "NONE",
+      "itemSpacing": 0,
+      "children": [
+        {
+          "id": "3110:19862",
+          "name": "Frame 1000006866",
+          "type": "FRAME",
+          "x": 28,
+          "y": 30,
+          "width": 118,
+          "height": 81,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              30
+            ]
+          ],
+          "constraints": {
+            "horizontal": "MIN",
+            "vertical": "MIN"
+          },
+          "fills": [],
+          "strokes": [],
+          "strokeWeight": 1,
+          "cornerRadius": 0,
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "layoutMode": "VERTICAL",
+          "itemSpacing": 10,
+          "children": [
+            {
+              "id": "3110:19863",
+              "name": "Method",
+              "type": "TEXT",
+              "x": 0,
+              "y": 0,
+              "width": 44,
+              "height": 12,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  0
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0.5333333611488342,
+                    "g": 0.5333333611488342,
+                    "b": 0.5333333611488342
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19864",
+              "name": "Local Banking",
+              "type": "TEXT",
+              "x": 0,
+              "y": 22,
+              "width": 118,
+              "height": 59,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1,
+                  22
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                },
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "visible": true,
+                  "opacity": 0.44999998807907104,
+                  "blendMode": "NORMAL",
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "position": 0,
+                      "boundVariables": {}
+                    },
+                    {
+                      "color": {
+                        "r": 1,
+                        "g": 0.2666666805744171,
+                        "b": 0,
+                        "a": 1
+                      },
+                      "position": 1,
+                      "boundVariables": {}
+                    }
+                  ],
+                  "gradientTransform": [
+                    [
+                      1.3136836290359497,
+                      0.286699503660202,
+                      -0.14588502049446106
+                    ],
+                    [
+                      -5.977907180786133,
+                      1.3136836290359497,
+                      1.9682683944702148
+                    ]
+                  ]
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 5.69661283493042,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "3110:19865",
+          "name": "Group 1000001680",
+          "type": "GROUP",
+          "x": 28,
+          "y": 153,
+          "width": 297,
+          "height": 80,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              153
+            ]
+          ],
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": [
+            {
+              "id": "3110:19866",
+              "name": "Processing Time",
+              "type": "TEXT",
+              "x": 28,
+              "y": 153,
+              "width": 104,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  153
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19867",
+              "name": "Min Deposit",
+              "type": "TEXT",
+              "x": 188,
+              "y": 153,
+              "width": 77,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  153
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19868",
+              "name": "10 Minutes If Made Within The Bank's Business Days/Hours",
+              "type": "TEXT",
+              "x": 28,
+              "y": 178,
+              "width": 151,
+              "height": 55,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  178
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19869",
+              "name": "$100 Or Equivalent In Wallet Currency",
+              "type": "TEXT",
+              "x": 188,
+              "y": 178,
+              "width": 137,
+              "height": 33,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  178
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "3110:19870",
+          "name": "Group 1000001679",
+          "type": "GROUP",
+          "x": 28,
+          "y": 263,
+          "width": 297,
+          "height": 80,
+          "relativeTransform": [
+            [
+              1,
+              0,
+              28
+            ],
+            [
+              0,
+              1,
+              263
+            ]
+          ],
+          "effects": [],
+          "blendMode": "PASS_THROUGH",
+          "layoutAlign": "INHERIT",
+          "layoutGrow": 0,
+          "children": [
+            {
+              "id": "3110:19871",
+              "name": "Fees",
+              "type": "TEXT",
+              "x": 28,
+              "y": 263,
+              "width": 28,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  263
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19872",
+              "name": "Currencies Accepted",
+              "type": "TEXT",
+              "x": 188,
+              "y": 263,
+              "width": 131,
+              "height": 10,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  263
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 1,
+              "children": []
+            },
+            {
+              "id": "3110:19873",
+              "name": "Zero",
+              "type": "TEXT",
+              "x": 28,
+              "y": 288,
+              "width": 33,
+              "height": 11,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  28
+                ],
+                [
+                  0,
+                  1,
+                  288
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            },
+            {
+              "id": "3110:19874",
+              "name": "JPY, THB, MYR, IDR, VND, SGD, PHP",
+              "type": "TEXT",
+              "x": 188,
+              "y": 288,
+              "width": 137,
+              "height": 55,
+              "relativeTransform": [
+                [
+                  1,
+                  0,
+                  188
+                ],
+                [
+                  0,
+                  1,
+                  288
+                ]
+              ],
+              "constraints": {
+                "horizontal": "MIN",
+                "vertical": "MIN"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "visible": true,
+                  "opacity": 1,
+                  "blendMode": "NORMAL",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  },
+                  "boundVariables": {}
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "effects": [],
+              "blendMode": "PASS_THROUGH",
+              "layoutAlign": "INHERIT",
+              "layoutGrow": 0,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

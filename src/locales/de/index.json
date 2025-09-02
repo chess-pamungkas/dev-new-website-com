@@ -209,7 +209,8 @@
 
   "footer-funding-1": "* Wenn eine Anfrage vor 11:00 Uhr Osteuropäischer Zeit gestellt wird",
   "footer-funding-2": "* Wir berechnen keine Gebühren, jedoch können je nach verwendeter Methode Gebühren von Ihrer Bank erhoben werden.",
-  "footer-company-name-text": "© 2024 OQtima Group | Alle Rechte vorbehalten.",
+  "footer-company-name-text": "OQtima Group",
+  "footer-all-rights-reserved": "Alle Rechte vorbehalten.",
   "button-sign-in": "Anmelden",
   "button-get-started": "Loslegen",
   "button-trade-now": "Jetzt handeln",
@@ -298,6 +299,9 @@
   "faq-btn-text": "Weitere FAQ anzeigen",
 
   "legal_documents-btn": "PDF anzeigen",
+  "legal_documents-badge": "Rechtsdokument",
+  "legal_documents-badge-text": "Rechtlich",
+  "legal_documents-badge-message": "Wichtige regulatorische Informationen und Compliance-Dokumente",
   "company_banner-with-title-title": "Wir leben in einer komplexen Finanzwelt.",
   "company_banner-with-title-subtitle": "Wir möchten, dass Sie davon profitieren können.",
   "company_split-text-promotion-text1": "Unsere Mission ist es, uns zu 100% auf eine makellose Handelsumgebung zu konzentrieren, die sich durch exzellenten Kundenservice und Interaktion zwischen Kunden und Unternehmen auszeichnet.",

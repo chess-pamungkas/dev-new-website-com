@@ -3,7 +3,7 @@ const LANG_CONFIG = [
   {
     id: "en",
     icon: "EnFlagIcon",
-    name: "English (UK)",
+    name: "English (US)",
     isDefault: true,
     URIPart: "",
   },
@@ -194,7 +194,7 @@ const CYSEC_LANG_CONFIG = [
   {
     id: "en",
     icon: "EnFlagIcon",
-    name: "English (UK)",
+    name: "English (US)",
     isDefault: true,
     URIPart: "",
   },

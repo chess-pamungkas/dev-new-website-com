@@ -1,11 +1,10 @@
 import {
   AboutIcon,
+  AccountTypesIcon,
   AllMarketsOverviewIcon,
   //  No used vars for the 2nd release, please, don't remove them
   CareerIcon,
-  CollaborationPartnershipIcon,
-  CommoditiesIcon,
-  ContactIcon,
+  ContactUsIcon,
   CopyTradingIcon,
   CryptoIcon,
   EducationIcon,
@@ -14,21 +13,22 @@ import {
   FundingWithdrawalsIcon,
   HelpCenterIcon,
   IndicesIcon,
+  IntroducingBrokersIcon,
   LegalIcon,
   Logo,
+  MetalsIcon,
   PlatformsIcon,
   PressAndNewsIcon,
+  PrivateVPSIcon,
   ProfessionalQualificationIcon,
   SharesIcon,
+  SwapFreeAccountIcon,
   TradingToolsIcon,
   ETFIcon,
   MT4Icon,
   MT5Icon,
-  AccountsIcon,
   SpreadAndFeesIcon,
   CTraderIcon,
-  VPSIcon,
-  SwapFreeIcon,
 } from "../components/shared/icons";
 import {
   ACCOUNTS_TYPE_PAGE_LINK,
@@ -62,6 +62,12 @@ const FSA_TOP_MARKETS_TAB = {
   title: "header-nav-tab-top-markets",
   subItems: [
     {
+      title: "header-nav-tab-top-markets-allmarkets-title",
+      link: ALL_MARKETS_PAGE_LINK,
+      icon: AllMarketsOverviewIcon,
+      description: "header-nav-tab-top-markets-allmarkets-desc",
+    },
+    {
       title: "header-nav-tab-top-markets-crypto-title-fsa",
       link: CRYPTO_PAGE_LINK,
       icon: CryptoIcon,
@@ -82,7 +88,7 @@ const FSA_TOP_MARKETS_TAB = {
     {
       title: "header-nav-tab-top-markets-commodities-title",
       link: METALS_PAGE_LINK,
-      icon: CommoditiesIcon,
+      icon: MetalsIcon,
       description: "header-nav-tab-top-markets-commodities-desc",
     },
     {
@@ -102,12 +108,6 @@ const FSA_TOP_MARKETS_TAB = {
       link: ETF_PAGE_LINK,
       icon: ETFIcon,
       description: "header-nav-tab-top-markets-etf-desc",
-    },
-    {
-      title: "header-nav-tab-top-markets-allmarkets-title",
-      link: ALL_MARKETS_PAGE_LINK,
-      icon: AllMarketsOverviewIcon,
-      description: "header-nav-tab-top-markets-allmarkets-desc",
     },
   ],
 };
@@ -136,7 +136,7 @@ const FSA_TRADING_TAB = {
     {
       title: "header-nav-tab-trading-funding-withdrawals-accounts-title",
       link: ACCOUNTS_TYPE_PAGE_LINK,
-      icon: AccountsIcon,
+      icon: AccountTypesIcon,
       description: "header-nav-tab-trading-funding-withdrawals-accounts-desc",
     },
     {
@@ -160,13 +160,13 @@ const FSA_TRADING_TAB = {
     {
       title: "header-nav-tab-trading-vps-title",
       link: VPS_PAGE_LINK,
-      icon: VPSIcon,
+      icon: PrivateVPSIcon,
       description: "header-nav-tab-trading-vps-desc",
     },
     {
       title: "header-nav-tab-trading-swap-free-title",
       link: SWAP_FREE_PAGE_LINK,
-      icon: SwapFreeIcon,
+      icon: SwapFreeAccountIcon,
       description: "header-nav-tab-trading-swap-free-desc",
     },
   ],
@@ -184,7 +184,7 @@ const FSA_COMPANY_TAB = {
     {
       title: "header-nav-tab-company-contact-title",
       link: CONTACT_US_PAGE_LINK,
-      icon: ContactIcon,
+      icon: ContactUsIcon,
       description: "header-nav-tab-company-contact-desc",
     },
     {
@@ -203,7 +203,7 @@ const FSA_COMPANY_TAB = {
       desktopOnly: true,
       title: "header-nav-tab-partners-collaboration-partnership-title-fsa",
       link: PARTNERS_PAGE_LINK,
-      icon: CollaborationPartnershipIcon,
+      icon: IntroducingBrokersIcon,
       description: "header-nav-tab-partners-collaboration-partnership-desc-fsa",
     },
     {
@@ -220,16 +220,9 @@ const FSA_COMPANY_TAB = {
 };
 
 const FSA_PARTNERS_TAB = {
-  mobileOnly: true,
   title: "header-nav-tab-partners-fsa",
-  subItems: [
-    {
-      title: "header-nav-tab-partners-collaboration-partnership-title-fsa",
-      link: PARTNERS_PAGE_LINK,
-      icon: CollaborationPartnershipIcon,
-      description: "header-nav-tab-partners-collaboration-partnership-desc-fsa",
-    },
-  ],
+  link: PARTNERS_PAGE_LINK,
+  isPartners: true,
 };
 
 const FSA_MENU_ITEMS = [

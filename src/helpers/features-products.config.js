@@ -1,0 +1,353 @@
+// Crypto Features Icons
+import featuresCryptoOpportunities from "../assets/images/icons/crypto/features-opportunities.svg";
+import featuresCryptoJoinOqtima from "../assets/images/icons/crypto/features-join-oqtima.svg";
+import featuresCryptoDiverseCrypto from "../assets/images/icons/crypto/features-diverse-crypto.svg";
+import featuresCryptoOptimizedSpreads from "../assets/images/icons/crypto/features-optimized-spreads.svg";
+import featuresCryptoFastExecutionLiquidity from "../assets/images/icons/crypto/features-fast-execution-liquidity.svg";
+import featuresCryptoFlexibleTrading from "../assets/images/icons/crypto/features-flexible-trading.svg";
+
+// Indices Features Icons
+import featuresGlobalAccess from "../assets/images/icons/indices/features-global-access.svg";
+import featuresFlexibleTrading from "../assets/images/icons/indices/features-flexible-trading.svg";
+import featuresLowSpreads from "../assets/images/icons/indices/features-low-spreads.svg";
+import featuresDeepLiquidity from "../assets/images/icons/indices/features-deep-liquidity.svg";
+import featuresFreedomToTrade from "../assets/images/icons/indices/features-freedom-to-trade.svg";
+import featuresTradeYourWay from "../assets/images/icons/indices/features-trade-your-way.svg";
+
+// Forex Features Icons
+import featuresForexCompetitiveSpreads from "../assets/images/icons/forex/features-competitive-spreads.svg";
+import featuresForexLeverageOptions from "../assets/images/icons/forex/features-leverage-options.svg";
+import featuresForexAdvancedTools from "../assets/images/icons/forex/features-advanced-tools.svg";
+import featuresForexRangeOfCurrencyPairs from "../assets/images/icons/forex/features-range-of-currency-pairs.svg";
+import featuresForexFastReliableExecution from "../assets/images/icons/forex/features-fast-reliable-execution.svg";
+import featuresForexSegregatedClientFunds from "../assets/images/icons/forex/features-segregated-client-funds.svg";
+
+// Metals Features Icons
+import featuresMetalsHighDemand from "../assets/images/icons/metals/features-high-demand.svg";
+import featuresMetalsOqtimaTrading from "../assets/images/icons/metals/features-oqtima-trading.svg";
+import featuresMetalsCompetitiveSpreads from "../assets/images/icons/metals/features-competitive-spreads.svg";
+import featuresMetalsCfdsTrading from "../assets/images/icons/metals/features-cfds-trading.svg";
+import featuresMetalsMetaquotesPlatform from "../assets/images/icons/metals/features-metaquotes-platform.svg";
+import featuresMetalsExecution from "../assets/images/icons/metals/features-execution.svg";
+
+// Shares Features Icons
+import featuresSharesTopShares from "../assets/images/icons/shares/features-top-shares.svg";
+import featuresSharesPowerfulPlatforms from "../assets/images/icons/shares/features-powerful-platforms.svg";
+import featuresSharesZeroCommissions from "../assets/images/icons/shares/features-zero-commissions.svg";
+import featuresSharesCompetitivePricing from "../assets/images/icons/shares/features-competitive-pricing.svg";
+import featuresSharesStrategyFreedom from "../assets/images/icons/shares/features-strategy-freedom.svg";
+import featuresSharesFastExecution from "../assets/images/icons/shares/features-fast-execution.svg";
+
+// Energies Features Icons
+import featuresEnergiesGlobalEnergy from "../assets/images/icons/energies/features-global-energy.svg";
+import featuresEnergiesLeveragedAccess from "../assets/images/icons/energies/features-leveraged-access.svg";
+import featuresEnergiesFastExecution from "../assets/images/icons/energies/features-fast-execution.svg";
+import featuresEnergiesZeroCommission from "../assets/images/icons/energies/features-zero-commission.svg";
+import featuresEnergiesDeepLiquidityEnergies from "../assets/images/icons/energies/features-deep-liquidity.svg";
+import featuresEnergiesStrategyFreedom from "../assets/images/icons/energies/features-strategy-freedom.svg";
+
+// ETF Features Icons
+import featuresEtfBroadAccess from "../assets/images/icons/etf/features-broad-access.svg";
+import featuresEtfStrategyFreedom from "../assets/images/icons/etf/features-strategy-freedom.svg";
+import featuresEtfTightSpreads from "../assets/images/icons/etf/features-tight-spreads.svg";
+import featuresEtfDeepLiquidity from "../assets/images/icons/etf/features-deep-liquidity.svg";
+import featuresEtfDiverseOptions from "../assets/images/icons/etf/features-diverse-options.svg";
+import featuresEtfFastExecution from "../assets/images/icons/etf/features-fast-execution.svg";
+
+// Swap-Free Icons
+import featuresSwapFreeSafeSecureDeposits from "../assets/images/icons/swap-free/features-safe-secure-deposits.svg";
+import featuresSwapFreeInvestmentProtection from "../assets/images/icons/swap-free/features-investment-protection.svg";
+import featuresSwapFreeLowSpreads from "../assets/images/icons/swap-free/features-24-5-support.svg";
+import featuresSwapFreeUltraLowSpreads from "../assets/images/icons/swap-free/features-ultra-low-spreads.svg";
+import featuresSwapFreeRegulatedTrusted from "../assets/images/icons/swap-free/features-regulated-trusted.svg";
+import featuresSwapFreeSeamlessTradingExperience from "../assets/images/icons/swap-free/features-seamless-trading-experience.svg";
+
+// Features configuration for different trading types
+// This will be populated with actual icons and content when provided
+
+export const CRYPTO_FEATURES = [
+  {
+    icon: featuresCryptoOpportunities,
+    title: "features-products_crypto_feature1_title",
+    description: "features-products_crypto_feature1_description",
+  },
+  {
+    icon: featuresCryptoJoinOqtima,
+    title: "features-products_crypto_feature2_title",
+    description: "features-products_crypto_feature2_description",
+  },
+  {
+    icon: featuresCryptoDiverseCrypto,
+    title: "features-products_crypto_feature3_title",
+    description: "features-products_crypto_feature3_description",
+  },
+  {
+    icon: featuresCryptoOptimizedSpreads,
+    title: "features-products_crypto_feature4_title",
+    description: "features-products_crypto_feature4_description",
+  },
+  {
+    icon: featuresCryptoFastExecutionLiquidity,
+    title: "features-products_crypto_feature5_title",
+    description: "features-products_crypto_feature5_description",
+  },
+  {
+    icon: featuresCryptoFlexibleTrading,
+    title: "features-products_crypto_feature6_title",
+    description: "features-products_crypto_feature6_description",
+  },
+];
+
+export const INDICES_FEATURES = [
+  {
+    icon: featuresGlobalAccess,
+    title: "features-products_indices_feature1_title",
+    description: "features-products_indices_feature1_description",
+  },
+  {
+    icon: featuresFlexibleTrading,
+    title: "features-products_indices_feature2_title",
+    description: "features-products_indices_feature2_description",
+  },
+  {
+    icon: featuresLowSpreads,
+    title: "features-products_indices_feature3_title",
+    description: "features-products_indices_feature3_description",
+  },
+  {
+    icon: featuresDeepLiquidity,
+    title: "features-products_indices_feature4_title",
+    description: "features-products_indices_feature4_description",
+  },
+  {
+    icon: featuresFreedomToTrade,
+    title: "features-products_indices_feature5_title",
+    description: "features-products_indices_feature5_description",
+  },
+  {
+    icon: featuresTradeYourWay,
+    title: "features-products_indices_feature6_title",
+    description: "features-products_indices_feature6_description",
+  },
+];
+
+export const FOREX_FEATURES = [
+  {
+    icon: featuresForexCompetitiveSpreads,
+    title: "features-products_forex_feature1_title",
+    description: "features-products_forex_feature1_description",
+  },
+  {
+    icon: featuresForexLeverageOptions,
+    title: "features-products_forex_feature2_title",
+    description: "features-products_forex_feature2_description",
+  },
+  {
+    icon: featuresForexAdvancedTools,
+    title: "features-products_forex_feature3_title",
+    description: "features-products_forex_feature3_description",
+  },
+  {
+    icon: featuresForexRangeOfCurrencyPairs,
+    title: "features-products_forex_feature4_title",
+    description: "features-products_forex_feature4_description",
+  },
+  {
+    icon: featuresForexFastReliableExecution,
+    title: "features-products_forex_feature5_title",
+    description: "features-products_forex_feature5_description",
+  },
+  {
+    icon: featuresForexSegregatedClientFunds,
+    title: "features-products_forex_feature6_title",
+    description: "features-products_forex_feature6_description",
+  },
+];
+
+export const METALS_FEATURES = [
+  {
+    icon: featuresMetalsHighDemand,
+    title: "features-products_metals_feature1_title",
+    description: "features-products_metals_feature1_description",
+  },
+  {
+    icon: featuresMetalsOqtimaTrading,
+    title: "features-products_metals_feature2_title",
+    description: "features-products_metals_feature2_description",
+  },
+  {
+    icon: featuresMetalsCompetitiveSpreads,
+    title: "features-products_metals_feature3_title",
+    description: "features-products_metals_feature3_description",
+  },
+  {
+    icon: featuresMetalsCfdsTrading,
+    title: "features-products_metals_feature4_title",
+    description: "features-products_metals_feature4_description",
+  },
+  {
+    icon: featuresMetalsMetaquotesPlatform,
+    title: "features-products_metals_feature5_title",
+    description: "features-products_metals_feature5_description",
+  },
+  {
+    icon: featuresMetalsExecution,
+    title: "features-products_metals_feature6_title",
+    description: "features-products_metals_feature6_description",
+  },
+];
+
+export const SHARES_FEATURES = [
+  {
+    icon: featuresSharesTopShares,
+    title: "features-products_shares_feature1_title",
+    description: "features-products_shares_feature1_description",
+  },
+  {
+    icon: featuresSharesPowerfulPlatforms,
+    title: "features-products_shares_feature2_title",
+    description: "features-products_shares_feature2_description",
+  },
+  {
+    icon: featuresSharesZeroCommissions,
+    title: "features-products_shares_feature3_title",
+    description: "features-products_shares_feature3_description",
+  },
+  {
+    icon: featuresSharesCompetitivePricing,
+    title: "features-products_shares_feature4_title",
+    description: "features-products_shares_feature4_description",
+  },
+  {
+    icon: featuresSharesStrategyFreedom,
+    title: "features-products_shares_feature5_title",
+    description: "features-products_shares_feature5_description",
+  },
+  {
+    icon: featuresSharesFastExecution,
+    title: "features-products_shares_feature6_title",
+    description: "features-products_shares_feature6_description",
+  },
+];
+
+export const ENERGIES_FEATURES = [
+  {
+    icon: featuresEnergiesGlobalEnergy,
+    title: "features-products_energies_feature1_title",
+    description: "features-products_energies_feature1_description",
+  },
+  {
+    icon: featuresEnergiesLeveragedAccess,
+    title: "features-products_energies_feature2_title",
+    description: "features-products_energies_feature2_description",
+  },
+  {
+    icon: featuresEnergiesFastExecution,
+    title: "features-products_energies_feature3_title",
+    description: "features-products_energies_feature3_description",
+  },
+  {
+    icon: featuresEnergiesZeroCommission,
+    title: "features-products_energies_feature4_title",
+    description: "features-products_energies_feature4_description",
+  },
+  {
+    icon: featuresEnergiesDeepLiquidityEnergies,
+    title: "features-products_energies_feature5_title",
+    description: "features-products_energies_feature5_description",
+  },
+  {
+    icon: featuresEnergiesStrategyFreedom,
+    title: "features-products_energies_feature6_title",
+    description: "features-products_energies_feature6_description",
+  },
+];
+
+export const ETF_FEATURES = [
+  {
+    icon: featuresEtfBroadAccess,
+    title: "features-products_etf_feature1_title",
+    description: "features-products_etf_feature1_description",
+  },
+  {
+    icon: featuresEtfStrategyFreedom,
+    title: "features-products_etf_feature2_title",
+    description: "features-products_etf_feature2_description",
+  },
+  {
+    icon: featuresEtfTightSpreads,
+    title: "features-products_etf_feature3_title",
+    description: "features-products_etf_feature3_description",
+  },
+  {
+    icon: featuresEtfDeepLiquidity,
+    title: "features-products_etf_feature4_title",
+    description: "features-products_etf_feature4_description",
+  },
+  {
+    icon: featuresEtfDiverseOptions,
+    title: "features-products_etf_feature5_title",
+    description: "features-products_etf_feature5_description",
+  },
+  {
+    icon: featuresEtfFastExecution,
+    title: "features-products_etf_feature6_title",
+    description: "features-products_etf_feature6_description",
+  },
+];
+
+export const SWAP_FREE_FEATURES = [
+  {
+    icon: featuresSwapFreeSafeSecureDeposits,
+    title: "features-products_swap-free_feature1_title",
+    description: "features-products_swap-free_feature1_description",
+  },
+  {
+    icon: featuresSwapFreeInvestmentProtection,
+    title: "features-products_swap-free_feature2_title",
+    description: "features-products_swap-free_feature2_description",
+  },
+  {
+    icon: featuresSwapFreeLowSpreads,
+    title: "features-products_swap-free_feature3_title",
+    description: "features-products_swap-free_feature3_description",
+  },
+  {
+    icon: featuresSwapFreeUltraLowSpreads,
+    title: "features-products_swap-free_feature4_title",
+    description: "features-products_swap-free_feature4_description",
+  },
+  {
+    icon: featuresSwapFreeRegulatedTrusted,
+    title: "features-products_swap-free_feature5_title",
+    description: "features-products_swap-free_feature5_description",
+  },
+  {
+    icon: featuresSwapFreeSeamlessTradingExperience,
+    title: "features-products_swap-free_feature6_title",
+    description: "features-products_swap-free_feature6_description",
+  },
+];
+
+// Helper function to get features based on trading type
+export const getFeaturesByTradingType = (tradingType) => {
+  switch (tradingType.toLowerCase()) {
+    case "crypto":
+      return CRYPTO_FEATURES;
+    case "indices":
+      return INDICES_FEATURES;
+    case "forex":
+      return FOREX_FEATURES;
+    case "metals":
+      return METALS_FEATURES;
+    case "shares":
+      return SHARES_FEATURES;
+    case "energies":
+      return ENERGIES_FEATURES;
+    case "swap-free":
+      return SWAP_FREE_FEATURES;
+    // Add more cases as needed
+    default:
+      return FOREX_FEATURES; // Default fallback
+  }
+};

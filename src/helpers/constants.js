@@ -187,9 +187,8 @@ export const PRIVACY_POLICY_PAGE_LINK = "/legal/privacy";
 export const COOKIE_POLICY_PAGE_LINK = "/legal/cookie";
 
 export const ANGLE_ICON_COLOR = {
-  black: "#232323",
   red: "#ff4400",
-  white: "#ffffff",
+  grey: "#5E5F63",
 };
 
 export const TABLE_PAGE_SIZES = [5, 10, 15];

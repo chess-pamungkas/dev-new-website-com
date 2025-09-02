@@ -48,14 +48,10 @@ const LegalContent = () => {
       </TopMarketPromotion>
       <Documents
         title={t("legal_documents-title-fsa")}
-        text={
-          <>
-            <span className="subtitle">
-              {t("legal_documents-text-bold-fsa")}
-            </span>
-            <span>{t("legal_documents-text-fsa")}</span>
-          </>
-        }
+        text={{
+          bold: t("legal_documents-text-bold-fsa"),
+          regular: t("legal_documents-text-fsa"),
+        }}
         documents={getLegalDocs()}
       />
     </>

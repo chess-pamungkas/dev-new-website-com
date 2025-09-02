@@ -13,6 +13,7 @@ const Slider = ({
   currentValue,
   onChange,
   renderMark,
+  renderThumb,
   invert = false,
 }) => {
   const handleRenderMark = (mark, index) => {
@@ -36,6 +37,7 @@ const Slider = ({
       marks={marks}
       onChange={(value) => onChange(value)}
       renderMark={handleRenderMark}
+      renderThumb={renderThumb}
       invert={invert}
     />
   );
@@ -52,6 +54,7 @@ Slider.propTypes = {
   currentValue: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
   renderMark: PropTypes.func,
+  renderThumb: PropTypes.func,
   invert: PropTypes.bool,
 };
 export default Slider;
