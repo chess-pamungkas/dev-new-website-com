@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
-import Lottie from "lottie-react";
+import LottieWrapper from "../shared/lottie-wrapper";
 import {
   DIR_LTR,
   DIR_RTL,
@@ -261,7 +261,7 @@ const PromotionMarkets = ({
           className="promotion-markets__chart"
           style={chartAnimationStyles}
         />
-        <Lottie
+        <LottieWrapper
           className="promotion-markets__svg"
           animationData={animation}
           style={animationStyle}

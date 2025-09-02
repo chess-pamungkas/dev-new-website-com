@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
-import Lottie from "lottie-react";
+import LottieWrapper from "../shared/lottie-wrapper";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import ButtonPopup from "../shared/button-popup";
 import { BIGGER_LANGUAGES } from "../../helpers/constants";
@@ -50,7 +50,7 @@ export const MarketingCircle = ({
   return (
     <div className="marketing-circle">
       <div className="container">
-        <Lottie
+        <LottieWrapper
           className="promotion-markets__svg"
           animationData={animation}
           style={{ height: animationHeight }}

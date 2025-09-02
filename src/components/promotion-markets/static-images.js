@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Lottie from "lottie-react";
+import LottieWrapper from "../shared/lottie-wrapper";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 
 export const StaticImages = ({ image, height, animation }) => {
@@ -19,7 +19,7 @@ export const StaticImages = ({ image, height, animation }) => {
       className="marketing-static-images"
       style={{ backgroundImage: `url(${image})`, height }}
     >
-      <Lottie
+      <LottieWrapper
         className="promotion-markets__svg"
         animationData={animation}
         style={{ height: animationHeight }}

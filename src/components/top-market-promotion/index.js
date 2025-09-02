@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import ButtonLink from "../shared/button-link";
 import ButtonPopup from "../shared/button-popup";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import Lottie from "lottie-react";
+import LottieWrapper from "../shared/lottie-wrapper";
 import ReactPlayer from "react-player";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
@@ -143,7 +143,7 @@ const TopMarketPromotion = ({
         return <ReactPlayer url={image} {...videoSettings} />;
       case isLottieImage:
         return (
-          <Lottie
+          <LottieWrapper
             className="top-market-promotion__img--lottie"
             animationData={image}
             style={lottieStyle}

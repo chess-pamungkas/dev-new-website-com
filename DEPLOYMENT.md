@@ -13,6 +13,10 @@ Fixed import paths for SVG files that were causing build failures:
 
 Added a pre-build script to verify all required SVG files exist before building.
 
+### 3. Server-Side Rendering (SSR) Issues
+
+Fixed SSR errors with `lottie-react` library that was trying to access `document` object during server-side rendering.
+
 ## Files Modified
 
 1. **src/components/pages-content/main-page-content/testimonials-security-content/testimonials-content/index.js**
@@ -37,7 +41,18 @@ Added a pre-build script to verify all required SVG files exist before building.
    - Simple Vercel deployment configuration for Gatsby
 
 6. **.vercelignore** (new)
+
    - Files to ignore during deployment
+
+7. **src/components/shared/lottie-wrapper/index.js** (new)
+
+   - SSR-safe wrapper for lottie-react components
+
+8. **Updated Lottie imports in:**
+   - src/components/promotion-markets/static-images.js
+   - src/components/promotion-markets/index.js
+   - src/components/top-market-promotion/index.js
+   - src/components/marketing-circle/index.js
 
 ## Deployment Steps
 
