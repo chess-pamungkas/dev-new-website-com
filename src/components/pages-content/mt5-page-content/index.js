@@ -11,7 +11,7 @@ import {
   mt5DownloadTabs,
   getAnimationStyle,
 } from "../../../helpers/platforms.config";
-import image from "../../../assets/images/mt5/MT5.svg";
+import image from "../../../assets/images/mt5/mt5.svg";
 import icon from "../../../assets/images/icon--white.svg";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";

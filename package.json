@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "start": "gatsby develop",
-    "build": "npm run copy:registration-script && gatsby build",
+    "build": "npm run check:svg && npm run copy:registration-script && gatsby build",
+    "check:svg": "node scripts/check-svg-files.js",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "split-locales": "node src/scripts/split-locales/index.js",

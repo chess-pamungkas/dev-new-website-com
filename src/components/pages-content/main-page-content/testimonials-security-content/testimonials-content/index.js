@@ -1,5 +1,5 @@
 import React from "react";
-import UAEIcon from "../../../../../assets/images/icons/main-page/testimonials/UAE.svg";
+import UAEIcon from "../../../../../assets/images/icons/main-page/testimonials/uae.svg";
 import MexicoIcon from "../../../../../assets/images/icons/main-page/testimonials/mexico.svg";
 import SouthAfricaIcon from "../../../../../assets/images/icons/main-page/testimonials/south-africa.svg";
 import TestimonialsIcon from "../../../../../assets/images/icons/main-page/testimonials/testimonials.svg";
