@@ -34,7 +34,7 @@ Added a pre-build script to verify all required SVG files exist before building.
 
 5. **vercel.json** (new)
 
-   - Vercel deployment configuration
+   - Simple Vercel deployment configuration for Gatsby
 
 6. **.vercelignore** (new)
    - Files to ignore during deployment
