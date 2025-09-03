@@ -228,6 +228,8 @@
     flex-direction: column;
     gap: 12px;
     flex-grow: 1;
+    text-align: left;
+    align-items: flex-start;
   }
 
   &__card-title {

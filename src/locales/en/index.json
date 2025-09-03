@@ -1502,9 +1502,9 @@
   "trading-tools_trading-tools-title": "Trading Tools",
   "trading-tools_trading-tools-text": "OQtima is your one-stop trading hub—offering powerful tools to simplify analysis and support your trading strategy.",
 
-  "vps_badge-text": "Virtual Private Server",
-  "vps_vps-title": "Virtual Private Server",
-  "vps_vps-text": "OQtima VPS is a powerful tool that allows you to trade with a dedicated server, giving you the ultimate trading experience.",
+  "vps_badge-text": "Zero Downtime Trading",
+  "vps_vps-title": "Private VPS",
+  "vps_vps-text": "Unlock Seamless Trading with our Complimentary Virtual Private Server (VPS)",
 
   "swap-free_badge-text": "Zero Swaps, Full Control",
   "swap-free_swap-free-title": "Islamic Swap-Free Accounts",
@@ -1933,6 +1933,7 @@
   "features-products_energies_title": "Why Choose OQtima for Energies Trading",
   "features-products_etf_title": "Why Choose OQtima for ETF Trading",
   "features-products_swap-free_title": "Why Choose OQtima",
+  "features-products_vps_title": "Advantages of using a VPS",
 
   "features-products_crypto_feature1_title": "Opportunities",
   "features-products_crypto_feature1_description": "Cryptocurrencies offer exciting new opportunities and excitement for traders globally.",
@@ -2037,6 +2038,19 @@
   "features-products_swap-free_feature5_description": "OQtima is a fully regulated broker. Click here to learn more about our compliance.",
   "features-products_swap-free_feature6_title": "Seamless Trading Experience",
   "features-products_swap-free_feature6_description": "Trade confidently with reliable infrastructure and transparent practices.",
+
+  "features-products_vps_feature1_title": "Always-On Trading",
+  "features-products_vps_feature1_description": "Keep your trades running smoothly—even when you’re offline. Step away from your devices while your strategies continue working in the background, uninterrupted.",
+  "features-products_vps_feature2_title": "Zero Downtime, Zero Worries",
+  "features-products_vps_feature2_description": "Our VPS guarantees 24/7 uptime, ensuring uninterrupted access to markets. Never miss a trade due to power cuts, updates, or connectivity issues.",
+  "features-products_vps_feature3_title": "Ultra-Low Latency Execution",
+  "features-products_vps_feature3_description": "Enjoy lightning-fast trade speeds—as fast as 1 millisecond. Every millisecond matters, and our VPS keeps you one step ahead in fast-moving markets.",
+  "features-products_vps_feature4_title": "Seamless EA Trading",
+  "features-products_vps_feature4_description": "Let your Expert Advisors run flawlessly. Our VPS ensures seamless, uninterrupted execution of automated strategies without delays.",
+  "features-products_vps_feature5_title": "Global Trading Access",
+  "features-products_vps_feature5_description": "Access your trading platform from any device, anywhere. Whether at home or on the move, stay connected through a secure link.",
+  "features-products_vps_feature6_title": "Optimized for All Devices",
+  "features-products_vps_feature6_description": "Our VPS is compatible with your favorite platforms—desktop, mobile, or tablet. Trade on your terms, across multiple devices, without performance loss.",
 
   "mt-advantage-list_badge-text": "Trade the Next Level",
   "mt-advantage-list_title": "Trade with OQtima MT4",
@@ -2149,6 +2163,12 @@
   "swap-free_our_community_primary_button": "Apply Now",
   "swap-free_our_community_secondary_button": "Compare Account Types",
 
+  "vps_our_community_badge_message": "Join Our Community",
+  "vps_our_community_title": "24/7 Ultra-Fast Connectivity",
+  "vps_our_community_subtitle": "Risk-free demo • No obligations • Same-day approval",
+  "vps_our_community_primary_button": "Open Demo Account",
+  "vps_our_community_secondary_button": "Compare Account Types",
+
   "how-to-trade-swap-free_badge-text": "Features",
   "how-to-trade-swap-free_title": "How to Trade Swap-Free?",
   "how-to-trade-swap-free_subtitle": "Experience the difference of true cost efficiency",
@@ -2168,5 +2188,22 @@
   "swap_free_freedom_feature_3": "Transparent pricing with no hidden fees or markups.",
   "swap_free_freedom_feature_4": "Swap-Free option not available for crypto trades.",
   "swap_free_freedom_start_trading": "Start Trading",
-  "swap_free_freedom_try_demo": "Try a Demo Account"
+  "swap_free_freedom_try_demo": "Try a Demo Account",
+
+  "keep_your_vps_badge_text": "Features",
+  "keep_your_vps_title": "Keep your VPS forever!",
+  "keep_your_vps_subtitle": "Experience the difference of true cost efficiency",
+  "keep_your_vps_card1_title": "Maintain a $500 balance",
+  "keep_your_vps_card1_description": "Keep a balance of at least $500 in your trading account to stay eligible for complimentary VPS renewal.",
+  "keep_your_vps_card2_title": "Monthly Trading Requirement",
+  "keep_your_vps_card2_description": "Trade at least 5 standard lots in Forex (closed positions) within 30 days to keep your VPS active.",
+  "keep_your_vps_footer_text": "Run your automated strategies 24/7 with the fastest connection to OQtima’s trading.",
+
+  "get_complimentary_vps_badge_text": "Features",
+  "get_complimentary_vps_title": "Get a complimentary (VPS)",
+  "get_complimentary_vps_subtitle": "Get a complimentary Virtual Private Server (VPS) with a minimum net deposit of:",
+  "get_complimentary_vps_card1_title": "Minimum $3000 deposit",
+  "get_complimentary_vps_card1_description": "Make a minimum net deposit of $3,000 to receive a free VPS. This applies to both new clients and existing clients without any trading history—no trading volume required.",
+  "get_complimentary_vps_card2_title": "Minimum trading volume of 5 Lots Forex",
+  "get_complimentary_vps_card2_description": "Trade a minimum of 5 standard lots in Forex (closed positions only) to qualify for a complimentary VPS. No minimum deposit needed if the trading volume is met."
 }

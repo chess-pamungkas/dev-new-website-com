@@ -1,0 +1,474 @@
+@import "vars";
+@import "mixins";
+
+.keep-your-vps {
+  position: relative;
+  width: 100%;
+  min-height: 748px;
+  background: transparent;
+  border-radius: 24px;
+  overflow: hidden;
+  margin: 48px 0 0 0;
+
+  @include mobile {
+    margin: 40px 0;
+  }
+
+  .keep-your-vps-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      object-fit: fill;
+      display: block;
+      opacity: 1;
+
+      @include mobile {
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+
+  // Content container
+  > *:not(.keep-your-vps-bg) {
+    position: relative;
+    z-index: 4;
+  }
+
+  .keep-your-vps-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 65px 20px 0;
+    gap: 16px;
+    text-align: center;
+
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 4px 10px;
+      background: rgba(15, 15, 15, 1);
+      border: 1px solid rgba(255, 68, 0, 0.15);
+      border-radius: 16px;
+      width: fit-content;
+
+      img {
+        width: 14px;
+        height: 14px;
+      }
+
+      .badge-label {
+        font-family: "Sofia Pro", Arial, sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: #fff;
+      }
+    }
+
+    .keep-your-vps-title {
+      width: 758px;
+      height: 60px;
+      font-family: "Sofia Pro", Arial, sans-serif;
+      font-style: normal;
+      font-weight: map-get($font-weight, semibold);
+      font-size: 52px;
+      line-height: 60px;
+      text-align: center;
+      letter-spacing: -0.02em;
+      background: linear-gradient(
+          102.31deg,
+          rgba(255, 255, 255, 0) 9.12%,
+          rgba(255, 68, 0, 0.45) 71.6%
+        ),
+        #fff;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+
+      @include mobile {
+        width: 358px;
+        height: 96px;
+        font-size: 42px;
+        line-height: 45px;
+        max-width: 358px;
+      }
+    }
+
+    .keep-your-vps-subtitle {
+      font-weight: map-get($font-weight, regular);
+      font-size: 18px;
+      line-height: 28px;
+      color: #fff;
+      margin: 0;
+      max-width: 625px;
+      opacity: 0.7;
+      order: 2;
+
+      @include mobile {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .keep-your-vps-cards {
+    display: flex;
+    gap: 27px;
+    padding: 42px 203px 0;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+
+    @include mobile {
+      flex-direction: column;
+      padding: 24px 18px 18px;
+      gap: 24px;
+    }
+
+    @include tablet {
+      flex-direction: column;
+      padding: 24px 18px 18px;
+      gap: 24px;
+      align-items: center;
+    }
+
+    @include desktop-lg {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      padding: 42px 0 0 0 !important;
+      justify-content: center;
+      align-items: stretch;
+      margin: 0 auto;
+    }
+
+    @include desktop-xl {
+      gap: 27px;
+      padding: 42px 203px 0;
+    }
+
+    .keep-your-vps-card {
+      flex: 1;
+      min-height: 357px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24px 28px;
+      gap: 32px;
+      isolation: isolate;
+      width: 610px;
+      height: 357px;
+      background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(255, 68, 0, 0.36) 100%
+        ),
+        rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 68, 0, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 12px;
+      flex: none;
+      order: 0;
+      flex-grow: 1;
+      position: relative;
+      overflow: visible;
+      text-align: left;
+
+      @include mobile {
+        width: 100%;
+        padding: 24px;
+        gap: 16px;
+        min-height: 590px;
+        height: 590px;
+      }
+
+      @include tablet {
+        width: 100%;
+        padding: 24px;
+        gap: 16px;
+        min-height: auto;
+        height: auto;
+      }
+
+      @include desktop-lg {
+        width: 100% !important;
+        max-width: 49% !important;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 24px 20px !important;
+        min-height: 345px;
+        height: 345px;
+      }
+
+      @include desktop-xl {
+        width: 510px !important;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      &.maintain-balance-card {
+        background-image: url("../../assets/images/bg/vps/bg-card-maintain-a-$500-balance-desktop.svg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @include mobile {
+          background-image: url("../../assets/images/bg/vps/bg-card-maintain-a-$500-balance-mobile.svg");
+        }
+      }
+
+      &.monthly-trading-card {
+        background-image: url("../../assets/images/bg/vps/bg-card-monthly-trading-requirement-desktop.svg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @include mobile {
+          background-image: url("../../assets/images/bg/vps/bg-card-monthly-trading-requirement-mobile.svg");
+        }
+      }
+
+      .card-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+        z-index: 1;
+        position: relative;
+
+        @include mobile {
+          width: 72px;
+          height: 72px;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .card-title {
+        width: 241px;
+        font-family: "Sofia Pro", Arial, sans-serif;
+        font-weight: map-get($font-weight, "bold");
+        font-size: 24px;
+        letter-spacing: -0.02em;
+        background: linear-gradient(
+            102.31deg,
+            rgba(0, 0, 0, 0) 9.12%,
+            rgba(255, 68, 0, 0.45) 71.6%
+          ),
+          #ffffff;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 0;
+        flex: none;
+        order: 2;
+        flex-grow: 0;
+        z-index: 2;
+        position: relative;
+
+        @include mobile {
+          font-size: 24px;
+          width: 100%;
+          height: auto;
+        }
+
+        @include tablet {
+          font-size: 24px;
+          width: 241px;
+        }
+      }
+
+      .card-description {
+        width: 273px;
+        font-family: "Sofia Pro", Arial, sans-serif;
+        font-weight: map-get($font-weight, "regular");
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.2px;
+        color: #ffffff;
+        opacity: 0.7;
+        margin: 0;
+        flex: none;
+        order: 3;
+        flex-grow: 0;
+        z-index: 3;
+        position: relative;
+
+        @include mobile {
+          font-size: 16px;
+          line-height: 24px;
+          width: 100%;
+          height: auto;
+        }
+
+        @include tablet {
+          font-size: 16px;
+          line-height: 24px;
+          width: 273px;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .keep-your-vps-info-panels {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    padding: 0 20px 40px;
+
+    @include mobile {
+      flex-direction: column;
+      gap: 20px;
+      padding: 0 18px 30px;
+    }
+
+    .keep-your-vps-info-panel {
+      flex: 1;
+      max-width: 300px;
+      padding: 24px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 68, 0, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      @include mobile {
+        max-width: 100%;
+        padding: 20px;
+      }
+
+      &.balance-panel {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 68, 0, 0.1) 0%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+      }
+
+      &.trading-panel {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 68, 0, 0.1) 0%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+      }
+
+      .info-header {
+        margin-bottom: 16px;
+
+        @include mobile {
+          margin-bottom: 12px;
+        }
+      }
+
+      .info-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .logo-text {
+        font-family: "Sofia Pro", Arial, sans-serif;
+        font-weight: map-get($font-weight, "semibold");
+        font-size: 16px;
+        line-height: 24px;
+        color: #ffffff;
+
+        @include mobile {
+          font-size: 14px;
+          line-height: 20px;
+        }
+      }
+
+      .info-content {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .balance-label {
+        font-family: "Sofia Pro", Arial, sans-serif;
+        font-weight: map-get($font-weight, "regular");
+        font-size: 14px;
+        line-height: 20px;
+        color: #ffffff;
+        opacity: 0.7;
+
+        @include mobile {
+          font-size: 12px;
+          line-height: 18px;
+        }
+      }
+
+      .balance-amount {
+        font-family: "Sofia Pro", Arial, sans-serif;
+        font-weight: map-get($font-weight, "bold");
+        font-size: 32px;
+        line-height: 40px;
+        color: #ffffff;
+
+        @include mobile {
+          font-size: 28px;
+          line-height: 36px;
+        }
+      }
+    }
+  }
+
+  .keep-your-vps-footer {
+    text-align: center;
+    padding: 0 20px 40px;
+
+    @include mobile {
+      padding: 0 18px 30px;
+    }
+
+    .keep-your-vps-footer-text {
+      font-family: "Sofia Pro", Arial, sans-serif;
+      font-weight: map-get($font-weight, "regular");
+      font-size: 18px;
+      line-height: 28px;
+      color: #ffffff;
+      opacity: 0.6;
+      padding-top: 38px;
+      max-width: 705px;
+      margin: 0 auto;
+
+      @include mobile {
+        font-size: 18px;
+        line-height: 28px;
+        opacity: 0.7;
+        padding-top: 16px;
+      }
+    }
+  }
+}

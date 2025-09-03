@@ -105,6 +105,35 @@
     position: relative;
     overflow: hidden;
 
+    // Optimize background loading with fallback
+    background-color: #f8f9fa; // Fallback color while loading
+    background-image: url("../images/bg/popup-registration/bg-popup-registration.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    // Smooth transition when background loads
+    transition: background-image 0.3s ease-in-out;
+
+    // Preload hint for better performance
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+      z-index: -1;
+    }
+
+    // Hide fallback when background is loaded
+    &.background-loaded::before {
+      opacity: 0;
+    }
+
     @include mobile {
       display: none !important; // Completely hide sidebar on mobile
     }

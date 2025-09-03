@@ -11,6 +11,7 @@ import bulletImage from "../../../assets/images/icons/bullet.png";
 import closemage from "../../../assets/images/icons/close-icon.svg";
 import badgeSecurityIcon from "../../../assets/images/icons/badge-security.svg";
 import PopupRegistrationForm from "./components/popup-registration-form";
+import BackgroundPreloader from "./components/background-preloader";
 
 const RTL_LANGUAGES = ["ar"];
 
@@ -225,6 +226,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
   const { isMobile } = useWindowSize();
   const [isLoading, setIsLoading] = useState(true);
   const [isContentReady, setIsContentReady] = useState(false);
+  const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
   const [isExternalLoad] = useState(isLoadedFromExternalScript());
 
   // FIRST EFFECT: Handle reset state after a forced reload
@@ -822,6 +824,36 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
 
     return () => clearTimeout(timer);
   }, [isOpen, isExternalLoad]);
+
+  // Background loading effect - show content when background is ready
+  useEffect(() => {
+    if (!isOpen || isMobile) return;
+
+    // For desktop, wait for background to load before showing content
+    if (isBackgroundLoaded) {
+      setIsContentReady(true);
+    }
+  }, [isBackgroundLoaded, isOpen, isMobile]);
+
+  // Preload background image when popup opens
+  useEffect(() => {
+    if (!isOpen || isMobile) return;
+
+    // Preload the background image
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href =
+      "/static/images/bg/popup-registration/bg-popup-registration.svg";
+    document.head.appendChild(link);
+
+    // Clean up
+    return () => {
+      if (link.parentNode) {
+        link.parentNode.removeChild(link);
+      }
+    };
+  }, [isOpen, isMobile]);
 
   // Separate effect for initial setup
   useEffect(() => {
@@ -1584,23 +1616,28 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
           >
             {/* Sidebar - Hidden on mobile, only show on desktop/RTL */}
             {(!isMobile || isRTLMode) && (
-              <div
-                className={cn("popup-registration__sidebar", {
-                  "popup-registration__sidebar--rtl": isRTLMode,
-                })}
-                data-rtl={isRTLMode ? "true" : "false"}
-                style={isRTLMode ? { order: "2 !important" } : {}}
+              <BackgroundPreloader
+                onBackgroundLoaded={() => setIsBackgroundLoaded(true)}
               >
-                {/* Close button for RTL only (mobile close button moved to content area) */}
-                {isRTLMode && (
-                  <img
-                    src={closemage}
-                    alt="Close"
-                    className="popup-registration__sidebar--rtl__close--rtl"
-                    onClick={handleClose}
-                  />
-                )}
-              </div>
+                <div
+                  className={cn("popup-registration__sidebar", {
+                    "popup-registration__sidebar--rtl": isRTLMode,
+                    "background-loaded": isBackgroundLoaded,
+                  })}
+                  data-rtl={isRTLMode ? "true" : "false"}
+                  style={isRTLMode ? { order: "2 !important" } : {}}
+                >
+                  {/* Close button for RTL only (mobile close button moved to content area) */}
+                  {isRTLMode && (
+                    <img
+                      src={closemage}
+                      alt="Close"
+                      className="popup-registration__sidebar--rtl__close--rtl"
+                      onClick={handleClose}
+                    />
+                  )}
+                </div>
+              </BackgroundPreloader>
             )}
             <div
               className={cn("popup-registration__content", {

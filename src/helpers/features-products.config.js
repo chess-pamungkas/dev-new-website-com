@@ -62,6 +62,14 @@ import featuresSwapFreeUltraLowSpreads from "../assets/images/icons/swap-free/fe
 import featuresSwapFreeRegulatedTrusted from "../assets/images/icons/swap-free/features-regulated-trusted.svg";
 import featuresSwapFreeSeamlessTradingExperience from "../assets/images/icons/swap-free/features-seamless-trading-experience.svg";
 
+// VPS Icons
+import featuresVpsAlwaysOnTrading from "../assets/images/icons/vps/features-always-on-trading.svg";
+import featuresVpsZeroDowntimeZeroWorries from "../assets/images/icons/vps/features-zero-downtime-zero-worries.svg";
+import featuresVpsUltraLowLatencyExecution from "../assets/images/icons/vps/features-ultra-low-latency-execution.svg";
+import featuresVpsSeamlessEaTrading from "../assets/images/icons/vps/features-seamless-ea-trading.svg";
+import featuresVpsGlobalTradingAccess from "../assets/images/icons/vps/features-global-trading-access.svg";
+import featuresVpsOptimizedForAllDevices from "../assets/images/icons/vps/features-optimized-for-all-devices.svg";
+
 // Features configuration for different trading types
 // This will be populated with actual icons and content when provided
 
@@ -329,6 +337,39 @@ export const SWAP_FREE_FEATURES = [
   },
 ];
 
+export const VPS_FEATURES = [
+  {
+    icon: featuresVpsAlwaysOnTrading,
+    title: "features-products_vps_feature1_title",
+    description: "features-products_vps_feature1_description",
+  },
+  {
+    icon: featuresVpsZeroDowntimeZeroWorries,
+    title: "features-products_vps_feature2_title",
+    description: "features-products_vps_feature2_description",
+  },
+  {
+    icon: featuresVpsUltraLowLatencyExecution,
+    title: "features-products_vps_feature3_title",
+    description: "features-products_vps_feature3_description",
+  },
+  {
+    icon: featuresVpsSeamlessEaTrading,
+    title: "features-products_vps_feature4_title",
+    description: "features-products_vps_feature4_description",
+  },
+  {
+    icon: featuresVpsGlobalTradingAccess,
+    title: "features-products_vps_feature5_title",
+    description: "features-products_vps_feature5_description",
+  },
+  {
+    icon: featuresVpsOptimizedForAllDevices,
+    title: "features-products_vps_feature6_title",
+    description: "features-products_vps_feature6_description",
+  },
+];
+
 // Helper function to get features based on trading type
 export const getFeaturesByTradingType = (tradingType) => {
   switch (tradingType.toLowerCase()) {
@@ -346,6 +387,8 @@ export const getFeaturesByTradingType = (tradingType) => {
       return ENERGIES_FEATURES;
     case "swap-free":
       return SWAP_FREE_FEATURES;
+    case "vps":
+      return VPS_FEATURES;
     // Add more cases as needed
     default:
       return FOREX_FEATURES; // Default fallback

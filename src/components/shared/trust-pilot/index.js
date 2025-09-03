@@ -10,20 +10,136 @@ const TrustPilot = ({
   width = "100%",
   token = "5e065b16-d809-410f-ae86-bc22829c122d", // Use same token as HTML file
 }) => {
+  // Preload TrustPilot script on component mount for faster loading
   useEffect(() => {
-    // Load TrustBox script EXACTLY like index.html (simple and reliable)
+    // Preload the script immediately when component mounts
+    const preloadLink = document.createElement("link");
+    preloadLink.rel = "preload";
+    preloadLink.as = "script";
+    preloadLink.href =
+      "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+    preloadLink.crossOrigin = "anonymous";
+    document.head.appendChild(preloadLink);
+
+    return () => {
+      // Clean up preload link on unmount
+      if (preloadLink.parentNode) {
+        preloadLink.parentNode.removeChild(preloadLink);
+      }
+    };
+  }, []);
+
+  // Use Intersection Observer for lazy loading optimization
+  useEffect(() => {
+    const widgetElement = document.querySelector(".trust-pilot");
+    if (!widgetElement) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Widget is visible, trigger initialization
+            console.log("TrustPilot widget is visible, initializing...");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: "50px", // Start loading 50px before widget becomes visible
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(widgetElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+  useEffect(() => {
+    // Load TrustBox script with optimized loading
     const loadTrustPilotScript = () => {
       // Check if script already exists
       if (document.querySelector('script[src*="tp.widget.bootstrap.min.js"]')) {
-        return;
+        return Promise.resolve();
       }
 
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src =
-        "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
-      script.async = true;
-      document.head.appendChild(script);
+      // Check if script was already loaded in this session
+      try {
+        if (sessionStorage.getItem("trustpilot-script-loaded") === "true") {
+          console.log("TrustPilot script already loaded in this session");
+          return Promise.resolve();
+        }
+      } catch (e) {
+        // SessionStorage not available, continue with normal loading
+      }
+
+      return new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src =
+          "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+        script.async = true;
+        script.defer = true; // Add defer for better loading
+
+        // Add preload hint for faster loading (only if not already exists)
+        if (
+          !document.querySelector(
+            'link[rel="preload"][href*="tp.widget.bootstrap.min.js"]'
+          )
+        ) {
+          const preloadLink = document.createElement("link");
+          preloadLink.rel = "preload";
+          preloadLink.as = "script";
+          preloadLink.href =
+            "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+          preloadLink.crossOrigin = "anonymous";
+          document.head.appendChild(preloadLink);
+        }
+
+        script.onload = () => {
+          console.log("TrustPilot script loaded successfully");
+          // Cache the script for future use with better error handling
+          if ("caches" in window && "serviceWorker" in navigator) {
+            try {
+              caches
+                .open("trustpilot-cache")
+                .then((cache) => {
+                  // Use cache.put instead of cache.add for better error handling
+                  return fetch(script.src)
+                    .then((response) => {
+                      if (response.ok) {
+                        return cache.put(script.src, response);
+                      }
+                      throw new Error(`HTTP error! status: ${response.status}`);
+                    })
+                    .catch((err) => {
+                      console.log("Cache fetch error:", err);
+                      // Don't throw error, just log it
+                    });
+                })
+                .catch((err) => console.log("Cache open error:", err));
+            } catch (error) {
+              console.log("Cache initialization error:", error);
+              // Continue without caching
+            }
+          } else {
+            // Fallback: Store in sessionStorage for basic caching
+            try {
+              sessionStorage.setItem("trustpilot-script-loaded", "true");
+            } catch (e) {
+              console.log("SessionStorage not available:", e);
+            }
+          }
+          resolve();
+        };
+        script.onerror = () => {
+          console.error("Failed to load TrustPilot script");
+          reject(new Error("TrustPilot script failed to load"));
+        };
+
+        document.head.appendChild(script);
+      });
     };
 
     // Add global CSS override to document head
@@ -57,17 +173,17 @@ const TrustPilot = ({
       document.head.appendChild(style);
     };
 
-    // Force widget re-initialization on language change
+    // Optimized widget initialization
     const initializeWidget = async () => {
       try {
-        // Load script first (exactly like index.html)
-        loadTrustPilotScript();
+        // Load script first with promise handling
+        await loadTrustPilotScript();
 
-        // Add CSS override
+        // Add CSS override immediately
         addGlobalCSS();
 
-        // Wait for script to be ready
-        await new Promise((resolve) => setTimeout(resolve, 200));
+        // Reduced wait time for faster loading
+        await new Promise((resolve) => setTimeout(resolve, 100));
 
         // Force TrustPilot to re-load the widget if it exists
         if (window.Trustpilot && window.Trustpilot.loadFromElement) {
@@ -79,15 +195,15 @@ const TrustPilot = ({
               existingIframe.remove();
             }
 
-            // Force reload the widget
+            // Force reload the widget with faster timing
             try {
               await window.Trustpilot.loadFromElement(widget);
-              console.log("TrustPilot widget reloaded successfully");
+              console.log("TrustPilot widget loaded successfully");
 
-              // Apply styling after widget loads
-              setTimeout(applyCustomStyling, 200);
-              setTimeout(applyCustomStyling, 500);
-              setTimeout(applyCustomStyling, 1000);
+              // Apply styling with reduced delays for faster appearance
+              setTimeout(applyCustomStyling, 100);
+              setTimeout(applyCustomStyling, 300);
+              setTimeout(applyCustomStyling, 600);
             } catch (error) {
               console.log("Error reloading TrustPilot widget:", error);
               // Fallback to normal initialization
@@ -99,8 +215,24 @@ const TrustPilot = ({
       }
     };
 
-    // Initialize widget
-    initializeWidget();
+    // Initialize widget with requestIdleCallback for non-blocking loading
+    const initWidget = () => {
+      if (window.requestIdleCallback) {
+        window.requestIdleCallback(
+          () => {
+            initializeWidget();
+          },
+          { timeout: 2000 }
+        );
+      } else {
+        // Fallback for browsers that don't support requestIdleCallback
+        setTimeout(() => {
+          initializeWidget();
+        }, 100);
+      }
+    };
+
+    initWidget();
 
     // Apply custom styling after widget loads
     const applyCustomStyling = () => {
@@ -170,16 +302,17 @@ const TrustPilot = ({
       }
     };
 
-    // Use MutationObserver to detect iframe creation (like index.html auto-loading)
+    // Optimized MutationObserver for faster iframe detection
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === "childList") {
           const iframe = document.querySelector(".trustpilot-widget iframe");
           if (iframe) {
-            // Apply styling as soon as iframe is detected
-            setTimeout(applyCustomStyling, 100);
+            // Apply styling immediately when iframe is detected
+            applyCustomStyling();
+            setTimeout(applyCustomStyling, 50);
+            setTimeout(applyCustomStyling, 200);
             setTimeout(applyCustomStyling, 500);
-            setTimeout(applyCustomStyling, 1000);
           }
         }
       });
@@ -190,16 +323,16 @@ const TrustPilot = ({
       subtree: true,
     });
 
-    // Fallback styling attempts (reduced frequency to avoid interference)
-    const delays = [1000, 2000, 3000, 5000];
+    // Optimized fallback styling attempts with faster timing
+    const delays = [500, 1000, 1500, 2000];
     delays.forEach((delay) => {
       setTimeout(applyCustomStyling, delay);
     });
 
-    // Continuous attempts for first 10 seconds only (like index.html quick loading)
+    // Continuous attempts for first 5 seconds only (reduced from 10 seconds)
     let attemptCount = 0;
     const intervalTimer = setInterval(() => {
-      if (attemptCount < 10) {
+      if (attemptCount < 5) {
         applyCustomStyling();
         attemptCount++;
       } else {
@@ -241,14 +374,14 @@ const TrustPilot = ({
         data-theme="dark"
         data-text-color="white"
       >
-        <a
+        {/* <a
           href="https://www.trustpilot.com/review/oqtima.com"
           target="_blank"
           rel="noopener noreferrer"
           className="trust-pilot__link"
         >
           Trustpilot
-        </a>
+        </a> */}
       </div>
     </div>
   );
