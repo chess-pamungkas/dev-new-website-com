@@ -783,6 +783,28 @@
           height: 24px;
           background: transparent;
         }
+
+        // Combined icons styling (overlapping flags)
+        &--combined {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 2px;
+          position: relative;
+
+          .spread-card__icon-img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            position: relative;
+            z-index: 1;
+
+            &:nth-child(2) {
+              margin-left: -8px;
+              z-index: 2;
+            }
+          }
+        }
       }
 
       &__symbol {

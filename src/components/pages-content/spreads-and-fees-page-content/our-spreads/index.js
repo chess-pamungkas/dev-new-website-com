@@ -248,9 +248,7 @@ const OurSpreads = ({ className }) => {
                     {filteredData.map((item, index) => (
                       <div key={index} className="spread-card">
                         <div className="spread-card__header">
-                          <div className="spread-card__icon">
-                            {renderSymbolIcons(item.col1)}
-                          </div>
+                          {renderSymbolIcons(item.col1)}
                           <h3 className="spread-card__symbol">{item.col1}</h3>
                           <p className="spread-card__description">
                             {item.description || `${item.col1} Currency Pair`}

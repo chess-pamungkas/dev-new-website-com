@@ -18,7 +18,7 @@ const TrustPilot = ({
     preloadLink.as = "script";
     preloadLink.href =
       "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
-    preloadLink.crossOrigin = "anonymous";
+    // Remove crossOrigin to avoid CORS issues in development
     document.head.appendChild(preloadLink);
 
     return () => {
@@ -82,6 +82,12 @@ const TrustPilot = ({
         script.async = true;
         script.defer = true; // Add defer for better loading
 
+        // Add integrity and crossorigin attributes for better security
+        // but only in production to avoid CORS issues in development
+        if (process.env.NODE_ENV === "production") {
+          script.crossOrigin = "anonymous";
+        }
+
         // Add preload hint for faster loading (only if not already exists)
         if (
           !document.querySelector(
@@ -93,55 +99,48 @@ const TrustPilot = ({
           preloadLink.as = "script";
           preloadLink.href =
             "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
-          preloadLink.crossOrigin = "anonymous";
+          // Remove crossOrigin to avoid CORS issues in development
           document.head.appendChild(preloadLink);
         }
 
         script.onload = () => {
           console.log("TrustPilot script loaded successfully");
-          // Cache the script for future use with better error handling
-          if ("caches" in window && "serviceWorker" in navigator) {
-            try {
-              caches
-                .open("trustpilot-cache")
-                .then((cache) => {
-                  // Use cache.put instead of cache.add for better error handling
-                  return fetch(script.src)
-                    .then((response) => {
-                      if (response.ok) {
-                        return cache.put(script.src, response);
-                      }
-                      throw new Error(`HTTP error! status: ${response.status}`);
-                    })
-                    .catch((err) => {
-                      console.log("Cache fetch error:", err);
-                      // Don't throw error, just log it
-                    });
-                })
-                .catch((err) => console.log("Cache open error:", err));
-            } catch (error) {
-              console.log("Cache initialization error:", error);
-              // Continue without caching
-            }
-          } else {
-            // Fallback: Store in sessionStorage for basic caching
-            try {
-              sessionStorage.setItem("trustpilot-script-loaded", "true");
-            } catch (e) {
-              console.log("SessionStorage not available:", e);
-            }
+          // Simple sessionStorage caching to avoid CORS issues
+          try {
+            sessionStorage.setItem("trustpilot-script-loaded", "true");
+          } catch (e) {
+            console.log("SessionStorage not available:", e);
           }
           resolve();
         };
         script.onerror = (error) => {
           console.warn("Failed to load TrustPilot script:", error);
-          // In development, don't reject the promise to prevent widget from breaking
-          // Instead, resolve and let the widget handle the missing script gracefully
+          // In development, try alternative loading method
           if (process.env.NODE_ENV === "development") {
-            console.log(
-              "Development mode: Continuing without TrustPilot script"
-            );
-            resolve();
+            console.log("Development mode: Trying alternative loading method");
+
+            // Try loading without CORS restrictions
+            const fallbackScript = document.createElement("script");
+            fallbackScript.type = "text/javascript";
+            fallbackScript.src = script.src;
+            fallbackScript.async = true;
+            fallbackScript.defer = true;
+            // No crossOrigin attribute for fallback
+
+            fallbackScript.onload = () => {
+              console.log("TrustPilot script loaded via fallback method");
+              resolve();
+            };
+
+            fallbackScript.onerror = () => {
+              console.log(
+                "Development mode: All loading methods failed, continuing silently"
+              );
+              // Just resolve without showing any UI
+              resolve();
+            };
+
+            document.head.appendChild(fallbackScript);
           } else {
             reject(new Error("TrustPilot script failed to load"));
           }
@@ -194,30 +193,11 @@ const TrustPilot = ({
         // Reduced wait time for faster loading
         await new Promise((resolve) => setTimeout(resolve, 100));
 
-        // Check if TrustPilot is available, if not show fallback in development
+        // Check if TrustPilot is available, if not continue silently in development
         if (!window.Trustpilot && process.env.NODE_ENV === "development") {
           console.log(
-            "TrustPilot not available in development, showing fallback"
+            "TrustPilot not available in development, continuing silently"
           );
-          const widget = document.querySelector(".trustpilot-widget");
-          if (widget) {
-            widget.innerHTML = `
-              <div style="
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                color: #ffffff;
-                font-family: 'Sofia Pro', Arial, sans-serif;
-                font-size: 13.6px;
-                font-weight: 700;
-                line-height: 24px;
-                height: 24px;
-              ">
-                <span>★★★★★</span>
-                <span>TrustPilot (Dev Mode)</span>
-              </div>
-            `;
-          }
           return;
         }
 
@@ -248,27 +228,11 @@ const TrustPilot = ({
         }
       } catch (error) {
         console.log("Error initializing widget:", error);
-        // In development, show fallback UI if widget fails to initialize
+        // In development, continue silently without showing any UI
         if (process.env.NODE_ENV === "development") {
-          const widget = document.querySelector(".trustpilot-widget");
-          if (widget && !widget.innerHTML.includes("TrustPilot (Dev Mode)")) {
-            widget.innerHTML = `
-              <div style="
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                color: #ffffff;
-                font-family: 'Sofia Pro', Arial, sans-serif;
-                font-size: 13.6px;
-                font-weight: 700;
-                line-height: 24px;
-                height: 24px;
-              ">
-                <span>★★★★★</span>
-                <span>TrustPilot (Dev Mode)</span>
-              </div>
-            `;
-          }
+          console.log(
+            "Development mode: Widget initialization failed, continuing silently"
+          );
         }
       }
     };

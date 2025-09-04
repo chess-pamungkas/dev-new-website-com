@@ -25,14 +25,32 @@ const ContactUsForm = () => {
 
   const handleContactForm = async (values, setSubmitting) => {
     try {
+      console.log("Starting contact form submission...");
+      console.log("API_URL:", API_URL);
+      console.log("executeRecaptcha available:", !!executeRecaptcha);
+
+      if (!executeRecaptcha) {
+        throw new Error("reCAPTCHA not loaded");
+      }
+
       const token = await executeRecaptcha("contact_us");
-      await axios.post(`${API_URL}mail`, {
+      console.log("reCAPTCHA token generated:", !!token);
+
+      const response = await axios.post(`${API_URL}mail`, {
         ...values,
         entity: currentEntity,
         token,
       });
+
+      console.log("API response:", response.status);
       handleApiResponse(true);
     } catch (error) {
+      console.error("Contact form error:", error);
+      console.error("Error details:", {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status,
+      });
       sendLog({ message: error.message, type: error.name });
       handleApiResponse(false);
     } finally {
