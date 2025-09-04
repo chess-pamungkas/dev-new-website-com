@@ -33,7 +33,9 @@ import { GeneralTableColumns } from "../../../helpers/top-market-tables";
 import { setLangParam } from "../../../helpers/services/language-service";
 import ContainerWrapper from "../../../components/shared/container-wrapper";
 import Hero from "../../shared/hero";
-import SpreadsFeesImageContent from "./spread-fees-image-content";
+import CostSwapRate from "./cost-swap-rate";
+import SpreadsFeesCommission from "./spreads-fees-commission";
+import OurSpreads from "./our-spreads";
 import OurCommunityContent from "../../../components/shared/our-community";
 import {
   ButtonPrimaryStandard,
@@ -176,7 +178,13 @@ const SpreadsAndFeesPageContent = ({ className, isShowHero = true }) => {
       />
 
       <ContainerWrapper>
-        <SpreadsFeesImageContent />
+        <OurSpreads />
+      </ContainerWrapper>
+
+      <SpreadsFeesCommission />
+
+      <ContainerWrapper>
+        <CostSwapRate />
       </ContainerWrapper>
 
       {isMobile ? (

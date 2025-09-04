@@ -17,7 +17,7 @@ const TrustPilot = ({
     preloadLink.rel = "preload";
     preloadLink.as = "script";
     preloadLink.href =
-      "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+      "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
     preloadLink.crossOrigin = "anonymous";
     document.head.appendChild(preloadLink);
 
@@ -78,7 +78,7 @@ const TrustPilot = ({
         const script = document.createElement("script");
         script.type = "text/javascript";
         script.src =
-          "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+          "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
         script.async = true;
         script.defer = true; // Add defer for better loading
 
@@ -92,7 +92,7 @@ const TrustPilot = ({
           preloadLink.rel = "preload";
           preloadLink.as = "script";
           preloadLink.href =
-            "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+            "https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
           preloadLink.crossOrigin = "anonymous";
           document.head.appendChild(preloadLink);
         }
@@ -133,9 +133,18 @@ const TrustPilot = ({
           }
           resolve();
         };
-        script.onerror = () => {
-          console.error("Failed to load TrustPilot script");
-          reject(new Error("TrustPilot script failed to load"));
+        script.onerror = (error) => {
+          console.warn("Failed to load TrustPilot script:", error);
+          // In development, don't reject the promise to prevent widget from breaking
+          // Instead, resolve and let the widget handle the missing script gracefully
+          if (process.env.NODE_ENV === "development") {
+            console.log(
+              "Development mode: Continuing without TrustPilot script"
+            );
+            resolve();
+          } else {
+            reject(new Error("TrustPilot script failed to load"));
+          }
         };
 
         document.head.appendChild(script);
@@ -185,6 +194,33 @@ const TrustPilot = ({
         // Reduced wait time for faster loading
         await new Promise((resolve) => setTimeout(resolve, 100));
 
+        // Check if TrustPilot is available, if not show fallback in development
+        if (!window.Trustpilot && process.env.NODE_ENV === "development") {
+          console.log(
+            "TrustPilot not available in development, showing fallback"
+          );
+          const widget = document.querySelector(".trustpilot-widget");
+          if (widget) {
+            widget.innerHTML = `
+              <div style="
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                color: #ffffff;
+                font-family: 'Sofia Pro', Arial, sans-serif;
+                font-size: 13.6px;
+                font-weight: 700;
+                line-height: 24px;
+                height: 24px;
+              ">
+                <span>★★★★★</span>
+                <span>TrustPilot (Dev Mode)</span>
+              </div>
+            `;
+          }
+          return;
+        }
+
         // Force TrustPilot to re-load the widget if it exists
         if (window.Trustpilot && window.Trustpilot.loadFromElement) {
           const widget = document.querySelector(".trustpilot-widget");
@@ -212,6 +248,28 @@ const TrustPilot = ({
         }
       } catch (error) {
         console.log("Error initializing widget:", error);
+        // In development, show fallback UI if widget fails to initialize
+        if (process.env.NODE_ENV === "development") {
+          const widget = document.querySelector(".trustpilot-widget");
+          if (widget && !widget.innerHTML.includes("TrustPilot (Dev Mode)")) {
+            widget.innerHTML = `
+              <div style="
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                color: #ffffff;
+                font-family: 'Sofia Pro', Arial, sans-serif;
+                font-size: 13.6px;
+                font-weight: 700;
+                line-height: 24px;
+                height: 24px;
+              ">
+                <span>★★★★★</span>
+                <span>TrustPilot (Dev Mode)</span>
+              </div>
+            `;
+          }
+        }
       }
     };
 

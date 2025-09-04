@@ -2205,5 +2205,25 @@
   "get_complimentary_vps_card1_title": "Minimum $3000 deposit",
   "get_complimentary_vps_card1_description": "Make a minimum net deposit of $3,000 to receive a free VPS. This applies to both new clients and existing clients without any trading history—no trading volume required.",
   "get_complimentary_vps_card2_title": "Minimum trading volume of 5 Lots Forex",
-  "get_complimentary_vps_card2_description": "Trade a minimum of 5 standard lots in Forex (closed positions only) to qualify for a complimentary VPS. No minimum deposit needed if the trading volume is met."
+  "get_complimentary_vps_card2_description": "Trade a minimum of 5 standard lots in Forex (closed positions only) to qualify for a complimentary VPS. No minimum deposit needed if the trading volume is met.",
+
+  "spreads-fees_cost_calculator_badge_text": "Cost Calculator",
+  "spreads-fees_swap_rate_title": "Swap Rate",
+  "spreads-fees_swap_rate_subtitle": "Swap (or rollover fee) is a small financing charge applied to positions held overnight. For shares, it's charged if held past market close for that stock.",
+  "spreads-fees_how_is_it_calculated_title": "How is it Calculated?",
+  "spreads-fees_swap_rate_calculation_description": "The swap rate (shown as % per annum on your platform) is used in this formula:",
+  "spreads-fees_swap_rate_formula": "Market Price (*EOD) X Trade size in lots X Swap rate / 100 / 360 = Swap charge per night in USD",
+
+  "spreads-fees_commission_title": "Commission",
+  "spreads-fees_commission_subtitle": "We charge standard commission only on our OQTIMA ECN+ account",
+  "spreads-fees_commission_table_header1": "TRADING ACCOUNT CURRENCY",
+  "spreads-fees_commission_table_header2": "PER 1 IN FX (100,000 BASE CURRENCY)",
+
+  "our_spreads_badge_text": "Tighter spreads, better trade",
+  "our_spreads_title": "Our Spreads",
+  "our_spreads_tab_major": "Major",
+  "our_spreads_tab_minor": "Minor",
+  "our_spreads_search_placeholder": "Search by Symbol",
+  "our_spreads_cta_primary": "Start Trading",
+  "our_spreads_cta_secondary": "Try a Demo Account"
 }

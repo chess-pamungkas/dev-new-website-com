@@ -539,6 +539,7 @@ Hero.propTypes = {
     "contact-us",
     "legal",
     "faq-hero",
+    "spreads-fees",
   ]),
   customBadgeText: PropTypes.string,
   customTitle: PropTypes.string,
