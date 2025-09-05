@@ -843,8 +843,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
     const link = document.createElement("link");
     link.rel = "preload";
     link.as = "image";
-    link.href =
-      "/static/images/bg/popup-registration/bg-popup-registration.svg";
+    link.href = "/images/bg/popup-registration/bg-popup-registration.svg";
     document.head.appendChild(link);
 
     // Clean up

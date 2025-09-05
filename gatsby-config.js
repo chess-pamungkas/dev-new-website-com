@@ -15,9 +15,15 @@ exports.onRenderBody = ({ setHtmlAttributes }) => {
 module.exports = {
   siteMetadata: {
     title: `website`,
-
     siteUrl: `https://www.yourdomain.tld`,
     indexedLocaleData,
+  },
+  // Optimize query performance
+  flags: {
+    FAST_DEV: true,
+    PRESERVE_WEBPACK_CACHE: true,
+    PRESERVE_FILE_DOWNLOAD_CACHE: true,
+    PARALLEL_SOURCING: true,
   },
   plugins: [
     "gatsby-plugin-sass",

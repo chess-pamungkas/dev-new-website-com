@@ -21,10 +21,18 @@ import { useLocation } from "@reach/router";
 const Layout = ({ children }) => {
   try {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
     const location = useLocation();
     const isContactUsPage =
       location?.pathname === "/contact-us" ||
-      location?.pathname === "/contact-us/";
+      location?.pathname === "/contact-us/" ||
+      location?.pathname?.includes("/contact-us");
+
+    // Check if popup registration is open
+    const isPopupRegistrationOpen =
+      isPopupOpen ||
+      (typeof window !== "undefined" &&
+        document.querySelector(".popup-registration") !== null);
 
     useEffect(() => {
       setIsLoaded(true);
@@ -33,6 +41,32 @@ const Layout = ({ children }) => {
       if (isBrowser()) {
         pushUTMParamsToDataLayer();
       }
+    }, []);
+
+    // Monitor for popup registration changes
+    useEffect(() => {
+      if (!isBrowser()) return;
+
+      const checkPopupStatus = () => {
+        const popupElement = document.querySelector(".popup-registration");
+        setIsPopupOpen(!!popupElement);
+      };
+
+      // Check initially
+      checkPopupStatus();
+
+      // Set up MutationObserver to watch for DOM changes
+      const observer = new MutationObserver(checkPopupStatus);
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ["class", "style"],
+      });
+
+      return () => {
+        observer.disconnect();
+      };
     }, []);
 
     return (
@@ -44,7 +78,9 @@ const Layout = ({ children }) => {
                 <SearchProvider>
                   <NotificationStripeProvider>
                     <TradingProvider>
-                      <ReCaptchaProvider showBadge={isContactUsPage}>
+                      <ReCaptchaProvider
+                        showBadge={isContactUsPage || isPopupRegistrationOpen}
+                      >
                         {isLoaded && (
                           <>
                             <Header />

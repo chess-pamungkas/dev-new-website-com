@@ -1,37 +1,18 @@
 import React, { useEffect } from "react";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
-import { getRecaptchaConfig } from "../../../config/recaptcha";
 
 const ReCaptchaProvider = ({ children, showBadge = false }) => {
-  const { siteKey: recaptchaKey, isAvailable } = getRecaptchaConfig();
+  const recaptchaSiteKey =
+    process.env.GOOGLE_CAPTCHA_SITE_KEY ||
+    process.env.GATSBY_GOOGLE_CAPTCHA_SITE_KEY;
 
   useEffect(() => {
-    if (!isAvailable) {
-      console.error("No reCAPTCHA key found");
-      return;
-    }
-
-    // Check if script already exists
-    if (document.getElementById("google-recaptcha-v3")) {
-      console.log("reCAPTCHA script already loaded");
-      return;
-    }
-
     // Load reCAPTCHA script manually
     const script = document.createElement("script");
-    script.src = `https://www.google.com/recaptcha/api.js?render=${recaptchaKey}`;
+    script.src = `https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`;
     script.async = true;
     script.defer = true;
     script.id = "google-recaptcha-v3";
-
-    // Add error handling
-    script.onerror = (error) => {
-      console.error("Failed to load reCAPTCHA script:", error);
-    };
-
-    script.onload = () => {
-      console.log("reCAPTCHA script loaded successfully");
-    };
 
     document.body.appendChild(script);
 
@@ -74,16 +55,12 @@ const ReCaptchaProvider = ({ children, showBadge = false }) => {
       }
       document.head.removeChild(style);
     };
-  }, [showBadge]);
-
-  // Debug environment variable
-  console.log("Using reCAPTCHA key:", recaptchaKey);
-  console.log("reCAPTCHA available:", isAvailable);
+  }, [showBadge, recaptchaSiteKey]);
 
   return (
     <>
       <GoogleReCaptchaProvider
-        reCaptchaKey={recaptchaKey}
+        reCaptchaKey={recaptchaSiteKey}
         scriptProps={{
           async: true,
           defer: true,
@@ -102,10 +79,7 @@ const ReCaptchaProvider = ({ children, showBadge = false }) => {
           },
         }}
         onLoad={() => {
-          console.log("ReCaptcha Provider loaded successfully");
-        }}
-        onError={(error) => {
-          console.error("ReCaptcha Provider error:", error);
+          console.log("ReCaptcha Provider loaded");
         }}
       >
         {children}

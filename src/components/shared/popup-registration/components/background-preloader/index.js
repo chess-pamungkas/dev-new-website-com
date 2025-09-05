@@ -22,7 +22,7 @@ const BackgroundPreloader = ({ onBackgroundLoaded, children }) => {
     };
 
     // Set the image source to preload
-    img.src = "/static/images/bg/popup-registration/bg-popup-registration.svg";
+    img.src = "/images/bg/popup-registration/bg-popup-registration.svg";
 
     // Fallback timeout in case image takes too long
     const timeout = setTimeout(() => {

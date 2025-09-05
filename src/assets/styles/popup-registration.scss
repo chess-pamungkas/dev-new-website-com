@@ -2015,7 +2015,7 @@
 
   .phone-country-code {
     flex-shrink: 0;
-    width: 80px; // Compact width for country code only
+    width: 60px; // Compact width for country code only
     height: 42px; // Ensure consistent height
     display: flex;
     align-items: center;
@@ -2329,7 +2329,7 @@
 
     .phone-country-code-group {
       flex-shrink: 0; // Prevent shrinking
-      width: 80px; // Keep same width as desktop for country code
+      width: 60px; // Keep same width as desktop for country code
 
       .phone-country-code {
         width: 100%;

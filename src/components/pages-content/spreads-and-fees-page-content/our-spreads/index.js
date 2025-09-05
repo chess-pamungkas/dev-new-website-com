@@ -159,15 +159,22 @@ const OurSpreads = ({ className }) => {
 
         {/* Custom Tabs with Platform Selection Styling */}
         <div className="our-spreads__tabs-container">
-          <div className="our-spreads__platform-selection">
+          <div
+            className="our-spreads__platform-selection"
+            onClick={(e) => {
+              if (
+                isMobile &&
+                !e.target.closest(".our-spreads__platform-dropdown")
+              ) {
+                setIsDropdownOpen(!isDropdownOpen);
+              }
+            }}
+          >
             {/* Tabs */}
             <div className="our-spreads__platform-tabs">
               {isMobile ? (
                 // Mobile dropdown
-                <button
-                  className="our-spreads__platform-tab our-spreads__platform-tab--active"
-                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                >
+                <button className="our-spreads__platform-tab our-spreads__platform-tab--active">
                   {spreadsTabs[activeTabIndex].title}
                   <svg
                     width="16"
@@ -204,13 +211,23 @@ const OurSpreads = ({ className }) => {
               )}
 
               {/* Mobile Dropdown */}
-              {isMobile && isDropdownOpen && (
-                <div className="our-spreads__platform-dropdown">
+              {isMobile && (
+                <div
+                  className={cn("our-spreads__platform-dropdown", {
+                    show: isDropdownOpen,
+                  })}
+                  style={{ display: isDropdownOpen ? "block" : "none" }}
+                >
                   {spreadsTabs.map((tab, index) => (
                     <button
                       key={tab.id}
                       className="our-spreads__platform-option"
-                      onClick={() => handleTabClick(index)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleTabClick(index);
+                        setIsDropdownOpen(false);
+                      }}
                     >
                       {tab.title}
                     </button>
