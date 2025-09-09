@@ -10,12 +10,50 @@ const Menu = ({ className }) => {
   const { t } = useTranslationWithVariables();
   const menu = getMenuItems();
 
+  // Process menu items for footer-specific changes
+  const processMenuForFooter = (menuItems) => {
+    return menuItems.map((item) => {
+      if (item.title === "header-nav-tab-top-markets") {
+        // For footer, change "Products" to "Top Markets"
+        const processedItem = { ...item };
+        if (processedItem.subItems) {
+          // Move "All Market Overviews" to the bottom
+          const allMarketsItem = processedItem.subItems.find(
+            (subItem) =>
+              subItem.title === "header-nav-tab-top-markets-allmarkets-title"
+          );
+          const otherItems = processedItem.subItems.filter(
+            (subItem) =>
+              subItem.title !== "header-nav-tab-top-markets-allmarkets-title"
+          );
+
+          processedItem.subItems = [
+            ...otherItems,
+            ...(allMarketsItem ? [allMarketsItem] : []),
+          ];
+        }
+        return processedItem;
+      }
+      return item;
+    });
+  };
+
+  const processedMenu = processMenuForFooter(menu);
+
   return (
     <div className={cn("menu", className)}>
-      {menu.length > 0 &&
-        menu.map((item) => {
-          const translatedTitle = t(item.title);
-          if (translatedTitle === "Partners") return null;
+      {processedMenu.length > 0 &&
+        processedMenu.map((item) => {
+          let translatedTitle = t(item.title);
+
+          // Change "Products" to "Top Markets" only in footer
+          if (item.title === "header-nav-tab-top-markets") {
+            translatedTitle = t("footer-nav-tab-top-markets");
+          }
+
+          // Skip Partners section in footer
+          if (item.title === "header-nav-tab-partners-fsa") return null;
+
           return (
             !item.mobileOnly && (
               <div

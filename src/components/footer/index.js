@@ -41,35 +41,35 @@ const Footer = ({ className }) => {
             <p className="footer__text">{t(getFooterText())}</p>
             <div className="footer__social-icons">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/oqtimatrading"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img src={LinkedInIcon} alt="LinkedIn" />
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/OQtima.Global/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img src={FacebookIcon} alt="Facebook" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/oqtima.global/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img src={InstagramIcon} alt="Instagram" />
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/@OQtima"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img src={YoutubeIcon} alt="YouTube" />
               </a>
             </div>
-            <div className="footer__app-badges">
+            {/* <div className="footer__app-badges">
               <a
                 href="https://apps.apple.com"
                 target="_blank"
@@ -84,7 +84,7 @@ const Footer = ({ className }) => {
               >
                 <img src={GooglePlayIcon} alt="Google Play" />
               </a>
-            </div>
+            </div> */}
           </div>
           <div className="footer__menu-wrapper">
             <Menu />

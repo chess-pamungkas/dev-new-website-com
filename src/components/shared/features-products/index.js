@@ -78,7 +78,7 @@ const FeaturesProducts = ({
         </h2>
 
         <p className="features-products__subtitle">
-          {t("features-products_subtitle")}
+          {t(`features-products_${tradingType}_subtitle`)}
         </p>
       </div>
 

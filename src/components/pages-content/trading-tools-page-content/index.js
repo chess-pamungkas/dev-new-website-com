@@ -6,18 +6,22 @@ import TopMarket from "../../top-market";
 import cn from "classnames";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import promotion from "../../../assets/images/trading-tools/promotion.svg";
-import AlphaGeneration from "../../trading-tools/components/alpha-generation";
 import icon from "../../../assets/images/icon--white.svg";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import TopMarketPromotion from "../../top-market-promotion";
-import FeaturedIdeas from "../../trading-tools/components/featured-ideas";
-import MarketBuzz from "../../trading-tools/components/market-buzz";
-import TradingCalendar from "../../trading-tools/components/trading-calendar";
+import TabTradingTools from "./tab-trading-tools";
+import FeaturedIdeas from "./featured-ideas";
+import TradingCalendar from "./trading-calendar";
+import MarketBuzz from "./market-buzz";
+import FeaturesProducts from "../../shared/features-products";
+import { getFeaturesByTradingType } from "../../../helpers/features-products.config";
 import { setLangParam } from "../../../helpers/services/language-service";
 import TradingToolsImageContent from "./trading-tools-image-content";
 import Hero from "../../shared/hero";
+import GuideContent from "../../shared/guide-content";
 import ContainerWrapper from "../../shared/container-wrapper";
 import OurCommunityContent from "../../shared/our-community";
+import AlphaGeneration from "./alpha-generation";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 
 const TradingToolsPageContent = ({ className, isShowHero = true }) => {
@@ -48,8 +52,30 @@ const TradingToolsPageContent = ({ className, isShowHero = true }) => {
         mobileBackground="url(../../assets/images/bg/trading-tools/trading-tools-mobile.svg)"
       />
 
+      <TabTradingTools />
+
       <ContainerWrapper>
-        <TradingToolsImageContent />
+        <TradingCalendar />
+        <FeaturesProducts
+          tradingType="trading-tools"
+          features={getFeaturesByTradingType("trading-tools")}
+        />
+      </ContainerWrapper>
+
+      <FeaturedIdeas />
+
+      <ContainerWrapper>
+        <MarketBuzz />
+      </ContainerWrapper>
+
+      <AlphaGeneration />
+
+      <ContainerWrapper>
+        <GuideContent
+          titleKey="forex-guide-title"
+          subtitleKey="forex-guide-subtitle"
+          className="guide-content--forex"
+        />
       </ContainerWrapper>
 
       {isMobile ? (

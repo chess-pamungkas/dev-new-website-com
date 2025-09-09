@@ -70,6 +70,14 @@ import featuresVpsSeamlessEaTrading from "../assets/images/icons/vps/features-se
 import featuresVpsGlobalTradingAccess from "../assets/images/icons/vps/features-global-trading-access.svg";
 import featuresVpsOptimizedForAllDevices from "../assets/images/icons/vps/features-optimized-for-all-devices.svg";
 
+// Trading Tools Features Icons
+import featuresTradingToolsFxChartsEvents from "../assets/images/icons/trading-tools/features-fx-charts-events.svg";
+import featuresTradingToolsFastMarketReactions from "../assets/images/icons/trading-tools/features-fast-market-reactions.svg";
+import featuresTradingToolsHistoricalDataTrends from "../assets/images/icons/trading-tools/features-historical-data-trends.svg";
+import featuresTradingToolsGlobalIndicesInsights from "../assets/images/icons/trading-tools/features-global-indices-insights.svg";
+import featuresTradingToolsFilterCompanyEasily from "../assets/images/icons/trading-tools/features-filter-company-easily.svg";
+import featuresTradingToolsRealTimeMarketData from "../assets/images/icons/trading-tools/features-real-time-market-data.svg";
+
 // Features configuration for different trading types
 // This will be populated with actual icons and content when provided
 
@@ -370,6 +378,39 @@ export const VPS_FEATURES = [
   },
 ];
 
+export const TRADING_TOOLS_FEATURES = [
+  {
+    icon: featuresTradingToolsFxChartsEvents,
+    title: "features-products_trading-tools_feature1_title",
+    description: "features-products_trading-tools_feature1_description",
+  },
+  {
+    icon: featuresTradingToolsFastMarketReactions,
+    title: "features-products_trading-tools_feature2_title",
+    description: "features-products_trading-tools_feature2_description",
+  },
+  {
+    icon: featuresTradingToolsHistoricalDataTrends,
+    title: "features-products_trading-tools_feature3_title",
+    description: "features-products_trading-tools_feature3_description",
+  },
+  {
+    icon: featuresTradingToolsGlobalIndicesInsights,
+    title: "features-products_trading-tools_feature4_title",
+    description: "features-products_trading-tools_feature4_description",
+  },
+  {
+    icon: featuresTradingToolsFilterCompanyEasily,
+    title: "features-products_trading-tools_feature5_title",
+    description: "features-products_trading-tools_feature5_description",
+  },
+  {
+    icon: featuresTradingToolsRealTimeMarketData,
+    title: "features-products_trading-tools_feature6_title",
+    description: "features-products_trading-tools_feature6_description",
+  },
+];
+
 // Helper function to get features based on trading type
 export const getFeaturesByTradingType = (tradingType) => {
   switch (tradingType.toLowerCase()) {
@@ -389,6 +430,8 @@ export const getFeaturesByTradingType = (tradingType) => {
       return SWAP_FREE_FEATURES;
     case "vps":
       return VPS_FEATURES;
+    case "trading-tools":
+      return TRADING_TOOLS_FEATURES;
     // Add more cases as needed
     default:
       return FOREX_FEATURES; // Default fallback

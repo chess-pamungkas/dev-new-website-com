@@ -379,17 +379,16 @@ const MarketSentimentContent = () => {
               className="market-sentiment__badge-icon"
             />
             <span className="market-sentiment__badge-text">
-              Market Sentiment
+              {t("market-sentiment_badge-text")}
             </span>
           </div>
 
           <h2 className="market-sentiment__title">
-            Real-Time Market Intelligence
+            {t("market-sentiment_title")}
           </h2>
 
           <p className="market-sentiment__description">
-            Get pro charts with TradingView, smart pattern scans via Trading
-            Central, and real-time market insights with Live Analysis.
+            {t("market-sentiment_description")}
           </p>
         </div>
 

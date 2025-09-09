@@ -68,16 +68,8 @@ const SwapFreeContent = ({ className, isShowHero = true }) => {
         </div>
       </ContainerWrapper>
 
-      {isMobile ? (
-        <OurCommunityContent
-          customBadgeMessage={t("swap-free_our_community_badge_message")}
-          customTitle={t("swap-free_our_community_title")}
-          customSubtitle={t("swap-free_our_community_subtitle")}
-          customPrimaryButton={t("swap-free_our_community_primary_button")}
-          customSecondaryButton={t("swap-free_our_community_secondary_button")}
-        />
-      ) : (
-        <ContainerWrapper>
+      <div className="swap-free-community">
+        {isMobile ? (
           <OurCommunityContent
             customBadgeMessage={t("swap-free_our_community_badge_message")}
             customTitle={t("swap-free_our_community_title")}
@@ -87,8 +79,20 @@ const SwapFreeContent = ({ className, isShowHero = true }) => {
               "swap-free_our_community_secondary_button"
             )}
           />
-        </ContainerWrapper>
-      )}
+        ) : (
+          <ContainerWrapper>
+            <OurCommunityContent
+              customBadgeMessage={t("swap-free_our_community_badge_message")}
+              customTitle={t("swap-free_our_community_title")}
+              customSubtitle={t("swap-free_our_community_subtitle")}
+              customPrimaryButton={t("swap-free_our_community_primary_button")}
+              customSecondaryButton={t(
+                "swap-free_our_community_secondary_button"
+              )}
+            />
+          </ContainerWrapper>
+        )}
+      </div>
 
       {/* Render the popup */}
       {isPopupOpen && (
