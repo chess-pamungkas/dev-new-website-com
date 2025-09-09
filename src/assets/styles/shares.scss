@@ -163,7 +163,7 @@
       top: 0;
       border-radius: 20px;
       background: url("../images/bg/hero/shares/shares-mobile.svg") no-repeat
-        center center;
+        right center;
       background-size: cover;
       overflow: hidden;
       border-radius: 20px;
@@ -172,35 +172,35 @@
 
     @include tablet {
       background: url("../images/bg/hero/shares/shares-desktop.svg") no-repeat
-        center center;
+        right center;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-lg {
       background: url("../images/bg/hero/shares/shares-desktop.svg") no-repeat
-        center center;
+        right center;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-xl {
       background: url("../images/bg/hero/shares/shares-desktop.svg") no-repeat
-        center center;
+        right center;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-2k {
       background: url("../images/bg/hero/shares/shares-desktop.svg") no-repeat
-        center center;
+        right center;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-5k {
       background: url("../images/bg/hero/shares/shares-desktop.svg") no-repeat
-        center center;
+        right center;
       background-size: cover;
       background-color: transparent;
     }

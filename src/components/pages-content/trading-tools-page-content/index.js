@@ -56,10 +56,12 @@ const TradingToolsPageContent = ({ className, isShowHero = true }) => {
 
       <ContainerWrapper>
         <TradingCalendar />
-        <FeaturesProducts
-          tradingType="trading-tools"
-          features={getFeaturesByTradingType("trading-tools")}
-        />
+        <div className="trading-calendar-page">
+          <FeaturesProducts
+            tradingType="trading-tools"
+            features={getFeaturesByTradingType("trading-tools")}
+          />
+        </div>
       </ContainerWrapper>
 
       <FeaturedIdeas />

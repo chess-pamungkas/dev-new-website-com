@@ -1963,7 +1963,6 @@
   "popup-registration-error-email-taken": "This email is already registered. Please log in or use a different email address.",
 
   "features-products_badge-text": "Features",
-  "features-products_subtitle": "Experience the difference of true cost efficiency",
   "features-products_forex_title": "Why Choose OQtima for Forex Trading",
   "features-products_metals_title": "Why Choose OQtima for Metals Trading",
   "features-products_shares_title": "Why Choose OQtima for Shares Trading",
@@ -1973,6 +1972,16 @@
   "features-products_etf_title": "Why Choose OQtima for ETF Trading",
   "features-products_swap-free_title": "Why Choose OQtima",
   "features-products_vps_title": "Advantages of using a VPS",
+  "features-products_trading-tools_title": "Why Choose OQtima's Trading Calendar?",
+  "features-products_forex_subtitle": "Experience the difference of true cost efficiency",
+  "features-products_metals_subtitle": "Experience the difference of true cost efficiency",
+  "features-products_shares_subtitle": "Experience the difference of true cost efficiency",
+  "features-products_crypto_subtitle": "Experience the difference of true cost efficiency",
+  "features-products_indices_subtitle": "Experience the difference of true cost efficiency",
+  "features-products_energies_subtitle": "Experience the difference of true cost efficiency",
+  "features-products_etf_subtitle": "Experience the difference of true cost efficiency",
+  "features-products_vps_subtitle": "Experience the difference of true cost efficiency",
+  "features-products_trading-tools_subtitle": "Key Features of OQtima's Trading Calendar",
 
   "features-products_crypto_feature1_title": "Opportunities",
   "features-products_crypto_feature1_description": "Cryptocurrencies offer exciting new opportunities and excitement for traders globally.",
@@ -2091,8 +2100,6 @@
   "features-products_vps_feature6_title": "Optimized for All Devices",
   "features-products_vps_feature6_description": "Our VPS is compatible with your favorite platforms—desktop, mobile, or tablet. Trade on your terms, across multiple devices, without performance loss.",
 
-  "features-products_trading-tools_title": "Why Choose OQtima's Trading Calendar?",
-  "features-products_trading-tools_subtitle": "Key Features of OQtima's Trading Calendar",
   "features-products_trading-tools_feature1_title": "FX Charts & Events",
   "features-products_trading-tools_feature1_description": "Access real-time FX charts and keep track of market events to make informed trading decisions.",
   "features-products_trading-tools_feature2_title": "Fast Market Reactions",

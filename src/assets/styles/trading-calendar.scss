@@ -207,3 +207,98 @@
     }
   }
 }
+
+// Custom styling for features-products in vps page mobile view
+@include mobile {
+  .trading-calendar-page .features-products {
+    // Ensure the section is visible
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 200px !important;
+
+    &__header {
+      display: block !important;
+      visibility: visible !important;
+      text-align: center !important;
+      margin-bottom: 20px !important;
+
+      // Override the default mobile text-align: left from features-products.scss
+      * {
+        text-align: center !important;
+      }
+    }
+
+    &__badge {
+      margin: 0 auto !important;
+      margin-bottom: 10px !important;
+    }
+
+    &__grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 20px;
+      padding: 0;
+      visibility: visible !important;
+    }
+
+    &__slider {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 20px;
+      overflow: visible !important;
+      scroll-snap-type: none !important;
+      padding: 0;
+    }
+
+    &__grid-container {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 20px;
+      grid-template-columns: none !important;
+      visibility: visible !important;
+    }
+
+    &__card {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      width: 100% !important;
+      min-width: auto !important;
+      min-height: auto !important;
+      scroll-snap-align: none !important;
+      flex-shrink: 1 !important;
+      padding: 24px 28px;
+      margin-bottom: 0;
+      background: #ffffff !important; // Temporary background for debugging
+
+      &::before {
+        background-image: url("../../assets/images/bg/features-products/features-products-mobile.svg") !important;
+      }
+    }
+
+    &__card-icon {
+      display: flex !important;
+      visibility: visible !important;
+      width: 72px;
+      height: 72px;
+      margin-bottom: 16px;
+    }
+
+    &__card-title {
+      display: block !important;
+      visibility: visible !important;
+      font-size: 24px !important;
+      margin: 0 0 12px 0 !important;
+      line-height: 1.2;
+    }
+
+    &__card-description {
+      display: block !important;
+      visibility: visible !important;
+      font-size: 16px !important;
+      max-width: none !important;
+      line-height: 1.5;
+    }
+  }
+}

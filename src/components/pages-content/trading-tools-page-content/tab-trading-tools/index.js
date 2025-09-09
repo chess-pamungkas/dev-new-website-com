@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import featuresIcon from "../../../../assets/images/icons/features.svg";
+import featuresWhiteIcon from "../../../../assets/images/icons/features-white.svg";
 
 const TabTradingTools = ({ className }) => {
   const { isMobile } = useWindowSize();
   const { t } = useTranslationWithVariables();
   const [activeTab, setActiveTab] = useState("trading-calendar");
+  const [hoveredTab, setHoveredTab] = useState(null);
 
   const tabs = [
     {
@@ -49,6 +51,14 @@ const TabTradingTools = ({ className }) => {
     }, 100);
   };
 
+  const handleMouseEnter = (tabId) => {
+    setHoveredTab(tabId);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredTab(null);
+  };
+
   return (
     <div className={`tab-trading-tools ${className || ""}`}>
       <div className="tab-trading-tools__container">
@@ -60,12 +70,21 @@ const TabTradingTools = ({ className }) => {
                 activeTab === tab.id ? "tab-trading-tools__tab--active" : ""
               }`}
               onClick={() => handleTabClick(tab.id)}
+              onMouseEnter={() => handleMouseEnter(tab.id)}
+              onMouseLeave={handleMouseLeave}
             >
-              <img
-                src={tab.icon}
-                alt={tab.label}
-                className="tab-trading-tools__tab-icon"
-              />
+              <div className="tab-trading-tools__tab-icon-container">
+                <img
+                  src={featuresIcon}
+                  alt={tab.label}
+                  className="tab-trading-tools__tab-icon"
+                />
+                <img
+                  src={featuresWhiteIcon}
+                  alt={tab.label}
+                  className="tab-trading-tools__tab-icon tab-trading-tools__tab-icon--white"
+                />
+              </div>
               <span className="tab-trading-tools__tab-text">{tab.label}</span>
             </button>
           ))}

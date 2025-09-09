@@ -41,6 +41,7 @@ const CompanyPageContent = ({ className, isShowHero = true }) => {
         showWarning={false}
         showHandImage={false}
         showHeroImage={false}
+        showTrustPilot={true}
         desktopBackground="url(../../assets/images/bg/hero/company/about-desktop.svg)"
         mobileBackground="url(../../assets/images/bg/hero/company/about-mobile.svg)"
       />
