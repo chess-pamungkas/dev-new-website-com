@@ -6,6 +6,15 @@ import SpreadsIcon from "../../../assets/images/icons/main-page/features-executi
 const SpreadsHeader = ({ tradingType }) => {
   const { t } = useTranslationWithVariables();
 
+  // Add " CFD" to the last word if tradingType is "crypto"
+  const getTradingTypeText = () => {
+    const baseText = t(`${tradingType}-text`);
+    if (tradingType === "crypto") {
+      return baseText + " CFD";
+    }
+    return baseText;
+  };
+
   return (
     <div className="spreads-header">
       <div className="spreads-badge">
@@ -13,7 +22,7 @@ const SpreadsHeader = ({ tradingType }) => {
         <span className="spreads-badge__text">{t("spreads-badge-text")}</span>
       </div>
       <h2 className="spreads-title">
-        {t("spreads-title", { tradingType: t(`${tradingType}-text`) })}
+        {t("spreads-title", { tradingType: getTradingTypeText() })}
       </h2>
       <p className="spreads-subtitle">{t("spreads-subtitle")}</p>
     </div>
