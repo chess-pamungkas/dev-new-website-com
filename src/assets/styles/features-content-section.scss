@@ -223,7 +223,8 @@
 
       @include mobile {
         width: 100%;
-        height: 561px;
+        height: auto;
+        min-height: auto;
       }
 
       @include tablet {
@@ -332,7 +333,7 @@
 
     @include mobile {
       width: 100%;
-      padding: 24px;
+      padding: 24px 24px 0 24px;
       gap: 20px;
       height: auto;
       flex: 1;
@@ -350,7 +351,7 @@
     @include mobile {
       width: 100%;
       height: auto;
-      flex: 1;
+      max-height: 218px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -407,6 +408,7 @@
 
     @include mobile {
       max-width: 100% !important;
+      flex: none; // Remove flex: 1 on mobile to reduce height
     }
   }
 
@@ -421,7 +423,7 @@
     justify-content: center;
 
     @include mobile {
-      margin-top: 16px;
+      margin-top: 0;
     }
   }
 
