@@ -900,4 +900,20 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
   &__button-icon {
     flex-shrink: 0;
   }
+
+  &__trust-pilot {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 16px 0;
+    max-width: 300px;
+
+    @include mobile {
+      padding-top: 50px;
+      margin: 0 auto;
+      max-width: 280px;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
