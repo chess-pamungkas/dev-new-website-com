@@ -234,7 +234,7 @@
 
         .table-cell {
           padding: 16px;
-          text-align: center;
+          text-align: left;
           font-weight: map-get($font-weight, "regular");
           font-size: 16px;
           line-height: 22px;
@@ -256,25 +256,25 @@
 
           &:nth-child(2) {
             width: 18.75%;
-            text-align: center;
+            text-align: left;
             font-weight: map-get($font-weight, "bold");
           }
 
           &:nth-child(3) {
             width: 18.75%;
-            text-align: center;
+            text-align: left;
             font-weight: map-get($font-weight, "regular");
           }
 
           &:nth-child(4) {
             width: 18.75%;
-            text-align: center;
+            text-align: left;
             font-weight: map-get($font-weight, "bold");
           }
 
           &:nth-child(5) {
             width: 18.75%;
-            text-align: center;
+            text-align: left;
             font-weight: map-get($font-weight, "regular");
           }
         }
@@ -336,10 +336,26 @@
         box-sizing: border-box;
 
         &:first-child {
-          width: 13%;
+          width: 25%;
           padding-left: 16px;
           border-top-left-radius: 12px;
           border-bottom-left-radius: 12px;
+        }
+
+        &:nth-child(2) {
+          width: 18.75%;
+        }
+
+        &:nth-child(3) {
+          width: 18.75%;
+        }
+
+        &:nth-child(4) {
+          width: 18.75%;
+        }
+
+        &:nth-child(5) {
+          width: 18.75%;
         }
 
         &:last-child {
