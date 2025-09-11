@@ -12,7 +12,7 @@
   padding: 80px 0;
 
   @include mobile {
-    min-height: 852px; // Use viewport height instead of fixed height
+    min-height: 100vh; // Use full viewport height
     padding: 40px 0;
     align-items: flex-start; // Start from top on mobile
     padding-top: 60px; // Add top padding for mobile
@@ -41,9 +41,10 @@
       @include mobile {
         object-fit: cover; // Use cover for better mobile coverage
         object-position: center;
-        width: 100%;
+        width: 100vw; // Use viewport width
         height: 100vh; // Use viewport height
         min-height: 100vh; // Ensure full viewport coverage
+        min-width: 100vw; // Ensure full viewport width coverage
       }
     }
 
@@ -51,6 +52,9 @@
       // Ensure background container takes full viewport height
       height: 100vh;
       min-height: 100vh;
+      width: 100vw; // Ensure full viewport width
+      left: 0;
+      right: 0;
     }
   }
 
