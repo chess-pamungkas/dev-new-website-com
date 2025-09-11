@@ -799,24 +799,13 @@
 
       // Combined icons styling (overlapping flags)
       &--combined {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 2px;
-        position: relative;
-        z-index: 1;
+        width: 48px; // Wider to accommodate two icons
+        gap: 2px; // Small gap between icons
 
-        .spread-card__icon-img {
-          width: 20px;
-          height: 20px;
-          object-fit: contain;
-          position: relative;
-          z-index: 1;
-
-          &:nth-child(2) {
-            margin-left: -8px;
-            z-index: 2;
-          }
+        img,
+        svg {
+          width: 22px; // Slightly smaller to fit two icons
+          height: 22px;
         }
       }
 
