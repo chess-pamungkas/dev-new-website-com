@@ -145,44 +145,44 @@ const SHARES = {
 };
 
 const METALS = {
-  key: "commodities",
+  key: "metals",
   icon: MetalsIcon,
-  title: "all-markets_market-items-list-commodities-title",
-  text: ["all-markets_market-items-list-commodities-text"],
+  title: "all-markets_market-items-list-metals-title",
+  text: ["all-markets_market-items-list-metals-text"],
   isGrayBackground: true,
   link: METALS_PAGE_LINK,
   advantages: [
     {
       key: "adv1",
-      text: "all-markets_market-items-list-commodities-adv1",
+      text: "all-markets_market-items-list-metals-adv1",
     },
     {
       key: "adv2",
-      text: "all-markets_market-items-list-commodities-adv2-fsa",
+      text: "all-markets_market-items-list-metals-adv2-fsa",
     },
     {
       key: "adv2-1",
-      text: "all-markets_market-items-list-commodities-adv2-1-fsa",
+      text: "all-markets_market-items-list-metals-adv2-1-fsa",
     },
     {
       key: "adv3",
-      text: "all-markets_market-items-list-commodities-adv3",
+      text: "all-markets_market-items-list-metals-adv3",
     },
     {
       key: "adv4",
-      text: "all-markets_market-items-list-commodities-adv4",
+      text: "all-markets_market-items-list-metals-adv4",
     },
     {
       key: "adv5",
-      text: "all-markets_market-items-list-commodities-adv5",
+      text: "all-markets_market-items-list-metals-adv5",
     },
     {
       key: "adv6",
-      text: "all-markets_market-items-list-commodities-adv6",
+      text: "all-markets_market-items-list-metals-adv6",
     },
     {
       key: "adv7",
-      text: "all-markets_market-items-list-commodities-adv7",
+      text: "all-markets_market-items-list-metals-adv7",
     },
   ],
 };

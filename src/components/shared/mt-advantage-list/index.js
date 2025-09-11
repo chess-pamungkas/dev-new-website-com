@@ -75,10 +75,7 @@ const MtItemAdvantageList = ({
           </div>
 
           {/* Platform Selection */}
-          <div
-            className="mt-advantage-list__platform-section"
-            id="mt-advantage-list__platform-section"
-          >
+          <div className="mt-advantage-list__platform-section">
             <Tabs
               isPlatformSelection={true}
               platformType={platformType}

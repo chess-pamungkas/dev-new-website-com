@@ -15,6 +15,11 @@ const HowToTradeSwapFree = ({ className }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
+  const startConvrsSession = () => {
+    if (ConvrsChat) {
+      ConvrsChat.ShowWebChat();
+    }
+  };
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -83,7 +88,7 @@ const HowToTradeSwapFree = ({ className }) => {
           <div className="card-button">
             <ButtonPrimaryStandard
               text={t("how-to-trade-swap-free_card1_button")}
-              onClick={handleShowRegistrationPopup}
+              onClick={startConvrsSession}
               showArrow={true}
             />
           </div>
@@ -103,7 +108,7 @@ const HowToTradeSwapFree = ({ className }) => {
           <div className="card-button">
             <ButtonPrimaryStandard
               text={t("how-to-trade-swap-free_card2_button")}
-              onClick={handleShowRegistrationPopup}
+              onClick={startConvrsSession}
               showArrow={true}
             />
           </div>

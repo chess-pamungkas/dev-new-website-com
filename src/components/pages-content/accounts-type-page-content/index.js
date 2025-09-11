@@ -37,12 +37,31 @@ const AccountsTypePageContent = ({ className, isShowHero = true }) => {
       <AccountTypesAccountComparison />
 
       {isMobile ? (
-        <OurCommunityContent />
+        <OurCommunityContent
+          customBadgeMessage={t("spreads-fees_our_community_badge_message")}
+          customTitle={t("accounts-type_our_community_title")}
+          customSubtitle={t("accounts-type_our_community_subtitle")}
+          customPrimaryButton={t("accounts-type_our_community_primary_button")}
+          customSecondaryButton={t(
+            "accounts-type_our_community_secondary_button"
+          )}
+        />
       ) : (
         <ContainerWrapper>
-          <OurCommunityContent />
+          <OurCommunityContent
+            customBadgeMessage={t("accounts-type_our_community_badge_message")}
+            customTitle={t("accounts-type_our_community_title")}
+            customSubtitle={t("accounts-type_our_community_subtitle")}
+            customPrimaryButton={t(
+              "accounts-type_our_community_primary_button"
+            )}
+            customSecondaryButton={t(
+              "accounts-type_our_community_secondary_button"
+            )}
+          />
         </ContainerWrapper>
       )}
+
       {isPopupOpen && (
         <ShowRegistrationPopup
           isOpen={isPopupOpen}

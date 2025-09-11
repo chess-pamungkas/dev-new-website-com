@@ -34,22 +34,27 @@ const WithdrawalTableComponent = ({
               ))}
             </tr>
           </thead>
-          {/* Body Section */}
-          <tbody className="table-body-section">
-            {data.map((row, rowIndex) => (
-              <tr key={rowIndex} className="table-row">
-                {columns.map((column, colIndex) => {
-                  const cellData = row[column.accessor];
-                  return (
-                    <td key={colIndex} className="table-cell">
-                      {cellData}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
-          </tbody>
         </table>
+
+        {/* Body Section with Scroll */}
+        <div className="table-body-scroll-container">
+          <table className="withdrawal-table-body">
+            <tbody className="table-body-section">
+              {data.map((row, rowIndex) => (
+                <tr key={rowIndex} className="table-row">
+                  {columns.map((column, colIndex) => {
+                    const cellData = row[column.accessor];
+                    return (
+                      <td key={colIndex} className="table-cell">
+                        {cellData}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

@@ -489,13 +489,13 @@ const Hero = ({
                       </span>
                     </div>
                   )}
+                </div>
+              )}
 
-                  {/* Trust Pilot Section - positioned after warning text */}
-                  {showTrustPilot && (
-                    <div className={`${heroType}__trust-pilot`}>
-                      <TrustPilot />
-                    </div>
-                  )}
+              {/* Trust Pilot Section - positioned after warning text */}
+              {showTrustPilot && heroType !== "faq-hero" && (
+                <div className={`${heroType}__trust-pilot`}>
+                  <TrustPilot />
                 </div>
               )}
             </div>

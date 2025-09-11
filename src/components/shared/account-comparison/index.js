@@ -9,6 +9,7 @@ import AccountComparisonDesktopBg from "../../../assets/images/bg/account-compar
 import AccountComparisonMobileBg from "../../../assets/images/bg/account-comparison/account-comparison-mobile.svg";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import LanguageContext from "../../../context/language-context";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import {
   ButtonPrimaryComparison,
   ButtonSecondaryComparison,
@@ -20,6 +21,7 @@ const AccountComparison = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
+  const { t } = useTranslationWithVariables();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -44,24 +46,24 @@ const AccountComparison = () => {
   }, []);
 
   const ecnFeatures = [
-    "$1.5 commission per side",
-    "Spreads from 0.0 pips (consistent)",
-    "Up to 1:1000 leverage",
-    "Best for: Active traders, scalpers, EAs",
+    t("account-comparison-ecn-feature1"),
+    t("account-comparison-ecn-feature2"),
+    t("account-comparison-ecn-feature3"),
+    t("account-comparison-ecn-feature4"),
   ];
 
   const zeroFeatures = [
-    "Commission-free trading",
-    "Spreads from 1.0 pips",
-    "Up to 1:1000 leverage",
-    "Best for: Beginners, swing traders",
+    t("account-comparison-zero-feature1"),
+    t("account-comparison-zero-feature2"),
+    t("account-comparison-zero-feature3"),
+    t("account-comparison-zero-feature4"),
   ];
 
   const sharedFeatures = [
-    { text: "900+ Instruments", icon: "🌐" },
-    { text: "MT4/MT5", icon: "📊" },
-    { text: "Negative Balance Protection", icon: "🛡️" },
-    { text: "24/7 Support", icon: "🎧" },
+    { text: t("account-comparison-shared-feature1"), icon: "🌐" },
+    { text: t("account-comparison-shared-feature2"), icon: "📊" },
+    { text: t("account-comparison-shared-feature3"), icon: "🛡️" },
+    { text: t("account-comparison-shared-feature4"), icon: "🎧" },
   ];
 
   const backgroundSrc = isMobile
@@ -84,15 +86,20 @@ const AccountComparison = () => {
         <div className="badge-row">
           <img
             src={BadgeAccountComparisonIcon}
-            alt="Account Comparison Badge"
+            alt={t("account-comparison-badge-alt")}
           />
-          <span className="badge-label">Account Comparison</span>
+          <span className="badge-label">
+            {t("account-comparison-badge-label")}
+          </span>
         </div>
         <h2 className="account-comparison-title">
-          Choose Your <span className="highlight">Trading Edge</span>
+          {t("account-comparison-title")}{" "}
+          <span className="highlight">
+            {t("account-comparison-title-highlight")}
+          </span>
         </h2>
         <p className="account-comparison-subtitle">
-          Two powerful accounts designed for different trading styles
+          {t("account-comparison-subtitle")}
         </p>
       </div>
 
@@ -102,19 +109,24 @@ const AccountComparison = () => {
         <div className="account-card ecn-card">
           <div className="card-header">
             <div className="card-badge">
-              <img src={BadgeMostPopularIcon} alt="Most Popular" />
-              <span>Most Popular</span>
+              <img
+                src={BadgeMostPopularIcon}
+                alt={t("account-comparison-ecn-badge-alt")}
+              />
+              <span>{t("account-comparison-ecn-badge-text")}</span>
             </div>
           </div>
           <div className="card-stars">
-            <img src={StarMostPopularIcon} alt="Stars" />
+            <img
+              src={StarMostPopularIcon}
+              alt={t("account-comparison-ecn-stars-alt")}
+            />
           </div>
 
-          <h3 className="card-title">ECN+</h3>
+          <h3 className="card-title">{t("account-comparison-ecn-title")}</h3>
 
           <p className="card-description">
-            Choose ECN+ if you: Trade frequently (10+ trades/month), Use
-            scalping strategies, Run Expert Advisors, Lowest possible costs
+            {t("account-comparison-ecn-description")}
           </p>
 
           <ul className="card-features">
@@ -131,11 +143,11 @@ const AccountComparison = () => {
           <div className="card-buttons">
             {/* <ButtonContainer> */}
             <ButtonPrimaryComparison
-              text="Start ECN+"
+              text={t("account-comparison-ecn-button-primary")}
               onClick={handleShowRegistrationPopup}
             />
             <ButtonSecondaryComparison
-              text="Try a Demo Account"
+              text={t("account-comparison-ecn-button-secondary")}
               onClick={handleShowRegistrationPopup}
             />
             {/* </ButtonContainer> */}
@@ -146,19 +158,24 @@ const AccountComparison = () => {
         <div className="account-card zero-card">
           <div className="card-header">
             <div className="card-badge">
-              <img src={BadgeBeginnerChoiceIcon} alt="Beginners Choice" />
-              <span>Beginners choice</span>
+              <img
+                src={BadgeBeginnerChoiceIcon}
+                alt={t("account-comparison-zero-badge-alt")}
+              />
+              <span>{t("account-comparison-zero-badge-text")}</span>
             </div>
           </div>
           <div className="card-stars">
-            <img src={StarBeginnerChoiceIcon} alt="Star" />
+            <img
+              src={StarBeginnerChoiceIcon}
+              alt={t("account-comparison-zero-stars-alt")}
+            />
           </div>
 
-          <h3 className="card-title">Zero+</h3>
+          <h3 className="card-title">{t("account-comparison-zero-title")}</h3>
 
           <p className="card-description">
-            Choose Zero if you: Prefer simple pricing, Trade occasionally, New
-            to CFD trading, Avoid commission calculations
+            {t("account-comparison-zero-description")}
           </p>
 
           <ul className="card-features">
@@ -175,11 +192,11 @@ const AccountComparison = () => {
           <div className="card-buttons">
             {/* <ButtonContainer> */}
             <ButtonPrimaryComparisonZero
-              text="Start Zero+"
+              text={t("account-comparison-zero-button-primary")}
               onClick={handleShowRegistrationPopup}
             />
             <ButtonSecondaryComparison
-              text="Try a Demo Account"
+              text={t("account-comparison-zero-button-secondary")}
               onClick={handleShowRegistrationPopup}
             />
             {/* </ButtonContainer> */}
@@ -190,8 +207,11 @@ const AccountComparison = () => {
       {/* Shared Features */}
       <div className="shared-features">
         <div className="shared-features-content">
-          Shared Features: 🌍 900+ Instruments | 💻 MT4/MT5 | 🛡️ Negative
-          Balance Protection | 📞 24/7 Support
+          {t("account-comparison-shared-features-label")}: 🌍{" "}
+          {t("account-comparison-shared-feature1")} | 💻{" "}
+          {t("account-comparison-shared-feature2")} | 🛡️{" "}
+          {t("account-comparison-shared-feature3")} | 📞{" "}
+          {t("account-comparison-shared-feature4")}
         </div>
       </div>
 

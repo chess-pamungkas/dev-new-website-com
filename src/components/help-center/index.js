@@ -150,14 +150,6 @@ const HelpCenter = ({ className }) => {
                 icon={tradingIcon}
                 classNames={["help-center--trading"]}
               />
-              <HelpCenterBlock
-                title={t("faq_beginners-title")}
-                titleClassName="help-center__block-title--beginners"
-                subtitle={t("faq_beginners-subtitle")}
-                faq={FAQ_BEGINNERS[0].content}
-                icon={beginnersTerminologyIcon}
-                classNames={["help-center--beginners"]}
-              />
             </>
           )}
         </div>

@@ -198,13 +198,94 @@
   }
 
   .spreads-table-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .table-body-scroll-container {
     width: 100%;
-    height: auto;
-    margin: 0 auto 24px auto;
-    overflow: hidden;
-    border-radius: 12px;
+    max-height: 354px; // 6 rows * 59px = 354px
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 0 0 12px 12px;
     background: transparent;
+
+    // Hide scrollbar but keep functionality
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE and Edge
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+    }
+  }
+
+  .spreads-table-body {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
     border: none;
+    margin: 0;
+
+    @include desktop-lg {
+      width: 1032px;
+      margin: 0 auto;
+    }
+
+    @include desktop-xl {
+      width: 1032px;
+      margin: 0 auto;
+    }
+
+    .table-body-section {
+      width: 100%;
+      height: auto;
+      display: table-row-group;
+    }
+
+    .table-row {
+      height: 59px;
+      min-height: 59px;
+      max-height: 59px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      border-collapse: separate;
+      display: table-row;
+
+      .table-cell {
+        padding: 16px;
+        text-align: center;
+        font-weight: map-get($font-weight, "regular");
+        font-size: 16px;
+        line-height: 22px;
+        color: #000;
+        vertical-align: middle;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        height: 59px;
+        min-height: 59px;
+        max-height: 59px;
+        box-sizing: border-box;
+
+        &:first-child {
+          text-align: left;
+          padding-left: 16px;
+          width: 25%;
+          font-weight: map-get($font-weight, "bold");
+        }
+
+        &.table-cell__min {
+          width: 18.75%;
+          text-align: center;
+          font-weight: map-get($font-weight, "bold");
+        }
+
+        &.table-cell__avg {
+          width: 18.75%;
+          text-align: center;
+          font-weight: map-get($font-weight, "regular");
+        }
+      }
+    }
   }
 
   .spreads-table {
@@ -329,77 +410,21 @@
       }
     }
 
-    // Table Body Section (Frame 1000001822)
-    .table-body-section {
-      width: 100%;
-      height: auto;
-      display: table-row-group;
-    }
-
-    // Data Rows
-    .table-row {
-      height: 59px;
-      min-height: 59px;
-      max-height: 59px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-      border-collapse: separate;
-      display: table-row;
-
-      // &:last-child {
-      //   border-bottom: none;
-      // }
-
-      .table-cell {
-        padding: 16px;
-        text-align: center;
-        font-weight: map-get($font-weight, "regular");
-        font-size: 16px;
-        line-height: 22px;
-        color: #000;
-        vertical-align: middle;
-        border: none;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-        height: 59px;
-        min-height: 59px;
-        max-height: 59px;
-        box-sizing: border-box;
-
-        &:first-child {
-          text-align: left;
-          padding-left: 16px;
-          width: 25%;
-          font-weight: map-get($font-weight, "bold");
-        }
-
-        &.table-cell__min {
-          width: 18.75%;
-          text-align: center;
-          font-weight: map-get($font-weight, "bold");
-        }
-
-        &.table-cell__avg {
-          width: 18.75%;
-          text-align: center;
-          font-weight: map-get($font-weight, "regular");
-        }
-      }
-    }
+    // Table Body Section - moved to spreads-table-body
   }
 
   // Clean and consistent table styling without !important
   .spreads-table {
     // Ensure consistent row heights across all sections
     .table-main-header,
-    .table-sub-header,
-    .table-row {
+    .table-sub-header {
       height: 59px;
       min-height: 59px;
       max-height: 59px;
     }
 
     // Consistent cell padding and alignment
-    th,
-    td {
+    th {
       padding: 16px;
       height: 59px;
       min-height: 59px;
@@ -407,31 +432,6 @@
       box-sizing: border-box;
       vertical-align: middle;
       line-height: 22px;
-    }
-
-    // Clean borders for table rows
-    .table-row {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-
-      // &:last-child {
-      //   border-bottom: none;
-      // }
-    }
-
-    // Ensure proper cell alignment
-    .table-cell {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-
-      // &:last-child {
-      //   border-bottom: none;
-      // }
-    }
-
-    // Additional styling for better consistency
-    .table-header-section,
-    .table-body-section {
-      height: auto;
-      min-height: auto;
     }
   }
 
@@ -564,11 +564,26 @@
     margin-bottom: 20px;
   }
 
+  .spreads-cards-scroll-container {
+    width: 100%;
+    max-height: 600px; // Approximate height for 6 cards
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 32px;
+
+    // Hide scrollbar but keep functionality
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE and Edge
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+    }
+  }
+
   .spreads-cards {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin-bottom: 32px;
   }
 
   .spread-card {
@@ -943,7 +958,6 @@
       -webkit-background-clip: unset;
       background-clip: unset;
       -webkit-text-fill-color: #101828;
-      text-fill-color: #101828;
 
       @include mobile {
         width: 100%;
@@ -1433,7 +1447,6 @@
     -webkit-background-clip: unset;
     background-clip: unset;
     -webkit-text-fill-color: #101828;
-    text-fill-color: #101828;
 
     @include mobile {
       width: 100%;

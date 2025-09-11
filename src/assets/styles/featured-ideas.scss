@@ -423,11 +423,11 @@
   }
 
   &__content-title {
-    width: 550px;
     font-family: "Sofia Pro", Arial, sans-serif;
     font-style: normal;
     font-weight: map-get($font-weight, "semibold");
     font-size: 44px;
+    line-height: 1.2;
     letter-spacing: -0.02em;
     background: linear-gradient(
         102.31deg,

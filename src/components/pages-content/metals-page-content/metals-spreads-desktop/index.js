@@ -31,7 +31,7 @@ const MetalsSpreadsDesktop = ({ data }) => {
         <div className="search-frame">
           <input
             type="text"
-            placeholder="Search by Symbol"
+            placeholder={t("metals_spreads_search_placeholder")}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
@@ -49,36 +49,49 @@ const MetalsSpreadsDesktop = ({ data }) => {
           <thead className="table-header-section">
             {/* Main Header Row */}
             <tr className="table-main-header">
-              <th>PRODUCT</th>
+              <th>{t("metals_spreads_table_header_product")}</th>
               <th className="table-header__ecn" colSpan="2">
-                ECN+ Account
+                {t("metals_spreads_table_header_ecn_account")}
               </th>
               <th className="table-header__oqtima" colSpan="2">
-                OQTIMA ONE ACCOUNT
+                {t("metals_spreads_table_header_oqtima_account")}
               </th>
             </tr>
             {/* Sub Header Row */}
             <tr className="table-sub-header">
-              <th>SYMBOL</th>
-              <th className="table-subheader__min">MIN</th>
-              <th className="table-subheader__avg">AVG</th>
-              <th className="table-subheader__min">MIN</th>
-              <th className="table-subheader__avg">AVG</th>
+              <th>{t("metals_spreads_table_header_symbol")}</th>
+              <th className="table-subheader__min">
+                {t("metals_spreads_table_header_min")}
+              </th>
+              <th className="table-subheader__avg">
+                {t("metals_spreads_table_header_avg")}
+              </th>
+              <th className="table-subheader__min">
+                {t("metals_spreads_table_header_min")}
+              </th>
+              <th className="table-subheader__avg">
+                {t("metals_spreads_table_header_avg")}
+              </th>
             </tr>
           </thead>
-          {/* Body Section */}
-          <tbody className="table-body-section">
-            {filteredData.map((item, index) => (
-              <tr key={index} className="table-row">
-                <td className="table-cell">{item.col1}</td>
-                <td className="table-cell table-cell__min">{item.col2}</td>
-                <td className="table-cell table-cell__avg">{item.col3}</td>
-                <td className="table-cell table-cell__min">{item.col4}</td>
-                <td className="table-cell table-cell__avg">{item.col5}</td>
-              </tr>
-            ))}
-          </tbody>
         </table>
+
+        {/* Body Section with Scroll */}
+        <div className="table-body-scroll-container">
+          <table className="spreads-table-body">
+            <tbody className="table-body-section">
+              {filteredData.map((item, index) => (
+                <tr key={index} className="table-row">
+                  <td className="table-cell">{item.col1}</td>
+                  <td className="table-cell table-cell__min">{item.col2}</td>
+                  <td className="table-cell table-cell__avg">{item.col3}</td>
+                  <td className="table-cell table-cell__min">{item.col4}</td>
+                  <td className="table-cell table-cell__avg">{item.col5}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Disclaimer */}

@@ -257,6 +257,8 @@
     border-radius: 12px;
     background: transparent;
     border: none;
+    display: flex;
+    flex-direction: column;
   }
 
   .spreads-table {
@@ -401,6 +403,51 @@
       height: auto;
       display: table-row-group;
     }
+  }
+
+  // Scrollable Body Container
+  .table-body-scroll-container {
+    width: 100%;
+    max-height: 354px; // 6 rows * 59px = 354px
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 0 0 12px 12px;
+    background: transparent;
+
+    // Hide scrollbar but keep functionality
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE and Edge
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+    }
+  }
+
+  // Table Body (separate from header)
+  .spreads-table-body {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    border: none;
+    margin: 0;
+
+    @include desktop-lg {
+      width: 1032px;
+      margin: 0 auto;
+    }
+
+    @include desktop-xl {
+      width: 1032px;
+      margin: 0 auto;
+    }
+
+    // Table Body Section
+    .table-body-section {
+      width: 100%;
+      height: auto;
+      display: table-row-group;
+    }
 
     // Data Rows
     .table-row {
@@ -433,12 +480,6 @@
           font-weight: map-get($font-weight, "bold");
         }
 
-        &.table-cell__symbol {
-          width: 25%;
-          text-align: left;
-          font-weight: map-get($font-weight, "bold");
-        }
-
         &.table-cell__min {
           width: 18.75%;
           text-align: center;
@@ -454,20 +495,18 @@
     }
   }
 
-  // Clean and consistent table styling without !important
+  // Clean and consistent table styling for header only
   .spreads-table {
-    // Ensure consistent row heights across all sections
+    // Ensure consistent row heights for header sections only
     .table-main-header,
-    .table-sub-header,
-    .table-row {
+    .table-sub-header {
       height: 59px;
       min-height: 59px;
       max-height: 59px;
     }
 
-    // Consistent cell padding and alignment
-    th,
-    td {
+    // Consistent cell padding and alignment for header
+    th {
       padding: 16px;
       height: 59px;
       min-height: 59px;
@@ -477,27 +516,8 @@
       line-height: 22px;
     }
 
-    // Clean borders for table rows
-    .table-row {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-
-      // &:last-child {
-      //   border-bottom: none;
-      // }
-    }
-
-    // Ensure proper cell alignment
-    .table-cell {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-
-      // &:last-child {
-      //   border-bottom: none;
-      // }
-    }
-
     // Additional styling for better consistency
-    .table-header-section,
-    .table-body-section {
+    .table-header-section {
       height: auto;
       min-height: auto;
     }
@@ -569,36 +589,57 @@
   width: 100%;
   padding: 0;
 
-  .tabs-container {
-    margin-bottom: 17px;
+  .tabs-search-container-mobile {
+    display: flex;
+    align-items: center;
+    gap: 8px; // Small gap for mobile
+    margin-bottom: 20px;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between; // Distribute space evenly
+
+    @include mobile {
+      gap: 6px; // Smaller gap on very small screens
+    }
   }
 
   .tabs {
     display: flex;
-    background: #f3f4f6;
-    border-radius: 8px;
-    padding: 4px;
-    max-width: 200px;
-    margin: 0 auto;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    gap: 8px; // Much smaller gap for mobile
+    flex-shrink: 0;
+    width: 50%; // Fixed 50% width
+    justify-content: flex-start; // Align tabs to start
 
     .tab {
-      flex: 1;
-      background: transparent;
+      padding: 6px 10px; // Standard padding for mobile
       border: none;
-      border-radius: 6px;
-      padding: 8px 16px;
+      background: transparent;
+      border-radius: 0;
       font-family: "Sofia Pro";
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 18px;
-      color: #6b7280;
+      font-weight: 500;
+      font-size: 12px; // Standard font size for mobile
+      line-height: 1.2; // Better line height
+      color: #525252; // From Figma inactive color
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
+      position: relative;
+      white-space: nowrap; // Prevent text wrapping
+      flex: 1; // Equal width for both tabs
 
-      &--active {
-        background: #ffffff;
+      &:hover {
+        background: transparent;
         color: #ff4400;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      &.tab--active {
+        background: #ff4400;
+        color: #ffffff;
+        border-radius: 4px; // Standard border radius for mobile
+        padding: 6px 10px; // Consistent padding
+        box-shadow: none;
       }
     }
   }
@@ -606,15 +647,20 @@
   .search-container-mobile {
     display: flex;
     align-items: center;
-    width: 100%;
-    height: 36px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 50px;
-    padding: 0 12px;
-    gap: 10px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 50%; // Fixed 50% width
+    height: 32px; // Standard height for mobile
+    border: 1px solid rgba(0, 0, 0, 0.2); // From Figma stroke opacity
+    border-radius: 16px; // Standard border radius for mobile
+    padding: 0 8px; // Standard padding for mobile
+    gap: 6px; // Standard gap for mobile
+    flex-shrink: 0; // Don't shrink
+    background: #ffffff; // Ensure background is visible
+    justify-content: flex-start; // Align content to start
+
+    @include mobile {
+      height: 30px; // Slightly smaller on very small screens
+      padding: 0 6px;
+    }
 
     .search-input-mobile {
       flex: 1;
@@ -624,18 +670,18 @@
       font-family: "Sofia Pro";
       font-style: normal;
       font-weight: 400;
-      font-size: 14px;
-      line-height: 22px;
-      color: rgba(0, 0, 0, 0.6125);
+      font-size: 12px; // Standard font size for mobile
+      line-height: 1.2; // Better line height
+      color: rgba(0, 0, 0, 0.6125); // From Figma text color
       padding: 0;
 
       &::placeholder {
-        color: rgba(0, 0, 0, 0.6125);
+        color: rgba(0, 0, 0, 0.6125); // From Figma placeholder color
         font-family: "Sofia Pro";
         font-style: normal;
         font-weight: 400;
-        font-size: 12px;
-        line-height: 10px;
+        font-size: 12px; // Standard font size for mobile
+        line-height: 1.2; // Better line height
       }
 
       &:focus {
@@ -647,8 +693,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 12px;
-      height: 12px;
+      width: 12px; // Standard icon size for mobile
+      height: 12px; // Standard icon size for mobile
       flex-shrink: 0;
 
       img {
@@ -658,6 +704,15 @@
         filter: none;
       }
     }
+  }
+
+  // Debug: Ensure search container is visible
+  .search-container-mobile {
+    position: relative;
+    z-index: 1;
+
+    // Add a subtle shadow to make it more visible
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
   .spreads-disclaimer-mobile {
@@ -670,11 +725,26 @@
     margin-bottom: 20px;
   }
 
+  .spreads-cards-scroll-container {
+    width: 100%;
+    max-height: 600px; // Approximate height for 6 cards
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 32px;
+
+    // Hide scrollbar but keep functionality
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE and Edge
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+    }
+  }
+
   .spreads-cards {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin-bottom: 32px;
   }
 
   .spread-card {
@@ -725,6 +795,29 @@
         height: 100%;
         object-fit: contain;
         display: block;
+      }
+
+      // Combined icons styling (overlapping flags)
+      &--combined {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2px;
+        position: relative;
+        z-index: 1;
+
+        .spread-card__icon-img {
+          width: 20px;
+          height: 20px;
+          object-fit: contain;
+          position: relative;
+          z-index: 1;
+
+          &:nth-child(2) {
+            margin-left: -8px;
+            z-index: 2;
+          }
+        }
       }
 
       // Ensure proper icon positioning

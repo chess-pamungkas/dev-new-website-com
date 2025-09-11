@@ -57,26 +57,28 @@ const ForexSpreadsDesktop = () => {
                 className={`tab ${activeTab === "major" ? "tab--active" : ""}`}
                 onClick={() => handleTabChange("major")}
               >
-                Major
+                {t("forex_spreads_tab_major")}
               </button>
               <button
                 className={`tab ${activeTab === "minor" ? "tab--active" : ""}`}
                 onClick={() => handleTabChange("minor")}
               >
-                Minor
+                {t("forex_spreads_tab_minor")}
               </button>
             </div>
           </div>
 
           {/* Explanatory Text */}
-          <div className="explanation-text">* MIN - minimum, AVG - average</div>
+          <div className="explanation-text">
+            {t("forex_spreads_explanation")}
+          </div>
 
           {/* Search Bar */}
           <div className="search-frame">
             <input
               type="text"
               className="search-input"
-              placeholder="Search by Symbol"
+              placeholder={t("forex_spreads_search_placeholder")}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -93,37 +95,43 @@ const ForexSpreadsDesktop = () => {
             <thead className="table-header-section">
               {/* Main Header Row */}
               <tr className="table-main-header">
-                <th>PRODUCT</th>
+                <th>{t("forex_spreads_table_header_product")}</th>
                 <th className="table-header__ecn" colSpan="2">
-                  ECN+ Account
+                  {t("forex_spreads_table_header_ecn_account")}
                 </th>
                 <th className="table-header__oqtima" colSpan="2">
-                  OQTIMA ONE ACCOUNT
+                  {t("forex_spreads_table_header_oqtima_account")}
                 </th>
               </tr>
               {/* Sub Header Row */}
               <tr className="table-sub-header">
-                <th>SYMBOL</th>
-                <th>MIN</th>
-                <th>AVG</th>
-                <th>MIN</th>
-                <th>AVG</th>
+                <th>{t("forex_spreads_table_header_symbol")}</th>
+                <th>{t("forex_spreads_table_header_min")}</th>
+                <th>{t("forex_spreads_table_header_avg")}</th>
+                <th>{t("forex_spreads_table_header_min")}</th>
+                <th>{t("forex_spreads_table_header_avg")}</th>
               </tr>
             </thead>
-
-            {/* Table Body Section */}
-            <tbody className="table-body-section">
-              {filteredData.map((item, index) => (
-                <tr key={index} className="table-row">
-                  <td className="table-cell table-cell__symbol">{item.col1}</td>
-                  <td className="table-cell table-cell__min">{item.col2}</td>
-                  <td className="table-cell table-cell__avg">{item.col3}</td>
-                  <td className="table-cell table-cell__min">{item.col4}</td>
-                  <td className="table-cell table-cell__avg">{item.col5}</td>
-                </tr>
-              ))}
-            </tbody>
           </table>
+
+          {/* Scrollable Body Section */}
+          <div className="table-body-scroll-container">
+            <table className="spreads-table-body">
+              <tbody className="table-body-section">
+                {filteredData.map((item, index) => (
+                  <tr key={index} className="table-row">
+                    <td className="table-cell table-cell__symbol">
+                      {item.col1}
+                    </td>
+                    <td className="table-cell table-cell__min">{item.col2}</td>
+                    <td className="table-cell table-cell__avg">{item.col3}</td>
+                    <td className="table-cell table-cell__min">{item.col4}</td>
+                    <td className="table-cell table-cell__avg">{item.col5}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* Disclaimer */}

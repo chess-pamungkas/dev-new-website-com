@@ -2477,3 +2477,11 @@
     color: #ffffff;
   }
 }
+
+// Grecaptcha badge styling - hide behind popup on mobile
+.grecaptcha-badge {
+  @include mobile {
+    z-index: -1 !important; // Hide completely behind popup on mobile
+    visibility: hidden !important; // Hide from view on mobile
+  }
+}

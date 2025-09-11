@@ -213,6 +213,8 @@
       }
       &.ecn-card {
         position: relative;
+        transition: all 0.3s ease;
+
         .card-header .card-badge {
           width: 132px;
           height: 26px;
@@ -228,14 +230,137 @@
             text-align: center;
           }
         }
+
+        // Hover state
+        &:hover {
+          // Add orange glow effect as shown in Figma
+          box-shadow: 0 0 20px rgba(255, 68, 0, 0.3) !important;
+          // border: 1px solid #ff4400 !important;
+
+          // Add background overlay with orange tint
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+              135deg,
+              rgba(255, 68, 0, 0.1) 0%,
+              rgba(255, 68, 0, 0.05) 100%
+            );
+            border-radius: 12px;
+            z-index: 1;
+            pointer-events: none;
+          }
+
+          .card-stars {
+            opacity: 0 !important;
+          }
+
+          // Show hover icon in top-right corner - positioned to cover card corner
+          &::before {
+            content: "";
+            position: absolute;
+            top: -30px;
+            right: -15px;
+            width: 155px;
+            height: 164.25px;
+            background-image: url("../../assets/images/icons/account-comparison/star-most-popular-hover.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: top right;
+            z-index: 10;
+            pointer-events: none;
+          }
+
+          // Button hover effect when card is hovered - using correct class name
+          .button-primary-comparison-accounts-type {
+            background: #ff4400 !important;
+            color: #fff !important;
+            border: none !important;
+            // Debug: add outline to see if button changes
+          }
+          .button-primary-comparison-accounts-type .button-text {
+            color: #fff !important;
+          }
+          .button-primary-comparison-accounts-type .button-arrow svg path {
+            stroke: #fff !important;
+          }
+        }
       }
-      &.zero-card .card-header .card-badge {
-        width: 156px;
-        height: 26px;
-        mix-blend-mode: normal;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        span {
-          color: #000;
+      &.zero-card {
+        position: relative;
+        transition: all 0.3s ease;
+
+        .card-header .card-badge {
+          width: 156px;
+          height: 26px;
+          mix-blend-mode: normal;
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          span {
+            color: #000;
+          }
+        }
+
+        // Hover state for zero card
+        &:hover {
+          // Add orange glow effect as shown in Figma
+          box-shadow: 0 0 20px rgba(255, 68, 0, 0.3) !important;
+          // border: 1px solid #ff4400 !important;
+
+          // Add background overlay with orange tint
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+              135deg,
+              rgba(255, 68, 0, 0.1) 0%,
+              rgba(255, 68, 0, 0.05) 100%
+            );
+            border-radius: 12px;
+            z-index: 1;
+            pointer-events: none;
+          }
+
+          .card-stars {
+            opacity: 0 !important;
+          }
+
+          // Show hover icon in top-right corner - positioned to cover card corner
+          &::before {
+            content: "";
+            position: absolute;
+            top: -30px;
+            right: -15px;
+            width: 155px;
+            height: 164.25px;
+            background-image: url("../../assets/images/icons/account-comparison/star-beginner-choice-hover.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: top right;
+            z-index: 10;
+            pointer-events: none;
+          }
+
+          // Button hover effect when card is hovered - using correct class name
+          .button-primary-comparison-zero-accounts-type {
+            background: #ff4400 !important;
+            color: #fff !important;
+            border: none !important;
+            // Debug: add outline to see if button changes
+          }
+          .button-primary-comparison-zero-accounts-type .button-text {
+            color: #fff !important;
+          }
+          .button-primary-comparison-zero-accounts-type .button-arrow svg path {
+            stroke: #fff !important;
+          }
         }
       }
       .card-title {
@@ -256,7 +381,6 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        text-fill-color: transparent;
         margin: 0;
         flex: none;
         order: 1;

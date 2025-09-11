@@ -9,6 +9,7 @@ import AccountComparisonDesktopBg from "../../../../assets/images/bg/account-com
 import AccountComparisonMobileBg from "../../../../assets/images/bg/account-comparison/account-comparison-mobile.svg";
 import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import LanguageContext from "../../../../context/language-context";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import {
   ButtonPrimaryComparisonAccountsType,
   ButtonSecondaryComparisonAccountsType,
@@ -19,6 +20,7 @@ const AccountTypesAccountComparison = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
+  const { t } = useTranslationWithVariables();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -43,25 +45,25 @@ const AccountTypesAccountComparison = () => {
   }, []);
 
   const ecnFeatures = [
-    "Spreads from 0.0 pips (consistent)",
-    "$1.5 commission per side",
-    "Up to 1:1000 leverage",
-    "$100 minimum deposit",
-    "Hedging, EAs, scalping allowed",
-    "USD, EUR, JPY, GBP, CAD, SGD",
-    "No deposit or withdrawal fees",
-    "7 markets, 300+ instruments",
+    t("account-comparison-accounts-type-ecn-feature1"),
+    t("account-comparison-accounts-type-ecn-feature2"),
+    t("account-comparison-accounts-type-ecn-feature3"),
+    t("account-comparison-accounts-type-ecn-feature4"),
+    t("account-comparison-accounts-type-ecn-feature5"),
+    t("account-comparison-accounts-type-ecn-feature6"),
+    t("account-comparison-accounts-type-ecn-feature7"),
+    t("account-comparison-accounts-type-ecn-feature8"),
   ];
 
   const zeroFeatures = [
-    "Spreads from 1.0 pips (consistent)",
-    "Commission-free trading",
-    "Up to 1:1000 leverage",
-    "$100 minimum deposit",
-    "Hedging, EAs, scalping allowed",
-    "USD, EUR, JPY, GBP, CAD, SGD",
-    "No deposit or withdrawal fees",
-    "7 markets, 300+ instruments",
+    t("account-comparison-accounts-type-zero-feature1"),
+    t("account-comparison-accounts-type-zero-feature2"),
+    t("account-comparison-accounts-type-zero-feature3"),
+    t("account-comparison-accounts-type-zero-feature4"),
+    t("account-comparison-accounts-type-zero-feature5"),
+    t("account-comparison-accounts-type-zero-feature6"),
+    t("account-comparison-accounts-type-zero-feature7"),
+    t("account-comparison-accounts-type-zero-feature8"),
   ];
 
   const backgroundSrc = isMobile
@@ -78,14 +80,17 @@ const AccountTypesAccountComparison = () => {
         <div className="badge-row">
           <img
             src={BadgeAccountComparisonIcon}
-            alt="Account Comparison Badge"
+            alt={t("account-comparison-badge-alt")}
           />
-          <span className="badge-label">Account Comparison</span>
+          <span className="badge-label">
+            {t("account-comparison-badge-label")}
+          </span>
         </div>
-        <h2 className="account-comparison-title">Choose Your Trading Edge</h2>
+        <h2 className="account-comparison-title">
+          {t("account-comparison-accounts-type-title")}
+        </h2>
         <p className="account-comparison-subtitle">
-          OQtima offers a variety of trading accounts to match every trading
-          style across all levels of experience.
+          {t("account-comparison-accounts-type-subtitle")}
         </p>
       </div>
 
@@ -95,19 +100,24 @@ const AccountTypesAccountComparison = () => {
         <div className="account-card ecn-card">
           <div className="card-header">
             <div className="card-badge">
-              <img src={BadgeMostPopularIcon} alt="Most Popular" />
-              <span>Most Popular</span>
+              <img
+                src={BadgeMostPopularIcon}
+                alt={t("account-comparison-ecn-badge-alt")}
+              />
+              <span>{t("account-comparison-ecn-badge-text")}</span>
             </div>
           </div>
           <div className="card-stars">
-            <img src={StarMostPopularIcon} alt="Stars" />
+            <img
+              src={StarMostPopularIcon}
+              alt={t("account-comparison-ecn-stars-alt")}
+            />
           </div>
 
-          <h3 className="card-title">ECN+</h3>
+          <h3 className="card-title">{t("account-comparison-ecn-title")}</h3>
 
           <p className="card-description">
-            Choose ECN+ if you: Trade frequently (10+ trades/month), Use
-            scalping strategies, Run Expert Advisors, Lowest possible costs
+            {t("account-comparison-ecn-description")}
           </p>
 
           <ul className="card-features">
@@ -124,11 +134,11 @@ const AccountTypesAccountComparison = () => {
           <div className="card-buttons">
             {/* <ButtonContainer> */}
             <ButtonPrimaryComparisonAccountsType
-              text="Start ECN+"
+              text={t("account-comparison-ecn-button-primary")}
               onClick={handleShowRegistrationPopup}
             />
             <ButtonSecondaryComparisonAccountsType
-              text="Try a Demo Account"
+              text={t("account-comparison-ecn-button-secondary")}
               onClick={handleShowRegistrationPopup}
             />
             {/* </ButtonContainer> */}
@@ -139,19 +149,24 @@ const AccountTypesAccountComparison = () => {
         <div className="account-card zero-card">
           <div className="card-header">
             <div className="card-badge">
-              <img src={BadgeBeginnerChoiceIcon} alt="Beginners Choice" />
-              <span>Beginners choice</span>
+              <img
+                src={BadgeBeginnerChoiceIcon}
+                alt={t("account-comparison-zero-badge-alt")}
+              />
+              <span>{t("account-comparison-zero-badge-text")}</span>
             </div>
           </div>
           <div className="card-stars">
-            <img src={StarBeginnerChoiceIcon} alt="Star" />
+            <img
+              src={StarBeginnerChoiceIcon}
+              alt={t("account-comparison-zero-stars-alt")}
+            />
           </div>
 
-          <h3 className="card-title">Zero+</h3>
+          <h3 className="card-title">{t("account-comparison-zero-title")}</h3>
 
           <p className="card-description">
-            Choose Zero if you: Prefer simple pricing, Trade occasionally, New
-            to CFD trading, Avoid commission calculations
+            {t("account-comparison-zero-description")}
           </p>
 
           <ul className="card-features">
@@ -168,11 +183,11 @@ const AccountTypesAccountComparison = () => {
           <div className="card-buttons">
             {/* <ButtonContainer> */}
             <ButtonPrimaryComparisonZeroAccountsType
-              text="Start Zero+"
+              text={t("account-comparison-zero-button-primary")}
               onClick={handleShowRegistrationPopup}
             />
             <ButtonSecondaryComparisonAccountsType
-              text="Try a Demo Account"
+              text={t("account-comparison-zero-button-secondary")}
               onClick={handleShowRegistrationPopup}
             />
             {/* </ButtonContainer> */}
@@ -183,8 +198,11 @@ const AccountTypesAccountComparison = () => {
       {/* Shared Features */}
       <div className="shared-features">
         <div className="shared-features-content">
-          Shared Features: 🌍 900+ Instruments | 💻 MT4/MT5 | 🛡️ Negative
-          Balance Protection | 📞 24/7 Support"
+          {t("account-comparison-shared-features-label")}: 🌍{" "}
+          {t("account-comparison-shared-feature1")} | 💻{" "}
+          {t("account-comparison-shared-feature2")} | 🛡️{" "}
+          {t("account-comparison-shared-feature3")} | 📞{" "}
+          {t("account-comparison-shared-feature4")}
         </div>
       </div>
 

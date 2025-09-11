@@ -1,4 +1,4 @@
-const EXCLUDE_INDICES = ["USIDX", "NETH25"];
+const EXCLUDE_INDICES = ["NETH25"];
 const EXCLUDE_FOREX = [
   "AUDNZD",
   "AUDCAD",

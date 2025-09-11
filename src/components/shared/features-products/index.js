@@ -107,9 +107,10 @@ const FeaturesProducts = ({
                 <h3 className="features-products__card-title">
                   {t(feature.title)}
                 </h3>
-                <p className="features-products__card-description">
-                  {t(feature.description)}
-                </p>
+                <p
+                  className="features-products__card-description"
+                  dangerouslySetInnerHTML={{ __html: t(feature.description) }}
+                />
               </div>
             ))}
           </div>
@@ -124,9 +125,10 @@ const FeaturesProducts = ({
                 <h3 className="features-products__card-title">
                   {t(feature.title)}
                 </h3>
-                <p className="features-products__card-description">
-                  {t(feature.description)}
-                </p>
+                <p
+                  className="features-products__card-description"
+                  dangerouslySetInnerHTML={{ __html: t(feature.description) }}
+                />
               </div>
             ))}
           </div>

@@ -166,7 +166,7 @@
 
     @include desktop-lg {
       width: 768px; // Based on Figma desktop width
-      height: auti; // Based on Figma desktop height
+      height: auto; // Based on Figma desktop height
       gap: 16px;
     }
 

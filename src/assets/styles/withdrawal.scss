@@ -179,13 +179,106 @@
   // Desktop Table Layout
   @include desktop-lg {
     .withdrawal-table-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .table-body-scroll-container {
       width: 100%;
-      height: auto;
-      margin: 0 auto 24px auto;
-      overflow: hidden;
-      border-radius: 12px;
+      max-height: 500px; // 8 rows * 59px = 472px (extra space for better UX)
+      overflow-y: auto;
+      overflow-x: hidden;
+      border-radius: 0 0 12px 12px;
       background: transparent;
+
+      // Hide scrollbar but keep functionality
+      scrollbar-width: none; // Firefox
+      -ms-overflow-style: none; // IE and Edge
+
+      &::-webkit-scrollbar {
+        display: none; // Chrome, Safari, Opera
+      }
+    }
+
+    .withdrawal-table-body {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      table-layout: fixed;
       border: none;
+      margin: 0;
+
+      @include desktop-lg {
+        width: 1032px;
+        margin: 0 auto;
+      }
+
+      @include desktop-xl {
+        width: 1032px;
+        margin: 0 auto;
+      }
+
+      .table-body-section {
+        width: 100%;
+        height: auto;
+        display: table-row-group;
+      }
+
+      .table-row {
+        height: 59px;
+        min-height: 59px;
+        max-height: 59px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        border-collapse: separate;
+        display: table-row;
+
+        .table-cell {
+          padding: 16px;
+          text-align: center;
+          font-weight: map-get($font-weight, "regular");
+          font-size: 16px;
+          line-height: 22px;
+          color: #000;
+          vertical-align: middle;
+          border: none;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+          height: 59px;
+          min-height: 59px;
+          max-height: 59px;
+          box-sizing: border-box;
+
+          &:first-child {
+            text-align: left;
+            padding-left: 16px;
+            width: 25%;
+            font-weight: map-get($font-weight, "bold");
+          }
+
+          &:nth-child(2) {
+            width: 18.75%;
+            text-align: center;
+            font-weight: map-get($font-weight, "bold");
+          }
+
+          &:nth-child(3) {
+            width: 18.75%;
+            text-align: center;
+            font-weight: map-get($font-weight, "regular");
+          }
+
+          &:nth-child(4) {
+            width: 18.75%;
+            text-align: center;
+            font-weight: map-get($font-weight, "bold");
+          }
+
+          &:nth-child(5) {
+            width: 18.75%;
+            text-align: center;
+            font-weight: map-get($font-weight, "regular");
+          }
+        }
+      }
     }
 
     .withdrawal-table-main {
@@ -256,55 +349,7 @@
       }
     }
 
-    // Table Body Section
-    .table-body-section {
-      width: 100%;
-      height: auto;
-      display: table-row-group;
-    }
-
-    // Data Rows
-    .table-row {
-      height: 59px;
-      min-height: 59px;
-      max-height: 59px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-      border-collapse: separate;
-      display: table-row;
-
-      &:last-child {
-        border-bottom: none;
-      }
-    }
-
-    // Table Cells
-    .table-cell {
-      padding: 16px;
-      text-align: left;
-      font-weight: map-get($font-weight, "regular");
-      font-size: 16px;
-      line-height: 22px;
-      color: #000;
-      vertical-align: middle;
-      border: none;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-      height: 59px;
-      min-height: 59px;
-      max-height: 59px;
-      box-sizing: border-box;
-
-      &:first-child {
-        text-align: left;
-        padding-left: 16px;
-        width: 13%;
-        font-weight: map-get($font-weight, "bold");
-      }
-
-      // Remove border bottom for cells in last row
-      .table-row:last-child & {
-        border-bottom: none;
-      }
-    }
+    // Table Body Section - moved to withdrawal-table-body
   }
 
   // Mobile Card Layout
@@ -626,6 +671,25 @@
     max-width: 353px;
     margin: 0 auto;
     padding: 0;
+  }
+}
+
+.withdrawal-cards-scroll-container {
+  max-height: 800px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 32px;
+
+  // Hide scrollbar but keep functionality
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // IE and Edge
+
+  &::-webkit-scrollbar {
+    display: none; // Chrome, Safari, Opera
+  }
+
+  @include mobile {
+    margin-bottom: 24px;
   }
 }
 

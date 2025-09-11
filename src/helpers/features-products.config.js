@@ -426,6 +426,8 @@ export const getFeaturesByTradingType = (tradingType) => {
       return SHARES_FEATURES;
     case "energies":
       return ENERGIES_FEATURES;
+    case "etf":
+      return ETF_FEATURES;
     case "swap-free":
       return SWAP_FREE_FEATURES;
     case "vps":

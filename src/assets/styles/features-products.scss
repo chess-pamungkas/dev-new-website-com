@@ -176,6 +176,7 @@
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 12px;
 
     // Background image
     &::before {
@@ -207,7 +208,7 @@
     }
 
     @include tablet {
-      padding: 24px 28px;
+      padding: 24px;
     }
 
     &:hover {

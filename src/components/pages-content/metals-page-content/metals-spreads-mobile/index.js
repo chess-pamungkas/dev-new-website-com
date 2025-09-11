@@ -92,7 +92,7 @@ const MetalsSpreadsMobile = ({ data }) => {
       <div className="search-container-mobile">
         <input
           type="text"
-          placeholder="Search by Symbol"
+          placeholder={t("metals_spreads_mobile_search_placeholder")}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-input-mobile"
@@ -104,46 +104,58 @@ const MetalsSpreadsMobile = ({ data }) => {
 
       {/* Disclaimer */}
       <div className="spreads-disclaimer-mobile">
-        * MIN - minimum, AVG - average
+        {t("metals_spreads_mobile_disclaimer")}
       </div>
 
-      {/* Cards - Display all metals data (XAGUSD, XAGEUR, XAUEUR, XAUUSD, XPTUSD) */}
-      <div className="spreads-cards">
-        {filteredData.map((item, index) => (
-          <div key={index} className="spread-card">
-            {/* Card Header: Icon + Symbol */}
-            <div className="spread-card__header">
-              {renderSymbolIcons(item.col1)}
-              <h3 className="spread-card__symbol">{item.col1}</h3>
-            </div>
-
-            {/* Card Accounts: ECN+ Account and OQtima ONE Account */}
-            <div className="spread-card__accounts">
-              {/* ECN+ Account Section */}
-              <div className="spread-card__account">
-                <h4 className="spread-card__account-title">ECN+ Account</h4>
-                <div className="spread-card__values">
-                  <span className="spread-card__label">MIN: {item.col2}</span>
-                  <span className="spread-card__label">AVG: {item.col3}</span>
-                </div>
+      {/* Cards - Display max 6 metals data with scroll */}
+      <div className="spreads-cards-scroll-container">
+        <div className="spreads-cards">
+          {filteredData.map((item, index) => (
+            <div key={index} className="spread-card">
+              {/* Card Header: Icon + Symbol */}
+              <div className="spread-card__header">
+                {renderSymbolIcons(item.col1)}
+                <h3 className="spread-card__symbol">{item.col1}</h3>
               </div>
 
-              {/* Divider between accounts */}
-              <div className="spread-card__divider"></div>
+              {/* Card Accounts: ECN+ Account and OQtima ONE Account */}
+              <div className="spread-card__accounts">
+                {/* ECN+ Account Section */}
+                <div className="spread-card__account">
+                  <h4 className="spread-card__account-title">
+                    {t("metals_spreads_mobile_ecn_account")}
+                  </h4>
+                  <div className="spread-card__values">
+                    <span className="spread-card__label">
+                      {t("metals_spreads_mobile_min")}: {item.col2}
+                    </span>
+                    <span className="spread-card__label">
+                      {t("metals_spreads_mobile_avg")}: {item.col3}
+                    </span>
+                  </div>
+                </div>
 
-              {/* OQtima ONE Account Section */}
-              <div className="spread-card__account">
-                <h4 className="spread-card__account-title">
-                  OQtima ONE Account
-                </h4>
-                <div className="spread-card__values">
-                  <span className="spread-card__label">MIN: {item.col4}</span>
-                  <span className="spread-card__label">AVG: {item.col5}</span>
+                {/* Divider between accounts */}
+                <div className="spread-card__divider"></div>
+
+                {/* OQtima ONE Account Section */}
+                <div className="spread-card__account">
+                  <h4 className="spread-card__account-title">
+                    {t("metals_spreads_mobile_oqtima_account")}
+                  </h4>
+                  <div className="spread-card__values">
+                    <span className="spread-card__label">
+                      {t("metals_spreads_mobile_min")}: {item.col4}
+                    </span>
+                    <span className="spread-card__label">
+                      {t("metals_spreads_mobile_avg")}: {item.col5}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* CTA Buttons */}

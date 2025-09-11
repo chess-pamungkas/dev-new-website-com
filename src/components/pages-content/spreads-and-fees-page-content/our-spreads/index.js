@@ -71,7 +71,7 @@ const OurSpreads = ({ className }) => {
     const icons = getSymbolIcons(symbol);
 
     if (icons.length === 0) {
-      return <div className="spread-card__icon">💱</div>; // Fallback to emoji
+      return <div className="spread-card__icon"></div>; // Fallback to emoji
     }
 
     if (icons.length === 1) {
@@ -261,52 +261,51 @@ const OurSpreads = ({ className }) => {
                   </div>
 
                   {/* Spreads Cards */}
-                  <div className="spreads-cards">
-                    {filteredData.map((item, index) => (
-                      <div key={index} className="spread-card">
-                        <div className="spread-card__header">
-                          {renderSymbolIcons(item.col1)}
-                          <h3 className="spread-card__symbol">{item.col1}</h3>
-                          <p className="spread-card__description">
-                            {item.description || `${item.col1} Currency Pair`}
-                          </p>
-                        </div>
-
-                        <div className="spread-card__accounts">
-                          {/* ECN+ Account */}
-                          <div className="spread-card__account">
-                            <h4 className="spread-card__account-title">
-                              ECN+ Account
-                            </h4>
-                            <div className="spread-card__values">
-                              <span className="spread-card__label">
-                                MIN: {item.col2}
-                              </span>
-                              <span className="spread-card__label">
-                                AVG: {item.col3}
-                              </span>
-                            </div>
+                  <div className="spreads-cards-scroll-container">
+                    <div className="spreads-cards">
+                      {filteredData.map((item, index) => (
+                        <div key={index} className="spread-card">
+                          <div className="spread-card__header">
+                            {renderSymbolIcons(item.col1)}
+                            <h3 className="spread-card__symbol">{item.col1}</h3>
                           </div>
 
-                          <div className="spread-card__divider"></div>
+                          <div className="spread-card__accounts">
+                            {/* ECN+ Account */}
+                            <div className="spread-card__account">
+                              <h4 className="spread-card__account-title">
+                                ECN+ Account
+                              </h4>
+                              <div className="spread-card__values">
+                                <span className="spread-card__label">
+                                  MIN: {item.col2}
+                                </span>
+                                <span className="spread-card__label">
+                                  AVG: {item.col3}
+                                </span>
+                              </div>
+                            </div>
 
-                          {/* OQtima ONE Account */}
-                          <div className="spread-card__account">
-                            <h4 className="spread-card__account-title">
-                              OQtima ONE Account
-                            </h4>
-                            <div className="spread-card__values">
-                              <span className="spread-card__label">
-                                MIN: {item.col4}
-                              </span>
-                              <span className="spread-card__label">
-                                AVG: {item.col5}
-                              </span>
+                            <div className="spread-card__divider"></div>
+
+                            {/* OQtima ONE Account */}
+                            <div className="spread-card__account">
+                              <h4 className="spread-card__account-title">
+                                OQtima ONE Account
+                              </h4>
+                              <div className="spread-card__values">
+                                <span className="spread-card__label">
+                                  MIN: {item.col4}
+                                </span>
+                                <span className="spread-card__label">
+                                  AVG: {item.col5}
+                                </span>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -358,30 +357,34 @@ const OurSpreads = ({ className }) => {
                           <th>AVG</th>
                         </tr>
                       </thead>
-
-                      {/* Table Body Section */}
-                      <tbody className="table-body-section">
-                        {filteredData.map((item, index) => (
-                          <tr key={index} className="table-row">
-                            <td className="table-cell table-cell__symbol">
-                              {item.col1}
-                            </td>
-                            <td className="table-cell table-cell__min">
-                              {item.col2}
-                            </td>
-                            <td className="table-cell table-cell__avg">
-                              {item.col3}
-                            </td>
-                            <td className="table-cell table-cell__min">
-                              {item.col4}
-                            </td>
-                            <td className="table-cell table-cell__avg">
-                              {item.col5}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
                     </table>
+
+                    {/* Body Section with Scroll */}
+                    <div className="table-body-scroll-container">
+                      <table className="spreads-table-body">
+                        <tbody className="table-body-section">
+                          {filteredData.map((item, index) => (
+                            <tr key={index} className="table-row">
+                              <td className="table-cell table-cell__symbol">
+                                {item.col1}
+                              </td>
+                              <td className="table-cell table-cell__min">
+                                {item.col2}
+                              </td>
+                              <td className="table-cell table-cell__avg">
+                                {item.col3}
+                              </td>
+                              <td className="table-cell table-cell__min">
+                                {item.col4}
+                              </td>
+                              <td className="table-cell table-cell__avg">
+                                {item.col5}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               )}

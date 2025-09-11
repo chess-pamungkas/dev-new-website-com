@@ -86,10 +86,10 @@ const FSA_TOP_MARKETS_TAB = {
       description: "header-nav-tab-top-markets-forex-desc",
     },
     {
-      title: "header-nav-tab-top-markets-commodities-title",
+      title: "header-nav-tab-top-markets-metals-title",
       link: METALS_PAGE_LINK,
       icon: MetalsIcon,
-      description: "header-nav-tab-top-markets-commodities-desc",
+      description: "header-nav-tab-top-markets-metals-desc",
     },
     {
       title: "header-nav-tab-top-markets-shares-title",

@@ -39,7 +39,10 @@ const MtPromotion = forwardRef(
           </div>
           <div className="mt-promotion__block">
             <div className="mt-promotion__description">
-              <div className="mt-promotion__advantages">
+              <div
+                className="mt-promotion__advantages"
+                id="mt-advantage-list__platform-section"
+              >
                 <MtItemAdvantageList
                   title={advantagesTitle}
                   advantages={advantages}

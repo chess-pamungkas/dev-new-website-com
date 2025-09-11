@@ -772,6 +772,24 @@
   }
 }
 
+// Custom styling for features-products in swap-free page
+.swap-free-page .features-products {
+  // Link styling for all breakpoints
+  &__card-description {
+    a {
+      font-weight: map-get($font-weight, "semibold");
+      color: #ff4400 !important; // Red color for links
+      text-decoration: none !important;
+
+      &:hover {
+        font-weight: map-get($font-weight, "semibold");
+        color: #e63e00 !important; // Darker red on hover
+        text-decoration: underline !important;
+      }
+    }
+  }
+}
+
 // Custom styling for features-products in swap-free page mobile view
 @include mobile {
   .swap-free-page .features-products {
