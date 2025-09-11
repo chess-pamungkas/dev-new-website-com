@@ -2481,7 +2481,31 @@
 // Grecaptcha badge styling - hide behind popup on mobile
 .grecaptcha-badge {
   @include mobile {
-    z-index: -1 !important; // Hide completely behind popup on mobile
-    visibility: hidden !important; // Hide from view on mobile
+    display: none !important; // Completely hide on mobile
+    visibility: hidden !important; // Additional hiding method
+    opacity: 0 !important; // Make transparent
+    pointer-events: none !important; // Disable interaction
+    position: absolute !important; // Remove from flow
+    left: -9999px !important; // Move off-screen
+    top: -9999px !important; // Move off-screen
+  }
+}
+
+// Additional global styling to override Google's inline styles
+@include mobile {
+  iframe[src*="recaptcha"] {
+    display: none !important;
+  }
+
+  .grecaptcha-badge,
+  div[style*="grecaptcha"],
+  iframe[title*="reCAPTCHA"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
   }
 }
