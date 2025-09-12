@@ -20,6 +20,7 @@
     left: 0;
     right: 0;
     position: relative;
+    overflow: hidden; // Ensure background doesn't overflow outside container
   }
 
   // Background
@@ -45,10 +46,10 @@
       @include mobile {
         object-fit: cover; // Use cover for better mobile coverage
         object-position: center;
-        width: 100vw; // Use viewport width
-        height: 100vh; // Use viewport height
+        width: 100%; // Use container width instead of viewport
+        height: 100%; // Use container height instead of viewport
         min-height: 100vh; // Ensure full viewport coverage
-        min-width: 100vw; // Ensure full viewport width coverage
+        min-width: 100%; // Ensure full container width coverage
         position: absolute;
         top: 0;
         left: 0;
@@ -58,15 +59,15 @@
     }
 
     @include mobile {
-      // Ensure background container takes full viewport height
-      height: 100vh;
+      // Ensure background container takes full container height
+      height: 100%;
       min-height: 100vh;
-      width: 100vw; // Ensure full viewport width
+      width: 100%; // Use container width
       left: 0;
       right: 0;
       top: 0;
       bottom: 0;
-      position: fixed; // Use fixed positioning to ensure full coverage
+      position: absolute; // Use absolute positioning to stay within market-sentiment container
     }
   }
 
