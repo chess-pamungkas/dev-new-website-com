@@ -13,9 +13,13 @@
 
   @include mobile {
     min-height: 100vh; // Use full viewport height
-    padding: 40px 0;
+    padding: 0; // Remove padding to ensure full coverage
     align-items: flex-start; // Start from top on mobile
     padding-top: 60px; // Add top padding for mobile
+    width: 100vw; // Ensure full viewport width
+    left: 0;
+    right: 0;
+    position: relative;
   }
 
   // Background
@@ -45,6 +49,11 @@
         height: 100vh; // Use viewport height
         min-height: 100vh; // Ensure full viewport coverage
         min-width: 100vw; // Ensure full viewport width coverage
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
       }
     }
 
@@ -55,13 +64,16 @@
       width: 100vw; // Ensure full viewport width
       left: 0;
       right: 0;
+      top: 0;
+      bottom: 0;
+      position: fixed; // Use fixed positioning to ensure full coverage
     }
   }
 
   // Main container
   &__container {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     max-width: 1280px;
     width: 100%;
     padding: 0;
@@ -75,6 +87,7 @@
       text-align: center;
       max-width: 100%;
       padding-left: $padding-sm;
+      z-index: 10; // Ensure content stays above background
       padding-right: $padding-sm;
       height: auto;
       min-height: auto;
