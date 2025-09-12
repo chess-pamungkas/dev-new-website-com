@@ -13,10 +13,11 @@
   border-radius: 24px; // Add border radius for desktop
 
   @include mobile {
-    min-height: 100vh; // Use full viewport height
+    min-height: 105vh; // Increase height to cover more content
     padding: 0; // Remove padding to ensure full coverage
     align-items: flex-start; // Start from top on mobile
-    padding-top: 35px; // Add top padding for mobile
+    padding-top: 60px; // Add top padding for mobile
+    padding-bottom: 60px; // Add bottom padding for mobile
     width: 100vw; // Ensure full viewport width
     left: 0;
     right: 0;
@@ -52,6 +53,18 @@
         object-fit: cover;
         object-position: center;
       }
+    }
+
+    @include mobile {
+      // Ensure background covers full container including bottom padding
+      height: 100%;
+      min-height: 105vh; // Match container height
+      width: 100%;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      position: absolute;
     }
   }
 
@@ -804,6 +817,7 @@
     justify-content: flex-start;
     position: relative;
     margin-top: 48px;
+    margin-bottom: 60px; // Add bottom margin for mobile spacing
 
     @include mobile {
       flex-direction: column;
@@ -816,6 +830,7 @@
       order: 0;
       align-self: stretch;
       flex-grow: 0;
+      margin-bottom: 80px; // Extra bottom margin for mobile
       gap: 16px;
       margin-top: 0;
     }
