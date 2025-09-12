@@ -10,13 +10,17 @@
   align-items: center;
   justify-content: center;
   padding: 80px 0;
+  border-radius: 24px; // Add border radius for desktop
 
   @include mobile {
     min-height: 100vh; // Use viewport height to cover full screen
-    padding: 40px 0 80px 0; // Add bottom padding to ensure content is covered
+    padding: 40px 0; // Add bottom padding to ensure content is covered
     align-items: flex-start; // Start from top on mobile
     margin-top: 40px;
     padding-top: 60px; // Add top padding for mobile
+    border-radius: 24px; // Add border radius for mobile
+    -webkit-border-radius: 24px; // WebKit prefix for better mobile support
+    -moz-border-radius: 24px; // Mozilla prefix
   }
 
   // Background
@@ -30,6 +34,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: inherit; // Inherit border radius from parent
+    overflow: hidden; // Ensure background respects border radius
 
     &-image {
       width: 100%;
@@ -38,6 +44,9 @@
       max-height: none;
       object-fit: fill;
       display: block;
+      border-radius: inherit; // Inherit border radius from parent
+      -webkit-border-radius: inherit; // WebKit prefix
+      -moz-border-radius: inherit; // Mozilla prefix
 
       @include mobile {
         object-fit: cover; // Use cover for better mobile coverage
@@ -45,6 +54,9 @@
         width: 100%;
         height: 100%; // Cover full container height
         min-height: 100%; // Ensure full coverage
+        border-radius: inherit; // Inherit border radius from parent
+        -webkit-border-radius: inherit; // WebKit prefix
+        -moz-border-radius: inherit; // Mozilla prefix
       }
     }
 
@@ -54,6 +66,10 @@
       min-height: 100vh;
       // Ensure background covers the entire content area
       min-height: 100%;
+      border-radius: inherit; // Inherit border radius from parent
+      -webkit-border-radius: inherit; // WebKit prefix
+      -moz-border-radius: inherit; // Mozilla prefix
+      overflow: hidden; // Ensure content respects border radius
     }
   }
 
