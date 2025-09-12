@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   padding: 80px 0;
+  border-radius: 24px; // Add border radius for desktop
 
   @include mobile {
     min-height: 100vh; // Use full viewport height
@@ -21,6 +22,9 @@
     right: 0;
     position: relative;
     overflow: hidden; // Ensure background doesn't overflow outside container
+    border-radius: 24px; // Add border radius for mobile
+    -webkit-border-radius: 24px; // WebKit prefix for better mobile support
+    -moz-border-radius: 24px; // Mozilla prefix
   }
 
   // Background
@@ -34,6 +38,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: inherit; // Inherit border radius from parent
+    overflow: hidden; // Ensure background respects border radius
 
     &-image {
       width: 100%;
@@ -42,6 +48,9 @@
       max-height: none;
       object-fit: fill;
       display: block;
+      border-radius: inherit; // Inherit border radius from parent
+      -webkit-border-radius: inherit; // WebKit prefix
+      -moz-border-radius: inherit; // Mozilla prefix
 
       @include mobile {
         object-fit: cover; // Use cover for better mobile coverage
@@ -55,6 +64,9 @@
         left: 0;
         right: 0;
         bottom: 0;
+        border-radius: inherit; // Inherit border radius from parent
+        -webkit-border-radius: inherit; // WebKit prefix
+        -moz-border-radius: inherit; // Mozilla prefix
       }
     }
 
@@ -68,6 +80,10 @@
       top: 0;
       bottom: 0;
       position: absolute; // Use absolute positioning to stay within market-sentiment container
+      border-radius: inherit; // Inherit border radius from parent
+      -webkit-border-radius: inherit; // WebKit prefix
+      -moz-border-radius: inherit; // Mozilla prefix
+      overflow: hidden; // Ensure content respects border radius
     }
   }
 
