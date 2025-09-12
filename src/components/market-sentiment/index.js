@@ -372,13 +372,9 @@ const MarketSentimentContent = () => {
       <div className="market-sentiment__container">
         {/* Header */}
         <div className="market-sentiment__header">
-          <div className="market-sentiment__badge">
-            <img
-              src={badgeIcon}
-              alt="Market Sentiment"
-              className="market-sentiment__badge-icon"
-            />
-            <span className="market-sentiment__badge-text">
+          <div className="badge-row">
+            <img src={badgeIcon} alt="Market Sentiment" />
+            <span className="badge-label">
               {t("market-sentiment_badge-text")}
             </span>
           </div>

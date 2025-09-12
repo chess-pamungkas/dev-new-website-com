@@ -86,26 +86,36 @@
 
   // Header section
   &__header {
-    margin-bottom: 48px;
-  }
-
-  &__badge {
-    box-sizing: border-box;
+    width: 100%;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 4px 10px;
-    gap: 12px;
-    width: 163.39px;
-    height: 28px;
-    background: #0f0f0f;
-    mix-blend-mode: normal;
-    border: 1px solid rgba(255, 68, 0, 0.15);
-    border-radius: 16px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    margin-bottom: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 16px;
+    text-align: left;
+    margin-bottom: 48px;
+
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 4px 10px;
+      background: rgba(15, 15, 15, 1);
+      border: 1px solid rgba(255, 68, 0, 0.15);
+      border-radius: 16px;
+      width: fit-content;
+      img {
+        width: 14px;
+        height: 14px;
+      }
+      .badge-label {
+        font-family: "Sofia Pro", Arial, sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: #fff;
+      }
+    }
     @include mobile {
       margin: 0 auto;
     }
@@ -142,7 +152,7 @@
     }
 
     @include mobile {
-      width: 172px;
+      width: 100%;
       gap: 4px; // Mobile specific gap
     }
   }
@@ -151,26 +161,27 @@
     width: 758px;
     font-family: "Sofia Pro", Arial, sans-serif;
     font-style: normal;
-    font-weight: 700;
+    font-weight: map-get($font-weight, semibold);
     font-size: 52px;
+    line-height: 1.25;
+    text-align: left;
     letter-spacing: -0.02em;
     background: linear-gradient(
         102.31deg,
         rgba(255, 255, 255, 0) 9.12%,
         rgba(255, 68, 0, 0.45) 71.6%
       ),
-      #ffffff;
+      #fff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    margin: 0;
     flex: none;
     order: 1;
-    align-self: stretch;
     flex-grow: 0;
-    margin: 0 0 16px 0;
 
     @include mobile {
-      width: 358px;
+      width: 100%;
       font-size: 42px;
       text-align: center;
     }
@@ -178,7 +189,6 @@
 
   &__description {
     width: 625px;
-    height: 56px;
     font-family: "Sofia Pro", Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -191,11 +201,12 @@
     order: 2;
     flex-grow: 0;
     margin: 0;
+    text-align: left;
 
     @include mobile {
-      width: 358px;
-      height: 112px;
+      width: 100%;
       text-align: center;
+      font-size: 16px;
       align-self: stretch;
     }
   }
@@ -986,7 +997,12 @@
   // Mobile specific adjustments
   @include mobile {
     &__header {
-      margin-bottom: 32px;
+      padding: 0;
+      margin-bottom: 24px;
+
+      .badge-row {
+        margin: 0 auto;
+      }
     }
 
     &__tabs {
