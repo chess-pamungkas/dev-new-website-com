@@ -708,7 +708,8 @@
 
   @include mobile {
     min-height: auto;
-    margin: 50px 0;
+    margin: 30px 0;
+    padding-bottom: 60px;
     .account-comparison-header {
       padding: 52px 18px 0;
       .account-comparison-title {
@@ -764,15 +765,17 @@
       }
     }
     .shared-features {
-      margin-top: 40px;
+      margin-top: 20px;
       padding: 0;
       width: calc(100% - 36px);
+      height: 160px;
       display: none !important;
       display: none !important;
       align-items: center;
       justify-content: center;
       .shared-features-content {
-        padding: 0 0 16.46px;
+        margin-top: 75px;
+        padding: 0 24px 16.46px;
         font-size: 18px;
         line-height: 28px;
         white-space: normal;

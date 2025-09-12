@@ -771,3 +771,11 @@
     flex-grow: 0;
   }
 }
+
+.mt4-page-content {
+  .account-comparison-content .shared-features {
+    @include mobile {
+      display: block !important;
+    }
+  }
+}

@@ -90,7 +90,9 @@ const Mt4PageContent = ({ className, isShowHero = true }) => {
           ref={downloadRef}
         />
       </ContainerWrapper>
-      <AccountComparison />
+      <div className="mt4-page-content">
+        <AccountComparison />
+      </div>
       {isMobile ? (
         <OurCommunityContent />
       ) : (

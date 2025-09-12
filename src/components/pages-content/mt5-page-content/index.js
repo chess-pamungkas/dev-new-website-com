@@ -91,7 +91,9 @@ const Mt5PageContent = ({ className, isShowHero = true }) => {
           ref={downloadRef}
         />
       </ContainerWrapper>
-      <AccountComparison />
+      <div className="mt5-page-content">
+        <AccountComparison />
+      </div>
       {isMobile ? (
         <OurCommunityContent />
       ) : (
