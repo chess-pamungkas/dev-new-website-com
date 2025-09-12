@@ -162,6 +162,15 @@
     "VWO.NYS": ["vwo", "nys"],
     "VXF.NYS": ["vxf", "nys"],
     "QQQ.NAS": ["qqq", "nas"],
-    "VXUS.NAS": ["vxus", "nas"]
+    "VXUS.NAS": ["vxus", "nas"],
+    "AUDCNH": ["aud", "cnh"],
+    "AUDSGD": ["aud", "sgd"],
+    "AUDZAR": ["aud", "zar"],
+    "CADCHF": ["cad", "chf"],
+    "CADJPY": ["cad", "jpy"],
+    "CHFJPY": ["chf", "jpy"],
+    "EURAUD": ["eur", "aud"],
+    "GBPAUD": ["gbp", "aud"],
+    "USDSGD": ["usd", "sgd"]
   }
 }

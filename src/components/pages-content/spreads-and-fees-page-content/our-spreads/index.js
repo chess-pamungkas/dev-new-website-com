@@ -164,7 +164,8 @@ const OurSpreads = ({ className }) => {
             onClick={(e) => {
               if (
                 isMobile &&
-                !e.target.closest(".our-spreads__platform-dropdown")
+                !e.target.closest(".our-spreads__platform-dropdown") &&
+                !e.target.closest(".search-container-mobile")
               ) {
                 setIsDropdownOpen(!isDropdownOpen);
               }
@@ -242,12 +243,37 @@ const OurSpreads = ({ className }) => {
                 // Mobile Layout
                 <div className="our-spreads-mobile">
                   {/* Search Bar */}
-                  <div className="search-container-mobile">
+                  <div
+                    className={cn("search-container-mobile", {
+                      "search-container-mobile--hidden": isDropdownOpen,
+                    })}
+                    onClick={(e) => {
+                      // Prevent event propagation to parent dropdown toggle
+                      e.stopPropagation();
+                    }}
+                  >
                     <input
                       type="text"
                       placeholder="Search by Symbol"
                       value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
+                      onChange={(e) => {
+                        setSearchTerm(e.target.value);
+                        // Close dropdown when typing in search
+                        if (isDropdownOpen) {
+                          setIsDropdownOpen(false);
+                        }
+                      }}
+                      onFocus={(e) => {
+                        // Prevent event propagation and close dropdown
+                        e.stopPropagation();
+                        if (isDropdownOpen) {
+                          setIsDropdownOpen(false);
+                        }
+                      }}
+                      onClick={(e) => {
+                        // Prevent event propagation when clicking input
+                        e.stopPropagation();
+                      }}
                       className="search-input-mobile"
                     />
                     <div className="search-icon-mobile">

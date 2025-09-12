@@ -79,7 +79,7 @@ const ForexSpreadsMobile = () => {
     const icons = getSymbolIcons(symbol);
 
     if (icons.length === 0) {
-      return <div className="spread-card__icon">💱</div>; // Fallback to emoji
+      return <div className="spread-card__icon"></div>; // Fallback to emoji
     }
 
     if (icons.length === 1) {
