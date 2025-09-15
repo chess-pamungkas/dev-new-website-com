@@ -38,33 +38,15 @@ const ContactUs = ({ className }) => {
         <div className="contact-us__content">
           {/* Badge */}
           <div className="contact-us__badge-group">
-            <div className="contact-us__badge">
+            <div className="contact-us__badge-content">
               <img
                 src={BadgeIcon}
-                alt="Trade the Next Level"
+                alt="Icon"
                 className="contact-us__badge-icon"
               />
-            </div>
-            <div className="contact-us__badge-content">
               <span className="contact-us__badge-message">
-                {t("contact-us_badge-text")}
+                {t("contact-us_badge-text-get-in-touch")}
               </span>
-              <svg
-                className="contact-us__badge-arrow"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
-                  stroke="#FF4400"
-                  strokeWidth="1.33333"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
             </div>
           </div>
 
