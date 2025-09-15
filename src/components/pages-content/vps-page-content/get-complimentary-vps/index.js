@@ -4,9 +4,32 @@ import { useTranslationWithVariables } from "../../../../helpers/hooks/use-trans
 import featuresIcon from "../../../../assets/images/icons/features.svg";
 import minimumDepositIcon from "../../../../assets/images/icons/vps/minimum-$3000-deposit.svg";
 import minimumTradingVolumeIcon from "../../../../assets/images/icons/vps/minimum-trading-volume.svg";
+import oqtimaForexCfdLightDesktop from "../../../../assets/images/vps/oqtima-forex-cfd-light-desktop.svg";
+import oqtimaForexCfdLightMobile from "../../../../assets/images/vps/oqtima-forex-cfd-light-mobile.svg";
+import handDesktop from "../../../../assets/images/vps/hand-desktop.svg";
+import handMobile from "../../../../assets/images/vps/hand-mobile.svg";
 import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import LanguageContext from "../../../../context/language-context";
 import { ButtonPrimaryStandard } from "../../../shared/reusable-buttons";
+
+// Arrow SVG component
+const ArrowIcon = () => (
+  <svg
+    width="8.59"
+    height="8.59"
+    viewBox="0 0 11 11"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+      stroke="currentColor"
+      strokeWidth="1.3333"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 const GetComplimentaryVPS = ({ className }) => {
   const { t } = useTranslationWithVariables();
@@ -74,18 +97,50 @@ const GetComplimentaryVPS = ({ className }) => {
 
         {/* Card 2: Minimum trading volume of 5 Lots Forex */}
         <div className="get-complimentary-vps-card minimum-trading-card">
-          <div className="card-icon">
-            <img
-              src={minimumTradingVolumeIcon}
-              alt={t("get_complimentary_vps_card2_title")}
-            />
+          <div className="card-content-wrapper">
+            <div className="card-icon">
+              <img
+                src={minimumTradingVolumeIcon}
+                alt={t("get_complimentary_vps_card2_title")}
+              />
+            </div>
+            <h3 className="card-title">
+              {t("get_complimentary_vps_card2_title")}
+            </h3>
+            <p className="card-description">
+              {t("get_complimentary_vps_card2_description")}
+            </p>
           </div>
-          <h3 className="card-title">
-            {t("get_complimentary_vps_card2_title")}
-          </h3>
-          <p className="card-description">
-            {t("get_complimentary_vps_card2_description")}
-          </p>
+          <div className="vps-image-container">
+            <img
+              src={
+                isMobile
+                  ? oqtimaForexCfdLightMobile
+                  : oqtimaForexCfdLightDesktop
+              }
+              alt="Oqtima Forex CFD"
+              className="vps-image"
+            />
+            <img
+              src={handDesktop}
+              alt="Hand pointing to Place Order button"
+              className="vps-hand-icon desktop-only"
+            />
+            <img
+              src={handMobile}
+              alt="Hand pointing to Place Order button"
+              className="vps-hand-icon mobile-only"
+            />
+            <button
+              className="vps-start-trading-btn"
+              onClick={handleShowRegistrationPopup}
+            >
+              <span className="btn-text">{t("button-place-order")}</span>
+              <span className="btn-arrow">
+                <ArrowIcon />
+              </span>
+            </button>
+          </div>
         </div>
       </div>
 

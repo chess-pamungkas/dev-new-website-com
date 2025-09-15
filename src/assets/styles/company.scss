@@ -1,6 +1,354 @@
 @import "vars";
 @import "mixins";
 
+// Company Section Styles
+.company-section {
+  position: relative;
+  width: 100%;
+  min-height: 1150px;
+  background: transparent;
+  border-radius: 24px;
+  overflow: hidden;
+  margin: 0 0 48px 0;
+
+  @include mobile {
+    min-height: auto;
+    margin: 50px 0 0 0;
+    padding-bottom: 30px;
+  }
+
+  .company-section-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      object-fit: fill;
+      display: block;
+      opacity: 1;
+      mix-blend-mode: color-dodge;
+
+      @include mobile {
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+
+  .company-section-container {
+    position: relative;
+    z-index: 2;
+    padding: 73px 20px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @include mobile {
+      padding: 52px 18px 0;
+    }
+
+    @include tablet {
+      padding: 60px 20px 0;
+    }
+
+    @include desktop-lg {
+      padding: 80px 40px 0;
+    }
+
+    @include desktop-xl {
+      padding: 100px 60px 0;
+    }
+  }
+
+  // Content container - match account-comparison structure
+  > *:not(.company-section-bg) {
+    position: relative;
+    z-index: 4;
+  }
+
+  .company-section-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    padding: 75px 0;
+
+    @include mobile {
+      gap: 24px;
+      padding: 75px 0 0 0;
+    }
+
+    @include tablet {
+      gap: 32px;
+    }
+
+    @include desktop-lg {
+      gap: 40px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include desktop-xl {
+      gap: 40px;
+    }
+  }
+
+  .company-section-card {
+    position: relative;
+    width: 100%;
+    // max-width: 800px;
+    padding: 24px 42px;
+    height: 319px;
+    background-color: rgba(0, 0, 0, 0.6); // Fallback background
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 300px;
+    z-index: 2;
+
+    @include mobile {
+      padding: 24px;
+      background-color: rgba(0, 0, 0, 0.6); // Fallback background
+      gap: 21px;
+      min-height: 608px;
+    }
+
+    @include tablet {
+      gap: 24px;
+      min-height: 319px;
+    }
+
+    @include desktop-lg {
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
+      min-height: 319px;
+    }
+
+    @include desktop-xl {
+      gap: 24px;
+    }
+
+    // Left content wrapper for desktop
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+
+      @include mobile {
+        gap: 12px;
+        flex: none;
+      }
+
+      @include tablet {
+        gap: 12px;
+      }
+
+      @include desktop-lg {
+        flex: 1;
+        max-width: 50%;
+      }
+    }
+
+    &__badge {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 6px 12px;
+      gap: 10px;
+      width: fit-content;
+      height: 26px;
+      background: #ff4400;
+      mix-blend-mode: normal;
+      border-radius: 16px;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+
+      @include mobile {
+        width: fit-content;
+        height: 26px;
+        padding: 6px 12px;
+        gap: 10px;
+      }
+
+      &-icon {
+        width: 14px;
+        height: 14px;
+        object-fit: contain;
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+
+        @include mobile {
+          width: 14px;
+          height: 14px;
+        }
+      }
+
+      &-text {
+        width: fit-content;
+        font-family: "Sofia Pro", Arial, sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: left;
+        color: #000000;
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+
+        @include mobile {
+          font-size: 14px;
+          line-height: 20px;
+        }
+      }
+    }
+
+    &__title {
+      font-family: "Sofia Pro", Arial, sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 72px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      background: linear-gradient(
+          102.31deg,
+          rgba(255, 255, 255, 0) 9.12%,
+          rgba(255, 68, 0, 0.45) 71.6%
+        ),
+        #ffffff;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+
+      @include mobile {
+        font-weight: 800;
+        font-size: 42px;
+        align-self: stretch;
+      }
+
+      @include tablet {
+        font-size: 72px;
+      }
+
+      @include desktop-lg {
+        font-size: 72px;
+      }
+    }
+
+    &__description {
+      width: 462px;
+      font-family: "Sofia Pro", Arial, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 26px;
+      letter-spacing: 0.2px;
+      color: #ffffff;
+      opacity: 0.7;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+      margin: 0;
+
+      @include mobile {
+        width: 100%;
+        height: auto;
+        font-size: 18px;
+        line-height: 28px;
+      }
+
+      @include tablet {
+        font-size: 16px;
+        line-height: 26px;
+      }
+
+      @include desktop-lg {
+        font-size: 16px;
+        line-height: 26px;
+      }
+    }
+
+    &__bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      justify-content: center;
+      align-items: flex-start;
+
+      @include mobile {
+        margin-top: 23px;
+        gap: 10px;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      @include desktop-lg {
+        flex: 1;
+        max-width: 50%;
+        margin-top: 0;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    &__bullet {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+
+      @include mobile {
+        gap: 10px;
+      }
+
+      &-icon {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        flex-shrink: 0;
+        margin-top: 2px;
+
+        @include mobile {
+          margin-top: 6px;
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      &-text {
+        font-family: "Sofia Pro", Arial, sans-serif;
+        font-weight: map-get($font-weight, "regular");
+        font-size: 18px;
+        line-height: 28px;
+        color: #ffffff;
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
 .company {
   position: relative;
   overflow: hidden;
@@ -769,5 +1117,117 @@
     flex: none;
     order: 1;
     flex-grow: 0;
+  }
+}
+
+.company-page {
+  @include mobile {
+    margin-top: 130px;
+
+    .features-products {
+      // Ensure the section is visible
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      min-height: 200px !important;
+
+      &__card-description {
+        a {
+          font-weight: map-get($font-weight, "semibold");
+          color: #ff4400 !important; // Red color for links
+          text-decoration: none !important;
+
+          &:hover {
+            font-weight: map-get($font-weight, "semibold");
+            color: #e63e00 !important; // Darker red on hover
+            text-decoration: underline !important;
+          }
+        }
+      }
+
+      &__header {
+        display: block !important;
+        visibility: visible !important;
+        text-align: center !important;
+        margin-bottom: 20px !important;
+
+        // Override the default mobile text-align: left from features-products.scss
+        * {
+          text-align: center !important;
+        }
+      }
+
+      &__badge {
+        margin: 0 auto !important;
+        margin-bottom: 10px !important;
+      }
+
+      &__grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px;
+        padding: 0;
+        visibility: visible !important;
+      }
+
+      &__slider {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px;
+        overflow: visible !important;
+        scroll-snap-type: none !important;
+        padding: 0;
+      }
+
+      &__grid-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px;
+        grid-template-columns: none !important;
+        visibility: visible !important;
+      }
+
+      &__card {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        min-width: auto !important;
+        min-height: auto !important;
+        scroll-snap-align: none !important;
+        flex-shrink: 1 !important;
+        padding: 24px 28px;
+        margin-bottom: 0;
+        background: #ffffff !important; // Temporary background for debugging
+
+        &::before {
+          background-image: url("../../assets/images/bg/features-products/features-products-mobile.svg") !important;
+        }
+      }
+
+      &__card-icon {
+        display: flex !important;
+        visibility: visible !important;
+        width: 72px;
+        height: 72px;
+        margin-bottom: 16px;
+      }
+
+      &__card-title {
+        display: block !important;
+        visibility: visible !important;
+        font-size: 24px !important;
+        margin: 0 0 12px 0 !important;
+        line-height: 1.2;
+      }
+
+      &__card-description {
+        display: block !important;
+        visibility: visible !important;
+        font-size: 16px !important;
+        max-width: none !important;
+        line-height: 1.5;
+      }
+    }
   }
 }

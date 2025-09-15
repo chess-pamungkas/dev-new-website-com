@@ -21,7 +21,7 @@
     align-items: center;
     padding: 6px 10px;
     gap: 5px;
-    width: 98px;
+    width: fit-content;
     height: 26px;
     background: linear-gradient(
         0deg,
@@ -37,7 +37,7 @@
     flex-grow: 0;
     box-sizing: border-box;
     margin: 0 auto;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
 
     @include mobile {
       margin: unset;
@@ -88,9 +88,8 @@
     order: 0;
     align-self: stretch;
     flex-grow: 0;
-    margin-bottom: 16px;
-    margin-left: auto;
-    margin-right: auto;
+    // margin-bottom: 16px;
+    margin: 0;
 
     @include mobile {
       font-size: 42px;

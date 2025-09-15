@@ -69,7 +69,7 @@ const FeaturesProducts = ({
             className="features-products__badge-icon"
           />
           <span className="features-products__badge-text">
-            {t("features-products_badge-text")}
+            {t(`features-products_${tradingType}_badge-text`)}
           </span>
         </div>
 

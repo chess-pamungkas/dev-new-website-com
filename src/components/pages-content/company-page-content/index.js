@@ -11,11 +11,13 @@ import icon from "../../../assets/images/icon--white.svg";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import TopMarketPromotion from "../../top-market-promotion";
 import { setLangParam } from "../../../helpers/services/language-service";
-import CompanyImageContent from "./company-image-content";
 import Hero from "../../shared/hero";
 import ContainerWrapper from "../../shared/container-wrapper";
 import OurCommunityContent from "../../shared/our-community";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
+import { getFeaturesByTradingType } from "../../../helpers/features-products.config";
+import FeaturesProducts from "../../shared/features-products";
+import CompanySection from "./company-section";
 
 const CompanyPageContent = ({ className, isShowHero = true }) => {
   const { t } = useTranslationWithVariables();
@@ -47,8 +49,17 @@ const CompanyPageContent = ({ className, isShowHero = true }) => {
       />
 
       <ContainerWrapper>
-        <CompanyImageContent />
+        <div className="company-page">
+          {/* Company Features Products */}
+          <FeaturesProducts
+            tradingType="company"
+            features={getFeaturesByTradingType("company")}
+          />
+        </div>
       </ContainerWrapper>
+
+      {/* Company Section */}
+      <CompanySection />
 
       {isMobile ? (
         <OurCommunityContent />

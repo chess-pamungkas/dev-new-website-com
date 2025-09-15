@@ -163,7 +163,7 @@
       top: 0;
       border-radius: 20px;
       background: url("../../assets/images/bg/trading-tools/trading-tools-mobile.svg")
-        no-repeat center center;
+        no-repeat right center;
       background-size: cover;
       overflow: hidden;
       border-radius: 20px;
@@ -172,35 +172,35 @@
 
     @include tablet {
       background: url("../../assets/images/bg/trading-tools/trading-tools-desktop.svg")
-        no-repeat center center;
+        no-repeat right center;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-lg {
       background: url("../../assets/images/bg/trading-tools/trading-tools-desktop.svg")
-        no-repeat center center;
+        no-repeat right center;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-xl {
       background: url("../../assets/images/bg/trading-tools/trading-tools-desktop.svg")
-        no-repeat center center;
+        no-repeat right center;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-2k {
       background: url("../../assets/images/bg/trading-tools/trading-tools-desktop.svg")
-        no-repeat center center;
+        no-repeat right center;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-5k {
       background: url("../../assets/images/bg/trading-tools/trading-tools-desktop.svg")
-        no-repeat center center;
+        no-repeat right center;
       background-size: cover;
       background-color: transparent;
     }

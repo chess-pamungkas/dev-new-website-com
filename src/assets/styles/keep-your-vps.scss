@@ -226,52 +226,6 @@
         margin-right: 0;
       }
 
-      &.maintain-balance-card {
-        background-image: url("../../assets/images/bg/vps/bg-card-maintain-a-$500-balance-desktop.svg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-
-        @include mobile {
-          background-image: url("../../assets/images/bg/vps/bg-card-maintain-a-$500-balance-mobile.svg");
-        }
-      }
-
-      &.monthly-trading-card {
-        background-image: url("../../assets/images/bg/vps/bg-card-monthly-trading-requirement-desktop.svg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-
-        @include mobile {
-          background-image: url("../../assets/images/bg/vps/bg-card-monthly-trading-requirement-mobile.svg");
-        }
-      }
-
-      .card-icon {
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: none;
-        order: 1;
-        flex-grow: 0;
-        z-index: 1;
-        position: relative;
-
-        @include mobile {
-          width: 72px;
-          height: 72px;
-        }
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-        }
-      }
-
       .card-title {
         width: 241px;
         font-family: "Sofia Pro", Arial, sans-serif;
@@ -334,6 +288,225 @@
           line-height: 24px;
           width: 273px;
           height: auto;
+        }
+      }
+
+      &.maintain-balance-card {
+        background-image: url("../../assets/images/bg/vps/bg-card-maintain-a-$500-balance-desktop.svg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @include mobile {
+          background-image: url("../../assets/images/bg/vps/bg-card-maintain-a-$500-balance-mobile.svg");
+        }
+      }
+
+      &.monthly-trading-card {
+        background-image: url("../../assets/images/bg/vps/bg-card-monthly-trading-requirement-desktop.svg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @include mobile {
+          background-image: url("../../assets/images/bg/vps/bg-card-monthly-trading-requirement-mobile.svg");
+        }
+
+        @include desktop-lg {
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 20px;
+        }
+
+        @include desktop-xl {
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 24px;
+        }
+
+        .card-content-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+          flex: 1;
+          z-index: 2;
+
+          @include mobile {
+            width: 100%;
+            gap: 16px;
+          }
+
+          @include desktop-lg {
+            flex: 1;
+            gap: 16px;
+          }
+
+          @include desktop-xl {
+            flex: 1;
+            gap: 20px;
+          }
+
+          .card-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+            z-index: 1;
+            position: relative;
+
+            @include mobile {
+              width: 72px;
+              height: 72px;
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+        }
+
+        .vps-image-container {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+          z-index: 1;
+
+          @include mobile {
+            width: 100%;
+            margin-top: 20px;
+            order: 2;
+          }
+
+          @include desktop-lg {
+            margin-right: 10px;
+            order: 2;
+            align-self: center;
+          }
+
+          .vps-image {
+            width: 100%;
+            height: auto;
+            // max-width: 200px;
+
+            @include mobile {
+              margin-top: 0;
+              max-width: 242px;
+            }
+
+            // @include desktop-lg {
+            //   max-width: 200px;
+            // }
+
+            // @include desktop-xl {
+            //   max-width: 200px;
+            // }
+          }
+
+          // Start Trading Button
+          .vps-start-trading-btn {
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 12px;
+            width: 167px;
+            height: 38px;
+            left: 17px;
+            top: 180px;
+            background: rgba(255, 68, 0, 0.49);
+            border: 1px solid rgba(255, 68, 0, 0.5);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+
+            @include mobile {
+              position: absolute;
+              width: 169.88;
+              height: 35.56px;
+              left: 50px;
+              top: 185px;
+              background: rgba(255, 68, 0, 0.3);
+              border: 1px solid rgba(255, 68, 0, 0.5);
+              border-radius: 8px;
+              padding: 13.5px 16px;
+            }
+
+            .btn-text {
+              font-family: "Sofia Pro", Arial, sans-serif;
+              font-style: normal;
+              font-weight: map-get($font-weight, "medium");
+              font-size: 18.4px;
+              line-height: 100%;
+              color: #fff;
+              white-space: nowrap;
+              flex: none;
+              order: 0;
+
+              @include mobile {
+                font-size: 14px;
+                font-weight: map-get($font-weight, "regular");
+                line-height: 120%;
+              }
+            }
+
+            .btn-arrow {
+              display: none;
+              width: 8.59px;
+              height: 8.59px;
+              flex: none;
+              order: 1;
+              transition: all 0.3s ease;
+              opacity: 0;
+              transform: translateX(-10px);
+              color: #ff4400;
+              margin-left: 8px;
+              align-items: center;
+              justify-content: center;
+
+              @include mobile {
+                display: none;
+              }
+
+              svg {
+                width: 100%;
+                height: 100%;
+              }
+            }
+
+            &:hover {
+              background: rgba(255, 68, 0, 0.7);
+              border: 1px solid rgba(255, 68, 0, 0.8);
+              transform: translateY(-2px);
+              box-shadow: 0 4px 12px rgba(255, 68, 0, 0.3);
+
+              @include mobile {
+                background: rgba(255, 68, 0, 0.5);
+                border: 1px solid rgba(255, 68, 0, 0.7);
+              }
+
+              .btn-arrow {
+                display: flex;
+                opacity: 1;
+                transform: translateX(0);
+                color: #ffffff;
+              }
+            }
+
+            &:active {
+              transform: translateY(0);
+              box-shadow: 0 2px 6px rgba(255, 68, 0, 0.2);
+            }
+          }
         }
       }
     }

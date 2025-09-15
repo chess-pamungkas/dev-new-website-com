@@ -240,6 +240,19 @@
         @include mobile {
           background-image: url("../../assets/images/bg/vps/bg-card-minimum-trading-volume-mobile.svg");
         }
+
+        // Desktop layout: side-by-side content and image
+        @include desktop-lg {
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 20px;
+        }
+
+        @include desktop-xl {
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 24px;
+        }
       }
 
       .card-icon {
@@ -301,7 +314,7 @@
       }
 
       .card-description {
-        width: 273px;
+        width: 238px;
         font-family: "Sofia Pro", Arial, sans-serif;
         font-weight: map-get($font-weight, "regular");
         font-size: 16px;
@@ -326,8 +339,233 @@
         @include tablet {
           font-size: 16px;
           line-height: 24px;
-          width: 273px;
+          width: 238px;
           height: auto;
+        }
+      }
+
+      // Content wrapper for text elements
+      .card-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 32px;
+
+        @include mobile {
+          gap: 16px;
+        }
+
+        @include desktop-lg {
+          flex: 1;
+          gap: 16px;
+        }
+
+        @include desktop-xl {
+          flex: 1;
+          gap: 20px;
+        }
+      }
+
+      // VPS Image Container
+      .vps-image-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 20px 0;
+        flex: none;
+        order: 4;
+        flex-grow: 0;
+        z-index: 2;
+        position: relative;
+        margin-top: 16px; // Add some space after description
+
+        @include mobile {
+          padding: 16px 0;
+          margin-top: 20px;
+        }
+
+        // Desktop specific positioning - positioned to the right
+        @include desktop-lg {
+          margin-top: 30px;
+          margin-right: 10px;
+          padding: 0;
+          width: auto;
+          flex: none;
+          order: 2;
+          align-self: flex-start;
+        }
+
+        @include desktop-xl {
+          margin-top: 30px;
+          margin-right: 10px;
+          padding: 0;
+          width: auto;
+          flex: none;
+          order: 2;
+          align-self: flex-start;
+        }
+
+        .vps-image {
+          max-width: 100%;
+          height: auto;
+          object-fit: contain;
+          display: block;
+
+          @include mobile {
+            max-width: 100%;
+            height: auto;
+          }
+
+          // Desktop specific sizing
+          @include desktop-lg {
+            max-width: 180px;
+            height: auto;
+          }
+
+          @include desktop-xl {
+            max-width: 200px;
+            height: auto;
+          }
+        }
+
+        // Hand Icon
+        .vps-hand-icon {
+          position: absolute;
+          z-index: 15;
+          pointer-events: none;
+
+          &.desktop-only {
+            display: none;
+
+            @include desktop-lg {
+              display: block;
+              width: auto;
+              height: 150px;
+              right: -65px;
+              top: 165px;
+            }
+
+            @include desktop-xl {
+              display: block;
+              width: auto;
+              height: 150px;
+              right: -65px;
+              top: 165px;
+            }
+          }
+
+          &.mobile-only {
+            display: block;
+            width: auto;
+            height: 80px;
+            right: -23px;
+            top: 190px;
+
+            @include desktop-lg {
+              display: none;
+            }
+          }
+        }
+
+        // Start Trading Button
+        .vps-start-trading-btn {
+          position: absolute;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 10px 12px;
+          width: 167px;
+          height: 38px;
+          left: 17px;
+          top: 150px;
+          background: rgba(255, 68, 0, 0.49);
+          border: 1px solid rgba(255, 68, 0, 0.5);
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          z-index: 10;
+
+          @include mobile {
+            position: absolute;
+            width: 263px;
+            height: 44px;
+            left: 16px;
+            top: 180px;
+            background: rgba(255, 68, 0, 0.3);
+            border: 1px solid rgba(255, 68, 0, 0.5);
+            border-radius: 8px;
+            padding: 13.5px 16px;
+          }
+
+          .btn-text {
+            font-family: "Sofia Pro", Arial, sans-serif;
+            font-style: normal;
+            font-weight: map-get($font-weight, "medium");
+            font-size: 18.4px;
+            line-height: 100%;
+            color: #000000;
+            white-space: nowrap;
+            flex: none;
+            order: 0;
+
+            @include mobile {
+              font-size: 14px;
+              font-weight: map-get($font-weight, "regular");
+              line-height: 120%;
+            }
+          }
+
+          .btn-arrow {
+            display: none;
+            width: 8.59px;
+            height: 8.59px;
+            flex: none;
+            order: 1;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-10px);
+            color: #ff4400;
+            margin-left: 8px;
+            align-items: center;
+            justify-content: center;
+
+            @include mobile {
+              display: none;
+            }
+
+            svg {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          &:hover {
+            background: rgba(255, 68, 0, 0.7);
+            border: 1px solid rgba(255, 68, 0, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 68, 0, 0.3);
+
+            @include mobile {
+              background: rgba(255, 68, 0, 0.5);
+              border: 1px solid rgba(255, 68, 0, 0.7);
+            }
+
+            .btn-arrow {
+              display: flex;
+              opacity: 1;
+              transform: translateX(0);
+              color: #ffffff;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+
+          &:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(255, 68, 0, 0.2);
+          }
         }
       }
 

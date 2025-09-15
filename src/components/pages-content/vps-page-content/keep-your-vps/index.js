@@ -6,9 +6,32 @@ import maintainBalanceIcon from "../../../../assets/images/icons/vps/maintain-a-
 import monthlyTradingIcon from "../../../../assets/images/icons/vps/monthly-trading-requirement.svg";
 import KeepYourVPSDesktopBg from "../../../../assets/images/bg/vps/keep-your-vps-forever-desktop.svg";
 import KeepYourVPSMobileBg from "../../../../assets/images/bg/vps/keep-your-vps-forever-mobile.svg";
+import bgCardMonthlyTradingRequirementDesktop from "../../../../assets/images/bg/vps/bg-card-monthly-trading-requirement-desktop.svg";
+import bgCardMonthlyTradingRequirementMobile from "../../../../assets/images/bg/vps/bg-card-monthly-trading-requirement-mobile.svg";
+import oqtimaForexCfdDarkDesktop from "../../../../assets/images/vps/oqtima-forex-cfd-dark-desktop.svg";
+import oqtimaForexCfdDarkMobile from "../../../../assets/images/vps/oqtima-forex-cfd-dark-mobile.svg";
 import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import LanguageContext from "../../../../context/language-context";
 import { ButtonPrimaryStandard } from "../../../shared/reusable-buttons";
+
+// Arrow SVG component
+const ArrowIcon = () => (
+  <svg
+    width="8.59"
+    height="8.59"
+    viewBox="0 0 11 11"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+      stroke="currentColor"
+      strokeWidth="1.3333"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 const KeepYourVPS = ({ className }) => {
   const { t } = useTranslationWithVariables();
@@ -79,13 +102,33 @@ const KeepYourVPS = ({ className }) => {
 
         {/* Card 2: Monthly Trading Requirement */}
         <div className="keep-your-vps-card monthly-trading-card">
-          <div className="card-icon">
-            <img src={monthlyTradingIcon} alt="Monthly Trading Requirement" />
+          <div className="card-content-wrapper">
+            <div className="card-icon">
+              <img src={monthlyTradingIcon} alt="Monthly Trading Requirement" />
+            </div>
+            <h3 className="card-title">{t("keep_your_vps_card2_title")}</h3>
+            <p className="card-description">
+              {t("keep_your_vps_card2_description")}
+            </p>
           </div>
-          <h3 className="card-title">{t("keep_your_vps_card2_title")}</h3>
-          <p className="card-description">
-            {t("keep_your_vps_card2_description")}
-          </p>
+          <div className="vps-image-container">
+            <img
+              src={
+                isMobile ? oqtimaForexCfdDarkMobile : oqtimaForexCfdDarkDesktop
+              }
+              alt="Oqtima Forex CFD"
+              className="vps-image"
+            />
+            <button
+              className="vps-start-trading-btn"
+              onClick={handleShowRegistrationPopup}
+            >
+              <span className="btn-text">{t("button-place-order")}</span>
+              <span className="btn-arrow">
+                <ArrowIcon />
+              </span>
+            </button>
+          </div>
         </div>
       </div>
 

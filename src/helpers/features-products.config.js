@@ -78,6 +78,21 @@ import featuresTradingToolsGlobalIndicesInsights from "../assets/images/icons/tr
 import featuresTradingToolsFilterCompanyEasily from "../assets/images/icons/trading-tools/features-filter-company-easily.svg";
 import featuresTradingToolsRealTimeMarketData from "../assets/images/icons/trading-tools/features-real-time-market-data.svg";
 
+// Company Features Icons
+import featuresCompanyClearVision from "../assets/images/icons/company/features-clear-vision.svg";
+import featuresCompanyTailoredExperience from "../assets/images/icons/company/features-tailored-experience.svg";
+import featuresCompanyFastDecadesOfExpertise from "../assets/images/icons/company/features-decades-of-expertise.svg";
+import featuresCompanyTraderCentric from "../assets/images/icons/company/features-trader-centric.svg";
+import featuresCompanyDedicatedTeam from "../assets/images/icons/company/features-dedicated-team.svg";
+import featuresCompanyMissionDriven from "../assets/images/icons/company/features-mission-driven.svg";
+
+// Partners Features Icons
+import featuresPartnersDailyPayouts from "../assets/images/icons/partners/features-daily-payouts.svg";
+import featuresPartnersMultilingualMarketingTools from "../assets/images/icons/partners/features-multilingual-marketing-tools.svg";
+import featuresPartnersLiveTrackingLinks from "../assets/images/icons/partners/features-live-tracking-links.svg";
+import featuresPartnersMultiTierIbScheme from "../assets/images/icons/partners/features-multi-tier-ib-scheme.svg";
+import featuresPartnersTraderAdvantage from "../assets/images/icons/partners/features-trader-advantage.svg";
+import featuresPartnersGlobalSalesSupport from "../assets/images/icons/partners/features-global-sales-support.svg";
 // Features configuration for different trading types
 // This will be populated with actual icons and content when provided
 
@@ -411,6 +426,72 @@ export const TRADING_TOOLS_FEATURES = [
   },
 ];
 
+export const COMPANY_FEATURES = [
+  {
+    icon: featuresCompanyClearVision,
+    title: "features-products_company_feature1_title",
+    description: "features-products_company_feature1_description",
+  },
+  {
+    icon: featuresCompanyTailoredExperience,
+    title: "features-products_company_feature2_title",
+    description: "features-products_company_feature2_description",
+  },
+  {
+    icon: featuresCompanyFastDecadesOfExpertise,
+    title: "features-products_company_feature3_title",
+    description: "features-products_company_feature3_description",
+  },
+  {
+    icon: featuresCompanyTraderCentric,
+    title: "features-products_company_feature4_title",
+    description: "features-products_company_feature4_description",
+  },
+  {
+    icon: featuresCompanyDedicatedTeam,
+    title: "features-products_company_feature5_title",
+    description: "features-products_company_feature5_description",
+  },
+  {
+    icon: featuresCompanyMissionDriven,
+    title: "features-products_company_feature6_title",
+    description: "features-products_company_feature6_description",
+  },
+];
+
+export const PARTNERS_FEATURES = [
+  {
+    icon: featuresPartnersDailyPayouts,
+    title: "features-products_partners_feature1_title",
+    description: "features-products_partners_feature1_description",
+  },
+  {
+    icon: featuresPartnersMultilingualMarketingTools,
+    title: "features-products_partners_feature2_title",
+    description: "features-products_partners_feature2_description",
+  },
+  {
+    icon: featuresPartnersLiveTrackingLinks,
+    title: "features-products_partners_feature3_title",
+    description: "features-products_partners_feature3_description",
+  },
+  {
+    icon: featuresPartnersMultiTierIbScheme,
+    title: "features-products_partners_feature4_title",
+    description: "features-products_partners_feature4_description",
+  },
+  {
+    icon: featuresPartnersTraderAdvantage,
+    title: "features-products_partners_feature5_title",
+    description: "features-products_partners_feature5_description",
+  },
+  {
+    icon: featuresPartnersGlobalSalesSupport,
+    title: "features-products_partners_feature6_title",
+    description: "features-products_partners_feature6_description",
+  },
+];
+
 // Helper function to get features based on trading type
 export const getFeaturesByTradingType = (tradingType) => {
   switch (tradingType.toLowerCase()) {
@@ -434,6 +515,10 @@ export const getFeaturesByTradingType = (tradingType) => {
       return VPS_FEATURES;
     case "trading-tools":
       return TRADING_TOOLS_FEATURES;
+    case "company":
+      return COMPANY_FEATURES;
+    case "partners":
+      return PARTNERS_FEATURES;
     // Add more cases as needed
     default:
       return FOREX_FEATURES; // Default fallback

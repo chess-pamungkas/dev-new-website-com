@@ -19,6 +19,8 @@ import ContainerWrapper from "../../shared/container-wrapper";
 import OurCommunityContent from "../../shared/our-community";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import GuideContent from "../../shared/guide-content";
+import { getFeaturesByTradingType } from "../../../helpers/features-products.config";
+import FeaturesProducts from "../../shared/features-products";
 
 const PartnersPageContent = ({ className, isShowHero = true }) => {
   const { t } = useTranslationWithVariables();
