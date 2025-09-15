@@ -60,10 +60,22 @@ const PartnersPageContent = ({ className, isShowHero = true }) => {
       </ContainerWrapper>
 
       {isMobile ? (
-        <OurCommunityContent />
+        <OurCommunityContent
+          customBadgeMessage={t("partners_our_community_badge_message")}
+          customTitle={t("partners_our_community_title")}
+          customSubtitle={t("partners_our_community_subtitle")}
+          customPrimaryButton={t("partners_our_community_primary_button")}
+          customSecondaryButton={t("partners_our_community_secondary_button")}
+        />
       ) : (
         <ContainerWrapper>
-          <OurCommunityContent />
+          <OurCommunityContent
+            customBadgeMessage={t("partners_our_community_badge_message")}
+            customTitle={t("partners_our_community_title")}
+            customSubtitle={t("partners_our_community_subtitle")}
+            customPrimaryButton={t("partners_our_community_primary_button")}
+            customSecondaryButton={t("partners_our_community_secondary_button")}
+          />
         </ContainerWrapper>
       )}
 
