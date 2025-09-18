@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "start": "gatsby develop",
-    "build": "npm run check:svg && npm run copy:registration-script && gatsby build",
+    "build": "npm run copy:registration-script && gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "copy:registration-script": "node src/scripts/copy-registration-script/index.js"
