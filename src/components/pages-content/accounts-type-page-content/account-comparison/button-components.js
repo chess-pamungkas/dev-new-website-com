@@ -26,8 +26,8 @@ const BaseButton = ({
 // Arrow SVG component
 const ArrowIcon = () => (
   <svg
-    width="11"
-    height="11"
+    width="9.33"
+    height="9.33"
     viewBox="0 0 11 11"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

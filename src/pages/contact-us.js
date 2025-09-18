@@ -5,7 +5,7 @@ import { useTranslationWithVariables } from "../helpers/hooks/use-translation-wi
 import Seo from "../components/shared/seo";
 import TopMarket from "../components/top-market";
 import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
-import image from "../assets/images/about-pages/contact-us.svg";
+// import image from "../assets/images/about-pages/contact-us.svg";
 import ContactUs from "../components/contact-us";
 import ReCaptchaProvider from "../components/shared/recaptcha-provider";
 import Hero from "../components/shared/hero";

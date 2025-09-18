@@ -165,11 +165,11 @@ const HelpCenter = ({ className }) => {
                   <div className="help-center__markets-badge">
                     <img
                       src={featuresIcon}
-                      alt="Features"
+                      alt={t("help-center_badge-alt")}
                       className="help-center__markets-badge-icon"
                     />
                     <span className="help-center__markets-badge-text">
-                      Features
+                      {t("help-center_badge-text")}
                     </span>
                   </div>
                   <h2 className="help-center__markets-title">
@@ -216,10 +216,22 @@ const HelpCenter = ({ className }) => {
       </section>
 
       {isMobile ? (
-        <OurCommunityContent />
+        <OurCommunityContent
+          customBadgeMessage={t("partners_our_community_badge_message")}
+          customTitle={t("partners_our_community_title")}
+          customSubtitle={t("partners_our_community_subtitle")}
+          customPrimaryButton={t("partners_our_community_primary_button")}
+          customSecondaryButton={t("partners_our_community_secondary_button")}
+        />
       ) : (
         <ContainerWrapper>
-          <OurCommunityContent />
+          <OurCommunityContent
+            customBadgeMessage={t("partners_our_community_badge_message")}
+            customTitle={t("partners_our_community_title")}
+            customSubtitle={t("partners_our_community_subtitle")}
+            customPrimaryButton={t("partners_our_community_primary_button")}
+            customSecondaryButton={t("partners_our_community_secondary_button")}
+          />
         </ContainerWrapper>
       )}
     </>

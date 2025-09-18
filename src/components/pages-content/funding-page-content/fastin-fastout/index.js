@@ -48,7 +48,7 @@ const FastInFastOutContent = () => {
           <div className="fastin-fastout-section__badge">
             <img
               src={badgeSecurityIcon}
-              alt="Security Badge"
+              alt={t("fastin-fastout_badge-icon-alt")}
               className="fastin-fastout-section__badge-icon"
             />
             <span className="fastin-fastout-section__badge-text">
@@ -90,7 +90,7 @@ const FastInFastOutContent = () => {
                   <div className="fastin-fastout-section__card-description">
                     <img
                       src={circleMarkIcon}
-                      alt="Check mark"
+                      alt={t("fastin-fastout_check-icon-alt")}
                       className="fastin-fastout-section__card-check"
                     />
                     <span>{feature.description}</span>

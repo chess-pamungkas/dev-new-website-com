@@ -31,7 +31,7 @@ import DemoAccountIcon from "../../assets/images/icons/main-page/features/featur
 import FeaturesIcon from "../../assets/images/icons/features.svg";
 
 const FeaturesContent = () => {
-  const { isMobile } = useWindowSize();
+  const { isMobile, isTablet } = useWindowSize();
   const { t } = useTranslationWithVariables();
 
   const bigCardBg = isMobile ? mobileBigCardBg : desktopBigCardBg;
@@ -59,16 +59,18 @@ const FeaturesContent = () => {
           <div className="features-content-section__badge">
             <img
               src={FeaturesIcon}
-              alt="Features"
+              alt={t("features-content-section_badge-text")}
               className="features-content-section__badge-icon"
             />
             <span className="features-content-section__badge-text">
-              Features
+              {t("features-content-section_badge-text")}
             </span>
           </div>
-          <h2 className="features-content-section__title">Why Choose OQtima</h2>
+          <h2 className="features-content-section__title">
+            {t("features-content-section_title")}
+          </h2>
           <p className="features-content-section__subtitle">
-            Experience the difference of true cost efficiency
+            {t("features-content-section_subtitle")}
           </p>
         </div>
 
@@ -87,17 +89,15 @@ const FeaturesContent = () => {
                   <div className="features-content-section__card-header">
                     <img
                       src={ClientSecurityIcon}
-                      alt="Client Security"
+                      alt={t("features-content-section_client-security_alt")}
                       className="features-content-section__card-icon"
                     />
                     <h3 className="features-content-section__card-title">
-                      Client Security & Regulation
+                      {t("features-content-section_client-security_title")}
                     </h3>
                   </div>
                   <p className="features-content-section__card-description">
-                    Your funds are secure with segregated accounts at Tier-1
-                    banks and negative balance protection. We operate with full
-                    regulatory transparency for your peace of mind.
+                    {t("features-content-section_client-security_description")}
                   </p>
                 </div>
 
@@ -106,7 +106,7 @@ const FeaturesContent = () => {
                   <div className="features-content-section__card-graphic">
                     <img
                       src={tier1BanksImg}
-                      alt="Tier 1 Banks"
+                      alt={t("features-content-section_tier1-banks_alt")}
                       className="features-content-section__card-graphic-img tier1-banks-img"
                     />
                   </div>
@@ -125,17 +125,15 @@ const FeaturesContent = () => {
                   <div className="features-content-section__card-header">
                     <img
                       src={MultiLanguageIcon}
-                      alt="Multi Language Support"
+                      alt={t("features-content-section_multi-language_alt")}
                       className="features-content-section__card-icon"
                     />
                     <h3 className="features-content-section__card-title">
-                      24/7 Multi-Language Support
+                      {t("features-content-section_multi-language_title")}
                     </h3>
                   </div>
                   <p className="features-content-section__card-description">
-                    Get round-the-clock assistance via live chat, phone, email,
-                    WhatsApp, and Telegram. Our specialists support you in
-                    English, Arabic, Spanish, and Portuguese.
+                    {t("features-content-section_multi-language_description")}
                   </p>
                 </div>
 
@@ -144,7 +142,7 @@ const FeaturesContent = () => {
                   <div className="features-content-section__card-graphic">
                     <img
                       src={chooseLanguageImg}
-                      alt="Choose Your Language"
+                      alt={t("features-content-section_choose-language_alt")}
                       className="features-content-section__card-graphic-img choose-language-img"
                     />
                   </div>
@@ -157,79 +155,103 @@ const FeaturesContent = () => {
           <div className="features-content-section__small-cards">
             {/* Payments & Security */}
             <div className="features-content-section__card features-content-section__card--small">
-              <div
-                className="features-content-section__card-bg"
-                style={{ backgroundImage: `url(${smallCardBgs.payments})` }}
-              >
+              <div className="features-content-section__card-bg">
                 <div className="features-content-section__card-content">
                   <div className="features-content-section__card-header">
                     <img
                       src={PaymentsIcon}
-                      alt="Payments & Security"
+                      alt={t("features-content-section_payments_alt")}
                       className="features-content-section__card-icon"
                     />
                     <h3 className="features-content-section__card-title">
-                      Payments & Security
+                      {t("features-content-section_payments_title")}
                     </h3>
                   </div>
                   <p className="features-content-section__card-description">
-                    Enjoy convenient regional payment methods, local banking
-                    options, and cryptocurrency support. We offer same-day
-                    withdrawals and ensure your funds and data are always
-                    secure.
+                    {t("features-content-section_payments_description")}
                   </p>
                 </div>
+                <div
+                  className="features-content-section__card-visual features-content-section__card-visual--payments"
+                  style={{
+                    backgroundImage: `url(${
+                      isMobile || isTablet
+                        ? cardPaymentsSecurityMobile
+                        : cardPaymentsSecurityDesktop
+                    })`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                ></div>
               </div>
             </div>
 
             {/* Superior Trading Conditions */}
             <div className="features-content-section__card features-content-section__card--small">
-              <div
-                className="features-content-section__card-bg"
-                style={{ backgroundImage: `url(${smallCardBgs.trading})` }}
-              >
+              <div className="features-content-section__card-bg">
                 <div className="features-content-section__card-content">
                   <div className="features-content-section__card-header">
                     <img
                       src={TradingConditionsIcon}
-                      alt="Superior Trading Conditions"
+                      alt={t("features-content-section_trading_alt")}
                       className="features-content-section__card-icon"
                     />
                     <h3 className="features-content-section__card-title">
-                      Superior Trading Conditions
+                      {t("features-content-section_trading_title")}
                     </h3>
                   </div>
                   <p className="features-content-section__card-description">
-                    Trade with an industry-leading $1.5 commission per side and
-                    spreads from 0.0 pips. Access 900+ instruments with up to
-                    1:1000 leverage, all supported by advanced technology.
+                    {t("features-content-section_trading_description")}
                   </p>
                 </div>
+                <div
+                  className="features-content-section__card-visual features-content-section__card-visual--trading"
+                  style={{
+                    backgroundImage: `url(${
+                      isMobile || isTablet
+                        ? cardSuperiorTradingConditionsMobile
+                        : cardSuperiorTradingConditionsDesktop
+                    })`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                ></div>
               </div>
             </div>
 
             {/* $10,000 Demo Account */}
             <div className="features-content-section__card features-content-section__card--small">
-              <div
-                className="features-content-section__card-bg"
-                style={{ backgroundImage: `url(${smallCardBgs.demo})` }}
-              >
+              <div className="features-content-section__card-bg">
                 <div className="features-content-section__card-content">
                   <div className="features-content-section__card-header">
                     <img
                       src={DemoAccountIcon}
-                      alt="Demo Account"
+                      alt={t("features-content-section_demo_alt")}
                       className="features-content-section__card-icon"
                     />
                     <h3 className="features-content-section__card-title">
-                      $10,000 Demo Account
+                      {t("features-content-section_demo_title")}
                     </h3>
                   </div>
                   <p className="features-content-section__card-description">
-                    Practice with a $10,000 virtual balance on our full platform
-                    under real market conditions. No risk, no time limits.
+                    {t("features-content-section_demo_description")}
                   </p>
                 </div>
+                <div
+                  className="features-content-section__card-visual features-content-section__card-visual--demo"
+                  style={{
+                    backgroundImage: `url(${
+                      isMobile || isTablet
+                        ? cardDemoAccountMobile
+                        : cardDemoAccountDesktop
+                    })`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                ></div>
               </div>
             </div>
           </div>

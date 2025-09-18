@@ -32,6 +32,14 @@
     border-radius: 8px;
   }
 
+  // @include tablet {
+  //   font-size: 16px;
+  // }
+
+  // @include desktop-lg {
+  //   font-size: 18px;
+  // }
+
   // Button text styles
   .button-text {
     transition: color 0.3s;
@@ -83,6 +91,17 @@
     padding-left: 0; // Remove left padding on mobile for centering
     padding-right: 0; // Reset right padding on mobile
     overflow: hidden; // Hide overflow on mobile for proper centering
+    font-size: 20px;
+  }
+
+  @include tablet {
+    width: 145px;
+    font-size: 16px;
+  }
+
+  @include desktop-lg {
+    width: 167px;
+    font-size: 20px;
   }
 
   .button-text {
@@ -104,8 +123,9 @@
 
   .button-arrow {
     opacity: 0;
-    width: 0;
+    // width: 0;
     margin-left: 0; // Add spacing between text and arrow
+    margin-top: 4px;
     transition: opacity 0.2s, width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
       margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
     overflow: hidden;
@@ -136,10 +156,19 @@
       overflow: hidden; // Hide overflow on mobile for proper centering
     }
 
+    @include tablet {
+      width: 160px;
+    }
+
+    @include desktop-lg {
+      width: 240px;
+    }
+
     .button-arrow {
       opacity: 1;
       width: 24px;
       margin-left: 0; // Add spacing between text and arrow
+      margin-top: 4px;
       color: map-get($colors, "black");
     }
 
@@ -198,6 +227,15 @@
   @include mobile {
     width: 100%;
     justify-content: center;
+    font-size: 20px;
+  }
+
+  @include tablet {
+    font-size: 16px;
+  }
+
+  @include desktop-lg {
+    font-size: 20px;
   }
 
   .button-text {
@@ -207,6 +245,7 @@
 
   .button-arrow {
     margin-left: 0;
+    margin-top: 4px;
     color: currentColor;
   }
 
@@ -272,6 +311,7 @@
     opacity: 0;
     width: 0;
     margin-left: 0;
+    margin-top: 4px;
     transition: opacity 0.2s, width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
       margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
     overflow: hidden;
@@ -304,6 +344,7 @@
       opacity: 1;
       width: 24px;
       margin-left: 0; // Add spacing between text and arrow
+      margin-top: 4px;
       color: #fff;
     }
 
@@ -334,6 +375,7 @@
 
   .button-arrow {
     margin-left: 0;
+    margin-top: 4px;
     color: currentColor;
   }
 
@@ -378,6 +420,21 @@
     overflow: hidden; // Hide overflow on mobile for proper centering
   }
 
+  @include tablet {
+    width: 205px;
+    font-size: 16px;
+  }
+
+  @include desktop-lg {
+    width: 225px;
+    font-size: 18px;
+  }
+
+  @include desktop-xl {
+    width: 237px;
+    font-size: 20px;
+  }
+
   .button-text {
     position: relative;
     white-space: nowrap;
@@ -399,6 +456,7 @@
     opacity: 0;
     width: 0;
     margin-left: 0;
+    margin-top: 4px;
     transition: opacity 0.2s, width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
       margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
     overflow: hidden;
@@ -427,10 +485,19 @@
       overflow: hidden; // Hide overflow on mobile for proper centering
     }
 
+    @include tablet {
+      width: 215px;
+    }
+
+    @include desktop-lg {
+      width: 238px;
+    }
+
     .button-arrow {
       opacity: 1;
       width: 24px;
       margin-left: 0; // Add spacing between text and arrow
+      margin-top: 4px;
       color: #fff;
     }
 
@@ -454,6 +521,18 @@
     justify-content: center;
   }
 
+  @include tablet {
+    font-size: 16px;
+  }
+
+  @include desktop-lg {
+    font-size: 18px;
+  }
+
+  @include desktop-xl {
+    font-size: 20px;
+  }
+
   .button-text {
     position: relative;
     transition: color 0.3s, text-decoration 0.3s;
@@ -461,6 +540,7 @@
 
   .button-arrow {
     margin-left: 0;
+    margin-top: 4px;
     color: currentColor;
   }
 
@@ -516,6 +596,7 @@
     opacity: 0;
     width: 0;
     margin-left: 0;
+    margin-top: 4px;
     transition: opacity 0.2s, width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
       margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
     overflow: hidden;
@@ -539,6 +620,7 @@
       opacity: 1;
       width: 24px;
       margin-left: 0;
+      margin-top: 4px;
       color: #fff;
     }
   }
@@ -576,6 +658,7 @@
     opacity: 1;
     width: 11px;
     margin-left: 0;
+    margin-top: 4px;
     transition: opacity 0.2s, width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
       margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
     // overflow: visible;
@@ -594,6 +677,7 @@
       opacity: 1;
       width: 24px;
       margin-left: 0;
+      margin-top: 4px;
       color: #ff4400;
     }
   }

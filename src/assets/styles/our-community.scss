@@ -2,7 +2,6 @@
 @import "mixins";
 
 .our-community-content {
-  padding: 40px 0;
   position: relative;
   overflow: hidden;
   margin-bottom: 100px;
@@ -56,7 +55,7 @@
 
   // Badge
   &__badge {
-    width: 169px;
+    width: fit-content;
     height: 28px;
     background: #0f0f0f;
     border: 1px solid rgba(255, 68, 0, 0.15);
@@ -88,7 +87,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 0 4px;
+    padding: 6px 10px;
   }
 
   &__badge-icon {
@@ -324,7 +323,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: 28px;
+      border-radius: 24px;
       background-size: cover;
       background-position: center center;
       width: 100%;
@@ -335,7 +334,7 @@
       flex-direction: column;
       gap: 32px;
       padding: 0 25px;
-      border-radius: 16px;
+      border-radius: 24px;
     }
 
     &__left {
@@ -349,7 +348,7 @@
     }
 
     &__badge {
-      width: 169px;
+      width: fit-content;
       height: 28px;
       margin: 0;
     }
@@ -453,8 +452,7 @@
 
   // Tablet Styles
   @include tablet {
-    padding: 20px 0;
-    margin: 15px 0 50px 0;
+    margin: 50px 0;
     border-radius: 20px;
     width: 100%;
 
@@ -463,18 +461,16 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: 28px;
+      border-radius: 24px;
       background-size: cover;
       background-position: center center;
-      width: 100%;
-      height: 100%;
     }
 
     &__container {
       flex-direction: column;
       gap: 0;
-      padding: 0 20px;
-      border-radius: 20px;
+      padding: 20px;
+      border-radius: 24px;
     }
 
     &__left {
@@ -489,13 +485,13 @@
     }
 
     &__badge {
-      width: 169px;
+      width: fit-content;
       height: 28px;
-      margin-bottom: 10px;
+      margin-bottom: 0;
     }
 
     &__title {
-      width: 100%;
+      width: 400px;
       height: auto;
       font-size: 32px;
       line-height: 1.25;
@@ -509,7 +505,8 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 10px;
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
     &__subtitle {
@@ -521,13 +518,13 @@
       color: #ffffff;
       opacity: 0.7;
       text-align: left;
-      margin-bottom: 10px;
+      margin-bottom: 0;
     }
 
     .navbar-dropdown-highlight__button-group {
       flex-direction: row;
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 5px;
       width: 100%;
       align-items: flex-start;
     }
@@ -611,7 +608,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: 28px;
+      border-radius: 24px;
       background-size: cover;
       background-position: center center;
       width: 100%;
@@ -620,7 +617,7 @@
 
     &__container {
       flex-direction: row !important;
-      padding: 0 40px;
+      padding: 40px;
       gap: 48px;
       border-radius: 24px;
       width: 100%;
@@ -628,6 +625,7 @@
 
     &__left {
       width: 694px !important;
+      gap: 20px;
       flex-shrink: 0;
       align-items: flex-start;
       padding-top: 20px;
@@ -639,9 +637,9 @@
     }
 
     &__title {
-      width: 694px;
+      width: 600px;
       height: auto;
-      font-size: 52px;
+      font-size: 48px;
       line-height: 1.25;
       background: linear-gradient(
           102.31deg,
@@ -669,6 +667,7 @@
     .navbar-dropdown-highlight__button-group {
       flex-direction: row !important;
       width: 537px !important;
+      margin-top: 20px;
     }
 
     .navbar-dropdown-highlight__button {
@@ -751,6 +750,7 @@
 
     &__left {
       width: 694px !important;
+      gap: 20px;
       flex-shrink: 0;
       align-items: flex-start;
       // padding-top: 80px;
@@ -853,7 +853,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: 28px;
+      border-radius: 24px;
       background-size: cover;
       background-position: center center;
       width: 100%;
@@ -864,12 +864,13 @@
       flex-direction: row !important;
       padding: 0 80px;
       gap: 80px;
-      border-radius: 28px;
+      border-radius: 24px;
       width: 100%;
     }
 
     &__left {
       width: 694px !important;
+      gap: 20px;
       flex-shrink: 0;
       align-items: flex-start;
       padding-top: 0;
@@ -977,7 +978,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: 32px;
+      border-radius: 24px;
       background-size: cover;
       background-position: center center;
       width: 100%;
@@ -988,12 +989,13 @@
       flex-direction: row !important;
       padding: 0 80px;
       gap: 100px;
-      border-radius: 32px;
+      border-radius: 24px;
       width: 100%;
     }
 
     &__left {
       width: 694px !important;
+      gap: 20px;
       flex-shrink: 0;
       align-items: flex-start;
     }

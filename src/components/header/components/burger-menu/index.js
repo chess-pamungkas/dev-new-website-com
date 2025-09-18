@@ -26,7 +26,7 @@ import CommonContext from "../../../../context/common-context";
 
 const BurgerMenu = ({ className }) => {
   const { t } = useTranslationWithVariables();
-  const { isMobile } = useWindowSize();
+  const { isMobile, isTablet } = useWindowSize();
   const { isScrolled } = useContext(CommonContext);
 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -103,11 +103,12 @@ const BurgerMenu = ({ className }) => {
       <div
         className={cn("burger-menu__navbar", {
           "burger-menu__navbar--lang-popup-opened": isLangPopupOpened,
-          "burger-menu__navbar--header-small": isScrolled && isMobile,
+          "burger-menu__navbar--header-small":
+            isScrolled && (isMobile || isTablet),
         })}
       >
         {/* Mobile Header Section */}
-        {isMobile && (
+        {(isMobile || isTablet) && (
           <div
             className={cn("burger-menu__mobile-header", {
               "burger-menu__mobile-header--small": isScrolled,
@@ -149,7 +150,7 @@ const BurgerMenu = ({ className }) => {
         )}
 
         {/* Desktop Close Button */}
-        {!isMobile && (
+        {!isMobile && !isTablet && (
           <button
             className={cn("burger-menu__trigger", {
               "burger-menu__trigger--open": isNavbarOpen,
@@ -166,7 +167,7 @@ const BurgerMenu = ({ className }) => {
         )}
 
         {/* Desktop Language Selector */}
-        {!isMobile && (
+        {!isMobile && !isTablet && (
           <LangSelect
             className="burger-menu__lang-select-mobile"
             setIsLangPopupOpened={setIsLangPopupOpened}
@@ -174,7 +175,7 @@ const BurgerMenu = ({ className }) => {
         )}
 
         {/* Mobile Content Section */}
-        {isMobile ? (
+        {isMobile || isTablet ? (
           <div className="burger-menu__mobile-content">
             <div className="burger-menu__mobile-navigation">
               {/* Action Text Section */}

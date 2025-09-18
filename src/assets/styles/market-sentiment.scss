@@ -53,6 +53,13 @@
         object-fit: cover;
         object-position: center;
       }
+
+      @include tablet {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        height: 100%;
+      }
     }
 
     @include mobile {
@@ -94,6 +101,26 @@
       padding-right: $padding-sm;
       height: auto;
       min-height: auto;
+    }
+
+    @include tablet {
+      max-width: 720px;
+    }
+
+    @include desktop-lg {
+      max-width: 1140px;
+    }
+
+    @include desktop-xl {
+      max-width: 1280px;
+    }
+
+    @include desktop-2k {
+      max-width: 1440px;
+    }
+
+    @include desktop-5k {
+      max-width: 1920px;
     }
   }
 
@@ -814,11 +841,10 @@
   &__actions {
     display: flex;
     gap: 12px;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     position: relative;
     margin-top: 48px;
-    margin-bottom: 60px; // Add bottom margin for mobile spacing
 
     @include mobile {
       flex-direction: column;
@@ -831,7 +857,6 @@
       order: 0;
       align-self: stretch;
       flex-grow: 0;
-      margin-bottom: 80px; // Extra bottom margin for mobile
       gap: 16px;
       margin-top: 0;
     }
@@ -840,8 +865,8 @@
   &__btn {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     padding: 14px 24px;
     gap: 10px;
     height: 51px;
@@ -932,6 +957,7 @@
         opacity: 0;
         width: 0;
         margin-left: 0; // Add spacing between text and arrow
+        margin-top: 8px;
         transition: opacity 0.2s, width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
           margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
         overflow: hidden;
@@ -995,6 +1021,7 @@
 
       .button-arrow {
         margin-left: 0;
+        margin-top: 8px;
         color: currentColor;
       }
 

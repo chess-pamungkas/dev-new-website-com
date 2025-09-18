@@ -7,6 +7,7 @@ import SliderThumbSVG from "../../../../assets/images/icons/main-page/cost-calcu
 import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import LanguageContext from "../../../../context/language-context";
 import { StandardButtons } from "../../../shared/reusable-buttons";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 
 const TRADE_VOLUME_MIN = 0.1;
 const TRADE_VOLUME_MAX = 10;
@@ -27,6 +28,7 @@ const CostCalculatorContent = () => {
   const [monthlyTrades, setMonthlyTrades] = useState(MONTHLY_TRADES_OPTIONS[0]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
+  const { t } = useTranslationWithVariables();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -64,7 +66,7 @@ const CostCalculatorContent = () => {
     >
       <img
         src={SliderThumbSVG}
-        alt="Slider Thumb"
+        alt={t("cost-calculator_slider-thumb-alt")}
         style={{
           width: 36,
           height: 36,
@@ -82,20 +84,21 @@ const CostCalculatorContent = () => {
           <span className="cost-calculator-content__badge">
             <img
               src={BadgeCostCalculator}
-              alt="Cost Calculator"
+              alt={t("cost-calculator_badge-icon-alt")}
               width={14}
               height={14}
             />
-            Cost Calculator
+            {t("cost-calculator_badge-text")}
           </span>
         </div>
         <div className="cost-calculator-content__title">
-          Track your <span>ECN+</span>
+          {t("cost-calculator_title")}{" "}
+          <span>{t("cost-calculator_title-highlight")}</span>
           <br />
-          Savings live
+          {t("cost-calculator_title-line2")}
         </div>
         <div className="cost-calculator-content__subtitle">
-          Calculate exactly how much you save with $1.5 commissions
+          {t("cost-calculator_subtitle")}
         </div>
         <div className="navbar-dropdown-highlight__button-group">
           <StandardButtons
@@ -114,12 +117,12 @@ const CostCalculatorContent = () => {
       <div className="cost-calculator-content__right">
         <div className="cost-calculator-content__card">
           <div className="cost-calculator-content__card-title">
-            Trading Parameters
+            {t("cost-calculator_card-title")}
           </div>
           <div className="cost-calculator-content__slider-label">
-            Trade Volumes
+            {t("cost-calculator_trade-volumes-label")}
             <span className="cost-calculator-content__slider-value">
-              {tradeVolume.toFixed(1)} LOTS
+              {tradeVolume.toFixed(1)} {t("cost-calculator_lots-text")}
             </span>
           </div>
           <div className="cost-calculator-content__slider">
@@ -141,7 +144,7 @@ const CostCalculatorContent = () => {
             className="cost-calculator-content__slider-label-2"
             style={{ marginTop: 2 }}
           >
-            Monthly Trades
+            {t("cost-calculator_monthly-trades-label")}
           </div>
           <div className="cost-calculator-content__monthly-trades">
             {MONTHLY_TRADES_OPTIONS.map((option) => (
@@ -161,27 +164,40 @@ const CostCalculatorContent = () => {
           <div className="cost-calculator-content__comparison-row">
             <div className="cost-calculator-content__comparison-card">
               <div className="cost-calculator-content__comparison-badge">
-                <img src={BadgeIndustryAverage} alt="Industry Average" />{" "}
-                Industry Average
+                <img
+                  src={BadgeIndustryAverage}
+                  alt={t("cost-calculator_industry-average-alt")}
+                />{" "}
+                {t("cost-calculator_industry-average-text")}
               </div>
               <div className="cost-calculator-content__comparison-value cost-calculator-content__comparison-value--industry">
-                $3.00 <span>Per side</span>
+                $3.00 <span>{t("cost-calculator_per-side-text")}</span>
               </div>
             </div>
             <div className="cost-calculator-content__comparison-card cost-calculator-content__comparison-card--oqtima">
               <div className="cost-calculator-content__comparison-badge cost-calculator-content__comparison-badge--oqtima">
-                <img src={BadgeOqtimaEcn} alt="OQtima ECN+" /> OQtima ECN+
+                <img
+                  src={BadgeOqtimaEcn}
+                  alt={t("cost-calculator_oqtima-ecn-alt")}
+                />{" "}
+                {t("cost-calculator_oqtima-ecn-text")}
               </div>
               <div className="cost-calculator-content__comparison-value cost-calculator-content__comparison-value--oqtima">
-                $1.50 <span>Per side</span>
+                $1.50 <span>{t("cost-calculator_per-side-text")}</span>
               </div>
             </div>
           </div>
           <div className="cost-calculator-content__savings-info">
-            Save <span>50%</span> on every trade!
+            {t("cost-calculator_save-percentage")}{" "}
+            <span>{t("cost-calculator_save-percentage-value")}</span>{" "}
+            {t("cost-calculator_save-percentage-text")}
             <br />
-            Monthly: <span>${monthlySavings.toLocaleString()}</span> saved,
-            Annual: <span>${annualSavings.toLocaleString()}</span> saved
+            {t("cost-calculator_monthly-saved")}{" "}
+            <span>${monthlySavings.toLocaleString()}</span>{" "}
+            {t("cost-calculator_saved-text")},
+            {t("cost-calculator_annual-saved")}{" "}
+            <span>${annualSavings.toLocaleString()}</span>{" "}
+            {t("cost-calculator_saved-text")}
           </div>
         </div>
       </div>

@@ -548,7 +548,7 @@
   }
 
   @include tablet {
-    padding: 20px 0;
+    padding: 75px 0;
 
     &__container {
       flex-direction: column;
@@ -768,7 +768,7 @@
   }
 
   @include desktop-xl {
-    padding: 120px 0 0;
+    padding: 120px 0 100px;
 
     &__container {
       gap: 42px;

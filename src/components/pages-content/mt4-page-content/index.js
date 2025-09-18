@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import TopMarketPromotion from "../../top-market-promotion";
-import animation from "../../../assets/images/animations/aggregator_MT4.json";
+// import animation from "../../../assets/images/animations/aggregator_MT4.json";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
 import {

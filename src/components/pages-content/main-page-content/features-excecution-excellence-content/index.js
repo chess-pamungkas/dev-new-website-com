@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import FeaturesIcon from "../../../../assets/images/icons/main-page/features-execution-excellence/features.svg";
 import NavArrowLeft from "../../../../assets/images/icons/main-page/features-execution-excellence/nav-arrow-left.svg";
 import NavArrowRight from "../../../../assets/images/icons/main-page/features-execution-excellence/nav-arrow-right.svg";
@@ -10,67 +11,68 @@ import InstrumentsIcon from "../../../../assets/images/icons/main-page/features-
 import BankLiquidityIcon from "../../../../assets/images/icons/main-page/features-execution-excellence/bank-liquidity.svg";
 import BadgeMarkIcon from "../../../../assets/images/icons/main-page/badge-mark.svg";
 
-const features = [
-  {
-    icon: AuditedQ2Icon,
-    badge: "Audited Q2 2025",
-    value: "99.8%",
-    description: "Orders executed within 30ms",
-    style: "light",
-    showBadges: true,
-    showBadgeMark: true,
-  },
-  {
-    icon: MethodologyLinkIcon,
-    badge: "Methodology Link",
-    value: "98%",
-    description: "Filled at requested price or better",
-    style: "dark",
-    showBadges: true,
-    showBadgeMark: true,
-  },
-  {
-    icon: ZeroIcon,
-    badge: "Zero",
-    value: "Zero",
-    description: "Requotes guarantee",
-    style: "light",
-    showBadges: false,
-    showBadgeMark: false,
-  },
-  {
-    icon: DataAuditedIcon,
-    badge: "Data audited 1 April 2025",
-    value: "99.9%",
-    description: "Platform uptime SLA",
-    style: "dark",
-    showBadges: true,
-    showBadgeMark: true,
-  },
-  {
-    icon: InstrumentsIcon,
-    badge: "Instruments",
-    value: "900+",
-    description: "Instruments available",
-    style: "light",
-    showBadges: false,
-    showBadgeMark: false,
-  },
-  {
-    icon: BankLiquidityIcon,
-    badge: "Tier-1",
-    value: "Tier-1",
-    description: "Bank liquidity providers",
-    style: "dark",
-    showBadges: false,
-    showBadgeMark: false,
-  },
-];
-
 const FeaturesExecutionExcellence = () => {
+  const { t } = useTranslationWithVariables();
   const [scrollIndex, setScrollIndex] = useState(0);
   const cardContainerRef = useRef(null);
   const visibleCards = 3;
+
+  const features = [
+    {
+      icon: AuditedQ2Icon,
+      badge: t("features-execution-excellence_feature1-badge"),
+      value: t("features-execution-excellence_feature1-value"),
+      description: t("features-execution-excellence_feature1-description"),
+      style: "light",
+      showBadges: true,
+      showBadgeMark: true,
+    },
+    {
+      icon: MethodologyLinkIcon,
+      badge: t("features-execution-excellence_feature2-badge"),
+      value: t("features-execution-excellence_feature2-value"),
+      description: t("features-execution-excellence_feature2-description"),
+      style: "dark",
+      showBadges: true,
+      showBadgeMark: true,
+    },
+    {
+      icon: ZeroIcon,
+      badge: t("features-execution-excellence_feature3-badge"),
+      value: t("features-execution-excellence_feature3-value"),
+      description: t("features-execution-excellence_feature3-description"),
+      style: "light",
+      showBadges: false,
+      showBadgeMark: false,
+    },
+    {
+      icon: DataAuditedIcon,
+      badge: t("features-execution-excellence_feature4-badge"),
+      value: t("features-execution-excellence_feature4-value"),
+      description: t("features-execution-excellence_feature4-description"),
+      style: "dark",
+      showBadges: true,
+      showBadgeMark: true,
+    },
+    {
+      icon: InstrumentsIcon,
+      badge: t("features-execution-excellence_feature5-badge"),
+      value: t("features-execution-excellence_feature5-value"),
+      description: t("features-execution-excellence_feature5-description"),
+      style: "light",
+      showBadges: false,
+      showBadgeMark: false,
+    },
+    {
+      icon: BankLiquidityIcon,
+      badge: t("features-execution-excellence_feature6-badge"),
+      value: t("features-execution-excellence_feature6-value"),
+      description: t("features-execution-excellence_feature6-description"),
+      style: "dark",
+      showBadges: false,
+      showBadgeMark: false,
+    },
+  ];
 
   const handleScroll = (direction) => {
     let newIndex = scrollIndex + direction;
@@ -94,16 +96,18 @@ const FeaturesExecutionExcellence = () => {
           <div className="features-component__badge-group">
             <img
               src={FeaturesIcon}
-              alt="Features"
+              alt={t("features-execution-excellence_badge-alt")}
               className="features-component__badge-icon"
             />
-            <span className="features-component__badge-text">Features</span>
+            <span className="features-component__badge-text">
+              {t("features-execution-excellence_badge-alt")}
+            </span>
           </div>
           <h2 className="features-component__title">
-            Execution Excellence & Market Access
+            {t("features-execution-excellence_title")}
           </h2>
           <div className="features-component__subtitle">
-            Verified performance metrics and institutional-grade infrastructure
+            {t("features-execution-excellence_subtitle")}
           </div>
         </div>
         <div className="features-component__nav">
@@ -111,12 +115,12 @@ const FeaturesExecutionExcellence = () => {
             className="features-component__nav-btn"
             onClick={() => handleScroll(-1)}
             disabled={scrollIndex === 0}
-            aria-label="Scroll left"
+            aria-label={t("features-execution-excellence_nav-left-aria")}
           >
             <span className="features-component__nav-bg" />
             <img
               src={NavArrowLeft}
-              alt="Left"
+              alt={t("features-execution-excellence_nav-left-alt")}
               className="features-component__nav-arrow"
             />
           </button>
@@ -124,12 +128,12 @@ const FeaturesExecutionExcellence = () => {
             className="features-component__nav-btn"
             onClick={() => handleScroll(1)}
             disabled={scrollIndex >= features.length - visibleCards}
-            aria-label="Scroll right"
+            aria-label={t("features-execution-excellence_nav-right-aria")}
           >
             <span className="features-component__nav-bg" />
             <img
               src={NavArrowRight}
-              alt="Right"
+              alt={t("features-execution-excellence_nav-right-alt")}
               className="features-component__nav-arrow"
             />
           </button>
@@ -144,7 +148,7 @@ const FeaturesExecutionExcellence = () => {
             >
               <img
                 src={feature.icon}
-                alt=""
+                alt={t("features-execution-excellence_card-icon-alt")}
                 className="features-component__card-icon"
               />
               <div className="features-component__card-content">
@@ -153,7 +157,7 @@ const FeaturesExecutionExcellence = () => {
                     {feature.showBadgeMark && (
                       <img
                         src={BadgeMarkIcon}
-                        alt=""
+                        alt={t("features-execution-excellence_badge-mark-alt")}
                         className="features-component__badge-mark"
                       />
                     )}

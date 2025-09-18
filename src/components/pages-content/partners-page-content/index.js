@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import TopMarketPromotion from "../../top-market-promotion";
-import promotion from "../../../assets/images/partners/promotion.svg";
+// import promotion from "../../../assets/images/partners/promotion.svg";
 import cn from "classnames";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import IncomeSlider from "../../partners/components/income-slider";
-import PartnersAdvantages from "../../partners/components/advantages";
-import { PARTNERS_ADVANTAGES } from "../../../helpers/partners.config";
-import HowToStart from "../../partners/components/how-to-start";
+// import PartnersAdvantages from "../../partners/components/advantages";
+// import { PARTNERS_ADVANTAGES } from "../../../helpers/partners.config";
+// import HowToStart from "../../partners/components/how-to-start";
 import icon from "../../../assets/images/icon--white.svg";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { setLangParam } from "../../../helpers/services/language-service";
 import Hero from "../../shared/hero";
-import PartnersImageContent from "./partners-image-content";
 import ContainerWrapper from "../../shared/container-wrapper";
 import OurCommunityContent from "../../shared/our-community";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import GuideContent from "../../shared/guide-content";
 import { getFeaturesByTradingType } from "../../../helpers/features-products.config";
 import FeaturesProducts from "../../shared/features-products";
+import FeaturesProductsPartners from "./features-products-partners";
 
 const PartnersPageContent = ({ className, isShowHero = true }) => {
   const { t } = useTranslationWithVariables();
@@ -50,8 +50,13 @@ const PartnersPageContent = ({ className, isShowHero = true }) => {
         mobileBackground="url(../../assets/images/bg/hero/partners/partners-mobile.svg)"
       />
       <IncomeSlider />
+      <div className="partners-page">
+        <FeaturesProductsPartners
+          tradingType="partners"
+          features={getFeaturesByTradingType("partners")}
+        />
+      </div>
       <ContainerWrapper>
-        <PartnersImageContent />
         <GuideContent
           titleKey="partners-guide-title"
           subtitleKey="partners-guide-subtitle"

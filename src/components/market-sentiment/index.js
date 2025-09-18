@@ -251,10 +251,10 @@ const MarketSentimentContent = () => {
 
   // Tab configuration
   const tabs = [
-    { id: "Forex", label: "Forex" },
-    { id: "Indices", label: "Indices" },
-    { id: "Commodities", label: "Commodities" },
-    { id: "Crypto", label: "Crypto" },
+    { id: "Forex", label: t("market-sentiment_tab-forex") },
+    { id: "Indices", label: t("market-sentiment_tab-indices") },
+    { id: "Commodities", label: t("market-sentiment_tab-commodities") },
+    { id: "Crypto", label: t("market-sentiment_tab-crypto") },
   ];
 
   // Use dynamic trading data or fallback to empty arrays
@@ -364,7 +364,7 @@ const MarketSentimentContent = () => {
       <div className="market-sentiment__background">
         <img
           src={backgroundSrc}
-          alt="Real-Time Market Intelligence Background"
+          alt={t("market-sentiment_background-alt")}
           className="market-sentiment__background-image"
         />
       </div>
@@ -373,7 +373,7 @@ const MarketSentimentContent = () => {
         {/* Header */}
         <div className="market-sentiment__header">
           <div className="badge-row">
-            <img src={badgeIcon} alt="Market Sentiment" />
+            <img src={badgeIcon} alt={t("market-sentiment_badge-icon-alt")} />
             <span className="badge-label">
               {t("market-sentiment_badge-text")}
             </span>
@@ -519,7 +519,11 @@ const MarketSentimentContent = () => {
                       >
                         <img
                           src={item.sentiment === "LONG" ? arrowUp : arrowDown}
-                          alt={item.sentiment}
+                          alt={
+                            item.sentiment === "LONG"
+                              ? t("market-sentiment_arrow-up-alt")
+                              : t("market-sentiment_arrow-down-alt")
+                          }
                           className="market-sentiment__arrow-icon"
                         />
                       </div>
@@ -550,8 +554,8 @@ const MarketSentimentContent = () => {
             <span className="button-text">{t("button-start-trading")}</span>
             <span className="button-arrow">
               <svg
-                width="11"
-                height="11"
+                width="9.33"
+                height="9.33"
                 viewBox="0 0 11 11"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -573,8 +577,8 @@ const MarketSentimentContent = () => {
             <span className="button-text">{t("button-try-demo")}</span>
             <span className="button-arrow">
               <svg
-                width="11"
-                height="11"
+                width="9.33"
+                height="9.33"
                 viewBox="0 0 11 11"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

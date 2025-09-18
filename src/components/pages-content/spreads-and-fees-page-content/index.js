@@ -3,7 +3,7 @@ import { useTranslationWithVariables } from "../../../helpers/hooks/use-translat
 import PropTypes from "prop-types";
 import cn from "classnames";
 import TopMarket from "../../top-market";
-import promotion from "../../../assets/images/spreads-and-fees/promotion.svg";
+// import promotion from "../../../assets/images/spreads-and-fees/promotion.svg";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import TopMarketLayout from "../../top-market-layout";
 import Tabs from "../../shared/tabs";

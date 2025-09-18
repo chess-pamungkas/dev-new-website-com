@@ -51,7 +51,7 @@ const HowToTradeSwapFree = ({ className }) => {
       <div className="how-to-trade-bg">
         <img
           src={backgroundSrc}
-          alt="How to Trade Swap-Free Background"
+          alt={t("how-to-trade-swap-free_background-alt")}
           className="how-to-trade-bg__image"
         />
       </div>
@@ -59,7 +59,10 @@ const HowToTradeSwapFree = ({ className }) => {
       {/* Header */}
       <div className="how-to-trade-header">
         <div className="badge-row">
-          <img src={featuresIcon} alt="Features Badge" />
+          <img
+            src={featuresIcon}
+            alt={t("how-to-trade-swap-free_features-badge-alt")}
+          />
           <span className="badge-label">
             {t("how-to-trade-swap-free_badge-text")}
           </span>
@@ -77,7 +80,10 @@ const HowToTradeSwapFree = ({ className }) => {
         {/* Card 1: Already Trading with OQtima */}
         <div className="how-to-trade-card existing-trader-card">
           <div className="card-icon">
-            <img src={alreadyTradingIcon} alt="Already Trading with OQtima" />
+            <img
+              src={alreadyTradingIcon}
+              alt={t("how-to-trade-swap-free_card1-icon-alt")}
+            />
           </div>
           <h3 className="card-title">
             {t("how-to-trade-swap-free_card1_title")}
@@ -97,7 +103,10 @@ const HowToTradeSwapFree = ({ className }) => {
         {/* Card 2: New to OQtima */}
         <div className="how-to-trade-card new-trader-card">
           <div className="card-icon">
-            <img src={newToOqtimaIcon} alt="New to OQtima" />
+            <img
+              src={newToOqtimaIcon}
+              alt={t("how-to-trade-swap-free_card2-icon-alt")}
+            />
           </div>
           <h3 className="card-title">
             {t("how-to-trade-swap-free_card2_title")}

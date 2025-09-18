@@ -1,5 +1,6 @@
 import React from "react";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import BadgeSecurityIcon from "../../../../assets/images/icons/main-page/badge-security.svg";
 import CircleMarkIcon from "../../../../assets/images/icons/circle-mark.svg";
 import InfrastructureIcon from "../../../../assets/images/icons/main-page/technology-infrastructure/infrastructure.svg";
@@ -8,39 +9,40 @@ import AdvancedToolsIcon from "../../../../assets/images/icons/main-page/technol
 
 const TechnologyInfrastructureContent = () => {
   const { isMobile } = useWindowSize();
+  const { t } = useTranslationWithVariables();
 
   const features = [
     {
       icon: InfrastructureIcon,
-      title: "Infrastructure",
+      title: t("technology-infrastructure_infrastructure-title"),
       features: [
-        "Equinix servers NY & London",
-        "Sub-millisecond execution",
-        "99.9% uptime SLA",
-        "FREE VPS servers available",
-        "99.9% order success rate",
+        t("technology-infrastructure_infrastructure-feature1"),
+        t("technology-infrastructure_infrastructure-feature2"),
+        t("technology-infrastructure_infrastructure-feature3"),
+        t("technology-infrastructure_infrastructure-feature4"),
+        t("technology-infrastructure_infrastructure-feature5"),
       ],
     },
     {
       icon: TradingPlatformsIcon,
-      title: "Trading Platforms",
+      title: t("technology-infrastructure_trading-platforms-title"),
       features: [
-        "MetaTrader 4 & 5",
-        "TradingView integration",
-        "Mobile apps (iOS & Android)",
-        "Web-based trading",
-        "Professional trading conditions",
+        t("technology-infrastructure_trading-platforms-feature1"),
+        t("technology-infrastructure_trading-platforms-feature2"),
+        t("technology-infrastructure_trading-platforms-feature3"),
+        t("technology-infrastructure_trading-platforms-feature4"),
+        t("technology-infrastructure_trading-platforms-feature5"),
       ],
     },
     {
       icon: AdvancedToolsIcon,
-      title: "Advanced Tools",
+      title: t("technology-infrastructure_advanced-tools-title"),
       features: [
-        "Trading Central analysis",
-        "Market sentiment indicators",
-        "Copy trading platform",
-        "Risk management tools",
-        "Customizable leverage 1:10 - 1:1000",
+        t("technology-infrastructure_advanced-tools-feature1"),
+        t("technology-infrastructure_advanced-tools-feature2"),
+        t("technology-infrastructure_advanced-tools-feature3"),
+        t("technology-infrastructure_advanced-tools-feature4"),
+        t("technology-infrastructure_advanced-tools-feature5"),
       ],
     },
   ];
@@ -56,24 +58,24 @@ const TechnologyInfrastructureContent = () => {
               <div className="technology-infrastructure-content__badge-icon-wrapper">
                 <img
                   src={BadgeSecurityIcon}
-                  alt="Security"
+                  alt={t("technology-infrastructure_badge-icon-alt")}
                   className="technology-infrastructure-content__badge-icon"
                 />
               </div>
               <span className="technology-infrastructure-content__badge-message">
-                Technology & Infrastructure
+                {t("technology-infrastructure_badge-text")}
               </span>
             </div>
           </div>
 
           {/* Main Title */}
           <h2 className="technology-infrastructure-content__title">
-            Professional Trading Environment
+            {t("technology-infrastructure_title")}
           </h2>
 
           {/* Subtitle */}
           <p className="technology-infrastructure-content__subtitle">
-            Verified performance metrics and institutional-grade infrastructure
+            {t("technology-infrastructure_subtitle")}
           </p>
         </div>
 
@@ -103,7 +105,7 @@ const TechnologyInfrastructureContent = () => {
                   >
                     <img
                       src={CircleMarkIcon}
-                      alt="Check"
+                      alt={t("technology-infrastructure_check-icon-alt")}
                       className="technology-infrastructure-content__feature-icon"
                     />
                     <span className="technology-infrastructure-content__feature-text">

@@ -64,7 +64,10 @@ const GetComplimentaryVPS = ({ className }) => {
       {/* Header */}
       <div className="get-complimentary-vps-header">
         <div className="badge-row">
-          <img src={featuresIcon} alt="Features Badge" />
+          <img
+            src={featuresIcon}
+            alt={t("get-complimentary-vps_features-badge-alt")}
+          />
           <span className="badge-label">
             {t("get_complimentary_vps_badge_text")}
           </span>
@@ -118,17 +121,17 @@ const GetComplimentaryVPS = ({ className }) => {
                   ? oqtimaForexCfdLightMobile
                   : oqtimaForexCfdLightDesktop
               }
-              alt="Oqtima Forex CFD"
+              alt={t("get-complimentary-vps_forex-cfd-alt")}
               className="vps-image"
             />
             <img
               src={handDesktop}
-              alt="Hand pointing to Place Order button"
+              alt={t("get-complimentary-vps_hand-icon-alt")}
               className="vps-hand-icon desktop-only"
             />
             <img
               src={handMobile}
-              alt="Hand pointing to Place Order button"
+              alt={t("get-complimentary-vps_hand-icon-alt")}
               className="vps-hand-icon mobile-only"
             />
             <button

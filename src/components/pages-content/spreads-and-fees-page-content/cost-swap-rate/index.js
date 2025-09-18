@@ -22,7 +22,10 @@ const CostSwapRate = ({ className = "" }) => {
         {/* Badge */}
         <div className="cost-swap-rate__badge">
           <div className="badge-row">
-            <img src={badgeCostCalculatorIcon} alt="Cost Calculator Badge" />
+            <img
+              src={badgeCostCalculatorIcon}
+              alt={t("cost-swap-rate_badge-icon-alt")}
+            />
             <span className="badge-label">
               {t("spreads-fees_cost_calculator_badge_text")}
             </span>
@@ -46,12 +49,12 @@ const CostSwapRate = ({ className = "" }) => {
           <div className="cost-swap-rate__card-content-bg">
             <img
               src={bgContainerSwapRateDesktop}
-              alt="Container Background"
+              alt={t("cost-swap-rate_container-bg-alt")}
               className="desktop-bg"
             />
             <img
               src={bgContainerSwapRateMobile}
-              alt="Container Background"
+              alt={t("cost-swap-rate_container-bg-alt")}
               className="mobile-bg"
             />
           </div>
@@ -61,18 +64,21 @@ const CostSwapRate = ({ className = "" }) => {
             <div className="cost-swap-rate__card-left-bg">
               <img
                 src={bgCardSwapRateDesktop}
-                alt="Card Left Background"
+                alt={t("cost-swap-rate_card-left-bg-alt")}
                 className="desktop-bg"
               />
               <img
                 src={bgCardSwapRateMobile}
-                alt="Card Left Background"
+                alt={t("cost-swap-rate_card-left-bg-alt")}
                 className="mobile-bg"
               />
             </div>
 
             <div className="cost-swap-rate__icon">
-              <img src={swapRateIcon} alt="Swap Rate Icon" />
+              <img
+                src={swapRateIcon}
+                alt={t("cost-swap-rate_swap-rate-icon-alt")}
+              />
             </div>
 
             <div className="cost-swap-rate__card-text">

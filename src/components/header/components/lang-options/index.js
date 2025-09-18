@@ -73,7 +73,11 @@ const LangOptions = ({
     <div className={cn("lang-options", className)}>
       {/* Close Button */}
       <button className="lang-options__close" onClick={onClose} type="button">
-        <img src={CloseIcon} alt="Close" className="lang-options__close-icon" />
+        <img
+          src={CloseIcon}
+          alt={t("lang-options_close-icon-alt")}
+          className="lang-options__close-icon"
+        />
       </button>
 
       {/* Badge Group */}
@@ -81,7 +85,7 @@ const LangOptions = ({
         <div className="lang-options__badge">
           <img
             src={BadgeSecurityIcon}
-            alt="Security"
+            alt={t("lang-options_badge-icon-alt")}
             className="lang-options__badge-icon"
           />
           <span className="lang-options__badge-text">

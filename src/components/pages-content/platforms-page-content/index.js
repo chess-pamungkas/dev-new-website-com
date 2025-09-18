@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import cn from "classnames";
-import TopMarket from "../../top-market";
+// import TopMarket from "../../top-market";
 import { getTradersList } from "../../../helpers/platforms.config";
 import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MetaTrader from "../../meta-trader";
@@ -10,7 +10,6 @@ import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
-import platforms from "../../../assets/images/platforms/platforms.svg";
 import { setLangParam } from "../../../helpers/services/language-service";
 
 const PlatformsPageContent = () => {
@@ -31,7 +30,7 @@ const PlatformsPageContent = () => {
 
   return (
     <>
-      <TopMarket
+      {/* <TopMarket
         className={cn("top-market--platforms", {
           "top-market--platforms--rtl": isRTL,
         })}
@@ -50,7 +49,7 @@ const PlatformsPageContent = () => {
           primaryClassName="highlighted-in-black"
           accentClassName="highlighted-in-white"
         />
-      </TopMarket>
+      </TopMarket> */}
       {META_TRADERS.map((trader, index) => (
         <MetaTrader key={trader.id || trader.title || index} {...trader} />
       ))}

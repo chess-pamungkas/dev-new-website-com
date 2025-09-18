@@ -107,8 +107,8 @@ const Metals = ({ className, isShowHero = true }) => {
                     </span>
                     <span className="metals__button-arrow">
                       <svg
-                        width="11"
-                        height="11"
+                        width="9.33"
+                        height="9.33"
                         viewBox="0 0 11 11"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -133,8 +133,8 @@ const Metals = ({ className, isShowHero = true }) => {
                     </span>
                     <span className="metals__button-arrow">
                       <svg
-                        width="11"
-                        height="11"
+                        width="9.33"
+                        height="9.33"
                         viewBox="0 0 11 11"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +155,9 @@ const Metals = ({ className, isShowHero = true }) => {
 
             {/* Trust Pilot Section */}
             <div className="metals__trust-pilot">
-              <span className="metals__trust-rating">Excellent</span>
+              <span className="metals__trust-rating">
+                {t("metals_trust-rating")}
+              </span>
               <div className="metals__trust-stars">
                 {/* 5 stars SVG */}
                 <svg
@@ -224,7 +226,9 @@ const Metals = ({ className, isShowHero = true }) => {
                     fill="#219653"
                   />
                 </svg>
-                <span className="metals__trust-name">Trustpilot</span>
+                <span className="metals__trust-name">
+                  {t("metals_trust-name")}
+                </span>
               </div>
             </div>
           </div>

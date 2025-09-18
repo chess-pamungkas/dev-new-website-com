@@ -17,7 +17,7 @@ const FundingWithdrawalsHeader = () => {
           <div className="funding-withdrawals-header__badge-content">
             <img
               src={featuresIcon}
-              alt="Features Icon"
+              alt={t("funding-withdrawals_badge-alt")}
               className="funding-withdrawals-header__badge-icon"
             />
             <span className="funding-withdrawals-header__badge-message">

@@ -225,7 +225,7 @@
 
     @include desktop-lg {
       padding-top: 50px;
-      max-width: 960px;
+      max-width: 1140px;
     }
 
     @include desktop-xl {
@@ -773,8 +773,6 @@
 }
 
 .our-community-content {
-  padding: 70px 0 !important;
-
   @include mobile {
     margin: 75px 0 40px 0 !important;
   }

@@ -4,29 +4,31 @@ import CircleMarkIcon from "../../../../../assets/images/icons/circle-mark.svg";
 import { ShowRegistrationPopup } from "../../../../../helpers/constants";
 import LanguageContext from "../../../../../context/language-context";
 import { StandardButtons } from "../../../../shared/reusable-buttons";
-
-const securityPoints = [
-  {
-    text: "Liquidity Partners: JP Morgan, Deutsche Bank, Citi",
-    icon: CircleMarkIcon,
-  },
-  {
-    text: "Infrastructure: Equinix servers NY & London",
-    icon: CircleMarkIcon,
-  },
-  {
-    text: "Protection: Client funds segregated",
-    icon: CircleMarkIcon,
-  },
-  {
-    text: "Negative balance protection",
-    icon: CircleMarkIcon,
-  },
-];
+import { useTranslationWithVariables } from "../../../../../helpers/hooks/use-translation-with-vars";
 
 const SecurityContent = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
+  const { t } = useTranslationWithVariables();
+
+  const securityPoints = [
+    {
+      text: t("security-content_liquidity-partners"),
+      icon: CircleMarkIcon,
+    },
+    {
+      text: t("security-content_infrastructure"),
+      icon: CircleMarkIcon,
+    },
+    {
+      text: t("security-content_protection"),
+      icon: CircleMarkIcon,
+    },
+    {
+      text: t("security-content_negative-balance"),
+      icon: CircleMarkIcon,
+    },
+  ];
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -38,16 +40,26 @@ const SecurityContent = () => {
   return (
     <div className="security-content">
       <div className="badge-row">
-        <img src={BadgeSecurityIcon} alt="Security Badge" />
-        <span className="badge-label">Security</span>
+        <img
+          src={BadgeSecurityIcon}
+          alt={t("security-content_badge-icon-alt")}
+        />
+        <span className="badge-label">{t("security-content_badge-text")}</span>
       </div>
       <h2 className="security-title">
-        Financial <span className="highlight">Strength & Security</span>
+        {t("security-content_title")}{" "}
+        <span className="highlight">
+          {t("security-content_title-highlight")}
+        </span>
       </h2>
       <ul className="security-list">
         {securityPoints.map((item, idx) => (
           <li key={idx} className="security-point">
-            <img src={item.icon} alt="icon" className="point-icon" />
+            <img
+              src={item.icon}
+              alt={t("security-content_point-icon-alt")}
+              className="point-icon"
+            />
             <span>{item.text}</span>
           </li>
         ))}

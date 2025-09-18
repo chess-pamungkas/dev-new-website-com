@@ -149,7 +149,7 @@ const OurSpreads = ({ className }) => {
         <div className="our-spreads__header">
           {/* Badge Group */}
           <div className="our-spreads__badge-group">
-            <img src={featureIcon} alt="Feature Icon" />
+            <img src={featureIcon} alt={t("our-spreads_feature-icon-alt")} />
             <span>{t("our_spreads_badge_text")}</span>
           </div>
 
@@ -254,7 +254,7 @@ const OurSpreads = ({ className }) => {
                   >
                     <input
                       type="text"
-                      placeholder="Search by Symbol"
+                      placeholder={t("our-spreads_search-placeholder")}
                       value={searchTerm}
                       onChange={(e) => {
                         setSearchTerm(e.target.value);
@@ -277,13 +277,16 @@ const OurSpreads = ({ className }) => {
                       className="search-input-mobile"
                     />
                     <div className="search-icon-mobile">
-                      <img src={SearchIcon} alt="Search" />
+                      <img
+                        src={SearchIcon}
+                        alt={t("our-spreads_search-icon-alt")}
+                      />
                     </div>
                   </div>
 
                   {/* Explanatory Text */}
                   <div className="spreads-disclaimer-mobile">
-                    * MIN - minimum, AVG - average
+                    {t("our-spreads_disclaimer-text")}
                   </div>
 
                   {/* Spreads Cards */}
@@ -300,14 +303,14 @@ const OurSpreads = ({ className }) => {
                             {/* ECN+ Account */}
                             <div className="spread-card__account">
                               <h4 className="spread-card__account-title">
-                                ECN+ Account
+                                {t("our-spreads_ecn-account-title")}
                               </h4>
                               <div className="spread-card__values">
                                 <span className="spread-card__label">
-                                  MIN: {item.col2}
+                                  {t("our-spreads_min-label")} {item.col2}
                                 </span>
                                 <span className="spread-card__label">
-                                  AVG: {item.col3}
+                                  {t("our-spreads_avg-label")} {item.col3}
                                 </span>
                               </div>
                             </div>
@@ -317,14 +320,14 @@ const OurSpreads = ({ className }) => {
                             {/* OQtima ONE Account */}
                             <div className="spread-card__account">
                               <h4 className="spread-card__account-title">
-                                OQtima ONE Account
+                                {t("our-spreads_oqtima-one-account-title")}
                               </h4>
                               <div className="spread-card__values">
                                 <span className="spread-card__label">
-                                  MIN: {item.col4}
+                                  {t("our-spreads_min-label")} {item.col4}
                                 </span>
                                 <span className="spread-card__label">
-                                  AVG: {item.col5}
+                                  {t("our-spreads_avg-label")} {item.col5}
                                 </span>
                               </div>
                             </div>
@@ -341,20 +344,23 @@ const OurSpreads = ({ className }) => {
                   <div className="search-container">
                     {/* Explanatory Text */}
                     <div className="explanation-text">
-                      * MIN - minimum, AVG - average
+                      {t("our-spreads_disclaimer-text")}
                     </div>
 
                     {/* Search Bar */}
                     <div className="search-frame">
                       <input
                         type="text"
-                        placeholder="Search by Symbol"
+                        placeholder={t("our-spreads_search-placeholder")}
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="search-input"
                       />
                       <div className="search-icon">
-                        <img src={SearchIcon} alt="Search" />
+                        <img
+                          src={SearchIcon}
+                          alt={t("our-spreads_search-icon-alt")}
+                        />
                       </div>
                     </div>
                   </div>
@@ -366,21 +372,21 @@ const OurSpreads = ({ className }) => {
                       <thead className="table-header-section">
                         {/* Main Header Row */}
                         <tr className="table-main-header">
-                          <th>PRODUCT</th>
+                          <th>{t("our-spreads_table-product-header")}</th>
                           <th className="table-header__ecn" colSpan="2">
-                            ECN+ Account
+                            {t("our-spreads_table-ecn-header")}
                           </th>
                           <th className="table-header__oqtima" colSpan="2">
-                            OQTIMA ONE ACCOUNT
+                            {t("our-spreads_table-oqtima-header")}
                           </th>
                         </tr>
                         {/* Sub Header Row */}
                         <tr className="table-sub-header">
-                          <th>SYMBOL</th>
-                          <th>MIN</th>
-                          <th>AVG</th>
-                          <th>MIN</th>
-                          <th>AVG</th>
+                          <th>{t("our-spreads_table-symbol-header")}</th>
+                          <th>{t("our-spreads_table-min-header")}</th>
+                          <th>{t("our-spreads_table-avg-header")}</th>
+                          <th>{t("our-spreads_table-min-header")}</th>
+                          <th>{t("our-spreads_table-avg-header")}</th>
                         </tr>
                       </thead>
                     </table>

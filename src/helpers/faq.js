@@ -4,9 +4,6 @@ import sharesIcon from "../assets/images/icons/all-markets/shares.svg";
 import metalsIcon from "../assets/images/icons/all-markets/metals.svg";
 import energiesIcon from "../assets/images/icons/all-markets/energies.svg";
 import cryptoIcon from "../assets/images/icons/all-markets/crypto.svg";
-import accountIcon from "../assets/images/icons/account.svg";
-import fundingIcon from "../assets/images/icons/funding.svg";
-import tradingIcon from "../assets/images/icons/trading.svg";
 import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
 export const FAQ_FOREX = [
   {
@@ -304,7 +301,6 @@ export const FAQ_QUICK_ANSWER = [
 export const FAQ_ALL = [
   {
     title: "faq_account-title",
-    icon: accountIcon,
     content: [
       {
         question: "faq_account-q1",
@@ -341,7 +337,6 @@ export const FAQ_ALL = [
   },
   {
     title: "faq_funding-title",
-    icon: fundingIcon,
     content: [
       {
         question: "faq_funding-q1",
@@ -367,7 +362,6 @@ export const FAQ_ALL = [
   },
   {
     title: "faq_trading-title",
-    icon: tradingIcon,
     content: [
       {
         question: "faq_trading-q1",

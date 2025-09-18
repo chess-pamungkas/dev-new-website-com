@@ -1,10 +1,3 @@
-import webTraderIcon from "../assets/images/icons/tools/webTrader.svg";
-import iosIcon from "../assets/images/icons/tools/ios_black.svg";
-import androidIcon from "../assets/images/icons/tools/android.svg";
-import windowsIcon from "../assets/images/icons/tools/windows.svg";
-import windows from "../assets/images/icons/tools/windows.svg";
-import metaTrader4Icon from "../assets/images/icons/tools/metaTrader4.svg";
-import metaTrader5Icon from "../assets/images/icons/tools/metaTrader5.svg";
 import {
   AdvantageIcon1,
   AdvantageIcon2,
@@ -98,45 +91,22 @@ export const FSA_ADVANTAGES = [
 
 export const MT4_PLATFORMS = {
   ios: {
-    icon: iosIcon,
     title: "index_trading-tools-platforms-ios",
   },
   android: {
-    icon: androidIcon,
     title: "index_trading-tools-platforms-android",
   },
   windows: {
-    icon: windowsIcon,
     title: "index_trading-tools-platforms-windows",
   },
 };
 
 export const MOBILE_PLATFORMS = {
   ios: {
-    icon: iosIcon,
     title: "index_trading-tools-platforms-ios",
   },
   android: {
-    icon: androidIcon,
     title: "index_trading-tools-platforms-android",
-  },
-};
-
-const FSA_PLATFORMS = {
-  webTrader: {
-    icon: webTraderIcon,
-    title: "index_trading-tools-platforms-webtrader",
-  },
-  ios: MOBILE_PLATFORMS.ios,
-  android: MOBILE_PLATFORMS.android,
-  metaTrader4: {
-    icon: metaTrader4Icon,
-    title: "index_trading-tools-platforms-metatrader4",
-  },
-
-  metaTrader5: {
-    icon: metaTrader5Icon,
-    title: "index_trading-tools-platforms-metatrader5",
   },
 };
 
@@ -144,7 +114,6 @@ export const getPlatforms = () => FSA_PLATFORMS;
 
 export const ADDITIONAL_PLATFORMS = {
   windows: {
-    icon: windows,
     title: "index_trading-tools-platforms-windows",
   },
 };

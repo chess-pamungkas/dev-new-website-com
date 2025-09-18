@@ -26,7 +26,7 @@ import CornerPanel from "./components/corner-panel";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { setLangParam } from "../../helpers/services/language-service";
 import LangSelect from "./components/lang-select";
-import NavbarDropdownHighlight from "./components/navbar-dropdown-highlight";
+import NavbarDropdownHighlight from "../shared/navbar-dropdown-highlight";
 import NavbarSubItem from "./components/navbar-sub-item";
 import PartnersNavIcon from "../shared/icons/PartnersNavIcon";
 
@@ -378,18 +378,7 @@ const Header = ({ className }) => {
                 <div className="container">
                   <div className="navbar-item__dropdown-flex">
                     <NavbarDropdownHighlight
-                      icon={activeMenuItem.subItems[0].icon}
-                      title={activeMenuItem.subItems[0].title}
-                      description={activeMenuItem.subItems[0].description}
-                      link={activeMenuItem.subItems[0].link}
-                      primaryButton={{
-                        text: "Start Trading",
-                        link: "/start-trading",
-                      }}
-                      secondaryButton={{
-                        text: "Try a Demo Account",
-                        link: "/demo-account",
-                      }}
+                      menuType={activeMenuItem.title.toLowerCase()}
                       onOpenRegistrationPopup={handleShowRegistrationPopup}
                     />
                     <div className="navbar-item__dropdown-separator" />

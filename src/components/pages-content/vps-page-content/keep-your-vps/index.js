@@ -69,7 +69,7 @@ const KeepYourVPS = ({ className }) => {
       <div className="keep-your-vps-bg">
         <img
           src={backgroundSrc}
-          alt="Keep Your VPS Forever Background"
+          alt={t("keep-your-vps_background-alt")}
           className="keep-your-vps-bg__image"
         />
       </div>
@@ -77,7 +77,7 @@ const KeepYourVPS = ({ className }) => {
       {/* Header */}
       <div className="keep-your-vps-header">
         <div className="badge-row">
-          <img src={featuresIcon} alt="Features Badge" />
+          <img src={featuresIcon} alt={t("keep-your-vps_features-badge-alt")} />
           <span className="badge-label">{t("keep_your_vps_badge_text")}</span>
         </div>
         <h2 className="keep-your-vps-title">{t("keep_your_vps_title")}</h2>
@@ -104,7 +104,10 @@ const KeepYourVPS = ({ className }) => {
         <div className="keep-your-vps-card monthly-trading-card">
           <div className="card-content-wrapper">
             <div className="card-icon">
-              <img src={monthlyTradingIcon} alt="Monthly Trading Requirement" />
+              <img
+                src={monthlyTradingIcon}
+                alt={t("keep-your-vps_card2-icon-alt")}
+              />
             </div>
             <h3 className="card-title">{t("keep_your_vps_card2_title")}</h3>
             <p className="card-description">
@@ -116,7 +119,7 @@ const KeepYourVPS = ({ className }) => {
               src={
                 isMobile ? oqtimaForexCfdDarkMobile : oqtimaForexCfdDarkDesktop
               }
-              alt="Oqtima Forex CFD"
+              alt={t("keep-your-vps_forex-cfd-alt")}
               className="vps-image"
             />
             <button

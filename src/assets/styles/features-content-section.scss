@@ -14,7 +14,7 @@
   }
 
   @include tablet {
-    margin: 80px 0 60px;
+    margin: 20px 0 40px;
   }
 
   &__container {
@@ -25,7 +25,7 @@
     width: 100%;
     max-width: 1280px;
     overflow: hidden;
-    padding: 0 20px;
+    padding: 0;
     box-sizing: border-box;
 
     @include mobile {
@@ -160,14 +160,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 32px;
+    gap: 20px;
     width: 100%;
     justify-content: center;
     max-width: 1280px;
 
     @include mobile {
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
       width: 100%;
       overflow-x: auto;
       padding: 0;
@@ -175,8 +175,17 @@
     }
 
     @include tablet {
-      gap: 24px;
+      flex-direction: column;
+      gap: 20px;
       width: 100%;
+      align-items: center;
+    }
+
+    @include desktop-lg {
+      flex-direction: row;
+      gap: 20px;
+      width: 100%;
+      align-items: center;
     }
   }
 
@@ -231,38 +240,81 @@
         width: 100%;
         height: 357px;
       }
+
+      @include desktop-lg {
+        width: 100%;
+        max-width: 468px;
+        height: 357px;
+      }
+
+      @include desktop-xl {
+        width: 100%;
+        max-width: 604px;
+        height: 357px;
+      }
     }
 
     &--small {
       min-height: 512px;
       width: 100%;
       max-width: 396px;
+      flex-shrink: 0;
+      background: #ffffff;
 
       @include mobile {
-        min-height: 473.5px;
+        min-height: 523px;
         max-width: none;
       }
 
       .features-content-section__card-content {
         width: 100%;
-        height: 100%;
-        padding: 32px;
+        padding: 32px 32px 0 32px;
         display: flex;
         flex-direction: column;
         gap: 20px;
         background: transparent;
         position: relative;
-        z-index: 2;
+        z-index: 1;
         box-sizing: border-box;
-        border-radius: 28px;
+        border-radius: 28px 28px 0 0;
         justify-content: flex-start;
         align-items: flex-start;
 
         @include mobile {
-          padding: 24px;
+          padding: 24px 24px 0 24px;
           gap: 16px;
           justify-content: flex-start;
           align-items: flex-start;
+        }
+
+        @include tablet {
+          width: 100%;
+          padding: 32px 32px 0 32px;
+          gap: 20px;
+          justify-content: flex-start;
+          align-items: flex-start;
+          background: #ffffff;
+          border-radius: 28px 28px 0 0;
+        }
+
+        @include desktop-lg {
+          width: 100%;
+          padding: 24px 24px 0 24px;
+          gap: 20px;
+          justify-content: flex-start;
+          align-items: flex-start;
+          background: #ffffff;
+          border-radius: 28px 28px 0 0;
+        }
+
+        @include desktop-xl {
+          width: 100%;
+          padding: 32px 32px 0 32px;
+          gap: 20px;
+          justify-content: flex-start;
+          align-items: flex-start;
+          background: #ffffff;
+          border-radius: 28px 28px 0 0;
         }
       }
 
@@ -276,6 +328,323 @@
         @include mobile {
           margin-top: 16px;
         }
+      }
+
+      // Card Visual Elements
+      .features-content-section__card-visual {
+        width: 100% !important;
+        height: 200px !important;
+        z-index: 10 !important;
+        border-radius: 0 0 28px 28px;
+        overflow: hidden;
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        min-height: 200px;
+        display: block !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        margin: 0 auto !important;
+
+        @include mobile {
+          height: 225px !important;
+          min-height: 225px !important;
+        }
+
+        &--payments {
+          @include mobile {
+            width: 100% !important;
+            background-size: 100% auto !important;
+            background-position: bottom center !important;
+          }
+
+          @include tablet {
+            width: 100% !important;
+            background-size: 100% auto !important;
+            background-position: bottom center !important;
+          }
+
+          @include desktop-lg {
+            width: 100% !important;
+            background-size: 100% auto !important;
+            background-position: bottom center !important;
+          }
+
+          @include desktop-xl {
+            width: 396px !important;
+          }
+        }
+
+        &--trading {
+          @include mobile {
+            width: 100% !important;
+            background-size: 100% auto !important;
+            background-position: bottom center !important;
+          }
+
+          @include tablet {
+            width: 100% !important;
+            background-size: cover !important;
+            background-position: top right !important;
+          }
+
+          @include desktop-lg {
+            width: 100% !important;
+            background-size: cover !important;
+            background-position: bottom center !important;
+          }
+
+          @include desktop-xl {
+            width: 100% !important;
+            background-size: cover !important;
+            background-position: top center !important;
+          }
+        }
+
+        &--demo {
+          @include mobile {
+            width: 100% !important;
+            background-size: 100% auto !important;
+            background-position: bottom center !important;
+          }
+
+          @include tablet {
+            width: 100% !important;
+            background-size: 100% auto !important;
+            background-position: bottom center !important;
+          }
+
+          @include desktop-lg {
+            width: 100% !important;
+            background-size: 100% auto !important;
+            background-position: bottom center !important;
+          }
+
+          @include desktop-xl {
+            width: 100% !important;
+            background-size: 100% 100% !important;
+            background-position: top center !important;
+          }
+        }
+      }
+
+      // Card Visual Image - removed since we're using background images
+
+      // Payment Logos
+      .features-content-section__payment-logos {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+      }
+
+      .features-content-section__payment-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .features-content-section__payment-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 68, 0, 0.2);
+        min-width: 60px;
+        height: 32px;
+      }
+
+      .features-content-section__payment-text {
+        font-size: 12px;
+        font-weight: 500;
+        color: #ffffff;
+        white-space: nowrap;
+      }
+
+      // Trading Chart
+      .features-content-section__trading-chart {
+        width: 100%;
+        height: 120px;
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .features-content-section__chart-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .features-content-section__chart-line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #ff4400 0%, #ff8800 100%);
+        border-radius: 2px;
+        transform: translateY(-50%);
+      }
+
+      .features-content-section__chart-point {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #ffffff;
+        padding: 8px 12px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .features-content-section__chart-value {
+        font-size: 14px;
+        font-weight: 600;
+        color: #000000;
+      }
+
+      .features-content-section__chart-percentage {
+        font-size: 12px;
+        font-weight: 500;
+        color: #ff4400;
+      }
+
+      // Demo Balance
+      .features-content-section__demo-balance {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+      }
+
+      .features-content-section__balance-container {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        position: relative;
+      }
+
+      .features-content-section__balance-label {
+        font-size: 12px;
+        color: #666666;
+        font-weight: 500;
+      }
+
+      .features-content-section__balance-amount {
+        font-size: 24px;
+        font-weight: 700;
+        color: #000000;
+      }
+
+      .features-content-section__balance-actions {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .features-content-section__balance-btn {
+        width: 32px;
+        height: 32px;
+        background: #ff4400;
+        border: none;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background: #e63d00;
+        }
+      }
+
+      .features-content-section__balance-plus {
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .features-content-section__balance-returns {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 12px;
+        color: #666666;
+      }
+
+      .features-content-section__returns-text {
+        font-weight: 500;
+      }
+
+      .features-content-section__returns-arrow {
+        color: #00c851;
+        font-size: 14px;
+      }
+
+      .features-content-section__balance-buttons {
+        display: flex;
+        gap: 8px;
+        width: 100%;
+      }
+
+      .features-content-section__action-btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px 12px;
+        border: 1px solid rgba(255, 68, 0, 0.2);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 12px;
+        font-weight: 500;
+
+        &:hover {
+          background: rgba(255, 68, 0, 0.1);
+          border-color: #ff4400;
+        }
+
+        &--deposit {
+          color: #0066cc;
+        }
+
+        &--withdraw {
+          color: #ff4400;
+        }
+      }
+
+      .features-content-section__action-icon {
+        font-size: 14px;
+      }
+
+      .features-content-section__action-text {
+        font-weight: 500;
       }
     }
   }
@@ -303,24 +672,61 @@
     }
 
     .features-content-section__card--small & {
-      background-size: contain;
+      background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       padding: 0;
       box-sizing: border-box;
       border-radius: 28px;
-      overflow: hidden;
+      overflow: visible;
+      position: relative;
+      height: 100%;
+      min-height: 512px;
 
       @include mobile {
         padding: 0;
         border-radius: 28px;
+        min-height: 523px;
+      }
+
+      @include tablet {
+        background-image: none;
+        background-size: unset;
+        background-position: unset;
+        background-repeat: unset;
+        padding: 0;
+        border-radius: 28px;
+        overflow: visible;
+        min-height: 650px;
+      }
+
+      @include desktop-lg {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 0;
+        box-sizing: border-box;
+        border-radius: 28px;
+        overflow: visible;
+        min-height: 512px;
+      }
+
+      @include desktop-xl {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 0;
+        box-sizing: border-box;
+        border-radius: 28px;
+        overflow: visible;
+        min-height: 512px;
       }
     }
   }
 
   // Left Content Container (302px width)
   &__card-left {
-    width: 302px;
+    width: 50%;
     height: 100%;
     padding: 32px;
     display: flex;
@@ -338,11 +744,19 @@
       height: auto;
       flex: 1;
     }
+
+    @include desktop-lg {
+      padding: 16px;
+    }
+
+    @include desktop-xl {
+      padding: 24px;
+    }
   }
 
   // Right Illustration Container (302px width)
   &__card-right {
-    width: 302px;
+    width: 50%;
     height: 100%;
     position: relative;
     z-index: 1;
@@ -390,6 +804,22 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     letter-spacing: -0.02em;
+
+    @include mobile {
+      font-size: 24px;
+    }
+
+    @include tablet {
+      font-size: 24px;
+    }
+
+    @include desktop-lg {
+      font-size: 20px;
+    }
+
+    @include desktop-xl {
+      font-size: 24px;
+    }
   }
 
   &__card-description {

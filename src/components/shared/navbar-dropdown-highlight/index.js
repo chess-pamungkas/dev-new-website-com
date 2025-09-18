@@ -1,25 +1,94 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
-import InternalLink from "../../../shared/internal-link";
-import subNavBadgeIcon from "../../../../assets/images/icons/sub-nav.svg";
-import { ShowRegistrationPopup } from "../../../../helpers/constants";
-import { setLangParam } from "../../../../helpers/services/language-service";
+import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
+import InternalLink from "../internal-link";
+import subNavBadgeIcon from "../../../assets/images/icons/sub-nav.svg";
+import { ShowRegistrationPopup } from "../../../helpers/constants";
+import { setLangParam } from "../../../helpers/services/language-service";
 
 const NavbarDropdownHighlight = ({
   className,
-  icon: Icon,
-  title,
-  description,
-  link,
-  subtitle,
-  primaryButton,
-  secondaryButton,
+  menuType = "platforms", // "products", "trading", "platforms", "more"
   onOpenRegistrationPopup,
 }) => {
   const { t } = useTranslationWithVariables();
   const langParam = setLangParam();
+
+  // Dynamic content based on menu type
+  const getMenuContent = (type) => {
+    // Map translation keys to menu types
+    const translationKeyMap = {
+      "header-nav-tab-top-markets": "products",
+      "header-nav-tab-trading": "trading",
+      "header-nav-tab-platforms-title": "platforms",
+      "header-nav-tab-company": "more",
+      "header-nav-tab-partners-fsa": "more",
+    };
+
+    // Get the actual menu type from translation key
+    const actualMenuType = translationKeyMap[type] || type;
+
+    const contentMap = {
+      products: {
+        badgeText: t("navbar-dropdown-highlight_products_badge-text"),
+        title: t("navbar-dropdown-highlight_products_title"),
+        subtitle: t("navbar-dropdown-highlight_products_subtitle"),
+        primaryButton: {
+          text: t("navbar-dropdown-highlight_products_primary-button"),
+          link: "/products",
+        },
+        secondaryButton: {
+          text: t("navbar-dropdown-highlight_products_secondary-button"),
+          link: "/products/demo",
+        },
+      },
+      trading: {
+        badgeText: t("navbar-dropdown-highlight_trading_badge-text"),
+        title: t("navbar-dropdown-highlight_trading_title"),
+        subtitle: t("navbar-dropdown-highlight_trading_subtitle"),
+        primaryButton: {
+          text: t("navbar-dropdown-highlight_trading_primary-button"),
+          link: "/trading",
+        },
+        secondaryButton: {
+          text: t("navbar-dropdown-highlight_trading_secondary-button"),
+          link: "/trading/demo",
+        },
+      },
+      platforms: {
+        badgeText: t("navbar-dropdown-highlight_platforms_badge-text"),
+        title: t("navbar-dropdown-highlight_platforms_title"),
+        subtitle: t("navbar-dropdown-highlight_platforms_subtitle"),
+        primaryButton: {
+          text: t("navbar-dropdown-highlight_platforms_primary-button"),
+          link: "/platforms",
+        },
+        secondaryButton: {
+          text: t("navbar-dropdown-highlight_platforms_secondary-button"),
+          link: "/platforms/demo",
+        },
+      },
+      more: {
+        badgeText: t("navbar-dropdown-highlight_more_badge-text"),
+        title: t("navbar-dropdown-highlight_more_title"),
+        subtitle: t("navbar-dropdown-highlight_more_subtitle"),
+        primaryButton: {
+          text: t("navbar-dropdown-highlight_more_primary-button"),
+          link: "/more",
+        },
+        secondaryButton: {
+          text: t("navbar-dropdown-highlight_more_secondary-button"),
+          link: "/more/demo",
+        },
+      },
+    };
+
+    return contentMap[actualMenuType] || contentMap.platforms;
+  };
+
+  const content = getMenuContent(menuType);
+
   return (
     <div className={cn("navbar-dropdown-highlight", className)}>
       <div className="navbar-dropdown-highlight__inner">
@@ -35,18 +104,18 @@ const NavbarDropdownHighlight = ({
             className="navbar-dropdown-highlight__badge-text"
             style={{ display: "inline-block", whiteSpace: "nowrap" }}
           >
-            {t("navbar-dropdown-highlight_badge-text")}
+            {content.badgeText}
           </span>
         </div>
         <div className="navbar-dropdown-highlight__content-block">
           <div className="navbar-dropdown-highlight__title">
-            {t("navbar-dropdown-highlight_title")}
+            {content.title}
           </div>
           <div className="navbar-dropdown-highlight__subtitle">
-            {t("navbar-dropdown-highlight_subtitle")}
+            {content.subtitle}
           </div>
           <div className="navbar-dropdown-highlight__button-group">
-            {primaryButton && primaryButton.text && (
+            {content.primaryButton && content.primaryButton.text && (
               <button
                 type="button"
                 data-popup-trigger="true"
@@ -64,7 +133,7 @@ const NavbarDropdownHighlight = ({
                 }}
               >
                 <span className="navbar-dropdown-highlight__button-text">
-                  {t(primaryButton.text)}
+                  {t(content.primaryButton.text)}
                 </span>
                 <span className="navbar-dropdown-highlight__button-arrow">
                   <svg
@@ -85,7 +154,7 @@ const NavbarDropdownHighlight = ({
                 </span>
               </button>
             )}
-            {secondaryButton && secondaryButton.text && (
+            {content.secondaryButton && content.secondaryButton.text && (
               <button
                 type="button"
                 data-popup-trigger="true"
@@ -103,7 +172,7 @@ const NavbarDropdownHighlight = ({
                 }}
               >
                 <span className="navbar-dropdown-highlight__button-text">
-                  {t(secondaryButton.text)}
+                  {t(content.secondaryButton.text)}
                 </span>
                 <span className="navbar-dropdown-highlight__button-arrow">
                   <svg
@@ -133,19 +202,7 @@ const NavbarDropdownHighlight = ({
 
 NavbarDropdownHighlight.propTypes = {
   className: PropTypes.string,
-  icon: PropTypes.elementType,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string,
-  description: PropTypes.string,
-  link: PropTypes.string,
-  primaryButton: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-  }),
-  secondaryButton: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-  }),
+  menuType: PropTypes.oneOf(["products", "trading", "platforms", "more"]),
   onOpenRegistrationPopup: PropTypes.func,
 };
 

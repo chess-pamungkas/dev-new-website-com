@@ -8,8 +8,8 @@ import {
 } from "./constants";
 import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
 import { useWindowSize } from "./hooks/use-window-size";
-import depositArrow from "../assets/images/withdrawal/deposit.png";
-import withdrawArrow from "../assets/images/withdrawal/withdraw.png";
+// import depositArrow from "../assets/images/withdrawal/deposit.png";
+// import withdrawArrow from "../assets/images/withdrawal/withdraw.png";
 
 const PAYMENT_METHODS_COLUMNS_FSA = [
   {

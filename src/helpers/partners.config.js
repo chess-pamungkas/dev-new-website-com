@@ -8,12 +8,12 @@ import {
   PartnersAdvantageIcon7,
   PartnersAdvantageIcon8,
 } from "../components/shared/icons";
-import StartItem1 from "../assets/images/partners/start-item1.svg";
-import StartItem2 from "../assets/images/partners/start-item2.svg";
-import StartItem3 from "../assets/images/partners/start-item3.svg";
-import StartItem4 from "../assets/images/partners/start-item4.svg";
-import StartItem5 from "../assets/images/partners/start-item5.svg";
-import StartItem6 from "../assets/images/partners/start-item6.svg";
+// import StartItem1 from "../assets/images/partners/start-item1.svg";
+// import StartItem2 from "../assets/images/partners/start-item2.svg";
+// import StartItem3 from "../assets/images/partners/start-item3.svg";
+// import StartItem4 from "../assets/images/partners/start-item4.svg";
+// import StartItem5 from "../assets/images/partners/start-item5.svg";
+// import StartItem6 from "../assets/images/partners/start-item6.svg";
 
 export const PARTNERS_ADVANTAGES = [
   {
@@ -58,38 +58,38 @@ export const PARTNERS_ADVANTAGES = [
   },
 ];
 
-export const START_STEPS = [
-  {
-    icon: StartItem1,
-    text: "partners_start-item1-fsa",
-    accent: "partners_start-item1-accent-fsa",
-  },
-  {
-    icon: StartItem2,
-    text: "partners_start-item2-fsa",
-    accent: "partners_start-item2-accent-fsa",
-  },
-  {
-    icon: StartItem3,
-    text: "partners_start-item3-fsa",
-    accent: "partners_start-item3-accent-fsa",
-  },
-  {
-    icon: StartItem4,
-    text: "partners_start-item4-fsa",
-    accent: "partners_start-item4-accent-fsa",
-  },
-  {
-    icon: StartItem5,
-    text: "partners_start-item5-fsa",
-    accent: "partners_start-item5-accent-fsa",
-  },
-  {
-    icon: StartItem6,
-    text: "partners_start-item6-fsa",
-    accent: "partners_start-item6-accent-fsa",
-  },
-];
+// export const START_STEPS = [
+//   {
+//     icon: StartItem1,
+//     text: "partners_start-item1-fsa",
+//     accent: "partners_start-item1-accent-fsa",
+//   },
+//   {
+//     icon: StartItem2,
+//     text: "partners_start-item2-fsa",
+//     accent: "partners_start-item2-accent-fsa",
+//   },
+//   {
+//     icon: StartItem3,
+//     text: "partners_start-item3-fsa",
+//     accent: "partners_start-item3-accent-fsa",
+//   },
+//   {
+//     icon: StartItem4,
+//     text: "partners_start-item4-fsa",
+//     accent: "partners_start-item4-accent-fsa",
+//   },
+//   {
+//     icon: StartItem5,
+//     text: "partners_start-item5-fsa",
+//     accent: "partners_start-item5-accent-fsa",
+//   },
+//   {
+//     icon: StartItem6,
+//     text: "partners_start-item6-fsa",
+//     accent: "partners_start-item6-accent-fsa",
+//   },
+// ];
 
 export const DEFAULT_CLIENTS = 110;
 export const MIN_CLIENTS = 10;

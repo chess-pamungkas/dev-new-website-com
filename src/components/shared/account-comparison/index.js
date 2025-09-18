@@ -16,10 +16,11 @@ import {
   ButtonPrimaryComparisonZero,
   ButtonContainer,
 } from "../reusable-buttons";
+import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 
 const AccountComparison = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const { isMobile } = useWindowSize();
   const { selectedLanguage } = useContext(LanguageContext);
   const { t } = useTranslationWithVariables();
 
@@ -30,20 +31,6 @@ const AccountComparison = () => {
   const handleClosePopup = () => {
     setIsPopupOpen(false);
   };
-
-  // Mobile detection
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    checkIsMobile();
-    window.addEventListener("resize", checkIsMobile);
-
-    return () => {
-      window.removeEventListener("resize", checkIsMobile);
-    };
-  }, []);
 
   const ecnFeatures = [
     t("account-comparison-ecn-feature1"),
@@ -59,13 +46,6 @@ const AccountComparison = () => {
     t("account-comparison-zero-feature4"),
   ];
 
-  const sharedFeatures = [
-    { text: t("account-comparison-shared-feature1"), icon: "🌐" },
-    { text: t("account-comparison-shared-feature2"), icon: "📊" },
-    { text: t("account-comparison-shared-feature3"), icon: "🛡️" },
-    { text: t("account-comparison-shared-feature4"), icon: "🎧" },
-  ];
-
   const backgroundSrc = isMobile
     ? AccountComparisonMobileBg
     : AccountComparisonDesktopBg;
@@ -76,7 +56,7 @@ const AccountComparison = () => {
       <div className="account-comparison-bg">
         <img
           src={backgroundSrc}
-          alt="Account Comparison Background"
+          alt={t("account-comparison-shared_background-alt")}
           className="account-comparison-bg__image"
         />
       </div>
@@ -133,7 +113,10 @@ const AccountComparison = () => {
             {ecnFeatures.map((feature, index) => (
               <li key={index} className="feature-item">
                 <div className="feature-icon">
-                  <img src={CircleMarkIcon} alt="Feature Icon" />
+                  <img
+                    src={CircleMarkIcon}
+                    alt={t("account-comparison_feature-icon-alt")}
+                  />
                 </div>
                 <span>{feature}</span>
               </li>
@@ -182,7 +165,10 @@ const AccountComparison = () => {
             {zeroFeatures.map((feature, index) => (
               <li key={index} className="feature-item">
                 <div className="feature-icon">
-                  <img src={CircleMarkIcon} alt="Feature Icon" />
+                  <img
+                    src={CircleMarkIcon}
+                    alt={t("account-comparison_feature-icon-alt")}
+                  />
                 </div>
                 <span>{feature}</span>
               </li>

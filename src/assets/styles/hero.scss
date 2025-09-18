@@ -260,7 +260,7 @@
 
     @include desktop-lg {
       padding-top: 50px;
-      max-width: 960px;
+      max-width: 1140px;
     }
 
     @include desktop-xl {
@@ -476,7 +476,6 @@
     border: none;
     font-weight: map-get($font-weight, "medium");
     font-size: 20px;
-    line-height: 23px;
     cursor: pointer;
     position: relative;
     transition: background 0.3s, color 0.3s, box-shadow 0.3s,
@@ -519,6 +518,14 @@
         left: auto;
         top: auto;
         transform: none;
+      }
+
+      @include tablet {
+        font-size: 18px;
+      }
+
+      @include desktop-lg {
+        font-size: 20px;
       }
     }
 

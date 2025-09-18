@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import BadgeSecurityIcon from "../../../../assets/images/icons/main-page/badge-security.svg";
 import CircleMarkIcon from "../../../../assets/images/icons/circle-mark.svg";
 import CloseOverlayIcon from "../../../../assets/images/icons/main-page/trust/close-overlay.svg";
@@ -13,6 +14,7 @@ const TrustContent = () => {
   const [isVideoHovered, setIsVideoHovered] = useState(false);
   const [isVideoClicked, setIsVideoClicked] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
+  const { t } = useTranslationWithVariables();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -32,18 +34,18 @@ const TrustContent = () => {
 
   const trustFeatures = [
     {
-      boldText: "Industry Veterans",
-      text: ": 50+ years of top-tier trading experience",
+      boldText: t("trust-content_feature1-bold"),
+      text: t("trust-content_feature1-text"),
       icon: CircleMarkIcon,
     },
     {
-      boldText: "Institutional Background",
-      text: ": Tech built by real-market professionals",
+      boldText: t("trust-content_feature2-bold"),
+      text: t("trust-content_feature2-text"),
       icon: CircleMarkIcon,
     },
     {
-      boldText: "Trust & Recognition",
-      text: ": Regulated, transparent, and industry-connected",
+      boldText: t("trust-content_feature3-bold"),
+      text: t("trust-content_feature3-text"),
       icon: CircleMarkIcon,
     },
   ];
@@ -65,9 +67,11 @@ const TrustContent = () => {
             <div className="trust-content__video-background"></div>
             {/* Video overlay text */}
             <div className="trust-content__video-overlay">
-              <h3 className="trust-content__video-name">Gianluigi Buffon</h3>
+              <h3 className="trust-content__video-name">
+                {t("trust-content_video-name")}
+              </h3>
               <p className="trust-content__video-title">
-                Strategic investor and brand ambassador
+                {t("trust-content_video-title")}
               </p>
             </div>
           </div>
@@ -79,23 +83,25 @@ const TrustContent = () => {
           <div className="trust-content__badge">
             <img
               src={BadgeSecurityIcon}
-              alt="Security"
+              alt={t("trust-content_badge-icon-alt")}
               className="trust-content__badge-icon"
             />
-            <span className="trust-content__badge-text">Trust</span>
+            <span className="trust-content__badge-text">
+              {t("trust-content_badge-text")}
+            </span>
           </div>
 
           {/* Main Title */}
           <h2 className="trust-content__title">
-            Professional Heritage{" "}
+            {t("trust-content_title")}{" "}
             <span className="trust-content__title-highlight">
-              You Can Trust
+              {t("trust-content_title-highlight")}
             </span>
           </h2>
 
           {/* Subtitle */}
           <p className="trust-content__subtitle">
-            Built by trading professionals for serious traders
+            {t("trust-content_subtitle")}
           </p>
 
           {/* Features List */}
@@ -104,7 +110,7 @@ const TrustContent = () => {
               <li key={index} className="trust-content__feature">
                 <img
                   src={feature.icon}
-                  alt="Check"
+                  alt={t("trust-content_check-icon-alt")}
                   className="trust-content__feature-icon"
                 />
                 <span className="trust-content__feature-text">
@@ -140,7 +146,7 @@ const TrustContent = () => {
             >
               <img
                 src={CloseOverlayIcon}
-                alt="Close"
+                alt={t("trust-content_close-icon-alt")}
                 className="trust-content__close-icon"
               />
             </button>

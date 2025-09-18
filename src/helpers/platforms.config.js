@@ -1,6 +1,6 @@
 import React from "react";
-import metaTrader4 from "../assets/images/icons/tools/metaTrader4.svg";
-import metaTrader5 from "../assets/images/icons/tools/metaTrader5.svg";
+// import metaTrader4 from "../assets/images/icons/tools/metaTrader4.svg";
+// import metaTrader5 from "../assets/images/icons/tools/metaTrader5.svg";
 import {
   MT4_PAGE_LINK,
   MT5_PAGE_LINK,

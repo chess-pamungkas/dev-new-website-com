@@ -3,7 +3,7 @@
 
 .income-slider {
   width: 100%;
-  padding: 80px 0 0 0;
+  padding: 50px 0 100px 0;
 
   &__wrapper {
     max-width: 1280px;
@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 10px;
 
     @include mobile {
       max-width: calc(100% - 50px);
@@ -55,11 +55,8 @@
 
   &__title {
     // Figma specifications
-    width: 100%;
-    // max-width: 1241px;
+    width: 800px;
     height: auto;
-    min-height: 104px;
-
     font-style: normal;
     font-weight: map-get($font-weight, "semibold");
     font-size: 52px;
@@ -83,17 +80,13 @@
     order: 0;
     align-self: stretch;
     flex-grow: 0;
+    margin: 0 auto;
 
-    margin-bottom: 16px;
+    padding-bottom: 30px;
 
     @include mobile {
-      margin-bottom: 20px;
+      width: 100%;
     }
-
-    // @include tablet {
-    //   font-size: 42px;
-    //   line-height: 46px;
-    // }
 
     // Note: .highlight class now inherits parent gradient styling
   }
@@ -695,7 +688,7 @@
 
   // Mobile specific adjustments
   @include mobile {
-    padding: 150px 0 0 0;
+    padding: 135px 0 0 0;
 
     &__content {
       max-width: 100%;

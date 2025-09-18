@@ -15,7 +15,6 @@ import SwapFreeBottomPromotion from "../../swap-free/components/bottom-promotion
 import { setLangParam } from "../../../helpers/services/language-service";
 import ContainerWrapper from "../../../components/shared/container-wrapper";
 import Hero from "../../shared/hero";
-import SwapFreeImageContent from "./swap-free-image-content";
 import SwapFreeFreedom from "./swap-free-freedom";
 import HowToTradeSwapFree from "./how-to-trade-swap-free";
 import OurCommunityContent from "../../../components/shared/our-community";

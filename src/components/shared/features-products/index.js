@@ -65,7 +65,7 @@ const FeaturesProducts = ({
         <div className="features-products__badge">
           <img
             src={featuresIcon}
-            alt="Features"
+            alt={t("features-products_badge-icon-alt")}
             className="features-products__badge-icon"
           />
           <span className="features-products__badge-text">

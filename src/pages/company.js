@@ -3,11 +3,6 @@ import { graphql } from "gatsby";
 import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 import "../assets/styles/index.scss";
 import Seo from "../components/shared/seo";
-import VideoBanner from "../components/video-banner";
-import SplitTextPromotion from "../components/split-text-promotion";
-import HighlightedLocalizationText from "../components/shared/highlighted-localization-text";
-import CompanyAdvantages from "../components/company-advantages";
-import video from "../assets/video/about.mp4";
 import CompanyPageContent from "../components/pages-content/company-page-content";
 import PageBackground from "../components/shared/page-background";
 

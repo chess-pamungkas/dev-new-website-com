@@ -112,8 +112,9 @@
     font-weight: map-get($font-weight, "regular");
     color: map-get($colors, "navbar-item-grey");
     font-size: 16px;
-    line-height: 1.2;
+    line-height: 28px;
     margin: 16px 0;
+    opacity: 0.7;
   }
 
   // Description

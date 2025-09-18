@@ -16,33 +16,33 @@ const SpreadsFeesCommission = ({ className }) => {
   const commissionData = [
     {
       currencyCode: "USD",
-      currencyName: "United States Dollar",
-      commissionRate: "$ 1.50 per lot traded ($3 round turn)",
+      currencyName: t("spreads-fees-commission_currency-usd"),
+      commissionRate: t("spreads-fees-commission_rate-usd"),
     },
     {
       currencyCode: "EUR",
-      currencyName: "Euro",
-      commissionRate: "€ 1.50 per lot traded (€3 round turn)",
+      currencyName: t("spreads-fees-commission_currency-eur"),
+      commissionRate: t("spreads-fees-commission_rate-eur"),
     },
     {
       currencyCode: "GBP",
-      currencyName: "British Pound",
-      commissionRate: "£ 1.25 per lot traded (£2.50 round turn)",
+      currencyName: t("spreads-fees-commission_currency-gbp"),
+      commissionRate: t("spreads-fees-commission_rate-gbp"),
     },
     {
       currencyCode: "SGD",
-      currencyName: "Singapore Dollar",
-      commissionRate: "S$ 1.75 per lot traded (S$ 3.50 round turn)",
+      currencyName: t("spreads-fees-commission_currency-sgd"),
+      commissionRate: t("spreads-fees-commission_rate-sgd"),
     },
     {
       currencyCode: "JPY",
-      currencyName: "Japanese Yen",
-      commissionRate: "¥225 per lot traded (¥450 round turn)",
+      currencyName: t("spreads-fees-commission_currency-jpy"),
+      commissionRate: t("spreads-fees-commission_rate-jpy"),
     },
     {
       currencyCode: "CAD",
-      currencyName: "Canadian Dollar",
-      commissionRate: "Can$ 2.00 per lot traded (Can$ 4 per round turn)",
+      currencyName: t("spreads-fees-commission_currency-cad"),
+      commissionRate: t("spreads-fees-commission_rate-cad"),
     },
   ];
 
@@ -52,12 +52,12 @@ const SpreadsFeesCommission = ({ className }) => {
       <div className="commission__bg">
         <img
           src={bgCommissionDesktop}
-          alt="Commission Background"
+          alt={t("spreads-fees-commission_background-alt")}
           className="desktop-bg"
         />
         <img
           src={bgCommissionMobile}
-          alt="Commission Background"
+          alt={t("spreads-fees-commission_background-alt")}
           className="mobile-bg"
         />
       </div>
@@ -68,8 +68,11 @@ const SpreadsFeesCommission = ({ className }) => {
         <div className="commission__header">
           {/* Badge Group */}
           <div className="commission__badge-group">
-            <img src={featureIcon} alt="Feature Icon" />
-            <span>Features</span>
+            <img
+              src={featureIcon}
+              alt={t("spreads-fees-commission_feature-icon-alt")}
+            />
+            <span>{t("spreads-fees-commission_badge-text")}</span>
           </div>
 
           {/* Title and Subtitle Container */}

@@ -37,15 +37,15 @@ const ContactUs = ({ className }) => {
         {/* Left Section - Content */}
         <div className="contact-us__content">
           {/* Badge */}
-          <div className="contact-us__badge-group">
-            <div className="contact-us__badge-content">
+          <div className="contact-us__page-badge-group">
+            <div className="contact-us__page-badge-content">
               <img
                 src={BadgeIcon}
                 alt="Icon"
-                className="contact-us__badge-icon"
+                className="contact-us__page-badge-icon"
               />
-              <span className="contact-us__badge-message">
-                {t("contact-us_badge-text-get-in-touch")}
+              <span className="contact-us__page-badge-message">
+                {t("contact-us_badge-text-trade-the-next-level")}
               </span>
             </div>
           </div>

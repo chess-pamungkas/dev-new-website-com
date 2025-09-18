@@ -788,6 +788,22 @@
         width: 100%;
       }
     }
+
+    .button-primary-standard {
+      width: 150px;
+
+      @include mobile {
+        width: 100%;
+      }
+
+      &:hover {
+        width: 167px;
+
+        @include mobile {
+          width: 100%;
+        }
+      }
+    }
   }
 
   // Trading Type Variant Styles Mixin

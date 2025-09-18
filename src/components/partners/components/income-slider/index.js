@@ -59,9 +59,7 @@ const IncomeSlider = ({ className }) => {
 
         {/* Title */}
         <h2 className="income-slider__title">
-          The compounding effect of <span className="highlight">an</span>
-          <br />
-          Introducing broker
+          The compounding effect of an Introducing broker
         </h2>
 
         {/* Main Container - Figma Horizontal Layout */}

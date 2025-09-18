@@ -91,102 +91,6 @@ const LANG_CONFIG = [
     name: "عربي",
     URIPart: "/ar",
   },
-  /*// German
-  {
-    id: "de",
-    icon: "DeFlagIcon",
-    name: "Deutsch",
-  },
-  // Polish
-  {
-    id: "pl",
-    icon: "PlFlagIcon",
-    name: "Polski",
-  },
-  // Danish
-  {
-    id: "da",
-    icon: "DaFlagIcon",
-    name: "Dansk",
-  },
-  // Finnish
-  {
-    id: "fi",
-    icon: "FiFlagIcon",
-    name: "Suomi",
-  },
-  // Russian
-  {
-    id: "ru",
-    icon: "RuFlagIcon",
-    name: "Русский",
-  },
-  // Arabic
-  {
-    id: "ar",
-    icon: "ArFlagIcon",
-    name: "عربي",
-  },
-  // Dutch (Netherlands)
-  {
-    id: "nl",
-    icon: "NlFlagIcon",
-    name: "Nederlands",
-  },
-  // Swedish
-  {
-    id: "sw",
-    icon: "SwFlagIcon",
-    name: "Svenska",
-  },
-  // Romanian
-  {
-    id: "ro",
-    icon: "RoFlagIcon",
-    name: "Română",
-  },
-  // Norwegian
- {
-   id: "no",
-   icon: "NoFlagIcon",
-   name: "Norsk",
- },
- // Czech
- {
-   id: "cz",
-   icon: "CzFlagIcon",
-   name: "Čeština",
- },
- // Korean
- {
-   id: "kr",
-   icon: "KrFlagIcon",
-   name: "한국인",
- },
- // Hindi (India)
- {
-   id: "in",
-   icon: "InFlagIcon",
-   name: "नहीं",
- },
- // Bengali (Bangladesh)
- {
-   id: "bd",
-   icon: "BdFlagIcon",
-   name: "বাংলা",
- },
- // Greek
- {
-   id: "gr",
-   icon: "GrFlagIcon",
-   name: "Ελληνικά",
- },
- // Filipino
- {
-   id: "ph",
-   icon: "PhFlagIcon",
-   name: "Filipino",
- },*/
 ];
 
 const CYSEC_LANG_CONFIG = [
@@ -225,20 +129,6 @@ const CYSEC_LANG_CONFIG = [
     icon: "CnFlagIcon",
     name: "简体中文",
     URIPart: "/cn",
-  },
-  // Portuguese
-  {
-    id: "pt",
-    icon: "PtFlagIcon",
-    name: "Português",
-    URIPart: "/pt",
-  },
-  // German
-  {
-    id: "de",
-    icon: "DeFlagIcon",
-    name: "Deutsch",
-    URIPart: "/de",
   },
 ];
 

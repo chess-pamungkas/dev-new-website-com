@@ -124,7 +124,10 @@ const AccountTypesAccountComparison = () => {
             {ecnFeatures.map((feature, index) => (
               <li key={index} className="feature-item">
                 <div className="feature-icon">
-                  <img src={CircleMarkIcon} alt="Feature Icon" />
+                  <img
+                    src={CircleMarkIcon}
+                    alt={t("account-comparison_feature-icon-alt")}
+                  />
                 </div>
                 <span>{feature}</span>
               </li>
@@ -173,7 +176,10 @@ const AccountTypesAccountComparison = () => {
             {zeroFeatures.map((feature, index) => (
               <li key={index} className="feature-item">
                 <div className="feature-icon">
-                  <img src={CircleMarkIcon} alt="Feature Icon" />
+                  <img
+                    src={CircleMarkIcon}
+                    alt={t("account-comparison_feature-icon-alt")}
+                  />
                 </div>
                 <span>{feature}</span>
               </li>
