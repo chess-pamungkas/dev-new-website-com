@@ -132,6 +132,14 @@
       align-items: center;
       align-self: stretch;
     }
+
+    @include tablet {
+      height: 310px;
+    }
+
+    @include desktop-lg {
+      height: 220px;
+    }
   }
 
   // Card Content
@@ -158,6 +166,44 @@
       width: 100%;
       height: 310px;
     }
+
+    @include tablet {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 10px;
+      gap: 4px;
+      width: 100%;
+      height: 310px;
+    }
+
+    @include desktop-lg {
+      flex-direction: row;
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      padding: 20px;
+      gap: 16px;
+      width: 100%;
+      height: 220px;
+      box-sizing: border-box;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    @include desktop-xl {
+      flex-direction: row;
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      padding: 20px;
+      gap: 16px;
+      width: 1240px;
+      height: 220px;
+      box-sizing: border-box;
+      border-radius: 12px;
+      overflow: hidden;
+    }
   }
 
   // Card Content Background
@@ -169,13 +215,13 @@
     height: 100%;
     z-index: 0;
     border-radius: 12px;
-    overflow: hidden;
+    overflow: visible;
 
     .desktop-bg {
       display: block;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
 
       @include mobile {
         display: none;
@@ -215,6 +261,21 @@
       padding: 12px 10px;
       gap: 0;
       margin-top: 10px;
+    }
+
+    @include tablet {
+      width: 100%;
+      height: 160px;
+    }
+
+    @include desktop-lg {
+      width: 454px;
+      height: 160px;
+    }
+
+    @include desktop-xl {
+      width: 454px;
+      height: 180px;
     }
   }
 
@@ -259,6 +320,11 @@
     flex-shrink: 0;
     position: relative;
     z-index: 1;
+
+    @include tablet {
+      width: 48px;
+      height: 48px;
+    }
 
     img {
       width: 100%;
@@ -306,6 +372,14 @@
     @include mobile {
       width: 100%;
     }
+
+    @include tablet {
+      font-size: 16px;
+    }
+
+    @include desktop-xl {
+      font-size: 22px;
+    }
   }
 
   // Card Description
@@ -325,6 +399,14 @@
       line-height: 140%;
       width: 100%;
     }
+
+    @include tablet {
+      font-size: 14px;
+    }
+
+    @include desktop-xl {
+      font-size: 16px;
+    }
   }
 
   // Right Section - Formula
@@ -341,6 +423,10 @@
       width: 100%;
       height: auto;
       justify-content: flex-start;
+    }
+
+    @include tablet {
+      font-size: 16px;
     }
   }
 

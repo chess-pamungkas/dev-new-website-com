@@ -114,7 +114,7 @@ const MarketItem = ({
           </>
         ) : (
           // Desktop: with container wrapper
-          <div className="container">
+          <div className="market-item__container">
             {index % 2 === 0 ? (
               // Even items: description left, advantages right
               <>

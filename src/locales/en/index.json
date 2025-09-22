@@ -81,6 +81,14 @@
   "cookie-popup-bnt-learn-more": "Learn More",
   "cookie-popup-bnt-accept-all": "Accept all",
 
+  "cookie_policy_search_placeholder": "Search cookies...",
+  "cookie_policy_mobile_search_placeholder": "Search cookies...",
+  "cookie_policy_table_header_company": "Company",
+  "cookie_policy_table_header_cookies": "Cookies",
+  "cookie_policy_table_header_opt_out": "Opt Out option",
+  "cookie_policy_mobile_cookies": "Cookies",
+  "cookie_policy_mobile_opt_out": "Opt Out option",
+
   "index_main-promotion-title": "Better Costs,\nBetter Global Trading",
   "index_main-promotion-animated-text-forex-traders": "Forex Traders",
   "index_main-promotion-animated-text-day-traders": "Day Traders",

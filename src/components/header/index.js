@@ -117,107 +117,73 @@ const Header = ({ className }) => {
         )}
         dir={isRTL ? DIR_RTL : DIR_LTR}
       >
-        {/* {isScrolled && isMobile ? (
-          <div className="header__main-wrapper" ref={headerMainWrapperRef}>
-            <div className="header__left">
-              <InternalLink to={HOME_PAGE_LINK}>
-                {isDesktop && <LogoTextMain className="header__logo" />}
-                {isTablet && <LogoTextMain className="header__logo" />}
-              </InternalLink>
-            </div>
-            <div className="header__center">
-              <ul className="header__navigation">
-                {menu.map(
-                  (item, idx) =>
-                    !item.mobileOnly && (
-                      <NavbarItem
-                        key={`header-menu-${stringTransformToKebabCase(
-                          item.title
-                        )}`}
-                        {...item}
-                        isDropdownVisible={openDropdownIndex === idx}
-                        onDropdownToggle={() => handleDropdownToggle(idx)}
-                        closeDropdown={handleCloseDropdown}
-                        index={idx}
-                        dropdownLocked={dropdownLocked}
-                        onOpenRegistrationPopup={handleShowRegistrationPopup}
-                      />
-                    )
-                )}
-              </ul>
-            </div>
-            <div className="header__right">
-              <BurgerMenu />
-              <div className="header__controls">
-                <LangSelect className="lang-select--header" isHeader={true} />
-              </div>
-            </div>
-          </div>
-        ) : ( */}
-        <div
+        {/* <div
           className="container"
           style={{
             height: "100%",
           }}
+        > */}
+        <div
+          className="header__main-wrapper container"
+          ref={headerMainWrapperRef}
         >
-          <div className="header__main-wrapper" ref={headerMainWrapperRef}>
-            <div className="header__left">
-              <InternalLink to={HOME_PAGE_LINK}>
-                {isDesktop && <LogoTextMain className="header__logo" />}
-                {isTablet && <LogoTextMain className="header__logo" />}
-              </InternalLink>
-            </div>
-            <div className="header__center">
-              <ul className="header__navigation">
-                {menu.map(
-                  (item, idx) =>
-                    !item.mobileOnly && (
-                      <NavbarItem
-                        key={`header-menu-${stringTransformToKebabCase(
-                          item.title
-                        )}`}
-                        {...item}
-                        isDropdownVisible={openDropdownIndex === idx}
-                        onDropdownToggle={() => handleDropdownToggle(idx)}
-                        closeDropdown={handleCloseDropdown}
-                        index={idx}
-                        dropdownLocked={dropdownLocked}
-                        onOpenRegistrationPopup={handleShowRegistrationPopup}
-                      />
-                    )
-                )}
-              </ul>
-            </div>
-            {/* Desktop navigation */}
-            <div className="header__right">
-              <BurgerMenu />
-              <div className="header__controls">
-                <LangSelect className="lang-select--header" isHeader={true} />
-                {isDesktop && (
-                  <>
-                    <ButtonLink
-                      link={GetLoginLink()}
-                      className={cn(
-                        "button-link--header button-link--ghost header__signin",
-                        { "header__signin--red": isScrolled }
-                      )}
-                    >
-                      {t("button-sign-in")}
-                    </ButtonLink>
-                    <ButtonPopup
-                      className={cn("button-link--header header__start", {
-                        "header__start--red": isScrolled,
-                      })}
-                      onClick={handleShowRegistrationPopup}
-                    >
-                      {t("button-get-started")}
-                    </ButtonPopup>
-                  </>
-                )}
-              </div>
+          <div className="header__left">
+            <InternalLink to={HOME_PAGE_LINK}>
+              {isDesktop && <LogoTextMain className="header__logo" />}
+              {isTablet && <LogoTextMain className="header__logo" />}
+            </InternalLink>
+          </div>
+          <div className="header__center">
+            <ul className="header__navigation">
+              {menu.map(
+                (item, idx) =>
+                  !item.mobileOnly && (
+                    <NavbarItem
+                      key={`header-menu-${stringTransformToKebabCase(
+                        item.title
+                      )}`}
+                      {...item}
+                      isDropdownVisible={openDropdownIndex === idx}
+                      onDropdownToggle={() => handleDropdownToggle(idx)}
+                      closeDropdown={handleCloseDropdown}
+                      index={idx}
+                      dropdownLocked={dropdownLocked}
+                      onOpenRegistrationPopup={handleShowRegistrationPopup}
+                    />
+                  )
+              )}
+            </ul>
+          </div>
+          {/* Desktop navigation */}
+          <div className="header__right">
+            <BurgerMenu />
+            <div className="header__controls">
+              <LangSelect className="lang-select--header" isHeader={true} />
+              {isDesktop && (
+                <>
+                  <ButtonLink
+                    link={GetLoginLink()}
+                    className={cn(
+                      "button-link--header button-link--ghost header__signin",
+                      { "header__signin--red": isScrolled }
+                    )}
+                  >
+                    {t("button-sign-in")}
+                  </ButtonLink>
+                  <ButtonPopup
+                    className={cn("button-link--header header__start", {
+                      "header__start--red": isScrolled,
+                    })}
+                    onClick={handleShowRegistrationPopup}
+                  >
+                    {t("button-get-started")}
+                  </ButtonPopup>
+                </>
+              )}
             </div>
           </div>
         </div>
+        {/* </div> */}
         {/* )} */}
       </header>
 
@@ -234,19 +200,7 @@ const Header = ({ className }) => {
           >
             {/* Header content inside the card */}
             <div className="header-content">
-              <div
-                className="container"
-                style={
-                  !isMobile
-                    ? {
-                        paddingLeft: "0",
-                        height: "100%",
-                        marginTop: "0",
-                        padding: isDesktop ? "35px 0" : "35px 32px",
-                      }
-                    : undefined
-                }
-              >
+              <div className="container">
                 <div className="header__main-wrapper">
                   <div className="header__left">
                     <InternalLink to={HOME_PAGE_LINK}>
@@ -342,7 +296,6 @@ const Header = ({ className }) => {
                   </div>
                   {/* Mobile navigation */}
                   <div className="header__right">
-                    <BurgerMenu />
                     <div className="header__controls">
                       <LangSelect
                         className="lang-select--header"
@@ -367,6 +320,7 @@ const Header = ({ className }) => {
                         {t("button-get-started")}
                       </ButtonPopup>
                     </div>
+                    <BurgerMenu />
                   </div>
                 </div>
               </div>

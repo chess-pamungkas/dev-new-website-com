@@ -46,12 +46,14 @@ const ETFContent = ({ className, isShowHero = true }) => {
         mobileBackground="url(../images/bg/hero/etf/etf-mobile.svg)"
       />
 
-      <TradingTicker
-        title={t("etf_trading-ticker-title")}
-        pageSpecificSection={ETF_TRADING_SECTION}
-      />
+      <div className="etf-content">
+        <TradingTicker
+          title={t("etf_trading-ticker-title")}
+          pageSpecificSection={ETF_TRADING_SECTION}
+        />
 
-      <BreadcrumbsTab currentPage={t("etf-text")} activeTab="etf" />
+        <BreadcrumbsTab currentPage={t("etf-text")} activeTab="etf" />
+      </div>
 
       <ContainerWrapper>
         {/* ETF Features Products */}

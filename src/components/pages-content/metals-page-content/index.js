@@ -55,12 +55,14 @@ const MetalsContent = ({ className, isShowHero }) => {
         mobileBackground="url(../images/bg/metals-mobile.svg)"
       />
 
-      <TradingTicker
-        title={t("metals_trading-ticker-title")}
-        pageSpecificSection={METALS_TRADING_SECTION}
-      />
+      <div className="metals-content">
+        <TradingTicker
+          title={t("metals_trading-ticker-title")}
+          pageSpecificSection={METALS_TRADING_SECTION}
+        />
 
-      <BreadcrumbsTab currentPage={t("metals-text")} activeTab="metals" />
+        <BreadcrumbsTab currentPage={t("metals-text")} activeTab="metals" />
+      </div>
 
       <ContainerWrapper>
         {/* Metals Features Products */}
@@ -73,7 +75,7 @@ const MetalsContent = ({ className, isShowHero }) => {
       <AccountComparison />
 
       <TopMarketLayout
-        className="top-market-layout--metals-spreads"
+        className="top-market-layout--metals-spreads container"
         headerTemplate={<SpreadsHeader tradingType="metals" />}
       >
         {isMobile ? (

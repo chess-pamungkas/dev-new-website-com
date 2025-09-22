@@ -3,7 +3,7 @@
 
 .legal {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   color: map-get($colors, "white");
   display: flex;
   align-items: center;
@@ -29,28 +29,29 @@
   }
 
   @include tablet {
-    height: 575px;
+    height: 455px;
     padding-top: 70px;
+    padding-bottom: 0;
   }
 
   @include desktop-lg {
-    height: 655px;
+    height: 510px;
     padding-top: 83px;
     padding-bottom: 0;
   }
 
   @include desktop-xl {
-    height: 786px;
+    height: 510px;
     padding-top: 83px;
   }
 
   @include desktop-2k {
-    height: 786px;
+    height: 510px;
     padding-top: 83px;
   }
 
   @include desktop-5k {
-    height: 786px;
+    height: 510px;
     padding-top: 83px;
   }
 
@@ -60,7 +61,6 @@
     max-width: 1400px;
     margin: 0 auto;
     border-radius: 24px;
-    background: #000000;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -77,68 +77,63 @@
       top: 73px;
       margin: 0 auto;
       border-radius: 20px;
-      overflow: hidden;
     }
 
     @include tablet {
       width: 768px;
       max-width: 768px;
-      height: 575px;
+      height: 455px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 73px;
       margin: 0 auto;
-      border-radius: 20px;
-      overflow: visible;
+      border-radius: 24px;
     }
 
     @include desktop-lg {
-      width: calc(100vw - 40px);
+      width: calc(100vw - 20px);
       max-width: 1200px;
-      height: 575px;
+      height: 510px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 77px;
+      top: 83px;
       margin: 0 auto;
-      overflow: visible;
+      border-radius: 24px;
     }
 
     @include desktop-xl {
       width: calc(100vw - 120px);
       max-width: 1400px;
-      height: 686px;
+      height: 510px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 83px;
       margin: 0 auto;
-      overflow: visible;
     }
 
     @include desktop-2k {
       width: calc(100vw - 160px);
       max-width: 1600px;
-      height: 686px;
+      height: 510px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 83px;
       margin: 0 auto;
-      overflow: visible;
     }
 
     @include desktop-5k {
       width: calc(100vw - 200px);
       max-width: 2000px;
-      height: 686px;
+      height: 510px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 83px;
       margin: 0 auto;
-      overflow: visible;
     }
   }
 
@@ -161,27 +156,27 @@
       height: 100%;
       left: 0;
       top: 0;
-      border-radius: 20px;
       background: url("../../assets/images/bg/hero/legal/legal-mobile.svg")
         no-repeat center center;
       background-size: cover;
-      overflow: hidden;
-      border-radius: 20px;
       background-color: transparent;
+      border-radius: 20px;
     }
 
     @include tablet {
       background: url("../../assets/images/bg/hero/legal/legal-desktop.svg")
-        no-repeat center center;
+        no-repeat 72% 50%;
       background-size: cover;
       background-color: transparent;
+      border-radius: 24px;
     }
 
     @include desktop-lg {
       background: url("../../assets/images/bg/hero/legal/legal-desktop.svg")
-        no-repeat center center;
+        no-repeat 60% 50%;
       background-size: cover;
       background-color: transparent;
+      border-radius: 24px;
     }
 
     @include desktop-xl {
@@ -221,15 +216,17 @@
 
     @include tablet {
       padding-top: 50px;
+      gap: 8px;
     }
 
     @include desktop-lg {
       padding-top: 50px;
-      max-width: 1140px;
+      max-width: 980px;
+      gap: 16px;
     }
 
     @include desktop-xl {
-      padding-top: 100px;
+      padding-top: 50px;
       max-width: 1280px;
     }
 
@@ -419,39 +416,44 @@
     color: #ffffff;
     font-weight: map-get($font-weight, "regular");
     margin: 0;
-    max-width: 615px;
+    max-width: 602px;
     opacity: 0.7;
 
     @include mobile {
       font-size: 16px;
       font-weight: map-get($font-weight, "light");
-      line-height: 24px;
+      line-height: 28px;
       max-width: 100%;
     }
 
     @include tablet {
       font-size: 18px;
       line-height: 28px;
+      max-width: 400px;
     }
 
     @include desktop-lg {
       font-size: 18px;
       line-height: 28px;
+      max-width: 602px;
     }
 
     @include desktop-xl {
       font-size: 18px;
       line-height: 28px;
+      max-width: 602px;
     }
 
     @include desktop-2k {
       font-size: 20px;
       line-height: 30px;
+      max-width: 602px;
     }
 
     @include desktop-5k {
       font-size: 22px;
       line-height: 32px;
+      max-width: 602px;
     }
   }
 
@@ -490,6 +492,20 @@
     @include desktop-5k {
       max-width: 600px;
       gap: 40px;
+    }
+
+    .button-container {
+      @include tablet {
+        gap: 0;
+      }
+
+      @include desktop-lg {
+        gap: 12px;
+      }
+
+      @include desktop-xl {
+        gap: 12px;
+      }
     }
   }
 
@@ -684,7 +700,7 @@
       justify-content: center;
       align-content: center;
       width: 100%;
-      margin-top: 65px;
+      margin-top: 35px;
     }
     @include tablet {
       width: 100%;
@@ -693,7 +709,7 @@
     @include desktop-lg {
       width: 393.48px;
       height: 30px;
-      margin-top: 143px;
+      margin-top: 30px;
     }
     @include desktop-xl {
       width: 393.48px;
@@ -776,19 +792,29 @@
 .legal-regulators {
   position: relative;
   width: 100%;
-  padding: 80px 0;
+  padding: 120px;
+  margin: 0 auto;
+  overflow: visible;
 
   @include mobile {
+    width: 100%;
     margin-top: 120px;
     padding: 0;
   }
 
   @include tablet {
-    padding: 60px 40px;
+    width: 100%;
+    padding: 130px 0 0;
   }
 
   @include desktop-lg {
-    padding: 100px;
+    width: 100%;
+    padding: 170px 0 80px;
+  }
+
+  @include desktop-xl {
+    width: 1034px;
+    padding: 170px 0 80px;
   }
 
   &__wrapper {
@@ -808,8 +834,8 @@
     }
 
     @include tablet {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 0;
     }
 
     @include desktop-lg {
@@ -841,6 +867,11 @@
 
   @include mobile {
     min-height: 278px;
+    max-width: 100%;
+  }
+
+  @include tablet {
+    max-width: 100%;
   }
 
   &__background {
@@ -850,6 +881,7 @@
     width: 100%;
     height: 100%;
     z-index: 1;
+    border-radius: 12px;
 
     &--desktop {
       display: block;
@@ -876,6 +908,14 @@
 
     @include mobile {
       border-radius: 8px;
+    }
+
+    @include tablet {
+      height: 340px;
+    }
+
+    @include desktop-lg {
+      height: 397px;
     }
 
     // Handle StaticImage component
@@ -916,6 +956,10 @@
     align-items: center;
 
     @include mobile {
+      margin-bottom: 10px;
+    }
+
+    @include tablet {
       margin-bottom: 10px;
     }
   }
@@ -965,7 +1009,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      text-fill-color: transparent;
       font-size: 0.9em;
       font-weight: 600;
       display: inline-block;
@@ -989,7 +1032,6 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        text-fill-color: transparent;
         font-size: 0.85em;
         margin-left: 6px;
         padding: 0;
@@ -1012,7 +1054,6 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        text-fill-color: transparent;
         font-size: 0.9em;
         margin-left: 7px;
         padding: 0;
@@ -1021,7 +1062,7 @@
     }
 
     @include desktop-lg {
-      font-size: 24px;
+      font-size: 22px;
 
       .highlighted-in-mixed {
         background: linear-gradient(
@@ -1033,7 +1074,6 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        text-fill-color: transparent;
         font-size: 0.9em;
         font-weight: 600;
         margin-left: 8px;
@@ -1106,55 +1146,92 @@
 // Legal Regulated Content Section
 .legal-regulated-content {
   position: relative;
-  width: 100%;
-  // min-height: 100vh;
+  width: 100vw;
+  height: 1049px;
   overflow: hidden;
   border-radius: 24px;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
 
   @include mobile {
-    border-radius: 10px;
+    border-radius: 9.92px;
+    height: 1795px;
   }
 
   &--rtl {
     direction: rtl;
   }
 
-  &__background {
+  &__hero-bg {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100%;
-    z-index: 1;
-
-    &--desktop {
-      display: block;
-
-      @include mobile {
-        display: none;
-      }
-    }
-
-    &--mobile {
-      display: none;
-
-      @include mobile {
-        display: block;
-      }
-    }
-  }
-
-  &__bg-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    margin: 0 auto;
     border-radius: 24px;
+    z-index: 1;
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    @include mobile {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: url("../../assets/images/legal/bg-regulated-mobile.svg")
+        no-repeat center center;
+      background-size: cover;
+      background-color: transparent;
+      border-radius: 9.92px;
+    }
+
+    @include tablet {
+      background: url("../../assets/images/legal/bg-regulated-desktop.svg")
+        no-repeat center center;
+      background-size: auto auto;
+      background-color: transparent;
+      border-radius: 24px;
+    }
+
+    @include desktop-lg {
+      background: url("../../assets/images/legal/bg-regulated-desktop.svg")
+        no-repeat center center;
+      background-color: transparent;
+      border-radius: 24px;
+    }
+
+    @include desktop-xl {
+      background: url("../../assets/images/legal/bg-regulated-desktop.svg")
+        no-repeat bottom center;
+      background-size: 100vw auto;
+      background-color: transparent;
+      border-radius: 24px;
+    }
+
+    @include desktop-2k {
+      background: url("../../assets/images/legal/bg-regulated-desktop.svg")
+        no-repeat 50% 95%;
+      background-size: 100vw auto;
+      background-color: transparent;
+      border-radius: 24px;
+    }
+
+    @include desktop-5k {
+      background: url("../../assets/images/legal/bg-regulated-desktop.svg")
+        no-repeat 50% 95%;
+      background-size: 100vw auto;
+      background-color: transparent;
+      border-radius: 24px;
+    }
   }
 
   &__wrapper {
     position: relative;
     z-index: 2;
-    max-width: 1400px;
+    // max-width: 1400px;
     margin: 0 auto;
     padding: 80px 20px;
 
@@ -1163,11 +1240,11 @@
     }
 
     @include tablet {
-      padding: 60px 0;
+      padding: 40px 0;
     }
 
     @include desktop-lg {
-      padding: 80px 0 50px 0;
+      padding: 70px 0;
     }
   }
 
@@ -1186,8 +1263,8 @@
     }
 
     @include tablet {
-      gap: 30px;
-      margin-bottom: 50px;
+      gap: 0;
+      margin-bottom: 0;
     }
 
     &--cysec {
@@ -1197,6 +1274,15 @@
 
       .legal-regulated-content__image-container {
         order: 2;
+        padding-left: 28px;
+
+        @include tablet {
+          padding-left: 0;
+        }
+
+        @include desktop-lg {
+          padding-left: 28px;
+        }
       }
 
       @include mobile {
@@ -1232,8 +1318,7 @@
   }
 
   &__content {
-    flex: 1;
-    max-width: 738px;
+    flex: 0 0 58%;
     padding: 32px;
 
     @include mobile {
@@ -1254,6 +1339,14 @@
 
     @include mobile {
       gap: 20px;
+    }
+
+    @include tablet {
+      gap: 16px;
+    }
+
+    @include desktop-lg {
+      gap: 24px;
     }
   }
 
@@ -1391,8 +1484,7 @@
   }
 
   &__image-container {
-    flex: 1;
-    max-width: 483px;
+    flex: 0 0 42%;
     height: 360px;
     border-radius: 20px;
     overflow: hidden;
@@ -1432,14 +1524,19 @@
   }
 
   &__image {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
-    // filter: grayscale(100%) brightness(0.8) contrast(1.2);
-    // transition: filter 0.3s ease;
+    object-position: center center;
 
-    // &:hover {
-    //   filter: grayscale(80%) brightness(0.9) contrast(1.1);
-    // }
+    @include tablet {
+      width: 100%;
+    }
+
+    @include desktop-lg {
+      width: 100%;
+    }
+
+    @include desktop-xl {
+      width: auto;
+    }
   }
 }

@@ -92,7 +92,7 @@ const AlphaGeneration = () => {
           />
         </div>
 
-        <div className="alpha-generation__container">
+        <div className="alpha-generation__container container">
           {/* Header */}
           <div className="alpha-generation__header">
             <div className="alpha-generation__badge">

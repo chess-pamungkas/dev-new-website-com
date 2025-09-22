@@ -131,14 +131,14 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 73px;
+      top: 66px;
       margin: 0 auto;
       border-radius: 20px;
       overflow: visible;
     }
 
     @include desktop-lg {
-      width: calc(100vw - 40px);
+      width: calc(100vw - 20px);
       max-width: 1200px;
       height: 575px;
       position: absolute;
@@ -156,7 +156,7 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 83px;
+      top: 77px;
       margin: 0 auto;
       overflow: visible;
     }
@@ -168,7 +168,7 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 83px;
+      top: 77px;
       margin: 0 auto;
       overflow: visible;
     }
@@ -180,7 +180,7 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 83px;
+      top: 77px;
       margin: 0 auto;
       overflow: visible;
     }
@@ -440,6 +440,14 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
       box-sizing: border-box;
       word-break: break-word;
     }
+
+    @include tablet {
+      width: 325px;
+    }
+
+    @include desktop-lg {
+      width: fit-content;
+    }
   }
 
   &__content-container {
@@ -461,7 +469,7 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
 
     @include desktop-lg {
       padding-top: 50px;
-      max-width: 1140px;
+      max-width: 980px;
     }
 
     @include desktop-xl {

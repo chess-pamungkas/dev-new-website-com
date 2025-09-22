@@ -54,12 +54,14 @@ const IndicesContent = ({ className, isShowHero = true }) => {
         mobileBackground="url(../images/bg/hero/indices/indices-mobile.svg)"
       />
 
-      <TradingTicker
-        title={t("indices_trading-ticker-title")}
-        pageSpecificSection={INDICES_TRADING_SECTION}
-      />
+      <div className="indices-content">
+        <TradingTicker
+          title={t("indices_trading-ticker-title")}
+          pageSpecificSection={INDICES_TRADING_SECTION}
+        />
 
-      <BreadcrumbsTab currentPage={t("indices-text")} activeTab="indices" />
+        <BreadcrumbsTab currentPage={t("indices-text")} activeTab="indices" />
+      </div>
 
       <ContainerWrapper>
         {/* Indices Features Products */}
@@ -72,7 +74,7 @@ const IndicesContent = ({ className, isShowHero = true }) => {
       <AccountComparison />
 
       <TopMarketLayout
-        className="top-market-layout--indices-spreads"
+        className="top-market-layout--indices-spreads container"
         headerTemplate={<SpreadsHeader tradingType="indices" />}
       >
         {isMobile ? (

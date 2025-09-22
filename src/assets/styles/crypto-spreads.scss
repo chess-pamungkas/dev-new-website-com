@@ -102,7 +102,7 @@
   margin: 0 auto;
 
   @include desktop-lg {
-    max-width: 1032px;
+    max-width: 100%;
   }
 
   @include desktop-xl {
@@ -120,6 +120,10 @@
     margin-right: auto;
 
     @include desktop-lg {
+      max-width: 100%;
+    }
+
+    @include desktop-xl {
       max-width: 1032px;
     }
 
@@ -202,7 +206,7 @@
     height: auto;
     margin: 0 auto 24px auto;
     overflow: hidden;
-    border-radius: 12px;
+    // border-radius: 12px;
     background: transparent;
     border: none;
     display: flex;
@@ -222,7 +226,7 @@
     border: none;
 
     @include desktop-lg {
-      width: 1032px;
+      width: 100%;
       margin: 0 auto;
     }
 
@@ -345,7 +349,7 @@
     max-height: 354px; // 6 rows * 59px = 354px
     overflow-y: auto;
     overflow-x: hidden;
-    border-radius: 0 0 12px 12px;
+    // border-radius: 0 0 12px 12px;
     background: transparent;
 
     // Hide scrollbar but keep functionality
@@ -937,13 +941,15 @@
       color: inherit;
 
       @include mobile {
-        max-width: 90%;
+        max-width: 100%;
         padding: 0;
-        align-items: flex-start;
+        align-items: center;
       }
 
       @include tablet {
+        max-width: 100%;
         padding: 16px 0 16px 0;
+        align-items: center;
       }
 
       @include desktop-lg {
@@ -982,21 +988,23 @@
       -webkit-text-fill-color: #101828;
 
       @include mobile {
-        width: 100%;
+        width: calc(100% - 40px);
         height: auto;
         font-size: 16px;
         line-height: 24px;
-        flex: none;
-        flex-grow: 0;
+        flex: 1;
+        flex-grow: 1;
+        margin-right: 8px;
       }
 
       @include tablet {
-        width: 720px;
-        height: 28px;
+        width: calc(100% - 40px);
+        height: auto;
         font-size: 18px;
         line-height: 28px;
-        flex: none;
-        flex-grow: 0;
+        flex: 1;
+        flex-grow: 1;
+        margin-right: 8px;
       }
     }
 
@@ -1015,8 +1023,15 @@
       transition: opacity 0.2s ease;
 
       @include mobile {
-        align-self: flex-start;
+        align-self: center;
         margin-top: 0;
+        flex-shrink: 0;
+      }
+
+      @include tablet {
+        align-self: center;
+        margin-top: 0;
+        flex-shrink: 0;
       }
 
       &:hover {
@@ -1364,15 +1379,71 @@
   }
 }
 
+// Main FAQ Section - Ensure proper grid layout
+.faq-section.faq-section--crypto {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  width: 100%;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include desktop-lg {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    display: grid;
+  }
+
+  @include desktop-xl {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    display: grid;
+  }
+
+  @include desktop-2k {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    display: grid;
+  }
+
+  @include desktop-5k {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    display: grid;
+  }
+}
+
+// Left Side - FAQ Content - Ensure proper grid behavior
+.faq-section.faq-section--crypto .faq-left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include mobile {
+    gap: 20px;
+  }
+}
+
 // Right Side - FAQ Items - Based on Figma Design
-.faq-section--crypto .faq-right {
-  flex: 1;
-  min-width: 0;
-  width: 768px; // Based on Figma desktop width
+.faq-section.faq-section--crypto .faq-right {
+  width: 100%; // Full width on desktop
   height: auto !important; // Allow height to expand with content
   display: flex;
   flex-direction: column;
   gap: 16px; // Based on Figma itemSpacing
+  min-width: 0; // Allow shrinking
 
   @include mobile {
     width: 100%;
@@ -1389,7 +1460,25 @@
   }
 
   @include desktop-lg {
-    width: 768px; // Based on Figma desktop width
+    width: 100%; // Full width on desktop
+    height: auto !important; // Allow height to expand with content
+    gap: 16px;
+  }
+
+  @include desktop-xl {
+    width: 100%; // Full width on desktop
+    height: auto !important; // Allow height to expand with content
+    gap: 16px;
+  }
+
+  @include desktop-2k {
+    width: 100%; // Full width on desktop
+    height: auto !important; // Allow height to expand with content
+    gap: 16px;
+  }
+
+  @include desktop-5k {
+    width: 100%; // Full width on desktop
     height: auto !important; // Allow height to expand with content
     gap: 16px;
   }
@@ -1426,13 +1515,14 @@
     color: inherit;
 
     @include mobile {
-      max-width: 90%;
+      max-width: 100%;
       padding: 0;
-      align-items: flex-start;
+      align-items: center;
     }
 
     @include tablet {
       padding: 16px 0 16px 0;
+      align-items: center;
     }
 
     @include desktop-lg {
@@ -1471,21 +1561,23 @@
     -webkit-text-fill-color: #101828;
 
     @include mobile {
-      width: 100%;
+      width: calc(100% - 40px);
       height: auto;
       font-size: 16px;
       line-height: 24px;
-      flex: none;
-      flex-grow: 0;
+      flex: 1;
+      flex-grow: 1;
+      margin-right: 8px;
     }
 
     @include tablet {
-      width: 720px;
-      height: 28px;
+      width: calc(100% - 40px);
+      height: auto;
       font-size: 18px;
       line-height: 28px;
-      flex: none;
-      flex-grow: 0;
+      flex: 1;
+      flex-grow: 1;
+      margin-right: 8px;
     }
   }
 
@@ -1504,8 +1596,15 @@
     transition: opacity 0.2s ease;
 
     @include mobile {
-      align-self: flex-start;
+      align-self: center;
       margin-top: 0;
+      flex-shrink: 0;
+    }
+
+    @include tablet {
+      align-self: center;
+      margin-top: 0;
+      flex-shrink: 0;
     }
 
     &:hover {

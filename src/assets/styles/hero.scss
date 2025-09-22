@@ -97,7 +97,7 @@
     }
 
     @include desktop-lg {
-      width: calc(100vw - 40px);
+      width: calc(100vw - 20px);
       max-width: 1200px;
       height: 575px;
       position: absolute;
@@ -115,7 +115,7 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 83px;
+      top: 77px;
       margin: 0 auto;
       overflow: visible;
     }
@@ -127,7 +127,7 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 83px;
+      top: 77px;
       margin: 0 auto;
       overflow: visible;
     }
@@ -139,7 +139,7 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 83px;
+      top: 77px;
       margin: 0 auto;
       overflow: visible;
     }
@@ -260,7 +260,7 @@
 
     @include desktop-lg {
       padding-top: 50px;
-      max-width: 1140px;
+      max-width: 980px;
     }
 
     @include desktop-xl {

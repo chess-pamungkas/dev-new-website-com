@@ -102,7 +102,7 @@
   margin: 0 auto;
 
   @include desktop-lg {
-    max-width: 1032px;
+    max-width: 100%;
   }
 
   @include desktop-xl {
@@ -207,7 +207,7 @@
     max-height: 354px; // 6 rows * 59px = 354px
     overflow-y: auto;
     overflow-x: hidden;
-    border-radius: 0 0 12px 12px;
+    // border-radius: 0 0 12px 12px;
     background: transparent;
 
     // Hide scrollbar but keep functionality
@@ -247,9 +247,13 @@
       height: 59px;
       min-height: 59px;
       max-height: 59px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
       border-collapse: separate;
       display: table-row;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+
+      &:last-child .table-cell {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      }
 
       .table-cell {
         padding: 16px;
@@ -293,7 +297,7 @@
     border-collapse: separate;
     border-spacing: 0;
     table-layout: fixed;
-    border-radius: 12px;
+    // border-radius: 12px;
     overflow: hidden;
 
     // Ensure proper table structure
@@ -301,7 +305,7 @@
     border: none;
 
     @include desktop-lg {
-      width: 1032px;
+      width: 100%;
       margin: 0 auto;
     }
 
@@ -325,7 +329,7 @@
       background: url("../../assets/images/bg/funding-withdrawals/table-head.svg")
         no-repeat center;
       background-size: cover;
-      border-radius: 12px;
+      // border-radius: 12px;
       border: none;
       overflow: hidden;
       display: table-row;
@@ -372,7 +376,7 @@
       min-height: 59px;
       max-height: 59px;
       background: rgba(255, 68, 0, 0.1);
-      border-radius: 12px;
+      // border-radius: 12px;
       border: none;
       overflow: hidden;
       display: table-row;
@@ -1341,34 +1345,112 @@
   }
 }
 
-// Right Side - FAQ Items - Based on Figma Design
-.faq-section--energies .faq-right {
-  flex: 1;
-  min-width: 0;
-  width: 768px; // Based on Figma desktop width
-  height: 615px; // Reduced height for energies FAQ section - use !important to override
-  display: flex;
-  flex-direction: column;
-  gap: 16px; // Based on Figma itemSpacing
+// Main FAQ Section - Ensure proper grid layout
+.faq-section.faq-section--energies {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 48px !important;
+  align-items: start !important;
+  width: 100% !important;
 
   @include mobile {
-    width: 100%;
-    max-width: 353px; // Based on Figma mobile width
-    height: auto !important;
-    gap: 16px;
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
   }
 
   @include tablet {
-    width: 100%;
-    max-width: 768px; // Based on Figma tablet width
-    height: auto !important; // Reduced height for energies FAQ section - use !important to override
-    gap: 16px;
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   @include desktop-lg {
-    width: 768px; // Based on Figma desktop width
-    height: auto !important; // Reduced height for energies FAQ section - use !important to override
-    gap: 16px;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 48px !important;
+    display: grid !important;
+    flex-direction: unset !important;
+  }
+
+  @include desktop-xl {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 48px !important;
+    display: grid !important;
+    flex-direction: unset !important;
+  }
+
+  @include desktop-2k {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 48px !important;
+    display: grid !important;
+    flex-direction: unset !important;
+  }
+
+  @include desktop-5k {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 48px !important;
+    display: grid !important;
+    flex-direction: unset !important;
+  }
+}
+
+// Left Side - FAQ Content - Ensure proper grid behavior
+.faq-section.faq-section--energies .faq-left {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+
+  @include mobile {
+    gap: 20px !important;
+  }
+}
+
+// Right Side - FAQ Items - Based on Figma Design
+.faq-section.faq-section--energies .faq-right {
+  width: 100% !important; // Full width on desktop
+  height: auto !important; // Allow height to expand with content
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important; // Based on Figma itemSpacing
+  min-width: 0 !important; // Allow shrinking
+
+  @include mobile {
+    width: 100% !important;
+    max-width: 353px !important; // Based on Figma mobile width
+    height: auto !important;
+    gap: 16px !important;
+  }
+
+  @include tablet {
+    width: 100% !important;
+    max-width: 768px !important; // Based on Figma tablet width
+    height: auto !important; // Allow height to expand with content
+    gap: 16px !important;
+  }
+
+  @include desktop-lg {
+    width: 100% !important; // Full width on desktop
+    height: auto !important; // Allow height to expand with content
+    gap: 16px !important;
+  }
+
+  @include desktop-xl {
+    width: 100% !important; // Full width on desktop
+    height: auto !important; // Allow height to expand with content
+    gap: 16px !important;
+  }
+
+  @include desktop-2k {
+    width: 100% !important; // Full width on desktop
+    height: auto !important; // Allow height to expand with content
+    gap: 16px !important;
+  }
+
+  @include desktop-5k {
+    width: 100% !important; // Full width on desktop
+    height: auto !important; // Allow height to expand with content
+    gap: 16px !important;
   }
 
   // FAQ Item Styling - Based on Figma Design
@@ -1403,13 +1485,14 @@
     color: inherit;
 
     @include mobile {
-      max-width: 90%;
+      max-width: 100%;
       padding: 0;
-      align-items: flex-start;
+      align-items: center;
     }
 
     @include tablet {
       padding: 16px 0 16px 0;
+      align-items: center;
     }
 
     @include desktop-lg {
@@ -1448,21 +1531,23 @@
     -webkit-text-fill-color: #101828;
 
     @include mobile {
-      width: 100%;
+      width: calc(100% - 40px);
       height: auto;
       font-size: 16px;
       line-height: 24px;
-      flex: none;
-      flex-grow: 0;
+      flex: 1;
+      flex-grow: 1;
+      margin-right: 8px;
     }
 
     @include tablet {
-      width: 720px;
-      height: 28px;
+      width: calc(100% - 40px);
+      height: auto;
       font-size: 18px;
       line-height: 28px;
-      flex: none;
-      flex-grow: 0;
+      flex: 1;
+      flex-grow: 1;
+      margin-right: 8px;
     }
   }
 
@@ -1481,8 +1566,15 @@
     transition: opacity 0.2s ease;
 
     @include mobile {
-      align-self: flex-start;
+      align-self: center;
       margin-top: 0;
+      flex-shrink: 0;
+    }
+
+    @include tablet {
+      align-self: center;
+      margin-top: 0;
+      flex-shrink: 0;
     }
 
     &:hover {

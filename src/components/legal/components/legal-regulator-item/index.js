@@ -1,10 +1,11 @@
 import React from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
-import { StaticImage } from "gatsby-plugin-image";
 import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import legalCardDesktop from "../../../../assets/images/legal/legal-card-desktop.svg";
+import legalCardMobile from "../../../../assets/images/legal/legal-card-mobile.svg";
 
 const LegalRegulatorItem = ({
   className,
@@ -21,21 +22,19 @@ const LegalRegulatorItem = ({
     <div className={cn("legal-regulator-item", className)}>
       {/* Card Background - Desktop */}
       <div className="legal-regulator-item__background legal-regulator-item__background--desktop">
-        <StaticImage
-          src="../../../../assets/images/legal/legal-card-desktop.svg"
+        <img
+          src={legalCardDesktop}
           alt=""
           className="legal-regulator-item__card-bg"
-          placeholder="none"
         />
       </div>
 
       {/* Card Background - Mobile */}
       <div className="legal-regulator-item__background legal-regulator-item__background--mobile">
-        <StaticImage
-          src="../../../../assets/images/legal/legal-card-mobile.svg"
+        <img
+          src={legalCardMobile}
           alt=""
           className="legal-regulator-item__card-bg"
-          placeholder="none"
         />
       </div>
 

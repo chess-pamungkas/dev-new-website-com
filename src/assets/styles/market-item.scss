@@ -5,7 +5,7 @@
   margin: 25px 0;
 
   @include mobile {
-    margin: 150px 0;
+    margin: 0;
   }
 
   @include tablet {
@@ -46,21 +46,32 @@
   }
 
   @include desktop-lg {
-    max-width: calc(100% - 60px);
+    max-width: 980px;
     padding: 24px;
     flex-direction: row;
     justify-content: space-between;
   }
 
   @include desktop-xl {
-    max-width: 1400px;
-    padding: 24px 0;
+    max-width: 1280px;
+    padding: 24px;
   }
 
-  .container {
+  @include desktop-2k {
+    max-width: 1440px;
+    padding: 24px;
+  }
+
+  @include desktop-5k {
+    max-width: 1920px;
+    padding: 24px;
+  }
+
+  &__container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
     gap: 40px;
 
     @include mobile {
@@ -73,12 +84,19 @@
     }
 
     @include desktop-lg {
-      gap: 50px;
-      flex-wrap: nowrap;
+      gap: 5px;
     }
 
     @include desktop-xl {
-      gap: 50px;
+      gap: 15px;
+    }
+
+    @include desktop-2k {
+      gap: 15px;
+    }
+
+    @include desktop-5k {
+      gap: 15px;
     }
   }
 
@@ -106,11 +124,19 @@
     }
 
     @include desktop-lg {
-      width: 49%;
+      width: 55%;
     }
 
     @include desktop-xl {
-      width: auto;
+      width: 65%;
+    }
+
+    @include desktop-2k {
+      width: 70%;
+    }
+
+    @include desktop-5k {
+      width: 75%;
     }
   }
 
@@ -128,7 +154,7 @@
 
     @include desktop-lg {
       padding-top: 0;
-      width: 49%;
+      width: auto;
     }
 
     @include desktop-xl {
@@ -323,7 +349,7 @@
   }
 
   &__trading-ticker-wrapper {
-    max-width: 833.6px;
+    max-width: 2000px;
     width: 100%;
     margin-top: 30px;
     overflow: hidden;

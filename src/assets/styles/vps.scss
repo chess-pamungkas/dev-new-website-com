@@ -3,7 +3,7 @@
 
 .vps {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   color: map-get($colors, "white");
   display: flex;
   align-items: center;
@@ -29,28 +29,31 @@
   }
 
   @include tablet {
-    height: 575px;
+    height: 555px;
+    border-radius: 24px;
     padding-top: 70px;
+    padding-bottom: 0;
   }
 
   @include desktop-lg {
-    height: 655px;
+    height: 583px;
+    border-radius: 24px;
     padding-top: 83px;
     padding-bottom: 0;
   }
 
   @include desktop-xl {
-    height: 786px;
+    height: 583px;
     padding-top: 83px;
   }
 
   @include desktop-2k {
-    height: 786px;
+    height: 583px;
     padding-top: 83px;
   }
 
   @include desktop-5k {
-    height: 786px;
+    height: 583px;
     padding-top: 83px;
   }
 
@@ -77,68 +80,63 @@
       top: 73px;
       margin: 0 auto;
       border-radius: 20px;
-      overflow: hidden;
     }
 
     @include tablet {
       width: 768px;
       max-width: 768px;
-      height: 575px;
+      height: 555px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 73px;
       margin: 0 auto;
-      border-radius: 20px;
-      overflow: visible;
+      border-radius: 24px;
     }
 
     @include desktop-lg {
-      width: calc(100vw - 40px);
+      width: calc(100vw - 20px);
       max-width: 1200px;
-      height: 575px;
+      height: 583px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 77px;
+      top: 83px;
       margin: 0 auto;
-      overflow: visible;
+      border-radius: 24px;
     }
 
     @include desktop-xl {
       width: calc(100vw - 120px);
       max-width: 1400px;
-      height: 686px;
+      height: 583px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 83px;
       margin: 0 auto;
-      overflow: visible;
     }
 
     @include desktop-2k {
       width: calc(100vw - 160px);
       max-width: 1600px;
-      height: 686px;
+      height: 583px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 83px;
       margin: 0 auto;
-      overflow: visible;
     }
 
     @include desktop-5k {
       width: calc(100vw - 200px);
       max-width: 2000px;
-      height: 686px;
+      height: 583px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 83px;
       margin: 0 auto;
-      overflow: visible;
     }
   }
 
@@ -172,14 +170,14 @@
 
     @include tablet {
       background: url("../../assets/images/bg/vps/vps-desktop.svg") no-repeat
-        center center;
+        86% 100%;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-lg {
       background: url("../../assets/images/bg/vps/vps-desktop.svg") no-repeat
-        center center;
+        86% 100%;
       background-size: cover;
       background-color: transparent;
     }
@@ -220,16 +218,16 @@
     }
 
     @include tablet {
-      padding-top: 50px;
+      padding-top: 90px;
+      gap: 16px;
     }
 
     @include desktop-lg {
-      padding-top: 50px;
-      max-width: 1140px;
+      max-width: 980px;
+      gap: 16px;
     }
 
     @include desktop-xl {
-      padding-top: 100px;
       max-width: 1280px;
     }
 
@@ -419,7 +417,7 @@
     color: #ffffff;
     font-weight: map-get($font-weight, "regular");
     margin: 0;
-    max-width: 615px;
+    max-width: 680px;
     opacity: 0.7;
 
     @include mobile {
@@ -430,28 +428,33 @@
     }
 
     @include tablet {
+      max-width: 300px;
       font-size: 18px;
       line-height: 28px;
     }
 
     @include desktop-lg {
+      max-width: 550px;
       font-size: 18px;
       line-height: 28px;
     }
 
     @include desktop-xl {
+      max-width: 680px;
       font-size: 18px;
       line-height: 28px;
     }
 
     @include desktop-2k {
-      font-size: 20px;
-      line-height: 30px;
+      max-width: 680px;
+      font-size: 18px;
+      line-height: 28px;
     }
 
     @include desktop-5k {
-      font-size: 22px;
-      line-height: 32px;
+      max-width: 680px;
+      font-size: 18px;
+      line-height: 28px;
     }
   }
 
@@ -490,6 +493,20 @@
     @include desktop-5k {
       max-width: 600px;
       gap: 40px;
+    }
+
+    .button-container {
+      @include tablet {
+        gap: 0;
+      }
+
+      @include desktop-lg {
+        gap: 12px;
+      }
+
+      @include desktop-xl {
+        gap: 12px;
+      }
     }
   }
 
@@ -688,12 +705,12 @@
     }
     @include tablet {
       width: 100%;
-      margin-top: 30px;
+      margin-top: 50px;
     }
     @include desktop-lg {
       width: 393.48px;
       height: 30px;
-      margin-top: 143px;
+      margin-top: 100px;
     }
     @include desktop-xl {
       width: 393.48px;
@@ -772,43 +789,630 @@
   }
 }
 
+.vps-content {
+  .trading-ticker-wrapper {
+    @include tablet {
+      margin-top: 110px;
+    }
+
+    @include desktop-lg {
+      margin-top: 110px;
+    }
+
+    @include desktop-xl {
+      margin-top: 110px;
+    }
+
+    @include desktop-2k {
+      margin-top: 110px;
+    }
+
+    @include desktop-5k {
+      margin-top: 110px;
+    }
+  }
+
+  .breadcrumbs-tab {
+    @include mobile {
+      display: none;
+    }
+
+    @include tablet {
+      margin-top: 5px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    @include desktop-lg {
+      margin-top: 5px;
+    }
+
+    @include desktop-xl {
+      margin-top: 25px;
+    }
+
+    @include desktop-2k {
+      margin-top: 25px;
+    }
+
+    @include desktop-5k {
+      margin-top: 25px;
+    }
+  }
+}
+
 // Custom styling for VPS page OurCommunityContent
 .vps-page {
   .our-community-content {
-    padding: 200px 0 50px 0 !important;
+    padding: 230px 0 50px 0 !important;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 100px;
+    border-radius: 24px;
+    margin: 0 20px 100px 20px;
+
     &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: url("../../assets/images/bg/vps/join-our-community-vps-desktop.svg")
         no-repeat center center;
       background-size: cover;
-      background-position: center center;
-    }
-
-    @include mobile {
-      padding: 45px 0 !important;
-      &::before {
-        background: url("../../assets/images/bg/vps/join-our-community-vps-mobile.svg")
-          no-repeat center center;
-        background-size: cover;
-        background-position: center center;
-      }
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      pointer-events: none;
     }
 
     &__container {
-      @include tablet {
-        top: -30px !important;
-      }
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 100px;
+      gap: 62px;
+      border-radius: 24px;
     }
 
     &__left {
-      @include tablet {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
+      width: 554px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    &__right {
+      width: 624px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    // Badge
+    &__badge {
+      width: fit-content;
+      height: 28px;
+      background: #0f0f0f;
+      border: 1px solid rgba(255, 68, 0, 0.15);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0;
+    }
+
+    &__badge-base {
+      width: 100px;
+      height: 24px;
+      background: #262626;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__badge-text {
+      font-size: 12px;
+      line-height: 16px;
+      color: #ffffff;
+      font-weight: 400;
+    }
+
+    &__badge-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 10px;
+    }
+
+    &__badge-icon {
+      width: 14px;
+      height: 14px;
+    }
+
+    &__badge-message {
+      font-size: 14px;
+      line-height: 20px;
+      color: #fff;
+      font-weight: map-get($font-weight, "medium");
+    }
+
+    // Title
+    &__title {
+      font-family: "Sofia Pro", Arial, sans-serif;
+      font-style: normal;
+      font-weight: map-get($font-weight, "semi-bold");
+      font-size: 52px;
+      letter-spacing: -0.02em;
+      width: 694px;
+      height: 120px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+
+      background: linear-gradient(
+          102.31deg,
+          rgba(255, 255, 255, 0) 9.12%,
+          rgba(255, 68, 0, 0.45) 71.6%
+        ),
+        #ffffff;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    // Subtitle
+    &__subtitle {
+      width: 333px;
+      height: 56px;
+      font-family: "Sofia Pro";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      letter-spacing: 0.2px;
+      color: #ffffff;
+      opacity: 0.7;
+      flex: none;
+      order: 2;
+      align-self: stretch;
+      flex-grow: 0;
+      margin: 0;
+    }
+
+    // Image container
+    &__image-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    // Button Group
+    .navbar-dropdown-highlight__button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      width: 537px;
+    }
+
+    .navbar-dropdown-highlight__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      text-decoration: none;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 600;
+
+      &--primary {
+        width: 167px;
+        height: 51px;
+        background: #ff4400;
+        color: #ffffff;
+        padding: 0 24px;
+        position: relative;
+        overflow: hidden;
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s,
+          color 0.3s;
+
+        .navbar-dropdown-highlight__button-text {
+          transition: color 0.3s;
+          z-index: 1;
+          position: absolute;
+          left: 24px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        .navbar-dropdown-highlight__button-arrow {
+          display: flex;
+          align-items: center;
+          opacity: 0;
+          width: 0;
+          margin-left: 0;
+          transition: opacity 0.2s, width 0.3s, margin-left 0.3s;
+          overflow: hidden;
+          z-index: 1;
+          position: absolute;
+          right: 24px;
+          top: 50%;
+          transform: translateY(-50%);
+          flex-shrink: 0;
+        }
+
+        &:hover {
+          width: 200px;
+          background: #ff4400;
+          color: #fff;
+          box-shadow: 0 0 19.3px 0 rgba(255, 68, 0, 0.5);
+
+          .navbar-dropdown-highlight__button-arrow {
+            opacity: 1;
+            width: 24px;
+            margin-left: 0;
+          }
+        }
+      }
+
+      &--secondary {
+        width: 288px;
+        height: 51px;
+        background: transparent;
+        color: #ffffff;
+        border: 1px solid transparent;
+        padding: 14px 24px;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.2);
+        }
       }
     }
 
-    &__title {
-      @include mobile {
+    .navbar-dropdown-highlight__button-text {
+      font-size: 20px;
+      line-height: 1.6;
+      font-weight: map-get($font-weight, "medium");
+      white-space: nowrap;
+    }
+
+    .navbar-dropdown-highlight__button-arrow {
+      width: 10px;
+      height: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-dropdown-highlight__button:hover
+      .navbar-dropdown-highlight__button-arrow {
+      transform: translateX(2px);
+    }
+
+    // Main Promotion Button Secondary
+    .main-promotion__button-secondary {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 14px 24px;
+      gap: 10px;
+      width: fit-content;
+      height: 51px;
+      background: transparent;
+      color: #fff;
+      border: none;
+      font-weight: map-get($font-weight, "medium");
+      font-size: 20px;
+      line-height: 1.6;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s, border 0.3s, text-decoration 0.3s;
+      outline: none;
+      text-decoration: none;
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+
+      .main-promotion__button-text {
+        transition: color 0.3s, text-decoration 0.3s;
+        z-index: 1;
+        position: relative;
+      }
+
+      .main-promotion__button-arrow {
+        display: flex;
+        align-items: center;
+        margin-left: 0;
+        transition: color 0.2s;
+        color: currentColor;
+      }
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+        border: none;
+        .main-promotion__button-arrow {
+          color: #ff4400;
+        }
+      }
+    }
+
+    // Mobile Styles
+    @include mobile {
+      padding: 45px 0;
+      margin: 50px 0 40px 0;
+      border-radius: 20px;
+      width: 100%;
+      height: 817px;
+
+      &::before {
+        background: url("../../assets/images/bg/vps/join-our-community-vps-mobile.svg")
+          no-repeat center center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 24px;
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        height: 100%;
+      }
+
+      &__container {
+        flex-direction: column;
+        gap: 32px;
+        padding: 0 25px;
+        border-radius: 24px;
+      }
+
+      &__left {
+        width: 100%;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      &__right {
+        width: 100%;
+      }
+
+      &__badge {
+        width: fit-content;
+        height: 28px;
+        margin: 0;
+      }
+
+      &__title {
+        width: 333px;
+        height: auto;
+        font-family: "Sofia Pro", Arial, sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 42px;
+        line-height: 1.25;
+        letter-spacing: -0.02em;
+        text-align: left;
+        margin-top: 6px;
+        margin-bottom: 6px;
+
+        background: linear-gradient(
+            102.31deg,
+            rgba(255, 255, 255, 0) 9.12%,
+            rgba(255, 68, 0, 0.45) 71.6%
+          ),
+          #ffffff;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      &__subtitle {
+        width: 333px;
+        height: 56px;
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: 0.2px;
+        color: #ffffff;
+        opacity: 0.7;
+        text-align: left;
+      }
+
+      .navbar-dropdown-highlight__button-group {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 0;
+        width: 100%;
+      }
+
+      .navbar-dropdown-highlight__button {
         width: 100% !important;
+        height: 51px;
+
+        &--primary {
+          width: 100% !important;
+          height: 51px;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+
+          .navbar-dropdown-highlight__button-text {
+            position: relative;
+            left: auto;
+            top: auto;
+            transform: none;
+            text-align: center;
+          }
+
+          .navbar-dropdown-highlight__button-arrow {
+            position: relative;
+            right: auto;
+            top: auto;
+            transform: none;
+            margin-left: 8px;
+          }
+
+          &:hover {
+            width: 100% !important;
+            background: #e63e00;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 68, 0, 0.3);
+
+            .navbar-dropdown-highlight__button-arrow {
+              opacity: 1;
+              width: 24px;
+              margin-left: 8px;
+            }
+          }
+        }
+      }
+
+      .main-promotion__button-secondary {
+        width: 100%;
+        align-self: stretch;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        .main-promotion__button-text {
+          text-align: center;
+        }
+      }
+    }
+
+    // Tablet Styles
+    @include tablet {
+      margin: 50px 0;
+      border-radius: 24px;
+      width: 100%;
+
+      &::before {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 24px;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      &__container {
+        flex-direction: column;
+        gap: 0;
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      &__left {
+        width: 100%;
+        gap: 0;
+        margin-top: 40px;
+        align-items: flex-start;
+      }
+
+      &__right {
+        width: 100%;
+      }
+
+      &__badge {
+        width: fit-content;
+        height: 28px;
+        margin-bottom: 0;
+      }
+
+      &__title {
+        width: 400px;
+        height: auto;
+        font-size: 32px;
+        line-height: 1.25;
+        text-align: left;
+        background: linear-gradient(
+            102.31deg,
+            rgba(255, 255, 255, 0) 9.12%,
+            rgba(255, 68, 0, 0.45) 71.6%
+          ),
+          #ffffff;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-top: 8px;
+        margin-bottom: 8px;
+      }
+
+      &__subtitle {
+        width: 400px;
+        height: auto;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: left;
+        margin-top: 8px;
+        margin-bottom: 20px;
+      }
+
+      .navbar-dropdown-highlight__button-group {
+        flex-direction: row;
+        gap: 12px;
+        margin-top: 0;
+        width: 100%;
+      }
+
+      .navbar-dropdown-highlight__button {
+        &--primary {
+          width: 150px;
+          height: 44px;
+          font-size: 16px;
+        }
+
+        &--secondary {
+          width: 200px;
+          height: 44px;
+          font-size: 16px;
+        }
+      }
+    }
+
+    // Desktop Styles
+    @include desktop-lg {
+      &__container {
+        padding: 0 60px;
+      }
+
+      &__title {
+        width: 600px;
+        font-size: 48px;
+      }
+
+      &__subtitle {
+        width: 500px;
+        font-size: 18px;
+      }
+    }
+
+    @include desktop-xl {
+      &__container {
+        padding: 0 100px;
+      }
+
+      &__title {
+        width: 694px;
+        font-size: 52px;
+      }
+
+      &__subtitle {
+        width: 333px;
+        font-size: 18px;
       }
     }
   }

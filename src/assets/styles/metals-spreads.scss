@@ -120,9 +120,12 @@
     margin-right: auto;
 
     @include desktop-lg {
-      max-width: 1032px;
+      max-width: 100%;
     }
 
+    @include desktop-xl {
+      max-width: 1032px;
+    }
     .search-frame {
       display: flex;
       align-items: center;
@@ -207,7 +210,7 @@
     max-height: 354px; // 6 rows * 59px = 354px
     overflow-y: auto;
     overflow-x: hidden;
-    border-radius: 0 0 12px 12px;
+    // border-radius: 0 0 12px 12px;
     background: transparent;
 
     // Hide scrollbar but keep functionality
@@ -228,7 +231,7 @@
     margin: 0;
 
     @include desktop-lg {
-      width: 1032px;
+      max-width: 100%;
       margin: 0 auto;
     }
 
@@ -293,7 +296,7 @@
     border-collapse: separate;
     border-spacing: 0;
     table-layout: fixed;
-    border-radius: 12px;
+    // border-radius: 12px;
     overflow: hidden;
 
     // Ensure proper table structure
@@ -301,7 +304,7 @@
     border: none;
 
     @include desktop-lg {
-      width: 1032px;
+      width: 100%;
       margin: 0 auto;
     }
 
@@ -325,7 +328,7 @@
       background: url("../../assets/images/bg/funding-withdrawals/table-head.svg")
         no-repeat center;
       background-size: cover;
-      border-radius: 12px;
+      // border-radius: 12px;
       border: none;
       overflow: hidden;
       display: table-row;
@@ -372,7 +375,7 @@
       min-height: 59px;
       max-height: 59px;
       background: rgba(255, 68, 0, 0.1);
-      border-radius: 12px;
+      // border-radius: 12px;
       border: none;
       overflow: hidden;
       display: table-row;
@@ -1342,7 +1345,290 @@
   }
 }
 
+// Main FAQ Section - Ensure proper grid layout
+.faq-section.faq-section--metals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  width: 100%;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include desktop-lg {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    display: grid;
+  }
+
+  @include desktop-xl {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    display: grid;
+  }
+
+  @include desktop-2k {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    display: grid;
+  }
+
+  @include desktop-5k {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    display: grid;
+  }
+}
+
+// Left Side - FAQ Content - Ensure proper grid behavior
+.faq-section.faq-section--metals .faq-left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include mobile {
+    gap: 20px;
+  }
+}
+
 // Right Side - FAQ Items - Based on Figma Design
+.faq-section.faq-section--metals .faq-right {
+  width: 100%; // Full width on desktop
+  height: auto !important; // Allow height to expand with content
+  display: flex;
+  flex-direction: column;
+  gap: 16px; // Based on Figma itemSpacing
+  min-width: 0; // Allow shrinking
+
+  @include mobile {
+    width: 100%;
+    max-width: 353px; // Based on Figma mobile width
+    height: auto !important;
+    gap: 16px;
+  }
+
+  @include tablet {
+    width: 100%;
+    max-width: 768px; // Based on Figma tablet width
+    height: auto !important; // Allow height to expand with content
+    gap: 16px;
+  }
+
+  @include desktop-lg {
+    width: 100%; // Full width on desktop
+    height: auto !important; // Allow height to expand with content
+    gap: 16px;
+  }
+
+  @include desktop-xl {
+    width: 100%; // Full width on desktop
+    height: auto !important; // Allow height to expand with content
+    gap: 16px;
+  }
+
+  @include desktop-2k {
+    width: 100%; // Full width on desktop
+    height: auto !important; // Allow height to expand with content
+    gap: 16px;
+  }
+
+  @include desktop-5k {
+    width: 100%; // Full width on desktop
+    height: auto !important; // Allow height to expand with content
+    gap: 16px;
+  }
+
+  // FAQ Item Styling - Based on Figma Design
+  .faq__item {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    transition: none;
+
+    // Height and spacing handled by help-center structure
+  }
+
+  // FAQ Item Content Layout - Adopt help-center structure
+  .faq__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 16px 0 16px 0;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    font-size: inherit;
+    line-height: inherit;
+    text-align: inherit;
+    color: inherit;
+
+    @include mobile {
+      max-width: 100%;
+      padding: 0;
+      align-items: center;
+    }
+
+    @include tablet {
+      padding: 16px 0 16px 0;
+      align-items: center;
+    }
+
+    @include desktop-lg {
+      padding: 16px 0 16px 0;
+    }
+
+    @include desktop-xl {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  // FAQ Question Text Area - Adopt help-center structure
+  .faq__title-text {
+    width: 720px;
+    height: 28px;
+    font-family: "Sofia Pro", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #101828;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: #101828;
+
+    @include mobile {
+      width: calc(100% - 40px);
+      height: auto;
+      font-size: 16px;
+      line-height: 24px;
+      flex: 1;
+      flex-grow: 1;
+      margin-right: 8px;
+    }
+
+    @include tablet {
+      width: calc(100% - 40px);
+      height: auto;
+      font-size: 18px;
+      line-height: 28px;
+      flex: 1;
+      flex-grow: 1;
+      margin-right: 8px;
+    }
+  }
+
+  // FAQ Expand Button - Adopt help-center structure
+  .faq__expand-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease;
+
+    @include mobile {
+      align-self: center;
+      margin-top: 0;
+      flex-shrink: 0;
+    }
+
+    @include tablet {
+      align-self: center;
+      margin-top: 0;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    // Icon styling handled by base FAQ component
+  }
+
+  .faq__expand-btn-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  // FAQ Expandable Content - Adopt help-center structure
+  .faq__expandable {
+    width: 100%;
+    padding: 8px 0 0 0;
+    color: #8c8c8c;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: map-get($font-weight, "regular");
+
+    @include mobile {
+      font-size: 14px;
+      line-height: 20px;
+      padding: 8px 0 0 0;
+    }
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 24px;
+      padding: 8px 0 0 0;
+    }
+  }
+
+  // FAQ Text Styling - Adopt help-center structure
+  .faq__text {
+    display: block;
+    margin-bottom: 15px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--bold {
+      color: #9b9b9b;
+      font-weight: map-get($font-weight, "black");
+    }
+  }
+
+  // Animation handled by base FAQ component
+}
+
+// Legacy support for old class name
 .metals-faq-right {
   flex: 1;
   min-width: 0;

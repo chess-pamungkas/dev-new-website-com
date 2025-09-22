@@ -63,7 +63,7 @@ const SpreadsFeesCommission = ({ className }) => {
       </div>
 
       {/* Content */}
-      <div className="commission__content">
+      <div className="commission__content container">
         {/* Header Section */}
         <div className="commission__header">
           {/* Badge Group */}

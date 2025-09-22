@@ -14,6 +14,10 @@
     margin: 130px 0 0 0;
   }
 
+  @include tablet {
+    margin: 150px 0 0 0;
+  }
+
   .get-complimentary-vps-bg {
     position: absolute;
     top: 0;
@@ -197,6 +201,7 @@
       }
 
       @include tablet {
+        flex-direction: row;
         width: 100%;
         padding: 24px;
         gap: 16px;
@@ -225,9 +230,23 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        flex-direction: column;
 
         @include mobile {
           background-image: url("../../assets/images/bg/vps/bg-card-minimum-$3000-deposit-mobile.svg");
+        }
+
+        @include tablet {
+          flex-direction: column;
+        }
+
+        @include desktop-lg {
+          flex-direction: column;
+          background-position: 85% 100%;
+        }
+
+        @include desktop-xl {
+          background-position: center;
         }
       }
 
@@ -310,6 +329,17 @@
 
         @include tablet {
           width: 238px;
+          font-size: 24px;
+        }
+
+        @include desktop-lg {
+          width: 200px;
+          font-size: 20px;
+        }
+
+        @include desktop-xl {
+          width: 238px;
+          font-size: 24px;
         }
       }
 
@@ -341,6 +371,16 @@
           line-height: 24px;
           width: 238px;
           height: auto;
+        }
+
+        @include desktop-lg {
+          width: 200px;
+          font-size: 14px;
+        }
+
+        @include desktop-xl {
+          width: 238px;
+          font-size: 16px;
         }
       }
 
@@ -383,6 +423,11 @@
         @include mobile {
           padding: 16px 0;
           margin-top: 20px;
+        }
+
+        @include tablet {
+          margin-top: 16px;
+          width: 50%;
         }
 
         // Desktop specific positioning - positioned to the right
@@ -443,7 +488,7 @@
               width: auto;
               height: 150px;
               right: -65px;
-              top: 165px;
+              top: 155px;
             }
 
             @include desktop-xl {
@@ -461,6 +506,11 @@
             height: 80px;
             right: -23px;
             top: 190px;
+
+            @include tablet {
+              display: block;
+              top: 210px;
+            }
 
             @include desktop-lg {
               display: none;
@@ -497,6 +547,25 @@
             border: 1px solid rgba(255, 68, 0, 0.5);
             border-radius: 8px;
             padding: 13.5px 16px;
+          }
+
+          @include tablet {
+            width: 278px;
+            height: 44px;
+            left: 20px;
+            top: 200px;
+            background: rgba(255, 68, 0, 0.3);
+          }
+
+          @include desktop-lg {
+            left: 6px;
+            top: 130px;
+            width: 167px;
+          }
+
+          @include desktop-xl {
+            left: 17px;
+            top: 150px;
           }
 
           .btn-text {

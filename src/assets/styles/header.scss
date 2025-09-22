@@ -43,7 +43,7 @@
 
 .header {
   min-height: 65px;
-  // padding: 35px 0;
+
   &-wrapper {
     position: fixed;
     z-index: 1000;
@@ -71,14 +71,15 @@
     backdrop-filter: blur(8.7px);
     /* Figma: add subtle shadow for floating effect */
     box-shadow: 0 8px 32px rgba(19, 40, 75, 0.08);
-    padding: 35px 32px;
+    // padding: 35px 32px;
     box-sizing: border-box;
 
     @include mobile {
       margin-top: 0 !important;
       top: 0 !important;
-      height: 65px;
-      padding: 0;
+      height: 65px !important;
+      // padding-left: $padding-sm !important;
+      // padding-right: $padding-sm !important;
       border: none;
       .header__main-wrapper {
         display: flex;
@@ -101,14 +102,20 @@
       }
       .header__right {
         gap: 10px;
+
+        // .burger-menu__trigger {
+        //   top: -12px !important;
+        // }
       }
     }
     @include tablet {
       margin-top: 0 !important;
       top: 0 !important;
-      height: 76px;
-      padding: 0;
+      height: 65px !important;
+      // padding-left: $padding-md !important;
+      // padding-right: $padding-md !important;
       border: none;
+      max-width: 100% !important;
       .header__main-wrapper {
         display: flex;
         align-items: center;
@@ -133,22 +140,22 @@
       }
     }
     @include desktop-lg {
-      max-width: 1050px;
+      max-width: calc(980px + 44px) !important;
       margin-top: 8px !important;
       top: 8px !important;
     }
     @include desktop-xl {
-      max-width: 1350px;
+      max-width: calc(1280px + 60px) !important;
       margin-top: 8px !important;
       top: 8px !important;
     }
     @include desktop-2k {
-      max-width: 1550px;
+      max-width: calc(1440px + 60px) !important;
       margin-top: 8px !important;
       top: 8px !important;
     }
     @include desktop-5k {
-      max-width: 2000px;
+      max-width: calc(1920px + 60px) !important;
       margin-top: 8px !important;
       top: 8px !important;
     }
@@ -160,7 +167,7 @@
     transition: all 0.4s ease-in-out;
     box-shadow: none;
     border: none;
-    padding: 35px 32px;
+    // padding: 35px 32px;
     box-sizing: border-box;
     width: 100%;
 
@@ -402,7 +409,7 @@
     }
 
     @include desktop-lg {
-      max-width: 1050px;
+      max-width: 1024px;
     }
 
     @include desktop-xl {
@@ -425,23 +432,23 @@
     width: 100%;
 
     @include tablet {
-      max-width: 600px;
+      max-width: 100%;
     }
 
     @include desktop-lg {
-      max-width: 980px;
+      max-width: calc(980px + 44px) !important;
     }
 
     @include desktop-xl {
-      max-width: 1350px;
+      max-width: calc(1280px + 60px) !important;
     }
 
     @include desktop-2k {
-      max-width: 1550px;
+      max-width: calc(1440px + 60px) !important;
     }
 
     @include desktop-5k {
-      max-width: 2000px;
+      max-width: calc(1920px + 60px) !important;
     }
   }
 }

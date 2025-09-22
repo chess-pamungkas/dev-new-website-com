@@ -44,12 +44,14 @@ const SharesContent = ({ className, isShowHero = true }) => {
         mobileBackground="url(../images/bg/hero/shares/shares-mobile.svg)"
       />
 
-      <TradingTicker
-        title={t("shares_trading-ticker-title")}
-        pageSpecificSection={SHARES_TRADING_SECTION}
-      />
+      <div className="shares-content">
+        <TradingTicker
+          title={t("shares_trading-ticker-title")}
+          pageSpecificSection={SHARES_TRADING_SECTION}
+        />
 
-      <BreadcrumbsTab currentPage={t("shares-text")} activeTab="shares" />
+        <BreadcrumbsTab currentPage={t("shares-text")} activeTab="shares" />
+      </div>
 
       <ContainerWrapper>
         {/* Shares Features Products */}

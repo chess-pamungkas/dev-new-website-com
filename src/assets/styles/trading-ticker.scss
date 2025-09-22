@@ -39,6 +39,18 @@
     margin-top: 0;
     margin-bottom: 0;
   }
+
+  @include desktop-2k {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include desktop-5k {
+    max-width: 2000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .trading-sections-wrapper {
@@ -135,6 +147,14 @@
 
   @include tablet {
     height: auto;
+  }
+
+  @include desktop-2k {
+    overflow: hidden;
+  }
+
+  @include desktop-5k {
+    overflow: hidden;
   }
 
   &--infinite-auto-scroll {

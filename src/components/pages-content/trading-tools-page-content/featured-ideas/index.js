@@ -94,7 +94,7 @@ const FeaturedIdeas = ({ className }) => {
         />
       </div>
 
-      <div className="featured-ideas__container">
+      <div className="featured-ideas__container container">
         {/* Header */}
         <div className="featured-ideas__header">
           <div className="featured-ideas__badge">

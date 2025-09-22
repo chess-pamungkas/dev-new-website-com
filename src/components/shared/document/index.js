@@ -1,8 +1,10 @@
 import React from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
-import { StaticImage } from "gatsby-plugin-image";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
+import documentCardDesktop from "../../../assets/images/legal/legal-download-card-desktop.svg";
+import documentCardMobile from "../../../assets/images/legal/legal-download-card-mobile.svg";
+import documentIcon from "../../../assets/images/legal/download-document.svg";
 
 const ArrowIcon = () => (
   <svg
@@ -31,15 +33,15 @@ const Document = ({ className, document }) => {
       {/* Background Images */}
       <div className="document__background">
         <div className="document__background--desktop">
-          <StaticImage
-            src="../../../assets/images/legal/legal-download-card-desktop.svg"
+          <img
+            src={documentCardDesktop}
             alt="Document Card Background Desktop"
             className="document__bg-image"
           />
         </div>
         <div className="document__background--mobile">
-          <StaticImage
-            src="../../../assets/images/legal/legal-download-card-mobile.svg"
+          <img
+            src={documentCardMobile}
             alt="Document Card Background Mobile"
             className="document__bg-image"
           />
@@ -50,8 +52,8 @@ const Document = ({ className, document }) => {
       <div className="document__content">
         {/* Top-Left Icon */}
         <div className="document__icon">
-          <StaticImage
-            src="../../../assets/images/legal/download-document.svg"
+          <img
+            src={documentIcon}
             alt="Document Icon"
             className="document__icon-img"
           />

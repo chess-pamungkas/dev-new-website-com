@@ -13,7 +13,16 @@
   }
 
   @include tablet {
+    grid-template-columns: 1fr;
     gap: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include desktop-lg {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    flex-direction: row;
   }
 
   // Left Side - Badge, Title, Subtitle, Button
@@ -180,8 +189,43 @@
       margin: 0;
       box-shadow: none;
       transition: none;
+      min-height: 53px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      margin-bottom: 20px;
 
-      // Height and spacing handled by help-center structure
+      @include mobile {
+        min-height: 53px;
+        margin-bottom: 10px;
+      }
+
+      @include tablet {
+        min-height: 53px;
+        margin-bottom: 20px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .faq__item--expanded {
+      background: transparent;
+      border: none;
+      min-height: 84px;
+      padding-bottom: 0;
+
+      @include mobile {
+        min-height: 84px;
+        padding-bottom: 0;
+      }
+
+      @include tablet {
+        min-height: 84px;
+        padding-bottom: 0;
+      }
     }
 
     // FAQ Item Content Layout - Adopt help-center structure
@@ -202,13 +246,14 @@
       color: inherit;
 
       @include mobile {
-        max-width: 90%;
+        // max-width: 90%;
         padding: 0;
-        align-items: flex-start;
+        align-items: center;
       }
 
       @include tablet {
         padding: 16px 0 16px 0;
+        align-items: center;
       }
 
       @include desktop-lg {
@@ -245,24 +290,25 @@
       -webkit-background-clip: unset;
       background-clip: unset;
       -webkit-text-fill-color: #101828;
-      text-fill-color: #101828;
 
       @include mobile {
-        width: 100%;
+        width: calc(100% - 40px);
         height: auto;
         font-size: 16px;
         line-height: 24px;
         flex: none;
         flex-grow: 0;
+        margin-right: 8px;
       }
 
       @include tablet {
-        width: 720px;
-        height: 28px;
+        width: calc(100% - 40px);
+        height: auto;
         font-size: 18px;
         line-height: 28px;
         flex: none;
         flex-grow: 0;
+        margin-right: 8px;
       }
     }
 
@@ -281,8 +327,15 @@
       transition: opacity 0.2s ease;
 
       @include mobile {
-        align-self: flex-start;
+        align-self: center;
         margin-top: 0;
+        flex-shrink: 0;
+      }
+
+      @include tablet {
+        align-self: center;
+        margin-top: 0;
+        flex-shrink: 0;
       }
 
       &:hover {
@@ -320,6 +373,14 @@
         line-height: 24px;
         padding: 8px 0 0 0;
       }
+    }
+
+    // FAQ Content Wrapper
+    .faq__content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
     }
 
     // FAQ Text Styling - Adopt help-center structure

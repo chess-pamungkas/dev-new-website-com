@@ -55,12 +55,14 @@ const CryptoContent = ({ className, isShowHero = true }) => {
         mobileBackground="url(../images/bg/hero/crypto/crypto-mobile.svg)"
       />
 
-      <TradingTicker
-        title={t("crypto_trading-ticker-title")}
-        pageSpecificSection={CRYPTO_TRADING_SECTION}
-      />
+      <div className="crypto-content">
+        <TradingTicker
+          title={t("crypto_trading-ticker-title")}
+          pageSpecificSection={CRYPTO_TRADING_SECTION}
+        />
 
-      <BreadcrumbsTab currentPage={t("crypto-text")} activeTab="crypto" />
+        <BreadcrumbsTab currentPage={t("crypto-text")} activeTab="crypto" />
+      </div>
 
       <ContainerWrapper>
         {/* Crypto Features Products */}
@@ -73,7 +75,7 @@ const CryptoContent = ({ className, isShowHero = true }) => {
       <AccountComparison />
 
       <TopMarketLayout
-        className="top-market-layout--crypto-spreads"
+        className="top-market-layout--crypto-spreads container"
         headerTemplate={<SpreadsHeader tradingType="crypto" />}
       >
         {isMobile ? (

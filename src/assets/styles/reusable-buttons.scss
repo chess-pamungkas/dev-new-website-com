@@ -164,6 +164,18 @@
       width: 240px;
     }
 
+    @include desktop-xl {
+      width: 240px;
+    }
+
+    @include desktop-2k {
+      width: 190px;
+    }
+
+    @include desktop-5k {
+      width: 190px;
+    }
+
     .button-arrow {
       opacity: 1;
       width: 24px;
@@ -205,12 +217,28 @@
       width: 100%;
     }
 
+    @include tablet {
+      width: 250px;
+    }
+
+    @include desktop-lg {
+      width: 298px;
+    }
+
     &:hover,
     &:focus {
       width: 310px;
 
       @include mobile {
         width: 100%;
+      }
+
+      @include tablet {
+        width: 265px;
+      }
+
+      @include desktop-lg {
+        width: 315px;
       }
     }
   }
@@ -431,7 +459,7 @@
   }
 
   @include desktop-xl {
-    width: 237px;
+    width: 238px;
     font-size: 20px;
   }
 
@@ -490,7 +518,11 @@
     }
 
     @include desktop-lg {
-      width: 238px;
+      width: 240px;
+    }
+
+    @include desktop-xl {
+      width: 255px;
     }
 
     .button-arrow {

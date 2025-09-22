@@ -32,11 +32,23 @@
     flex-direction: column;
 
     @include tablet {
-      max-width: 479px;
+      max-width: 100%;
     }
 
     @include desktop-lg {
-      max-width: 723px;
+      max-width: 100%;
+    }
+
+    @include desktop-xl {
+      max-width: 100%;
+    }
+
+    @include desktop-2k {
+      max-width: 100%;
+    }
+
+    @include desktop-5k {
+      max-width: 100%;
     }
   }
 

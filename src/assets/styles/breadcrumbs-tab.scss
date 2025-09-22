@@ -2,24 +2,48 @@
 @import "mixins";
 
 .breadcrumbs-tab {
+  margin: 0 auto;
   @include mobile {
-    display: none;
-    padding: 30px 0 10px 0;
+    // display: none;
+    max-width: 100%;
+    padding-left: $padding-sm;
+    padding-right: $padding-sm;
+    padding-top: 100px;
+    padding-bottom: 30px;
   }
 
   @include tablet {
-    padding: 30px 0;
+    max-width: 720px;
+    padding-top: 100px;
+    padding-bottom: 30px;
   }
 
   @include desktop-lg {
+    max-width: 980px;
     padding: 40px 0;
+    margin-top: 75px; /* Reduced spacing for better visual balance */
+  }
+
+  @include desktop-xl {
+    max-width: 1280px;
+    margin-top: 75px; /* Reduced spacing for better visual balance */
+  }
+
+  @include desktop-2k {
+    max-width: 1440px;
+    margin-top: 75px; /* Reduced spacing for better visual balance */
+  }
+
+  @include desktop-5k {
+    max-width: 1920px;
+    margin-top: 75px; /* Reduced spacing for better visual balance */
   }
 
   &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1400px;
+    max-width: 1920px;
     margin: 0 auto;
     padding: 0 20px;
 
@@ -43,11 +67,11 @@
     }
 
     @include desktop-2k {
-      padding: 0 100px;
+      padding: 0;
     }
 
     @include desktop-5k {
-      padding: 0 120px;
+      padding: 0;
     }
   }
 

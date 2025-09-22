@@ -264,7 +264,7 @@
 
   // Tablet Styles (768px - 1023px)
   @include tablet {
-    padding: 20px 0;
+    padding: 75px 0 20px;
 
     &__container {
       flex-direction: column;
@@ -345,7 +345,7 @@
 
   // Desktop Large Styles (1024px and up)
   @include desktop-lg {
-    padding: 75px 0 100px;
+    padding: 75px 0 50px;
     &__container {
       flex-direction: row !important;
       padding: 0;
@@ -413,6 +413,8 @@
 
   // Desktop XL Styles (1200px and up)
   @include desktop-xl {
+    padding: 75px 0 50px;
+
     &__container {
       flex-direction: row !important;
       padding: 0;
@@ -458,6 +460,10 @@
       flex-direction: row !important;
       width: 429.33px !important;
     }
+  }
+
+  @include desktop-2k {
+    padding: 75px 0 0;
   }
 
   // Partners Variant Styles

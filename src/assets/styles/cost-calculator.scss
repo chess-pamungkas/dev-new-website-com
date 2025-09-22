@@ -34,6 +34,16 @@
     gap: 12px;
   }
 
+  @include desktop-2k {
+    padding: 64px 0 80px 0;
+    gap: 160px;
+  }
+
+  @include desktop-5k {
+    padding: 64px 0 80px 0;
+    gap: 630px;
+  }
+
   &__left {
     flex: 1 1 0;
     display: flex;

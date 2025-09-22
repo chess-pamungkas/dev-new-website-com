@@ -3,7 +3,7 @@
 
 .forex {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   color: map-get($colors, "white");
   display: flex;
   align-items: center;
@@ -29,28 +29,31 @@
   }
 
   @include tablet {
-    height: 575px;
+    height: 555px;
+    border-radius: 24px;
     padding-top: 70px;
+    padding-bottom: 0;
   }
 
   @include desktop-lg {
-    height: 655px;
+    height: 583px;
+    border-radius: 24px;
     padding-top: 83px;
     padding-bottom: 0;
   }
 
   @include desktop-xl {
-    height: 786px;
+    height: 583px;
     padding-top: 83px;
   }
 
   @include desktop-2k {
-    height: 786px;
+    height: 583px;
     padding-top: 83px;
   }
 
   @include desktop-5k {
-    height: 786px;
+    height: 583px;
     padding-top: 83px;
   }
 
@@ -60,7 +63,6 @@
     max-width: 1400px;
     margin: 0 auto;
     border-radius: 24px;
-    background: #000000;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -77,68 +79,63 @@
       top: 73px;
       margin: 0 auto;
       border-radius: 20px;
-      overflow: hidden;
     }
 
     @include tablet {
       width: 768px;
       max-width: 768px;
-      height: 575px;
+      height: 555px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 73px;
       margin: 0 auto;
-      border-radius: 20px;
-      overflow: visible;
+      border-radius: 24px;
     }
 
     @include desktop-lg {
-      width: calc(100vw - 40px);
+      width: calc(100vw - 20px);
       max-width: 1200px;
-      height: 575px;
+      height: 583px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 77px;
+      top: 83px;
       margin: 0 auto;
-      overflow: visible;
+      border-radius: 24px;
     }
 
     @include desktop-xl {
       width: calc(100vw - 120px);
       max-width: 1400px;
-      height: 686px;
+      height: 583px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 83px;
       margin: 0 auto;
-      overflow: visible;
     }
 
     @include desktop-2k {
       width: calc(100vw - 160px);
       max-width: 1600px;
-      height: 686px;
+      height: 583px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 83px;
       margin: 0 auto;
-      overflow: visible;
     }
 
     @include desktop-5k {
       width: calc(100vw - 200px);
       max-width: 2000px;
-      height: 686px;
+      height: 583px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 83px;
       margin: 0 auto;
-      overflow: visible;
     }
   }
 
@@ -171,15 +168,15 @@
     }
 
     @include tablet {
-      background: url("../images/bg/hero/forex/forex-desktop.svg") no-repeat
-        center center;
+      background: url("../images/bg/hero/forex/forex-desktop.svg") no-repeat 88%
+        center;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-lg {
       background: url("../images/bg/hero/forex/forex-desktop.svg") no-repeat
-        center center;
+        right center;
       background-size: cover;
       background-color: transparent;
     }
@@ -199,8 +196,8 @@
     }
 
     @include desktop-5k {
-      background: url("../images/bg/hero/forex/forex-desktop.svg") no-repeat
-        center center;
+      background: url("../images/bg/hero/forex/forex-desktop.svg") no-repeat 80%
+        65%;
       background-size: cover;
       background-color: transparent;
     }
@@ -220,16 +217,16 @@
     }
 
     @include tablet {
-      padding-top: 50px;
+      padding-top: 90px;
+      gap: 16px;
     }
 
     @include desktop-lg {
-      padding-top: 50px;
-      max-width: 1140px;
+      max-width: 980px;
+      gap: 16px;
     }
 
     @include desktop-xl {
-      padding-top: 100px;
       max-width: 1280px;
     }
 
@@ -420,7 +417,7 @@
     color: #ffffff;
     font-weight: map-get($font-weight, "regular");
     margin: 0;
-    max-width: 615px;
+    max-width: 450px;
     opacity: 0.7;
 
     @include mobile {
@@ -431,28 +428,33 @@
     }
 
     @include tablet {
+      max-width: 300px;
       font-size: 18px;
       line-height: 28px;
     }
 
     @include desktop-lg {
+      max-width: 450px;
       font-size: 18px;
       line-height: 28px;
     }
 
     @include desktop-xl {
+      max-width: 450px;
       font-size: 18px;
       line-height: 28px;
     }
 
     @include desktop-2k {
-      font-size: 20px;
-      line-height: 30px;
+      max-width: 450px;
+      font-size: 18px;
+      line-height: 28px;
     }
 
     @include desktop-5k {
-      font-size: 22px;
-      line-height: 32px;
+      max-width: 450px;
+      font-size: 18px;
+      line-height: 28px;
     }
   }
 
@@ -491,6 +493,20 @@
     @include desktop-5k {
       max-width: 600px;
       gap: 40px;
+    }
+
+    .button-container {
+      @include tablet {
+        gap: 0;
+      }
+
+      @include desktop-lg {
+        gap: 12px;
+      }
+
+      @include desktop-xl {
+        gap: 12px;
+      }
     }
   }
 
@@ -686,17 +702,15 @@
       align-content: center;
       width: 100%;
       margin-top: 65px;
-      padding-left: 20px;
-      padding-right: 20px;
     }
     @include tablet {
       width: 100%;
-      margin-top: 30px;
+      margin-top: 80px;
     }
     @include desktop-lg {
       width: 393.48px;
       height: 30px;
-      margin-top: 170px;
+      margin-top: 100px;
     }
     @include desktop-xl {
       width: 393.48px;
@@ -772,5 +786,57 @@
     flex: none;
     order: 1;
     flex-grow: 0;
+  }
+}
+
+.forex-content {
+  .trading-ticker-wrapper {
+    @include tablet {
+      margin-top: 110px;
+    }
+
+    @include desktop-lg {
+      margin-top: 110px;
+    }
+
+    @include desktop-xl {
+      margin-top: 110px;
+    }
+
+    @include desktop-2k {
+      margin-top: 110px;
+    }
+
+    @include desktop-5k {
+      margin-top: 110px;
+    }
+  }
+
+  .breadcrumbs-tab {
+    @include mobile {
+      display: none;
+    }
+
+    @include tablet {
+      margin-top: 5px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    @include desktop-lg {
+      margin-top: 5px;
+    }
+
+    @include desktop-xl {
+      margin-top: 25px;
+    }
+
+    @include desktop-2k {
+      margin-top: 25px;
+    }
+
+    @include desktop-5k {
+      margin-top: 25px;
+    }
   }
 }

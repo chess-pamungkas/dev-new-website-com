@@ -90,7 +90,7 @@ const FundingPageContent = ({ className, isShowHero = true }) => {
   };
 
   return (
-    <div className="funding-page">
+    <>
       <Hero
         className={className}
         isShowHero={isShowHero}
@@ -102,49 +102,35 @@ const FundingPageContent = ({ className, isShowHero = true }) => {
         mobileBackground="url(../../assets/images/bg/funding-withdrawals/funding-withdrawals-mobile.svg)"
       />
 
-      <ContainerWrapper>
-        <FastInFastOutContent />
-        <FundingWithdrawalsHeader />
-        <TopMarketLayout className="top-market-layout--withdrawal">
-          <Tabs tabList={tabs} />
-        </TopMarketLayout>
-        <ButtonContainer>
-          <ButtonPrimaryStandard
-            text={isDepositTab ? t("deposit_button") : t("withdrawal_button")}
-            onClick={() => {
-              const link = isDepositTab
-                ? GetDepositLink()
-                : GetWithdrawalLink();
-              window.open(link, "_blank");
-            }}
-          />
-          <ButtonSecondaryStandard
-            text={t("try_demo_account_button")}
-            onClick={() => {
-              setIsPopupOpen(true);
-            }}
-          />
-        </ButtonContainer>
-
-        <PaymentSystemsContent />
-      </ContainerWrapper>
-
-      {isMobile ? (
-        <OurCommunityContent
-          customBadgeMessage={t(
-            "funding-withdrawals_our_community_badge_message"
-          )}
-          customTitle={t("funding-withdrawals_our_community_title")}
-          customSubtitle={t("funding-withdrawals_our_community_subtitle")}
-          customPrimaryButton={t(
-            "funding-withdrawals_our_community_primary_button"
-          )}
-          customSecondaryButton={t(
-            "funding-withdrawals_our_community_secondary_button"
-          )}
-        />
-      ) : (
+      <div className="funding-page">
         <ContainerWrapper>
+          <FastInFastOutContent />
+          <FundingWithdrawalsHeader />
+          <TopMarketLayout className="top-market-layout--withdrawal">
+            <Tabs tabList={tabs} />
+          </TopMarketLayout>
+          <ButtonContainer>
+            <ButtonPrimaryStandard
+              text={isDepositTab ? t("deposit_button") : t("withdrawal_button")}
+              onClick={() => {
+                const link = isDepositTab
+                  ? GetDepositLink()
+                  : GetWithdrawalLink();
+                window.open(link, "_blank");
+              }}
+            />
+            <ButtonSecondaryStandard
+              text={t("try_demo_account_button")}
+              onClick={() => {
+                setIsPopupOpen(true);
+              }}
+            />
+          </ButtonContainer>
+
+          <PaymentSystemsContent />
+        </ContainerWrapper>
+
+        {isMobile ? (
           <OurCommunityContent
             customBadgeMessage={t(
               "funding-withdrawals_our_community_badge_message"
@@ -158,17 +144,33 @@ const FundingPageContent = ({ className, isShowHero = true }) => {
               "funding-withdrawals_our_community_secondary_button"
             )}
           />
-        </ContainerWrapper>
-      )}
+        ) : (
+          <ContainerWrapper>
+            <OurCommunityContent
+              customBadgeMessage={t(
+                "funding-withdrawals_our_community_badge_message"
+              )}
+              customTitle={t("funding-withdrawals_our_community_title")}
+              customSubtitle={t("funding-withdrawals_our_community_subtitle")}
+              customPrimaryButton={t(
+                "funding-withdrawals_our_community_primary_button"
+              )}
+              customSecondaryButton={t(
+                "funding-withdrawals_our_community_secondary_button"
+              )}
+            />
+          </ContainerWrapper>
+        )}
 
-      {/* Render the popup */}
-      {isPopupOpen && (
-        <ShowRegistrationPopup
-          isOpen={isPopupOpen}
-          onClose={handleClosePopup}
-        />
-      )}
-    </div>
+        {/* Render the popup */}
+        {isPopupOpen && (
+          <ShowRegistrationPopup
+            isOpen={isPopupOpen}
+            onClose={handleClosePopup}
+          />
+        )}
+      </div>
+    </>
   );
 };
 

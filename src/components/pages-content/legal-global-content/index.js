@@ -11,7 +11,7 @@ import { useTranslationWithVariables } from "../../../helpers/hooks/use-translat
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import LegalRegulators from "../../legal/components/legal-regulators";
 import { LEGAL_REGULATORS } from "../../../helpers/legal.config";
-import LegalRegulatedContent from "../LegalRegulatedContent";
+import LegalRegulatedContent from "../legal-regulated-content";
 import Documents from "../../documents";
 import { getLegalDocs } from "../../../helpers/documents";
 import Hero from "../../shared/hero";

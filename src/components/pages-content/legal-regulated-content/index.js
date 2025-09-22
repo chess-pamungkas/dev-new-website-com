@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
-import bgRegulatedDesktop from "../../../assets/images/legal/bg-regulated-desktop.svg";
-import bgRegulatedMobile from "../../../assets/images/legal/bg-regulated-mobile.svg";
 import personPlusIcon from "../../../assets/images/icons/person-plus.svg";
 import cysecRegulatedDesktop from "../../../assets/images/legal/cysec-regulated-desktop.svg";
 import cysecRegulatedMobile from "../../../assets/images/legal/cysec-regulated-mobile.svg";
@@ -28,7 +26,7 @@ const ArrowIcon = () => (
   </svg>
 );
 
-const LegalRegulatedContentx = ({ className }) => {
+const LegalRegulatedContent = ({ className }) => {
   const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
 
@@ -47,23 +45,8 @@ const LegalRegulatedContentx = ({ className }) => {
         isRTL ? "legal-regulated-content--rtl" : ""
       }`}
     >
-      {/* Background Images */}
-      <div className="legal-regulated-content__background">
-        <div className="legal-regulated-content__background--desktop">
-          <img
-            src={bgRegulatedDesktop}
-            alt="Regulated Background Desktop"
-            className="legal-regulated-content__bg-image"
-          />
-        </div>
-        <div className="legal-regulated-content__background--mobile">
-          <img
-            src={bgRegulatedMobile}
-            alt="Regulated Background Mobile"
-            className="legal-regulated-content__bg-image"
-          />
-        </div>
-      </div>
+      {/* Background Image */}
+      <div className="legal-regulated-content__hero-bg"></div>
 
       <div className="legal-regulated-content__wrapper container">
         {/* Top Section: Regulated by CySEC */}

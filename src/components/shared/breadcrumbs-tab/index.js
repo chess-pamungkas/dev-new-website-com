@@ -2,11 +2,13 @@ import React from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
+import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { HOME_PAGE_LINK } from "../../../helpers/constants";
 import InternalLink from "../internal-link";
 
 const BreadcrumbsTab = ({ className, currentPage, activeTab }) => {
   const { t } = useTranslationWithVariables();
+  const { isLG } = useWindowSize();
 
   const marketTabs = [
     { key: "all-markets", label: "All Markets Overview", link: "/all-markets" },
@@ -19,11 +21,16 @@ const BreadcrumbsTab = ({ className, currentPage, activeTab }) => {
     { key: "etf", label: "ETF", link: "/etf" },
   ];
 
+  // Filter out "all-markets" tab on desktop-lg
+  const filteredMarketTabs = isLG
+    ? marketTabs.filter((tab) => tab.key !== "all-markets")
+    : marketTabs;
+
   // Check if activeTab exists in marketTabs
   const isActiveTabValid = marketTabs.some((tab) => tab.key === activeTab);
 
   return (
-    <div className={cn("breadcrumbs-tab container", className)}>
+    <div className={cn("breadcrumbs-tab", className)}>
       {/* <div className="container"> */}
       <div className="breadcrumbs-tab__content">
         {/* Breadcrumbs */}
@@ -40,7 +47,7 @@ const BreadcrumbsTab = ({ className, currentPage, activeTab }) => {
 
         {/* Market Tabs */}
         <div className="breadcrumbs-tab__tabs">
-          {marketTabs.map((tab) => (
+          {filteredMarketTabs.map((tab) => (
             <InternalLink
               key={tab.key}
               to={tab.link}
@@ -48,6 +55,7 @@ const BreadcrumbsTab = ({ className, currentPage, activeTab }) => {
                 "breadcrumbs-tab__tab--active":
                   isActiveTabValid && activeTab === tab.key,
               })}
+              data-tab-key={tab.key}
             >
               <span>{t(`breadcrumbs_tab_${tab.key}`)}</span>
             </InternalLink>

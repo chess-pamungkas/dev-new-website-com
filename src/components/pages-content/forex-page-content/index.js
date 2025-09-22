@@ -59,12 +59,14 @@ const ForexContent = ({ className, isShowHero }) => {
         mobileBackground="url(../images/bg/hero/forex/forex-mobile.svg)"
       />
 
-      <TradingTicker
-        title={t("forex_trading-ticker-title")}
-        pageSpecificSection={FOREX_TRADING_SECTION}
-      />
+      <div className="forex-content">
+        <TradingTicker
+          title={t("forex_trading-ticker-title")}
+          pageSpecificSection={FOREX_TRADING_SECTION}
+        />
 
-      <BreadcrumbsTab currentPage={t("forex-text")} activeTab="forex" />
+        <BreadcrumbsTab currentPage={t("forex-text")} activeTab="forex" />
+      </div>
 
       <ContainerWrapper>
         {/* Forex Features Products */}
@@ -77,7 +79,7 @@ const ForexContent = ({ className, isShowHero }) => {
       <AccountComparison />
 
       <TopMarketLayout
-        className="top-market-layout--forex-spreads"
+        className="top-market-layout--forex-spreads container"
         headerTemplate={<SpreadsHeader tradingType="forex" />}
       >
         {isMobile ? <ForexSpreadsMobile /> : <ForexSpreadsDesktop />}

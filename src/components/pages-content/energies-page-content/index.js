@@ -55,12 +55,14 @@ const EnergiesContent = ({ className, isShowHero = true }) => {
         mobileBackground="url(../images/bg/hero/energies/energies-mobile.svg)"
       />
 
-      <TradingTicker
-        title={t("energies_trading-ticker-title")}
-        pageSpecificSection={ENERGIES_TRADING_SECTION}
-      />
+      <div className="energies-content">
+        <TradingTicker
+          title={t("energies_trading-ticker-title")}
+          pageSpecificSection={ENERGIES_TRADING_SECTION}
+        />
 
-      <BreadcrumbsTab currentPage={t("energies-text")} activeTab="energies" />
+        <BreadcrumbsTab currentPage={t("energies-text")} activeTab="energies" />
+      </div>
 
       <ContainerWrapper>
         {/* Energies Features Products */}
@@ -73,7 +75,7 @@ const EnergiesContent = ({ className, isShowHero = true }) => {
       <AccountComparison />
 
       <TopMarketLayout
-        className="top-market-layout--energies-spreads"
+        className="top-market-layout--energies-spreads container"
         headerTemplate={<SpreadsHeader tradingType="energies" />}
       >
         {isMobile ? (
