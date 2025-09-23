@@ -8,6 +8,14 @@
     padding: 125px 0;
   }
 
+  @include tablet {
+    padding: 125px 0 25px 0;
+  }
+
+  @include desktop-lg {
+    padding: 150px 0 25px 0;
+  }
+
   &__container {
     max-width: 1280px;
     margin: 0 auto;
@@ -30,6 +38,14 @@
       max-width: 355px;
       margin: 0 auto;
       padding: 0;
+    }
+
+    @include tablet {
+      flex-direction: column;
+    }
+
+    @include desktop-lg {
+      flex-direction: row;
     }
   }
 

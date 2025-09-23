@@ -20,6 +20,26 @@
     justify-content: center;
   }
 
+  @include tablet {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 30px;
+    margin-bottom: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include desktop-lg {
+    width: 100%;
+    margin-top: 0;
+    max-width: 818px;
+    margin-left: 50px;
+  }
+
   &__container {
     position: relative;
     width: 100%;

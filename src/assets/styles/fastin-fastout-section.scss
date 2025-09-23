@@ -263,6 +263,14 @@
       -webkit-text-fill-color: unset;
       background-clip: unset;
     }
+
+    @include tablet {
+      font-size: 22px;
+    }
+
+    @include desktop-lg {
+      font-size: 32px;
+    }
   }
 
   &__card-description {

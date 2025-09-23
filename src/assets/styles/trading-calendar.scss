@@ -4,7 +4,7 @@
 .trading-calendar {
   position: relative;
   width: 100%;
-  padding: 80px 0 20px 0;
+  padding: 50px 0 20px 0;
 
   @include mobile {
     padding: 40px 0;
@@ -22,7 +22,22 @@
     @include mobile {
       flex-direction: column;
       gap: 40px;
-      padding: 0;
+    }
+
+    @include tablet {
+      margin: 0;
+      flex-direction: column;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    @include desktop-lg {
+      flex-direction: row;
+      gap: 60px;
+    }
+
+    @include desktop-2k {
+      max-width: 100%;
     }
   }
 

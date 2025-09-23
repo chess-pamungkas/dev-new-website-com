@@ -171,6 +171,7 @@
     @include desktop-xl {
       gap: 27px;
       padding: 42px 203px 0;
+      max-width: 1280px;
     }
 
     .keep-your-vps-card {
@@ -211,11 +212,11 @@
       }
 
       @include tablet {
-        flex-direction: row;
-        width: 100%;
+        flex-direction: column;
+        width: 626.5px;
         padding: 24px;
         gap: 16px;
-        min-height: auto;
+        min-height: 345px;
         height: auto;
       }
 
@@ -234,6 +235,12 @@
         width: 510px !important;
         margin-left: 0;
         margin-right: 0;
+      }
+
+      &.monthly-trading-card {
+        @include tablet {
+          flex-direction: row;
+        }
       }
 
       .card-title {

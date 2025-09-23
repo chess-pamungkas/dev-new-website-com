@@ -167,7 +167,7 @@
     }
 
     @include tablet {
-      background: url("../images/bg/metals-desktop.svg") no-repeat 86% 100%;
+      background: url("../images/bg/metals-desktop.svg") no-repeat 80% 100%;
       background-size: cover;
       background-color: transparent;
     }
@@ -422,7 +422,7 @@
     }
 
     @include tablet {
-      max-width: 300px;
+      max-width: 350px;
       font-size: 18px;
       line-height: 28px;
     }

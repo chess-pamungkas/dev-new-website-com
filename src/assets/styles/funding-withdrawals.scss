@@ -219,7 +219,7 @@
 
     @include tablet {
       padding-top: 90px;
-      gap: 16px;
+      gap: 20px;
     }
 
     @include desktop-lg {
@@ -482,7 +482,7 @@
     }
     @include tablet {
       width: 100%;
-      margin-top: 50px;
+      margin-top: 20px;
     }
     @include desktop-lg {
       width: 393.48px;
@@ -996,7 +996,7 @@
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 50px;
 
     @include mobile {
       max-width: 100%;
@@ -1006,7 +1006,7 @@
 
     @include tablet {
       max-width: 768px;
-      padding: 0 20px;
+      padding: 0;
     }
 
     @include desktop-lg {
@@ -1049,5 +1049,9 @@
   // Override button-container margin-top for our-community-content
   .our-community-content .button-container {
     margin-top: 0 !important;
+
+    @include tablet {
+      justify-content: flex-start !important;
+    }
   }
 }

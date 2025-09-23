@@ -1590,6 +1590,36 @@
       margin-top: -78px;
       padding: 0;
     }
+
+    @include tablet {
+      left: 50%;
+      max-width: 100%;
+      padding: 0;
+    }
+
+    @include desktop-lg {
+      left: 50%;
+      max-width: 100%;
+      padding: 0;
+    }
+
+    @include desktop-xl {
+      left: 39.5%;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    @include desktop-2k {
+      left: 40.5%;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    @include desktop-5k {
+      left: 43%;
+      max-width: 800px;
+      padding: 0 20px;
+    }
   }
 
   &__metric-card {
@@ -1629,7 +1659,7 @@
       width: 100%;
       height: 100%;
       background-image: url("../../assets/images/bg/trading-tools/bg-card-market-buzz-desktop.svg");
-      background-size: 100% 100%;
+      background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       z-index: 0;
@@ -1652,9 +1682,23 @@
       }
     }
 
+    @include tablet {
+      width: 233px;
+      height: 165px;
+    }
+
+    @include desktop-lg {
+      width: 318px;
+      height: 200px;
+    }
+
+    @include desktop-xl {
+      width: 336px;
+      height: 205px;
+    }
+
     .market-buzz__metric-badge {
       margin: 0;
-      margin-top: 15px;
       align-self: flex-start;
     }
   }
@@ -1842,6 +1886,21 @@
       padding-top: 0;
       margin-bottom: 40px;
     }
+
+    @include tablet {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    @include desktop-lg {
+      flex-direction: row;
+      width: 100%;
+    }
+
+    @include desktop-xl {
+      flex-direction: row;
+      width: 1023px;
+    }
   }
 
   &__ai-card {
@@ -1885,6 +1944,39 @@
         background-size: cover;
       }
     }
+
+    @include tablet {
+      width: 100%;
+      height: 357px;
+      border-radius: 28px;
+
+      &::before {
+        background-image: url("../../assets/images/bg/trading-tools/bg-card-tc-market-buzz-desktop.svg");
+        background-size: cover;
+      }
+    }
+
+    @include desktop-lg {
+      width: 48%;
+      height: 357px;
+      border-radius: 28px;
+
+      &::before {
+        background-image: url("../../assets/images/bg/trading-tools/bg-card-tc-market-buzz-desktop.svg");
+        background-size: cover;
+      }
+    }
+
+    @include desktop-xl {
+      width: 501.5px;
+      height: 357px;
+      border-radius: 28px;
+
+      &::before {
+        background-image: url("../../assets/images/bg/trading-tools/bg-card-tc-market-buzz-desktop.svg");
+        background-size: cover;
+      }
+    }
   }
 
   &__ai-content {
@@ -1906,6 +1998,15 @@
       gap: 19.75px;
       width: 208.03px;
       height: 236.47px;
+    }
+
+    @include tablet {
+      width: 50%;
+    }
+
+    @include desktop-lg {
+      width: 295px;
+      height: 333px;
     }
   }
 

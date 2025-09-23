@@ -168,8 +168,8 @@
     }
 
     @include tablet {
-      background: url("../images/bg/hero/forex/forex-desktop.svg") no-repeat 88%
-        center;
+      background: url("../images/bg/hero/forex/forex-desktop.svg") no-repeat 86%
+        100%;
       background-size: cover;
       background-color: transparent;
     }
@@ -218,7 +218,7 @@
 
     @include tablet {
       padding-top: 90px;
-      gap: 16px;
+      gap: 20px;
     }
 
     @include desktop-lg {
