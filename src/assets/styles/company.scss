@@ -5,20 +5,20 @@
 .company-section {
   position: relative;
   width: 100%;
-  min-height: 981px;
+  min-height: 1150px;
   background: transparent;
   border-radius: 24px;
   overflow: hidden;
   margin: 48px 0;
 
-  @include tablet {
-    padding-bottom: 75px;
-  }
-
   @include mobile {
     min-height: auto;
     margin: 50px 0 0 0;
     padding-bottom: 30px;
+  }
+
+  @include tablet {
+    padding-bottom: 0;
   }
 
   .company-section-bg {
