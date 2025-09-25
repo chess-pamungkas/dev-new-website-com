@@ -226,7 +226,7 @@ const Hero = ({
           badge: customBadgeText || "swap-free_badge-text",
           title: customTitle || "swap-free_swap-free-title",
           subtitle: customSubtitle || "swap-free_swap-free-text",
-          primaryButton: customPrimaryButtonText || "button-start-trading",
+          primaryButton: customPrimaryButtonText || "button-apply-now",
           secondaryButton: customSecondaryButtonText || "button-try-demo",
           warning: customWarningText || "index_main-promotion-warning",
           reviews: "index_main-promotion-reviews",

@@ -184,22 +184,22 @@
 
     @include desktop-xl {
       background: url("../../assets/images/bg/vps/vps-desktop.svg") no-repeat
-        center center;
-      background-size: cover;
+        center;
+      background-size: 100% auto;
       background-color: transparent;
     }
 
     @include desktop-2k {
       background: url("../../assets/images/bg/vps/vps-desktop.svg") no-repeat
-        center center;
-      background-size: cover;
+        center;
+      background-size: 100% auto;
       background-color: transparent;
     }
 
     @include desktop-5k {
       background: url("../../assets/images/bg/vps/vps-desktop.svg") no-repeat
-        center center;
-      background-size: 100% 100%;
+        center;
+      background-size: 100% auto;
       background-color: transparent;
     }
   }
@@ -1404,7 +1404,7 @@
 
       &__title {
         width: 600px;
-        font-size: 48px;
+        font-size: 40px;
       }
 
       &__subtitle {

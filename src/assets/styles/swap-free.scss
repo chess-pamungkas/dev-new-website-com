@@ -964,3 +964,15 @@
     }
   }
 }
+
+.swap-free__button-container {
+  .button-primary-hero {
+    @include tablet {
+      width: 150px;
+
+      &:hover {
+        width: 165px;
+      }
+    }
+  }
+}

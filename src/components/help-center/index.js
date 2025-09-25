@@ -215,16 +215,8 @@ const HelpCenter = ({ className }) => {
         )}
       </section>
 
-      {isMobile ? (
-        <OurCommunityContent
-          customBadgeMessage={t("partners_our_community_badge_message")}
-          customTitle={t("partners_our_community_title")}
-          customSubtitle={t("partners_our_community_subtitle")}
-          customPrimaryButton={t("partners_our_community_primary_button")}
-          customSecondaryButton={t("partners_our_community_secondary_button")}
-        />
-      ) : (
-        <ContainerWrapper>
+      <div className="help-center__our-community">
+        {isMobile ? (
           <OurCommunityContent
             customBadgeMessage={t("partners_our_community_badge_message")}
             customTitle={t("partners_our_community_title")}
@@ -232,8 +224,20 @@ const HelpCenter = ({ className }) => {
             customPrimaryButton={t("partners_our_community_primary_button")}
             customSecondaryButton={t("partners_our_community_secondary_button")}
           />
-        </ContainerWrapper>
-      )}
+        ) : (
+          <ContainerWrapper>
+            <OurCommunityContent
+              customBadgeMessage={t("partners_our_community_badge_message")}
+              customTitle={t("partners_our_community_title")}
+              customSubtitle={t("partners_our_community_subtitle")}
+              customPrimaryButton={t("partners_our_community_primary_button")}
+              customSecondaryButton={t(
+                "partners_our_community_secondary_button"
+              )}
+            />
+          </ContainerWrapper>
+        )}
+      </div>
     </>
   );
 };

@@ -45,7 +45,7 @@
     display: flex;
     width: 100%;
     height: auto;
-    border-radius: 0.3125rem;
+    border-radius: 32px;
     text-align: left !important;
     margin: auto;
     max-height: 100vh;
@@ -60,23 +60,21 @@
       overflow-y: auto;
       max-width: none;
       max-height: none;
-      border-radius: 20px;
+      border-radius: 32px;
       gap: 0; // No gap on mobile - stacked layout
     }
 
     @include tablet {
-      max-width: 90%;
-      max-height: 90vh;
-      border-radius: 24px;
+      max-width: 100%;
+      max-height: 100vh;
+      border-radius: 32px;
+      gap: 0;
     }
-
-    // @include tablet {
-    //   padding: 0.625rem;
-    // }
 
     @include desktop-lg {
       max-width: 966px; // Based on Figma design (331 + 20 + 615)
       max-height: 749px; // Based on Figma design
+      gap: 20px;
     }
 
     @include desktop-xl {
@@ -135,7 +133,7 @@
     }
 
     @include mobile {
-      display: none !important; // Completely hide sidebar on mobile
+      display: none; // Completely hide sidebar on mobile
     }
 
     @include mobile {
@@ -150,24 +148,27 @@
 
     @include tablet {
       padding: 0;
+      display: none;
     }
 
     @include desktop-lg {
       padding: 0;
+      display: block;
     }
 
     @include desktop-xl {
-      padding: 0;
+      background-size: cover;
+      background-position: center center;
     }
 
     @include desktop-2k {
-      padding: 0;
-      background-size: 80% auto;
+      background-size: cover;
+      background-position: center center;
     }
 
     @include desktop-5k {
-      padding: 0;
-      background-size: 75% auto;
+      background-size: cover;
+      background-position: center center;
     }
   }
 
@@ -217,14 +218,27 @@
 
     @include tablet {
       padding: 2.5rem;
+      width: 100%;
     }
 
     @include desktop-lg {
       padding: 3.125rem;
+      width: 615px; // Based on Figma design
     }
 
     @include desktop-xl {
-      padding: 32px 42px;
+      width: 615px;
+      height: 749px;
+    }
+
+    @include desktop-2k {
+      width: 750px; // Increase width to match sidebar scaling
+      height: 900px; // Increase height to match sidebar scaling
+    }
+
+    @include desktop-5k {
+      width: 900px; // Increase width to match sidebar scaling
+      height: 1100px; // Increase height to match sidebar scaling
     }
 
     &__badge {

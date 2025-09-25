@@ -61,7 +61,7 @@ const TabTradingTools = ({ className }) => {
 
   return (
     <div className={`tab-trading-tools ${className || ""}`}>
-      <div className="tab-trading-tools__container">
+      <div className="tab-trading-tools__container container">
         <div className="tab-trading-tools__tabs">
           {tabs.map((tab) => (
             <button

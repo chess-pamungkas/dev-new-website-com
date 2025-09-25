@@ -171,7 +171,7 @@
 
     @include tablet {
       background: url("../../assets/images/bg/hero/mt4/mt4-desktop.svg")
-        no-repeat center center;
+        no-repeat 80% 100%;
       background-size: cover;
       background-color: transparent;
     }
@@ -436,7 +436,7 @@
     }
 
     @include desktop-lg {
-      max-width: 681px;
+      max-width: 650px;
       font-size: 18px;
       line-height: 28px;
     }

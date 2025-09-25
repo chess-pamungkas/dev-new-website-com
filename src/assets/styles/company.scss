@@ -152,10 +152,10 @@
       flex-direction: column;
     }
 
-    @include desktop-xl {
-      padding: 150px 0;
-      gap: 40px;
-    }
+    // @include desktop-xl {
+    //   padding: 150px 0;
+    //   gap: 40px;
+    // }
   }
 
   .company-section-card {
@@ -181,7 +181,7 @@
 
     @include tablet {
       gap: 24px;
-      min-height: 319px;
+      min-height: 400px;
     }
 
     @include desktop-lg {
@@ -592,7 +592,7 @@
 
     @include tablet {
       background: url("../../assets/images/bg/hero/company/about-desktop.svg")
-        no-repeat center center;
+        no-repeat 100% 100%;
       background-size: cover;
       background-color: transparent;
     }

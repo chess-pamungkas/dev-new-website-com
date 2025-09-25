@@ -2,7 +2,7 @@
 @import "mixins";
 
 .help-center {
-  padding-top: 90px;
+  padding-top: 150px;
   padding-bottom: 120px;
   background: map-get($colors, "white");
 
@@ -12,22 +12,22 @@
   }
 
   @include tablet {
-    padding-top: 80px;
+    padding-top: 150px;
     padding-bottom: 0;
   }
 
   &__wrapper {
     margin: 0 auto;
-    // max-width: 1240px;
-    // padding: 0 20px;
+    max-width: 1240px;
+    padding: 0 20px;
 
-    // @include mobile {
-    //   padding: 0 16px;
-    // }
+    @include mobile {
+      padding: 0 16px;
+    }
 
-    // @include tablet {
-    //   padding: 0 40px;
-    // }
+    @include tablet {
+      padding: 0;
+    }
   }
 
   &__title {
@@ -77,9 +77,18 @@
     }
 
     @include tablet {
+      flex-direction: column;
+      gap: 32px;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    @include desktop-lg {
       flex-direction: row;
       gap: 32px;
       align-items: flex-start;
+      width: 100%;
     }
   }
 
@@ -88,8 +97,8 @@
     align-items: flex-start;
     gap: 32px;
     flex-shrink: 0;
-    width: 441px;
-    height: 176px;
+    width: 404px;
+    height: 200px;
 
     @include mobile {
       flex-direction: column;
@@ -101,9 +110,15 @@
     @include tablet {
       flex-direction: column;
       gap: 0;
-      width: 441px;
+      width: 100%;
+      max-width: 100%;
       height: auto;
       align-items: flex-start;
+    }
+
+    @include desktop-lg {
+      width: 404px;
+      height: 200px;
     }
   }
 
@@ -338,8 +353,13 @@
     }
 
     @include tablet {
-      width: 768px;
+      width: 100%;
+      max-width: 100%;
       align-items: stretch;
+    }
+
+    @include desktop-lg {
+      width: 768px;
     }
   }
 
@@ -372,7 +392,7 @@
     background: url("../../assets/images/bg/faq/bg-oqtima-markets-desktop.svg")
       no-repeat center center;
     background-size: cover;
-    padding: 80px 60px;
+    padding: 80px 60px 40px;
     border-radius: 20px;
     overflow: hidden;
     background-color: #f8f9fa; /* Fallback color */
@@ -670,7 +690,6 @@
             line-height: 28px;
             color: #ffffff;
             -webkit-text-fill-color: #ffffff;
-            text-fill-color: #ffffff;
             font-family: "Sofia Pro", sans-serif;
             background: none;
             -webkit-background-clip: unset;
@@ -834,7 +853,6 @@
     .faq__title-text {
       color: #ffffff !important;
       -webkit-text-fill-color: #ffffff !important;
-      text-fill-color: #ffffff !important;
       background: none !important;
       -webkit-background-clip: unset !important;
       background-clip: unset !important;
@@ -881,23 +899,24 @@
   }
 
   .faq--help-center .faq__wrapper {
-    align-items: stretch;
-    max-width: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     background: transparent;
     border-radius: 0;
-    padding: 0;
-    min-height: auto;
-    justify-content: flex-start;
-    position: static;
-    overflow: visible;
+    padding: 0 20px;
+    box-sizing: border-box;
 
     @include mobile {
+      padding: 0 16px;
+    }
+
+    @include tablet {
       padding: 0;
-      min-height: auto;
-      width: 100%;
+    }
+
+    @include desktop-lg {
+      padding: 0;
     }
   }
 
@@ -911,25 +930,6 @@
     opacity: 0.6;
   }
 
-  .faq__wrapper {
-    align-items: stretch;
-    max-width: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    background: transparent;
-    border-radius: 0;
-    padding: 0;
-    min-height: auto;
-    justify-content: flex-start;
-
-    @include mobile {
-      padding: 0;
-      min-height: auto;
-      width: 100%;
-    }
-  }
-
   .faq--help-center .faq__title {
     display: flex;
     align-items: center;
@@ -937,32 +937,25 @@
     position: relative;
     width: 100%;
     margin: 0;
-    padding: 16px 0 16px 0;
+    padding: 16px 0;
     background: none;
-    -webkit-background-clip: unset;
-    background-clip: unset;
     font-size: inherit;
     line-height: inherit;
     text-align: inherit;
     color: inherit;
 
     @include mobile {
-      max-width: 90%;
       padding: 0;
-      align-items: flex-start;
+      align-items: center;
     }
 
     @include tablet {
-      padding: 16px 0 16px 0;
+      padding: 16px 0;
+      align-items: center;
     }
 
     @include desktop-lg {
-      padding: 16px 0 16px 0;
-    }
-
-    @include desktop-xl {
-      font-size: inherit;
-      line-height: inherit;
+      padding: 16px 0;
     }
   }
 
@@ -989,71 +982,31 @@
     -webkit-background-clip: unset;
     background-clip: unset;
     -webkit-text-fill-color: #101828;
-    text-fill-color: #101828;
 
     @include mobile {
-      width: 100%;
+      width: calc(100% - 40px);
       height: auto;
       font-size: 16px;
       line-height: 24px;
-      flex: none;
-      flex-grow: 0;
+      flex: 1;
+      flex-grow: 1;
+      margin-right: 8px;
     }
 
     @include tablet {
-      width: 720px;
-      height: 28px;
+      width: calc(100% - 40px);
+      height: auto;
       font-size: 18px;
       line-height: 28px;
-      flex: none;
-      flex-grow: 0;
+      flex: 1;
+      flex-grow: 1;
+      margin-right: 8px;
     }
   }
 
-  // Maximum specificity override for GENERAL FAQ sections (NOT markets)
-  .help-center
-    .faq--help-center:not(.help-center--market)
-    .faq__title
-    .faq__title-text,
-  .help-center .faq--help-center:not(.help-center--market) .faq__title-text {
-    all: unset;
-    display: block;
-    width: 720px;
-    height: 28px;
-    font-family: "Sofia Pro", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 28px;
-    color: #101828;
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-    margin: 0;
-    padding: 0;
-    text-align: left;
-    opacity: 1;
-    visibility: visible;
-    background: none;
-    -webkit-background-clip: unset;
-    background-clip: unset;
-    -webkit-text-fill-color: #101828;
-    text-fill-color: #101828;
-
-    @include mobile {
-      width: 100%;
-      height: auto;
-      font-size: 16px;
-      line-height: 24px;
-    }
-
-    @include tablet {
-      width: 720px;
-      height: 28px;
-      font-size: 18px;
-      line-height: 28px;
-    }
+  // Markets section - white text override
+  .help-center .faq--help-center.help-center--market .faq__title-text {
+    color: #ffffff !important;
   }
 
   // Specific override for MARKETS section to keep white text
@@ -1064,19 +1017,20 @@
   .help-center .faq--help-center.help-center--market .faq__title-text {
     all: unset;
     display: block;
-    width: 720px;
-    height: 28px;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
     font-family: "Sofia Pro", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 28px;
     color: #ffffff;
-    flex: none;
+    flex: 1;
     order: 0;
     align-self: stretch;
-    flex-grow: 0;
-    margin: 0;
+    flex-grow: 1;
+    margin: 0 16px 0 0;
     padding: 0;
     text-align: left;
     opacity: 1;
@@ -1085,20 +1039,82 @@
     -webkit-background-clip: unset;
     background-clip: unset;
     -webkit-text-fill-color: #ffffff;
-    text-fill-color: #ffffff;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     @include mobile {
       width: 100%;
+      max-width: 100%;
       height: auto;
       font-size: 16px;
       line-height: 24px;
+      flex: 1;
+      flex-grow: 1;
+      padding: 0;
+      white-space: normal;
+      text-overflow: unset;
     }
 
     @include tablet {
-      width: 720px;
-      height: 28px;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
       font-size: 18px;
       line-height: 28px;
+      flex: 1;
+      flex-grow: 1;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @include desktop-lg {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      font-size: 18px;
+      line-height: 28px;
+      flex: 1;
+      flex-grow: 1;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @include desktop-xl {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      font-size: 18px;
+      line-height: 28px;
+      flex: 1;
+      flex-grow: 1;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @include desktop-2k {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      font-size: 18px;
+      line-height: 28px;
+      flex: 1;
+      flex-grow: 1;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @include desktop-5k {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      font-size: 18px;
+      line-height: 28px;
+      flex: 1;
+      flex-grow: 1;
+      padding: 0;
+      box-sizing: border-box;
     }
   }
 
@@ -1280,7 +1296,7 @@
 // Maximum specificity override for MARKET section FAQ items
 .help-center .faq--help-center.help-center--market .faq__item:not(:first-child),
 .help-center .help-center__markets-section .faq__item:not(:first-child) {
-  border-top: 1px solid #adadad !important;
+  border-top: 1px solid #e4e7ec !important;
   padding-top: 26px !important;
 }
 
@@ -1394,6 +1410,22 @@
     @include mobile {
       font-size: 16px;
       line-height: 24px;
+    }
+  }
+}
+
+.help-center__our-community {
+  .our-community-content__title {
+    @include tablet {
+      font-size: 30px;
+    }
+
+    @include desktop-lg {
+      font-size: 40px;
+    }
+
+    @include desktop-xl {
+      font-size: 52px;
     }
   }
 }

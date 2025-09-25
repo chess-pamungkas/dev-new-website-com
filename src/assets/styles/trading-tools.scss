@@ -199,7 +199,7 @@
     @include desktop-5k {
       background: url("../../assets/images/bg/trading-tools/trading-tools-desktop.svg")
         no-repeat right center;
-      background-size: cover;
+      background-size: 100% 100%;
       background-color: transparent;
     }
   }

@@ -3,7 +3,7 @@
 
 .partners {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   color: map-get($colors, "white");
   display: flex;
   align-items: center;
@@ -29,28 +29,31 @@
   }
 
   @include tablet {
-    height: 575px;
+    height: 555px;
+    border-radius: 24px;
     padding-top: 70px;
+    padding-bottom: 0;
   }
 
   @include desktop-lg {
-    height: 655px;
+    height: 583px;
+    border-radius: 24px;
     padding-top: 83px;
     padding-bottom: 0;
   }
 
   @include desktop-xl {
-    height: 786px;
+    height: 583px;
     padding-top: 83px;
   }
 
   @include desktop-2k {
-    height: 786px;
+    height: 583px;
     padding-top: 83px;
   }
 
   @include desktop-5k {
-    height: 786px;
+    height: 583px;
     padding-top: 83px;
   }
 
@@ -77,68 +80,63 @@
       top: 73px;
       margin: 0 auto;
       border-radius: 20px;
-      overflow: hidden;
     }
 
     @include tablet {
       width: 768px;
       max-width: 768px;
-      height: 575px;
+      height: 555px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 73px;
       margin: 0 auto;
-      border-radius: 20px;
-      overflow: visible;
+      border-radius: 24px;
     }
 
     @include desktop-lg {
       width: calc(100vw - 20px);
       max-width: 1200px;
-      height: 575px;
+      height: 583px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 77px;
+      top: 83px;
       margin: 0 auto;
-      overflow: visible;
+      border-radius: 24px;
     }
 
     @include desktop-xl {
       width: calc(100vw - 120px);
       max-width: 1400px;
-      height: 686px;
+      height: 583px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 83px;
       margin: 0 auto;
-      overflow: visible;
     }
 
     @include desktop-2k {
       width: calc(100vw - 160px);
       max-width: 1600px;
-      height: 686px;
+      height: 583px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 83px;
       margin: 0 auto;
-      overflow: visible;
     }
 
     @include desktop-5k {
       width: calc(100vw - 200px);
       max-width: 2000px;
-      height: 686px;
+      height: 583px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 83px;
       margin: 0 auto;
-      overflow: visible;
     }
   }
 
@@ -172,7 +170,7 @@
 
     @include tablet {
       background: url("../../assets/images/bg/hero/partners/partners-desktop.svg")
-        no-repeat center center;
+        no-repeat 75% 100%;
       background-size: cover;
       background-color: transparent;
     }
@@ -220,16 +218,16 @@
     }
 
     @include tablet {
-      padding-top: 50px;
+      padding-top: 90px;
+      gap: 8px;
     }
 
     @include desktop-lg {
-      padding-top: 50px;
       max-width: 980px;
+      gap: 16px;
     }
 
     @include desktop-xl {
-      padding-top: 100px;
       max-width: 1280px;
     }
 
@@ -331,12 +329,12 @@
 
     @include tablet {
       font-size: 52px;
-      width: 100%;
+      width: 500px;
     }
 
     @include desktop-lg {
       font-size: 72px;
-      width: 758px;
+      width: 650px;
     }
 
     &--big {
@@ -347,7 +345,7 @@
       font-size: 72px;
       line-height: 83px; // Exact pixel value from Figma
       letter-spacing: -0.02em; // -2%
-      width: 758px;
+      width: 681px;
       height: 166px;
       background: linear-gradient(
           102.31deg,
@@ -430,28 +428,33 @@
     }
 
     @include tablet {
+      max-width: 350px;
       font-size: 18px;
       line-height: 28px;
     }
 
     @include desktop-lg {
+      max-width: 600px;
       font-size: 18px;
       line-height: 28px;
     }
 
     @include desktop-xl {
+      max-width: 600px;
       font-size: 18px;
       line-height: 28px;
     }
 
     @include desktop-2k {
-      font-size: 20px;
-      line-height: 30px;
+      max-width: 600px;
+      font-size: 18px;
+      line-height: 28px;
     }
 
     @include desktop-5k {
-      font-size: 22px;
-      line-height: 32px;
+      max-width: 600px;
+      font-size: 18px;
+      line-height: 28px;
     }
   }
 
@@ -490,6 +493,16 @@
     @include desktop-5k {
       max-width: 600px;
       gap: 40px;
+    }
+
+    .button-primary-hero {
+      @include tablet {
+        width: 150px;
+
+        &:hover {
+          width: 165px;
+        }
+      }
     }
   }
 
@@ -693,7 +706,7 @@
     @include desktop-lg {
       width: 393.48px;
       height: 30px;
-      margin-top: 143px;
+      margin-top: 30px;
     }
     @include desktop-xl {
       width: 393.48px;
@@ -774,10 +787,20 @@
 
 // Partners Page Features Products Custom Styling
 .partners-page {
-  margin-bottom: 75px;
+  position: relative;
+  width: 100%;
+  min-height: 862px;
+  background: transparent;
+  border-radius: 24px;
+  overflow: hidden;
+  margin: 48px 0;
 
   @include mobile {
-    margin-top: 80px;
+    margin: 0;
+  }
+
+  @include tablet {
+    padding-bottom: 40px;
   }
 
   .features-products {
@@ -787,13 +810,14 @@
     border-radius: 24px;
     overflow: hidden;
     margin: 0px auto;
+    padding: 0 0 40px;
 
     @include mobile {
       min-height: 1955px;
-      margin: 60px 0;
+      margin: 60px 0 20px;
     }
 
-    // Background styling similar to company-section-bg
+    // Background styling similar to account-comparison-bg
     &-bg {
       position: absolute;
       top: 0;
@@ -819,6 +843,23 @@
           object-fit: cover;
           object-position: center;
         }
+
+        @include tablet {
+          object-fit: cover;
+          object-position: center;
+          width: 100%;
+          height: 100%;
+        }
+
+        @include desktop-lg {
+          object-fit: cover;
+          object-position: center;
+        }
+
+        @include desktop-xl {
+          object-fit: cover;
+          object-position: bottom center;
+        }
       }
     }
 
@@ -841,6 +882,11 @@
     }
 
     &__header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 73px 20px 0;
+      gap: 16px;
       text-align: center;
       margin-bottom: 60px;
 
@@ -851,26 +897,24 @@
     }
 
     &__badge {
-      box-sizing: border-box;
       display: flex;
-      flex-direction: row;
       align-items: center;
-      padding: 6px 10px;
       gap: 12px;
-      width: fit-content;
-      height: 22px;
-      background: #0f0f0f;
-      mix-blend-mode: normal;
+      padding: 4px 10px;
+      background: rgba(15, 15, 15, 1);
       border: 1px solid rgba(255, 68, 0, 0.15);
       border-radius: 16px;
-      flex: none;
-      order: 0;
-      flex-grow: 0;
+      width: fit-content;
       margin: 0 auto;
       margin-bottom: 10px;
 
       @include mobile {
         margin-bottom: 10px;
+      }
+
+      img {
+        width: 14px;
+        height: 14px;
       }
     }
 
@@ -890,15 +934,10 @@
 
     &__badge-text {
       font-family: "Sofia Pro", Arial, sans-serif;
-      font-style: normal;
       font-weight: 500;
       font-size: 14px;
       line-height: 20px;
-      text-align: center;
-      color: #ffffff;
-      flex: none;
-      order: 1;
-      flex-grow: 0;
+      color: #fff;
 
       @include mobile {
         font-size: 14px;
@@ -909,9 +948,8 @@
     &__title {
       font-family: "Sofia Pro", Arial, sans-serif;
       font-style: normal;
-      font-weight: map-get($font-weight, "semibold");
+      font-weight: map-get($font-weight, semibold);
       font-size: 52px;
-      line-height: 1.3;
       text-align: center;
       letter-spacing: -0.02em;
       background: linear-gradient(
@@ -919,7 +957,7 @@
           rgba(255, 255, 255, 0) 9.12%,
           rgba(255, 68, 0, 0.45) 71.6%
         ),
-        #ffffff;
+        #fff;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -928,43 +966,83 @@
       order: 1;
       flex-grow: 0;
 
+      .highlight {
+        background: inherit;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
       @include mobile {
         font-size: 42px;
-        line-height: 1.325;
         align-self: stretch;
+        width: 100%;
+        height: auto;
       }
 
       @include tablet {
         font-size: 52px;
-        line-height: 1.3;
+        width: 100%;
+        height: auto;
       }
 
       @include desktop-lg {
         font-size: 52px;
-        line-height: 1.3;
+      }
+    }
+
+    &__subtitle {
+      font-weight: map-get($font-weight, regular);
+      font-size: 18px;
+      line-height: 28px;
+      color: #fff;
+      margin: 0;
+      max-width: 625px;
+      opacity: 0.7;
+      order: 2;
+
+      @include mobile {
+        font-size: 16px;
+        line-height: 24px;
+        max-width: 100%;
+      }
+
+      @include tablet {
+        font-size: 18px;
+        line-height: 28px;
+        max-width: 100%;
+      }
+
+      @include desktop-lg {
+        max-width: 625px;
       }
     }
 
     &__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      align-items: start;
+      display: flex;
+      gap: 27px;
+      padding: 42px 203px 0;
+      justify-content: center;
+      width: 100%;
+      margin: 0 auto;
 
       @include mobile {
         margin-top: 60px;
-        grid-template-columns: 1fr;
+        flex-direction: column;
         gap: 24px;
+        padding: 0 20px;
       }
 
       @include tablet {
-        grid-template-columns: repeat(2, 1fr);
+        flex-direction: column;
         gap: 32px;
+        padding: 0 40px;
       }
 
       @include desktop-lg {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
+        flex-direction: row;
+        gap: 27px;
+        padding: 42px 203px 0;
       }
     }
 
@@ -995,30 +1073,43 @@
     &__grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
+      gap: 13px;
       align-items: start;
 
       @include mobile {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 13px;
       }
 
       @include tablet {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 32px;
+        grid-template-columns: 1fr;
+        gap: 13px;
+        gap: 13px;
       }
 
       @include desktop-lg {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 13px;
+      }
+
+      @include desktop-xl {
         grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
+        gap: 13px;
       }
     }
 
     &__card {
-      background: transparent;
+      flex: 1;
+      min-height: 258px;
+      background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.05) 100%
+        ),
+        rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 16px;
       padding: 24px 28px;
-      min-height: 258px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       position: relative;
       overflow: hidden;

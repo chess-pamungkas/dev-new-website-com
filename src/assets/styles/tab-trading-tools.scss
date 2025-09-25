@@ -10,10 +10,15 @@
     padding: 125px 0 20px 0;
   }
 
-  &__container {
+  @include tablet {
+    padding: 150px 0 20px 0;
+  }
+  s &__container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
 
     @include mobile {
       max-width: 100%;
@@ -27,18 +32,43 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    width: 1239px;
+    width: 100%;
+    max-width: 1239px;
+    margin: 0 auto;
 
-    @include mobile {
+    @include tablet {
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      align-content: flex-start;
-      padding: 0;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 1239px;
+      margin: 0 auto;
+    }
+
+    @include desktop-lg {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 1239px;
+      margin: 0 auto;
+    }
+
+    @include mobile {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
       gap: 15px;
-      width: 353px;
-      height: 79px;
+      padding: 0;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      justify-items: center;
+      align-items: center;
     }
   }
 
@@ -56,6 +86,38 @@
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     width: 288px;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: #ffffff;
+      border: 1px solid rgba(255, 68, 0, 0.15);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      width: 288px;
+    }
+
+    @include desktop-lg {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: #ffffff;
+      border: 1px solid rgba(255, 68, 0, 0.15);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      width: 288px;
+    }
 
     @include mobile {
       box-sizing: border-box;

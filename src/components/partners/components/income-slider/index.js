@@ -44,7 +44,7 @@ const IncomeSlider = ({ className }) => {
       })}
       dir={isRTL ? DIR_RTL : DIR_LTR}
     >
-      <div className="income-slider__wrapper">
+      <div className="income-slider__wrapper container">
         {/* Badge */}
         <div className="income-slider__badge">
           <img
@@ -63,7 +63,7 @@ const IncomeSlider = ({ className }) => {
         </h2>
 
         {/* Main Container - Figma Horizontal Layout */}
-        <div className="income-slider__main-container">
+        <div className="income-slider__main-container container">
           {/* Mobile Stats Cards Container */}
           <div className="income-slider__stats-mobile">
             {/* Left Stats Card - Clients */}
@@ -80,7 +80,7 @@ const IncomeSlider = ({ className }) => {
             <div className="income-slider__stat-card income-slider__stat-card--income">
               <div className="income-slider__stat-content">
                 <h3 className="income-slider__stat-value income-slider__stat-value--income">
-                  $ {formatMoney(totalIncome)}
+                  $ {totalIncome}
                 </h3>
                 <p className="income-slider__stat-label">
                   {t(`partners_income-slider-income-note-fsa`)}
@@ -153,7 +153,7 @@ const IncomeSlider = ({ className }) => {
           <div className="income-slider__stat-card income-slider__stat-card--income income-slider__stat-card--desktop">
             <div className="income-slider__stat-content">
               <h3 className="income-slider__stat-value income-slider__stat-value--income">
-                $ {formatMoney(totalIncome)}
+                $ {totalIncome}
               </h3>
               <p className="income-slider__stat-label">
                 {t(`partners_income-slider-income-note-fsa`)}
