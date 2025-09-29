@@ -19,18 +19,4 @@ export const wrapPageElement = ({ element }) => {
 
   return element;
 };
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then((registration) => {
-        console.log(
-          "Service Worker registered with scope:",
-          registration.scope
-        );
-      })
-      .catch((registrationError) => {
-        console.log("Service Worker registration failed:", registrationError);
-      });
-  });
-}
+// Service worker registration removed to prevent warnings

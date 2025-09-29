@@ -24,7 +24,7 @@ import CommonContext from "../../context/common-context";
 import InternalLink from "../shared/internal-link";
 import CornerPanel from "./components/corner-panel";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
-import { setLangParam } from "../../helpers/services/language-service";
+import { useLangParam } from "../../helpers/services/language-service";
 import LangSelect from "./components/lang-select";
 import NavbarDropdownHighlight from "../shared/navbar-dropdown-highlight";
 import NavbarSubItem from "./components/navbar-sub-item";
@@ -44,9 +44,7 @@ const Header = ({ className }) => {
     isScrolled,
   } = useContext(CommonContext);
 
-  // Debug log for isScrolled
-  console.log("Header isScrolled:", isScrolled);
-  const langParam = setLangParam();
+  const langParam = useLangParam();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [openDropdownIndex, setOpenDropdownIndex] = useState(null);
   const [dropdownLocked, setDropdownLocked] = useState(false); // Add lock state
@@ -66,20 +64,11 @@ const Header = ({ className }) => {
   };
 
   const handleDropdownToggle = (idx) => {
-    console.log(
-      "[Header] handleDropdownToggle called with idx:",
-      idx,
-      "current openDropdownIndex:",
-      openDropdownIndex
-    );
-
     // Force immediate state update for switching between dropdowns
     if (openDropdownIndex === idx) {
-      console.log("[Header] Closing dropdown for idx:", idx);
       setOpenDropdownIndex(null);
       lastDropdownIndexRef.current = null;
     } else {
-      console.log("[Header] Opening dropdown for idx:", idx);
       // Immediately set the new index
       setOpenDropdownIndex(idx);
       lastDropdownIndexRef.current = idx;
@@ -332,7 +321,7 @@ const Header = ({ className }) => {
                 <div className="container">
                   <div className="navbar-item__dropdown-flex">
                     <NavbarDropdownHighlight
-                      menuType={activeMenuItem.title.toLowerCase()}
+                      menuType={activeMenuItem.title}
                       onOpenRegistrationPopup={handleShowRegistrationPopup}
                     />
                     <div className="navbar-item__dropdown-separator" />

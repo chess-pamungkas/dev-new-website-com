@@ -202,7 +202,7 @@ const NavbarDropdownHighlight = ({
 
 NavbarDropdownHighlight.propTypes = {
   className: PropTypes.string,
-  menuType: PropTypes.oneOf(["products", "trading", "platforms", "more"]),
+  menuType: PropTypes.string,
   onOpenRegistrationPopup: PropTypes.func,
 };
 

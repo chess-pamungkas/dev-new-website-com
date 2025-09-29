@@ -69,7 +69,9 @@ const Document = ({ className, document }) => {
           target="_blank"
           rel="noreferrer"
         >
-          <span className="document__view-pdf-text">View PDF</span>
+          <span className="document__view-pdf-text">
+            {t("legal_documents-btn")}
+          </span>
           <div className="document__view-pdf-icon">
             <ArrowIcon />
           </div>

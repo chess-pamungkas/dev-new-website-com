@@ -157,7 +157,7 @@ const iconMap = {
 export const getIcon = (iconName) => {
   const icon = iconMap[iconName.toLowerCase()];
   if (!icon) {
-    console.warn(`Icon not found for: ${iconName}`);
+    // console.warn(`Icon not found for: ${iconName}`);
   }
   return icon || null;
 };

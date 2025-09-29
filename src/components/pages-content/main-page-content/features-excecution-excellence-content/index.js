@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
+import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import FeaturesIcon from "../../../../assets/images/icons/main-page/features-execution-excellence/features.svg";
 import NavArrowLeft from "../../../../assets/images/icons/main-page/features-execution-excellence/nav-arrow-left.svg";
 import NavArrowRight from "../../../../assets/images/icons/main-page/features-execution-excellence/nav-arrow-right.svg";
@@ -13,9 +14,23 @@ import BadgeMarkIcon from "../../../../assets/images/icons/main-page/badge-mark.
 
 const FeaturesExecutionExcellence = () => {
   const { t } = useTranslationWithVariables();
+  const { isDesktop, isTablet, isMobile } = useWindowSize();
   const [scrollIndex, setScrollIndex] = useState(0);
   const cardContainerRef = useRef(null);
-  const visibleCards = 3;
+
+  // Calculate visible cards based on screen size
+  const getVisibleCards = () => {
+    if (isMobile) return 1;
+    if (isTablet) return 2;
+    return 3; // desktop
+  };
+
+  const visibleCards = getVisibleCards();
+
+  // Reset scroll index when screen size changes
+  useEffect(() => {
+    setScrollIndex(0);
+  }, [isDesktop, isTablet, isMobile]);
 
   const features = [
     {
@@ -80,12 +95,24 @@ const FeaturesExecutionExcellence = () => {
     if (newIndex > features.length - visibleCards)
       newIndex = features.length - visibleCards;
     setScrollIndex(newIndex);
+
     if (cardContainerRef.current) {
-      const cardWidth = cardContainerRef.current.firstChild.offsetWidth + 17; // 17px gap
-      cardContainerRef.current.scrollTo({
-        left: cardWidth * newIndex,
-        behavior: "smooth",
-      });
+      const container = cardContainerRef.current;
+      const firstCard = container.firstChild;
+
+      if (firstCard) {
+        const cardWidth = firstCard.offsetWidth;
+        const gap = 17; // gap between cards
+        const totalCardWidth = cardWidth + gap;
+
+        // Calculate scroll position to show the new index
+        const scrollLeft = totalCardWidth * newIndex;
+
+        container.scrollTo({
+          left: scrollLeft,
+          behavior: "smooth",
+        });
+      }
     }
   };
 

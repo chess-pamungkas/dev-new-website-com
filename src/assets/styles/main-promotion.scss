@@ -49,8 +49,6 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  // padding-top: 80px;
-  // padding-bottom: 100px;
   z-index: 2;
   left: 50%;
   right: 50%;
@@ -70,32 +68,26 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
 
   @include tablet {
     height: 575px;
-    // padding-top: 70px;
   }
 
   @include desktop-lg {
-    // padding-top: 83px;
-    padding-bottom: 0;
-    margin-bottom: 100px;
+    height: 686px;
+    margin-bottom: 0px;
   }
 
   @include desktop-xl {
-    height: 786px;
-    // padding-top: 83px;
-    // padding-bottom: 50px;
-    margin-bottom: 50px;
+    height: 686px;
+    margin-bottom: 0;
   }
 
   @include desktop-2k {
-    height: 786px;
-    // padding-top: 83px;
-    padding-bottom: 100px;
+    height: 686px;
+    margin-bottom: 0;
   }
 
   @include desktop-5k {
-    height: 786px;
-    // padding-top: 83px;
-    padding-bottom: 100px;
+    height: 686px;
+    margin-bottom: 0;
   }
 
   &__hero-container {

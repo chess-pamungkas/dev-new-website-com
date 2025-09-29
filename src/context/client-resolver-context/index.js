@@ -13,7 +13,7 @@ export const ClientResolverProvider = ({ children }) => {
   const [isPopupShown, setIsPopupShown] = useState(false);
 
   useEffect(() => {
-    if (currentEntity) {
+    if (currentEntity && API_URL) {
       axios
         .get(`${API_URL}client-detection?entity=${currentEntity}`)
         .then((response) => {
@@ -21,9 +21,20 @@ export const ClientResolverProvider = ({ children }) => {
           return response.data;
         })
         .then((clientConfig) => handleClient(clientConfig, setIsPopupShown))
-        .catch((error) =>
-          sendLog({ message: error.message, type: error.name })
-        );
+        .catch((error) => {
+          // Only log errors in development, suppress 500 errors from dev server
+          if (
+            process.env.NODE_ENV === "development" &&
+            error.response?.status === 500
+          ) {
+            console.warn(
+              "Client detection API temporarily unavailable:",
+              error.message
+            );
+          } else {
+            sendLog({ message: error.message, type: error.name });
+          }
+        });
     }
   }, [currentEntity]);
 

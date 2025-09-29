@@ -304,6 +304,13 @@ const Hero = ({
           warning: customWarningText || "index_main-promotion-warning",
           reviews: "index_main-promotion-reviews",
         };
+      case "system-info":
+        return {
+          badge: customBadgeText || "system-info_badge-text",
+          title: customTitle || "",
+          subtitle: customSubtitle || "",
+          primaryButton: customPrimaryButtonText || "",
+        };
       default: // main-promotion
         return {
           badge: customBadgeText || "index_main-promotion-badge",
@@ -540,6 +547,7 @@ Hero.propTypes = {
     "legal",
     "faq-hero",
     "spreads-fees",
+    "system-info",
   ]),
   customBadgeText: PropTypes.string,
   customTitle: PropTypes.string,

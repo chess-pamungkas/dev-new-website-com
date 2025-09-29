@@ -11,7 +11,7 @@ const LANG_CONFIG = [
   {
     id: "fr",
     icon: "FrFlagIcon",
-    name: "Français",
+    name: "Française",
     URIPart: "/fr",
   },
   // Brazilian
@@ -106,7 +106,7 @@ const CYSEC_LANG_CONFIG = [
   {
     id: "fr",
     icon: "FrFlagIcon",
-    name: "Français",
+    name: "Française",
     URIPart: "/fr",
   },
   // Spanish

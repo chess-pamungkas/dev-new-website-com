@@ -924,6 +924,10 @@
       height: 1.125rem;
       z-index: 10003; // Higher z-index for mobile
     }
+
+    @include desktop-2k {
+      right: 50px;
+    }
   }
 
   @include mobile {
@@ -1726,6 +1730,14 @@
     padding: 12px 16px; // Slightly smaller padding on mobile
     font-size: 14px; // Consistent font size on mobile
     line-height: 1.4; // Better line height for mobile
+  }
+
+  @include tablet {
+    width: 100%; // Full width on tablet
+  }
+
+  @include desktop-lg {
+    width: 260.5px;
   }
 }
 

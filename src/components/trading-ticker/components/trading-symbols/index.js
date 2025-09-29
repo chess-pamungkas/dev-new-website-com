@@ -144,7 +144,7 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
   useEffect(() => {
     const intervalId = setInterval(
       isRTL ? performScrollRTL : performScroll,
-      50
+      100 // Increased from 50ms to 100ms to reduce performance impact
     );
     return () => {
       clearInterval(intervalId);
@@ -232,9 +232,10 @@ TradingSymbols.propTypes = {
     PropTypes.shape({
       symbol: PropTypes.string.isRequired,
       direction: PropTypes.oneOf(["up", "down"]).isRequired,
-      bid: PropTypes.string.isRequired,
-      ask: PropTypes.string.isRequired,
-      spread: PropTypes.string.isRequired,
+      bid: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      ask: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      spread: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
     })
   ),
   uniqueId: PropTypes.string,
