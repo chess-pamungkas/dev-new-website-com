@@ -1234,5 +1234,23 @@
     flex-grow: 0;
   }
 
-  // ... rest of original styles preserved for hero functionality
+  &__button-container {
+    .button-primary-hero {
+      @include tablet {
+        width: 135px;
+
+        &:hover {
+          width: 150px;
+        }
+      }
+
+      @include desktop-lg {
+        width: 150px;
+
+        &:hover {
+          width: 165px;
+        }
+      }
+    }
+  }
 }

@@ -5,6 +5,7 @@ import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { DIR_LTR, DIR_RTL } from "../../../helpers/constants";
 import { ButtonPrimaryHero } from "../reusable-buttons";
+import fourZeroFourText from "../../../assets/images/bg/404/404-text.svg";
 
 const SystemInfoComponent = ({
   className,
@@ -56,6 +57,15 @@ const SystemInfoComponent = ({
                   />
                 </svg>
               </div>
+            </div>
+
+            {/* 404 Text Image */}
+            <div className="system-info__404-text-container">
+              <img
+                src={fourZeroFourText}
+                alt="404"
+                className="system-info__404-text"
+              />
             </div>
 
             {/* Subheading */}

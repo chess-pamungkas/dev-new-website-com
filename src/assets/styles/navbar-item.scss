@@ -9,8 +9,18 @@
   gap: 2px;
   color: map-get($colors, "navbar-text-grey");
   cursor: pointer;
+  flex: 0 1 auto; // Allow items to grow/shrink as needed
+  min-width: fit-content; // Ensure items can accommodate their content
+
+  @include desktop-lg {
+    padding: 27px 2px;
+  }
 
   @include desktop-xl {
+    padding: 27px 12px;
+  }
+
+  @include desktop-2k {
     padding: 27px 16px;
   }
 
@@ -93,6 +103,14 @@
     vertical-align: middle;
     position: relative;
     color: map-get($colors, "black");
+
+    @include desktop-lg {
+      margin-left: 5px !important;
+    }
+
+    @include desktop-xl {
+      margin-left: 10px !important;
+    }
   }
   &__icon {
     position: absolute;
@@ -148,8 +166,34 @@
       background: none;
       box-shadow: none;
       border: none;
-      margin: 0;
+      margin: 0 auto;
       padding: 0;
+
+      @include mobile {
+        max-width: 100%;
+        padding-left: $padding-sm;
+        padding-right: $padding-sm;
+      }
+
+      @include tablet {
+        max-width: 720px;
+      }
+
+      @include desktop-lg {
+        max-width: 1004px;
+      }
+
+      @include desktop-xl {
+        max-width: 1280px;
+      }
+
+      @include desktop-2k {
+        max-width: 1440px;
+      }
+
+      @include desktop-5k {
+        max-width: 1920px;
+      }
     }
 
     &-flex {
@@ -254,6 +298,17 @@
     font-weight: map-get($font-weight, "medium");
     font-size: 16px;
     line-height: 19px;
+    white-space: nowrap;
+
+    @include desktop-lg {
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    @include desktop-xl {
+      font-size: 16px;
+      line-height: 19px;
+    }
 
     &--black {
       color: map-get($colors, "black");
@@ -261,6 +316,9 @@
   }
 
   &--active {
+    position: relative;
+    flex-shrink: 0;
+
     .navbar-item__dropdown {
       visibility: visible;
       opacity: 1;
@@ -297,7 +355,7 @@
     align-items: center;
     color: map-get($colors, "navbar-text-grey");
     gap: 2px;
-    width: 100%;
+    width: auto;
     height: 100%;
     cursor: pointer;
     pointer-events: auto;

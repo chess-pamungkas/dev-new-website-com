@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
+import { navigate } from "gatsby";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import LanguageContext from "../../../context/language-context";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
@@ -38,9 +39,14 @@ const OurCommunityContent = ({
   const secondaryButtonText =
     customSecondaryButton || t("our_community_secondary_button");
 
-  // Use custom click handlers if provided, otherwise use default popup
+  // Use custom click handlers if provided, otherwise use default handlers
   const handlePrimaryClick = onPrimaryClick || handleShowRegistrationPopup;
-  const handleSecondaryClick = onSecondaryClick || handleShowRegistrationPopup;
+  // Default secondary button navigates to accounts-type page instead of opening popup
+  const handleSecondaryClick =
+    onSecondaryClick ||
+    (() => {
+      navigate("/accounts-type");
+    });
 
   return (
     <div className="our-community-content">

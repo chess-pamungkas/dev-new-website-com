@@ -59,6 +59,33 @@
     height: 100%;
     position: relative;
     margin: 0 auto;
+    min-width: 0; // Allow flex items to shrink
+
+    @include mobile {
+      max-width: 100%;
+      padding-left: $padding-sm;
+      padding-right: $padding-sm;
+    }
+
+    @include tablet {
+      max-width: 720px;
+    }
+
+    @include desktop-lg {
+      max-width: 1004px;
+    }
+
+    @include desktop-xl {
+      max-width: 1280px;
+    }
+
+    @include desktop-2k {
+      max-width: 1440px;
+    }
+
+    @include desktop-5k {
+      max-width: 1920px;
+    }
   }
 
   &--small {
@@ -73,6 +100,48 @@
     box-shadow: 0 8px 32px rgba(19, 40, 75, 0.08);
     // padding: 35px 32px;
     box-sizing: border-box;
+
+    // Apply same responsive widths for small header mode
+    .header__left {
+      @include desktop-lg {
+        min-width: 120px; // More space for logo
+      }
+    }
+
+    .header__right {
+      justify-content: flex-end; // Align content to the right
+      margin-left: auto; // Push container to the right edge
+      max-width: 380px; // Prevent overflow
+      gap: 8px; // Reduced gap to save space
+
+      @include desktop-lg {
+        max-width: 400px; // More space for longer translations
+        gap: 10px;
+      }
+
+      @include desktop-xl {
+        max-width: 450px; // Even more space on larger screens
+        gap: 12px;
+      }
+
+      @include desktop-2k {
+        max-width: 500px; // Maximum space on largest screens
+      }
+    }
+
+    .header__navigation {
+      @include desktop-lg {
+        min-width: 400px; // Ensure minimum space for navigation
+      }
+
+      @include desktop-xl {
+        min-width: 500px; // More space for longer translations
+      }
+
+      @include desktop-2k {
+        min-width: 600px; // Maximum space on largest screens
+      }
+    }
 
     @include mobile {
       margin-top: 0 !important;
@@ -125,12 +194,12 @@
         position: relative;
         margin: 0 auto;
       }
-      .header__left,
-      .header__center,
-      .header__right {
-        min-width: auto;
-        flex-basis: auto;
-      }
+      // .header__left,
+      // .header__center,
+      // .header__right {
+      //   min-width: auto;
+      //   flex-basis: auto;
+      // }
       .header__center {
         justify-content: center;
         padding: 0;
@@ -140,7 +209,7 @@
       }
     }
     @include desktop-lg {
-      max-width: calc(980px + 44px) !important;
+      max-width: calc(1004px + 44px) !important;
       margin-top: 8px !important;
       top: 8px !important;
     }
@@ -217,34 +286,68 @@
   }
 
   &__left {
-    flex: 0 1 auto;
-    min-width: 120px;
+    flex: 0 0 auto; // Don't grow or shrink
+    min-width: 120px; // Increased from 120px
     display: flex;
     align-items: center;
+
+    @include desktop-lg {
+      min-width: 120px; // More space for logo
+    }
   }
 
   &__right {
-    flex: 0 1 auto;
-    min-width: 120px;
+    flex: 0 1 auto; // Allow to shrink if needed
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: flex-end; // Align content to the right
+    gap: 8px; // Reduced gap to save space
+    margin-left: auto; // Push container to the right edge
+    max-width: 380px; // Prevent overflow
+
+    @include desktop-lg {
+      max-width: 400px; // More space for longer translations
+      gap: 10px;
+    }
+
+    @include desktop-xl {
+      max-width: 450px; // Even more space on larger screens
+      gap: 12px;
+    }
+
+    @include desktop-2k {
+      max-width: 500px; // Maximum space on largest screens
+    }
   }
 
   &__signin {
-    margin-left: 15px;
-    font-size: 16px;
+    margin-left: 8px;
+    font-size: 14px;
     font-weight: map-get($font-weight, "medium");
     justify-content: center;
     vertical-align: middle;
-    padding: 16px;
+    padding: 12px;
     color: map-get($colors, "black");
     background-color: rgba(255, 68, 0, 0.15);
     border: 1px solid rgba(255, 68, 0, 0.15);
     border-radius: 8px;
-    width: 94px;
+    width: fit-content !important;
+    min-width: 80px;
     height: 38px;
     transition: all 0.2s ease;
+    white-space: nowrap;
+
+    @include desktop-lg {
+      margin-left: 6px;
+      font-size: 14px !important;
+      min-width: 85px;
+    }
+
+    @include desktop-xl {
+      margin-left: 15px !important;
+      font-size: 16px !important;
+      min-width: 90px;
+    }
 
     &--red {
       color: map-get($colors, "red");
@@ -265,18 +368,38 @@
   }
 
   &__start {
-    margin-left: 10px;
-    font-size: 16px;
+    margin-left: 8px;
+    font-size: 14px;
     font-weight: map-get($font-weight, "medium");
     justify-content: center;
     vertical-align: middle;
-    padding: 16px;
+    padding: 12px;
     background-color: map-get($colors, "red");
     color: map-get($colors, "white");
     border-radius: 8px;
-    width: 94px;
+    width: auto;
+    min-width: 90px;
     height: 38px;
     transition: all 0.2s ease;
+    white-space: nowrap;
+
+    @include desktop-lg {
+      margin-left: 6px;
+      font-size: 14px;
+      min-width: 95px;
+    }
+
+    @include desktop-xl {
+      margin-left: 10px;
+      font-size: 15px;
+      min-width: 100px;
+    }
+
+    @include desktop-2k {
+      margin-left: 12px;
+      font-size: 16px;
+      min-width: 105px;
+    }
 
     &--red {
       background-color: map-get($colors, "red");
@@ -302,6 +425,20 @@
     @include desktop-lg {
       display: flex;
       align-self: stretch;
+      flex-wrap: nowrap;
+      gap: 0;
+      align-items: center;
+      justify-content: center;
+      flex: 1 1 auto; // Allow navigation to grow/shrink
+      min-width: 400px; // Ensure minimum space for navigation
+    }
+
+    @include desktop-xl {
+      min-width: 500px; // More space for longer translations
+    }
+
+    @include desktop-2k {
+      min-width: 600px; // Maximum space on largest screens
     }
 
     // Navigation text colors based on header state
@@ -367,6 +504,7 @@
     }
   }
 }
+
 .header-dropdown-card-wrapper {
   position: absolute;
   top: 100%;
@@ -409,7 +547,7 @@
     }
 
     @include desktop-lg {
-      max-width: 1024px;
+      max-width: 1048px;
     }
 
     @include desktop-xl {
@@ -436,7 +574,7 @@
     }
 
     @include desktop-lg {
-      max-width: calc(980px + 44px) !important;
+      max-width: calc(1004px + 44px) !important;
     }
 
     @include desktop-xl {
@@ -460,6 +598,33 @@
   height: 76px;
   display: flex;
   align-items: center;
+  margin: 0 auto;
+
+  @include mobile {
+    max-width: 100%;
+    padding-left: $padding-sm;
+    padding-right: $padding-sm;
+  }
+
+  @include tablet {
+    max-width: 720px;
+  }
+
+  @include desktop-lg {
+    max-width: 1004px;
+  }
+
+  @include desktop-xl {
+    max-width: 1280px;
+  }
+
+  @include desktop-2k {
+    max-width: 1440px;
+  }
+
+  @include desktop-5k {
+    max-width: 1920px;
+  }
 }
 
 .dropdown-content {
@@ -492,4 +657,12 @@
     max-width: 3500px;
     padding: 35px 0;
   }
+}
+
+// Utility class for handling long translations
+.header__text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }

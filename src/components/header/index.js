@@ -112,10 +112,7 @@ const Header = ({ className }) => {
             height: "100%",
           }}
         > */}
-        <div
-          className="header__main-wrapper container"
-          ref={headerMainWrapperRef}
-        >
+        <div className="header__main-wrapper" ref={headerMainWrapperRef}>
           <div className="header__left">
             <InternalLink to={HOME_PAGE_LINK}>
               {isDesktop && <LogoTextMain className="header__logo" />}
@@ -189,234 +186,233 @@ const Header = ({ className }) => {
           >
             {/* Header content inside the card */}
             <div className="header-content">
-              <div className="container">
-                <div className="header__main-wrapper">
-                  <div className="header__left">
-                    <InternalLink to={HOME_PAGE_LINK}>
-                      {isDesktop && <LogoTextMain className="header__logo" />}
-                      {isTablet && <LogoTextMain className="header__logo" />}
-                    </InternalLink>
-                  </div>
-                  <div className="header__center">
-                    <ul className="header__navigation">
-                      {menu.map(
-                        (item, idx) =>
-                          !item.mobileOnly &&
-                          (item.isPartners ? (
-                            <a
-                              key={`dropdown-header-menu-${stringTransformToKebabCase(
-                                item.title
-                              )}`}
-                              href={item.link}
-                              className={cn(
-                                "navbar-item__title navbar-item__partners-link navbar-item",
-                                {
-                                  "navbar-item--active":
-                                    openDropdownIndex === idx,
-                                }
-                              )}
-                              style={{ display: "flex", alignItems: "center" }}
-                              onMouseEnter={() =>
-                                setPartnersDropdownHovered(true)
-                              }
-                              onMouseLeave={() =>
-                                setPartnersDropdownHovered(false)
-                              }
-                            >
-                              {t(item.title)}
-                              <span className="navbar-item__icon-wrapper">
-                                <PartnersNavIcon
-                                  className={cn(
-                                    "navbar-item__icon navbar-item__icon--partners"
-                                  )}
-                                  color={
-                                    partnersDropdownHovered
-                                      ? "#FF4400"
-                                      : "#B6B6B6"
-                                  }
-                                />
-                              </span>
-                            </a>
-                          ) : (
-                            <li
-                              key={`dropdown-header-menu-${stringTransformToKebabCase(
-                                item.title
-                              )}`}
-                              className={cn("navbar-item", {
+              {/* <div className="container"> */}
+              <div className="header__main-wrapper">
+                <div className="header__left">
+                  <InternalLink to={HOME_PAGE_LINK}>
+                    {isDesktop && <LogoTextMain className="header__logo" />}
+                    {isTablet && <LogoTextMain className="header__logo" />}
+                  </InternalLink>
+                </div>
+                <div className="header__center">
+                  <ul className="header__navigation">
+                    {menu.map(
+                      (item, idx) =>
+                        !item.mobileOnly &&
+                        (item.isPartners ? (
+                          <a
+                            key={`dropdown-header-menu-${stringTransformToKebabCase(
+                              item.title
+                            )}`}
+                            href={item.link}
+                            className={cn(
+                              "navbar-item__title navbar-item__partners-link navbar-item",
+                              {
                                 "navbar-item--active":
                                   openDropdownIndex === idx,
+                              }
+                            )}
+                            style={{ display: "flex", alignItems: "center" }}
+                            onMouseEnter={() =>
+                              setPartnersDropdownHovered(true)
+                            }
+                            onMouseLeave={() =>
+                              setPartnersDropdownHovered(false)
+                            }
+                          >
+                            {t(item.title)}
+                            <span className="navbar-item__icon-wrapper">
+                              <PartnersNavIcon
+                                className={cn(
+                                  "navbar-item__icon navbar-item__icon--partners"
+                                )}
+                                color={
+                                  partnersDropdownHovered
+                                    ? "#FF4400"
+                                    : "#B6B6B6"
+                                }
+                              />
+                            </span>
+                          </a>
+                        ) : (
+                          <li
+                            key={`dropdown-header-menu-${stringTransformToKebabCase(
+                              item.title
+                            )}`}
+                            className={cn("navbar-item", {
+                              "navbar-item--active": openDropdownIndex === idx,
+                            })}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDropdownToggle(idx);
+                            }}
+                          >
+                            <span
+                              className={cn("navbar-item__title", {
+                                "navbar-item__title--black":
+                                  openDropdownIndex === idx,
                               })}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleDropdownToggle(idx);
+                            >
+                              {t(item.title)}
+                            </span>
+                            <span
+                              className="navbar-item__icon-wrapper"
+                              style={{
+                                position: "relative",
+                                width: 16,
+                                height: 16,
                               }}
                             >
-                              <span
-                                className={cn("navbar-item__title", {
-                                  "navbar-item__title--black":
-                                    openDropdownIndex === idx,
-                                })}
-                              >
-                                {t(item.title)}
-                              </span>
-                              <span
-                                className="navbar-item__icon-wrapper"
-                                style={{
-                                  position: "relative",
-                                  width: 16,
-                                  height: 16,
-                                }}
-                              >
-                                <ChevronDownIcon
-                                  className={cn(
-                                    "navbar-item__icon",
-                                    "navbar-item__icon--down",
-                                    {
-                                      rotated: openDropdownIndex === idx,
-                                    }
-                                  )}
-                                  color="#000000"
-                                />
-                              </span>
-                            </li>
-                          ))
+                              <ChevronDownIcon
+                                className={cn(
+                                  "navbar-item__icon",
+                                  "navbar-item__icon--down",
+                                  {
+                                    rotated: openDropdownIndex === idx,
+                                  }
+                                )}
+                                color="#000000"
+                              />
+                            </span>
+                          </li>
+                        ))
+                    )}
+                  </ul>
+                </div>
+                {/* Mobile navigation */}
+                <div className="header__right">
+                  <div className="header__controls">
+                    <LangSelect
+                      className="lang-select--header"
+                      isHeader={true}
+                      key="dropdown-lang-select"
+                    />
+                    <ButtonLink
+                      link={GetLoginLink()}
+                      className={cn(
+                        "button-link--header button-link--ghost header__signin",
+                        { "header__signin--red": isScrolled }
                       )}
-                    </ul>
+                    >
+                      {t("button-sign-in")}
+                    </ButtonLink>
+                    <ButtonPopup
+                      className={cn("button-link--header header__start", {
+                        "header__start--red": isScrolled,
+                      })}
+                      onClick={handleShowRegistrationPopup}
+                    >
+                      {t("button-get-started")}
+                    </ButtonPopup>
                   </div>
-                  {/* Mobile navigation */}
-                  <div className="header__right">
-                    <div className="header__controls">
-                      <LangSelect
-                        className="lang-select--header"
-                        isHeader={true}
-                        key="dropdown-lang-select"
-                      />
-                      <ButtonLink
-                        link={GetLoginLink()}
-                        className={cn(
-                          "button-link--header button-link--ghost header__signin",
-                          { "header__signin--red": isScrolled }
-                        )}
-                      >
-                        {t("button-sign-in")}
-                      </ButtonLink>
-                      <ButtonPopup
-                        className={cn("button-link--header header__start", {
-                          "header__start--red": isScrolled,
-                        })}
-                        onClick={handleShowRegistrationPopup}
-                      >
-                        {t("button-get-started")}
-                      </ButtonPopup>
-                    </div>
-                    <BurgerMenu />
-                  </div>
+                  <BurgerMenu />
                 </div>
               </div>
+              {/* </div> */}
             </div>
 
             {/* Dropdown content inside the same card */}
             <div className="dropdown-content">
               <div className="navbar-item__dropdown navbar-item__dropdown--visible">
-                <div className="container">
-                  <div className="navbar-item__dropdown-flex">
-                    <NavbarDropdownHighlight
-                      menuType={activeMenuItem.title}
-                      onOpenRegistrationPopup={handleShowRegistrationPopup}
-                    />
-                    <div className="navbar-item__dropdown-separator" />
-                    <div className="navbar-item__dropdown-content">
-                      {(() => {
-                        const items = activeMenuItem.subItems.filter(
-                          (item) => !item.footerOnly
-                        );
-                        const count = items.length;
-                        let left = [],
-                          right = [],
-                          showSeparator = false;
-                        if (count === 8) {
-                          left = items.slice(0, 4);
-                          right = items.slice(4, 8);
-                        } else if (count === 6) {
-                          left = items.slice(0, 3);
-                          right = items.slice(3, 6);
-                        } else if (count === 2) {
-                          left = [items[0]];
-                          right = [items[1]];
-                          showSeparator = true;
-                        } else if (count === 5) {
-                          left = items.slice(0, 3);
-                          right = items.slice(3, 5);
-                        } else {
-                          // fallback: split evenly
-                          const mid = Math.ceil(count / 2);
-                          left = items.slice(0, mid);
-                          right = items.slice(mid);
-                        }
-                        if (left.length < right.length) {
-                          while (left.length < right.length)
-                            left.push({ empty: true });
-                        } else if (right.length < left.length) {
-                          while (right.length < left.length)
-                            right.push({ empty: true });
-                        }
-                        return (
-                          <div
-                            className={`navbar-item__dropdown-columns navbar-item__dropdown-columns--grid${
-                              showSeparator
-                                ? " navbar-item__dropdown-columns--with-separator"
-                                : ""
-                            }`}
-                          >
-                            <div className="navbar-item__dropdown-column">
-                              {left.map((subItem, idx) =>
-                                subItem.empty ? (
-                                  <li
-                                    className="dropdown-item dropdown-item--empty navbar-item__dropdown-card"
-                                    key={`empty-left-${idx}`}
-                                  ></li>
-                                ) : (
-                                  <NavbarSubItem
-                                    key={`header-menu-${stringTransformToKebabCase(
-                                      subItem.title
-                                    )}`}
-                                    subItem={subItem}
-                                    onClick={handleCloseDropdown}
-                                    className="navbar-item__dropdown-card"
-                                    isTwoItemsLayout={count === 2}
-                                  />
-                                )
-                              )}
-                            </div>
-                            {showSeparator && (
-                              <div className="navbar-item__dropdown-separator navbar-item__dropdown-separator--column" />
+                {/* <div className="container"> */}
+                <div className="navbar-item__dropdown-flex">
+                  <NavbarDropdownHighlight
+                    menuType={activeMenuItem.title}
+                    onOpenRegistrationPopup={handleShowRegistrationPopup}
+                  />
+                  <div className="navbar-item__dropdown-separator" />
+                  <div className="navbar-item__dropdown-content">
+                    {(() => {
+                      const items = activeMenuItem.subItems.filter(
+                        (item) => !item.footerOnly
+                      );
+                      const count = items.length;
+                      let left = [],
+                        right = [],
+                        showSeparator = false;
+                      if (count === 8) {
+                        left = items.slice(0, 4);
+                        right = items.slice(4, 8);
+                      } else if (count === 6) {
+                        left = items.slice(0, 3);
+                        right = items.slice(3, 6);
+                      } else if (count === 2) {
+                        left = [items[0]];
+                        right = [items[1]];
+                        showSeparator = true;
+                      } else if (count === 5) {
+                        left = items.slice(0, 3);
+                        right = items.slice(3, 5);
+                      } else {
+                        // fallback: split evenly
+                        const mid = Math.ceil(count / 2);
+                        left = items.slice(0, mid);
+                        right = items.slice(mid);
+                      }
+                      if (left.length < right.length) {
+                        while (left.length < right.length)
+                          left.push({ empty: true });
+                      } else if (right.length < left.length) {
+                        while (right.length < left.length)
+                          right.push({ empty: true });
+                      }
+                      return (
+                        <div
+                          className={`navbar-item__dropdown-columns navbar-item__dropdown-columns--grid${
+                            showSeparator
+                              ? " navbar-item__dropdown-columns--with-separator"
+                              : ""
+                          }`}
+                        >
+                          <div className="navbar-item__dropdown-column">
+                            {left.map((subItem, idx) =>
+                              subItem.empty ? (
+                                <li
+                                  className="dropdown-item dropdown-item--empty navbar-item__dropdown-card"
+                                  key={`empty-left-${idx}`}
+                                ></li>
+                              ) : (
+                                <NavbarSubItem
+                                  key={`header-menu-${stringTransformToKebabCase(
+                                    subItem.title
+                                  )}`}
+                                  subItem={subItem}
+                                  onClick={handleCloseDropdown}
+                                  className="navbar-item__dropdown-card"
+                                  isTwoItemsLayout={count === 2}
+                                />
+                              )
                             )}
-                            <div className="navbar-item__dropdown-column">
-                              {right.map((subItem, idx) =>
-                                subItem.empty ? (
-                                  <li
-                                    className="dropdown-item dropdown-item--empty navbar-item__dropdown-card"
-                                    key={`empty-right-${idx}`}
-                                  ></li>
-                                ) : (
-                                  <NavbarSubItem
-                                    key={`header-menu-${stringTransformToKebabCase(
-                                      subItem.title
-                                    )}`}
-                                    subItem={subItem}
-                                    onClick={handleCloseDropdown}
-                                    className="navbar-item__dropdown-card"
-                                    isTwoItemsLayout={count === 2}
-                                  />
-                                )
-                              )}
-                            </div>
                           </div>
-                        );
-                      })()}
-                    </div>
+                          {showSeparator && (
+                            <div className="navbar-item__dropdown-separator navbar-item__dropdown-separator--column" />
+                          )}
+                          <div className="navbar-item__dropdown-column">
+                            {right.map((subItem, idx) =>
+                              subItem.empty ? (
+                                <li
+                                  className="dropdown-item dropdown-item--empty navbar-item__dropdown-card"
+                                  key={`empty-right-${idx}`}
+                                ></li>
+                              ) : (
+                                <NavbarSubItem
+                                  key={`header-menu-${stringTransformToKebabCase(
+                                    subItem.title
+                                  )}`}
+                                  subItem={subItem}
+                                  onClick={handleCloseDropdown}
+                                  className="navbar-item__dropdown-card"
+                                  isTwoItemsLayout={count === 2}
+                                />
+                              )
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })()}
                   </div>
                 </div>
+                {/* </div> */}
               </div>
             </div>
           </div>

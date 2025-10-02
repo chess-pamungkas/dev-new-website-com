@@ -118,6 +118,14 @@
     gap: 10px;
     height: 19px;
   }
+
+  @include desktop-lg {
+    padding: 0;
+  }
+
+  @include desktop-xl {
+    padding: 0 8px;
+  }
 }
 
 .lang-select__flag {

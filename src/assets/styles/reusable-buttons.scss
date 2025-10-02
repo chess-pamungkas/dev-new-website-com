@@ -68,7 +68,7 @@
 // ========================================
 .button-primary-hero {
   @extend .reusable-button;
-  width: 167px;
+  width: fit-content;
   background: #fff;
   color: map-get($colors, "black");
   box-shadow: 0px 0px 19.3px rgba(255, 68, 0, 0.5);
@@ -94,15 +94,15 @@
     font-size: 20px;
   }
 
-  @include tablet {
-    width: 145px;
-    font-size: 16px;
-  }
+  // @include tablet {
+  //   width: 145px;
+  //   font-size: 16px;
+  // }
 
-  @include desktop-lg {
-    width: 167px;
-    font-size: 20px;
-  }
+  // @include desktop-lg {
+  //   width: 167px;
+  //   font-size: 20px;
+  // }
 
   .button-text {
     position: relative;
@@ -122,8 +122,9 @@
   }
 
   .button-arrow {
-    opacity: 0;
+    // opacity: 0;
     // width: 0;
+    display: none;
     margin-left: 0; // Add spacing between text and arrow
     margin-top: 4px;
     transition: opacity 0.2s, width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
@@ -138,13 +139,14 @@
       transform: none;
       margin-left: 0;
       width: 0; // Ensure arrow takes no space on mobile before hover
-      opacity: 0; // Ensure arrow is completely hidden on mobile before hover
+      // opacity: 0; // Ensure arrow is completely hidden on mobile before hover
+      display: none;
     }
   }
 
   &:hover,
   &:focus {
-    width: 240px; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
+    width: fit-content; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
     background: #ff4400;
     color: map-get($colors, "black") !important;
     box-shadow: 0 0 19.3px 0 rgba(255, 68, 0, 0.5);
@@ -156,28 +158,29 @@
       overflow: hidden; // Hide overflow on mobile for proper centering
     }
 
-    @include tablet {
-      width: 160px;
-    }
+    // @include tablet {
+    //   width: 160px;
+    // }
 
-    @include desktop-lg {
-      width: 240px;
-    }
+    // @include desktop-lg {
+    //   width: 240px;
+    // }
 
-    @include desktop-xl {
-      width: 240px;
-    }
+    // @include desktop-xl {
+    //   width: 240px;
+    // }
 
-    @include desktop-2k {
-      width: 190px;
-    }
+    // @include desktop-2k {
+    //   width: 190px;
+    // }
 
-    @include desktop-5k {
-      width: 190px;
-    }
+    // @include desktop-5k {
+    //   width: 190px;
+    // }
 
     .button-arrow {
-      opacity: 1;
+      // opacity: 1;
+      display: flex;
       width: 24px;
       margin-left: 0; // Add spacing between text and arrow
       margin-top: 4px;
@@ -336,7 +339,8 @@
   }
 
   .button-arrow {
-    opacity: 0;
+    // opacity: 0;
+    display: none;
     width: 0;
     margin-left: 0;
     margin-top: 4px;
@@ -369,7 +373,8 @@
     }
 
     .button-arrow {
-      opacity: 1;
+      // opacity: 1;
+      display: flex;
       width: 24px;
       margin-left: 0; // Add spacing between text and arrow
       margin-top: 4px;
@@ -481,7 +486,8 @@
   }
 
   .button-arrow {
-    opacity: 0;
+    // opacity: 0;
+    display: none;
     width: 0;
     margin-left: 0;
     margin-top: 4px;
@@ -526,7 +532,8 @@
     }
 
     .button-arrow {
-      opacity: 1;
+      // opacity: 1;
+      display: flex;
       width: 24px;
       margin-left: 0; // Add spacing between text and arrow
       margin-top: 4px;
@@ -623,9 +630,10 @@
   }
 
   .button-arrow {
-    display: flex;
+    // display: flex;
     align-items: center;
-    opacity: 0;
+    // opacity: 0;
+    display: none;
     width: 0;
     margin-left: 0;
     margin-top: 4px;
@@ -649,7 +657,8 @@
     }
 
     .button-arrow {
-      opacity: 1;
+      // opacity: 1;
+      display: flex;
       width: 24px;
       margin-left: 0;
       margin-top: 4px;
@@ -685,9 +694,10 @@
   }
 
   .button-arrow {
-    display: flex;
+    // display: flex;
     align-items: center;
-    opacity: 1;
+    // opacity: 1;
+    display: none;
     width: 11px;
     margin-left: 0;
     margin-top: 4px;
@@ -706,7 +716,8 @@
     background: transparent;
 
     .button-arrow {
-      opacity: 1;
+      // opacity: 1;
+      display: flex;
       width: 24px;
       margin-left: 0;
       margin-top: 4px;

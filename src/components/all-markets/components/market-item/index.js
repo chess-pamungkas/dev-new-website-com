@@ -102,7 +102,6 @@ const MarketItem = ({
               />
               <div className="market-item__trading-ticker-wrapper">
                 <TradingTicker
-                  title={t(`forex_trading-ticker-title-fsa`)}
                   pageSpecificSection={getTradingSection(title)}
                   uniqueId={`market-item-${index}-${title.toLowerCase()}`}
                 />
@@ -134,7 +133,6 @@ const MarketItem = ({
                   {!isTablet ? (
                     <div className="market-item__trading-ticker-wrapper">
                       <TradingTicker
-                        title={t(`forex_trading-ticker-title-fsa`)}
                         pageSpecificSection={getTradingSection(title)}
                         uniqueId={`market-item-${index}-${title.toLowerCase()}`}
                       />
@@ -150,7 +148,6 @@ const MarketItem = ({
                 {isTablet ? (
                   <div className="market-item__trading-ticker-wrapper">
                     <TradingTicker
-                      title={t(`forex_trading-ticker-title-fsa`)}
                       pageSpecificSection={getTradingSection(title)}
                       uniqueId={`market-item-${index}-${title.toLowerCase()}`}
                     />
@@ -182,7 +179,6 @@ const MarketItem = ({
                   {!isTablet ? (
                     <div className="market-item__trading-ticker-wrapper">
                       <TradingTicker
-                        title={t(`forex_trading-ticker-title-fsa`)}
                         pageSpecificSection={getTradingSection(title)}
                         uniqueId={`market-item-${index}-${title.toLowerCase()}`}
                       />
@@ -192,7 +188,6 @@ const MarketItem = ({
                 {isTablet ? (
                   <div className="market-item__trading-ticker-wrapper">
                     <TradingTicker
-                      title={t(`forex_trading-ticker-title-fsa`)}
                       pageSpecificSection={getTradingSection(title)}
                       uniqueId={`market-item-${index}-${title.toLowerCase()}`}
                     />

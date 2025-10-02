@@ -1,4 +1,5 @@
 import React from "react";
+import { navigate } from "gatsby";
 import { ButtonContainer } from "../reusable-buttons";
 import {
   ButtonPrimaryCommunity,
@@ -18,6 +19,13 @@ export const CommunityButtons = ({
   const primaryText = customPrimaryButton || "Open Demo Account";
   const secondaryText = customSecondaryButton || "Compare Account Types";
 
+  // Default secondary button click handler - navigate to accounts-type page
+  const handleSecondaryClick =
+    onSecondaryClick ||
+    (() => {
+      navigate("/accounts-type");
+    });
+
   return (
     <ButtonContainer>
       <ButtonPrimaryCommunity
@@ -27,7 +35,7 @@ export const CommunityButtons = ({
       />
       <ButtonSecondaryCommunity
         text={secondaryText}
-        onClick={onSecondaryClick}
+        onClick={handleSecondaryClick}
         disabled={disabled}
       />
     </ButtonContainer>

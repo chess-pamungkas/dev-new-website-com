@@ -271,7 +271,7 @@
     }
 
     @include desktop-lg {
-      margin-bottom: 400px;
+      margin-bottom: 150px;
     }
   }
 
@@ -345,6 +345,29 @@
       height: 136px;
       filter: blur(1.84px);
     }
+  }
+
+  &__404-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+
+    @include mobile {
+      margin-bottom: 0;
+    }
+
+    @include tablet {
+      margin-bottom: 35px;
+    }
+  }
+
+  &__404-text {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 
   &__subheading {

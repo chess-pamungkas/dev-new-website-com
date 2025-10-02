@@ -69,8 +69,6 @@ export const PORTAL_LANGUAGES_MAP = {
   zh: "zh-Hant",
   id: "id",
   jp: "ja",
-  pt: "pt",
-  de: "de",
   my: "ms",
   ar: "ar",
 };

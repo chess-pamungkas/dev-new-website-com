@@ -567,11 +567,11 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
     @include tablet {
       font-size: 42px;
       width: 100%;
-      width: 758px;
     }
 
     @include desktop-lg {
       font-size: 58px;
+      width: 925px;
     }
 
     @include desktop-xl {

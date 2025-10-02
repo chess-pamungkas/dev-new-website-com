@@ -17,9 +17,18 @@
 
   // Responsive
   @include desktop-lg {
+    width: 38%;
     min-width: 180px;
     // max-width: 220px;
-    padding: 14px 10px;
+    padding: 14px 0;
+  }
+
+  // Responsive
+  @include desktop-xl {
+    width: 45%;
+    min-width: 180px;
+    // max-width: 220px;
+    padding: 14px 0;
   }
 
   // Inner wrapper
@@ -36,7 +45,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 111px;
+    width: fit-content;
     height: 26px;
     background: rgba(255, 68, 0, 0.1) !important;
     border: 1px solid rgba(255, 68, 0, 0.15) !important;
@@ -162,6 +171,15 @@
     box-sizing: border-box;
     white-space: nowrap;
     // min-width: 167px;
+
+    @include desktop-lg {
+      font-size: 16px;
+    }
+
+    @include desktop-xl {
+      font-size: 18px;
+    }
+
     .navbar-dropdown-highlight__button-text {
       white-space: nowrap;
     }
@@ -171,7 +189,7 @@
       color: #fff;
       border: none;
       box-shadow: 0 1px 4px rgba(255, 68, 0, 0.08);
-      width: 167px;
+      width: fit-content;
       height: 51px;
       padding: 0 24px;
       position: relative;
@@ -182,8 +200,6 @@
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
-      padding-left: 24px; // Add left padding to position text correctly
-      padding-right: 0; // Reset right padding
 
       .navbar-dropdown-highlight__button-text {
         transition: color 0.3s;
@@ -214,7 +230,7 @@
     }
     &--primary:hover,
     &--primary:focus {
-      width: 180px; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
+      width: fit-content; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
       background: #ff4400;
       color: #fff;
       box-shadow: 0 0 19.3px 0 rgba(255, 68, 0, 0.5);
