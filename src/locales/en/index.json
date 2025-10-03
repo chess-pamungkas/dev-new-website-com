@@ -96,17 +96,6 @@
   "index_main-promotion-animated-text-you": "You",
   "index_main-promotion-hero-gianluigi-buffon-name": "Gianluigi Buffon",
 
-  "index_main-promotion-hero-gianluigi-buffon-text-fsa": "World Cup Champion Legend & Passionate Trader: Uses OQtima to trade",
-  "index_main-promotion-hero-sea-name": "Sea",
-  "index_main-promotion-hero-sea-text": "World Champion Legend - OQtima Brand Ambassador",
-  "index_main-promotion-hero-europe-name": "Europe",
-  "index_main-promotion-hero-europe-text": "World Champion Legend - OQtima Brand Ambassador",
-  "index_main-promotion-hero-south-africa-name": "South Africa",
-  "index_main-promotion-hero-south-africa-text": "World Champion Legend - OQtima Brand Ambassador",
-  "index_main-promotion-hero-japan-name": "Japan",
-  "index_main-promotion-hero-japan-text": "World Champion Legend - OQtima Brand Ambassador",
-  "index_main-promotion-hero-australia-name": "Australia",
-  "index_main-promotion-hero-australia-text": "World Champion Legend - OQtima Brand Ambassador",
   "index_main-promotion-badge": "Access Global Markets",
   "index_main-promotion-subtitle": "Trade with the lowest commission of just $1.5 per side and enjoy consistently tight spreads from 0.0.",
   "index_main-promotion-warning": "CFDs are complex instruments and come with a high risk of losing money",
@@ -798,6 +787,7 @@
   "all-markets_market-items-list-energies-button": "Trade Energies",
   "all-markets_market-items-list-crypto-button": "Trade Crypto",
   "all-markets_market-items-list-etf-button": "Trade ETF",
+
   "all-markets_market-items-list-forex-adv1": "{{ forex-currency-pairs }} currency pairs",
   "all-markets_market-items-list-forex-adv2-fsa": "MT4",
   "all-markets_market-items-list-forex-adv2-1-fsa": "MT5",
@@ -2192,28 +2182,28 @@
   "guide-step-3-title": "Start Trading",
   "guide-step-3-description": "Set your leverage, select your assets and go",
 
-  "main-guide-title": "Get Started in <span class=\"guide-content__title-highlight\">3 Simple Steps</span>",
+  "main-guide-title": "Get Started in 3 Simple Steps",
   "main-guide-subtitle": "Calculate exactly how much you save with $1.5 commissions",
 
-  "crypto-guide-title": "Ready to trade <span class=\"guide-content__title-highlight\">Crypto?</span>",
+  "crypto-guide-title": "Ready to trade Crypto?",
   "crypto-guide-subtitle": "Take advantage of professional deep liquidity and leverage on the hottest asset of the last decade.",
 
-  "indices-guide-title": "Ready to trade <span class=\"guide-content__title-highlight\">Indices?</span>",
+  "indices-guide-title": "Ready to trade Indices?",
   "indices-guide-subtitle": "Take advantage of professional deep liquidity and leverage on the hottest asset of the last decade.",
 
-  "forex-guide-title": "Ready to trade <span class=\"guide-content__title-highlight\">Forex?</span>",
+  "forex-guide-title": "Ready to trade Forex?",
   "forex-guide-subtitle": "Take advantage of one of the most liquid and volatile financial markets in the world with a global broker.",
 
-  "metals-guide-title": "Ready to trade <span class=\"guide-content__title-highlight\">Metals?</span>",
+  "metals-guide-title": "Ready to trade Metals?",
   "metals-guide-subtitle": "Take advantage of one of the most liquid and volatile financial markets in the world with a global broker.",
 
-  "shares-guide-title": "Ready to trade <span class=\"guide-content__title-highlight\">Shares?</span>",
+  "shares-guide-title": "Ready to trade Shares?",
   "shares-guide-subtitle": "Take advantage of professional deep liquidity and leverage on the hottest asset of the last decade.",
 
-  "energies-guide-title": "Ready to trade <span class=\"guide-content__title-highlight\">Energies?</span>",
+  "energies-guide-title": "Ready to trade Energies?",
   "energies-guide-subtitle": "Take advantage of professional deep liquidity and leverage on the hottest asset of the last decade.",
 
-  "etf-guide-title": "Ready to trade <span class=\"guide-content__title-highlight\">ETF?</span>",
+  "etf-guide-title": "Ready to trade ETF?",
   "etf-guide-subtitle": "Take advantage of professional deep liquidity and leverage on the hottest asset of the last decade.",
 
   "partners-guide-title": "How to start?",
@@ -2440,12 +2430,6 @@
   "energies_spreads_mobile_min": "MIN",
   "energies_spreads_mobile_avg": "AVG",
 
-  "market-sentiment_badge-text": "Market Sentiment",
-  "market-sentiment_title": "Real-Time Market Intelligence",
-  "market-sentiment_description": "Get pro charts with TradingView, smart pattern scans via Trading Central, and real-time market insights with Live Analysis.",
-  "market-sentiment_cta_primary": "Start Trading",
-  "market-sentiment_cta_secondary": "Try a Demo Account",
-
   "market-buzz_badge_text": "Trading Tools",
   "market-buzz_title": "Market Buzz",
   "market-buzz_description": "Market Buzz tackles infobesity and supports timely, educated trade decisions with natural language processing and compelling data visualizations.",
@@ -2459,10 +2443,10 @@
   "market-buzz_harness_description": "Don't spend countless hours to scroll through long list of headlines. Find the buzz that is driving the markets and act upon it.",
   "market-buzz_cta_primary": "Start Trading",
   "market-buzz_cta_secondary": "Try a Demo Account",
+
   "account-comparison-badge-alt": "Account Comparison Badge",
   "account-comparison-badge-label": "Account Comparison",
-  "account-comparison-title": "Choose Your",
-  "account-comparison-title-highlight": "Trading Edge",
+  "account-comparison-title": "Choose Your Trading Edge",
   "account-comparison-subtitle": "Two powerful accounts designed for different trading styles",
   "account-comparison-ecn-badge-alt": "Most Popular",
   "account-comparison-ecn-badge-text": "Most Popular",
@@ -2513,27 +2497,21 @@
   "features-content-section_badge-text": "Features",
   "features-content-section_title": "Why Choose OQtima",
   "features-content-section_subtitle": "Experience the difference of true cost efficiency",
-
   "features-content-section_client-security_title": "Client Security & Regulation",
   "features-content-section_client-security_description": "Your funds are secure with segregated accounts at Tier-1 banks, negative balance protection, and full regulatory transparency.",
   "features-content-section_client-security_alt": "Client Security",
-
   "features-content-section_multi-language_title": "24/7 Multi-Language Support",
   "features-content-section_multi-language_description": "Get round-the-clock assistance via live chat, phone, email, WhatsApp, and Telegram in multiple languages.",
   "features-content-section_multi-language_alt": "Multi Language Support",
-
   "features-content-section_payments_title": "Payments & Security",
   "features-content-section_payments_description": "Enjoy convenient regional payment methods, local banking options, and cryptocurrency support. We offer same-day withdrawals and ensure your funds and data are always secure.",
   "features-content-section_payments_alt": "Payments & Security",
-
   "features-content-section_trading_title": "Superior Trading Conditions",
   "features-content-section_trading_description": "Trade with an industry-leading $0.0 commission per side and spreads from 0.0 pips. Access 500+ instruments with up to 1:1000 leverage, all supported by advanced technology.",
   "features-content-section_trading_alt": "Superior Trading Conditions",
-
   "features-content-section_demo_title": "$10,000 Demo Account",
   "features-content-section_demo_description": "Practice with a $10,000 virtual balance on our full platform under real market conditions. No risk, no time limits.",
   "features-content-section_demo_alt": "Demo Account",
-
   "features-content-section_tier1-banks_alt": "Tier 1 Banks",
   "features-content-section_choose-language_alt": "Choose Your Language",
 
@@ -2588,22 +2566,6 @@
   "technology-infrastructure_advanced-tools-feature3": "Copy trading platform",
   "technology-infrastructure_advanced-tools-feature4": "Risk management tools",
   "technology-infrastructure_advanced-tools-feature5": "Customizable leverage 1:10 - 1:1000",
-
-  "trust-content_badge-icon-alt": "Security",
-  "trust-content_badge-text": "Trust",
-  "trust-content_title": "Professional Heritage",
-  "trust-content_title-highlight": "You Can Trust",
-  "trust-content_subtitle": "Built by trading professionals for serious traders",
-  "trust-content_check-icon-alt": "Check",
-  "trust-content_video-name": "Gianluigi Buffon",
-  "trust-content_video-title": "Strategic investor and brand ambassador",
-  "trust-content_close-icon-alt": "Close",
-  "trust-content_feature1-bold": "Industry Veterans",
-  "trust-content_feature1-text": ": 50+ years of top-tier trading experience",
-  "trust-content_feature2-bold": "Institutional Background",
-  "trust-content_feature2-text": ": Tech built by real-market professionals",
-  "trust-content_feature3-bold": "Trust & Recognition",
-  "trust-content_feature3-text": ": Regulated, transparent, and industry-connected",
 
   "how-to-trade-swap-free_background-alt": "How to Trade Swap-Free Background",
   "how-to-trade-swap-free_features-badge-alt": "Features Badge",
@@ -2666,8 +2628,7 @@
 
   "security-content_badge-icon-alt": "Security Badge",
   "security-content_badge-text": "Security",
-  "security-content_title": "Financial",
-  "security-content_title-highlight": "Strength & Security",
+  "security-content_title": "Financial Strength & Security",
   "security-content_point-icon-alt": "icon",
   "security-content_liquidity-partners": "Liquidity Partners: JP Morgan, Deutsche Bank, Citi",
   "security-content_infrastructure": "Infrastructure: Equinix servers NY & London",
@@ -2727,6 +2688,30 @@
   "market-sentiment_tab-crypto": "Crypto",
   "market-sentiment_arrow-up-alt": "LONG",
   "market-sentiment_arrow-down-alt": "SHORT",
+  "market-sentiment_long": "LONG",
+  "market-sentiment_short": "SHORT",
+  "market-sentiment_consider-long": "Consider Long",
+  "market-sentiment_badge-text": "Market Sentiment",
+  "market-sentiment_title": "Real-Time Market Intelligence",
+  "market-sentiment_description": "Get pro charts with TradingView, smart pattern scans via Trading Central, and real-time market insights with Live Analysis.",
+  "market-sentiment_cta_primary": "Start Trading",
+  "market-sentiment_cta_secondary": "Try a Demo Account",
+
+  "trust-content_badge-icon-alt": "Security",
+  "trust-content_badge-text": "Trust",
+  "trust-content_title": "Professional Heritage",
+  "trust-content_title-highlight": "You Can Trust",
+  "trust-content_subtitle": "Built by trading professionals for serious traders",
+  "trust-content_check-icon-alt": "Check",
+  "trust-content_video-name": "Gianluigi Buffon",
+  "trust-content_video-title": "Strategic investor and brand ambassador",
+  "trust-content_close-icon-alt": "Close",
+  "trust-content_feature1-bold": "Industry Veterans",
+  "trust-content_feature1-text": ": 50+ years of top-tier trading experience",
+  "trust-content_feature2-bold": "Institutional Background",
+  "trust-content_feature2-text": ": Tech built by real-market professionals",
+  "trust-content_feature3-bold": "Trust & Recognition",
+  "trust-content_feature3-text": ": Regulated, transparent, and industry-connected",
 
   "metals_trust-rating": "Excellent",
   "metals_trust-name": "Trustpilot",
@@ -2761,5 +2746,8 @@
   "navbar-dropdown-highlight_more_title": "OQtima is built for Trading",
   "navbar-dropdown-highlight_more_subtitle": "OQtima MT4 one of the most superior choices in the market for every level of trader",
   "navbar-dropdown-highlight_more_primary-button": "Start Trading",
-  "navbar-dropdown-highlight_more_secondary-button": "Browse Services"
+  "navbar-dropdown-highlight_more_secondary-button": "Browse Services",
+  "trading-symbol-bid": "Bid",
+  "trading-symbol-ask": "Ask",
+  "trading-symbol-spread": "Spread"
 }

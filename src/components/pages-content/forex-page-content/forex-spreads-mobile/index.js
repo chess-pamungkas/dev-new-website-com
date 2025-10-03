@@ -205,6 +205,8 @@ const ForexSpreadsMobile = () => {
         {/* CTA Buttons */}
         <div className="spreads-cta-mobile">
           <StandardButtons
+            primaryText={t("button-start-trading")}
+            secondaryText={t("button-try-demo")}
             onPrimaryClick={handleShowRegistrationPopup}
             onSecondaryClick={handleShowRegistrationPopup}
           />

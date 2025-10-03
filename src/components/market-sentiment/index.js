@@ -59,14 +59,17 @@ const MarketSentimentContent = () => {
     }, 0);
 
     const percentage = Math.abs(hash % 60) + 30; // 30-90%
-    const sentiment = percentage > 60 ? "LONG" : "SHORT";
-    const color = sentiment === "LONG" ? "#00D084" : "#FF4444";
+    const isLong = percentage > 60;
+    const sentiment = isLong
+      ? t("market-sentiment_long")
+      : t("market-sentiment_short");
+    const color = isLong ? "#00D084" : "#FF4444";
 
     return {
       percentage: `${percentage}%`,
       sentiment,
       status: "Contrarian",
-      recommendation: "Consider Long",
+      recommendation: t("market-sentiment_consider-long"),
       color,
     };
   };
@@ -502,7 +505,7 @@ const MarketSentimentContent = () => {
                     </div>
                     <div
                       className={`market-sentiment__symbol-direction ${
-                        item.sentiment === "SHORT"
+                        item.sentiment === t("market-sentiment_short")
                           ? "market-sentiment__symbol-direction--short"
                           : "market-sentiment__symbol-direction--long"
                       }`}
@@ -512,15 +515,19 @@ const MarketSentimentContent = () => {
                       </span>
                       <div
                         className={`market-sentiment__symbol-direction-icon ${
-                          item.sentiment === "LONG"
+                          item.sentiment === t("market-sentiment_long")
                             ? "market-sentiment__symbol-direction-icon--up"
                             : "market-sentiment__symbol-direction-icon--down"
                         }`}
                       >
                         <img
-                          src={item.sentiment === "LONG" ? arrowUp : arrowDown}
+                          src={
+                            item.sentiment === t("market-sentiment_long")
+                              ? arrowUp
+                              : arrowDown
+                          }
                           alt={
-                            item.sentiment === "LONG"
+                            item.sentiment === t("market-sentiment_long")
                               ? t("market-sentiment_arrow-up-alt")
                               : t("market-sentiment_arrow-down-alt")
                           }
@@ -551,7 +558,9 @@ const MarketSentimentContent = () => {
             className="market-sentiment__btn market-sentiment__btn--primary"
             onClick={handleShowRegistrationPopup}
           >
-            <span className="button-text">{t("button-start-trading")}</span>
+            <span className="button-text">
+              {t("market-sentiment_cta_primary")}
+            </span>
             <span className="button-arrow">
               <svg
                 width="9.33"
@@ -574,7 +583,9 @@ const MarketSentimentContent = () => {
             className="market-sentiment__btn market-sentiment__btn--secondary"
             onClick={handleShowRegistrationPopup}
           >
-            <span className="button-text">{t("button-try-demo")}</span>
+            <span className="button-text">
+              {t("market-sentiment_cta_secondary")}
+            </span>
             <span className="button-arrow">
               <svg
                 width="9.33"

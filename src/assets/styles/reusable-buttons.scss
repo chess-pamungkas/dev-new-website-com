@@ -16,7 +16,7 @@
   border-radius: 8px;
   border: none;
   font-weight: map-get($font-weight, "medium");
-  font-size: 20px;
+  font-size: 16px;
   line-height: 23px;
   cursor: pointer;
   position: relative;
@@ -91,7 +91,7 @@
     padding-left: 0; // Remove left padding on mobile for centering
     padding-right: 0; // Reset right padding on mobile
     overflow: hidden; // Hide overflow on mobile for proper centering
-    font-size: 20px;
+    font-size: 16px;
   }
 
   // @include tablet {
@@ -266,7 +266,7 @@
   }
 
   @include desktop-lg {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .button-text {
@@ -296,7 +296,7 @@
 // ========================================
 .button-primary-standard {
   @extend .reusable-button;
-  width: 167px;
+  width: fit-content;
   background: #ff4400;
   color: #fff;
   // box-shadow: 0px 0px 19.3px rgba(255, 68, 0, 0.5);
@@ -360,7 +360,7 @@
 
   &:hover,
   &:focus {
-    width: 190px; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
+    width: fit-content; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
     background: #ff4400;
     color: #fff !important;
     box-shadow: 0 0 19.3px 0 rgba(255, 68, 0, 0.5);
@@ -454,18 +454,18 @@
   }
 
   @include tablet {
-    width: 205px;
+    width: fit-content;
     font-size: 16px;
   }
 
   @include desktop-lg {
-    width: 225px;
-    font-size: 18px;
+    width: fit-content;
+    font-size: 16px;
   }
 
   @include desktop-xl {
-    width: 238px;
-    font-size: 20px;
+    width: fit-content;
+    font-size: 16px;
   }
 
   .button-text {
@@ -616,12 +616,12 @@
 
   .button-text {
     position: relative;
-    width: 99px;
+    width: fit-content;
     height: 23px;
     font-family: "Sofia Pro", Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 23px;
     color: #000;
     flex: none;
@@ -685,7 +685,7 @@
     font-family: "Sofia Pro", Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 23px;
     color: #fff;
     flex: none;
@@ -694,10 +694,9 @@
   }
 
   .button-arrow {
-    // display: flex;
+    display: flex;
     align-items: center;
-    // opacity: 1;
-    display: none;
+    opacity: 1;
     width: 11px;
     margin-left: 0;
     margin-top: 4px;
@@ -717,10 +716,10 @@
 
     .button-arrow {
       // opacity: 1;
-      display: flex;
-      width: 24px;
-      margin-left: 0;
-      margin-top: 4px;
+      // display: flex;
+      // width: 24px;
+      // margin-left: 0;
+      // margin-top: 4px;
       color: #ff4400;
     }
   }
@@ -798,7 +797,7 @@
     font-family: "Sofia Pro";
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 23px;
     color: #000000;
     flex: none;
@@ -837,7 +836,7 @@
     .button-arrow {
       display: flex;
       width: 24px;
-      border-color: #ffffff;
+      border-color: #110909;
       color: #ffffff;
     }
   }
@@ -848,7 +847,7 @@
 // ========================================
 .button-container {
   display: flex;
-  gap: 12px;
+  gap: 0;
   align-items: center;
   justify-content: flex-start;
   position: relative;

@@ -437,7 +437,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    gap: 0;
     width: 295px;
     height: 29px;
 
@@ -502,7 +502,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
+    gap: 0;
     width: 295px;
     height: 29px;
 
@@ -684,7 +684,7 @@
     }
 
     @include desktop-xl {
-      padding: 24px;
+      padding: 20px;
       gap: 28px;
       min-height: 231px !important;
     }
@@ -749,7 +749,7 @@
     padding: 6px 10px;
     gap: 5px;
     margin: 0;
-    width: 151px;
+    width: fit-content;
     height: 26px;
     background: linear-gradient(0deg, #f7f5f3, #f7f5f3), #ffffff;
     mix-blend-mode: normal;
@@ -780,7 +780,7 @@
     // Tablet styles
     @include tablet {
       padding: 6px 10px;
-      width: 155px;
+      width: fit-content;
       height: 27px;
       font-size: 12px;
       line-height: 21px;
@@ -795,7 +795,7 @@
     // Desktop styles
     @include desktop-lg {
       padding: 8px;
-      width: 100px;
+      width: fit-content;
       height: 28px;
       font-size: 8px;
       line-height: 22px;
@@ -809,7 +809,7 @@
 
     @include desktop-xl {
       padding: 10px;
-      width: 160px;
+      width: fit-content;
       font-size: 14px;
     }
 
@@ -826,7 +826,7 @@
   }
 
   &__comparison-value {
-    width: 152.5px;
+    width: fit-content;
     font-style: normal;
     font-weight: map-get($font-weight, "semibold");
     font-size: 62px;
@@ -843,7 +843,7 @@
 
     // Mobile styles
     @include mobile {
-      width: 127px;
+      width: fit-content;
       font-size: 48px;
       line-height: 1.1;
     }
@@ -863,7 +863,7 @@
     }
 
     @include desktop-xl {
-      width: 152.5px;
+      width: fit-content;
       font-size: 62px;
       line-height: 1.2;
     }
@@ -876,7 +876,6 @@
       color: #3a1200;
       opacity: 0.7;
       letter-spacing: 0;
-      line-height: 2px;
       text-align: center;
       transition: all 0.3s ease;
 
@@ -884,21 +883,18 @@
       @include mobile {
         font-size: 20px !important;
         margin-top: 6px;
-        line-height: 1.2;
       }
 
       // Tablet styles
       @include tablet {
         font-size: 20px;
         margin-top: 9px;
-        line-height: 1.2;
       }
 
       // Desktop styles
       @include desktop-lg {
         font-size: 20px;
         margin-top: 10px;
-        line-height: 1.2;
       }
     }
 
@@ -931,7 +927,6 @@
         color: inherit;
         opacity: 1;
         letter-spacing: 0;
-        line-height: 20px;
         text-align: center;
         background: none;
         -webkit-background-clip: unset;
@@ -1002,16 +997,16 @@
       padding: 16px;
       gap: 30px;
       height: 110px;
-      font-size: 16px;
+      font-size: 15px;
       line-height: 24px;
     }
 
     // Desktop styles
     @include desktop-xl {
-      padding: 20px;
+      padding: 16px;
       gap: 25px;
       height: 96px;
-      font-size: 18px;
+      font-size: 15px;
       line-height: 28px;
     }
 

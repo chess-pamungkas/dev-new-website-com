@@ -208,7 +208,7 @@
   }
 
   &__title {
-    width: 758px;
+    width: fit-content;
     font-family: "Sofia Pro", Arial, sans-serif;
     font-style: normal;
     font-weight: map-get($font-weight, semibold);
@@ -289,7 +289,7 @@
     align-items: center;
     padding: 10px 20px;
     gap: 10px;
-    width: 150px;
+    width: fit-content;
     height: 36px;
     border-radius: 8px;
     flex: none;
@@ -721,7 +721,7 @@
     padding: 3px 7.5px;
     gap: 7.5px;
     margin: 0;
-    width: 85.5px;
+    width: fit-content;
     height: 24px;
     background: #d80027;
     border: 0.75px solid #d80027;
@@ -836,7 +836,7 @@
     font-family: "Sofia Pro", Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 20px;
     text-align: right;
     letter-spacing: 0.2px;
@@ -923,7 +923,7 @@
     }
 
     &--primary {
-      width: 167px; // Same as button-primary-hero
+      width: fit-content; // Same as button-primary-hero
       background: #fff;
       color: #000;
       box-shadow: 0px 0px 19.3px rgba(255, 68, 0, 0.5);
@@ -986,7 +986,7 @@
 
       &:hover,
       &:focus {
-        width: 190px; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
+        width: fit-content; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
         background: #ff4400;
         color: #000 !important;
         box-shadow: 0 0 19.3px 0 rgba(255, 68, 0, 0.5);

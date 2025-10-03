@@ -40,7 +40,7 @@
     align-items: center;
     padding: 6px 10px;
     gap: 6px;
-    width: 98px;
+    width: fit-content;
     height: 26px;
     background: linear-gradient(
         0deg,
@@ -222,7 +222,7 @@
   &__card-badge {
     font-family: "Sofia Pro", sans-serif;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
     color: #ff4400;
     background: rgba(255, 68, 0, 0.08);
     border-radius: 12px;
@@ -241,7 +241,7 @@
   &__card-desc {
     font-family: "Sofia Pro", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 13px;
     color: #000;
     opacity: 0.7;
     margin-bottom: 0;
@@ -265,7 +265,7 @@
     height: 26px;
     border-radius: 16px;
     font-weight: map-get($font-weight, "medium");
-    font-size: 14px;
+    font-size: 13px;
     color: map-get($colors, "black");
     z-index: 2;
     &--placeholder {
@@ -316,7 +316,7 @@
     margin-bottom: 0;
     font-family: "Sofia Pro", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 13px;
     line-height: 28px;
     letter-spacing: 0.2px;
     color: #414141;

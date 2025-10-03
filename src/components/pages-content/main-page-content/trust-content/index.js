@@ -124,6 +124,8 @@ const TrustContent = () => {
           {/* Button Group */}
           <div className="navbar-dropdown-highlight__button-group">
             <StandardButtons
+              primaryText={t("button-start-trading")}
+              secondaryText={t("button-try-demo")}
               onPrimaryClick={handleShowRegistrationPopup}
               onSecondaryClick={handleShowRegistrationPopup}
             />

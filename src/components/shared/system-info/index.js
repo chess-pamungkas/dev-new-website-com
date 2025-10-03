@@ -5,7 +5,8 @@ import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { DIR_LTR, DIR_RTL } from "../../../helpers/constants";
 import { ButtonPrimaryHero } from "../reusable-buttons";
-import fourZeroFourText from "../../../assets/images/bg/404/404-text.svg";
+import fourZeroFourTextDesktop from "../../../assets/images/bg/404/404-text-desktop.png";
+import fourZeroFourTextMobile from "../../../assets/images/bg/404/404-text-mobile.png";
 
 const SystemInfoComponent = ({
   className,
@@ -62,9 +63,14 @@ const SystemInfoComponent = ({
             {/* 404 Text Image */}
             <div className="system-info__404-text-container">
               <img
-                src={fourZeroFourText}
+                src={fourZeroFourTextDesktop}
                 alt="404"
-                className="system-info__404-text"
+                className="system-info__404-text system-info__404-text--desktop"
+              />
+              <img
+                src={fourZeroFourTextMobile}
+                alt="404"
+                className="system-info__404-text system-info__404-text--mobile"
               />
             </div>
 

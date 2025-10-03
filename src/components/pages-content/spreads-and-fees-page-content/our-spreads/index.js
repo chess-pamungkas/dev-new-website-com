@@ -429,6 +429,8 @@ const OurSpreads = ({ className }) => {
           {isMobile ? (
             <div className="our-spreads__cta-mobile">
               <StandardButtons
+                primaryText={t("button-start-trading")}
+                secondaryText={t("button-try-demo")}
                 onPrimaryClick={handleShowRegistrationPopup}
                 onSecondaryClick={handleShowRegistrationPopup}
               />
@@ -436,6 +438,8 @@ const OurSpreads = ({ className }) => {
           ) : (
             <div className="our-spreads__cta-desktop">
               <StandardButtons
+                primaryText={t("button-start-trading")}
+                secondaryText={t("button-try-demo")}
                 onPrimaryClick={handleShowRegistrationPopup}
                 onSecondaryClick={handleShowRegistrationPopup}
               />

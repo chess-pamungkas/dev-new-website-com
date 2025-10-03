@@ -73,10 +73,7 @@ const AccountComparison = () => {
           </span>
         </div>
         <h2 className="account-comparison-title">
-          {t("account-comparison-title")}{" "}
-          <span className="highlight">
-            {t("account-comparison-title-highlight")}
-          </span>
+          {t("account-comparison-title")}
         </h2>
         <p className="account-comparison-subtitle">
           {t("account-comparison-subtitle")}

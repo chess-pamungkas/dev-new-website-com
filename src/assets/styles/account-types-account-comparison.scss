@@ -216,7 +216,7 @@
         transition: all 0.3s ease;
 
         .card-header .card-badge {
-          width: 132px;
+          width: fit-content;
           height: 26px;
           background: #ff4400;
           mix-blend-mode: normal;
@@ -295,7 +295,7 @@
         transition: all 0.3s ease;
 
         .card-header .card-badge {
-          width: 156px;
+          width: fit-content;
           height: 26px;
           mix-blend-mode: normal;
           border: 1px solid rgba(255, 255, 255, 0.25);
@@ -424,6 +424,7 @@
         visibility: visible;
         opacity: 1;
         box-sizing: border-box;
+        min-height: 78px;
         .feature-item {
           display: flex;
           flex-direction: row;
@@ -527,12 +528,12 @@
           background: #000;
           border: none;
           .button-text {
-            width: 99px;
+            width: fit-content;
             height: 23px;
             font-family: "Sofia Pro", Arial, sans-serif;
             font-style: normal;
             font-weight: 500;
-            font-size: 20px;
+            font-size: 16px;
             line-height: 23px;
             color: #000;
             flex: none;
@@ -569,12 +570,12 @@
           border: 1px solid #000;
           background: transparent;
           .button-text {
-            width: 102px;
+            width: fit-content;
             height: 23px;
             font-family: "Sofia Pro", Arial, sans-serif;
             font-style: normal;
             font-weight: 500;
-            font-size: 20px;
+            font-size: 16px;
             line-height: 23px;
             color: #000;
             flex: none;
@@ -611,12 +612,12 @@
           background: transparent;
           border: none;
           .button-text {
-            width: 183px;
+            width: fit-content;
             height: 23px;
             font-family: "Sofia Pro", Arial, sans-serif;
             font-style: normal;
             font-weight: 500;
-            font-size: 20px;
+            font-size: 16px;
             line-height: 23px;
             color: #000;
             opacity: 0.75;
@@ -687,11 +688,9 @@
     .account-comparison-header {
       padding: 52px 18px 0;
       .account-comparison-title {
-        width: 358px;
-        height: 96px;
+        width: fit-content;
         font-size: 42px;
-        line-height: 45px;
-        max-width: 358px;
+        max-width: fit-content;
       }
       .account-comparison-subtitle {
         font-size: 18px;
@@ -884,12 +883,12 @@
 
   .button-text {
     position: relative;
-    width: 99px;
+    width: fit-content;
     height: 23px;
     font-family: "Sofia Pro", Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 23px;
     color: #000;
     flex: none;
@@ -975,7 +974,7 @@
     font-family: "Sofia Pro", Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 23px;
     color: #000;
     flex: none;

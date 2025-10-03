@@ -103,7 +103,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   padding-top: 16.46px;
-  gap: 20px;
+  gap: 12px;
   width: 234.28px;
   height: 32.17px;
   position: relative;
@@ -117,7 +117,7 @@
   align-items: flex-start;
   padding: 0;
   gap: 13.17px;
-  width: 57px;
+  width: 70px;
   height: 32.17px;
 }
 
@@ -137,7 +137,7 @@
   font-size: 12px;
   line-height: 27px;
   color: map-get($colors, "black");
-  width: 18px;
+  width: fit-content;
   height: 8px;
   display: flex;
   align-items: center;

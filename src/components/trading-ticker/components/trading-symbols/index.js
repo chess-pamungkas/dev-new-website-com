@@ -3,6 +3,7 @@ import cn from "classnames";
 import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
+import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import arrowUp from "../../../../assets/images/icons/trading-ticker/arrow-up.svg";
 import arrowDown from "../../../../assets/images/icons/trading-ticker/arrow-down.svg";
 import { getIcon } from "./icon-loader";
@@ -12,6 +13,7 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
   const symbolsRef = useRef();
   const isRTL = useRtlDirection();
   const { isMobile } = useWindowSize();
+  const { t } = useTranslationWithVariables();
   const margin = isMobile ? 10 : 0;
   const [isTouched, setIsTouched] = useState(false);
 
@@ -193,13 +195,17 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
               {/* Product Details */}
               <div className="trading-symbol-card__details">
                 <div className="trading-symbol-card__bid-container">
-                  <span className="trading-symbol-card__label">Bid</span>
+                  <span className="trading-symbol-card__label">
+                    {t("trading-symbol-bid")}
+                  </span>
                   <span className="trading-symbol-card__bid-value">
                     {symbol.bid}
                   </span>
                 </div>
                 <div className="trading-symbol-card__ask-container">
-                  <span className="trading-symbol-card__label">Ask</span>
+                  <span className="trading-symbol-card__label">
+                    {t("trading-symbol-ask")}
+                  </span>
                   <span
                     className={cn("trading-symbol-card__ask-value", {
                       "trading-symbol-card__ask-value--up":
@@ -212,7 +218,9 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
                   </span>
                 </div>
                 <div className="trading-symbol-card__spread-container">
-                  <span className="trading-symbol-card__label">Spread</span>
+                  <span className="trading-symbol-card__label">
+                    {t("trading-symbol-spread")}
+                  </span>
                   <span className="trading-symbol-card__spread-value">
                     {symbol.spread}
                   </span>

@@ -48,6 +48,22 @@
       order: 0;
       align-self: stretch;
       flex-grow: 0;
+
+      @include mobile {
+        font-size: 15px;
+      }
+
+      @include tablet {
+        font-size: 15px;
+      }
+
+      @include desktop-lg {
+        font-size: 15px;
+      }
+
+      @include desktop-xl {
+        font-size: 18px;
+      }
     }
   }
 
@@ -58,7 +74,7 @@
     align-items: center;
     padding: 6px 10px;
     gap: 5px;
-    width: 121px;
+    width: fit-content;
     height: 26px;
     background: #fff;
     border: 1px solid rgba(255, 68, 0, 0.15);

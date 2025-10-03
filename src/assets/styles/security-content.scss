@@ -16,7 +16,7 @@
     align-items: center;
     padding: 6px 10px;
     gap: 5px;
-    width: 94px;
+    width: fit-content;
     height: 26px;
     background: linear-gradient(
         0deg,
@@ -37,7 +37,7 @@
       line-height: 20px;
       text-align: center;
       color: map-get($colors, "black");
-      width: 52px;
+      width: fit-content;
       height: 20px;
       flex: none;
       order: 0;

@@ -46,12 +46,7 @@ const SecurityContent = () => {
         />
         <span className="badge-label">{t("security-content_badge-text")}</span>
       </div>
-      <h2 className="security-title">
-        {t("security-content_title")}{" "}
-        <span className="highlight">
-          {t("security-content_title-highlight")}
-        </span>
-      </h2>
+      <h2 className="security-title">{t("security-content_title")}</h2>
       <ul className="security-list">
         {securityPoints.map((item, idx) => (
           <li key={idx} className="security-point">
@@ -66,6 +61,8 @@ const SecurityContent = () => {
       </ul>
       <div className="navbar-dropdown-highlight__button-group">
         <StandardButtons
+          primaryText={t("button-start-trading")}
+          secondaryText={t("button-try-demo")}
           onPrimaryClick={handleShowRegistrationPopup}
           onSecondaryClick={handleShowRegistrationPopup}
         />
