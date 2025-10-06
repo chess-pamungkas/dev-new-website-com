@@ -1,6 +1,7 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
+import LanguageContext from "../../../../context/language-context";
 import FeaturesIcon from "../../../../assets/images/icons/main-page/features-execution-excellence/features.svg";
 import NavArrowLeft from "../../../../assets/images/icons/main-page/features-execution-excellence/nav-arrow-left.svg";
 import NavArrowRight from "../../../../assets/images/icons/main-page/features-execution-excellence/nav-arrow-right.svg";
@@ -15,8 +16,12 @@ import BadgeMarkIcon from "../../../../assets/images/icons/main-page/badge-mark.
 const FeaturesExecutionExcellence = () => {
   const { t } = useTranslationWithVariables();
   const { isDesktop, isTablet, isMobile } = useWindowSize();
+  const { selectedLanguage } = useContext(LanguageContext);
   const [scrollIndex, setScrollIndex] = useState(0);
   const cardContainerRef = useRef(null);
+
+  // Check if current language is RTL (Arabic)
+  const isRTL = selectedLanguage?.id === "ar";
 
   // Calculate visible cards based on screen size
   const getVisibleCards = () => {
@@ -31,6 +36,11 @@ const FeaturesExecutionExcellence = () => {
   useEffect(() => {
     setScrollIndex(0);
   }, [isDesktop, isTablet, isMobile]);
+
+  // Reset scroll index when RTL state changes
+  useEffect(() => {
+    setScrollIndex(0);
+  }, [isRTL]);
 
   const features = [
     {
@@ -106,10 +116,16 @@ const FeaturesExecutionExcellence = () => {
         const totalCardWidth = cardWidth + gap;
 
         // Calculate scroll position to show the new index
-        const scrollLeft = totalCardWidth * newIndex;
+        let scrollPosition = totalCardWidth * newIndex;
+
+        // For RTL, we need to scroll in the opposite direction
+        if (isRTL) {
+          const maxScrollLeft = container.scrollWidth - container.clientWidth;
+          scrollPosition = maxScrollLeft - scrollPosition;
+        }
 
         container.scrollTo({
-          left: scrollLeft,
+          left: scrollPosition,
           behavior: "smooth",
         });
       }
@@ -117,7 +133,9 @@ const FeaturesExecutionExcellence = () => {
   };
 
   return (
-    <section className="features-component">
+    <section
+      className={`features-component ${isRTL ? "features-component--rtl" : ""}`}
+    >
       <div className="features-component__header-row">
         <div className="features-component__header-col">
           <div className="features-component__badge-group">
@@ -140,8 +158,12 @@ const FeaturesExecutionExcellence = () => {
         <div className="features-component__nav">
           <button
             className="features-component__nav-btn"
-            onClick={() => handleScroll(-1)}
-            disabled={scrollIndex === 0}
+            onClick={() => handleScroll(isRTL ? 1 : -1)}
+            disabled={
+              isRTL
+                ? scrollIndex >= features.length - visibleCards
+                : scrollIndex === 0
+            }
             aria-label={t("features-execution-excellence_nav-left-aria")}
           >
             <span className="features-component__nav-bg" />
@@ -153,8 +175,12 @@ const FeaturesExecutionExcellence = () => {
           </button>
           <button
             className="features-component__nav-btn"
-            onClick={() => handleScroll(1)}
-            disabled={scrollIndex >= features.length - visibleCards}
+            onClick={() => handleScroll(isRTL ? -1 : 1)}
+            disabled={
+              isRTL
+                ? scrollIndex === 0
+                : scrollIndex >= features.length - visibleCards
+            }
             aria-label={t("features-execution-excellence_nav-right-aria")}
           >
             <span className="features-component__nav-bg" />

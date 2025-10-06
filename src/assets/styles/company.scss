@@ -752,7 +752,7 @@
 
     @include tablet {
       font-size: 52px;
-      width: 500px;
+      width: 550px;
     }
 
     @include desktop-lg {
@@ -857,25 +857,25 @@
     }
 
     @include desktop-lg {
-      max-width: 450px;
+      max-width: 500px;
       font-size: 18px;
       line-height: 28px;
     }
 
     @include desktop-xl {
-      max-width: 450px;
+      max-width: 500px;
       font-size: 18px;
       line-height: 28px;
     }
 
     @include desktop-2k {
-      max-width: 450px;
+      max-width: 500px;
       font-size: 18px;
       line-height: 28px;
     }
 
     @include desktop-5k {
-      max-width: 450px;
+      max-width: 500px;
       font-size: 18px;
       line-height: 28px;
     }

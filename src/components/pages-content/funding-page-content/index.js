@@ -127,7 +127,7 @@ const FundingPageContent = ({ className, isShowHero = true }) => {
             />
           </ButtonContainer>
 
-          <PaymentSystemsContent />
+          <PaymentSystemsContent isDepositTab={isDepositTab} />
         </ContainerWrapper>
 
         {isMobile ? (

@@ -102,6 +102,8 @@ const CryptoSpreadsDesktop = ({ data }) => {
       {/* CTA Buttons */}
       <div className="spreads-cta">
         <StandardButtons
+          primaryText={t("button-start-trading")}
+          secondaryText={t("button-try-demo")}
           onPrimaryClick={handleShowRegistrationPopup}
           onSecondaryClick={handleShowRegistrationPopup}
         />

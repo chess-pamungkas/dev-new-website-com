@@ -450,46 +450,50 @@ export const getAnimationStyle = () => {
 };
 
 // Platform Selection Configuration
-export const PLATFORM_SELECTION_CONFIG = {
-  tabs: [
-    { id: "mobile", label: "MOBILE & TABLET" },
-    { id: "desktop", label: "DESKTOP" },
-    { id: "webtrader", label: "WEBTRADER" },
-  ],
-  mobilePlatforms: [
-    {
-      id: "android",
-      name: "MT4 for Android",
-      color: "#4CAF50",
-    },
-    {
-      id: "ios",
-      name: "MT4 for iOS",
-      color: "#000000",
-    },
-    {
-      id: "huawei",
-      name: "MT4 for Huawei",
-      color: "#000000",
-    },
-  ],
-  desktopPlatforms: [
-    {
-      id: "windows",
-      name: "MT4 for Windows",
-      color: "#0078D4",
-    },
-    {
-      id: "mac",
-      name: "MT4 for Mac",
-      color: "#000000",
-    },
-  ],
-  webtraderPlatforms: [
-    {
-      id: "browser",
-      name: "MT4 WebTrader",
-      color: "#FF4400",
-    },
-  ],
+export const PLATFORM_SELECTION_CONFIG = () => {
+  const { t } = useTranslationWithVariables();
+
+  return {
+    tabs: [
+      { id: "mobile", label: t("platform-selection_mobile-tablet") },
+      { id: "desktop", label: t("platform-selection_desktop") },
+      { id: "webtrader", label: t("platform-selection_webtrader") },
+    ],
+    mobilePlatforms: [
+      {
+        id: "android",
+        name: t("platform-selection_mt4-android"),
+        color: "#4CAF50",
+      },
+      {
+        id: "ios",
+        name: t("platform-selection_mt4-ios"),
+        color: "#000000",
+      },
+      {
+        id: "huawei",
+        name: t("platform-selection_mt4-huawei"),
+        color: "#000000",
+      },
+    ],
+    desktopPlatforms: [
+      {
+        id: "windows",
+        name: t("platform-selection_mt4-windows"),
+        color: "#0078D4",
+      },
+      {
+        id: "mac",
+        name: t("platform-selection_mt4-mac"),
+        color: "#000000",
+      },
+    ],
+    webtraderPlatforms: [
+      {
+        id: "browser",
+        name: t("platform-selection_mt4-webtrader"),
+        color: "#FF4400",
+      },
+    ],
+  };
 };

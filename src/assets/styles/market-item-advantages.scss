@@ -136,7 +136,7 @@
   &__advantage-item {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     padding: 0px;
     gap: 12px;
     width: 349px;
@@ -152,10 +152,14 @@
       min-height: 28px;
       gap: 10px;
     }
+
+    .market-item-advantages__icon {
+      margin-top: 4px;
+    }
   }
 
   &__advantage-text {
-    width: auto;
+    width: fit-content;
     height: auto;
     min-height: 28px;
     font-family: "Sofia Pro";

@@ -575,6 +575,7 @@
   "energies_top-market-title": "Trade long or short with no restriction on Brent and Crude Oil.",
   "energies_top-market-btn1": "Try our demo account",
   "energies_top-market-btn2": "Trade energies now",
+
   "energies_top-market-promo-text": "In the current geopolitical and macroeconomic situation, Energies are one of the favourite instruments for OQtima experienced traders",
   "energies-top-market-promo-text-accent": "",
   "energies_trading-ticker-title": "POPULAR ENERGIES TO TRADE",
@@ -621,6 +622,7 @@
   "metals_top-market-title": "Get exposure to volatility across all the hottest precious metals.",
   "metals_top-market-btn1": "Try our demo account",
   "metals_top-market-btn2": "Trade metals now",
+
   "metals_top-market-promo-text": "Trade precious metals like Gold, and Silver with\nspreads as low as 0.0 pips.",
   "metals-top-market-promo-text-accent": "5,7,13,14",
   "metals_trading-ticker-title": "POPULAR METALS TO TRADE",
@@ -668,6 +670,7 @@
   "indices_badge-text": "Leverage Indices",
   "indices_indices-title": "Indices Trading",
   "indices_indices-text": "Trade the world’s most exciting indices and stocks with one of the widest global selections at your fingertips.",
+
   "indices_top-market-title": "{{ indices-number }} stock indexes to capture the markets using leverage",
   "indices-top-market-title-accent": "1,2,3,9",
   "indices_top-market-btn1": "Try our demo account",
@@ -724,6 +727,7 @@
   "shares_badge-text": "CFD Momentum",
   "shares_shares-title": "Shares trading",
   "shares_shares-text": "Tesla, Netflix, Apple, Meta, and hidden gems for savvy traders — that's the OQtima range. Trade long or short with up to 1:1000 leverage.",
+
   "shares_top-market-promotion-promo-text-fsa": "With OQtima you can trade the hottest shares, long or short, with MT4 and MT5, getting access to advanced charting options, helpful tools, and markets insights.",
   "shares_top-market-promotion-promo-text-accent-fsa": "2,7,8,13,15",
   "shares_top-market-promo-btn": "START TRADING SHARES CFD",
@@ -1112,6 +1116,30 @@
   "deposit_column_title4-fsa": "Fees",
   "deposit_column_title5-fsa": "Currencies Accepted",
 
+  "funding_data_method_cards": "Credit and Debit Cards",
+  "funding_data_method_crypto": "Crypto funding",
+  "funding_data_method_int_bank": "International Bankwire",
+  "funding_data_method_uk_bank": "UK Bankwire",
+  "funding_data_method_local_bank": "Local Banking",
+  "funding_data_method_sticpay": "STICPAY",
+  "funding_data_method_pix": "PIX",
+  "funding_data_method_ewallets": "E-Wallets",
+  "funding_data_processing_instant": "Instant",
+  "funding_data_processing_3_5_days": "3-5 Business Days",
+  "funding_data_processing_instant_uk": "Instant, If Made Within UK Business Days/Hours",
+  "funding_data_processing_10_minutes": "10 Minutes If Made Within The Bank's Business Days/Hours",
+  "funding_data_processing_one_day": "Within One Business Day",
+  "funding_data_min_deposit": "$100 Or Equivalent In Wallet Currency",
+  "funding_data_fees_zero": "Zero",
+  "funding_data_currencies_usd_eur": "USD & EUR",
+  "funding_data_currencies_crypto": "AVAX, BNB, BTC, BCH, ADA, DASH, DOGE, ETH, LTC, MATIC, XRP, SHB, SOL, USDC, ESDT (ERC20/TRON)",
+  "funding_data_currencies_int_bank": "USD, EUR, GBP, JPY, CAD, CHF, AUD, AED, HKD, PHP, NZD, ZAR",
+  "funding_data_currencies_uk_bank": "GBP",
+  "funding_data_currencies_local": "JPY, THB, MYR, IDR, VND, SGD, PHP",
+  "funding_data_currencies_sticpay": "CAD, GBP, JPY, USD",
+  "funding_data_currencies_pix": "USD",
+  "funding_data_currencies_ewallets": "Local Currencies Accepted",
+
   "withdrawal_data-method-card-fsa": "Credit and Debit Cards",
   "withdrawal_data-method-card-currencies-fsa": "USD & EUR",
   "withdrawal_data-method-crypto-fsa": "Crypto funding",
@@ -1299,11 +1327,10 @@
   "faq_trading-q5": "What spreads do you offer?",
   "faq_trading-a5": "Our spreads are floating, which means that they will fluctuate depending on the market conditions. Depending on the account type you choose, our spreads start from zero pips.",
 
-  "faq_market-title": "OQtima Markets",
   "faq_markets-title": "OQtima Markets",
   "faq_markets-subtitle": "Trade the world's most popular markets with competitive spreads and fast execution",
   "faq_forex-subtitle": "80 Currency pairs to trade 24/5",
-  "faq_metals-subtitle": "Get exposure to volatility across the hottest precious metals",
+  "faq_metals-subtitle": "Trade the most volatile precious metals",
   "faq_energies-subtitle": "Trade the most volatile precious metals",
   "faq_shares-subtitle": "Trade the most volatile precious metals",
   "faq_indices-subtitle": "Trade the most volatile precious metals",
@@ -1451,9 +1478,14 @@
   "partners_income-slider-clients-note-fsa": "Total accumulated clients",
   "partners_income-slider-income-note-fsa": "Your income per month",
 
+  "partners_income-slider_badge-icon-alt": "Income Slider",
+  "partners_income-slider_badge-text": "Multiply your earnings",
+  "partners_income-slider_title": "The compounding effect of an Introducing broker",
+
   "accounts-type_badge-text": "One Platform, Multiple Ways to Trade",
   "accounts-type_accounts-type-title": "Account types",
   "accounts-type_accounts-type-text": "Find the account that fits your trading goals—choosing the right one is simple. Whether you're just starting or trading full-time, there's an option for you.",
+
   "accounts-type_account-type1-title": "account type",
   "accounts-type_account-type1-name": "OQtima ECN+",
   "accounts-type_account-type1-btn-title": "Open an account",
@@ -1556,7 +1588,6 @@
   "contact-us_contact-us-text": "At OQtima, we're here to support your trading journey—reach out through your preferred contact method.",
   "contact-us_button-apply-now": "Contact Us",
   "contact-us_button-contact-us": "Start a Partnership",
-  "contact-us_badge-text-get-in-touch": "Reach us, anytime",
 
   "legal_badge-text": "Regulated & Reliable",
   "legal_legal-title": "Legal Documents",
@@ -1780,6 +1811,7 @@
   "etf_badge-text": "ETFs CFD",
   "etf_etf-title": "ETF trading",
   "etf_etf-text": "OQtima offers 100+ ETFs to trade with leverage — based on market themes, sectors, or country performance.",
+
   "etf_top-market-title": "ETFs CFD",
   "etf_top-market-btn1": "TRY OUR DEMO ACCOUNT",
   "etf_top-market-btn2": "START TRADING ETF NOW",
@@ -2749,5 +2781,14 @@
   "navbar-dropdown-highlight_more_secondary-button": "Browse Services",
   "trading-symbol-bid": "Bid",
   "trading-symbol-ask": "Ask",
-  "trading-symbol-spread": "Spread"
+  "trading-symbol-spread": "Spread",
+  "platform-selection_mobile-tablet": "MOBILE & TABLET",
+  "platform-selection_desktop": "DESKTOP",
+  "platform-selection_webtrader": "WEBTRADER",
+  "platform-selection_mt4-android": "MT4 for Android",
+  "platform-selection_mt4-ios": "MT4 for iOS",
+  "platform-selection_mt4-huawei": "MT4 for Huawei",
+  "platform-selection_mt4-windows": "MT4 for Windows",
+  "platform-selection_mt4-mac": "MT4 for Mac",
+  "platform-selection_mt4-webtrader": "MT4 WebTrader"
 }

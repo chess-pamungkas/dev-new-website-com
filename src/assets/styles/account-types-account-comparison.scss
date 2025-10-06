@@ -396,6 +396,7 @@
         font-weight: 400;
         font-size: 16px;
         line-height: 26px;
+        height: 78px;
         letter-spacing: 0.2px;
         color: #000000;
         opacity: 0.7;
@@ -428,7 +429,7 @@
         .feature-item {
           display: flex;
           flex-direction: row;
-          align-items: center;
+          align-items: flex-start;
           padding: 0;
           gap: 12px;
           flex: none;
@@ -457,6 +458,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 4px;
             img {
               width: 16px;
               height: 16px;
@@ -464,7 +466,7 @@
             }
           }
           span {
-            width: 434px;
+            width: fit-content;
             display: flex;
             align-items: center;
             height: auto;

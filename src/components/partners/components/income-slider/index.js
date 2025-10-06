@@ -49,17 +49,17 @@ const IncomeSlider = ({ className }) => {
         <div className="income-slider__badge">
           <img
             src={IncomeSliderIcon}
-            alt="Income Slider"
+            alt={t("partners_income-slider_badge-icon-alt")}
             className="income-slider__badge-icon"
           />
           <span className="income-slider__badge-text">
-            Multiply your earnings
+            {t("partners_income-slider_badge-text")}
           </span>
         </div>
 
         {/* Title */}
         <h2 className="income-slider__title">
-          The compounding effect of an Introducing broker
+          {t("partners_income-slider_title")}
         </h2>
 
         {/* Main Container - Figma Horizontal Layout */}

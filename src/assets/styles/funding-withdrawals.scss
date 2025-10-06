@@ -434,8 +434,8 @@
     }
 
     @include desktop-lg {
-      max-width: 450px;
-      font-size: 18px;
+      max-width: 495px;
+      font-size: 16px;
       line-height: 28px;
     }
 
@@ -696,7 +696,7 @@
     align-items: center;
     padding: 6px 10px;
     gap: 20px;
-    width: 204px;
+    width: fit-content;
     height: 26px;
     background: linear-gradient(
         0deg,
@@ -712,7 +712,7 @@
     flex-grow: 0;
 
     @include mobile {
-      width: 184px;
+      width: fit-content;
       height: 14px;
       gap: 8px;
       padding: 0;
@@ -765,7 +765,7 @@
     align-items: center;
     padding: 0px;
     gap: 8px;
-    width: 184px;
+    width: fit-content;
     height: 14px;
     flex: none;
     order: 1;

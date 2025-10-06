@@ -700,7 +700,7 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
     display: flex;
     flex-direction: column;
     gap: 31px;
-    max-width: 440px;
+    max-width: fit-content;
 
     @include mobile {
       max-width: 100%;
@@ -714,22 +714,22 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
     }
 
     @include desktop-lg {
-      max-width: 440px;
+      max-width: fit-content;
       gap: 31px;
     }
 
     @include desktop-xl {
-      max-width: 440px;
+      max-width: fit-content;
       gap: 31px;
     }
 
     @include desktop-2k {
-      max-width: 500px;
+      max-width: fit-content;
       gap: 35px;
     }
 
     @include desktop-5k {
-      max-width: 600px;
+      max-width: fit-content;
       gap: 40px;
     }
   }

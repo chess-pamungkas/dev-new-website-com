@@ -123,20 +123,20 @@
       }
 
       @include tablet {
-        width: 180px;
-        min-width: 180px;
+        width: fit-content;
+        min-width: fit-content;
       }
 
       // Hover state styling - now properly shows arrow
       &:hover {
-        width: 240px; // Expand width to accommodate text + arrow + spacing
+        width: fit-content; // Expand width to accommodate text + arrow + spacing
 
         @include mobile {
           width: 100%;
         }
 
         @include tablet {
-          width: 220px; // Expand width on tablet
+          width: fit-content; // Expand width on tablet
         }
 
         .button-arrow {

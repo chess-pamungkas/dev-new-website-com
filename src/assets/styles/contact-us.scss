@@ -296,7 +296,7 @@
   color: #000000;
   opacity: 0.7;
 
-  width: 556px;
+  width: fit-content;
   height: 56px;
   margin: 0 0 40px 0;
 
@@ -324,7 +324,7 @@
   @include desktop-lg {
     font-size: 18px;
     line-height: 28px;
-    width: 556px;
+    width: fit-content;
     height: 56px;
     margin-bottom: 40px;
   }
@@ -421,7 +421,7 @@
 // Contact Us Content Section - Override title styling for content area
 .contact-us-content-section {
   .contact-us__title {
-    width: 572px;
+    width: fit-content;
     height: 62px;
 
     font-weight: map-get($font-weight, "semibold"); // 600
@@ -1232,25 +1232,5 @@
     flex: none;
     order: 1;
     flex-grow: 0;
-  }
-
-  &__button-container {
-    .button-primary-hero {
-      @include tablet {
-        width: 135px;
-
-        &:hover {
-          width: 150px;
-        }
-      }
-
-      @include desktop-lg {
-        width: 150px;
-
-        &:hover {
-          width: 165px;
-        }
-      }
-    }
   }
 }

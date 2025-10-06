@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import featuresIcon from "../../../../assets/images/icons/features.svg";
 import minimumDepositIcon from "../../../../assets/images/icons/vps/minimum-$3000-deposit.svg";
 import minimumTradingVolumeIcon from "../../../../assets/images/icons/vps/minimum-trading-volume.svg";
@@ -36,6 +37,7 @@ const GetComplimentaryVPS = ({ className }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
+  const isRTL = useRtlDirection();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -60,7 +62,11 @@ const GetComplimentaryVPS = ({ className }) => {
   }, []);
 
   return (
-    <section className={`get-complimentary-vps ${className || ""}`}>
+    <section
+      className={`get-complimentary-vps ${
+        isRTL ? "get-complimentary-vps--rtl" : ""
+      } ${className || ""}`}
+    >
       {/* Header */}
       <div className="get-complimentary-vps-header">
         <div className="badge-row">

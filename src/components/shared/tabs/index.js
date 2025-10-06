@@ -79,7 +79,8 @@ const Tabs = ({
   };
 
   // Platform selection specific data
-  const platformTabs = PLATFORM_SELECTION_CONFIG.tabs;
+  const platformConfig = PLATFORM_SELECTION_CONFIG();
+  const platformTabs = platformConfig.tabs;
 
   // Get download links based on platform type
   const downloadLinks =
@@ -122,29 +123,27 @@ const Tabs = ({
 
   const platformImages = getPlatformImages();
 
-  const mobilePlatforms = PLATFORM_SELECTION_CONFIG.mobilePlatforms.map(
-    (platform) => ({
-      ...platform,
-      name: `${platformPrefix} for ${platform.name.split(" for ")[1]}`,
-      icon: isMobile
-        ? platform.id === "android"
-          ? platformImages.androidMobile
-          : platform.id === "ios"
-          ? platformImages.iosMobile
-          : platformImages.huaweiMobile
-        : platform.id === "android"
-        ? platformImages.androidDesktop
+  const mobilePlatforms = platformConfig.mobilePlatforms.map((platform) => ({
+    ...platform,
+    name: `${platformPrefix} for ${platform.name.split(" for ")[1]}`,
+    icon: isMobile
+      ? platform.id === "android"
+        ? platformImages.androidMobile
         : platform.id === "ios"
-        ? platformImages.iosDesktop
-        : platformImages.huaweiDesktop,
-      link:
-        platform.id === "android"
-          ? downloadLinks.getAndroidLink()
-          : platform.id === "ios"
-          ? downloadLinks.getIOSLink()
-          : downloadLinks.getHuaweiLink(),
-    })
-  );
+        ? platformImages.iosMobile
+        : platformImages.huaweiMobile
+      : platform.id === "android"
+      ? platformImages.androidDesktop
+      : platform.id === "ios"
+      ? platformImages.iosDesktop
+      : platformImages.huaweiDesktop,
+    link:
+      platform.id === "android"
+        ? downloadLinks.getAndroidLink()
+        : platform.id === "ios"
+        ? downloadLinks.getIOSLink()
+        : downloadLinks.getHuaweiLink(),
+  }));
 
   const desktopPlatforms = [
     {

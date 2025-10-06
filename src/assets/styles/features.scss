@@ -71,7 +71,6 @@
     max-width: 619px;
     font-weight: map-get($font-weight, "semibold");
     font-size: 52px;
-    line-height: 60px;
     letter-spacing: -0.02em;
     background: linear-gradient(
         102.31deg,
@@ -202,8 +201,8 @@
     align-items: flex-start;
     gap: 50px;
     // min-width: 300px;
-    width: 306px;
-    // height: 295px;
+    width: 303px;
+    min-height: 295px;
     // border: 1px solid rgba(255, 68, 0, 0.15);
     border-radius: 12px; // Uncomment untuk border radius
     box-sizing: border-box; // Uncomment untuk box sizing
@@ -211,10 +210,10 @@
     // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     order: 0;
     align-self: stretch;
-    padding: 24px 20px 20px;
+    padding: 15px;
 
     @include tablet {
-      min-width: 306px; // Ensure minimum width on tablet
+      min-width: 303px; // Ensure minimum width on tablet
       flex-shrink: 0; // Prevent shrinking on tablet
     }
   }
@@ -241,7 +240,7 @@
   &__card-desc {
     font-family: "Sofia Pro", sans-serif;
     font-weight: 400;
-    font-size: 13px;
+    font-size: 11px;
     color: #000;
     opacity: 0.7;
     margin-bottom: 0;
@@ -316,7 +315,7 @@
     margin-bottom: 0;
     font-family: "Sofia Pro", sans-serif;
     font-weight: 400;
-    font-size: 13px;
+    font-size: 11px;
     line-height: 28px;
     letter-spacing: 0.2px;
     color: #414141;

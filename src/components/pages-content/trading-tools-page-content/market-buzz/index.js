@@ -85,6 +85,8 @@ const MarketBuzz = ({ className }) => {
           {isMobile ? (
             <div className="market-buzz__cta-mobile">
               <StandardButtons
+                primaryText={t("market-buzz_cta_primary")}
+                secondaryText={t("market-buzz_cta_secondary")}
                 onPrimaryClick={handleShowRegistrationPopup}
                 onSecondaryClick={handleShowRegistrationPopup}
               />
@@ -92,6 +94,8 @@ const MarketBuzz = ({ className }) => {
           ) : (
             <div className="market-buzz__cta-desktop">
               <StandardButtons
+                primaryText={t("market-buzz_cta_primary")}
+                secondaryText={t("market-buzz_cta_secondary")}
                 onPrimaryClick={handleShowRegistrationPopup}
                 onSecondaryClick={handleShowRegistrationPopup}
               />

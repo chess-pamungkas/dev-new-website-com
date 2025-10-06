@@ -1414,28 +1414,28 @@
 
     @include tablet {
       font-size: 52px;
-      width: 500px;
+      width: fit-content;
     }
 
     @include desktop-lg {
       font-size: 72px;
-      width: 758px;
+      width: fit-content;
     }
 
     @include desktop-xl {
       font-size: 72px;
-      width: 758px;
+      width: fit-content;
     }
 
     @include desktop-2k {
       font-size: 84px;
-      width: 900px;
+      width: fit-content;
       line-height: 1.2;
     }
 
     @include desktop-5k {
       font-size: 96px;
-      width: 1100px;
+      width: fit-content;
       line-height: 1.2;
     }
   }
@@ -1726,6 +1726,16 @@
     @include desktop-lg {
       gap: 24px;
     }
+
+    @include desktop-xl {
+      max-width: 674px;
+      gap: 24px;
+    }
+
+    @include desktop-2k {
+      max-width: 850px;
+      gap: 24px;
+    }
   }
 
   &__badge {
@@ -1805,6 +1815,16 @@
     }
 
     @include tablet {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    @include desktop-lg {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    @include desktop-xl {
       font-size: 16px;
       line-height: 24px;
     }
