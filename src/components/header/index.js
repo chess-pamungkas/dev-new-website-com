@@ -182,6 +182,7 @@ const Header = ({ className }) => {
             className={cn("header-dropdown-card", {
               "header-dropdown-card--from-small": isScrolled,
               "header-dropdown-card--from-big": !isScrolled,
+              "header-dropdown-card--rtl": isRTL,
             })}
           >
             {/* Header content inside the card */}

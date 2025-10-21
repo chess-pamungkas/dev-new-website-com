@@ -5,6 +5,9 @@ import { useTranslationWithVariables } from "../../../../helpers/hooks/use-trans
 import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import { ChevronDownIcon } from "../../../shared/icons";
 import LanguageContext from "../../../../context/language-context";
+import ReusableButtons from "../../../shared/reusable-buttons";
+
+const { ArrowIcon } = ReusableButtons;
 import desktopBgSVG from "../../../../assets/images/bg/trading-tools/bg-feature-ideas-desktop.svg";
 import mobileBgSVG from "../../../../assets/images/bg/trading-tools/bg-feature-ideas-mobile.svg";
 import badgeIcon from "../../../../assets/images/icons/badge-market-sentiment.svg";
@@ -206,21 +209,7 @@ const FeaturedIdeas = ({ className }) => {
               >
                 <span className="button-text">{t("button-open-account")}</span>
                 <span className="button-arrow">
-                  <svg
-                    width="9.33"
-                    height="9.33"
-                    viewBox="0 0 11 11"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
-                      stroke="currentColor"
-                      strokeWidth="1.3333"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <ArrowIcon isRTL={isRTL} />
                 </span>
               </button>
               <button
@@ -229,21 +218,7 @@ const FeaturedIdeas = ({ className }) => {
               >
                 <span className="button-text">{t("button-try-demo")}</span>
                 <span className="button-arrow">
-                  <svg
-                    width="9.33"
-                    height="9.33"
-                    viewBox="0 0 11 11"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
-                      stroke="currentColor"
-                      strokeWidth="1.3333"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <ArrowIcon isRTL={isRTL} />
                 </span>
               </button>
             </div>

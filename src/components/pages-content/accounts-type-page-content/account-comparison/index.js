@@ -15,12 +15,14 @@ import {
   ButtonSecondaryComparisonAccountsType,
   ButtonPrimaryComparisonZeroAccountsType,
 } from "./button-components";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 
 const AccountTypesAccountComparison = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
   const { t } = useTranslationWithVariables();
+  const isRTL = useRtlDirection();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -71,7 +73,11 @@ const AccountTypesAccountComparison = () => {
     : AccountComparisonDesktopBg;
 
   return (
-    <section className="account-types-account-comparison-content">
+    <section
+      className={`account-types-account-comparison-content ${
+        isRTL ? "account-comparison-content--rtl" : ""
+      }`}
+    >
       {/* Background Images */}
       <div className="account-comparison-bg"></div>
 

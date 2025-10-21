@@ -123,7 +123,12 @@ const Tabs = ({
 
   const platformImages = getPlatformImages();
 
-  const mobilePlatforms = platformConfig.mobilePlatforms.map((platform) => ({
+  // For MT5, hide Huawei option (no Huawei link available)
+  const filteredMobilePlatforms = platformConfig.mobilePlatforms.filter(
+    (platform) => !(platformType === "mt5" && platform.id === "huawei")
+  );
+
+  const mobilePlatforms = filteredMobilePlatforms.map((platform) => ({
     ...platform,
     name: `${platformPrefix} for ${platform.name.split(" for ")[1]}`,
     icon: isMobile
@@ -142,7 +147,7 @@ const Tabs = ({
         ? downloadLinks.getAndroidLink()
         : platform.id === "ios"
         ? downloadLinks.getIOSLink()
-        : downloadLinks.getHuaweiLink(),
+        : downloadLinks.getHuaweiLink && downloadLinks.getHuaweiLink(),
   }));
 
   const desktopPlatforms = [

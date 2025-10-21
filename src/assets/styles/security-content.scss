@@ -54,7 +54,7 @@
     height: 120px;
     font-weight: map-get($font-weight, "semibold");
     font-size: 52px;
-    line-height: 60px;
+    line-height: 52px;
     letter-spacing: -0.02em;
     background: linear-gradient(
         102.31deg,
@@ -65,7 +65,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
     flex: none;
     order: 1;
     align-self: stretch;

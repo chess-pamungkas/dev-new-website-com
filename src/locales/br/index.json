@@ -6,7 +6,7 @@
   "header-nav-tab-top-markets-forex-title": "Forex",
   "header-nav-tab-top-markets-forex-desc": "{{ forex-currency-pairs }} Pares de moedas para negociar 24/5",
   "header-nav-tab-top-markets-metals-title": "Metais",
-  "header-nav-tab-top-markets-metals-desc": "Obtenha exposição à volatilidade através dos metais preciosos mais quentes.",
+  "header-nav-tab-top-markets-metals-desc": "Obtenha exposição à volatilidade nos metais preciosos mais quentes.",
   "header-nav-tab-top-markets-shares-title": "Ações",
   "header-nav-tab-top-markets-shares-desc": "Negocie as ações mais procuradas com o poder dos CFDs agora",
   "header-nav-tab-top-markets-energies-title": "Energias",
@@ -61,7 +61,7 @@
   "cookie_policy_table_header_opt_out": "Opção de Opt-out",
   "cookie_policy_mobile_cookies": "Cookies",
   "cookie_policy_mobile_opt_out": "Opção de Opt-out",
-  "index_main-promotion-title": "Custos Melhores,\nNegociação Global Melhor",
+  "index_main-promotion-title": "Custos melhores,\nmelhor comércio global",
   "index_main-promotion-animated-text-forex-traders": "Traders de Forex",
   "index_main-promotion-animated-text-day-traders": "Traders Diários",
   "index_main-promotion-animated-text-day-trader": "Trader Diário",
@@ -1405,7 +1405,7 @@
   "partners_partners-text": "Seja parceiro de uma corretora confiável e receba uma parte de nossa receita da atividade de trading de cada cliente ativo que você nos indicar",
   "partners_button-apply-now": "Candidatar-se Agora",
   "partners_button-contact-us": "Entre em Contato",
-  "contact-us_badge-text": "Entre em contato, a qualquer hora",
+  "contact-us_badge-text": "Entre em contato conosco, a qualquer momento",
   "contact-us_contact-us-title": "Conecte-se Conosco",
   "contact-us_contact-us-text": "Na OQtima, estamos aqui para apoiar sua jornada de trading—entre em contato através do seu método preferido.",
   "contact-us_button-apply-now": "Entre em Contato",
@@ -2482,7 +2482,7 @@
   "navbar-dropdown-highlight_products_title": "OQtima é construído para Trading",
   "navbar-dropdown-highlight_products_subtitle": "Mais de 1.000 ativos para negociar diretamente no celular, desktop ou tablet em qualquer lugar a qualquer hora",
   "navbar-dropdown-highlight_products_primary-button": "Começar a Negociar",
-  "navbar-dropdown-highlight_products_secondary-button": "Try a Demo Account",
+  "navbar-dropdown-highlight_products_secondary-button": "Experimente uma Conta Demo",
   "navbar-dropdown-highlight_trading_badge-text": "Negociar Agora",
   "navbar-dropdown-highlight_trading_title": "OQtima é construído para Trading",
   "navbar-dropdown-highlight_trading_subtitle": "OQtima MT4 uma das escolhas mais superiores do mercado para cada nível de trader",
@@ -2541,5 +2541,6 @@
   "platform-selection_mt4-webtrader": "MT4 WebTrader",
   "partners_income-slider_badge-icon-alt": "Controle de Renda do Parceiro",
   "partners_income-slider_badge-text": "Multiplique seus ganhos",
-  "partners_income-slider_title": "O efeito composto de um corretor introdutor"
+  "partners_income-slider_title": "O efeito composto de um corretor introdutor",
+  "popup-registration-badge": "Registro"
 }

@@ -6,7 +6,7 @@
   "header-nav-tab-top-markets-forex-title": "ฟอเร็กซ์",
   "header-nav-tab-top-markets-forex-desc": "ซื้อขาย {{ forex-currency-pairs }} คู่เงิน ได้ตลอด 24/5",
   "header-nav-tab-top-markets-metals-title": "โลหะ",
-  "header-nav-tab-top-markets-metals-desc": "Get exposure to volatility across the hottest precious metals.",
+  "header-nav-tab-top-markets-metals-desc": "รับความผันผวนจากโลหะมีค่าที่ร้อนแรงที่สุด",
   "header-nav-tab-top-markets-shares-title": "หุ้น",
   "header-nav-tab-top-markets-shares-desc": "ซื้อขายหุ้นที่เป็นที่ต้องการมากที่สุดด้วย CFD ตอนนี้",
   "header-nav-tab-top-markets-energies-title": "พลังงาน",
@@ -61,7 +61,7 @@
   "cookie_policy_table_header_opt_out": "Opt Out option",
   "cookie_policy_mobile_cookies": "Cookies",
   "cookie_policy_mobile_opt_out": "Opt Out option",
-  "index_main-promotion-title": "ประสบการณ์การซื้อขายที่สมบูรณ์แบบสำหรับ",
+  "index_main-promotion-title": "ต้นทุนที่ดีกว่า การค้าระดับโลกที่ดีกว่า",
   "index_main-promotion-animated-text-forex-traders": "ผู้ซื้อขายฟอเร็กซ์",
   "index_main-promotion-animated-text-day-traders": "ผู้ซื้อขายรายวัน",
   "index_main-promotion-animated-text-day-trader": "ผู้ซื้อขายรายวัน",
@@ -1405,7 +1405,7 @@
   "partners_partners-text": "เป็นพันธมิตรกับโบรกเกอร์ที่เชื่อถือได้และรับส่วนแบ่งจากรายได้ของเราจากกิจกรรมการเทรดของลูกค้าที่ใช้งานอยู่ทุกคนที่คุณแนะนำให้เรา",
   "partners_button-apply-now": "สมัครตอนนี้",
   "partners_button-contact-us": "ติดต่อเรา",
-  "contact-us_badge-text": "ติดต่อเราได้ตลอดเวลา",
+  "contact-us_badge-text": "ติดต่อเรา ได้ตลอดเวลา",
   "contact-us_contact-us-title": "เชื่อมต่อกับเรา",
   "contact-us_contact-us-text": "ที่ OQtima เราอยู่ที่นี่เพื่อสนับสนุนการเดินทางในการเทรดของคุณ—ติดต่อเราผ่านวิธีการติดต่อที่คุณต้องการ",
   "contact-us_button-apply-now": "ติดต่อเรา",
@@ -2482,7 +2482,7 @@
   "navbar-dropdown-highlight_products_title": "OQtima สร้างขึ้นเพื่อการเทรด",
   "navbar-dropdown-highlight_products_subtitle": "มากกว่า 1,000 สินทรัพย์เพื่อเทรดโดยตรงบนมือถือ เดสก์ท็อป หรือแท็บเล็ตได้ทุกที่ทุกเวลา",
   "navbar-dropdown-highlight_products_primary-button": "เริ่มเทรด",
-  "navbar-dropdown-highlight_products_secondary-button": "Try a Demo Account",
+  "navbar-dropdown-highlight_products_secondary-button": "ลองบัญชีทดลอง",
   "navbar-dropdown-highlight_trading_badge-text": "เทรดตอนนี้",
   "navbar-dropdown-highlight_trading_title": "OQtima สร้างขึ้นเพื่อการเทรด",
   "navbar-dropdown-highlight_trading_subtitle": "OQtima MT4 เป็นหนึ่งในตัวเลือกที่ดีที่สุดในตลาดสำหรับเทรดเดอร์ทุกระดับ",
@@ -2541,5 +2541,6 @@
   "platform-selection_mt4-webtrader": "MT4 WebTrader",
   "partners_income-slider_badge-icon-alt": "สไลด์รายได้พันธมิตร",
   "partners_income-slider_badge-text": "เพิ่มรายได้ของคุณ",
-  "partners_income-slider_title": "ผลประกอบของโบรกเกอร์แนะนำ"
+  "partners_income-slider_title": "ผลประกอบของโบรกเกอร์แนะนำ",
+  "popup-registration-badge": "การลงทะเบียน"
 }

@@ -97,6 +97,11 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
+
+    @include mobile {
+      font-size: 12px;
+      line-height: 18px;
+    }
   }
 
   // Title
@@ -237,7 +242,7 @@
 
   // Responsive Design
   @include mobile {
-    padding: 225px 0 50px;
+    padding: 200px 0 50px;
 
     &__container {
       gap: 63px;
@@ -292,6 +297,11 @@
       font-size: 14px;
       line-height: 20px;
       white-space: nowrap;
+
+      @include mobile {
+        font-size: 12px;
+        line-height: 18px;
+      }
     }
 
     &__title {

@@ -203,6 +203,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    @include mobile {
+      font-size: 12px;
+      line-height: 18px;
+    }
   }
 
   &__title {
@@ -586,11 +591,7 @@
     }
 
     @include desktop-lg {
-      font-size: 22px;
-    }
-
-    @include desktop-xl {
-      font-size: 26px;
+      font-size: 20px;
     }
   }
 

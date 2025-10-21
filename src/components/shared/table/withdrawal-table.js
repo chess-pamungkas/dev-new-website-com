@@ -20,7 +20,11 @@ const WithdrawalTableComponent = ({
 
   // Desktop Table Layout - Use spreads-table structure
   return (
-    <div className={cn("withdrawal-table", className)}>
+    <div
+      className={cn("withdrawal-table", className, {
+        "withdrawal-table--rtl": isRTL,
+      })}
+    >
       <div className="withdrawal-table-container">
         <table className="withdrawal-table-main">
           {/* Header Section */}

@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import LanguageContext from "../../../../context/language-context";
 import FeaturesIcon from "../../../../assets/images/icons/main-page/features-execution-excellence/features.svg";
 import NavArrowLeft from "../../../../assets/images/icons/main-page/features-execution-excellence/nav-arrow-left.svg";
@@ -21,7 +22,7 @@ const FeaturesExecutionExcellence = () => {
   const cardContainerRef = useRef(null);
 
   // Check if current language is RTL (Arabic)
-  const isRTL = selectedLanguage?.id === "ar";
+  const isRTL = useRtlDirection();
 
   // Calculate visible cards based on screen size
   const getVisibleCards = () => {
@@ -40,6 +41,14 @@ const FeaturesExecutionExcellence = () => {
   // Reset scroll index when RTL state changes
   useEffect(() => {
     setScrollIndex(0);
+
+    // Set initial scroll position for RTL
+    if (isRTL && cardContainerRef.current) {
+      const container = cardContainerRef.current;
+      // In RTL with direction:rtl, scrollLeft starts at 0 on the right side
+      // So we don't need to set an initial scroll position
+      container.scrollLeft = 0;
+    }
   }, [isRTL]);
 
   const features = [
@@ -118,10 +127,21 @@ const FeaturesExecutionExcellence = () => {
         // Calculate scroll position to show the new index
         let scrollPosition = totalCardWidth * newIndex;
 
-        // For RTL, we need to scroll in the opposite direction
+        // For RTL with direction:rtl CSS, the scroll behavior is reversed
+        // We need to scroll in the opposite direction
         if (isRTL) {
-          const maxScrollLeft = container.scrollWidth - container.clientWidth;
-          scrollPosition = maxScrollLeft - scrollPosition;
+          // In RTL mode, scrolling works in reverse
+          // Index 0 = rightmost position (scrollLeft ≈ 0)
+          // Higher index = scroll left (negative or lower scrollLeft depending on browser)
+          scrollPosition = totalCardWidth * newIndex;
+
+          // Use negative scroll for RTL to move left
+          // This works consistently across browsers with direction:rtl
+          container.scrollTo({
+            left: -scrollPosition,
+            behavior: "smooth",
+          });
+          return; // Exit early for RTL
         }
 
         container.scrollTo({

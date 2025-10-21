@@ -200,7 +200,7 @@
         font-family: "Sofia Pro", Arial, sans-serif;
         font-style: normal;
         font-weight: 700;
-        font-size: 26px;
+        font-size: 24px;
         letter-spacing: -0.02em;
         background: linear-gradient(
             102.31deg,
@@ -330,7 +330,7 @@
 
         .card-description {
           font-size: 16px;
-          line-height: 24px;
+          line-height: 16px;
         }
       }
     }
@@ -359,13 +359,13 @@
         background-repeat: no-repeat;
 
         .card-title {
-          font-size: 26px !important;
+          font-size: 24px !important;
         }
 
         .card-description {
           width: 100%;
           font-size: 18px !important;
-          line-height: 28px !important;
+          line-height: 18px !important;
         }
       }
     }
@@ -388,7 +388,7 @@
 
         .card-description {
           font-size: 18px !important;
-          line-height: 28px !important;
+          line-height: 18px !important;
         }
       }
     }
@@ -398,10 +398,10 @@
     order: 4;
 
     button {
-      width: 146px !important;
+      width: fit-content !important;
 
       &:hover {
-        width: 170px !important;
+        width: fit-content !important;
       }
 
       @include mobile {

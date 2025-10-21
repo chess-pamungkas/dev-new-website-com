@@ -62,7 +62,10 @@ const MarketBuzz = ({ className }) => {
   };
 
   return (
-    <div id="market-buzz" className={cn("market-buzz", className)}>
+    <div
+      id="market-buzz"
+      className={cn("market-buzz", className, { "market-buzz--rtl": isRTL })}
+    >
       {/* Header Section */}
       <div className="market-buzz__header">
         <div className="market-buzz__header-badge">

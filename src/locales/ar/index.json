@@ -6,7 +6,7 @@
   "header-nav-tab-top-markets-forex-title": "الفوركس",
   "header-nav-tab-top-markets-forex-desc": "{{ forex-currency-pairs }} أزواج عملات للتداول 24/5",
   "header-nav-tab-top-markets-metals-title": "المعادن",
-  "header-nav-tab-top-markets-metals-desc": "احصل على تعرض للتقلبات عبر أهم المعادن الثمينة.",
+  "header-nav-tab-top-markets-metals-desc": "احصل على التعرض للتقلبات عبر أكثر المعادن الثمينة سخونة.",
   "header-nav-tab-top-markets-shares-title": "الأسهم",
   "header-nav-tab-top-markets-shares-desc": "تداول أكثر الأسهم المطلوبة بقوة عقود الفروقات الآن",
   "header-nav-tab-top-markets-energies-title": "الطاقة",
@@ -1997,7 +1997,7 @@
   "mt-advantage-list_feature-one-click": "1-Click Trading & Notifications",
   "mt-advantage-list_feature-live-news": "Live News & OQtima Indicators",
   "mt-advantage-list_feature-multi-platform": "Windows, Mac, Mobile & Tablet",
-  "guide-badge-text": "دليل",
+  "guide-badge-text": "الدليل",
   "guide-step-1-title": "تسجيل",
   "guide-step-1-description": "اختر حسابك: ECN+ أو Zero - أنت تقرر",
   "guide-step-2-title": "التحقق",
@@ -2472,7 +2472,7 @@
   "market-sentiment_arrow-down-alt": "قصير",
   "metals_trust-rating": "Excellent",
   "metals_trust-name": "Trustpilot",
-  "guide-content_badge-icon-alt": "دليل",
+  "guide-content_badge-icon-alt": "الدليل",
   "guide-content_step-circle-alt": "خطوة",
   "navbar-dropdown-highlight_badge-icon-alt": "Badge",
   "navbar-dropdown-highlight_badge-text": "Trade Now",
@@ -2482,7 +2482,7 @@
   "navbar-dropdown-highlight_products_title": "OQtima مصمم للتداول",
   "navbar-dropdown-highlight_products_subtitle": "أكثر من 1000 أصل للتداول مباشرة على الهاتف المحمول أو سطح المكتب أو الجهاز اللوحي في أي مكان وفي أي وقت",
   "navbar-dropdown-highlight_products_primary-button": "ابدأ التداول",
-  "navbar-dropdown-highlight_products_secondary-button": "Try a Demo Account",
+  "navbar-dropdown-highlight_products_secondary-button": "جرب حساب تجريبي",
   "navbar-dropdown-highlight_trading_badge-text": "تداول الآن",
   "navbar-dropdown-highlight_trading_title": "OQtima مصمم للتداول",
   "navbar-dropdown-highlight_trading_subtitle": "OQtima MT4 أحد الخيارات الأكثر تفوقاً في السوق لكل مستوى من المتداولين",
@@ -2541,5 +2541,6 @@
   "platform-selection_mt4-webtrader": "MT4 ويب تريدر",
   "partners_income-slider_badge-icon-alt": "شريط دخل الشريك",
   "partners_income-slider_badge-text": "اضرب أرباحك",
-  "partners_income-slider_title": "تأثير التراكم لوسيط الإحالة"
+  "partners_income-slider_title": "تأثير التراكم لوسيط الإحالة",
+  "popup-registration-badge": "التسجيل"
 }

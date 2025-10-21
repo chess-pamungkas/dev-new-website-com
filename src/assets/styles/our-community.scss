@@ -100,6 +100,11 @@
     line-height: 20px;
     color: #fff;
     font-weight: map-get($font-weight, "medium");
+
+    @include mobile {
+      font-size: 12px;
+      line-height: 18px;
+    }
   }
 
   // Title - Updated according to Figma specifications
@@ -354,12 +359,12 @@
     }
 
     &__title {
-      width: 333px; // Figma: width: 333px
+      width: 100%; // Figma: width: 333px
       height: auto; // Figma: height: 192px
       font-family: "Sofia Pro", Arial, sans-serif;
       font-style: normal;
       font-weight: 700; // Figma: font-weight: 700
-      font-size: 42px; // Figma: font-size: 42px
+      font-size: 32px; // Figma: font-size: 42px
       line-height: 1.25; // Figma: line-height: 48px
       letter-spacing: -0.02em; // Figma: letter-spacing: -0.02em
       text-align: left;
@@ -378,9 +383,9 @@
     }
 
     &__subtitle {
-      width: 333px;
+      width: 100%;
       height: 56px;
-      font-size: 18px;
+      font-size: 14px;
       line-height: 28px;
       letter-spacing: 0.2px;
       color: #ffffff;
@@ -391,7 +396,7 @@
     .navbar-dropdown-highlight__button-group {
       flex-direction: column;
       gap: 12px;
-      margin-top: 0;
+      margin-top: 40px;
       width: 100%;
     }
 
@@ -452,7 +457,7 @@
 
   // Tablet Styles
   @include tablet {
-    margin: 50px 0;
+    margin: 30px 0;
     border-radius: 24px;
     width: 100%;
 
@@ -469,7 +474,7 @@
     &__container {
       flex-direction: column;
       gap: 0;
-      padding: 20px;
+      padding: 40px 20px;
       border-radius: 24px;
     }
 
@@ -726,7 +731,7 @@
 
   // Desktop XL Styles
   @include desktop-xl {
-    margin: 50px 0;
+    margin: 0 0 50px 0;
     border-radius: 24px;
     width: 100%;
 
@@ -742,7 +747,7 @@
 
     &__container {
       flex-direction: row !important;
-      padding: 0 80px;
+      padding: 80px;
       gap: 62px;
       border-radius: 24px;
       width: 100%;

@@ -4,6 +4,7 @@ import { useTranslationWithVariables } from "../../../helpers/hooks/use-translat
 import { ButtonPrimaryStandard } from "../reusable-buttons";
 import Faq from "../../faq";
 import SpreadsIcon from "../../../assets/images/icons/main-page/features-execution-excellence/features.svg";
+import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 
 const FaqSection = ({
   faqData,
@@ -15,6 +16,7 @@ const FaqSection = ({
   onFaqButtonClick,
 }) => {
   const { t } = useTranslationWithVariables();
+  const isRTL = useRtlDirection();
 
   const handleFaqButtonClick = () => {
     if (onFaqButtonClick) {
@@ -26,7 +28,9 @@ const FaqSection = ({
   };
 
   return (
-    <div className={`faq-section ${className}`}>
+    <div
+      className={`faq-section ${className} ${isRTL ? `${className}--rtl` : ""}`}
+    >
       {/* Left Side - Badge, Title, Subtitle, Button */}
       <div className="faq-left">
         <div className="faq-badge">

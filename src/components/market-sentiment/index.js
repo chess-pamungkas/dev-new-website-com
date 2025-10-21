@@ -568,9 +568,14 @@ const MarketSentimentContent = () => {
                 viewBox="0 0 11 11"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                className={isRTL ? "arrow-rtl" : ""}
               >
                 <path
-                  d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+                  d={
+                    isRTL
+                      ? "M10.3333 5.50004H1M1 5.50004L5.66667 0.833374M1 5.50004L5.66667 10.1667"
+                      : "M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+                  }
                   stroke="currentColor"
                   strokeWidth="1.3333"
                   strokeLinecap="round"
@@ -593,9 +598,14 @@ const MarketSentimentContent = () => {
                 viewBox="0 0 11 11"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                className={isRTL ? "arrow-rtl" : ""}
               >
                 <path
-                  d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+                  d={
+                    isRTL
+                      ? "M10.3333 5.50004H1M1 5.50004L5.66667 0.833374M1 5.50004L5.66667 10.1667"
+                      : "M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+                  }
                   stroke="currentColor"
                   strokeWidth="1.3333"
                   strokeLinecap="round"

@@ -78,7 +78,7 @@
       }
 
       .badge-label {
-        width: 133px;
+        width: fit-content;
         height: 20px;
         font-family: "Sofia Pro", Arial, sans-serif;
         font-style: normal;
@@ -209,6 +209,10 @@
         img {
           width: 109.46px;
           height: 116px;
+        }
+
+        @include mobile {
+          right: 0;
         }
       }
       &.ecn-card {
@@ -364,7 +368,7 @@
         }
       }
       .card-title {
-        width: 173px;
+        width: fit-content;
         height: 50px;
         font-family: "Sofia Pro", Arial, sans-serif;
         font-style: normal;
@@ -426,6 +430,10 @@
         opacity: 1;
         box-sizing: border-box;
         min-height: 78px;
+
+        @include mobile {
+          margin: 80px 0 20px 0;
+        }
         .feature-item {
           display: flex;
           flex-direction: row;
@@ -688,15 +696,15 @@
     min-height: auto;
     margin: 75px 0 50px 0;
     .account-comparison-header {
-      padding: 52px 18px 0;
+      padding: 52px 18px 40px 18px;
       .account-comparison-title {
         width: fit-content;
         font-size: 42px;
         max-width: fit-content;
       }
       .account-comparison-subtitle {
-        font-size: 18px;
-        max-width: 354px;
+        font-size: 16px;
+        max-width: 100%;
       }
     }
     .account-cards {
@@ -749,8 +757,8 @@
       align-items: center;
       justify-content: center;
       .shared-features-content {
-        padding: 0 0 16.46px;
-        font-size: 18px;
+        padding: 0 5px 16.46px;
+        font-size: 12px;
         line-height: 28px;
         white-space: normal;
         text-align: center;

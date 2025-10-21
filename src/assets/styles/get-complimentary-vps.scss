@@ -206,8 +206,8 @@
         width: 100%;
         padding: 24px;
         gap: 16px;
-        min-height: auto;
-        height: auto;
+        min-height: 350px;
+        height: 350px;
       }
 
       @include desktop-lg {
@@ -370,7 +370,7 @@
         @include tablet {
           font-size: 16px;
           line-height: 24px;
-          width: 238px;
+          width: 275px;
           height: auto;
         }
 
@@ -488,7 +488,7 @@
               display: block;
               width: auto;
               height: 150px;
-              right: -65px;
+              right: -30px;
               top: 155px;
             }
 
@@ -496,7 +496,7 @@
               display: block;
               width: auto;
               height: 150px;
-              right: -65px;
+              right: -30px;
               top: 165px;
             }
           }
@@ -551,9 +551,9 @@
           }
 
           @include tablet {
-            width: 278px;
+            width: 208px;
             height: 44px;
-            left: 20px;
+            left: 55px;
             top: 200px;
             background: rgba(255, 68, 0, 0.3);
           }
@@ -573,7 +573,7 @@
             font-family: "Sofia Pro", Arial, sans-serif;
             font-style: normal;
             font-weight: map-get($font-weight, "medium");
-            font-size: 18.4px;
+            font-size: 15px;
             line-height: 100%;
             color: #000000;
             white-space: nowrap;

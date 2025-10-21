@@ -339,7 +339,11 @@ const OurSpreads = ({ className }) => {
                 </div>
               ) : (
                 // Desktop Layout
-                <div className="our-spreads-desktop">
+                <div
+                  className={cn("our-spreads-desktop", {
+                    "our-spreads-desktop--rtl": isRTL,
+                  })}
+                >
                   {/* Search Container */}
                   <div className="search-container">
                     {/* Explanatory Text */}

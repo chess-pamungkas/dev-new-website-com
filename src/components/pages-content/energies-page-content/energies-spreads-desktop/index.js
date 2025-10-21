@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import SearchIcon from "../../../../assets/images/icons/metals/search-table-metals.svg";
 import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import LanguageContext from "../../../../context/language-context";
@@ -8,6 +9,7 @@ import { StandardButtons } from "../../../shared/reusable-buttons";
 
 const EnergiesSpreadsDesktop = ({ data }) => {
   const { t } = useTranslationWithVariables();
+  const isRTL = useRtlDirection();
   const [searchTerm, setSearchTerm] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
@@ -25,7 +27,11 @@ const EnergiesSpreadsDesktop = ({ data }) => {
   );
 
   return (
-    <div className="energies-spreads-desktop">
+    <div
+      className={`energies-spreads-desktop ${
+        isRTL ? "energies-spreads-desktop--rtl" : ""
+      }`}
+    >
       {/* Search Bar */}
       <div className="search-container">
         <div className="search-frame">

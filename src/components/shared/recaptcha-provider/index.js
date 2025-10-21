@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 const ReCaptchaProvider = ({ children, showBadge = false }) => {
-  const recaptchaSiteKey =
-    process.env.GOOGLE_CAPTCHA_SITE_KEY ||
-    process.env.GATSBY_GOOGLE_CAPTCHA_SITE_KEY;
+  const recaptchaSiteKey = process.env.GATSBY_GOOGLE_CAPTCHA_SITE_KEY;
 
   useEffect(() => {
     // Load reCAPTCHA script manually

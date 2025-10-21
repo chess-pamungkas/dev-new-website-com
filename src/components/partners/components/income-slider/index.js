@@ -29,13 +29,41 @@ const IncomeSlider = ({ className }) => {
   };
 
   const handleSliderInput = (event) => {
-    const value = parseInt(event.target.value);
+    let value = parseInt(event.target.value);
+
+    // In RTL mode, we need to reverse the value calculation
+    if (isRTL) {
+      // Convert LTR value to RTL value
+      // LTR: 10=0%, 500=100% -> RTL: 10=100%, 500=0%
+      const percentage =
+        ((value - MIN_CLIENTS) / (MAX_CLIENTS - MIN_CLIENTS)) * 100;
+      const rtlPercentage = 100 - percentage;
+      value = Math.round(
+        MIN_CLIENTS + (rtlPercentage / 100) * (MAX_CLIENTS - MIN_CLIENTS)
+      );
+    }
+
     onSliderChange(value);
   };
 
   const getSliderPercentage = () => {
     return ((clientsCount - MIN_CLIENTS) / (MAX_CLIENTS - MIN_CLIENTS)) * 100;
   };
+
+  const getRTLInputValue = () => {
+    if (!isRTL) return clientsCount;
+
+    // Convert RTL value to LTR input value
+    const percentage =
+      ((clientsCount - MIN_CLIENTS) / (MAX_CLIENTS - MIN_CLIENTS)) * 100;
+    const rtlPercentage = 100 - percentage;
+    return Math.round(
+      MIN_CLIENTS + (rtlPercentage / 100) * (MAX_CLIENTS - MIN_CLIENTS)
+    );
+  };
+
+  // No need for separate RTL calculation - we use the same percentage
+  // The difference is in CSS positioning (right instead of left)
 
   return (
     <section
@@ -105,13 +133,15 @@ const IncomeSlider = ({ className }) => {
               <div className="income-slider__progress-track">
                 <div
                   className="income-slider__progress-fill"
-                  style={{ width: `${getSliderPercentage()}%` }}
+                  style={{
+                    width: `${getSliderPercentage()}%`,
+                  }}
                 ></div>
                 <input
                   type="range"
                   min={MIN_CLIENTS}
                   max={MAX_CLIENTS}
-                  value={clientsCount}
+                  value={isRTL ? getRTLInputValue() : clientsCount}
                   onChange={handleSliderInput}
                   className="income-slider__progress-input"
                 />
@@ -129,7 +159,10 @@ const IncomeSlider = ({ className }) => {
               {/* Slider Thumb */}
               <div
                 className="income-slider__progress-thumb"
-                style={{ left: `${getSliderPercentage()}%` }}
+                style={{
+                  left: `${getSliderPercentage()}%`,
+                  "--thumb-position": `${getSliderPercentage()}%`,
+                }}
               >
                 <div className="income-slider__progress-thumb-handle"></div>
                 <div className="income-slider__progress-thumb-line"></div>

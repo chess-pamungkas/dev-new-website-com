@@ -6,7 +6,7 @@
   "header-nav-tab-top-markets-forex-title": "外匯",
   "header-nav-tab-top-markets-forex-desc": "{{ forex-currency-pairs }}種貨幣對可全天交易",
   "header-nav-tab-top-markets-metals-title": "金屬",
-  "header-nav-tab-top-markets-metals-desc": "Get exposure to volatility across the hottest precious metals.",
+  "header-nav-tab-top-markets-metals-desc": "了解最熱門貴金屬的波動性。",
   "header-nav-tab-top-markets-shares-title": "股票",
   "header-nav-tab-top-markets-shares-desc": "使用差價合約（CFDs）交易最熱門的股票",
   "header-nav-tab-top-markets-energies-title": "能源",
@@ -61,7 +61,7 @@
   "cookie_policy_table_header_opt_out": "Opt Out option",
   "cookie_policy_mobile_cookies": "Cookies",
   "cookie_policy_mobile_opt_out": "Opt Out option",
-  "index_main-promotion-title": "一個優化的交易交易體驗為",
+  "index_main-promotion-title": "更低成本，\n更好的全球貿易",
   "index_main-promotion-animated-text-forex-traders": "外匯交易員",
   "index_main-promotion-animated-text-day-traders": "日內交易員",
   "index_main-promotion-animated-text-day-trader": "日內交易員",
@@ -1405,7 +1405,7 @@
   "partners_partners-text": "与值得信赖的经纪商合作，从您推荐给我们的每个活跃客户的交易活动中获得我们收入的一部分",
   "partners_button-apply-now": "立即申请",
   "partners_button-contact-us": "联系我们",
-  "contact-us_badge-text": "随时联系我们",
+  "contact-us_badge-text": "隨時聯繫我們",
   "contact-us_contact-us-title": "与我们联系",
   "contact-us_contact-us-text": "在OQtima，我们在这里支持您的交易之旅——通过您首选的联系方式与我们联系。",
   "contact-us_button-apply-now": "联系我们",
@@ -2482,7 +2482,7 @@
   "navbar-dropdown-highlight_products_title": "OQtima专为交易而建",
   "navbar-dropdown-highlight_products_subtitle": "超过1,000种资产可直接在手机、桌面或平板电脑上随时随地交易",
   "navbar-dropdown-highlight_products_primary-button": "开始交易",
-  "navbar-dropdown-highlight_products_secondary-button": "Try a Demo Account",
+  "navbar-dropdown-highlight_products_secondary-button": "尝试模拟账户",
   "navbar-dropdown-highlight_trading_badge-text": "立即交易",
   "navbar-dropdown-highlight_trading_title": "OQtima专为交易而建",
   "navbar-dropdown-highlight_trading_subtitle": "OQtima MT4是市场上每个级别交易者的最佳选择之一",
@@ -2541,5 +2541,6 @@
   "platform-selection_mt4-webtrader": "MT4网页交易平台",
   "partners_income-slider_badge-icon-alt": "合作伙伴收入滑块",
   "partners_income-slider_badge-text": "倍增您的收入",
-  "partners_income-slider_title": "介绍经纪商的复合效应"
+  "partners_income-slider_title": "介绍经纪商的复合效应",
+  "popup-registration-badge": "註冊"
 }

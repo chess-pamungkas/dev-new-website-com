@@ -6,7 +6,7 @@
   "header-nav-tab-top-markets-forex-title": "Forex",
   "header-nav-tab-top-markets-forex-desc": "{{ forex-currency-pairs }} paires de devises à négocier 24/5",
   "header-nav-tab-top-markets-metals-title": "Métaux",
-  "header-nav-tab-top-markets-metals-desc": "Get exposure to volatility across the hottest precious metals.",
+  "header-nav-tab-top-markets-metals-desc": "Obtenez une exposition à la volatilité sur les métaux précieux les plus recherchés.",
   "header-nav-tab-top-markets-shares-title": "Actions",
   "header-nav-tab-top-markets-shares-desc": "Tradez les actions les plus recherchées avec la puissance des CFD dès maintenant.",
   "header-nav-tab-top-markets-energies-title": "Énergies",
@@ -61,7 +61,7 @@
   "cookie_policy_table_header_opt_out": "Opt Out option",
   "cookie_policy_mobile_cookies": "Cookies",
   "cookie_policy_mobile_opt_out": "Opt Out option",
-  "index_main-promotion-title": "Une expérience commerciale parfaitement optimisée pour",
+  "index_main-promotion-title": "Meilleurs coûts,\nmeilleur commerce mondial",
   "index_main-promotion-animated-text-forex-traders": "Forex Traders",
   "index_main-promotion-animated-text-day-traders": "Day Traders",
   "index_main-promotion-animated-text-day-trader": "Day Trader",
@@ -2482,7 +2482,7 @@
   "navbar-dropdown-highlight_products_title": "OQtima est conçu pour le Trading",
   "navbar-dropdown-highlight_products_subtitle": "Plus de 1 000 actifs à trader directement sur mobile, bureau ou tablette n'importe où et n'importe quand",
   "navbar-dropdown-highlight_products_primary-button": "Commencer à Trader",
-  "navbar-dropdown-highlight_products_secondary-button": "Try a Demo Account",
+  "navbar-dropdown-highlight_products_secondary-button": "Essayez un Compte Démo",
   "navbar-dropdown-highlight_trading_badge-text": "Trader Maintenant",
   "navbar-dropdown-highlight_trading_title": "OQtima est conçu pour le Trading",
   "navbar-dropdown-highlight_trading_subtitle": "OQtima MT4 l'un des choix les plus supérieurs du marché pour chaque niveau de trader",
@@ -2541,5 +2541,6 @@
   "platform-selection_mt4-webtrader": "MT4 WebTrader",
   "partners_income-slider_badge-icon-alt": "Curseur de Revenus du Partenaire",
   "partners_income-slider_badge-text": "Multipliez vos gains",
-  "partners_income-slider_title": "L'effet composé d'un courtier introduisant"
+  "partners_income-slider_title": "L'effet composé d'un courtier introduisant",
+  "popup-registration-badge": "Inscription"
 }

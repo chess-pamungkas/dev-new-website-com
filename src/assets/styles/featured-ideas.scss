@@ -462,7 +462,7 @@
     padding: 0px;
     gap: 18px;
     width: 625px;
-    height: 232px;
+    height: auto;
     flex: none;
     order: 0;
     align-self: stretch;
@@ -689,7 +689,7 @@
 
       &:hover,
       &:focus {
-        width: 250px; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
+        width: fit-content; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
         background: #ff4400;
         color: #000 !important;
         box-shadow: 0 0 19.3px 0 rgba(255, 68, 0, 0.5);

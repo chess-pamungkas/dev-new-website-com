@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import InternalLink from "../../../shared/internal-link";
 import subNavBadgeIcon from "../../../../assets/images/icons/sub-nav.svg";
 import { ShowRegistrationPopup } from "../../../../helpers/constants";
@@ -19,9 +20,16 @@ const NavbarDropdownHighlight = ({
   onOpenRegistrationPopup,
 }) => {
   const { t } = useTranslationWithVariables();
+  const isRTL = useRtlDirection();
   const langParam = setLangParam();
   return (
-    <div className={cn("navbar-dropdown-highlight", className)}>
+    <div
+      className={cn(
+        "navbar-dropdown-highlight",
+        isRTL && "navbar-dropdown-highlight--rtl",
+        className
+      )}
+    >
       <div className="navbar-dropdown-highlight__inner">
         <div className="navbar-dropdown-highlight__badge">
           <span style={{ display: "inline-flex", alignItems: "center" }}>
@@ -66,16 +74,66 @@ const NavbarDropdownHighlight = ({
                 <span className="navbar-dropdown-highlight__button-text">
                   {t(primaryButton.text)}
                 </span>
-                <span className="navbar-dropdown-highlight__button-arrow">
+                <span
+                  className="navbar-dropdown-highlight__button-arrow"
+                  style={
+                    isRTL
+                      ? {
+                          transform: "scaleX(-1) !important",
+                          WebkitTransform: "scaleX(-1) !important",
+                          MozTransform: "scaleX(-1) !important",
+                          msTransform: "scaleX(-1) !important",
+                        }
+                      : {}
+                  }
+                >
                   <svg
                     width="9.33"
                     height="9.33"
                     viewBox="0 0 11 11"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    style={
+                      isRTL
+                        ? {
+                            transform: "scaleX(-1) !important",
+                            WebkitTransform: "scaleX(-1) !important",
+                            MozTransform: "scaleX(-1) !important",
+                            msTransform: "scaleX(-1) !important",
+                          }
+                        : {}
+                    }
+                    ref={(el) => {
+                      if (el && isRTL) {
+                        el.style.setProperty(
+                          "transform",
+                          "scaleX(-1)",
+                          "important"
+                        );
+                        el.style.setProperty(
+                          "-webkit-transform",
+                          "scaleX(-1)",
+                          "important"
+                        );
+                        el.style.setProperty(
+                          "-moz-transform",
+                          "scaleX(-1)",
+                          "important"
+                        );
+                        el.style.setProperty(
+                          "-ms-transform",
+                          "scaleX(-1)",
+                          "important"
+                        );
+                      }
+                    }}
                   >
                     <path
-                      d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+                      d={
+                        isRTL
+                          ? "M10.3333 5.50004H1M1 5.50004L5.66667 0.833374M1 5.50004L5.66667 10.1667"
+                          : "M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+                      }
                       stroke="white"
                       strokeWidth="1.3333"
                       strokeLinecap="round"
@@ -105,16 +163,66 @@ const NavbarDropdownHighlight = ({
                 <span className="navbar-dropdown-highlight__button-text">
                   {t(secondaryButton.text)}
                 </span>
-                <span className="navbar-dropdown-highlight__button-arrow">
+                <span
+                  className="navbar-dropdown-highlight__button-arrow"
+                  style={
+                    isRTL
+                      ? {
+                          transform: "scaleX(-1) !important",
+                          WebkitTransform: "scaleX(-1) !important",
+                          MozTransform: "scaleX(-1) !important",
+                          msTransform: "scaleX(-1) !important",
+                        }
+                      : {}
+                  }
+                >
                   <svg
                     width="9.33"
                     height="9.33"
                     viewBox="0 0 11 11"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    style={
+                      isRTL
+                        ? {
+                            transform: "scaleX(-1) !important",
+                            WebkitTransform: "scaleX(-1) !important",
+                            MozTransform: "scaleX(-1) !important",
+                            msTransform: "scaleX(-1) !important",
+                          }
+                        : {}
+                    }
+                    ref={(el) => {
+                      if (el && isRTL) {
+                        el.style.setProperty(
+                          "transform",
+                          "scaleX(-1)",
+                          "important"
+                        );
+                        el.style.setProperty(
+                          "-webkit-transform",
+                          "scaleX(-1)",
+                          "important"
+                        );
+                        el.style.setProperty(
+                          "-moz-transform",
+                          "scaleX(-1)",
+                          "important"
+                        );
+                        el.style.setProperty(
+                          "-ms-transform",
+                          "scaleX(-1)",
+                          "important"
+                        );
+                      }
+                    }}
                   >
                     <path
-                      d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+                      d={
+                        isRTL
+                          ? "M10.3333 5.50004H1M1 5.50004L5.66667 0.833374M1 5.50004L5.66667 10.1667"
+                          : "M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
+                      }
                       stroke="currentColor"
                       strokeWidth="1.3333"
                       strokeLinecap="round"

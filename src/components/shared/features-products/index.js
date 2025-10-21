@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
+import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import featuresIcon from "../../../assets/images/icons/features.svg";
 
 const FeaturesProducts = ({
@@ -12,6 +13,7 @@ const FeaturesProducts = ({
 }) => {
   const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
+  const isRTL = useRtlDirection();
   const [currentSlide, setCurrentSlide] = useState(0);
   const sliderRef = useRef(null);
 
@@ -58,7 +60,11 @@ const FeaturesProducts = ({
   };
 
   return (
-    <section className={cn("features-products", className)}>
+    <section
+      className={cn("features-products", className, {
+        "features-products--rtl": isRTL,
+      })}
+    >
       {/* <div className="container"> */}
       {/* Header Section */}
       <div className="features-products__header">

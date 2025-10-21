@@ -730,7 +730,7 @@
       }
 
       .guide-content__title {
-        font-size: 52px;
+        font-size: 48px;
         // line-height: 60px;
       }
 
@@ -748,7 +748,7 @@
       .guide-content__step-card {
         padding: 20px;
         border-radius: 20px;
-        height: 102px;
+        height: 120px;
       }
 
       .guide-content__step-content {
@@ -795,21 +795,21 @@
       }
     }
 
-    .button-primary-standard {
-      width: 150px;
+    // .button-primary-standard {
+    //   width: 150px;
 
-      @include mobile {
-        width: 100%;
-      }
+    //   @include mobile {
+    //     width: 100%;
+    //   }
 
-      &:hover {
-        width: 167px;
+    //   &:hover {
+    //     width: 167px;
 
-        @include mobile {
-          width: 100%;
-        }
-      }
-    }
+    //     @include mobile {
+    //       width: 100%;
+    //     }
+    //   }
+    // }
   }
 
   // Trading Type Variant Styles Mixin
@@ -868,7 +868,7 @@
 
       .guide-content__title {
         width: auto !important;
-        font-size: 52px;
+        font-size: 48px;
       }
 
       .guide-content__subtitle {

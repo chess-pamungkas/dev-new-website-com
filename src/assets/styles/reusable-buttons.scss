@@ -196,7 +196,7 @@
   // Special styling for MT4 and MT5 hero buttons
   &.mt4-hero-button,
   &.mt5-hero-button {
-    width: 266px;
+    width: fit-content;
 
     @include mobile {
       width: 100%;
@@ -204,7 +204,7 @@
 
     &:hover,
     &:focus {
-      width: 290px;
+      width: fit-content;
 
       @include mobile {
         width: 100%;
@@ -507,7 +507,7 @@
 
   &:hover,
   &:focus {
-    width: 260px; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
+    width: fit-content; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
     background: #ff4400;
     color: #fff !important;
     box-shadow: 0 0 19.3px 0 rgba(255, 68, 0, 0.5);
@@ -520,15 +520,15 @@
     }
 
     @include tablet {
-      width: 215px;
+      width: fit-content;
     }
 
     @include desktop-lg {
-      width: 240px;
+      width: fit-content;
     }
 
     @include desktop-xl {
-      width: 255px;
+      width: fit-content;
     }
 
     .button-arrow {

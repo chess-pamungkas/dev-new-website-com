@@ -307,6 +307,11 @@
     font-size: 14px;
     font-weight: map-get($font-weight, "medium");
     line-height: 20px;
+
+    @include mobile {
+      font-size: 12px;
+      line-height: 18px;
+    }
   }
 
   &__badge-arrow {

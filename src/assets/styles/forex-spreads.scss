@@ -44,7 +44,6 @@
   width: 100%;
   font-weight: map-get($font-weight, "semibold");
   font-size: 52px;
-  line-height: 1.2;
   text-align: center;
   letter-spacing: -0.02em;
   background: linear-gradient(
@@ -649,6 +648,7 @@
   }
 
   .search-container-mobile {
+    position: relative;
     display: flex;
     align-items: center;
     width: 50%; // Fixed 50% width
@@ -664,6 +664,14 @@
     @include mobile {
       height: 30px; // Slightly smaller on very small screens
       padding: 0 6px;
+
+      .search-input-mobile {
+        padding: 0 18px 0 0; // Adjust right padding for smaller screens
+      }
+
+      .search-icon-mobile {
+        right: 6px; // Adjust icon position for smaller padding
+      }
     }
 
     .search-input-mobile {
@@ -677,7 +685,7 @@
       font-size: 12px; // Standard font size for mobile
       line-height: 1.2; // Better line height
       color: rgba(0, 0, 0, 0.6125); // From Figma text color
-      padding: 0;
+      padding: 0 20px 0 0; // Add right padding for icon space
 
       &::placeholder {
         color: rgba(0, 0, 0, 0.6125); // From Figma placeholder color
@@ -694,6 +702,10 @@
     }
 
     .search-icon-mobile {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
       display: flex;
       align-items: center;
       justify-content: center;

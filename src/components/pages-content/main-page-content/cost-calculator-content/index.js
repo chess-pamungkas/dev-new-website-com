@@ -8,6 +8,7 @@ import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import LanguageContext from "../../../../context/language-context";
 import { StandardButtons } from "../../../shared/reusable-buttons";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 
 const TRADE_VOLUME_MIN = 0.1;
 const TRADE_VOLUME_MAX = 10;
@@ -29,6 +30,7 @@ const CostCalculatorContent = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
   const { t } = useTranslationWithVariables();
+  const isRTL = useRtlDirection();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -61,7 +63,7 @@ const CostCalculatorContent = () => {
         margin: 0,
         cursor: "pointer",
         zIndex: 2,
-        transform: "translate(12px, -0)",
+        transform: isRTL ? "translate(-12px, -0)" : "translate(12px, -0)",
       }}
     >
       <img
@@ -78,7 +80,11 @@ const CostCalculatorContent = () => {
   );
 
   return (
-    <section className="cost-calculator-content">
+    <section
+      className={`cost-calculator-content ${
+        isRTL ? "cost-calculator-content--rtl" : ""
+      }`}
+    >
       <div className="cost-calculator-content__left">
         <div className="cost-calculator-content__badge-row">
           <span className="cost-calculator-content__badge">
@@ -139,6 +145,7 @@ const CostCalculatorContent = () => {
               thumbClassName="cost-calculator-content__slider-thumb"
               trackClassName="cost-calculator-content__slider-track"
               renderThumb={renderThumb}
+              invert={isRTL}
             />
           </div>
           <div className="cost-calculator-content__divider" />

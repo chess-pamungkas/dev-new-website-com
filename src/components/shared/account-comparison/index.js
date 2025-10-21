@@ -17,12 +17,14 @@ import {
   ButtonContainer,
 } from "../reusable-buttons";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
+import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 
 const AccountComparison = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const { isMobile } = useWindowSize();
   const { selectedLanguage } = useContext(LanguageContext);
   const { t } = useTranslationWithVariables();
+  const isRTL = useRtlDirection();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -51,7 +53,11 @@ const AccountComparison = () => {
     : AccountComparisonDesktopBg;
 
   return (
-    <section className="account-comparison-content">
+    <section
+      className={`account-comparison-content ${
+        isRTL ? "account-comparison-content--rtl" : ""
+      }`}
+    >
       {/* Background Images */}
       <div className="account-comparison-bg">
         <img

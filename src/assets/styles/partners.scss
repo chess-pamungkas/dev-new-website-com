@@ -286,6 +286,11 @@
     font-size: 14px;
     font-weight: map-get($font-weight, "medium");
     line-height: 20px;
+
+    @include mobile {
+      font-size: 12px;
+      line-height: 18px;
+    }
   }
 
   &__badge-arrow {
@@ -1061,7 +1066,7 @@
         rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 16px;
-      padding: 24px 28px;
+      padding: 24px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       position: relative;
       overflow: hidden;
@@ -1100,7 +1105,7 @@
 
       @include mobile {
         min-height: 258px;
-        padding: 24px 28px;
+        padding: 24px;
         gap: 16px;
         min-width: 100%;
         width: 100%;
@@ -1125,7 +1130,7 @@
       font-family: "Sofia Pro", Arial, sans-serif;
       font-style: normal;
       font-weight: map-get($font-weight, "bold");
-      font-size: 26px;
+      font-size: 20px;
       letter-spacing: -0.02em;
       background: linear-gradient(
           102.31deg,

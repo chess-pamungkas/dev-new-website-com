@@ -6,7 +6,7 @@
   "header-nav-tab-top-markets-forex-title": "Forex",
   "header-nav-tab-top-markets-forex-desc": "{{ forex-currency-pairs }} Pasangan mata uang untuk diperdagangkan 24/5",
   "header-nav-tab-top-markets-metals-title": "Logam",
-  "header-nav-tab-top-markets-metals-desc": "Get exposure to volatility across the hottest precious metals.",
+  "header-nav-tab-top-markets-metals-desc": "Dapatkan eksposur terhadap volatilitas di logam mulia paling populer.",
   "header-nav-tab-top-markets-shares-title": "Saham",
   "header-nav-tab-top-markets-shares-desc": "Perdagangkan saham yang paling dicari dengan kekuatan CFD sekarang",
   "header-nav-tab-top-markets-energies-title": "Energi",
@@ -61,7 +61,7 @@
   "cookie_policy_table_header_opt_out": "Opt Out option",
   "cookie_policy_mobile_cookies": "Cookies",
   "cookie_policy_mobile_opt_out": "Opt Out option",
-  "index_main-promotion-title": "Pengalaman perdagangan yang sempurna",
+  "index_main-promotion-title": "Biaya lebih baik,\nperdagangan global lebih baik",
   "index_main-promotion-animated-text-forex-traders": "Pedagang Forex",
   "index_main-promotion-animated-text-day-traders": "Pedagang Harian",
   "index_main-promotion-animated-text-day-trader": "Pedagang Harian",
@@ -2482,7 +2482,7 @@
   "navbar-dropdown-highlight_products_title": "OQtima dibangun untuk Trading",
   "navbar-dropdown-highlight_products_subtitle": "Lebih dari 1.000 aset untuk diperdagangkan langsung di ponsel, desktop atau tablet di mana saja kapan saja",
   "navbar-dropdown-highlight_products_primary-button": "Mulai Berdagang",
-  "navbar-dropdown-highlight_products_secondary-button": "Try a Demo Account",
+  "navbar-dropdown-highlight_products_secondary-button": "Coba Akun Demo",
   "navbar-dropdown-highlight_trading_badge-text": "Berdagang Sekarang",
   "navbar-dropdown-highlight_trading_title": "OQtima dibangun untuk Trading",
   "navbar-dropdown-highlight_trading_subtitle": "OQtima MT4 salah satu pilihan paling unggul di pasar untuk setiap level trader",
@@ -2541,5 +2541,6 @@
   "platform-selection_mt4-webtrader": "MT4 WebTrader",
   "partners_income-slider_badge-icon-alt": "Penggeser Pendapatan Mitra",
   "partners_income-slider_badge-text": "Lipatgandakan penghasilan Anda",
-  "partners_income-slider_title": "Efek gabungan dari broker pengantar"
+  "partners_income-slider_title": "Efek gabungan dari broker pengantar",
+  "popup-registration-badge": "Pendaftaran"
 }

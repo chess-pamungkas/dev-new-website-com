@@ -22,7 +22,7 @@
   @include mobile {
     height: 953px;
     border-radius: 20px;
-    padding-top: 73px;
+    padding-top: 66px;
     margin-top: 0;
     margin-bottom: 0;
     overflow: visible;
@@ -77,7 +77,7 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 73px;
+      top: 66px;
       margin: 0 auto;
       border-radius: 20px;
     }
@@ -286,6 +286,11 @@
     font-size: 14px;
     font-weight: map-get($font-weight, "medium");
     line-height: 20px;
+
+    @include mobile {
+      font-size: 12px;
+      line-height: 18px;
+    }
   }
 
   &__badge-arrow {

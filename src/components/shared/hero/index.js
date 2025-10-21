@@ -274,7 +274,7 @@ const Hero = ({
         };
       case "contact-us":
         return {
-          badge: customBadgeText || "contact-us_badge-text-get-in-touch",
+          badge: customBadgeText || "contact-us_badge-text",
           title: customTitle || "contact-us_contact-us-title",
           subtitle: customSubtitle || "contact-us_contact-us-text",
           primaryButton:
@@ -538,6 +538,7 @@ Hero.propTypes = {
     "forex",
     "metals",
     "shares",
+    "energies",
     "etf",
     "mt4",
     "mt5",

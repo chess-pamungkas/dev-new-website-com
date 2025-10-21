@@ -4,6 +4,7 @@ import { useTranslationWithVariables } from "../../../../helpers/hooks/use-trans
 import SearchIcon from "../../../../assets/images/icons/metals/search-table-metals.svg";
 import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import LanguageContext from "../../../../context/language-context";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { StandardButtons } from "../../../shared/reusable-buttons";
 
 const IndicesSpreadsDesktop = ({ data }) => {
@@ -11,6 +12,7 @@ const IndicesSpreadsDesktop = ({ data }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
+  const isRTL = useRtlDirection();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -25,7 +27,11 @@ const IndicesSpreadsDesktop = ({ data }) => {
   );
 
   return (
-    <div className="indices-spreads-desktop">
+    <div
+      className={`indices-spreads-desktop ${
+        isRTL ? "indices-spreads-desktop--rtl" : ""
+      }`}
+    >
       {/* Search Bar */}
       <div className="search-container">
         <div className="search-frame">

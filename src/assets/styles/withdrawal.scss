@@ -731,6 +731,7 @@
 
   @include mobile {
     text-align: left; // ✅ Left align for mobile
+    margin-top: 80px;
   }
 }
 

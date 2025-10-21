@@ -1658,10 +1658,13 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
               {/* Badge */}
               <div className="popup-registration__content__badge">
                 <div className="popup-registration__content__badge-icon">
-                  <img src={badgeSecurityIcon} alt="Registration" />
+                  <img
+                    src={badgeSecurityIcon}
+                    alt={t("popup-registration-badge")}
+                  />
                 </div>
                 <span className="popup-registration__content__badge-text">
-                  Registration
+                  {t("popup-registration-badge")}
                 </span>
               </div>
 

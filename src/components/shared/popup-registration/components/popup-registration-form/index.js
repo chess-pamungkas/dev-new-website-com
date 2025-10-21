@@ -1065,7 +1065,7 @@ const PopupRegistrationForm = ({ params }) => {
           // console.log("Setting language from URL:", cleanLang);
 
           // Special handling for Arabic
-          if (isRTLLanguage(cleanLang)) {
+          if (cleanLang === "ar") {
             // Set RTL flags in session storage and globals
             try {
               sessionStorage.setItem("oqtima_tab_rtl", "true");
@@ -1189,9 +1189,8 @@ const PopupRegistrationForm = ({ params }) => {
     effectiveLanguage = "pt";
   }
 
-  // Check untuk RTL language
-  const forcedRTL = isRTLLanguage(effectiveLanguage);
-  const isRTLMode = isRTL || forcedRTL;
+  // Use hook-based RTL detection
+  const isRTLMode = isRTL;
 
   // First parse and extract the language parameters
   useEffect(() => {
@@ -1224,7 +1223,7 @@ const PopupRegistrationForm = ({ params }) => {
       // console.log(`Sanitized language code: ${sanitizedLang}`);
 
       // Check if the sanitized language is Arabic
-      const isArabic = isRTLLanguage(sanitizedLang);
+      const isArabic = sanitizedLang === "ar";
 
       if (!isArabic) {
         cleanRTLAttributes();
@@ -1238,7 +1237,7 @@ const PopupRegistrationForm = ({ params }) => {
       if (setCurrentLanguage && typeof setCurrentLanguage === "function") {
         try {
           // Create proper language object expected by the context
-          const isRtlLang = isRTLLanguage(sanitizedLang);
+          const isRtlLang = sanitizedLang === "ar";
           const langObject = {
             id: sanitizedLang,
             title: sanitizedLang.toUpperCase(),
@@ -1279,7 +1278,7 @@ const PopupRegistrationForm = ({ params }) => {
       const cleanLang = langAttr.replace(/[?&].*$/, "").toLowerCase();
 
       // Just update the form's RTL state based on language
-      if (isRTLLanguage(cleanLang)) {
+      if (cleanLang === "ar") {
         // Add mobile-specific styling for RTL in the registration form
         if (!document.getElementById("rtl-form-mobile-styles")) {
           const mobileStyleEl = document.createElement("style");

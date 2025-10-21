@@ -286,6 +286,11 @@
     font-size: 14px;
     font-weight: map-get($font-weight, "medium");
     line-height: 20px;
+
+    @include mobile {
+      font-size: 12px;
+      line-height: 18px;
+    }
   }
 
   &__badge-arrow {
@@ -942,6 +947,11 @@
       line-height: 20px;
       color: #fff;
       font-weight: map-get($font-weight, "medium");
+
+      @include mobile {
+        font-size: 12px;
+        line-height: 18px;
+      }
     }
 
     // Title
@@ -1399,7 +1409,7 @@
       }
 
       &__left {
-        margin-top: 130px;
+        margin-top: 90px;
       }
 
       &__title {
@@ -1423,7 +1433,7 @@
       }
 
       &__left {
-        margin-top: 130px;
+        margin-top: 90px;
       }
 
       &__title {
@@ -1447,7 +1457,7 @@
       }
 
       &__left {
-        margin-top: 190px;
+        margin-top: 160px;
       }
     }
 

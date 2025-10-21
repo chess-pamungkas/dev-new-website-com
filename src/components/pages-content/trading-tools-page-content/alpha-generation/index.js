@@ -5,6 +5,10 @@ import { useTranslationWithVariables } from "../../../../helpers/hooks/use-trans
 import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import { ChevronDownIcon, ChevronUpIcon } from "../../../shared/icons";
 import LanguageContext from "../../../../context/language-context";
+import cn from "classnames";
+import ReusableButtons from "../../../shared/reusable-buttons";
+
+const { ArrowIcon } = ReusableButtons;
 import desktopBgSVG from "../../../../assets/images/bg/trading-tools/bg-alpha-generation-desktop.svg";
 import mobileBgSVG from "../../../../assets/images/bg/trading-tools/bg-alpha-generation-mobile.svg";
 import badgeIcon from "../../../../assets/images/icons/badge-market-sentiment.svg";
@@ -82,7 +86,10 @@ const AlphaGeneration = () => {
 
   return (
     <>
-      <div id="alpha-generation" className="alpha-generation">
+      <div
+        id="alpha-generation"
+        className={cn("alpha-generation", { "alpha-generation--rtl": isRTL })}
+      >
         {/* Background */}
         <div className="alpha-generation__background">
           <img
@@ -147,21 +154,7 @@ const AlphaGeneration = () => {
                 >
                   <span className="button-text">{tab.label}</span>
                   <span className="button-arrow">
-                    <svg
-                      width="9.33"
-                      height="9.33"
-                      viewBox="0 0 11 11"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
-                        stroke="currentColor"
-                        strokeWidth="1.3333"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <ArrowIcon isRTL={isRTL} />
                   </span>
                 </div>
               ))}
@@ -199,21 +192,7 @@ const AlphaGeneration = () => {
                     {t("button-open-account")}
                   </span>
                   <span className="button-arrow">
-                    <svg
-                      width="9.33"
-                      height="9.33"
-                      viewBox="0 0 11 11"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
-                        stroke="currentColor"
-                        strokeWidth="1.3333"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <ArrowIcon isRTL={isRTL} />
                   </span>
                 </button>
                 <button
@@ -222,21 +201,7 @@ const AlphaGeneration = () => {
                 >
                   <span className="button-text">{t("button-try-demo")}</span>
                   <span className="button-arrow">
-                    <svg
-                      width="9.33"
-                      height="9.33"
-                      viewBox="0 0 11 11"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
-                        stroke="currentColor"
-                        strokeWidth="1.3333"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <ArrowIcon isRTL={isRTL} />
                   </span>
                 </button>
               </div>

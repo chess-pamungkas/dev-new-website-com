@@ -709,6 +709,11 @@
     font-size: 14px;
     font-weight: map-get($font-weight, "medium");
     line-height: 20px;
+
+    @include mobile {
+      font-size: 12px;
+      line-height: 18px;
+    }
   }
 
   &__badge-arrow {
@@ -757,7 +762,7 @@
 
     @include desktop-lg {
       font-size: 72px;
-      width: 758px;
+      width: 860px;
     }
 
     &--big {
@@ -1119,7 +1124,7 @@
     @include desktop-lg {
       width: 393.48px;
       height: 30px;
-      margin-top: 100px;
+      margin-top: 75px;
     }
     @include desktop-xl {
       width: 393.48px;

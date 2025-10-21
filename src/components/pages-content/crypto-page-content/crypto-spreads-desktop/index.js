@@ -5,12 +5,14 @@ import SearchIcon from "../../../../assets/images/icons/metals/search-table-meta
 import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import LanguageContext from "../../../../context/language-context";
 import { StandardButtons } from "../../../shared/reusable-buttons";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 
 const CryptoSpreadsDesktop = ({ data }) => {
   const { t } = useTranslationWithVariables();
   const [searchTerm, setSearchTerm] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
+  const isRTL = useRtlDirection();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -25,7 +27,11 @@ const CryptoSpreadsDesktop = ({ data }) => {
   );
 
   return (
-    <div className="crypto-spreads-desktop">
+    <div
+      className={`crypto-spreads-desktop ${
+        isRTL ? "crypto-spreads-desktop--rtl" : ""
+      }`}
+    >
       {/* Search Bar */}
       <div className="search-container">
         <div className="search-frame">

@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { graphql } from "gatsby";
 import LanguageContext from "../context/language-context";
 import ClientResolverContext from "../context/client-resolver-context";
+import { useRtlDirection } from "../helpers/hooks/use-rtl-direction";
 
 // Import the styles directly
 import "../assets/styles/popup-registration.scss";
@@ -106,9 +107,9 @@ const manuallySetLanguage = async (lang, i18nInstance) => {
       return false;
     }
 
-    // Special handling for RTL languages
-    const RTL_LANGUAGES = ["ar"];
-    const isRTL = RTL_LANGUAGES.includes(lang);
+    // Use hook for RTL detection
+    // Note: This function is called outside React context, so we use manual check
+    const isRTL = lang === "ar";
 
     // Apply RTL styling if needed
     if (isRTL) {
@@ -608,7 +609,7 @@ const PopupRegistrationPage = ({ location, data }) => {
       }
 
       // Detect RTL languages
-      const isRtlLanguage = RTL_LANGUAGES.includes(effectiveLangParam);
+      const isRtlLanguage = effectiveLangParam === "ar";
       setIsRTL(isRtlLanguage);
 
       // Store params in state

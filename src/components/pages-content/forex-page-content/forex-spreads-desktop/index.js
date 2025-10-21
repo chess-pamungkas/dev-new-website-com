@@ -11,6 +11,7 @@ import TradingContext from "../../../../context/trading-context";
 import SearchIcon from "../../../../assets/images/icons/metals/search-table-metals.svg";
 import LanguageContext from "../../../../context/language-context";
 import { StandardButtons } from "../../../shared/reusable-buttons";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 
 const ForexSpreadsDesktop = () => {
   const { t } = useTranslationWithVariables();
@@ -19,6 +20,7 @@ const ForexSpreadsDesktop = () => {
   const { selectedLanguage } = useContext(LanguageContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeTab, setActiveTab] = useState("major"); // "major" or "minor"
+  const isRTL = useRtlDirection();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -47,7 +49,11 @@ const ForexSpreadsDesktop = () => {
 
   return (
     <>
-      <div className="forex-spreads-desktop">
+      <div
+        className={`forex-spreads-desktop ${
+          isRTL ? "forex-spreads-desktop--rtl" : ""
+        }`}
+      >
         {/* Search Container with Tabs */}
         <div className="search-container">
           {/* Tabs */}
