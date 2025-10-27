@@ -29,7 +29,9 @@ import {
   CAMPAIGN_PARAMS,
 } from "./services/marketing-service";
 import { setLangParam } from "./services/language-service";
+import { PORTAL_LANGUAGES_MAP } from "./lang-options.config";
 import RegistrationPopup from "../components/registration-popup";
+import { isBrowser } from "./services/is-browser";
 
 export const WINDOW_SIZE_SM = 375;
 export const WINDOW_SIZE_MD = 768;
@@ -115,8 +117,28 @@ export const ShowRegistrationPopup = ({ isOpen, onClose, langParam }) => {
   );
 };
 
+// Helper function to get current language code from URL
+const getCurrentLangCode = () => {
+  if (isBrowser()) {
+    const { pathname } = window.location;
+    const matches = pathname.match(/\/[a-z]{2}\//);
+    if (matches) {
+      const langCode = matches[0].slice(1, 3);
+      return langCode;
+    }
+  }
+  return "en"; // Default to English
+};
+
+// Helper function to get language parameter for portal links
+const getLangParamForPortal = () => {
+  const langCode = getCurrentLangCode();
+  const portalLangCode = PORTAL_LANGUAGES_MAP[langCode] || langCode;
+  return `?language=${portalLangCode}`;
+};
+
 export const GetRegistrationLink = () => {
-  const langParam = setLangParam();
+  const langParam = getLangParamForPortal();
   const ibParams = setIBparamsToLink();
   const campaignParams = setCampaignParamsToLink();
 
@@ -143,13 +165,13 @@ export const GetRegistrationLink = () => {
 };
 
 export const GetLoginLink = () =>
-  `https://portal.oqtima.${topLevelDomain}/login${setLangParam()}`;
+  `https://portal.oqtima.${topLevelDomain}/login${getLangParamForPortal()}`;
 
 export const GetDepositLink = () =>
-  `https://portal.oqtima.${topLevelDomain}/funds/deposit${setLangParam()}`;
+  `https://portal.oqtima.${topLevelDomain}/funds/deposit${getLangParamForPortal()}`;
 
 export const GetWithdrawalLink = () =>
-  `https://portal.oqtima.${topLevelDomain}/funds/withdrawal${setLangParam()}`;
+  `https://portal.oqtima.${topLevelDomain}/funds/withdrawal${getLangParamForPortal()}`;
 
 export const COMING_SOON_PAGE_LINK = "/coming-soon";
 export const COMPANY_PAGE_LINK = "/company";

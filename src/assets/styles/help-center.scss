@@ -174,7 +174,7 @@
     background-clip: text;
 
     @include mobile {
-      font-size: 52px;
+      font-size: 42px;
     }
 
     @include tablet {
@@ -198,7 +198,7 @@
       background-clip: text;
 
       @include mobile {
-        font-size: 52px;
+        font-size: 42px;
       }
       @include tablet {
         font-size: 44px;
@@ -491,7 +491,7 @@
     @include mobile {
       width: 100%;
       height: auto;
-      font-size: 51.57px;
+      font-size: 42px;
       text-align: center;
     }
 
@@ -531,6 +531,7 @@
 
     @include mobile {
       gap: 32px;
+      margin-top: 0;
     }
   }
 
@@ -908,7 +909,7 @@
     box-sizing: border-box;
 
     @include mobile {
-      padding: 0 16px;
+      padding: 0;
     }
 
     @include tablet {

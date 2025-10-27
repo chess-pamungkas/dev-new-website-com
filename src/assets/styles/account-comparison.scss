@@ -468,8 +468,8 @@
           }
           span {
             width: fit-content;
-            display: flex;
-            align-items: center;
+            display: block;
+            align-items: flex-start;
             height: auto;
             font-family: "Sofia Pro", Arial, sans-serif;
             font-style: normal;
@@ -479,14 +479,17 @@
             letter-spacing: 0.2px;
             color: #fff;
             opacity: 0.7;
-            flex: none;
+            flex: 1;
             order: 1;
             flex-grow: 1;
-            display: block;
             visibility: visible;
             background: transparent;
             padding: 0;
             margin: 0;
+            max-width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
           }
         }
       }
@@ -749,7 +752,7 @@
       gap: 24px;
       .account-card {
         width: 100%;
-        padding: 24px;
+        padding: 20px;
         gap: 12px;
         .card-title {
           font-size: 72px;
@@ -762,6 +765,12 @@
         .card-features .feature-item span {
           font-size: 14px;
           line-height: 20px;
+          flex: 1;
+          flex-grow: 1;
+          max-width: 100%;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          hyphens: auto;
         }
         .card-buttons {
           flex-direction: column !important;
@@ -787,15 +796,15 @@
       margin-top: 20px;
       padding: 0;
       width: calc(100% - 36px);
-      height: 160px;
+      height: 122px;
       display: none !important;
       display: none !important;
       align-items: center;
       justify-content: center;
       .shared-features-content {
-        margin-top: 75px;
+        margin-top: 55px;
         padding: 0 24px 16.46px;
-        font-size: 18px;
+        font-size: 14px;
         line-height: 28px;
         white-space: normal;
         text-align: center;
@@ -830,8 +839,14 @@
           line-height: 26px;
         }
         .card-features .feature-item span {
-          font-size: 18x;
+          font-size: 18px;
           line-height: 28px;
+          flex: 1;
+          flex-grow: 1;
+          max-width: 100%;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          hyphens: auto;
         }
         .card-buttons {
           width: 100% !important;
@@ -893,6 +908,12 @@
         .card-features .feature-item span {
           font-size: 18px !important;
           line-height: 28px !important;
+          flex: 1 !important;
+          flex-grow: 1 !important;
+          max-width: 100% !important;
+          word-wrap: break-word !important;
+          overflow-wrap: break-word !important;
+          hyphens: auto !important;
         }
       }
       .card-description {

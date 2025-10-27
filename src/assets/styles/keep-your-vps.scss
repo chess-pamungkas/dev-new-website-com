@@ -12,6 +12,9 @@
 
   @include mobile {
     margin: 40px 0;
+    min-height: auto;
+    height: auto;
+    padding-bottom: 20px;
   }
 
   .keep-your-vps-bg {
@@ -63,6 +66,11 @@
     gap: 16px;
     text-align: center;
 
+    @include mobile {
+      padding: 20px 16px;
+      gap: 12px;
+    }
+
     .badge-row {
       display: flex;
       align-items: center;
@@ -112,11 +120,16 @@
       flex-grow: 0;
 
       @include mobile {
-        width: 358px;
-        height: 96px;
-        font-size: 42px;
-        line-height: 45px;
-        max-width: 358px;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: auto;
+        font-size: 36px;
+        line-height: 1.2;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        padding: 0 16px;
       }
     }
 
@@ -146,7 +159,7 @@
 
     @include mobile {
       flex-direction: column;
-      padding: 24px 18px 18px;
+      padding: 24px 25px 18px 25px;
       gap: 24px;
     }
 
@@ -458,9 +471,21 @@
 
             @include mobile {
               position: absolute;
-              width: 169.88;
+              width: 169.88px;
               height: 35.56px;
               left: 50px;
+              top: 185px;
+              background: rgba(255, 68, 0, 0.3);
+              border: 1px solid rgba(255, 68, 0, 0.5);
+              border-radius: 8px;
+              padding: 13.5px 16px;
+            }
+
+            @include small-mobile {
+              position: absolute;
+              width: 169.88px;
+              height: 35.56px;
+              left: 13px;
               top: 185px;
               background: rgba(255, 68, 0, 0.3);
               border: 1px solid rgba(255, 68, 0, 0.5);

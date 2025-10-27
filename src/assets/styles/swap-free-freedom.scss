@@ -5,7 +5,11 @@
   padding: 80px 0;
 
   @include mobile {
-    padding: 125px 0;
+    padding: 125px 0 50px 0;
+  }
+
+  include mobile {
+    padding: 125px 0 150px 0;
   }
 
   @include tablet {
@@ -35,7 +39,7 @@
       flex-direction: column;
       gap: 24px;
       width: 100%;
-      max-width: 355px;
+      max-width: 100%;
       margin: 0 auto;
       padding: 0;
     }
@@ -52,19 +56,17 @@
   &__text {
     flex: 1;
     min-width: 625px;
-    max-height: 507px;
+    max-height: auto;
 
     @include mobile {
       width: 100%;
       min-width: auto;
-      max-height: auto;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       padding: 0;
       gap: 16px;
       order: 2;
-      margin-bottom: 150px;
     }
   }
 
@@ -124,7 +126,7 @@
       align-items: center;
       padding: 6px 10px;
       gap: 5px;
-      width: 173px;
+      width: fit-content;
       height: 26px;
       background: linear-gradient(
           0deg,
@@ -181,7 +183,6 @@
     font-family: "Sofia Pro", Arial, sans-serif;
     font-weight: map-get($font-weight, "semibold");
     font-size: 52px;
-    line-height: 60px;
     letter-spacing: -0.02em;
     background: linear-gradient(
         102.31deg,
@@ -205,8 +206,7 @@
       font-family: "Sofia Pro";
       font-style: normal;
       font-weight: map-get($font-weight, "semibold");
-      font-size: 52px;
-      line-height: 60px;
+      font-size: 42px;
       letter-spacing: -0.02em;
       background: linear-gradient(
           102.31deg,

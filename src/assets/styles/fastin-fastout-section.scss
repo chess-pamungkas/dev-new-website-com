@@ -39,6 +39,7 @@
 
     @include mobile {
       margin-bottom: 36px;
+      padding: 0 16px;
     }
   }
 
@@ -112,9 +113,13 @@
 
     @include mobile {
       font-weight: 700; // Bold for mobile as per Figma
-      font-size: 52px; // Keep 52px as per Figma mobile
+      font-size: 36px; // Reduced for better mobile fit
+      line-height: 1.2; // Better line height for mobile
       margin-bottom: 16px;
       max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
       // Keep same gradient for mobile
       // background: linear-gradient(
       //     102.31deg,

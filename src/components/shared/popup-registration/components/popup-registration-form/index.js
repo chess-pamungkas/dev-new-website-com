@@ -15,6 +15,8 @@ import LanguageContext from "../../../../../context/language-context";
 import selectorIcon from "../../../../../assets/images/icons/popup-registration/selector.svg";
 import chevronDownIcon from "../../../../../assets/images/icons/popup-registration/chevron-down.svg";
 import { cleanRTLAttributes } from "../../index";
+import ReusableButtons from "../../../../../components/shared/reusable-buttons";
+const { ArrowIcon } = ReusableButtons;
 
 // RTL languages - Arabic
 const RTL_LANGUAGES = ["ar"];
@@ -2854,21 +2856,7 @@ const PopupRegistrationForm = ({ params }) => {
                     {t("popup-registration-continue")}
                   </span>
                   <span className="button-arrow">
-                    <svg
-                      width="9.33"
-                      height="9.33"
-                      viewBox="0 0 11 11"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
-                        stroke="currentColor"
-                        strokeWidth="1.3333"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <ArrowIcon isRTL={isRTL} />
                   </span>
                 </button>
 

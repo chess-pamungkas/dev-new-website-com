@@ -1625,17 +1625,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
                   })}
                   data-rtl={isRTLMode ? "true" : "false"}
                   style={isRTLMode ? { order: "2 !important" } : {}}
-                >
-                  {/* Close button for RTL only (mobile close button moved to content area) */}
-                  {isRTLMode && (
-                    <img
-                      src={closemage}
-                      alt="Close"
-                      className="popup-registration__sidebar--rtl__close--rtl"
-                      onClick={handleClose}
-                    />
-                  )}
-                </div>
+                ></div>
               </BackgroundPreloader>
             )}
             <div
@@ -1645,15 +1635,13 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
               data-rtl={isRTLMode ? "true" : "false"}
               style={isRTLMode ? { order: "1 !important" } : {}}
             >
-              {/* Close button for desktop and mobile */}
-              {(!isRTLMode && !isMobile) || (isMobile && !isRTLMode) ? (
-                <img
-                  src={closemage}
-                  alt="Close"
-                  className="popup-registration__close"
-                  onClick={handleClose}
-                />
-              ) : null}
+              {/* Close button for all modes */}
+              <img
+                src={closemage}
+                alt="Close"
+                className="popup-registration__close"
+                onClick={handleClose}
+              />
 
               {/* Badge */}
               <div className="popup-registration__content__badge">

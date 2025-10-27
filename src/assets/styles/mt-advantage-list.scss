@@ -116,6 +116,10 @@
       flex: none;
       order: 1;
       flex-grow: 0;
+
+      @include mobile {
+        font-size: 13px;
+      }
     }
   }
 
@@ -153,9 +157,11 @@
 
   &__feature-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
     padding: 0;
+    width: 100%;
+    max-width: 100%;
   }
 
   &__feature-icon {
@@ -173,9 +179,13 @@
     color: map-get($colors, "black");
     opacity: 0.7;
     margin: 0;
-    flex: none;
+    flex: 1;
     order: 1;
-    flex-grow: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   &__platform-section {
@@ -201,13 +211,18 @@
       // text-align: center;
     }
 
-    // &__title {
-    //   font-size: 24px;
-    //   line-height: 32px;
-    //   // text-align: center;
-    //   width: 100%;
-    //   max-width: 100%;
-    // }
+    &__title {
+      font-size: 36px;
+      line-height: 1.2;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+
+      @include small-mobile {
+        font-size: 32px;
+        line-height: 1.1;
+      }
+    }
 
     &__features {
       grid-template-columns: 1fr;
@@ -221,6 +236,12 @@
     &__feature-text {
       font-size: 16px;
       line-height: 24px;
+      flex: 1;
+      flex-grow: 1;
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
       // text-align: center;
     }
 
