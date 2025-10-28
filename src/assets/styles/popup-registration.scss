@@ -73,23 +73,23 @@
 
     @include desktop-lg {
       max-width: 966px; // Based on Figma design (331 + 20 + 615)
-      max-height: 749px; // Based on Figma design
+      max-height: 850px; // Based on Figma design
       gap: 20px;
     }
 
     @include desktop-xl {
       max-width: 966px; // Based on Figma design
-      max-height: 749px; // Based on Figma design
+      max-height: 850px; // Based on Figma design
     }
 
     @include desktop-2k {
       max-width: 966px; // Based on Figma design
-      max-height: 749px; // Based on Figma design
+      max-height: 850px; // Based on Figma design
     }
 
     @include desktop-5k {
       max-width: 966px; // Based on Figma design
-      max-height: 749px; // Based on Figma design
+      max-height: 850px; // Based on Figma design
     }
   }
 
@@ -98,7 +98,7 @@
       no-repeat center center;
     background-size: cover;
     width: 331px; // Based on Figma design
-    height: 749px; // Based on Figma design
+    height: 100%; // Based on Figma design
     border-radius: 32px; // Based on Figma design - full rounded corners since there's a gap
     position: relative;
     overflow: hidden;
@@ -174,8 +174,8 @@
 
   &__content {
     position: relative;
-    width: 615px; // Based on Figma design
-    height: 749px; // Based on Figma design
+    width: 750px; // Based on Figma design
+    height: auto; // Based on Figma design
     background-color: white;
     border-radius: 32px; // Based on Figma design - full rounded corners since there's a gap
     padding: 32px 42px;
@@ -223,22 +223,26 @@
 
     @include desktop-lg {
       padding: 3.125rem;
-      width: 615px; // Based on Figma design
+      width: auto; // Based on Figma design
+      max-height: 850px;
     }
 
     @include desktop-xl {
-      width: 615px;
-      height: 749px;
+      width: 750px;
+      height: auto;
+      max-height: 850px;
     }
 
     @include desktop-2k {
       width: 750px; // Increase width to match sidebar scaling
-      height: 900px; // Increase height to match sidebar scaling
+      height: auto; // Increase height to match sidebar scaling
+      max-height: 850px;
     }
 
     @include desktop-5k {
       width: 900px; // Increase width to match sidebar scaling
-      height: 1100px; // Increase height to match sidebar scaling
+      height: auto; // Increase height to match sidebar scaling
+      max-height: 850px;
     }
 
     &__badge {

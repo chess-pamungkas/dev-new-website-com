@@ -7,13 +7,13 @@
   padding-top: 68px;
   padding-bottom: 40px;
   z-index: 5;
-  background-image: url("../images/bg/footer-desktop.svg");
+  background-image: url("../images/bg/footer/footer-desktop.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 
   @include mobile {
-    background-image: url("../images/bg/footer-mobile.svg");
+    background-image: url("../images/bg/footer/footer-mobile.svg");
     padding-top: 32px;
     padding-bottom: 24px;
   }

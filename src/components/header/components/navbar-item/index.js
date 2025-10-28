@@ -68,6 +68,16 @@ const NavbarItem = ({
         return;
       }
 
+      // Do not close if click is inside lang-options popup
+      if (e.target.closest(".lang-options")) {
+        return;
+      }
+
+      // Do not close if click is inside any popup
+      if (e.target.closest(".popup")) {
+        return;
+      }
+
       // Only close if clicked outside the dropdown and navbar items
       if (itemRef.current && !itemRef.current.contains(e.target)) {
         closeDropdown();

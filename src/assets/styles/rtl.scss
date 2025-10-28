@@ -1815,7 +1815,7 @@ body[dir="rtl"] .phone-number-container,
 
     @include desktop-xl {
       max-width: 966px;
-      max-height: 749px;
+      max-height: 850px;
     }
   }
 
@@ -1888,7 +1888,7 @@ body[dir="rtl"] .phone-number-container,
       no-repeat center center;
     background-size: cover;
     width: 331px;
-    height: 749px;
+    height: 100%;
     border-radius: 0 32px 32px 0 !important; // Rounded on right for RTL
     position: relative;
     overflow: hidden;
@@ -2920,24 +2920,24 @@ body[dir="rtl"] .faq-section.faq-section--etf .faq-right .faq__title-text,
     @include tablet {
       right: unset !important;
       left: 0 !important;
-      background: url("../images/bg/account-types-desktop.svg") no-repeat 135%
-        100% !important;
+      background: url("../images/bg/accounts-type/accounts-type-desktop.svg")
+        no-repeat 135% 100% !important;
       background-color: map-get($colors, "black") !important;
     }
 
     @include desktop-lg {
       right: unset !important;
       left: 0 !important;
-      background: url("../images/bg/account-types-desktop.svg") no-repeat -800px
-        center !important;
+      background: url("../images/bg/accounts-type/accounts-type-desktop.svg")
+        no-repeat -800px center !important;
       background-color: map-get($colors, "black") !important;
     }
 
     @include desktop-xl {
       right: unset !important;
       left: 0 !important;
-      background: url("../images/bg/account-types-desktop.svg") no-repeat -750px
-        center !important;
+      background: url("../images/bg/accounts-type/accounts-type-desktop.svg")
+        no-repeat -750px center !important;
       background-color: map-get($colors, "black") !important;
     }
   }
@@ -2963,22 +2963,24 @@ body[dir="rtl"] .account-types__hero-bg,
   @include tablet {
     right: unset !important;
     left: 0 !important;
-    background: url("../images/bg/account-types-desktop.svg") no-repeat 135%
-      100% !important;
+    background: url("../images/bg/accounts-type/accounts-type-desktop.svg")
+      no-repeat 135% 100% !important;
     background-color: map-get($colors, "black") !important;
   }
 
   @include desktop-lg {
     right: unset !important;
     left: 0 !important;
-    background: url("../images/bg/account-types-desktop.svg") no-repeat -800px center !important;
+    background: url("../images/bg/accounts-type/accounts-type-desktop.svg")
+      no-repeat -800px center !important;
     background-color: map-get($colors, "black") !important;
   }
 
   @include desktop-xl {
     right: unset !important;
     left: 0 !important;
-    background: url("../images/bg/account-types-desktop.svg") no-repeat -750px center !important;
+    background: url("../images/bg/accounts-type/accounts-type-desktop.svg")
+      no-repeat -750px center !important;
     background-color: map-get($colors, "black") !important;
   }
 }
@@ -6347,6 +6349,38 @@ html[lang="ar"] .legal .legal__hero-bg,
 body[dir="rtl"] .legal .legal__hero-bg,
 [dir="rtl"] .legal .legal__hero-bg {
   transform: scaleX(-1) !important;
+}
+
+// Legal subheading - set width for RTL
+html[dir="rtl"] .legal__subheading,
+html[lang="ar"] .legal__subheading,
+body[dir="rtl"] .legal__subheading,
+[dir="rtl"] .legal__subheading {
+  max-width: 725px !important;
+
+  @include mobile {
+    max-width: 100% !important;
+  }
+
+  @include tablet {
+    max-width: 400px !important;
+  }
+
+  @include desktop-lg {
+    max-width: 650px !important;
+  }
+
+  @include desktop-xl {
+    max-width: 650px !important;
+  }
+
+  @include desktop-2k {
+    max-width: 650px !important;
+  }
+
+  @include desktop-5k {
+    max-width: 650px !important;
+  }
 }
 
 // Legal documents - align document name to the right in RTL

@@ -28,7 +28,8 @@ const LangSelectItem = ({
         to={originalPath}
         language={language.id}
         className="lang-options__select"
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation(); // Prevent event from bubbling to close other dropdowns
           languageSelectHandler(language);
           document.documentElement.setAttribute("lang", language.id);
         }}

@@ -23,7 +23,10 @@ const LangSelect = ({ className, isHeader = false, setIsLangPopupOpened }) => {
 
   const onLangSelect = (selected) => {
     setSelectedLanguage(selected);
-    closePopup();
+    // Close popup after a short delay to allow the Link navigation to complete
+    setTimeout(() => {
+      closePopup();
+    }, 100);
   };
 
   return (

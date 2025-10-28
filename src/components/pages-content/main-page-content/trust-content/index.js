@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import BadgeSecurityIcon from "../../../../assets/images/icons/main-page/badge-security.svg";
@@ -7,14 +7,35 @@ import CloseOverlayIcon from "../../../../assets/images/icons/main-page/trust/cl
 import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import LanguageContext from "../../../../context/language-context";
 import { StandardButtons } from "../../../shared/reusable-buttons";
+import BuffonVideo from "../../../../assets/video/Buffon-Precision-Protection-Performance-Website-version.mp4";
 
 const TrustContent = () => {
   const { isMobile } = useWindowSize();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isVideoHovered, setIsVideoHovered] = useState(false);
   const [isVideoClicked, setIsVideoClicked] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
   const { t } = useTranslationWithVariables();
+  const videoRef = useRef(null);
+
+  // Autoplay video when it's clicked
+  useEffect(() => {
+    if (isVideoClicked && videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.log("Video autoplay prevented:", error);
+      });
+    }
+  }, [isVideoClicked]);
+
+  // Pause and reset video when closed
+  useEffect(() => {
+    if (!isVideoClicked && videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  }, [isVideoClicked]);
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -30,6 +51,60 @@ const TrustContent = () => {
 
   const handleVideoClose = () => {
     setIsVideoClicked(false);
+  };
+
+  const handlePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play();
+        setIsPlaying(true);
+      }
+    }
+  };
+
+  const handleFullscreen = () => {
+    if (videoRef.current) {
+      if (!document.fullscreenElement) {
+        videoRef.current
+          .requestFullscreen()
+          .then(() => {
+            setIsFullscreen(true);
+          })
+          .catch(() => {
+            console.log("Fullscreen request failed");
+          });
+      } else {
+        document
+          .exitFullscreen()
+          .then(() => {
+            setIsFullscreen(false);
+          })
+          .catch(() => {
+            console.log("Exit fullscreen failed");
+          });
+      }
+    }
+  };
+
+  // Listen for fullscreen changes to keep state in sync
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      if (!document.fullscreenElement) {
+        setIsFullscreen(false);
+      }
+    };
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
+
+  const handleVideoEnded = () => {
+    setIsPlaying(false);
   };
 
   const trustFeatures = [
@@ -133,12 +208,44 @@ const TrustContent = () => {
         </div>
       </div>
 
-      {/* YouTube Overlay - Full Screen */}
+      {/* Video Overlay - Full Screen */}
       {isVideoClicked && (
         <div className="trust-content__youtube-overlay">
-          {/* YouTube player placeholder */}
+          {/* Video player */}
           <div className="trust-content__youtube-player">
-            <div className="trust-content__youtube-background-image"></div>
+            <video
+              ref={videoRef}
+              src={BuffonVideo}
+              className="trust-content__video-element"
+              autoPlay
+              loop
+              playsInline
+              width="100%"
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+              onEnded={handleVideoEnded}
+            />
+
+            {/* Custom Video Controls - Bottom of container */}
+            <div className="trust-content__video-controls">
+              <button
+                className="trust-content__play-pause-button"
+                onClick={handlePlayPause}
+                type="button"
+                aria-label={isPlaying ? "Pause" : "Play"}
+              >
+                {isPlaying ? "⏸️" : "▶️"}
+              </button>
+              <button
+                className="trust-content__fullscreen-button"
+                onClick={handleFullscreen}
+                type="button"
+                aria-label={isFullscreen ? "Exit fullscreen" : "Fullscreen"}
+              >
+                {isFullscreen ? "🔲 Exit" : "⛶"}
+              </button>
+            </div>
+
             <button
               className="trust-content__close-button"
               onClick={(e) => {
