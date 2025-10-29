@@ -162,7 +162,8 @@
       left: 0;
       top: 0;
       border-radius: 20px;
-      background: url("../images/bg/metals-mobile.svg") no-repeat center center;
+      background: url("../images/bg/hero/metals/metals-mobile.svg") no-repeat
+        center center;
       background-size: cover;
       overflow: hidden;
       border-radius: 20px;
@@ -170,31 +171,36 @@
     }
 
     @include tablet {
-      background: url("../images/bg/metals-desktop.svg") no-repeat 80% 100%;
+      background: url("../images/bg/hero/metals/metals-desktop.svg") no-repeat
+        80% 100%;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-lg {
-      background: url("../images/bg/metals-desktop.svg") no-repeat right center;
+      background: url("../images/bg/hero/metals/metals-desktop.svg") no-repeat
+        right center;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-xl {
-      background: url("../images/bg/metals-desktop.svg") no-repeat center center;
+      background: url("../images/bg/hero/metals/metals-desktop.svg") no-repeat
+        center center;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-2k {
-      background: url("../images/bg/metals-desktop.svg") no-repeat center center;
+      background: url("../images/bg/hero/metals/metals-desktop.svg") no-repeat
+        center center;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-5k {
-      background: url("../images/bg/metals-desktop.svg") no-repeat center center;
+      background: url("../images/bg/hero/metals/metals-desktop.svg") no-repeat
+        center center;
       background-size: cover;
       background-color: transparent;
     }

@@ -98,8 +98,8 @@ const FundingPageContent = ({ className, isShowHero = true }) => {
         showWarning={false}
         showHandImage={false}
         showHeroImage={false}
-        desktopBackground="url(../../assets/images/bg/funding-withdrawals/funding-withdrawals-desktop.svg)"
-        mobileBackground="url(../../assets/images/bg/funding-withdrawals/funding-withdrawals-mobile.svg)"
+        desktopBackground="url(../../assets/images/bg/hero/funding-withdrawals/funding-withdrawals-desktop.svg)"
+        mobileBackground="url(../../assets/images/bg/hero/funding-withdrawals/funding-withdrawals-mobile.svg)"
       />
 
       <div className="funding-page">

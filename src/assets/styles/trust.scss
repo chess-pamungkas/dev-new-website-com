@@ -162,38 +162,40 @@
 
   &__close-button {
     position: absolute;
-    top: 5px;
-    right: 15px;
-    width: 36px;
-    height: 36px;
-    background: transparent;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.8);
     border: none;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     z-index: 10;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    opacity: 0.8;
 
     &:hover {
-      transform: scale(1.1);
+      background: rgba(0, 0, 0, 0.9);
+      opacity: 1;
+      transform: scale(1.05);
     }
   }
 
-  &__close-icon {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(1); /* Makes the icon white */
-  }
-
   &__youtube-player {
-    width: 975px;
-    height: 607.34px;
+    width: 1200px;
+    height: 675px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: visible;
+
+    &:hover .trust-content__video-controls {
+      opacity: 1;
+    }
   }
 
   &__video-element {
@@ -209,35 +211,115 @@
     left: 0;
     width: 100%;
     height: 60px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 0 20px;
+    justify-content: space-between;
+    padding: 0 16px;
     z-index: 5;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__controls-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__controls-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__progress-container {
+    flex: 1;
+    margin: 0 16px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__progress-bar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  &__progress-filled {
+    height: 100%;
+    background: #ff0000;
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s ease;
+  }
+
+  &__progress-handle {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: #ff0000;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &__progress-container:hover &__progress-handle {
+    opacity: 1;
+  }
+
+  &__time-display {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: white;
+    font-size: 14px;
+    font-family: "Roboto", "Arial", sans-serif;
+    min-width: 80px;
+  }
+
+  &__current-time,
+  &__duration {
+    font-size: 14px;
+    color: white;
+  }
+
+  &__time-separator {
+    color: white;
+    font-size: 14px;
   }
 
   &__play-pause-button,
+  &__volume-button,
   &__fullscreen-button {
     background: transparent;
     border: none;
     color: #fff;
-    font-size: 24px;
     cursor: pointer;
-    padding: 8px 16px;
-    transition: all 0.3s ease;
+    padding: 8px;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 2px;
 
     &:hover {
       background: rgba(255, 255, 255, 0.1);
-      transform: scale(1.1);
     }
 
-    &:active {
-      transform: scale(0.95);
+    svg {
+      width: 24px;
+      height: 24px;
     }
   }
 
@@ -591,6 +673,62 @@
     }
   }
 
+  // Mobile landscape - video fullscreen with controls at bottom
+  @media screen and (max-width: 767px) and (orientation: landscape) {
+    &__youtube-overlay {
+      background: #000 !important;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+    }
+
+    &__youtube-player {
+      width: 100vw !important;
+      height: 100vh !important;
+      max-width: 100% !important;
+      max-height: 100vh !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      justify-content: stretch !important;
+    }
+
+    &__video-element {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      flex: 1 !important;
+    }
+
+    &__video-controls {
+      position: relative !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 60px !important;
+      background: rgba(0, 0, 0, 0.8) !important;
+      z-index: 10 !important;
+      display: flex !important;
+      flex-shrink: 0 !important;
+      opacity: 1 !important;
+    }
+
+    &__close-button {
+      position: absolute !important;
+      top: 12px !important;
+      right: 12px !important;
+      z-index: 11 !important;
+    }
+  }
+
   @include tablet {
     padding: 75px 0;
 
@@ -656,8 +794,8 @@
 
     &__youtube-player {
       width: 100%;
-      max-width: 720px;
-      height: 484px;
+      max-width: 900px;
+      height: 506px;
     }
 
     &__youtube-play-button {

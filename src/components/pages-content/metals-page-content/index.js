@@ -51,8 +51,8 @@ const MetalsContent = ({ className, isShowHero }) => {
         showWarning={false}
         showHandImage={false}
         showHeroImage={false}
-        desktopBackground="url(../images/bg/metals-desktop.svg)"
-        mobileBackground="url(../images/bg/metals-mobile.svg)"
+        desktopBackground="url(../images/bg/hero/metals/metals-desktop.svg)"
+        mobileBackground="url(../images/bg/hero/metals/metals-mobile.svg)"
       />
 
       <div className="metals-content">

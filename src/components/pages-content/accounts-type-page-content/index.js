@@ -30,8 +30,8 @@ const AccountsTypePageContent = ({ className, isShowHero = true }) => {
         showWarning={false}
         showHandImage={false}
         showHeroImage={false}
-        desktopBackground="url(../../../assets/images/bg/accounts-type/accounts-type-desktop.svg)"
-        mobileBackground="url(../../../assets/images/bg/accounts-type/accounts-type-mobile.svg)"
+        desktopBackground="url(../../../assets/images/bg/hero/accounts-type/accounts-type-desktop.svg)"
+        mobileBackground="url(../../../assets/images/bg/hero/accounts-type/accounts-type-mobile.svg)"
       />
 
       <AccountTypesAccountComparison />

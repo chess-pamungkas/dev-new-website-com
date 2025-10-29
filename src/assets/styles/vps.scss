@@ -160,8 +160,8 @@
       left: 0;
       top: 0;
       border-radius: 20px;
-      background: url("../../assets/images/bg/vps/vps-mobile.svg") no-repeat
-        center center;
+      background: url("../../assets/images/bg/hero/vps/vps-mobile.svg")
+        no-repeat center center;
       background-size: cover;
       overflow: hidden;
       border-radius: 20px;
@@ -169,36 +169,36 @@
     }
 
     @include tablet {
-      background: url("../../assets/images/bg/vps/vps-desktop.svg") no-repeat
-        86% 100%;
+      background: url("../../assets/images/bg/hero/vps/vps-desktop.svg")
+        no-repeat 86% 100%;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-lg {
-      background: url("../../assets/images/bg/vps/vps-desktop.svg") no-repeat
-        86% 100%;
+      background: url("../../assets/images/bg/hero/vps/vps-desktop.svg")
+        no-repeat 86% 100%;
       background-size: cover;
       background-color: transparent;
     }
 
     @include desktop-xl {
-      background: url("../../assets/images/bg/vps/vps-desktop.svg") no-repeat
-        center;
+      background: url("../../assets/images/bg/hero/vps/vps-desktop.svg")
+        no-repeat center;
       background-size: 100% auto;
       background-color: transparent;
     }
 
     @include desktop-2k {
-      background: url("../../assets/images/bg/vps/vps-desktop.svg") no-repeat
-        center;
+      background: url("../../assets/images/bg/hero/vps/vps-desktop.svg")
+        no-repeat center;
       background-size: 100% auto;
       background-color: transparent;
     }
 
     @include desktop-5k {
-      background: url("../../assets/images/bg/vps/vps-desktop.svg") no-repeat
-        center;
+      background: url("../../assets/images/bg/hero/vps/vps-desktop.svg")
+        no-repeat center;
       background-size: 100% auto;
       background-color: transparent;
     }

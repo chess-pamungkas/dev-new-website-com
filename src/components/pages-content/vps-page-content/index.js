@@ -36,8 +36,8 @@ const VPSContent = ({ className, isShowHero = true }) => {
         showHandImage={false}
         showHeroImage={false}
         showTrustPilot={true}
-        desktopBackground="url(../../assets/images/bg/vps/vps-desktop.svg)"
-        mobileBackground="url(../../assets/images/bg/vps/vps-mobile.svg)"
+        desktopBackground="url(../../assets/images/bg/hero/vps/vps-desktop.svg)"
+        mobileBackground="url(../../assets/images/bg/hero/vps/vps-mobile.svg)"
       />
 
       {/* Get Complimentary VPS Section */}

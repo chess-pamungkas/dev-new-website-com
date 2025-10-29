@@ -173,8 +173,8 @@ const SpreadsAndFeesPageContent = ({ className, isShowHero = true }) => {
         showWarning={false}
         showHandImage={false}
         showHeroImage={false}
-        desktopBackground="url(../../assets/images/bg/spreads-fees/spreads-fees-desktop.svg)"
-        mobileBackground="url(../../assets/images/bg/spreads-fees/spreads-fees-mobile.svg)"
+        desktopBackground="url(../../assets/images/bg/hero/spreads-fees/spreads-fees-desktop.svg)"
+        mobileBackground="url(../../assets/images/bg/hero/spreads-fees/spreads-fees-mobile.svg)"
       />
 
       <ContainerWrapper>

@@ -41,8 +41,8 @@ const TradingToolsPageContent = ({ className, isShowHero = true }) => {
         showWarning={false}
         showHandImage={false}
         showHeroImage={false}
-        desktopBackground="url(../../assets/images/bg/trading-tools/trading-tools-desktop.svg)"
-        mobileBackground="url(../../assets/images/bg/trading-tools/trading-tools-mobile.svg)"
+        desktopBackground="url(../../assets/images/bg/hero/trading-tools/trading-tools-desktop.svg)"
+        mobileBackground="url(../../assets/images/bg/hero/trading-tools/trading-tools-mobile.svg)"
       />
 
       <TabTradingTools />

@@ -47,8 +47,8 @@ const SwapFreeContent = ({ className, isShowHero = true }) => {
         showWarning={false}
         showHandImage={false}
         showHeroImage={false}
-        desktopBackground="url(../../assets/images/bg/swap-free/swap-free-desktop.svg)"
-        mobileBackground="url(../../assets/images/bg/swap-free/swap-free-mobile.svg)"
+        desktopBackground="url(../../assets/images/bg/hero/swap-free/swap-free-desktop.svg)"
+        mobileBackground="url(../../assets/images/bg/hero/swap-free/swap-free-mobile.svg)"
       />
 
       {/* Swap-Free Freedom Section */}
