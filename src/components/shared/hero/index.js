@@ -311,6 +311,23 @@ const Hero = ({
           subtitle: customSubtitle || "",
           primaryButton: customPrimaryButtonText || "",
         };
+      case "client-portal-assistance":
+        return {
+          badge: customBadgeText || "client-portal-assistance_badge-text",
+          title:
+            customTitle ||
+            "client-portal-assistance_client-portal-assistance-title",
+          subtitle:
+            customSubtitle ||
+            "client-portal-assistance_client-portal-assistance-text",
+          primaryButton:
+            customPrimaryButtonText ||
+            "client-portal-assistance_button-get-started",
+          secondaryButton:
+            customSecondaryButtonText ||
+            "client-portal-assistance_button-watch-quick-overview",
+          warning: customWarningText || "index_main-promotion-warning",
+        };
       default: // main-promotion
         return {
           badge: customBadgeText || "index_main-promotion-badge",
@@ -549,6 +566,7 @@ Hero.propTypes = {
     "faq-hero",
     "spreads-fees",
     "system-info",
+    "client-portal-assistance",
   ]),
   customBadgeText: PropTypes.string,
   customTitle: PropTypes.string,

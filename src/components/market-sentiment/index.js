@@ -121,13 +121,26 @@ const MarketSentimentContent = () => {
 
   // Fetch data for all categories
   useEffect(() => {
-    if (!API_URL) return;
+    if (!API_URL) {
+      setIsLoading(false);
+      return;
+    }
 
-    const socket = io(`${API_URL}ws-stocks/`);
+    const socket = io(`${API_URL}ws-stocks/`, {
+      timeout: 10000, // 10 second timeout
+      reconnection: true,
+      reconnectionAttempts: 3,
+      reconnectionDelay: 1000,
+    });
 
     const fetchDataForCategory = (category, sectionId) => {
       socket.emit("stocks", sectionId);
     };
+
+    // Set up timeout to stop loading after 10 seconds if no data received
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 10000);
 
     // Set up event listener for replies
     socket.on("reply", (data) => {
@@ -170,8 +183,20 @@ const MarketSentimentContent = () => {
         }));
 
         // Set loading to false once we have data for any category
+        clearTimeout(loadingTimeout);
         setIsLoading(false);
       }
+    });
+
+    // Handle connection errors
+    socket.on("connect_error", (error) => {
+      console.error("Socket connection error:", error);
+      clearTimeout(loadingTimeout);
+      setIsLoading(false);
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Socket disconnected");
     });
 
     // Fetch data for each category
@@ -188,6 +213,7 @@ const MarketSentimentContent = () => {
 
     return () => {
       clearInterval(intervalId);
+      clearTimeout(loadingTimeout);
       socket.disconnect();
     };
   }, [API_URL]);

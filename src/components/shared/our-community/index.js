@@ -36,8 +36,12 @@ const OurCommunityContent = ({
   const subtitle = customSubtitle || t("our_community_subtitle");
   const primaryButtonText =
     customPrimaryButton || t("our_community_primary_button");
+  // If customSecondaryButton is explicitly null, pass null to hide the button
+  // Otherwise, use customSecondaryButton if provided, or fall back to translation
   const secondaryButtonText =
-    customSecondaryButton || t("our_community_secondary_button");
+    customSecondaryButton === null
+      ? null
+      : customSecondaryButton || t("our_community_secondary_button");
 
   // Use custom click handlers if provided, otherwise use default handlers
   const handlePrimaryClick = onPrimaryClick || handleShowRegistrationPopup;

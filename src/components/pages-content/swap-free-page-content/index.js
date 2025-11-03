@@ -52,7 +52,9 @@ const SwapFreeContent = ({ className, isShowHero = true }) => {
       />
 
       {/* Swap-Free Freedom Section */}
-      <SwapFreeFreedom />
+      <ContainerWrapper>
+        <SwapFreeFreedom />
+      </ContainerWrapper>
 
       {/* How to Trade Swap-Free Section */}
       <HowToTradeSwapFree />

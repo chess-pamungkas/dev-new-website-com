@@ -117,7 +117,7 @@ const HowToTradeSwapFree = ({ className }) => {
           <div className="card-button">
             <ButtonPrimaryStandard
               text={t("how-to-trade-swap-free_card2_button")}
-              onClick={startConvrsSession}
+              onClick={handleShowRegistrationPopup}
               showArrow={true}
             />
           </div>

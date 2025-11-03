@@ -584,3 +584,22 @@ export const FAQ_COPY_TRADING = [
     ],
   },
 ];
+
+export const FAQ_CLIENT_PORTAL_ASSISTANCE = [
+  {
+    question: "client-portal-assistance_faq-title1",
+    answer: ["client-portal-assistance_faq-content1"],
+  },
+  {
+    question: "client-portal-assistance_faq-title2",
+    answer: ["client-portal-assistance_faq-content2"],
+  },
+  {
+    question: "client-portal-assistance_faq-title3",
+    answer: ["client-portal-assistance_faq-content3"],
+  },
+  {
+    question: "client-portal-assistance_faq-title4",
+    answer: ["client-portal-assistance_faq-content4"],
+  },
+];

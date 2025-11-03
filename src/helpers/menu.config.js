@@ -175,30 +175,98 @@ const FSA_TRADING_TAB = {
 const FSA_COMPANY_TAB = {
   title: "header-nav-tab-company",
   subItems: [
+    // Learn Column
     {
-      title: "header-nav-tab-company-about-title",
-      link: COMPANY_PAGE_LINK,
-      icon: AboutIcon,
-      description: "header-nav-tab-company-about-desc",
+      groupTitle: "header-nav-tab-trading-hub-learn-title",
+      groupItems: [
+        {
+          title: "header-nav-tab-trading-hub-trading-academy-title",
+          link: "/trading-academy",
+          icon: EducationIcon,
+          description: "header-nav-tab-trading-hub-trading-academy-desc",
+        },
+        {
+          title: "header-nav-tab-trading-hub-beginners-guide-title",
+          link: "/beginners-guide",
+          icon: EducationIcon,
+          description: "header-nav-tab-trading-hub-beginners-guide-desc",
+        },
+        {
+          title: "header-nav-tab-trading-hub-intermediate-lessons-title",
+          link: "/intermediate-lessons",
+          icon: EducationIcon,
+          description: "header-nav-tab-trading-hub-intermediate-lessons-desc",
+        },
+        {
+          title: "header-nav-tab-trading-hub-advanced-playbook-title",
+          link: "/advanced-playbook",
+          icon: EducationIcon,
+          description: "header-nav-tab-trading-hub-advanced-playbook-desc",
+        },
+      ],
     },
+    // Help Center Column
     {
-      title: "header-nav-tab-company-contact-title",
-      link: CONTACT_US_PAGE_LINK,
-      icon: ContactUsIcon,
-      description: "header-nav-tab-company-contact-desc",
+      groupTitle: "header-nav-tab-trading-hub-help-center-title",
+      groupItems: [
+        {
+          title: "header-nav-tab-trading-hub-client-portal-assistance-title",
+          link: "/client-portal-assistance",
+          icon: HelpCenterIcon,
+          description:
+            "header-nav-tab-trading-hub-client-portal-assistance-desc",
+        },
+        {
+          title: "header-nav-tab-trading-hub-platform-setup-guides-title",
+          link: "/platform-setup-guides",
+          icon: HelpCenterIcon,
+          description: "header-nav-tab-trading-hub-platform-setup-guides-desc",
+        },
+        {
+          title: "header-nav-tab-company-help-center-title",
+          link: FAQ_PAGE_LINK,
+          icon: HelpCenterIcon,
+          description: "header-nav-tab-company-help-center-desc",
+        },
+        {
+          title: "header-nav-tab-trading-hub-newsroom-title",
+          link: BLOG_URL,
+          icon: PressAndNewsIcon,
+          description: "header-nav-tab-trading-hub-newsroom-desc",
+        },
+        {
+          title: "header-nav-tab-company-legal-title",
+          link: LEGAL_PAGE_LINK,
+          icon: LegalIcon,
+          description: "header-nav-tab-company-legal-desc",
+        },
+      ],
     },
+    // Contact Support Column
     {
-      title: "header-nav-tab-company-legal-title",
-      link: LEGAL_PAGE_LINK,
-      icon: LegalIcon,
-      description: "header-nav-tab-company-legal-desc",
+      groupTitle: "header-nav-tab-trading-hub-contact-support-title",
+      groupItems: [
+        {
+          title: "header-nav-tab-trading-hub-live-chat-title",
+          link: CONTACT_US_PAGE_LINK,
+          icon: ContactUsIcon,
+          description: "header-nav-tab-trading-hub-live-chat-desc",
+        },
+        {
+          title: "header-nav-tab-trading-hub-send-message-title",
+          link: CONTACT_US_PAGE_LINK,
+          icon: ContactUsIcon,
+          description: "header-nav-tab-trading-hub-send-message-desc",
+        },
+        {
+          title: "header-nav-tab-trading-hub-support-hours-title",
+          link: CONTACT_US_PAGE_LINK,
+          icon: ContactUsIcon,
+          description: "header-nav-tab-trading-hub-support-hours-desc",
+        },
+      ],
     },
-    {
-      title: "header-nav-tab-company-help-center-title",
-      link: FAQ_PAGE_LINK,
-      icon: HelpCenterIcon,
-      description: "header-nav-tab-company-help-center-desc",
-    },
+    // Legacy items for backward compatibility
     {
       desktopOnly: true,
       title: "header-nav-tab-partners-collaboration-partnership-title-fsa",

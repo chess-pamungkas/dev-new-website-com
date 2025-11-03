@@ -327,89 +327,145 @@ const Header = ({ className }) => {
                       const items = activeMenuItem.subItems.filter(
                         (item) => !item.footerOnly
                       );
-                      const count = items.length;
-                      let left = [],
-                        right = [],
-                        showSeparator = false;
-                      if (count === 8) {
-                        left = items.slice(0, 4);
-                        right = items.slice(4, 8);
-                      } else if (count === 6) {
-                        left = items.slice(0, 3);
-                        right = items.slice(3, 6);
-                      } else if (count === 2) {
-                        left = [items[0]];
-                        right = [items[1]];
-                        showSeparator = true;
-                      } else if (count === 5) {
-                        left = items.slice(0, 3);
-                        right = items.slice(3, 5);
-                      } else {
-                        // fallback: split evenly
-                        const mid = Math.ceil(count / 2);
-                        left = items.slice(0, mid);
-                        right = items.slice(mid);
-                      }
-                      if (left.length < right.length) {
-                        while (left.length < right.length)
-                          left.push({ empty: true });
-                      } else if (right.length < left.length) {
-                        while (right.length < left.length)
-                          right.push({ empty: true });
-                      }
-                      return (
-                        <div
-                          className={`navbar-item__dropdown-columns navbar-item__dropdown-columns--grid${
-                            showSeparator
-                              ? " navbar-item__dropdown-columns--with-separator"
-                              : ""
-                          }`}
-                        >
-                          <div className="navbar-item__dropdown-column">
-                            {left.map((subItem, idx) =>
-                              subItem.empty ? (
-                                <li
-                                  className="dropdown-item dropdown-item--empty navbar-item__dropdown-card"
-                                  key={`empty-left-${idx}`}
-                                ></li>
-                              ) : (
-                                <NavbarSubItem
-                                  key={`header-menu-${stringTransformToKebabCase(
-                                    subItem.title
-                                  )}`}
-                                  subItem={subItem}
-                                  onClick={handleCloseDropdown}
-                                  className="navbar-item__dropdown-card"
-                                  isTwoItemsLayout={count === 2}
-                                />
-                              )
-                            )}
-                          </div>
-                          {showSeparator && (
-                            <div className="navbar-item__dropdown-separator navbar-item__dropdown-separator--column" />
-                          )}
-                          <div className="navbar-item__dropdown-column">
-                            {right.map((subItem, idx) =>
-                              subItem.empty ? (
-                                <li
-                                  className="dropdown-item dropdown-item--empty navbar-item__dropdown-card"
-                                  key={`empty-right-${idx}`}
-                                ></li>
-                              ) : (
-                                <NavbarSubItem
-                                  key={`header-menu-${stringTransformToKebabCase(
-                                    subItem.title
-                                  )}`}
-                                  subItem={subItem}
-                                  onClick={handleCloseDropdown}
-                                  className="navbar-item__dropdown-card"
-                                  isTwoItemsLayout={count === 2}
-                                />
-                              )
-                            )}
-                          </div>
-                        </div>
+
+                      // Check if this is a grouped structure (Trading Hub) - v2
+                      const hasGroupedItems = items.some(
+                        (item) =>
+                          item &&
+                          item.groupTitle &&
+                          item.groupItems &&
+                          Array.isArray(item.groupItems)
                       );
+
+                      if (hasGroupedItems) {
+                        // Handle grouped structure (Trading Hub)
+                        return (
+                          <div className="navbar-item__dropdown-columns navbar-item__dropdown-columns--grouped">
+                            {items
+                              .filter(
+                                (item) =>
+                                  item &&
+                                  item.groupTitle &&
+                                  item.groupItems &&
+                                  Array.isArray(item.groupItems)
+                              )
+                              .map((group, groupIdx) => (
+                                <div
+                                  key={`group-${groupIdx}`}
+                                  className="navbar-item__dropdown-column navbar-item__dropdown-column--group"
+                                >
+                                  <h3 className="navbar-item__dropdown-group-title">
+                                    {t(group.groupTitle)}
+                                  </h3>
+                                  <ul className="navbar-item__dropdown-group-items">
+                                    {group.groupItems
+                                      .filter(
+                                        (subItem) => subItem && subItem.title
+                                      )
+                                      .map((subItem, itemIdx) => (
+                                        <NavbarSubItem
+                                          key={`header-menu-${stringTransformToKebabCase(
+                                            subItem.title
+                                          )}`}
+                                          subItem={subItem}
+                                          onClick={handleCloseDropdown}
+                                          className="navbar-item__dropdown-card"
+                                          isTwoItemsLayout={false}
+                                          hideIcon
+                                          hideDescription
+                                        />
+                                      ))}
+                                  </ul>
+                                </div>
+                              ))}
+                          </div>
+                        );
+                      } else {
+                        // Handle flat structure (other menus)
+                        const count = items.length;
+                        let left = [],
+                          right = [],
+                          showSeparator = false;
+                        if (count === 8) {
+                          left = items.slice(0, 4);
+                          right = items.slice(4, 8);
+                        } else if (count === 6) {
+                          left = items.slice(0, 3);
+                          right = items.slice(3, 6);
+                        } else if (count === 2) {
+                          left = [items[0]];
+                          right = [items[1]];
+                          showSeparator = true;
+                        } else if (count === 5) {
+                          left = items.slice(0, 3);
+                          right = items.slice(3, 5);
+                        } else {
+                          // fallback: split evenly
+                          const mid = Math.ceil(count / 2);
+                          left = items.slice(0, mid);
+                          right = items.slice(mid);
+                        }
+                        if (left.length < right.length) {
+                          while (left.length < right.length)
+                            left.push({ empty: true });
+                        } else if (right.length < left.length) {
+                          while (right.length < left.length)
+                            right.push({ empty: true });
+                        }
+                        return (
+                          <div
+                            className={`navbar-item__dropdown-columns navbar-item__dropdown-columns--grid${
+                              showSeparator
+                                ? " navbar-item__dropdown-columns--with-separator"
+                                : ""
+                            }`}
+                          >
+                            <div className="navbar-item__dropdown-column">
+                              {left.map((subItem, idx) =>
+                                subItem.empty ? (
+                                  <li
+                                    className="dropdown-item dropdown-item--empty navbar-item__dropdown-card"
+                                    key={`empty-left-${idx}`}
+                                  ></li>
+                                ) : (
+                                  <NavbarSubItem
+                                    key={`header-menu-${stringTransformToKebabCase(
+                                      subItem.title
+                                    )}`}
+                                    subItem={subItem}
+                                    onClick={handleCloseDropdown}
+                                    className="navbar-item__dropdown-card"
+                                    isTwoItemsLayout={count === 2}
+                                  />
+                                )
+                              )}
+                            </div>
+                            {showSeparator && (
+                              <div className="navbar-item__dropdown-separator navbar-item__dropdown-separator--column" />
+                            )}
+                            <div className="navbar-item__dropdown-column">
+                              {right.map((subItem, idx) =>
+                                subItem.empty ? (
+                                  <li
+                                    className="dropdown-item dropdown-item--empty navbar-item__dropdown-card"
+                                    key={`empty-right-${idx}`}
+                                  ></li>
+                                ) : (
+                                  <NavbarSubItem
+                                    key={`header-menu-${stringTransformToKebabCase(
+                                      subItem.title
+                                    )}`}
+                                    subItem={subItem}
+                                    onClick={handleCloseDropdown}
+                                    className="navbar-item__dropdown-card"
+                                    isTwoItemsLayout={count === 2}
+                                  />
+                                )
+                              )}
+                            </div>
+                          </div>
+                        );
+                      }
                     })()}
                   </div>
                 </div>

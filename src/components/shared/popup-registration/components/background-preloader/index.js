@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import popupRegistrationBg from "../../../../../assets/images/bg/popup-registration/bg-popup-registration.svg";
 
 const BackgroundPreloader = ({ onBackgroundLoaded, children }) => {
   const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
@@ -21,8 +22,8 @@ const BackgroundPreloader = ({ onBackgroundLoaded, children }) => {
       }
     };
 
-    // Set the image source to preload
-    img.src = "/images/bg/popup-registration/bg-popup-registration.svg";
+    // Set the image source to preload via webpack-managed asset
+    img.src = popupRegistrationBg;
 
     // Fallback timeout in case image takes too long
     const timeout = setTimeout(() => {

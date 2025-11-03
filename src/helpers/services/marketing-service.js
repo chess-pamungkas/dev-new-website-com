@@ -2,7 +2,6 @@ import {
   MARKETING_GET_PARAMS,
   // SECT2_GROUP1_COUNT_OF_WORDS_DEFAULT,
 } from "../marketing.config";
-import { navigate } from "gatsby";
 import { isBrowser } from "./is-browser";
 import { IB_PARAMS } from "./ib-service";
 
@@ -44,27 +43,35 @@ export const getCampaignParamsAndSetToStorage = () => {
     const urlParams = getParamsFromUrl();
     const campaignCode = urlParams.get(CAMPAIGN_PARAMS.campaign_code);
 
-    // Check if the URL parameter starts with `?${CAMPAIGN_PARAMS.campaign_code}=`
-    if (
-      window.location.search.startsWith(`?${CAMPAIGN_PARAMS.campaign_code}=`)
-    ) {
-      if (campaignCode) {
-        localStorage.setItem(CAMPAIGN_PARAMS.campaign_code, campaignCode);
-        localStorage.removeItem(IB_PARAMS.r_code);
+    // Check if campaign_code parameter exists in URL (regardless of position)
+    if (campaignCode) {
+      localStorage.setItem(CAMPAIGN_PARAMS.campaign_code, campaignCode);
+      localStorage.removeItem(IB_PARAMS.r_code);
 
-        // Store UTM parameters in localStorage if they exist
-        const utmSource = urlParams.get("utm_source");
-        const utmMedium = urlParams.get("utm_medium");
-        const utmCampaign = urlParams.get("utm_campaign");
+      // Store UTM parameters in localStorage if they exist
+      const utmSource = urlParams.get("utm_source");
+      const utmMedium = urlParams.get("utm_medium");
+      const utmCampaign = urlParams.get("utm_campaign");
 
-        if (utmSource) localStorage.setItem("utm_source", utmSource);
-        if (utmMedium) localStorage.setItem("utm_medium", utmMedium);
-        if (utmCampaign) localStorage.setItem("utm_campaign", utmCampaign);
+      if (utmSource) localStorage.setItem("utm_source", utmSource);
+      if (utmMedium) localStorage.setItem("utm_medium", utmMedium);
+      if (utmCampaign) localStorage.setItem("utm_campaign", utmCampaign);
+
+      // Only remove campaign_code parameter, preserve other query parameters (like search query)
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.delete(CAMPAIGN_PARAMS.campaign_code);
+
+      // Only remove UTM parameters if they were stored
+      if (utmSource) newUrl.searchParams.delete("utm_source");
+      if (utmMedium) newUrl.searchParams.delete("utm_medium");
+      if (utmCampaign) newUrl.searchParams.delete("utm_campaign");
+
+      // Only update URL if it actually changed
+      // Use replaceState to avoid navigation if URL hasn't changed significantly
+      if (newUrl.search !== window.location.search) {
+        window.history.replaceState({}, "", newUrl.toString());
       }
     }
-
-    const { pathname } = window.location;
-    navigate(pathname);
   }
 };
 

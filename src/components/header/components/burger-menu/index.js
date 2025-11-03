@@ -39,6 +39,20 @@ const BurgerMenu = ({ className }) => {
   // Mobile navigation accordion state
   const [openSections, setOpenSections] = useState({});
 
+  // Handle Live Chat click to open ConvrsChat
+  const handleLiveChatClick = (e, title) => {
+    // Check if this is the Live Chat item
+    if (title === "header-nav-tab-trading-hub-live-chat-title") {
+      e.preventDefault();
+      if (typeof window !== "undefined" && window.ConvrsChat) {
+        window.ConvrsChat.ShowWebChat();
+      }
+      onTriggerChange(); // Close the menu
+      return true;
+    }
+    return false;
+  };
+
   const toggleSection = (section) => {
     setOpenSections((prev) => {
       // If the clicked section is already open, close it
@@ -236,28 +250,71 @@ const BurgerMenu = ({ className }) => {
                     </div>
                     {openSections[title] && subItems && subItems.length > 0 && (
                       <div className="mobile-nav-subitems">
-                        {subItems.map(
-                          ({
+                        {subItems.map((item) => {
+                          // Grouped structure (Trading Hub)
+                          if (
+                            item &&
+                            item.groupTitle &&
+                            item.groupItems &&
+                            Array.isArray(item.groupItems)
+                          ) {
+                            return (
+                              <div
+                                key={`mobile-group-${item.groupTitle}`}
+                                className="mobile-nav-subgroup"
+                              >
+                                <div className="mobile-nav-subgroup-title">
+                                  {t(item.groupTitle)}
+                                </div>
+                                {item.groupItems
+                                  .filter(
+                                    (si) =>
+                                      si &&
+                                      si.title &&
+                                      !si.desktopOnly &&
+                                      !si.footerOnly
+                                  )
+                                  .map(({ link, title: subTitle }) => (
+                                    <a
+                                      key={`mobile-nav-${subTitle}`}
+                                      href={link}
+                                      className="mobile-nav-subitem"
+                                      onClick={(e) => {
+                                        if (!handleLiveChatClick(e, subTitle)) {
+                                          onTriggerChange();
+                                        }
+                                      }}
+                                    >
+                                      {t(subTitle)}
+                                    </a>
+                                  ))}
+                              </div>
+                            );
+                          }
+
+                          // Flat items
+                          const {
                             link,
                             title: subTitle,
                             desktopOnly,
                             footerOnly,
-                          }) =>
-                            !desktopOnly &&
-                            !footerOnly && (
-                              <a
-                                key={`mobile-nav-${subTitle}`}
-                                href={link}
-                                className="mobile-nav-subitem"
-                                onClick={() => {
-                                  // Handle navigation and close menu
+                          } = item;
+                          if (desktopOnly || footerOnly) return null;
+                          return (
+                            <a
+                              key={`mobile-nav-${subTitle}`}
+                              href={link}
+                              className="mobile-nav-subitem"
+                              onClick={(e) => {
+                                if (!handleLiveChatClick(e, subTitle)) {
                                   onTriggerChange();
-                                }}
-                              >
-                                {t(subTitle)}
-                              </a>
-                            )
-                        )}
+                                }
+                              }}
+                            >
+                              {t(subTitle)}
+                            </a>
+                          );
+                        })}
                       </div>
                     )}
                   </div>
@@ -307,10 +364,83 @@ const BurgerMenu = ({ className }) => {
                     >
                       {!!subItems && subItems.length > 0 && (
                         <ul className="burger-menu__links">
-                          {subItems.map(
-                            ({ link, title, desktopOnly, footerOnly }) =>
-                              !desktopOnly &&
-                              !footerOnly && (
+                          {subItems
+                            .filter((item) => {
+                              // Include grouped items (Trading Hub)
+                              if (
+                                item &&
+                                item.groupTitle &&
+                                item.groupItems &&
+                                Array.isArray(item.groupItems)
+                              ) {
+                                // Check if group has any visible items
+                                return item.groupItems.some(
+                                  (subItem) =>
+                                    subItem &&
+                                    subItem.title &&
+                                    !subItem.desktopOnly &&
+                                    !subItem.footerOnly
+                                );
+                              }
+                              // Filter flat structure items
+                              return (
+                                item && !item.desktopOnly && !item.footerOnly
+                              );
+                            })
+                            .map((item) => {
+                              // Handle grouped structure (Trading Hub) - v2
+                              if (
+                                item &&
+                                item.groupTitle &&
+                                item.groupItems &&
+                                Array.isArray(item.groupItems)
+                              ) {
+                                return (
+                                  <li
+                                    key={`group-${item.groupTitle}`}
+                                    className="burger-menu__group-item"
+                                  >
+                                    <h4 className="burger-menu__group-title">
+                                      {t(item.groupTitle)}
+                                    </h4>
+                                    <ul className="burger-menu__group-links">
+                                      {item.groupItems
+                                        .filter(
+                                          (subItem) =>
+                                            subItem &&
+                                            subItem.title &&
+                                            !subItem.desktopOnly &&
+                                            !subItem.footerOnly
+                                        )
+                                        .map(({ link, title }) => (
+                                          <li
+                                            key={`burger-menu-${stringTransformToKebabCase(
+                                              title
+                                            )}`}
+                                            className="burger-menu__link-item"
+                                          >
+                                            <InternalLink
+                                              className="burger-menu__link"
+                                              to={link}
+                                              onClick={(e) => {
+                                                if (
+                                                  !handleLiveChatClick(e, title)
+                                                ) {
+                                                  onTriggerChange();
+                                                }
+                                              }}
+                                            >
+                                              {t(title)}
+                                            </InternalLink>
+                                          </li>
+                                        ))}
+                                    </ul>
+                                  </li>
+                                );
+                              }
+                              // Handle flat structure (other menus)
+                              const { link, title } = item;
+                              return (
                                 <li
                                   key={`burger-menu-${stringTransformToKebabCase(
                                     title
@@ -320,13 +450,17 @@ const BurgerMenu = ({ className }) => {
                                   <InternalLink
                                     className="burger-menu__link"
                                     to={link}
-                                    onClick={onTriggerChange}
+                                    onClick={(e) => {
+                                      if (!handleLiveChatClick(e, title)) {
+                                        onTriggerChange();
+                                      }
+                                    }}
                                   >
                                     {t(title)}
                                   </InternalLink>
                                 </li>
-                              )
-                          )}
+                              );
+                            })}
                         </ul>
                       )}
                     </Accordion>

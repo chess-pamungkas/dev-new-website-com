@@ -440,3 +440,127 @@
     transition: all 0.2s ease;
   }
 }
+
+// ==============================
+// Trading Hub grouped menu styles
+// (moved from header.scss)
+// ==============================
+.navbar-item__dropdown-column--group {
+  flex: 1;
+  min-width: 0;
+
+  @include tablet {
+    width: 100%;
+  }
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.navbar-item__dropdown-group-title {
+  font-family: "Sofia Pro", Arial, sans-serif;
+  font-style: normal;
+  font-weight: map-get($font-weight, "black");
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  color: #000000;
+  margin: 0 0 16px 0;
+  padding-bottom: 0;
+
+  @include mobile {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+  }
+
+  @include tablet {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+  }
+
+  @include desktop-lg {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 16px;
+    padding-bottom: 0;
+  }
+}
+
+.navbar-item__dropdown-group-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include tablet {
+    gap: 6px;
+  }
+
+  @include mobile {
+    gap: 6px;
+  }
+}
+
+// Trading Hub specific item/card overrides
+.navbar-item__dropdown-columns--grouped .navbar-item__dropdown-card {
+  min-height: 50px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+
+  &:hover {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .dropdown-item__link {
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: map-get($colors, "red");
+    }
+  }
+
+  .dropdown-item__title {
+    font-weight: map-get($font-weight, "medium");
+  }
+}
+
+// Grouped dropdown columns (Trading Hub)
+.navbar-item__dropdown-columns--grouped {
+  display: flex;
+  gap: 40px;
+  padding: 0 40px;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 16px;
+  }
+
+  @include tablet {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  @include desktop-lg {
+    flex-direction: row;
+    gap: 10px;
+    padding: 0;
+  }
+
+  @include desktop-xl {
+    flex-direction: row;
+    gap: 40px;
+    padding: 0;
+  }
+}

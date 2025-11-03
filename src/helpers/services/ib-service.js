@@ -1,4 +1,3 @@
-import { navigate } from "gatsby";
 import { isBrowser } from "./is-browser";
 import { CAMPAIGN_PARAMS } from "./marketing-service";
 
@@ -15,16 +14,21 @@ export const getIBParamsAndSetToStorage = () => {
     const urlParams = getParamsFromUrl();
     const r_code = urlParams.get(IB_PARAMS.r_code);
 
-    // Check if the URL parameter starts with `?${IB_PARAMS.r_code}=`
-    if (window.location.search.startsWith(`?${IB_PARAMS.r_code}=`)) {
-      if (r_code) {
-        localStorage.setItem(IB_PARAMS.r_code, r_code);
-        localStorage.removeItem(CAMPAIGN_PARAMS.campaign_code);
+    // Check if r_code parameter exists in URL (regardless of position)
+    if (r_code) {
+      localStorage.setItem(IB_PARAMS.r_code, r_code);
+      localStorage.removeItem(CAMPAIGN_PARAMS.campaign_code);
+
+      // Only remove r_code parameter, preserve other query parameters
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.delete(IB_PARAMS.r_code);
+
+      // Only update URL if we actually removed a parameter
+      // Use replaceState to avoid navigation if URL hasn't changed significantly
+      if (newUrl.search !== window.location.search) {
+        window.history.replaceState({}, "", newUrl.toString());
       }
     }
-
-    const { pathname } = window.location;
-    navigate(pathname);
   }
 };
 

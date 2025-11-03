@@ -10,6 +10,7 @@ import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import bulletImage from "../../../assets/images/icons/bullet.png";
 import closemage from "../../../assets/images/icons/close-icon.svg";
 import badgeSecurityIcon from "../../../assets/images/icons/badge-security.svg";
+import popupRegistrationBg from "../../../assets/images/bg/popup-registration/bg-popup-registration.svg";
 import PopupRegistrationForm from "./components/popup-registration-form";
 import BackgroundPreloader from "./components/background-preloader";
 
@@ -843,7 +844,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
     const link = document.createElement("link");
     link.rel = "preload";
     link.as = "image";
-    link.href = "/images/bg/popup-registration/bg-popup-registration.svg";
+    link.href = popupRegistrationBg;
     document.head.appendChild(link);
 
     // Clean up

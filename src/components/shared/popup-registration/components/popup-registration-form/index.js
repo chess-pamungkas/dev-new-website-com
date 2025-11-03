@@ -2430,6 +2430,7 @@ const PopupRegistrationForm = ({ params }) => {
                 )?.code || ""
               : "",
             mobile: "",
+            language: portalLanguageCode || "en",
             is_subscribe: 1,
             agreement: 0,
           }}
@@ -2460,13 +2461,18 @@ const PopupRegistrationForm = ({ params }) => {
                 if (matchingCountry) {
                   setSelectedCountry(matchingCountry.name);
                   setSelectedCountryCode(matchingCountry.code);
-                  setFieldValue("country", matchingCountry.name, true);
+                  setFieldValue(
+                    "country",
+                    matchingCountry.value || matchingCountry.name,
+                    true
+                  );
                   setFieldValue("country_code", matchingCountry.code, true);
                 }
               }
             }, [clientConfig, setFieldValue]);
 
             const handleCountrySelect = (countryName) => {
+              setSelectedCountry(countryName);
               setSelectedCountry(countryName);
               const matchingCountry = countries.find(
                 (c) => c.name === countryName
@@ -2475,7 +2481,12 @@ const PopupRegistrationForm = ({ params }) => {
                 setSelectedCountryCode(matchingCountry.code);
                 setFieldValue("country_code", matchingCountry.code, true);
               }
-              setFieldValue("country", countryName, true);
+              // Set country.value (not country.name) for API submission
+              setFieldValue(
+                "country",
+                matchingCountry?.value || countryName,
+                true
+              );
               setIsCountryOpen(false);
               setSearchCountry("");
             };

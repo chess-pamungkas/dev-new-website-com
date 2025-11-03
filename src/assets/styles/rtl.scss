@@ -715,7 +715,7 @@ html[lang="ar"] .header-dropdown-card {
   }
 
   .dropdown-item__link {
-    direction: ltr;
+    direction: rtl;
     grid-template-columns: 1fr 50px;
     text-align: right;
 
@@ -723,13 +723,13 @@ html[lang="ar"] .header-dropdown-card {
       grid-column: 1 / -1;
       grid-row: 2;
       text-align: right;
-      align-items: flex-end;
+      align-items: flex-start;
     }
   }
 
   .dropdown-item__content {
     text-align: right;
-    align-items: flex-end;
+    align-items: flex-start;
   }
 
   .dropdown-item__icon {
@@ -755,7 +755,7 @@ html[lang="ar"] .header-dropdown-card {
   .dropdown-item__icon--above + .dropdown-item__content {
     order: 2;
     text-align: right;
-    align-items: flex-end;
+    align-items: flex-start;
   }
 }
 
@@ -1965,9 +1965,9 @@ body[dir="rtl"] .phone-number-container,
       }
 
       // Error messages
-      .popup-registration__error {
-        text-align: right !important;
-      }
+      // .popup-registration__error {
+      //   text-align: right !important;
+      // }
 
       // Risk warning
       &__risk-warning {
@@ -6588,6 +6588,49 @@ body[dir="rtl"] .swap-free .swap-free__hero-bg,
   }
 }
 
+// RTL: Flip badge arrow and move hero BG to left for Client Portal Assistance
+html[dir="rtl"]
+  .client-portal-assistance
+  .client-portal-assistance__badge-arrow,
+html[lang="ar"]
+  .client-portal-assistance
+  .client-portal-assistance__badge-arrow,
+body[dir="rtl"]
+  .client-portal-assistance
+  .client-portal-assistance__badge-arrow,
+[dir="rtl"] .client-portal-assistance .client-portal-assistance__badge-arrow {
+  transform: scaleX(-1) !important;
+}
+
+html[dir="rtl"] .client-portal-assistance .client-portal-assistance__hero-bg,
+html[lang="ar"] .client-portal-assistance .client-portal-assistance__hero-bg,
+body[dir="rtl"] .client-portal-assistance .client-portal-assistance__hero-bg,
+[dir="rtl"] .client-portal-assistance .client-portal-assistance__hero-bg {
+  @include tablet {
+    right: unset !important;
+    left: 0 !important;
+    background: url("../images/bg/hero/client-portal-assistance/client-portal-assistance-desktop.svg")
+      no-repeat 125% bottom !important;
+    background-color: transparent !important;
+  }
+
+  @include desktop-lg {
+    right: unset !important;
+    left: 0 !important;
+    background: url("../images/bg/hero/client-portal-assistance/client-portal-assistance-desktop.svg")
+      no-repeat -800px bottom !important;
+    background-color: transparent !important;
+  }
+
+  @include desktop-xl {
+    right: unset !important;
+    left: 0 !important;
+    background: url("../images/bg/hero/client-portal-assistance/client-portal-assistance-desktop.svg")
+      no-repeat -750px bottom !important;
+    background-color: transparent !important;
+  }
+}
+
 // How to Trade Swap Free RTL Styling
 html[dir="rtl"]
   .how-to-trade-swap-free
@@ -6898,4 +6941,20 @@ body[dir="rtl"]
   border-bottom-right-radius: 0 !important;
   border-top-left-radius: 12px !important;
   border-bottom-left-radius: 12px !important;
+}
+
+// OnboardingGuideStep RTL Styles
+html[dir="rtl"] .onboarding-guide-step__card-icon,
+html[lang="ar"] .onboarding-guide-step__card-icon,
+body[dir="rtl"] .onboarding-guide-step__card-icon,
+[dir="rtl"] .onboarding-guide-step__card-icon {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+html[dir="rtl"] .onboarding-guide-step__bullet-icon,
+html[lang="ar"] .onboarding-guide-step__bullet-icon,
+body[dir="rtl"] .onboarding-guide-step__bullet-icon,
+[dir="rtl"] .onboarding-guide-step__bullet-icon {
+  transform: scaleX(-1) !important;
 }
