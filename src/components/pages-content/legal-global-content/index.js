@@ -1,12 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TopMarketPromotion from "../../top-market-promotion";
-import TopMarket from "../../top-market";
 import cn from "classnames";
-// import image from "../../../assets/images/about-pages/legal-promo.svg";
-// import fsaPromo from "../../../assets/images/about-pages/fsa-promo.svg";
-// import cysecPromo from "../../../assets/images/about-pages/cysec-promo.svg";
-import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import LegalRegulators from "../../legal/components/legal-regulators";

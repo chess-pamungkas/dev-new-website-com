@@ -1,46 +1,6 @@
 @import "vars";
 @import "mixins";
 
-.corner-panel {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 10px;
-
-  @include desktop-lg {
-    padding-top: 17px;
-  }
-
-  &__content {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-  }
-
-  &__link {
-    text-align: center;
-    font-weight: map-get($font-weight, "regular");
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: 0.28px;
-    color: map-get($colors, "white");
-  }
-
-  &__item {
-    display: flex;
-    align-items: center;
-  }
-
-  &__separator {
-    text-align: center;
-    font-weight: map-get($font-weight, "regular");
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: 0.28px;
-    color: map-get($colors, "white");
-    padding: 0px 8px;
-  }
-}
-
 .header {
   min-height: 65px;
 

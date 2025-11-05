@@ -1,18 +1,12 @@
 import React, { useCallback, useRef, useState } from "react";
 import PropTypes from "prop-types";
-import cn from "classnames";
-import TopMarketPromotion from "../../top-market-promotion";
-// import animation from "../../../assets/images/animations/aggregator_MT5.json";
-import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
 import {
   getMT5Advantages,
   getMT5DownloadLink,
-  mt5DownloadTabs,
   getAnimationStyle,
 } from "../../../helpers/platforms.config";
 import image from "../../../assets/images/mt5/mt5.svg";
-import icon from "../../../assets/images/icon--white.svg";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
@@ -26,7 +20,6 @@ import OurCommunityContent from "../../shared/our-community";
 
 const Mt5PageContent = ({ className, isShowHero = true }) => {
   const { t } = useTranslationWithVariables();
-  const isRTL = useRtlDirection();
   const { isMobile, isTablet, isLG, isXL } = useWindowSize();
   const mt5Advantages = getMT5Advantages();
   const downloadRef = useRef(null);
@@ -40,25 +33,6 @@ const Mt5PageContent = ({ className, isShowHero = true }) => {
   const handleClosePopup = () => {
     setIsPopupOpen(false); // Close the popup
   };
-
-  //No need at MT5 as theres no null value at download section.  Enable when MT5 is at .COM and empty values
-  // const scrollToTarget = () => {
-  //   downloadRef.current?.scrollIntoView({ behavior: "smooth" });
-  // };
-
-  const getMT5DownloadLinkByDevice = useCallback(getMT5DownloadLink, [
-    isIOS,
-    isAndroid,
-    isWindows,
-    isMacOs,
-  ]);
-
-  const getAnimationStyles = useCallback(getAnimationStyle, [
-    isMobile,
-    isTablet,
-    isLG,
-    isXL,
-  ]);
 
   return (
     <>
@@ -75,14 +49,7 @@ const Mt5PageContent = ({ className, isShowHero = true }) => {
 
       <ContainerWrapper>
         <MtPromotion
-          title={
-            <HighlightedLocalizationText
-              localizationText="mt5_top-market-promo-text2"
-              wordsToHighlight="mt5_top-market-promo-text-accent2"
-              primaryClassName="highlighted-in-black"
-              accentClassName="highlighted-in-red"
-            />
-          }
+          title={t("mt5_top-market-promo-text2")}
           advantagesTitle={t("mt5_market-items-list_title")}
           advantages={mt5Advantages}
           downloadTitle={t("mt5_download-title")}

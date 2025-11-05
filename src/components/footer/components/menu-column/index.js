@@ -12,6 +12,46 @@ const MenuColumn = ({ className, items }) => {
     <ul className={cn("menu-column", className)}>
       {Array.isArray(items) &&
         items.map((item) => {
+          // Handle groupTitle items (for Trading Hub)
+          if (item.groupTitle && item.groupItems) {
+            return (
+              <li
+                key={`footer-menu-group-${stringTransformToKebabCase(
+                  item.groupTitle
+                )}`}
+                className="menu-column__group"
+              >
+                <h5 className="menu-column__group-title">
+                  {t(item.groupTitle)}
+                </h5>
+                <ul className="menu-column__group-items">
+                  {item.groupItems.map((groupItem) => {
+                    // Skip items that are desktopOnly
+                    if (groupItem.desktopOnly) return null;
+                    return (
+                      <li
+                        key={`footer-menu-${stringTransformToKebabCase(
+                          groupItem.title
+                        )}`}
+                        className="menu-column__item"
+                      >
+                        <InternalLink
+                          className={cn("menu-column__link")}
+                          to={groupItem.link}
+                        >
+                          {t(groupItem.title)}
+                        </InternalLink>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </li>
+            );
+          }
+
+          // Handle regular items (skip desktopOnly items)
+          if (item.desktopOnly) return null;
+
           return (
             <li
               className="menu-column__item"
@@ -30,10 +70,23 @@ const MenuColumn = ({ className, items }) => {
 MenuColumn.propTypes = {
   className: PropTypes.string,
   items: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired,
-    })
+    PropTypes.oneOfType([
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        link: PropTypes.string.isRequired,
+        desktopOnly: PropTypes.bool,
+      }),
+      PropTypes.shape({
+        groupTitle: PropTypes.string.isRequired,
+        groupItems: PropTypes.arrayOf(
+          PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            link: PropTypes.string.isRequired,
+            desktopOnly: PropTypes.bool,
+          })
+        ).isRequired,
+      }),
+    ])
   ).isRequired,
 };
 

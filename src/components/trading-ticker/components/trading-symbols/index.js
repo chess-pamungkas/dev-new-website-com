@@ -114,7 +114,7 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
     }
     // perform auto scroll when not touched
     if (cont.scrollLeft !== cont.scrollWidth && !isTouched) {
-      cont.scrollTo(cont.scrollLeft + 1, 0);
+      cont.scrollTo(cont.scrollLeft + 2, 0);
     }
   };
 
@@ -139,14 +139,14 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
       }
     }
     if (cont.scrollLeft !== cont.scrollWidth && !isTouched) {
-      cont.scrollTo(cont.scrollLeft - 1, 0);
+      cont.scrollTo(cont.scrollLeft - 2, 0);
     }
   };
 
   useEffect(() => {
     const intervalId = setInterval(
       isRTL ? performScrollRTL : performScroll,
-      100 // Increased from 50ms to 100ms to reduce performance impact
+      50 // Reduced to 50ms for faster scrolling
     );
     return () => {
       clearInterval(intervalId);

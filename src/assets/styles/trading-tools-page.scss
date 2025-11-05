@@ -7,64 +7,6 @@
   }
 }
 
-.top-market--trading-tools {
-  .top-market__text {
-    font-size: 16px;
-    line-height: 20px;
-
-    @include tablet {
-      font-size: 21px;
-      line-height: 26px;
-    }
-
-    @include desktop-lg {
-      font-size: 22px;
-      line-height: 45px;
-    }
-
-    @include desktop-xl {
-      font-size: 28px;
-      line-height: 45px;
-    }
-  }
-
-  .top-market__btn-wrapper {
-    @include tablet {
-      justify-content: center;
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-
-    @include desktop-lg {
-      flex-wrap: nowrap;
-    }
-
-    @include desktop-xl {
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      max-width: 810px;
-    }
-  }
-
-  .top-market__btn {
-    background: map-get($colors, "red");
-    border-color: map-get($colors, "white");
-    color: map-get($colors, "white");
-    line-height: 40px;
-    width: 269px;
-    font-size: 15px;
-    text-transform: unset;
-    margin: 0 5px 10px;
-
-    @include desktop-xl {
-      line-height: 58px;
-      width: 380px;
-      font-size: 24px;
-      margin: 0 10px 20px 10px;
-    }
-  }
-}
-
 .alpha-generation {
   position: relative;
   width: 100%;

@@ -1141,81 +1141,6 @@ html[lang="ar"] .main-promotion {
   }
 }
 
-.top-market--platforms--rtl {
-  .top-market__trader-tools {
-    img + img {
-      margin-left: unset;
-      margin-right: 30px;
-
-      @include tablet {
-        margin-left: unset;
-        margin-right: 25px;
-      }
-
-      @include desktop-xl {
-        margin-left: unset;
-        margin-right: 20px;
-      }
-    }
-  }
-}
-
-.meta-trader--rtl {
-  &:before {
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    right: unset;
-    left: 0;
-  }
-
-  .meta-trader__description {
-    @include desktop-lg {
-      margin-right: unset;
-      margin-left: 34px;
-    }
-
-    @include desktop-xl {
-      margin-right: unset;
-      margin-left: 230px;
-    }
-  }
-
-  .market-item-advantages__text {
-    padding-left: unset;
-    padding-right: 10px;
-
-    @include tablet {
-      padding-right: 20px;
-    }
-  }
-
-  .meta-trader__more-link {
-    margin-right: unset;
-    margin-left: 18px;
-
-    @include desktop-xl {
-      margin-left: 50px;
-    }
-  }
-
-  .meta-trader__tool-icon {
-    margin-right: unset;
-    margin-left: 25px;
-
-    @include desktop-lg {
-      margin-left: 35px;
-    }
-
-    @include desktop-xl {
-      margin-left: 55px;
-    }
-
-    &:last-child {
-      margin-left: 0;
-    }
-  }
-}
-
 .mt-promotion--rtl {
   .mt-promotion__title {
     text-align: right;
@@ -1621,20 +1546,6 @@ body[dir="rtl"] .contact-us__info-item,
   }
 }
 
-.top-market--trading-tools--rtl {
-  .top-market__btn {
-    @include desktop-xl {
-      &:first-child {
-        margin: 0 0 0 10px;
-      }
-
-      &:last-child {
-        margin: 49px 0 0 0;
-      }
-    }
-  }
-}
-
 .alpha-generation--rtl,
 .featured-ideas--rtl {
   .trading-tools-tabs .tabs__tab {
@@ -1692,32 +1603,6 @@ body[dir="rtl"] .contact-us__info-item,
 .swap-rate--rtl {
   .swap-rate__title {
     text-align: right;
-  }
-}
-
-.swap-free-promotion--rtl {
-  .swap-free-promotion__title {
-    @include tablet {
-      text-align: right;
-    }
-  }
-
-  .swap-free-promotion__description {
-    @include tablet {
-      text-align: right;
-    }
-  }
-
-  .swap-free-promotion__text {
-    @include tablet {
-      text-align: right;
-    }
-  }
-
-  .swap-free-promotion__img-block {
-    @include desktop-xl {
-      padding-left: 200px;
-    }
   }
 }
 

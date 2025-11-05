@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import { navigate } from "gatsby";
+import { useI18next } from "gatsby-plugin-react-i18next";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import LanguageContext from "../../../context/language-context";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
@@ -20,6 +20,7 @@ const OurCommunityContent = ({
   const { isMobile } = useWindowSize();
   const { selectedLanguage } = useContext(LanguageContext);
   const { t } = useTranslationWithVariables();
+  const { navigate } = useI18next();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleShowRegistrationPopup = () => {
@@ -46,6 +47,7 @@ const OurCommunityContent = ({
   // Use custom click handlers if provided, otherwise use default handlers
   const handlePrimaryClick = onPrimaryClick || handleShowRegistrationPopup;
   // Default secondary button navigates to accounts-type page instead of opening popup
+  // navigate from useI18next automatically preserves language prefix (e.g., /my/accounts-type)
   const handleSecondaryClick =
     onSecondaryClick ||
     (() => {

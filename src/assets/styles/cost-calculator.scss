@@ -108,6 +108,10 @@
       height: 14px;
       margin-right: 8px;
     }
+
+    @include mobile {
+      font-size: 12px;
+    }
   }
 
   &__title {
@@ -682,7 +686,7 @@
     transition: all 0.3s ease;
 
     @include tablet {
-      padding: 10px;
+      padding: 20px 7px;
       gap: 40px;
       min-height: 200px;
     }
@@ -696,7 +700,7 @@
     }
 
     @include desktop-xl {
-      padding: 20px;
+      padding: 20px 14px;
       gap: 28px;
       min-height: 231px !important;
     }
@@ -794,7 +798,7 @@
       padding: 6px 10px;
       width: fit-content;
       height: 27px;
-      font-size: 12px;
+      font-size: 11px;
       line-height: 21px;
       gap: 5.5px;
 

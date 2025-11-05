@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
-import InternalLink from "../internal-link";
 import subNavBadgeIcon from "../../../assets/images/icons/sub-nav.svg";
-import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { setLangParam } from "../../../helpers/services/language-service";
 
 const NavbarDropdownHighlight = ({
@@ -38,11 +36,9 @@ const NavbarDropdownHighlight = ({
         subtitle: t("navbar-dropdown-highlight_products_subtitle"),
         primaryButton: {
           text: t("navbar-dropdown-highlight_products_primary-button"),
-          link: "/products",
         },
         secondaryButton: {
           text: t("navbar-dropdown-highlight_products_secondary-button"),
-          link: "/products/demo",
         },
       },
       trading: {
@@ -51,11 +47,9 @@ const NavbarDropdownHighlight = ({
         subtitle: t("navbar-dropdown-highlight_trading_subtitle"),
         primaryButton: {
           text: t("navbar-dropdown-highlight_trading_primary-button"),
-          link: "/trading",
         },
         secondaryButton: {
           text: t("navbar-dropdown-highlight_trading_secondary-button"),
-          link: "/trading/demo",
         },
       },
       platforms: {
@@ -64,11 +58,9 @@ const NavbarDropdownHighlight = ({
         subtitle: t("navbar-dropdown-highlight_platforms_subtitle"),
         primaryButton: {
           text: t("navbar-dropdown-highlight_platforms_primary-button"),
-          link: "/platforms",
         },
         secondaryButton: {
           text: t("navbar-dropdown-highlight_platforms_secondary-button"),
-          link: "/platforms/demo",
         },
       },
       more: {
@@ -77,11 +69,9 @@ const NavbarDropdownHighlight = ({
         subtitle: t("navbar-dropdown-highlight_more_subtitle"),
         primaryButton: {
           text: t("navbar-dropdown-highlight_more_primary-button"),
-          link: "/more",
         },
         secondaryButton: {
           text: t("navbar-dropdown-highlight_more_secondary-button"),
-          link: "/more/demo",
         },
       },
     };

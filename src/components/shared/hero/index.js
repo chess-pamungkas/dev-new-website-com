@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { MarketingContext } from "../../../context/marketing-context";
-import { getDefaultTextSequence } from "../../../helpers/marketing.config";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import LanguageContext from "../../../context/language-context";
 import { HeroButtons, ButtonPrimaryHero } from "../reusable-buttons";
@@ -39,7 +38,6 @@ const Hero = ({
   const { selectedLanguage } = useContext(LanguageContext);
   const { content, sect1 } = useContext(MarketingContext);
   const isRTL = useRtlDirection();
-  const DEFAULT_TEXT_SEQUENCE = getDefaultTextSequence(selectedLanguage.id);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleShowRegistrationPopup = () => {

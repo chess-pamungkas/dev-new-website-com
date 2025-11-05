@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
-import TopMarket from "../../top-market";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { getFeaturesByTradingType } from "../../../helpers/features-products.config";
 import FeaturesProducts from "../../shared/features-products";
-import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
-import SwapFreeTopPromotion from "../../swap-free/components/swap-free-top-promotion";
-import SwapFreeCenterPromotion from "../../swap-free/components/swap-free-center-promotion";
-import SwapFreeAdvantages from "../../swap-free/components/swap-free-advantages";
-import { SWAP_FREE_ADVANTAGES } from "../../../helpers/swap-free.config";
-import SwapFreeBottomPromotion from "../../swap-free/components/bottom-promotion";
 import { setLangParam } from "../../../helpers/services/language-service";
 import ContainerWrapper from "../../../components/shared/container-wrapper";
 import Hero from "../../shared/hero";

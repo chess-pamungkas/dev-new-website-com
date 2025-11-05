@@ -12,7 +12,6 @@ import arrowUp from "../../assets/images/icons/main-page/market-sentiment/arrow-
 import arrowDown from "../../assets/images/icons/main-page/market-sentiment/arrow-down.svg";
 import { getIcon } from "../trading-ticker/components/trading-symbols/icon-loader";
 import symbolMapping from "../trading-ticker/components/trading-symbols/symbol-icon-mapping.json";
-import TradingContext from "../../context/trading-context";
 import { getTradingSections } from "../../helpers/config";
 import { filterSymbols } from "../../helpers/services/filter-symbols";
 import { io } from "socket.io-client";

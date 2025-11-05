@@ -34,6 +34,25 @@ const Menu = ({ className }) => {
         }
         return processedItem;
       }
+
+      // Process Trading Hub (Company tab) for footer
+      if (item.title === "header-nav-tab-company") {
+        const processedItem = { ...item };
+        if (processedItem.subItems) {
+          // Separate groupTitle items and footerOnly items
+          const groupItems = processedItem.subItems.filter(
+            (subItem) => subItem.groupTitle && subItem.groupItems
+          );
+          const footerOnlyItems = processedItem.subItems.filter(
+            (subItem) => subItem.footerOnly
+          );
+
+          // Combine groupTitle items first, then footerOnly items
+          processedItem.subItems = [...groupItems, ...footerOnlyItems];
+        }
+        return processedItem;
+      }
+
       return item;
     });
   };

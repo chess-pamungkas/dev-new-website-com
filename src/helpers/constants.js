@@ -185,19 +185,14 @@ export const FOREX_PAGE_LINK = "/forex";
 export const SHARES_PAGE_LINK = "/shares";
 export const ENERGIES_PAGE_LINK = "/energies";
 export const METALS_PAGE_LINK = "/metals";
-export const PLATFORMS_LINK = "/platforms";
 export const ALL_MARKETS_PAGE_LINK = "/all-markets";
 export const MT4_PAGE_LINK = "/mt4";
 export const MT5_PAGE_LINK = "/mt5";
-export const CTRADER_PAGE_LINK = "/ctrader";
-export const TRADING_VIEW_PAGE_LINK = "/trading-view";
 export const TRADING_TOOLS_PAGE_LINK = "/trading-tools";
 export const VPS_PAGE_LINK = "/vps";
 export const SWAP_FREE_PAGE_LINK = "/swap-free";
 export const WITHDRAWAL_PAGE_LINK = "/funding";
 export const SPREADS_AND_FEES_PAGE_LINK = "/spreads-and-fees";
-export const PROFESSIONAL_QUALIFICATION_PAGE_LINK =
-  "/professional-qualification";
 export const PARTNERS_PAGE_LINK = "/partners";
 export const ACCOUNTS_TYPE_PAGE_LINK = "/accounts-type";
 export const ETF_PAGE_LINK = "/etf";
@@ -207,11 +202,6 @@ export const MT4_WEB_TRADER_LINK = "/mt4-webtrader";
 
 export const PRIVACY_POLICY_PAGE_LINK = "/legal/privacy";
 export const COOKIE_POLICY_PAGE_LINK = "/legal/cookie";
-
-export const ANGLE_ICON_COLOR = {
-  red: "#ff4400",
-  grey: "#5E5F63",
-};
 
 export const TABLE_PAGE_SIZES = [5, 10, 15];
 
@@ -312,8 +302,3 @@ export const PAYMENT_SYSTEMS = {
     logo: wiseLogo,
   },
 };
-
-export const YOUTUBE_VIDEO_SHARE_LINK = "https://youtu.be/";
-
-// used to apply specific styles for languages that have longer words and etc.
-export const BIGGER_LANGUAGES = ["my", "vn", "es", "id"];

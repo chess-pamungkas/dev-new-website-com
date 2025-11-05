@@ -4,6 +4,7 @@ import cn from "classnames";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
+import { useI18next } from "gatsby-plugin-react-i18next";
 import featuresIcon from "../../../assets/images/icons/features.svg";
 
 const FeaturesProducts = ({
@@ -14,6 +15,7 @@ const FeaturesProducts = ({
   const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
   const isRTL = useRtlDirection();
+  const { navigate, language } = useI18next();
   const [currentSlide, setCurrentSlide] = useState(0);
   const sliderRef = useRef(null);
 
@@ -57,6 +59,78 @@ const FeaturesProducts = ({
     if (!isMobile) return;
     const maxSlides = features.length - 1;
     setCurrentSlide(currentSlide === 0 ? maxSlides : currentSlide - 1);
+  };
+
+  // Function to process description HTML and add language prefix to internal links
+  // This ensures the href attribute shows the correct URL with language prefix on hover
+  const processDescriptionHtml = (htmlString) => {
+    if (!htmlString || typeof window === "undefined") return htmlString;
+
+    // Create a temporary DOM element to parse the HTML string
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = htmlString;
+
+    // Find all anchor tags
+    const links = tempDiv.querySelectorAll("a");
+    links.forEach((link) => {
+      const originalHref = link.getAttribute("href");
+      // Only process internal links (not external URLs, mailto, or hash anchors)
+      if (
+        originalHref &&
+        !originalHref.startsWith("http") &&
+        !originalHref.startsWith("mailto:") &&
+        !originalHref.startsWith("#")
+      ) {
+        // Check if link is not already prefixed to avoid double prefixing
+        const languagePrefix = `/${language}/`;
+        if (!originalHref.startsWith(languagePrefix)) {
+          // Normalize href: ensure it starts with / and remove any trailing slash
+          let normalizedHref = originalHref.startsWith("/")
+            ? originalHref
+            : `/${originalHref}`;
+          // Remove trailing slash if present (we'll add it back after language prefix)
+          normalizedHref = normalizedHref.replace(/\/$/, "");
+          // Remove leading slash to combine with language prefix
+          normalizedHref = normalizedHref.replace(/^\//, "");
+          // Set href with language prefix (e.g., /id/company)
+          link.setAttribute("href", `/${language}/${normalizedHref}`);
+        }
+      }
+    });
+
+    return tempDiv.innerHTML;
+  };
+
+  // Handle clicks on links within descriptions to preserve language prefix
+  // navigate from useI18next automatically adds language prefix (e.g., /my/company)
+  const handleDescriptionClick = (e) => {
+    const link = e.target.closest("a");
+    if (link && link.href) {
+      const href = link.getAttribute("href");
+      // Only intercept internal links (not external URLs)
+      if (
+        href &&
+        !href.startsWith("http") &&
+        !href.startsWith("mailto:") &&
+        !href.startsWith("#")
+      ) {
+        e.preventDefault();
+        // Extract base path from potentially prefixed href
+        // If href is already prefixed (e.g., /id/company), extract base path
+        const languagePrefix = `/${language}/`;
+        let basePath;
+        if (href.startsWith(languagePrefix)) {
+          // Remove language prefix, keep leading slash
+          basePath = `/${href.substring(languagePrefix.length)}`;
+        } else if (href.startsWith("/")) {
+          basePath = href;
+        } else {
+          basePath = `/${href}`;
+        }
+        // navigate from useI18next automatically preserves language prefix
+        navigate(basePath);
+      }
+    }
   };
 
   return (
@@ -115,7 +189,10 @@ const FeaturesProducts = ({
                 </h3>
                 <p
                   className="features-products__card-description"
-                  dangerouslySetInnerHTML={{ __html: t(feature.description) }}
+                  dangerouslySetInnerHTML={{
+                    __html: processDescriptionHtml(t(feature.description)),
+                  }}
+                  onClick={handleDescriptionClick}
                 />
               </div>
             ))}
@@ -133,7 +210,10 @@ const FeaturesProducts = ({
                 </h3>
                 <p
                   className="features-products__card-description"
-                  dangerouslySetInnerHTML={{ __html: t(feature.description) }}
+                  dangerouslySetInnerHTML={{
+                    __html: processDescriptionHtml(t(feature.description)),
+                  }}
+                  onClick={handleDescriptionClick}
                 />
               </div>
             ))}

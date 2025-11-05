@@ -21,7 +21,6 @@ import AddressIcon from "../../assets/images/icons/contact-us/address.svg";
 
 const ContactUs = ({ className }) => {
   const { t } = useTranslationWithVariables();
-  const { isMobile } = useWindowSize();
   const isRTL = useRtlDirection();
   const email = getContactEmail();
   const phone = getContactPhone();

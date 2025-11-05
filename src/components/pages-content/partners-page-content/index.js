@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import TopMarketPromotion from "../../top-market-promotion";
-// import promotion from "../../../assets/images/partners/promotion.svg";
-import cn from "classnames";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
-import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import IncomeSlider from "../../partners/components/income-slider";
-// import PartnersAdvantages from "../../partners/components/advantages";
-// import { PARTNERS_ADVANTAGES } from "../../../helpers/partners.config";
-// import HowToStart from "../../partners/components/how-to-start";
-import icon from "../../../assets/images/icon--white.svg";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { setLangParam } from "../../../helpers/services/language-service";
@@ -19,19 +11,13 @@ import OurCommunityContent from "../../shared/our-community";
 import { useWindowSize } from "../../../helpers/hooks/use-window-size";
 import GuideContent from "../../shared/guide-content";
 import { getFeaturesByTradingType } from "../../../helpers/features-products.config";
-import FeaturesProducts from "../../shared/features-products";
 import FeaturesProductsPartners from "./features-products-partners";
 
 const PartnersPageContent = ({ className, isShowHero = true }) => {
   const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
-  const isRTL = useRtlDirection();
   const langParam = setLangParam(); // Get the language parameter
   const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
-
-  const handleShowRegistrationPopup = () => {
-    setIsPopupOpen(true); // Open the popup
-  };
 
   const handleClosePopup = () => {
     setIsPopupOpen(false); // Close the popup

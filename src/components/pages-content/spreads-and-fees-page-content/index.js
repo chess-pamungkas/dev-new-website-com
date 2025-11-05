@@ -2,11 +2,6 @@ import React, { useEffect, useContext, useState } from "react";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import TopMarket from "../../top-market";
-// import promotion from "../../../assets/images/spreads-and-fees/promotion.svg";
-import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
-import TopMarketLayout from "../../top-market-layout";
-import Tabs from "../../shared/tabs";
 import TableComponent from "../../shared/table";
 import {
   ColumnsSpreadTable2,
@@ -16,7 +11,6 @@ import {
   DATA_SPREADS_TABLE_FOREX,
   DATA_SPREADS_TABLE_INDICES,
 } from "../../../helpers/spreads-and-fees.config";
-import TopMarketPromotion from "../../top-market-promotion";
 import icon from "../../../assets/images/icon--white.svg";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
@@ -37,11 +31,6 @@ import CostSwapRate from "./cost-swap-rate";
 import SpreadsFeesCommission from "./spreads-fees-commission";
 import OurSpreads from "./our-spreads";
 import OurCommunityContent from "../../../components/shared/our-community";
-import {
-  ButtonPrimaryStandard,
-  ButtonSecondaryStandard,
-  ButtonContainer,
-} from "../../shared/reusable-buttons";
 
 const SpreadsAndFeesPageContent = ({ className, isShowHero = true }) => {
   const { t } = useTranslationWithVariables();

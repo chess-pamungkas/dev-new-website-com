@@ -1,9 +1,7 @@
 import React, { useCallback, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import TopMarketPromotion from "../../top-market-promotion";
 // import animation from "../../../assets/images/animations/aggregator_MT4.json";
-import HighlightedLocalizationText from "../../shared/highlighted-localization-text";
 import MtPromotion from "../../mt-promotion";
 import {
   getMT4Advantages,
@@ -74,14 +72,7 @@ const Mt4PageContent = ({ className, isShowHero = true }) => {
 
       <ContainerWrapper>
         <MtPromotion
-          title={
-            <HighlightedLocalizationText
-              localizationText="mt4_top-market-promo-text2"
-              wordsToHighlight="mt4_top-market-promo-text-accent2"
-              primaryClassName="highlighted-in-black"
-              accentClassName="highlighted-in-red"
-            />
-          }
+          title={t("mt4_top-market-promo-text2")}
           advantagesTitle={t("mt4_market-items-list_title")}
           advantages={mt4Advantages}
           downloadTitle={t("mt4_download-title")}

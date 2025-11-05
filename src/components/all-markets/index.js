@@ -15,7 +15,6 @@ const AllMarkets = ({ className, isShowHero = true }) => {
   const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
   const { selectedLanguage } = useContext(LanguageContext);
-  const isRTL = useRtlDirection();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const handleClosePopup = () => {
     setIsPopupOpen(false);

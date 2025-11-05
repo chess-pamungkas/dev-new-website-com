@@ -9,7 +9,6 @@ import {
   getFAQMarket,
 } from "../../helpers/faq";
 import Faq from "../faq";
-import { stringTransformToKebabCase } from "../../helpers/services/string-service";
 import FaqHero from "./faq-hero";
 import featuresIcon from "../../assets/images/icons/features.svg";
 import quickAnswersIcon from "../../assets/images/icons/faq/quick-answers.svg";

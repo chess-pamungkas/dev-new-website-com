@@ -9,7 +9,6 @@ import {
   MAX_CLIENTS,
   MIN_CLIENTS,
 } from "../../../../helpers/partners.config";
-import { formatMoney } from "../../../../helpers/services/format-money";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { DIR_LTR, DIR_RTL } from "../../../../helpers/constants";
 import "../../../../assets/styles/income-slider.scss";

@@ -4,7 +4,7 @@ import sharesIcon from "../assets/images/icons/all-markets/shares.svg";
 import metalsIcon from "../assets/images/icons/all-markets/metals.svg";
 import energiesIcon from "../assets/images/icons/all-markets/energies.svg";
 import cryptoIcon from "../assets/images/icons/all-markets/crypto.svg";
-import { useTranslationWithVariables } from "./hooks/use-translation-with-vars";
+
 export const FAQ_FOREX = [
   {
     question: "forex_faq-title1",

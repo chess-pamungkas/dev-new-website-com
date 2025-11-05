@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
@@ -14,10 +14,6 @@ const MtItemAdvantageList = ({
   className,
   advantages,
   title,
-  btnTitle,
-  link,
-  btnClassName,
-  btnOnClick,
   platformType = "mt4", // Add platformType prop
 }) => {
   const { t } = useTranslationWithVariables();
@@ -92,10 +88,6 @@ MtItemAdvantageList.propTypes = {
   className: PropTypes.string,
   advantages: PropTypes.arrayOf(PropTypes.object).isRequired,
   title: PropTypes.string,
-  btnTitle: PropTypes.string,
-  link: PropTypes.string,
-  btnClassName: PropTypes.string,
-  btnOnClick: PropTypes.func,
   platformType: PropTypes.oneOf(["mt4", "mt5"]),
 };
 

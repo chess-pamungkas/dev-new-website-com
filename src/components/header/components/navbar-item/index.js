@@ -3,14 +3,9 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { ChevronDownIcon, ChevronUpIcon } from "../../../shared/icons";
-import { ANGLE_ICON_COLOR } from "../../../../helpers/constants";
-import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
-import NavbarSubItem from "../navbar-sub-item";
 import CommonContext from "../../../../context/common-context";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import PartnersNavIcon from "../../../shared/icons/PartnersNavIcon";
-import NavbarDropdownHighlight from "../navbar-dropdown-highlight";
-import { ShowRegistrationPopup } from "../../../../helpers/constants";
 
 const NavbarItem = ({
   className,

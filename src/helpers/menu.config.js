@@ -1,13 +1,8 @@
 import {
-  AboutIcon,
   AccountTypesIcon,
   AllMarketsOverviewIcon,
-  //  No used vars for the 2nd release, please, don't remove them
-  CareerIcon,
   ContactUsIcon,
-  CopyTradingIcon,
   CryptoIcon,
-  EducationIcon,
   EnergiesIcon,
   ForexIcon,
   FundingWithdrawalsIcon,
@@ -17,10 +12,8 @@ import {
   LegalIcon,
   Logo,
   MetalsIcon,
-  PlatformsIcon,
   PressAndNewsIcon,
   PrivateVPSIcon,
-  ProfessionalQualificationIcon,
   SharesIcon,
   SwapFreeAccountIcon,
   TradingToolsIcon,
@@ -28,7 +21,6 @@ import {
   MT4Icon,
   MT5Icon,
   SpreadAndFeesIcon,
-  CTraderIcon,
 } from "../components/shared/icons";
 import {
   ACCOUNTS_TYPE_PAGE_LINK,
@@ -45,7 +37,6 @@ import {
   MT4_PAGE_LINK,
   MT5_PAGE_LINK,
   PARTNERS_PAGE_LINK,
-  PROFESSIONAL_QUALIFICATION_PAGE_LINK,
   SHARES_PAGE_LINK,
   SPREADS_AND_FEES_PAGE_LINK,
   WITHDRAWAL_PAGE_LINK,
@@ -182,25 +173,21 @@ const FSA_COMPANY_TAB = {
         {
           title: "header-nav-tab-trading-hub-trading-academy-title",
           link: "/trading-academy",
-          icon: EducationIcon,
           description: "header-nav-tab-trading-hub-trading-academy-desc",
         },
         {
           title: "header-nav-tab-trading-hub-beginners-guide-title",
           link: "/beginners-guide",
-          icon: EducationIcon,
           description: "header-nav-tab-trading-hub-beginners-guide-desc",
         },
         {
           title: "header-nav-tab-trading-hub-intermediate-lessons-title",
           link: "/intermediate-lessons",
-          icon: EducationIcon,
           description: "header-nav-tab-trading-hub-intermediate-lessons-desc",
         },
         {
           title: "header-nav-tab-trading-hub-advanced-playbook-title",
           link: "/advanced-playbook",
-          icon: EducationIcon,
           description: "header-nav-tab-trading-hub-advanced-playbook-desc",
         },
       ],
@@ -276,6 +263,11 @@ const FSA_COMPANY_TAB = {
     },
     {
       footerOnly: true,
+      title: "header-nav-tab-partners-fsa", // Use "Partners" title for footer
+      link: PARTNERS_PAGE_LINK,
+    },
+    {
+      footerOnly: true,
       title: "document-privacy-policy-name",
       link: PRIVACY_POLICY_PAGE_LINK,
     },
@@ -302,18 +294,3 @@ const FSA_MENU_ITEMS = [
 ];
 
 export const getMenuItems = () => FSA_MENU_ITEMS;
-
-export const getCornerItems = () => [
-  {
-    link: BLOG_URL,
-    title: "Newsroom", // no need to translate it for now
-  },
-  {
-    link: PARTNERS_PAGE_LINK,
-    title: "header-nav-tab-partners-fsa",
-  },
-  {
-    link: CONTACT_US_PAGE_LINK,
-    title: "header-nav-tab-company-contact-title",
-  },
-];

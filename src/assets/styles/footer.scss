@@ -321,6 +321,49 @@
     }
   }
 
+  &__group {
+    list-style-type: none;
+    margin-bottom: 20px;
+
+    @include mobile {
+      margin-bottom: 15px;
+    }
+
+    @include desktop-lg {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__group-title {
+    color: #fff;
+    font-weight: map-get($font-weight, "medium");
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0 0 15px;
+
+    @include mobile {
+      font-size: 12px;
+      line-height: 15px;
+      margin-bottom: 10px;
+    }
+
+    @include tablet {
+      margin-bottom: 10px;
+    }
+
+    @include desktop-lg {
+      font-size: 12px;
+      line-height: 15px;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__group-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
   &__subtitles {
     margin-top: 20px;
   }

@@ -1,10 +1,9 @@
 import React from "react";
+import { ButtonContainer, ArrowIcon } from "../reusable-buttons";
+import { ButtonPrimaryCommunity } from "../reusable-buttons";
+import InternalLink from "../internal-link";
+import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useI18next } from "gatsby-plugin-react-i18next";
-import { ButtonContainer } from "../reusable-buttons";
-import {
-  ButtonPrimaryCommunity,
-  ButtonSecondaryCommunity,
-} from "../reusable-buttons";
 
 // Community section button pair
 export const CommunityButtons = ({
@@ -14,6 +13,7 @@ export const CommunityButtons = ({
   customPrimaryButton,
   customSecondaryButton,
 }) => {
+  const isRTL = useRtlDirection();
   const { navigate } = useI18next();
 
   // Use custom text if provided, otherwise use default fallback
@@ -32,12 +32,20 @@ export const CommunityButtons = ({
     ? customSecondaryButton || "Compare Account Types"
     : "";
 
-  // Default secondary button click handler - navigate to accounts-type page (preserves current language)
-  const handleSecondaryClick =
-    onSecondaryClick ||
-    (() => {
+  // Handle secondary link click
+  // Always use navigate from useI18next to preserve language prefix
+  // navigate from useI18next automatically adds language prefix (e.g., /my/accounts-type)
+  const handleSecondaryLinkClick = (e) => {
+    e.preventDefault();
+    if (onSecondaryClick) {
+      // If custom handler is provided, it should handle navigation itself
+      // But we still use navigate here to ensure language prefix is preserved
+      onSecondaryClick();
+    } else {
+      // navigate from useI18next automatically preserves language prefix
       navigate("/accounts-type");
-    });
+    }
+  };
 
   return (
     <ButtonContainer>
@@ -47,11 +55,18 @@ export const CommunityButtons = ({
         disabled={disabled}
       />
       {showSecondaryButton && (
-        <ButtonSecondaryCommunity
-          text={secondaryText}
-          onClick={handleSecondaryClick}
-          disabled={disabled}
-        />
+        <InternalLink
+          to="/accounts-type"
+          className="community-buttons__secondary-link"
+          onClick={handleSecondaryLinkClick}
+        >
+          <span className="community-buttons__secondary-link-text">
+            {secondaryText}
+          </span>
+          <span className="community-buttons__secondary-link-arrow">
+            <ArrowIcon isRTL={isRTL} />
+          </span>
+        </InternalLink>
       )}
     </ButtonContainer>
   );

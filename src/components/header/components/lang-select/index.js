@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { ChevronDownIcon, ChevronUpIcon } from "../../../shared/icons";
-import { ANGLE_ICON_COLOR } from "../../../../helpers/constants";
 import { useModal } from "../../../../helpers/hooks/use-modal";
 import LanguageContext from "../../../../context/language-context";
 import Popup from "../../../shared/popup";

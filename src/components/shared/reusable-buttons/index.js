@@ -497,7 +497,7 @@ const ForceArrowFlip = () => {
 };
 
 // Arrow SVG component
-const ArrowIcon = ({ isRTL = false }) => {
+export const ArrowIcon = ({ isRTL = false }) => {
   // Use the hook for consistent RTL detection
   const hookRTL = useRtlDirection();
   const shouldFlip = isRTL || hookRTL;

@@ -1,9 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
-import HighlightedLocalizationText from "../../../shared/highlighted-localization-text";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 import legalCardDesktop from "../../../../assets/images/legal/legal-card-desktop.svg";
 import legalCardMobile from "../../../../assets/images/legal/legal-card-mobile.svg";
 

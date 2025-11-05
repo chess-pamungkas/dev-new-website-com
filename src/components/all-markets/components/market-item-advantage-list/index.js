@@ -5,20 +5,11 @@ import icon from "../../../../assets/images/icons/all-markets/advantage-icon.svg
 import iconSm from "../../../../assets/images/icons/all-markets/advantage-icon-sm.svg";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
-import ButtonPopup from "../../../shared/button-popup";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { ButtonLearnMore } from "../../../shared/reusable-buttons";
 import bgCard from "../../../../assets/images/bg/all-markets/bg-card.svg";
 
-const MarketItemAdvantageList = ({
-  className,
-  advantages,
-  title,
-  btnTitle,
-  link,
-  btnClassName,
-  btnOnClick,
-}) => {
+const MarketItemAdvantageList = ({ className, advantages, link }) => {
   const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
   const isRTL = useRtlDirection();
@@ -80,11 +71,7 @@ const MarketItemAdvantageList = ({
 MarketItemAdvantageList.propTypes = {
   className: PropTypes.string,
   advantages: PropTypes.arrayOf(PropTypes.object).isRequired,
-  title: PropTypes.string,
-  btnTitle: PropTypes.string,
   link: PropTypes.string,
-  btnClassName: PropTypes.string,
-  btnOnClick: PropTypes.func,
 };
 
 export default MarketItemAdvantageList;
