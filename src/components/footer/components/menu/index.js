@@ -2,12 +2,14 @@ import React from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
+import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import MenuColumn from "../menu-column";
 import { stringTransformToKebabCase } from "../../../../helpers/services/string-service";
 import { getMenuItems } from "../../../../helpers/menu.config";
 
 const Menu = ({ className }) => {
   const { t } = useTranslationWithVariables();
+  const { isMobile, isTablet } = useWindowSize();
   const menu = getMenuItems();
 
   // Process menu items for footer-specific changes
@@ -43,12 +45,8 @@ const Menu = ({ className }) => {
           const groupItems = processedItem.subItems.filter(
             (subItem) => subItem.groupTitle && subItem.groupItems
           );
-          const footerOnlyItems = processedItem.subItems.filter(
-            (subItem) => subItem.footerOnly
-          );
-
-          // Combine groupTitle items first, then footerOnly items
-          processedItem.subItems = [...groupItems, ...footerOnlyItems];
+          // Remove footerOnly items from Trading Hub - they will be in separate column
+          processedItem.subItems = [...groupItems];
         }
         return processedItem;
       }
@@ -57,21 +55,65 @@ const Menu = ({ className }) => {
     });
   };
 
+  // Extract footerOnly items from Company tab BEFORE processing (to create separate column)
+  const companyTabOriginal = menu.find(
+    (item) => item.title === "header-nav-tab-company"
+  );
+  const footerOnlyItems =
+    companyTabOriginal?.subItems?.filter((subItem) => subItem.footerOnly) || [];
+
   const processedMenu = processMenuForFooter(menu);
+
+  // For mobile/tablet: Insert footerOnlyItems after Platforms
+  // For desktop: Keep footerOnlyItems at the end
+  const shouldReorderForMobile = isMobile || isTablet;
+  let orderedMenu = [...processedMenu];
+  let legalItems = null;
+
+  if (shouldReorderForMobile) {
+    // Find Platforms index
+    const platformsIndex = orderedMenu.findIndex(
+      (item) => item.title === "header-nav-tab-platforms-title"
+    );
+
+    if (platformsIndex !== -1 && footerOnlyItems.length > 0) {
+      // Create legal items wrapper for mobile/tablet
+      legalItems = {
+        title: null, // No title for legal items
+        subItems: footerOnlyItems,
+        isLegalColumn: true,
+      };
+      // Insert after Platforms (at platformsIndex + 1)
+      orderedMenu.splice(platformsIndex + 1, 0, legalItems);
+    }
+  }
 
   return (
     <div className={cn("menu", className)}>
-      {processedMenu.length > 0 &&
-        processedMenu.map((item) => {
+      {orderedMenu.length > 0 &&
+        orderedMenu.map((item, index) => {
+          // Skip Partners section in footer (will be shown in separate column)
+          if (item.title === "header-nav-tab-partners-fsa") return null;
+
+          // Handle legal items (Partners, Privacy Policy, Cookie Policy)
+          if (item.isLegalColumn) {
+            return (
+              <div
+                key="footer-menu-legal-policies"
+                className="menu__wrapper menu__wrapper--legal"
+              >
+                {/* Empty title for legal column - no title needed */}
+                <MenuColumn items={item.subItems || []} />
+              </div>
+            );
+          }
+
           let translatedTitle = t(item.title);
 
           // Change "Products" to "Top Markets" only in footer
           if (item.title === "header-nav-tab-top-markets") {
             translatedTitle = t("footer-nav-tab-top-markets");
           }
-
-          // Skip Partners section in footer
-          if (item.title === "header-nav-tab-partners-fsa") return null;
 
           return (
             !item.mobileOnly && (
@@ -85,6 +127,17 @@ const Menu = ({ className }) => {
             )
           );
         })}
+
+      {/* Separate column for Partners, Privacy Policy, and Cookie Policy (Desktop only) */}
+      {!shouldReorderForMobile && footerOnlyItems.length > 0 && (
+        <div
+          key="footer-menu-legal-policies"
+          className="menu__wrapper menu__wrapper--legal"
+        >
+          {/* Empty title for legal column - no title needed */}
+          <MenuColumn items={footerOnlyItems} />
+        </div>
+      )}
     </div>
   );
 };

@@ -6776,6 +6776,44 @@ body[dir="rtl"]
   margin-left: 0 !important;
 }
 
+// VPS Start Trading Button RTL Styling
+html[dir="rtl"] .vps-start-trading-btn,
+html[lang="ar"] .vps-start-trading-btn,
+body[dir="rtl"] .vps-start-trading-btn,
+[dir="rtl"] .vps-start-trading-btn {
+  flex-direction: row !important;
+}
+
+html[dir="rtl"] .vps-start-trading-btn .btn-text,
+html[lang="ar"] .vps-start-trading-btn .btn-text,
+body[dir="rtl"] .vps-start-trading-btn .btn-text,
+[dir="rtl"] .vps-start-trading-btn .btn-text {
+  order: 2 !important;
+}
+
+html[dir="rtl"] .vps-start-trading-btn .btn-arrow,
+html[lang="ar"] .vps-start-trading-btn .btn-arrow,
+body[dir="rtl"] .vps-start-trading-btn .btn-arrow,
+[dir="rtl"] .vps-start-trading-btn .btn-arrow {
+  order: 1 !important;
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+}
+
+html[dir="rtl"] .vps-start-trading-btn .btn-arrow svg,
+html[lang="ar"] .vps-start-trading-btn .btn-arrow svg,
+body[dir="rtl"] .vps-start-trading-btn .btn-arrow svg,
+[dir="rtl"] .vps-start-trading-btn .btn-arrow svg {
+  transform: scaleX(-1) !important;
+}
+
+html[dir="rtl"] .vps-start-trading-btn:hover .btn-arrow svg,
+html[lang="ar"] .vps-start-trading-btn:hover .btn-arrow svg,
+body[dir="rtl"] .vps-start-trading-btn:hover .btn-arrow svg,
+[dir="rtl"] .vps-start-trading-btn:hover .btn-arrow svg {
+  transform: scaleX(-1) translateX(0) !important;
+}
+
 html[dir="rtl"]
   .withdrawal-table
   .withdrawal-table-main
@@ -6842,4 +6880,47 @@ html[lang="ar"] .onboarding-guide-step__bullet-icon,
 body[dir="rtl"] .onboarding-guide-step__bullet-icon,
 [dir="rtl"] .onboarding-guide-step__bullet-icon {
   transform: scaleX(-1) !important;
+}
+
+// Community Buttons Secondary Link RTL Styles
+html[dir="rtl"] .community-buttons__secondary-link,
+html[lang="ar"] .community-buttons__secondary-link,
+body[dir="rtl"] .community-buttons__secondary-link,
+[dir="rtl"] .community-buttons__secondary-link {
+  margin-left: unset;
+  margin-right: 16px;
+}
+
+html[dir="rtl"] .community-buttons__secondary-link-arrow,
+html[lang="ar"] .community-buttons__secondary-link-arrow,
+body[dir="rtl"] .community-buttons__secondary-link-arrow,
+[dir="rtl"] .community-buttons__secondary-link-arrow {
+  transform: scaleX(-1);
+}
+
+html[dir="rtl"]
+  .community-buttons__secondary-link:hover
+  .community-buttons__secondary-link-arrow,
+html[dir="rtl"]
+  .community-buttons__secondary-link:focus
+  .community-buttons__secondary-link-arrow,
+html[lang="ar"]
+  .community-buttons__secondary-link:hover
+  .community-buttons__secondary-link-arrow,
+html[lang="ar"]
+  .community-buttons__secondary-link:focus
+  .community-buttons__secondary-link-arrow,
+body[dir="rtl"]
+  .community-buttons__secondary-link:hover
+  .community-buttons__secondary-link-arrow,
+body[dir="rtl"]
+  .community-buttons__secondary-link:focus
+  .community-buttons__secondary-link-arrow,
+[dir="rtl"]
+  .community-buttons__secondary-link:hover
+  .community-buttons__secondary-link-arrow,
+[dir="rtl"]
+  .community-buttons__secondary-link:focus
+  .community-buttons__secondary-link-arrow {
+  transform: scaleX(-1) translateX(-4px);
 }

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
+import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import featuresIcon from "../../../../assets/images/icons/features.svg";
 import maintainBalanceIcon from "../../../../assets/images/icons/vps/maintain-a-$500-balance.svg";
 import monthlyTradingIcon from "../../../../assets/images/icons/vps/monthly-trading-requirement.svg";
@@ -14,14 +15,17 @@ import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import LanguageContext from "../../../../context/language-context";
 import { ButtonPrimaryStandard } from "../../../shared/reusable-buttons";
 
-// Arrow SVG component
-const ArrowIcon = () => (
+// Arrow SVG component with RTL support
+const ArrowIcon = ({ isRTL = false }) => (
   <svg
     width="8.59"
     height="8.59"
     viewBox="0 0 11 11"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    style={{
+      transform: isRTL ? "scaleX(-1)" : "none",
+    }}
   >
     <path
       d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
@@ -38,6 +42,7 @@ const KeepYourVPS = ({ className }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
+  const isRTL = useRtlDirection();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -128,7 +133,7 @@ const KeepYourVPS = ({ className }) => {
             >
               <span className="btn-text">{t("button-place-order")}</span>
               <span className="btn-arrow">
-                <ArrowIcon />
+                <ArrowIcon isRTL={isRTL} />
               </span>
             </button>
           </div>

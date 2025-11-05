@@ -13,14 +13,17 @@ import { ShowRegistrationPopup } from "../../../../helpers/constants";
 import LanguageContext from "../../../../context/language-context";
 import { ButtonPrimaryStandard } from "../../../shared/reusable-buttons";
 
-// Arrow SVG component
-const ArrowIcon = () => (
+// Arrow SVG component with RTL support
+const ArrowIcon = ({ isRTL = false }) => (
   <svg
     width="8.59"
     height="8.59"
     viewBox="0 0 11 11"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    style={{
+      transform: isRTL ? "scaleX(-1)" : "none",
+    }}
   >
     <path
       d="M1 5.50004H10.3333M10.3333 5.50004L5.66667 0.833374M10.3333 5.50004L5.66667 10.1667"
@@ -146,7 +149,7 @@ const GetComplimentaryVPS = ({ className }) => {
             >
               <span className="btn-text">{t("button-place-order")}</span>
               <span className="btn-arrow">
-                <ArrowIcon />
+                <ArrowIcon isRTL={isRTL} />
               </span>
             </button>
           </div>

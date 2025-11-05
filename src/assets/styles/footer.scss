@@ -265,11 +265,18 @@
     @include tablet {
       margin: 0 0 50px;
     }
+
+    &--legal {
+      // Legal column (Partners, Privacy Policy, Cookie Policy) - no title
+      .menu__column-title {
+        display: none;
+      }
+    }
   }
 
   @include tablet {
     display: block;
-    columns: 2;
+    columns: 3;
   }
 
   @include desktop-lg {
