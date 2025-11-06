@@ -143,7 +143,7 @@ const RTL_LANGUAGES = ["ar"];
           return "https://dev-back.oqt-ima.com/";
         }
 
-        if (scriptOrigin.includes("dev-new-website.com.vercel.app")) {
+        if (scriptOrigin.includes("vercel.app")) {
           return "https://dev-back.oqt-ima.com/";
         }
 
@@ -267,7 +267,7 @@ const RTL_LANGUAGES = ["ar"];
           return "development";
         }
 
-        if (scriptOrigin.includes("dev-new-website.com.vercel.app")) {
+        if (scriptOrigin.includes("vercel.app")) {
           return "development";
         }
 
