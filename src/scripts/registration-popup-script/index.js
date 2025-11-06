@@ -1069,6 +1069,8 @@ const RTL_LANGUAGES = ["ar"];
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
         width: 100vw !important;
         height: 100vh !important;
         min-width: 100vw !important;
@@ -1079,6 +1081,16 @@ const RTL_LANGUAGES = ["ar"];
         z-index: 2147483646 !important;
         pointer-events: auto !important;
         overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      
+      /* Ensure wrapper doesn't break overlay coverage */
+      .popup-registration__wrapper {
+        position: relative !important;
+        z-index: 1 !important;
+        max-width: 1170px !important;
+        margin: 0 auto !important;
       }
 
       /* Prevent body scroll when popup is open */
@@ -1088,47 +1100,16 @@ const RTL_LANGUAGES = ["ar"];
         width: 100% !important;
         height: 100% !important;
       }
-
-      /* Hide all content behind popup when popup is open */
-      /* Only target direct children of body, excluding popup and loading overlay */
-      body.popup-registration-open > *:not(.popup-registration):not(.oqtima-loading-overlay),
-      html.popup-registration-open > *:not(.popup-registration):not(.oqtima-loading-overlay) {
+      
+      /* Hide body content when popup is open to prevent visibility */
+      body.popup-registration-open > *:not(.popup-registration):not(.oqtima-loading-overlay) {
         visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
       }
-
-      /* Ensure main content wrapper is hidden */
+      
+      /* Ensure main content is hidden */
       body.popup-registration-open #___gatsby,
-      body.popup-registration-open #gatsby-focus-wrapper,
-      body.popup-registration-open main,
-      body.popup-registration-open .main-content,
-      body.popup-registration-open [class*="container"]:not(.popup-registration):not(.popup-registration__wrapper):not(.popup-registration__container) {
+      body.popup-registration-open #gatsby-focus-wrapper {
         visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-      }
-
-      /* CRITICAL: Ensure popup and loading overlay are always visible */
-      .popup-registration,
-      .oqtima-loading-overlay {
-        visibility: visible !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        display: flex !important;
-      }
-
-      /* Additional specificity for when popup is open */
-      body.popup-registration-open .popup-registration,
-      html.popup-registration-open .popup-registration,
-      body.popup-registration-open .oqtima-loading-overlay,
-      html.popup-registration-open .oqtima-loading-overlay,
-      .popup-registration__wrapper,
-      .popup-registration__iframe,
-      .popup-registration__container {
-        visibility: visible !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
       }
 
       /* Trigger elements with data-oqtima-trigger attribute */
@@ -1305,108 +1286,6 @@ const RTL_LANGUAGES = ["ar"];
 
     // Add the style element to the head
     document.head.appendChild(styleElement);
-  }
-
-  // Store original styles for background content restoration
-  const backgroundContentStyles = new Map();
-
-  /**
-   * Hide all background content when popup is open
-   */
-  function hideBackgroundContent() {
-    // Hide all direct children of body except popup and loading overlay
-    const bodyChildren = Array.from(document.body.children);
-    bodyChildren.forEach((el) => {
-      // Skip popup registration, loading overlay, and live chat
-      if (
-        el &&
-        !el.classList.contains("popup-registration") &&
-        !el.classList.contains("oqtima-loading-overlay") &&
-        el.id !== "convrs-chat-channel-container" &&
-        el.className !== "popup-registration" &&
-        !el.id?.includes("convrs")
-      ) {
-        // Double check: make sure this is not the popup
-        const isPopup =
-          el.classList.contains("popup-registration") ||
-          el.id === "oqtima-registration-modal" ||
-          el.querySelector(".popup-registration");
-
-        if (!isPopup) {
-          // Store original styles
-          const originalStyles = {
-            visibility: el.style.visibility || "",
-            opacity: el.style.opacity || "",
-            pointerEvents: el.style.pointerEvents || "",
-          };
-          backgroundContentStyles.set(el, originalStyles);
-
-          // Hide element
-          el.style.setProperty("visibility", "hidden", "important");
-          el.style.setProperty("opacity", "0", "important");
-          el.style.setProperty("pointer-events", "none", "important");
-        }
-      }
-    });
-
-    // Also hide main content wrappers
-    const mainContentSelectors = [
-      "#___gatsby",
-      "#gatsby-focus-wrapper",
-      "main",
-      ".main-content",
-    ];
-    mainContentSelectors.forEach((selector) => {
-      const elements = document.querySelectorAll(selector);
-      elements.forEach((el) => {
-        if (el && !el.classList.contains("popup-registration")) {
-          const originalStyles = {
-            visibility: el.style.visibility || "",
-            opacity: el.style.opacity || "",
-            pointerEvents: el.style.pointerEvents || "",
-          };
-          backgroundContentStyles.set(el, originalStyles);
-
-          el.style.setProperty("visibility", "hidden", "important");
-          el.style.setProperty("opacity", "0", "important");
-          el.style.setProperty("pointer-events", "none", "important");
-        }
-      });
-    });
-  }
-
-  /**
-   * Restore all background content when popup is closed
-   */
-  function restoreBackgroundContent() {
-    backgroundContentStyles.forEach((originalStyles, el) => {
-      if (el && el.style) {
-        if (originalStyles.visibility) {
-          el.style.setProperty(
-            "visibility",
-            originalStyles.visibility,
-            "important"
-          );
-        } else {
-          el.style.removeProperty("visibility");
-        }
-        if (originalStyles.opacity) {
-          el.style.setProperty("opacity", originalStyles.opacity, "important");
-        } else {
-          el.style.removeProperty("opacity");
-        }
-        if (originalStyles.pointerEvents) {
-          el.style.setProperty(
-            "pointer-events",
-            originalStyles.pointerEvents,
-            "important"
-          );
-        } else {
-          el.style.removeProperty("pointer-events");
-        }
-      }
-    });
-    backgroundContentStyles.clear();
   }
 
   /**
@@ -2036,16 +1915,21 @@ const RTL_LANGUAGES = ["ar"];
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
       width: 100vw !important;
       height: 100vh !important;
       min-width: 100vw !important;
       min-height: 100vh !important;
+      max-width: 100vw !important;
+      max-height: 100vh !important;
       z-index: 2147483646 !important;
       display: flex !important;
       background-color: rgba(0, 0, 0, 0.7) !important;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
       pointer-events: auto !important;
+      overflow: hidden !important;
     `;
 
     // Add mobile-specific styles
@@ -2061,11 +1945,6 @@ const RTL_LANGUAGES = ["ar"];
     }
 
     modalContainer.style.cssText = modalStyles;
-
-    // Override opacity to ensure popup is visible immediately
-    modalContainer.style.setProperty("opacity", "1", "important");
-    modalContainer.style.setProperty("visibility", "visible", "important");
-    modalContainer.style.setProperty("display", "flex", "important");
 
     // Create wrapper
     const wrapper = document.createElement("div");
@@ -2106,11 +1985,6 @@ const RTL_LANGUAGES = ["ar"];
 
     wrapper.style.cssText = wrapperStyles;
 
-    // Ensure wrapper is visible
-    wrapper.style.setProperty("visibility", "visible", "important");
-    wrapper.style.setProperty("opacity", "1", "important");
-    wrapper.style.setProperty("display", "flex", "important");
-
     // Create iframe
     const iframe = document.createElement("iframe");
     iframe.className = "popup-registration__iframe";
@@ -2150,11 +2024,6 @@ const RTL_LANGUAGES = ["ar"];
     }
 
     iframe.style.cssText = iframeStyles;
-
-    // Ensure iframe is visible (override initial opacity: 0)
-    iframe.style.setProperty("opacity", "1", "important");
-    iframe.style.setProperty("visibility", "visible", "important");
-    iframe.style.setProperty("display", "block", "important");
 
     // Enable scrolling for iOS
     iframe.setAttribute("scrolling", "yes");
@@ -2445,32 +2314,11 @@ const RTL_LANGUAGES = ["ar"];
     wrapper.appendChild(iframe);
     modalContainer.appendChild(wrapper);
 
-    // Add class to body and html to prevent scrolling
+    // Add class to body to prevent scrolling and ensure overlay covers everything
     document.body.classList.add("popup-registration-open");
-    document.documentElement.classList.add("popup-registration-open");
 
-    // Ensure popup is visible before hiding background
-    modalContainer.style.setProperty("visibility", "visible", "important");
-    modalContainer.style.setProperty("opacity", "1", "important");
-    modalContainer.style.setProperty("display", "flex", "important");
-
-    // Add the container to the document body FIRST
+    // Add the container to the document body
     document.body.appendChild(modalContainer);
-
-    // Force a reflow to ensure popup is in DOM
-    void modalContainer.offsetHeight;
-
-    // Hide all background content AFTER popup is added and rendered
-    // Use setTimeout to ensure popup is fully rendered before hiding background
-    setTimeout(() => {
-      // Double check popup is visible before hiding background
-      if (modalContainer && modalContainer.parentNode === document.body) {
-        modalContainer.style.setProperty("visibility", "visible", "important");
-        modalContainer.style.setProperty("opacity", "1", "important");
-        modalContainer.style.setProperty("display", "flex", "important");
-        hideBackgroundContent();
-      }
-    }, 10);
 
     // Lock body scroll
     if (isMobile) {
@@ -2530,18 +2378,25 @@ const RTL_LANGUAGES = ["ar"];
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
       width: 100vw !important;
       height: 100vh !important;
       min-width: 100vw !important;
       min-height: 100vh !important;
+      max-width: 100vw !important;
+      max-height: 100vh !important;
       z-index: 2147483647 !important;
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
       background-color: rgba(0, 0, 0, 0.7) !important;
       overflow-y: auto !important;
+      overflow-x: hidden !important;
       direction: rtl !important;
       pointer-events: auto !important;
+      margin: 0 !important;
+      padding: 0 !important;
     `;
 
     // Add RTL styles to head but scope them to only affect the popup
@@ -2822,32 +2677,11 @@ const RTL_LANGUAGES = ["ar"];
     wrapper.appendChild(container);
     modalContainer.appendChild(wrapper);
 
-    // Add class to body and html to prevent scrolling
+    // Add class to body to prevent scrolling and ensure overlay covers everything
     document.body.classList.add("popup-registration-open");
-    document.documentElement.classList.add("popup-registration-open");
 
-    // Ensure popup is visible before hiding background
-    modalContainer.style.setProperty("visibility", "visible", "important");
-    modalContainer.style.setProperty("opacity", "1", "important");
-    modalContainer.style.setProperty("display", "flex", "important");
-
-    // Add the container to the document body FIRST
+    // Add the container to the document body
     document.body.appendChild(modalContainer);
-
-    // Force a reflow to ensure popup is in DOM
-    void modalContainer.offsetHeight;
-
-    // Hide all background content AFTER popup is added and rendered
-    // Use setTimeout to ensure popup is fully rendered before hiding background
-    setTimeout(() => {
-      // Double check popup is visible before hiding background
-      if (modalContainer && modalContainer.parentNode === document.body) {
-        modalContainer.style.setProperty("visibility", "visible", "important");
-        modalContainer.style.setProperty("opacity", "1", "important");
-        modalContainer.style.setProperty("display", "flex", "important");
-        hideBackgroundContent();
-      }
-    }, 10);
 
     // Setup close function
     setupCloseFunction(
@@ -2946,12 +2780,8 @@ const RTL_LANGUAGES = ["ar"];
           document.body.removeChild(modalContainer);
         }
 
-        // Remove class from body and html
+        // Remove class from body
         document.body.classList.remove("popup-registration-open");
-        document.documentElement.classList.remove("popup-registration-open");
-
-        // Restore background content
-        restoreBackgroundContent();
 
         // Remove styles
         if (styleEl) {
@@ -3187,9 +3017,6 @@ const RTL_LANGUAGES = ["ar"];
 
                 // Remove any popup-related classes
                 document.body.classList.remove("popup-registration-open");
-                document.documentElement.classList.remove(
-                  "popup-registration-open"
-                );
                 document.body.classList.remove(
                   "oqtima-iframe-open",
                   "oqtima-mobile-open",
@@ -3199,9 +3026,6 @@ const RTL_LANGUAGES = ["ar"];
                   "oqtima-mobile-open",
                   "oqtima-mobile-popup-open"
                 );
-
-                // Restore background content
-                restoreBackgroundContent();
               } catch (cleanupErr) {
                 // Even cleanup failed, but we tried
               }
@@ -3226,9 +3050,6 @@ const RTL_LANGUAGES = ["ar"];
 
               // Remove any popup-related classes
               document.body.classList.remove("popup-registration-open");
-              document.documentElement.classList.remove(
-                "popup-registration-open"
-              );
               document.body.classList.remove(
                 "oqtima-iframe-open",
                 "oqtima-mobile-open",
@@ -3238,9 +3059,6 @@ const RTL_LANGUAGES = ["ar"];
                 "oqtima-mobile-open",
                 "oqtima-mobile-popup-open"
               );
-
-              // Restore background content
-              restoreBackgroundContent();
             } catch (manualCleanupErr) {
               // Manual cleanup also failed
             }
@@ -4433,32 +4251,11 @@ const RTL_LANGUAGES = ["ar"];
     // Add the iframe to the container
     modalContainer.appendChild(iframe);
 
-    // Add class to body and html to prevent scrolling
+    // Add class to body to prevent scrolling and ensure overlay covers everything
     document.body.classList.add("popup-registration-open");
-    document.documentElement.classList.add("popup-registration-open");
 
-    // Ensure popup is visible before hiding background
-    modalContainer.style.setProperty("visibility", "visible", "important");
-    modalContainer.style.setProperty("opacity", "1", "important");
-    modalContainer.style.setProperty("display", "flex", "important");
-
-    // Add the container to the document body FIRST
+    // Add the container to the document body
     document.body.appendChild(modalContainer);
-
-    // Force a reflow to ensure popup is in DOM
-    void modalContainer.offsetHeight;
-
-    // Hide all background content AFTER popup is added and rendered
-    // Use setTimeout to ensure popup is fully rendered before hiding background
-    setTimeout(() => {
-      // Double check popup is visible before hiding background
-      if (modalContainer && modalContainer.parentNode === document.body) {
-        modalContainer.style.setProperty("visibility", "visible", "important");
-        modalContainer.style.setProperty("opacity", "1", "important");
-        modalContainer.style.setProperty("display", "flex", "important");
-        hideBackgroundContent();
-      }
-    }, 10);
 
     // Add styles
     const styleEl = document.createElement("style");
@@ -4584,12 +4381,8 @@ const RTL_LANGUAGES = ["ar"];
           styleEl.parentNode.removeChild(styleEl);
         }
 
-        // Remove class from body and html
+        // Remove class from body
         document.body.classList.remove("popup-registration-open");
-        document.documentElement.classList.remove("popup-registration-open");
-
-        // Restore background content
-        restoreBackgroundContent();
 
         // MOBILE SPECIFIC FIX: Enhanced restoration for mobile scroll behavior
         // Restore original styles
@@ -5342,14 +5135,10 @@ const RTL_LANGUAGES = ["ar"];
       document.body.classList.remove("oqtima-mobile-open");
       document.body.classList.remove("popup-open");
       document.body.classList.remove("popup-registration-open");
-      document.documentElement.classList.remove("popup-registration-open");
       document.documentElement.classList.remove("oqtima-mobile-open");
       document.body.classList.remove("oqtima-mobile-modal-open");
       document.documentElement.classList.remove("oqtima-mobile-popup-open");
       document.body.classList.remove("oqtima-mobile-popup-open");
-
-      // Restore background content
-      restoreBackgroundContent();
 
       // Try to remove any modal containers that might be left
       const modalContainer = document.querySelector(".popup-registration");
@@ -5357,12 +5146,8 @@ const RTL_LANGUAGES = ["ar"];
         modalContainer.parentNode.removeChild(modalContainer);
       }
 
-      // Remove class from body and html
+      // Remove class from body
       document.body.classList.remove("popup-registration-open");
-      document.documentElement.classList.remove("popup-registration-open");
-
-      // Restore background content
-      restoreBackgroundContent();
 
       const loadingOverlay = document.querySelector(".oqtima-loading-overlay");
       if (loadingOverlay && loadingOverlay.parentNode) {
