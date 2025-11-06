@@ -144,7 +144,7 @@ const RTL_LANGUAGES = ["ar"];
         }
 
         if (scriptOrigin.includes("dev-new-website.com.vercel.app")) {
-          return "https://dev-new-website-back.com.vercel.app/";
+          return "https://dev-back.oqt-ima.com/";
         }
 
         if (scriptOrigin.includes("test.oqt-ima.com")) {
@@ -214,7 +214,7 @@ const RTL_LANGUAGES = ["ar"];
     }
 
     if (hostname === "dev-new-website.com.vercel.app") {
-      return "https://dev-new-website-back.com.vercel.app/";
+      return "https://dev-back.oqt-ima.com/";
     }
 
     if (hostname === "test.oqt-ima.com") {
