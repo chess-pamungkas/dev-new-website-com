@@ -1064,6 +1064,31 @@ const RTL_LANGUAGES = ["ar"];
     styleElement.id = "oqtima-registration-styles";
 
     const css = `
+      /* Ensure popup overlay covers entire viewport */
+      .popup-registration {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        min-width: 100vw !important;
+        min-height: 100vh !important;
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        background-color: rgba(0, 0, 0, 0.7) !important;
+        z-index: 2147483646 !important;
+        pointer-events: auto !important;
+        overflow: hidden !important;
+      }
+
+      /* Prevent body scroll when popup is open */
+      body.popup-registration-open {
+        overflow: hidden !important;
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+
       /* Trigger elements with data-oqtima-trigger attribute */
       [data-oqtima-trigger] {
         cursor: pointer !important;
@@ -1867,13 +1892,16 @@ const RTL_LANGUAGES = ["ar"];
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      min-width: 100vw !important;
+      min-height: 100vh !important;
       z-index: 2147483646 !important;
       display: flex !important;
       background-color: rgba(0, 0, 0, 0.7) !important;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
+      pointer-events: auto !important;
     `;
 
     // Add mobile-specific styles
@@ -1897,8 +1925,11 @@ const RTL_LANGUAGES = ["ar"];
     // Base styles for wrapper
     let wrapperStyles = `
       background: white !important;
+      background-color: white !important;
       transform: scale(0.98);
       transition: transform 0.3s ease-in-out;
+      position: relative !important;
+      z-index: 1 !important;
     `;
 
     // Add mobile-specific styles
@@ -2255,6 +2286,9 @@ const RTL_LANGUAGES = ["ar"];
     wrapper.appendChild(iframe);
     modalContainer.appendChild(wrapper);
 
+    // Add class to body to prevent scrolling and ensure overlay covers everything
+    document.body.classList.add("popup-registration-open");
+
     // Add the container to the document body
     document.body.appendChild(modalContainer);
 
@@ -2316,15 +2350,18 @@ const RTL_LANGUAGES = ["ar"];
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      min-width: 100vw !important;
+      min-height: 100vh !important;
       z-index: 2147483647 !important;
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
-        background-color: rgba(0, 0, 0, 0.7) !important;
+      background-color: rgba(0, 0, 0, 0.7) !important;
       overflow-y: auto !important;
-        direction: rtl !important;
+      direction: rtl !important;
+      pointer-events: auto !important;
     `;
 
     // Add RTL styles to head but scope them to only affect the popup
@@ -2605,6 +2642,9 @@ const RTL_LANGUAGES = ["ar"];
     wrapper.appendChild(container);
     modalContainer.appendChild(wrapper);
 
+    // Add class to body to prevent scrolling and ensure overlay covers everything
+    document.body.classList.add("popup-registration-open");
+
     // Add the container to the document body
     document.body.appendChild(modalContainer);
 
@@ -2704,6 +2744,9 @@ const RTL_LANGUAGES = ["ar"];
         if (modalContainer) {
           document.body.removeChild(modalContainer);
         }
+
+        // Remove class from body
+        document.body.classList.remove("popup-registration-open");
 
         // Remove styles
         if (styleEl) {
@@ -2938,6 +2981,7 @@ const RTL_LANGUAGES = ["ar"];
                 document.body.style.top = "";
 
                 // Remove any popup-related classes
+                document.body.classList.remove("popup-registration-open");
                 document.body.classList.remove(
                   "oqtima-iframe-open",
                   "oqtima-mobile-open",
@@ -2970,6 +3014,7 @@ const RTL_LANGUAGES = ["ar"];
               document.body.style.top = "";
 
               // Remove any popup-related classes
+              document.body.classList.remove("popup-registration-open");
               document.body.classList.remove(
                 "oqtima-iframe-open",
                 "oqtima-mobile-open",
@@ -4171,6 +4216,9 @@ const RTL_LANGUAGES = ["ar"];
     // Add the iframe to the container
     modalContainer.appendChild(iframe);
 
+    // Add class to body to prevent scrolling and ensure overlay covers everything
+    document.body.classList.add("popup-registration-open");
+
     // Add the container to the document body
     document.body.appendChild(modalContainer);
 
@@ -4297,6 +4345,9 @@ const RTL_LANGUAGES = ["ar"];
         if (styleEl && styleEl.parentNode) {
           styleEl.parentNode.removeChild(styleEl);
         }
+
+        // Remove class from body
+        document.body.classList.remove("popup-registration-open");
 
         // MOBILE SPECIFIC FIX: Enhanced restoration for mobile scroll behavior
         // Restore original styles
@@ -5048,6 +5099,7 @@ const RTL_LANGUAGES = ["ar"];
       document.body.classList.remove("oqtima-iframe-open");
       document.body.classList.remove("oqtima-mobile-open");
       document.body.classList.remove("popup-open");
+      document.body.classList.remove("popup-registration-open");
       document.documentElement.classList.remove("oqtima-mobile-open");
       document.body.classList.remove("oqtima-mobile-modal-open");
       document.documentElement.classList.remove("oqtima-mobile-popup-open");
@@ -5058,6 +5110,9 @@ const RTL_LANGUAGES = ["ar"];
       if (modalContainer && modalContainer.parentNode) {
         modalContainer.parentNode.removeChild(modalContainer);
       }
+
+      // Remove class from body
+      document.body.classList.remove("popup-registration-open");
 
       const loadingOverlay = document.querySelector(".oqtima-loading-overlay");
       if (loadingOverlay && loadingOverlay.parentNode) {
