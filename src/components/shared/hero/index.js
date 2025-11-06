@@ -214,7 +214,7 @@ const Hero = ({
           badge: customBadgeText || "vps_badge-text",
           title: customTitle || "vps_vps-title",
           subtitle: customSubtitle || "vps_vps-text",
-          primaryButton: customPrimaryButtonText || "button-start-trading",
+          primaryButton: customPrimaryButtonText || "button-register-now",
           secondaryButton: customSecondaryButtonText || "button-try-demo",
           warning: customWarningText || "index_main-promotion-warning",
           reviews: "index_main-promotion-reviews",

@@ -274,14 +274,18 @@
     &:first-child {
       width: fit-content;
       @include tablet {
-        width: 50%;
+        width: 35%;
+      }
+
+      @include desktop-lg {
+        width: 40%;
       }
     }
 
     &:last-child {
       width: fit-content;
       @include tablet {
-        width: 50%;
+        width: fit-content;
       }
 
       @include desktop-lg {
@@ -343,11 +347,13 @@
       gap: 4px;
 
       @include tablet {
-        width: 50%;
+        width: 35%;
+        font-size: 13px;
       }
 
       @include desktop-lg {
-        width: 50%;
+        width: 40%;
+        font-size: 16px;
       }
     }
 
@@ -368,6 +374,14 @@
       line-height: 22px;
       letter-spacing: -0.02em;
       opacity: 0.9;
+
+      @include tablet {
+        font-size: 13px;
+      }
+
+      @include desktop-lg {
+        font-size: 16px;
+      }
     }
   }
 

@@ -6924,3 +6924,58 @@ body[dir="rtl"]
   .community-buttons__secondary-link-arrow {
   transform: scaleX(-1) translateX(-4px);
 }
+
+// Force live chat widget to remain LTR in RTL pages
+html[dir="rtl"],
+body[dir="rtl"],
+[dir="rtl"] {
+  // Target all Convrs live chat elements
+  [id*="convrs"],
+  [class*="convrs"],
+  [id*="Convrs"],
+  [class*="Convrs"] {
+    direction: ltr !important;
+    text-align: left !important;
+
+    * {
+      direction: ltr !important;
+      text-align: left !important;
+    }
+
+    // Ensure input fields are LTR
+    input,
+    textarea {
+      direction: ltr !important;
+      text-align: left !important;
+    }
+
+    // Ensure message bubbles are left-aligned
+    [class*="message"],
+    [class*="Message"],
+    [class*="bubble"],
+    [class*="Bubble"] {
+      direction: ltr !important;
+      text-align: left !important;
+      margin-left: 0 !important;
+      margin-right: auto !important;
+    }
+
+    // Ensure header and footer elements are LTR
+    [class*="header"],
+    [class*="Header"],
+    [class*="footer"],
+    [class*="Footer"] {
+      direction: ltr !important;
+      text-align: left !important;
+    }
+
+    // Ensure icons and buttons maintain LTR layout
+    [class*="icon"],
+    [class*="Icon"],
+    button,
+    [class*="button"],
+    [class*="Button"] {
+      direction: ltr !important;
+    }
+  }
+}

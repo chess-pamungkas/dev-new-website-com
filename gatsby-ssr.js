@@ -126,6 +126,27 @@ export const onRenderBody = ({
                     // For normal pages, ensure livechat is visible and properly z-indexed
                     // Only set z-index, don't touch display/visibility to let livechat show naturally
                     el.style.setProperty('z-index', '21', 'important');
+                    
+                    // Force LTR direction for live chat widget in RTL pages
+                    const isRTL = document.documentElement.getAttribute('dir') === 'rtl' || 
+                                 document.body.getAttribute('dir') === 'rtl' ||
+                                 document.documentElement.dir === 'rtl';
+                    if (isRTL) {
+                      el.style.setProperty('direction', 'ltr', 'important');
+                      el.setAttribute('dir', 'ltr');
+                      
+                      // Apply LTR to all child elements
+                      const allChildren = el.querySelectorAll('*');
+                      allChildren.forEach(child => {
+                        if (child.style) {
+                          child.style.setProperty('direction', 'ltr', 'important');
+                          child.style.setProperty('text-align', 'left', 'important');
+                        }
+                        if (child.setAttribute) {
+                          child.setAttribute('dir', 'ltr');
+                        }
+                      });
+                    }
                   }
                 });
               } catch (error) {
@@ -144,6 +165,17 @@ export const onRenderBody = ({
                           (node.className && typeof node.className === 'string' && node.className.includes('convrs')))) {
                         console.log('🔵 Livechat element detected, managing...');
                         setTimeout(manageLivechatZIndex, 100);
+                        
+                        // Also apply LTR styling immediately for new elements
+                        const isRTL = document.documentElement.getAttribute('dir') === 'rtl' || 
+                                     document.body.getAttribute('dir') === 'rtl' ||
+                                     document.documentElement.dir === 'rtl';
+                        if (isRTL && node.style) {
+                          node.style.setProperty('direction', 'ltr', 'important');
+                          if (node.setAttribute) {
+                            node.setAttribute('dir', 'ltr');
+                          }
+                        }
                       }
                     });
                   }
