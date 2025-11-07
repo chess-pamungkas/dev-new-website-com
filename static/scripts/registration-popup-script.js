@@ -1108,6 +1108,24 @@ const RTL_LANGUAGES = ["ar"];
         z-index: 1000001 !important;
         background: white !important;
         background-color: white !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+        min-width: 0 !important;
+      }
+      
+      /* Ensure iframe doesn't get cut off - full width and height */
+      .popup-registration__iframe {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        min-height: 600px !important;
+        border: none !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
 
       /* Prevent body scroll when popup is open */
@@ -2036,6 +2054,7 @@ const RTL_LANGUAGES = ["ar"];
       z-index: 1000001 !important;
       display: flex !important;
       width: 100% !important;
+      min-width: 0 !important;
       height: auto !important;
       border-radius: 32px !important;
       text-align: left !important;
@@ -2047,19 +2066,24 @@ const RTL_LANGUAGES = ["ar"];
       transform: scale(0.98);
       transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
       opacity: 0;
+      box-sizing: border-box !important;
     `;
 
     // Add mobile-specific styles
     if (isMobile) {
       containerStyles += `
         width: 100% !important;
+        min-width: 0 !important;
         height: 100vh !important;
         min-height: 100vh !important;
         flex-direction: column !important;
         overflow-y: auto !important;
+        overflow-x: hidden !important;
         max-width: none !important;
         max-height: none !important;
         border-radius: 32px !important;
+        padding: 0 !important;
+        margin: 0 !important;
       `;
     } else {
       // Detect if it's a tablet (>= 768px and < 1024px)
@@ -2067,8 +2091,11 @@ const RTL_LANGUAGES = ["ar"];
 
       containerStyles += `
         max-width: 966px !important;
+        min-width: 600px !important;
         max-height: ${isTablet ? "900px" : "850px"} !important;
         border-radius: 32px !important;
+        padding: 0 !important;
+        margin: 20px auto !important;
       `;
     }
 
@@ -2094,11 +2121,16 @@ const RTL_LANGUAGES = ["ar"];
     // Base styles for iframe
     let iframeStyles = `
       width: 100% !important;
+      min-width: 0 !important;
       height: 100% !important;
+      min-height: 600px !important;
       border: none !important;
       background: white !important;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
+      display: block !important;
+      box-sizing: border-box !important;
+      overflow: visible !important;
     `;
 
     iframe.style.cssText = iframeStyles;
@@ -2551,7 +2583,9 @@ const RTL_LANGUAGES = ["ar"];
       border-radius: 32px !important;
       overflow: hidden !important;
       width: 100% !important;
+      min-width: 0 !important;
       max-width: 966px !important;
+      min-width: 600px !important;
       max-height: ${isTablet ? "900px" : "850px"} !important;
       background: white !important;
       background-color: white !important;
@@ -2559,6 +2593,9 @@ const RTL_LANGUAGES = ["ar"];
       transform: scale(0.98);
       transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
       opacity: 0;
+      box-sizing: border-box !important;
+      padding: 0 !important;
+      margin: 20px auto !important;
     `;
 
     // Create iframe container
