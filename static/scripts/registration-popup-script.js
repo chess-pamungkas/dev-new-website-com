@@ -1123,6 +1123,34 @@ const RTL_LANGUAGES = ["ar"];
         visibility: visible !important;
       }
       
+      /* Desktop: Ensure sidebar is visible */
+      @media (min-width: 1024px) {
+        .popup-registration__container .popup-registration__sidebar {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          width: 331px !important;
+          flex-shrink: 0 !important;
+        }
+        
+        .popup-registration__container .popup-registration__content {
+          width: 615px !important;
+          flex: 1 !important;
+        }
+      }
+      
+      /* Mobile/Tablet: Content should be 100% width */
+      @media (max-width: 1023px) {
+        .popup-registration__container .popup-registration__content {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+        
+        .popup-registration__container .popup-registration__sidebar {
+          display: none !important;
+        }
+      }
+      
       /* Ensure iframe doesn't get cut off - full width and height */
       .popup-registration__iframe {
         width: 100% !important;
@@ -4363,15 +4391,25 @@ const RTL_LANGUAGES = ["ar"];
     const iframe = document.createElement("iframe");
     iframe.className = "popup-registration__mobile-fullscreen";
     iframe.style.position = "fixed";
-    iframe.style.bottom = "0";
+    iframe.style.top = "0";
     iframe.style.left = "0";
     iframe.style.width = "100%";
     iframe.style.height = "100%";
     iframe.style.border = "none";
-    iframe.style.backgroundColor = "#ffffff";
+    iframe.style.backgroundColor = "transparent";
     iframe.style.zIndex = "1000000";
     iframe.style.overflow = "hidden";
     iframe.style.transition = "all 0.3s ease-in-out";
+    iframe.style.display = "block";
+
+    // CRITICAL: Add attributes for cross-domain support
+    iframe.setAttribute("allow", "clipboard-write");
+    iframe.setAttribute("allowfullscreen", "true");
+    iframe.setAttribute("allowtransparency", "true");
+    iframe.setAttribute("scrolling", "yes");
+    iframe.setAttribute("importance", "high");
+    iframe.setAttribute("title", "Registration Form");
+    // Note: crossorigin and sandbox removed to allow cross-origin content to load properly
 
     // Set RTL and language attributes for iframe
     iframe.setAttribute("lang", finalLanguage);
@@ -4475,6 +4513,14 @@ const RTL_LANGUAGES = ["ar"];
       
       .popup-registration__mobile-fullscreen {
         -webkit-overflow-scrolling: touch;
+        background: transparent !important;
+        background-color: transparent !important;
+      }
+      
+      /* Ensure content inside iframe is 100% width on mobile/tablet */
+      .popup-registration__mobile-fullscreen {
+        width: 100% !important;
+        height: 100% !important;
       }
       
       ${
