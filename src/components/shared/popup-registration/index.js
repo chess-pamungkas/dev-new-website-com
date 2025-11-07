@@ -224,7 +224,7 @@ const LoadingSpinner = () => (
 const PopupRegistration = ({ isOpen, onClose, className, params }) => {
   const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
-  const { isMobile } = useWindowSize();
+  const { isMobile, isDesktop } = useWindowSize();
   const [isLoading, setIsLoading] = useState(true);
   const [isContentReady, setIsContentReady] = useState(false);
   const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
@@ -788,15 +788,43 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
       }
 
       /* Hide content until fully loaded */
-      .popup-registration__content,
-      .popup-registration__sidebar {
+      .popup-registration__content {
         opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+      
+      /* Sidebar should be visible on desktop even before styles loaded */
+      .popup-registration__sidebar {
+        opacity: 0.5;
         transition: opacity 0.3s ease-in-out;
       }
 
       .styles-loaded .popup-registration__content,
       .styles-loaded .popup-registration__sidebar {
         opacity: 1;
+      }
+      
+      /* Desktop: Always show sidebar */
+      @media (min-width: 1024px) {
+        .popup-registration__sidebar {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          width: 331px !important;
+          flex-shrink: 0 !important;
+        }
+      }
+      
+      /* Mobile/Tablet: Hide sidebar */
+      @media (max-width: 1023px) {
+        .popup-registration__sidebar {
+          display: none !important;
+        }
+        
+        .popup-registration__content {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
       }
     `;
     document.head.appendChild(preloadStyle);
@@ -1614,8 +1642,26 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
             }
             data-rtl={isRTLMode.toString()}
           >
-            {/* Sidebar - Hidden on mobile, only show on desktop/RTL */}
-            {(!isMobile || isRTLMode) && (
+            {/* Sidebar - Always render, CSS will handle visibility based on screen size */}
+            {(() => {
+              // Check URL parameters first (most reliable)
+              const urlParams =
+                typeof window !== "undefined"
+                  ? new URLSearchParams(window.location.search)
+                  : null;
+              const isExplicitlyMobile =
+                urlParams?.get("mobile") === "true" ||
+                urlParams?.get("isMobile") === "true";
+
+              // Always render sidebar - CSS media queries will handle visibility
+              // Only skip rendering if explicitly mobile AND isMobile device
+              // CRITICAL: For desktop, always render sidebar regardless of URL params
+              const isDesktopView = !isMobile && window.innerWidth >= 1024;
+              const shouldRenderSidebar =
+                isDesktopView || !(isExplicitlyMobile && isMobile);
+
+              return shouldRenderSidebar;
+            })() && (
               <BackgroundPreloader
                 onBackgroundLoaded={() => setIsBackgroundLoaded(true)}
               >
@@ -1625,7 +1671,14 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
                     "background-loaded": isBackgroundLoaded,
                   })}
                   data-rtl={isRTLMode ? "true" : "false"}
-                  style={isRTLMode ? { order: "2 !important" } : {}}
+                  style={{
+                    ...(isRTLMode ? { order: "2 !important" } : {}),
+                    display: "block !important",
+                    visibility: "visible !important",
+                    opacity: isBackgroundLoaded ? 1 : 0.5,
+                    width: "331px",
+                    flexShrink: 0,
+                  }}
                 ></div>
               </BackgroundPreloader>
             )}

@@ -4495,6 +4495,60 @@ const RTL_LANGUAGES = ["ar"];
     // Set the iframe source
     iframe.src = iframeUrl;
 
+    // Add error handler for iframe
+    iframe.addEventListener("error", function (e) {
+      console.error("[OQtima] Mobile iframe load error:", e);
+      iframe.style.backgroundColor = "transparent";
+    });
+
+    // Add load event to check if content loaded
+    iframe.addEventListener("load", function () {
+      console.log("[OQtima] Mobile iframe loaded successfully");
+      // Ensure background is transparent
+      iframe.style.backgroundColor = "transparent";
+      iframe.style.background = "transparent";
+
+      // Ensure iframe is visible
+      iframe.style.opacity = "1";
+      iframe.style.visibility = "visible";
+      iframe.style.display = "block";
+
+      // Try to check if iframe content is accessible
+      try {
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
+        if (iframeDoc) {
+          console.log("[OQtima] Mobile iframe document accessible");
+
+          // Ensure content inside iframe is 100% width
+          const container = iframeDoc.querySelector(
+            ".popup-registration__container"
+          );
+          const content = iframeDoc.querySelector(
+            ".popup-registration__content"
+          );
+
+          if (container) {
+            container.style.width = "100%";
+            container.style.maxWidth = "100%";
+            container.style.gap = "0";
+          }
+
+          if (content) {
+            content.style.width = "100%";
+            content.style.maxWidth = "100%";
+          }
+        }
+      } catch (e) {
+        console.warn(
+          "[OQtima] Cannot access mobile iframe document (cross-origin):",
+          e
+        );
+        // This is expected for cross-origin iframes - content should still load
+        // CSS in popup-registration.js should handle the styling
+      }
+    });
+
     // Add the iframe to the container
     modalContainer.appendChild(iframe);
 

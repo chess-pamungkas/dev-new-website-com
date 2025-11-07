@@ -889,25 +889,69 @@ const PopupRegistrationPage = ({ location, data }) => {
             overflow-y: auto !important;
             padding: 0 !important;
             border: none !important;
+            display: flex !important;
+            gap: 20px !important;
           }
-
-          /* Fix for mobile styles */
-          @media screen and (max-width: 767px) {
-            .popup-registration__content {
-              width: 100% !important;
-              border-radius: 0 0 0.625rem 0.625rem !important;
-              padding: 1.875rem 1.25rem !important;
+          
+          /* Desktop: Ensure sidebar is visible */
+          @media screen and (min-width: 1024px) {
+            .popup-registration__container {
+              max-width: 966px !important;
+              min-width: 966px !important;
+              gap: 20px !important;
             }
             
             .popup-registration__sidebar {
-              width: 100% !important;
-              border-radius: 0.625rem 0.625rem 0 0 !important;
-              max-height: 21.875rem !important;
+              display: block !important;
+              visibility: visible !important;
+              opacity: 1 !important;
+              width: 331px !important;
+              flex-shrink: 0 !important;
             }
             
+            .popup-registration__content {
+              width: 615px !important;
+              flex: 1 !important;
+            }
+          }
+          
+          /* Tablet: Content should be 100% width, no sidebar */
+          @media screen and (min-width: 768px) and (max-width: 1023px) {
             .popup-registration__container {
-              flex-direction: column !important;
-              border-radius: 0.625rem !important;
+              width: 100% !important;
+              max-width: 100% !important;
+              gap: 0 !important;
+            }
+            
+            .popup-registration__content {
+              width: 100% !important;
+              max-width: 100% !important;
+            }
+            
+            .popup-registration__sidebar {
+              display: none !important;
+            }
+          }
+
+          /* Fix for mobile styles - ensure content is 100% width */
+          @media screen and (max-width: 767px) {
+            .popup-registration__container {
+              width: 100% !important;
+              max-width: 100% !important;
+              gap: 0 !important;
+            }
+            
+            .popup-registration__content {
+              width: 100% !important;
+              max-width: 100% !important;
+              border-radius: 20px !important;
+              padding: 20px !important;
+              min-height: 100vh !important;
+              height: 100vh !important;
+            }
+            
+            .popup-registration__sidebar {
+              display: none !important;
             }
           }
 
