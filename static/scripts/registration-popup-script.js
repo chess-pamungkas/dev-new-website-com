@@ -1102,14 +1102,20 @@ const RTL_LANGUAGES = ["ar"];
       }
       
       /* Hide body content when popup is open to prevent visibility */
-      body.popup-registration-open > *:not(.popup-registration):not(.oqtima-loading-overlay) {
-        visibility: hidden !important;
+      body.popup-registration-open > *:not(.popup-registration):not(.oqtima-loading-overlay):not(style):not(script) {
+        display: none !important;
       }
       
-      /* Ensure main content is hidden */
+      /* Ensure main Gatsby containers are hidden */
       body.popup-registration-open #___gatsby,
       body.popup-registration-open #gatsby-focus-wrapper {
-        visibility: hidden !important;
+        display: none !important;
+      }
+      
+      /* Hide third-party fixed badges like reCAPTCHA */
+      body.popup-registration-open .grecaptcha-badge,
+      body.popup-registration-open iframe[src*="recaptcha"] {
+        display: none !important;
       }
 
       /* Trigger elements with data-oqtima-trigger attribute */
