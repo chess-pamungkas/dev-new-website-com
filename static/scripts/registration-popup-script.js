@@ -1085,12 +1085,29 @@ const RTL_LANGUAGES = ["ar"];
         padding: 0 !important;
       }
       
-      /* Ensure wrapper doesn't break overlay coverage */
+      /* Ensure wrapper is full screen and transparent */
       .popup-registration__wrapper {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 1000000 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        background: transparent !important;
+        overflow-y: auto !important;
+      }
+      
+      /* Container is the white box */
+      .popup-registration__container {
         position: relative !important;
-        z-index: 1 !important;
-        max-width: 1170px !important;
-        margin: 0 auto !important;
+        z-index: 1000001 !important;
+        background: white !important;
+        background-color: white !important;
       }
 
       /* Prevent body scroll when popup is open */
@@ -1101,15 +1118,39 @@ const RTL_LANGUAGES = ["ar"];
         height: 100% !important;
       }
       
-      /* Hide body content when popup is open to prevent visibility */
+      /* Hide ALL body content when popup is open - only show popup */
       body.popup-registration-open > *:not(.popup-registration):not(.oqtima-loading-overlay):not(style):not(script) {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
       }
       
-      /* Ensure main Gatsby containers are hidden */
+      /* Ensure main Gatsby containers and all page elements are completely hidden */
       body.popup-registration-open #___gatsby,
-      body.popup-registration-open #gatsby-focus-wrapper {
+      body.popup-registration-open #gatsby-focus-wrapper,
+      body.popup-registration-open main,
+      body.popup-registration-open header,
+      body.popup-registration-open footer,
+      body.popup-registration-open nav,
+      body.popup-registration-open section,
+      body.popup-registration-open article,
+      body.popup-registration-open div:not(.popup-registration):not(.popup-registration__wrapper):not(.popup-registration__container) {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
+      
+      /* Ensure popup overlay covers everything */
+      .popup-registration {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 2147483646 !important;
+        background-color: rgba(0, 0, 0, 0.7) !important;
       }
       
       /* Hide third-party fixed badges like reCAPTCHA */
@@ -1952,44 +1993,86 @@ const RTL_LANGUAGES = ["ar"];
 
     modalContainer.style.cssText = modalStyles;
 
-    // Create wrapper
+    // Create wrapper (full screen, transparent, for centering)
     const wrapper = document.createElement("div");
     wrapper.className = "popup-registration__wrapper";
 
-    // Base styles for wrapper
+    // Base styles for wrapper - should be full screen and transparent
     let wrapperStyles = `
-      background: white !important;
-      background-color: white !important;
-      transform: scale(0.98);
-      transition: transform 0.3s ease-in-out;
-      position: relative !important;
-      z-index: 1 !important;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: 1000000 !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      background: transparent !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
     `;
 
     // Add mobile-specific styles
     if (isMobile) {
       wrapperStyles += `
-        flex: 1 !important;
-      width: 100% !important;
-      height: 100% !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        align-items: stretch !important;
+      `;
+    }
+
+    wrapper.style.cssText = wrapperStyles;
+
+    // Create container (the white box with content)
+    const container = document.createElement("div");
+    container.className = "popup-registration__container";
+
+    // Base styles for container
+    let containerStyles = `
+      position: relative !important;
+      z-index: 1000001 !important;
       display: flex !important;
+      width: 100% !important;
+      height: auto !important;
+      border-radius: 32px !important;
+      text-align: left !important;
+      margin: auto !important;
+      max-height: 100vh !important;
+      overflow: hidden !important;
+      background: white !important;
+      background-color: white !important;
+      transform: scale(0.98);
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      opacity: 0;
+    `;
+
+    // Add mobile-specific styles
+    if (isMobile) {
+      containerStyles += `
+        width: 100% !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
         flex-direction: column !important;
+        overflow-y: auto !important;
+        max-width: none !important;
+        max-height: none !important;
+        border-radius: 32px !important;
       `;
     } else {
       // Detect if it's a tablet (>= 768px and < 1024px)
       const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
 
-      wrapperStyles += `
-      width: 100% !important;
-        max-width: 1170px !important;
-        height: 100% !important;
-        max-height: ${isTablet ? "900px" : "800px"} !important;
-        border-radius: 8px !important;
-        overflow: hidden !important;
+      containerStyles += `
+        max-width: 966px !important;
+        max-height: ${isTablet ? "900px" : "850px"} !important;
+        border-radius: 32px !important;
       `;
     }
 
-    wrapper.style.cssText = wrapperStyles;
+    container.style.cssText = containerStyles;
 
     // Create iframe
     const iframe = document.createElement("iframe");
@@ -2011,23 +2094,12 @@ const RTL_LANGUAGES = ["ar"];
     // Base styles for iframe
     let iframeStyles = `
       width: 100% !important;
+      height: 100% !important;
       border: none !important;
       background: white !important;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
     `;
-
-    // Add mobile-specific styles
-    if (isMobile) {
-      iframeStyles += `
-        flex: 1 !important;
-      height: 100% !important;
-      `;
-    } else {
-      iframeStyles += `
-        height: 100% !important;
-      `;
-    }
 
     iframe.style.cssText = iframeStyles;
 
@@ -2054,7 +2126,8 @@ const RTL_LANGUAGES = ["ar"];
         loadingOverlay.remove();
         // Show modal and content
         modalContainer.style.opacity = "1";
-        wrapper.style.transform = "scale(1)";
+        container.style.opacity = "1";
+        container.style.transform = "scale(1)";
         iframe.style.opacity = "1";
 
         // Fix iframe scrolling after content is loaded
@@ -2316,8 +2389,9 @@ const RTL_LANGUAGES = ["ar"];
         newUrl.length > 150 ? newUrl.substring(0, 147) + "..." : newUrl;
     }
 
-    // Assemble the popup
-    wrapper.appendChild(iframe);
+    // Assemble the popup: modalContainer > wrapper > container > iframe
+    container.appendChild(iframe);
+    wrapper.appendChild(container);
     modalContainer.appendChild(wrapper);
 
     // Add class to body to prevent scrolling and ensure overlay covers everything
@@ -2441,38 +2515,51 @@ const RTL_LANGUAGES = ["ar"];
     // Detect if it's a tablet (>= 768px and < 1024px)
     const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
 
-    // Create wrapper element
+    // Create wrapper element (full screen, transparent, for centering)
     const wrapper = document.createElement("div");
     wrapper.className =
       "popup-registration__wrapper popup-registration__wrapper--rtl";
     wrapper.setAttribute("dir", "rtl");
     wrapper.style.cssText = `
-      width: 100% !important;
-      max-width: 1170px !important;
-      height: 100% !important;
-      max-height: ${isTablet ? "900px" : "800px"} !important;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: 1000000 !important;
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
-      // overflow-y: auto !important;
+      background: transparent !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
       direction: rtl !important;
     `;
 
-    // Create container with RTL layout
+    // Create container with RTL layout (the white box)
     const container = document.createElement("div");
     container.className =
       "popup-registration__container popup-registration__container--rtl";
     container.setAttribute("dir", "rtl");
     container.style.cssText = `
+      position: relative !important;
+      z-index: 1000001 !important;
       display: flex !important;
       flex-direction: row-reverse !important;
-          border-radius: 10px !important;
+      border-radius: 32px !important;
       overflow: hidden !important;
       width: 100% !important;
-      max-height: 100% !important;
-      // height: 900px !important;
-          direction: rtl !important;
-        `;
+      max-width: 966px !important;
+      max-height: ${isTablet ? "900px" : "850px"} !important;
+      background: white !important;
+      background-color: white !important;
+      direction: rtl !important;
+      transform: scale(0.98);
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      opacity: 0;
+    `;
 
     // Create iframe container
     const iframeContainer = document.createElement("div");
@@ -2585,6 +2672,8 @@ const RTL_LANGUAGES = ["ar"];
       if (spinnerStyles && spinnerStyles.parentNode) {
         spinnerStyles.parentNode.removeChild(spinnerStyles);
       }
+      container.style.opacity = "1";
+      container.style.transform = "scale(1)";
       iframe.style.opacity = "1";
 
       // Send message to iframe with parameters
