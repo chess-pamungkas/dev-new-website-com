@@ -1135,6 +1135,43 @@ const RTL_LANGUAGES = ["ar"];
         box-sizing: border-box !important;
         margin: 0 !important;
         padding: 0 !important;
+        background: transparent !important;
+        flex: 1 !important;
+      }
+      
+      /* Mobile: iframe should be full width and height */
+      @media (max-width: 767px) {
+        .popup-registration__container {
+          width: 100% !important;
+          max-width: 100% !important;
+          min-width: 0 !important;
+          height: 100vh !important;
+          gap: 0 !important;
+        }
+        
+        .popup-registration__iframe {
+          width: 100% !important;
+          height: 100% !important;
+          min-height: 100vh !important;
+        }
+      }
+      
+      /* Tablet: content should be 100% width */
+      @media (min-width: 768px) and (max-width: 1023px) {
+        .popup-registration__container {
+          width: 100% !important;
+          max-width: 100% !important;
+          gap: 0 !important;
+        }
+      }
+      
+      /* Desktop: show sidebar with proper width */
+      @media (min-width: 1024px) {
+        .popup-registration__container {
+          max-width: 966px !important;
+          min-width: 966px !important;
+          gap: 20px !important;
+        }
       }
 
       /* Prevent body scroll when popup is open */
@@ -2094,20 +2131,36 @@ const RTL_LANGUAGES = ["ar"];
         border-radius: 32px !important;
         padding: 0 !important;
         margin: 0 !important;
+        gap: 0 !important;
       `;
     } else {
       // Detect if it's a tablet (>= 768px and < 1024px)
       const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
 
-      containerStyles += `
-        max-width: 966px !important;
-        min-width: 966px !important;
-        max-height: ${isTablet ? "900px" : "850px"} !important;
-        border-radius: 32px !important;
-        padding: 0 !important;
-        margin: 20px auto !important;
-        gap: 20px !important;
-      `;
+      if (isTablet) {
+        // Tablet: no sidebar, content should be 100% width
+        containerStyles += `
+          width: 100% !important;
+          max-width: 100% !important;
+          min-width: 0 !important;
+          max-height: 900px !important;
+          border-radius: 32px !important;
+          padding: 0 !important;
+          margin: 20px auto !important;
+          gap: 0 !important;
+        `;
+      } else {
+        // Desktop: show sidebar with proper width
+        containerStyles += `
+          max-width: 966px !important;
+          min-width: 966px !important;
+          max-height: 850px !important;
+          border-radius: 32px !important;
+          padding: 0 !important;
+          margin: 20px auto !important;
+          gap: 20px !important;
+        `;
+      }
     }
 
     container.style.cssText = containerStyles;
@@ -2129,20 +2182,32 @@ const RTL_LANGUAGES = ["ar"];
     // CRITICAL: Ensure cross-domain cookie access
     iframe.setAttribute("crossorigin", "anonymous");
 
-    // Base styles for iframe
+    // Base styles for iframe - must allow content inside to render properly
     let iframeStyles = `
       width: 100% !important;
       min-width: 0 !important;
       height: 100% !important;
       min-height: 600px !important;
       border: none !important;
-      background: white !important;
+      background: transparent !important;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
       display: block !important;
       box-sizing: border-box !important;
-      overflow: visible !important;
+      overflow: hidden !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      flex: 1 1 auto !important;
     `;
+
+    // Add mobile-specific iframe styles
+    if (isMobile) {
+      iframeStyles += `
+        width: 100% !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+      `;
+    }
 
     iframe.style.cssText = iframeStyles;
 
