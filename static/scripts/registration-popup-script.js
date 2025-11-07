@@ -1102,16 +1102,25 @@ const RTL_LANGUAGES = ["ar"];
         overflow-y: auto !important;
       }
       
-      /* Container is the white box */
+      /* Container is the flex container for sidebar + content */
       .popup-registration__container {
         position: relative !important;
         z-index: 1000001 !important;
-        background: white !important;
-        background-color: white !important;
+        background: transparent !important;
+        background-color: transparent !important;
         overflow: hidden !important;
         box-sizing: border-box !important;
         width: 100% !important;
         min-width: 0 !important;
+        display: flex !important;
+        gap: 20px !important;
+      }
+      
+      /* Ensure sidebar and content inside iframe are visible */
+      .popup-registration__container .popup-registration__sidebar,
+      .popup-registration__container .popup-registration__content {
+        display: block !important;
+        visibility: visible !important;
       }
       
       /* Ensure iframe doesn't get cut off - full width and height */
@@ -2048,7 +2057,7 @@ const RTL_LANGUAGES = ["ar"];
     const container = document.createElement("div");
     container.className = "popup-registration__container";
 
-    // Base styles for container
+    // Base styles for container - must match SCSS structure
     let containerStyles = `
       position: relative !important;
       z-index: 1000001 !important;
@@ -2061,8 +2070,9 @@ const RTL_LANGUAGES = ["ar"];
       margin: auto !important;
       max-height: 100vh !important;
       overflow: hidden !important;
-      background: white !important;
-      background-color: white !important;
+      background: transparent !important;
+      background-color: transparent !important;
+      gap: 20px !important;
       transform: scale(0.98);
       transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
       opacity: 0;
@@ -2091,11 +2101,12 @@ const RTL_LANGUAGES = ["ar"];
 
       containerStyles += `
         max-width: 966px !important;
-        min-width: 600px !important;
+        min-width: 966px !important;
         max-height: ${isTablet ? "900px" : "850px"} !important;
         border-radius: 32px !important;
         padding: 0 !important;
         margin: 20px auto !important;
+        gap: 20px !important;
       `;
     }
 
@@ -2585,11 +2596,12 @@ const RTL_LANGUAGES = ["ar"];
       width: 100% !important;
       min-width: 0 !important;
       max-width: 966px !important;
-      min-width: 600px !important;
+      min-width: 966px !important;
       max-height: ${isTablet ? "900px" : "850px"} !important;
-      background: white !important;
-      background-color: white !important;
+      background: transparent !important;
+      background-color: transparent !important;
       direction: rtl !important;
+      gap: 20px !important;
       transform: scale(0.98);
       transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
       opacity: 0;
