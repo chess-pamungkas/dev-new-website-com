@@ -229,6 +229,127 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
   const [isContentReady, setIsContentReady] = useState(false);
   const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
   const [isExternalLoad] = useState(isLoadedFromExternalScript());
+  const popupRootRef = React.useRef(null);
+
+  useEffect(() => {
+    if (!isExternalLoad || typeof document === "undefined") {
+      return undefined;
+    }
+
+    const style = document.createElement("style");
+    style.setAttribute("data-oqtima-hide-recaptcha", "true");
+    style.textContent = `
+      .grecaptcha-badge,
+      div[style*="grecaptcha"],
+      iframe[src*="recaptcha"],
+      iframe[title*="reCAPTCHA"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+    `;
+
+    document.head.appendChild(style);
+
+    return () => {
+      style.parentNode?.removeChild(style);
+    };
+  }, [isExternalLoad]);
+
+  useEffect(() => {
+    if (!isExternalLoad || typeof document === "undefined") return;
+
+    const target = popupRootRef.current;
+    if (!target) return;
+
+    const hiddenElements = [];
+
+    const hideSiblings = (element) => {
+      if (!element || element === document.body) return;
+
+      const parent = element.parentElement;
+      if (!parent) return;
+
+      Array.from(parent.children).forEach((child) => {
+        if (child === element) return;
+
+        const alreadyHidden = hiddenElements.find(
+          ({ element: hiddenElement }) => hiddenElement === child
+        );
+
+        if (alreadyHidden) return;
+
+        hiddenElements.push({
+          element: child,
+          display: child.style.getPropertyValue("display"),
+          priority: child.style.getPropertyPriority("display"),
+        });
+
+        child.style.setProperty("display", "none", "important");
+      });
+
+      hideSiblings(parent);
+    };
+
+    hideSiblings(target);
+
+    const html = document.documentElement;
+    const body = document.body;
+
+    const styleSnapshots = [
+      {
+        element: html,
+        property: "overflow",
+        value: html.style.getPropertyValue("overflow"),
+        priority: html.style.getPropertyPriority("overflow"),
+        newValue: "hidden",
+      },
+      {
+        element: body,
+        property: "overflow",
+        value: body.style.getPropertyValue("overflow"),
+        priority: body.style.getPropertyPriority("overflow"),
+        newValue: "hidden",
+      },
+      {
+        element: html,
+        property: "background-color",
+        value: html.style.getPropertyValue("background-color"),
+        priority: html.style.getPropertyPriority("background-color"),
+        newValue: "transparent",
+      },
+      {
+        element: body,
+        property: "background-color",
+        value: body.style.getPropertyValue("background-color"),
+        priority: body.style.getPropertyPriority("background-color"),
+        newValue: "transparent",
+      },
+    ];
+
+    styleSnapshots.forEach(({ element, property, newValue }) => {
+      element.style.setProperty(property, newValue, "important");
+    });
+
+    return () => {
+      hiddenElements.forEach(({ element, display, priority }) => {
+        if (display) {
+          element.style.setProperty("display", display, priority || "");
+        } else {
+          element.style.removeProperty("display");
+        }
+      });
+
+      styleSnapshots.forEach(({ element, property, value, priority }) => {
+        if (value) {
+          element.style.setProperty(property, value, priority || "");
+        } else {
+          element.style.removeProperty(property);
+        }
+      });
+    };
+  }, [isExternalLoad]);
 
   // FIRST EFFECT: Handle reset state after a forced reload
   useEffect(() => {
@@ -293,6 +414,10 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
       return {};
     }
   });
+
+  const forcedSidebarPreference = parsedParams?.forceSidebar;
+  const isSidebarForcedDesktop = forcedSidebarPreference === true;
+  const isSidebarForcedHidden = forcedSidebarPreference === false;
 
   // Clear any existing RTL settings on initial mount
   useEffect(() => {
@@ -691,7 +816,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
         right: 0;
         bottom: 0;
         z-index: 2147483647;
-        background: rgba(0, 0, 0, 0.7);
+        background: transparent;
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -715,10 +840,6 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
 
       /* Mobile styles */
       @media screen and (max-width: 767px) {
-        .popup-registration {
-          background: #fff;
-        }
-
         .popup-registration__wrapper {
           padding: 0;
         }
@@ -776,7 +897,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
         opacity: 0;
         transform: scale(0.98);
         transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-        background: white;
+        background: transparent;
         border-radius: 8px;
         overflow: hidden;
         position: relative;
@@ -1587,6 +1708,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
     <>
       {isLoading && isExternalLoad && <LoadingSpinner />}
       <div
+        ref={popupRootRef}
         key={isRTLMode ? "rtl" : "ltr"}
         className={cn("popup-registration", {
           "popup-registration--rtl": isRTLMode,
@@ -1608,7 +1730,7 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "rgba(0, 0, 0, 0.7)",
+                backgroundColor: "transparent",
                 zIndex: 9999,
               }
             : {
@@ -1628,39 +1750,36 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
         >
           <div
             key={isRTLMode ? "rtl-container" : "ltr-container"}
-            className={cn("popup-registration__container", className, {
-              "popup-registration__container--rtl": isRTLMode,
-            })}
-            dir={isRTLMode ? "rtl" : "ltr"}
-            style={
-              isRTLMode
-                ? {
-                    flexDirection: "row-reverse !important",
-                    display: "flex !important",
+            className={cn(
+              "popup-registration__container",
+              className,
+              {
+                "popup-registration__container--rtl": isRTLMode,
+              },
+              parsedParams?.forceSidebar === undefined
+                ? {}
+                : {
+                    "popup-registration__container--forced-sidebar":
+                      parsedParams?.forceSidebar === true,
                   }
-                : {}
+            )}
+            dir={isRTLMode ? "rtl" : "ltr"}
+            data-force-sidebar={
+              parsedParams?.forceSidebar === true ? "true" : undefined
             }
+            style={{
+              ...(isRTLMode
+                ? {
+                    flexDirection: "row-reverse",
+                  }
+                : {}),
+            }}
             data-rtl={isRTLMode.toString()}
           >
-            {/* Sidebar - Always render, CSS will handle visibility based on screen size */}
+            {/* Sidebar - Always render on desktop, CSS will handle visibility based on screen size */}
             {(() => {
-              // Check URL parameters first (most reliable)
-              const urlParams =
-                typeof window !== "undefined"
-                  ? new URLSearchParams(window.location.search)
-                  : null;
-              const isExplicitlyMobile =
-                urlParams?.get("mobile") === "true" ||
-                urlParams?.get("isMobile") === "true";
-
-              // Always render sidebar - CSS media queries will handle visibility
-              // Only skip rendering if explicitly mobile AND isMobile device
-              // CRITICAL: For desktop, always render sidebar regardless of URL params
-              const isDesktopView = !isMobile && window.innerWidth >= 1024;
-              const shouldRenderSidebar =
-                isDesktopView || !(isExplicitlyMobile && isMobile);
-
-              return shouldRenderSidebar;
+              // Always render sidebar; responsive CSS handles visibility on tablet/mobile
+              return true;
             })() && (
               <BackgroundPreloader
                 onBackgroundLoaded={() => setIsBackgroundLoaded(true)}
@@ -1669,15 +1788,25 @@ const PopupRegistration = ({ isOpen, onClose, className, params }) => {
                   className={cn("popup-registration__sidebar", {
                     "popup-registration__sidebar--rtl": isRTLMode,
                     "background-loaded": isBackgroundLoaded,
+                    "popup-registration__sidebar--forced-hidden":
+                      parsedParams?.forceSidebar === false,
                   })}
                   data-rtl={isRTLMode ? "true" : "false"}
                   style={{
-                    ...(isRTLMode ? { order: "2 !important" } : {}),
-                    display: "block !important",
-                    visibility: "visible !important",
+                    ...(isRTLMode ? { order: 2 } : {}),
+                    display:
+                      parsedParams?.forceSidebar === false ? "none" : "block",
+                    visibility: "visible",
                     opacity: isBackgroundLoaded ? 1 : 0.5,
                     width: "331px",
                     flexShrink: 0,
+                    minWidth: "331px",
+                    height: "100%",
+                    backgroundImage: `url(${popupRegistrationBg})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center center",
+                    backgroundColor: "#f8f9fa",
                   }}
                 ></div>
               </BackgroundPreloader>

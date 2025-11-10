@@ -83,6 +83,11 @@ const RTL_LANGUAGES = ["ar"];
       return "http://localhost:8000/";
     }
 
+    // For local development
+    if (hostname === "landingpage.test/") {
+      return "http://landingpage.test/";
+    }
+
     // For development environment
     if (hostname === "dev.oqt-ima.com") {
       return "https://dev.oqt-ima.com/";
@@ -134,7 +139,8 @@ const RTL_LANGUAGES = ["ar"];
         // If script is served from the frontend, map to corresponding backend
         if (
           scriptOrigin.includes("localhost") ||
-          scriptOrigin.includes("127.0.0.1")
+          scriptOrigin.includes("127.0.0.1") ||
+          scriptOrigin.includes("landingpage.test")
         ) {
           return "http://localhost:3000/";
         }
@@ -195,7 +201,11 @@ const RTL_LANGUAGES = ["ar"];
     }
 
     // For local development with standard ports
-    if (hostname === "localhost" || hostname === "127.0.0.1") {
+    if (
+      hostname === "localhost" ||
+      hostname === "127.0.0.1" ||
+      hostname === "landingpage.test"
+    ) {
       // MODIFIED: Ensure proper handling of localhost with port 80 (standard HTTP port)
       // which is typically hidden in the URL but still needs the backend on port 3000
       if (port === "8000" || port === "80" || port === "") {
@@ -205,6 +215,7 @@ const RTL_LANGUAGES = ["ar"];
       else if (port) {
         return `http://localhost:${port}/`;
       }
+
       return "http://localhost:3000/";
     }
 
@@ -258,7 +269,8 @@ const RTL_LANGUAGES = ["ar"];
         // Determine environment based on script source domain
         if (
           scriptOrigin.includes("localhost") ||
-          scriptOrigin.includes("127.0.0.1")
+          scriptOrigin.includes("127.0.0.1") ||
+          scriptOrigin.includes("landingpage.test")
         ) {
           return "development";
         }
@@ -293,7 +305,11 @@ const RTL_LANGUAGES = ["ar"];
     }
 
     // For local development
-    if (hostname === "localhost" || hostname === "127.0.0.1") {
+    if (
+      hostname === "localhost" ||
+      hostname === "127.0.0.1" ||
+      hostname === "landingpage.test"
+    ) {
       return "development";
     }
 
@@ -1064,193 +1080,6 @@ const RTL_LANGUAGES = ["ar"];
     styleElement.id = "oqtima-registration-styles";
 
     const css = `
-      /* Ensure popup overlay covers entire viewport */
-      .popup-registration {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        min-width: 100vw !important;
-        min-height: 100vh !important;
-        max-width: 100vw !important;
-        max-height: 100vh !important;
-        background-color: rgba(0, 0, 0, 0.7) !important;
-        z-index: 2147483646 !important;
-        pointer-events: auto !important;
-        overflow: hidden !important;
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-      
-      /* Ensure wrapper is full screen and transparent */
-      .popup-registration__wrapper {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        z-index: 1000000 !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        background: transparent !important;
-        overflow-y: auto !important;
-      }
-      
-      /* Container is the flex container for sidebar + content */
-      .popup-registration__container {
-        position: relative !important;
-        z-index: 1000001 !important;
-        background: transparent !important;
-        background-color: transparent !important;
-        overflow: hidden !important;
-        box-sizing: border-box !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        display: flex !important;
-        gap: 20px !important;
-      }
-      
-      /* Ensure sidebar and content inside iframe are visible */
-      .popup-registration__container .popup-registration__sidebar,
-      .popup-registration__container .popup-registration__content {
-        display: block !important;
-        visibility: visible !important;
-      }
-      
-      /* Desktop: Ensure sidebar is visible */
-      @media (min-width: 1024px) {
-        .popup-registration__container .popup-registration__sidebar {
-          display: block !important;
-          visibility: visible !important;
-          opacity: 1 !important;
-          width: 331px !important;
-          flex-shrink: 0 !important;
-        }
-        
-        .popup-registration__container .popup-registration__content {
-          width: 615px !important;
-          flex: 1 !important;
-        }
-      }
-      
-      /* Mobile/Tablet: Content should be 100% width */
-      @media (max-width: 1023px) {
-        .popup-registration__container .popup-registration__content {
-          width: 100% !important;
-          max-width: 100% !important;
-        }
-        
-        .popup-registration__container .popup-registration__sidebar {
-          display: none !important;
-        }
-      }
-      
-      /* Ensure iframe doesn't get cut off - full width and height */
-      .popup-registration__iframe {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        height: 100% !important;
-        min-height: 600px !important;
-        border: none !important;
-        display: block !important;
-        box-sizing: border-box !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        background: transparent !important;
-        flex: 1 !important;
-      }
-      
-      /* Mobile: iframe should be full width and height */
-      @media (max-width: 767px) {
-        .popup-registration__container {
-          width: 100% !important;
-          max-width: 100% !important;
-          min-width: 0 !important;
-          height: 100vh !important;
-          gap: 0 !important;
-        }
-        
-        .popup-registration__iframe {
-          width: 100% !important;
-          height: 100% !important;
-          min-height: 100vh !important;
-        }
-      }
-      
-      /* Tablet: content should be 100% width */
-      @media (min-width: 768px) and (max-width: 1023px) {
-        .popup-registration__container {
-          width: 100% !important;
-          max-width: 100% !important;
-          gap: 0 !important;
-        }
-      }
-      
-      /* Desktop: show sidebar with proper width */
-      @media (min-width: 1024px) {
-        .popup-registration__container {
-          max-width: 966px !important;
-          min-width: 966px !important;
-          gap: 20px !important;
-        }
-      }
-
-      /* Prevent body scroll when popup is open */
-      body.popup-registration-open {
-        overflow: hidden !important;
-        position: fixed !important;
-        width: 100% !important;
-        height: 100% !important;
-      }
-      
-      /* Hide ALL body content when popup is open - only show popup */
-      body.popup-registration-open > *:not(.popup-registration):not(.oqtima-loading-overlay):not(style):not(script) {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-      }
-      
-      /* Ensure main Gatsby containers and all page elements are completely hidden */
-      body.popup-registration-open #___gatsby,
-      body.popup-registration-open #gatsby-focus-wrapper,
-      body.popup-registration-open main,
-      body.popup-registration-open header,
-      body.popup-registration-open footer,
-      body.popup-registration-open nav,
-      body.popup-registration-open section,
-      body.popup-registration-open article,
-      body.popup-registration-open div:not(.popup-registration):not(.popup-registration__wrapper):not(.popup-registration__container) {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-      }
-      
-      /* Ensure popup overlay covers everything */
-      .popup-registration {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        z-index: 2147483646 !important;
-        background-color: rgba(0, 0, 0, 0.7) !important;
-      }
-      
-      /* Hide third-party fixed badges like reCAPTCHA */
-      body.popup-registration-open .grecaptcha-badge,
-      body.popup-registration-open iframe[src*="recaptcha"] {
-        display: none !important;
-      }
-
       /* Trigger elements with data-oqtima-trigger attribute */
       [data-oqtima-trigger] {
         cursor: pointer !important;
@@ -1682,13 +1511,18 @@ const RTL_LANGUAGES = ["ar"];
     const originalScrollPos = window.scrollY;
 
     // Prevent background scrolling for non-embedded popups
+    const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+    const isExplicitMobileRequest =
+      params.forceMobile === true ||
+      params.isMobile === true ||
+      params.mobile === true;
+    const isMobileDetection =
+      typeof window !== "undefined" &&
+      (viewportWidth <= 767 ||
+        (isExplicitMobileRequest && viewportWidth < 1024));
+
     if (typeof window !== "undefined" && !params.embedded) {
       // Check if this will be a mobile popup
-      const isMobileDetection =
-        window.innerWidth <= 767 ||
-        params.forceMobile === true ||
-        params.isMobile === true ||
-        params.mobile === true;
 
       if (isMobileDetection) {
         // MOBILE SPECIFIC: Use different approach to prevent background scrolling
@@ -1870,12 +1704,7 @@ const RTL_LANGUAGES = ["ar"];
     }
 
     // Determine if mobile based on screen width
-    const isMobile =
-      typeof window !== "undefined" &&
-      (window.innerWidth <= 767 ||
-        params.forceMobile === true ||
-        params.isMobile === true ||
-        params.mobile === true);
+    const isMobile = isMobileDetection;
 
     // If mobile device, create mobile popup, otherwise create standard popup
     try {
@@ -1967,8 +1796,10 @@ const RTL_LANGUAGES = ["ar"];
     countryName,
     countryCode
   ) {
-    // Detect mobile
+    // Detect mobile / tablet
     const isMobile = window.innerWidth <= 767;
+    const isTablet = window.innerWidth > 767 && window.innerWidth < 1024;
+    const shouldForceSidebar = !isMobile && !isTablet;
 
     // Add loading overlay first
     const loadingOverlay = document.createElement("div");
@@ -1979,7 +1810,7 @@ const RTL_LANGUAGES = ["ar"];
       left: 0 !important;
       right: 0 !important;
       bottom: 0 !important;
-      background: rgba(0, 0, 0, 0.7) !important;
+      background: transparent !important;
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
@@ -2022,7 +1853,7 @@ const RTL_LANGUAGES = ["ar"];
           height: 100% !important;
           display: flex !important;
           flex-direction: column !important;
-          background: rgba(0, 0, 0, 0.7) !important;
+          background: transparent !important;
         }
 
         .popup-registration__wrapper {
@@ -2031,7 +1862,7 @@ const RTL_LANGUAGES = ["ar"];
           height: 100% !important;
           display: flex !important;
           flex-direction: column !important;
-          background: white !important;
+          background: transparent !important;
           position: relative !important;
         }
 
@@ -2054,21 +1885,13 @@ const RTL_LANGUAGES = ["ar"];
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      min-width: 100vw !important;
-      min-height: 100vh !important;
-      max-width: 100vw !important;
-      max-height: 100vh !important;
+      width: 100% !important;
+      height: 100% !important;
       z-index: 2147483646 !important;
       display: flex !important;
       background-color: rgba(0, 0, 0, 0.7) !important;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
-      pointer-events: auto !important;
-      overflow: hidden !important;
     `;
 
     // Add mobile-specific styles
@@ -2091,107 +1914,40 @@ const RTL_LANGUAGES = ["ar"];
 
     // Base styles for wrapper - should be full screen and transparent
     let wrapperStyles = `
-      position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      z-index: 1000000 !important;
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
       background: transparent !important;
-      overflow-y: auto !important;
-      -webkit-overflow-scrolling: touch !important;
+      transform: scale(0.98);
+      transition: transform 0.3s ease-in-out;
     `;
 
     // Add mobile-specific styles
     if (isMobile) {
       wrapperStyles += `
-        height: 100vh !important;
-        min-height: 100vh !important;
+        flex: 1 !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
         align-items: stretch !important;
+        justify-content: flex-start !important;
+        overflow: hidden !important;
+      `;
+    } else {
+      const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+
+      wrapperStyles += `
+        width: 100% !important;
+        max-width: 1170px !important;
+        height: 100% !important;
+        max-height: ${isTablet ? "900px" : "800px"} !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
       `;
     }
 
     wrapper.style.cssText = wrapperStyles;
-
-    // Create container (the white box with content)
-    const container = document.createElement("div");
-    container.className = "popup-registration__container";
-
-    // Base styles for container - must match SCSS structure
-    let containerStyles = `
-      position: relative !important;
-      z-index: 1000001 !important;
-      display: flex !important;
-      width: 100% !important;
-      min-width: 0 !important;
-      height: auto !important;
-      border-radius: 32px !important;
-      text-align: left !important;
-      margin: auto !important;
-      max-height: 100vh !important;
-      overflow: hidden !important;
-      background: transparent !important;
-      background-color: transparent !important;
-      gap: 20px !important;
-      transform: scale(0.98);
-      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-      opacity: 0;
-      box-sizing: border-box !important;
-    `;
-
-    // Add mobile-specific styles
-    if (isMobile) {
-      containerStyles += `
-        width: 100% !important;
-        min-width: 0 !important;
-        height: 100vh !important;
-        min-height: 100vh !important;
-        flex-direction: column !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        max-width: none !important;
-        max-height: none !important;
-        border-radius: 32px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        gap: 0 !important;
-      `;
-    } else {
-      // Detect if it's a tablet (>= 768px and < 1024px)
-      const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
-
-      if (isTablet) {
-        // Tablet: no sidebar, content should be 100% width
-        containerStyles += `
-          width: 100% !important;
-          max-width: 100% !important;
-          min-width: 0 !important;
-          max-height: 900px !important;
-          border-radius: 32px !important;
-          padding: 0 !important;
-          margin: 20px auto !important;
-          gap: 0 !important;
-        `;
-      } else {
-        // Desktop: show sidebar with proper width
-        containerStyles += `
-          max-width: 966px !important;
-          min-width: 966px !important;
-          max-height: 850px !important;
-          border-radius: 32px !important;
-          padding: 0 !important;
-          margin: 20px auto !important;
-          gap: 20px !important;
-        `;
-      }
-    }
-
-    container.style.cssText = containerStyles;
 
     // Create iframe
     const iframe = document.createElement("iframe");
@@ -2262,8 +2018,7 @@ const RTL_LANGUAGES = ["ar"];
         loadingOverlay.remove();
         // Show modal and content
         modalContainer.style.opacity = "1";
-        container.style.opacity = "1";
-        container.style.transform = "scale(1)";
+        wrapper.style.transform = "scale(1)";
         iframe.style.opacity = "1";
 
         // Fix iframe scrolling after content is loaded
@@ -2345,6 +2100,7 @@ const RTL_LANGUAGES = ["ar"];
             ip_address: ipAddress,
             country_name: countryName,
             country_code: countryCode,
+            forceSidebar: shouldForceSidebar,
 
             // Cross-domain storage instructions
             storeInSessionStorage: true,
@@ -2483,6 +2239,64 @@ const RTL_LANGUAGES = ["ar"];
 
       // Show content after a short delay to ensure smooth transition
       setTimeout(showContent, 500);
+
+      // Diagnostic: inspect sidebar rendering inside iframe
+      try {
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
+        if (iframeDoc) {
+          const reportSidebarState = (phase) => {
+            try {
+              const sidebarEl = iframeDoc.querySelector(
+                ".popup-registration__sidebar"
+              );
+              if (!sidebarEl) {
+                console.warn(
+                  `[OQtima][SidebarTrace] Sidebar element not found inside iframe during ${phase}.`
+                );
+                return;
+              }
+
+              const computed = iframe.contentWindow
+                ? iframe.contentWindow.getComputedStyle(sidebarEl)
+                : iframeDoc.defaultView?.getComputedStyle(sidebarEl);
+
+              console.log("[OQtima][SidebarTrace] Sidebar diagnostics", {
+                phase,
+                offsetWidth: sidebarEl.offsetWidth,
+                offsetHeight: sidebarEl.offsetHeight,
+                clientWidth: sidebarEl.clientWidth,
+                clientHeight: sidebarEl.clientHeight,
+                computedDisplay: computed?.display,
+                computedVisibility: computed?.visibility,
+                computedOpacity: computed?.opacity,
+                computedBackgroundImage: computed?.backgroundImage,
+                computedBackgroundColor: computed?.backgroundColor,
+                dataAttributes: sidebarEl.dataset,
+                classList: Array.from(sidebarEl.classList || []),
+              });
+            } catch (sidebarError) {
+              console.warn(
+                "[OQtima][SidebarTrace] Error while reading sidebar state:",
+                sidebarError
+              );
+            }
+          };
+
+          reportSidebarState("initial-load");
+          setTimeout(() => reportSidebarState("post-500ms"), 500);
+          setTimeout(() => reportSidebarState("post-1500ms"), 1500);
+        } else {
+          console.warn(
+            "[OQtima][SidebarTrace] Unable to access iframe document for sidebar inspection."
+          );
+        }
+      } catch (diagnosticError) {
+        console.warn(
+          "[OQtima][SidebarTrace] Diagnostic inspection failed:",
+          diagnosticError
+        );
+      }
     });
 
     // Construct and set iframe URL
@@ -2492,42 +2306,23 @@ const RTL_LANGUAGES = ["ar"];
       referralValue,
       isMobile
     );
-    iframe.src = url;
-
-    // REDUNDANCY: Add referral parameters again to ensure they're in the URL
-    // This is a defensive measure in case they weren't properly added in constructIframeUrl
+    const urlParts = url.split("?");
+    const baseUrl = urlParts[0];
+    const existingParams = new URLSearchParams(urlParts[1] || "");
+    existingParams.set("force_sidebar", shouldForceSidebar ? "true" : "false");
     if (referralType !== null && referralType !== undefined && referralValue) {
-      // Start with the existing URL
-      let newUrl = url;
-      const urlParts = url.split("?");
-      const baseUrl = urlParts[0];
-      const existingParams = new URLSearchParams(urlParts[1] || "");
-
-      // Ensure the referral parameters are included with all possible naming variations
-      // Primary format with underscore (as expected by the API)
       existingParams.set("referral_type", referralType);
       existingParams.set("referral_value", referralValue);
-
-      // Add alternative formats for maximum compatibility
       existingParams.set("referralType", referralType);
       existingParams.set("referralValue", referralValue);
       existingParams.set("referral-type", referralType);
       existingParams.set("referral-value", referralValue);
-
-      // Reconstruct the URL with the updated parameters
-      newUrl = `${baseUrl}?${existingParams.toString()}`;
-
-      // Set the iframe source to the updated URL
-      iframe.src = newUrl;
-
-      // Debug log the updated URL (truncated if too long)
-      const logUrl =
-        newUrl.length > 150 ? newUrl.substring(0, 147) + "..." : newUrl;
     }
+    const newUrl = `${baseUrl}?${existingParams.toString()}`;
+    iframe.src = newUrl;
 
     // Assemble the popup: modalContainer > wrapper > container > iframe
-    container.appendChild(iframe);
-    wrapper.appendChild(container);
+    wrapper.appendChild(iframe);
     modalContainer.appendChild(wrapper);
 
     // Add class to body to prevent scrolling and ensure overlay covers everything
@@ -2582,6 +2377,9 @@ const RTL_LANGUAGES = ["ar"];
     countryCode
   ) {
     // CRITICAL: Don't save the RTL state again, it's already saved in openRegistrationPopup
+    const isMobile = window.innerWidth <= 767;
+    const isTablet = window.innerWidth > 767 && window.innerWidth < 1024;
+    const shouldForceSidebar = !isMobile && !isTablet;
 
     // Create modal container with RTL support
     const modalContainer = document.createElement("div");
@@ -2648,9 +2446,6 @@ const RTL_LANGUAGES = ["ar"];
     `;
     document.head.appendChild(rtlStyles);
 
-    // Detect if it's a tablet (>= 768px and < 1024px)
-    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
-
     // Create wrapper element (full screen, transparent, for centering)
     const wrapper = document.createElement("div");
     wrapper.className =
@@ -2687,9 +2482,6 @@ const RTL_LANGUAGES = ["ar"];
       border-radius: 32px !important;
       overflow: hidden !important;
       width: 100% !important;
-      min-width: 0 !important;
-      max-width: 966px !important;
-      min-width: 966px !important;
       max-height: ${isTablet ? "900px" : "850px"} !important;
       background: transparent !important;
       background-color: transparent !important;
@@ -2781,7 +2573,7 @@ const RTL_LANGUAGES = ["ar"];
           width: 100% !important;
           height: 100% !important;
           border: none !important;
-          background-color: #ffffff !important;
+          background-color: transparent !important;
           box-shadow: 0 0 40px rgba(0, 0, 0, 0.7) !important;
           transition: all 0.3s ease-in-out !important;
           display: block !important;
@@ -2803,7 +2595,12 @@ const RTL_LANGUAGES = ["ar"];
       referralValue,
       false
     );
-    iframe.src = url;
+    const rtlUrlParts = url.split("?");
+    const rtlBaseUrl = rtlUrlParts[0];
+    const rtlParams = new URLSearchParams(rtlUrlParts[1] || "");
+    rtlParams.set("force_sidebar", shouldForceSidebar ? "true" : "false");
+    const rtlFinalUrl = `${rtlBaseUrl}?${rtlParams.toString()}`;
+    iframe.src = rtlFinalUrl;
 
     // Add load event listener
     iframe.addEventListener("load", function () {
@@ -2833,6 +2630,7 @@ const RTL_LANGUAGES = ["ar"];
             ip_address: ipAddress,
             country_name: countryName,
             country_code: countryCode,
+            forceSidebar: shouldForceSidebar,
           },
           timestamp: Date.now(),
         };
@@ -3318,6 +3116,17 @@ const RTL_LANGUAGES = ["ar"];
           typeof event.data === "object" &&
           !Array.isArray(event.data)
         ) {
+          if (event.data.type === "OQTIMA_SIDEBAR_TRACE") {
+            console.log("[OQtima][SidebarTrace][iframe]", {
+              phase: event.data.phase,
+              status: event.data.status,
+              details: event.data.details || null,
+              error: event.data.error || null,
+              origin: event.origin,
+            });
+            return;
+          }
+
           // Handle registration success message
           if (event.data.type === "OQTIMA_REGISTRATION_SUCCESS") {
             // Handle optional redirect
@@ -4445,6 +4254,7 @@ const RTL_LANGUAGES = ["ar"];
       params.set("isMobile", "true");
       params.set("popup_isolated", "true");
       params.set("prevent_lang_switch", "true");
+      params.set("force_sidebar", "false");
 
       // Add cache busting to prevent cached English content
       params.set("_t", Date.now().toString());
@@ -4856,6 +4666,7 @@ const RTL_LANGUAGES = ["ar"];
             isMobile: true,
             mobileView: true,
             mobileScroll: true,
+            forceSidebar: false,
             // CRITICAL: Ensure referral parameters are included in all formats
             referral_type: referralType,
             referralType: referralType,
