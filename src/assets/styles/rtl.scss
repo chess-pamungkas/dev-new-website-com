@@ -1745,7 +1745,7 @@ body[dir="rtl"] .phone-number-container,
   html[lang="ar"] &__content,
   body[dir="rtl"] &__content,
   [dir="rtl"] &__content {
-    border-radius: 32px 0 0 32px !important; // Rounded on left for RTL
+    border-radius: 32px !important; // Rounded on left for RTL
     order: 1 !important; // Position on left side in RTL
     text-align: right !important;
 
@@ -1774,7 +1774,7 @@ body[dir="rtl"] .phone-number-container,
     background-size: cover;
     width: 331px;
     height: 100%;
-    border-radius: 0 32px 32px 0 !important; // Rounded on right for RTL
+    border-radius: 32px !important; // Rounded on right for RTL
     position: relative;
     overflow: hidden;
     background-color: #f8f9fa;
