@@ -340,7 +340,8 @@ const MarketSentimentContent = () => {
 
     // perform auto scroll when not touched - always scroll if not at end
     if (!isTouched) {
-      cont.scrollLeft = targetScrollLeft + 1;
+      targetScrollLeft += 1;
+      cont.scrollLeft = targetScrollLeft;
     }
   };
 
@@ -371,7 +372,8 @@ const MarketSentimentContent = () => {
     }
 
     if (!isTouched) {
-      cont.scrollLeft = targetScrollLeft - 1;
+      targetScrollLeft -= 1;
+      cont.scrollLeft = targetScrollLeft;
     }
   };
 

@@ -117,8 +117,9 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
       }
     }
     // perform auto scroll when not touched
-    if (cont.scrollLeft !== cont.scrollWidth && !isTouched) {
-      cont.scrollLeft = targetScrollLeft + 2;
+    if (!isTouched) {
+      targetScrollLeft += 2;
+      cont.scrollLeft = targetScrollLeft;
     }
   };
 
@@ -146,8 +147,9 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
         cont.scrollLeft = targetScrollLeft;
       }
     }
-    if (cont.scrollLeft !== cont.scrollWidth && !isTouched) {
-      cont.scrollLeft = targetScrollLeft - 2;
+    if (!isTouched) {
+      targetScrollLeft -= 2;
+      cont.scrollLeft = targetScrollLeft;
     }
   };
 
