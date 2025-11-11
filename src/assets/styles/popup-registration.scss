@@ -928,10 +928,6 @@
       height: 1.125rem;
       z-index: 10003; // Higher z-index for mobile
     }
-
-    @include desktop-2k {
-      right: 50px;
-    }
   }
 
   @include mobile {

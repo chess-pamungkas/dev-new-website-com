@@ -192,10 +192,19 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
     width: 734px;
     height: 734px;
     opacity: 0.62;
-    background-image: $globe-image;
-    background-size: cover;
-    background-position: bottom center;
-    background-repeat: no-repeat;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
     z-index: 1;
 
     @include mobile {
@@ -204,10 +213,6 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
       height: 734px;
       left: -120px;
       top: 660px;
-      background-image: $globe-image;
-      background-size: cover;
-      background-position: bottom center;
-      background-repeat: no-repeat;
       opacity: 0.62;
       z-index: 1;
     }
@@ -219,7 +224,6 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
       // max-height: 400px;
       bottom: 0;
       right: 60px;
-      background-position: bottom center;
     }
 
     @include desktop-lg {
@@ -229,7 +233,6 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
       // max-height: 500px;
       bottom: 0;
       right: 50px;
-      background-position: bottom center;
     }
 
     @include desktop-xl {
@@ -239,7 +242,6 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
       // max-height: 600px;
       bottom: 0;
       right: 45px;
-      background-position: bottom center;
     }
 
     @include desktop-2k {
@@ -249,7 +251,6 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
       // max-height: 650px;
       bottom: 0;
       right: 238px;
-      background-position: bottom center;
     }
 
     @include desktop-5k {
@@ -259,7 +260,6 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
       // max-height: 700px;
       bottom: 0;
       right: 238px;
-      background-position: bottom center;
     }
   }
 

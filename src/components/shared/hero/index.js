@@ -9,6 +9,7 @@ import LanguageContext from "../../../context/language-context";
 import { HeroButtons, ButtonPrimaryHero } from "../reusable-buttons";
 import FaqSearchBar from "../../help-center/faq-search-bar";
 import TrustPilot from "../trust-pilot";
+import globeImage from "../../../assets/images/bg/hero/main-promotion/globe.svg";
 
 const Hero = ({
   className,
@@ -351,7 +352,20 @@ const Hero = ({
         <div className={`${heroType}__hero-container`}>
           {/* Hero Background Image */}
           <div className={`${heroType}__hero-bg`}>
-            {showHeroImage && <div className={`${heroType}__hero-img`}></div>}
+            {showHeroImage && heroType === "main-promotion" && (
+              <div className={`${heroType}__hero-img`}>
+                <img
+                  src={globeImage}
+                  alt={t(translationKeys.title)}
+                  fetchPriority="high"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+            )}
+            {showHeroImage && heroType !== "main-promotion" && (
+              <div className={`${heroType}__hero-img`}></div>
+            )}
           </div>
 
           <div className="container">
