@@ -121,7 +121,7 @@ const Menu = ({ className }) => {
                 key={`footer-menu-${stringTransformToKebabCase(item.title)}`}
                 className="menu__wrapper"
               >
-                <h4 className="menu__column-title">{translatedTitle}</h4>
+                <h3 className="menu__column-title">{translatedTitle}</h3>
                 <MenuColumn items={item.subItems || []} />
               </div>
             )

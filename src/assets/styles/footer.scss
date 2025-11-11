@@ -390,7 +390,7 @@
 }
 
 /* Fallback: Hide by text content using attribute selector (JS can add data-title if needed) */
-.footer h4.menu__column-title {
+.footer .menu__column-title {
   /* Hide if text is exactly 'Partners' */
   &:after {
     content: attr(data-title);
@@ -399,7 +399,7 @@
 }
 
 /* Pure CSS (not 100% cross-browser, but works in modern browsers) */
-// .footer h4.menu__column-title {
+// .footer .menu__column-title {
 //   /* Hide if text is exactly 'Partners' */
 //   &:is(:where(:not([data-title])):not(:empty)) {
 //     display: none;
@@ -407,7 +407,7 @@
 // }
 
 // /* Most robust: Use nth-child or JS to add a class, but for now, use this: */
-// .footer h4.menu__column-title {
+// .footer .menu__column-title {
 //   /* Hide if text is exactly 'Partners' */
 //   &[data-title="Partners"] {
 //     display: none !important;
