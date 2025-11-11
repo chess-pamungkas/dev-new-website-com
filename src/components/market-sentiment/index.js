@@ -313,59 +313,65 @@ const MarketSentimentContent = () => {
   const performScroll = () => {
     const cont = symbolsGridRef.current;
     if (!cont) return;
+    const scrollWidth = cont.scrollWidth;
+    let targetScrollLeft = cont.scrollLeft;
 
-    if (isMiddleOfScroll(cont.scrollWidth, cont.scrollLeft)) {
+    if (isMiddleOfScroll(scrollWidth, targetScrollLeft)) {
       // move first child to the end when center of scroll width passed
       const first = cont.querySelector(".market-sentiment__symbol-card");
       if (first) {
+        const firstWidth = first.offsetWidth;
         cont.appendChild(first);
-        cont.scrollTo(cont.scrollLeft - first.offsetWidth - margin, 0);
+        targetScrollLeft -= firstWidth + margin;
+        cont.scrollLeft = targetScrollLeft;
       }
     }
 
-    if (
-      isMiddleOfScrollReversed(cont.scrollWidth, cont.scrollLeft) &&
-      isTouched
-    ) {
+    if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
       // move last child to the start when center of scroll width passed in reversed direction while manual scroll is active
       const lastChild = cont.lastChild;
       if (lastChild) {
+        const lastChildWidth = lastChild.offsetWidth;
         cont.prepend(lastChild);
-        cont.scrollTo(cont.scrollLeft + lastChild.offsetWidth + margin, 0);
+        targetScrollLeft += lastChildWidth + margin;
+        cont.scrollLeft = targetScrollLeft;
       }
     }
 
     // perform auto scroll when not touched - always scroll if not at end
     if (!isTouched) {
-      cont.scrollTo(cont.scrollLeft + 1, 0);
+      cont.scrollLeft = targetScrollLeft + 1;
     }
   };
 
   const performScrollRTL = () => {
     const cont = symbolsGridRef.current;
     if (!cont) return;
+    const scrollWidth = cont.scrollWidth;
+    let targetScrollLeft = cont.scrollLeft;
 
-    if (isMiddleOfScroll(cont.scrollWidth, cont.scrollLeft)) {
+    if (isMiddleOfScroll(scrollWidth, targetScrollLeft)) {
       const first = cont.querySelector(".market-sentiment__symbol-card");
       if (first) {
+        const firstWidth = first.offsetWidth;
         cont.appendChild(first);
-        cont.scrollTo(cont.scrollLeft - -first.offsetWidth - -margin, 0);
+        targetScrollLeft += firstWidth + margin;
+        cont.scrollLeft = targetScrollLeft;
       }
     }
 
-    if (
-      isMiddleOfScrollReversed(cont.scrollWidth, cont.scrollLeft) &&
-      isTouched
-    ) {
+    if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
       const lastChild = cont.lastChild;
       if (lastChild) {
+        const lastChildWidth = lastChild.offsetWidth;
         cont.prepend(lastChild);
-        cont.scrollTo(cont.scrollLeft + -lastChild.offsetWidth + -margin, 0);
+        targetScrollLeft -= lastChildWidth + margin;
+        cont.scrollLeft = targetScrollLeft;
       }
     }
 
     if (!isTouched) {
-      cont.scrollTo(cont.scrollLeft - 1, 0);
+      cont.scrollLeft = targetScrollLeft - 1;
     }
   };
 

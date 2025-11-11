@@ -93,53 +93,61 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
   const performScroll = () => {
     const cont = document.getElementById(`trading-symbols-${uniqueId}`);
     if (!cont) return;
-    if (isMiddleOfScroll(cont.scrollWidth, cont.scrollLeft)) {
+    const scrollWidth = cont.scrollWidth;
+    let targetScrollLeft = cont.scrollLeft;
+
+    if (isMiddleOfScroll(scrollWidth, targetScrollLeft)) {
       // move first child to the end when center of scroll width passed
       const first = cont.querySelector(".trading-symbol-card");
       if (first) {
+        const firstWidth = first.offsetWidth;
         cont.appendChild(first);
-        cont.scrollTo(cont.scrollLeft - first.offsetWidth - margin, 0);
+        targetScrollLeft -= firstWidth + margin;
+        cont.scrollLeft = targetScrollLeft;
       }
     }
-    if (
-      isMiddleOfScrollReversed(cont.scrollWidth, cont.scrollLeft) &&
-      isTouched
-    ) {
+    if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
       // move last child to the start when center of scroll width passed in reversed direction while manual scroll is active
       const lastchild = cont.lastChild;
       if (lastchild) {
+        const lastChildWidth = lastchild.offsetWidth;
         cont.prepend(lastchild);
-        cont.scrollTo(cont.scrollLeft + lastchild.offsetWidth + margin, 0);
+        targetScrollLeft += lastChildWidth + margin;
+        cont.scrollLeft = targetScrollLeft;
       }
     }
     // perform auto scroll when not touched
     if (cont.scrollLeft !== cont.scrollWidth && !isTouched) {
-      cont.scrollTo(cont.scrollLeft + 2, 0);
+      cont.scrollLeft = targetScrollLeft + 2;
     }
   };
 
   const performScrollRTL = () => {
     const cont = document.getElementById(`trading-symbols-${uniqueId}`);
     if (!cont) return;
-    if (isMiddleOfScroll(cont.scrollWidth, cont.scrollLeft)) {
+    const scrollWidth = cont.scrollWidth;
+    let targetScrollLeft = cont.scrollLeft;
+
+    if (isMiddleOfScroll(scrollWidth, targetScrollLeft)) {
       const first = cont.querySelector(".trading-symbol-card");
       if (first) {
+        const firstWidth = first.offsetWidth;
         cont.appendChild(first);
-        cont.scrollTo(cont.scrollLeft - -first.offsetWidth - -margin, 0);
+        targetScrollLeft += firstWidth + margin;
+        cont.scrollLeft = targetScrollLeft;
       }
     }
-    if (
-      isMiddleOfScrollReversed(cont.scrollWidth, cont.scrollLeft) &&
-      isTouched
-    ) {
+    if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
       const lastchild = cont.lastChild;
       if (lastchild) {
+        const lastChildWidth = lastchild.offsetWidth;
         cont.prepend(lastchild);
-        cont.scrollTo(cont.scrollLeft + -lastchild.offsetWidth + -margin, 0);
+        targetScrollLeft -= lastChildWidth + margin;
+        cont.scrollLeft = targetScrollLeft;
       }
     }
     if (cont.scrollLeft !== cont.scrollWidth && !isTouched) {
-      cont.scrollTo(cont.scrollLeft - 2, 0);
+      cont.scrollLeft = targetScrollLeft - 2;
     }
   };
 
