@@ -1,4 +1,10 @@
-import React, { useState, useContext, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useContext,
+  useEffect,
+  useRef,
+  useLayoutEffect,
+} from "react";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
@@ -16,6 +22,9 @@ import { getTradingSections } from "../../helpers/config";
 import { filterSymbols } from "../../helpers/services/filter-symbols";
 import { io } from "socket.io-client";
 
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 const MarketSentimentContent = () => {
   const { isMobile } = useWindowSize();
   const isRTL = useRtlDirection();
@@ -28,6 +37,63 @@ const MarketSentimentContent = () => {
   const [isTouched, setIsTouched] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const symbolsGridRef = useRef();
+  const scrollMetricsRef = useRef({ scrollWidth: 0 });
+
+  const getCardWidth = (card) => {
+    if (!card) return 0;
+    const cached = card.dataset.cardWidth;
+    if (cached) {
+      return Number(cached);
+    }
+    const width = card.getBoundingClientRect().width;
+    card.dataset.cardWidth = String(width);
+    return width;
+  };
+
+  const cacheCardWidths = () => {
+    const container = symbolsGridRef.current;
+    if (!container) return;
+    container
+      .querySelectorAll(".market-sentiment__symbol-card")
+      .forEach((card) => {
+        if (!card.dataset.cardWidth) {
+          card.dataset.cardWidth = String(card.getBoundingClientRect().width);
+        }
+      });
+  };
+
+  const updateScrollMetrics = () => {
+    const container = symbolsGridRef.current;
+    if (!container) return;
+    scrollMetricsRef.current.scrollWidth = container.scrollWidth;
+  };
+
+  useIsomorphicLayoutEffect(() => {
+    const container = symbolsGridRef.current;
+    if (!container) return;
+
+    let frameId = requestAnimationFrame(() => {
+      updateScrollMetrics();
+      cacheCardWidths();
+    });
+
+    let resizeObserver;
+    if (typeof ResizeObserver !== "undefined") {
+      resizeObserver = new ResizeObserver(() => {
+        if (frameId) cancelAnimationFrame(frameId);
+        frameId = requestAnimationFrame(() => {
+          updateScrollMetrics();
+          cacheCardWidths();
+        });
+      });
+      resizeObserver.observe(container);
+    }
+
+    return () => {
+      if (frameId) cancelAnimationFrame(frameId);
+      resizeObserver?.disconnect();
+    };
+  }, [activeTab, dynamicTradingData, isMobile]);
 
   // Registration popup handlers
   const handleShowRegistrationPopup = () => {
@@ -304,23 +370,25 @@ const MarketSentimentContent = () => {
   const margin = isMobile ? 10 : 15; // Gap between cards
 
   // check is scroll passed center of scroll width
-  const isMiddleOfScroll = (width, offset) => Math.abs(offset) > width / 2;
+  const isMiddleOfScroll = (width, offset) =>
+    width > 0 ? Math.abs(offset) > width / 2 : false;
 
   // check is scroll passed center of scroll width in reversed direction
   const isMiddleOfScrollReversed = (width, offset) =>
-    Math.abs(offset) < width / 2;
+    width > 0 ? Math.abs(offset) < width / 2 : false;
 
   const performScroll = () => {
     const cont = symbolsGridRef.current;
     if (!cont) return;
-    const scrollWidth = cont.scrollWidth;
+    const { scrollWidth } = scrollMetricsRef.current;
+    if (!scrollWidth) return;
     let targetScrollLeft = cont.scrollLeft;
 
     if (isMiddleOfScroll(scrollWidth, targetScrollLeft)) {
       // move first child to the end when center of scroll width passed
-      const first = cont.querySelector(".market-sentiment__symbol-card");
+      const first = cont.firstElementChild;
       if (first) {
-        const firstWidth = first.offsetWidth;
+        const firstWidth = getCardWidth(first);
         cont.appendChild(first);
         targetScrollLeft -= firstWidth + margin;
         cont.scrollLeft = targetScrollLeft;
@@ -329,9 +397,9 @@ const MarketSentimentContent = () => {
 
     if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
       // move last child to the start when center of scroll width passed in reversed direction while manual scroll is active
-      const lastChild = cont.lastChild;
-      if (lastChild && lastChild instanceof HTMLElement) {
-        const lastChildWidth = lastChild.offsetWidth;
+      const lastChild = cont.lastElementChild;
+      if (lastChild) {
+        const lastChildWidth = getCardWidth(lastChild);
         cont.prepend(lastChild);
         targetScrollLeft += lastChildWidth + margin;
         cont.scrollLeft = targetScrollLeft;
@@ -348,13 +416,14 @@ const MarketSentimentContent = () => {
   const performScrollRTL = () => {
     const cont = symbolsGridRef.current;
     if (!cont) return;
-    const scrollWidth = cont.scrollWidth;
+    const { scrollWidth } = scrollMetricsRef.current;
+    if (!scrollWidth) return;
     let targetScrollLeft = cont.scrollLeft;
 
     if (isMiddleOfScroll(scrollWidth, targetScrollLeft)) {
-      const first = cont.querySelector(".market-sentiment__symbol-card");
+      const first = cont.firstElementChild;
       if (first) {
-        const firstWidth = first.offsetWidth;
+        const firstWidth = getCardWidth(first);
         cont.appendChild(first);
         targetScrollLeft += firstWidth + margin;
         cont.scrollLeft = targetScrollLeft;
@@ -362,9 +431,9 @@ const MarketSentimentContent = () => {
     }
 
     if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
-      const lastChild = cont.lastChild;
-      if (lastChild && lastChild instanceof HTMLElement) {
-        const lastChildWidth = lastChild.offsetWidth;
+      const lastChild = cont.lastElementChild;
+      if (lastChild) {
+        const lastChildWidth = getCardWidth(lastChild);
         cont.prepend(lastChild);
         targetScrollLeft -= lastChildWidth + margin;
         cont.scrollLeft = targetScrollLeft;
@@ -379,18 +448,28 @@ const MarketSentimentContent = () => {
 
   // Auto scroll effect - continuous infinite scrolling
   useEffect(() => {
-    // Only start scrolling when we have data and not loading
-    if (isLoading || getCurrentTradingData().length === 0) return;
+    if (isLoading || isTouched) return;
+    if (getCurrentTradingData().length === 0) return;
 
-    const intervalId = setInterval(
-      isRTL ? performScrollRTL : performScroll,
-      50 // Same interval as TradingTicker
-    );
+    let animationFrameId;
+
+    const tick = () => {
+      if (isRTL) {
+        performScrollRTL();
+      } else {
+        performScroll();
+      }
+      animationFrameId = requestAnimationFrame(tick);
+    };
+
+    animationFrameId = requestAnimationFrame(tick);
 
     return () => {
-      clearInterval(intervalId);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
-  }, [isTouched, isRTL, activeTab, isLoading]);
+  }, [isTouched, isRTL, activeTab, isLoading, dynamicTradingData]);
 
   const backgroundSrc = isMobile ? mobileBgSVG : desktopBgSVG;
 

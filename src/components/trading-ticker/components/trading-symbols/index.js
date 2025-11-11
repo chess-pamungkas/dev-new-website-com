@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
@@ -15,7 +15,63 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
   const { isMobile } = useWindowSize();
   const { t } = useTranslationWithVariables();
   const margin = isMobile ? 10 : 0;
+  const scrollStep = 1;
   const [isTouched, setIsTouched] = useState(false);
+  const scrollMetricsRef = useRef({ scrollWidth: 0 });
+
+  const getCardWidth = (card) => {
+    if (!card) return 0;
+    const cachedWidth = card.dataset.cardWidth;
+    if (cachedWidth) {
+      return Number(cachedWidth);
+    }
+    const measuredWidth = card.getBoundingClientRect().width;
+    card.dataset.cardWidth = String(measuredWidth);
+    return measuredWidth;
+  };
+
+  const cacheCardWidths = () => {
+    const container = symbolsRef.current;
+    if (!container) return;
+    container.querySelectorAll(".trading-symbol-card").forEach((card) => {
+      if (!card.dataset.cardWidth) {
+        card.dataset.cardWidth = String(card.getBoundingClientRect().width);
+      }
+    });
+  };
+
+  const updateScrollMetrics = () => {
+    const container = symbolsRef.current;
+    if (!container) return;
+    scrollMetricsRef.current.scrollWidth = container.scrollWidth;
+  };
+
+  useLayoutEffect(() => {
+    const container = symbolsRef.current;
+    if (!container) return;
+
+    let frameId = requestAnimationFrame(() => {
+      updateScrollMetrics();
+      cacheCardWidths();
+    });
+
+    let resizeObserver;
+    if (typeof ResizeObserver !== "undefined") {
+      resizeObserver = new ResizeObserver(() => {
+        if (frameId) cancelAnimationFrame(frameId);
+        frameId = requestAnimationFrame(() => {
+          updateScrollMetrics();
+          cacheCardWidths();
+        });
+      });
+      resizeObserver.observe(container);
+    }
+
+    return () => {
+      if (frameId) cancelAnimationFrame(frameId);
+      resizeObserver?.disconnect();
+    };
+  }, [symbols.length, uniqueId]);
 
   // Get icon(s) for a symbol
   const getSymbolIcons = (symbol) => {
@@ -85,22 +141,24 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
   };
 
   // check is scroll passed center of scroll width
-  const isMiddleOfScroll = (width, offset) => Math.abs(offset) > width / 2;
+  const isMiddleOfScroll = (width, offset) =>
+    width > 0 ? Math.abs(offset) > width / 2 : false;
   // check is scroll passed center of scroll width in reversed direction, used for check when manual scroll is active
   const isMiddleOfScrollReversed = (width, offset) =>
-    Math.abs(offset) < width / 2;
+    width > 0 ? Math.abs(offset) < width / 2 : false;
 
   const performScroll = () => {
-    const cont = document.getElementById(`trading-symbols-${uniqueId}`);
+    const cont = symbolsRef.current;
     if (!cont) return;
-    const scrollWidth = cont.scrollWidth;
+    const { scrollWidth } = scrollMetricsRef.current;
+    if (!scrollWidth) return;
     let targetScrollLeft = cont.scrollLeft;
 
     if (isMiddleOfScroll(scrollWidth, targetScrollLeft)) {
       // move first child to the end when center of scroll width passed
-      const first = cont.querySelector(".trading-symbol-card");
+      const first = cont.firstElementChild;
       if (first) {
-        const firstWidth = first.offsetWidth;
+        const firstWidth = getCardWidth(first);
         cont.appendChild(first);
         targetScrollLeft -= firstWidth + margin;
         cont.scrollLeft = targetScrollLeft;
@@ -108,9 +166,9 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
     }
     if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
       // move last child to the start when center of scroll width passed in reversed direction while manual scroll is active
-      const lastchild = cont.lastChild;
-      if (lastchild && lastchild instanceof HTMLElement) {
-        const lastChildWidth = lastchild.offsetWidth;
+      const lastchild = cont.lastElementChild;
+      if (lastchild) {
+        const lastChildWidth = getCardWidth(lastchild);
         cont.prepend(lastchild);
         targetScrollLeft += lastChildWidth + margin;
         cont.scrollLeft = targetScrollLeft;
@@ -118,48 +176,62 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
     }
     // perform auto scroll when not touched
     if (!isTouched) {
-      targetScrollLeft += 2;
+      targetScrollLeft += scrollStep;
       cont.scrollLeft = targetScrollLeft;
     }
   };
 
   const performScrollRTL = () => {
-    const cont = document.getElementById(`trading-symbols-${uniqueId}`);
+    const cont = symbolsRef.current;
     if (!cont) return;
-    const scrollWidth = cont.scrollWidth;
+    const { scrollWidth } = scrollMetricsRef.current;
+    if (!scrollWidth) return;
     let targetScrollLeft = cont.scrollLeft;
 
     if (isMiddleOfScroll(scrollWidth, targetScrollLeft)) {
-      const first = cont.querySelector(".trading-symbol-card");
+      const first = cont.firstElementChild;
       if (first) {
-        const firstWidth = first.offsetWidth;
+        const firstWidth = getCardWidth(first);
         cont.appendChild(first);
         targetScrollLeft += firstWidth + margin;
         cont.scrollLeft = targetScrollLeft;
       }
     }
     if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
-      const lastchild = cont.lastChild;
-      if (lastchild && lastchild instanceof HTMLElement) {
-        const lastChildWidth = lastchild.offsetWidth;
+      const lastchild = cont.lastElementChild;
+      if (lastchild) {
+        const lastChildWidth = getCardWidth(lastchild);
         cont.prepend(lastchild);
         targetScrollLeft -= lastChildWidth + margin;
         cont.scrollLeft = targetScrollLeft;
       }
     }
     if (!isTouched) {
-      targetScrollLeft -= 2;
+      targetScrollLeft -= scrollStep;
       cont.scrollLeft = targetScrollLeft;
     }
   };
 
   useEffect(() => {
-    const intervalId = setInterval(
-      isRTL ? performScrollRTL : performScroll,
-      50 // Reduced to 50ms for faster scrolling
-    );
+    if (isTouched) return;
+
+    let animationFrameId;
+
+    const tick = () => {
+      if (isRTL) {
+        performScrollRTL();
+      } else {
+        performScroll();
+      }
+      animationFrameId = requestAnimationFrame(tick);
+    };
+
+    animationFrameId = requestAnimationFrame(tick);
+
     return () => {
-      clearInterval(intervalId);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
   }, [isTouched, isRTL]);
 
