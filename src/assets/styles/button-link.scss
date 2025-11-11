@@ -112,7 +112,9 @@
     display: flex;
     align-items: center;
     border-radius: $border-radius-header;
-    color: map-get($colors, "white");
+    background: map-get($colors, "red");
+    color: #fff;
+    border: 2px solid map-get($colors, "red");
     font-size: 14px;
     font-weight: map-get($font-weight, "bold");
     text-transform: none;
@@ -127,12 +129,36 @@
     &:focus {
       background: map-get($colors, "white");
       color: map-get($colors, "red");
+      border-color: map-get($colors, "red");
       cursor: pointer;
     }
+    &.header__start {
+      background: map-get($colors, "red");
+      color: #fff;
+
+      &:hover,
+      &:focus {
+        background: map-get($colors, "white");
+        color: map-get($colors, "red");
+      }
+    }
+
+    &.header__start--red {
+      background: map-get($colors, "white");
+      color: map-get($colors, "red");
+      border-color: map-get($colors, "red");
+
+      &:hover,
+      &:focus {
+        background: map-get($colors, "red");
+        color: #fff;
+      }
+    }
+
     // Special case: header ghost signin
     &.button-link--ghost.header__signin {
-      background: rgba(255, 68, 0, 0.15);
-      border: 1px solid rgba(255, 68, 0, 0.15);
+      background: rgba(map-get($colors, "red"), 0.15);
+      border: 1px solid rgba(map-get($colors, "red"), 0.15);
       color: map-get($colors, "black");
       font-size: 16px;
       font-weight: map-get($font-weight, "medium");

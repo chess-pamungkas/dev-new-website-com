@@ -169,21 +169,21 @@
 
   &__active {
     color: #fff;
-    border-color: #ff4400;
-    background: #ff4400;
-    box-shadow: 0 2px 6px rgba(255, 68, 0, 0.2);
+    border-color: map-get($colors, "red");
+    background: map-get($colors, "red");
+    box-shadow: 0 2px 6px rgba(map-get($colors, "red"), 0.2);
 
     &:hover {
-      border-color: #ff4400;
-      background: #ff4400;
+      border-color: map-get($colors, "red");
+      background: map-get($colors, "red");
       color: #fff !important;
     }
   }
 
   &:hover {
     color: map-get($colors, "black");
-    background: rgba(255, 68, 0, 0.15);
-    border: 1px solid rgba(255, 68, 0, 0.15);
+    background: rgba(map-get($colors, "red"), 0.15);
+    border: 1px solid rgba(map-get($colors, "red"), 0.15);
     box-shadow: none;
     transition: background 0.2s, border 0.2s, color 0.2s;
   }
@@ -293,8 +293,8 @@
       z-index: 1001;
 
       &:hover {
-        background: rgba(255, 68, 0, 0.08);
-        color: #ff4400;
+        background: rgba(map-get($colors, "red"), 0.08);
+        color: map-get($colors, "red");
       }
 
       &:last-child {
@@ -302,8 +302,8 @@
       }
 
       &--active {
-        background: rgba(255, 68, 0, 0.08);
-        color: #ff4400;
+        background: rgba(map-get($colors, "red"), 0.08);
+        color: map-get($colors, "red");
         font-weight: map-get($font-weight, "bold");
       }
     }

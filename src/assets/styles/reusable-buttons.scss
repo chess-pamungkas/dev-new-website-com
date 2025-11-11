@@ -151,9 +151,9 @@
   &:hover,
   &:focus {
     width: fit-content; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
-    background: #ff4400;
+    background: map-get($colors, "red");
     color: map-get($colors, "black") !important;
-    box-shadow: 0 0 19.3px 0 rgba(255, 68, 0, 0.5);
+    box-shadow: 0 0 19.3px 0 rgba(map-get($colors, "red"), 0.5);
     padding-right: 8px; // Add right padding to balance the left padding
 
     @include mobile {
@@ -290,7 +290,7 @@
     border: none;
 
     .button-arrow {
-      color: #ff4400;
+      color: map-get($colors, "red");
     }
   }
 }
@@ -301,9 +301,9 @@
 .button-primary-standard {
   @extend .reusable-button;
   width: fit-content;
-  background: #ff4400;
+  background: map-get($colors, "red");
   color: #fff;
-  // box-shadow: 0px 0px 19.3px rgba(255, 68, 0, 0.5);
+  // box-shadow: 0px 0px 19.3px rgba(map-get($colors, "red"), 0.5);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: visible; // Changed from hidden to visible to allow expansion
@@ -365,9 +365,9 @@
   &:hover,
   &:focus {
     width: fit-content; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
-    background: #ff4400;
+    background: map-get($colors, "red");
     color: #fff !important;
-    box-shadow: 0 0 19.3px 0 rgba(255, 68, 0, 0.5);
+    box-shadow: 0 0 19.3px 0 rgba(map-get($colors, "red"), 0.5);
     padding-right: 8px; // Add right padding to balance the left padding
 
     @include mobile {
@@ -422,7 +422,7 @@
     border: none;
 
     .button-arrow {
-      color: #ff4400;
+      color: map-get($colors, "red");
     }
   }
 }
@@ -433,9 +433,9 @@
 .button-primary-community {
   @extend .reusable-button;
   width: 237px;
-  background: #ff4400;
+  background: map-get($colors, "red");
   color: #fff;
-  // box-shadow: 0px 0px 19.3px rgba(255, 68, 0, 0.5);
+  // box-shadow: 0px 0px 19.3px rgba(map-get($colors, "red"), 0.5);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: visible; // Changed from hidden to visible to allow expansion
@@ -512,9 +512,9 @@
   &:hover,
   &:focus {
     width: fit-content; // Increased to accommodate: 24px left padding + text + 24px arrow + 24px right padding
-    background: #ff4400;
+    background: map-get($colors, "red");
     color: #fff !important;
-    box-shadow: 0 0 19.3px 0 rgba(255, 68, 0, 0.5);
+    box-shadow: 0 0 19.3px 0 rgba(map-get($colors, "red"), 0.5);
     padding-right: 8px; // Add right padding to balance the left padding
 
     @include mobile {
@@ -593,7 +593,7 @@
     border: none;
 
     .button-arrow {
-      color: #ff4400;
+      color: map-get($colors, "red");
     }
   }
 }
@@ -653,7 +653,7 @@
   }
 
   &:hover {
-    background: #ff4400;
+    background: map-get($colors, "red");
     color: #fff !important;
 
     .button-text {
@@ -724,7 +724,7 @@
       // width: 24px;
       // margin-left: 0;
       // margin-top: 4px;
-      color: #ff4400;
+      color: map-get($colors, "red");
     }
   }
 }
@@ -741,7 +741,7 @@
   }
 
   &:hover {
-    background: #ff4400;
+    background: map-get($colors, "red");
     border: none;
     color: #fff !important;
 
@@ -768,7 +768,7 @@
   gap: 10px;
   width: 349px;
   height: 51px;
-  border: 1px solid #ff4400;
+  border: 1px solid map-get($colors, "red");
   border-radius: 8px;
   background: transparent;
   color: #000000;
@@ -821,7 +821,7 @@
     display: none;
     width: 9.33px;
     height: 9.33px;
-    // border: 1.3333px solid #ff4400;
+    // border: 1.3333px solid map-get($colors, "red");
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -830,7 +830,7 @@
 
   &:hover,
   &:focus {
-    background: #ff4400;
+    background: map-get($colors, "red");
     color: #ffffff;
 
     .button-text {

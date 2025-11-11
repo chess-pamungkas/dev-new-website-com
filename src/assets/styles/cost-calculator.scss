@@ -364,12 +364,12 @@
         width: 24px;
         height: 24px;
         background: #fff;
-        border: 2px solid #ff4400;
+        border: 2px solid map-get($colors, "red");
         border-radius: 50%;
         box-shadow: 0 2px 8px rgba(255, 68, 0, 0.15);
         transition: border 0.2s;
         &:hover {
-          border: 2px solid #ff4400;
+          border: 2px solid map-get($colors, "red");
         }
       }
     }
@@ -424,7 +424,7 @@
       order: 0;
 
       &.active {
-        background: #ff4400;
+        background: map-get($colors, "red");
         color: #fff;
         border-right: 0.5px solid rgba(0, 0, 0, 0.15);
         border-radius: 8px;
@@ -568,7 +568,7 @@
     z-index: 1;
 
     &:first-child {
-      background: #ff4400;
+      background: map-get($colors, "red");
       z-index: 2;
     }
   }

@@ -14,6 +14,8 @@ const Slider = ({
   onChange,
   renderMark,
   renderThumb,
+  ariaLabel,
+  ariaLabelledBy,
   invert = false,
 }) => {
   const handleRenderMark = (mark, index) => {
@@ -38,6 +40,8 @@ const Slider = ({
       onChange={(value) => onChange(value)}
       renderMark={handleRenderMark}
       renderThumb={renderThumb}
+      ariaLabel={ariaLabel ? [ariaLabel] : undefined}
+      ariaLabelledby={ariaLabelledBy ? [ariaLabelledBy] : undefined}
       invert={invert}
     />
   );
@@ -55,6 +59,8 @@ Slider.propTypes = {
   onChange: PropTypes.func.isRequired,
   renderMark: PropTypes.func,
   renderThumb: PropTypes.func,
+  ariaLabel: PropTypes.string,
+  ariaLabelledBy: PropTypes.string,
   invert: PropTypes.bool,
 };
 export default Slider;

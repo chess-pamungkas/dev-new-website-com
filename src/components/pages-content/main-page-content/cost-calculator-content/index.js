@@ -145,6 +145,7 @@ const CostCalculatorContent = () => {
               thumbClassName="cost-calculator-content__slider-thumb"
               trackClassName="cost-calculator-content__slider-track"
               renderThumb={renderThumb}
+              ariaLabel={t("cost-calculator_trade-volumes-label")}
               invert={isRTL}
             />
           </div>

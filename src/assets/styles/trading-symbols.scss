@@ -154,11 +154,11 @@
   align-items: center;
 
   &--up {
-    color: #219653;
+    color: map-get($colors, "green");
   }
 
   &--down {
-    color: #ff4400;
+    color: map-get($colors, "red");
   }
 }
 
@@ -168,18 +168,18 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 27px;
-  color: #ff4400;
+  color: map-get($colors, "red");
   width: 57px;
   height: 11px;
   display: flex;
   align-items: center;
 
   &--up {
-    color: #219653;
+    color: map-get($colors, "green");
   }
 
   &--down {
-    color: #ff4400;
+    color: map-get($colors, "red");
   }
 }
 
