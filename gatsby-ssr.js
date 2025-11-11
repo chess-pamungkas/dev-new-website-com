@@ -192,76 +192,7 @@ export const onRenderBody = ({
       src="https://metatraderweb.app/trade/widget.js"
     />,
   ]);
-  const apiUrl = process.env.GATSBY_OQTIMA_API_URL;
-  const convrsUrl = process.env.GATSBY_CONVRS_LIVECHAT;
-  const preconnectOrigins = [];
-
-  // Preconnect to API backend if configured
-  if (apiUrl) {
-    try {
-      const apiUrlObj = new URL(apiUrl);
-      preconnectOrigins.push(
-        <link
-          key="preconnect-api"
-          rel="preconnect"
-          href={apiUrlObj.origin}
-          crossOrigin="anonymous"
-        />
-      );
-    } catch (e) {
-      // Invalid URL, skip
-    }
-  }
-
-  // Preconnect to MetaTrader widget (critical for widget.js)
-  preconnectOrigins.push(
-    <link
-      key="preconnect-metatrader"
-      rel="preconnect"
-      href="https://metatraderweb.app"
-      crossOrigin="anonymous"
-    />,
-    <link
-      key="dns-prefetch-metatrader"
-      rel="dns-prefetch"
-      href="https://metatraderweb.app"
-    />
-  );
-
-  // Preconnect to Conv.rs livechat (190ms LCP savings)
-  // Always add webchat.conv.rs as it's a known origin
-  preconnectOrigins.push(
-    <link
-      key="preconnect-convrs"
-      rel="preconnect"
-      href="https://webchat.conv.rs"
-      crossOrigin="anonymous"
-    />,
-    <link
-      key="dns-prefetch-convrs"
-      rel="dns-prefetch"
-      href="https://webchat.conv.rs"
-    />
-  );
-
-  // Preconnect to Trustpilot widget (in critical path)
-  preconnectOrigins.push(
-    <link
-      key="preconnect-trustpilot"
-      rel="preconnect"
-      href="https://widget.trustpilot.com"
-      crossOrigin="anonymous"
-    />,
-    <link
-      key="dns-prefetch-trustpilot"
-      rel="dns-prefetch"
-      href="https://widget.trustpilot.com"
-    />
-  );
-
   setHeadComponents([
-    // Preconnect hints for critical origins
-    ...preconnectOrigins,
     // Default title and description for Google bot fast mode
     <title key="default-title">
       Forex & CFD Trading on Stocks, Indices, Oil, Gold by OQtima™
@@ -296,6 +227,102 @@ export const onRenderBody = ({
     />,
     <meta key="tw-img" name="twitter:image" content="/preview.jpeg" />,
   ]);
+};
+
+// Inject preload and preconnect links early in head for optimal performance
+export const onPreRenderHTML = ({
+  getHeadComponents,
+  replaceHeadComponents,
+  pathname,
+}) => {
+  const headComponents = getHeadComponents();
+  const earlyHints = [];
+
+  // Preconnect hints - add these first for maximum impact
+  const apiUrl = process.env.GATSBY_OQTIMA_API_URL;
+
+  // Preconnect to API backend (600ms LCP savings per Lighthouse)
+  // Use GATSBY_OQTIMA_API_URL from environment variable for each environment
+  if (apiUrl) {
+    try {
+      const apiUrlObj = new URL(apiUrl);
+      earlyHints.push(
+        <link
+          key="preconnect-api"
+          rel="preconnect"
+          href={apiUrlObj.origin}
+          crossOrigin="anonymous"
+        />,
+        <link
+          key="dns-prefetch-api"
+          rel="dns-prefetch"
+          href={apiUrlObj.origin}
+        />
+      );
+    } catch (e) {
+      // Invalid URL, skip silently
+    }
+  }
+
+  // Preconnect to MetaTrader widget (critical for widget.js)
+  earlyHints.push(
+    <link
+      key="preconnect-metatrader"
+      rel="preconnect"
+      href="https://metatraderweb.app"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-metatrader"
+      rel="dns-prefetch"
+      href="https://metatraderweb.app"
+    />
+  );
+
+  // Preconnect to Conv.rs livechat
+  earlyHints.push(
+    <link
+      key="preconnect-convrs"
+      rel="preconnect"
+      href="https://webchat.conv.rs"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-convrs"
+      rel="dns-prefetch"
+      href="https://webchat.conv.rs"
+    />
+  );
+
+  // Preconnect to Trustpilot widget (in critical path)
+  earlyHints.push(
+    <link
+      key="preconnect-trustpilot"
+      rel="preconnect"
+      href="https://widget.trustpilot.com"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-trustpilot"
+      rel="dns-prefetch"
+      href="https://widget.trustpilot.com"
+    />
+  );
+
+  // Preload LCP image for homepage/main promotion pages
+  if (pathname === "/" || pathname.match(/^\/[a-z]{2}\/?$/)) {
+    earlyHints.push(
+      <link
+        key="preload-globe-image"
+        rel="preload"
+        as="image"
+        href="/static/globe-9221a3a2c6689b620d91ba9459b8acc4.svg"
+      />
+    );
+  }
+
+  // Insert all early hints at the very beginning of head components
+  replaceHeadComponents([...earlyHints, ...headComponents]);
 };
 
 export const wrapPageElement = ({ element }) => {
