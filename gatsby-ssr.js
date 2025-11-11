@@ -193,6 +193,7 @@ export const onRenderBody = ({
     />,
   ]);
   const apiUrl = process.env.GATSBY_OQTIMA_API_URL;
+  const convrsUrl = process.env.GATSBY_CONVRS_LIVECHAT;
   const preconnectOrigins = [];
 
   // Preconnect to API backend if configured
@@ -212,13 +213,49 @@ export const onRenderBody = ({
     }
   }
 
-  // Preconnect to MetaTrader widget
+  // Preconnect to MetaTrader widget (critical for widget.js)
   preconnectOrigins.push(
     <link
       key="preconnect-metatrader"
       rel="preconnect"
       href="https://metatraderweb.app"
       crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-metatrader"
+      rel="dns-prefetch"
+      href="https://metatraderweb.app"
+    />
+  );
+
+  // Preconnect to Conv.rs livechat (190ms LCP savings)
+  // Always add webchat.conv.rs as it's a known origin
+  preconnectOrigins.push(
+    <link
+      key="preconnect-convrs"
+      rel="preconnect"
+      href="https://webchat.conv.rs"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-convrs"
+      rel="dns-prefetch"
+      href="https://webchat.conv.rs"
+    />
+  );
+
+  // Preconnect to Trustpilot widget (in critical path)
+  preconnectOrigins.push(
+    <link
+      key="preconnect-trustpilot"
+      rel="preconnect"
+      href="https://widget.trustpilot.com"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-trustpilot"
+      rel="dns-prefetch"
+      href="https://widget.trustpilot.com"
     />
   );
 

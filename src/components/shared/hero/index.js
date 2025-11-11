@@ -365,7 +365,9 @@ const Hero = ({
                   alt={t(translationKeys.title)}
                   fetchPriority="high"
                   loading="eager"
-                  decoding="async"
+                  decoding="sync"
+                  width="734"
+                  height="734"
                 />
               </div>
             )}
