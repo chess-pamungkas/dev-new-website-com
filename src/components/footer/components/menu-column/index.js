@@ -21,9 +21,13 @@ const MenuColumn = ({ className, items }) => {
                 )}`}
                 className="menu-column__group"
               >
-                <h5 className="menu-column__group-title">
+                <div
+                  className="menu-column__group-title"
+                  role="heading"
+                  aria-level={4}
+                >
                   {t(item.groupTitle)}
-                </h5>
+                </div>
                 <ul className="menu-column__group-items">
                   {item.groupItems.map((groupItem) => {
                     // Skip items that are desktopOnly
