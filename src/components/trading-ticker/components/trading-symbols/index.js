@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
@@ -25,53 +25,55 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
     if (cachedWidth) {
       return Number(cachedWidth);
     }
-    const measuredWidth = card.getBoundingClientRect().width;
+    const measuredWidth =
+      card.offsetWidth || card.getBoundingClientRect().width;
     card.dataset.cardWidth = String(measuredWidth);
     return measuredWidth;
   };
 
-  const cacheCardWidths = () => {
-    const container = symbolsRef.current;
-    if (!container) return;
-    container.querySelectorAll(".trading-symbol-card").forEach((card) => {
-      if (!card.dataset.cardWidth) {
-        card.dataset.cardWidth = String(card.getBoundingClientRect().width);
-      }
-    });
-  };
-
-  const updateScrollMetrics = () => {
-    const container = symbolsRef.current;
-    if (!container) return;
-    scrollMetricsRef.current.scrollWidth = container.scrollWidth;
-  };
-
-  useLayoutEffect(() => {
+  useEffect(() => {
     const container = symbolsRef.current;
     if (!container) return;
 
     let frameId = requestAnimationFrame(() => {
-      updateScrollMetrics();
-      cacheCardWidths();
-    });
-
-    let resizeObserver;
-    if (typeof ResizeObserver !== "undefined") {
-      resizeObserver = new ResizeObserver(() => {
-        if (frameId) cancelAnimationFrame(frameId);
-        frameId = requestAnimationFrame(() => {
-          updateScrollMetrics();
-          cacheCardWidths();
-        });
+      scrollMetricsRef.current.scrollWidth = container.scrollWidth;
+      container.querySelectorAll(".trading-symbol-card").forEach((card) => {
+        if (!card.dataset.cardWidth) {
+          card.dataset.cardWidth = String(card.offsetWidth);
+        }
       });
-      resizeObserver.observe(container);
-    }
+    });
 
     return () => {
       if (frameId) cancelAnimationFrame(frameId);
-      resizeObserver?.disconnect();
     };
-  }, [symbols.length, uniqueId]);
+  }, [symbols, isMobile]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let resizeFrame = null;
+
+    const measure = () => {
+      const container = symbolsRef.current;
+      if (!container) return;
+      container.querySelectorAll(".trading-symbol-card").forEach((card) => {
+        delete card.dataset.cardWidth;
+      });
+      scrollMetricsRef.current.scrollWidth = container.scrollWidth;
+    };
+
+    const handleResize = () => {
+      if (resizeFrame) cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(measure);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (resizeFrame) cancelAnimationFrame(resizeFrame);
+    };
+  }, []);
 
   // Get icon(s) for a symbol
   const getSymbolIcons = (symbol) => {

@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useContext,
-  useEffect,
-  useRef,
-  useLayoutEffect,
-} from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../helpers/hooks/use-rtl-direction";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
@@ -21,9 +15,6 @@ import symbolMapping from "../trading-ticker/components/trading-symbols/symbol-i
 import { getTradingSections } from "../../helpers/config";
 import { filterSymbols } from "../../helpers/services/filter-symbols";
 import { io } from "socket.io-client";
-
-const useIsomorphicLayoutEffect =
-  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const MarketSentimentContent = () => {
   const { isMobile } = useWindowSize();
@@ -45,55 +36,58 @@ const MarketSentimentContent = () => {
     if (cached) {
       return Number(cached);
     }
-    const width = card.getBoundingClientRect().width;
+    const width = card.offsetWidth || card.getBoundingClientRect().width;
     card.dataset.cardWidth = String(width);
     return width;
   };
 
-  const cacheCardWidths = () => {
-    const container = symbolsGridRef.current;
-    if (!container) return;
-    container
-      .querySelectorAll(".market-sentiment__symbol-card")
-      .forEach((card) => {
-        if (!card.dataset.cardWidth) {
-          card.dataset.cardWidth = String(card.getBoundingClientRect().width);
-        }
-      });
-  };
-
-  const updateScrollMetrics = () => {
-    const container = symbolsGridRef.current;
-    if (!container) return;
-    scrollMetricsRef.current.scrollWidth = container.scrollWidth;
-  };
-
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     const container = symbolsGridRef.current;
     if (!container) return;
 
     let frameId = requestAnimationFrame(() => {
-      updateScrollMetrics();
-      cacheCardWidths();
-    });
-
-    let resizeObserver;
-    if (typeof ResizeObserver !== "undefined") {
-      resizeObserver = new ResizeObserver(() => {
-        if (frameId) cancelAnimationFrame(frameId);
-        frameId = requestAnimationFrame(() => {
-          updateScrollMetrics();
-          cacheCardWidths();
+      scrollMetricsRef.current.scrollWidth = container.scrollWidth;
+      container
+        .querySelectorAll(".market-sentiment__symbol-card")
+        .forEach((card) => {
+          if (!card.dataset.cardWidth) {
+            card.dataset.cardWidth = String(card.offsetWidth);
+          }
         });
-      });
-      resizeObserver.observe(container);
-    }
+    });
 
     return () => {
       if (frameId) cancelAnimationFrame(frameId);
-      resizeObserver?.disconnect();
     };
   }, [activeTab, dynamicTradingData, isMobile]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let resizeFrame = null;
+
+    const measure = () => {
+      const container = symbolsGridRef.current;
+      if (!container) return;
+      container
+        .querySelectorAll(".market-sentiment__symbol-card")
+        .forEach((card) => {
+          delete card.dataset.cardWidth;
+        });
+      scrollMetricsRef.current.scrollWidth = container.scrollWidth;
+    };
+
+    const handleResize = () => {
+      if (resizeFrame) cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(measure);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (resizeFrame) cancelAnimationFrame(resizeFrame);
+    };
+  }, []);
 
   // Registration popup handlers
   const handleShowRegistrationPopup = () => {
