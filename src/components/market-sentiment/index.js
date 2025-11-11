@@ -330,7 +330,7 @@ const MarketSentimentContent = () => {
     if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
       // move last child to the start when center of scroll width passed in reversed direction while manual scroll is active
       const lastChild = cont.lastChild;
-      if (lastChild) {
+      if (lastChild && lastChild instanceof HTMLElement) {
         const lastChildWidth = lastChild.offsetWidth;
         cont.prepend(lastChild);
         targetScrollLeft += lastChildWidth + margin;
@@ -363,7 +363,7 @@ const MarketSentimentContent = () => {
 
     if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
       const lastChild = cont.lastChild;
-      if (lastChild) {
+      if (lastChild && lastChild instanceof HTMLElement) {
         const lastChildWidth = lastChild.offsetWidth;
         cont.prepend(lastChild);
         targetScrollLeft -= lastChildWidth + margin;

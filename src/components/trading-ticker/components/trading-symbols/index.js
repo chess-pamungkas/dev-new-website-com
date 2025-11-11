@@ -109,7 +109,7 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
     if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
       // move last child to the start when center of scroll width passed in reversed direction while manual scroll is active
       const lastchild = cont.lastChild;
-      if (lastchild) {
+      if (lastchild && lastchild instanceof HTMLElement) {
         const lastChildWidth = lastchild.offsetWidth;
         cont.prepend(lastchild);
         targetScrollLeft += lastChildWidth + margin;
@@ -140,7 +140,7 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
     }
     if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
       const lastchild = cont.lastChild;
-      if (lastchild) {
+      if (lastchild && lastchild instanceof HTMLElement) {
         const lastChildWidth = lastchild.offsetWidth;
         cont.prepend(lastchild);
         targetScrollLeft -= lastChildWidth + margin;
