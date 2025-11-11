@@ -15,13 +15,14 @@ import myFlag from "../../../assets/images/icons/languages/my.svg";
 import arFlag from "../../../assets/images/icons/languages/ar.svg";
 import enUsFlag from "../../../assets/images/icons/languages/en-us.svg";
 
-export const LogoTextMain = ({ className }) => (
+export const LogoTextMain = ({ className, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="169.007"
     height="36.623"
     viewBox="0 0 169.007 36.623"
     className={className}
+    {...props}
   >
     <g
       id="Group_222"

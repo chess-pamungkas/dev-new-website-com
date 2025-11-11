@@ -113,9 +113,24 @@ const Header = ({ className }) => {
         > */}
         <div className="header__main-wrapper" ref={headerMainWrapperRef}>
           <div className="header__left">
-            <InternalLink to={HOME_PAGE_LINK}>
-              {isDesktop && <LogoTextMain className="header__logo" />}
-              {isTablet && <LogoTextMain className="header__logo" />}
+            <InternalLink
+              to={HOME_PAGE_LINK}
+              aria-label={t("breadcrumbs_home")}
+            >
+              {isDesktop && (
+                <LogoTextMain
+                  className="header__logo"
+                  aria-hidden="true"
+                  focusable="false"
+                />
+              )}
+              {isTablet && (
+                <LogoTextMain
+                  className="header__logo"
+                  aria-hidden="true"
+                  focusable="false"
+                />
+              )}
             </InternalLink>
           </div>
           <div className="header__center">
