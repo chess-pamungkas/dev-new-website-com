@@ -192,7 +192,39 @@ export const onRenderBody = ({
       src="https://metatraderweb.app/trade/widget.js"
     />,
   ]);
+  const apiUrl = process.env.GATSBY_OQTIMA_API_URL;
+  const preconnectOrigins = [];
+
+  // Preconnect to API backend if configured
+  if (apiUrl) {
+    try {
+      const apiUrlObj = new URL(apiUrl);
+      preconnectOrigins.push(
+        <link
+          key="preconnect-api"
+          rel="preconnect"
+          href={apiUrlObj.origin}
+          crossOrigin="anonymous"
+        />
+      );
+    } catch (e) {
+      // Invalid URL, skip
+    }
+  }
+
+  // Preconnect to MetaTrader widget
+  preconnectOrigins.push(
+    <link
+      key="preconnect-metatrader"
+      rel="preconnect"
+      href="https://metatraderweb.app"
+      crossOrigin="anonymous"
+    />
+  );
+
   setHeadComponents([
+    // Preconnect hints for critical origins
+    ...preconnectOrigins,
     // Default title and description for Google bot fast mode
     <title key="default-title">
       Forex & CFD Trading on Stocks, Indices, Oil, Gold by OQtima™

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { MarketingContext } from "../../../context/marketing-context";
@@ -344,6 +345,11 @@ const Hero = ({
 
   return (
     <>
+      {heroType === "main-promotion" && showHeroImage && (
+        <Helmet>
+          <link rel="preload" as="image" href={globeImage} />
+        </Helmet>
+      )}
       <section
         className={cn(`${heroType}`, className, {
           [`${heroType}--rtl`]: isRTL,
