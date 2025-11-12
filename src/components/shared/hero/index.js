@@ -347,7 +347,13 @@ const Hero = ({
     <>
       {heroType === "main-promotion" && showHeroImage && (
         <Helmet>
-          <link rel="preload" as="image" href={globeImage} />
+          <link
+            rel="preload"
+            as="image"
+            href={globeImage}
+            fetchpriority="high"
+            imagesrcset={`${globeImage} 1x`}
+          />
         </Helmet>
       )}
       <section

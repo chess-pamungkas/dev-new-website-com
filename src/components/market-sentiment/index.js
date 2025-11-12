@@ -29,6 +29,7 @@ const MarketSentimentContent = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const symbolsGridRef = useRef();
   const scrollMetricsRef = useRef({ scrollWidth: 0 });
+  const scrollPositionRef = useRef(0);
 
   const getCardWidth = (card) => {
     if (!card) return 0;
@@ -47,6 +48,7 @@ const MarketSentimentContent = () => {
 
     let frameId = requestAnimationFrame(() => {
       scrollMetricsRef.current.scrollWidth = container.scrollWidth;
+      scrollPositionRef.current = container.scrollLeft || 0;
       container
         .querySelectorAll(".market-sentiment__symbol-card")
         .forEach((card) => {
@@ -75,6 +77,7 @@ const MarketSentimentContent = () => {
           delete card.dataset.cardWidth;
         });
       scrollMetricsRef.current.scrollWidth = container.scrollWidth;
+      scrollPositionRef.current = container.scrollLeft || 0;
     };
 
     const handleResize = () => {
@@ -376,7 +379,7 @@ const MarketSentimentContent = () => {
     if (!cont) return;
     const { scrollWidth } = scrollMetricsRef.current;
     if (!scrollWidth) return;
-    let targetScrollLeft = cont.scrollLeft;
+    let targetScrollLeft = scrollPositionRef.current;
 
     if (isMiddleOfScroll(scrollWidth, targetScrollLeft)) {
       // move first child to the end when center of scroll width passed
@@ -385,7 +388,6 @@ const MarketSentimentContent = () => {
         const firstWidth = getCardWidth(first);
         cont.appendChild(first);
         targetScrollLeft -= firstWidth + margin;
-        cont.scrollLeft = targetScrollLeft;
       }
     }
 
@@ -396,15 +398,15 @@ const MarketSentimentContent = () => {
         const lastChildWidth = getCardWidth(lastChild);
         cont.prepend(lastChild);
         targetScrollLeft += lastChildWidth + margin;
-        cont.scrollLeft = targetScrollLeft;
       }
     }
 
     // perform auto scroll when not touched - always scroll if not at end
     if (!isTouched) {
       targetScrollLeft += 1;
-      cont.scrollLeft = targetScrollLeft;
     }
+    scrollPositionRef.current = targetScrollLeft;
+    cont.scrollLeft = targetScrollLeft;
   };
 
   const performScrollRTL = () => {
@@ -412,7 +414,7 @@ const MarketSentimentContent = () => {
     if (!cont) return;
     const { scrollWidth } = scrollMetricsRef.current;
     if (!scrollWidth) return;
-    let targetScrollLeft = cont.scrollLeft;
+    let targetScrollLeft = scrollPositionRef.current;
 
     if (isMiddleOfScroll(scrollWidth, targetScrollLeft)) {
       const first = cont.firstElementChild;
@@ -420,7 +422,6 @@ const MarketSentimentContent = () => {
         const firstWidth = getCardWidth(first);
         cont.appendChild(first);
         targetScrollLeft += firstWidth + margin;
-        cont.scrollLeft = targetScrollLeft;
       }
     }
 
@@ -430,14 +431,14 @@ const MarketSentimentContent = () => {
         const lastChildWidth = getCardWidth(lastChild);
         cont.prepend(lastChild);
         targetScrollLeft -= lastChildWidth + margin;
-        cont.scrollLeft = targetScrollLeft;
       }
     }
 
     if (!isTouched) {
       targetScrollLeft -= 1;
-      cont.scrollLeft = targetScrollLeft;
     }
+    scrollPositionRef.current = targetScrollLeft;
+    cont.scrollLeft = targetScrollLeft;
   };
 
   // Auto scroll effect - continuous infinite scrolling
@@ -565,6 +566,11 @@ const MarketSentimentContent = () => {
           ref={symbolsGridRef}
           onTouchStart={() => setIsTouched(true)}
           onTouchEnd={() => setIsTouched(false)}
+          onScroll={() => {
+            const container = symbolsGridRef.current;
+            if (!container) return;
+            scrollPositionRef.current = container.scrollLeft;
+          }}
         >
           {isLoading
             ? // Loading state

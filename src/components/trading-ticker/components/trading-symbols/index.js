@@ -18,6 +18,7 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
   const scrollStep = 1;
   const [isTouched, setIsTouched] = useState(false);
   const scrollMetricsRef = useRef({ scrollWidth: 0 });
+  const scrollPositionRef = useRef(0);
 
   const getCardWidth = (card) => {
     if (!card) return 0;
@@ -37,6 +38,7 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
 
     let frameId = requestAnimationFrame(() => {
       scrollMetricsRef.current.scrollWidth = container.scrollWidth;
+      scrollPositionRef.current = container.scrollLeft || 0;
       container.querySelectorAll(".trading-symbol-card").forEach((card) => {
         if (!card.dataset.cardWidth) {
           card.dataset.cardWidth = String(card.offsetWidth);
@@ -61,6 +63,7 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
         delete card.dataset.cardWidth;
       });
       scrollMetricsRef.current.scrollWidth = container.scrollWidth;
+      scrollPositionRef.current = container.scrollLeft || 0;
     };
 
     const handleResize = () => {
@@ -154,7 +157,7 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
     if (!cont) return;
     const { scrollWidth } = scrollMetricsRef.current;
     if (!scrollWidth) return;
-    let targetScrollLeft = cont.scrollLeft;
+    let targetScrollLeft = scrollPositionRef.current;
 
     if (isMiddleOfScroll(scrollWidth, targetScrollLeft)) {
       // move first child to the end when center of scroll width passed
@@ -163,7 +166,6 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
         const firstWidth = getCardWidth(first);
         cont.appendChild(first);
         targetScrollLeft -= firstWidth + margin;
-        cont.scrollLeft = targetScrollLeft;
       }
     }
     if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
@@ -173,14 +175,14 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
         const lastChildWidth = getCardWidth(lastchild);
         cont.prepend(lastchild);
         targetScrollLeft += lastChildWidth + margin;
-        cont.scrollLeft = targetScrollLeft;
       }
     }
     // perform auto scroll when not touched
     if (!isTouched) {
       targetScrollLeft += scrollStep;
-      cont.scrollLeft = targetScrollLeft;
     }
+    scrollPositionRef.current = targetScrollLeft;
+    cont.scrollLeft = targetScrollLeft;
   };
 
   const performScrollRTL = () => {
@@ -188,7 +190,7 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
     if (!cont) return;
     const { scrollWidth } = scrollMetricsRef.current;
     if (!scrollWidth) return;
-    let targetScrollLeft = cont.scrollLeft;
+    let targetScrollLeft = scrollPositionRef.current;
 
     if (isMiddleOfScroll(scrollWidth, targetScrollLeft)) {
       const first = cont.firstElementChild;
@@ -196,7 +198,6 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
         const firstWidth = getCardWidth(first);
         cont.appendChild(first);
         targetScrollLeft += firstWidth + margin;
-        cont.scrollLeft = targetScrollLeft;
       }
     }
     if (isMiddleOfScrollReversed(scrollWidth, targetScrollLeft) && isTouched) {
@@ -205,13 +206,13 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
         const lastChildWidth = getCardWidth(lastchild);
         cont.prepend(lastchild);
         targetScrollLeft -= lastChildWidth + margin;
-        cont.scrollLeft = targetScrollLeft;
       }
     }
     if (!isTouched) {
       targetScrollLeft -= scrollStep;
-      cont.scrollLeft = targetScrollLeft;
     }
+    scrollPositionRef.current = targetScrollLeft;
+    cont.scrollLeft = targetScrollLeft;
   };
 
   useEffect(() => {
@@ -250,6 +251,11 @@ const TradingSymbols = ({ className, symbols, uniqueId = "default" }) => {
         ref={symbolsRef}
         onTouchStart={() => setIsTouched(true)}
         onTouchEnd={() => setIsTouched(false)}
+        onScroll={() => {
+          const container = symbolsRef.current;
+          if (!container) return;
+          scrollPositionRef.current = container.scrollLeft;
+        }}
       >
         {prepareSymbols(symbols).map((symbol, key) => (
           <div
