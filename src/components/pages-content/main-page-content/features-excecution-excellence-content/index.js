@@ -1,4 +1,10 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useContext,
+  useLayoutEffect,
+} from "react";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
@@ -20,6 +26,7 @@ const FeaturesExecutionExcellence = () => {
   const { selectedLanguage } = useContext(LanguageContext);
   const [scrollIndex, setScrollIndex] = useState(0);
   const cardContainerRef = useRef(null);
+  const cardWidthRef = useRef(null);
 
   // Check if current language is RTL (Arabic)
   const isRTL = useRtlDirection();
@@ -32,6 +39,29 @@ const FeaturesExecutionExcellence = () => {
   };
 
   const visibleCards = getVisibleCards();
+
+  // Cache card width to avoid forced reflows
+  useLayoutEffect(() => {
+    const updateCardWidth = () => {
+      if (cardContainerRef.current) {
+        const firstCard = cardContainerRef.current.firstChild;
+        if (firstCard instanceof HTMLElement) {
+          cardWidthRef.current = firstCard.offsetWidth;
+        }
+      }
+    };
+
+    // Use requestAnimationFrame to read layout properties at the right time
+    const frameId = requestAnimationFrame(updateCardWidth);
+
+    // Also update on resize
+    window.addEventListener("resize", updateCardWidth);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", updateCardWidth);
+    };
+  }, [isDesktop, isTablet, isMobile, isRTL]);
 
   // Reset scroll index when screen size changes
   useEffect(() => {
@@ -115,12 +145,11 @@ const FeaturesExecutionExcellence = () => {
       newIndex = features.length - visibleCards;
     setScrollIndex(newIndex);
 
-    if (cardContainerRef.current) {
-      const container = cardContainerRef.current;
-      const firstCard = container.firstChild;
-
-      if (firstCard) {
-        const cardWidth = firstCard.offsetWidth;
+    // Use requestAnimationFrame to ensure we're reading layout properties at the right time
+    requestAnimationFrame(() => {
+      if (cardContainerRef.current && cardWidthRef.current !== null) {
+        const container = cardContainerRef.current;
+        const cardWidth = cardWidthRef.current;
         const gap = 17; // gap between cards
         const totalCardWidth = cardWidth + gap;
 
@@ -149,7 +178,7 @@ const FeaturesExecutionExcellence = () => {
           behavior: "smooth",
         });
       }
-    }
+    });
   };
 
   return (

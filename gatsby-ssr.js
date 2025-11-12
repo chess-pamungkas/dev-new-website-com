@@ -192,7 +192,116 @@ export const onRenderBody = ({
       src="https://metatraderweb.app/trade/widget.js"
     />,
   ]);
+  // Preconnect hints - add in onRenderBody to ensure they're in HTML
+  const apiUrl = process.env.GATSBY_OQTIMA_API_URL;
+  const preconnectLinks = [];
+
+  // Preconnect to API backend
+  if (apiUrl) {
+    try {
+      const apiUrlObj = new URL(apiUrl);
+      preconnectLinks.push(
+        <link
+          key="preconnect-api"
+          rel="preconnect"
+          href={apiUrlObj.origin}
+          crossOrigin="anonymous"
+        />,
+        <link
+          key="dns-prefetch-api"
+          rel="dns-prefetch"
+          href={apiUrlObj.origin}
+        />
+      );
+    } catch (e) {
+      // Invalid URL, skip
+    }
+  }
+
+  // Preconnect to MetaTrader widget
+  preconnectLinks.push(
+    <link
+      key="preconnect-metatrader"
+      rel="preconnect"
+      href="https://metatraderweb.app"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-metatrader"
+      rel="dns-prefetch"
+      href="https://metatraderweb.app"
+    />
+  );
+
+  // Preconnect to Conv.rs livechat
+  preconnectLinks.push(
+    <link
+      key="preconnect-convrs"
+      rel="preconnect"
+      href="https://webchat.conv.rs"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-convrs"
+      rel="dns-prefetch"
+      href="https://webchat.conv.rs"
+    />
+  );
+
+  // Preconnect to Trustpilot widget
+  preconnectLinks.push(
+    <link
+      key="preconnect-trustpilot"
+      rel="preconnect"
+      href="https://widget.trustpilot.com"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-trustpilot"
+      rel="dns-prefetch"
+      href="https://widget.trustpilot.com"
+    />
+  );
+
+  // Preconnect to Google Fonts (used by third-party widgets like Trustpilot)
+  // Note: We can't control font-display for fonts loaded by third-party scripts,
+  // but preconnecting helps reduce latency
+  preconnectLinks.push(
+    <link
+      key="preconnect-google-fonts"
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-google-fonts"
+      rel="dns-prefetch"
+      href="https://fonts.gstatic.com"
+    />
+  );
+
+  /*
+   * NOTE: Third-party resource limitations (cannot be fixed directly):
+   *
+   * 1. Cache lifetimes for third-party resources:
+   *    - Trustpilot widgets (widget.trustpilot.com) - Cache headers controlled by Trustpilot
+   *    - MetaTrader widget (metatraderweb.app) - Cache headers controlled by MetaTrader
+   *    These resources are served by third-party servers, so we cannot set cache headers.
+   *    Preconnect hints are added above to reduce connection latency.
+   *
+   * 2. Font display for Google Fonts:
+   *    - Google Fonts loaded by third-party scripts (e.g., Trustpilot) don't have font-display
+   *    - We cannot add font-display to fonts loaded by third-party scripts
+   *    - Preconnect hints are added above to help with font loading performance
+   *
+   * To improve these metrics, contact the third-party providers:
+   * - Trustpilot: Request better cache headers and font-display support
+   * - MetaTrader: Request better cache headers
+   */
+
   setHeadComponents([
+    // Preconnect hints - add first for early discovery
+    ...preconnectLinks,
     // Default title and description for Google bot fast mode
     <title key="default-title">
       Forex & CFD Trading on Stocks, Indices, Oil, Gold by OQtima™
@@ -229,7 +338,7 @@ export const onRenderBody = ({
   ]);
 };
 
-// Inject preload and preconnect links early in head for optimal performance
+// Inject preload link early in head for optimal LCP performance
 export const onPreRenderHTML = ({
   getHeadComponents,
   replaceHeadComponents,
@@ -238,91 +347,24 @@ export const onPreRenderHTML = ({
   const headComponents = getHeadComponents();
   const earlyHints = [];
 
-  // Preconnect hints - add these first for maximum impact
-  const apiUrl = process.env.GATSBY_OQTIMA_API_URL;
-
-  // Preconnect to API backend (600ms LCP savings per Lighthouse)
-  // Use GATSBY_OQTIMA_API_URL from environment variable for each environment
-  if (apiUrl) {
-    try {
-      const apiUrlObj = new URL(apiUrl);
-      earlyHints.push(
-        <link
-          key="preconnect-api"
-          rel="preconnect"
-          href={apiUrlObj.origin}
-          crossOrigin="anonymous"
-        />,
-        <link
-          key="dns-prefetch-api"
-          rel="dns-prefetch"
-          href={apiUrlObj.origin}
-        />
-      );
-    } catch (e) {
-      // Invalid URL, skip silently
-    }
-  }
-
-  // Preconnect to MetaTrader widget (critical for widget.js)
-  earlyHints.push(
-    <link
-      key="preconnect-metatrader"
-      rel="preconnect"
-      href="https://metatraderweb.app"
-      crossOrigin="anonymous"
-    />,
-    <link
-      key="dns-prefetch-metatrader"
-      rel="dns-prefetch"
-      href="https://metatraderweb.app"
-    />
-  );
-
-  // Preconnect to Conv.rs livechat
-  earlyHints.push(
-    <link
-      key="preconnect-convrs"
-      rel="preconnect"
-      href="https://webchat.conv.rs"
-      crossOrigin="anonymous"
-    />,
-    <link
-      key="dns-prefetch-convrs"
-      rel="dns-prefetch"
-      href="https://webchat.conv.rs"
-    />
-  );
-
-  // Preconnect to Trustpilot widget (in critical path)
-  earlyHints.push(
-    <link
-      key="preconnect-trustpilot"
-      rel="preconnect"
-      href="https://widget.trustpilot.com"
-      crossOrigin="anonymous"
-    />,
-    <link
-      key="dns-prefetch-trustpilot"
-      rel="dns-prefetch"
-      href="https://widget.trustpilot.com"
-    />
-  );
-
   // Preload LCP image for homepage/main promotion pages
+  // Use the correct hash: f8acc4 (updated from screenshot)
+  // Note: Helmet also adds a preload link, but this one is earlier in head for better discovery
   if (pathname === "/" || pathname.match(/^\/[a-z]{2}\/?$/)) {
     earlyHints.push(
       <link
         key="preload-globe-image"
         rel="preload"
         as="image"
-        href="/static/globe-9221a3a2c6689b620d91ba9459b8acc4.svg"
+        href="/static/globe-9221a3a2c6689b620d91ba9459f8acc4.svg"
       />
     );
   }
 
-  // Insert all early hints at the very beginning of head components
-  replaceHeadComponents([...earlyHints, ...headComponents]);
+  // Insert preload link at the very beginning of head components
+  if (earlyHints.length > 0) {
+    replaceHeadComponents([...earlyHints, ...headComponents]);
+  }
 };
 
 export const wrapPageElement = ({ element }) => {
