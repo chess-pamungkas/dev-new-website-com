@@ -502,15 +502,6 @@ export const ArrowIcon = ({ isRTL = false }) => {
   const hookRTL = useRtlDirection();
   const shouldFlip = isRTL || hookRTL;
 
-  console.log(
-    "ArrowIcon: isRTL =",
-    isRTL,
-    "hookRTL =",
-    hookRTL,
-    "shouldFlip =",
-    shouldFlip
-  );
-
   // FORCE the transform with !important
   const transformStyle = shouldFlip ? "scaleX(-1) !important" : "none";
 
@@ -603,16 +594,6 @@ export const ButtonPrimaryHero = ({
   const isRTL = useRtlDirection();
   const finalRTL = isRTL;
 
-  // Debug logging
-  console.log(
-    "ButtonPrimaryHero: isRTL =",
-    isRTL,
-    "finalRTL =",
-    finalRTL,
-    "text =",
-    text
-  );
-
   return (
     <BaseButton
       className={cn("button-primary-hero", className)}
@@ -639,16 +620,6 @@ export const ButtonSecondaryHero = ({
 }) => {
   const isRTL = useRtlDirection();
   const finalRTL = isRTL;
-
-  // Debug logging
-  console.log(
-    "ButtonSecondaryHero: isRTL =",
-    isRTL,
-    "finalRTL =",
-    finalRTL,
-    "text =",
-    text
-  );
 
   return (
     <BaseButton

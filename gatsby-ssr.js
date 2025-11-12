@@ -47,6 +47,13 @@ export const onRenderBody = ({
         </div>
       </div>
     </section>,
+    ,
+    <script
+      key="clean-bis-attributes"
+      dangerouslySetInnerHTML={{
+        __html: `(function(){try{var nodes=document.querySelectorAll('[bis_skin_checked]');for(var i=0;i<nodes.length;i++){nodes[i].removeAttribute('bis_skin_checked');}}catch(e){}})();`,
+      }}
+    />,
   ]);
   setPostBodyComponents([
     <script

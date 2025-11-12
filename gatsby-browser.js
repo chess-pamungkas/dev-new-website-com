@@ -50,44 +50,6 @@ if ("serviceWorker" in navigator) {
   }
 }
 
-const scheduleConvrsWidgetLoad = () => {
-  if (typeof window === "undefined") return;
-  if (window.__OQTIMA_CONVRS_LOADING__) return;
+export const onClientEntry = () => {};
 
-  const loadScript = () => {
-    if (document.getElementById("convrs-webchat")) return;
-    const src = process.env.GATSBY_CONVRS_LIVECHAT;
-    if (!src) return;
-
-    const script = document.createElement("script");
-    script.id = "convrs-webchat";
-    script.src = src;
-    script.async = true;
-    script.setAttribute("data-loaded-late", "true");
-    document.body.appendChild(script);
-  };
-
-  const requestIdle = window.requestIdleCallback
-    ? (cb) => window.requestIdleCallback(cb, { timeout: 5000 })
-    : (cb) => setTimeout(cb, 1500);
-
-  const triggerLoad = () => {
-    if (window.__OQTIMA_CONVRS_LOADING__) return;
-    window.__OQTIMA_CONVRS_LOADING__ = true;
-    requestIdle(loadScript);
-  };
-
-  if (document.readyState === "complete") {
-    triggerLoad();
-  } else {
-    window.addEventListener("load", triggerLoad, { once: true });
-  }
-};
-
-export const onClientEntry = () => {
-  scheduleConvrsWidgetLoad();
-};
-
-export const onRouteUpdate = () => {
-  scheduleConvrsWidgetLoad();
-};
+export const onRouteUpdate = () => {};

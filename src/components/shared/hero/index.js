@@ -377,19 +377,16 @@ const Hero = ({
             {showHeroImage && (
               <div className={`${heroType}__hero-img`} aria-hidden="true">
                 {heroType === "main-promotion" && (
-                  <picture>
-                    <source srcSet={globeImage} type="image/svg+xml" />
-                    <img
-                      src={globeImage}
-                      alt=""
-                      width="734"
-                      height="734"
-                      loading="eager"
-                      fetchPriority="high"
-                      decoding="sync"
-                      className={`${heroType}__hero-img-element`}
-                    />
-                  </picture>
+                  <img
+                    src={globeImage}
+                    alt=""
+                    width="734"
+                    height="734"
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="sync"
+                    className={`${heroType}__hero-img-element`}
+                  />
                 )}
               </div>
             )}
@@ -568,19 +565,16 @@ const Hero = ({
               <div className={`${heroType}__hand-container`}>
                 <div className={`${heroType}__hand-img`} aria-hidden="true">
                   {heroType === "main-promotion" && (
-                    <picture>
-                      <source srcSet={handImage} type="image/svg+xml" />
-                      <img
-                        src={handImage}
-                        alt=""
-                        width="714"
-                        height="692"
-                        loading="eager"
-                        fetchPriority="high"
-                        decoding="sync"
-                        className={`${heroType}__hand-img-element`}
-                      />
-                    </picture>
+                    <img
+                      src={handImage}
+                      alt=""
+                      width="714"
+                      height="692"
+                      loading="eager"
+                      fetchpriority="high"
+                      decoding="sync"
+                      className={`${heroType}__hand-img-element`}
+                    />
                   )}
                 </div>
               </div>

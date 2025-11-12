@@ -146,9 +146,15 @@ NavbarItem.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string.isRequired,
   subItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-    })
+    PropTypes.oneOfType([
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }),
+      PropTypes.shape({
+        groupTitle: PropTypes.string.isRequired,
+        groupItems: PropTypes.array,
+      }),
+    ])
   ),
   link: PropTypes.string,
   isPartners: PropTypes.bool,
