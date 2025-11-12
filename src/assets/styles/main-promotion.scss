@@ -193,18 +193,10 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
     height: 734px;
     opacity: 0.62;
     z-index: 1;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-
-    img {
-      width: 100%;
-      height: 100%;
-      max-width: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
+    background-image: $globe-image;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
     z-index: 1;
 
     @include mobile {

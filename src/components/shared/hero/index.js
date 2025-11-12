@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { MarketingContext } from "../../../context/marketing-context";
@@ -9,7 +10,8 @@ import LanguageContext from "../../../context/language-context";
 import { HeroButtons, ButtonPrimaryHero } from "../reusable-buttons";
 import FaqSearchBar from "../../help-center/faq-search-bar";
 import TrustPilot from "../trust-pilot";
-import { StaticImage } from "gatsby-plugin-image";
+import globeImage from "../../../assets/images/bg/hero/main-promotion/globe.svg";
+import handImage from "../../../assets/images/bg/hero/main-promotion/hand.svg";
 
 const Hero = ({
   className,
@@ -349,25 +351,21 @@ const Hero = ({
           [`${heroType}--rtl`]: isRTL,
         })}
       >
+        {heroType === "main-promotion" && showHeroImage && (
+          <Helmet>
+            <link rel="preload" as="image" href={globeImage} />
+          </Helmet>
+        )}
+        {heroType === "main-promotion" && showHandImage && (
+          <Helmet>
+            <link rel="preload" as="image" href={handImage} />
+          </Helmet>
+        )}
         <div className={`${heroType}__hero-container`}>
           {/* Hero Background Image */}
           <div className={`${heroType}__hero-bg`}>
-            {showHeroImage && heroType === "main-promotion" && (
-              <div className={`${heroType}__hero-img`}>
-                <StaticImage
-                  src="../../../assets/images/bg/hero/main-promotion/globe.svg"
-                  alt={t(translationKeys.title)}
-                  loading="eager"
-                  fetchpriority="high"
-                  placeholder="none"
-                  layout="fixed"
-                  width={734}
-                  height={734}
-                />
-              </div>
-            )}
-            {showHeroImage && heroType !== "main-promotion" && (
-              <div className={`${heroType}__hero-img`}></div>
+            {showHeroImage && (
+              <div className={`${heroType}__hero-img`} aria-hidden="true"></div>
             )}
           </div>
 
@@ -542,7 +540,10 @@ const Hero = ({
             {/* Hand Image - positioned on the right side */}
             {showHandImage && (
               <div className={`${heroType}__hand-container`}>
-                <div className={`${heroType}__hand-img`}></div>
+                <div
+                  className={`${heroType}__hand-img`}
+                  aria-hidden="true"
+                ></div>
               </div>
             )}
           </div>

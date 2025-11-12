@@ -1,6 +1,13 @@
 import React, { cloneElement, createElement } from "react";
 import Layout from "./src/components/shared/layout";
 
+// Critical font assets (importing ensures hashed URLs are available at build time)
+import SofiaProRegularWoff2 from "./src/assets/fonts/SofiaProRegular.woff2";
+import SofiaProMediumWoff2 from "./src/assets/fonts/SofiaProMedium.woff2";
+import SofiaProBoldWoff2 from "./src/assets/fonts/SofiaProBold.woff2";
+import SofiaProBlackWoff2 from "./src/assets/fonts/SofiaProBlack.woff2";
+import RobotoMediumTtf from "./src/assets/fonts/Roboto-Medium.ttf";
+
 export const onRenderBody = ({
   setPostBodyComponents,
   setHeadComponents,
@@ -196,27 +203,31 @@ export const onRenderBody = ({
   const apiUrl = process.env.GATSBY_OQTIMA_API_URL;
   const preconnectLinks = [];
 
-  // Preconnect to API backend
+  // Preconnect to API backend (env or default)
+  const apiOrigins = new Set();
   if (apiUrl) {
     try {
-      const apiUrlObj = new URL(apiUrl);
-      preconnectLinks.push(
-        <link
-          key="preconnect-api"
-          rel="preconnect"
-          href={apiUrlObj.origin}
-          crossOrigin="anonymous"
-        />,
-        <link
-          key="dns-prefetch-api"
-          rel="dns-prefetch"
-          href={apiUrlObj.origin}
-        />
-      );
+      apiOrigins.add(new URL(apiUrl).origin);
     } catch (e) {
-      // Invalid URL, skip
+      // Invalid URL, ignore
     }
   }
+
+  apiOrigins.forEach((origin) => {
+    preconnectLinks.push(
+      <link
+        key={`preconnect-api-${origin}`}
+        rel="preconnect"
+        href={origin}
+        crossOrigin="anonymous"
+      />,
+      <link
+        key={`dns-prefetch-api-${origin}`}
+        rel="dns-prefetch"
+        href={origin}
+      />
+    );
+  });
 
   // Preconnect to MetaTrader widget
   preconnectLinks.push(
@@ -302,6 +313,47 @@ export const onRenderBody = ({
   setHeadComponents([
     // Preconnect hints - add first for early discovery
     ...preconnectLinks,
+    // Preload critical fonts used above the fold
+    <link
+      key="preload-font-sofia-regular"
+      rel="preload"
+      href={SofiaProRegularWoff2}
+      as="font"
+      type="font/woff2"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="preload-font-sofia-medium"
+      rel="preload"
+      href={SofiaProMediumWoff2}
+      as="font"
+      type="font/woff2"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="preload-font-sofia-bold"
+      rel="preload"
+      href={SofiaProBoldWoff2}
+      as="font"
+      type="font/woff2"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="preload-font-sofia-black"
+      rel="preload"
+      href={SofiaProBlackWoff2}
+      as="font"
+      type="font/woff2"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="preload-font-roboto-medium"
+      rel="preload"
+      href={RobotoMediumTtf}
+      as="font"
+      type="font/ttf"
+      crossOrigin="anonymous"
+    />,
     // Default title and description for Google bot fast mode
     <title key="default-title">
       Forex & CFD Trading on Stocks, Indices, Oil, Gold by OQtima™
