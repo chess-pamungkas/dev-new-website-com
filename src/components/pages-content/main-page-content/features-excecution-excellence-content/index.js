@@ -1,10 +1,4 @@
-import React, {
-  useRef,
-  useState,
-  useEffect,
-  useContext,
-  useLayoutEffect,
-} from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { useTranslationWithVariables } from "../../../../helpers/hooks/use-translation-with-vars";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
@@ -41,27 +35,35 @@ const FeaturesExecutionExcellence = () => {
   const visibleCards = getVisibleCards();
 
   // Cache card width to avoid forced reflows
-  useLayoutEffect(() => {
+  useEffect(() => {
+    const container = cardContainerRef.current;
+    if (!container) return undefined;
+
     const updateCardWidth = () => {
-      if (cardContainerRef.current) {
-        const firstCard = cardContainerRef.current.firstChild;
-        if (firstCard instanceof HTMLElement) {
-          cardWidthRef.current = firstCard.offsetWidth;
-        }
+      const firstCard = container.firstElementChild;
+      if (firstCard instanceof HTMLElement) {
+        cardWidthRef.current = firstCard.offsetWidth;
       }
     };
 
-    // Use requestAnimationFrame to read layout properties at the right time
-    const frameId = requestAnimationFrame(updateCardWidth);
+    updateCardWidth();
 
-    // Also update on resize
-    window.addEventListener("resize", updateCardWidth);
+    if (typeof ResizeObserver !== "undefined") {
+      const observer = new ResizeObserver(() => {
+        requestAnimationFrame(updateCardWidth);
+      });
+      observer.observe(container);
+
+      return () => observer.disconnect();
+    }
+
+    const handleResize = () => requestAnimationFrame(updateCardWidth);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      cancelAnimationFrame(frameId);
-      window.removeEventListener("resize", updateCardWidth);
+      window.removeEventListener("resize", handleResize);
     };
-  }, [isDesktop, isTablet, isMobile, isRTL]);
+  }, [isRTL]);
 
   // Reset scroll index when screen size changes
   useEffect(() => {
@@ -145,39 +147,28 @@ const FeaturesExecutionExcellence = () => {
       newIndex = features.length - visibleCards;
     setScrollIndex(newIndex);
 
-    // Use requestAnimationFrame to ensure we're reading layout properties at the right time
     requestAnimationFrame(() => {
-      if (cardContainerRef.current && cardWidthRef.current !== null) {
-        const container = cardContainerRef.current;
-        const cardWidth = cardWidthRef.current;
-        const gap = 17; // gap between cards
-        const totalCardWidth = cardWidth + gap;
+      const container = cardContainerRef.current;
+      const cardWidth = cardWidthRef.current;
+      if (!container || cardWidth == null) return;
 
-        // Calculate scroll position to show the new index
-        let scrollPosition = totalCardWidth * newIndex;
+      const gap = 17;
+      const totalCardWidth = cardWidth + gap;
+      const scrollPosition = totalCardWidth * newIndex;
 
-        // For RTL with direction:rtl CSS, the scroll behavior is reversed
-        // We need to scroll in the opposite direction
+      requestAnimationFrame(() => {
         if (isRTL) {
-          // In RTL mode, scrolling works in reverse
-          // Index 0 = rightmost position (scrollLeft ≈ 0)
-          // Higher index = scroll left (negative or lower scrollLeft depending on browser)
-          scrollPosition = totalCardWidth * newIndex;
-
-          // Use negative scroll for RTL to move left
-          // This works consistently across browsers with direction:rtl
           container.scrollTo({
             left: -scrollPosition,
             behavior: "smooth",
           });
-          return; // Exit early for RTL
+        } else {
+          container.scrollTo({
+            left: scrollPosition,
+            behavior: "smooth",
+          });
         }
-
-        container.scrollTo({
-          left: scrollPosition,
-          behavior: "smooth",
-        });
-      }
+      });
     });
   };
 
