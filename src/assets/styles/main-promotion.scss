@@ -193,6 +193,9 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
     height: 734px;
     opacity: 0.62;
     z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
     background-image: $globe-image;
     background-size: contain;
     background-repeat: no-repeat;
@@ -327,10 +330,33 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
   &__hand-img {
     width: 100%;
     height: 100%;
-    background-image: $hand-image;
-    background-size: contain;
-    background-position: bottom center;
-    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: bottom center;
+      display: block;
+    }
+  }
+
+  &__hero-img-element {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    display: block;
+  }
+
+  &__hand-img-element {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    display: block;
   }
 
   &__warning-container {

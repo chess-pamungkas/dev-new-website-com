@@ -365,7 +365,20 @@ const Hero = ({
           {/* Hero Background Image */}
           <div className={`${heroType}__hero-bg`}>
             {showHeroImage && (
-              <div className={`${heroType}__hero-img`} aria-hidden="true"></div>
+              <div className={`${heroType}__hero-img`} aria-hidden="true">
+                {heroType === "main-promotion" && (
+                  <img
+                    src={globeImage}
+                    alt=""
+                    width="734"
+                    height="734"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="sync"
+                    className={`${heroType}__hero-img-element`}
+                  />
+                )}
+              </div>
             )}
           </div>
 
@@ -540,10 +553,20 @@ const Hero = ({
             {/* Hand Image - positioned on the right side */}
             {showHandImage && (
               <div className={`${heroType}__hand-container`}>
-                <div
-                  className={`${heroType}__hand-img`}
-                  aria-hidden="true"
-                ></div>
+                <div className={`${heroType}__hand-img`} aria-hidden="true">
+                  {heroType === "main-promotion" && (
+                    <img
+                      src={handImage}
+                      alt=""
+                      width="714"
+                      height="692"
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="sync"
+                      className={`${heroType}__hand-img-element`}
+                    />
+                  )}
+                </div>
               </div>
             )}
           </div>
