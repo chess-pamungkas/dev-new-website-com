@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { MarketingContext } from "../../../context/marketing-context";
@@ -10,7 +9,7 @@ import LanguageContext from "../../../context/language-context";
 import { HeroButtons, ButtonPrimaryHero } from "../reusable-buttons";
 import FaqSearchBar from "../../help-center/faq-search-bar";
 import TrustPilot from "../trust-pilot";
-import globeImage from "../../../assets/images/bg/hero/main-promotion/globe.svg";
+import { StaticImage } from "gatsby-plugin-image";
 
 const Hero = ({
   className,
@@ -345,17 +344,6 @@ const Hero = ({
 
   return (
     <>
-      {heroType === "main-promotion" && showHeroImage && (
-        <Helmet>
-          <link
-            rel="preload"
-            as="image"
-            href={globeImage}
-            fetchpriority="high"
-            imagesrcset={`${globeImage} 1x`}
-          />
-        </Helmet>
-      )}
       <section
         className={cn(`${heroType}`, className, {
           [`${heroType}--rtl`]: isRTL,
@@ -366,14 +354,15 @@ const Hero = ({
           <div className={`${heroType}__hero-bg`}>
             {showHeroImage && heroType === "main-promotion" && (
               <div className={`${heroType}__hero-img`}>
-                <img
-                  src={globeImage}
+                <StaticImage
+                  src="../../../assets/images/bg/hero/main-promotion/globe.svg"
                   alt={t(translationKeys.title)}
-                  fetchPriority="high"
                   loading="eager"
-                  decoding="sync"
-                  width="734"
-                  height="734"
+                  fetchpriority="high"
+                  placeholder="none"
+                  layout="fixed"
+                  width={734}
+                  height={734}
                 />
               </div>
             )}
