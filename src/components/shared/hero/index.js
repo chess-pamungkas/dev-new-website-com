@@ -353,12 +353,22 @@ const Hero = ({
       >
         {heroType === "main-promotion" && showHeroImage && (
           <Helmet>
-            <link rel="preload" as="image" href={globeImage} />
+            <link
+              rel="preload"
+              as="image"
+              href={globeImage}
+              fetchpriority="high"
+            />
           </Helmet>
         )}
         {heroType === "main-promotion" && showHandImage && (
           <Helmet>
-            <link rel="preload" as="image" href={handImage} />
+            <link
+              rel="preload"
+              as="image"
+              href={handImage}
+              fetchpriority="high"
+            />
           </Helmet>
         )}
         <div className={`${heroType}__hero-container`}>
@@ -375,7 +385,7 @@ const Hero = ({
                       width="734"
                       height="734"
                       loading="eager"
-                      fetchpriority="high"
+                      fetchPriority="high"
                       decoding="sync"
                       className={`${heroType}__hero-img-element`}
                     />
@@ -566,7 +576,7 @@ const Hero = ({
                         width="714"
                         height="692"
                         loading="eager"
-                        fetchpriority="high"
+                        fetchPriority="high"
                         decoding="sync"
                         className={`${heroType}__hand-img-element`}
                       />

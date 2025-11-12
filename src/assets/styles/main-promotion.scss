@@ -196,6 +196,19 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
     display: block;
     z-index: 1;
 
+    picture,
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: bottom center;
+      display: block;
+    }
+
+    picture {
+      display: block;
+    }
+
     @include mobile {
       position: absolute;
       width: 734px;
@@ -325,6 +338,19 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
     width: 100%;
     height: 100%;
     display: block;
+
+    picture,
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: bottom center;
+      display: block;
+    }
+
+    picture {
+      display: block;
+    }
   }
 
   &__hero-img-element {
