@@ -166,49 +166,50 @@ const FSA_TRADING_TAB = {
 const FSA_COMPANY_TAB = {
   title: "header-nav-tab-company",
   subItems: [
-    // Learn Column
-    {
-      groupTitle: "header-nav-tab-trading-hub-learn-title",
-      groupItems: [
-        {
-          title: "header-nav-tab-trading-hub-trading-academy-title",
-          link: "/trading-academy",
-          description: "header-nav-tab-trading-hub-trading-academy-desc",
-        },
-        {
-          title: "header-nav-tab-trading-hub-beginners-guide-title",
-          link: "/beginners-guide",
-          description: "header-nav-tab-trading-hub-beginners-guide-desc",
-        },
-        {
-          title: "header-nav-tab-trading-hub-intermediate-lessons-title",
-          link: "/intermediate-lessons",
-          description: "header-nav-tab-trading-hub-intermediate-lessons-desc",
-        },
-        {
-          title: "header-nav-tab-trading-hub-advanced-playbook-title",
-          link: "/advanced-playbook",
-          description: "header-nav-tab-trading-hub-advanced-playbook-desc",
-        },
-      ],
-    },
+    // Learn Column - Hidden (commented out)
+    // {
+    //   groupTitle: "header-nav-tab-trading-hub-learn-title",
+    //   groupItems: [
+    //     {
+    //       title: "header-nav-tab-trading-hub-trading-academy-title",
+    //       link: "/trading-academy",
+    //       description: "header-nav-tab-trading-hub-trading-academy-desc",
+    //     },
+    //     {
+    //       title: "header-nav-tab-trading-hub-beginners-guide-title",
+    //       link: "/beginners-guide",
+    //       description: "header-nav-tab-trading-hub-beginners-guide-desc",
+    //     },
+    //     {
+    //       title: "header-nav-tab-trading-hub-intermediate-lessons-title",
+    //       link: "/intermediate-lessons",
+    //       description: "header-nav-tab-trading-hub-intermediate-lessons-desc",
+    //     },
+    //     {
+    //       title: "header-nav-tab-trading-hub-advanced-playbook-title",
+    //       link: "/advanced-playbook",
+    //       description: "header-nav-tab-trading-hub-advanced-playbook-desc",
+    //     },
+    //   ],
+    // },
     // Help Center Column
     {
       groupTitle: "header-nav-tab-trading-hub-help-center-title",
       groupItems: [
-        {
-          title: "header-nav-tab-trading-hub-client-portal-assistance-title",
-          link: "/client-portal-assistance",
-          icon: HelpCenterIcon,
-          description:
-            "header-nav-tab-trading-hub-client-portal-assistance-desc",
-        },
-        {
-          title: "header-nav-tab-trading-hub-platform-setup-guides-title",
-          link: "/platform-setup-guides",
-          icon: HelpCenterIcon,
-          description: "header-nav-tab-trading-hub-platform-setup-guides-desc",
-        },
+        // Hidden items - commented out
+        // {
+        //   title: "header-nav-tab-trading-hub-client-portal-assistance-title",
+        //   link: "/client-portal-assistance",
+        //   icon: HelpCenterIcon,
+        //   description:
+        //     "header-nav-tab-trading-hub-client-portal-assistance-desc",
+        // },
+        // {
+        //   title: "header-nav-tab-trading-hub-platform-setup-guides-title",
+        //   link: "/platform-setup-guides",
+        //   icon: HelpCenterIcon,
+        //   description: "header-nav-tab-trading-hub-platform-setup-guides-desc",
+        // },
         {
           title: "header-nav-tab-company-help-center-title",
           link: FAQ_PAGE_LINK,
@@ -245,12 +246,13 @@ const FSA_COMPANY_TAB = {
           icon: ContactUsIcon,
           description: "header-nav-tab-trading-hub-send-message-desc",
         },
-        {
-          title: "header-nav-tab-trading-hub-support-hours-title",
-          link: CONTACT_US_PAGE_LINK,
-          icon: ContactUsIcon,
-          description: "header-nav-tab-trading-hub-support-hours-desc",
-        },
+        // Hidden item - commented out
+        // {
+        //   title: "header-nav-tab-trading-hub-support-hours-title",
+        //   link: CONTACT_US_PAGE_LINK,
+        //   icon: ContactUsIcon,
+        //   description: "header-nav-tab-trading-hub-support-hours-desc",
+        // },
       ],
     },
     // Legacy items for backward compatibility

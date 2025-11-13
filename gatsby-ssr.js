@@ -17,7 +17,7 @@ export const onRenderBody = ({
   setPreBodyComponents,
   pathname,
 }) => {
-  setPreBodyComponents([
+  const preBodyComponents = [
     // // Default content for Google bot fast mode (Hidden for users)
     <section
       key="default-nojs-content"
@@ -58,7 +58,85 @@ export const onRenderBody = ({
         __html: `(function(){try{var nodes=document.querySelectorAll('[bis_skin_checked]');for(var i=0;i<nodes.length;i++){nodes[i].removeAttribute('bis_skin_checked');}}catch(e){}})();`,
       }}
     />,
-  ]);
+  ];
+
+  // Add script to optimize LCP image rendering for homepage
+  // This ensures the image container is visible immediately after React renders it
+  if (pathname === "/" || (pathname && pathname.match(/^\/[a-z]{2}\/?$/))) {
+    preBodyComponents.push(
+      <script
+        key="lcp-image-optimizer"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              // Optimize LCP image visibility immediately after React renders it
+              // This runs as early as possible to reduce element render delay
+              function optimizeLCPImage() {
+                var heroImg = document.querySelector('.main-promotion__hero-img');
+                var heroImgElement = document.querySelector('.main-promotion__hero-img-element');
+                
+                if (heroImg) {
+                  // Ensure container is visible immediately
+                  heroImg.style.display = 'block';
+                  heroImg.style.visibility = 'visible';
+                  heroImg.style.opacity = '0.62';
+                }
+                
+                if (heroImgElement) {
+                  // Ensure image is visible and properly styled
+                  heroImgElement.style.display = 'block';
+                  heroImgElement.style.visibility = 'visible';
+                }
+              }
+              
+              // Run immediately if DOM is ready
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', optimizeLCPImage);
+              } else {
+                optimizeLCPImage();
+              }
+              
+              // Also run after a short delay to catch React-rendered elements
+              setTimeout(optimizeLCPImage, 100);
+              setTimeout(optimizeLCPImage, 500);
+              
+              // Monitor for when React renders the image
+              if (window.MutationObserver) {
+                var observer = new MutationObserver(function(mutations) {
+                  mutations.forEach(function(mutation) {
+                    if (mutation.addedNodes.length > 0) {
+                      mutation.addedNodes.forEach(function(node) {
+                        if (node.nodeType === 1) {
+                          var img = node.querySelector && node.querySelector('.main-promotion__hero-img-element');
+                          if (img || (node.classList && node.classList.contains('main-promotion__hero-img-element'))) {
+                            optimizeLCPImage();
+                          }
+                        }
+                      });
+                    }
+                  });
+                });
+                
+                if (document.body) {
+                  observer.observe(document.body, {
+                    childList: true,
+                    subtree: true
+                  });
+                  
+                  // Stop observing after 5 seconds
+                  setTimeout(function() {
+                    observer.disconnect();
+                  }, 5000);
+                }
+              }
+            })();
+          `,
+        }}
+      />
+    );
+  }
+
+  setPreBodyComponents(preBodyComponents);
   setPostBodyComponents([
     <script
       key="live-chat"
@@ -70,18 +148,12 @@ export const onRenderBody = ({
       key="livechat-debug"
       dangerouslySetInnerHTML={{
         __html: `
-          // Debug livechat loading
+          // Debug livechat loading (silent - no console logs)
           (function() {
             const checkLivechat = setInterval(function() {
-              const livechatScript = document.getElementById('convrs-webchat');
               const livechatElements = document.querySelectorAll('[id*="convrs"], [class*="convrs"]');
               
-              if (livechatScript) {
-                console.log('✅ Livechat script element found');
-              }
-              
               if (livechatElements.length > 0) {
-                console.log('✅ Livechat elements found:', livechatElements.length);
                 clearInterval(checkLivechat);
               }
             }, 2000);

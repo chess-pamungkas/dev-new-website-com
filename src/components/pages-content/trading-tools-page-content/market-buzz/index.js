@@ -152,26 +152,6 @@ const MarketBuzz = ({ className }) => {
 
         {/* AI Feature Section */}
         <div className="market-buzz__ai-feature">
-          {/* First Card */}
-          <div className="market-buzz__ai-card">
-            <div className="market-buzz__ai-content">
-              <div className="market-buzz__ai-icon">
-                <img
-                  src={aiFeature.icon}
-                  alt="AI Feature"
-                  className="market-buzz__ai-icon-img"
-                />
-              </div>
-              <div className="market-buzz__ai-text">
-                <h3 className="market-buzz__ai-title">{aiFeature.title}</h3>
-                <p className="market-buzz__ai-description">
-                  {aiFeature.description}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Second Card */}
           <div className="market-buzz__ai-card">
             <div className="market-buzz__ai-content">
               <div className="market-buzz__ai-icon">
