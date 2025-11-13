@@ -61,6 +61,40 @@ export const onRenderBody = ({
   ]);
   setPostBodyComponents([
     <script
+      key="live-chat"
+      defer
+      id="convrs-webchat"
+      src={process.env.GATSBY_CONVRS_LIVECHAT}
+    />,
+    <script
+      key="livechat-debug"
+      dangerouslySetInnerHTML={{
+        __html: `
+          // Debug livechat loading
+          (function() {
+            const checkLivechat = setInterval(function() {
+              const livechatScript = document.getElementById('convrs-webchat');
+              const livechatElements = document.querySelectorAll('[id*="convrs"], [class*="convrs"]');
+              
+              if (livechatScript) {
+                console.log('✅ Livechat script element found');
+              }
+              
+              if (livechatElements.length > 0) {
+                console.log('✅ Livechat elements found:', livechatElements.length);
+                clearInterval(checkLivechat);
+              }
+            }, 2000);
+            
+            // Stop checking after 30 seconds
+            setTimeout(function() {
+              clearInterval(checkLivechat);
+            }, 30000);
+          })();
+        `,
+      }}
+    />,
+    <script
       key="livechat-management"
       dangerouslySetInnerHTML={{
         __html: `
