@@ -403,23 +403,18 @@ export const onPreRenderHTML = ({
   // Preload LCP image for homepage/main promotion pages
   // Use the correct hash: f8acc4 (updated from screenshot)
   // Note: Helmet also adds a preload link, but this one is earlier in head for better discovery
-  // Place it at the very beginning of head for earliest discovery
   if (pathname === "/" || pathname.match(/^\/[a-z]{2}\/?$/)) {
-    // Add preload link with fetchpriority for optimal LCP
-    // Using lowercase fetchpriority as per HTML spec (React will preserve it)
     earlyHints.push(
       <link
         key="preload-globe-image"
         rel="preload"
         as="image"
         href="/static/globe-9221a3a2c6689b620d91ba9459f8acc4.svg"
-        fetchpriority="high"
       />
     );
   }
 
   // Insert preload link at the very beginning of head components
-  // This ensures it's discovered as early as possible
   if (earlyHints.length > 0) {
     replaceHeadComponents([...earlyHints, ...headComponents]);
   }

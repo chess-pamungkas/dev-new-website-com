@@ -20,8 +20,7 @@ import { useLocation } from "@reach/router";
 
 const Layout = ({ children }) => {
   try {
-    // Always render content immediately - no conditional rendering to avoid hydration issues
-    // This ensures server and client render the same HTML initially
+    const [isLoaded, setIsLoaded] = useState(false);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const location = useLocation();
     const isContactUsPage =
@@ -30,11 +29,14 @@ const Layout = ({ children }) => {
       location?.pathname?.includes("/contact-us");
 
     // Check if popup registration is open
-    // Only use state to avoid hydration mismatch - don't check DOM during render
-    // The useEffect below will update isPopupOpen after mount
-    const isPopupRegistrationOpen = isPopupOpen;
+    const isPopupRegistrationOpen =
+      isPopupOpen ||
+      (typeof window !== "undefined" &&
+        document.querySelector(".popup-registration") !== null);
 
     useEffect(() => {
+      setIsLoaded(true);
+
       // Push UTM parameters to GTM dataLayer
       if (isBrowser()) {
         pushUTMParamsToDataLayer();
@@ -79,13 +81,17 @@ const Layout = ({ children }) => {
                       <ReCaptchaProvider
                         showBadge={isContactUsPage || isPopupRegistrationOpen}
                       >
-                        <Header />
-                        <CookiesPopup />
-                        <section className="scroll-container">
-                          {/* Render children directly - MainPromotion will be outside MainContainer */}
-                          {children}
-                          <Footer />
-                        </section>
+                        {isLoaded && (
+                          <>
+                            <Header />
+                            <CookiesPopup />
+                            <section className="scroll-container">
+                              {/* Render children directly - MainPromotion will be outside MainContainer */}
+                              {children}
+                              <Footer />
+                            </section>
+                          </>
+                        )}
                         {/* <Bookmark /> */}
                       </ReCaptchaProvider>
                     </TradingProvider>
