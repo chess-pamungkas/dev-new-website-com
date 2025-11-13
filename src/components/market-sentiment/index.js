@@ -15,6 +15,7 @@ import symbolMapping from "../trading-ticker/components/trading-symbols/symbol-i
 import { getTradingSections } from "../../helpers/config";
 import { filterSymbols } from "../../helpers/services/filter-symbols";
 import { io } from "socket.io-client";
+import { isBrowser } from "../../helpers/services/is-browser";
 
 const MarketSentimentContent = () => {
   const { isMobile } = useWindowSize();
@@ -183,12 +184,13 @@ const MarketSentimentContent = () => {
 
   // Fetch data for all categories
   useEffect(() => {
-    if (!API_URL) {
+    if (!API_URL || !isBrowser()) {
       setIsLoading(false);
       return;
     }
 
     const socket = io(`${API_URL}ws-stocks/`, {
+      transports: ["polling", "websocket"], // Fallback to polling if websocket fails
       timeout: 10000, // 10 second timeout
       reconnection: true,
       reconnectionAttempts: 3,
@@ -250,15 +252,24 @@ const MarketSentimentContent = () => {
       }
     });
 
-    // Handle connection errors
+    // Handle connection errors silently (don't spam console)
     socket.on("connect_error", (error) => {
-      console.error("Socket connection error:", error);
+      // Only log in development, suppress in production
+      if (process.env.NODE_ENV === "development") {
+        console.debug("Socket.IO connection error:", error.message);
+      }
       clearTimeout(loadingTimeout);
       setIsLoading(false);
     });
 
-    socket.on("disconnect", () => {
-      console.log("Socket disconnected");
+    socket.on("disconnect", (reason) => {
+      // Only log unexpected disconnects
+      if (
+        reason !== "io client disconnect" &&
+        process.env.NODE_ENV === "development"
+      ) {
+        console.debug("Socket.IO disconnected:", reason);
+      }
     });
 
     // Fetch data for each category
@@ -276,6 +287,9 @@ const MarketSentimentContent = () => {
     return () => {
       clearInterval(intervalId);
       clearTimeout(loadingTimeout);
+      socket.off("reply");
+      socket.off("connect_error");
+      socket.off("disconnect");
       socket.disconnect();
     };
   }, [API_URL]);

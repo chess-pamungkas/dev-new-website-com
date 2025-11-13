@@ -28,19 +28,51 @@ export const TradingProvider = ({ children }) => {
 
     try {
       const socketInstance = io(normalizedUrl, {
-        transports: ["websocket"],
+        transports: ["polling", "websocket"], // Fallback to polling if websocket fails
+        reconnection: true,
+        reconnectionAttempts: 5,
+        reconnectionDelay: 1000,
+        timeout: 10000,
       });
+
       socketRef.current = socketInstance;
-      setSocketReady(true);
+
+      // Handle connection errors silently (don't spam console)
+      socketInstance.on("connect_error", (error) => {
+        // Only log in development, suppress in production
+        if (process.env.NODE_ENV === "development") {
+          console.debug("Socket.IO connection error:", error.message);
+        }
+      });
+
+      socketInstance.on("disconnect", (reason) => {
+        // Only log unexpected disconnects
+        if (
+          reason !== "io client disconnect" &&
+          process.env.NODE_ENV === "development"
+        ) {
+          console.debug("Socket.IO disconnected:", reason);
+        }
+      });
+
+      socketInstance.on("connect", () => {
+        setSocketReady(true);
+      });
 
       return () => {
         socketInstance.off("reply");
+        socketInstance.off("connect_error");
+        socketInstance.off("disconnect");
+        socketInstance.off("connect");
         socketInstance.disconnect();
         socketRef.current = null;
         setSocketReady(false);
       };
     } catch (error) {
-      sendLog({ message: error.message, type: error.name });
+      // Only log critical errors
+      if (process.env.NODE_ENV === "development") {
+        console.error("Socket.IO initialization error:", error);
+      }
       return undefined;
     }
   }, []);

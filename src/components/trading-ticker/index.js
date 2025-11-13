@@ -8,6 +8,7 @@ import { filterSymbols } from "../../helpers/services/filter-symbols";
 import TradingContext from "../../context/trading-context";
 import { io } from "socket.io-client";
 import { sendLog } from "../../helpers/services/log-service";
+import { isBrowser } from "../../helpers/services/is-browser";
 
 const API_URL = process.env.GATSBY_OQTIMA_API_URL;
 
@@ -45,19 +46,41 @@ const TradingTicker = ({
       return () => setNeedToLoadSymbols(false);
     }
 
+    if (!API_URL || !isBrowser()) {
+      return;
+    }
+
     // Page-specific ticker - use local socket connection
-    const socket = io(`${API_URL}ws-stocks/`);
+    const socket = io(`${API_URL}ws-stocks/`, {
+      transports: ["polling", "websocket"], // Fallback to polling if websocket fails
+      reconnection: true,
+      reconnectionAttempts: 3,
+      reconnectionDelay: 1000,
+      timeout: 10000,
+    });
+
+    // Handle connection errors silently
+    socket.on("connect_error", (error) => {
+      if (process.env.NODE_ENV === "development") {
+        console.debug("Socket.IO connection error:", error.message);
+      }
+    });
+
+    const handleReply = (data) => {
+      if (data) setLocalTradingSymbols(data);
+    };
+
+    socket.on("reply", handleReply);
 
     const fetchData = () => {
       try {
         if (API_URL && pageSpecificSection) {
           socket.emit("stocks", pageSpecificSection.id);
-          socket.on("reply", (data) => {
-            if (data) setLocalTradingSymbols(data);
-          });
         }
       } catch (error) {
-        sendLog({ message: error.message, type: error.name });
+        if (process.env.NODE_ENV === "development") {
+          console.debug("Socket.IO emit error:", error.message);
+        }
       }
     };
 
@@ -67,6 +90,8 @@ const TradingTicker = ({
 
     return () => {
       clearInterval(intervalId);
+      socket.off("reply", handleReply);
+      socket.off("connect_error");
       socket.disconnect();
     };
   }, [pageSpecificSection?.id]);

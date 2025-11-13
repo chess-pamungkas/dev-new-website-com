@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { MarketingContext } from "../../../context/marketing-context";
@@ -364,7 +363,7 @@ const Hero = ({
                     height="734"
                     loading="eager"
                     fetchpriority="high"
-                    decoding="async"
+                    decoding="sync"
                     className={`${heroType}__hero-img-element`}
                   />
                 )}
@@ -552,7 +551,7 @@ const Hero = ({
                       height="692"
                       loading="eager"
                       fetchpriority="high"
-                      decoding="async"
+                      decoding="sync"
                       className={`${heroType}__hand-img-element`}
                     />
                   )}
