@@ -1525,10 +1525,6 @@ const PopupRegistrationForm = ({ params }) => {
           privacyPolicy: privacyLink || "",
           cookiePolicy: cookieLink || "",
         });
-
-        // Console log privacy and policy values when popup registration is opened
-        console.log("Privacy Policy Value:", privacyLink || "");
-        console.log("Cookie Policy Value:", cookieLink || "");
       } catch (error) {
         sendLog({ message: error.message, type: error.name });
       }
@@ -1960,7 +1956,6 @@ const PopupRegistrationForm = ({ params }) => {
 
   // Update the handleRegistrationtForm function to ensure referral parameters are included
   const handleRegistrationtForm = async (values) => {
-    console.log("Form submission started with values:", values);
     setIsLoading(true);
     const token = await executeRecaptcha("popup_registration");
 
@@ -2119,11 +2114,7 @@ const PopupRegistrationForm = ({ params }) => {
         cookie: policyLinks.cookiePolicy,
       };
 
-      // Debug: Log the registration data being sent
-      console.log("Registration Data being sent:", registrationData);
-      console.log("API URL:", `${API_URL}crm-register`);
-      console.log("Privacy Policy URL:", policyLinks.privacyPolicy);
-      console.log("Cookie Policy URL:", policyLinks.cookiePolicy);
+      // Registration data prepared and ready to send
 
       // Only include referral parameters if they exist and this is a specific referral type
       if (finalReferralType !== null) {

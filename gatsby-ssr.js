@@ -391,33 +391,16 @@ export const onRenderBody = ({
   ]);
 };
 
-// Inject preload link early in head for optimal LCP performance
+// Note: LCP image preload is handled by Helmet in Hero component
+// This ensures the correct path is resolved via webpack in component context
+// No need for duplicate preload here as it can cause path resolution issues in SSR
 export const onPreRenderHTML = ({
   getHeadComponents,
   replaceHeadComponents,
   pathname,
 }) => {
-  const headComponents = getHeadComponents();
-  const earlyHints = [];
-
-  // Preload LCP image for homepage/main promotion pages
-  // Use the correct hash: f8acc4 (updated from screenshot)
-  // Note: Helmet also adds a preload link, but this one is earlier in head for better discovery
-  if (pathname === "/" || pathname.match(/^\/[a-z]{2}\/?$/)) {
-    earlyHints.push(
-      <link
-        key="preload-globe-image"
-        rel="preload"
-        as="image"
-        href="/static/globe-9221a3a2c6689b620d91ba9459f8acc4.svg"
-      />
-    );
-  }
-
-  // Insert preload link at the very beginning of head components
-  if (earlyHints.length > 0) {
-    replaceHeadComponents([...earlyHints, ...headComponents]);
-  }
+  // This hook can be used for other early hints if needed
+  // LCP image preload is handled by Hero component via Helmet
 };
 
 export const wrapPageElement = ({ element }) => {

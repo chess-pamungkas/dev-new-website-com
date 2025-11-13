@@ -92,10 +92,9 @@ const TrustPilot = ({
             iframeDoc.head.appendChild(style);
           }
         } catch (e) {
-          // CORS error - use CSS filter approach instead
-          console.log(
-            "Cannot access iframe content due to CORS, using CSS filter"
-          );
+          // CORS error - this is expected behavior for cross-origin iframes
+          // CSS filter fallback is already applied via SCSS (trust-pilot.scss)
+          // No need to log as this is normal and expected
         }
       }
     };
