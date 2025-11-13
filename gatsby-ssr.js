@@ -7,9 +7,9 @@ import SofiaProMediumWoff2 from "./src/assets/fonts/SofiaProMedium.woff2";
 import SofiaProBoldWoff2 from "./src/assets/fonts/SofiaProBold.woff2";
 import SofiaProBlackWoff2 from "./src/assets/fonts/SofiaProBlack.woff2";
 import RobotoMediumTtf from "./src/assets/fonts/Roboto-Medium.ttf";
-// Critical LCP images (hand image is currently the LCP element)
-import HandImage from "./src/assets/images/bg/hero/main-promotion/hand.svg";
+// Critical LCP images (globe image is the LCP element)
 import GlobeImage from "./src/assets/images/bg/hero/main-promotion/globe.svg";
+import HandImage from "./src/assets/images/bg/hero/main-promotion/hand.svg";
 
 export const onRenderBody = ({
   setPostBodyComponents,
@@ -396,7 +396,7 @@ export const onRenderBody = ({
 
 // Preload LCP images early in HTML head for optimal performance
 // This ensures images are discoverable in initial document (required by PageSpeed Insights)
-// Hand image is currently the LCP element, so it must be preloaded in initial HTML
+// Globe image is the LCP element, so it must be preloaded first in initial HTML
 export const onPreRenderHTML = ({
   getHeadComponents,
   replaceHeadComponents,
@@ -408,23 +408,23 @@ export const onPreRenderHTML = ({
   // Preload LCP images for homepage/main promotion pages
   // These must be in initial HTML, not added later by React/Helmet
   if (pathname === "/" || pathname.match(/^\/[a-z]{2}\/?$/)) {
-    // Hand image is the current LCP element - must be preloaded first
-    earlyHints.push(
-      <link
-        key="preload-hand-image"
-        rel="preload"
-        as="image"
-        href={HandImage}
-        fetchpriority="high"
-      />
-    );
-    // Globe image is also important for hero section
+    // Globe image is the LCP element - must be preloaded first
     earlyHints.push(
       <link
         key="preload-globe-image"
         rel="preload"
         as="image"
         href={GlobeImage}
+        fetchpriority="high"
+      />
+    );
+    // Hand image is also important for hero section
+    earlyHints.push(
+      <link
+        key="preload-hand-image"
+        rel="preload"
+        as="image"
+        href={HandImage}
         fetchpriority="high"
       />
     );

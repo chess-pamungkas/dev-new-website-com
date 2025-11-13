@@ -351,26 +351,6 @@ const Hero = ({
           [`${heroType}--rtl`]: isRTL,
         })}
       >
-        {heroType === "main-promotion" && showHeroImage && (
-          <Helmet>
-            <link
-              rel="preload"
-              as="image"
-              href={globeImage}
-              fetchpriority="high"
-            />
-          </Helmet>
-        )}
-        {heroType === "main-promotion" && showHandImage && (
-          <Helmet>
-            <link
-              rel="preload"
-              as="image"
-              href={handImage}
-              fetchpriority="high"
-            />
-          </Helmet>
-        )}
         <div className={`${heroType}__hero-container`}>
           {/* Hero Background Image */}
           <div className={`${heroType}__hero-bg`}>
@@ -384,7 +364,7 @@ const Hero = ({
                     height="734"
                     loading="eager"
                     fetchpriority="high"
-                    decoding="sync"
+                    decoding="async"
                     className={`${heroType}__hero-img-element`}
                   />
                 )}
@@ -572,7 +552,7 @@ const Hero = ({
                       height="692"
                       loading="eager"
                       fetchpriority="high"
-                      decoding="sync"
+                      decoding="async"
                       className={`${heroType}__hand-img-element`}
                     />
                   )}

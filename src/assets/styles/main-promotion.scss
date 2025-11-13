@@ -194,7 +194,7 @@ $hand-image: url("../images/bg/hero/main-promotion/hand.svg");
     opacity: 0.62;
     z-index: 1;
     display: block;
-    z-index: 1;
+    contain: layout style paint;
 
     picture,
     img {
