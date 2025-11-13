@@ -60,8 +60,8 @@ export const onRenderBody = ({
     />,
   ];
 
-  // Add script to optimize LCP image rendering for homepage
-  // This ensures the image container is visible immediately after React renders it
+  // Script to ensure LCP image is visible immediately after React renders it
+  // This runs as early as possible to reduce element render delay
   if (pathname === "/" || (pathname && pathname.match(/^\/[a-z]{2}\/?$/))) {
     preBodyComponents.push(
       <script
@@ -69,66 +69,34 @@ export const onRenderBody = ({
         dangerouslySetInnerHTML={{
           __html: `
             (function() {
-              // Optimize LCP image visibility immediately after React renders it
-              // This runs as early as possible to reduce element render delay
-              function optimizeLCPImage() {
+              // Ensure LCP image is visible immediately
+              function ensureLCPImageVisible() {
                 var heroImg = document.querySelector('.main-promotion__hero-img');
                 var heroImgElement = document.querySelector('.main-promotion__hero-img-element');
                 
                 if (heroImg) {
-                  // Ensure container is visible immediately
                   heroImg.style.display = 'block';
                   heroImg.style.visibility = 'visible';
                   heroImg.style.opacity = '0.62';
                 }
                 
                 if (heroImgElement) {
-                  // Ensure image is visible and properly styled
                   heroImgElement.style.display = 'block';
                   heroImgElement.style.visibility = 'visible';
                 }
               }
               
-              // Run immediately if DOM is ready
+              // Run immediately
               if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', optimizeLCPImage);
+                document.addEventListener('DOMContentLoaded', ensureLCPImageVisible);
               } else {
-                optimizeLCPImage();
+                ensureLCPImageVisible();
               }
               
-              // Also run after a short delay to catch React-rendered elements
-              setTimeout(optimizeLCPImage, 100);
-              setTimeout(optimizeLCPImage, 500);
-              
-              // Monitor for when React renders the image
-              if (window.MutationObserver) {
-                var observer = new MutationObserver(function(mutations) {
-                  mutations.forEach(function(mutation) {
-                    if (mutation.addedNodes.length > 0) {
-                      mutation.addedNodes.forEach(function(node) {
-                        if (node.nodeType === 1) {
-                          var img = node.querySelector && node.querySelector('.main-promotion__hero-img-element');
-                          if (img || (node.classList && node.classList.contains('main-promotion__hero-img-element'))) {
-                            optimizeLCPImage();
-                          }
-                        }
-                      });
-                    }
-                  });
-                });
-                
-                if (document.body) {
-                  observer.observe(document.body, {
-                    childList: true,
-                    subtree: true
-                  });
-                  
-                  // Stop observing after 5 seconds
-                  setTimeout(function() {
-                    observer.disconnect();
-                  }, 5000);
-                }
-              }
+              // Run after React hydration
+              setTimeout(ensureLCPImageVisible, 0);
+              setTimeout(ensureLCPImageVisible, 50);
+              setTimeout(ensureLCPImageVisible, 100);
             })();
           `,
         }}
@@ -310,111 +278,23 @@ export const onRenderBody = ({
       src="https://metatraderweb.app/trade/widget.js"
     />,
   ]);
-  // Preconnect hints - add in onRenderBody to ensure they're in HTML
-  const apiUrl = process.env.GATSBY_OQTIMA_API_URL;
-  const preconnectLinks = [];
-
-  // Preconnect to API backend (env or default)
-  const apiOrigins = new Set();
-  if (apiUrl) {
-    try {
-      apiOrigins.add(new URL(apiUrl).origin);
-    } catch (e) {
-      // Invalid URL, ignore
-    }
-  }
-
-  apiOrigins.forEach((origin) => {
-    preconnectLinks.push(
-      <link
-        key={`preconnect-api-${origin}`}
-        rel="preconnect"
-        href={origin}
-        crossOrigin="anonymous"
-      />,
-      <link
-        key={`dns-prefetch-api-${origin}`}
-        rel="dns-prefetch"
-        href={origin}
-      />
-    );
-  });
-
-  // Preconnect to MetaTrader widget
-  preconnectLinks.push(
-    <link
-      key="preconnect-metatrader"
-      rel="preconnect"
-      href="https://metatraderweb.app"
-      crossOrigin="anonymous"
-    />,
-    <link
-      key="dns-prefetch-metatrader"
-      rel="dns-prefetch"
-      href="https://metatraderweb.app"
-    />
-  );
-
-  // Preconnect to Conv.rs livechat
-  preconnectLinks.push(
-    <link
-      key="preconnect-convrs"
-      rel="preconnect"
-      href="https://webchat.conv.rs"
-      crossOrigin="anonymous"
-    />,
-    <link
-      key="dns-prefetch-convrs"
-      rel="dns-prefetch"
-      href="https://webchat.conv.rs"
-    />
-  );
-
-  // Preconnect to Trustpilot widget
-  preconnectLinks.push(
-    <link
-      key="preconnect-trustpilot"
-      rel="preconnect"
-      href="https://widget.trustpilot.com"
-      crossOrigin="anonymous"
-    />,
-    <link
-      key="dns-prefetch-trustpilot"
-      rel="dns-prefetch"
-      href="https://widget.trustpilot.com"
-    />
-  );
-
-  // Preconnect to Google Fonts (used by third-party widgets like Trustpilot)
-  // Note: We can't control font-display for fonts loaded by third-party scripts,
-  // but preconnecting helps reduce latency
-  preconnectLinks.push(
-    <link
-      key="preconnect-google-fonts"
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossOrigin="anonymous"
-    />,
-    <link
-      key="dns-prefetch-google-fonts"
-      rel="dns-prefetch"
-      href="https://fonts.gstatic.com"
-    />
-  );
 
   /*
-   * NOTE: Third-party resource limitations (cannot be fixed directly):
+   * NOTE: Preconnect hints are now added in onPreRenderHTML to ensure they're
+   * at the very beginning of <head> for optimal performance.
+   *
+   * Third-party resource limitations (cannot be fixed directly):
    *
    * 1. Cache lifetimes for third-party resources:
    *    - Trustpilot widgets (widget.trustpilot.com) - Cache headers controlled by Trustpilot
    *    - MetaTrader widget (metatraderweb.app) - Cache headers controlled by MetaTrader
    *    These resources are served by third-party servers, so we cannot set cache headers.
-   *    Preconnect hints are added above to reduce connection latency.
+   *    Preconnect hints are added in onPreRenderHTML to reduce connection latency.
    *
    * 2. Font display for Google Fonts:
    *    - Google Fonts loaded by third-party scripts (e.g., Trustpilot) don't have font-display
    *    - We cannot add font-display to fonts loaded by third-party scripts
-   *    - Preconnect hints are added above to help with font loading performance
+   *    - Preconnect hints are added in onPreRenderHTML to help with font loading performance
    *
    * To improve these metrics, contact the third-party providers:
    * - Trustpilot: Request better cache headers and font-display support
@@ -422,8 +302,6 @@ export const onRenderBody = ({
    */
 
   setHeadComponents([
-    // Preconnect hints - add first for early discovery
-    ...preconnectLinks,
     // Preload critical fonts used above the fold
     <link
       key="preload-font-sofia-regular"
@@ -511,6 +389,126 @@ export const onPreRenderHTML = ({
 }) => {
   const headComponents = getHeadComponents();
   const earlyHints = [];
+
+  // Preconnect hints - MUST be at the very beginning of head for optimal performance
+  // These establish connections early to reduce critical path latency
+  const apiUrl = process.env.GATSBY_OQTIMA_API_URL;
+  const preconnectLinks = [];
+
+  // Preconnect to API backend (dev-back.oqt-ima.com) - 80ms LCP savings
+  if (apiUrl) {
+    try {
+      const apiOrigin = new URL(apiUrl).origin;
+      preconnectLinks.push(
+        <link
+          key={`preconnect-api-${apiOrigin}`}
+          rel="preconnect"
+          href={apiOrigin}
+          crossOrigin="anonymous"
+        />,
+        <link
+          key={`dns-prefetch-api-${apiOrigin}`}
+          rel="dns-prefetch"
+          href={apiOrigin}
+        />
+      );
+    } catch (e) {
+      // Invalid URL, ignore
+    }
+  }
+
+  // Preconnect to Trustpilot widget - 190ms LCP savings (highest priority)
+  preconnectLinks.push(
+    <link
+      key="preconnect-trustpilot"
+      rel="preconnect"
+      href="https://widget.trustpilot.com"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-trustpilot"
+      rel="dns-prefetch"
+      href="https://widget.trustpilot.com"
+    />
+  );
+
+  // Preconnect to Google (www.google.com) - 80ms LCP savings (for reCAPTCHA)
+  preconnectLinks.push(
+    <link
+      key="preconnect-google"
+      rel="preconnect"
+      href="https://www.google.com"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-google"
+      rel="dns-prefetch"
+      href="https://www.google.com"
+    />
+  );
+
+  // Preconnect to Google reCAPTCHA API
+  preconnectLinks.push(
+    <link
+      key="preconnect-google-recaptcha"
+      rel="preconnect"
+      href="https://www.gstatic.com"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-google-recaptcha"
+      rel="dns-prefetch"
+      href="https://www.gstatic.com"
+    />
+  );
+
+  // Preconnect to MetaTrader widget (for /trade/widget.js)
+  preconnectLinks.push(
+    <link
+      key="preconnect-metatrader"
+      rel="preconnect"
+      href="https://metatraderweb.app"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-metatrader"
+      rel="dns-prefetch"
+      href="https://metatraderweb.app"
+    />
+  );
+
+  // Preconnect to Google Fonts (used by third-party widgets)
+  preconnectLinks.push(
+    <link
+      key="preconnect-google-fonts"
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-google-fonts"
+      rel="dns-prefetch"
+      href="https://fonts.gstatic.com"
+    />
+  );
+
+  // Preconnect to Conv.rs livechat
+  preconnectLinks.push(
+    <link
+      key="preconnect-convrs"
+      rel="preconnect"
+      href="https://webchat.conv.rs"
+      crossOrigin="anonymous"
+    />,
+    <link
+      key="dns-prefetch-convrs"
+      rel="dns-prefetch"
+      href="https://webchat.conv.rs"
+    />
+  );
+
+  // Add preconnect links at the very beginning
+  earlyHints.push(...preconnectLinks);
 
   // Preload LCP images for homepage/main promotion pages
   // These must be in initial HTML, not added later by React/Helmet
