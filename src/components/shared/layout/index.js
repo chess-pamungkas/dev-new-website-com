@@ -20,7 +20,8 @@ import { useLocation } from "@reach/router";
 
 const Layout = ({ children }) => {
   try {
-    const [isLoaded, setIsLoaded] = useState(false);
+    // Always render content immediately - no conditional rendering to avoid hydration issues
+    // This ensures server and client render the same HTML initially
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const location = useLocation();
     const isContactUsPage =
@@ -29,14 +30,11 @@ const Layout = ({ children }) => {
       location?.pathname?.includes("/contact-us");
 
     // Check if popup registration is open
-    const isPopupRegistrationOpen =
-      isPopupOpen ||
-      (typeof window !== "undefined" &&
-        document.querySelector(".popup-registration") !== null);
+    // Only use state to avoid hydration mismatch - don't check DOM during render
+    // The useEffect below will update isPopupOpen after mount
+    const isPopupRegistrationOpen = isPopupOpen;
 
     useEffect(() => {
-      setIsLoaded(true);
-
       // Push UTM parameters to GTM dataLayer
       if (isBrowser()) {
         pushUTMParamsToDataLayer();
@@ -81,17 +79,13 @@ const Layout = ({ children }) => {
                       <ReCaptchaProvider
                         showBadge={isContactUsPage || isPopupRegistrationOpen}
                       >
-                        {isLoaded && (
-                          <>
-                            <Header />
-                            <CookiesPopup />
-                            <section className="scroll-container">
-                              {/* Render children directly - MainPromotion will be outside MainContainer */}
-                              {children}
-                              <Footer />
-                            </section>
-                          </>
-                        )}
+                        <Header />
+                        <CookiesPopup />
+                        <section className="scroll-container">
+                          {/* Render children directly - MainPromotion will be outside MainContainer */}
+                          {children}
+                          <Footer />
+                        </section>
                         {/* <Bookmark /> */}
                       </ReCaptchaProvider>
                     </TradingProvider>

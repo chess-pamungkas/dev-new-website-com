@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import cn from "classnames";
 import PropTypes from "prop-types";
@@ -9,6 +9,18 @@ const Popup = ({
   isPopupOpen = false,
   handlePopupClose = () => {},
 }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Only render on client side (after hydration)
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // During SSR, return null
+  if (typeof document === "undefined" || !isMounted) {
+    return null;
+  }
+
   const popupContent = (
     <div className={cn("popup", { "popup--active": isPopupOpen }, className)}>
       {/* Close the popup on outer wrapper click */}
@@ -30,7 +42,7 @@ const Popup = ({
     </div>
   );
 
-  // Use portal to render at document body level
+  // Use portal to render at document body level (only on client side)
   return ReactDOM.createPortal(popupContent, document.body);
 };
 
