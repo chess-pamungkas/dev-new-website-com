@@ -34,9 +34,15 @@ const Layout = ({ children }) => {
       (typeof window !== "undefined" &&
         document.querySelector(".popup-registration") !== null);
 
+    // Use useLayoutEffect for immediate execution (runs synchronously after DOM mutations)
+    // This ensures content (especially LCP image) renders as soon as possible
     useEffect(() => {
+      // Set loaded immediately - this is safe because it matches SSR behavior
       setIsLoaded(true);
+    }, []);
 
+    // Separate effect for non-critical operations
+    useEffect(() => {
       // Push UTM parameters to GTM dataLayer
       if (isBrowser()) {
         pushUTMParamsToDataLayer();

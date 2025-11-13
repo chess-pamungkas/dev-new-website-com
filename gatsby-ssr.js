@@ -15,6 +15,7 @@ export const onRenderBody = ({
   setPostBodyComponents,
   setHeadComponents,
   setPreBodyComponents,
+  pathname,
 }) => {
   setPreBodyComponents([
     // // Default content for Google bot fast mode (Hidden for users)
@@ -426,6 +427,35 @@ export const onPreRenderHTML = ({
         as="image"
         href={HandImage}
         fetchpriority="high"
+      />
+    );
+    // Add critical CSS inline to ensure LCP image container is visible immediately
+    earlyHints.push(
+      <style
+        key="lcp-critical-css"
+        dangerouslySetInnerHTML={{
+          __html: `
+            /* Critical CSS for LCP image - ensures immediate visibility */
+            .main-promotion__hero-img {
+              position: absolute !important;
+              bottom: 0 !important;
+              right: -50px !important;
+              width: 734px !important;
+              height: 734px !important;
+              opacity: 0.62 !important;
+              z-index: 1 !important;
+              display: block !important;
+              visibility: visible !important;
+            }
+            .main-promotion__hero-img-element {
+              width: 100% !important;
+              height: 100% !important;
+              object-fit: contain !important;
+              object-position: bottom center !important;
+              display: block !important;
+            }
+          `,
+        }}
       />
     );
   }
