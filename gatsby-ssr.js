@@ -7,6 +7,9 @@ import SofiaProMediumWoff2 from "./src/assets/fonts/SofiaProMedium.woff2";
 import SofiaProBoldWoff2 from "./src/assets/fonts/SofiaProBold.woff2";
 import SofiaProBlackWoff2 from "./src/assets/fonts/SofiaProBlack.woff2";
 import RobotoMediumTtf from "./src/assets/fonts/Roboto-Medium.ttf";
+// Critical LCP images (hand image is currently the LCP element)
+import HandImage from "./src/assets/images/bg/hero/main-promotion/hand.svg";
+import GlobeImage from "./src/assets/images/bg/hero/main-promotion/globe.svg";
 
 export const onRenderBody = ({
   setPostBodyComponents,
@@ -391,16 +394,46 @@ export const onRenderBody = ({
   ]);
 };
 
-// Note: LCP image preload is handled by Helmet in Hero component
-// This ensures the correct path is resolved via webpack in component context
-// No need for duplicate preload here as it can cause path resolution issues in SSR
+// Preload LCP images early in HTML head for optimal performance
+// This ensures images are discoverable in initial document (required by PageSpeed Insights)
+// Hand image is currently the LCP element, so it must be preloaded in initial HTML
 export const onPreRenderHTML = ({
   getHeadComponents,
   replaceHeadComponents,
   pathname,
 }) => {
-  // This hook can be used for other early hints if needed
-  // LCP image preload is handled by Hero component via Helmet
+  const headComponents = getHeadComponents();
+  const earlyHints = [];
+
+  // Preload LCP images for homepage/main promotion pages
+  // These must be in initial HTML, not added later by React/Helmet
+  if (pathname === "/" || pathname.match(/^\/[a-z]{2}\/?$/)) {
+    // Hand image is the current LCP element - must be preloaded first
+    earlyHints.push(
+      <link
+        key="preload-hand-image"
+        rel="preload"
+        as="image"
+        href={HandImage}
+        fetchpriority="high"
+      />
+    );
+    // Globe image is also important for hero section
+    earlyHints.push(
+      <link
+        key="preload-globe-image"
+        rel="preload"
+        as="image"
+        href={GlobeImage}
+        fetchpriority="high"
+      />
+    );
+  }
+
+  // Insert preload links at the very beginning of head components
+  if (earlyHints.length > 0) {
+    replaceHeadComponents([...earlyHints, ...headComponents]);
+  }
 };
 
 export const wrapPageElement = ({ element }) => {
