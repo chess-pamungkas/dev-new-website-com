@@ -722,9 +722,9 @@
         touch-action: manipulation !important;
         pointer-events: auto !important;
         -webkit-tap-highlight-color: rgba(255, 68, 0, 0.3);
-        min-height: 44px; // Ensure adequate touch target size
         display: inline-block;
         padding: 2px 4px; // Add padding for better touch target
+        margin: 0; // Remove horizontal margin on mobile to eliminate gaps between text
       }
     }
 
