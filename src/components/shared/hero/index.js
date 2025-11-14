@@ -352,10 +352,9 @@ const Hero = ({
       >
         <div className={`${heroType}__hero-container`}>
           {/* Hero Background Image - Render LCP image immediately for main-promotion */}
-          {/* CRITICAL: Always render image container for main-promotion to avoid conditional rendering delay */}
           <div className={`${heroType}__hero-bg`}>
-            {/* For main-promotion, always render image container (no conditional) to ensure immediate visibility */}
-            {heroType === "main-promotion" ? (
+            {/* Always render image container for main-promotion to avoid conditional rendering delay */}
+            {heroType === "main-promotion" && showHeroImage ? (
               <div
                 className={`${heroType}__hero-img`}
                 aria-hidden="true"
@@ -371,26 +370,24 @@ const Hero = ({
                   zIndex: 1,
                 }}
               >
-                {showHeroImage && (
-                  <img
-                    src={globeImage}
-                    alt=""
-                    width="734"
-                    height="734"
-                    loading="eager"
-                    fetchpriority="high"
-                    decoding="sync"
-                    className={`${heroType}__hero-img-element`}
-                    style={{
-                      display: "block",
-                      visibility: "visible",
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "contain",
-                      objectPosition: "bottom center",
-                    }}
-                  />
-                )}
+                <img
+                  src={globeImage}
+                  alt=""
+                  width="734"
+                  height="734"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="sync"
+                  className={`${heroType}__hero-img-element`}
+                  style={{
+                    display: "block",
+                    visibility: "visible",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    objectPosition: "bottom center",
+                  }}
+                />
               </div>
             ) : showHeroImage ? (
               <div className={`${heroType}__hero-img`} aria-hidden="true">

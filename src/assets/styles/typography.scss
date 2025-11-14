@@ -183,20 +183,6 @@
     U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
     U+FEFF, U+FFFD;
 }
-
-/*
- * NOTE: Font display optimization for third-party Google Fonts
- * 
- * Google Fonts loaded by third-party scripts (e.g., TrustPilot widget) don't have font-display
- * property. We cannot modify @font-face declarations for fonts loaded by third-party scripts.
- * 
- * Our own fonts (Sofia Pro, Roboto, Noto Sans JP, Montserrat, Lato) already have font-display: swap
- * which ensures text is visible immediately while fonts load.
- * 
- * To fully resolve font-display warnings for Google Fonts:
- * - Contact TrustPilot to request font-display support for their Google Fonts
- * - Or consider using self-hosted fonts instead of relying on third-party Google Fonts
- */
 /* latin-ext */
 @font-face {
   font-family: "Lato";

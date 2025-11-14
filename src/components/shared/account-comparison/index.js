@@ -59,18 +59,11 @@ const AccountComparison = () => {
       }`}
     >
       {/* Background Images */}
-      {/* CRITICAL: This SVG is very large (3.6 MB), so we use lazy loading and low priority */}
-      {/* TODO: Optimize SVG file by removing embedded bitmap images and using SVG paths */}
       <div className="account-comparison-bg">
         <img
           src={backgroundSrc}
           alt={t("account-comparison-shared_background-alt")}
           className="account-comparison-bg__image"
-          loading="lazy"
-          decoding="async"
-          fetchpriority="low"
-          width={isMobile ? "375" : "1920"}
-          height={isMobile ? "981" : "981"}
         />
       </div>
 
