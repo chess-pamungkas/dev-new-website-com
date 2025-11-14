@@ -547,7 +547,7 @@
     // -webkit-text-size-adjust: 100%;
 
     @supports (-webkit-touch-callout: none) {
-      font-size: 0.8125rem !important;
+      font-size: 1rem !important; // 16px to prevent iOS Safari auto-zoom
       transform-origin: left top;
     }
 
@@ -713,6 +713,19 @@
       color: #ff4400;
       text-decoration: underline;
       margin: 0 0.125rem;
+      touch-action: manipulation;
+      pointer-events: auto;
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(255, 68, 0, 0.2);
+
+      @include mobile {
+        touch-action: manipulation !important;
+        pointer-events: auto !important;
+        -webkit-tap-highlight-color: rgba(255, 68, 0, 0.3);
+        min-height: 44px; // Ensure adequate touch target size
+        display: inline-block;
+        padding: 2px 4px; // Add padding for better touch target
+      }
     }
 
     @include mobile {
@@ -1251,7 +1264,7 @@
     -webkit-text-size-adjust: 100%;
 
     @supports (-webkit-touch-callout: none) {
-      font-size: 0.8125rem !important;
+      font-size: 1rem !important; // 16px to prevent iOS Safari auto-zoom
       transform-origin: left top;
     }
   }
@@ -1728,7 +1741,7 @@
   @include mobile {
     width: 100%; // Full width on mobile
     padding: 12px 16px; // Slightly smaller padding on mobile
-    font-size: 14px; // Consistent font size on mobile
+    font-size: 16px !important; // 16px to prevent iOS Safari auto-zoom
     line-height: 1.4; // Better line height for mobile
   }
 
@@ -1782,6 +1795,10 @@
     font-size: 14px;
     line-height: 24px;
     color: #6b7280; // Based on Figma placeholder color
+
+    @include mobile {
+      font-size: 16px !important; // 16px to prevent iOS Safari auto-zoom
+    }
 
     &:focus {
       outline: none;
@@ -2150,6 +2167,10 @@
       display: flex; // Ensure proper alignment
       align-items: center; // Center vertically like country code
 
+      @include mobile {
+        font-size: 16px !important; // 16px to prevent iOS Safari auto-zoom
+      }
+
       &:focus {
         outline: none;
         border-color: #ff4400;
@@ -2406,6 +2427,10 @@
         border-radius: 0 6px 6px 0; // Rounded right corners only (same as desktop)
         height: 42px;
         border-left: none; // No separator line (same as desktop)
+
+        @include mobile {
+          font-size: 16px !important; // 16px to prevent iOS Safari auto-zoom
+        }
       }
     }
 

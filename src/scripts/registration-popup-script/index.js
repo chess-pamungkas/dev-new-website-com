@@ -1198,7 +1198,18 @@ const RTL_LANGUAGES = ["ar"];
           width: 100% !important;
           height: 100% !important;
           overflow: hidden !important;
-          touch-action: none !important;
+          touch-action: pan-y !important;
+        }
+        
+        /* Ensure policy links are clickable on mobile */
+        body.popup-open .popup-registration__consent .link,
+        body.popup-open a[href*="policy"],
+        body.popup-open a[href*="privacy"],
+        body.popup-open a[href*="cookie"],
+        body.popup-open a[href*="terms"] {
+          touch-action: manipulation !important;
+          pointer-events: auto !important;
+          cursor: pointer !important;
         }
 
         /* Fix dropdown positioning */
@@ -2076,6 +2087,27 @@ const RTL_LANGUAGES = ["ar"];
             form {
                   padding-bottom: 50px;
                 }
+                /* Prevent iOS Safari auto-zoom on input focus */
+                input[type="text"],
+                input[type="email"],
+                input[type="tel"],
+                input[type="password"],
+                input[type="number"],
+                textarea,
+                select {
+                  font-size: 16px !important;
+                }
+                @supports (-webkit-touch-callout: none) {
+                  input[type="text"],
+                  input[type="email"],
+                  input[type="tel"],
+                  input[type="password"],
+                  input[type="number"],
+                  textarea,
+                  select {
+                    font-size: 16px !important;
+                  }
+                }
               `;
               iframeDoc.head.appendChild(mobileStyle);
             }
@@ -2734,6 +2766,18 @@ const RTL_LANGUAGES = ["ar"];
             }
             input, select, textarea {
               text-align: right !important;
+              font-size: 16px !important; /* Prevent iOS Safari auto-zoom */
+            }
+            @supports (-webkit-touch-callout: none) {
+              input[type="text"],
+              input[type="email"],
+              input[type="tel"],
+              input[type="password"],
+              input[type="number"],
+              textarea,
+              select {
+                font-size: 16px !important; /* Prevent iOS Safari auto-zoom */
+              }
             }
           `;
           iframeDoc.head.appendChild(style);
