@@ -738,6 +738,10 @@
     line-height: 26px;
     color: #000000;
 
+    // Prevent iOS Safari auto-zoom on input focus
+    // iOS Safari zooms in if font-size is less than 16px
+    -webkit-text-size-adjust: 100%;
+
     /* Auto layout properties */
     flex: none;
     order: 1;
@@ -770,6 +774,12 @@
       padding: 10px 14px;
       border-radius: 6px;
       margin-bottom: 8px; // Add bottom margin for mobile to prevent overlap
+
+      // Prevent iOS Safari auto-zoom on input focus
+      // iOS Safari zooms in if font-size is less than 16px
+      @supports (-webkit-touch-callout: none) {
+        font-size: 16px !important;
+      }
     }
 
     @include tablet {
@@ -801,6 +811,10 @@
     font-size: 16px;
     line-height: 26px;
     color: #000000;
+
+    // Prevent iOS Safari auto-zoom on textarea focus
+    // iOS Safari zooms in if font-size is less than 16px
+    -webkit-text-size-adjust: 100%;
 
     /* Auto layout properties */
     flex: none;
@@ -834,6 +848,12 @@
       padding: 10px 14px;
       border-radius: 6px;
       margin-bottom: 8px; // Add bottom margin for mobile to prevent overlap
+
+      // Prevent iOS Safari auto-zoom on textarea focus
+      // iOS Safari zooms in if font-size is less than 16px
+      @supports (-webkit-touch-callout: none) {
+        font-size: 16px !important;
+      }
     }
 
     @include tablet {
@@ -844,6 +864,19 @@
     @include desktop-lg {
       width: 424px;
       min-height: 120px;
+    }
+  }
+
+  // Prevent iOS Safari auto-zoom for all input types
+  // iOS Safari zooms in if font-size is less than 16px
+  @supports (-webkit-touch-callout: none) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      @include mobile {
+        font-size: 16px !important;
+      }
     }
   }
 }
