@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
-import { StaticImage } from "gatsby-plugin-image";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import {
   FAQ_ALL,
@@ -10,6 +9,7 @@ import {
   getFAQMarket,
 } from "../../../helpers/faq";
 import { debounce } from "lodash";
+import SearchIcon from "../../../assets/images/icons/faq/search.svg";
 
 const FaqSearchBar = ({ className, setSearchResults, setNoSearchResult }) => {
   const COUNT_OF_SEARCH_CHARS = 1;
@@ -72,8 +72,8 @@ const FaqSearchBar = ({ className, setSearchResults, setNoSearchResult }) => {
     <div className={cn("faq-search-bar", className)}>
       <div className="faq-search-bar__input-container">
         <div className="faq-search-bar__icon-container">
-          <StaticImage
-            src="../../../assets/images/icons/faq/search.svg"
+          <img
+            src={SearchIcon}
             alt="Search"
             className="faq-search-bar__icon"
             width={26}

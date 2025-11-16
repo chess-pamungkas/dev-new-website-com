@@ -8,11 +8,13 @@ import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import { useRtlDirection } from "../../../../helpers/hooks/use-rtl-direction";
 import { ButtonLearnMore } from "../../../shared/reusable-buttons";
 import bgCard from "../../../../assets/images/bg/all-markets/bg-card.svg";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const MarketItemAdvantageList = ({ className, advantages, link }) => {
   const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
   const isRTL = useRtlDirection();
+  const { navigate } = useI18next();
 
   return (
     <div
@@ -57,7 +59,14 @@ const MarketItemAdvantageList = ({ className, advantages, link }) => {
             <div className="market-item-advantages-list__learn-more-wrapper">
               <ButtonLearnMore
                 text={t("all-markets_market-items-list-learn-more-btn")}
-                onClick={() => window.open(link, "_self")}
+                onClick={() => {
+                  // Use navigate from useI18next to preserve language prefix in browser history
+                  // Extract path from link (remove domain if present)
+                  const linkPath = link.startsWith("http")
+                    ? new URL(link).pathname
+                    : link;
+                  navigate(linkPath);
+                }}
                 className="market-item-advantages-list__learn-more-btn"
               />
             </div>

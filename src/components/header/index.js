@@ -215,19 +215,13 @@ const Header = ({ className }) => {
                       (item, idx) =>
                         !item.mobileOnly &&
                         (item.isPartners ? (
-                          <a
+                          <li
                             key={`dropdown-header-menu-${stringTransformToKebabCase(
                               item.title
                             )}`}
-                            href={item.link}
-                            className={cn(
-                              "navbar-item__title navbar-item__partners-link navbar-item",
-                              {
-                                "navbar-item--active":
-                                  openDropdownIndex === idx,
-                              }
-                            )}
-                            style={{ display: "flex", alignItems: "center" }}
+                            className={cn("navbar-item", {
+                              "navbar-item--active": openDropdownIndex === idx,
+                            })}
                             onMouseEnter={() =>
                               setPartnersDropdownHovered(true)
                             }
@@ -235,20 +229,28 @@ const Header = ({ className }) => {
                               setPartnersDropdownHovered(false)
                             }
                           >
-                            {t(item.title)}
-                            <span className="navbar-item__icon-wrapper">
-                              <PartnersNavIcon
-                                className={cn(
-                                  "navbar-item__icon navbar-item__icon--partners"
-                                )}
-                                color={
-                                  partnersDropdownHovered
-                                    ? "#FF4400"
-                                    : "#B6B6B6"
-                                }
-                              />
-                            </span>
-                          </a>
+                            <InternalLink
+                              to={item.link}
+                              className={cn(
+                                "navbar-item__title navbar-item__partners-link"
+                              )}
+                              style={{ display: "flex", alignItems: "center" }}
+                            >
+                              {t(item.title)}
+                              <span className="navbar-item__icon-wrapper">
+                                <PartnersNavIcon
+                                  className={cn(
+                                    "navbar-item__icon navbar-item__icon--partners"
+                                  )}
+                                  color={
+                                    partnersDropdownHovered
+                                      ? "#FF4400"
+                                      : "#B6B6B6"
+                                  }
+                                />
+                              </span>
+                            </InternalLink>
+                          </li>
                         ) : (
                           <li
                             key={`dropdown-header-menu-${stringTransformToKebabCase(

@@ -18,6 +18,7 @@ import { ShowRegistrationPopup } from "../../../helpers/constants";
 import LanguageContext from "../../../context/language-context";
 import { StandardButtons } from "../reusable-buttons";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const GuideContent = ({
   titleKey = "guide-content-title",
@@ -29,6 +30,7 @@ const GuideContent = ({
   const { isMobile } = useWindowSize();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const { selectedLanguage } = useContext(LanguageContext);
+  const { navigate } = useI18next();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -45,8 +47,9 @@ const GuideContent = ({
 
   const handleSecondaryButtonClick = () => {
     // For partners, "Contact Us" redirects to contact-us page
+    // Use navigate from useI18next to preserve language prefix in browser history
     if (variant === "partners") {
-      window.location.href = "/contact-us";
+      navigate("/contact-us");
     } else {
       handleShowRegistrationPopup();
     }

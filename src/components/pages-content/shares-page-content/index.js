@@ -16,19 +16,23 @@ import Hero from "../../shared/hero";
 import GuideContent from "../../shared/guide-content";
 import FaqSection from "../../shared/faq-section";
 import TradingTicker from "../../trading-ticker";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const SharesContent = ({ className, isShowHero = true }) => {
   const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
   const langParam = setLangParam(); // Get the language parameter
   const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+  const { navigate } = useI18next();
+
   const handleClosePopup = () => {
     setIsPopupOpen(false); // Close the popup
   };
 
   const handleFaqButtonClick = () => {
     // Navigate to FAQ page
-    window.location.href = "/faq";
+    // Use navigate from useI18next to preserve language prefix in browser history
+    navigate("/faq");
   };
 
   return (

@@ -6,6 +6,7 @@ import { ChevronDownIcon, ChevronUpIcon } from "../../../shared/icons";
 import CommonContext from "../../../../context/common-context";
 import { useWindowSize } from "../../../../helpers/hooks/use-window-size";
 import PartnersNavIcon from "../../../shared/icons/PartnersNavIcon";
+import InternalLink from "../../../shared/internal-link";
 
 const NavbarItem = ({
   className,
@@ -98,8 +99,8 @@ const NavbarItem = ({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <a
-          href={link}
+        <InternalLink
+          to={link}
           className={cn("navbar-item__title navbar-item__partners-link")}
         >
           {t(title)}
@@ -109,7 +110,7 @@ const NavbarItem = ({
               color={isHovered ? "#FF4400" : "#B6B6B6"}
             />
           </span>
-        </a>
+        </InternalLink>
       </li>
     );
   }

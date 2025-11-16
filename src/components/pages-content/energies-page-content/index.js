@@ -23,6 +23,7 @@ import TradingTicker from "../../trading-ticker";
 import TopMarketLayout from "../../top-market-layout";
 import EnergiesSpreadsDesktop from "./energies-spreads-desktop";
 import EnergiesSpreadsMobile from "./energies-spreads-mobile";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const EnergiesContent = ({ className, isShowHero = true }) => {
   const { t } = useTranslationWithVariables();
@@ -30,6 +31,7 @@ const EnergiesContent = ({ className, isShowHero = true }) => {
   const { tradingSymbols } = useContext(TradingContext);
   const langParam = setLangParam(); // Get the language parameter
   const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+  const { navigate } = useI18next();
 
   const handleClosePopup = () => {
     setIsPopupOpen(false); // Close the popup
@@ -37,7 +39,8 @@ const EnergiesContent = ({ className, isShowHero = true }) => {
 
   const handleFaqButtonClick = () => {
     // Navigate to FAQ page
-    window.location.href = "/faq";
+    // Use navigate from useI18next to preserve language prefix in browser history
+    navigate("/faq");
   };
 
   updateTableDataWithLiveColumn(DATA_ENERGIES, tradingSymbols);

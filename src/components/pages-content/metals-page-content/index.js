@@ -23,6 +23,7 @@ import TradingTicker from "../../trading-ticker";
 import TopMarketLayout from "../../top-market-layout";
 import MetalsSpreadsDesktop from "./metals-spreads-desktop";
 import MetalsSpreadsMobile from "./metals-spreads-mobile";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const MetalsContent = ({ className, isShowHero }) => {
   const { t } = useTranslationWithVariables();
@@ -30,6 +31,7 @@ const MetalsContent = ({ className, isShowHero }) => {
   const { tradingSymbols } = useContext(TradingContext);
   const langParam = setLangParam(); // Get the language parameter
   const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+  const { navigate } = useI18next();
 
   const handleClosePopup = () => {
     setIsPopupOpen(false); // Close the popup
@@ -37,7 +39,8 @@ const MetalsContent = ({ className, isShowHero }) => {
 
   const handleFaqButtonClick = () => {
     // Navigate to FAQ page
-    window.location.href = "/faq";
+    // Use navigate from useI18next to preserve language prefix in browser history
+    navigate("/faq");
   };
 
   updateTableDataWithLiveColumn(DATA_METALS, tradingSymbols);

@@ -12,11 +12,14 @@ import OnboardingGuide from "./onboarding-guide";
 import OnboardingGuideStep from "./onboarding-guide-step";
 import FaqSection from "../../shared/faq-section";
 import { FAQ_CLIENT_PORTAL_ASSISTANCE } from "../../../helpers/faq";
+import { useI18next } from "gatsby-plugin-react-i18next";
+
 const ClientPortalAssistanceContent = ({ className, isShowHero = true }) => {
   const { t } = useTranslationWithVariables();
   const { isMobile } = useWindowSize();
   const langParam = setLangParam(); // Get the language parameter
   const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+  const { navigate } = useI18next();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true); // Open the popup
@@ -28,7 +31,8 @@ const ClientPortalAssistanceContent = ({ className, isShowHero = true }) => {
 
   const handleFaqButtonClick = () => {
     // Navigate to FAQ page
-    window.location.href = "/faq";
+    // Use navigate from useI18next to preserve language prefix in browser history
+    navigate("/faq");
   };
 
   return (

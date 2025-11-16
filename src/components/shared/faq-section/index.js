@@ -5,6 +5,7 @@ import { ButtonPrimaryStandard } from "../reusable-buttons";
 import Faq from "../../faq";
 import SpreadsIcon from "../../../assets/images/icons/main-page/features-execution-excellence/features.svg";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const FaqSection = ({
   faqData,
@@ -17,13 +18,15 @@ const FaqSection = ({
 }) => {
   const { t } = useTranslationWithVariables();
   const isRTL = useRtlDirection();
+  const { navigate } = useI18next();
 
   const handleFaqButtonClick = () => {
     if (onFaqButtonClick) {
       onFaqButtonClick();
     } else {
       // Default behavior - navigate to FAQ page
-      window.location.href = "/faq";
+      // Use navigate from useI18next to preserve language prefix in browser history
+      navigate("/faq");
     }
   };
 

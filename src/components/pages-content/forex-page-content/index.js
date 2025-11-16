@@ -26,6 +26,7 @@ import TradingTicker from "../../trading-ticker";
 import TopMarketLayout from "../../top-market-layout";
 import ForexSpreadsDesktop from "./forex-spreads-desktop";
 import ForexSpreadsMobile from "./forex-spreads-mobile";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const ForexContent = ({ className, isShowHero }) => {
   const { t } = useTranslationWithVariables();
@@ -33,6 +34,7 @@ const ForexContent = ({ className, isShowHero }) => {
   const { isMobile } = useWindowSize();
   const langParam = setLangParam(); // Get the language parameter
   const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage popup visibility
+  const { navigate } = useI18next();
 
   const handleClosePopup = () => {
     setIsPopupOpen(false); // Close the popup
@@ -40,7 +42,8 @@ const ForexContent = ({ className, isShowHero }) => {
 
   const handleFaqButtonClick = () => {
     // Navigate to FAQ page
-    window.location.href = "/faq";
+    // Use navigate from useI18next to preserve language prefix in browser history
+    navigate("/faq");
   };
 
   updateTableDataWithLiveColumn(DATA_FOREX_MINOR, tradingSymbols);

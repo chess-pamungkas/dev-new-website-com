@@ -7,6 +7,7 @@ import { DIR_LTR, DIR_RTL } from "../../../helpers/constants";
 import { ButtonPrimaryHero } from "../reusable-buttons";
 import fourZeroFourTextDesktop from "../../../assets/images/bg/404/404-text-desktop.png";
 import fourZeroFourTextMobile from "../../../assets/images/bg/404/404-text-mobile.png";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const SystemInfoComponent = ({
   className,
@@ -17,6 +18,7 @@ const SystemInfoComponent = ({
 }) => {
   const isRTL = useRtlDirection();
   const { t } = useTranslationWithVariables();
+  const { navigate } = useI18next();
 
   return (
     <section
@@ -81,7 +83,7 @@ const SystemInfoComponent = ({
             <div className="system-info__button-container">
               <ButtonPrimaryHero
                 text={t("system-page-go-back-btn")}
-                onClick={() => (window.location.href = "/")}
+                onClick={() => navigate("/")}
                 className="system-info__return-btn"
                 showArrow={true}
               />

@@ -11,6 +11,7 @@ import FaqSearchBar from "../../help-center/faq-search-bar";
 import TrustPilot from "../trust-pilot";
 import globeImage from "../../../assets/images/bg/hero/main-promotion/globe.svg";
 import handImage from "../../../assets/images/bg/hero/main-promotion/hand.svg";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const Hero = ({
   className,
@@ -41,6 +42,7 @@ const Hero = ({
   const { content, sect1 } = useContext(MarketingContext);
   const isRTL = useRtlDirection();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const { navigate } = useI18next();
 
   const handleShowRegistrationPopup = () => {
     setIsPopupOpen(true);
@@ -80,8 +82,9 @@ const Hero = ({
 
   const handleSecondaryButtonClick = () => {
     // For partners, redirect to contact-us page
+    // Use navigate from useI18next to preserve language prefix in browser history
     if (heroType === "partners") {
-      window.location.href = "/contact-us";
+      navigate("/contact-us");
     } else {
       handleShowRegistrationPopup();
     }

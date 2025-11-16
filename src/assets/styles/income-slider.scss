@@ -337,7 +337,7 @@
     @include mobile {
       width: auto;
       height: auto;
-      font-size: 47.43px;
+      font-size: 40px;
       line-height: 100%;
       word-wrap: break-word;
       overflow-wrap: break-word;
@@ -347,7 +347,7 @@
     @include tablet {
       width: auto;
       height: auto;
-      font-size: 47.43px;
+      font-size: 40px;
       line-height: 100%;
     }
 
@@ -400,7 +400,7 @@
       @include mobile {
         width: auto;
         height: auto;
-        font-size: 47.43px;
+        font-size: 40px;
         // line-height: 120%;
         letter-spacing: -0.04em;
       }
