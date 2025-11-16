@@ -1,19 +1,46 @@
 import React, { useEffect } from "react";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import { useLocation } from "@reach/router";
 
 const ReCaptchaProvider = ({ children, showBadge = false }) => {
+  const recaptchaSiteKey = process.env.GATSBY_GOOGLE_CAPTCHA_SITE_KEY;
+  const location = useLocation();
+
   useEffect(() => {
-    // Load reCAPTCHA script manually
-    const script = document.createElement("script");
-    script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.GATSBY_GOOGLE_CAPTCHA_SITE_KEY}`;
-    script.async = true;
-    script.defer = true;
-    script.id = "google-recaptcha-v3";
+    if (!recaptchaSiteKey) return;
 
-    document.body.appendChild(script);
+    // Check if we're on contact-us page
+    const isContactUsPage =
+      location?.pathname === "/contact-us" ||
+      location?.pathname === "/contact-us/" ||
+      location?.pathname?.includes("/contact-us");
 
-    // Update style to position badge at bottom left
-    const style = document.createElement("style");
+    // Only load script if badge should be shown (contact-us page or popup registration)
+    // This reduces JavaScript execution time on pages that don't need reCAPTCHA
+    const shouldLoadScript = showBadge || isContactUsPage;
+
+    if (shouldLoadScript) {
+      // Load reCAPTCHA script manually only when needed
+      if (!document.getElementById("google-recaptcha-v3")) {
+        const script = document.createElement("script");
+        script.src = `https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`;
+        script.async = true;
+        script.defer = true;
+        script.id = "google-recaptcha-v3";
+        script.setAttribute("loading", "lazy");
+        document.body.appendChild(script);
+      }
+    }
+
+    // Always update style to position badge at bottom left (even if script not loaded yet)
+    // This ensures styling is ready when script loads
+    let style = document.getElementById("recaptcha-badge-styles");
+    if (!style) {
+      style = document.createElement("style");
+      style.id = "recaptcha-badge-styles";
+      document.head.appendChild(style);
+    }
+
     style.innerHTML = `
       .grecaptcha-badge { 
         visibility: ${showBadge ? "visible" : "hidden"} !important;
@@ -41,22 +68,21 @@ const ReCaptchaProvider = ({ children, showBadge = false }) => {
         transform: none !important;
       }
     `;
-    document.head.appendChild(style);
 
     return () => {
-      // Cleanup script when component unmounts
-      const existingScript = document.getElementById("google-recaptcha-v3");
-      if (existingScript) {
-        document.body.removeChild(existingScript);
-      }
-      document.head.removeChild(style);
+      // Don't remove script on unmount - keep it loaded for better UX
+      // Only remove style if needed (but we'll keep it for badge visibility control)
     };
-  }, [showBadge]);
+  }, [showBadge, recaptchaSiteKey, location]);
+
+  if (!recaptchaSiteKey) {
+    return <>{children}</>;
+  }
 
   return (
     <>
       <GoogleReCaptchaProvider
-        reCaptchaKey={process.env.GATSBY_GOOGLE_CAPTCHA_SITE_KEY}
+        reCaptchaKey={recaptchaSiteKey}
         scriptProps={{
           async: true,
           defer: true,

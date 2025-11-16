@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState, useRef } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
@@ -8,8 +8,20 @@ import {
   FAQ_QUICK_ANSWER,
   getFAQMarket,
 } from "../../../helpers/faq";
-import { debounce } from "lodash";
 import SearchIcon from "../../../assets/images/icons/faq/search.svg";
+
+// Simple debounce implementation to avoid importing entire lodash library
+const debounce = (func, wait) => {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};
 
 const FaqSearchBar = ({ className, setSearchResults, setNoSearchResult }) => {
   const COUNT_OF_SEARCH_CHARS = 1;
@@ -56,16 +68,15 @@ const FaqSearchBar = ({ className, setSearchResults, setNoSearchResult }) => {
     }
   };
 
-  // eslint-disable-next-line
-  const debouncedHandleSearchValue = useCallback(
-    debounce(handleSearchValue, 500, {}),
-    []
+  // Use useRef to persist debounced function across renders
+  const debouncedHandleSearchValueRef = useRef(
+    debounce(handleSearchValue, 500)
   );
 
   const handleSearchInputChange = (e) => {
     setNoSearchResult(false);
     setSearchTerm(e.target.value);
-    debouncedHandleSearchValue(e.target.value);
+    debouncedHandleSearchValueRef.current(e.target.value);
   };
 
   return (
