@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
@@ -6,18 +6,31 @@ import Seo from "../components/shared/seo";
 import MainPromotion from "../components/pages-content/main-page-content/main-promotion-content";
 import TradingTicker from "../components/trading-ticker";
 import TestimonialsSecurityContent from "../components/pages-content/main-page-content/testimonials-security-content";
-import AccountComparison from "../components/shared/account-comparison";
 import FeaturesExecutionExcellence from "../components/pages-content/main-page-content/features-excecution-excellence-content";
 import ContainerWrapper from "../components/shared/container-wrapper";
 import CostCalculatorContent from "../components/pages-content/main-page-content/cost-calculator-content";
 import TechnologyInfrastructureContent from "../components/pages-content/main-page-content/technology-infrastructure-content";
 import MarketSentimentContent from "../components/market-sentiment";
-import TrustContent from "../components/pages-content/main-page-content/trust-content";
-import FeaturesSectionContent from "../components/features-section";
-import GuideContent from "../components/shared/guide-content";
-import OurCommunityContent from "../components/shared/our-community";
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import PageBackground from "../components/shared/page-background";
+
+// Lazy load non-critical components to reduce initial JavaScript execution time
+const AccountComparison = lazy(() =>
+  import("../components/shared/account-comparison")
+);
+const TrustContent = lazy(() =>
+  import("../components/pages-content/main-page-content/trust-content")
+);
+const FeaturesSectionContent = lazy(() =>
+  import("../components/features-section")
+);
+const GuideContent = lazy(() => import("../components/shared/guide-content"));
+const OurCommunityContent = lazy(() =>
+  import("../components/shared/our-community")
+);
+
+// Loading fallback component
+const ComponentLoader = () => <div style={{ minHeight: "200px" }} />;
 
 const IndexPage = ({ className, isShowHero = true }) => {
   const { t } = useTranslationWithVariables();
@@ -38,27 +51,42 @@ const IndexPage = ({ className, isShowHero = true }) => {
         <FeaturesExecutionExcellence />
         <TestimonialsSecurityContent />
       </ContainerWrapper>
-      <AccountComparison />
+      {/* Lazy load AccountComparison - below the fold */}
+      <Suspense fallback={<ComponentLoader />}>
+        <AccountComparison />
+      </Suspense>
       <ContainerWrapper>
         <CostCalculatorContent />
         <TechnologyInfrastructureContent />
       </ContainerWrapper>
       <MarketSentimentContent />
       <ContainerWrapper>
-        <TrustContent />
-        <FeaturesSectionContent />
-        <GuideContent
-          titleKey="main-guide-title"
-          subtitleKey="main-guide-subtitle"
-        />
+        {/* Lazy load TrustContent - below the fold */}
+        <Suspense fallback={<ComponentLoader />}>
+          <TrustContent />
+        </Suspense>
+        {/* Lazy load FeaturesSectionContent - below the fold */}
+        <Suspense fallback={<ComponentLoader />}>
+          <FeaturesSectionContent />
+        </Suspense>
+        {/* Lazy load GuideContent - below the fold */}
+        <Suspense fallback={<ComponentLoader />}>
+          <GuideContent
+            titleKey="main-guide-title"
+            subtitleKey="main-guide-subtitle"
+          />
+        </Suspense>
       </ContainerWrapper>
-      {isMobile ? (
-        <OurCommunityContent />
-      ) : (
-        <ContainerWrapper>
+      {/* Lazy load OurCommunityContent - bottom of page */}
+      <Suspense fallback={<ComponentLoader />}>
+        {isMobile ? (
           <OurCommunityContent />
-        </ContainerWrapper>
-      )}
+        ) : (
+          <ContainerWrapper>
+            <OurCommunityContent />
+          </ContainerWrapper>
+        )}
+      </Suspense>
     </PageBackground>
   );
 };
