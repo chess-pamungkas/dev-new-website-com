@@ -974,4 +974,42 @@
       font-size: 18px;
     }
   }
+
+  @include desktop-2k {
+    // Fix image stretching on 2K displays - maintain aspect ratio
+    &__video-section {
+      // Use 100% auto to maintain aspect ratio while filling width
+      background-size: auto 100%;
+      background-position: center center;
+
+      &--hovered {
+        background-size: cover;
+        transform: scale(1.02);
+      }
+
+      &--clicked {
+        background-size: cover;
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  @include desktop-5k {
+    // Fix image stretching on 5K displays - maintain aspect ratio
+    &__video-section {
+      // Use 100% auto to maintain aspect ratio while filling width
+      background-size: auto 100%;
+      background-position: center center;
+
+      &--hovered {
+        background-size: cover;
+        transform: scale(1.02);
+      }
+
+      &--clicked {
+        background-size: cover;
+        transform: scale(1.05);
+      }
+    }
+  }
 }

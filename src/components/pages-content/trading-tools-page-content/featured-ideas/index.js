@@ -11,7 +11,9 @@ const { ArrowIcon } = ReusableButtons;
 import desktopBgSVG from "../../../../assets/images/bg/trading-tools/bg-feature-ideas-desktop.svg";
 import mobileBgSVG from "../../../../assets/images/bg/trading-tools/bg-feature-ideas-mobile.svg";
 import badgeIcon from "../../../../assets/images/icons/badge-market-sentiment.svg";
-import featuredIdeasImage from "../../../../assets/images/trading-tools/featured-ideas.svg";
+import featuredIdeasCustomizableFiltersImage from "../../../../assets/images/trading-tools/featured-ideas-customizable-filters.png";
+import featuredIdeasEducationalImage from "../../../../assets/images/trading-tools/featured-ideas-educational.png";
+import featuredIdeasRealTimeOnLiveChartsImage from "../../../../assets/images/trading-tools/featured-ideas-real-time-on-live-charts.png";
 import { setLangParam } from "../../../../helpers/services/language-service";
 
 const FeaturedIdeas = ({ className }) => {
@@ -39,17 +41,17 @@ const FeaturedIdeas = ({ className }) => {
     {
       id: "customizable-filters",
       label: t("featured-ideas_tab_customizable_filters"),
-      icon: featuredIdeasImage,
+      icon: featuredIdeasCustomizableFiltersImage,
     },
     {
       id: "educational",
       label: t("featured-ideas_tab_educational"),
-      icon: featuredIdeasImage,
+      icon: featuredIdeasEducationalImage,
     },
     {
       id: "real-time-charts",
       label: t("featured-ideas_tab_real_time_charts"),
-      icon: featuredIdeasImage,
+      icon: featuredIdeasRealTimeOnLiveChartsImage,
     },
   ];
 
@@ -57,25 +59,25 @@ const FeaturedIdeas = ({ className }) => {
     switch (activeTab) {
       case "customizable-filters":
         return {
-          icon: featuredIdeasImage,
+          icon: featuredIdeasCustomizableFiltersImage,
           title: t("featured-ideas_tab_customizable_filters_title"),
           description: t("featured-ideas_tab_customizable_filters_description"),
         };
       case "educational":
         return {
-          icon: featuredIdeasImage,
+          icon: featuredIdeasEducationalImage,
           title: t("featured-ideas_tab_educational_title"),
           description: t("featured-ideas_tab_educational_description"),
         };
       case "real-time-charts":
         return {
-          icon: featuredIdeasImage,
+          icon: featuredIdeasRealTimeOnLiveChartsImage,
           title: t("featured-ideas_tab_real_time_charts_title"),
           description: t("featured-ideas_tab_real_time_charts_description"),
         };
       default:
         return {
-          icon: featuredIdeasImage,
+          icon: featuredIdeasCustomizableFiltersImage,
           title: t("featured-ideas_tab_customizable_filters_title"),
           description: t("featured-ideas_tab_customizable_filters_description"),
         };

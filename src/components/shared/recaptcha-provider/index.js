@@ -23,9 +23,10 @@ const ReCaptchaProvider = ({ children, showBadge = false }) => {
     });
 
     // Also load after a delay if user hasn't interacted (fallback for forms)
+    // Increased delay to 5 seconds to reduce initial JavaScript execution time
     const timeoutId = setTimeout(() => {
       loadRecaptchaOnInteraction();
-    }, 3000); // Load after 3 seconds as fallback
+    }, 5000); // Load after 5 seconds as fallback (increased from 3s)
 
     return () => {
       events.forEach((event) => {

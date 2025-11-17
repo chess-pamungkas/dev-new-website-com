@@ -1,62 +1,64 @@
-# Optimasi JavaScript Execution Time
+# Optimasi JavaScript Execution Time - Update
 
 ## Masalah
 
-GTmetrix menunjukkan **1.9s spent executing JavaScript** dengan masalah utama:
+GTmetrix menunjukkan **1.6s spent executing JavaScript** dengan masalah utama:
 
-- `framework-af353efbad687f13f4eb.js`: **2.9s CPU time** (1.2s evaluation)
-- reCAPTCHA: **553ms CPU time** (441ms evaluation)
-- Component page: **265ms CPU time**
-- app.js: **169ms CPU time**
+- `framework-af353efbad687f13f4eb.js`: **1.8s CPU time** (946ms evaluation) - MASIH TERBESAR
+- `Unattributable`: **705ms CPU time**
+- reCAPTCHA: **424ms CPU time** (391ms evaluation)
+- Component page: **291ms CPU time**
 
-## Strategi Optimasi
+## Optimasi yang Sudah Dilakukan
 
-### 1. Lazy Load Komponen Non-Critical di Homepage
+### 1. ✅ Lazy Load Komponen Non-Critical di Homepage
 
-Komponen berikut tidak perlu di-load saat initial page load:
+- `AccountComparison` - Lazy loaded
+- `TrustContent` - Lazy loaded
+- `FeaturesSectionContent` - Lazy loaded
+- `GuideContent` - Lazy loaded
+- `OurCommunityContent` - Lazy loaded
+- `MarketSentimentContent` - Lazy loaded (menggunakan socket.io-client)
+- `TradingTicker` - Lazy loaded (menggunakan socket.io-client)
 
-- `AccountComparison` - Below the fold
-- `TrustContent` - Below the fold
-- `FeaturesSectionContent` - Below the fold
-- `GuideContent` - Below the fold
-- `OurCommunityContent` - Bottom of page
+### 2. ✅ Lazy Load react-table
 
-### 2. Lazy Load Library Besar
+- `react-table` sekarang di-load secara dynamic saat TableComponent digunakan
+- Mengurangi initial bundle size karena react-table adalah library besar (~100KB+)
 
-- `react-table` - Hanya digunakan di beberapa halaman (spreads-and-fees, forex, dll)
-- `react-spring` - Animasi library, bisa di-lazy load
-- `react-player` - Video player, hanya digunakan di trust section
-- `lottie-react` - Animation library, bisa di-lazy load
+### 3. ✅ Optimize reCAPTCHA Loading
 
-### 3. Defer Third-Party Scripts
-
-- TrustPilot widget - Load setelah user scroll
-- MetaTrader widget - Load setelah user scroll
-
-### 4. Code Splitting
-
-Gatsby sudah melakukan code splitting otomatis, tapi kita bisa optimize lebih dengan:
-
-- Dynamic imports untuk komponen besar
-- Intersection Observer untuk lazy load saat komponen masuk viewport
-
-## Implementasi
-
-### Step 1: Lazy Load Komponen Homepage
-
-Update `src/pages/index.js` untuk lazy load komponen non-critical.
-
-### Step 2: Lazy Load react-table
-
-Update `src/components/shared/table/index.js` untuk dynamic import react-table.
-
-### Step 3: Defer TrustPilot Widget
-
-Load TrustPilot widget hanya saat user scroll ke trust section.
+- Delay ditingkatkan dari 3 detik ke 5 detik
+- Masih load on user interaction (click, touch, scroll, keydown)
+- Mengurangi initial JavaScript execution time
 
 ## Expected Results
 
-- **JavaScript execution time**: 1.9s → ~1.0-1.2s (reduction ~40-50%)
+Setelah optimasi ini:
+
+- **JavaScript execution time**: 1.6s → ~1.0-1.2s (reduction ~25-40%)
+- **Framework bundle size**: Berkurang karena react-table dan socket.io-client di-split
 - **TBT (Total Blocking Time)**: Reduced significantly
 - **FCP (First Contentful Paint)**: Improved
 - **LCP (Largest Contentful Paint)**: Improved
+
+## Library yang Sudah Di-Lazy Load
+
+1. **react-table** - Dynamic import di TableComponent
+2. **socket.io-client** - Lazy loaded via MarketSentimentContent dan TradingTicker
+3. **Komponen besar** - AccountComparison, TrustContent, FeaturesSectionContent, GuideContent, OurCommunityContent
+
+## Catatan Penting
+
+- **react-table** akan di-load saat TableComponent pertama kali digunakan (biasanya di halaman spreads-and-fees, forex, dll)
+- **socket.io-client** akan di-load saat TradingTicker atau MarketSentimentContent di-render
+- **reCAPTCHA** akan di-load setelah 5 detik atau saat user interaction (whichever comes first)
+
+## Langkah Selanjutnya (Opsional)
+
+Jika masih perlu optimasi lebih lanjut:
+
+1. **Code splitting lebih agresif** - Split framework bundle lebih kecil
+2. **Tree shaking** - Pastikan hanya code yang digunakan yang di-bundle
+3. **Optimize third-party scripts** - TrustPilot, MetaTrader widget
+4. **Defer non-critical CSS** - Split CSS untuk above-the-fold content

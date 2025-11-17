@@ -4,13 +4,17 @@ import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
 import Seo from "../components/shared/seo";
 import MainPromotion from "../components/pages-content/main-page-content/main-promotion-content";
-import TradingTicker from "../components/trading-ticker";
+// Lazy load TradingTicker - uses socket.io-client (large library)
+const TradingTicker = lazy(() => import("../components/trading-ticker"));
 import TestimonialsSecurityContent from "../components/pages-content/main-page-content/testimonials-security-content";
 import FeaturesExecutionExcellence from "../components/pages-content/main-page-content/features-excecution-excellence-content";
 import ContainerWrapper from "../components/shared/container-wrapper";
 import CostCalculatorContent from "../components/pages-content/main-page-content/cost-calculator-content";
 import TechnologyInfrastructureContent from "../components/pages-content/main-page-content/technology-infrastructure-content";
-import MarketSentimentContent from "../components/market-sentiment";
+// Lazy load MarketSentimentContent - uses socket.io-client (large library)
+const MarketSentimentContent = lazy(() =>
+  import("../components/market-sentiment")
+);
 import { useWindowSize } from "../helpers/hooks/use-window-size";
 import PageBackground from "../components/shared/page-background";
 
@@ -45,7 +49,10 @@ const IndexPage = ({ className, isShowHero = true }) => {
 
       {/* MainPromotion rendered outside container constraints */}
       <MainPromotion />
-      <TradingTicker />
+      {/* Lazy load TradingTicker - uses socket.io-client */}
+      <Suspense fallback={<ComponentLoader />}>
+        <TradingTicker />
+      </Suspense>
       {/* Content inside container */}
       <ContainerWrapper>
         <FeaturesExecutionExcellence />
@@ -59,7 +66,10 @@ const IndexPage = ({ className, isShowHero = true }) => {
         <CostCalculatorContent />
         <TechnologyInfrastructureContent />
       </ContainerWrapper>
-      <MarketSentimentContent />
+      {/* Lazy load MarketSentimentContent - uses socket.io-client */}
+      <Suspense fallback={<ComponentLoader />}>
+        <MarketSentimentContent />
+      </Suspense>
       <ContainerWrapper>
         {/* Lazy load TrustContent - below the fold */}
         <Suspense fallback={<ComponentLoader />}>
