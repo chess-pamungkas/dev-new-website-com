@@ -2,8 +2,9 @@
 @import "mixins";
 
 // Import images directly in SCSS
-$globe-image: url("../images/bg/hero/main-promotion/globe.svg");
-$hand-image: url("../images/bg/hero/main-promotion/hand.svg");
+// Using static folder path for WebP (more reliable in Gatsby)
+$globe-image: url("/images/globe.webp");
+$hand-image: url("/images/hand.webp");
 
 .main-promotion {
   position: relative;

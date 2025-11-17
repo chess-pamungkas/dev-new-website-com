@@ -9,8 +9,9 @@ import LanguageContext from "../../../context/language-context";
 import { HeroButtons, ButtonPrimaryHero } from "../reusable-buttons";
 import FaqSearchBar from "../../help-center/faq-search-bar";
 import TrustPilot from "../trust-pilot";
-import globeImage from "../../../assets/images/bg/hero/main-promotion/globe.svg";
-import handImage from "../../../assets/images/bg/hero/main-promotion/hand.svg";
+// Using static folder path for WebP (more reliable in Gatsby)
+const globeImage = "/images/globe.webp";
+const handImage = "/images/hand.webp";
 import { useI18next } from "gatsby-plugin-react-i18next";
 
 const Hero = ({

@@ -8,8 +8,9 @@ import SofiaProBoldWoff2 from "./src/assets/fonts/SofiaProBold.woff2";
 import SofiaProBlackWoff2 from "./src/assets/fonts/SofiaProBlack.woff2";
 import RobotoMediumTtf from "./src/assets/fonts/Roboto-Medium.ttf";
 // Critical LCP images (globe image is the LCP element)
-import GlobeImage from "./src/assets/images/bg/hero/main-promotion/globe.svg";
-import HandImage from "./src/assets/images/bg/hero/main-promotion/hand.svg";
+// Using static folder path for WebP (more reliable in Gatsby)
+const GlobeImage = "/images/globe.webp";
+const HandImage = "/images/hand.webp";
 
 export const onRenderBody = ({
   setPostBodyComponents,

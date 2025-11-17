@@ -23,6 +23,7 @@ npm run rollback:svg
 ```
 
 Atau manual:
+
 ```bash
 # Restore dari backup
 copy src\assets\images\bg\join-our-community\join-our-community-desktop.svg.backup src\assets\images\bg\join-our-community\join-our-community-desktop.svg
@@ -40,12 +41,14 @@ node scripts/extract-svg-images.js
 ```
 
 Atau extract manual menggunakan online tool:
+
 - https://svgtom.com/
 - Copy base64 string dari SVG dan decode
 
 ### Langkah 3: Optimasi Extracted Images
 
 1. **Convert ke WebP** (lebih kecil 25-50%):
+
    - Gunakan Squoosh: https://squoosh.app/
    - Atau TinyPNG: https://tinypng.com/
 
@@ -62,10 +65,9 @@ Atau extract manual menggunakan online tool:
   &::before {
     // Ganti dari SVG ke extracted image
     // background: url("../../assets/images/bg/join-our-community/join-our-community-desktop.svg")
-    
+
     // Menjadi direct image (WebP dengan fallback)
-    background-image: 
-      url("../../assets/images/extracted/bg/join-our-community/join-our-community-desktop-image-1.webp"),
+    background-image: url("../../assets/images/extracted/bg/join-our-community/join-our-community-desktop-image-1.webp"),
       url("../../assets/images/extracted/bg/join-our-community/join-our-community-desktop-image-1.png");
     background-repeat: no-repeat;
     background-position: center center;
@@ -80,17 +82,15 @@ Atau extract manual menggunakan online tool:
 ```scss
 .trust-video {
   // Default state
-  background-image: 
-    url("../../assets/images/extracted/trust/trust-video-desktop-image-1.webp"),
+  background-image: url("../../assets/images/extracted/trust/trust-video-desktop-image-1.webp"),
     url("../../assets/images/extracted/trust/trust-video-desktop-image-1.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  
+
   // Hovered state
   &--hovered {
-    background-image: 
-      url("../../assets/images/extracted/trust/trust-video-desktop-image-1.webp"),
+    background-image: url("../../assets/images/extracted/trust/trust-video-desktop-image-1.webp"),
       url("../../assets/images/extracted/trust/trust-video-desktop-image-1.png");
     // ... rest
   }
@@ -129,6 +129,7 @@ Atau gunakan `<picture>` element:
 Setelah menggunakan extracted images di CSS, Anda bisa:
 
 **Opsi A: Hapus SVG files** (jika tidak digunakan lagi)
+
 ```bash
 # Hapus SVG files yang sudah tidak digunakan
 rm src/assets/images/bg/join-our-community/join-our-community-desktop.svg
@@ -161,10 +162,10 @@ Buat SVG sederhana tanpa embedded images, hanya dengan vector shapes jika diperl
 ## 🎯 Hasil Akhir
 
 Dengan solusi ini:
+
 - **CSS background langsung ke image file** (tidak melalui SVG)
 - **Ukuran lebih kecil**: WebP biasanya 25-50% lebih kecil dari PNG/JPEG
 - **Loading lebih cepat**: Images bisa di-cache dan lazy load
 - **Tampilan tetap sama**: Tidak ada perubahan visual
 
 **Total pengurangan**: ~14.77 MB → ~500 KB - 1.5 MB (90-97% reduction) 🚀
-

@@ -1,9 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import BadgeAccountComparisonIcon from "../../../assets/images/icons/account-comparison/badge-account-comparison.svg";
 import BadgeMostPopularIcon from "../../../assets/images/icons/account-comparison/badge-most-popular.svg";
-import StarMostPopularIcon from "../../../assets/images/icons/account-comparison/star-most-popular.svg";
+// Using static folder path for WebP (more reliable in Gatsby)
+const StarMostPopularIcon = "/images/star-most-popular.webp";
 import BadgeBeginnerChoiceIcon from "../../../assets/images/icons/account-comparison/badge-beginner-choice.svg";
-import StarBeginnerChoiceIcon from "../../../assets/images/icons/account-comparison/star-beginner-choice.svg";
+// Using static folder path for WebP (more reliable in Gatsby)
+const StarBeginnerChoiceIcon = "/images/star-beginner-choice.webp";
 import CircleMarkIcon from "../../../assets/images/icons/circle-mark.svg";
 // Import WebP for desktop (smaller file size), SVG for mobile
 // Using static folder path for WebP (more reliable in Gatsby)

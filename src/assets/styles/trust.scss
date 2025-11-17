@@ -20,8 +20,7 @@
     transition: all 0.3s ease;
 
     // Default state background
-    background: url("/images/trust-video-desktop.webp")
-      no-repeat center center;
+    background: url("/images/trust-video-desktop.webp") no-repeat center center;
     background-size: cover;
     border-radius: 24px;
     overflow: hidden;
@@ -744,8 +743,8 @@
       order: 2;
       display: block;
       visibility: visible;
-      background: url("/images/trust-video-desktop.webp")
-        no-repeat center center;
+      background: url("/images/trust-video-desktop.webp") no-repeat center
+        center;
       background-size: 100% 100%;
       border-radius: 16px;
     }
