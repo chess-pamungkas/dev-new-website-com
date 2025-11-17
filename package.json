@@ -12,8 +12,7 @@
     "build": "npm run copy:registration-script && gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "copy:registration-script": "node src/scripts/copy-registration-script/index.js",
-    "update-translations": "node scripts/update-translations.js"
+    "copy:registration-script": "node src/scripts/copy-registration-script/index.js"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.13.4",

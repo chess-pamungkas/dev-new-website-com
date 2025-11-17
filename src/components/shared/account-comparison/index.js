@@ -5,7 +5,9 @@ import StarMostPopularIcon from "../../../assets/images/icons/account-comparison
 import BadgeBeginnerChoiceIcon from "../../../assets/images/icons/account-comparison/badge-beginner-choice.svg";
 import StarBeginnerChoiceIcon from "../../../assets/images/icons/account-comparison/star-beginner-choice.svg";
 import CircleMarkIcon from "../../../assets/images/icons/circle-mark.svg";
-import AccountComparisonDesktopBg from "../../../assets/images/bg/account-comparison/account-comparison-desktop.svg";
+// Import WebP for desktop (smaller file size), SVG for mobile
+// Using static folder path for WebP (more reliable in Gatsby)
+const AccountComparisonDesktopBg = "/images/account-comparison-desktop.webp";
 import AccountComparisonMobileBg from "../../../assets/images/bg/account-comparison/account-comparison-mobile.svg";
 import { ShowRegistrationPopup } from "../../../helpers/constants";
 import LanguageContext from "../../../context/language-context";
@@ -48,6 +50,7 @@ const AccountComparison = () => {
     t("account-comparison-zero-feature4"),
   ];
 
+  // Using static folder path for WebP (more reliable)
   const backgroundSrc = isMobile
     ? AccountComparisonMobileBg
     : AccountComparisonDesktopBg;

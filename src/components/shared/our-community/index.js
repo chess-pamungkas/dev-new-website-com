@@ -7,6 +7,10 @@ import { ShowRegistrationPopup } from "../../../helpers/constants";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import BadgeJoinOurCommunityIcon from "../../../assets/images/icons/join-our-community/badge-join-our-community.svg";
 import { CommunityButtons } from "../community-buttons";
+// Import background images
+// Using static folder path for WebP (more reliable in Gatsby)
+const JoinOurCommunityDesktopBg = "/images/join-our-community-desktop.webp";
+import JoinOurCommunityMobileBg from "../../../assets/images/bg/join-our-community/join-our-community-mobile.svg";
 
 const OurCommunityContent = ({
   customBadgeMessage,
@@ -54,8 +58,21 @@ const OurCommunityContent = ({
       navigate("/accounts-type");
     });
 
+  // Set background image directly as inline style
+  // Using static folder path for WebP (more reliable)
+  const backgroundImage = isMobile
+    ? JoinOurCommunityMobileBg
+    : JoinOurCommunityDesktopBg;
+
+  const style = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center center",
+    backgroundRepeat: "no-repeat",
+  };
+
   return (
-    <div className="our-community-content">
+    <div className="our-community-content" style={style}>
       <div className="our-community-content__container">
         <div className="our-community-content__left">
           <div className="our-community-content__badge">
