@@ -3,6 +3,11 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
 const ReCaptchaProvider = ({ children, showBadge = false }) => {
   const [shouldLoadRecaptcha, setShouldLoadRecaptcha] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     // Defer reCAPTCHA loading until user interaction or form focus
@@ -85,6 +90,11 @@ const ReCaptchaProvider = ({ children, showBadge = false }) => {
 
   // Only render GoogleReCaptchaProvider when script should be loaded
   // This prevents unnecessary initialization overhead
+  // Also ensure it only renders on client-side to avoid hydration warnings
+  if (!isClient) {
+    return <>{children}</>;
+  }
+
   return (
     <>
       {shouldLoadRecaptcha ? (
@@ -117,7 +127,7 @@ const ReCaptchaProvider = ({ children, showBadge = false }) => {
         // Render children without reCAPTCHA provider until needed
         children
       )}
-      <div id="captcha-placeholder" />
+      <div id="captcha-placeholder" suppressHydrationWarning />
     </>
   );
 };

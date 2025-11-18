@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../helpers/hooks/use-translation-with-vars";
@@ -34,7 +34,7 @@ const IndexPage = ({ className, isShowHero = true }) => {
       {/* MainPromotion rendered outside container constraints */}
       <MainPromotion />
       {/* Lazy load TradingTicker - uses socket.io-client */}
-      <Suspense fallback={<ComponentLoader />}>
+      <Suspense fallback={null}>
         <TradingTicker />
       </Suspense>
       {/* Content inside container */}
@@ -48,7 +48,7 @@ const IndexPage = ({ className, isShowHero = true }) => {
         <TechnologyInfrastructureContent />
       </ContainerWrapper>
       {/* Lazy load MarketSentimentContent - uses socket.io-client */}
-      <Suspense fallback={<ComponentLoader />}>
+      <Suspense fallback={null}>
         <MarketSentimentContent />
       </Suspense>
       <ContainerWrapper>

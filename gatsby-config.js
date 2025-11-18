@@ -58,6 +58,11 @@ module.exports = {
             options: {
               id: process.env.GATSBY_GOOGLE_TAG_MANAGER,
               defaultDataLayer: { platform: "gatsby" },
+              // Enable GTM in development for testing
+              includeInDevelopment:
+                process.env.GATSBY_ENABLE_GTM_DEV === "true",
+              // Route change event name
+              routeChangeEventName: "gatsby-route-change",
             },
           },
         ]
