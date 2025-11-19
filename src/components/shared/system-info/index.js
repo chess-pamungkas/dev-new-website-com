@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
@@ -8,6 +8,7 @@ import { ButtonLearnMore } from "../reusable-buttons";
 import fourZeroFourTextDesktop from "../../../assets/images/bg/404/404-text-desktop.png";
 import fourZeroFourTextMobile from "../../../assets/images/bg/404/404-text-mobile.png";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import LanguageContext from "../../../context/language-context";
 
 const SystemInfoComponent = ({
   className,
@@ -19,6 +20,7 @@ const SystemInfoComponent = ({
   const isRTL = useRtlDirection();
   const { t } = useTranslationWithVariables();
   const { navigate } = useI18next();
+  const { selectedLanguage } = useContext(LanguageContext);
 
   return (
     <section
@@ -85,8 +87,14 @@ const SystemInfoComponent = ({
                 <ButtonLearnMore
                   text={t("system-page-go-back-btn")}
                   onClick={() => {
-                    // Use navigate from useI18next to preserve language prefix in browser history
-                    navigate("/");
+                    // Preserve language prefix when navigating to homepage
+                    // Use selectedLanguage.URIPart to get language prefix
+                    // Default language has URIPart: "" (empty), non-default has URIPart: "/id" (without trailing slash)
+                    // For homepage, we need trailing slash: "/" for default, "/id/" for non-default
+                    const languagePrefix = selectedLanguage?.URIPart || "";
+                    const homepagePath =
+                      languagePrefix === "" ? "/" : `${languagePrefix}/`;
+                    navigate(homepagePath);
                   }}
                   className="system-info__return-btn"
                 />
