@@ -1,7 +1,4 @@
-import {
-  MARKETING_GET_PARAMS,
-  // SECT2_GROUP1_COUNT_OF_WORDS_DEFAULT,
-} from "../marketing.config";
+import { MARKETING_GET_PARAMS } from "../marketing.config";
 import { isBrowser } from "./is-browser";
 import { IB_PARAMS } from "./ib-service";
 
@@ -44,16 +41,6 @@ export const getCampaignParamsAndSetToStorage = () => {
     // Check if campaign_code or UTM parameters exist in URL
     const hasCampaignCode = !!campaignCode;
     const hasUTMParams = !!(utmSource || utmMedium || utmCampaign);
-
-    console.log("getCampaignParamsAndSetToStorage called", {
-      hasCampaignCode,
-      hasUTMParams,
-      campaignCode,
-      utmSource,
-      utmMedium,
-      utmCampaign,
-      currentURL: window.location.href,
-    });
 
     if (hasCampaignCode || hasUTMParams) {
       // Store campaign_code if exists
