@@ -402,6 +402,18 @@
   }
 }
 
+// Prevent live chat from blocking FAQ expand buttons in faq-section (only on mobile and tablet)
+// Live chat is hidden with JavaScript when in faq-section area, so we don't need high z-index
+// This prevents faq-section and buttons from appearing above header (z-index: 1000)
+.faq-section {
+  // Ensure FAQ expand buttons are clickable without affecting header z-index
+  .faq__expand-btn {
+    // No z-index needed since live chat is hidden with JavaScript
+    // Just ensure button is clickable
+    pointer-events: auto !important;
+  }
+}
+
 // Specific page variants
 .faq-section--metals {
   // Metals-specific styling

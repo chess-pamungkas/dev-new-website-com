@@ -601,11 +601,19 @@ body[dir="rtl"] .account-comparison-content,
   }
 }
 
-// Global RTL our community content background flip
-html[dir="rtl"] .our-community-content::before,
-html[lang="ar"] .our-community-content::before,
-body[dir="rtl"] .our-community-content::before,
-[dir="rtl"] .our-community-content::before {
+// Global RTL our community content background image flip
+html[dir="rtl"] .our-community-content,
+html[lang="ar"] .our-community-content,
+body[dir="rtl"] .our-community-content,
+[dir="rtl"] .our-community-content {
+  transform: scaleX(-1) !important;
+}
+
+// Flip the container back so content is not flipped
+html[dir="rtl"] .our-community-content__container,
+html[lang="ar"] .our-community-content__container,
+body[dir="rtl"] .our-community-content__container,
+[dir="rtl"] .our-community-content__container {
   transform: scaleX(-1) !important;
 }
 

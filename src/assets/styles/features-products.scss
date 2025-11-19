@@ -1,5 +1,5 @@
 .features-products {
-  padding: 60px 0 0 0;
+  padding: 60px 0;
 
   @include mobile {
     padding: 30px 0 0 0;
@@ -292,6 +292,7 @@
 
 @include tablet {
   .features-products {
+    padding: 60px 0 0 0;
     &__grid-container {
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
@@ -301,6 +302,7 @@
 
 @include desktop-lg {
   .features-products {
+    padding: 60px 0;
     &__grid-container {
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;

@@ -855,6 +855,7 @@
     border-radius: 24px;
     margin: 50px 0;
     min-height: 583px; // Add minimum height to ensure proper background display
+    background-image: none !important; // Hide inline background-image, use ::before instead
 
     &::before {
       content: "";

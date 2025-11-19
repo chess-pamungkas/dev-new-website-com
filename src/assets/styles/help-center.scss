@@ -185,7 +185,7 @@
     &--quick-answer {
       font-size: 44px;
       font-weight: map-get($font-weight, "semibold");
-      line-height: 1.2;
+      line-height: 1.3;
       margin-top: 0;
       background: linear-gradient(
           102.31deg,
@@ -1427,6 +1427,22 @@
 
     @include desktop-xl {
       font-size: 48px;
+    }
+  }
+}
+
+// Prevent live chat from blocking FAQ expand buttons in .help-center area only
+// Live chat has very high z-index (30000) which blocks FAQ expand buttons
+// Since live chat is hidden with JavaScript when in help-center area, we don't need high z-index
+// This prevents help-center and buttons from appearing above header (z-index: 1000)
+.help-center {
+  &__block-faqs {
+    // Don't set z-index on container to avoid conflicts with header
+
+    .faq__expand-btn {
+      // No z-index needed since live chat is hidden with JavaScript
+      // Just ensure button is clickable
+      pointer-events: auto !important;
     }
   }
 }

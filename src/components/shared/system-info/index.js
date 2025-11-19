@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useRtlDirection } from "../../../helpers/hooks/use-rtl-direction";
 import { useTranslationWithVariables } from "../../../helpers/hooks/use-translation-with-vars";
 import { DIR_LTR, DIR_RTL } from "../../../helpers/constants";
-import { ButtonPrimaryHero } from "../reusable-buttons";
+import { ButtonLearnMore } from "../reusable-buttons";
 import fourZeroFourTextDesktop from "../../../assets/images/bg/404/404-text-desktop.png";
 import fourZeroFourTextMobile from "../../../assets/images/bg/404/404-text-mobile.png";
 import { useI18next } from "gatsby-plugin-react-i18next";
@@ -81,12 +81,16 @@ const SystemInfoComponent = ({
 
             {/* Button Container */}
             <div className="system-info__button-container">
-              <ButtonPrimaryHero
-                text={t("system-page-go-back-btn")}
-                onClick={() => navigate("/")}
-                className="system-info__return-btn"
-                showArrow={true}
-              />
+              <div className="system-info__button-wrapper">
+                <ButtonLearnMore
+                  text={t("system-page-go-back-btn")}
+                  onClick={() => {
+                    // Use navigate from useI18next to preserve language prefix in browser history
+                    navigate("/");
+                  }}
+                  className="system-info__return-btn"
+                />
+              </div>
             </div>
           </div>
         </div>

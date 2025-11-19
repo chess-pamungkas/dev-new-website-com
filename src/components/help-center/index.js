@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
 import { useTranslationWithVariables } from "../../helpers/hooks/use-translation-with-vars";
@@ -21,14 +21,91 @@ import { DIR_LTR, DIR_RTL } from "../../helpers/constants";
 import OurCommunityContent from "../shared/our-community";
 import ContainerWrapper from "../shared/container-wrapper";
 import { useWindowSize } from "../../helpers/hooks/use-window-size";
+import { isBrowser } from "../../helpers/services/is-browser";
 
 const HelpCenter = ({ className }) => {
   const { t } = useTranslationWithVariables();
-  const { isMobile } = useWindowSize();
+  const { isMobile, isTablet } = useWindowSize();
   const [searchResults, setSearchResults] = useState([]);
   const [noSearchResult, setNoSearchResult] = useState(false);
   const isRTL = useRtlDirection();
   const faqMarket = getFAQMarket();
+  const helpCenterRef = useRef(null);
+
+  // Hide live chat when scrolling through help-center area (only on mobile and tablet)
+  useEffect(() => {
+    if (!isBrowser() || !helpCenterRef.current) return;
+
+    const showLiveChat = () => {
+      const liveChatElements = document.querySelectorAll(
+        "#convrs-shadow-host, #convrs-chat-channel-container, .convrs-chat-channel-container"
+      );
+
+      liveChatElements.forEach((el) => {
+        if (el && el.style) {
+          el.style.removeProperty("display");
+          el.style.removeProperty("visibility");
+          el.style.removeProperty("opacity");
+          el.style.removeProperty("pointer-events");
+        }
+      });
+    };
+
+    const hideLiveChat = () => {
+      const liveChatElements = document.querySelectorAll(
+        "#convrs-shadow-host, #convrs-chat-channel-container, .convrs-chat-channel-container"
+      );
+
+      liveChatElements.forEach((el) => {
+        if (el && el.style) {
+          el.style.setProperty("display", "none", "important");
+          el.style.setProperty("visibility", "hidden", "important");
+          el.style.setProperty("opacity", "0", "important");
+          el.style.setProperty("pointer-events", "none", "important");
+        }
+      });
+    };
+
+    // Only hide live chat on mobile and tablet, not on desktop
+    const shouldHideLiveChat = isMobile || isTablet;
+
+    // If desktop, show live chat and return early
+    if (!shouldHideLiveChat) {
+      showLiveChat();
+      return;
+    }
+
+    const checkScrollPosition = () => {
+      const helpCenterElement = helpCenterRef.current;
+      if (!helpCenterElement) return;
+
+      const rect = helpCenterElement.getBoundingClientRect();
+      const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+
+      if (isInViewport) {
+        hideLiveChat();
+      } else {
+        showLiveChat();
+      }
+    };
+
+    // Check on mount
+    checkScrollPosition();
+
+    // Check on scroll
+    window.addEventListener("scroll", checkScrollPosition, { passive: true });
+    window.addEventListener("resize", checkScrollPosition, { passive: true });
+
+    // Hide live chat on mount (since help-center is visible)
+    hideLiveChat();
+
+    return () => {
+      window.removeEventListener("scroll", checkScrollPosition);
+      window.removeEventListener("resize", checkScrollPosition);
+      // Show live chat again when component unmounts or when switching to desktop
+      showLiveChat();
+    };
+  }, [isMobile, isTablet]);
 
   // Clean and Simple HelpCenterBlock Component
   const HelpCenterBlock = ({
@@ -88,6 +165,7 @@ const HelpCenter = ({ className }) => {
         setNoSearchResult={setNoSearchResult}
       />
       <section
+        ref={helpCenterRef}
         className={cn("help-center", className, {
           "help-center--rtl": isRTL,
         })}
